@@ -34413,7 +34413,7 @@
 <h4 id="arrayprototypeentries">▼ <code>Array.prototype.entries()</code> 関数<a class="headerlink" href="#arrayprototypeentries" title="Permanent link">&para;</a></h4>
 <p>配列から key と value を取得する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"foo"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">,</span><span class="w"> </span><span class="s2">"baz"</span><span class="p">];</span>
 
 <span class="c1">// key、valueを取得できる。</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">iterator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">array</span><span class="p">.</span><span class="nx">entries</span><span class="p">();</span>
@@ -34423,9 +34423,9 @@
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">// [ 0, &#39;foo&#39; ]</span>
-<span class="c1">// [ 1, &#39;bar&#39; ]</span>
-<span class="c1">// [ 2, &#39;baz&#39; ]</span>
+<span class="c1">// [ 0, 'foo' ]</span>
+<span class="c1">// [ 1, 'bar' ]</span>
+<span class="c1">// [ 2, 'baz' ]</span>
 </code></pre></div>
 <h4 id="arrayprototypemap">▼ <code>Array.prototype.map()</code> 関数<a class="headerlink" href="#arrayprototypemap" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
@@ -34438,7 +34438,7 @@
 <h4 id="arraylength">▼ <code>Array.length</code><a class="headerlink" href="#arraylength" title="Permanent link">&para;</a></h4>
 <p>要素数を出力する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;qux&quot;</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"foo"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">,</span><span class="w"> </span><span class="s2">"baz"</span><span class="p">,</span><span class="w"> </span><span class="s2">"qux"</span><span class="p">];</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">param</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
 
@@ -34453,12 +34453,12 @@
 <span class="w">  </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">z</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">z</span><span class="o">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span>
 <span class="w">  </span><span class="p">}),</span>
 <span class="p">);</span>
 
 <span class="c1">// json形式オブジェクト</span>
-<span class="c1">// &quot;{&quot;x&quot;:5, &quot;y&quot;:5 &quot;z&quot;:&quot;test&quot;}&quot;</span>
+<span class="c1">// "{"x":5, "y":5 "z":"test"}"</span>
 </code></pre></div>
 <h4 id="stringify">▼ <code>stringify()</code> 関数<a class="headerlink" href="#stringify" title="Permanent link">&para;</a></h4>
 <p>JSON から JavaScript にデシリアライズする。</p>
@@ -34467,12 +34467,12 @@
 <span class="w">  </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">z</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">z</span><span class="o">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span>
 <span class="w">  </span><span class="p">}),</span>
 <span class="p">);</span>
 
 <span class="c1">// JavaScriptオブジェクト</span>
-<span class="c1">// {x:5, y:5 z:&quot;test&quot;}</span>
+<span class="c1">// {x:5, y:5 z:"test"}</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02">02. オブジェクトの作成、初期化<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
@@ -34640,7 +34640,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// ファイルの読み出し</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Foo</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./foo.js&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Foo</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./foo.js"</span><span class="p">;</span>
 
 <span class="c1">// 作成、初期化</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
@@ -34667,7 +34667,7 @@
 <span class="p">};</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// ファイルの読み出し</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Foo</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./foo.js&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Foo</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./foo.js"</span><span class="p">;</span>
 
 <span class="c1">// 作成、初期化</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
@@ -34754,11 +34754,11 @@
 <div class="highlight"><pre><span></span><code><span class="c1">// Object.create()による継承。</span>
 <span class="nx">SubFoo</span><span class="p">.</span><span class="nx">prototype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 状態を定義</span>
-<span class="w">  </span><span class="nx">subProperty</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;テスト&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">subProperty</span><span class="o">:</span><span class="w"> </span><span class="s2">"テスト"</span><span class="p">,</span>
 
 <span class="w">  </span><span class="c1">// 関数を定義</span>
 <span class="w">  </span><span class="nx">printSubValue</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;これは&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">subProperty</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;です。&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">"これは"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">subProperty</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"です。"</span><span class="p">;</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="p">});</span>
 
@@ -34794,7 +34794,7 @@
 <p>コンストラクタ関数内の this は、自身がコールされたオブジェクトを指す。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 一番外側はWindowオブジェクト</span>
-<span class="nx">param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;global param&quot;</span><span class="p">;</span>
+<span class="nx">param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"global param"</span><span class="p">;</span>
 
 <span class="c1">// 関数宣言</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">printParam</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -34803,13 +34803,13 @@
 
 <span class="c1">// オブジェクト1</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">object1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">param</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;object1 param&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">param</span><span class="o">:</span><span class="w"> </span><span class="s2">"object1 param"</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">func</span><span class="o">:</span><span class="w"> </span><span class="nx">printParam</span><span class="p">,</span>
 <span class="p">};</span>
 
 <span class="c1">// オブジェクト2</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">object2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">param</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;object2 param&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">param</span><span class="o">:</span><span class="w"> </span><span class="s2">"object2 param"</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">func</span><span class="o">:</span><span class="w"> </span><span class="nx">printParam</span><span class="p">,</span>
 <span class="p">};</span>
 </code></pre></div>
@@ -34827,7 +34827,7 @@
 <p><code>this</code> は、自身が宣言されたオブジェクトを指す。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 一番外側はWindowオブジェクト</span>
-<span class="nx">param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;global param&quot;</span><span class="p">;</span>
+<span class="nx">param</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"global param"</span><span class="p">;</span>
 
 <span class="c1">// アロー関数による省略記法</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">printParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -34836,13 +34836,13 @@
 
 <span class="c1">// オブジェクト1</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">object1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">param</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;object1 param&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">param</span><span class="o">:</span><span class="w"> </span><span class="s2">"object1 param"</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">func</span><span class="o">:</span><span class="w"> </span><span class="nx">printParam</span><span class="p">,</span>
 <span class="p">};</span>
 
 <span class="c1">// オブジェクト2</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">object2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">param</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;object2 param&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">param</span><span class="o">:</span><span class="w"> </span><span class="s2">"object2 param"</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">func</span><span class="o">:</span><span class="w"> </span><span class="nx">printParam</span><span class="p">,</span>
 <span class="p">};</span>
 </code></pre></div>

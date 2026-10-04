@@ -34714,18 +34714,18 @@
 <h4 id="_11">▼ トークンリクエスト送信<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>認可コードを使用して、Keycloak にトークンリクエストを送信する。</p>
 <p>ID トークンとアクセストークンを取得できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;grant_type=authorization_code&amp;code=&lt;認証コード&gt;&amp;redirect_uri=http://&lt;アプリケーションのドメイン&gt;/oidc&amp;client_id=rp1&amp;client_secret=&lt;Client secret&gt;&quot;</span><span class="w"> </span>http://&lt;Keycloakのドメイン&gt;/realms/oidc-sample/protocol/openid-connect/token
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-d<span class="w"> </span><span class="s2">"grant_type=authorization_code&amp;code=&lt;認証コード&gt;&amp;redirect_uri=http://&lt;アプリケーションのドメイン&gt;/oidc&amp;client_id=rp1&amp;client_secret=&lt;Client secret&gt;"</span><span class="w"> </span>http://&lt;Keycloakのドメイン&gt;/realms/oidc-sample/protocol/openid-connect/token
 
 <span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;access_token&quot;</span>:<span class="w"> </span>&lt;アクセストークン&gt;,
-<span class="w">  </span><span class="s2">&quot;expires_in&quot;</span>:<span class="w"> </span><span class="m">300</span>,
-<span class="w">  </span><span class="s2">&quot;refresh_expires_in&quot;</span>:<span class="w"> </span><span class="m">1800</span>,
-<span class="w">  </span><span class="s2">&quot;refresh_token&quot;</span>:<span class="w"> </span>&lt;リフレッシュトークン&gt;,
-<span class="w">  </span><span class="s2">&quot;token_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;Bearer&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;id_token&quot;</span>:<span class="w"> </span>&lt;IDトークン&gt;,
-<span class="w">  </span><span class="s2">&quot;not-before-policy&quot;</span>:<span class="w"> </span><span class="m">0</span>,
-<span class="w">  </span><span class="s2">&quot;session_state&quot;</span>:<span class="w"> </span><span class="s2">&quot;8468db1c-feb4-4803-bfeb-213149b560cf&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;scope&quot;</span>:<span class="w"> </span><span class="s2">&quot;openid email profile&quot;</span>
+<span class="w">  </span><span class="s2">"access_token"</span>:<span class="w"> </span>&lt;アクセストークン&gt;,
+<span class="w">  </span><span class="s2">"expires_in"</span>:<span class="w"> </span><span class="m">300</span>,
+<span class="w">  </span><span class="s2">"refresh_expires_in"</span>:<span class="w"> </span><span class="m">1800</span>,
+<span class="w">  </span><span class="s2">"refresh_token"</span>:<span class="w"> </span>&lt;リフレッシュトークン&gt;,
+<span class="w">  </span><span class="s2">"token_type"</span>:<span class="w"> </span><span class="s2">"Bearer"</span>,
+<span class="w">  </span><span class="s2">"id_token"</span>:<span class="w"> </span>&lt;IDトークン&gt;,
+<span class="w">  </span><span class="s2">"not-before-policy"</span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">  </span><span class="s2">"session_state"</span>:<span class="w"> </span><span class="s2">"8468db1c-feb4-4803-bfeb-213149b560cf"</span>,
+<span class="w">  </span><span class="s2">"scope"</span>:<span class="w"> </span><span class="s2">"openid email profile"</span>
 <span class="o">}</span>
 </code></pre></div>
 <blockquote>
@@ -34734,14 +34734,14 @@
 </ul>
 </blockquote>
 <h4 id="_12">▼ ユーザー情報の取得<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &lt;アクセストークン&gt;&quot;</span><span class="w"> </span>http://&lt;Keycloakのドメイン&gt;/realms/oidc-sample/protocol/openid-connect/userinfo
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer &lt;アクセストークン&gt;"</span><span class="w"> </span>http://&lt;Keycloakのドメイン&gt;/realms/oidc-sample/protocol/openid-connect/userinfo
 
 <span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;sub&quot;</span>:<span class="w"> </span>&lt;User<span class="w"> </span>ID&gt;,
-<span class="w">  </span><span class="s2">&quot;email_verified&quot;</span>:<span class="w"> </span>false,
-<span class="w">  </span><span class="s2">&quot;preferred_username&quot;</span>:<span class="w"> </span><span class="s2">&quot;admin&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;given_name&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;family_name&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">  </span><span class="s2">"sub"</span>:<span class="w"> </span>&lt;User<span class="w"> </span>ID&gt;,
+<span class="w">  </span><span class="s2">"email_verified"</span>:<span class="w"> </span>false,
+<span class="w">  </span><span class="s2">"preferred_username"</span>:<span class="w"> </span><span class="s2">"admin"</span>,
+<span class="w">  </span><span class="s2">"given_name"</span>:<span class="w"> </span><span class="s2">""</span>,
+<span class="w">  </span><span class="s2">"family_name"</span>:<span class="w"> </span><span class="s2">""</span>
 <span class="o">}</span>
 </code></pre></div>
 <blockquote>
@@ -34751,7 +34751,7 @@
 </blockquote>
 <h4 id="_13">▼ アクセストークンの再作成<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>リフレッシュトークンを使用して、アクセストークンを再作成する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;client_id=rp1&amp;client_secret=&lt;Client Secret&gt;&amp;grant_type=refresh_token&amp;refresh_token=&lt;リフレッシュトークン&gt;&amp;scope=openid profile&quot;</span><span class="w"> </span>http://&lt;Keycloakのドメイン&gt;/realms/oidc-sample/protocol/openid-connect/token
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-d<span class="w"> </span><span class="s2">"client_id=rp1&amp;client_secret=&lt;Client Secret&gt;&amp;grant_type=refresh_token&amp;refresh_token=&lt;リフレッシュトークン&gt;&amp;scope=openid profile"</span><span class="w"> </span>http://&lt;Keycloakのドメイン&gt;/realms/oidc-sample/protocol/openid-connect/token
 </code></pre></div>
 <blockquote>
 <ul>

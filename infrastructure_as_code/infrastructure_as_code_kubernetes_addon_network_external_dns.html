@@ -33938,8 +33938,8 @@
 <p>すると ExternalDNS アドオンは、Ingress の <code>.spec.rules[*].host</code> キーに応じて、Amazon Route 53 に A レコードと TXT レコードを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>logs<span class="w"> </span>external-dns<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>example.com
 
-<span class="nv">time</span><span class="o">=</span><span class="s2">&quot;2023-02-28T10:09:30Z&quot;</span><span class="w"> </span><span class="nv">level</span><span class="o">=</span>info<span class="w"> </span><span class="nv">msg</span><span class="o">=</span><span class="s2">&quot;Desired change: CREATE example.com A [Id: /hostedzone/*****]&quot;</span>
-<span class="nv">time</span><span class="o">=</span><span class="s2">&quot;2023-02-28T10:09:30Z&quot;</span><span class="w"> </span><span class="nv">level</span><span class="o">=</span>info<span class="w"> </span><span class="nv">msg</span><span class="o">=</span><span class="s2">&quot;Desired change: CREATE example.com TXT [Id: /hostedzone/*****]&quot;</span>
+<span class="nv">time</span><span class="o">=</span><span class="s2">"2023-02-28T10:09:30Z"</span><span class="w"> </span><span class="nv">level</span><span class="o">=</span>info<span class="w"> </span><span class="nv">msg</span><span class="o">=</span><span class="s2">"Desired change: CREATE example.com A [Id: /hostedzone/*****]"</span>
+<span class="nv">time</span><span class="o">=</span><span class="s2">"2023-02-28T10:09:30Z"</span><span class="w"> </span><span class="nv">level</span><span class="o">=</span>info<span class="w"> </span><span class="nv">msg</span><span class="o">=</span><span class="s2">"Desired change: CREATE example.com TXT [Id: /hostedzone/*****]"</span>
 </code></pre></div>
 <p>なお、Ingress のアノテーションに <code>external-dns.alpha.kubernetes.io/hostname: &lt;ホスト名&gt;</code> を明示的に指定してもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
@@ -34063,12 +34063,12 @@
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external-dns</span>
 <span class="nt">rules</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;services&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;endpoints&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;pods&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;nodes&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;get&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;watch&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;list&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;extensions&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;networking.k8s.io&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ingresses&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;get&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;watch&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;list&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"services"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"endpoints"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"pods"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"nodes"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"watch"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"list"</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"extensions"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"networking.k8s.io"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ingresses"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"watch"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"list"</span><span class="p p-Indicator">]</span>
 <span class="nn">---</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRoleBinding</span>
@@ -34110,54 +34110,54 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="terraform">▼ Terraform の公式モジュールの場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h4>
 <p>ArgoCD のセットアップのうち、AWS 側で必要なものをまとめる。</p>
 <p>ここでは、Terraform の公式モジュールを使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_external_dns&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"iam_assumable_role_with_oidc_external_dns"</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"</span>
 
-<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;バージョン&gt;"</span>
 
 <span class="c1">  # ExternalDNSのPodに紐付けるIAMロール</span>
 <span class="w">  </span><span class="na">create_role</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-external-dns&quot;</span>
+<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-external-dns"</span>
 
 <span class="c1">  # Amazon EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの</span>
-<span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://&quot;, &quot;&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://", ""</span><span class="p">)</span>
 
 <span class="c1">  # AWS IAMロールに紐付けるIAMポリシー</span>
 <span class="w">  </span><span class="na">role_policy_arns</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:policy/ExternalDNSIAMPolicy&quot;</span>
+<span class="w">    </span><span class="s2">"arn:aws:iam::&lt;AWSアカウントID&gt;:policy/ExternalDNSIAMPolicy"</span>
 <span class="w">  </span><span class="p">]</span>
 
 <span class="c1">  # ExternalDNSのPodのServiceAccount名</span>
 <span class="c1">  # ServiceAccountは、Terraformではなく、マニフェストで定義したほうが良い</span>
 <span class="w">  </span><span class="na">oidc_fully_qualified_subjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;system:serviceaccount:kube-system:foo-external-dns&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"system:serviceaccount:kube-system:foo-external-dns"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">...</span>
 <span class="w">  </span><span class="p">]</span>
 
 <span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;acm_foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/acm/aws&quot;</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 4.3.2&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"acm_foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/acm/aws"</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~&gt; 4.3.2"</span>
 
 <span class="w">  </span><span class="na">domain_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_route53_zone.foo.name</span>
 <span class="w">  </span><span class="na">zone_id</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_route53_zone.foo.zone_id</span>
 <span class="c1">  # ワイルドカード証明書とする</span>
 <span class="w">  </span><span class="na">subject_alternative_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;*.example.com&quot;</span>
+<span class="w">    </span><span class="s2">"*.example.com"</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_route53_zone&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example.com&quot;</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_route53_zone"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"example.com"</span>
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_route53_record&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_route53_record"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">zone_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_route53_zone.foo.id</span>
-<span class="w">  </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo.example.com&quot;</span>
+<span class="w">  </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo.example.com"</span>
 <span class="c1">  # Route53のTerraformとExternalDNSのマニフェストを分離するために、NSタイプを使用する</span>
-<span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;NS&quot;</span>
+<span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"NS"</span>
 <span class="w">  </span><span class="na">ttl</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">30</span>
 <span class="w">  </span><span class="na">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_route53_zone.foo.name_servers</span>
 <span class="p">}</span>

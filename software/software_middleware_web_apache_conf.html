@@ -35501,7 +35501,7 @@
 <p>ディレクティブを囲うディレクティブの一種。</p>
 <p>指定したディレクトリ内にリクエストがあったときに実行するディレクティブを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">&quot;/var/www/foo&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">"/var/www/foo"</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nb">DirectoryIndex</span><span class="w"> </span>index.php
 <span class="w">    </span><span class="nb">AllowOverride</span><span class="w"> </span><span class="k">All</span>
 <span class="nt">&lt;/Directory&gt;</span>
@@ -35561,12 +35561,12 @@
 <h4 id="directoryindex_1">▼ DirectoryIndex とは<a class="headerlink" href="#directoryindex_1" title="Permanent link">&para;</a></h4>
 <p>Directory ディレクティブによってリクエストされたディレクトリのインデックスファイルをレスポンスする。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">&quot;/var/www/foo&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">"/var/www/foo"</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nb">DirectoryIndex</span><span class="w"> </span>index.html<span class="w"> </span>index.php
 <span class="nt">&lt;/Directory&gt;</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">&quot;/var/www/foo&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">"/var/www/foo"</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nb">DirectoryIndex</span><span class="w"> </span>index.html
 <span class="w">    </span><span class="nb">DirectoryIndex</span><span class="w"> </span>index.php
 <span class="nt">&lt;/Directory&gt;</span>
@@ -35576,7 +35576,7 @@
 <h4 id="allowoverride_1">▼ AllowOverride とは<a class="headerlink" href="#allowoverride_1" title="Permanent link">&para;</a></h4>
 <p>別に用意した <code>.htaccess</code> ファイルにて、有効化するディレクティブを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">&quot;/var/www/foo&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">"/var/www/foo"</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nb">DirectoryIndex</span><span class="w"> </span>index.php
 <span class="w">    </span><span class="nb">AllowOverride</span><span class="w"> </span><span class="k">All</span>
 <span class="nt">&lt;/Directory&gt;</span>
@@ -35630,7 +35630,7 @@
 <h4 id="setenvif_1">▼ SetEnvIf とは<a class="headerlink" href="#setenvif_1" title="Permanent link">&para;</a></h4>
 <p>条件分岐と環境変数の設定を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c"># クエリパラメーターが以下の拡張子の場合</span>
-<span class="nb">SetEnvIf</span><span class="w"> </span>Request_URI<span class="w"> </span><span class="s2">&quot;\.(gif|jpe?g|png|js|css)$&quot;</span><span class="w"> </span>object-is-ignore
+<span class="nb">SetEnvIf</span><span class="w"> </span>Request_URI<span class="w"> </span><span class="s2">"\.(gif|jpe?g|png|js|css)$"</span><span class="w"> </span>object-is-ignore
 </code></pre></div>
 <h4 id="nolog">▼ nolog<a class="headerlink" href="#nolog" title="Permanent link">&para;</a></h4>
 <p>ログを出力しない場合を設定できる。</p>
@@ -35644,18 +35644,18 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c"># common形式</span>
 <span class="nb">CustomLog</span><span class="w"> </span>logs/access_log<span class="w"> </span>common
-<span class="nb">LogFormat</span><span class="w"> </span><span class="s2">&quot;%h %l %u %t &quot;</span>%r<span class="s2">&quot; %&gt;s %b&quot;</span><span class="w"> </span>common
+<span class="nb">LogFormat</span><span class="w"> </span><span class="s2">"%h %l %u %t "</span>%r<span class="s2">" %&gt;s %b"</span><span class="w"> </span>common
 
 <span class="c"># combine形式</span>
 <span class="nb">CustomLog</span><span class="w"> </span>logs/access_log<span class="w"> </span>combined
-<span class="nb">LogFormat</span><span class="w"> </span><span class="s2">&quot;%h %l %u %t &quot;</span>%r<span class="s2">&quot; %&gt;s %b &quot;</span>%{Referer}i<span class="s2">&quot; &quot;</span>%{User-Agent}i<span class="s2">&quot;&quot;</span><span class="w"> </span>combined
+<span class="nb">LogFormat</span><span class="w"> </span><span class="s2">"%h %l %u %t "</span>%r<span class="s2">" %&gt;s %b "</span>%{Referer}i<span class="s2">" "</span>%{User-Agent}i<span class="s2">""</span><span class="w"> </span>combined
 </code></pre></div>
 <p>以下のようなログになる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># common形式</span>
-<span class="m">118</span>.86.194.71<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">17</span>/Aug/2011:23:04:03<span class="w"> </span>+0900<span class="o">]</span><span class="w"> </span><span class="s2">&quot;GET /home/name/category/web HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="m">11815</span>
+<span class="m">118</span>.86.194.71<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">17</span>/Aug/2011:23:04:03<span class="w"> </span>+0900<span class="o">]</span><span class="w"> </span><span class="s2">"GET /home/name/category/web HTTP/1.1"</span><span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="m">11815</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># combine形式</span>
-<span class="m">118</span>.86.194.71<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">17</span>/Aug/2011:23:04:03<span class="w"> </span>+0900<span class="o">]</span><span class="w"> </span><span class="s2">&quot;GET /home/name/category/web HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="m">11815</span><span class="w"> </span><span class="s2">&quot;http://naoberry.com/home/name/&quot;</span><span class="w"> </span><span class="s2">&quot;Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.112 Safari/535.1&quot;</span>
+<span class="m">118</span>.86.194.71<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">17</span>/Aug/2011:23:04:03<span class="w"> </span>+0900<span class="o">]</span><span class="w"> </span><span class="s2">"GET /home/name/category/web HTTP/1.1"</span><span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="m">11815</span><span class="w"> </span><span class="s2">"http://naoberry.com/home/name/"</span><span class="w"> </span><span class="s2">"Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.112 Safari/535.1"</span>
 </code></pre></div>
 <h4 id="_7">▼ ログの変数一覧<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <table>
@@ -35757,9 +35757,9 @@
 <p>レスポンスヘッダーを追加する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p><code>Referrer-Policy</code> ヘッダーを追加し、値を <code>no-referrer-when-downgrade</code> とする。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">Header</span><span class="w"> </span>set<span class="w"> </span>Referrer-Policy<span class="w"> </span><span class="s2">&quot;no-referrer-when-downgrade&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nb">Header</span><span class="w"> </span>set<span class="w"> </span>Referrer-Policy<span class="w"> </span><span class="s2">"no-referrer-when-downgrade"</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">Header</span><span class="w"> </span>set<span class="w"> </span>Referrer-Policy<span class="w"> </span><span class="s2">&quot;no-referrer-when-downgrade&quot;</span><span class="w"> </span>always
+<div class="highlight"><pre><span></span><code><span class="nb">Header</span><span class="w"> </span>set<span class="w"> </span>Referrer-Policy<span class="w"> </span><span class="s2">"no-referrer-when-downgrade"</span><span class="w"> </span>always
 </code></pre></div>
 <p>補足として、Chrome85 以降の <code>Referrer-Policy</code> ヘッダー初期値の仕様変更については、以下のリンクを参考にせよ。</p>
 <blockquote>
@@ -35771,9 +35771,9 @@
 <p>レスポンスヘッダーを削除する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p><code>Referrer-Policy</code> ヘッダーを削除する</p>
-<div class="highlight"><pre><span></span><code><span class="nb">Header</span><span class="w"> </span>unset<span class="w"> </span>Referrer-Policy<span class="w"> </span><span class="s2">&quot;no-referrer-when-downgrade&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nb">Header</span><span class="w"> </span>unset<span class="w"> </span>Referrer-Policy<span class="w"> </span><span class="s2">"no-referrer-when-downgrade"</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">Header</span><span class="w"> </span>unset<span class="w"> </span>Referrer-Policy<span class="w"> </span><span class="s2">&quot;no-referrer-when-downgrade&quot;</span><span class="w"> </span>always
+<div class="highlight"><pre><span></span><code><span class="nb">Header</span><span class="w"> </span>unset<span class="w"> </span>Referrer-Policy<span class="w"> </span><span class="s2">"no-referrer-when-downgrade"</span><span class="w"> </span>always
 </code></pre></div>
 <p><br></p>
 

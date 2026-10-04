@@ -34992,7 +34992,7 @@ $<span class="w"> </span>go<span class="w"> </span>build<span class="w"> </span>
 <h4 id="-m">▼ -m<a class="headerlink" href="#-m" title="Permanent link">&para;</a></h4>
 <p>コミットメッセージを設定する。</p>
 <p>空コミットでよく使う。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>--allow-empty<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;first commit&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>--allow-empty<span class="w"> </span>-m<span class="w"> </span><span class="s2">"first commit"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="clean">clean<a class="headerlink" href="#clean" title="Permanent link">&para;</a></h3>
@@ -35009,13 +35009,13 @@ $<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>ti
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>env
 
-<span class="nv">GO111MODULE</span><span class="o">=</span><span class="s2">&quot;on&quot;</span>
-<span class="nv">GOARCH</span><span class="o">=</span><span class="s2">&quot;amd64&quot;</span>
+<span class="nv">GO111MODULE</span><span class="o">=</span><span class="s2">"on"</span>
+<span class="nv">GOARCH</span><span class="o">=</span><span class="s2">"amd64"</span>
 
 ...
 
-<span class="nv">PKG_CONFIG</span><span class="o">=</span><span class="s2">&quot;pkg-config&quot;</span>
-<span class="nv">GOGCCFLAGS</span><span class="o">=</span><span class="s2">&quot;-fPIC -m64 -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build887404645=/tmp/go-build -gno-record-gcc-switches&quot;</span>
+<span class="nv">PKG_CONFIG</span><span class="o">=</span><span class="s2">"pkg-config"</span>
+<span class="nv">GOGCCFLAGS</span><span class="o">=</span><span class="s2">"-fPIC -m64 -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build887404645=/tmp/go-build -gno-record-gcc-switches"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="fmt">fmt<a class="headerlink" href="#fmt" title="Permanent link">&para;</a></h3>
@@ -35031,7 +35031,7 @@ $<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>ti
 <p>コードと外部モジュールに対して <code>build</code> コマンドを実行することで、<code>$GOPATH</code> 以下の <code>bin</code> ディレクトリまたは <code>pkg</code> ディレクトリにインストール (配置) する。</p>
 <p>内部または外部のコードからビルドされたアーティファクト (バイナリファイル) であれば <code>bin</code> ディレクトリ配下に配置し、それ以外 (例：<code>.a</code> ファイル) であれば <code>pkg</code> ディレクトリ配下に配置する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># asdfでGoをインストールしている場合は、go installコマンドの前に`PATH`を設定しておく</span>
-$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>go<span class="w"> </span>env<span class="w"> </span>GOPATH<span class="k">)</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>go<span class="w"> </span>env<span class="w"> </span>GOPATH<span class="k">)</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
 
 $<span class="w"> </span>go<span class="w"> </span>install
 </code></pre></div>
@@ -35314,7 +35314,7 @@ go:<span class="w"> </span>finding<span class="w"> </span>module<span class="w">
 
 <span class="c1">// 直接的に依存するモジュール (アプリで使用するモジュール)</span>
 <span class="nx">require</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nx">モジュール名</span><span class="p">&gt;</span><span class="w"> </span><span class="p">&lt;</span><span class="nx">バージョンタグ</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">モジュール名</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">バージョンタグ</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">foo</span><span class="w"> </span><span class="nx">v1</span><span class="mf">.3.0</span>
 <span class="w">    </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">bar</span><span class="w"> </span><span class="nx">v1</span><span class="mf">.0.0</span>
 <span class="p">)</span>
@@ -35324,7 +35324,7 @@ go:<span class="w"> </span>finding<span class="w"> </span>module<span class="w">
 <span class="w">    </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">baz</span><span class="w"> </span><span class="nx">v1</span><span class="mf">.0.0</span><span class="w"> </span><span class="c1">// indirect</span>
 <span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="s">&quot;github.com/bar&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="s">"github.com/bar"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 何らかの処理</span>
@@ -35350,7 +35350,7 @@ go:<span class="w"> </span>added<span class="w"> </span>github.com/foo<span clas
 <span class="k">go</span><span class="w"> </span><span class="mf">1.16</span>
 
 <span class="nx">require</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">foo</span><span class="w"> </span><span class="nx">v0</span><span class="mf">.0.0</span><span class="o">-</span><span class="p">&lt;</span><span class="nx">コミット日時のタイムスタンプ</span><span class="p">&gt;</span><span class="o">-</span><span class="p">&lt;</span><span class="nx">コミットID</span><span class="p">&gt;</span><span class="w"> </span><span class="c1">// indirect</span>
+<span class="w">    </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">foo</span><span class="w"> </span><span class="nx">v0</span><span class="mf">.0.0</span><span class="o">-&lt;</span><span class="nx">コミット日時のタイムスタンプ</span><span class="o">&gt;-&lt;</span><span class="nx">コミットID</span><span class="o">&gt;</span><span class="w"> </span><span class="c1">// indirect</span>
 <span class="p">)</span>
 </code></pre></div>
 <blockquote>
@@ -35405,12 +35405,12 @@ github.com/foo@v1.0.0:<span class="w"> </span>verifying<span class="w"> </span>m
 
 <span class="k">go</span><span class="w"> </span><span class="mf">1.16</span>
 
-<span class="nx">replace</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">hiroki</span><span class="o">-</span><span class="nx">hasegawa</span><span class="o">/</span><span class="nx">foo</span><span class="o">-</span><span class="nx">repository</span><span class="o">/</span><span class="nx">local</span><span class="o">-</span><span class="nx">pkg</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="o">/</span>
+<span class="nx">replace</span><span class="w"> </span><span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">/</span><span class="nx">hiroki</span><span class="o">-</span><span class="nx">hasegawa</span><span class="o">/</span><span class="nx">foo</span><span class="o">-</span><span class="nx">repository</span><span class="o">/</span><span class="nx">local</span><span class="o">-</span><span class="nx">pkg</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">/</span>
 </code></pre></div>
 <p>これらにより、ローカルマシンのモジュールをインポートできるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;local.packages/local-pkg&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"local.packages/local-pkg"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 何らかの処理</span>

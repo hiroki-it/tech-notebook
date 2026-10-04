@@ -36701,13 +36701,13 @@
 <p><br></p>
 <h2 id="01-03-terraform">01-03. セットアップ (Terraform の場合)<a class="headerlink" href="#01-03-terraform" title="Permanent link">&para;</a></h2>
 <p>ここでは、Terraform の公式モジュールを使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;eks_foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/eks/aws&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"eks_foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/eks/aws"</span>
 
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;モジュールのバージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;モジュールのバージョン&gt;"</span>
 
 <span class="w">  </span><span class="na">cluster_name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="err">foo-eks-cluster</span>
-<span class="w">  </span><span class="na">cluster_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;Kubernetesのバージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">cluster_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;Kubernetesのバージョン&gt;"</span>
 
 <span class="c1">  # kube-apiserverをプライベートアクセスにするか否か</span>
 <span class="w">  </span><span class="na">cluster_endpoint_private_access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
@@ -36716,10 +36716,10 @@
 <span class="w">  </span><span class="na">cluster_endpoint_public_access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 
 <span class="c1">  # Amazon EKS Clusterのkube-apiserverにリクエストを送信できるCIDR</span>
-<span class="w">  </span><span class="na">cluster_endpoint_public_access_cidrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*.*.*.*/32&quot;, &quot;*.*.*.*/32&quot;, &quot;*.*.*.*/32&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="na">cluster_endpoint_public_access_cidrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"*.*.*.*/32", "*.*.*.*/32", "*.*.*.*/32"</span><span class="p">]</span>
 
 <span class="c1">  # Amazon CloudWatch Logsに送信するログの種類</span>
-<span class="w">  </span><span class="na">cluster_enabled_log_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;api&quot;, &quot;audit&quot;, &quot;authenticator&quot;, &quot;controllerManager&quot;, &quot;scheduler&quot;</span><span class="p">,]</span>
+<span class="w">  </span><span class="na">cluster_enabled_log_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"api", "audit", "authenticator", "controllerManager", "scheduler"</span><span class="p">,]</span>
 
 <span class="c1">  # ログの保管期間</span>
 <span class="w">  </span><span class="na">cluster_log_retention_in_days</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">365</span>
@@ -36728,7 +36728,7 @@
 <span class="w">  </span><span class="na">cluster_create_security_group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 
 <span class="c1">  # セキュリティグループのID</span>
-<span class="w">  </span><span class="na">cluster_security_group_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span>
+<span class="w">  </span><span class="na">cluster_security_group_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
 
 <span class="c1">  # IRSAを有効化するか否か</span>
 <span class="w">  </span><span class="na">enable_irsa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
@@ -36737,31 +36737,31 @@
 <span class="w">  </span><span class="na">worker_create_security_group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 
 <span class="c1">  # Amazon VPCのID</span>
-<span class="w">  </span><span class="na">vpc_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;vpc-*****&quot;</span>
+<span class="w">  </span><span class="na">vpc_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"vpc-*****"</span>
 
 <span class="c1">  # サブネットのID</span>
-<span class="w">  </span><span class="na">subnets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;subnet-*****&quot;, &quot;subnet-*****&quot;, &quot;subnet-*****&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="na">subnets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"subnet-*****", "subnet-*****", "subnet-*****"</span><span class="p">]</span>
 
 <span class="c1">  # Amazon EKSアドオン</span>
 <span class="w">  </span><span class="nb">addons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nb">coredns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">resolve_conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
+<span class="w">      </span><span class="na">resolve_conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"OVERWRITE"</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nb">kube-proxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">resolve_conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
+<span class="w">      </span><span class="na">resolve_conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"OVERWRITE"</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nb">vpc-cni</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">resolve_conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
+<span class="w">      </span><span class="na">resolve_conflicts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"OVERWRITE"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="c1">  # Amazon EKSマネージドグループ</span>
 <span class="w">  </span><span class="nb">eks_managed_node_groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nb">foo-group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">instance_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;m5.large&quot;</span><span class="p">]</span>
+<span class="w">      </span><span class="na">instance_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"m5.large"</span><span class="p">]</span>
 <span class="w">      </span><span class="na">min_size</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">3</span>
 <span class="w">      </span><span class="na">max_size</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">4</span>
 <span class="w">      </span><span class="na">desired_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span>
@@ -36958,43 +36958,43 @@
 
 <span class="c1"># ArgoCDのPodにスイッチロールの権限を持たせるためのAWS IAMロール</span>
 <span class="c1"># 対象のAmazon EKS Clusterに接続するためのAWS IAMロールにスイッチロールできる</span>
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_argocd_access_entry_service&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"iam_assumable_role_with_oidc_argocd_access_entry_service"</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"</span>
 
-<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;バージョン&gt;"</span>
 
 <span class="c1">  # ArgoCDのPodに紐付けるAWS IAMロール</span>
 <span class="w">  </span><span class="na">create_role</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-argocd-access-entry-service&quot;</span>
+<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-argocd-access-entry-service"</span>
 
 <span class="c1">  # Amazon EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの</span>
 <span class="c1">  # ArgoCDは外部のAmazon EKS Clusterで稼働している</span>
-<span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks_argocd.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://&quot;, &quot;&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks_argocd.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://", ""</span><span class="p">)</span>
 
 <span class="c1">  # ArgoCDのPodのServiceAccount名</span>
 <span class="c1">  # ServiceAccountは、Terraformではなく、マニフェストで定義したほうが良い</span>
 <span class="w">  </span><span class="na">oidc_fully_qualified_subjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="c1">    # argocd applicaton-controller</span>
-<span class="w">    </span><span class="s2">&quot;system:serviceaccount:argocd:foo-argocd-application-controller&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"system:serviceaccount:argocd:foo-argocd-application-controller"</span><span class="p">,</span>
 <span class="c1">    # argocd-server</span>
-<span class="w">    </span><span class="s2">&quot;system:serviceaccount:argocd:foo-argocd-server&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"system:serviceaccount:argocd:foo-argocd-server"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">...</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 
 <span class="c1"># 対象のAmazon EKS Clusterに接続するためのAWS IAMロール</span>
 <span class="c1"># 対象のAmazon EKS Clusterでアクセスエントリーを設定する必要がある</span>
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_argocd_access_entry_cluster&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"iam_assumable_role_argocd_access_entry_cluster"</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="na">source</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/iam/aws//modules/iam-assumable-role"</span>
 
-<span class="w">  </span><span class="na">version</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;バージョン&gt;"</span>
 
 <span class="w">  </span><span class="na">create_role</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">role_name</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-argocd-access-entry-cluster&quot;</span>
+<span class="w">  </span><span class="na">role_name</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-argocd-access-entry-cluster"</span>
 
-<span class="w">  </span><span class="na">trusted_role_actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sts:AssumeRole&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="na">trusted_role_actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"sts:AssumeRole"</span><span class="p">]</span>
 
 <span class="w">  </span><span class="na">trusted_role_arns</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="nv">module.iam_assumable_role_with_oidc_argocd_access_entry_service.iam_role_arn</span>
@@ -37015,13 +37015,13 @@
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">awsAuthConfig:</span>
-<span class="w">      </span><span class="no">clusterName&quot;: &quot;&lt;クラスター名&gt;&quot;,</span>
-<span class="w">      </span><span class="no">roleARN: &quot;&lt;対象のAmazon EKS ClusterにアクセスするためのAWS IAMロールARN&gt;&quot;</span>
+<span class="w">      </span><span class="no">clusterName": "&lt;クラスター名&gt;",</span>
+<span class="w">      </span><span class="no">roleARN: "&lt;対象のAmazon EKS ClusterにアクセスするためのAWS IAMロールARN&gt;"</span>
 <span class="w">    </span><span class="no">tlsClientConfig:</span>
 <span class="w">      </span><span class="no">insecure: false,</span>
-<span class="w">      </span><span class="no">caData: &quot;&lt;Amazon EKS Clusterのサーバー証明書をbase64方式エンコードした値&gt;&quot;</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;クラスター名&gt;&quot;</span>
-<span class="w">  </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://*****.gr7.ap-northeast-1.eks.amazonaws.com&quot;</span>
+<span class="w">      </span><span class="no">caData: "&lt;Amazon EKS Clusterのサーバー証明書をbase64方式エンコードした値&gt;"</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;クラスター名&gt;"</span>
+<span class="w">  </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">"https://*****.gr7.ap-northeast-1.eks.amazonaws.com"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -37034,26 +37034,26 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># 宛先のAmazon EKS Clusterの設定</span>
 
 <span class="c1"># 対象のAmazon EKS Clusterでアクセスエントリーを設定する</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_access_entry&quot;</span><span class="w"> </span><span class="nv">&quot;argocd&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_eks_access_entry"</span><span class="w"> </span><span class="nv">"argocd"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">cluster_name</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo_argocd.name</span>
 
 <span class="w">  </span><span class="na">principal_arn</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_iam_role.argocd.arn</span>
 
-<span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;STANDARD&quot;</span>
+<span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"STANDARD"</span>
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_access_policy_association&quot;</span><span class="w"> </span><span class="nv">&quot;argocd&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_eks_access_policy_association"</span><span class="w"> </span><span class="nv">"argocd"</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="na">cluster_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-cluster&quot;</span>
+<span class="w">  </span><span class="na">cluster_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-cluster"</span>
 
-<span class="w">  </span><span class="na">policy_arn</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy&quot;</span>
+<span class="w">  </span><span class="na">policy_arn</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"arn:aws:eks::aws:cluster-access-policy/AmazonEKSViewPolicy"</span>
 
 <span class="w">  </span><span class="na">principal_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_iam_role.argocd.arn</span>
 
 <span class="w">  </span><span class="nb">access_scope</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">namespaces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-namespace&quot;</span>
-<span class="w">    </span><span class="na">type</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;namespace&quot;</span>
+<span class="w">    </span><span class="na">namespaces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-namespace"</span>
+<span class="w">    </span><span class="na">type</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">"namespace"</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="na">depends_on</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
@@ -37061,19 +37061,19 @@
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_iam_role&quot;</span><span class="w"> </span><span class="nv">&quot;access_entry_argocd&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_iam_role"</span><span class="w"> </span><span class="nv">"access_entry_argocd"</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;access-entry-argocd&quot;</span>
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"access-entry-argocd"</span>
 
 <span class="w">  </span><span class="na">assume_role_policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">jsonencode</span><span class="p">({</span>
-<span class="w">    </span><span class="na">Version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span>
+<span class="w">    </span><span class="na">Version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"2012-10-17"</span>
 <span class="w">    </span><span class="na">Statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="na">Effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
+<span class="w">        </span><span class="na">Effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Allow"</span>
 <span class="w">        </span><span class="nb">Principal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="na">AWS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arn:aws:iam::*****:role/aws-reserved/sso.amazonaws.com/ap-northeast-1/AWSReservedSSO_*****&quot;</span>
+<span class="w">          </span><span class="na">AWS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"arn:aws:iam::*****:role/aws-reserved/sso.amazonaws.com/ap-northeast-1/AWSReservedSSO_*****"</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="na">Action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sts:AssumeRole&quot;</span>
+<span class="w">        </span><span class="na">Action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"sts:AssumeRole"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">})</span>
@@ -37194,14 +37194,14 @@
 <p>『Amazon EKS ClusterのOIDCプロバイダーURL』『OIDCプロバイダーのサーバー証明書を署名する中間認証局 (例：CertificateManagerなど) のサムプリント』『IDプロバイダーによるトークンの発行対象 (<code>sts.amazonaws.com</code>) 』を使用して、OIDCプロバイダーを作成する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code><span class="kr">data</span><span class="w"> </span><span class="nc">&quot;tls_certificate&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">data</span><span class="w"> </span><span class="nc">"tls_certificate"</span><span class="w"> </span><span class="nv">"this"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.foo_eks.cluster_oidc_issuer_url</span>
 <span class="p">}</span>
 
 <span class="c1"># OIDCのIDプロバイダーをAWSに登録する。</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_iam_openid_connect_provider&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_iam_openid_connect_provider"</span><span class="w"> </span><span class="nv">"this"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">url</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="nv">module.foo_eks.cluster_oidc_issuer_url</span>
-<span class="w">  </span><span class="na">client_id_list</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sts.amazonaws.com&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="na">client_id_list</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"sts.amazonaws.com"</span><span class="p">]</span>
 <span class="w">  </span><span class="na">thumbprint_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.tls_certificate.this[0].certificates</span><span class="p">[</span><span class="err">*</span><span class="p">].</span><span class="err">sha</span><span class="m">1</span><span class="err">_fingerprint</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -37216,11 +37216,11 @@
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/run/secrets/kubernetes.io/serviceaccount</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-api-access-*****</span>
-<span class="w">          </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">        </span><span class="c1"># OIDC のプロバイダーによるアクセストークンをコンテナにマウントする</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/run/secrets/eks.amazonaws.com/serviceaccount</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-iam-token</span>
-<span class="w">          </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-api-access-*****</span>
 <span class="w">      </span><span class="nt">projected</span><span class="p">:</span>
@@ -37266,22 +37266,22 @@
 <p>IRSA で使用する AWS IAM ロールの信頼されたエンティティに、Amazon EKS Cluster の OIDC プロバイダーURL やユーザー名 (<code>system:serviceaccount:&lt;Namespac名&gt;:&lt;ServiceAccount名&gt;</code>) を設定する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Sid&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"Sid"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">""</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;Federated&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:oidc-provider/&lt;Amazon</span><span class="nv"> </span><span class="s">EKS</span><span class="nv"> </span><span class="s">ClusterのOIDCプロバイダーURL&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"Federated"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:iam::&lt;AWSアカウントID&gt;:oidc-provider/&lt;Amazon</span><span class="nv"> </span><span class="s">EKS</span><span class="nv"> </span><span class="s">ClusterのOIDCプロバイダーURL&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">        </span><span class="c1"># AssumeRoleWithWebIdentity を使用する</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sts:AssumeRoleWithWebIdentity&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"sts:AssumeRoleWithWebIdentity"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Condition"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">            </span><span class="c1"># 完全一致</span>
-<span class="w">            </span><span class="s">&quot;StringEquals&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">            </span><span class="s">"StringEquals"</span><span class="p p-Indicator">:</span>
 <span class="w">              </span><span class="p p-Indicator">{</span>
-<span class="w">                </span><span class="s">&quot;&lt;Amazon</span><span class="nv"> </span><span class="s">EKS</span><span class="nv"> </span><span class="s">ClusterのOIDCプロバイダーURL&gt;:sub&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">                  </span><span class="p p-Indicator">[</span><span class="s">&quot;system:serviceaccount:&lt;Namespac名&gt;:&lt;ServiceAccount名&gt;&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">                </span><span class="s">"&lt;Amazon</span><span class="nv"> </span><span class="s">EKS</span><span class="nv"> </span><span class="s">ClusterのOIDCプロバイダーURL&gt;:sub"</span><span class="p p-Indicator">:</span>
+<span class="w">                  </span><span class="p p-Indicator">[</span><span class="s">"system:serviceaccount:&lt;Namespac名&gt;:&lt;ServiceAccount名&gt;"</span><span class="p p-Indicator">],</span>
 <span class="w">              </span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
@@ -37302,7 +37302,7 @@
 <span class="w">    </span><span class="nt">eks.amazonaws.com/role-arn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;AWS IAMロールのARN&gt;</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;信頼されたエンティティで指定したユーザー名にあるServiceAccount名&gt;</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;信頼されたエンティティで指定したユーザー名にあるNamespace名&gt;</span>
-<span class="nt">automountServiceAccountToken</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="nt">automountServiceAccountToken</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <dl>
 <dt><code>(4)</code></dt>
@@ -37398,7 +37398,7 @@
 <p>トークン文字列を取得する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>describe<span class="w"> </span>secret<span class="w"> </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>eks-admin<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>describe<span class="w"> </span>secret<span class="w"> </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>eks-admin<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{print $1}'</span><span class="k">)</span>
 </code></pre></div>
 <dl>
 <dt><code>(6)</code></dt>
@@ -37423,7 +37423,7 @@
 <h3 id="service-ip">Service のための IP アドレス<a class="headerlink" href="#service-ip" title="Permanent link">&para;</a></h3>
 <p>Service に割り当てる IP アドレスは、Service IP 範囲によって決まる。</p>
 <p><code>10.100.0.0/16</code> または <code>172.20.0.0/16</code> のいずれかになる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span>-A<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.clusterIP}&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span>-A<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.spec.clusterIP}'</span>
 
 <span class="c1"># IP範囲の中からServiceにIPアドレスを割り当てる</span>
 <span class="m">172</span>.20.74.199
@@ -37875,7 +37875,7 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>get-parameter<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--name<span class="w"> </span>/aws/service/eks/optimized-ami/&lt;バージョン&gt;/amazon-linux-2/recommended/image_id<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--region<span class="w"> </span>ap-northeast-1<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--query<span class="w"> </span><span class="s2">&quot;Parameter.Value&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--query<span class="w"> </span><span class="s2">"Parameter.Value"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--output<span class="w"> </span>text
 </code></pre></div>
 <blockquote>
@@ -37894,7 +37894,7 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>get-parameter<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--name<span class="w"> </span>/aws/service/bottlerocket/aws-k8s-&lt;バージョン&gt;/x86_64/latest/image_id<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--region<span class="w"> </span>ap-northeast-1<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--query<span class="w"> </span><span class="s2">&quot;Parameter.Value&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--query<span class="w"> </span><span class="s2">"Parameter.Value"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--output<span class="w"> </span>text
 </code></pre></div>
 <blockquote>
@@ -37911,40 +37911,40 @@
 <h3 id="kubelet-configjson-kubeletconfiguration"><code>kubelet-config.json</code> ファイル (KubeletConfiguration)<a class="headerlink" href="#kubelet-configjson-kubeletconfiguration" title="Permanent link">&para;</a></h3>
 <p>Amazon EC2 ワーカーNode の kubelet を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;kind&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;KubeletConfiguration&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;apiVersion&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;kubelet.config.k8s.io/v1beta1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;address&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0.0.0.0&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;authentication&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"kind"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"KubeletConfiguration"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"apiVersion"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"kubelet.config.k8s.io/v1beta1"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"address"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"0.0.0.0"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"authentication"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;anonymous&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;enabled&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="s">&quot;webhook&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;cacheTTL&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2m0s&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;enabled&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="s">&quot;x509&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;clientCAFile&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/etc/kubernetes/pki/ca.crt&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"anonymous"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"enabled"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"false"</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"webhook"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"cacheTTL"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2m0s"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"enabled"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"x509"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"clientCAFile"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/etc/kubernetes/pki/ca.crt"</span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;authorization&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"authorization"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;mode&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Webhook&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;webhook&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;cacheAuthorizedTTL&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;5m0s&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;cacheUnauthorizedTTL&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;30s&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"mode"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Webhook"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"webhook"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"cacheAuthorizedTTL"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"5m0s"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"cacheUnauthorizedTTL"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"30s"</span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;clusterDomain&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cluster.local&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;hairpinMode&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;hairpin-veth&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;readOnlyPort&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;cgroupDriver&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cgroupfs&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;cgroupRoot&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;featureGates&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;RotateKubeletServerCertificate&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;protectKernelDefaults&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;serializeImagePulls&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;serverTLSBootstrap&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"clusterDomain"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"cluster.local"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"hairpinMode"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"hairpin-veth"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"readOnlyPort"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"cgroupDriver"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"cgroupfs"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"cgroupRoot"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"featureGates"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"RotateKubeletServerCertificate"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">"protectKernelDefaults"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"serializeImagePulls"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"false"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"serverTLSBootstrap"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="c1"># 暗号スイート</span>
-<span class="w">  </span><span class="s">&quot;tlsCipherSuites&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"tlsCipherSuites"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
-<span class="w">      </span><span class="s">&quot;TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;TLS_RSA_WITH_AES_256_GCM_SHA384&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;TLS_RSA_WITH_AES_128_GCM_SHA256&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"TLS_RSA_WITH_AES_256_GCM_SHA384"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"TLS_RSA_WITH_AES_128_GCM_SHA256"</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
@@ -38040,15 +38040,15 @@
 
 <span class="nb">set</span><span class="w"> </span>-o<span class="w"> </span>xtrace
 
-<span class="nv">PARAMETERS</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ssm<span class="w"> </span>get-parameters-by-path<span class="w"> </span>--with-decryption<span class="w"> </span>--path<span class="w"> </span><span class="s2">&quot;/eks/foo-eks-cluster&quot;</span><span class="k">)</span>
+<span class="nv">PARAMETERS</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ssm<span class="w"> </span>get-parameters-by-path<span class="w"> </span>--with-decryption<span class="w"> </span>--path<span class="w"> </span><span class="s2">"/eks/foo-eks-cluster"</span><span class="k">)</span>
 
 <span class="c1"># Clusterのサーバー証明書、kube-apiserverのエンドポイントの値をパラメーターストアから取得する。</span>
-<span class="k">for</span><span class="w"> </span>parameter<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">PARAMETERS</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Parameters[] | .Name + &quot;=&quot; + .Value&#39;</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export </span><span class="si">${</span><span class="nv">parameter</span><span class="p">##*/</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="k">done</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">EXPORT_ENVS</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">for</span><span class="w"> </span>parameter<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">PARAMETERS</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.Parameters[] | .Name + "=" + .Value'</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"export </span><span class="si">${</span><span class="nv">parameter</span><span class="p">##*/</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">done</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">EXPORT_ENVS</span><span class="si">}</span><span class="s2">"</span>
 
 <span class="c1"># 出力する。</span>
-<span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">EXPORT_ENVS</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">source</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">EXPORT_ENVS</span><span class="si">}</span><span class="s2">"</span>
 
 /etc/eks/bootstrap.sh<span class="w"> </span>foo-eks-cluster<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--b64-cluster-ca<span class="w"> </span><span class="nv">$B64_CLUSTER_CA</span><span class="w"> </span><span class="se">\</span>
@@ -38077,13 +38077,13 @@
 <span class="c1"># --image-gc-high-thresholdオプションに値が既に設定されていなければ、設定を挿入する。</span>
 <span class="k">if</span><span class="w"> </span>!<span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span>imageGCHighThresholdPercent<span class="w"> </span>/etc/kubernetes/kubelet/kubelet-config.json<span class="p">;</span>
 <span class="k">then</span>
-<span class="w">    </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;/&quot;apiVersion*/a \ \ &quot;imageGCHighThresholdPercent&quot;: 70,&#39;</span><span class="w"> </span>/etc/kubernetes/kubelet/kubelet-config.json
+<span class="w">    </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'/"apiVersion*/a \ \ "imageGCHighThresholdPercent": 70,'</span><span class="w"> </span>/etc/kubernetes/kubelet/kubelet-config.json
 <span class="k">fi</span>
 
 <span class="c1"># --image-gc-low-thresholdオプションに値が既に設定されていなければ、設定を挿入する。</span>
 <span class="k">if</span><span class="w"> </span>!<span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span>imageGCLowThresholdPercent<span class="w"> </span>/etc/kubernetes/kubelet/kubelet-config.json<span class="p">;</span>
 <span class="k">then</span>
-<span class="w">    </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;/&quot;imageGCHigh*/a \ \ &quot;imageGCLowThresholdPercent&quot;: 50,&#39;</span><span class="w"> </span>/etc/kubernetes/kubelet/kubelet-config.json
+<span class="w">    </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'/"imageGCHigh*/a \ \ "imageGCLowThresholdPercent": 50,'</span><span class="w"> </span>/etc/kubernetes/kubelet/kubelet-config.json
 <span class="k">fi</span>
 
 /etc/eks/bootstrap.sh<span class="w"> </span>foo-eks-cluster<span class="w"> </span><span class="se">\</span>
@@ -38116,13 +38116,13 @@
 <span class="c1"># --shutdown-grace-periodオプションに値が既に設定されていなければ、設定を挿入する。</span>
 <span class="k">if</span><span class="w"> </span>!<span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span>shutdownGracePeriod<span class="w"> </span>/etc/kubernetes/kubelet/kubelet-config.json<span class="p">;</span>
 <span class="k">then</span>
-<span class="w">    </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;/&quot;apiVersion*/a \ \ &quot;shutdownGracePeriod&quot;: &quot;360s&quot;,&#39;</span><span class="w"> </span>/etc/kubernetes/kubelet/kubelet-config.json
+<span class="w">    </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'/"apiVersion*/a \ \ "shutdownGracePeriod": "360s",'</span><span class="w"> </span>/etc/kubernetes/kubelet/kubelet-config.json
 <span class="k">fi</span>
 
 <span class="c1"># --shutdown-grace-period-critical-podsオプションに値が既に設定されていなければ、設定を挿入する。</span>
 <span class="k">if</span><span class="w"> </span>!<span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span>shutdownGracePeriodCriticalPods<span class="w"> </span>/etc/kubernetes/kubelet/kubelet-config.json<span class="p">;</span>
 <span class="k">then</span>
-<span class="w">    </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;/&quot;shutdownGracePeriod*/a \ \ &quot;shutdownGracePeriodCriticalPods&quot;: &quot;120s&quot;,&#39;</span><span class="w"> </span>/etc/kubernetes/kubelet/kubelet-config.json
+<span class="w">    </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'/"shutdownGracePeriod*/a \ \ "shutdownGracePeriodCriticalPods": "120s",'</span><span class="w"> </span>/etc/kubernetes/kubelet/kubelet-config.json
 <span class="k">fi</span>
 
 mkdir<span class="w"> </span>-p<span class="w"> </span>/etc/systemd/logind.conf.d
@@ -38149,7 +38149,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>ns<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>namespace<span class="w"> </span>-o<span class="w"> </span>name<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span>/<span class="w"> </span>-f<span class="w"> </span><span class="m">2</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$ns</span>
 <span class="w">  </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span><span class="nv">$ns</span><span class="w"> </span>-o<span class="w"> </span>json<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.items[] | select(.status.phase == &quot;Failed&quot;) | select(.status.reason == &quot;Shutdown&quot; or .status.reason == &quot;NodeShutdown&quot; or .status.reason == &quot;Terminated&quot;) | .metadata.name&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.items[] | select(.status.phase == "Failed") | select(.status.reason == "Shutdown" or .status.reason == "NodeShutdown" or .status.reason == "Terminated") | .metadata.name'</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>--no-run-if-empty<span class="w"> </span>--max-args<span class="o">=</span><span class="m">100</span><span class="w"> </span>--verbose<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span><span class="nv">$ns</span>
 <span class="k">done</span>
 </code></pre></div>
@@ -38213,26 +38213,26 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <h3 id="node_14">マネージド Node グループの場合<a class="headerlink" href="#node_14" title="Permanent link">&para;</a></h3>
 <p>起動テンプレートを使用し、Amazon EC2 ワーカーNode を作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Nodeグループ</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_node_group&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_eks_node_group"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">...</span>
 
 <span class="c1">  # Nodeグループの種類だけ、起動テンプレートを設定する</span>
 <span class="w">  </span><span class="nb">launch_template</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">id</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_launch_template.foo1.id</span>
-<span class="w">    </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;$Latest&quot;</span>
+<span class="w">    </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"$Latest"</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">launch_template</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">id</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_launch_template.foo2.id</span>
-<span class="w">    </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;$Latest&quot;</span>
+<span class="w">    </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"$Latest"</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="p">...</span>
 <span class="p">}</span>
 
 <span class="c1"># 起動テンプレート</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_launch_template&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_launch_template"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="c1">  # タグ付けは任意である</span>
 <span class="w">  </span><span class="nb">tag_specifications</span><span class="w"> </span><span class="p">{</span>
@@ -38245,7 +38245,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <span class="p">}</span>
 
 <span class="c1"># Nodeグループのタグ</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_autoscaling_group_tag&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_autoscaling_group_tag"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">for_each</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">local.tags</span>
 
 <span class="w">  </span><span class="na">autoscaling_group_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_node_group.foo.name</span>
@@ -38270,25 +38270,25 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 </blockquote>
 <h3 id="node_15">セルフマネージド Node グループの場合<a class="headerlink" href="#node_15" title="Permanent link">&para;</a></h3>
 <p>任意の AutoScaling にて、起動テンプレートを使用して Amazon EC2 ワーカーNode を作成する。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_autoscaling_group&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_autoscaling_group"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">...</span>
 
 <span class="w">  </span><span class="nb">tag</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">key</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Name&quot;</span>
-<span class="w">    </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-instance&quot;</span>
+<span class="w">    </span><span class="na">key</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"Name"</span>
+<span class="w">    </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-instance"</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="c1">  # AutoScalingのタグに kubernetes.io/cluster/&lt;Amazon EKS Cluster名&gt; をつける必要がある</span>
 <span class="w">  </span><span class="nb">tag</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">key</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;kubernetes.io/cluster/&lt;Amazon EKS Cluster名&gt;&quot;</span>
-<span class="w">    </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;owned&quot;</span>
+<span class="w">    </span><span class="na">key</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"kubernetes.io/cluster/&lt;Amazon EKS Cluster名&gt;"</span>
+<span class="w">    </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"owned"</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="c1">  # 起動テンプレートは任意である</span>
 <span class="w">  </span><span class="nb">launch_template</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">id</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_launch_template.foo.id</span>
-<span class="w">    </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;$Latest&quot;</span>
+<span class="w">    </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"$Latest"</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="p">...</span>

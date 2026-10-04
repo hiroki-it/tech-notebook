@@ -34398,9 +34398,9 @@
 <p>最初の『<code>#!</code>』をシェバンという。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"foo"</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"bar"</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"baz"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_5">ヒアドキュメント<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
@@ -34431,7 +34431,7 @@ cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; echo.sh</span>
 <p>終了文字列 (例：EOF) をシングルクオートで囲うと、エスケープできる。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-cat<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39; &gt; echo.sh</span>
+cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; echo.sh</span>
 <span class="s">#!/bin/bash</span>
 <span class="s">${FOO}</span>
 <span class="s">${BAR}</span>
@@ -34513,7 +34513,7 @@ cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; echo.sh</span>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span>
+<span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span>
 <span class="k">done</span>
 </code></pre></div>
 <p><br></p>
@@ -34524,18 +34524,18 @@ cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; echo.sh</span>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-<span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
-<span class="w">    </span><span class="s2">&quot;tes&quot;</span><span class="o">)</span>
-<span class="w">        </span><span class="nv">VAR</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span>
+<span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span>
+<span class="w">    </span><span class="s2">"tes"</span><span class="o">)</span>
+<span class="w">        </span><span class="nv">VAR</span><span class="o">=</span><span class="s2">"foo"</span>
 <span class="w">    </span><span class="p">;;</span>
-<span class="w">    </span><span class="s2">&quot;stg&quot;</span><span class="o">)</span>
-<span class="w">        </span><span class="nv">VAR</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span>
+<span class="w">    </span><span class="s2">"stg"</span><span class="o">)</span>
+<span class="w">        </span><span class="nv">VAR</span><span class="o">=</span><span class="s2">"bar"</span>
 <span class="w">    </span><span class="p">;;</span>
-<span class="w">    </span><span class="s2">&quot;prd&quot;</span><span class="o">)</span>
-<span class="w">        </span><span class="nv">VAR</span><span class="o">=</span><span class="s2">&quot;baz&quot;</span>
+<span class="w">    </span><span class="s2">"prd"</span><span class="o">)</span>
+<span class="w">        </span><span class="nv">VAR</span><span class="o">=</span><span class="s2">"baz"</span>
 <span class="w">    </span><span class="p">;;</span>
 <span class="w">    </span>*<span class="o">)</span>
-<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;The parameter &quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot; is invalid.&quot;</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"The parameter "</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">" is invalid."</span>
 <span class="w">        </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
 <span class="w">    </span><span class="p">;;</span>
 <span class="k">esac</span>
@@ -34543,26 +34543,26 @@ cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; echo.sh</span>
 <h4 id="if">▼ if<a class="headerlink" href="#if" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VAR</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;空文字です&quot;</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$VAR</span><span class="s2">"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"空文字です"</span><span class="p">;</span>
 <span class="k">else</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;空文字ではありません&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"空文字ではありません"</span><span class="p">;</span>
 <span class="k">fi</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VAR</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;変数なし or 空文字です&quot;</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">"</span><span class="nv">$VAR</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"変数なし or 空文字です"</span><span class="p">;</span>
 <span class="k">else</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;変数が設定されています&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"変数が設定されています"</span><span class="p">;</span>
 <span class="k">fi</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VAR</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;NULLです&quot;</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">"</span><span class="nv">$VAR</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"NULLです"</span><span class="p">;</span>
 <span class="k">else</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;NULLではありません&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"NULLではありません"</span><span class="p">;</span>
 <span class="k">fi</span>
 </code></pre></div>
 <blockquote>
@@ -34577,9 +34577,9 @@ cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; echo.sh</span>
 some_command
 
 <span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;エラーなので別の処理を実行します&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"エラーなので別の処理を実行します"</span><span class="p">;</span>
 <span class="k">else</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;エラーではないため、正しい処理を実行します&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"エラーではないため、正しい処理を実行します"</span><span class="p">;</span>
 <span class="k">fi</span>
 </code></pre></div>
 <p><br></p>
@@ -34658,25 +34658,25 @@ some_command
 <p>ターゲットとして、単一/複数の名前を定義できる。</p>
 <p>コマンドはタブで改行する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nf">foo</span><span class="o">:</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"foo"</span>
 
 <span class="nf">bar</span><span class="o">:</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"bar"</span>
 
 <span class="nf">baz qux</span><span class="o">:</span><span class="w"> </span><span class="c"># 複数のターゲット名</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"baz"</span>
 </code></pre></div>
 <h4 id="_20">▼ ターゲット間依存関係<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>特定のターゲットの実行前に、他のターゲットを実行しておきたい場合、依存関係を定義できる。</p>
 <p>これは複数定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nf">foo</span><span class="o">:</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"foo"</span>
 
 <span class="nf">bar</span><span class="o">:</span><span class="w"> </span><span class="n">foo</span> <span class="c"># fooを事前に実行する。</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"bar"</span>
 
 <span class="nf">baz</span><span class="o">:</span><span class="w"> </span><span class="n">foo</span> <span class="n">baz</span> <span class="c"># foo、bazを事前に実行する。</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"baz"</span>
 </code></pre></div>
 <h4 id="phony">▼ <code>.PHONY</code><a class="headerlink" href="#phony" title="Permanent link">&para;</a></h4>
 <p>ターゲットと同じ名前のファイルがある場合、<code>make</code> コマンドでターゲットを指定できなくなる。</p>
@@ -34685,13 +34685,13 @@ some_command
 <span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">foo</span> <span class="n">bar</span> <span class="n">baz</span> <span class="n">qux</span>
 
 <span class="nf">foo</span><span class="o">:</span><span class="w"> </span><span class="c"># fooという名前のファイルがあると、実行できない。</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"foo"</span>
 
 <span class="nf">bar</span><span class="o">:</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"bar"</span>
 
 <span class="nf">baz qux</span><span class="o">:</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"baz"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34705,7 +34705,7 @@ some_command
 <div class="highlight"><pre><span></span><code><span class="nv">FOO</span><span class="o">:=</span>foo
 
 <span class="nf">echo</span><span class="o">:</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FOO</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="c1"># 何も出力されない</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">FOO</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="c1"># 何も出力されない</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34717,7 +34717,7 @@ some_command
 <div class="highlight"><pre><span></span><code><span class="nv">FOO</span><span class="o">=</span>foo
 
 <span class="nf">echo</span><span class="o">:</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FOO</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="c1"># fooを出力できる</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">FOO</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="c1"># fooを出力できる</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34727,10 +34727,10 @@ some_command
 <p>ターゲット内では、標準出力への出力をシェル変数に代入できない。</p>
 <p>そのため、シェル変数はターゲット外で定義する必要がある。</p>
 <p>また、遅延評価で代入し、<code>$(shell ...)</code> とする必要がある。</p>
-<div class="highlight"><pre><span></span><code><span class="nv">FOO</span><span class="o">=</span><span class="k">$(</span>shell<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="k">)</span>
+<div class="highlight"><pre><span></span><code><span class="nv">FOO</span><span class="o">=</span><span class="k">$(</span>shell<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"foo"</span><span class="k">)</span>
 
 <span class="nf">echo</span><span class="o">:</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FOO</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">FOO</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34750,7 +34750,7 @@ some_command
 <div class="highlight"><pre><span></span><code><span class="nv">FOO</span><span class="o">=</span>default
 
 <span class="nf">foo</span><span class="o">:</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FOO</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">FOO</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="makefile_1">Makefile のよくある使い方<a class="headerlink" href="#makefile_1" title="Permanent link">&para;</a></h3>
@@ -34783,7 +34783,7 @@ $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># configureへのパスに注意。</span>
-$<span class="w"> </span>../configure<span class="w"> </span>--prefix<span class="o">=</span><span class="s2">&quot;&lt;コードのインストール先のパス&gt;&quot;</span>
+$<span class="w"> </span>../configure<span class="w"> </span>--prefix<span class="o">=</span><span class="s2">"&lt;コードのインストール先のパス&gt;"</span>
 </code></pre></div>
 <dl>
 <dt><code>(3)</code></dt>

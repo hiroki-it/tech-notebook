@@ -36315,10 +36315,10 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Global</span>
 <span class="c1"># ---------------------------------------------</span>
-<span class="na">camel_case_prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Bar&quot;</span>
-<span class="na">region</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
-<span class="na">environment</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;stg&quot;</span>
-<span class="na">service</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span>
+<span class="na">camel_case_prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Bar"</span>
+<span class="na">region</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span>
+<span class="na">environment</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">"stg"</span>
+<span class="na">service</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"bar"</span>
 </code></pre></div>
 <p>一方で、特定のリソースのみで使用する環境変数/通常変数の場合は、対象のリソース、種類名、オプション名がわかるように命名する。</p>
 <blockquote>
@@ -36350,11 +36350,11 @@
 <span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Variables VPC</span>
 <span class="c1"># ---------------------------------------------</span>
-<span class="nb">vpc_availability_zones</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;a&quot;, c = &quot;c&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="na">vpc_cidr</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*.*.*.*/23&quot;</span>
-<span class="nb">vpc_subnet_private_datastore_cidrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*.*.*.*/27&quot;, c = &quot;*.*.*.*/27&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="nb">vpc_subnet_private_app_cidrs</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*.*.*.*/25&quot;, c = &quot;*.*.*.*/25&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="nb">vpc_subnet_public_cidrs</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*.*.*.*/27&quot;, c = &quot;*.*.*.*/27&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="nb">vpc_availability_zones</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"a", c = "c"</span><span class="w"> </span><span class="p">}</span>
+<span class="na">vpc_cidr</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="s2">"*.*.*.*/23"</span>
+<span class="nb">vpc_subnet_private_datastore_cidrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*.*.*.*/27", c = "*.*.*.*/27"</span><span class="w"> </span><span class="p">}</span>
+<span class="nb">vpc_subnet_private_app_cidrs</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*.*.*.*/25", c = "*.*.*.*/25"</span><span class="w"> </span><span class="p">}</span>
+<span class="nb">vpc_subnet_public_cidrs</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*.*.*.*/27", c = "*.*.*.*/27"</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <h4 id="boolean">▼ boolean 型の命名<a class="headerlink" href="#boolean" title="Permanent link">&para;</a></h4>
 <p><code>count</code> 引数による条件分岐でリソースの作成の有無を切り替えている場合、<code>enable_***</code> という名前の boolean 型環境変数を用意する。</p>
@@ -36375,16 +36375,16 @@
 <span class="c1"># ---------------------------------------------</span>
 <span class="c1"># ALB</span>
 <span class="c1"># ---------------------------------------------</span>
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;alb_foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"alb_foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">  # ローカルモジュール</span>
-<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../modules/alb&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"../modules/alb"</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
 
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;alb_foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"alb_foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">  # リモートモジュールを参照する。</span>
-<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -36399,11 +36399,11 @@
 <span class="c1"># ---------------------------------------------</span>
 
 <span class="c1"># 良い例</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_route_table&quot;</span><span class="w"> </span><span class="nv">&quot;public&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_route_table"</span><span class="w"> </span><span class="nv">"public"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_route_table&quot;</span><span class="w"> </span><span class="nv">&quot;private&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_route_table"</span><span class="w"> </span><span class="nv">"private"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36412,11 +36412,11 @@
 <span class="c1"># ---------------------------------------------</span>
 
 <span class="c1"># 悪い例</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_route_table&quot;</span><span class="w"> </span><span class="nv">&quot;route_table_public&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_route_table"</span><span class="w"> </span><span class="nv">"route_table_public"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_route_table&quot;</span><span class="w"> </span><span class="nv">&quot;route_table_private&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_route_table"</span><span class="w"> </span><span class="nv">"route_table_private"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36429,7 +36429,7 @@
 <span class="c1"># Resource Internet Gateway</span>
 <span class="c1"># ---------------------------------------------</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_internet_gateway&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_internet_gateway"</span><span class="w"> </span><span class="nv">"this"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36448,9 +36448,9 @@
 <li>種類は、alb-httpcode-4xx-count</li>
 <li>クラウドプロバイダーのリソース名は、CloudWatchAlarm を省略して Alarm</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_cloudwatch_metric_alarm&quot;</span><span class="w"> </span><span class="nv">&quot;alb_httpcode_target_4xx_count&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_cloudwatch_metric_alarm"</span><span class="w"> </span><span class="nv">"alb_httpcode_target_4xx_count"</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="na">alarm_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prd-foo-alb-httpcode-target-4xx-count-alarm&quot;</span>
+<span class="w">  </span><span class="na">alarm_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"prd-foo-alb-httpcode-target-4xx-count-alarm"</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36463,9 +36463,9 @@
 <li>種類は、echo-helloworld</li>
 <li>クラウドプロバイダーのリソース名の lambda は省略する。</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_lambda_function&quot;</span><span class="w"> </span><span class="nv">&quot;echo_helloworld&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_lambda_function"</span><span class="w"> </span><span class="nv">"echo_helloworld"</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="na">function_name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prd-foo-echo-helloworld&quot;</span>
+<span class="w">  </span><span class="na">function_name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"prd-foo-echo-helloworld"</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36476,7 +36476,7 @@
 <p><strong>＊実装例＊</strong></p>
 <p>例として、CloudWatch を示す。</p>
 <p>リソース名は <code>ecs_container_nginx</code>、リソースタイプは <code>aws_cloudwatch_log_group</code>、attribute は <code>name</code> オプションである。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">output</span><span class="w"> </span><span class="nv">&quot;ecs_container_nginx_cloudwatch_log_group_name&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">output</span><span class="w"> </span><span class="nv">"ecs_container_nginx_cloudwatch_log_group_name"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_cloudwatch_log_group.ecs_container_nginx.name</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36485,15 +36485,15 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Output IAM Role</span>
 <span class="c1"># ---------------------------------------------</span>
-<span class="kr">output</span><span class="w"> </span><span class="nv">&quot;ecs_task_execution_iam_role_arn&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">output</span><span class="w"> </span><span class="nv">"ecs_task_execution_iam_role_arn"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_iam_role.ecs_task_execution.arn</span>
 <span class="p">}</span>
 
-<span class="kr">output</span><span class="w"> </span><span class="nv">&quot;lambda_execute_iam_role_arn&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">output</span><span class="w"> </span><span class="nv">"lambda_execute_iam_role_arn"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_iam_role.lambda_execute.arn</span>
 <span class="p">}</span>
 
-<span class="kr">output</span><span class="w"> </span><span class="nv">&quot;rds_enhanced_monitoring_iam_role_arn&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">output</span><span class="w"> </span><span class="nv">"rds_enhanced_monitoring_iam_role_arn"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_iam_role.rds_enhanced_monitoring.arn</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36504,11 +36504,11 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Output ALB</span>
 <span class="c1"># ---------------------------------------------</span>
-<span class="kr">output</span><span class="w"> </span><span class="nv">&quot;alb_zone_id&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">output</span><span class="w"> </span><span class="nv">"alb_zone_id"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_lb.this.zone_id</span>
 <span class="p">}</span>
 
-<span class="kr">output</span><span class="w"> </span><span class="nv">&quot;alb_dns_name&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">output</span><span class="w"> </span><span class="nv">"alb_dns_name"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_lb.this.dns_name</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36521,11 +36521,11 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Output ECR</span>
 <span class="c1"># ---------------------------------------------</span>
-<span class="kr">output</span><span class="w"> </span><span class="nv">&quot;laravel_ecr_repository_url&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">output</span><span class="w"> </span><span class="nv">"laravel_ecr_repository_url"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_ecr_repository.laravel.repository_url</span>
 <span class="p">}</span>
 
-<span class="kr">output</span><span class="w"> </span><span class="nv">&quot;nginx_ecr_repository_url&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">output</span><span class="w"> </span><span class="nv">"nginx_ecr_repository_url"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_ecr_repository.nginx.repository_url</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36534,13 +36534,13 @@
 <p>一部のクラウドプロバイダーのリソースでは、<code>description</code> オプションで説明文を設定できる。</p>
 <p>基本的には英語で説明する。</p>
 <p>また、文章ではなく、『関係代名詞/形容詞/副詞/前置詞 + 単語』を使い、『<code>〇〇</code> な <code>△△</code>』『<code>〇〇</code> の <code>△△</code>』といった説明にする。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;説明文です&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"説明文です"</span>
 <span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>ヒアドキュメントを使用して、複数行で定義できる。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="dl">EOF</span>
 <span class="sh">  説明文です。</span>
 <span class="dl">EOF</span>
@@ -36563,8 +36563,8 @@
 <span class="c1"># ---------------------------------------------</span>
 <span class="c1"># ALB</span>
 <span class="c1"># ---------------------------------------------</span>
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;alb_foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../modules/alb&quot;</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"alb_foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"../modules/alb"</span>
 
 <span class="c1">  # Variables</span>
 <span class="w">  </span><span class="na">environment</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="nv">var.environment</span><span class="c1">                   # Global</span>
@@ -36595,14 +36595,14 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># EXAMPLE</span>
 <span class="c1"># ---------------------------------------------</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_baz&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_baz"</span><span class="w"> </span><span class="nv">"this"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">for_each</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.vpc_availability_zones</span><span class="c1"> # 最初にfor_each</span>
 <span class="c1">  # スペース</span>
 <span class="w">  </span><span class="na">subnet_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_subnet.public</span><span class="p">[</span><span class="err">*</span><span class="p">].</span><span class="err">id</span><span class="c1"> # 各設定 (順番にルールなし)</span>
 <span class="c1">  # スペース</span>
 <span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">format</span><span class="p">(</span>
-<span class="w">      </span><span class="s2">&quot;prd-foo-%d-baz&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"prd-foo-%d-baz"</span><span class="p">,</span>
 <span class="w">      </span><span class="nv">each.value</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="w">  </span><span class="p">}</span>
@@ -36619,7 +36619,7 @@
 <h3 id="terraform_1">terraform コマンドのセットアップ<a class="headerlink" href="#terraform_1" title="Permanent link">&para;</a></h3>
 <h4 id="docker-composeyml">▼ docker-compose.yml ファイルを用いる場合<a class="headerlink" href="#docker-composeyml" title="Permanent link">&para;</a></h4>
 <p>作業者間で <code>terraform</code> コマンドのバージョンを統一するために、<code>docker-compose.yml</code> ファイルを作成する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.8"</span>
 
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">terraform</span><span class="p">:</span>
@@ -36639,13 +36639,13 @@
 <span class="nv">env</span><span class="o">=</span>
 
 <span class="nf">init</span><span class="o">:</span>
-<span class="w">    </span>docker-compose<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>init<span class="w"> </span>-reconfigure
+<span class="w">    </span>docker-compose<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>init<span class="w"> </span>-reconfigure
 
 <span class="nf">fmt</span><span class="o">:</span>
 <span class="w">    </span>docker-compose<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>terraform<span class="w"> </span>fmt<span class="w"> </span>-recursive
 
 <span class="nf">validate</span><span class="o">:</span><span class="w"> </span><span class="n">init</span> <span class="n">fmt</span>
-<span class="w">    </span>docker-compose<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>validate
+<span class="w">    </span>docker-compose<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>validate
 </code></pre></div>
 <h4 id="asdf">▼ asdf パッケージを使用する場合<a class="headerlink" href="#asdf" title="Permanent link">&para;</a></h4>
 <p>バージョンを統一するために、<code>.tool-versions</code> ファイルを作成する。</p>
@@ -36676,7 +36676,7 @@ $<span class="w"> </span>asdf<span class="w"> </span>install
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;local&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">"local"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36689,13 +36689,13 @@ terraform<span class="w"> </span>-chdir<span class="o">=</span>./prd<span class=
 <span class="w">  </span>-upgrade<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-reconfigure<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-backend<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-backend-config<span class="o">=</span><span class="s2">&quot;bucket=prd-foo-tfstate-bucket&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-backend-config<span class="o">=</span><span class="s2">&quot;key=terraform.tfstate&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-backend-config<span class="o">=</span><span class="s2">&quot;encrypt=true&quot;</span>
+<span class="w">  </span>-backend-config<span class="o">=</span><span class="s2">"bucket=prd-foo-tfstate-bucket"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-backend-config<span class="o">=</span><span class="s2">"key=terraform.tfstate"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-backend-config<span class="o">=</span><span class="s2">"encrypt=true"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>Invalid<span class="w"> </span>backend<span class="w"> </span>configuration<span class="w"> </span>argument
 
-The<span class="w"> </span>backend<span class="w"> </span>configuration<span class="w"> </span>argument<span class="w"> </span><span class="s2">&quot;bucket&quot;</span><span class="w"> </span>given<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>expected<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>selected<span class="w"> </span>backend<span class="w"> </span>type.
+The<span class="w"> </span>backend<span class="w"> </span>configuration<span class="w"> </span>argument<span class="w"> </span><span class="s2">"bucket"</span><span class="w"> </span>given<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>expected<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>selected<span class="w"> </span>backend<span class="w"> </span>type.
 </code></pre></div>
 <p><br></p>
 <h3 id="gitignore"><code>.gitignore</code><a class="headerlink" href="#gitignore" title="Permanent link">&para;</a></h3>
@@ -36779,7 +36779,7 @@ crash.*.log
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># Amazon RDSの場合</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_rds_cluster"</span><span class="w"> </span><span class="nv">"this"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="c1">  # 実際の値はAWS Secrets Managerから参照する。</span>
 <span class="w">  </span><span class="na">master_username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.rds_db_master_username_ssm_parameter_value</span>
@@ -36969,7 +36969,7 @@ crash.*.log
 <p><code>grep</code> コマンドを使用して、差分の表記部分のみを取得するとよい。</p>
 <p>これを確認し、差分が正しいかをレビューする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span>-no-color<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A<span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="s1">&#39;Terraform will perform the following actions&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A<span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="s1">'Terraform will perform the following actions'</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>pbcopy
 </code></pre></div>
 <h4 id="terraform_3">▼ Terraform 以外を使用する場合<a class="headerlink" href="#terraform_3" title="Permanent link">&para;</a></h4>

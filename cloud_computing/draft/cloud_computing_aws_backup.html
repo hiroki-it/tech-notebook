@@ -33858,39 +33858,39 @@
 <span class="nb">set</span><span class="w"> </span>-xeuo<span class="w"> </span>pipefail
 
 <span class="c1"># 事前に環境変数に実行環境名を代入する。</span>
-<span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
-<span class="w">    </span><span class="s2">&quot;tes&quot;</span><span class="o">)</span>
-<span class="w">        </span><span class="nv">aws_account_id</span><span class="o">=</span><span class="s2">&quot;&lt;テスト環境アカウントID&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_access_key_id</span><span class="o">=</span><span class="s2">&quot;&lt;テスト環境アクセスキーID&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_secret_access_key</span><span class="o">=</span><span class="s2">&quot;&lt;テスト環境シークレットアクセスキー&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_iam_role_external_id</span><span class="o">=</span><span class="s2">&quot;&lt;信頼ポリシーに設定した外部ID&gt;&quot;</span>
+<span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span>
+<span class="w">    </span><span class="s2">"tes"</span><span class="o">)</span>
+<span class="w">        </span><span class="nv">aws_account_id</span><span class="o">=</span><span class="s2">"&lt;テスト環境アカウントID&gt;"</span>
+<span class="w">        </span><span class="nv">aws_access_key_id</span><span class="o">=</span><span class="s2">"&lt;テスト環境アクセスキーID&gt;"</span>
+<span class="w">        </span><span class="nv">aws_secret_access_key</span><span class="o">=</span><span class="s2">"&lt;テスト環境シークレットアクセスキー&gt;"</span>
+<span class="w">        </span><span class="nv">aws_iam_role_external_id</span><span class="o">=</span><span class="s2">"&lt;信頼ポリシーに設定した外部ID&gt;"</span>
 <span class="w">    </span><span class="p">;;</span>
-<span class="w">    </span><span class="s2">&quot;prd&quot;</span><span class="o">)</span>
-<span class="w">        </span><span class="nv">aws_account_id</span><span class="o">=</span><span class="s2">&quot;&lt;本番環境アカウントID&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_access_key_id</span><span class="o">=</span><span class="s2">&quot;&lt;本番環境アクセスキーID&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_secret_access_key</span><span class="o">=</span><span class="s2">&quot;&lt;本番環境シークレットアクセスキー&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_iam_role_external_id</span><span class="o">=</span><span class="s2">&quot;&lt;信頼ポリシーに設定した外部ID&gt;&quot;</span>
+<span class="w">    </span><span class="s2">"prd"</span><span class="o">)</span>
+<span class="w">        </span><span class="nv">aws_account_id</span><span class="o">=</span><span class="s2">"&lt;本番環境アカウントID&gt;"</span>
+<span class="w">        </span><span class="nv">aws_access_key_id</span><span class="o">=</span><span class="s2">"&lt;本番環境アクセスキーID&gt;"</span>
+<span class="w">        </span><span class="nv">aws_secret_access_key</span><span class="o">=</span><span class="s2">"&lt;本番環境シークレットアクセスキー&gt;"</span>
+<span class="w">        </span><span class="nv">aws_iam_role_external_id</span><span class="o">=</span><span class="s2">"&lt;信頼ポリシーに設定した外部ID&gt;"</span>
 <span class="w">    </span><span class="p">;;</span>
 <span class="w">    </span>*<span class="o">)</span>
-<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;The parameter &quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot; is invalid.&quot;</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"The parameter "</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">" is invalid."</span>
 <span class="w">        </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
 <span class="w">    </span><span class="p">;;</span>
 <span class="k">esac</span>
 
 <span class="c1"># 信頼されたエンティティの資格情報を設定する。</span>
-aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$aws_account_id</span><span class="s2">&quot;</span>
-aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$aws_secret_access_key</span><span class="s2">&quot;</span>
-aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_default_region<span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="s2">"</span><span class="nv">$aws_account_id</span><span class="s2">"</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="s2">"</span><span class="nv">$aws_secret_access_key</span><span class="s2">"</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_default_region<span class="w"> </span><span class="s2">"ap-northeast-1"</span>
 
 <span class="c1"># https://sts.amazonaws.com に、ロールの紐付けをリクエストする。</span>
 <span class="c1"># セッションの失効秒数を少なくすればより安全</span>
-<span class="nv">aws_sts_credentials</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>assume-role<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--role-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::</span><span class="si">${</span><span class="nv">aws_access_key_id</span><span class="si">}</span><span class="s2">:role/&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;-&lt;紐付けしたいIAMロール名&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--role-session-name<span class="w"> </span><span class="s2">&quot;&lt;任意のセッション名&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--external-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$aws_iam_role_external_id</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--duration-seconds<span class="w"> </span><span class="s2">&quot;&lt;セッションデータの失効秒数&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;Credentials&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--output<span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
+<span class="nv">aws_sts_credentials</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>assume-role<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--role-arn<span class="w"> </span><span class="s2">"arn:aws:iam::</span><span class="si">${</span><span class="nv">aws_access_key_id</span><span class="si">}</span><span class="s2">:role/"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"-&lt;紐付けしたいIAMロール名&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--role-session-name<span class="w"> </span><span class="s2">"&lt;任意のセッション名&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--external-id<span class="w"> </span><span class="s2">"</span><span class="nv">$aws_iam_role_external_id</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--duration-seconds<span class="w"> </span><span class="s2">"&lt;セッションデータの失効秒数&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--query<span class="w"> </span><span class="s2">"Credentials"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output<span class="w"> </span><span class="s2">"json"</span><span class="k">)</span><span class="s2">"</span>
 </code></pre></div>
 <p><br></p>
 

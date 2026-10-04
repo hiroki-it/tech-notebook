@@ -33768,7 +33768,7 @@ name: design-application-architecture-for-new-feature
 <span class="s">   FooValidator[入力値のFooが妥当かを確認する]</span>
 <span class="s">   BarValidator[送信データのFooが妥当かを確認する]</span>
 
-<span class="s">   subgraph UiUsecases[&quot;【UI】〇〇機能&quot;]</span>
+<span class="s">   subgraph UiUsecases["【UI】〇〇機能"]</span>
 <span class="s">      UiGetDraft([〇〇の下書きを閲覧する (UI特有のユースケースで、APIでは不要) ])</span>
 <span class="s">      UiGet([〇〇を閲覧する])</span>
 <span class="s">      UiRegister([〇〇を登録する])</span>
@@ -33783,7 +33783,7 @@ name: design-application-architecture-for-new-feature
 <span class="s">   UiRegister -. &lt;&lt; include &gt;&gt; .-&gt; FooValidator</span>
 <span class="s">   UiChange -. &lt;&lt; include &gt;&gt; .-&gt; FooValidator</span>
 
-<span class="s">   subgraph ApiUsecases[&quot;【API】〇〇機能&quot;]</span>
+<span class="s">   subgraph ApiUsecases["【API】〇〇機能"]</span>
 <span class="s">      ApiGet([〇〇を閲覧する])</span>
 <span class="s">      ApiRegister([〇〇を登録する])</span>
 <span class="s">      ApiChange([〇〇を更新する])</span>

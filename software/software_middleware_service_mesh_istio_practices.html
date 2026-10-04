@@ -34616,12 +34616,12 @@
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span>
 <span class="w">          </span><span class="nt">args</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">              </span><span class="no">trap &#39;curl -fs -X POST http://localhost:15020/quitquitquit || echo &quot;Failed to shutdown istio-proxy&quot;&#39; EXIT</span>
+<span class="w">              </span><span class="no">trap 'curl -fs -X POST http://localhost:15020/quitquitquit || echo "Failed to shutdown istio-proxy"' EXIT</span>
 <span class="w">              </span><span class="no">until curl -fsI http://localhost:15021/healthz/ready; do</span>
-<span class="w">                </span><span class="no">echo &quot;Waiting for Sidecar to be healthy&quot;;</span>
+<span class="w">                </span><span class="no">echo "Waiting for Sidecar to be healthy";</span>
 <span class="w">                </span><span class="no">sleep 3;</span>
 <span class="w">              </span><span class="no">done</span>
-<span class="w">              </span><span class="no">echo &quot;Sidecar available. Running job command...&quot;</span>
+<span class="w">              </span><span class="no">echo "Sidecar available. Running job command..."</span>
 <span class="w">              </span><span class="no">&lt;CronJobのコマンド&gt;</span>
 <span class="w">              </span><span class="no">exit $?</span>
 </code></pre></div>
@@ -34730,7 +34730,7 @@
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;.&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"."</span>
 <span class="w">  </span><span class="c1"># 特定のマイクロサービスへのリクエストのみを扱うため、ホスト名もそれのみを許可する</span>
 <span class="w">  </span><span class="c1"># ただし、gateways オプションがある VirtualService ではワイルドカードする</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
@@ -34995,33 +34995,33 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <span class="nt">workflow</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># master ブランチにて、任意の方法でパイプラインを実行した場合</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_REF_NAME == &#39;master&#39;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_REF_NAME == 'master'</span>
 <span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;prd&quot;</span>
+<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">"prd"</span>
 <span class="w">    </span><span class="c1"># develop ブランチにて、任意の方法でパイプラインを実行した場合</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_REF_NAME == &#39;develop&#39;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_REF_NAME == 'develop'</span>
 <span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;stg&quot;</span>
+<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">"stg"</span>
 <span class="w">    </span><span class="c1"># MR にて、任意の方法でパイプラインを実行した場合</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &#39;merge_request_event&#39;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == 'merge_request_event'</span>
 <span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tes&quot;</span>
+<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">"tes"</span>
 <span class="w">    </span><span class="c1"># 上記以外で、web から手動でパイプラインを実行した場合</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &#39;web&#39;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == 'web'</span>
 <span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tes&quot;</span>
+<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">"tes"</span>
 
 <span class="nt">variables</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># EKS は K8s のマイナーバージョンを公開していないため、&quot;.0&quot;と仮定して処理する</span>
+<span class="w">  </span><span class="c1"># EKS は K8s のマイナーバージョンを公開していないため、".0"と仮定して処理する</span>
 <span class="w">  </span><span class="c1"># 現在の EKS の K8s バージョン</span>
-<span class="w">  </span><span class="nt">K8S_CURRENT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.24.0&quot;</span>
+<span class="w">  </span><span class="nt">K8S_CURRENT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">"1.24.0"</span>
 <span class="w">  </span><span class="c1"># アップグレード後の EKS の K8s バージョン</span>
-<span class="w">  </span><span class="nt">K8S_NEXT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.26.0&quot;</span>
+<span class="w">  </span><span class="nt">K8S_NEXT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">"1.26.0"</span>
 
 <span class="w">  </span><span class="c1"># 現在の Istio のバージョン</span>
-<span class="w">  </span><span class="nt">ISTIO_CURRENT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.15.3&quot;</span>
+<span class="w">  </span><span class="nt">ISTIO_CURRENT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">"1.15.3"</span>
 <span class="w">  </span><span class="c1"># アップグレード後の Istio のバージョン</span>
-<span class="w">  </span><span class="nt">ISTIO_NEXT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.17.5&quot;</span>
+<span class="w">  </span><span class="nt">ISTIO_NEXT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">"1.17.5"</span>
 
 <span class="nt">stages</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
@@ -35032,7 +35032,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amazon/aws-cli</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_ECR=&quot;${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_ECR="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">      </span><span class="no">cat &lt;&lt;EOF &gt; k3d-config.yaml</span>
 <span class="w">      </span><span class="no">apiVersion: k3d.io/v1alpha5</span>
@@ -35042,7 +35042,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <span class="w">          </span><span class="no">mirrors:</span>
 <span class="w">            </span><span class="no">&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com:</span>
 <span class="w">              </span><span class="no">endpoint:</span>
-<span class="w">                </span><span class="no">- &quot;http://&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com&quot;</span>
+<span class="w">                </span><span class="no">- "http://&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com"</span>
 <span class="w">          </span><span class="no">configs:</span>
 <span class="w">            </span><span class="no">${AWS_ECR}:</span>
 <span class="w">              </span><span class="no">auth:</span>
@@ -35058,12 +35058,12 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># K3D を使用することで Docker in Docker となるため、そのための環境変数を設定する</span>
 <span class="w">    </span><span class="c1"># @see https://gitlab.com/gitlab-org/gitlab-runner/-/issues/27300</span>
-<span class="w">    </span><span class="nt">DOCKER_DRIVER</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;overlay2&quot;</span>
-<span class="w">    </span><span class="nt">DOCKER_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tcp://docker:2375&quot;</span>
-<span class="w">    </span><span class="nt">DOCKER_TLS_CERTDIR</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">DOCKER_DRIVER</span><span class="p">:</span><span class="w"> </span><span class="s">"overlay2"</span>
+<span class="w">    </span><span class="nt">DOCKER_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">"tcp://docker:2375"</span>
+<span class="w">    </span><span class="nt">DOCKER_TLS_CERTDIR</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 <span class="w">  </span><span class="nt">services</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker:dind</span>
-<span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;--tls=false&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"--tls=false"</span><span class="p p-Indicator">]</span>
 <span class="w">  </span><span class="c1"># K3D Cluster は異なる Job に持ち越せないので、事前処理として実行する</span>
 <span class="w">  </span><span class="nt">before_script</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apk --update add bash curl git</span>
@@ -35075,7 +35075,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <span class="w">      </span><span class="no">k3d version</span>
 <span class="w">    </span><span class="c1"># kubectl コマンドをインストールする</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">curl -kLO https://dl.k8s.io/release/v&quot;${K8S_NEXT_VERSION}&quot;/bin/linux/amd64/kubectl</span>
+<span class="w">      </span><span class="no">curl -kLO https://dl.k8s.io/release/v"${K8S_NEXT_VERSION}"/bin/linux/amd64/kubectl</span>
 <span class="w">      </span><span class="no">chmod +x ./kubectl</span>
 <span class="w">      </span><span class="no">mv ./kubectl /usr/local/bin/kubectl</span>
 <span class="w">      </span><span class="no">kubectl version</span>
@@ -35083,12 +35083,12 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <span class="w">    </span><span class="c1"># registries.yaml ファイルを volume で配置する</span>
 <span class="w">    </span><span class="c1"># もし該当のバージョンのイメージがなければ、rc 版を使用する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">k3d cluster create --config k3d-config.yaml &quot;${CI_PIPELINE_ID}&quot; --image rancher/k3s:v&quot;${K8S_NEXT_VERSION}&quot;-k3s1 --agents 2 || \</span>
-<span class="w">        </span><span class="no">k3d cluster create --config k3d-config.yaml &quot;${CI_PIPELINE_ID}&quot; --image rancher/k3s:v&quot;${K8S_NEXT_VERSION}&quot;-rc1-k3s1 --agents 2</span>
+<span class="w">      </span><span class="no">k3d cluster create --config k3d-config.yaml "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-k3s1 --agents 2 || \</span>
+<span class="w">        </span><span class="no">k3d cluster create --config k3d-config.yaml "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-rc1-k3s1 --agents 2</span>
 <span class="w">    </span><span class="c1"># Node にラベル付けする</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">kubectl label node k3d-&quot;${CI_PIPELINE_ID}&quot;-agent-0 node.kubernetes.io/nodetype=ingress --overwrite</span>
-<span class="w">      </span><span class="no">kubectl label node k3d-&quot;${CI_PIPELINE_ID}&quot;-agent-1 node.kubernetes.io/nodetype=system --overwrite</span>
+<span class="w">      </span><span class="no">kubectl label node k3d-"${CI_PIPELINE_ID}"-agent-0 node.kubernetes.io/nodetype=ingress --overwrite</span>
+<span class="w">      </span><span class="no">kubectl label node k3d-"${CI_PIPELINE_ID}"-agent-1 node.kubernetes.io/nodetype=system --overwrite</span>
 <span class="w">    </span><span class="c1"># 動作を確認する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d cluster list</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl get node --show-labels</span>
@@ -35096,7 +35096,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <span class="w">  </span><span class="c1"># @see https://istio.io/latest/docs/setup/upgrade/helm/</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># CRD をインストールする</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f https://raw.githubusercontent.com/istio/istio/&quot;${ISTIO_NEXT_VERSION}&quot;/manifests/charts/base/crds/crd-all.gen.yaml</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f https://raw.githubusercontent.com/istio/istio/"${ISTIO_NEXT_VERSION}"/manifests/charts/base/crds/crd-all.gen.yaml</span>
 <span class="w">    </span><span class="c1"># Namespace を作成する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">      </span><span class="no">kubectl create ns istio-ingress</span>
@@ -35106,11 +35106,11 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl get ns -L istio.io/rev</span>
 <span class="w">    </span><span class="c1"># istiod チャートを Apply する</span>
 <span class="w">    </span><span class="c1"># ブルー/グリーンデプロイ時に新旧 Istiod を並行稼働させるために、helmfile.yaml にリビジョンをつける</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile -e &quot;${ENV}&quot; -f helmfile_istiod_&quot;${ISTIO_NEXT_VERSION//\./-}&quot;.yaml apply --skip-crds --skip-diff-on-install</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile -e "${ENV}" -f helmfile_istiod_"${ISTIO_NEXT_VERSION//\./-}".yaml apply --skip-crds --skip-diff-on-install</span>
 <span class="w">    </span><span class="c1"># istio-base チャートを Apply する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile -e &quot;${ENV}&quot; -f helmfile_istio-base.yaml apply --skip-diff-on-install</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile -e "${ENV}" -f helmfile_istio-base.yaml apply --skip-diff-on-install</span>
 <span class="w">    </span><span class="c1"># istio-ingressgateway チャートを Apply する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile -e &quot;${ENV}&quot; -f helmfile_istio-ingressgateway.yaml apply --skip-diff-on-install</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile -e "${ENV}" -f helmfile_istio-ingressgateway.yaml apply --skip-diff-on-install</span>
 <span class="w">    </span><span class="c1"># 動作を確認する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istioctl version</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istioctl proxy-status</span>
@@ -35124,7 +35124,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 
 <span class="c1"># asdfをインストールする</span>
 git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>https://github.com/asdf-vm/asdf.git<span class="w"> </span>~/.asdf
-<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;. &quot;$HOME/.asdf/asdf.sh&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+<span class="nb">echo</span><span class="w"> </span><span class="s1">'. "$HOME/.asdf/asdf.sh"'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
 <span class="nb">export</span><span class="w"> </span><span class="nv">ASDF_DIR</span><span class="o">=</span>~/.asdf
 <span class="nb">source</span><span class="w"> </span>~/.bashrc
 

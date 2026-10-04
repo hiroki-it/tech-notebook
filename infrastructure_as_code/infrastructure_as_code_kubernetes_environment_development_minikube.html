@@ -34645,7 +34645,7 @@ $<span class="w"> </span>minikube<span class="w"> </span>start
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--driver<span class="o">=</span>hyperkit<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--mount<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--mount-string<span class="o">=</span><span class="s2">&quot;/Users/hiroki.hasegawa/projects/foo:/data&quot;</span>
+<span class="w">    </span>--mount-string<span class="o">=</span><span class="s2">"/Users/hiroki.hasegawa/projects/foo:/data"</span>
 </code></pre></div>
 <dl>
 <dt><code>(2)</code></dt>
@@ -34718,22 +34718,22 @@ docker@minikube:~$<span class="w"> </span>ls<span class="w"> </span>-la<span cla
 docker@minikube:~$<span class="w"> </span>cat<span class="w"> </span>/etc/cni/net.d/100-crio-bridge.conf
 
 <span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;cniVersion&quot;</span>:<span class="w"> </span><span class="s2">&quot;0.3.1&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;crio&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;type&quot;</span>:<span class="w"> </span><span class="s2">&quot;bridge&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;bridge&quot;</span>:<span class="w"> </span><span class="s2">&quot;cni0&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;isGateway&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;ipMasq&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;hairpinMode&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;ipam&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;type&quot;</span>:<span class="w"> </span><span class="s2">&quot;host-local&quot;</span>,
-<span class="w">        </span><span class="s2">&quot;routes&quot;</span>:<span class="w"> </span><span class="o">[</span>
-<span class="w">            </span><span class="o">{</span><span class="w"> </span><span class="s2">&quot;dst&quot;</span>:<span class="w"> </span><span class="s2">&quot;0.0.0.0/0&quot;</span><span class="w"> </span><span class="o">}</span>,
-<span class="w">            </span><span class="o">{</span><span class="w"> </span><span class="s2">&quot;dst&quot;</span>:<span class="w"> </span><span class="s2">&quot;1100:200::1/24&quot;</span><span class="w"> </span><span class="o">}</span>
+<span class="w">    </span><span class="s2">"cniVersion"</span>:<span class="w"> </span><span class="s2">"0.3.1"</span>,
+<span class="w">    </span><span class="s2">"name"</span>:<span class="w"> </span><span class="s2">"crio"</span>,
+<span class="w">    </span><span class="s2">"type"</span>:<span class="w"> </span><span class="s2">"bridge"</span>,
+<span class="w">    </span><span class="s2">"bridge"</span>:<span class="w"> </span><span class="s2">"cni0"</span>,
+<span class="w">    </span><span class="s2">"isGateway"</span>:<span class="w"> </span><span class="s2">"true"</span>,
+<span class="w">    </span><span class="s2">"ipMasq"</span>:<span class="w"> </span><span class="s2">"true"</span>,
+<span class="w">    </span><span class="s2">"hairpinMode"</span>:<span class="w"> </span><span class="s2">"true"</span>,
+<span class="w">    </span><span class="s2">"ipam"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">"type"</span>:<span class="w"> </span><span class="s2">"host-local"</span>,
+<span class="w">        </span><span class="s2">"routes"</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">            </span><span class="o">{</span><span class="w"> </span><span class="s2">"dst"</span>:<span class="w"> </span><span class="s2">"0.0.0.0/0"</span><span class="w"> </span><span class="o">}</span>,
+<span class="w">            </span><span class="o">{</span><span class="w"> </span><span class="s2">"dst"</span>:<span class="w"> </span><span class="s2">"1100:200::1/24"</span><span class="w"> </span><span class="o">}</span>
 <span class="w">        </span><span class="o">]</span>,
-<span class="w">        </span><span class="s2">&quot;ranges&quot;</span>:<span class="w"> </span><span class="o">[</span>
-<span class="w">            </span><span class="o">[{</span><span class="w"> </span><span class="s2">&quot;subnet&quot;</span>:<span class="w"> </span><span class="s2">&quot;10.85.0.0/16&quot;</span><span class="w"> </span><span class="o">}]</span>,
-<span class="w">            </span><span class="o">[{</span><span class="w"> </span><span class="s2">&quot;subnet&quot;</span>:<span class="w"> </span><span class="s2">&quot;1100:200::/24&quot;</span><span class="w"> </span><span class="o">}]</span>
+<span class="w">        </span><span class="s2">"ranges"</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">            </span><span class="o">[{</span><span class="w"> </span><span class="s2">"subnet"</span>:<span class="w"> </span><span class="s2">"10.85.0.0/16"</span><span class="w"> </span><span class="o">}]</span>,
+<span class="w">            </span><span class="o">[{</span><span class="w"> </span><span class="s2">"subnet"</span>:<span class="w"> </span><span class="s2">"1100:200::/24"</span><span class="w"> </span><span class="o">}]</span>
 <span class="w">        </span><span class="o">]</span>
 <span class="w">    </span><span class="o">}</span>
 <span class="o">}</span>

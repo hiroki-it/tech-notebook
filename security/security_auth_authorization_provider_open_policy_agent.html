@@ -33957,7 +33957,7 @@
 </ul>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="c1"># subordinates.json ファイル</span>
-<span class="p p-Indicator">{</span><span class="s">&quot;alice&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;bob&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">&quot;bob&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span><span class="w"> </span><span class="s">&quot;charlie&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;david&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">&quot;david&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[]}</span>
+<span class="p p-Indicator">{</span><span class="s">"alice"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"bob"</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">"bob"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span><span class="w"> </span><span class="s">"charlie"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"david"</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">"david"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[]}</span>
 </code></pre></div>
 <dl>
 <dt><code>(2)</code></dt>
@@ -33967,7 +33967,7 @@
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type:application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Content-Type:application/json'</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--data-binary<span class="w"> </span>@subordinates.json<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="m">127</span>.0.0.1:8181/v1/data/subordinates
 </code></pre></div>
@@ -33993,16 +33993,16 @@
 <span class="err">#</span><span class="w"> </span><span class="err">一般社員は、自身の給与のみで参照権限を持つ</span><span class="w"> </span><span class="p">(</span><span class="n">trueを返却する</span><span class="p">)</span><span class="w"> </span><span class="err">。</span>
 <span class="n">allow</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">some</span><span class="w"> </span><span class="n">username</span>
-<span class="w">  </span><span class="n">input</span><span class="p">.</span><span class="n">method</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;GET&quot;</span>
-<span class="w">  </span><span class="n">input</span><span class="p">.</span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;finance&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;salary&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">username</span><span class="p">]</span>
+<span class="w">  </span><span class="n">input</span><span class="p">.</span><span class="n">method</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"GET"</span>
+<span class="w">  </span><span class="n">input</span><span class="p">.</span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">"finance"</span><span class="p">,</span><span class="w"> </span><span class="s">"salary"</span><span class="p">,</span><span class="w"> </span><span class="n">username</span><span class="p">]</span>
 <span class="w">  </span><span class="n">input</span><span class="p">.</span><span class="n">user</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">username</span>
 <span class="p">}</span>
 
 <span class="err">#</span><span class="w"> </span><span class="err">管理職は、自身と部下社員の給与で参照権限を持つ</span><span class="w"> </span><span class="p">(</span><span class="n">trueを返却する</span><span class="p">)</span><span class="w"> </span><span class="err">。</span>
 <span class="n">allow</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">some</span><span class="w"> </span><span class="n">username</span>
-<span class="w">  </span><span class="n">input</span><span class="p">.</span><span class="n">method</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;GET&quot;</span>
-<span class="w">  </span><span class="n">input</span><span class="p">.</span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;finance&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;salary&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">username</span><span class="p">]</span>
+<span class="w">  </span><span class="n">input</span><span class="p">.</span><span class="n">method</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"GET"</span>
+<span class="w">  </span><span class="n">input</span><span class="p">.</span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">"finance"</span><span class="p">,</span><span class="w"> </span><span class="s">"salary"</span><span class="p">,</span><span class="w"> </span><span class="n">username</span><span class="p">]</span>
 <span class="w">  </span><span class="n">subord</span><span class="p">[</span><span class="n">input</span><span class="p">.</span><span class="n">user</span><span class="p">][_]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">username</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -34014,7 +34014,7 @@
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: text/plain&#39;</span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Content-Type: text/plain'</span><span class="se">\</span>
 <span class="w">    </span>--data-binary<span class="w"> </span>@httpapi_authz.rego<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="m">127</span>.0.0.1:8181/v1/policies/httpapi_authz
 </code></pre></div>
@@ -34029,13 +34029,13 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># request.json ファイル</span>
 <span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="c1"># リクエストの内容</span>
-<span class="w">  </span><span class="s">&quot;input&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">"input"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">      </span><span class="c1"># GET メソッド</span>
-<span class="w">      </span><span class="s">&quot;method&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;GET&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"method"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"GET"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="c1"># パス</span>
-<span class="w">      </span><span class="s">&quot;path&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;finance&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;salary&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;alice&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">      </span><span class="s">"path"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"finance"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"salary"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"alice"</span><span class="p p-Indicator">],</span>
 <span class="w">      </span><span class="c1"># アカウント名</span>
-<span class="w">      </span><span class="s">&quot;user&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;alice&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"user"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"alice"</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
@@ -34048,12 +34048,12 @@
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type:application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s1">'Content-Type:application/json'</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--data-binary<span class="w"> </span>@request.json<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="m">127</span>.0.0.1:8181/v1/data/httpapi/authz/allow<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
 
 <span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;result&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span>
+<span class="w">  </span><span class="s2">"result"</span>:<span class="w"> </span><span class="s2">"true"</span>
 <span class="o">}</span>
 </code></pre></div>
 <p><br></p>
@@ -34079,11 +34079,11 @@
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gatekeeper-validating-webhook-configuration</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">gatekeeper.sh/system</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yes&quot;</span>
+<span class="w">    </span><span class="nt">gatekeeper.sh/system</span><span class="p">:</span><span class="w"> </span><span class="s">"yes"</span>
 <span class="nt">webhooks</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># webhook 名は完全修飾ドメイン名にする。</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">validation.gatekeeper.sh</span>
-<span class="w">    </span><span class="nt">admissionReviewVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;v1&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;v1beta1&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">admissionReviewVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"v1"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"v1beta1"</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">clientConfig</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># webhook サーバーを Cluster 内部に自作する場合は、webhook サーバーに証明書バンドルを登録する。</span>
 <span class="w">      </span><span class="nt">caBundle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ci0tLS0tQk...</span>
@@ -34103,16 +34103,16 @@
 <span class="w">    </span><span class="nt">objectSelector</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">    </span><span class="c1"># validating-admission ステップ発火条件を登録する。</span>
 <span class="w">    </span><span class="nt">rules</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">apiVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">operations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CREATE&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;UPDATE&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">apiVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">operations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"CREATE"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"UPDATE"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">    </span><span class="nt">sideEffects</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
 <span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">    </span><span class="c1"># webhook 名は完全修飾ドメイン名にする。</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">check-ignore-label.gatekeeper.sh</span>
-<span class="w">    </span><span class="nt">admissionReviewVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;v1&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;v1beta1&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">admissionReviewVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"v1"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"v1beta1"</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">clientConfig</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># webhook サーバーを Cluster 内部に自作する場合は、webhook サーバーに証明書バンドルを登録する。</span>
 <span class="w">      </span><span class="nt">caBundle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ci0tLS0tQk...</span>
@@ -34130,11 +34130,11 @@
 <span class="w">    </span><span class="nt">objectSelector</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">    </span><span class="c1"># validating-admission ステップ発火条件を登録する。</span>
 <span class="w">    </span><span class="nt">rules</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">apiVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">operations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CREATE&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;UPDATE&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;namespaces&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">apiVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">operations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"CREATE"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"UPDATE"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"namespaces"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">    </span><span class="nt">sideEffects</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
 <span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </code></pre></div>

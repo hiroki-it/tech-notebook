@@ -34218,7 +34218,7 @@
 </blockquote>
 <h4 id="_8">▼ ログシンクフィルター<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>シンクを発火させるときのログの条件を設定する。</p>
-<div class="highlight"><pre><span></span><code>resource.type<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;k8s_container&quot;</span><span class="w"> </span>AND<span class="w"> </span>resource.labels.namespace_name<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-namespace&quot;</span><span class="w"> </span>AND<span class="w"> </span>resource.labels.pod_name<span class="w"> </span><span class="o">=</span>~<span class="w"> </span><span class="s2">&quot;foo-pod&quot;</span><span class="w"> </span>AND<span class="w"> </span>jsonPayload.level<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span><span class="s2">&quot;FATAL&quot;</span><span class="w"> </span>OR<span class="w"> </span><span class="s2">&quot;ERROR&quot;</span><span class="o">)</span>
+<div class="highlight"><pre><span></span><code>resource.type<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"k8s_container"</span><span class="w"> </span>AND<span class="w"> </span>resource.labels.namespace_name<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-namespace"</span><span class="w"> </span>AND<span class="w"> </span>resource.labels.pod_name<span class="w"> </span><span class="o">=</span>~<span class="w"> </span><span class="s2">"foo-pod"</span><span class="w"> </span>AND<span class="w"> </span>jsonPayload.level<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span><span class="s2">"FATAL"</span><span class="w"> </span>OR<span class="w"> </span><span class="s2">"ERROR"</span><span class="o">)</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02_1">02. 文法<a class="headerlink" href="#02_1" title="Permanent link">&para;</a></h2>
@@ -34255,50 +34255,50 @@
 <p>ログメッセージは、構造化ログになっている。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># わかりやすいように改行している。</span>
 <span class="m">2023</span>-03-16T19:48:25.824524924+09:00<span class="w"> </span>stderr<span class="w"> </span>F<span class="w"> </span><span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;message&quot;</span>:<span class="w"> </span><span class="s2">&quot;There was an error in the application&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;foo&quot;</span>:<span class="w"> </span><span class="s2">&quot;FOO&quot;</span>
-<span class="w">  </span><span class="s2">&quot;bar&quot;</span>:<span class="w"> </span><span class="s2">&quot;BAR&quot;</span>
-<span class="w">  </span><span class="s2">&quot;baz&quot;</span>:<span class="w"> </span><span class="s2">&quot;BAZ&quot;</span>
+<span class="w">  </span><span class="s2">"message"</span>:<span class="w"> </span><span class="s2">"There was an error in the application"</span>,
+<span class="w">  </span><span class="s2">"foo"</span>:<span class="w"> </span><span class="s2">"FOO"</span>
+<span class="w">  </span><span class="s2">"bar"</span>:<span class="w"> </span><span class="s2">"BAR"</span>
+<span class="w">  </span><span class="s2">"baz"</span>:<span class="w"> </span><span class="s2">"BAZ"</span>
 <span class="o">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;insertId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;42&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;jsonPayload&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"insertId"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"42"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"jsonPayload"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;message&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;There</span><span class="nv"> </span><span class="s">was</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">error</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">application&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;bar&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;BAR&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;baz&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;BAZ&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"message"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"There</span><span class="nv"> </span><span class="s">was</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">error</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">application"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"foo"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"FOO"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"bar"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"BAR"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"baz"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"BAZ"</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;httpRequest&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;requestMethod&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;GET&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;resource&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"httpRequest"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"requestMethod"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"GET"</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">"resource"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;k8s_container&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;labels&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">      </span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"k8s_container"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"labels"</span><span class="p p-Indicator">:</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
-<span class="w">          </span><span class="s">&quot;container_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;hello-app&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;pod_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;helloworld-gke-6cfd6f4599-9wff8&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;project_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;stackdriver-sandbox-92334288&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;namespace_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;default&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;location&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;us-west4&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;cluster_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;helloworld-gke&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"container_name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"hello-app"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"pod_name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"helloworld-gke-6cfd6f4599-9wff8"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"project_id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"stackdriver-sandbox-92334288"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"namespace_name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"default"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"location"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"us-west4"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"cluster_name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"helloworld-gke"</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;timestamp&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2020-11-07T15:57:35.945508391Z&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;severity&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ERROR&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;labels&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;user_label_2&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;value_2&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;user_label_1&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;value_1&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;logName&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;projects/stackdriver-sandbox-92334288/logs/stdout&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;operation&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"timestamp"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2020-11-07T15:57:35.945508391Z"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"severity"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"ERROR"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"labels"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"user_label_2"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"value_2"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"user_label_1"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"value_1"</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">"logName"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"projects/stackdriver-sandbox-92334288/logs/stdout"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"operation"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;get_data&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;producer&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;github.com/MyProject/MyApplication&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;first&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"get_data"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"producer"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"github.com/MyProject/MyApplication"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"first"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;trace&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;sourceLocation&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="p p-Indicator">{</span><span class="s">&quot;file&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;get_data.py&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;line&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;142&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;function&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;getData&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;receiveTimestamp&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2020-11-07T15:57:42.411414059Z&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;spanId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;000000000000004a&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"trace"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"sourceLocation"</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">{</span><span class="s">"file"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"get_data.py"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"line"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"142"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"function"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"getData"</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">"receiveTimestamp"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2020-11-07T15:57:42.411414059Z"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"spanId"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"000000000000004a"</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
@@ -34322,7 +34322,7 @@
 </code></pre></div>
 <h4 id="_14">▼ ワイルドカード<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># 部分一致</span>
-resource.labels.pod_name:<span class="w"> </span><span class="s2">&quot;pod&quot;</span>
+resource.labels.pod_name:<span class="w"> </span><span class="s2">"pod"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34334,13 +34334,13 @@ resource.labels.pod_name:<span class="w"> </span><span class="s2">&quot;pod&quot
 <p><code>=~</code> 演算子を使用して正規表現マッチングを有効化する。</p>
 <p>正規表現にすると、<code>.*</code> 演算子や <code>$</code> 演算子でワイルドカードを適用できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 前方一致</span>
-resource.labels.pod_name<span class="o">=</span>~<span class="s2">&quot;foo-pod-.*&quot;</span>
+resource.labels.pod_name<span class="o">=</span>~<span class="s2">"foo-pod-.*"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 後方一致</span>
-resource.labels.pod_name<span class="o">=</span>~<span class="s2">&quot;pod</span>$<span class="s2">&quot;</span>
+resource.labels.pod_name<span class="o">=</span>~<span class="s2">"pod</span>$<span class="s2">"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 部分一致</span>
-resource.labels.pod_name<span class="o">=</span>~<span class="s2">&quot;.*pod.*&quot;</span>
+resource.labels.pod_name<span class="o">=</span>~<span class="s2">".*pod.*"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34352,8 +34352,8 @@ resource.labels.pod_name<span class="o">=</span>~<span class="s2">&quot;.*pod.*&
 <p>特定の値を持たないログをクエリする。</p>
 <p><strong>＊実行例＊</strong></p>
 <p>ヘルスチェック (<code>/health</code>) とメトリクス (<code>/metrics</code>) のエンドポイント以外のアクセスログをクエリする。</p>
-<div class="highlight"><pre><span></span><code>-jsonPayload.requestPath<span class="o">=</span><span class="s2">&quot;/health&quot;</span>
--jsonPayload.requestPath<span class="o">=</span><span class="s2">&quot;/metrics&quot;</span>
+<div class="highlight"><pre><span></span><code>-jsonPayload.requestPath<span class="o">=</span><span class="s2">"/health"</span>
+-jsonPayload.requestPath<span class="o">=</span><span class="s2">"/metrics"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_17">シンク<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
@@ -34362,37 +34362,37 @@ resource.labels.pod_name<span class="o">=</span>~<span class="s2">&quot;.*pod.*&
 <p>ロジックは、ログクエリと同じである。</p>
 <h4 id="_19">▼ リソースタイプ<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># KubernetesCluster</span>
-resource.type<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;k8s_cluster&quot;</span>
+resource.type<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"k8s_cluster"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># Kubernetesコンテナ</span>
-resource.type<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;k8s_container&quot;</span>
+resource.type<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"k8s_container"</span>
 </code></pre></div>
 <h3 id="_20">リソースラベル<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Kubernetes Cluster名</span>
-resource.labels.cluster_name<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-cluster&quot;</span>
+resource.labels.cluster_name<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-cluster"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># リソースのロケーション</span>
-resource.labels.location<span class="o">=</span><span class="s2">&quot;asia-northeast1&quot;</span>
+resource.labels.location<span class="o">=</span><span class="s2">"asia-northeast1"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># Namespace名</span>
-resource.labels.namespace_name<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-namespace&quot;</span>
+resource.labels.namespace_name<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-namespace"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># Pod名</span>
-resource.labels.pod_name<span class="w"> </span><span class="o">=</span>~<span class="w"> </span><span class="s2">&quot;foo-pod&quot;</span>
+resource.labels.pod_name<span class="w"> </span><span class="o">=</span>~<span class="w"> </span><span class="s2">"foo-pod"</span>
 </code></pre></div>
 <h4 id="_21">▼ 任意のキー<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># 任意のキー</span>
-jsonPayload.Level<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;WARN&quot;</span>
+jsonPayload.Level<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"WARN"</span>
 </code></pre></div>
 <h4 id="_22">▼ 組み合わせ<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p>マイクロサービスアーキテクチャで、istio-proxy のアウトバウンド通信で発生したエラーをクエリする。</p>
 <p>ここでは、宛先 Cluster として <code>PassthroughCluster</code> を指定した。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Kubernetes上のPod内のistio-proxyコンテナ</span>
 <span class="c1"># 送信元Clusterとして、PassthroughClusterを設定する</span>
-resource.labels.container_name<span class="o">=</span><span class="s2">&quot;istio-proxy&quot;</span>
-resource.labels.pod_name<span class="o">=</span><span class="s2">&quot;foo-pod&quot;</span>
-jsonPayload.upstream_cluster<span class="o">=</span><span class="s2">&quot;PassthroughCluster&quot;</span>
--jsonPayload.response_flags<span class="o">=</span><span class="s2">&quot;-&quot;</span>
+resource.labels.container_name<span class="o">=</span><span class="s2">"istio-proxy"</span>
+resource.labels.pod_name<span class="o">=</span><span class="s2">"foo-pod"</span>
+jsonPayload.upstream_cluster<span class="o">=</span><span class="s2">"PassthroughCluster"</span>
+-jsonPayload.response_flags<span class="o">=</span><span class="s2">"-"</span>
 </code></pre></div>
 <p><br></p>
 

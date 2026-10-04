@@ -34589,13 +34589,13 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">DD_SITE</span><span class="o">=</span>datadoghq.com
 
 <span class="c1"># インストールする。</span>
-$<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-L<span class="w"> </span>https://s3.amazonaws.com/dd-agent/scripts/install_script.sh<span class="k">)</span><span class="s2">&quot;</span>
+$<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>curl<span class="w"> </span>-L<span class="w"> </span>https://s3.amazonaws.com/dd-agent/scripts/install_script.sh<span class="k">)</span><span class="s2">"</span>
 </code></pre></div>
 <h4 id="ansible">▼ インストール (Ansible の場合)<a class="headerlink" href="#ansible" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install datadog agent</span>
 <span class="w">      </span><span class="nt">ansible.builtin.shell</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">        </span><span class="no">bash -c &quot;$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)&quot;</span>
+<span class="w">        </span><span class="no">bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"</span>
 <span class="w">      </span><span class="nt">environment</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">DD_AGENT_MAJOR_VERSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7</span>
 <span class="w">        </span><span class="nt">DD_API_KEY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;APIキー&gt;</span>
@@ -34631,7 +34631,7 @@ $<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><
 
 <span class="c1">## @param api_key - string - required</span>
 <span class="c1">## @env DD_API_KEY - string - required</span>
-<span class="c1">## The Datadog API key to associate your Agent&#39;s data with your organization.</span>
+<span class="c1">## The Datadog API key to associate your Agent's data with your organization.</span>
 <span class="c1">## Create a new API key here: https://app.datadoghq.com/account/settings</span>
 <span class="c1">#</span>
 <span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;APIキー&gt;</span>
@@ -34646,11 +34646,11 @@ $<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><
 <span class="c1"># Log collection Configuration</span>
 <span class="c1"># ---------------------------------------------</span>
 
-<span class="c1">## @param logs_enabled - boolean - optional - default: &quot;false&quot;</span>
-<span class="c1">## @env DD_LOGS_ENABLED - boolean - optional - default: &quot;false&quot;</span>
+<span class="c1">## @param logs_enabled - boolean - optional - default: "false"</span>
+<span class="c1">## @env DD_LOGS_ENABLED - boolean - optional - default: "false"</span>
 <span class="c1">## Enable Datadog Agent log collection by setting logs_enabled to true.</span>
 <span class="c1">#</span>
-<span class="nt">logs_enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="nt">logs_enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03">03. コンテナの場合<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
@@ -34661,7 +34661,7 @@ $<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><
 <h4 id="dockerhub">▼ DockerHub を使用する場合<a class="headerlink" href="#dockerhub" title="Permanent link">&para;</a></h4>
 <p>Amazon ECS タスクのコンテナ定義にて、DockerHub の URL を直接的に指定する。</p>
 <p>datadog エージェントにデフォルトで内蔵されている設定をそのまま使用する場合は、こちらを採用する。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;datadog&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;image&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;datadog/agent:latest&quot;</span><span class="p p-Indicator">}]</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[{</span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"datadog"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"image"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"datadog/agent:latest"</span><span class="p p-Indicator">}]</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34671,7 +34671,7 @@ $<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><
 <h4 id="ecr">▼ ECR パブリックギャラリーを使用する場合<a class="headerlink" href="#ecr" title="Permanent link">&para;</a></h4>
 <p>Amazon ECS タスクのコンテナ定義で、ECR パブリックギャラリーの URL を指定し、ECR イメージをプルする。</p>
 <p>datadog エージェントにデフォルトで内蔵されている設定をそのまま使用する場合は、こちらを採用する。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;datadog&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;image&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;public.ecr.aws/datadog/agent:latest&quot;</span><span class="p p-Indicator">}]</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[{</span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"datadog"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"image"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"public.ecr.aws/datadog/agent:latest"</span><span class="p p-Indicator">}]</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34689,8 +34689,8 @@ $<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span>
 <span class="w">  </span><span class="p p-Indicator">{</span>
-<span class="w">    </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;datadog&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">    </span><span class="s">&quot;image&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-datadog-repository:*****&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"datadog"</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"image"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-datadog-repository:*****"</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">]</span>
 </code></pre></div>
@@ -34717,46 +34717,46 @@ $<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><
 <span class="w">  </span><span class="p p-Indicator">},</span>
 <span class="w">  </span><span class="p p-Indicator">{</span>
 <span class="w">    </span><span class="c1"># datadog コンテナ (サイドカー)</span>
-<span class="w">    </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;datadog&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">    </span><span class="s">&quot;image&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;datadog/agent:latest&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">    </span><span class="s">&quot;essential&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">    </span><span class="s">&quot;portMappings&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"datadog"</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"image"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"datadog/agent:latest"</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"essential"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"false"</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"portMappings"</span><span class="p p-Indicator">:</span>
 <span class="w">      </span><span class="p p-Indicator">[</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
-<span class="w">          </span><span class="s">&quot;containerPort&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">8126</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;hostPort&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">8126</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;protocol&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;tcp&quot;</span>
+<span class="w">          </span><span class="s">"containerPort"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">8126</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"hostPort"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">8126</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"protocol"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"tcp"</span>
 <span class="w">        </span><span class="p p-Indicator">}</span>
 <span class="w">      </span><span class="p p-Indicator">],</span>
-<span class="w">    </span><span class="s">&quot;logConfiguration&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="s">"logConfiguration"</span><span class="p p-Indicator">:</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;logDriver&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;awslogs&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;options&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"logDriver"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"awslogs"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"options"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;awslogs-group&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/prd-foo/bar/log&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;awslogs-region&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ap-northeast-1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;awslogs-stream-prefix&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/container&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"awslogs-group"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/prd-foo/bar/log"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"awslogs-region"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"ap-northeast-1"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"awslogs-stream-prefix"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/container"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
-<span class="w">    </span><span class="s">&quot;cpu&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">,</span>
-<span class="w">    </span><span class="s">&quot;memory&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">256</span><span class="p p-Indicator">,</span>
-<span class="w">    </span><span class="s">&quot;environment&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="s">"cpu"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"memory"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">256</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"environment"</span><span class="p p-Indicator">:</span>
 <span class="w">      </span><span class="p p-Indicator">[</span>
-<span class="w">        </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ECS_FARGATE&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DD_PROCESS_AGENT_ENABLED&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DD_DOGSTATSD_NON_LOCAL_TRAFFIC&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DD_APM_ENABLED&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DD_LOGS_ENABLED&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DD_ENV&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="w"> </span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"ECS_FARGATE"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="w"> </span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"DD_PROCESS_AGENT_ENABLED"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="w"> </span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"DD_DOGSTATSD_NON_LOCAL_TRAFFIC"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="w"> </span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"DD_APM_ENABLED"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="w"> </span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"DD_LOGS_ENABLED"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="w"> </span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"DD_ENV"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"foo"</span><span class="w"> </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">],</span>
-<span class="w">    </span><span class="s">&quot;secrets&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DD_API_KEY&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;valueFrom&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/prd-foo/DD_API_KEY&quot;</span><span class="w"> </span><span class="p p-Indicator">}],</span>
-<span class="w">    </span><span class="s">&quot;dockerLabels&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">    </span><span class="s">"secrets"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="w"> </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"DD_API_KEY"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"valueFrom"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/prd-foo/DD_API_KEY"</span><span class="w"> </span><span class="p p-Indicator">}],</span>
+<span class="w">    </span><span class="s">"dockerLabels"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">        </span><span class="c1"># Amazon ECS コンテナに対する env タグ</span>
-<span class="w">        </span><span class="s">&quot;com.datadoghq.tags.env&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;prd&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"com.datadoghq.tags.env"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"prd"</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="c1"># Amazon ECS コンテナに対する service タグ</span>
-<span class="w">        </span><span class="s">&quot;com.datadoghq.tags.service&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"com.datadoghq.tags.service"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="c1"># Amazon ECS コンテナに対する version タグ</span>
-<span class="w">        </span><span class="s">&quot;com.datadoghq.tags.version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;バージョンタグ&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"com.datadoghq.tags.version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;バージョンタグ&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">  </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">]</span>
@@ -34764,18 +34764,18 @@ $<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><
 <h4 id="amazon-ecs-iam">▼ Amazon ECS の IAM ロール<a class="headerlink" href="#amazon-ecs-iam" title="Permanent link">&para;</a></h4>
 <p>datadog コンテナがコンテナからメトリクスの元になるデータポイントを収集できるように、Amazon ECS タスク実行ロールにポリシーを追加する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">[</span>
-<span class="w">            </span><span class="s">&quot;ecs:ListClusters&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;ecs:ListContainerInstances&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;ecs:DescribeContainerInstances&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ecs:ListClusters"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ecs:ListContainerInstances"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ecs:DescribeContainerInstances"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>

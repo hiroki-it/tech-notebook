@@ -34040,22 +34040,22 @@ $<span class="w"> </span>docker<span class="w"> </span>push<span class="w"> </sp
 <p>Amazon ECR へのアクセスの認可スコープを設定する。</p>
 <p>AWS IAM ポリシーよりも強い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 中央集権的にコンテナイメージを提供する Amazon ECR</span>
-<span class="p p-Indicator">{</span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2008-10-17&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="p p-Indicator">{</span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2008-10-17"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Sid&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;AllowAccessFromMultipleAccount&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">"Sid"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"AllowAccessFromMultipleAccount"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">            </span><span class="c1"># Amazon ECR に接続できる他の AWS アカウント</span>
-<span class="w">            </span><span class="s">&quot;AWS&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;arn:aws:iam::*****:root&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">            </span><span class="s">"AWS"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"arn:aws:iam::*****:root"</span><span class="p p-Indicator">],</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">        </span><span class="c1"># 操作の認可スコープ</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">[</span>
-<span class="w">            </span><span class="s">&quot;ecr:BatchCheckLayerAvailability&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;ecr:BatchGetImage&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;ecr:GetDownloadUrlForLayer&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;ecr:ListImages&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;ecr:StartLifecyclePolicyPreview&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ecr:BatchCheckLayerAvailability"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ecr:BatchGetImage"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ecr:GetDownloadUrlForLayer"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ecr:ListImages"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ecr:StartLifecyclePolicyPreview"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">],</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">]}</span>

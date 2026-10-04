@@ -34096,7 +34096,7 @@
 <h3 id="clientid">clientID<a class="headerlink" href="#clientid" title="Permanent link">&para;</a></h3>
 <p>ID プロバイダーで発行したクライアント ID を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">providers</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">clientID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;クライアントID&gt;&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">clientID</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;クライアントID&gt;"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34107,7 +34107,7 @@
 <h3 id="clientsecret">clientSecret<a class="headerlink" href="#clientsecret" title="Permanent link">&para;</a></h3>
 <p>ID プロバイダーで発行したクライアントシークレットを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">providers</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;クライアントシークレット&gt;&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;クライアントシークレット&gt;"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34130,7 +34130,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># 認証方法が OIDC で、ID プロバイダーが Keycloak の場合</span>
 <span class="nt">providers</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">oidcConfig</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">issuerURL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://keycloak.foo-namespace.svc.cluster.local/realms/&lt;realm名&gt;&quot;</span>
+<span class="w">      </span><span class="nt">issuerURL</span><span class="p">:</span><span class="w"> </span><span class="s">"http://keycloak.foo-namespace.svc.cluster.local/realms/&lt;realm名&gt;"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34140,7 +34140,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># 認証方法が OIDC で、ID プロバイダーが AWS Cognito の場合</span>
 <span class="nt">providers</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">oidcConfig</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">issuerURL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://cognito-idp.ap-northeast-1.amazonaws.com/&lt;ユーザープールID&gt;&quot;</span>
+<span class="w">      </span><span class="nt">issuerURL</span><span class="p">:</span><span class="w"> </span><span class="s">"https://cognito-idp.ap-northeast-1.amazonaws.com/&lt;ユーザープールID&gt;"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34159,7 +34159,7 @@
 <h3 id="provider">provider<a class="headerlink" href="#provider" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 認証方法が OIDC で、任意の ID プロバイダーの場合</span>
 <span class="nt">providers</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;oidc&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="s">"oidc"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34168,7 +34168,7 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="c1"># 認証方法が任意で、ID プロバイダーが GitHub の場合</span>
 <span class="nt">providers</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;github&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="s">"github"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34177,7 +34177,7 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="c1"># 認証方法が任意で、ID プロバイダーが Keycloak の場合</span>
 <span class="nt">providers</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;keycloak&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="s">"keycloak"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34186,7 +34186,7 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="c1"># 認証方法が OIDC で、ID プロバイダーが Keycloak の場合</span>
 <span class="nt">providers</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;keycloak-oidc&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="s">"keycloak-oidc"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34200,7 +34200,7 @@
 <h2 id="03-server">03. server<a class="headerlink" href="#03-server" title="Permanent link">&para;</a></h2>
 <h3 id="bindaddress">BindAddress<a class="headerlink" href="#bindaddress" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">server</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">BindAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1:4180&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">BindAddress</span><span class="p">:</span><span class="w"> </span><span class="s">"127.0.0.1:4180"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34210,7 +34210,7 @@
 <p><br></p>
 <h3 id="securebindaddress">SecureBindAddress<a class="headerlink" href="#securebindaddress" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">server</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">SecureBindAddress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1:443&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">SecureBindAddress</span><span class="p">:</span><span class="w"> </span><span class="s">"127.0.0.1:443"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34221,7 +34221,7 @@
 <p><br></p>
 <h2 id="04-redirect_url">04. redirect_url<a class="headerlink" href="#04-redirect_url" title="Permanent link">&para;</a></h2>
 <p>コールバック URL (ID プロバイダーからの認可レスポンスのリダイレクト先 URL) を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">redirect_url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://&lt;アプリケーションのドメイン&gt;/oauth2/callback&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">redirect_url</span><span class="p">:</span><span class="w"> </span><span class="s">"https://&lt;アプリケーションのドメイン&gt;/oauth2/callback"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34285,7 +34285,7 @@
 <p>注意点として、ID プロバイダーの URL ではない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">upstreamConfig</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">upstreams</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://127.0.0.1/&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">"http://127.0.0.1/"</span>
 </code></pre></div>
 <blockquote>
 <ul>

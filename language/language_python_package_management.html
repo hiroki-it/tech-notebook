@@ -34384,7 +34384,7 @@ $<span class="w"> </span>pip3<span class="w"> </span>freeze<span class="w"> </sp
 </code></pre></div>
 <p>アップグレードできるパッケージを一括でアップグレードする場合は、パイプラインと組み合わせる必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip3<span class="w"> </span>freeze<span class="w"> </span>--local<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s1">&#39;^\-e&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s1">'^\-e'</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="o">=</span><span class="w"> </span>-f<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-n1<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>-U
 </code></pre></div>

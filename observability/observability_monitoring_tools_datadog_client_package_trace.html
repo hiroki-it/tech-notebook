@@ -34127,10 +34127,10 @@ $<span class="w"> </span>rm<span class="w"> </span>datadog-php-tracer.deb
 <p>また、PHP-FPM に環境変数を渡せるように、<code>www</code> プールに関する設定ファイルを配置し、PHP-FPM を再起動する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># /etc/php-fpm.d/dd-trace.confファイル</span>
 <span class="k">[www]</span>
-<span class="na">env[DD_SERVICE]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;foo&#39;</span>
-<span class="na">env[DD_SERVICE_MAPPING]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;guzzle:foo-guzzle,pdo:foo-pdo&#39;</span>
-<span class="na">env[DD_ENV]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;prd&#39;</span>
-<span class="na">env[DD_VERSION]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;&lt;バージョンタグ&gt;&#39;</span>
+<span class="na">env[DD_SERVICE]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">'foo'</span>
+<span class="na">env[DD_SERVICE_MAPPING]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">'guzzle:foo-guzzle,pdo:foo-pdo'</span>
+<span class="na">env[DD_ENV]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">'prd'</span>
+<span class="na">env[DD_VERSION]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">'&lt;バージョンタグ&gt;'</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34185,7 +34185,7 @@ For<span class="w"> </span>help,<span class="w"> </span>check<span class="w"> </
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 失敗の場合</span>
 $<span class="w"> </span>php<span class="w"> </span>--ri<span class="o">=</span>ddtrace
-Extension<span class="w"> </span><span class="s1">&#39;ddtrace&#39;</span><span class="w"> </span>not<span class="w"> </span>present.
+Extension<span class="w"> </span><span class="s1">'ddtrace'</span><span class="w"> </span>not<span class="w"> </span>present.
 </code></pre></div>
 <h4 id="_7">▼ パラメーターの動作確認<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>パラメーターがパッケージに渡されたか否かは、<code>DATADOG TRACER CONFIGURATION</code> の項目で確認できる。</p>
@@ -34197,45 +34197,45 @@ DATADOG<span class="w"> </span>TRACER<span class="w"> </span><span class="nv">CO
 
 <span class="c1"># 得られたJSONを整形している</span>
 <span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;date&quot;</span>:<span class="w"> </span><span class="s2">&quot;2021-00-00T09:00:00Z&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;os_name&quot;</span>:<span class="w"> </span><span class="s2">&quot;Linux ***** 5.10.25-linuxkit #1 SMP Tue Mar 23 09:27:39 UTC 2021 x86_64&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;os_version&quot;</span>:<span class="w"> </span><span class="s2">&quot;5.10.25-linuxkit&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;version&quot;</span>:<span class="w"> </span><span class="s2">&quot;0.64.1&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;lang&quot;</span>:<span class="w"> </span><span class="s2">&quot;php&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;lang_version&quot;</span>:<span class="w"> </span><span class="s2">&quot;8.0.8&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;env&quot;</span>:<span class="w"> </span>null,
-<span class="w">    </span><span class="s2">&quot;enabled&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;service&quot;</span>:<span class="w"> </span>null,
-<span class="w">    </span><span class="s2">&quot;enabled_cli&quot;</span>:<span class="w"> </span><span class="s2">&quot;false&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;agent_url&quot;</span>:<span class="w"> </span><span class="s2">&quot;http://localhost:8126&quot;</span>,<span class="w"> </span><span class="c1"># datadogコンテナのアドレスポート</span>
-<span class="w">    </span><span class="s2">&quot;debug&quot;</span>:<span class="w"> </span><span class="s2">&quot;false&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;analytics_enabled&quot;</span>:<span class="w"> </span><span class="s2">&quot;false&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;sample_rate&quot;</span>:<span class="w"> </span><span class="m">1</span>.000000,
-<span class="w">    </span><span class="s2">&quot;sampling_rules&quot;</span>:<span class="w"> </span>null,
-<span class="w">    </span><span class="s2">&quot;tags&quot;</span>:<span class="w"> </span><span class="o">{}</span>,
-<span class="w">    </span><span class="s2">&quot;service_mapping&quot;</span>:<span class="w"> </span><span class="o">{}</span>,
-<span class="w">    </span><span class="s2">&quot;distributed_tracing_enabled&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;priority_sampling_enabled&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;dd_version&quot;</span>:<span class="w"> </span>null,
-<span class="w">    </span><span class="s2">&quot;architecture&quot;</span>:<span class="w"> </span><span class="s2">&quot;x86_64&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;sapi&quot;</span>:<span class="w"> </span><span class="s2">&quot;cli&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;datadog.trace.request_init_hook&quot;</span>:<span class="w"> </span><span class="s2">&quot;/opt/datadog-php/dd-trace-sources/bridge/dd_wrap_autoloader.php&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;open_basedir_configured&quot;</span>:<span class="w"> </span><span class="s2">&quot;false&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;uri_fragment_regex&quot;</span>:<span class="w"> </span>null,
-<span class="w">    </span><span class="s2">&quot;uri_mapping_incoming&quot;</span>:<span class="w"> </span>null,
-<span class="w">    </span><span class="s2">&quot;uri_mapping_outgoing&quot;</span>:<span class="w"> </span>null,
-<span class="w">    </span><span class="s2">&quot;auto_flush_enabled&quot;</span>:<span class="w"> </span><span class="s2">&quot;false&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;generate_root_span&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;http_client_split_by_domain&quot;</span>:<span class="w"> </span><span class="s2">&quot;false&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;measure_compile_time&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;report_hostname_on_root_span&quot;</span>:<span class="w"> </span><span class="s2">&quot;false&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;traced_internal_functions&quot;</span>:<span class="w"> </span>null,
-<span class="w">    </span><span class="s2">&quot;auto_prepend_file_configured&quot;</span>:<span class="w"> </span><span class="s2">&quot;false&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;integrations_disabled&quot;</span>:<span class="w"> </span><span class="s2">&quot;default&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;enabled_from_env&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;opcache.file_cache&quot;</span>:<span class="w"> </span>null,
-<span class="w">    </span><span class="s2">&quot;agent_error&quot;</span>:<span class="w"> </span><span class="s2">&quot;Failed to connect to localhost port 8126: Connection refused&quot;</span>,<span class="w"> </span><span class="c1"># エラーメッセージ</span>
-<span class="w">    </span><span class="s2">&quot;DDTRACE_REQUEST_INIT_HOOK&quot;</span>:<span class="w"> </span><span class="s2">&quot;&#39;DDTRACE_REQUEST_INIT_HOOK=/opt/datadog-php/dd-trace-sources/bridge/dd_wrap_autoloader.php&#39; is deprecated, use DD_TRACE_REQUEST_INIT_HOOK instead.&quot;</span>
+<span class="w">    </span><span class="s2">"date"</span>:<span class="w"> </span><span class="s2">"2021-00-00T09:00:00Z"</span>,
+<span class="w">    </span><span class="s2">"os_name"</span>:<span class="w"> </span><span class="s2">"Linux ***** 5.10.25-linuxkit #1 SMP Tue Mar 23 09:27:39 UTC 2021 x86_64"</span>,
+<span class="w">    </span><span class="s2">"os_version"</span>:<span class="w"> </span><span class="s2">"5.10.25-linuxkit"</span>,
+<span class="w">    </span><span class="s2">"version"</span>:<span class="w"> </span><span class="s2">"0.64.1"</span>,
+<span class="w">    </span><span class="s2">"lang"</span>:<span class="w"> </span><span class="s2">"php"</span>,
+<span class="w">    </span><span class="s2">"lang_version"</span>:<span class="w"> </span><span class="s2">"8.0.8"</span>,
+<span class="w">    </span><span class="s2">"env"</span>:<span class="w"> </span>null,
+<span class="w">    </span><span class="s2">"enabled"</span>:<span class="w"> </span><span class="s2">"true"</span>,
+<span class="w">    </span><span class="s2">"service"</span>:<span class="w"> </span>null,
+<span class="w">    </span><span class="s2">"enabled_cli"</span>:<span class="w"> </span><span class="s2">"false"</span>,
+<span class="w">    </span><span class="s2">"agent_url"</span>:<span class="w"> </span><span class="s2">"http://localhost:8126"</span>,<span class="w"> </span><span class="c1"># datadogコンテナのアドレスポート</span>
+<span class="w">    </span><span class="s2">"debug"</span>:<span class="w"> </span><span class="s2">"false"</span>,
+<span class="w">    </span><span class="s2">"analytics_enabled"</span>:<span class="w"> </span><span class="s2">"false"</span>,
+<span class="w">    </span><span class="s2">"sample_rate"</span>:<span class="w"> </span><span class="m">1</span>.000000,
+<span class="w">    </span><span class="s2">"sampling_rules"</span>:<span class="w"> </span>null,
+<span class="w">    </span><span class="s2">"tags"</span>:<span class="w"> </span><span class="o">{}</span>,
+<span class="w">    </span><span class="s2">"service_mapping"</span>:<span class="w"> </span><span class="o">{}</span>,
+<span class="w">    </span><span class="s2">"distributed_tracing_enabled"</span>:<span class="w"> </span><span class="s2">"true"</span>,
+<span class="w">    </span><span class="s2">"priority_sampling_enabled"</span>:<span class="w"> </span><span class="s2">"true"</span>,
+<span class="w">    </span><span class="s2">"dd_version"</span>:<span class="w"> </span>null,
+<span class="w">    </span><span class="s2">"architecture"</span>:<span class="w"> </span><span class="s2">"x86_64"</span>,
+<span class="w">    </span><span class="s2">"sapi"</span>:<span class="w"> </span><span class="s2">"cli"</span>,
+<span class="w">    </span><span class="s2">"datadog.trace.request_init_hook"</span>:<span class="w"> </span><span class="s2">"/opt/datadog-php/dd-trace-sources/bridge/dd_wrap_autoloader.php"</span>,
+<span class="w">    </span><span class="s2">"open_basedir_configured"</span>:<span class="w"> </span><span class="s2">"false"</span>,
+<span class="w">    </span><span class="s2">"uri_fragment_regex"</span>:<span class="w"> </span>null,
+<span class="w">    </span><span class="s2">"uri_mapping_incoming"</span>:<span class="w"> </span>null,
+<span class="w">    </span><span class="s2">"uri_mapping_outgoing"</span>:<span class="w"> </span>null,
+<span class="w">    </span><span class="s2">"auto_flush_enabled"</span>:<span class="w"> </span><span class="s2">"false"</span>,
+<span class="w">    </span><span class="s2">"generate_root_span"</span>:<span class="w"> </span><span class="s2">"true"</span>,
+<span class="w">    </span><span class="s2">"http_client_split_by_domain"</span>:<span class="w"> </span><span class="s2">"false"</span>,
+<span class="w">    </span><span class="s2">"measure_compile_time"</span>:<span class="w"> </span><span class="s2">"true"</span>,
+<span class="w">    </span><span class="s2">"report_hostname_on_root_span"</span>:<span class="w"> </span><span class="s2">"false"</span>,
+<span class="w">    </span><span class="s2">"traced_internal_functions"</span>:<span class="w"> </span>null,
+<span class="w">    </span><span class="s2">"auto_prepend_file_configured"</span>:<span class="w"> </span><span class="s2">"false"</span>,
+<span class="w">    </span><span class="s2">"integrations_disabled"</span>:<span class="w"> </span><span class="s2">"default"</span>,
+<span class="w">    </span><span class="s2">"enabled_from_env"</span>:<span class="w"> </span><span class="s2">"true"</span>,
+<span class="w">    </span><span class="s2">"opcache.file_cache"</span>:<span class="w"> </span>null,
+<span class="w">    </span><span class="s2">"agent_error"</span>:<span class="w"> </span><span class="s2">"Failed to connect to localhost port 8126: Connection refused"</span>,<span class="w"> </span><span class="c1"># エラーメッセージ</span>
+<span class="w">    </span><span class="s2">"DDTRACE_REQUEST_INIT_HOOK"</span>:<span class="w"> </span><span class="s2">"'DDTRACE_REQUEST_INIT_HOOK=/opt/datadog-php/dd-trace-sources/bridge/dd_wrap_autoloader.php' is deprecated, use DD_TRACE_REQUEST_INIT_HOOK instead."</span>
 <span class="o">}</span>
 </code></pre></div>
 <blockquote>
@@ -34256,25 +34256,25 @@ DATADOG<span class="w"> </span>TRACER<span class="w"> </span><span class="nv">CO
 <p>ただし、フレームワークより先に読み込むため、<code>.env</code> ファイル参照を使用できない。</p>
 <p>そこで、環境変数はインフラ側で設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// datadogTracer.tsファイル</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;dd-trace&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"dd-trace"</span><span class="p">;</span>
 
 <span class="nx">tracer</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
 <span class="w">  </span><span class="c1">// フレームワークの.envファイル参照を使用できない</span>
 <span class="w">  </span><span class="nx">env</span><span class="o">:</span><span class="w"> </span><span class="nx">DD_ENV</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="nx">DD_SERVICE</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;-ssr&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">service</span><span class="o">:</span><span class="w"> </span><span class="nx">DD_SERVICE</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"-ssr"</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">version</span><span class="o">:</span><span class="w"> </span><span class="nx">DD_VERSION</span><span class="p">,</span>
 
 <span class="w">  </span><span class="c1">// 検証時のオプション</span>
-<span class="w">  </span><span class="nx">debug</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">startupLogs</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">debug</span><span class="o">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">startupLogs</span><span class="o">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span>
 <span class="p">});</span>
 
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">datadogTracer</span><span class="p">;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// nuxt.config.tsファイル</span>
 <span class="c1">// 先頭で読み込む</span>
-<span class="k">import</span><span class="w"> </span><span class="s1">&#39;./datadogTracer&#39;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Configuration</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@nuxt/types&#39;</span>
+<span class="k">import</span><span class="w"> </span><span class="s1">'./datadogTracer'</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Configuration</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nuxt/types'</span>
 
 <span class="p">...</span>
 </code></pre></div>
@@ -34287,37 +34287,37 @@ DATADOG<span class="w"> </span>TRACER<span class="w"> </span><span class="nv">CO
 <p>パッケージの起動ログは、<code>init()</code> 関数の <code>startupLogs</code> オプションを有効化すると確認できる。</p>
 <div class="highlight"><pre><span></span><code>DATADOG<span class="w"> </span>TRACER<span class="w"> </span>CONFIGURATION<span class="w"> </span>-
 <span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;date&quot;</span>:<span class="w"> </span><span class="s2">&quot;2022-01-02T00:00:00.541Z&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;os_name&quot;</span>:<span class="w"> </span><span class="s2">&quot;Darwin&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;os_version&quot;</span>:<span class="w"> </span><span class="s2">&quot;20.6.0&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;architecture&quot;</span>:<span class="w"> </span><span class="s2">&quot;arm64&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;version&quot;</span>:<span class="w"> </span><span class="s2">&quot;2.0.1&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;lang&quot;</span>:<span class="w"> </span><span class="s2">&quot;nodejs&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;lang_version&quot;</span>:<span class="w"> </span><span class="s2">&quot;14.18.2&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;env&quot;</span>:<span class="w"> </span><span class="s2">&quot;prd&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;service&quot;</span>:<span class="w"> </span><span class="s2">&quot;foo&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;agent_url&quot;</span>:<span class="w"> </span><span class="s2">&quot;http://127.0.0.1:8126&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;agent_error&quot;</span>:<span class="w"> </span><span class="s2">&quot;Network error trying to reach the agent: socket hang up&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;debug&quot;</span>:<span class="w"> </span><span class="s2">&quot;false&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;sample_rate&quot;</span>:<span class="w"> </span><span class="m">1</span>,
-<span class="w">    </span><span class="s2">&quot;sampling_rules&quot;</span>:<span class="w"> </span><span class="o">[]</span>,
-<span class="w">    </span><span class="s2">&quot;tags&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;service&quot;</span>:<span class="w"> </span><span class="s2">&quot;foo&quot;</span>,
-<span class="w">        </span><span class="s2">&quot;env&quot;</span>:<span class="w"> </span><span class="s2">&quot;prd&quot;</span>,
-<span class="w">        </span><span class="s2">&quot;version&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;バージョンタグ&gt;&quot;</span>,
-<span class="w">        </span><span class="s2">&quot;runtime-id&quot;</span>:<span class="w"> </span><span class="s2">&quot;*****&quot;</span>
+<span class="w">    </span><span class="s2">"date"</span>:<span class="w"> </span><span class="s2">"2022-01-02T00:00:00.541Z"</span>,
+<span class="w">    </span><span class="s2">"os_name"</span>:<span class="w"> </span><span class="s2">"Darwin"</span>,
+<span class="w">    </span><span class="s2">"os_version"</span>:<span class="w"> </span><span class="s2">"20.6.0"</span>,
+<span class="w">    </span><span class="s2">"architecture"</span>:<span class="w"> </span><span class="s2">"arm64"</span>,
+<span class="w">    </span><span class="s2">"version"</span>:<span class="w"> </span><span class="s2">"2.0.1"</span>,
+<span class="w">    </span><span class="s2">"lang"</span>:<span class="w"> </span><span class="s2">"nodejs"</span>,
+<span class="w">    </span><span class="s2">"lang_version"</span>:<span class="w"> </span><span class="s2">"14.18.2"</span>,
+<span class="w">    </span><span class="s2">"env"</span>:<span class="w"> </span><span class="s2">"prd"</span>,
+<span class="w">    </span><span class="s2">"service"</span>:<span class="w"> </span><span class="s2">"foo"</span>,
+<span class="w">    </span><span class="s2">"agent_url"</span>:<span class="w"> </span><span class="s2">"http://127.0.0.1:8126"</span>,
+<span class="w">    </span><span class="s2">"agent_error"</span>:<span class="w"> </span><span class="s2">"Network error trying to reach the agent: socket hang up"</span>,
+<span class="w">    </span><span class="s2">"debug"</span>:<span class="w"> </span><span class="s2">"false"</span>,
+<span class="w">    </span><span class="s2">"sample_rate"</span>:<span class="w"> </span><span class="m">1</span>,
+<span class="w">    </span><span class="s2">"sampling_rules"</span>:<span class="w"> </span><span class="o">[]</span>,
+<span class="w">    </span><span class="s2">"tags"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">"service"</span>:<span class="w"> </span><span class="s2">"foo"</span>,
+<span class="w">        </span><span class="s2">"env"</span>:<span class="w"> </span><span class="s2">"prd"</span>,
+<span class="w">        </span><span class="s2">"version"</span>:<span class="w"> </span><span class="s2">"&lt;バージョンタグ&gt;"</span>,
+<span class="w">        </span><span class="s2">"runtime-id"</span>:<span class="w"> </span><span class="s2">"*****"</span>
 <span class="w">    </span><span class="o">}</span>,
-<span class="w">    </span><span class="s2">&quot;dd_version&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;バージョンタグ&gt;&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;log_injection_enabled&quot;</span>:<span class="w"> </span><span class="s2">&quot;false&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;runtime_metrics_enabled&quot;</span>:<span class="w"> </span><span class="s2">&quot;false&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;profiling_enabled&quot;</span>:<span class="w"> </span><span class="s2">&quot;false&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;integrations_loaded&quot;</span>:<span class="w"> </span><span class="o">[</span>
-<span class="w">        </span><span class="s2">&quot;connect@3.7.0&quot;</span>,
-<span class="w">        </span><span class="s2">&quot;fs&quot;</span>,
-<span class="w">        </span><span class="s2">&quot;http&quot;</span>,
-<span class="w">        </span><span class="s2">&quot;https&quot;</span>
+<span class="w">    </span><span class="s2">"dd_version"</span>:<span class="w"> </span><span class="s2">"&lt;バージョンタグ&gt;"</span>,
+<span class="w">    </span><span class="s2">"log_injection_enabled"</span>:<span class="w"> </span><span class="s2">"false"</span>,
+<span class="w">    </span><span class="s2">"runtime_metrics_enabled"</span>:<span class="w"> </span><span class="s2">"false"</span>,
+<span class="w">    </span><span class="s2">"profiling_enabled"</span>:<span class="w"> </span><span class="s2">"false"</span>,
+<span class="w">    </span><span class="s2">"integrations_loaded"</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">        </span><span class="s2">"connect@3.7.0"</span>,
+<span class="w">        </span><span class="s2">"fs"</span>,
+<span class="w">        </span><span class="s2">"http"</span>,
+<span class="w">        </span><span class="s2">"https"</span>
 <span class="w">    </span><span class="o">]</span>,
-<span class="w">    </span><span class="s2">&quot;appsec_enabled&quot;</span>:<span class="w"> </span><span class="s2">&quot;false&quot;</span>
+<span class="w">    </span><span class="s2">"appsec_enabled"</span>:<span class="w"> </span><span class="s2">"false"</span>
 <span class="o">}</span>
 
 WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w"> </span>DIAGNOSTIC<span class="w"> </span>-<span class="w"> </span>Agent<span class="w"> </span>Error:<span class="w"> </span>Network<span class="w"> </span>error<span class="w"> </span>trying<span class="w"> </span>to<span class="w"> </span>reach<span class="w"> </span>the<span class="w"> </span>agent:<span class="w"> </span>socket<span class="w"> </span>hang<span class="w"> </span>up
@@ -34339,10 +34339,10 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"net/http"</span>
 
-<span class="w">    </span><span class="s">&quot;gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer&quot;</span>
+<span class="w">    </span><span class="s">"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -34350,27 +34350,27 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <span class="w">    </span><span class="c1">// Tracerを作成する</span>
 <span class="w">    </span><span class="c1">// Tracer名はパッケージ名が推奨である</span>
 <span class="w">    </span><span class="c1">// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;計装パッケージ名&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">"計装パッケージ名"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Trace provider is initializing ...&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">"Info: Trace provider is initializing ..."</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 親スパンを作成する。</span>
 <span class="w">    </span><span class="nx">span</span><span class="p">,</span><span class="w"> </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">StartSpanFromContext</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
-<span class="w">        </span><span class="s">&quot;post.process&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"post.process"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">Finish</span><span class="p">()</span>
 
 <span class="w">    </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">NewRequest</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;GET&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"GET"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"https://example.com"</span><span class="p">,</span>
 <span class="w">        </span><span class="kc">nil</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">req</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">WithContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">req</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">WithContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Inject</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Inject</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// トレースコンテキストを持つ既存コンテキストを設定する</span>
 <span class="w">        </span><span class="nx">span</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
 <span class="w">        </span><span class="c1">// Carrierとして使用するメタデータを設定し、トレースコンテキストを注入する</span>
@@ -34378,7 +34378,7 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to inject context: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to inject context: %s"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">DefaultClient</span><span class="p">.</span><span class="nx">Do</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
@@ -34395,33 +34395,33 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"net/http"</span>
 
-<span class="w">    </span><span class="s">&quot;gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer&quot;</span>
+<span class="w">    </span><span class="s">"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Trace provider is initializing ...&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">"Info: Trace provider is initializing ..."</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// Carrierからトレースコンテキストを取得する。</span>
 <span class="w">    </span><span class="nx">tracectx</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Extract</span><span class="p">(</span><span class="nx">tracer</span><span class="p">.</span><span class="nx">HTTPHeadersCarrier</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">Header</span><span class="p">))</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to extract context: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to extract context: %s"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Info: Tracer provider initialize successfully&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">"Info: Tracer provider initialize successfully"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// Tracerを作成する</span>
 <span class="w">    </span><span class="c1">// Tracer名はパッケージ名が推奨である</span>
 <span class="w">    </span><span class="c1">// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;計装パッケージ名&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">"計装パッケージ名"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 子スパンを作成する。</span>
 <span class="w">    </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">StartSpan</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;post.filter&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"post.filter"</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">ChildOf</span><span class="p">(</span><span class="nx">tracectx</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -34443,14 +34443,14 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;net&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"net"</span>
 
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
+<span class="w">    </span><span class="s">"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"</span>
 
-<span class="w">    </span><span class="nx">grpctracer</span><span class="w"> </span><span class="s">&quot;gopkg.in/DataDog/dd-trace-go.v1/contrib/google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="nx">grpctracer</span><span class="w"> </span><span class="s">"gopkg.in/DataDog/dd-trace-go.v1/contrib/google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -34458,10 +34458,10 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <span class="w">    </span><span class="c1">// Tracerを作成する</span>
 <span class="w">    </span><span class="c1">// Tracer名はパッケージ名が推奨である</span>
 <span class="w">    </span><span class="c1">// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;計装パッケージ名&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">"計装パッケージ名"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// パッケージをセットアップする。</span>
-<span class="w">    </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">tracer</span><span class="p">.</span><span class="nx">WithEnv</span><span class="p">(</span><span class="s">&quot;prd&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">tracer</span><span class="p">.</span><span class="nx">WithEnv</span><span class="p">(</span><span class="s">"prd"</span><span class="p">))</span>
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Stop</span><span class="p">()</span>
 
@@ -34477,21 +34477,21 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span><span class="w"> </span><span class="c1">// pb.goファイルに関する実装は省略している。</span>
+<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="c1">// pb.goファイルに関する実装は省略している。</span>
 
-<span class="w">    </span><span class="nx">listenPort</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nx">Listen</span><span class="p">(</span><span class="s">&quot;tcp&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;:%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">9000</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">listenPort</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nx">Listen</span><span class="p">(</span><span class="s">"tcp"</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">":%d"</span><span class="p">,</span><span class="w"> </span><span class="mi">9000</span><span class="p">))</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to listen: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to listen: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーでリクエストを受信する。</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpcServer</span><span class="p">.</span><span class="nx">Serve</span><span class="p">(</span><span class="nx">listenPort</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to serve: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to serve: %s"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to serve: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to serve: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -34508,21 +34508,21 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">"log"</span>
 
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 
-<span class="w">    </span><span class="nx">grpctrace</span><span class="w"> </span><span class="s">&quot;gopkg.in/DataDog/dd-trace-go.v1/contrib/google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="nx">grpctrace</span><span class="w"> </span><span class="s">"gopkg.in/DataDog/dd-trace-go.v1/contrib/google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとの接続を作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;:9000&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">":9000"</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithInsecure</span><span class="p">(),</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithBlock</span><span class="p">(),</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithChainUnaryInterceptor</span><span class="p">(</span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">(</span><span class="nx">datadogAPMServiceName</span><span class="p">,</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">DefaultTracer</span><span class="p">)),</span>
@@ -34530,12 +34530,12 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to create gRPC connection: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to create gRPC connection: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">conn</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
 
-<span class="w">    </span><span class="o">...</span><span class="w"> </span><span class="c1">// pb.goファイルに関する実装は省略している。</span>
+<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="c1">// pb.goファイルに関する実装は省略している。</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>

@@ -34022,7 +34022,7 @@
 
 <span class="c1"># kube-schedulerがPodを再スケジューリングさせる</span>
 35m<span class="w">         </span>Normal<span class="w">   </span>Scheduled<span class="w">                </span>pod/foo-5c844554c5-vgdjl<span class="w">            </span>Successfully<span class="w"> </span>assigned<span class="w"> </span>foo-5c844554c5-vgdjl<span class="w"> </span>to<span class="w"> </span>ip-*-*-*-*.ap-northeast-1.compute.internal
-35m<span class="w">         </span>Normal<span class="w">   </span>Pulled<span class="w">                   </span>pod/foo-5c844554c5-vgdjl<span class="w">            </span>Container<span class="w"> </span>image<span class="w"> </span><span class="s2">&quot;public.ecr.aws/docker/library/foo:*.*.*&quot;</span><span class="w"> </span>already<span class="w"> </span>present<span class="w"> </span>on<span class="w"> </span>machine
+35m<span class="w">         </span>Normal<span class="w">   </span>Pulled<span class="w">                   </span>pod/foo-5c844554c5-vgdjl<span class="w">            </span>Container<span class="w"> </span>image<span class="w"> </span><span class="s2">"public.ecr.aws/docker/library/foo:*.*.*"</span><span class="w"> </span>already<span class="w"> </span>present<span class="w"> </span>on<span class="w"> </span>machine
 35m<span class="w">         </span>Normal<span class="w">   </span>Created<span class="w">                  </span>pod/foo-5c844554c5-vgdjl<span class="w">            </span>Created<span class="w"> </span>container<span class="w"> </span>foo
 35m<span class="w">         </span>Normal<span class="w">   </span>Started<span class="w">                  </span>pod/foo-5c844554c5-vgdjl<span class="w">            </span>Started<span class="w"> </span>container<span class="w"> </span>foo
 35m<span class="w">         </span>Normal<span class="w">   </span>SuccessfulCreate<span class="w">         </span>replicaset/foo-5c844554c5<span class="w">           </span>Created<span class="w"> </span>pod:<span class="w"> </span>foo-5c844554c5-vgdjl
@@ -34067,11 +34067,11 @@
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># 毎日 00:00 (JST) に descheduler を実行する</span>
 <span class="w">  </span><span class="c1"># Amazon EKS は UTC でタイムゾーンを設定しているため、9 時間分ずらす必要がある</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0</span><span class="nv"> </span><span class="s">15</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">15</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
 
 <span class="w">  </span><span class="c1"># その他の例</span>
 <span class="w">  </span><span class="c1"># 12:00 と 24:00 (JST) に descheduler を実行する</span>
-<span class="w">  </span><span class="c1"># schedule: &quot;0 3,15 * * *&quot;</span>
+<span class="w">  </span><span class="c1"># schedule: "0 3,15 * * *"</span>
 
 <span class="w">  </span><span class="nt">concurrencyPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Forbid</span>
 <span class="w">  </span><span class="nt">successfulJobsHistoryLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
@@ -34093,10 +34093,10 @@
 <span class="w">              </span><span class="nt">command</span><span class="p">:</span>
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/descheduler</span>
 <span class="w">              </span><span class="nt">args</span><span class="p">:</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;--policy-config-file&#39;</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'--policy-config-file'</span>
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/policy-dir/policy.yaml</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;--v&#39;</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'--v'</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'3'</span>
 <span class="w">              </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/policy-dir</span>
 <span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">policy-volume</span>
@@ -34118,14 +34118,14 @@
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler</span>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">policy.yaml</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">apiVersion: &quot;descheduler/v1alpha1&quot;</span>
-<span class="w">    </span><span class="no">kind: &quot;DeschedulerPolicy&quot;</span>
-<span class="w">    </span><span class="no">evictLocalStoragePods: &quot;true&quot;</span>
+<span class="w">    </span><span class="no">apiVersion: "descheduler/v1alpha1"</span>
+<span class="w">    </span><span class="no">kind: "DeschedulerPolicy"</span>
+<span class="w">    </span><span class="no">evictLocalStoragePods: "true"</span>
 <span class="w">    </span><span class="no">strategies:</span>
 <span class="w">      </span><span class="no">HighNodeUtilization:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">enabled: "true"</span>
 <span class="w">      </span><span class="no">LowNodeUtilization:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">enabled: "true"</span>
 <span class="w">        </span><span class="no">params:</span>
 <span class="w">          </span><span class="no">nodeResourceUtilizationThresholds:</span>
 <span class="w">            </span><span class="no">targetThresholds:</span>
@@ -34137,24 +34137,24 @@
 <span class="w">              </span><span class="no">memory: 20</span>
 <span class="w">              </span><span class="no">pods: 20</span>
 <span class="w">      </span><span class="no">PodLifeTime:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">enabled: "true"</span>
 <span class="w">      </span><span class="no">RemoveDuplicates:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">enabled: "true"</span>
 <span class="w">      </span><span class="no">RemoveFailedPods:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">enabled: "true"</span>
 <span class="w">      </span><span class="no">RemovePodsHavingTooManyRestarts:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">enabled: "true"</span>
 <span class="w">      </span><span class="no">RemovePodsViolatingInterPodAntiAffinity:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">enabled: "true"</span>
 <span class="w">      </span><span class="no">RemovePodsViolatingNodeAffinity:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">enabled: "true"</span>
 <span class="w">        </span><span class="no">params:</span>
 <span class="w">          </span><span class="no">nodeAffinityType:</span>
 <span class="w">          </span><span class="no">- requiredDuringSchedulingIgnoredDuringExecution</span>
 <span class="w">      </span><span class="no">RemovePodsViolatingNodeTaints:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">enabled: "true"</span>
 <span class="w">      </span><span class="no">RemovePodsViolatingTopologySpreadConstraint:</span>
-<span class="w">        </span><span class="no">enabled: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">enabled: "true"</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02-deschedulerpolicy">02. DeschedulerPolicy<a class="headerlink" href="#02-deschedulerpolicy" title="Permanent link">&para;</a></h2>
@@ -34176,7 +34176,7 @@
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">LowNodeUtilization</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="nt">params</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">nodeResourceUtilizationThresholds</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># ターゲット閾値 (この値を超過した Node から Pod を退避させる)</span>
@@ -34203,7 +34203,7 @@
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">RemoveDuplicates</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34218,14 +34218,14 @@
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">RemoveFailedPods</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="nt">params</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">failedPods</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">minPodLifetimeSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3600</span>
 <span class="w">        </span><span class="c1"># Failed ステータスになった理由でフィルタリングする</span>
 <span class="w">        </span><span class="nt">reasons</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodeAffinity</span>
-<span class="w">        </span><span class="nt">includingInitContainers</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">        </span><span class="nt">includingInitContainers</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34240,11 +34240,11 @@
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">RemovePodsHavingTooManyRestarts</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="nt">params</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">podsHavingTooManyRestarts</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">podRestartThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
-<span class="w">        </span><span class="nt">includingInitContainers</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">        </span><span class="nt">includingInitContainers</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34257,7 +34257,7 @@
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">RemovePodsViolatingNodeAffinity</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34270,7 +34270,7 @@
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">RemovePodsViolatingInterPodAntiAffinity</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34286,11 +34286,11 @@
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">RemovePodsViolatingTopologySpreadConstraint</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="nt">params</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">podsHavingTooManyRestarts</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">podRestartThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
-<span class="w">        </span><span class="nt">includingInitContainers</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">        </span><span class="nt">includingInitContainers</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <blockquote>
 <ul>

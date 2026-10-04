@@ -34166,21 +34166,21 @@ ValidatingAdmissionWebhook,
 <span class="w">    </span><span class="nt">istio.io/tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;エイリアス&gt;</span>
 <span class="nt">webhooks</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rev.namespace.sidecar-injector.istio.io</span>
-<span class="w">    </span><span class="nt">admissionReviewVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;v1&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;v1beta1&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">admissionReviewVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"v1"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"v1beta1"</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="c1"># mutating-admission ステップ発火条件を登録する。</span>
 <span class="w">    </span><span class="nt">rules</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">apiVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;v1&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">operations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CREATE&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;UPDATE&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;pods&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">apiVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"v1"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">operations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"CREATE"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"UPDATE"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"pods"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">    </span><span class="c1"># Istiod の Service の宛先情報を登録する。</span>
 <span class="w">    </span><span class="nt">clientConfig</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">service</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod-&lt;リビジョン&gt;</span>
 <span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
 <span class="w">        </span><span class="c1"># エンドポイント</span>
-<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/inject&quot;</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">"/inject"</span>
 <span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">      </span><span class="nt">caBundle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ci0tLS0tQk...</span>
 <span class="w">    </span><span class="c1"># webhook サーバーのコールに失敗した場合の処理を設定する。</span>
@@ -34224,16 +34224,16 @@ ValidatingAdmissionWebhook,
 <span class="nt">webhooks</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># webhook 名は完全修飾ドメイン名にする。</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">validation.istio.io</span>
-<span class="w">    </span><span class="nt">admissionReviewVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;v1&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;v1beta1&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">admissionReviewVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"v1"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"v1beta1"</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">sideEffects</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
 <span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 <span class="w">    </span><span class="c1"># 発火条件を登録する (例：Pod の作成/更新リクエスト時に発火する) 。</span>
 <span class="w">    </span><span class="nt">rules</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;security.istio.io&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;networking.istio.io&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">apiVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">operations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CREATE&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;UPDATE&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"security.istio.io"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"networking.istio.io"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">apiVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">operations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"CREATE"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"UPDATE"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">    </span><span class="c1"># webhook サーバーの情報を登録する。</span>
 <span class="w">    </span><span class="nt">clientConfig</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># webhook サーバーの送信元にある Service を登録する。</span>
@@ -34263,12 +34263,12 @@ ValidatingAdmissionWebhook,
 </ul>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;apiVersion&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;admission.k8s.io/v1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;kind&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;AdmissionReview&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"apiVersion"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"admission.k8s.io/v1"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"kind"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"AdmissionReview"</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="c1"># AdmissionRequest</span>
-<span class="w">  </span><span class="s">&quot;request&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{},</span>
+<span class="w">  </span><span class="s">"request"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{},</span>
 <span class="w">  </span><span class="c1"># AdmissionResponse</span>
-<span class="w">  </span><span class="s">&quot;response&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{},</span>
+<span class="w">  </span><span class="s">"response"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
@@ -34277,47 +34277,47 @@ ValidatingAdmissionWebhook,
 <p>kube-apiserver は、特定のリクエストを受信すると、webhook サーバーに AdmissionReview 内の AdmissionRequest にリクエストパラメーターを格納し、リクエストとして送信する。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;apiVersion&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;admission.k8s.io/v1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;kind&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;AdmissionReview&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"apiVersion"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"admission.k8s.io/v1"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"kind"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"AdmissionReview"</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="c1"># AdmissionRequest</span>
-<span class="w">  </span><span class="s">&quot;request&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">    </span><span class="s">&quot;uid&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;705ab4f5-6393-11e8-b7cc-42010a800002&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">    </span><span class="s">&quot;kind&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;group&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;autoscaling&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;v1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;kind&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Scale&quot;</span>
+<span class="w">  </span><span class="s">"request"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">    </span><span class="s">"uid"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"705ab4f5-6393-11e8-b7cc-42010a800002"</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"kind"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">"group"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"autoscaling"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"v1"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"kind"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Scale"</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="c1"># 変更される Kubernetes リソースの種類を表す。</span>
-<span class="w">    </span><span class="s">&quot;resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;group&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;apps&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;v1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;deployments&quot;</span>
+<span class="w">    </span><span class="s">"resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">"group"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"apps"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"v1"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"deployments"</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="c1"># kube-apiserver の操作の種類を表す。</span>
-<span class="w">    </span><span class="s">&quot;operation&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;CREATE&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"operation"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"CREATE"</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="c1"># 認証／認可されたユーザーを表す。</span>
-<span class="w">    </span><span class="s">&quot;userInfo&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;username&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;admin&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;uid&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;014fbff9a07c&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;groups&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
-<span class="w">        </span><span class="s">&quot;system:authenticated&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;my-admin-group&quot;</span>
+<span class="w">    </span><span class="s">"userInfo"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">"username"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"admin"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"uid"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"014fbff9a07c"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"groups"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">        </span><span class="s">"system:authenticated"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"my-admin-group"</span>
 <span class="w">      </span><span class="p p-Indicator">],</span>
-<span class="w">      </span><span class="s">&quot;extra&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;some-key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
-<span class="w">          </span><span class="s">&quot;some-value1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;some-value2&quot;</span>
+<span class="w">      </span><span class="s">"extra"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">"some-key"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">          </span><span class="s">"some-value1"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"some-value2"</span>
 <span class="w">        </span><span class="p p-Indicator">]</span>
 <span class="w">      </span><span class="p p-Indicator">}</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="c1"># 認証／認可された操作の種類を表す。</span>
-<span class="w">    </span><span class="s">&quot;options&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;apiVersion&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;meta.k8s.io/v1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;kind&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;CreateOptions&quot;</span>
+<span class="w">    </span><span class="s">"options"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">"apiVersion"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"meta.k8s.io/v1"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"kind"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"CreateOptions"</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="c1"># ドライランモードで実行されていることを表す。</span>
 <span class="w">    </span><span class="c1"># etcd に永続化されない。</span>
-<span class="w">    </span><span class="s">&quot;dryRun&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">    </span><span class="s">"dryRun"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"false"</span>
 <span class="w">  </span><span class="p p-Indicator">}</span>
 
 <span class="w">  </span><span class="nv">...</span>
@@ -34335,17 +34335,17 @@ ValidatingAdmissionWebhook,
 <p>マニフェストの patch 処理の定義方法は、JSON Patch ツールに依存している。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;apiVersion&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;admission.k8s.io/v1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;kind&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;AdmissionReview&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"apiVersion"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"admission.k8s.io/v1"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"kind"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"AdmissionReview"</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="c1"># AdmissionResponse</span>
-<span class="w">  </span><span class="s">&quot;response&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;uid&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;value</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">request.uid&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"response"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">"uid"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;value</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">request.uid&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="c1"># 宛先の webhook サーバーが受信したか否かを表す。</span>
-<span class="w">      </span><span class="s">&quot;allowed&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"allowed"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="c1"># Path による Patch 処理を行う。</span>
-<span class="w">      </span><span class="s">&quot;patchType&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;JSONPatch&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"patchType"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"JSONPatch"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="c1"># Patch 処理の対象となる Kubernetes リソースと処理内容を表す。base64 方式でエンコードされている。</span>
-<span class="w">      </span><span class="s">&quot;patch&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;W3sib3AiOiAiYWRkIiwgInBhdGgiOiAiL3NwZWMvcmVwbGljYXMiLCAidmFsdWUiOiAzfV0=&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"patch"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"W3sib3AiOiAiYWRkIiwgInBhdGgiOiAiL3NwZWMvcmVwbGljYXMiLCAidmFsdWUiOiAzfV0="</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
@@ -34353,11 +34353,11 @@ ValidatingAdmissionWebhook,
 <span class="p p-Indicator">[</span>
 <span class="w">  </span><span class="p p-Indicator">{</span>
 <span class="w">    </span><span class="c1"># 追加処理を実行する。</span>
-<span class="w">    </span><span class="s">&quot;op&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;add&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"op"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"add"</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="c1"># .spec.replicas キーをターゲットとする。</span>
-<span class="w">    </span><span class="s">&quot;path&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/spec/replicas&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"path"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/spec/replicas"</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="c1"># 値は 3 とする。</span>
-<span class="w">    </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">]</span>
 </code></pre></div>
@@ -34382,17 +34382,17 @@ ValidatingAdmissionWebhook,
 <p>webhook サーバーは、AdmissionReview 内の AdmissionResponse にバリデーションの結果を格納し、レスポンスとして返信する。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;apiVersion&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;admission.k8s.io/v1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;kind&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;AdmissionReview&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"apiVersion"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"admission.k8s.io/v1"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"kind"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"AdmissionReview"</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="c1"># AdmissionResponse</span>
-<span class="w">  </span><span class="s">&quot;response&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;uid&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;value</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">request.uid&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"response"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">"uid"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;value</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">request.uid&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="c1"># 宛先の webhook サーバーが受信したか否かを表す。</span>
-<span class="w">      </span><span class="s">&quot;allowed&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;status&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">      </span><span class="s">"allowed"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"status"</span><span class="p p-Indicator">:</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
-<span class="w">          </span><span class="s">&quot;code&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">403</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;message&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;You</span><span class="nv"> </span><span class="s">cannot</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">because</span><span class="nv"> </span><span class="s">it</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">Tuesday</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">your</span><span class="nv"> </span><span class="s">name</span><span class="nv"> </span><span class="s">starts</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">A&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"code"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">403</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"message"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"You</span><span class="nv"> </span><span class="s">cannot</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">because</span><span class="nv"> </span><span class="s">it</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">Tuesday</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">your</span><span class="nv"> </span><span class="s">name</span><span class="nv"> </span><span class="s">starts</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">A"</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>

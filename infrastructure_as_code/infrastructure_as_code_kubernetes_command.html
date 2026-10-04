@@ -36225,7 +36225,7 @@ secret/foo-secret<span class="w"> </span>created
 secret/foo-secret<span class="w"> </span>created
 </code></pre></div>
 <p>キー名と値から Secret を作成する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>foo-secret<span class="w"> </span>--from-literal<span class="o">=</span><span class="nv">username</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="w"> </span>--from-literal<span class="o">=</span><span class="nv">password</span><span class="o">=</span><span class="s2">&quot;baz&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>foo-secret<span class="w"> </span>--from-literal<span class="o">=</span><span class="nv">username</span><span class="o">=</span><span class="s2">"bar"</span><span class="w"> </span>--from-literal<span class="o">=</span><span class="nv">password</span><span class="o">=</span><span class="s2">"baz"</span>
 
 secret/foo-secret<span class="w"> </span>created
 </code></pre></div>
@@ -36263,7 +36263,7 @@ secret/foo-secret<span class="w"> </span>created
 <p><strong>＊例＊</strong></p>
 <p>指定した名前の Pod をすべて削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>--no-headers<span class="w"> </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s2">&quot;:metadata.name&quot;</span><span class="w"> </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;&lt;指定した名前&gt;&#39;</span><span class="w">  </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="k">)</span>
+<span class="w">    </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>--no-headers<span class="w"> </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s2">":metadata.name"</span><span class="w"> </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">'&lt;指定した名前&gt;'</span><span class="w">  </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-s<span class="w"> </span><span class="s1">'\n'</span><span class="w"> </span><span class="s1">' '</span><span class="k">)</span>
 </code></pre></div>
 <h4 id="-force">▼ --force<a class="headerlink" href="#-force" title="Permanent link">&para;</a></h4>
 <p>Pod を強制的に削除する。</p>
@@ -36332,7 +36332,7 @@ Name:<span class="w">               </span>baz-node
 <h4 id="-f">▼ -f<a class="headerlink" href="#-f" title="Permanent link">&para;</a></h4>
 <p>ファイルを指定して、差分を表示する。</p>
 <p>CRD を Helm の管理外で作成する場合に役立つ。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">&quot;https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.15/manifests/crds/application-crd.yaml&quot;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">"https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.15/manifests/crds/application-crd.yaml"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-f<span class="w"> </span>-
 </code></pre></div>
 <p><br></p>
@@ -36388,7 +36388,7 @@ Name:<span class="w">               </span>baz-node
 <p>Pod の <code>.metadata.labels</code> キーではなく、Pod 名であることに注意する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>--<span class="w"> </span>bash
 
-Defaulted<span class="w"> </span>container<span class="w"> </span><span class="s2">&quot;foo-container&quot;</span><span class="w"> </span>out<span class="w"> </span>of:<span class="w"> </span>foo-container,<span class="w"> </span>bar-container
+Defaulted<span class="w"> </span>container<span class="w"> </span><span class="s2">"foo-container"</span><span class="w"> </span>out<span class="w"> </span>of:<span class="w"> </span>foo-container,<span class="w"> </span>bar-container
 </code></pre></div>
 <p><br></p>
 <h3 id="expose">expose<a class="headerlink" href="#expose" title="Permanent link">&para;</a></h3>
@@ -36437,7 +36437,7 @@ Defaulted<span class="w"> </span>container<span class="w"> </span><span class="s
 <li><a href="https://text.superbrothers.dev/190616-kubectl-get-all-does-not-include-most-resources/">kubectl get all は全リソースの情報を表示しない | text․superbrothers․dev</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>kubectl<span class="w"> </span>api-resources<span class="w"> </span>--namespaced<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--verbs<span class="o">=</span>list<span class="w"> </span>-o<span class="w"> </span>name<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s2">&quot;\n&quot;</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/,$//&#39;</span><span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>-n<span class="w"> </span>foo-namespace
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>kubectl<span class="w"> </span>api-resources<span class="w"> </span>--namespaced<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--verbs<span class="o">=</span>list<span class="w"> </span>-o<span class="w"> </span>name<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s2">"\n"</span><span class="w"> </span><span class="s2">","</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">'s/,$//'</span><span class="k">)</span><span class="s2">"</span><span class="w"> </span>-n<span class="w"> </span>foo-namespace
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p>すべての Node の情報を取得する。</p>
@@ -36487,12 +36487,12 @@ bar-pod<span class="w">    </span><span class="m">2</span>/2<span class="w">    
 <p><strong>＊例＊</strong></p>
 <p>各 Node で作成できる Pod の上限数を確認する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-o<span class="o">=</span>custom-columns<span class="o">=</span>NODE:.metadata.name,MAX_PODS:.status.allocatable.pods,CAPACITY_PODS:.status.capacity.pods,INSTANCE_TYPE:.metadata.labels.<span class="s2">&quot;node\.kubernetes\.io/instance-type&quot;</span>
+<span class="w">    </span>-o<span class="o">=</span>custom-columns<span class="o">=</span>NODE:.metadata.name,MAX_PODS:.status.allocatable.pods,CAPACITY_PODS:.status.capacity.pods,INSTANCE_TYPE:.metadata.labels.<span class="s2">"node\.kubernetes\.io/instance-type"</span>
 </code></pre></div>
 <p>さらに、各 Node で稼働中の Pod 数を確認する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="k">for</span><span class="w"> </span>node<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{if (NR!=1) {print $1}}&#39;</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="k">do</span><span class="w"> </span>echo<span class="s2">&quot;&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Checking </span><span class="si">${</span><span class="nv">node</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>kubectl<span class="w"> </span>describe<span class="w"> </span>node<span class="w"> </span><span class="si">${</span><span class="nv">node</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Non-terminated&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="k">for</span><span class="w"> </span>node<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{if (NR!=1) {print $1}}'</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="k">do</span><span class="w"> </span>echo<span class="s2">""</span><span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Checking </span><span class="si">${</span><span class="nv">node</span><span class="si">}</span><span class="s2">..."</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>kubectl<span class="w"> </span>describe<span class="w"> </span>node<span class="w"> </span><span class="si">${</span><span class="nv">node</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"Non-terminated"</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p>ArgoCD の Application から、<code>argocd app diff</code> コマンドで反復的に差分を確認する。</p>
@@ -36501,17 +36501,17 @@ bar-pod<span class="w">    </span><span class="m">2</span>/2<span class="w">    
 <span class="nv">application</span><span class="o">=</span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>application<span class="w"> </span>-A<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>foo<span class="w"> </span><span class="k">)</span>
 
 <span class="c1"># 一列目の実を取得する。</span>
-<span class="nv">application_names</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$application</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{if(NR&gt;1) print $1}&#39;</span><span class="k">)</span>
+<span class="nv">application_names</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$application</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{if(NR&gt;1) print $1}'</span><span class="k">)</span>
 
 <span class="c1"># 差分を取得する。</span>
-<span class="k">for</span><span class="w"> </span>application_name<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">application_names</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<span class="w">  </span>argocd<span class="w"> </span>app<span class="w"> </span>diff<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$application_name</span><span class="s2">&quot;</span>
+<span class="k">for</span><span class="w"> </span>application_name<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">application_names</span><span class="p">[@]</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>argocd<span class="w"> </span>app<span class="w"> </span>diff<span class="w"> </span><span class="s2">"</span><span class="nv">$application_name</span><span class="s2">"</span>
 <span class="k">done</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p>特定の値を持つマニフェストのみを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>applications<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>yq<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="s1">&#39;.items[] | select(.spec.destination.namespace == &quot;foo&quot;)&#39;</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>yq<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="s1">'.items[] | select(.spec.destination.namespace == "foo")'</span>
 </code></pre></div>
 <h4 id="-a_1">▼ -A<a class="headerlink" href="#-a_1" title="Permanent link">&para;</a></h4>
 <p>指定した Kubernetes リソースを Namespace に関係なく取得する。</p>
@@ -36521,8 +36521,8 @@ bar-pod<span class="w">    </span><span class="m">2</span>/2<span class="w">    
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-A<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span>NAMESPACE<span class="w"> </span>-e<span class="w"> </span>&lt;Node名&gt;
 </code></pre></div>
 <p>すべての Pod のイメージをアルファベット順で取得する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-A<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.items[*].spec.containers[*].image}&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;[[:space:]]&#39;</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-A<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">"{.items[*].spec.containers[*].image}"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-s<span class="w"> </span><span class="s1">'[[:space:]]'</span><span class="w"> </span><span class="s1">'\n'</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c
 </code></pre></div>
@@ -36533,7 +36533,7 @@ bar-pod<span class="w">    </span><span class="m">2</span>/2<span class="w">    
 <p>Service の指定した情報をユーザー定義のカラムで取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">&#39;NAME:.metadata.name,IP:.spec.clusterIP,PORT:.spec.ports[*].targetPort&#39;</span>
+<span class="w">    </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">'NAME:.metadata.name,IP:.spec.clusterIP,PORT:.spec.ports[*].targetPort'</span>
 
 NAME<span class="w">                   </span>IP<span class="w">           </span>PORT
 kube-dns<span class="w">               </span><span class="m">10</span>.0.0.10<span class="w">    </span><span class="m">53</span>,53
@@ -36542,7 +36542,7 @@ kubernetes-dashboard<span class="w">   </span><span class="m">10</span>.0.0.250<
 <p>なお、さらに <code>json</code> 形式で出力できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">&#39;NAME:.metadata.name,IP:.spec.clusterIP,PORT:.spec.ports[*].targetPort&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">'NAME:.metadata.name,IP:.spec.clusterIP,PORT:.spec.ports[*].targetPort'</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-o<span class="w"> </span>json
 </code></pre></div>
 <blockquote>
@@ -36554,7 +36554,7 @@ kubernetes-dashboard<span class="w">   </span><span class="m">10</span>.0.0.250<
 <p>Application の指定した情報をユーザー定義のカラムを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>application<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s2">&quot;NAME:metadata.name,PROJECT:spec.project,STATUS:status.sync.status&quot;</span>
+<span class="w">    </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s2">"NAME:metadata.name,PROJECT:spec.project,STATUS:status.sync.status"</span>
 
 NAME<span class="w">               </span>PROJECT<span class="w">        </span>STATUS
 foo-application<span class="w">    </span>foo-project<span class="w">    </span>Synced
@@ -36565,31 +36565,31 @@ baz-application<span class="w">    </span>baz-project<span class="w">    </span>
 <p><code>kubectl</code> コマンドの結果をマークダウンの表にして出力する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>application<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">&#39;NAME:metadata.name,PROJECT:spec.project,STATUS:status.sync.status&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;</span>
+<span class="w">    </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">'NAME:metadata.name,PROJECT:spec.project,STATUS:status.sync.status'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'</span>
 <span class="s1">      BEGIN {</span>
-<span class="s1">        FS=&quot;  *&quot;</span>
-<span class="s1">        OFS=&quot; | &quot;</span>
+<span class="s1">        FS="  *"</span>
+<span class="s1">        OFS=" | "</span>
 <span class="s1">      }</span>
 <span class="s1">      {</span>
 <span class="s1">        if (NR==1) {</span>
 <span class="s1">          for(i=1; i&lt;=NF; i++) {</span>
-<span class="s1">            gsub(/ */, &quot;&quot;, $i)</span>
-<span class="s1">            printf &quot;| %s &quot;, $i</span>
+<span class="s1">            gsub(/ */, "", $i)</span>
+<span class="s1">            printf "| %s ", $i</span>
 <span class="s1">          }</span>
-<span class="s1">          print &quot;|&quot;</span>
+<span class="s1">          print "|"</span>
 <span class="s1">          for(i=1; i&lt;=NF; i++) {</span>
-<span class="s1">            gsub(/./, &quot;-&quot;, $i)</span>
-<span class="s1">            printf &quot;|-%s-&quot;, $i</span>
+<span class="s1">            gsub(/./, "-", $i)</span>
+<span class="s1">            printf "|-%s-", $i</span>
 <span class="s1">          }</span>
-<span class="s1">          print &quot;|&quot;</span>
+<span class="s1">          print "|"</span>
 <span class="s1">        } else {</span>
 <span class="s1">          for(i=1; i&lt;=NF; i++) {</span>
-<span class="s1">            printf &quot;| %s &quot;, $i</span>
+<span class="s1">            printf "| %s ", $i</span>
 <span class="s1">          }</span>
-<span class="s1">          print &quot;|&quot;</span>
+<span class="s1">          print "|"</span>
 <span class="s1">        }</span>
-<span class="s1">      }&#39;</span>
+<span class="s1">      }'</span>
 </code></pre></div>
 <p>複数の結果をマージして、マークダウンの表にして出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
@@ -36597,15 +36597,15 @@ baz-application<span class="w">    </span>baz-project<span class="w">    </span>
 <span class="c1"># 各Applicationを全て抽出する。</span>
 kubectl<span class="w"> </span>get<span class="w"> </span>application<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">&#39;NAME:metadata.name,PROJECT:spec.project&#39;</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>foo.txt
+<span class="w">  </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">'NAME:metadata.name,PROJECT:spec.project'</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>foo.txt
 
 kubectl<span class="w"> </span>get<span class="w"> </span>application<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-n<span class="w"> </span>bar<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">&#39;NAME:metadata.name,PROJECT:spec.project&#39;</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>bar.txt
+<span class="w">  </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">'NAME:metadata.name,PROJECT:spec.project'</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>bar.txt
 
 kubectl<span class="w"> </span>get<span class="w"> </span>application<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-n<span class="w"> </span>baz<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">&#39;NAME:metadata.name,PROJECT:spec.project&#39;</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>baz.txt
+<span class="w">  </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">'NAME:metadata.name,PROJECT:spec.project'</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>baz.txt
 
 <span class="c1"># ヘッダーを削除する。</span>
 <span class="c1"># https://akiniwa.hatenablog.jp/entry/2014/05/01/123126</span>
@@ -36623,36 +36623,36 @@ cat<span class="w"> </span>sorted.txt<span class="w"> </span><span class="se">\<
 <span class="w">  </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>uniq.txt
 
 <span class="c1"># ヘッダーをつけ直す。</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Application Project&#39;</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>merged.txt
+<span class="nb">echo</span><span class="w"> </span><span class="s1">'Application Project'</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>merged.txt
 
 <span class="c1"># ヘッダーとそれ移行を接続する</span>
 cat<span class="w"> </span>uniq.txt<span class="w"> </span>&gt;&gt;<span class="w"> </span>merged.txt
 
 <span class="c1"># マークダウン表として出力する。</span>
-cat<span class="w"> </span>merged.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;</span>
+cat<span class="w"> </span>merged.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'</span>
 <span class="s1">      BEGIN {</span>
-<span class="s1">        FS=&quot;  *&quot;</span>
-<span class="s1">        OFS=&quot; | &quot;</span>
+<span class="s1">        FS="  *"</span>
+<span class="s1">        OFS=" | "</span>
 <span class="s1">      }</span>
 <span class="s1">      {</span>
 <span class="s1">        if (NR==1) {</span>
 <span class="s1">          for(i=1; i&lt;=NF; i++) {</span>
-<span class="s1">            gsub(/ */, &quot;&quot;, $i)</span>
-<span class="s1">            printf &quot;| %s &quot;, $i</span>
+<span class="s1">            gsub(/ */, "", $i)</span>
+<span class="s1">            printf "| %s ", $i</span>
 <span class="s1">          }</span>
-<span class="s1">          print &quot;|&quot;</span>
+<span class="s1">          print "|"</span>
 <span class="s1">          for(i=1; i&lt;=NF; i++) {</span>
-<span class="s1">            gsub(/./, &quot;-&quot;, $i)</span>
-<span class="s1">            printf &quot;|-%s-&quot;, $i</span>
+<span class="s1">            gsub(/./, "-", $i)</span>
+<span class="s1">            printf "|-%s-", $i</span>
 <span class="s1">          }</span>
-<span class="s1">          print &quot;|&quot;</span>
+<span class="s1">          print "|"</span>
 <span class="s1">        } else {</span>
 <span class="s1">          for(i=1; i&lt;=NF; i++) {</span>
-<span class="s1">            printf &quot;| %s &quot;, $i</span>
+<span class="s1">            printf "| %s ", $i</span>
 <span class="s1">          }</span>
-<span class="s1">          print &quot;|&quot;</span>
+<span class="s1">          print "|"</span>
 <span class="s1">        }</span>
-<span class="s1">      }&#39;</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>merged.md
+<span class="s1">      }'</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>merged.md
 
 
 <span class="c1"># 場合によっては、他のフォーマットに変換する</span>
@@ -36691,31 +36691,31 @@ baz-application<span class="w">    </span>baz-project<span class="w">    </span>
 <p><code>L4</code> ロードバランサーの IP アドレスを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span>istio-ingressgateway<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>istio-ingress<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.status.loadBalancer.ingress[0].ip}&quot;</span>
+<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">"{.status.loadBalancer.ingress[0].ip}"</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p>Pod 内のコンテナを取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 特定のPodを対象とする。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.spec.containers[*].name}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/ /\n/g&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span>
+<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">"{.spec.containers[*].name}"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s/ /\n/g'</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span>
 
 <span class="c1"># 全てのPodを対象とする。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.items[*].spec.containers[*].name}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/ /\n/g&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span>
+<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">"{.items[*].spec.containers[*].name}"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s/ /\n/g'</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p>Pod の現在の IP アドレスを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.status.podIP}&quot;</span>
+<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">"{.status.podIP}"</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p>IstioOperator に定義した Istio のバージョンを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>istiooperator<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>istio-system<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.metadata.labels.operator\.istio\.io\/version}&quot;</span>
+<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">"{.metadata.labels.operator\.istio\.io\/version}"</span>
 </code></pre></div>
 <h4 id="-o-wide">▼ -o wide<a class="headerlink" href="#-o-wide" title="Permanent link">&para;</a></h4>
 <p>指定したリソースの詳細な情報を取得する。</p>
@@ -36762,10 +36762,10 @@ baz-node<span class="w">   </span>Ready<span class="w">    </span>worker<span cl
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2021-12-00T00:00:00Z&quot;</span>
+<span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="s">"2021-12-00T00:00:00Z"</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">swp-secret</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-<span class="w">  </span><span class="nt">resourceVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;18329&quot;</span>
+<span class="w">  </span><span class="nt">resourceVersion</span><span class="p">:</span><span class="w"> </span><span class="s">"18329"</span>
 <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Opaque</span>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">FOO</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span><span class="w"> </span><span class="c1"># base64 方式のエンコード値</span>
@@ -36784,7 +36784,7 @@ baz-node<span class="w">   </span>Ready<span class="w">    </span>worker<span cl
 <p><code>.metadata.labels</code> キーの値を OR 条件で指定できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span>&lt;キー&gt;<span class="o">=</span>&lt;値&gt;,&lt;キー&gt;<span class="o">=</span>&lt;値&gt;
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span><span class="s1">&#39;&lt;キー&gt; in (&lt;値&gt;,&lt;値&gt;)&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span><span class="s1">'&lt;キー&gt; in (&lt;値&gt;,&lt;値&gt;)'</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p><code>.metadata.labels.topology.kubernetes.io/zone</code> キーの値が <code>ap-northeast-1a</code> である Node を取得する。</p>
@@ -36851,7 +36851,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p>すべての Kubernetes リソースのなかから、ArgoCD で管理していないものの <code>.metadata.labels</code> キーの値を表示する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-A<span class="w"> </span>--show-labels<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;argocd.argoproj.io/instance&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-A<span class="w"> </span>--show-labels<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">"argocd.argoproj.io/instance"</span>
 </code></pre></div>
 <h4 id="-watch-w">▼ --watch (-w)<a class="headerlink" href="#-watch-w" title="Permanent link">&para;</a></h4>
 <p>指定した Pod の情報 (フェーズ、ステータスなど) を継続的に取得し、情報に変更があれば出力を追記していく。</p>
@@ -36987,7 +36987,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>rollout<span class="w"> 
 </blockquote>
 <h4 id="cronjob">▼ cronjob<a class="headerlink" href="#cronjob" title="Permanent link">&para;</a></h4>
 <p>CronJob のバッチを一時無効にする。</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>patch<span class="w"> </span>cronjobs<span class="w"> </span>foo-batch<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;{&quot;spec&quot; : {&quot;suspend&quot; : true }}&#39;</span>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>patch<span class="w"> </span>cronjobs<span class="w"> </span>foo-batch<span class="w"> </span>-p<span class="w"> </span><span class="s1">'{"spec" : {"suspend" : true }}'</span>
 </code></pre></div>
 <h4 id="pv">▼ pv<a class="headerlink" href="#pv" title="Permanent link">&para;</a></h4>
 <p>PersistentVolume の設定値を変更する。</p>
@@ -37000,8 +37000,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>rollout<span class="w"> 
 </blockquote>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pv<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w">  </span>tail<span class="w"> </span>-n+2<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w">  </span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w">  </span>xargs<span class="w"> </span>-I<span class="o">{}</span><span class="w"> </span>kubectl<span class="w"> </span>patch<span class="w"> </span>pv<span class="w"> </span><span class="o">{}</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;{&quot;metadata&quot;:{&quot;finalizers&quot;: null}}&#39;</span>
+<span class="w">    </span><span class="p">|</span><span class="w">  </span>awk<span class="w"> </span><span class="s1">'{print $1}'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w">  </span>xargs<span class="w"> </span>-I<span class="o">{}</span><span class="w"> </span>kubectl<span class="w"> </span>patch<span class="w"> </span>pv<span class="w"> </span><span class="o">{}</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">'{"metadata":{"finalizers": null}}'</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="port-forward">port-forward<a class="headerlink" href="#port-forward" title="Permanent link">&para;</a></h3>
@@ -37066,7 +37066,7 @@ Forwarding<span class="w"> </span>from<span class="w"> </span><span class="o">[<
 <p>kube-proxy とは異なるリソースであることに注意する。</p>
 <h4 id="-address-accept-hosts">▼ --address、--accept-hosts<a class="headerlink" href="#-address-accept-hosts" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>proxy<span class="w"> </span>--address<span class="o">=</span><span class="m">0</span>.0.0.0<span class="w"> </span>--accept-hosts<span class="o">=</span><span class="s1">&#39;.*&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>proxy<span class="w"> </span>--address<span class="o">=</span><span class="m">0</span>.0.0.0<span class="w"> </span>--accept-hosts<span class="o">=</span><span class="s1">'.*'</span>
 
 Starting<span class="w"> </span>to<span class="w"> </span>serve<span class="w"> </span>on<span class="w"> </span><span class="o">[</span>::<span class="o">]</span>:8001
 </code></pre></div>
@@ -37193,28 +37193,28 @@ Starting<span class="w"> </span>to<span class="w"> </span>serve<span class="w"> 
 
 <span class="c1"># kubectlコマンドのバージョン</span>
 Client<span class="w"> </span>Version:<span class="w"> </span>version.Info<span class="o">{</span>
-<span class="w">  </span>Major:<span class="s2">&quot;1&quot;</span>,
-<span class="w">  </span>Minor:<span class="s2">&quot;22&quot;</span>,
-<span class="w">  </span>GitVersion:<span class="s2">&quot;v1.22.4&quot;</span>,
-<span class="w">  </span>GitCommit:<span class="s2">&quot;*****&quot;</span>,
-<span class="w">  </span>GitTreeState:<span class="s2">&quot;clean&quot;</span>,
-<span class="w">  </span>BuildDate:<span class="s2">&quot;2021-11-17T15:41:42Z&quot;</span>,
-<span class="w">  </span>GoVersion:<span class="s2">&quot;go1.16.10&quot;</span>,
-<span class="w">  </span>Compiler:<span class="s2">&quot;gc&quot;</span>,
-<span class="w">  </span>Platform:<span class="s2">&quot;darwin/amd64&quot;</span>
+<span class="w">  </span>Major:<span class="s2">"1"</span>,
+<span class="w">  </span>Minor:<span class="s2">"22"</span>,
+<span class="w">  </span>GitVersion:<span class="s2">"v1.22.4"</span>,
+<span class="w">  </span>GitCommit:<span class="s2">"*****"</span>,
+<span class="w">  </span>GitTreeState:<span class="s2">"clean"</span>,
+<span class="w">  </span>BuildDate:<span class="s2">"2021-11-17T15:41:42Z"</span>,
+<span class="w">  </span>GoVersion:<span class="s2">"go1.16.10"</span>,
+<span class="w">  </span>Compiler:<span class="s2">"gc"</span>,
+<span class="w">  </span>Platform:<span class="s2">"darwin/amd64"</span>
 <span class="o">}</span>
 
 <span class="c1"># kube-apiserverのバージョン</span>
 Server<span class="w"> </span>Version:<span class="w"> </span>version.Info<span class="o">{</span>
-<span class="w">  </span>Major:<span class="s2">&quot;1&quot;</span>,
-<span class="w">  </span>Minor:<span class="s2">&quot;22&quot;</span>,
-<span class="w">  </span>GitVersion:<span class="s2">&quot;v1.22.3&quot;</span>,
-<span class="w">  </span>GitCommit:<span class="s2">&quot;*****&quot;</span>,
-<span class="w">  </span>GitTreeState:<span class="s2">&quot;clean&quot;</span>,
-<span class="w">  </span>BuildDate:<span class="s2">&quot;2021-10-27T18:35:25Z&quot;</span>,
-<span class="w">  </span>GoVersion:<span class="s2">&quot;go1.16.9&quot;</span>,
-<span class="w">  </span>Compiler:<span class="s2">&quot;gc&quot;</span>,
-<span class="w">  </span>Platform:<span class="s2">&quot;linux/amd64&quot;</span>
+<span class="w">  </span>Major:<span class="s2">"1"</span>,
+<span class="w">  </span>Minor:<span class="s2">"22"</span>,
+<span class="w">  </span>GitVersion:<span class="s2">"v1.22.3"</span>,
+<span class="w">  </span>GitCommit:<span class="s2">"*****"</span>,
+<span class="w">  </span>GitTreeState:<span class="s2">"clean"</span>,
+<span class="w">  </span>BuildDate:<span class="s2">"2021-10-27T18:35:25Z"</span>,
+<span class="w">  </span>GoVersion:<span class="s2">"go1.16.9"</span>,
+<span class="w">  </span>Compiler:<span class="s2">"gc"</span>,
+<span class="w">  </span>Platform:<span class="s2">"linux/amd64"</span>
 <span class="o">}</span>
 </code></pre></div>
 <blockquote>

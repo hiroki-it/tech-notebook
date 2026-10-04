@@ -35908,14 +35908,14 @@ Default<span class="w"> </span>output<span class="w"> </span>format<span class="
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>&lt;資格情報の項目&gt;
 </code></pre></div>
 <p>アクセスキーID を設定する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="s2">&quot;&lt;アクセスキーID&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="s2">"&lt;アクセスキーID&gt;"</span>
 </code></pre></div>
 <p>シークレットアクセスキーを設定する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="s2">&quot;&lt;シークレットアクセスキー&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="s2">"&lt;シークレットアクセスキー&gt;"</span>
 </code></pre></div>
 <p>リージョンを設定する。</p>
 <p>『<code>aws_region</code>』ではなく『<code>aws_default_region</code>』であることに注意する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_default_region<span class="w"> </span><span class="s2">&quot;&lt;リージョン名&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_default_region<span class="w"> </span><span class="s2">"&lt;リージョン名&gt;"</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="01-02">01-02. 設定ファイル<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
@@ -36113,7 +36113,7 @@ Default<span class="w"> </span>output<span class="w"> </span>format<span class="
 <h4 id="-filters">▼ --filters<a class="headerlink" href="#-filters" title="Permanent link">&para;</a></h4>
 <p>Amazon EC2、AWS AutoScaling、Amazon RDS など</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 特定のタグ値のデータのみを取得する。『tag:』のつけ忘れに注意する。</span>
-$<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--filters<span class="w"> </span><span class="s2">&quot;Name=tag:&lt;タグ名&gt;,Values=&lt;タグ値&gt;&quot;</span>
+$<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--filters<span class="w"> </span><span class="s2">"Name=tag:&lt;タグ名&gt;,Values=&lt;タグ値&gt;"</span>
 </code></pre></div>
 <h4 id="filter">▼ filter の文字を含む独自のオプション<a class="headerlink" href="#filter" title="Permanent link">&para;</a></h4>
 <p>AWS DynamoDB など</p>
@@ -36126,20 +36126,20 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <p>代わりに、<code>jq</code> コマンドのパスを使用してもよい。</p>
 <h4 id="-query">▼ --query<a class="headerlink" href="#-query" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># 全てのキーと値を取得する。</span>
-$<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;Reservations[*]&quot;</span>
+$<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--query<span class="w"> </span><span class="s2">"Reservations[*]"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 最初のインデックスキーのみを取得する。</span>
-$<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;Reservations[0]&quot;</span>
+$<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--query<span class="w"> </span><span class="s2">"Reservations[0]"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 特定のタグ値のデータのみを取得し、そのデータのインスタンスIDのみを取得する。</span>
 $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--filters<span class="w"> </span><span class="s2">&quot;Name=tag:&lt;タグ名&gt;,Values=&lt;タグ値&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--query<span class="w"> </span><span class="s2">&quot;Reservations[*].Instances[*].InstanceId&quot;</span>
+<span class="w">    </span>--filters<span class="w"> </span><span class="s2">"Name=tag:&lt;タグ名&gt;,Values=&lt;タグ値&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--query<span class="w"> </span><span class="s2">"Reservations[*].Instances[*].InstanceId"</span>
 
 <span class="c1"># 特定のタグ値のデータのみを取得し、そのデータのセキュリティグループのIDのみを取得する。</span>
 $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--filters<span class="w"> </span><span class="s2">&quot;Name=tag:&lt;タグ名&gt;,Values=&lt;タグ値&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--query<span class="w"> </span><span class="s2">&quot;SecurityGroups[*].GroupId&quot;</span>
+<span class="w">    </span>--filters<span class="w"> </span><span class="s2">"Name=tag:&lt;タグ名&gt;,Values=&lt;タグ値&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--query<span class="w"> </span><span class="s2">"SecurityGroups[*].GroupId"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36163,14 +36163,14 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <p>Amazon CloudWatch アラームの状態を変更する。</p>
 <p>アラームをテストできる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>cloudwatch<span class="w"> </span>set-alarm-state<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--alarm-name<span class="w"> </span><span class="s2">&quot;prd-foo-alarm&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--alarm-name<span class="w"> </span><span class="s2">"prd-foo-alarm"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--state-value<span class="w"> </span>ALARM<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--state-reason<span class="w"> </span><span class="s2">&quot;アラート!!&quot;</span>
+<span class="w">    </span>--state-reason<span class="w"> </span><span class="s2">"アラート!!"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>cloudwatch<span class="w"> </span>set-alarm-state<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--alarm-name<span class="w"> </span><span class="s2">&quot;prd-foo-alarm&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--alarm-name<span class="w"> </span><span class="s2">"prd-foo-alarm"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--state-value<span class="w"> </span>OK<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--state-reason<span class="w"> </span><span class="s2">&quot;大丈夫です!!&quot;</span>
+<span class="w">    </span>--state-reason<span class="w"> </span><span class="s2">"大丈夫です!!"</span>
 </code></pre></div>
 <h4 id="get-metric-statistics">▼ get-metric-statistics<a class="headerlink" href="#get-metric-statistics" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
@@ -36179,11 +36179,11 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>cloudwatch<span class="w"> </span>get-metric-statistics<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--namespace<span class="w"> </span>AWS/Logs<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--metric-name<span class="w"> </span>IncomingBy***<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--start-time<span class="w"> </span><span class="s2">&quot;2021-08-01T00:00:00&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--end-time<span class="w"> </span><span class="s2">&quot;2021-08-31T23:59:59&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--start-time<span class="w"> </span><span class="s2">"2021-08-01T00:00:00"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--end-time<span class="w"> </span><span class="s2">"2021-08-31T23:59:59"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--period<span class="w"> </span><span class="m">86400</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--statistics<span class="w"> </span>Sum<span class="w"> </span><span class="se">\</span>
-<span class="w">      </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;.Datapoints[] | [.Timestamp, .Sum] | @csv&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort
+<span class="w">      </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s2">".Datapoints[] | [.Timestamp, .Sum] | @csv"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36205,8 +36205,8 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <p>Amazon EC2 の情報を取得する。</p>
 <p>ローカル PC から踏み台サーバー (Amazon EC2) を経由して Amazon Aurora に接続する場合、Amazon EC2 のインスタンス ID を取得したいときに役立つ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--filters<span class="w"> </span><span class="s2">&quot;Name=tag:Name,Values=&lt;Amazon EC2名&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--query<span class="w"> </span><span class="s2">&quot;Reservations[].Instances[].InstanceId&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--filters<span class="w"> </span><span class="s2">"Name=tag:Name,Values=&lt;Amazon EC2名&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--query<span class="w"> </span><span class="s2">"Reservations[].Instances[].InstanceId"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--output<span class="w"> </span>text
 </code></pre></div>
 <p><br></p>
@@ -36262,7 +36262,7 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <p>ローカル PC から踏み台サーバー (Amazon EC2) を経由して Amazon Aurora に接続する場合、Amazon Aurora のクラスター名を取得したいときに役立つ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-clusters<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--db-cluster-identifier<span class="w"> </span>&lt;Amazon<span class="w"> </span>Auroraのクラスター名&gt;<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--query<span class="w"> </span><span class="s2">&quot;DBClusters[0].ReaderEndpoint&quot;</span><span class="w"> </span>--output<span class="w"> </span>text
+<span class="w">    </span>--query<span class="w"> </span><span class="s2">"DBClusters[0].ReaderEndpoint"</span><span class="w"> </span>--output<span class="w"> </span>text
 </code></pre></div>
 <p><br></p>
 <h3 id="amazon-s3">Amazon S3<a class="headerlink" href="#amazon-s3" title="Permanent link">&para;</a></h3>
@@ -36285,24 +36285,24 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 </code></pre></div>
 <p>コピーされる側のバケットのバケットポリシーでアクセスを許可すれば、異なるアカウント間でもコピーできる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;AWS&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;AWS</span><span class="nv"> </span><span class="s">IAMユーザーのARN&gt;&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;s3:PutObject&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:s3:::foo-bucket/*&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"AWS"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;AWS</span><span class="nv"> </span><span class="s">IAMユーザーのARN&gt;"</span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"s3:PutObject"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:s3:::foo-bucket/*"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Condition"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">            </span><span class="c1"># 完全一致</span>
-<span class="w">            </span><span class="s">&quot;StringEquals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;s3:x-amz-acl&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;bucket-owner-full-control&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="s">"StringEquals"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"s3:x-amz-acl"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"bucket-owner-full-control"</span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;AWS&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;AWS</span><span class="nv"> </span><span class="s">IAMユーザーのARN&gt;&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;s3:ListBucket&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:s3:::bar-bucket&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"AWS"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;AWS</span><span class="nv"> </span><span class="s">IAMユーザーのARN&gt;"</span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"s3:ListBucket"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:s3:::bar-bucket"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
@@ -36326,13 +36326,13 @@ $<span class="w"> </span>aws<span class="w"> </span>sqs<span class="w"> </span>r
 $<span class="w"> </span>aws<span class="w"> </span>sqs<span class="w"> </span>receive-message<span class="w"> </span>--queue-url<span class="w"> </span><span class="si">${</span><span class="nv">SQS_QUEUE_URL</span><span class="si">}</span><span class="w"> </span>&gt;<span class="w"> </span>receiveOutput.json
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Messages&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Messages"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Body&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;メッセージの内容&gt;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;ReceiptHandle&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;AQEBUo4y+XVuRSe4jMv0QM6Ob1viUnPbZ64WI01+Kmj6erhv192m80m+wgyob+zBgL4OMT+bps4KR/q5WK+W3tnno6cCFuwKGRM4OQGM9omMkK1F+ZwBC49hbl7UlzqAqcSrHfxyDo5x+xEyrEyL+sFK2MxNV6d0mF+7WxXTboyAu7JxIiKLG6cUlkhWfk3W4/Kghagy5erwRhwTaKtmF+7hw3Y99b55JLFTrZjW+/Jrq9awLCedce0kBQ3d2+7pnlpEcoY42+7T1dRI2s7um+nj5TIUpx2oSd9BWBHCjd8UQjmyye645asrWMAl1VCvHZrHRIG/v3vgq776e1mmi9pGxN96IW1aDZCQ1CSeqTFASe4=&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;MD5OfBody&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;6699d5711c044a109a6aff9fc193aada&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;MessageId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Body"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;メッセージの内容&gt;"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"ReceiptHandle"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"AQEBUo4y+XVuRSe4jMv0QM6Ob1viUnPbZ64WI01+Kmj6erhv192m80m+wgyob+zBgL4OMT+bps4KR/q5WK+W3tnno6cCFuwKGRM4OQGM9omMkK1F+ZwBC49hbl7UlzqAqcSrHfxyDo5x+xEyrEyL+sFK2MxNV6d0mF+7WxXTboyAu7JxIiKLG6cUlkhWfk3W4/Kghagy5erwRhwTaKtmF+7hw3Y99b55JLFTrZjW+/Jrq9awLCedce0kBQ3d2+7pnlpEcoY42+7T1dRI2s7um+nj5TIUpx2oSd9BWBHCjd8UQjmyye645asrWMAl1VCvHZrHRIG/v3vgq776e1mmi9pGxN96IW1aDZCQ1CSeqTFASe4="</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"MD5OfBody"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"6699d5711c044a109a6aff9fc193aada"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"MessageId"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*****"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
@@ -36349,7 +36349,7 @@ $<span class="w"> </span>aws<span class="w"> </span>secretsmanager<span class="w
 <span class="w">    </span>--query<span class="o">=</span>SecretString
 
 <span class="c1"># ダブルクオーテーションで囲われている</span>
-<span class="s2">&quot;...&quot;</span>
+<span class="s2">"..."</span>
 </code></pre></div>
 <p>もし AWS Secrets Manager に JSON ファイルを登録している場合、これを取得するとダブルクオーテーションで囲われてしまっている。</p>
 <p>そのため、<code>--output</code> オプションで <code>text</code> 使用してダブルクオーテーションを削除する必要がある。</p>
@@ -36373,7 +36373,7 @@ $<span class="w"> </span>aws<span class="w"> </span>secretsmanager<span class="w
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>sts<span class="w"> </span>decode-authorization-message<span class="w"> </span>--encoded-message<span class="w"> </span>zAc3k...
 
 <span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;DecodedMessage&quot;</span>:<span class="w"> </span><span class="s2">&quot;{...}&quot;</span>
+<span class="w">    </span><span class="s2">"DecodedMessage"</span>:<span class="w"> </span><span class="s2">"{...}"</span>
 <span class="o">}</span>
 </code></pre></div>
 <blockquote>
@@ -36399,9 +36399,9 @@ $<span class="w"> </span>aws<span class="w"> </span>secretsmanager<span class="w
 <p>発行した ID とコードは、<code>amazon-ssm-agent</code> コマンドの実行時に必要となる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>amazon-ssm-agent<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-register<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-id<span class="w"> </span><span class="s2">&quot;&lt;ID&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-code<span class="w"> </span><span class="s2">&quot;&lt;コード&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-region<span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="w">    </span>-id<span class="w"> </span><span class="s2">"&lt;ID&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-code<span class="w"> </span><span class="s2">"&lt;コード&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-region<span class="w"> </span><span class="s2">"ap-northeast-1"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36413,17 +36413,17 @@ $<span class="w"> </span>aws<span class="w"> </span>secretsmanager<span class="w
 <h4 id="get-parameters-by-path">▼ get-parameters-by-path<a class="headerlink" href="#get-parameters-by-path" title="Permanent link">&para;</a></h4>
 <p>特定のパスで始まるすべての変数をパラメーターストアから取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># パスのないパラメーターの場合</span>
-<span class="l l-Scalar l-Scalar-Plain">$ aws ssm get-parameters-by-path --path &quot;/&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">$ aws ssm get-parameters-by-path --path "/"</span>
 
 <span class="l l-Scalar l-Scalar-Plain">{</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">&quot;Parameters&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">"Parameters"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;Name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"Name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"FOO"</span><span class="p p-Indicator">,</span>
 
 <span class="w">            </span><span class="nv">...</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;Name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;BAR&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"Name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"BAR"</span><span class="p p-Indicator">,</span>
 
 <span class="w">            </span><span class="nv">...</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
@@ -36431,17 +36431,17 @@ $<span class="w"> </span>aws<span class="w"> </span>secretsmanager<span class="w
 <span class="w"> </span><span class="err">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 『/FOO』で始まるパラメーターの場合</span>
-<span class="l l-Scalar l-Scalar-Plain">$ aws ssm get-parameters-by-path --path &quot;/FOO&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">$ aws ssm get-parameters-by-path --path "/FOO"</span>
 
 <span class="l l-Scalar l-Scalar-Plain">{</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">&quot;Parameters&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">"Parameters"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;Name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/FOO&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"Name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/FOO"</span><span class="p p-Indicator">,</span>
 
 <span class="w">            </span><span class="nv">...</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;Name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/FOO/BAR&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"Name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/FOO/BAR"</span><span class="p p-Indicator">,</span>
 
 <span class="w">            </span><span class="nv">...</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
@@ -36517,13 +36517,13 @@ Note<span class="w"> </span>that<span class="w"> </span>it<span class="w"> </spa
 <p>特定の送信元 IP アドレスを制限するポリシーを AWS IAM ユーザーに紐付けることにより、その AWS IAM ユーザーが AWS CLI の実行するときに、社外から実行できないように制限をかけられる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Deny&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;NotIpAddress&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;aws:SourceIp&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*.*.*.*/32&quot;</span><span class="p p-Indicator">]}},</span>
+<span class="w">      </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Deny"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"Condition"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"NotIpAddress"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"aws:SourceIp"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*.*.*.*/32"</span><span class="p p-Indicator">]}},</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>

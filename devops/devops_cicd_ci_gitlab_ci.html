@@ -35658,9 +35658,9 @@
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golang:${GO_VERSION}</span>
 <span class="w">  </span><span class="nt">before_script</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># 他のプライベートリポジトリからモジュールをプルするために、資格情報をセットアップする</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;machine foo.gitlab.com&quot; &gt; ~/.netrc</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;login ${GIT_USER}&quot; &gt;&gt; ~/.netrc</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;password ${GIT_TOKEN}&quot; &gt;&gt; ~/.netrc</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "machine foo.gitlab.com" &gt; ~/.netrc</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "login ${GIT_USER}" &gt;&gt; ~/.netrc</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "password ${GIT_TOKEN}" &gt;&gt; ~/.netrc</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># 他のプライベートリポジトリのモジュールをインポートする</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">go mod tidy</span>
@@ -35678,7 +35678,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apk update &amp;&amp; apk --no-cache add curl curl-dev</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">curl -X POST &quot;https://gitlab.com/api/v4/projects/&lt;プロジェクトID&gt;/trigger/pipeline&quot;</span>
+<span class="w">      </span><span class="no">curl -X POST "https://gitlab.com/api/v4/projects/&lt;プロジェクトID&gt;/trigger/pipeline"</span>
 <span class="w">      </span><span class="no">-F token=&lt;トークン&gt;</span>
 <span class="w">      </span><span class="no">-F ref=&lt;ブランチ&gt;</span>
 <span class="w">      </span><span class="no">-F variables[&lt;変数名&gt;]=&lt;値&gt;</span>
@@ -35703,7 +35703,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo foo</span>
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># feature ブランチ (develop、main、以外) のみで実行する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &#39;push&#39; &amp;&amp; $CI_COMMIT_BRANCH$CI_COMMIT_BRANCH != &#39;develop&#39; &amp;&amp; $CI_COMMIT_BRANCH != &#39;main&#39;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == 'push' &amp;&amp; $CI_COMMIT_BRANCH$CI_COMMIT_BRANCH != 'develop' &amp;&amp; $CI_COMMIT_BRANCH != 'main'</span>
 </code></pre></div>
 <h4 id="ci_commit_tag">▼ <code>CI_COMMIT_TAG</code><a class="headerlink" href="#ci_commit_tag" title="Permanent link">&para;</a></h4>
 <p>現在のタグ名が割り当てられている。</p>
@@ -35717,7 +35717,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo foo</span>
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># MR を作成/更新したタイミングで発火する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &quot;merge_request_event&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == "merge_request_event"</span>
 </code></pre></div>
 <table>
 <thead>
@@ -35755,7 +35755,7 @@
 <p>デフォルトですと、GitLab CI がサブモジュールを無視して処理してしまうため、これを無視しないようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">GIT_SUBMODULE_STRATEGY</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;recursive&quot;</span>
+<span class="w">    </span><span class="nt">GIT_SUBMODULE_STRATEGY</span><span class="p">:</span><span class="w"> </span><span class="s">"recursive"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35782,34 +35782,34 @@
 
 <span class="c1"># 変数のデフォルト値を設定しておく</span>
 <span class="nt">variables</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">PATH</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;default&quot;</span>
+<span class="w">  </span><span class="nt">PATH</span><span class="p">:</span><span class="w"> </span><span class="s">"default"</span>
 
 <span class="nt">.foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat &quot;${PATH}&quot;/foo.txt</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat "${PATH}"/foo.txt</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># bar-job.yaml</span>
 
 <span class="c1"># 変数のデフォルト値を設定しておく</span>
 <span class="nt">variables</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">PATH</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;default&quot;</span>
+<span class="w">  </span><span class="nt">PATH</span><span class="p">:</span><span class="w"> </span><span class="s">"default"</span>
 
 <span class="nt">.bar_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat &quot;${PATH}&quot;/bar.txt</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat "${PATH}"/bar.txt</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># baz-job.yaml</span>
 
 <span class="c1"># 変数のデフォルト値を設定しておく</span>
 <span class="nt">variables</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">PATH</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;default&quot;</span>
+<span class="w">  </span><span class="nt">PATH</span><span class="p">:</span><span class="w"> </span><span class="s">"default"</span>
 
 <span class="nt">.baz_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat &quot;${PATH}&quot;/baz.txt</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat "${PATH}"/baz.txt</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35836,20 +35836,20 @@
 <span class="w">  </span><span class="nt">extends</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.foo_job</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat &quot;${PATH}&quot;/foo.txt</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat "${PATH}"/foo.txt</span>
 <span class="w">  </span><span class="c1"># 親リポジトリの変数を上書きする</span>
 <span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">PATH</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;path_1&quot;</span>
+<span class="w">    </span><span class="nt">PATH</span><span class="p">:</span><span class="w"> </span><span class="s">"path_1"</span>
 
 <span class="nt">foo_2_job</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># 親リポジトリで定義した隠し Job をコールする</span>
 <span class="w">  </span><span class="nt">extends</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.foo_job</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat &quot;${PATH}&quot;/foo.txt</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat "${PATH}"/foo.txt</span>
 <span class="w">  </span><span class="c1"># 親リポジトリの変数を上書きする</span>
 <span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">PATH</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;path_2&quot;</span>
+<span class="w">    </span><span class="nt">PATH</span><span class="p">:</span><span class="w"> </span><span class="s">"path_2"</span>
 
 <span class="nt">bar_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">extends</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.bar_job</span>
@@ -35858,13 +35858,13 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo1_job</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo2_job</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat &quot;${PATH}&quot;/bar.txt</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat "${PATH}"/bar.txt</span>
 
 <span class="nt">baz_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">extends</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.baz_job</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat &quot;${PATH}&quot;/baz.txt</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat "${PATH}"/baz.txt</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35875,7 +35875,7 @@
 <p>ヒアドキュメントを使用して、CI の実行コンテナでファイルを自動的に作成し、これを配布する。</p>
 <p><code>artifacts</code> キーを使用して、後続の Job でも設定ファイルを使用できるようにしている。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">GITLAB_COMMENT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6.0.1&quot;</span>
+<span class="w">  </span><span class="nt">GITLAB_COMMENT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">"6.0.1"</span>
 
 <span class="c1"># github-comment を準備する</span>
 <span class="nt">.install_github_comment</span><span class="p">:</span>
@@ -35885,20 +35885,20 @@
 <span class="w">    </span><span class="c1"># github-comment をインストールする</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">      </span><span class="no">apk add --upgrade curl tar jq</span>
-<span class="w">      </span><span class="no">LATEST_DOWNLOAD_URL=$(curl -sL https://api.github.com/repos/suzuki-shunsuke/github-comment/releases/latest | jq -r &quot;.assets[].browser_download_url&quot; | grep linux_amd64)</span>
-<span class="w">      </span><span class="no">curl -sL -O &quot;${LATEST_DOWNLOAD_URL}&quot;</span>
+<span class="w">      </span><span class="no">LATEST_DOWNLOAD_URL=$(curl -sL https://api.github.com/repos/suzuki-shunsuke/github-comment/releases/latest | jq -r ".assets[].browser_download_url" | grep linux_amd64)</span>
+<span class="w">      </span><span class="no">curl -sL -O "${LATEST_DOWNLOAD_URL}"</span>
 <span class="w">      </span><span class="no">tar zxvf *.tar.gz</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./github-comment --version</span>
 <span class="w">    </span><span class="c1"># CI の実行環境で各リポジトリに配布する github-comment.yaml ファイルを作成する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">cat &lt;&lt; &#39;EOF&#39; &gt; github-comment.yaml</span>
+<span class="w">      </span><span class="no">cat &lt;&lt; 'EOF' &gt; github-comment.yaml</span>
 <span class="w">      </span><span class="no"># https://suzuki-shunsuke.github.io/github-comment/getting-started</span>
 <span class="w">      </span><span class="no">---</span>
 <span class="w">      </span><span class="no">exec:</span>
 <span class="w">        </span><span class="no"># 静的解析以外の処理のためのテンプレート</span>
 <span class="w">        </span><span class="no"># -k オプションで何も指定しない場合、default テンプレートになる</span>
 <span class="w">        </span><span class="no">default:</span>
-<span class="w">          </span><span class="no">- when: &quot;true&quot;</span>
+<span class="w">          </span><span class="no">- when: "true"</span>
 <span class="w">            </span><span class="no">template: |</span>
 
 <span class="w">              </span><span class="no">## `{{ .Vars.TestName }}`</span>
@@ -35907,7 +35907,7 @@
 <span class="w">              </span><span class="no">|-----|--------------------|</span>
 <span class="w">              </span><span class="no">| コマンド | `{{ .JoinCommand }}` |</span>
 <span class="w">              </span><span class="no">| 説明 | {{ .Vars.Description }} |</span>
-<span class="w">              </span><span class="no">| 実行Job | {{ template &quot;link&quot; . }} |</span>
+<span class="w">              </span><span class="no">| 実行Job | {{ template "link" . }} |</span>
 
 <span class="w">              </span><span class="no">## 詳細</span>
 
@@ -35924,7 +35924,7 @@
 
 <span class="w">        </span><span class="no"># 静的解析のためのテンプレート</span>
 <span class="w">        </span><span class="no">test:</span>
-<span class="w">          </span><span class="no">- when: &quot;true&quot;</span>
+<span class="w">          </span><span class="no">- when: "true"</span>
 <span class="w">            </span><span class="no">template: |</span>
 
 <span class="w">              </span><span class="no">## `{{ .Vars.TestName }}`</span>
@@ -35933,8 +35933,8 @@
 <span class="w">              </span><span class="no">|-----|--------------------|</span>
 <span class="w">              </span><span class="no">| 静的解析 | `{{ .JoinCommand }}` |</span>
 <span class="w">              </span><span class="no">| 説明 | {{ .Vars.Description }} |</span>
-<span class="w">              </span><span class="no">| 成否 | {{ template &quot;status&quot; . }} |</span>
-<span class="w">              </span><span class="no">| 実行Job | {{ template &quot;link&quot; . }} |</span>
+<span class="w">              </span><span class="no">| 成否 | {{ template "status" . }} |</span>
+<span class="w">              </span><span class="no">| 実行Job | {{ template "link" . }} |</span>
 
 <span class="w">              </span><span class="no">## 詳細</span>
 
@@ -35962,9 +35962,9 @@
 <p>Job 内で使用する変数を設定する。</p>
 <p>値をダブルクオートかシングルクオートで囲わないと、<code>.gitlab-ci.yml</code> ファイル自体で予期せぬ構文エラーになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">BAR</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span>
-<span class="w">  </span><span class="nt">BAZ</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;baz&quot;</span>
-<span class="w">  </span><span class="nt">QUX</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;qux&quot;</span>
+<span class="w">  </span><span class="nt">BAR</span><span class="p">:</span><span class="w"> </span><span class="s">"bar"</span>
+<span class="w">  </span><span class="nt">BAZ</span><span class="p">:</span><span class="w"> </span><span class="s">"baz"</span>
+<span class="w">  </span><span class="nt">QUX</span><span class="p">:</span><span class="w"> </span><span class="s">"qux"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35977,7 +35977,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># variables.yml ファイル</span>
 <span class="c1"># variables で空文字を設定する</span>
 <span class="nt">variables</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">FOO</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">  </span><span class="nt">FOO</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">include</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">local</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.gitlab-ci/variables.yml</span>
@@ -35992,7 +35992,7 @@
 <p>空文字を設定したい場合、<code>variables</code> キーに設定しても空文字として出力されない。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># variables で空文字を設定する</span>
 <span class="nt">variables</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">FOO</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">  </span><span class="nt">FOO</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 
 <span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
@@ -36006,7 +36006,7 @@
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># ダブルクオートがある</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;${FOO}&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "${FOO}"</span>
 </code></pre></div>
 <h4 id="_15">▼ リスト<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>変数でリストを定義できる。</p>
@@ -36043,29 +36043,29 @@
 <span class="nt">workflow</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># main ブランチにて、任意の方法でパイプラインを実行した場合</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_REF_NAME == &#39;main&#39;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_REF_NAME == 'main'</span>
 <span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;prd&quot;</span>
+<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">"prd"</span>
 <span class="w">    </span><span class="c1"># develop ブランチにて、任意の方法でパイプラインを実行した場合</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_REF_NAME == &#39;develop&#39;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_REF_NAME == 'develop'</span>
 <span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;stg&quot;</span>
+<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">"stg"</span>
 <span class="w">    </span><span class="c1"># MR にて、任意の方法でパイプラインを実行した場合</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &#39;merge_request_event&#39;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == 'merge_request_event'</span>
 <span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tes&quot;</span>
+<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">"tes"</span>
 <span class="w">    </span><span class="c1"># 上記以外で、web から手動でパイプラインを実行した場合</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &#39;web&#39;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == 'web'</span>
 <span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tes&quot;</span>
+<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">"tes"</span>
 
 <span class="nt">setup-manifest</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpine/helm:latest</span>
 <span class="w">  </span><span class="c1"># ブランチ名に応じて、values ファイルを切り替える</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm lint . -f &quot;${VALUES_FILE_PATH}&quot; -f &quot;${SECRETS_FILE_PATH}&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm template . -f &quot;${VALUES_FILE_PATH}&quot; -f &quot;${SECRETS_FILE_PATH}&quot; &gt; manifest.yaml</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm lint . -f "${VALUES_FILE_PATH}" -f "${SECRETS_FILE_PATH}"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm template . -f "${VALUES_FILE_PATH}" -f "${SECRETS_FILE_PATH}" &gt; manifest.yaml</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat manifest.yaml</span>
 </code></pre></div>
 <blockquote>
@@ -36101,10 +36101,10 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">terraform fmt -check -recursive</span>
 <span class="w">  </span><span class="c1"># 0 以外の全ての終了コードの場合のみ終了する</span>
 <span class="w">  </span><span class="c1"># インデントを揃えるべき場所がある場合、Job を失敗させる</span>
-<span class="w">  </span><span class="nt">allow_failure</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">  </span><span class="nt">allow_failure</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># MR を作成/更新したタイミングで発火する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &quot;merge_request_event&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == "merge_request_event"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
@@ -36113,7 +36113,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo foo-1 || true</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo foo-2</span>
 <span class="w">  </span><span class="c1"># 0 以外の全ての終了コードの場合のみ終了する</span>
-<span class="w">  </span><span class="nt">allow_failure</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">  </span><span class="nt">allow_failure</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <h4 id="0_1">▼ <code>0</code> 以外の特定終了コードの場合<a class="headerlink" href="#0_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
@@ -36300,7 +36300,7 @@
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpine:1.0.0</span>
-<span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;sh&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"sh"</span><span class="p p-Indicator">]</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo foo</span>
 </code></pre></div>
@@ -36320,7 +36320,7 @@
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/alpine:1.0.0</span>
-<span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;sh&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"sh"</span><span class="p p-Indicator">]</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo foo</span>
 </code></pre></div>
@@ -36406,7 +36406,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo baz</span>
 <span class="w">  </span><span class="c1"># foo_job の foo1 のアーティファクトのみを継承する</span>
 <span class="w">  </span><span class="nt">dependencies</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;foo_job:</span><span class="nv"> </span><span class="s">[foo1]&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"foo_job:</span><span class="nv"> </span><span class="s">[foo1]"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36461,19 +36461,19 @@
 <span class="w">  </span><span class="c1"># OR 条件</span>
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># main ブランチのみ</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_BRANCH == &#39;main&#39;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_BRANCH == 'main'</span>
 <span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">TAG_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;main&quot;</span>
+<span class="w">        </span><span class="nt">TAG_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">"main"</span>
 
 <span class="w">    </span><span class="c1"># hotfix から始まるブランチのみ</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_BRANCH =~ /^hotfix.*$/</span>
 <span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">TAG_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hotfix-${CI_COMMIT_SHA}&quot;</span>
+<span class="w">        </span><span class="nt">TAG_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">"hotfix-${CI_COMMIT_SHA}"</span>
 
 <span class="w">    </span><span class="c1"># 任意の名前のタグがついている場合のみ</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_TAG</span>
 <span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">TAG_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;$CI_COMMIT_TAG&quot;</span>
+<span class="w">        </span><span class="nt">TAG_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">"$CI_COMMIT_TAG"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36488,7 +36488,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm template . -f foo-values.yaml -f foo-secrets.yaml &gt; foo.yaml</span>
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># web イベント (パイプライン実行ボタン) の場合</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &quot;web&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == "web"</span>
 <span class="w">    </span><span class="c1"># ファイルやディレクトリ内に差分があった場合</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">changes</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template/**/*</span>
@@ -36531,11 +36531,11 @@
 <p>GitLab CI 上で Docker in Docker を使用する場合、実行コンテナとサービスコンテナでセットアップが必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># ドライバーの設定</span>
-<span class="w">  </span><span class="nt">DOCKER_DRIVER</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;overlay2&quot;</span>
+<span class="w">  </span><span class="nt">DOCKER_DRIVER</span><span class="p">:</span><span class="w"> </span><span class="s">"overlay2"</span>
 <span class="w">  </span><span class="c1"># ホストの設定</span>
-<span class="w">  </span><span class="nt">DOCKER_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tcp://docker:2375&quot;</span>
+<span class="w">  </span><span class="nt">DOCKER_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">"tcp://docker:2375"</span>
 <span class="w">  </span><span class="c1"># TLS の無効化 (非暗号化)</span>
-<span class="w">  </span><span class="nt">DOCKER_TLS_CERTDIR</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">  </span><span class="nt">DOCKER_TLS_CERTDIR</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 
 <span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># CI の実行環境</span>
@@ -36544,7 +36544,7 @@
 <span class="w">  </span><span class="nt">services</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker:19.03.0-dind</span>
 <span class="w">      </span><span class="c1"># TLS の無効化 (非暗号化)</span>
-<span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;--tls=false&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"--tls=false"</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36602,7 +36602,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;Hello World&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "Hello World"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36691,7 +36691,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo bar</span>
 <span class="w">  </span><span class="c1"># BAZ 変数が false の場合は実行しない (never)</span>
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$BAZ == &#39;false&#39;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$BAZ == 'false'</span>
 <span class="w">      </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">never</span>
 </code></pre></div>
 <blockquote>
@@ -36710,9 +36710,9 @@
 <p>anchor として定義した処理を隠し Job 化する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># GitLab の他のリポジトリからモジュールをプルするために、資格情報をセットアップする</span>
 <span class="nt">.setup_git</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;setup_git</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;machine foo.gitlab.com&quot; &gt; ~/.netrc</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;login ${GIT_USER}&quot; &gt;&gt; ~/.netrc</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;password ${GIT_TOKEN}&quot; &gt;&gt; ~/.netrc</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "machine foo.gitlab.com" &gt; ~/.netrc</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "login ${GIT_USER}" &gt;&gt; ~/.netrc</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "password ${GIT_TOKEN}" &gt;&gt; ~/.netrc</span>
 
 <span class="nt">go_mod</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
@@ -36736,9 +36736,9 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># GitLab の他のリポジトリからモジュールをプルするために、資格情報をセットアップする</span>
 <span class="nt">.setup_git</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">before_script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;machine foo.gitlab.com&quot; &gt; ~/.netrc</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;login ${GIT_USER}&quot; &gt;&gt; ~/.netrc</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;password ${GIT_TOKEN}&quot; &gt;&gt; ~/.netrc</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "machine foo.gitlab.com" &gt; ~/.netrc</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "login ${GIT_USER}" &gt;&gt; ~/.netrc</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "password ${GIT_TOKEN}" &gt;&gt; ~/.netrc</span>
 
 <span class="nt">go_mod</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>

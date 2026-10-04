@@ -34763,7 +34763,7 @@ https://kubernetes.default.svc<span class="w">  </span><span class="m">0</span><
 <span class="w">    </span>--username<span class="w"> </span>admin<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--password<span class="w"> </span>&lt;パスワード&gt;
 
-<span class="s1">&#39;admin:login&#39;</span><span class="w"> </span>logged<span class="w"> </span><span class="k">in</span><span class="w"> </span>successfully
+<span class="s1">'admin:login'</span><span class="w"> </span>logged<span class="w"> </span><span class="k">in</span><span class="w"> </span>successfully
 </code></pre></div>
 <h4 id="-sso-sso-port">▼ --sso、--sso-port<a class="headerlink" href="#-sso-sso-port" title="Permanent link">&para;</a></h4>
 <p>SSO でログインする。</p>
@@ -34796,7 +34796,7 @@ https://kubernetes.default.svc<span class="w">  </span><span class="m">0</span><
 </code></pre></div>
 <h4 id="-application-namespaces">▼ --application-namespaces<a class="headerlink" href="#-application-namespaces" title="Permanent link">&para;</a></h4>
 <p>ArgoCD が Cluster スコープモードの場合、Application を作成できる Namespace を設定する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd-application-controller<span class="w"> </span>--application-namespaces<span class="w"> </span><span class="s2">&quot;*&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd-application-controller<span class="w"> </span>--application-namespaces<span class="w"> </span><span class="s2">"*"</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="07-argocd-server">07. argocd-server コマンド<a class="headerlink" href="#07-argocd-server" title="Permanent link">&para;</a></h2>
@@ -34817,7 +34817,7 @@ https://kubernetes.default.svc<span class="w">  </span><span class="m">0</span><
 </code></pre></div>
 <h4 id="-application-namespaces_1">▼ --application-namespaces<a class="headerlink" href="#-application-namespaces_1" title="Permanent link">&para;</a></h4>
 <p>ArgoCD が Cluster スコープモードの場合、Application を操作できる Namespace を設定する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd-server<span class="w"> </span>--application-namespaces<span class="w"> </span><span class="s2">&quot;*&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd-server<span class="w"> </span>--application-namespaces<span class="w"> </span><span class="s2">"*"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="version">version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h3>
@@ -34825,17 +34825,17 @@ https://kubernetes.default.svc<span class="w">  </span><span class="m">0</span><
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd-server<span class="w"> </span>version
 
 <span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;Version&quot;</span>:<span class="w"> </span><span class="s2">&quot;v2.6.7+5bcd846&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;BuildDate&quot;</span>:<span class="w"> </span><span class="s2">&quot;2023-03-23T14:57:27Z&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;GitCommit&quot;</span>:<span class="w"> </span><span class="s2">&quot;*****&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;GitTreeState&quot;</span>:<span class="w"> </span><span class="s2">&quot;clean&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;GoVersion&quot;</span>:<span class="w"> </span><span class="s2">&quot;go1.18.10&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;Compiler&quot;</span>:<span class="w"> </span><span class="s2">&quot;gc&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;Platform&quot;</span>:<span class="w"> </span><span class="s2">&quot;linux/amd64&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;KustomizeVersion&quot;</span>:<span class="w"> </span><span class="s2">&quot;v4.5.7 2022-08-02T16:35:54Z&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;HelmVersion&quot;</span>:<span class="w"> </span><span class="s2">&quot;v3.10.3+g835b733&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;KubectlVersion&quot;</span>:<span class="w"> </span><span class="s2">&quot;v0.24.2&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;JsonnetVersion&quot;</span>:<span class="w"> </span><span class="s2">&quot;v0.19.1&quot;</span>
+<span class="w">    </span><span class="s2">"Version"</span>:<span class="w"> </span><span class="s2">"v2.6.7+5bcd846"</span>,
+<span class="w">    </span><span class="s2">"BuildDate"</span>:<span class="w"> </span><span class="s2">"2023-03-23T14:57:27Z"</span>,
+<span class="w">    </span><span class="s2">"GitCommit"</span>:<span class="w"> </span><span class="s2">"*****"</span>,
+<span class="w">    </span><span class="s2">"GitTreeState"</span>:<span class="w"> </span><span class="s2">"clean"</span>,
+<span class="w">    </span><span class="s2">"GoVersion"</span>:<span class="w"> </span><span class="s2">"go1.18.10"</span>,
+<span class="w">    </span><span class="s2">"Compiler"</span>:<span class="w"> </span><span class="s2">"gc"</span>,
+<span class="w">    </span><span class="s2">"Platform"</span>:<span class="w"> </span><span class="s2">"linux/amd64"</span>,
+<span class="w">    </span><span class="s2">"KustomizeVersion"</span>:<span class="w"> </span><span class="s2">"v4.5.7 2022-08-02T16:35:54Z"</span>,
+<span class="w">    </span><span class="s2">"HelmVersion"</span>:<span class="w"> </span><span class="s2">"v3.10.3+g835b733"</span>,
+<span class="w">    </span><span class="s2">"KubectlVersion"</span>:<span class="w"> </span><span class="s2">"v0.24.2"</span>,
+<span class="w">    </span><span class="s2">"JsonnetVersion"</span>:<span class="w"> </span><span class="s2">"v0.19.1"</span>
 <span class="o">}</span>
 </code></pre></div>
 <p><br></p>

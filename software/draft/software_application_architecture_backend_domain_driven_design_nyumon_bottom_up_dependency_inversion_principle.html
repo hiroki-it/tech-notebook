@@ -33719,17 +33719,17 @@ ServiceLocator オブジェクトには、呼び出しの紐づけを事前に�
 
 紐づけをキーバリューで定義しておき、（書籍では言及していないが）フラグで条件分岐させて切り替える。
 
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">IUserRepository</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./domain/IUserRepository&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">ICircleRepository</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./domain/ICircleRepository&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">IUserRepository</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./domain/IUserRepository"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">ICircleRepository</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./domain/ICircleRepository"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">InMemoryUserRepository</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">UserRepository</span><span class="p">,</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./infrastructure/userRepository&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./infrastructure/userRepository"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">InMemoryCircleRepository</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">CircleRepository</span><span class="p">,</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./infrastructure/circleRepository&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">ServiceLocator</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./serviceLocator&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./infrastructure/circleRepository"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">ServiceLocator</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./serviceLocator"</span><span class="p">;</span>
 
 <span class="kr">type</span><span class="w"> </span><span class="nx">RepositoriesMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">token</span><span class="o">:</span><span class="w"> </span><span class="kt">symbol</span><span class="p">;</span>
@@ -33737,13 +33737,13 @@ ServiceLocator オブジェクトには、呼び出しの紐づけを事前に�
 <span class="p">};</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">tokens</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">IUserRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">Symbol</span><span class="p">(</span><span class="s2">&quot;IUserRepository&quot;</span><span class="p">),</span>
-<span class="w">  </span><span class="nx">ICircleRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">Symbol</span><span class="p">(</span><span class="s2">&quot;ICircleRepository&quot;</span><span class="p">),</span>
+<span class="w">  </span><span class="nx">IUserRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">Symbol</span><span class="p">(</span><span class="s2">"IUserRepository"</span><span class="p">),</span>
+<span class="w">  </span><span class="nx">ICircleRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">Symbol</span><span class="p">(</span><span class="s2">"ICircleRepository"</span><span class="p">),</span>
 <span class="w">  </span><span class="c1">// 中略</span>
 <span class="p">}</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
 
 <span class="c1">// 環境変数からフラグを取得する</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">inMemory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">IN_MEMORY</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">inMemory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">IN_MEMORY</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"true"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">repositoriesMap</span><span class="o">:</span><span class="w"> </span><span class="kt">RepositoriesMap</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
@@ -33811,7 +33811,7 @@ ServiceLocator では static 宣言であるため、アプリ起動時にイン
 
 UserApplicationService のなかでは、依存先の UserRepository がすでに準備されてしまっている
 
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserApplicationService</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./userApplicationService&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserApplicationService</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./userApplicationService"</span><span class="p">;</span>
 
 <span class="c1">// UserApplicationServiceを外から見ても、UserRepositoryに依存することはわからない。</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">userApplicationService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="p">();</span>
@@ -33901,17 +33901,17 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-09" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-09.png" /></p>
 <details><summary>🚨補足（クリックで開く）</summary><div>
 
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">IUserRepository</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./domain/IUserRepository&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">ICircleRepository</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./domain/ICircleRepository&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">IUserRepository</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./domain/IUserRepository"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">ICircleRepository</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./domain/ICircleRepository"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">InMemoryUserRepository</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">UserRepository</span><span class="p">,</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./infrastructure/userRepository&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./infrastructure/userRepository"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">InMemoryCircleRepository</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">CircleRepository</span><span class="p">,</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./infrastructure/circleRepository&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">IocContainer</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./iocContainer&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./infrastructure/circleRepository"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">IocContainer</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./iocContainer"</span><span class="p">;</span>
 
 <span class="kr">type</span><span class="w"> </span><span class="nx">RepositoriesMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">token</span><span class="o">:</span><span class="w"> </span><span class="kt">symbol</span><span class="p">;</span>
@@ -33919,13 +33919,13 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 <span class="p">};</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">tokens</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">IUserRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">Symbol</span><span class="p">(</span><span class="s2">&quot;IUserRepository&quot;</span><span class="p">),</span>
-<span class="w">  </span><span class="nx">ICircleRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">Symbol</span><span class="p">(</span><span class="s2">&quot;ICircleRepository&quot;</span><span class="p">),</span>
+<span class="w">  </span><span class="nx">IUserRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">Symbol</span><span class="p">(</span><span class="s2">"IUserRepository"</span><span class="p">),</span>
+<span class="w">  </span><span class="nx">ICircleRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">Symbol</span><span class="p">(</span><span class="s2">"ICircleRepository"</span><span class="p">),</span>
 <span class="w">  </span><span class="c1">// 中略</span>
 <span class="p">}</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
 
 <span class="c1">// 環境変数からフラグを取得する</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">inMemory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">IN_MEMORY</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">inMemory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">IN_MEMORY</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"true"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">repositoriesMap</span><span class="o">:</span><span class="w"> </span><span class="kt">RepositoriesMap</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
@@ -33980,10 +33980,10 @@ IoC コンテナオブジェクトでインスタンスを作成し、これを�
 
 <div class="highlight"><pre><span></span><code><span class="c1">// IoC Containerとコンストラクタインジェクションの場合</span>
 
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./repositories&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">tokens</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./iocContainer&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./domain/IUserRepository&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./userApplicationService&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./repositories"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">tokens</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./iocContainer"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./domain/IUserRepository"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./userApplicationService"</span><span class="p">;</span>
 
 <span class="c1">// IoCコンテナからuserRepositoryインスタンスを取得する</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">userRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">container</span><span class="p">.</span><span class="nx">resolve</span><span class="o">&lt;</span><span class="nx">IUserRepository</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">IUserRepository</span><span class="p">);</span>
@@ -33992,7 +33992,7 @@ IoC コンテナオブジェクトでインスタンスを作成し、これを�
 <span class="c1">// 引数にリポジトリや他の依存する新しいリポジトリを渡さないとビルド段階でエラーになる</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">userApplicationService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="p">(</span><span class="nx">tokens</span><span class="p">.</span><span class="nx">userRepository</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
 
-<span class="nx">userApplicationService</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">);</span>
+<span class="nx">userApplicationService</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="s2">"1"</span><span class="p">);</span>
 </code></pre></div>
 
 ServiceLocator オブジェクトでは static 宣言であるため、アプリ起動時にインスタンスを ServiceLocator オブジェクト内で作る。
@@ -34003,7 +34003,7 @@ ServiceLocator オブジェクトからインスタンスを取り出せない�
 
 <div class="highlight"><pre><span></span><code><span class="c1">// ServiceLocatorオブジェクトの場合</span>
 
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserApplicationService</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./userApplicationService&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserApplicationService</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./userApplicationService"</span><span class="p">;</span>
 
 <span class="c1">// UserApplicationServiceを外から見ても、UserRepositoryに依存することはわからない。</span>
 <span class="c1">// UserApplicationServiceにIUserRepositoryを渡し忘れても、ビルド段階ではエラーにならない</span>

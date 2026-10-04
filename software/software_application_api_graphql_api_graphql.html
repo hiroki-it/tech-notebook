@@ -33965,15 +33965,15 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--data<span class="w"> </span><span class="s1">&#39;query GetUser { user { id name }}&#39;</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--data<span class="w"> </span><span class="s1">'query GetUser { user { id name }}'</span>
 
 
 <span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;data&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;user&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">      </span><span class="s2">&quot;id&quot;</span>:<span class="w"> </span><span class="s2">&quot;hoge&quot;</span>,
-<span class="w">      </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;foo&quot;</span>,
+<span class="w">  </span><span class="s2">"data"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">"user"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">"id"</span>:<span class="w"> </span><span class="s2">"hoge"</span>,
+<span class="w">      </span><span class="s2">"name"</span>:<span class="w"> </span><span class="s2">"foo"</span>,
 <span class="w">    </span><span class="o">}</span>
 <span class="w">  </span><span class="o">}</span>
 <span class="o">}</span>
@@ -34022,7 +34022,7 @@
 <p><strong>＊例＊</strong></p>
 <p>ここでは、前述の Mutation 処理の API スキーマで定義した <code>CreateUser()</code> 関数を実行すると仮定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">mutation</span><span class="w"> </span><span class="nf">CreateUser</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">createUser</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example@gmail.com&quot;</span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">createUser</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">"bar"</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="s">"example@gmail.com"</span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">name</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -34030,14 +34030,14 @@
 <p>クライアント側で <code>CreateUser()</code> 関数を実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--data<span class="w"> </span><span class="s1">&#39;mutation CreateUser { createUser(data: { name: &quot;bar&quot;, email: &quot;example@gmail.com&quot;}) { name }}&#39;</span>
+<span class="w">    </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--data<span class="w"> </span><span class="s1">'mutation CreateUser { createUser(data: { name: "bar", email: "example@gmail.com"}) { name }}'</span>
 
 
 <span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;data&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;createUser&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">      </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;bar&quot;</span>,
+<span class="w">  </span><span class="s2">"data"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">"createUser"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">"name"</span>:<span class="w"> </span><span class="s2">"bar"</span>,
 <span class="w">    </span><span class="o">}</span>
 <span class="w">  </span><span class="o">}</span>
 <span class="o">}</span>

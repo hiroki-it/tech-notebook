@@ -34664,7 +34664,7 @@
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">401 Unauthorized</span>
 <span class="nn">---</span>
-<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm=&quot;&lt;realm名&gt;&quot;, charaset=&quot;UTF-8&quot;</span>
+<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm="&lt;realm名&gt;", charaset="UTF-8"</span>
 </code></pre></div>
 <dl>
 <dt><code>(3)</code></dt>
@@ -34685,7 +34685,7 @@
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
 <span class="nn">---</span>
-<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm=&quot;&quot;</span>
+<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm=""</span>
 </code></pre></div>
 <dl>
 <dt><code>(5)</code></dt>
@@ -34710,7 +34710,7 @@
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">401 Unauthorized</span>
 <span class="nn">---</span>
-<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm=&quot;&lt;realm名&gt;&quot;, charaset=&quot;UTF-8&quot;</span>
+<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm="&lt;realm名&gt;", charaset="UTF-8"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_11">ダイジェスト認証<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
@@ -34720,11 +34720,11 @@
 <h4 id="_13">▼ ダイジェスト認証の仕組み<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
 <span class="nn">---</span>
-<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm=&quot;&lt;realm名&gt;&quot;, charaset=&quot;UTF-8&quot;</span>
+<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm="&lt;realm名&gt;", charaset="UTF-8"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo-form</span>
 <span class="nn">---</span>
-<span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Digest realm=&quot;&lt;realm名&gt;&quot; nonce=&quot;&lt;サーバー側が作成した任意の文字列&gt;&quot; algorithm=&quot;&lt;ハッシュ関数名&gt;&quot; qoq=&quot;auth&quot;</span>
+<span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Digest realm="&lt;realm名&gt;" nonce="&lt;サーバー側が作成した任意の文字列&gt;" algorithm="&lt;ハッシュ関数名&gt;" qoq="auth"</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03">03. トークンベース認証<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
@@ -34920,10 +34920,10 @@
 <span class="nt">Content-Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/json</span>
 <span class="nn">---</span>
 <span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;access_token&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;expires_in&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">3600</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;scope&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;messaging:push&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;token_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Bearer&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"access_token"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*****"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"expires_in"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">3600</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"scope"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"messaging:push"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"token_type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Bearer"</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <dl>
@@ -34953,7 +34953,7 @@
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
 <span class="nn">---</span>
-<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer realm=&quot;&quot;</span>
+<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer realm=""</span>
 </code></pre></div>
 <dl>
 <dt><code>(5)</code></dt>
@@ -34970,7 +34970,7 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">401 Unauthorized</span>
 <span class="nn">---</span>
-<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm=&quot;&lt;realm名&gt;&quot;, charaset=&quot;UTF-8&quot;</span>
+<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm="&lt;realm名&gt;", charaset="UTF-8"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_21">正常系/異常系レスポンス<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
@@ -34982,20 +34982,20 @@
 <p>成功の場合は、realm 属性を空にしたレスポンスを返信する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
 <span class="nn">---</span>
-<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer realm=&quot;&quot;</span>
+<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer realm=""</span>
 </code></pre></div>
 <p>失敗の場合は、error 属性にエラメッセージを割り当てたレスポンスを返信する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">400 Bad Request</span>
 <span class="nn">---</span>
-<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer error=&quot;invalid_request&quot;</span>
+<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer error="invalid_request"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">401 Unauthorized</span>
 <span class="nn">---</span>
-<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer realm=&quot;token_required&quot;</span>
+<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer realm="token_required"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">403 Forbidden</span>
 <span class="nn">---</span>
-<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer error=&quot;insufficient_scope&quot;</span>
+<span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer error="insufficient_scope"</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="04">04. 証明書ベース認証<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>

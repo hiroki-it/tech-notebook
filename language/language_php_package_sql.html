@@ -33941,7 +33941,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM doraemon_characters&quot;</span><span class="p">;</span>
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s2">"SELECT * FROM doraemon_characters"</span><span class="p">;</span>
 <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$dbh</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span> <span class="c1">// プリペアードステートメントを定義。</span>
 <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span> <span class="c1">// 実行。</span>
 
@@ -33977,7 +33977,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT COUNT(*) FROM doraemon_characters&quot;</span><span class="p">;</span>
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s2">"SELECT COUNT(*) FROM doraemon_characters"</span><span class="p">;</span>
 <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$dbh</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span> <span class="c1">// プリペアードステートメントを定義。</span>
 <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span> <span class="c1">// 実行。</span>
 
@@ -33995,27 +33995,27 @@
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// $_POSTを使用して、送信されたPOSTメソッドのリクエストを受け取り、属性から各値を取得する。</span>
-<span class="nv">$staff_name</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">];</span>
-<span class="nv">$staff_pass</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s2">&quot;pass&quot;</span><span class="p">];</span>
+<span class="nv">$staff_name</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s2">"name"</span><span class="p">];</span>
+<span class="nv">$staff_pass</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s2">"pass"</span><span class="p">];</span>
 
 
 <span class="c1">// HTMLとして変数の内容を出力する際、『&lt;』『&gt;』などの特殊文字をエスケープ (無害化)</span>
-<span class="nv">$staff_name</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$staff_name</span><span class="p">,</span> <span class="nx">ENT_QUOTES</span><span class="p">,</span> <span class="s2">&quot;UTF-8&quot;</span><span class="p">);</span>
-<span class="nv">$staff_pass</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$staff_pass</span><span class="p">,</span> <span class="nx">ENT_QUOTES</span><span class="p">,</span> <span class="s2">&quot;UTF-8&quot;</span><span class="p">);</span>
+<span class="nv">$staff_name</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$staff_name</span><span class="p">,</span> <span class="nx">ENT_QUOTES</span><span class="p">,</span> <span class="s2">"UTF-8"</span><span class="p">);</span>
+<span class="nv">$staff_pass</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$staff_pass</span><span class="p">,</span> <span class="nx">ENT_QUOTES</span><span class="p">,</span> <span class="s2">"UTF-8"</span><span class="p">);</span>
 
 
 <span class="c1">// DBと接続 (イコールの間にスペースを入れるとエラーになってしまう)</span>
-<span class="nv">$dsn</span> <span class="o">=</span> <span class="s2">&quot;mysql:dbname=kizukeba_pronami_php;</span>
+<span class="nv">$dsn</span> <span class="o">=</span> <span class="s2">"mysql:dbname=kizukeba_pronami_php;</span>
 <span class="s2">host=kizukebapronamiphp</span>
-<span class="s2">charaset=UTF-8&quot;</span><span class="p">;</span>
-<span class="nv">$user</span> <span class="o">=</span> <span class="s2">&quot;root&quot;</span><span class="p">;</span>
-<span class="nv">$password</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="s2">charaset=UTF-8"</span><span class="p">;</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="s2">"root"</span><span class="p">;</span>
+<span class="nv">$password</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
 <span class="nv">$dbh</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="nv">$dsn</span><span class="p">,</span> <span class="nv">$user</span><span class="p">,</span> <span class="nv">$password</span><span class="p">);</span>
 <span class="nv">$dbh</span><span class="o">-&gt;</span><span class="na">setAttribute</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_ERRMODE</span><span class="p">,</span><span class="nx">PDO</span><span class="o">::</span><span class="na">ERRMODE_EXCEPTION</span><span class="p">);</span>
 
 
 <span class="c1">// 列名と値を指定してINSERT</span>
-<span class="nv">$sql</span><span class="o">=</span><span class="s2">&quot;INSERT INTO mst_staff (name,password) VALUES (?,?)&quot;</span><span class="p">;</span>
+<span class="nv">$sql</span><span class="o">=</span><span class="s2">"INSERT INTO mst_staff (name,password) VALUES (?,?)"</span><span class="p">;</span>
 <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$dbh</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
 
 

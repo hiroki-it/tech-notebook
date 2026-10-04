@@ -35118,11 +35118,11 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <h4 id="author">▼ author<a class="headerlink" href="#author" title="Permanent link">&para;</a></h4>
 <p>パッケージの作成者名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;author&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"author"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Hiroki</span><span class="nv"> </span><span class="s">Hasegawa&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;email&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;example@gmail.com&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;url&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://github.com/hiroki-hasegawa&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Hiroki</span><span class="nv"> </span><span class="s">Hasegawa"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"email"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"example@gmail.com"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"url"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"https://github.com/hiroki-hasegawa"</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
@@ -35133,7 +35133,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </blockquote>
 <h4 id="bug">▼ bug<a class="headerlink" href="#bug" title="Permanent link">&para;</a></h4>
 <p>不具合の報告先の URL を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;bugs&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;url&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://github.com/hiroki-hasegawa/foo/issues&quot;</span><span class="p p-Indicator">}}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"bugs"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"url"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"https://github.com/hiroki-hasegawa/foo/issues"</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35145,11 +35145,11 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p>NPM に登録されていないパッケージは、『<code>git+&lt;GitHubリポジトリURL&gt;</code>』を指定する。</p>
 <p><code>npm install</code> コマンドの実行時に <code>--production</code> オプションを有効化すると、<code>dependencies</code> キーが使用される。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;dependencies&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"dependencies"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;^1.1.1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;bar&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;^1.0.0&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;baz&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;git+https://github.com/baz/baz-package.git&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"foo"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"^1.1.1"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"bar"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"^1.0.0"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"baz"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"git+https://github.com/baz/baz-package.git"</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
@@ -35159,7 +35159,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="description">▼ description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">foo</span><span class="nv"> </span><span class="s">package&quot;</span><span class="p p-Indicator">}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"description"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">foo</span><span class="nv"> </span><span class="s">package"</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35170,11 +35170,11 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p>開発環境のみ依存するパッケージ名を設定する。</p>
 <p><code>npm install</code> コマンドの実行時に <code>--production</code> オプションを有効化しないと、<code>devDependencies</code> キーが使用される。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;devDependencies&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"devDependencies"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;^1.1.1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;bar&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;^1.0.0&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;baz&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;git+https://github.com/baz/baz-package.git&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"foo"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"^1.1.1"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"bar"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"^1.0.0"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"baz"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"git+https://github.com/baz/baz-package.git"</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
@@ -35186,7 +35186,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <h4 id="directories">▼ directories<a class="headerlink" href="#directories" title="Permanent link">&para;</a></h4>
 <p>パッケージのディレクトリ構造を設定する。</p>
 <p><code>doc</code> キーでドキュメントのパス、<code>lib</code> でパッケージのパスを指定する。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;directories&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;doc&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo/doc&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;lib&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo/lib&quot;</span><span class="p p-Indicator">}}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"directories"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"doc"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"foo/doc"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"lib"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"foo/lib"</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35201,7 +35201,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <li><a href="https://qiita.com/suin/items/994458418c737cc9c3e8">package.jsonに"engines"を設定すると「このバージョンのNode.jsでしか動かない」を表明できる #JavaScript - Qiita</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;engines&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;node&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;1.0.0&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;npm&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;1.0.0&quot;</span><span class="p p-Indicator">}}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"engines"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"node"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"1.0.0"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"npm"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"1.0.0"</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <h4 id="homepage">▼ homepage<a class="headerlink" href="#homepage" title="Permanent link">&para;</a></h4>
 <p>パッケージを説明する Web サイトのリンクを設定する。</p>
@@ -35210,7 +35210,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <li><a href="https://docs.npmjs.com/cli/v7/configuring-npm/package-json#homepage">package.json | npm Docs</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;homepage&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="p p-Indicator">}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"homepage"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"https://example.com"</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="main">▼ main<a class="headerlink" href="#main" title="Permanent link">&para;</a></h4>
 <p>エントリポイントとなるファイルを設定する。</p>
@@ -35219,12 +35219,12 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <li><a href="https://docs.npmjs.com/cli/v7/configuring-npm/package-json#main">package.json | npm Docs</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;main&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;index.js&quot;</span><span class="p p-Indicator">}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"main"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"index.js"</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="name">▼ name<a class="headerlink" href="#name" title="Permanent link">&para;</a></h4>
 <p>npm パッケージ名を設定する。</p>
 <p>すべての npm パッケージのなかで、一意の名前である必要がある。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35233,8 +35233,8 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </blockquote>
 <h4 id="repository">▼ repository<a class="headerlink" href="#repository" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;repository&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="p p-Indicator">{</span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;git&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;url&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://github.com/hiroki-hasegawa/foo.git&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">"repository"</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">{</span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"git"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"url"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"https://github.com/hiroki-hasegawa/foo.git"</span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
@@ -35244,7 +35244,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </blockquote>
 <h4 id="scripts">▼ scripts<a class="headerlink" href="#scripts" title="Permanent link">&para;</a></h4>
 <p>汎用コマンドとエイリアスを設定する。<code>npm run &lt;エイリアス&gt;</code> コマンドで実行できる。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;scripts&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;npm</span><span class="nv"> </span><span class="s">install&quot;</span><span class="p p-Indicator">}}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"scripts"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"foo"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"npm</span><span class="nv"> </span><span class="s">install"</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35253,7 +35253,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </blockquote>
 <h4 id="version">▼ version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h4>
 <p>パッケージのバージョンを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;バージョンタグ&gt;&quot;</span><span class="p p-Indicator">}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;バージョンタグ&gt;"</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35325,22 +35325,22 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p>補足として、実行するコマンドのなかで、再び <code>npm run</code> コマンドも定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="c1"># コマンド</span>
-<span class="w">  </span><span class="s">&quot;scripts&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="c1"># &quot;&lt;エイリアス&gt;&quot;: &quot;&lt;実行するコマンド&gt;&quot;,</span>
-<span class="w">      </span><span class="s">&quot;dev&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;npm</span><span class="nv"> </span><span class="s">run</span><span class="nv"> </span><span class="s">development&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;development&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cross-env</span><span class="nv"> </span><span class="s">NODE_ENV=development</span><span class="nv"> </span><span class="s">node_modules/webpack/bin/webpack.js</span><span class="nv"> </span><span class="s">--progress</span><span class="nv"> </span><span class="s">--hide-modules</span><span class="nv"> </span><span class="s">--config=node_modules/laravel-mix/setup/webpack.config.js&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;watch&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;npm</span><span class="nv"> </span><span class="s">run</span><span class="nv"> </span><span class="s">development</span><span class="nv"> </span><span class="s">--</span><span class="nv"> </span><span class="s">--watch&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;watch-poll&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;npm</span><span class="nv"> </span><span class="s">run</span><span class="nv"> </span><span class="s">watch</span><span class="nv"> </span><span class="s">--</span><span class="nv"> </span><span class="s">--watch-poll&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;hot&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cross-env</span><span class="nv"> </span><span class="s">NODE_ENV=development</span><span class="nv"> </span><span class="s">node_modules/webpack-dev-server/bin/webpack-dev-server.js</span><span class="nv"> </span><span class="s">--inline</span><span class="nv"> </span><span class="s">--hot</span><span class="nv"> </span><span class="s">--disable-host-check</span><span class="nv"> </span><span class="s">--config=node_modules/laravel-mix/setup/webpack.config.js&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;prod&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;npm</span><span class="nv"> </span><span class="s">run</span><span class="nv"> </span><span class="s">production&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;production&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cross-env</span><span class="nv"> </span><span class="s">NODE_ENV=production</span><span class="nv"> </span><span class="s">node_modules/webpack/bin/webpack.js</span><span class="nv"> </span><span class="s">--no-progress</span><span class="nv"> </span><span class="s">--hide-modules</span><span class="nv"> </span><span class="s">--config=node_modules/laravel-mix/setup/webpack.config.js&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"scripts"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="c1"># "&lt;エイリアス&gt;": "&lt;実行するコマンド&gt;",</span>
+<span class="w">      </span><span class="s">"dev"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"npm</span><span class="nv"> </span><span class="s">run</span><span class="nv"> </span><span class="s">development"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"development"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"cross-env</span><span class="nv"> </span><span class="s">NODE_ENV=development</span><span class="nv"> </span><span class="s">node_modules/webpack/bin/webpack.js</span><span class="nv"> </span><span class="s">--progress</span><span class="nv"> </span><span class="s">--hide-modules</span><span class="nv"> </span><span class="s">--config=node_modules/laravel-mix/setup/webpack.config.js"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"watch"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"npm</span><span class="nv"> </span><span class="s">run</span><span class="nv"> </span><span class="s">development</span><span class="nv"> </span><span class="s">--</span><span class="nv"> </span><span class="s">--watch"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"watch-poll"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"npm</span><span class="nv"> </span><span class="s">run</span><span class="nv"> </span><span class="s">watch</span><span class="nv"> </span><span class="s">--</span><span class="nv"> </span><span class="s">--watch-poll"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"hot"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"cross-env</span><span class="nv"> </span><span class="s">NODE_ENV=development</span><span class="nv"> </span><span class="s">node_modules/webpack-dev-server/bin/webpack-dev-server.js</span><span class="nv"> </span><span class="s">--inline</span><span class="nv"> </span><span class="s">--hot</span><span class="nv"> </span><span class="s">--disable-host-check</span><span class="nv"> </span><span class="s">--config=node_modules/laravel-mix/setup/webpack.config.js"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"prod"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"npm</span><span class="nv"> </span><span class="s">run</span><span class="nv"> </span><span class="s">production"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"production"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"cross-env</span><span class="nv"> </span><span class="s">NODE_ENV=production</span><span class="nv"> </span><span class="s">node_modules/webpack/bin/webpack.js</span><span class="nv"> </span><span class="s">--no-progress</span><span class="nv"> </span><span class="s">--hide-modules</span><span class="nv"> </span><span class="s">--config=node_modules/laravel-mix/setup/webpack.config.js"</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="node_options">NODE_OPTIONS<a class="headerlink" href="#node_options" title="Permanent link">&para;</a></h3>
 <p>メモリ上限を設定する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">NODE_OPTIONS</span><span class="o">=</span><span class="s2">&quot;--max-old-space-size=2048&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">NODE_OPTIONS</span><span class="o">=</span><span class="s2">"--max-old-space-size=2048"</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02-yarn">02. Yarn<a class="headerlink" href="#02-yarn" title="Permanent link">&para;</a></h2>
@@ -35506,12 +35506,12 @@ $<span class="w"> </span>yarn<span class="w"> </span>upgrade<span class="w"> </s
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;!doctype html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span> <span class="p">/&gt;</span>
     <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>webpack tutorial<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://code.jquery.com/jquery-3.1.1.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/app.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://code.jquery.com/jquery-3.1.1.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"js/app.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
@@ -35519,12 +35519,12 @@ $<span class="w"> </span>yarn<span class="w"> </span>upgrade<span class="w"> </s
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;!doctype html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span> <span class="p">/&gt;</span>
     <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>webpack tutorial<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
     <span class="cm">&lt;!-- jQueryもバンドルされたファイル --&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/bundle.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"js/bundle.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>

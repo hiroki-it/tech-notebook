@@ -35732,13 +35732,13 @@ $<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span
 <h3 id="-username">--<code>&lt;影響範囲&gt;</code> user.name<a class="headerlink" href="#-username" title="Permanent link">&para;</a></h3>
 <p>Author と Committer の名前を設定する。</p>
 <p><code>local</code> が一番最後に上書きされ、適用される。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--local<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;hiroki.hasegawa&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--local<span class="w"> </span>user.name<span class="w"> </span><span class="s2">"hiroki.hasegawa"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="-useremail">--<code>&lt;影響範囲&gt;</code> user.email<a class="headerlink" href="#-useremail" title="Permanent link">&para;</a></h3>
 <p>Author と Committer のメールアドレスを設定する。</p>
 <p><code>local</code> が一番最後に上書きされ、適用される。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--local<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;example@gmail.com&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--local<span class="w"> </span>user.email<span class="w"> </span><span class="s2">"example@gmail.com"</span>
 </code></pre></div>
 <p>Author の情報は、コミット時に反映される (Committer は表示されない) 。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>log
@@ -35785,7 +35785,7 @@ Date:<span class="w">   </span>Sat<span class="w"> </span>Sep<span class="w"> </
 <h3 id="-global-coreeditor">--global core.editor<a class="headerlink" href="#-global-coreeditor" title="Permanent link">&para;</a></h3>
 <p>git のデフォルトエディタを設定する。</p>
 <p>ここでは、Vim をデフォルトとする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.editor<span class="w"> </span><span class="s2">&quot;vim -c &quot;</span><span class="nb">set</span><span class="w"> </span><span class="nv">fenc</span><span class="o">=</span>utf-8<span class="s2">&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.editor<span class="w"> </span><span class="s2">"vim -c "</span><span class="nb">set</span><span class="w"> </span><span class="nv">fenc</span><span class="o">=</span>utf-8<span class="s2">""</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="init">init<a class="headerlink" href="#init" title="Permanent link">&para;</a></h2>
@@ -35839,7 +35839,7 @@ $<span class="w"> </span>clip<span class="w"> </span>&lt;<span class="w"> </span
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-T<span class="w"> </span>&lt;接続名&gt;
 
-Hi<span class="w"> </span>hiroki.hasegawa!<span class="w"> </span>You<span class="err">&#39;</span>ve<span class="w"> </span>successfully<span class="w"> </span>authenticated,<span class="w"> </span>but<span class="w"> </span>GitHub<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>provide<span class="w"> </span>shell<span class="w"> </span>access.
+Hi<span class="w"> </span>hiroki.hasegawa!<span class="w"> </span>You<span class="err">'</span>ve<span class="w"> </span>successfully<span class="w"> </span>authenticated,<span class="w"> </span>but<span class="w"> </span>GitHub<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>provide<span class="w"> </span>shell<span class="w"> </span>access.
 </code></pre></div>
 <p><br></p>
 <p><br></p>
@@ -35970,7 +35970,7 @@ and<span class="w"> </span>the<span class="w"> </span>repository<span class="w">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>--branch<span class="w"> </span>main<span class="w"> </span>https://github.com/hiroki-hasegawa/foo-sub-module.git<span class="w"> </span>./modules/foo-sub-module
 </code></pre></div>
 <p>コマンドを実行すると、<code>.gitmodules</code> ファイルが作成される。</p>
-<div class="highlight"><pre><span></span><code>[submodule &quot;modules/foo-sub-module&quot;]
+<div class="highlight"><pre><span></span><code>[submodule "modules/foo-sub-module"]
     path = modules/foo-sub-module
     url = https://github.com/hiroki-hasegawa/foo-sub-module.git
     branch = main
@@ -36092,24 +36092,24 @@ $<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span
 <div class="highlight"><pre><span></span><code><span class="nv">DIFF</span><span class="o">=</span><span class="k">$(</span>git<span class="w"> </span>diff<span class="w"> </span>origin/main<span class="w"> </span>--name-only<span class="w"> </span>--relative<span class="w"> </span>./...<span class="k">)</span>
 
 <span class="c1"># 空文字かどうかを検証する</span>
-<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$DIFF</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;差分なし&quot;</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">"</span><span class="nv">$DIFF</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"差分なし"</span><span class="p">;</span>
 <span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 <span class="k">fi</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;差分あり&quot;</span><span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"差分あり"</span><span class="p">;</span>
 </code></pre></div>
 <p>空文字でないことを <code>true</code> として判定できる。</p>
 <p>ダブルクオーテーションをつける。</p>
 <div class="highlight"><pre><span></span><code><span class="nv">DIFF</span><span class="o">=</span><span class="k">$(</span>git<span class="w"> </span>diff<span class="w"> </span>origin/main<span class="w"> </span>--name-only<span class="w"> </span>--relative<span class="w"> </span>./...<span class="k">)</span>
 
 <span class="c1"># 空文字でないかどうかを検証する</span>
-<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$DIFF</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;差分あり&quot;</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">"</span><span class="nv">$DIFF</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"差分あり"</span><span class="p">;</span>
 <span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
 <span class="k">fi</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;差分なし&quot;</span><span class="p">;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"差分なし"</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36122,10 +36122,10 @@ $<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span
 
 <span class="c1"># 終了コードを検証する</span>
 <span class="k">case</span><span class="w"> </span><span class="nv">$EXIT_CODE</span><span class="w"> </span><span class="k">in</span>
-<span class="w">  </span><span class="m">0</span><span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;差分なし&quot;</span><span class="w"> </span><span class="p">;;</span>
-<span class="w">  </span><span class="m">1</span><span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;差分あり&quot;</span><span class="w"> </span><span class="p">;;</span>
-<span class="w">  </span><span class="m">128</span><span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;パラーメーターが誤っている&quot;</span><span class="w"> </span><span class="p">;;</span>
-<span class="w">  </span>*<span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;予期せぬエラー&quot;</span><span class="w"> </span><span class="p">;;</span>
+<span class="w">  </span><span class="m">0</span><span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"差分なし"</span><span class="w"> </span><span class="p">;;</span>
+<span class="w">  </span><span class="m">1</span><span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"差分あり"</span><span class="w"> </span><span class="p">;;</span>
+<span class="w">  </span><span class="m">128</span><span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"パラーメーターが誤っている"</span><span class="w"> </span><span class="p">;;</span>
+<span class="w">  </span>*<span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"予期せぬエラー"</span><span class="w"> </span><span class="p">;;</span>
 <span class="k">esac</span>
 </code></pre></div>
 <blockquote>
@@ -36153,22 +36153,22 @@ Aborting
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>status
 
 On<span class="w"> </span>branch<span class="w"> </span><span class="m">2019</span>/foo-repository/feature/6
-Your<span class="w"> </span>branch<span class="w"> </span>is<span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span>date<span class="w"> </span>with<span class="w"> </span><span class="s2">&quot;origin/2019/foo-repository/feature/6&quot;</span>.
+Your<span class="w"> </span>branch<span class="w"> </span>is<span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span>date<span class="w"> </span>with<span class="w"> </span><span class="s2">"origin/2019/foo-repository/feature/6"</span>.
 
 Changes<span class="w"> </span>not<span class="w"> </span>staged<span class="w"> </span><span class="k">for</span><span class="w"> </span>commit:
-<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>update<span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
-<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>discard<span class="w"> </span>changes<span class="w"> </span><span class="k">in</span><span class="w"> </span>working<span class="w"> </span>directory<span class="o">)</span>
+<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git add &lt;file&gt;..."</span><span class="w"> </span>to<span class="w"> </span>update<span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
+<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git checkout -- &lt;file&gt;..."</span><span class="w"> </span>to<span class="w"> </span>discard<span class="w"> </span>changes<span class="w"> </span><span class="k">in</span><span class="w"> </span>working<span class="w"> </span>directory<span class="o">)</span>
 
 <span class="w">        </span>modified:<span class="w">   </span>app/Resources/views/Inquiry/index.html.twig
 <span class="w">        </span>modified:<span class="w">   </span>app/config/config.yml
 <span class="w">        </span>modified:<span class="w">   </span>src/AppBundle/Entity/Inquiry.php
 
 Untracked<span class="w"> </span>files:
-<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>include<span class="w"> </span><span class="k">in</span><span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
+<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git add &lt;file&gt;..."</span><span class="w"> </span>to<span class="w"> </span>include<span class="w"> </span><span class="k">in</span><span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
 
 <span class="w">        </span>app/Resources/views/Toppage/menu.html.twig
 
-no<span class="w"> </span>changes<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add&quot;</span><span class="w"> </span>and/or<span class="w"> </span><span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
+no<span class="w"> </span>changes<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git add"</span><span class="w"> </span>and/or<span class="w"> </span><span class="s2">"git commit -a"</span><span class="o">)</span>
 </code></pre></div>
 <p>これを、<code>stash -u</code> する</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>stash<span class="w"> </span>-u
@@ -36194,19 +36194,19 @@ stash@<span class="o">{</span><span class="m">0</span><span class="o">}</span>:<
 
 On<span class="w"> </span>branch<span class="w"> </span><span class="m">2019</span>/foo-repository/feature/8
 Changes<span class="w"> </span>not<span class="w"> </span>staged<span class="w"> </span><span class="k">for</span><span class="w"> </span>commit:
-<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>update<span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
-<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>discard<span class="w"> </span>changes<span class="w"> </span><span class="k">in</span><span class="w"> </span>working<span class="w"> </span>directory<span class="o">)</span>
+<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git add &lt;file&gt;..."</span><span class="w"> </span>to<span class="w"> </span>update<span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
+<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git checkout -- &lt;file&gt;..."</span><span class="w"> </span>to<span class="w"> </span>discard<span class="w"> </span>changes<span class="w"> </span><span class="k">in</span><span class="w"> </span>working<span class="w"> </span>directory<span class="o">)</span>
 
 <span class="w">        </span>modified:<span class="w">   </span>app/Resources/views/Inquiry/index.html.twig
 <span class="w">        </span>modified:<span class="w">   </span>app/config/config.yml
 <span class="w">        </span>modified:<span class="w">   </span>src/AppBundle/Entity/Inquiry.php
 
 Untracked<span class="w"> </span>files:
-<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>include<span class="w"> </span><span class="k">in</span><span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
+<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git add &lt;file&gt;..."</span><span class="w"> </span>to<span class="w"> </span>include<span class="w"> </span><span class="k">in</span><span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
 
 <span class="w">        </span>app/Resources/views/Toppage/menu.html.twig
 
-no<span class="w"> </span>changes<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add&quot;</span><span class="w"> </span>and/or<span class="w"> </span><span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
+no<span class="w"> </span>changes<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git add"</span><span class="w"> </span>and/or<span class="w"> </span><span class="s2">"git commit -a"</span><span class="o">)</span>
 </code></pre></div>
 <h3 id="drop">drop<a class="headerlink" href="#drop" title="Permanent link">&para;</a></h3>
 <p>退避している指定のファイルを復元せずに削除する。</p>
@@ -36242,12 +36242,12 @@ Dropped<span class="w"> </span>refs/stash@<span class="o">{</span><span class="m
 
 git<span class="w"> </span>add<span class="w"> </span>.
 
-<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>git<span class="w"> </span>status<span class="w"> </span>--porcelain<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;変更点がないため、終了しました。&quot;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>git<span class="w"> </span>status<span class="w"> </span>--porcelain<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"変更点がないため、終了しました。"</span>
 <span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span><span class="p">;</span>
 <span class="k">fi</span>
 
-git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;CIツールが自動的にプッシュしました。&quot;</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"CIツールが自動的にプッシュしました。"</span>
 
 git<span class="w"> </span>pull
 
@@ -36338,7 +36338,7 @@ Merge:<span class="w"> </span>41cc21b<span class="w"> </span>f81c813
 Author:<span class="w"> </span>hiroki.hasegawa<span class="w"> </span>&lt;example@gmail.com&gt;
 Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">22</span>:56:32<span class="w"> </span><span class="m">2019</span><span class="w"> </span>+0900
 
-<span class="w">    </span>Merge<span class="w"> </span>remote-tracking<span class="w"> </span>branch<span class="w"> </span><span class="s2">&quot;refs/remotes/origin/main&quot;</span>
+<span class="w">    </span>Merge<span class="w"> </span>remote-tracking<span class="w"> </span>branch<span class="w"> </span><span class="s2">"refs/remotes/origin/main"</span>
 
 commit<span class="w"> </span>41cc21bb53a8597270b5deae3259751df18bce81
 Author:<span class="w"> </span>hiroki.hasegawa<span class="w"> </span>&lt;example@gmail.com&gt;
@@ -36421,7 +36421,7 @@ Merge:<span class="w"> </span>41cc21b<span class="w"> </span>f81c813
 Author:<span class="w"> </span>Hiroki<span class="w"> </span>Hasegawa<span class="w"> </span>&lt;example@gmail.com&gt;
 Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">22</span>:56:32<span class="w"> </span><span class="m">2019</span><span class="w"> </span>+0900
 
-<span class="w">    </span>Merge<span class="w"> </span>remote-tracking<span class="w"> </span>branch<span class="w"> </span><span class="s2">&quot;refs/remotes/origin/main&quot;</span>
+<span class="w">    </span>Merge<span class="w"> </span>remote-tracking<span class="w"> </span>branch<span class="w"> </span><span class="s2">"refs/remotes/origin/main"</span>
 
 commit<span class="w"> </span>41cc21bb53a8597270b5deae3259751df18bce81
 Author:<span class="w"> </span>Hiroki<span class="w"> </span>Hasegawa<span class="w"> </span>&lt;example@gmail.com&gt;
@@ -36461,7 +36461,7 @@ Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </
 <p><code>git commit --amend</code> に <code>-m</code> オプションを付けて、メッセージを変更する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>--amend<span class="w"> </span>-m<span class="o">=</span><span class="s2">&quot;&lt;変更後のメッセージ&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>--amend<span class="w"> </span>-m<span class="o">=</span><span class="s2">"&lt;変更後のメッセージ&gt;"</span>
 </code></pre></div>
 <dl>
 <dt><code>(4)</code></dt>
@@ -36512,14 +36512,14 @@ Successfully<span class="w"> </span>rebased<span class="w"> </span>and<span clas
 <p>しかし、危険な方法であるため、個人利用のリポジトリのみで使用するようにする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-git<span class="w"> </span>filter-branch<span class="w"> </span>-f<span class="w"> </span>--env-filter<span class="w"> </span><span class="s2">&quot;</span>
+git<span class="w"> </span>filter-branch<span class="w"> </span>-f<span class="w"> </span>--env-filter<span class="w"> </span><span class="s2">"</span>
 <span class="s2">    # Author名かCommitter名のいずれかが誤っていれば適用します。</span>
-<span class="s2">    if [ </span><span class="si">${</span><span class="nv">GIT_AUTHOR_NAME</span><span class="si">}</span><span class="s2">=&quot;</span>hiroki.hasegawa<span class="s2">&quot; -o </span><span class="si">${</span><span class="nv">GIT_COMMITTER_NAME</span><span class="si">}</span><span class="s2">=&quot;</span>hiroki.hasegawa<span class="s2">&quot; ] ; then</span>
-<span class="s2">    export GIT_AUTHOR_NAME=&quot;</span>hiroki.hasegawa<span class="s2">&quot;</span>
-<span class="s2">    export GIT_AUTHOR_EMAIL=&quot;</span>example@gmail.com<span class="s2">&quot;</span>
-<span class="s2">    export GIT_COMMITTER_NAME=&quot;</span>hiroki.hasegawa<span class="s2">&quot;</span>
-<span class="s2">    export GIT_COMMITTER_EMAIL=&quot;</span>example@gmail.com<span class="s2">&quot;</span>
-<span class="s2">fi&quot;</span>
+<span class="s2">    if [ </span><span class="si">${</span><span class="nv">GIT_AUTHOR_NAME</span><span class="si">}</span><span class="s2">="</span>hiroki.hasegawa<span class="s2">" -o </span><span class="si">${</span><span class="nv">GIT_COMMITTER_NAME</span><span class="si">}</span><span class="s2">="</span>hiroki.hasegawa<span class="s2">" ] ; then</span>
+<span class="s2">    export GIT_AUTHOR_NAME="</span>hiroki.hasegawa<span class="s2">"</span>
+<span class="s2">    export GIT_AUTHOR_EMAIL="</span>example@gmail.com<span class="s2">"</span>
+<span class="s2">    export GIT_COMMITTER_NAME="</span>hiroki.hasegawa<span class="s2">"</span>
+<span class="s2">    export GIT_COMMITTER_EMAIL="</span>example@gmail.com<span class="s2">"</span>
+<span class="s2">fi"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="-onto">--onto &lt;派生元にしたいローカルブランチ名&gt; &lt;誤って派生元にしたローカルブランチ名&gt; &lt;派生元を変更したいローカルブランチ名&gt;<a class="headerlink" href="#-onto" title="Permanent link">&para;</a></h3>
@@ -36554,9 +36554,9 @@ git<span class="w"> </span>filter-branch<span class="w"> </span>-f<span class="w
 error:<span class="w"> </span>could<span class="w"> </span>not<span class="w"> </span>apply<span class="w"> </span>37bee65...<span class="w"> </span>update<span class="w"> </span><span class="c1">#0 README.mdに本レポジトリのタイトルと引用を記載した</span>
 
 Resolve<span class="w"> </span>all<span class="w"> </span>conflicts<span class="w"> </span>manually,<span class="w"> </span>mark<span class="w"> </span>them<span class="w"> </span>as<span class="w"> </span>resolved<span class="w"> </span>with
-<span class="s2">&quot;git add/rm &lt;conflicted_files&gt;&quot;</span>,<span class="w"> </span><span class="k">then</span><span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;git rebase --continue&quot;</span>.
-You<span class="w"> </span>can<span class="w"> </span>instead<span class="w"> </span>skip<span class="w"> </span>this<span class="w"> </span>commit:<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;git rebase --skip&quot;</span>.
-To<span class="w"> </span>abort<span class="w"> </span>and<span class="w"> </span>get<span class="w"> </span>back<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>state<span class="w"> </span>before<span class="w"> </span><span class="s2">&quot;git rebase&quot;</span>,<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;git rebase --abort&quot;</span>.
+<span class="s2">"git add/rm &lt;conflicted_files&gt;"</span>,<span class="w"> </span><span class="k">then</span><span class="w"> </span>run<span class="w"> </span><span class="s2">"git rebase --continue"</span>.
+You<span class="w"> </span>can<span class="w"> </span>instead<span class="w"> </span>skip<span class="w"> </span>this<span class="w"> </span>commit:<span class="w"> </span>run<span class="w"> </span><span class="s2">"git rebase --skip"</span>.
+To<span class="w"> </span>abort<span class="w"> </span>and<span class="w"> </span>get<span class="w"> </span>back<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>state<span class="w"> </span>before<span class="w"> </span><span class="s2">"git rebase"</span>,<span class="w"> </span>run<span class="w"> </span><span class="s2">"git rebase --abort"</span>.
 
 Could<span class="w"> </span>not<span class="w"> </span>apply<span class="w"> </span>37bee65...<span class="w"> </span>update<span class="w"> </span><span class="c1">#0 README.mdに本レポジトリのタイトルと引用を記載した</span>
 </code></pre></div>
@@ -36578,9 +36578,9 @@ $
 <h3 id="_8">コマンド組み合わせ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>すべてのリモートブランチを pull する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-r<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;\-&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">"\-&gt;"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>main<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>remote<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>--track<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">remote</span><span class="p">#origin/</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$remote</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>remote<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>--track<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">remote</span><span class="p">#origin/</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$remote</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
 
 $<span class="w"> </span>git<span class="w"> </span>fetch<span class="w"> </span>--all
 
@@ -36618,40 +36618,40 @@ $<span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>
 <h2 id="show-branch">show-branch<a class="headerlink" href="#show-branch" title="Permanent link">&para;</a></h2>
 <p>作業ブランチの派生元になっているブランチを確認。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>show-branch<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>git<span class="w"> </span>rev-parse<span class="w"> </span>--abbrev-ref<span class="w"> </span>HEAD<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"*"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>git<span class="w"> </span>rev-parse<span class="w"> </span>--abbrev-ref<span class="w"> </span>HEAD<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="s2">&quot;[]~^[]&quot;</span><span class="w"> </span><span class="s2">&quot;{print </span><span class="nv">$2</span><span class="s2">}&quot;</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="s2">"[]~^[]"</span><span class="w"> </span><span class="s2">"{print </span><span class="nv">$2</span><span class="s2">}"</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="filter-branch">filter-branch<a class="headerlink" href="#filter-branch" title="Permanent link">&para;</a></h2>
 <h3 id="-f-env-filter">-f --env-filter<a class="headerlink" href="#-f-env-filter" title="Permanent link">&para;</a></h3>
 <p>指定した名前とメールアドレスを上書きする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>filter-branch<span class="w"> </span>--force<span class="w"> </span>--env-filter<span class="w"> </span><span class="s1">&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>filter-branch<span class="w"> </span>--force<span class="w"> </span>--env-filter<span class="w"> </span><span class="s1">'</span>
 <span class="s1">    # GIT_AUTHOR_NAMEの書き換え</span>
-<span class="s1">    if [ &quot;$GIT_AUTHOR_NAME&quot;=&quot;&lt;変更前のコミッター名&gt;&quot; ];</span>
+<span class="s1">    if [ "$GIT_AUTHOR_NAME"="&lt;変更前のコミッター名&gt;" ];</span>
 <span class="s1">    then</span>
-<span class="s1">      GIT_AUTHOR_NAME=&quot;&lt;変更後のコミッター名&gt;&quot;;</span>
+<span class="s1">      GIT_AUTHOR_NAME="&lt;変更後のコミッター名&gt;";</span>
 <span class="s1">    fi</span>
 
 <span class="s1">    # GIT_AUTHOR_EMAILの書き換え</span>
-<span class="s1">    if [ &quot;$GIT_AUTHOR_EMAIL&quot;=&quot;&lt;変更前のコミッターメールアドレス&gt;&quot; ];</span>
+<span class="s1">    if [ "$GIT_AUTHOR_EMAIL"="&lt;変更前のコミッターメールアドレス&gt;" ];</span>
 <span class="s1">    then</span>
-<span class="s1">      GIT_AUTHOR_EMAIL=&quot;&lt;変更後のコミッターメールアドレス&gt;&quot;;</span>
+<span class="s1">      GIT_AUTHOR_EMAIL="&lt;変更後のコミッターメールアドレス&gt;";</span>
 <span class="s1">    fi</span>
 
 <span class="s1">    # GIT_COMMITTER_NAMEの書き換え</span>
-<span class="s1">    if [ &quot;$GIT_COMMITTER_NAME&quot;=&quot;&lt;変更前のコミッター名&gt;&quot; ];</span>
+<span class="s1">    if [ "$GIT_COMMITTER_NAME"="&lt;変更前のコミッター名&gt;" ];</span>
 <span class="s1">    then</span>
-<span class="s1">      GIT_COMMITTER_NAME=&quot;&lt;変更後のコミッター名&gt;&quot;;</span>
+<span class="s1">      GIT_COMMITTER_NAME="&lt;変更後のコミッター名&gt;";</span>
 <span class="s1">    fi</span>
 
 <span class="s1">    # GIT_COMMITTER_EMAILの書き換え</span>
-<span class="s1">    if [ &quot;$GIT_COMMITTER_EMAIL&quot;=&quot;&lt;変更前のコミッターメールアドレス&gt;&quot; ];</span>
+<span class="s1">    if [ "$GIT_COMMITTER_EMAIL"="&lt;変更前のコミッターメールアドレス&gt;" ];</span>
 <span class="s1">    then</span>
-<span class="s1">      GIT_COMMITTER_EMAIL=&quot;&lt;変更後のコミッターメールアドレス&gt;&quot;;</span>
+<span class="s1">      GIT_COMMITTER_EMAIL="&lt;変更後のコミッターメールアドレス&gt;";</span>
 <span class="s1">    fi</span>
-<span class="s1">    &#39;</span><span class="w"> </span>--<span class="w"> </span>--all
+<span class="s1">    '</span><span class="w"> </span>--<span class="w"> </span>--all
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36665,7 +36665,7 @@ $<span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>
 <p>すべてのコミットに対して、特定のファイルを削除する処理を実行する。</p>
 <p>加えて、ローカルリポジトリに対してガーベジコレクションを実行すると、ローカルリポジトリから完全に削除できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>filter-branch<span class="w"> </span>-f<span class="w"> </span>--tree-filter<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s1">&#39;rm -f &lt;パス&gt;&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s1">'rm -f &lt;パス&gt;'</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>HEAD
 
 <span class="c1"># ガベージコレクションを実行する</span>

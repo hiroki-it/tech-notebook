@@ -33760,22 +33760,22 @@
 
 <span class="c1">// EnableFoo1 foo1Enabledを有効化する</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">fooEnabled</span><span class="w"> </span><span class="o">*</span><span class="nx">FooEnabled</span><span class="p">)</span><span class="w"> </span><span class="nx">EnableFoo1</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">FooEnabled</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">foo1Enabled</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;foo1 is enabled&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">foo1Enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">"foo1 is enabled"</span><span class="p">)</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fooEnabled</span>
 <span class="p">}</span>
 
 <span class="c1">// EnableFoo2 foo2Enabledを有効化する</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">fooEnabled</span><span class="w"> </span><span class="o">*</span><span class="nx">FooEnabled</span><span class="p">)</span><span class="w"> </span><span class="nx">EnableFoo2</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">FooEnabled</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">foo2Enabled</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;foo2 is enabled&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">foo2Enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">"foo2 is enabled"</span><span class="p">)</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fooEnabled</span>
 <span class="p">}</span>
 
 <span class="c1">// EnableFoo3 foo3Enabledを有効化する</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">fooEnabled</span><span class="w"> </span><span class="o">*</span><span class="nx">FooEnabled</span><span class="p">)</span><span class="w"> </span><span class="nx">EnableFoo3</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">FooEnabled</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">foo3Enabled</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;foo3 is enabled&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">foo3Enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">"foo3 is enabled"</span><span class="p">)</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fooEnabled</span>
 <span class="p">}</span>
 
@@ -33830,7 +33830,7 @@
 <span class="w">        </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">foo3Enabled</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">encountered</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">bool</span><span class="p">]</span><span class="kt">bool</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">encountered</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kt">map</span><span class="p">[</span><span class="kt">bool</span><span class="p">]</span><span class="kt">bool</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">slice</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="p">{</span>
@@ -33839,7 +33839,7 @@
 <span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">            </span><span class="p">}</span>
 
-<span class="w">            </span><span class="nx">encountered</span><span class="p">[</span><span class="nx">v</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="nx">encountered</span><span class="p">[</span><span class="nx">v</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -33848,17 +33848,17 @@
 <span class="p">}</span>
 <span class="c1">// EnableFoo1 foo1Enabledを有効化する</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">fooEnabled</span><span class="w"> </span><span class="o">*</span><span class="nx">FooEnabled</span><span class="p">)</span><span class="w"> </span><span class="nx">EnableFoo1</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">foo1Enabled</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">foo1Enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
 
 <span class="c1">// EnableFoo2 foo2Enabledを有効化する</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">fooEnabled</span><span class="w"> </span><span class="o">*</span><span class="nx">FooEnabled</span><span class="p">)</span><span class="w"> </span><span class="nx">EnableFoo2</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">foo2Enabled</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">foo2Enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
 
 <span class="c1">// EnableFoo3 foo3Enabledを有効化する</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">fooEnabled</span><span class="w"> </span><span class="o">*</span><span class="nx">FooEnabled</span><span class="p">)</span><span class="w"> </span><span class="nx">EnableFoo3</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">foo3Enabled</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">foo3Enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
 
 <span class="c1">// getFoo1Enabled foo1Enabledを取得する</span>
@@ -33879,8 +33879,8 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"os"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
@@ -33891,21 +33891,21 @@
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 有効化が重複する場合</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">IsDuplicateFoo</span><span class="p">():</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Failed to initialize foo: Foo is duplicate&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">"Failed to initialize foo: Foo is duplicate"</span><span class="p">)</span>
 <span class="w">        </span><span class="c1">// 後続の処理を実行できないので、ここでプロセスを終了させる</span>
 <span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// Foo1を使用する場合</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">getFoo1Enabled</span><span class="p">():</span>
-<span class="w">        </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">NewFoo1</span><span class="p">()</span>
+<span class="w">        </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">NewFoo1</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// Foo2を使用する場合</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">getFoo2Enabled</span><span class="p">():</span>
-<span class="w">        </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">NewFoo2</span><span class="p">()</span>
+<span class="w">        </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">NewFoo2</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// Foo3を使用する場合</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">fooEnabled</span><span class="p">.</span><span class="nx">getFoo3Enabled</span><span class="p">():</span>
-<span class="w">        </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">NewFoo3</span><span class="p">()</span>
+<span class="w">        </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">NewFoo3</span><span class="p">()</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="p">}</span>

@@ -33686,18 +33686,18 @@
 <p>Node.js のロガーは通常バックエンドでしか使用できないが、Pino 内の <code>pino/browser</code> モジュールはブラウザで使用できる。</p>
 <h4 id="_2">▼ ログ構造<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;level&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">30</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1744725534278</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;pid&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;hostname&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo-65d4ffdcfc-6sf99&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;trace_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;514bc006c3350c34be840a0dfe289492&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;msg&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Do</span><span class="nv"> </span><span class="s">something</span><span class="nv"> </span><span class="s">successfully&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"level"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">30</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"time"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1744725534278</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"pid"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"hostname"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"foo-65d4ffdcfc-6sf99"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"trace_id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"514bc006c3350c34be840a0dfe289492"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"msg"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Do</span><span class="nv"> </span><span class="s">something</span><span class="nv"> </span><span class="s">successfully"</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="info-error">▼ info 関数 (そのほか、error 関数など)<a class="headerlink" href="#info-error" title="Permanent link">&para;</a></h4>
 <p>指定のログレベルのメッセージを出力する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">pino</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;pino&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">pino</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"pino"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"https"</span><span class="p">;</span>
 
 <span class="kd">let</span><span class="w"> </span><span class="nx">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pino</span><span class="p">();</span>
 
@@ -33708,26 +33708,26 @@
 <span class="w">  </span><span class="c1">// クエリパラメータの取得</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">queryParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="nx">query</span><span class="p">;</span>
 
-<span class="w">  </span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;Do something successfully&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">"Do something successfully"</span><span class="p">);</span>
 
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="nx">headers</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">queryParam</span><span class="o">:</span><span class="w"> </span><span class="nx">queryParam</span><span class="p">,</span>
 <span class="w">  </span><span class="p">};</span>
 
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">"Content-Type"</span><span class="p">,</span><span class="w"> </span><span class="s2">"application/json"</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
 <span class="p">});</span>
 </code></pre></div>
 <p>ログレベル（info、error）は数値になっており、<code>info</code> や <code>error</code> などの文字列を出力する場合、次のように実装する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">pino</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;pino&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">pino</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"pino"</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pino</span><span class="p">({</span>
 <span class="w">  </span><span class="c1">// 不要なフィールドを削除する</span>
 <span class="w">  </span><span class="nx">base</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
 <span class="w">  </span><span class="c1">// フィールド名を変更する</span>
-<span class="w">  </span><span class="nx">messageKey</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;message&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">timeKey</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">messageKey</span><span class="o">:</span><span class="w"> </span><span class="s2">"message"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">timeKey</span><span class="o">:</span><span class="w"> </span><span class="s2">"timestamp"</span><span class="p">,</span>
 <span class="w">  </span><span class="c1">// タイムスタンプの形式を変更する</span>
 <span class="w">  </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="nx">pino</span><span class="p">.</span><span class="nx">stdTimeFunctions</span><span class="p">.</span><span class="nx">isoTime</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">formatters</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
@@ -33747,8 +33747,8 @@
 <p><br></p>
 <p><br></p>
 <h4 id="_3">▼ フィールドの追加<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">pino</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;pino&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">pino</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"pino"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"https"</span><span class="p">;</span>
 
 <span class="kd">let</span><span class="w"> </span><span class="nx">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pino</span><span class="p">();</span>
 
@@ -33759,29 +33759,29 @@
 <span class="w">  </span><span class="c1">// クエリパラメータの取得</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">queryParam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="nx">query</span><span class="p">;</span>
 
-<span class="w">  </span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">({</span><span class="nx">trace_id</span><span class="o">:</span><span class="w"> </span><span class="nx">getTraceId</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">header</span><span class="p">)},</span><span class="w"> </span><span class="s2">&quot;Do something successfully&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">({</span><span class="nx">trace_id</span><span class="o">:</span><span class="w"> </span><span class="nx">getTraceId</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">header</span><span class="p">)},</span><span class="w"> </span><span class="s2">"Do something successfully"</span><span class="p">);</span>
 
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="nx">headers</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">queryParam</span><span class="o">:</span><span class="w"> </span><span class="nx">queryParam</span><span class="p">,</span>
 <span class="w">  </span><span class="p">};</span>
 
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s2">"Content-Type"</span><span class="p">,</span><span class="w"> </span><span class="s2">"application/json"</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">response</span><span class="p">));</span>
 <span class="p">});</span>
 
 <span class="kd">function</span><span class="w"> </span><span class="nx">getTraceId</span><span class="p">(</span><span class="nx">headers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 受信したリクエストのtraceparentヘッダーから値を取得する</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">traceparent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">headers</span><span class="o">?</span><span class="p">.[</span><span class="s2">&quot;traceparent&quot;</span><span class="p">];</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">traceparent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">headers</span><span class="o">?</span><span class="p">.[</span><span class="s2">"traceparent"</span><span class="p">];</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">traceparent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// W3C Trace Context</span>
 <span class="w">    </span><span class="c1">// traceparent: 00-&lt;trace_id&gt;-&lt;span_id&gt;-01</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">parts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">traceparent</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">parts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">traceparent</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">"-"</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">parts</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">parts</span><span class="p">[</span><span class="mf">1</span><span class="p">];</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;unknown&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -33791,24 +33791,24 @@
 </ul>
 </blockquote>
 <h4 id="browser">▼ browser モジュール<a class="headerlink" href="#browser" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">pino</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;pino/browser&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">pino</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"pino/browser"</span><span class="p">;</span>
 
 <span class="c1">// prettyPrint: true で見やすい出力 (開発用)</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pino</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">browser</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">asObject</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// ログをオブジェクト形式で出力</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nx">level</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;info&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">level</span><span class="o">:</span><span class="w"> </span><span class="s2">"info"</span><span class="p">,</span>
 <span class="p">});</span>
 
-<span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;Hello from browser!&quot;</span><span class="p">);</span>
-<span class="nx">logger</span><span class="p">.</span><span class="nx">error</span><span class="p">({</span><span class="nx">err</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;error!&quot;</span><span class="p">)},</span><span class="w"> </span><span class="s2">&quot;エラー発生&quot;</span><span class="p">);</span>
+<span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">"Hello from browser!"</span><span class="p">);</span>
+<span class="nx">logger</span><span class="p">.</span><span class="nx">error</span><span class="p">({</span><span class="nx">err</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">"error!"</span><span class="p">)},</span><span class="w"> </span><span class="s2">"エラー発生"</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="winston">winston<a class="headerlink" href="#winston" title="Permanent link">&para;</a></h3>
 <h4 id="winston_1">▼ winston とは<a class="headerlink" href="#winston_1" title="Permanent link">&para;</a></h4>
 <p>Node.js のロガーである。</p>
 <p>バックエンドのみで使用でき、Node.js のレンダリングに関わる処理でコールしても何も起こらない。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">winston</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;winston&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">winston</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"winston"</span><span class="p">;</span>
 
 <span class="cm">/**</span>
 <span class="cm"> * ログの出力先 (トランスポート) を設定する</span>
@@ -33817,7 +33817,7 @@
 <span class="w">  </span><span class="ow">new</span><span class="w"> </span><span class="nx">winston</span><span class="p">.</span><span class="nx">transports</span><span class="p">.</span><span class="nx">Console</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">level</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">LOG_LEVEL</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// 環境変数をbool型に変換する</span>
-<span class="w">    </span><span class="nx">quiet</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">LOG_QUIET</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">quiet</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">LOG_QUIET</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span>
 <span class="w">  </span><span class="p">}),</span>
 <span class="p">];</span>
 
@@ -33826,7 +33826,7 @@
 <span class="cm"> */</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">winston</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">combine</span><span class="p">(</span>
 <span class="w">  </span><span class="nx">winston</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">timestamp</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">format</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;YYYY-MM-DDTHH:mm:ss.SSSZ&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">format</span><span class="o">:</span><span class="w"> </span><span class="s2">"YYYY-MM-DDTHH:mm:ss.SSSZ"</span><span class="p">,</span>
 <span class="w">  </span><span class="p">}),</span>
 <span class="w">  </span><span class="nx">winston</span><span class="p">.</span><span class="nx">format</span><span class="p">((</span><span class="nx">info</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// タイムスタンプにtimeキーを使用するため、元のtimestampキーを削除する</span>
@@ -33845,7 +33845,7 @@
 <span class="w">  </span><span class="nx">winston</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">splat</span><span class="p">(),</span>
 <span class="w">  </span><span class="c1">// 開発環境：prettyPrintで出力を整形する</span>
 <span class="w">  </span><span class="c1">// AWS環境：JSON形式で出力する</span>
-<span class="w">  </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">LOG_PRETTY_PRINT</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
+<span class="w">  </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">LOG_PRETTY_PRINT</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"true"</span>
 <span class="w">    </span><span class="o">?</span><span class="w"> </span><span class="nx">winston</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">prettyPrint</span><span class="p">()</span>
 <span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="nx">winston</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">json</span><span class="p">(),</span>
 <span class="p">);</span>
@@ -33885,20 +33885,20 @@
 </tbody>
 </table>
 <div class="highlight"><pre><span></span><code><span class="c1"># info レベル</span>
-<span class="p p-Indicator">{</span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test&quot;</span><span class="p p-Indicator">,</span><span class="nt"> level</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;info&quot;</span><span class="p p-Indicator">,</span><span class="nt"> time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-05-27T21:47:28.454+09:00&quot;</span><span class="p p-Indicator">}</span>
+<span class="p p-Indicator">{</span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">"test"</span><span class="p p-Indicator">,</span><span class="nt"> level</span><span class="p">:</span><span class="w"> </span><span class="s">"info"</span><span class="p p-Indicator">,</span><span class="nt"> time</span><span class="p">:</span><span class="w"> </span><span class="s">"2025-05-27T21:47:28.454+09:00"</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># error レベル</span>
-<span class="p p-Indicator">{</span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test&quot;</span><span class="p p-Indicator">,</span><span class="nt"> level</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p p-Indicator">,</span><span class="nt"> time</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2025-05-27T21:47:28.454+09:00&quot;</span><span class="p p-Indicator">}</span>
+<span class="p p-Indicator">{</span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">"test"</span><span class="p p-Indicator">,</span><span class="nt"> level</span><span class="p">:</span><span class="w"> </span><span class="s">"error"</span><span class="p p-Indicator">,</span><span class="nt"> time</span><span class="p">:</span><span class="w"> </span><span class="s">"2025-05-27T21:47:28.454+09:00"</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02-nodejs">02. node.js のプロセスの操作<a class="headerlink" href="#02-nodejs" title="Permanent link">&para;</a></h2>
 <h3 id="_6">新しいプロセスの実行<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="child_process">▼ child_process<a class="headerlink" href="#child_process" title="Permanent link">&para;</a></h4>
 <p>子の node.js プロセスを実行する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">spawn</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;child_process&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">spawn</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"child_process"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">script</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
-<span class="sb">  process.stdin.on(&#39;data&#39;, (data) =&gt; {</span>
+<span class="sb">  process.stdin.on('data', (data) =&gt; {</span>
 <span class="sb">    process.stdout.write(data.toString().toUpperCase());</span>
 <span class="sb">  });</span>
 <span class="sb">`</span><span class="p">;</span>
@@ -33906,11 +33906,11 @@
 <span class="c1">// 実行する子プロセスを設定する</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">child</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">spawn</span><span class="p">(</span>
 <span class="w">    </span><span class="c1">// Nodeコマンドを実行する</span>
-<span class="w">    </span><span class="s2">&quot;node&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"node"</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// eオプションでスクリプトを実行する</span>
-<span class="w">    </span><span class="p">[</span><span class="s2">&quot;-e&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">script</span><span class="p">],</span>
+<span class="w">    </span><span class="p">[</span><span class="s2">"-e"</span><span class="p">,</span><span class="w"> </span><span class="nx">script</span><span class="p">],</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">stdio</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;pipe&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pipe&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;inherit&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">stdio</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"pipe"</span><span class="p">,</span><span class="w"> </span><span class="s2">"pipe"</span><span class="p">,</span><span class="w"> </span><span class="s2">"inherit"</span><span class="p">],</span>
 <span class="w">      </span><span class="nx">detached</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">);</span>
@@ -33921,34 +33921,34 @@
 
 <span class="w">  </span><span class="nx">child</span><span class="p">.</span><span class="nx">unref</span><span class="p">()</span>
 
-<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">stdout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
-<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">stderr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">stdout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">''</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">stderr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">''</span>
 
 <span class="w">  </span><span class="c1">// 子プロセスの標準出力からデータを取得する</span>
-<span class="w">  </span><span class="nx">child</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">child</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'data'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">stdout</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
-<span class="w">    </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;FAILED&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">"SUCCESS"</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">reject</span><span class="p">(</span><span class="s2">"FAILED"</span><span class="p">);</span>
 <span class="w">  </span><span class="p">})</span>
 
 <span class="w">  </span><span class="c1">// 子プロセスの標準エラー出力からデータを取得する</span>
-<span class="w">  </span><span class="nx">child</span><span class="p">.</span><span class="nx">stderr</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">child</span><span class="p">.</span><span class="nx">stderr</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'data'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">stderr</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span>
-<span class="w">    </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;FAILED&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">"SUCCESS"</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">reject</span><span class="p">(</span><span class="s2">"FAILED"</span><span class="p">);</span>
 <span class="w">  </span><span class="p">})</span>
 
 <span class="w">  </span><span class="c1">// 子プロセスが終了した時の処理</span>
 <span class="w">  </span><span class="c1">// 後処理は非同期化にする</span>
-<span class="w">  </span><span class="nx">child</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">code</span><span class="p">,</span><span class="w"> </span><span class="nx">signal</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;FAILED&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">child</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'close'</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">code</span><span class="p">,</span><span class="w"> </span><span class="nx">signal</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">"SUCCESS"</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">reject</span><span class="p">(</span><span class="s2">"FAILED"</span><span class="p">);</span>
 <span class="w">  </span><span class="p">})</span>
 
 <span class="w">  </span><span class="c1">// 子プロセスの作成中や実行中にエラーが発生した時の処理</span>
-<span class="w">  </span><span class="nx">child</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;FAILED&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">child</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">"SUCCESS"</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">reject</span><span class="p">(</span><span class="s2">"FAILED"</span><span class="p">);</span>
 <span class="w">  </span><span class="p">})</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -33963,16 +33963,16 @@
 <h4 id="processon">▼ process.on<a class="headerlink" href="#processon" title="Permanent link">&para;</a></h4>
 <p>Node.js のプロセスのステータスに応じて、処理を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// プロセスの終了前にクリーンアップ処理を実行する</span>
-<span class="nx">process</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;beforeExit&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">code</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Process beforeExit event with code: &quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">);</span>
+<span class="nx">process</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"beforeExit"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">code</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Process beforeExit event with code: "</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">);</span>
 <span class="p">});</span>
 
 <span class="c1">// プロセス終了時のステータスコードを設定する</span>
-<span class="nx">process</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;exit&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">code</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Process exit event with code: &quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">);</span>
+<span class="nx">process</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"exit"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">code</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Process exit event with code: "</span><span class="p">,</span><span class="w"> </span><span class="nx">code</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;This message is displayed first.&quot;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"This message is displayed first."</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03">03. ファイルの操作<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
@@ -33980,10 +33980,10 @@
 <h4 id="writefilesync">▼ writeFileSync<a class="headerlink" href="#writefilesync" title="Permanent link">&para;</a></h4>
 <p>ファイルにテキストを書き込む。</p>
 <p>同期処理のため、完了を待って後続の処理を実行する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;fs&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"fs"</span><span class="p">;</span>
 
 <span class="c1">// ファイルを書き込む</span>
-<span class="nx">fs</span><span class="p">.</span><span class="nx">writeFileSync</span><span class="p">(</span><span class="s2">&quot;output.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;書き込む内容&quot;</span><span class="p">);</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">writeFileSync</span><span class="p">(</span><span class="s2">"output.txt"</span><span class="p">,</span><span class="w"> </span><span class="s2">"書き込む内容"</span><span class="p">);</span>
 
 <span class="c1">// 後続の処理</span>
 </code></pre></div>
@@ -33996,18 +33996,18 @@
 <h4 id="writefile">▼ writeFile<a class="headerlink" href="#writefile" title="Permanent link">&para;</a></h4>
 <p>ファイルにテキストを書き込む。</p>
 <p>非同期処理のため、先行の処理の完了を待たずに後続の処理を実行する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;fs&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"fs"</span><span class="p">;</span>
 
 <span class="c1">// ファイルを書き込む</span>
-<span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="s2">&quot;output.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;書き込む内容&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="s2">"output.txt"</span><span class="p">,</span><span class="w"> </span><span class="s2">"書き込む内容"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 書き出しに失敗した場合</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;エラーが発生しました。&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"エラーが発生しました。"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
 <span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="nx">err</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="w">  </span><span class="c1">// 書き出しに成功した場合</span>
 <span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;ファイルが正常に書き出しされました&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"ファイルが正常に書き出しされました"</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">});</span>
 
@@ -34023,41 +34023,41 @@
 <h2 id="04">04. メモリの操作<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_9">キャッシュの作成<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>外部のインメモリ DB ではなく、コンテナやサーバーのメモリ上にオブジェクトのキャッシュを作成する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">NodeCache</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;node-cache&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">NodeCache</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"node-cache"</span><span class="p">;</span>
 
 <span class="c1">// メモリ上にキャッシュを作成する (TTL 無制限、チェック間隔 600 秒)</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">fooNodeCache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">NodeCache</span><span class="p">();</span>
 
 <span class="c1">// キャッシュにデータを保存する</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;myObject&quot;</span><span class="p">;</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">objToCache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;太郎&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">30</span><span class="p">};</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"myObject"</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">objToCache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"太郎"</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">30</span><span class="p">};</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">ttlInSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3600</span><span class="p">;</span><span class="w"> </span><span class="c1">// 1時間</span>
 
 <span class="nx">fooNodeCache</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">objToCache</span><span class="p">,</span><span class="w"> </span><span class="nx">ttlInSeconds</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`&quot;</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">&quot; をキャッシュに保存しました。`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`"</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">" をキャッシュに保存しました。`</span><span class="p">);</span>
 
 <span class="c1">// キャッシュからデータを取得する</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">cachedObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fooNodeCache</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">cachedObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`キャッシュから &quot;</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">&quot; を取得しました:`</span><span class="p">,</span><span class="w"> </span><span class="nx">cachedObj</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`キャッシュから "</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">" を取得しました:`</span><span class="p">,</span><span class="w"> </span><span class="nx">cachedObj</span><span class="p">);</span>
 <span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`キャッシュに &quot;</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">&quot; は見つかりませんでした。`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`キャッシュに "</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">" は見つかりませんでした。`</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="c1">// キャッシュにキーが存在するか確認する</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">hasKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fooNodeCache</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`キャッシュに &quot;</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">&quot; は存在しますか？:`</span><span class="p">,</span><span class="w"> </span><span class="nx">hasKey</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`キャッシュに "</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">" は存在しますか？:`</span><span class="p">,</span><span class="w"> </span><span class="nx">hasKey</span><span class="p">);</span>
 
 <span class="c1">// キャッシュからデータを削除する</span>
 <span class="nx">fooNodeCache</span><span class="p">.</span><span class="nx">del</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`&quot;</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">&quot; をキャッシュから削除しました。`</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`"</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">" をキャッシュから削除しました。`</span><span class="p">);</span>
 
 <span class="c1">// 再度キャッシュからデータを取得する</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">deletedObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fooNodeCache</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">deletedObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`キャッシュから &quot;</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">&quot; を取得しました:`</span><span class="p">,</span><span class="w"> </span><span class="nx">deletedObj</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`キャッシュから "</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">" を取得しました:`</span><span class="p">,</span><span class="w"> </span><span class="nx">deletedObj</span><span class="p">);</span>
 <span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`キャッシュに &quot;</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">&quot; は見つかりませんでした。`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`キャッシュに "</span><span class="si">${</span><span class="nx">key</span><span class="si">}</span><span class="sb">" は見つかりませんでした。`</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>

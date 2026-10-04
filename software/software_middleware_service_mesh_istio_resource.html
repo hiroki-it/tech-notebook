@@ -35239,17 +35239,17 @@
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-c istio-proxy \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-- bash -c &quot;curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}&quot; | yq -P</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}" | yq -P</span>
 
 <span class="nn">---</span>
 <span class="nt">configs</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener</span>
 <span class="w">    </span><span class="c1"># リスナー</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0_50002</span>
 <span class="w">    </span><span class="nt">active_state</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">version_info</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2022-11-24T12:13:05Z/468</span>
 <span class="w">      </span><span class="nt">listener</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.config.listener.v3.Listener</span>
+<span class="w">        </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.config.listener.v3.Listener</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0_50002</span>
 <span class="w">        </span><span class="nt">address</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">socket_address</span><span class="p">:</span>
@@ -35266,7 +35266,7 @@
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 <span class="w">                </span><span class="nt">typed_config</span><span class="p">:</span>
 <span class="w">                  </span><span class="c1"># ネットワークフィルター (http_connection_manager) を指定する</span>
-<span class="w">                  </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+<span class="w">                  </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
 <span class="w">                  </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound_0.0.0.0_50001</span>
 <span class="w">                  </span><span class="nt">rds</span><span class="p">:</span>
 <span class="w">                    </span><span class="nt">config_source</span><span class="p">:</span>
@@ -35276,7 +35276,7 @@
 <span class="w">                    </span><span class="nt">route_config_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50002</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener</span>
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
@@ -35510,17 +35510,17 @@
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-c istio-proxy \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-- bash -c &quot;curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}&quot; | yq -P</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}" | yq -P</span>
 
 <span class="nn">---</span>
 <span class="nt">configs</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener</span>
 <span class="w">    </span><span class="c1"># リスナー</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0_50002</span>
 <span class="w">    </span><span class="nt">active_state</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">version_info</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2022-11-24T12:13:05Z/468</span>
 <span class="w">      </span><span class="nt">listener</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.config.listener.v3.Listener</span>
+<span class="w">        </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.config.listener.v3.Listener</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0_50002</span>
 <span class="w">        </span><span class="nt">address</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">socket_address</span><span class="p">:</span>
@@ -35537,7 +35537,7 @@
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 <span class="w">                </span><span class="nt">typed_config</span><span class="p">:</span>
 <span class="w">                  </span><span class="c1"># ネットワークフィルター (http_connection_manager) を指定する</span>
-<span class="w">                  </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+<span class="w">                  </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
 <span class="w">                  </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound_0.0.0.0_50001</span>
 <span class="w">                  </span><span class="nt">rds</span><span class="p">:</span>
 <span class="w">                    </span><span class="nt">config_source</span><span class="p">:</span>
@@ -35547,7 +35547,7 @@
 <span class="w">                    </span><span class="nt">route_config_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50002</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener</span>
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
@@ -35562,15 +35562,15 @@
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-c istio-proxy \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-- bash -c &quot;curl http://127.0.0.1:15000/config_dump?resource={dynamic_route_configs}&quot; | yq -P</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_route_configs}" | yq -P</span>
 
 <span class="nn">---</span>
 <span class="nt">configs</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig</span>
 <span class="w">    </span><span class="c1"># ルート</span>
 <span class="w">    </span><span class="nt">version_info</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2022-11-24T12:13:05Z/468</span>
 <span class="w">    </span><span class="nt">route_config</span><span class="p">:</span>
-<span class="w">      </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.config.route.v3.RouteConfiguration</span>
+<span class="w">      </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.config.route.v3.RouteConfiguration</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50002</span>
 <span class="w">      </span><span class="c1"># VirtualService 配下の Service の設定値が変わると、virtual_hosts キーの設定値も変わる</span>
 <span class="w">      </span><span class="nt">virtual_hosts</span><span class="p">:</span>
@@ -35597,7 +35597,7 @@
 <span class="w">                  </span><span class="nt">num_retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 <span class="w">                  </span><span class="nt">retry_host_predicate</span><span class="p">:</span>
 <span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.retry_host_predicates.previous_hosts</span>
-<span class="w">                  </span><span class="nt">host_selection_retry_max_attempts</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;5&quot;</span>
+<span class="w">                  </span><span class="nt">host_selection_retry_max_attempts</span><span class="p">:</span><span class="w"> </span><span class="s">"5"</span>
 <span class="w">                  </span><span class="nt">retriable_status_codes</span><span class="p">:</span>
 <span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">503</span>
 <span class="w">                </span><span class="nt">max_stream_duration</span><span class="p">:</span>
@@ -35608,7 +35608,7 @@
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;@type&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'@type'</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig</span>
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
@@ -35784,16 +35784,16 @@ httpbin-app-service.services.svc.cluster.local<span class="w">                  
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-c istio-proxy \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-- bash -c &quot;curl http://127.0.0.1:15000/config_dump?resource={dynamic_active_clusters}&quot; | yq -P</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_active_clusters}" | yq -P</span>
 
 <span class="nn">---</span>
 <span class="nt">configs</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster</span>
 <span class="w">    </span><span class="c1"># クラスター</span>
 <span class="w">    </span><span class="nt">version_info</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2022-11-24T12:13:05Z/468</span>
 
 <span class="w">    </span><span class="nt">cluster</span><span class="p">:</span>
-<span class="w">      </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.config.cluster.v3.Cluster</span>
+<span class="w">      </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.config.cluster.v3.Cluster</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EDS</span>
 <span class="w">      </span><span class="nt">eds_cluster_config</span><span class="p">:</span>
@@ -35804,7 +35804,7 @@ httpbin-app-service.services.svc.cluster.local<span class="w">                  
 <span class="w">        </span><span class="nt">service_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster</span>
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
@@ -35812,14 +35812,14 @@ httpbin-app-service.services.svc.cluster.local<span class="w">                  
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-c istio-proxy \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-- bash -c &quot;curl http://127.0.0.1:15000/config_dump?include_eds&quot; | yq -P</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-- bash -c "curl http://127.0.0.1:15000/config_dump?include_eds" | yq -P</span>
 
 <span class="nn">---</span>
 <span class="nt">configs</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># エンドポイント</span>
 <span class="w">  </span><span class="nt">dynamic_endpoint_configs</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoint_config</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment</span>
+<span class="w">        </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment</span>
 <span class="w">        </span><span class="nt">cluster_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local</span>
 <span class="w">        </span><span class="c1"># いずれかのエンドポイントにロードバランシング</span>
 <span class="w">        </span><span class="nt">endpoints</span><span class="p">:</span>
@@ -36008,7 +36008,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.stats</span>
 <span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
 <span class="w">            </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/stats.PluginConfig</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">    </span><span class="c1"># http_connection_manager 内の HTTP フィルターを追加する</span>
@@ -36032,10 +36032,10 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.stats</span>
 <span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
 <span class="w">            </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/stats.PluginConfig</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">disable_host_header_fallback</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">disable_host_header_fallback</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="c1"># http_connection_manager 内の HTTP フィルターを追加する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP_FILTER</span>
 <span class="w">      </span><span class="nt">match</span><span class="p">:</span>
@@ -36057,10 +36057,10 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.stats</span>
 <span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
 <span class="w">            </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/stats.PluginConfig</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">disable_host_header_fallback</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">disable_host_header_fallback</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">  </span><span class="c1"># デフォルトのフィルターよりも先に適用する</span>
 <span class="w">  </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1</span>
 </code></pre></div>
@@ -36102,7 +36102,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.stats</span>
 <span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
 <span class="w">            </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/stats.PluginConfig</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">    </span><span class="c1"># ネットワークフィルターの設定値を変更する</span>
@@ -36124,7 +36124,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.stats</span>
 <span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
 <span class="w">            </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/stats.PluginConfig</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">    </span><span class="c1"># ネットワークフィルターの設定値を変更する</span>
@@ -36146,7 +36146,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.stats</span>
 <span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
 <span class="w">            </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/stats.PluginConfig</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">  </span><span class="c1"># デフォルトのフィルターよりも先に適用する</span>
@@ -36203,7 +36203,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">      </span><span class="c1"># Authorization ヘッダーを指定する</span>
 <span class="w">      </span><span class="nt">fromHeaders</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
-<span class="w">          </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Bearer</span><span class="nv"> </span><span class="s">&quot;</span>
+<span class="w">          </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">"Bearer</span><span class="nv"> </span><span class="s">"</span>
 <span class="nn">---</span>
 <span class="c1"># AuthorizationPolicy で RequestAuthentication を強制する</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
@@ -36217,7 +36217,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">when</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">request.auth.claims[iss]</span>
 <span class="w">          </span><span class="c1"># JWT トークンがある場合にのみ許可する</span>
-<span class="w">          </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;https://&lt;Auth0のドメイン&gt;/&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"https://&lt;Auth0のドメイン&gt;/"</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36248,7 +36248,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">      </span><span class="c1"># Authorization ヘッダーを指定する</span>
 <span class="w">      </span><span class="nt">fromHeaders</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
-<span class="w">          </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Bearer</span><span class="nv"> </span><span class="s">&quot;</span>
+<span class="w">          </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">"Bearer</span><span class="nv"> </span><span class="s">"</span>
 <span class="nn">---</span>
 <span class="c1"># RequestAuthentication で設定した Authorization ヘッダーがない場合には認可エラーとする</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
@@ -36263,7 +36263,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">request.auth.claims[iss]</span>
 <span class="w">          </span><span class="c1"># JWT トークンがある場合にのみ許可する</span>
 <span class="w">          </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">[</span><span class="s">&quot;http://keycloak.com/realms/&lt;realm名&gt;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">            </span><span class="p p-Indicator">[</span><span class="s">"http://keycloak.com/realms/&lt;realm名&gt;"</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36295,7 +36295,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">      </span><span class="c1"># Authorization ヘッダーを指定する</span>
 <span class="w">      </span><span class="nt">fromHeaders</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
-<span class="w">          </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Bearer</span><span class="nv"> </span><span class="s">&quot;</span>
+<span class="w">          </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">"Bearer</span><span class="nv"> </span><span class="s">"</span>
 <span class="nn">---</span>
 <span class="c1"># RequestAuthentication で設定した Authorization ヘッダーがない場合には認可エラーとする</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>

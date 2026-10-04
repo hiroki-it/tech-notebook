@@ -34495,12 +34495,12 @@
 
 <span class="w">    </span><span class="c1">// 接続情報。sprintf関数を使用すると、可読性が高い。</span>
 <span class="w">    </span><span class="nx">dsn</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;%s:%s@tcp(%s:%s)/%s?charset=utf8&amp;parseTime=True&amp;loc=Local&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;DB_USER&quot;</span><span class="p">),</span>
-<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;DB_PASSWORD&quot;</span><span class="p">),</span>
-<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;DB_HOST&quot;</span><span class="p">),</span>
-<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;DB_PORT&quot;</span><span class="p">),</span>
-<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;DB_DATABASE&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="s">"%s:%s@tcp(%s:%s)/%s?charset=utf8&amp;parseTime=True&amp;loc=Local"</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">"DB_USER"</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">"DB_PASSWORD"</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">"DB_HOST"</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">"DB_PORT"</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">"DB_DATABASE"</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// DBに接続します。</span>
@@ -34522,7 +34522,7 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// DBとの接続を切断します。</span>
-<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">sqlDb</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sqlDb</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
@@ -34551,11 +34551,11 @@
 
 <span class="c1">// 以下と同じ</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">ID</span><span class="w">        </span><span class="kt">uint</span><span class="w"> </span><span class="s">`gorm:&quot;primaryKey&quot;`</span>
+<span class="w">    </span><span class="nx">ID</span><span class="w">        </span><span class="kt">uint</span><span class="w"> </span><span class="s">`gorm:"primaryKey"`</span>
 <span class="w">    </span><span class="nx">Name</span><span class="w">      </span><span class="kt">string</span>
 <span class="w">    </span><span class="nx">CreatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
 <span class="w">    </span><span class="nx">UpdatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
-<span class="w">    </span><span class="nx">DeletedAt</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DeleteAt</span><span class="w"> </span><span class="s">`gorm:&quot;index&quot;`</span>
+<span class="w">    </span><span class="nx">DeletedAt</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DeleteAt</span><span class="w"> </span><span class="s">`gorm:"index"`</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -34600,7 +34600,7 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">model</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">UserID</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`gorm:&quot;primaryKey&quot;`</span><span class="w"> </span><span class="c1">// プライマリーキーとして使用される。</span>
+<span class="w">    </span><span class="nx">UserID</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`gorm:"primaryKey"`</span><span class="w"> </span><span class="c1">// プライマリーキーとして使用される。</span>
 <span class="w">    </span><span class="nx">Name</span><span class="w">   </span><span class="kt">string</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -34622,14 +34622,14 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="w"> </span><span class="mi">111</span><span class="p">}</span>
 
-<span class="c1">// UPDATE users SET deleted_at=&quot;2013-10-29 10:23&quot; WHERE id = 111;</span>
+<span class="c1">// UPDATE users SET deleted_at="2013-10-29 10:23" WHERE id = 111;</span>
 <span class="nx">db</span><span class="p">.</span><span class="nx">Delete</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span>
 
-<span class="c1">// UPDATE users SET deleted_at=&quot;2013-10-29 10:23&quot; WHERE age = 20;</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">Where</span><span class="p">(</span><span class="s">&quot;age = ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">).</span><span class="nx">Delete</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{})</span>
+<span class="c1">// UPDATE users SET deleted_at="2013-10-29 10:23" WHERE age = 20;</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Where</span><span class="p">(</span><span class="s">"age = ?"</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">).</span><span class="nx">Delete</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{})</span>
 
 <span class="c1">// SELECT * FROM users WHERE age = 20 AND deleted_at IS NULL;</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">Where</span><span class="p">(</span><span class="s">&quot;age = 20&quot;</span><span class="p">).</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Where</span><span class="p">(</span><span class="s">"age = 20"</span><span class="p">).</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34652,7 +34652,7 @@
 
 <span class="c1">// テーブル名を『foo』になる。</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="nx">TableName</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;foo&quot;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"foo"</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -34688,13 +34688,13 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// CREATE処理を実行する</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">Animal</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Giraffe&quot;</span><span class="p">}).</span><span class="nx">Error</span><span class="p">;</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">Animal</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"Giraffe"</span><span class="p">}).</span><span class="nx">Error</span><span class="p">;</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Rollback</span><span class="p">()</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// CREATE処理を実行する。</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">Animal</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Lion&quot;</span><span class="p">}).</span><span class="nx">Error</span><span class="p">;</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">Animal</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"Lion"</span><span class="p">}).</span><span class="nx">Error</span><span class="p">;</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Rollback</span><span class="p">()</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">    </span><span class="p">}</span>
@@ -34713,7 +34713,7 @@
 <h4 id="create_1">▼ <code>CREATE</code> 処理とは<a class="headerlink" href="#create_1" title="Permanent link">&para;</a></h4>
 <p>gorm モデルのフィールドに設定された値を元に、レコードを作成する。</p>
 <p>作成したレコードのプライマリーキーを、構造体から取得できる。</p>
-<div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Jinzhu&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="nx">Birthday</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()}</span>
+<div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"Jinzhu"</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="nx">Birthday</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()}</span>
 
 <span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span>
 
@@ -34755,7 +34755,7 @@
 <span class="nx">db</span><span class="p">.</span><span class="nx">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
 
 <span class="c1">// SELECT * FROM users WHERE id = 10;</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;10&quot;</span><span class="p">)</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="s">"10"</span><span class="p">)</span>
 
 <span class="c1">// SELECT * FROM users WHERE id IN (1,2,3);</span>
 <span class="nx">db</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">users</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">})</span>
@@ -34771,16 +34771,16 @@
 <p>gorm モデルのフィールドに設定された値を元に、レコードを変更する。</p>
 <h4 id="_6">▼ 単一レコード更新 (暗黙的)<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>フィールドとは無関係に、渡された値を元に UPDATE 分を実行する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// UPDATE users SET name=&#39;hello&#39;, updated_at=&#39;2013-11-17 21:34:10&#39; WHERE active=true;</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{}).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&quot;active = ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="nx">Update</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE active=true;</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{}).</span><span class="nx">Where</span><span class="p">(</span><span class="s">"active = ?"</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="nx">Update</span><span class="p">(</span><span class="s">"name"</span><span class="p">,</span><span class="w"> </span><span class="s">"hello"</span><span class="p">)</span>
 
 <span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="mi">111</span><span class="p">}</span>
 
-<span class="c1">// UPDATE users SET name=&#39;hello&#39;, updated_at=&#39;2013-11-17 21:34:10&#39; WHERE id=111;</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Update</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
+<span class="c1">// UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE id=111;</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Update</span><span class="p">(</span><span class="s">"name"</span><span class="p">,</span><span class="w"> </span><span class="s">"hello"</span><span class="p">)</span>
 
-<span class="c1">// UPDATE users SET name=&#39;hello&#39;, updated_at=&#39;2013-11-17 21:34:10&#39; WHERE id=111 AND active=true;</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&quot;active = ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="nx">Update</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
+<span class="c1">// UPDATE users SET name='hello', updated_at='2013-11-17 21:34:10' WHERE id=111 AND active=true;</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">"active = ?"</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="nx">Update</span><span class="p">(</span><span class="s">"name"</span><span class="p">,</span><span class="w"> </span><span class="s">"hello"</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34793,11 +34793,11 @@
 <p>gorm モデルを使用した場合、フィールド値がゼロ値であると、これに紐付けられたレコード値の更新はスキップされてしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="mi">111</span><span class="p">}</span>
 
-<span class="c1">// UPDATE users SET name=&#39;hello&#39;, age=18, updated_at = &#39;2013-11-17 21:34:10&#39; WHERE id = 111;</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="nx">Active</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p">})</span>
+<span class="c1">// UPDATE users SET name='hello', age=18, updated_at = '2013-11-17 21:34:10' WHERE id = 111;</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"hello"</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="nx">Active</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span><span class="p">})</span>
 
-<span class="c1">// UPDATE users SET name=&#39;hello&#39;, age=18, active=false, updated_at=&#39;2013-11-17 21:34:10&#39; WHERE id=111;</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p">})</span>
+<span class="c1">// UPDATE users SET name='hello', age=18, active=false, updated_at='2013-11-17 21:34:10' WHERE id=111;</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}{</span><span class="s">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"hello"</span><span class="p">,</span><span class="w"> </span><span class="s">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="s">"active"</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span><span class="p">})</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34809,11 +34809,11 @@
 <p>フィールド値がゼロ値であっても、スキップされない。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="mi">111</span><span class="p">}</span>
 
-<span class="c1">// UPDATE users SET name=&#39;new_name&#39;, age=0 WHERE id=111;</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Select</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Age&quot;</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;new_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">})</span>
+<span class="c1">// UPDATE users SET name='new_name', age=0 WHERE id=111;</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Select</span><span class="p">(</span><span class="s">"Name"</span><span class="p">,</span><span class="w"> </span><span class="s">"Age"</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"new_name"</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">})</span>
 
-<span class="c1">// UPDATE users SET name=&#39;new_name&#39;, age=0 WHERE id=111;</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Select</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;jinzhu&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Role</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;admin&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">})</span>
+<span class="c1">// UPDATE users SET name='new_name', age=0 WHERE id=111;</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Select</span><span class="p">(</span><span class="s">"*"</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"jinzhu"</span><span class="p">,</span><span class="w"> </span><span class="nx">Role</span><span class="p">:</span><span class="w"> </span><span class="s">"admin"</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">})</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34826,11 +34826,11 @@
 
 <span class="nx">db</span><span class="p">.</span><span class="nx">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span>
 
-<span class="nx">user</span><span class="p">.</span><span class="nx">Name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;jinzhu 2&quot;</span>
+<span class="nx">user</span><span class="p">.</span><span class="nx">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"jinzhu 2"</span>
 
-<span class="nx">user</span><span class="p">.</span><span class="nx">Age</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span>
+<span class="nx">user</span><span class="p">.</span><span class="nx">Age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span>
 
-<span class="c1">// UPDATE users SET name=&#39;jinzhu 2&#39;, age=100, birthday=&#39;2016-01-01&#39;, updated_at = &#39;2013-11-17 21:34:10&#39; WHERE id=111;</span>
+<span class="c1">// UPDATE users SET name='jinzhu 2', age=100, birthday='2016-01-01', updated_at = '2013-11-17 21:34:10' WHERE id=111;</span>
 <span class="nx">db</span><span class="p">.</span><span class="nx">Save</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
@@ -34864,11 +34864,11 @@
 <h3 id="exec">Exec<a class="headerlink" href="#exec" title="Permanent link">&para;</a></h3>
 <h4 id="exec_1">▼ Exec とは<a class="headerlink" href="#exec_1" title="Permanent link">&para;</a></h4>
 <p>SQL ステートメントをそのまま実行する。</p>
-<div class="highlight"><pre><span></span><code><span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">&quot;DROP TABLE users&quot;</span><span class="p">)</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">&quot;UPDATE orders SET shipped_at = ? WHERE id IN ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">(),</span><span class="w"> </span><span class="p">[]</span><span class="kt">int64</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">})</span>
-<span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">&quot;UPDATE users SET money = ? WHERE name = ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Expr</span><span class="p">(</span><span class="s">&quot;money * ? + ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;jinzhu&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">"DROP TABLE users"</span><span class="p">)</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">"UPDATE orders SET shipped_at = ? WHERE id IN ?"</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">(),</span><span class="w"> </span><span class="p">[]</span><span class="kt">int64</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">})</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">"UPDATE users SET money = ? WHERE name = ?"</span><span class="p">,</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Expr</span><span class="p">(</span><span class="s">"money * ? + ?"</span><span class="p">,</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="s">"jinzhu"</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;SET SESSION max_execution_time=%d;&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"SET SESSION max_execution_time=%d;"</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34884,12 +34884,12 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">NewDb</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// Createの前</span>
-<span class="w">    </span><span class="nx">db</span><span class="p">.</span><span class="nx">Callback</span><span class="p">().</span><span class="nx">Create</span><span class="p">().</span><span class="nx">Before</span><span class="p">(</span><span class="s">&quot;gorm:before_create&quot;</span><span class="p">).</span><span class="nx">Register</span><span class="p">(</span><span class="s">&quot;&lt;フック名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;CRUD関数名&gt;&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">db</span><span class="p">.</span><span class="nx">Callback</span><span class="p">().</span><span class="nx">Create</span><span class="p">().</span><span class="nx">Before</span><span class="p">(</span><span class="s">"gorm:before_create"</span><span class="p">).</span><span class="nx">Register</span><span class="p">(</span><span class="s">"&lt;フック名&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s">"&lt;CRUD関数名&gt;"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -34901,14 +34901,14 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">db</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="w"> </span><span class="o">*</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="nx">BeforeSave</span><span class="p">(</span><span class="nx">tx</span><span class="w"> </span><span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">user</span><span class="p">.</span><span class="nx">LastUpdated</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">user</span><span class="p">.</span><span class="nx">LastUpdated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">db</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="w"> </span><span class="o">*</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="nx">AfterSave</span><span class="p">(</span><span class="nx">tx</span><span class="w"> </span><span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;User successfully saved:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">ID</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"User successfully saved:"</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">ID</span><span class="p">)</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -34939,13 +34939,13 @@
 <span class="w">    </span><span class="nx">Unscoped</span><span class="w">             </span><span class="kt">bool</span>
 <span class="w">    </span><span class="nx">Dest</span><span class="w">                 </span><span class="kd">interface</span><span class="p">{}</span>
 <span class="w">    </span><span class="nx">ReflectValue</span><span class="w">         </span><span class="nx">reflect</span><span class="p">.</span><span class="nx">Value</span>
-<span class="w">    </span><span class="nx">Clauses</span><span class="w">              </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">clause</span><span class="p">.</span><span class="nx">Clause</span>
+<span class="w">    </span><span class="nx">Clauses</span><span class="w">              </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">clause</span><span class="p">.</span><span class="nx">Clause</span>
 <span class="w">    </span><span class="nx">BuildClauses</span><span class="w">         </span><span class="p">[]</span><span class="kt">string</span>
 <span class="w">    </span><span class="nx">Distinct</span><span class="w">             </span><span class="kt">bool</span>
 <span class="w">    </span><span class="nx">Selects</span><span class="w">              </span><span class="p">[]</span><span class="kt">string</span>
 <span class="w">    </span><span class="nx">Omits</span><span class="w">                </span><span class="p">[]</span><span class="kt">string</span>
 <span class="w">    </span><span class="nx">Joins</span><span class="w">                </span><span class="p">[]</span><span class="nx">join</span>
-<span class="w">    </span><span class="nx">Preloads</span><span class="w">             </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kd">interface</span><span class="p">{}</span>
+<span class="w">    </span><span class="nx">Preloads</span><span class="w">             </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kd">interface</span><span class="p">{}</span>
 <span class="w">    </span><span class="nx">Settings</span><span class="w">             </span><span class="nx">sync</span><span class="p">.</span><span class="nx">Map</span>
 <span class="w">    </span><span class="nx">ConnPool</span><span class="w">             </span><span class="nx">ConnPool</span>
 <span class="w">    </span><span class="nx">Schema</span><span class="w">               </span><span class="o">*</span><span class="nx">schema</span><span class="p">.</span><span class="nx">Schema</span>

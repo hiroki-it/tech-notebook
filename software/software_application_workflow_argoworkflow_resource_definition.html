@@ -34009,7 +34009,7 @@
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/bash</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span>
 <span class="w">          </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">            </span><span class="no">echo &quot;Hello World&quot;</span>
+<span class="w">            </span><span class="no">echo "Hello World"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34050,7 +34050,7 @@
 <span class="w">      </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpline:1.0.0</span>
 <span class="w">          </span><span class="nt">cource</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">            </span><span class="no">echo &quot;Hello World&quot;</span>
+<span class="w">            </span><span class="no">echo "Hello World"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34073,7 +34073,7 @@
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/bash</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span>
 <span class="w">          </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">            </span><span class="no">echo &quot;Hello World&quot;</span>
+<span class="w">            </span><span class="no">echo "Hello World"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34099,13 +34099,13 @@
 <span class="w">    </span><span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">trigger.on-sync-status-unknown</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">- when: app.status.sync.status == &#39;Unknown&#39;</span>
+<span class="w">    </span><span class="no">- when: app.status.sync.status == 'Unknown'</span>
 <span class="w">      </span><span class="no">send: [app-sync-status, github-commit-status]</span>
 <span class="w">  </span><span class="nt">trigger.sync-operation-change</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">- when: app.status.operationState.phase in [&#39;Error&#39;, &#39;Failed&#39;]</span>
+<span class="w">    </span><span class="no">- when: app.status.operationState.phase in ['Error', 'Failed']</span>
 <span class="w">      </span><span class="no">send: [app-sync-failed, github-commit-status]</span>
 <span class="w">  </span><span class="nt">trigger.on-deployed</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">- when: app.status.operationState.phase in [&#39;Succeeded&#39;] and app.status.health.status == &#39;Healthy&#39;</span>
+<span class="w">    </span><span class="no">- when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'</span>
 <span class="w">      </span><span class="no">oncePer: app.status.sync.revision</span>
 <span class="w">      </span><span class="no">send: [app-sync-succeeded]</span>
 </code></pre></div>
@@ -34146,7 +34146,7 @@
 <span class="w">    </span><span class="no">env: prd</span>
 
 <span class="w">  </span><span class="nt">template.a-slack-template-with-context</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">message: &quot;ArgoCD sync in {{ .context.env }}&quot;</span>
+<span class="w">    </span><span class="no">message: "ArgoCD sync in {{ .context.env }}"</span>
 </code></pre></div>
 <blockquote>
 <ul>

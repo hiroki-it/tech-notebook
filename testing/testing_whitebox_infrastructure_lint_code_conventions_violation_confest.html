@@ -33971,11 +33971,11 @@
 <div class="highlight"><pre><span></span><code><span class="n">package</span><span class="w"> </span><span class="n">main</span>
 
 <span class="n">deny</span><span class="p">[</span><span class="n">msg</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">input</span><span class="p">.</span><span class="n">kind</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Deployment&quot;</span>
+<span class="w">  </span><span class="n">input</span><span class="p">.</span><span class="n">kind</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"Deployment"</span>
 
 <span class="w">  </span><span class="ow">not</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">spec</span><span class="p">.</span><span class="n">template</span><span class="p">.</span><span class="n">spec</span><span class="p">.</span><span class="n">securityContext</span><span class="p">.</span><span class="n">runAsNonRoot</span>
 
-<span class="w">  </span><span class="n">msg</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Containers must not run as root&quot;</span>
+<span class="w">  </span><span class="n">msg</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="s">"Containers must not run as root"</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -33989,11 +33989,11 @@
 <div class="highlight"><pre><span></span><code><span class="n">package</span><span class="w"> </span><span class="n">main</span>
 
 <span class="n">violation</span><span class="p">[</span><span class="n">msg</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">input</span><span class="p">.</span><span class="n">kind</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Deployment&quot;</span>
+<span class="w">  </span><span class="n">input</span><span class="p">.</span><span class="n">kind</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"Deployment"</span>
 
 <span class="w">  </span><span class="ow">not</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">spec</span><span class="p">.</span><span class="n">template</span><span class="p">.</span><span class="n">spec</span><span class="p">.</span><span class="n">securityContext</span><span class="p">.</span><span class="n">runAsNonRoot</span>
 
-<span class="w">  </span><span class="n">msg</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Containers must not run as root&quot;</span>
+<span class="w">  </span><span class="n">msg</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="s">"Containers must not run as root"</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>

@@ -34067,54 +34067,54 @@
 <p>バックエンドの場所に限らず、<code>terraform apply</code> コマンドを実行した後、成功もしくは失敗したタイミングで初めて作成される。</p>
 <p><code>tfstate</code> ファイル間では、Terraform やプロバイダーのバージョンに差が開きすぎると、互換性がなくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;terraform_version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;1.0.0&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;serial&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;lineage&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****-*****-*****-*****-*****&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;outputs&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="c1"># output ブロックの apply で追加される。</span>
-<span class="w">    </span><span class="s">&quot;foo_ids&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span>
+<span class="w">  </span><span class="s">"version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"terraform_version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"1.0.0"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"serial"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"lineage"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*****-*****-*****-*****-*****"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"outputs"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="c1"># output ブロックの apply で追加される。</span>
+<span class="w">    </span><span class="s">"foo_ids"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*****"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"string"</span>
 <span class="w">    </span><span class="p p-Indicator">}</span>
 <span class="w">  </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;resources&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">  </span><span class="s">"resources"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;mode&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;data&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># data ブロックの apply で追加される。</span>
-<span class="w">      </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;aws_caller_identity&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># resource タイプ</span>
-<span class="w">      </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;current&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># リソース名</span>
-<span class="w">      </span><span class="s">&quot;provider&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;provider[\&quot;registry.terraform.io/hashicorp/aws\&quot;]&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;instances&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="c1"># 設定値</span>
+<span class="w">      </span><span class="s">"mode"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"data"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># data ブロックの apply で追加される。</span>
+<span class="w">      </span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"aws_caller_identity"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># resource タイプ</span>
+<span class="w">      </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"current"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># リソース名</span>
+<span class="w">      </span><span class="s">"provider"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"provider[\"registry.terraform.io/hashicorp/aws\"]"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"instances"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="c1"># 設定値</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
-<span class="w">          </span><span class="s">&quot;schema_version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;attributes&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;account_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;AWSアカウントID&gt;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;arn&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;user_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span>
+<span class="w">          </span><span class="s">"schema_version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"attributes"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="s">"account_id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;AWSアカウントID&gt;"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"arn"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*****"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*****"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"user_id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*****"</span>
 <span class="w">            </span><span class="nv">...</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
-<span class="w">          </span><span class="s">&quot;sensitive_attributes&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="w">          </span><span class="s">"sensitive_attributes"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
 <span class="w">        </span><span class="p p-Indicator">}</span>
 <span class="w">      </span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;module&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;module.ec2&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># module ブロックの場合に追加される。</span>
-<span class="w">      </span><span class="s">&quot;mode&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;managed&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># import や、resource ブロックの apply で追加される。</span>
-<span class="w">      </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;aws_instance&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># resource タイプ</span>
-<span class="w">      </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;bastion&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># リソース名</span>
-<span class="w">      </span><span class="s">&quot;provider&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;provider[\&quot;registry.terraform.io/hashicorp/aws\&quot;]&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;instances&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="c1"># 設定値</span>
+<span class="w">      </span><span class="s">"module"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"module.ec2"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># module ブロックの場合に追加される。</span>
+<span class="w">      </span><span class="s">"mode"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"managed"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># import や、resource ブロックの apply で追加される。</span>
+<span class="w">      </span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"aws_instance"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># resource タイプ</span>
+<span class="w">      </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"bastion"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># リソース名</span>
+<span class="w">      </span><span class="s">"provider"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"provider[\"registry.terraform.io/hashicorp/aws\"]"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"instances"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="c1"># 設定値</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
-<span class="w">          </span><span class="s">&quot;schema_version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;attributes&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;arn&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;prd-foo-instance&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;tags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">              </span><span class="s">&quot;Env&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;prd&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">              </span><span class="s">&quot;ManagedBy&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;terraform&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">              </span><span class="s">&quot;Repository&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://github.com/*****&quot;</span>
+<span class="w">          </span><span class="s">"schema_version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"attributes"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="s">"arn"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*****"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"prd-foo-instance"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"tags"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">              </span><span class="s">"Env"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"prd"</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">"ManagedBy"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"terraform"</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">"Repository"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"https://github.com/*****"</span>
 <span class="w">            </span><span class="p p-Indicator">},</span>
-<span class="w">            </span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"description"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*****"</span><span class="p p-Indicator">,</span>
 <span class="w">            </span><span class="nv">...</span>
 <span class="w">          </span><span class="p p-Indicator">}</span>
 <span class="w">        </span><span class="p p-Indicator">}</span>
@@ -34137,7 +34137,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># Amazon S3による状態ロックを使用する場合</span>
 <span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;s3&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">"s3"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">use_lockfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -34193,22 +34193,22 @@ Lock<span class="w"> </span>Info:
 </blockquote>
 <h4 id="version">▼ version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h4>
 <p>プロバイダーのバージョンを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="err">provider</span><span class="w"> </span><span class="s2">&quot;registry.terraform.io/hashicorp/aws&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="err">provider</span><span class="w"> </span><span class="s2">"registry.terraform.io/hashicorp/aws"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">...</span>
 
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;4.3.0&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"4.3.0"</span>
 
 <span class="w">  </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="constraints">▼ constraints<a class="headerlink" href="#constraints" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="err">provider</span><span class="w"> </span><span class="s2">&quot;registry.terraform.io/hashicorp/aws&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="err">provider</span><span class="w"> </span><span class="s2">"registry.terraform.io/hashicorp/aws"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">...</span>
 
-<span class="w">  </span><span class="na">constraints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&gt;= 3.19.0&quot;</span>
+<span class="w">  </span><span class="na">constraints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&gt;= 3.19.0"</span>
 
 <span class="w">  </span><span class="p">...</span>
 
@@ -34216,14 +34216,14 @@ Lock<span class="w"> </span>Info:
 </code></pre></div>
 <h4 id="hashes">▼ hashes<a class="headerlink" href="#hashes" title="Permanent link">&para;</a></h4>
 <p>ハッシュ値を設定する、タグごとに役割が異なる。</p>
-<div class="highlight"><pre><span></span><code><span class="err">provider</span><span class="w"> </span><span class="s2">&quot;registry.terraform.io/hashicorp/aws&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="err">provider</span><span class="w"> </span><span class="s2">"registry.terraform.io/hashicorp/aws"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">...</span>
 
 <span class="w">  </span><span class="na">hashes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;h1:*****&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;h1:*****&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;zh:*****&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"h1:*****"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"h1:*****"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"zh:*****"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">...</span>
 <span class="w">  </span><span class="p">]</span>
 
@@ -34269,7 +34269,7 @@ Lock<span class="w"> </span>Info:
 <p>以降、プロバイダープラグインをインストールする必要がなくなり、<code>terraform init</code> コマンドの速度を改善できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ~/.terraformrcファイル</span>
 
-<span class="na">plugin_cache_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;$HOME/.terraform.d/plugin-cache&quot;</span>
+<span class="na">plugin_cache_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"$HOME/.terraform.d/plugin-cache"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34290,32 +34290,32 @@ Lock<span class="w"> </span>Info:
 <div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
 
 <span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">required_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.3.0&quot;</span>
+<span class="w">  </span><span class="na">required_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1.3.0"</span>
 
 <span class="w">  </span><span class="nb">required_providers</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nb">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hashicorp/aws&quot;</span>
-<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;3.0&quot;</span>
+<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"hashicorp/aws"</span>
+<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"3.0"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;s3&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">bucket</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prd-foo-tfstate-bucket&quot;</span>
-<span class="w">    </span><span class="na">key</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform.tfstate&quot;</span>
-<span class="w">    </span><span class="na">region</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">"s3"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">bucket</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"prd-foo-tfstate-bucket"</span>
+<span class="w">    </span><span class="na">key</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform.tfstate"</span>
+<span class="w">    </span><span class="na">region</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span>
 <span class="c1">    # アクセスキーID</span>
-<span class="w">    </span><span class="na">access_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span>
+<span class="w">    </span><span class="na">access_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
 <span class="c1">    # シークレットアクセスキー</span>
-<span class="w">    </span><span class="na">secret_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span>
+<span class="w">    </span><span class="na">secret_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">region</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="kr">provider</span><span class="w"> </span><span class="nv">"aws"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">region</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span>
 <span class="c1">  # アクセスキーID</span>
-<span class="w">  </span><span class="na">access_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span>
+<span class="w">  </span><span class="na">access_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
 <span class="c1">  # シークレットアクセスキー</span>
-<span class="w">  </span><span class="na">secret_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span>
+<span class="w">  </span><span class="na">secret_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_6">▼ 資格情報ファイルによる設定<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
@@ -34335,79 +34335,79 @@ Lock<span class="w"> </span>Info:
 <div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
 
 <span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">required_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.3.0&quot;</span>
+<span class="w">  </span><span class="na">required_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1.3.0"</span>
 
 <span class="w">  </span><span class="nb">required_providers</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nb">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hashicorp/aws&quot;</span>
-<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;3.0&quot;</span>
+<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"hashicorp/aws"</span>
+<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"3.0"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="c1">  # 資格情報ファイルから、アクセスキーID、シークレットアクセスキーを読み込む</span>
-<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;s3&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">"s3"</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">    # バケット名</span>
-<span class="w">    </span><span class="na">bucket</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prd-foo-tfstate-bucket&quot;</span>
+<span class="w">    </span><span class="na">bucket</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">"prd-foo-tfstate-bucket"</span>
 <span class="c1">    # tfstateファイル名とバケット内ディレクトリ構造</span>
-<span class="w">    </span><span class="na">key</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform.tfstate&quot;</span>
-<span class="w">    </span><span class="na">region</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="w">    </span><span class="na">key</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform.tfstate"</span>
+<span class="w">    </span><span class="na">region</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span>
 <span class="c1">    # 資格情報ファイルへのパス</span>
-<span class="w">    </span><span class="na">shared_credentials_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;$HOME/.aws/credentials&quot;</span>
+<span class="w">    </span><span class="na">shared_credentials_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"$HOME/.aws/credentials"</span>
 <span class="c1">    # 資格情報ファイルのプロファイル名</span>
-<span class="w">    </span><span class="na">profile</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bar-profile&quot;</span>
+<span class="w">    </span><span class="na">profile</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">"bar-profile"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1"># 資格情報ファイルから、アクセスキーID、シークレットアクセスキーを読み込む</span>
-<span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">region</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
-<span class="w">  </span><span class="na">profile</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
-<span class="w">  </span><span class="na">shared_credentials_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;$HOME/.aws/&lt;資格情報ファイル名&gt;&quot;</span>
+<span class="kr">provider</span><span class="w"> </span><span class="nv">"aws"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">region</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span>
+<span class="w">  </span><span class="na">profile</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span>
+<span class="w">  </span><span class="na">shared_credentials_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"$HOME/.aws/&lt;資格情報ファイル名&gt;"</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_7">▼ 環境変数による設定<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>資格情報ファイルではなく、<code>export</code> コマンドを使用して、必要な情報も設定できる。</p>
 <p>参照できる環境変数名は決まっている。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># regionの代わり</span>
-$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="s2">&quot;ap-northeast-1&quot;</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="s2">"ap-northeast-1"</span>
 
 <span class="c1"># access_keyの代わり</span>
-$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="s2">&quot;*****&quot;</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="s2">"*****"</span>
 
 <span class="c1"># secret_keyの代わり</span>
-$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="s2">&quot;*****&quot;</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="s2">"*****"</span>
 
 <span class="c1"># profileの代わり</span>
-$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span><span class="s2">&quot;bar-profile&quot;</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span><span class="s2">"bar-profile"</span>
 
 <span class="c1"># tokenの代わり (AWS STSを使用する場合)</span>
-$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SESSION_TOKEN</span><span class="o">=</span><span class="s2">&quot;*****&quot;</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SESSION_TOKEN</span><span class="o">=</span><span class="s2">"*****"</span>
 </code></pre></div>
 <p>環境変数を設定すると、値が <code>provider</code> ブロックに自動的に出力される。</p>
 <p>CircleCI のような、一時的に環境変数が必要になるような状況では有効な方法である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
 
 <span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">required_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.3.0&quot;</span>
+<span class="w">  </span><span class="na">required_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1.3.0"</span>
 
 <span class="w">  </span><span class="nb">required_providers</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nb">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hashicorp/aws&quot;</span>
-<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;3.0&quot;</span>
+<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"hashicorp/aws"</span>
+<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"3.0"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="c1">  # リージョン、アクセスキーID、シークレットアクセスキーは不要</span>
-<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;s3&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">bucket</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バケット名&gt;&quot;</span>
-<span class="w">    </span><span class="na">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;tfstateファイル名とバケット内ディレクトリ構造&gt;&quot;</span>
+<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">"s3"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">bucket</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;バケット名&gt;"</span>
+<span class="w">    </span><span class="na">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;tfstateファイル名とバケット内ディレクトリ構造&gt;"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1"># 環境変数から、リージョン、アクセスキーID、シークレットアクセスキーを読み込む</span>
 <span class="c1"># リージョン、アクセスキーID、シークレットアクセスキー、の設定は不要</span>
-<span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{}</span>
+<span class="kr">provider</span><span class="w"> </span><span class="nv">"aws"</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 <p><br></p>
 

@@ -34817,10 +34817,10 @@
 <p><code>gcloud</code> コマンドはわかりにくいエラーを出力することがあり、足がかりを掴めることがある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/root/.config/gcloud/logs/&lt;タイムスタンプ&gt;/&lt;タイムスタンプ&gt;.log
 
-<span class="m">2023</span>-06-26<span class="w"> </span><span class="m">06</span>:23:43,998<span class="w"> </span>DEBUG<span class="w">    </span>root<span class="w">            </span>Loaded<span class="w"> </span>Command<span class="w"> </span>Group:<span class="w"> </span><span class="o">[</span><span class="s1">&#39;gcloud&#39;</span>,<span class="w"> </span><span class="s1">&#39;auth&#39;</span><span class="o">]</span>
-<span class="m">2023</span>-06-26<span class="w"> </span><span class="m">06</span>:23:44,000<span class="w"> </span>DEBUG<span class="w">    </span>root<span class="w">            </span>Loaded<span class="w"> </span>Command<span class="w"> </span>Group:<span class="w"> </span><span class="o">[</span><span class="s1">&#39;gcloud&#39;</span>,<span class="w"> </span><span class="s1">&#39;auth&#39;</span>,<span class="w"> </span><span class="s1">&#39;activate_service_account&#39;</span><span class="o">]</span>
-<span class="m">2023</span>-06-26<span class="w"> </span><span class="m">06</span>:23:44,003<span class="w"> </span>DEBUG<span class="w">    </span>root<span class="w">            </span>Running<span class="w"> </span><span class="o">[</span>gcloud.auth.activate-service-account<span class="o">]</span><span class="w"> </span>with<span class="w"> </span>arguments:<span class="w"> </span><span class="o">[</span>--key-file:<span class="w"> </span><span class="s2">&quot;foo-credential.json&quot;</span>,<span class="w"> </span>ACCOUNT:<span class="w"> </span><span class="s2">&quot;foo-serviceaccount@foo-project.iam.gserviceaccount.com&quot;</span><span class="o">]</span>
-<span class="m">2023</span>-06-26<span class="w"> </span><span class="m">06</span>:23:44,003<span class="w"> </span>DEBUG<span class="w">    </span>root<span class="w">            </span><span class="s1">&#39;str&#39;</span><span class="w"> </span>object<span class="w"> </span>has<span class="w"> </span>no<span class="w"> </span>attribute<span class="w"> </span><span class="s1">&#39;get&#39;</span>
+<span class="m">2023</span>-06-26<span class="w"> </span><span class="m">06</span>:23:43,998<span class="w"> </span>DEBUG<span class="w">    </span>root<span class="w">            </span>Loaded<span class="w"> </span>Command<span class="w"> </span>Group:<span class="w"> </span><span class="o">[</span><span class="s1">'gcloud'</span>,<span class="w"> </span><span class="s1">'auth'</span><span class="o">]</span>
+<span class="m">2023</span>-06-26<span class="w"> </span><span class="m">06</span>:23:44,000<span class="w"> </span>DEBUG<span class="w">    </span>root<span class="w">            </span>Loaded<span class="w"> </span>Command<span class="w"> </span>Group:<span class="w"> </span><span class="o">[</span><span class="s1">'gcloud'</span>,<span class="w"> </span><span class="s1">'auth'</span>,<span class="w"> </span><span class="s1">'activate_service_account'</span><span class="o">]</span>
+<span class="m">2023</span>-06-26<span class="w"> </span><span class="m">06</span>:23:44,003<span class="w"> </span>DEBUG<span class="w">    </span>root<span class="w">            </span>Running<span class="w"> </span><span class="o">[</span>gcloud.auth.activate-service-account<span class="o">]</span><span class="w"> </span>with<span class="w"> </span>arguments:<span class="w"> </span><span class="o">[</span>--key-file:<span class="w"> </span><span class="s2">"foo-credential.json"</span>,<span class="w"> </span>ACCOUNT:<span class="w"> </span><span class="s2">"foo-serviceaccount@foo-project.iam.gserviceaccount.com"</span><span class="o">]</span>
+<span class="m">2023</span>-06-26<span class="w"> </span><span class="m">06</span>:23:44,003<span class="w"> </span>DEBUG<span class="w">    </span>root<span class="w">            </span><span class="s1">'str'</span><span class="w"> </span>object<span class="w"> </span>has<span class="w"> </span>no<span class="w"> </span>attribute<span class="w"> </span><span class="s1">'get'</span>
 
 <span class="c1"># エラーがあれば</span>
 Traceback<span class="w"> </span><span class="o">(</span>most<span class="w"> </span>recent<span class="w"> </span>call<span class="w"> </span>last<span class="o">)</span>:
@@ -34879,11 +34879,11 @@ ACTIVE<span class="w">  </span>ACCOUNT
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># application_default_credentials.json ファイル</span>
 <span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;client_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;***.apps.googleusercontent.com&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;client_secret&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;***&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;quota_project_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;***&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;refresh_token&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;***&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;authorized_user&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"client_id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"***.apps.googleusercontent.com"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"client_secret"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"***"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"quota_project_id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"***"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"refresh_token"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"***"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"authorized_user"</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
@@ -34955,14 +34955,14 @@ $<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </sp
 To<span class="w"> </span>add<span class="w"> </span>gcloud<span class="w"> </span>components<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>PATH,<span class="w"> </span>add<span class="w"> </span>this<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>profile:
 
 <span class="w">  </span><span class="k">for</span><span class="w"> </span>bash<span class="w"> </span>users
-<span class="w">    </span><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>brew<span class="w"> </span>--prefix<span class="k">)</span><span class="s2">/share/google-cloud-sdk/path.bash.inc&quot;</span>
+<span class="w">    </span><span class="nb">source</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>brew<span class="w"> </span>--prefix<span class="k">)</span><span class="s2">/share/google-cloud-sdk/path.bash.inc"</span>
 
 <span class="w">  </span><span class="k">for</span><span class="w"> </span>zsh<span class="w"> </span>users
-<span class="w">    </span><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>brew<span class="w"> </span>--prefix<span class="k">)</span><span class="s2">/share/google-cloud-sdk/path.zsh.inc&quot;</span>
-<span class="w">    </span><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>brew<span class="w"> </span>--prefix<span class="k">)</span><span class="s2">/share/google-cloud-sdk/completion.zsh.inc&quot;</span>
+<span class="w">    </span><span class="nb">source</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>brew<span class="w"> </span>--prefix<span class="k">)</span><span class="s2">/share/google-cloud-sdk/path.zsh.inc"</span>
+<span class="w">    </span><span class="nb">source</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>brew<span class="w"> </span>--prefix<span class="k">)</span><span class="s2">/share/google-cloud-sdk/completion.zsh.inc"</span>
 
 <span class="w">  </span><span class="k">for</span><span class="w"> </span>fish<span class="w"> </span>users
-<span class="w">    </span><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>brew<span class="w"> </span>--prefix<span class="k">)</span><span class="s2">/share/google-cloud-sdk/path.fish.inc&quot;</span>
+<span class="w">    </span><span class="nb">source</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>brew<span class="w"> </span>--prefix<span class="k">)</span><span class="s2">/share/google-cloud-sdk/path.fish.inc"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35214,7 +35214,7 @@ Welcome!<span class="w"> </span>This<span class="w"> </span><span class="nb">com
 Settings<span class="w"> </span>from<span class="w"> </span>your<span class="w"> </span>current<span class="w"> </span>configuration<span class="w"> </span><span class="o">[</span>default<span class="o">]</span><span class="w"> </span>are:
 core:
 <span class="w">  </span>account:<span class="w"> </span>hiroki.hasegawa
-<span class="w">  </span>disable_usage_reporting:<span class="w"> </span><span class="s1">&#39;True&#39;</span>
+<span class="w">  </span>disable_usage_reporting:<span class="w"> </span><span class="s1">'True'</span>
 <span class="w">  </span>project:<span class="w"> </span>foo-project
 
 Pick<span class="w"> </span>configuration<span class="w"> </span>to<span class="w"> </span>use:
@@ -35286,7 +35286,7 @@ bar-project-***<span class="w">    </span>bar-project<span class="w">   </span>*
 <h3 id="google-cloud-logging">Google Cloud Logging<a class="headerlink" href="#google-cloud-logging" title="Permanent link">&para;</a></h3>
 <h4 id="read">▼ read<a class="headerlink" href="#read" title="Permanent link">&para;</a></h4>
 <p>Google Cloud Logging からログを読み出す。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> </span><span class="nb">read</span><span class="w"> </span><span class="s1">&#39;resource.labels.container_name=&quot;foo-container&quot;&#39;</span><span class="w"> </span>--limit<span class="w"> </span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> </span><span class="nb">read</span><span class="w"> </span><span class="s1">'resource.labels.container_name="foo-container"'</span><span class="w"> </span>--limit<span class="w"> </span><span class="m">1</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35297,10 +35297,10 @@ bar-project-***<span class="w">    </span>bar-project<span class="w">   </span>*
 <p>Google Cloud Logging にログを送信する。</p>
 <p>アプリケーションの代わりに特定の条件に合致するログを送信したい場合に、使用するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 非構造化ログ</span>
-$<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> </span>write<span class="w"> </span>test-log<span class="w"> </span><span class="s2">&quot;これはテストログです&quot;</span>
+$<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> </span>write<span class="w"> </span>test-log<span class="w"> </span><span class="s2">"これはテストログです"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 構造化ログ</span>
-$<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> </span>write<span class="w"> </span>--payload-type<span class="o">=</span>json<span class="w"> </span>test-log<span class="w"> </span><span class="s1">&#39;{&quot;id&quot;:1,&quot;name&quot;:&quot;これはテストログです&quot;}&#39;</span>
+$<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> </span>write<span class="w"> </span>--payload-type<span class="o">=</span>json<span class="w"> </span>test-log<span class="w"> </span><span class="s1">'{"id":1,"name":"これはテストログです"}'</span>
 </code></pre></div>
 <blockquote>
 <ul>

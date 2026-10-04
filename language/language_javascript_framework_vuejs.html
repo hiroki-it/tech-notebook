@@ -34753,7 +34753,7 @@
 <p><strong>＊実装例＊</strong></p>
 <p>例えば、テンプレートの親コンポーネントタグでクリックイベントが発火したとき、親コンポーネントから、イベントに紐付いたイベントハンドラ関数がコールされる。</p>
 <div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- divタグのidは『app』とする --&gt;</span>
-<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;app&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"app"</span><span class="p">&gt;</span>
 
     <span class="cm">&lt;!--</span>
 <span class="cm">    ・親コンポーネントタグを記述。</span>
@@ -34761,8 +34761,8 @@
 <span class="cm">    ・イベントとイベントハンドラ関数を対応づける。</span>
 <span class="cm">    --&gt;</span>
     <span class="p">&lt;</span><span class="nt">v-foo-component-1</span>
-        <span class="na">:criteria</span><span class="o">=</span><span class="s">&quot;criteria&quot;</span>
-        <span class="na">v-on</span> <span class="na">change</span><span class="o">=</span><span class="s">&quot;changeQuery&quot;</span>
+        <span class="na">:criteria</span><span class="o">=</span><span class="s">"criteria"</span>
+        <span class="na">v-on</span> <span class="na">change</span><span class="o">=</span><span class="s">"changeQuery"</span>
     <span class="p">&gt;&lt;/</span><span class="nt">v-foo-component-1</span><span class="p">&gt;</span>
 
     <span class="cm">&lt;!-- 親コンポーネントタグを記述 --&gt;</span>
@@ -34779,7 +34779,7 @@
 
 <span class="cm">&lt;!-- ルートVueインスタンスの作成は外部スクリプトで実行する。 --&gt;</span>
 <span class="p">&lt;</span><span class="nt">script</span>
-    <span class="err">&lt;</span><span class="na">src</span><span class="o">=</span><span class="s">{{</span> <span class="na">asset</span><span class="err">(&quot;.../</span><span class="na">index</span><span class="err">.</span><span class="na">js</span><span class="err">&quot;)</span> <span class="err">}}</span><span class="p">&gt;</span>
+    <span class="err">&lt;</span><span class="na">src</span><span class="o">=</span><span class="s">{{</span> <span class="na">asset</span><span class="err">(".../</span><span class="na">index</span><span class="err">.</span><span class="na">js</span><span class="err">")</span> <span class="err">}}</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <h4 id="1-2-viewmodel-vue-indexjs">(1-2) 【ViewModel】データの初期化を実行する Vue コンストラクタ関数 (<code>index.js</code>)<a class="headerlink" href="#1-2-viewmodel-vue-indexjs" title="Permanent link">&para;</a></h4>
@@ -34798,14 +34798,14 @@
 <span class="c1">// 変数に対する格納を省略しても良い</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
 <span class="w">  </span><span class="c1">// Vueインスタンスを使用するdivタグを設定.</span>
-<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">"#app"</span><span class="p">,</span>
 <span class="w">  </span><span class="c1">// dataオプション</span>
 <span class="w">  </span><span class="c1">// Vueインスタンスのデータを保持する</span>
 <span class="w">  </span><span class="c1">// 異なる場所にある同じコンポーネントは異なるVueインスタンスからなる。</span>
 <span class="w">  </span><span class="c1">// 異なるVueインスタンスは異なる値を持つ必要があるため、関数として定義。</span>
 <span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">isLoading</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">isLoading</span><span class="o">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
 <span class="w">      </span><span class="nx">staffData</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
 <span class="w">      </span><span class="nx">criteria</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
@@ -34820,7 +34820,7 @@
 <span class="w">  </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// イベントハンドラ関数</span>
 <span class="w">    </span><span class="nx">changeQuery</span><span class="p">(</span><span class="nx">criteriaObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;criteria&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;limit&quot;</span><span class="p">];</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"criteria"</span><span class="p">,</span><span class="w"> </span><span class="s2">"limit"</span><span class="p">];</span>
 <span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">keys</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">criteriaObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">          </span><span class="k">this</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">criteriaObj</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
@@ -34856,9 +34856,9 @@
 <span class="w">  </span><span class="c1">// テンプレートと親コンポーネントの対応になるようにする。</span>
 <span class="w">  </span><span class="nx">component</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">//『HTMLでのコンポーネントのタグ名：子コンポーネント』</span>
-<span class="w">    </span><span class="s2">&quot;v-foo-component-1&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;.../component/foo-1.vue&quot;</span><span class="p">),</span>
-<span class="w">    </span><span class="s2">&quot;v-foo-component-2&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;.../component/foo-2.vue&quot;</span><span class="p">),</span>
-<span class="w">    </span><span class="s2">&quot;v-foo-component-3&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;.../component/foo-3.vue&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="s2">"v-foo-component-1"</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">".../component/foo-1.vue"</span><span class="p">),</span>
+<span class="w">    </span><span class="s2">"v-foo-component-2"</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">".../component/foo-2.vue"</span><span class="p">),</span>
+<span class="w">    </span><span class="s2">"v-foo-component-3"</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">".../component/foo-3.vue"</span><span class="p">),</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -34877,12 +34877,12 @@
 <span class="cm">  ・子コンポーネントタグを記述 </span>
 <span class="cm">  ・下方のdataオプションの値をpropsに渡すように設定。</span>
 <span class="cm">  --&gt;</span>
-  <span class="p">&lt;</span><span class="nt">v-foo-component-4</span> <span class="na">:aaa</span><span class="o">=</span><span class="s">&quot;a&quot;</span> <span class="na">:bbb</span><span class="o">=</span><span class="s">&quot;b&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">v-foo-component-4</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">v-foo-component-4</span> <span class="na">:aaa</span><span class="o">=</span><span class="s">"a"</span> <span class="na">:bbb</span><span class="o">=</span><span class="s">"b"</span><span class="p">&gt;&lt;/</span><span class="nt">v-foo-component-4</span><span class="p">&gt;</span>
 
   <span class="cm">&lt;!-- 条件付きレンダリングを実行するディレクション --&gt;</span>
-  <span class="p">&lt;</span><span class="nt">template</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;foo.isOk()&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">template</span> <span class="na">v-if</span><span class="o">=</span><span class="s">"foo.isOk()"</span><span class="p">&gt;</span>
     <span class="cm">&lt;!-- 孫コンポーネントタグを記述 --&gt;</span>
-    <span class="p">&lt;</span><span class="nt">v-foo-component-5</span> <span class="na">:ccc</span><span class="o">=</span><span class="s">&quot;c&quot;</span> <span class="na">:ddd</span><span class="o">=</span><span class="s">&quot;d&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">v-foo-component-5</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">v-foo-component-5</span> <span class="na">:ccc</span><span class="o">=</span><span class="s">"c"</span> <span class="na">:ddd</span><span class="o">=</span><span class="s">"d"</span><span class="p">&gt;&lt;/</span><span class="nt">v-foo-component-5</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 
@@ -34898,12 +34898,12 @@
 <span class="w">    </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">criteria</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">Object</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">required</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">required</span><span class="o">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span>
 <span class="w">      </span><span class="p">},</span>
 
 <span class="w">      </span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">Object</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">required</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">required</span><span class="o">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">    </span><span class="p">},</span>
 
@@ -34912,10 +34912,10 @@
 <span class="w">    </span><span class="c1">// 異なるVueインスタンスは異なる値を持つ必要があるため、関数として定義する。</span>
 <span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">d</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;d&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="s2">"c"</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">d</span><span class="o">:</span><span class="w"> </span><span class="s2">"d"</span><span class="p">,</span>
 <span class="w">      </span><span class="p">};</span>
 <span class="w">    </span><span class="p">},</span>
 
@@ -34926,7 +34926,7 @@
 <span class="cm">        ・コンポーネント (v-foo-component-1) と紐付く処理</span>
 <span class="cm">        ・changeイベントの発火と、そのイベントハンドラ関数に引数を渡す。</span>
 <span class="cm">        */</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">criteria</span><span class="o">:</span><span class="w"> </span><span class="nx">localCriteria</span><span class="p">});</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s2">"change"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">criteria</span><span class="o">:</span><span class="w"> </span><span class="nx">localCriteria</span><span class="p">});</span>
 <span class="w">      </span><span class="p">},</span>
 
 <span class="w">      </span><span class="c1">// ajax関数から受信したデータを使用して、propsを更新</span>
@@ -34935,8 +34935,8 @@
 <span class="w">      </span><span class="c1">// 『HTMLでのコンポーネントのタグ名： JSでのコンポーネントのオブジェクト名』</span>
 <span class="w">      </span><span class="nx">component</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 子コンポーネントと孫コンポーネントの対応関係</span>
-<span class="w">        </span><span class="s2">&quot;v-foo-component-4&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./xxx/xxx/foo-4&quot;</span><span class="p">),</span>
-<span class="w">        </span><span class="s2">&quot;v-foo-component-5&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./xxx/xxx/foo-5&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="s2">"v-foo-component-4"</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"./xxx/xxx/foo-4"</span><span class="p">),</span>
+<span class="w">        </span><span class="s2">"v-foo-component-5"</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"./xxx/xxx/foo-5"</span><span class="p">),</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">};</span>
@@ -34974,24 +34974,24 @@
 <p><img alt="Vueにおけるemitとv-onの連携" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Vueにおけるemitとv-onの連携.png" /></p>
 <p>View (<code>template</code> タグ部分) のイベントを、ViewModel (<code>script</code> タグ部分) のイベントハンドラ関数 (<code>methods:</code> 内にある関数) やインライン JS ステートメントにバインディングし、イベントが発火した時点でイベントハンドラ関数をコールする。</p>
 <p>コンポーネントの <code>script</code> タグ部分 (ViewModel) の親子間データ渡しである『Props Down, Events Up』とは異なる概念なので注意する。</p>
-<div class="highlight"><pre><span></span><code>v-on:{イベント名}=&quot;{イベントハンドラ関数 (methods: 内にある関数) }&quot;
+<div class="highlight"><pre><span></span><code>v-on:{イベント名}="{イベントハンドラ関数 (methods: 内にある関数) }"
 </code></pre></div>
 <p>または、省略して、</p>
-<div class="highlight"><pre><span></span><code>@:{イベント名}=&quot;<span class="p">&lt;</span><span class="nt">イベントハンドラ関数</span><span class="p">&gt;</span>&quot;
+<div class="highlight"><pre><span></span><code>@:{イベント名}="<span class="p">&lt;</span><span class="nt">イベントハンドラ関数</span><span class="p">&gt;</span>"
 </code></pre></div>
 <p>で記述する。</p>
 <h4 id="v-onsubmitbutton">▼ <code>v-on:submit="&lt;イベントハンドラ関数&gt;"</code>、<code>button</code> タグ<a class="headerlink" href="#v-onsubmitbutton" title="Permanent link">&para;</a></h4>
 <p>View のフォーム送信イベントが起きた時点で、ViewModel にバインディングされたイベントハンドラ関数をコールする。</p>
 <p>例えば、親コンポーネントでは、子コンポーネントによって発火させられる <code>search</code> イベントに対して、<code>result()</code> 関数というイベントハンドラ関数を紐付けておく。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;app&quot;</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">"app"</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">v-foo-component</span>
-          <span class="na">v-on:search</span><span class="o">=</span><span class="s">&quot;result()&quot;</span>
+          <span class="na">v-on:search</span><span class="o">=</span><span class="s">"result()"</span>
   <span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">v-foo-component</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
 <span class="cm">&lt;!-- Vueインスタンスの作成は外部スクリプトで実行する。 --&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{{ asset(&quot;</span><span class="err">.../</span><span class="na">index</span><span class="err">.</span><span class="na">js</span><span class="err">&quot;)</span> <span class="err">}}&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"{{ asset("</span><span class="err">.../</span><span class="na">index</span><span class="err">.</span><span class="na">js</span><span class="err">")</span> <span class="err">}}"</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>index.js の <code>methods:</code> 内には、イベントハンドラ関数として <code>result()</code> 関数を定義する。</p>
@@ -34999,7 +34999,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1">// 変数に対する格納を省略しても良い</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
 <span class="w">  </span><span class="c1">// Vueインスタンスを使用するdivタグを設定.</span>
-<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">"#app"</span><span class="p">,</span>
 
 <span class="w">  </span><span class="c1">// イベントハンドラ関数</span>
 <span class="w">  </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
@@ -35022,9 +35022,9 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
   <span class="cm">&lt;!-- submitイベントが発火すると、紐付くイベントハンドラ関数がコールされる --&gt;</span>
-  <span class="p">&lt;</span><span class="nt">form</span> <span class="na">v-on:submit</span><span class="err">.</span><span class="na">prevent</span><span class="o">=</span><span class="s">&quot;search()&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">form</span> <span class="na">v-on:submit</span><span class="err">.</span><span class="na">prevent</span><span class="o">=</span><span class="s">"search()"</span><span class="p">&gt;</span>
     <span class="cm">&lt;!-- submitイベントを発火させるbuttonタグ。submitの場合は省略可能 --&gt;</span>
-    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>検索する<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>検索する<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 
@@ -35035,7 +35035,7 @@
 <span class="w">    </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">search</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 親コンポーネントのsearchイベントを発火させる。</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s2">&quot;search&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s2">"search"</span><span class="p">);</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">});</span>
@@ -35078,14 +35078,14 @@
 <h4 id="v-model">▼ <code>v-model</code> とは<a class="headerlink" href="#v-model" title="Permanent link">&para;</a></h4>
 <p>実装方法は、<code>v-on:input="&lt;イベントハンドラ関数&gt;"</code> と同じである。例えば、以下の 2 つは同じである。</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span>
-    <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span>
-    <span class="na">v-model</span><span class="o">=</span><span class="s">&quot;foo&quot;</span><span class="p">&gt;</span>
+    <span class="na">type</span><span class="o">=</span><span class="s">"text"</span>
+    <span class="na">v-model</span><span class="o">=</span><span class="s">"foo"</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">input</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span>
-    <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span>
-    <span class="na">:value</span><span class="o">=</span><span class="s">&quot;foo&quot;</span>
-    <span class="err">@</span><span class="na">input</span><span class="o">=</span><span class="s">&quot;eventHandler&quot;</span><span class="p">&gt;</span>
+    <span class="na">type</span><span class="o">=</span><span class="s">"text"</span>
+    <span class="na">:value</span><span class="o">=</span><span class="s">"foo"</span>
+    <span class="err">@</span><span class="na">input</span><span class="o">=</span><span class="s">"eventHandler"</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">input</span><span class="p">&gt;</span>
 </code></pre></div>
 <p><br></p>
@@ -35097,29 +35097,29 @@
 <h3 id="_8">コンポーネントの登録方法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ グローバル登録<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s2">&quot;v-foo-component&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./xxx/xxx/foo&quot;</span><span class="p">),</span>
+<div class="highlight"><pre><span></span><code><span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s2">"v-foo-component"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"./xxx/xxx/foo"</span><span class="p">),</span>
 <span class="p">});</span>
 
 <span class="c1">// 変数に対する格納を省略しても良い</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">"#app"</span><span class="p">,</span>
 <span class="p">});</span>
 </code></pre></div>
 <h4 id="_10">▼ ローカル登録<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">vFooComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// テンプレートと親コンポーネントの対応関係</span>
-<span class="w">  </span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./xxx/xxx/foo&quot;</span><span class="p">),</span>
+<span class="w">  </span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"./xxx/xxx/foo"</span><span class="p">),</span>
 <span class="p">};</span>
 
 <span class="c1">// 変数に対する格納を省略しても良い</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">"#app"</span><span class="p">,</span>
 
 <span class="w">  </span><span class="nx">components</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 親コンポーネントにオブジェクト名をつける。</span>
-<span class="w">    </span><span class="s2">&quot;v-foo-component&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">vFooComponent</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"v-foo-component"</span><span class="o">:</span><span class="w"> </span><span class="nx">vFooComponent</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -35127,11 +35127,11 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 変数に対する格納を省略しても良い</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">"#app"</span><span class="p">,</span>
 
 <span class="w">  </span><span class="nx">components</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// テンプレートと親コンポーネントの対応関係</span>
-<span class="w">    </span><span class="s2">&quot;v-foo-component&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./xxx/xxx/foo&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="s2">"v-foo-component"</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"./xxx/xxx/foo"</span><span class="p">),</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -35216,7 +35216,7 @@
 <span class="w">  </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="s2">"Hiroki"</span><span class="p">,</span>
 <span class="w">      </span><span class="p">};</span>
 <span class="w">    </span><span class="p">},</span>
 
@@ -35246,7 +35246,7 @@ undefined
 <span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Hiroki"</span><span class="p">,</span>
 <span class="w">      </span><span class="p">};</span>
 <span class="w">    </span><span class="p">},</span>
 
@@ -35257,7 +35257,7 @@ undefined
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 結果</span>
-<span class="s2">&quot;Hiroki&quot;</span>
+<span class="s2">"Hiroki"</span>
 </code></pre></div>
 <h4 id="beforemount">▼ beforeMount<a class="headerlink" href="#beforemount" title="Permanent link">&para;</a></h4>
 <p>Vue インスタンスがマウントされる前に実行される。</p>
@@ -35273,12 +35273,12 @@ undefined
 <span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
 <span class="w">      </span><span class="p">};</span>
 <span class="w">    </span><span class="p">},</span>
 
 <span class="w">    </span><span class="nx">beforeMount</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">;</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hiroki"</span><span class="p">;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">});</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
@@ -35306,18 +35306,18 @@ undefined
 <span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
 <span class="w">      </span><span class="p">};</span>
 <span class="w">    </span><span class="p">},</span>
 
 <span class="w">    </span><span class="nx">mounted</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">;</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hiroki"</span><span class="p">;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">});</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 結果</span>
-<span class="s2">&quot;Hiroki&quot;</span>
+<span class="s2">"Hiroki"</span>
 </code></pre></div>
 <p>ただし、すべての子コンポーネントでマウントが完了したことを待つために、<code>nextTick()</code> 関数を使用する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
@@ -35328,13 +35328,13 @@ undefined
 <span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
 <span class="w">      </span><span class="p">};</span>
 <span class="w">    </span><span class="p">},</span>
 
 <span class="w">    </span><span class="nx">mounted</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">$nextTick</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hiroki"</span><span class="p">;</span>
 <span class="w">      </span><span class="p">});</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">});</span>
@@ -35354,13 +35354,13 @@ undefined
 <span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
 <span class="w">      </span><span class="p">};</span>
 <span class="w">    </span><span class="p">},</span>
 
 <span class="w">    </span><span class="nx">mounted</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">$nextTick</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hiroki"</span><span class="p">;</span>
 <span class="w">      </span><span class="p">});</span>
 <span class="w">    </span><span class="p">},</span>
 
@@ -35371,7 +35371,7 @@ undefined
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 結果</span>
-<span class="s2">&quot;Hiroki&quot;</span>
+<span class="s2">"Hiroki"</span>
 </code></pre></div>
 <h4 id="updated">▼ updated<a class="headerlink" href="#updated" title="Permanent link">&para;</a></h4>
 <p>データが更新されるときの再レンダリング後に実行される。</p>
@@ -35384,13 +35384,13 @@ undefined
 <span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
 <span class="w">      </span><span class="p">};</span>
 <span class="w">    </span><span class="p">},</span>
 
 <span class="w">    </span><span class="nx">mounted</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">$nextTick</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hiroki"</span><span class="p">;</span>
 <span class="w">      </span><span class="p">});</span>
 <span class="w">    </span><span class="p">},</span>
 
@@ -35401,7 +35401,7 @@ undefined
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 結果</span>
-<span class="s2">&quot;Hiroki&quot;</span>
+<span class="s2">"Hiroki"</span>
 </code></pre></div>
 <h4 id="beforedestroy">▼ beforeDestroy<a class="headerlink" href="#beforedestroy" title="Permanent link">&para;</a></h4>
 <p>Vue インスタンスが削除される前に実行する。</p>

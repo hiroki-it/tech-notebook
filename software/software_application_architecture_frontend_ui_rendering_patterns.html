@@ -34360,19 +34360,19 @@
 <p>これは、同じページでは特定の HTML しかクライアントレンダリングできないほかの方法 (SSR、SSG、ISR など) とは異なる。</p>
 <p>CSR は、DOM の現在の状態を DOM から参照するのではなく、相当する状態を状態オブジェクトとして管理する。</p>
 <p>そして、状態オブジェクトをその都度変更したうえで、実際の DOM にこれを動的に適用し続ける。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"react"</span><span class="p">;</span>
 
 
 <span class="c1">// APIからデータを取ってくる</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">getTodoList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;遊ぶ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;買い物&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;宿題&quot;</span><span class="p">];</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="s2">"遊ぶ"</span><span class="p">,</span><span class="w"> </span><span class="s2">"買い物"</span><span class="p">,</span><span class="w"> </span><span class="s2">"宿題"</span><span class="p">];</span>
 <span class="p">};</span>
 
 <span class="c1">// カスタムフック</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">useTodoList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">fooState</span><span class="w"> </span><span class="nx">setFooState</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">fooState</span><span class="w"> </span><span class="nx">setFooState</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="s2">""</span><span class="p">);</span>
 
 <span class="w">    </span><span class="nx">useEffect</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// 実行したい無名な非同期関数</span>
@@ -34391,7 +34391,7 @@
 <span class="w">    </span><span class="c1">// データがまだ取得できていないならローディング、取得できているならHTMLをクライアントレンダリングする関数</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
 <span class="w">        </span><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
-<span class="w">          </span><span class="p">{</span><span class="nx">state</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;{</span><span class="nx">e</span><span class="p">}&lt;/</span><span class="nt">li</span><span class="p">&gt;)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Loding&quot;</span><span class="p">}</span>
+<span class="w">          </span><span class="p">{</span><span class="nx">state</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;{</span><span class="nx">e</span><span class="p">}&lt;/</span><span class="nt">li</span><span class="p">&gt;)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">"Loding"</span><span class="p">}</span>
 <span class="w">        </span><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 <span class="w">    </span><span class="p">);</span>
 <span class="p">}</span>

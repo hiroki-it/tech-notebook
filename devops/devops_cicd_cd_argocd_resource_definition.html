@@ -35704,19 +35704,19 @@ sops<span class="w"> </span><span class="m">3</span>.7.3
 <h4 id="terraform">▼ Terraform の公式モジュールの場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h4>
 <p>ArgoCD のセットアップのうち、AWS 側で必要なものをまとめる。</p>
 <p>ここでは、Terraform の公式モジュールを使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_argocd_repo_server&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"iam_assumable_role_with_oidc_argocd_repo_server"</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"</span>
 
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;バージョン&gt;"</span>
 
 <span class="c1">  # ArgoCDのrepo-serverのPodに紐付けるIAMロール</span>
 <span class="w">  </span><span class="na">create_role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">role_name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-argocd-reposerver&quot;</span>
+<span class="w">  </span><span class="na">role_name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-argocd-reposerver"</span>
 
 <span class="c1">  # Amazon EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの</span>
 <span class="c1">  # ArgoCDは外部のAmazon EKS Clusterで稼働している</span>
-<span class="w">  </span><span class="na">provider_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks_argocd.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://&quot;, &quot;&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="na">provider_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks_argocd.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://", ""</span><span class="p">)</span>
 
 <span class="c1">  # AWS IAMロールに紐付けるIAMポリシー</span>
 <span class="w">  </span><span class="na">role_policy_arns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
@@ -35726,15 +35726,15 @@ sops<span class="w"> </span><span class="m">3</span>.7.3
 <span class="c1">  # ArgoCDのrepo-serverのPodのServiceAccount名</span>
 <span class="c1">  # ServiceAccountは、Terraformではなく、マニフェストで定義したほうが良い</span>
 <span class="w">  </span><span class="na">oidc_fully_qualified_subjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;system:serviceaccount:argocd:foo-argocd-repo-server&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"system:serviceaccount:argocd:foo-argocd-repo-server"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">...</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_iam_policy&quot;</span><span class="w"> </span><span class="nv">&quot;argocd_reposerver_policy&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-argocd-reposerver-policy&quot;</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_iam_policy"</span><span class="w"> </span><span class="nv">"argocd_reposerver_policy"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-argocd-reposerver-policy"</span>
 <span class="w">  </span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">templatefile</span><span class="p">(</span>
-<span class="w">    </span><span class="s2">&quot;${path.module}/policies/inline_policies/argocd_reposerver_policy.tpl&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"${path.module}/policies/inline_policies/argocd_reposerver_policy.tpl"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">{}</span>
 <span class="w">  </span><span class="p">)</span>
 <span class="p">}</span>
@@ -35760,14 +35760,14 @@ $<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </s
 $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span>./manifests/crds
 </code></pre></div>
 <p>これは、URL で指定してもよい。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/argoproj/argo-cd/manifests/crds?ref=&lt;タグ&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">"https://github.com/argoproj/argo-cd/manifests/crds?ref=&lt;タグ&gt;"</span>
 
-$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/argoproj/argo-cd/manifests/crds?ref=&lt;タグ&gt;&quot;</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">"https://github.com/argoproj/argo-cd/manifests/crds?ref=&lt;タグ&gt;"</span>
 </code></pre></div>
 <p>例えば、argocd-cd チャートの <code>5.26.0</code> を使用する場合、これは ArgoCD の <code>2.6.5</code> をサポートしているため、以下の値で適用する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.5&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">"https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.5"</span>
 
-$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.5&quot;</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">"https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.5"</span>
 </code></pre></div>
 <p>チャートリポジトリからチャートをインストールし、Kubernetes リソースを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://argoproj.github.io/argo-helm
@@ -35812,7 +35812,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>patch<span class="w"> </span>service<span class="w"> </span>argocd-server<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-p<span class="w"> </span><span class="s1">&#39;{&quot;spec&quot;: {&quot;type&quot;: &quot;LoadBalancer&quot;}}&#39;</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="s1">'{"spec": {"type": "LoadBalancer"}}'</span>
 </code></pre></div>
 <dl>
 <dt><code>(2)</code></dt>
@@ -35822,7 +35822,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>argocd-initial-admin-secret<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.data.password}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-d<span class="p">;</span><span class="w"> </span><span class="nb">echo</span>
+<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">"{.data.password}"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-d<span class="p">;</span><span class="w"> </span><span class="nb">echo</span>
 </code></pre></div>
 <dl>
 <dt><code>(3)</code></dt>
@@ -35862,7 +35862,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>login<span class="w"> </span>&lt;ArgoCDのドメイン名&gt;<span class="w"> </span>--username<span class="w"> </span>admin<span class="w"> </span>--password<span class="w"> </span>&lt;前の手順で取得した文字列&gt;
 
-<span class="s1">&#39;admin:login&#39;</span><span class="w"> </span>logged<span class="w"> </span><span class="k">in</span><span class="w"> </span>successfully
+<span class="s1">'admin:login'</span><span class="w"> </span>logged<span class="w"> </span><span class="k">in</span><span class="w"> </span>successfully
 </code></pre></div>
 <p><br></p>
 <h3 id="_7">ネットワークに公開する場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
@@ -35997,13 +35997,13 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">            </span><span class="nt">configMapKeyRef</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-cmd-params-cm</span>
-<span class="w">              </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
 <span class="w">          </span><span class="nt">valueFrom</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">secretKeyRef</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-redis</span>
-<span class="w">              </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">      </span><span class="c1"># Volume の各種パスをコンテナにマウントする</span>
 <span class="w">      </span><span class="c1"># https://github.com/argoproj/argo-cd/blob/v2.6.0/common/common.go#L60-L77</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
@@ -36048,7 +36048,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">      </span><span class="nt">configMap</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">defaultMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">420</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-styles-cm</span>
-<span class="w">        </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">        </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="c1"># repo-server に HTTPS リクエストを送信するために、サーバー証明書を設定する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-repo-server-tls</span>
 <span class="w">      </span><span class="nt">secret</span><span class="p">:</span>
@@ -36060,7 +36060,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tls.key</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ca.crt</span>
 <span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ca.crt</span>
-<span class="w">        </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">        </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">        </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-repo-server-tls</span>
 <span class="w">    </span><span class="c1"># dex-server に HTTPS リクエストを送信するために、サーバー証明書を設定する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-dex-server-tls</span>
@@ -36071,7 +36071,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tls.crt</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ca.crt</span>
 <span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ca.crt</span>
-<span class="w">        </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">        </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">        </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-dex-server-tls</span>
 </code></pre></div>
 <blockquote>
@@ -36115,19 +36115,19 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">            </span><span class="nt">configMapKeyRef</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-cm</span>
-<span class="w">              </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
 <span class="w">          </span><span class="nt">valueFrom</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">configMapKeyRef</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-cmd-params-cm</span>
-<span class="w">              </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
 <span class="w">          </span><span class="nt">valueFrom</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">secretKeyRef</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-redis</span>
-<span class="w">              </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">      </span><span class="c1"># Volume の各種パスをコンテナにマウントする</span>
 <span class="w">      </span><span class="c1"># https://github.com/argoproj/argo-cd/blob/v2.6.0/common/common.go#L60-L77</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
@@ -36252,7 +36252,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tls.key</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ca.crt</span>
 <span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ca.crt</span>
-<span class="w">        </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">        </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">        </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-repo-server-tls</span>
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
@@ -36270,9 +36270,9 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">public.ecr.aws/docker/library/redis:latest-alpine</span>
 <span class="w">      </span><span class="nt">args</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--save</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">""</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--appendonly</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;no&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"no"</span>
 <span class="w">      </span><span class="c1"># application-controller からのリクエストを受信する</span>
 <span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6379</span>
@@ -36315,7 +36315,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">            </span><span class="nt">configMapKeyRef</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-cmd-params-cm</span>
-<span class="w">              </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
@@ -36332,7 +36332,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tls.key</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ca.crt</span>
 <span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ca.crt</span>
-<span class="w">        </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">        </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">        </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-dex-server-tls</span>
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
@@ -36371,19 +36371,19 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">            </span><span class="nt">configMapKeyRef</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-cm</span>
-<span class="w">              </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
 <span class="w">          </span><span class="nt">valueFrom</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">configMapKeyRef</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-cmd-params-cm</span>
-<span class="w">              </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
 <span class="w">          </span><span class="nt">valueFrom</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">secretKeyRef</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="err">****</span>
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-redis</span>
-<span class="w">              </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">      </span><span class="c1"># Volume の各種パスをコンテナにマウントする</span>
 <span class="w">      </span><span class="c1"># https://github.com/argoproj/argo-cd/blob/v2.6.0/common/common.go#L60-L77</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
@@ -36404,7 +36404,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tls.key</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ca.crt</span>
 <span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ca.crt</span>
-<span class="w">        </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">        </span><span class="nt">optional</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">        </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-repo-server-tls</span>
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
@@ -36676,7 +36676,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">    </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
 <span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./manifests</span>
 <span class="w">    </span><span class="nt">directory</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">recurse</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">      </span><span class="nt">recurse</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -37251,9 +37251,9 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">syncPolicy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">automated</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">allowEmpty</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">      </span><span class="nt">prune</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">      </span><span class="nt">selfHeal</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">      </span><span class="nt">allowEmpty</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">      </span><span class="nt">prune</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">      </span><span class="nt">selfHeal</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -37340,7 +37340,7 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># Cluster 名を出力する。</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{cluster}}&quot;</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"{{cluster}}"</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 <span class="w">      </span><span class="nt">source</span><span class="p">:</span>
@@ -37349,7 +37349,7 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
 <span class="w">      </span><span class="nt">destination</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># Cluster の URL を出力する。</span>
-<span class="w">        </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{url}}&quot;</span>
+<span class="w">        </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">"{{url}}"</span>
 <span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-namespace</span>
 </code></pre></div>
 <blockquote>
@@ -37385,13 +37385,13 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
-<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">"*"</span>
+<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">  </span><span class="nt">destinations</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
-<span class="w">      </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">"*"</span>
+<span class="w">      </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">  </span><span class="nt">sourceRepos</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="c1"># 執筆時点 (2023/05/17) では、default の AppProject で sourceNamespaces キーは使用できない</span>
 <span class="c1"># sourceNamespaces</span>
 </code></pre></div>
@@ -37427,7 +37427,7 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-cmd-params-cm</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="nt">data</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">application.namespaces</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">  </span><span class="nt">application.namespaces</span><span class="p">:</span><span class="w"> </span><span class="s">"*"</span>
 </code></pre></div>
 <p>あるいは、application-controller の起動時にパラメーターとして渡してもよい。</p>
 <div class="highlight"><pre><span></span><code>apiVersion:<span class="w"> </span>v1
@@ -37442,7 +37442,7 @@ spec:
 <span class="w">      </span>args:
 <span class="w">        </span>-<span class="w"> </span>/usr/local/bin/argocd-application-controller
 <span class="w">        </span><span class="c1"># 起動時のパラメーターとして</span>
-<span class="w">        </span>-<span class="w"> </span>--application-namespaces<span class="o">=</span><span class="s2">&quot;*&quot;</span>
+<span class="w">        </span>-<span class="w"> </span>--application-namespaces<span class="o">=</span><span class="s2">"*"</span>
 
 <span class="w">  </span>...
 </code></pre></div>
@@ -37458,7 +37458,7 @@ spec:
 <span class="w">      </span>args:
 <span class="w">        </span>-<span class="w"> </span>/usr/local/bin/argocd-server
 <span class="w">        </span><span class="c1"># 起動時のパラメーターとして</span>
-<span class="w">        </span>-<span class="w"> </span>--application-namespaces<span class="o">=</span><span class="s2">&quot;*&quot;</span>
+<span class="w">        </span>-<span class="w"> </span>--application-namespaces<span class="o">=</span><span class="s2">"*"</span>
 
 <span class="w">  </span>...
 </code></pre></div>
@@ -37490,7 +37490,7 @@ spec:
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span><span class="w"> </span><span class="c1"># サービス名など</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">sourceRepos</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="description">description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h3>
@@ -37512,7 +37512,7 @@ spec:
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span><span class="w"> </span><span class="c1"># サービス名など</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">destinations</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="w"> </span><span class="c1"># 所属する Application は、全ての Namespace にデプロイできる。</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">"*"</span><span class="w"> </span><span class="c1"># 所属する Application は、全ての Namespace にデプロイできる。</span>
 <span class="w">      </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://*****.gr7.ap-northeast-1.eks.amazonaws.com</span><span class="w"> </span><span class="c1"># 所属する Application は、指定した URL の Cluster のみを指定できる。</span>
 </code></pre></div>
 <p><br></p>
@@ -37525,8 +37525,8 @@ spec:
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span><span class="w"> </span><span class="c1"># サービス名など</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
-<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">"*"</span>
+<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">"*"</span>
 </code></pre></div>
 <h3 id="namespaceresourcewhitelist">namespaceResourceWhitelist<a class="headerlink" href="#namespaceresourcewhitelist" title="Permanent link">&para;</a></h3>
 <p>AppProject 内で Application がデプロイできる Namespaced スコープ (Namespace のある) なリソースを設定する。</p>
@@ -37537,8 +37537,8 @@ spec:
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span><span class="w"> </span><span class="c1"># サービス名など</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">namespaceResourceWhitelist</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
-<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">"*"</span>
+<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">"*"</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="05-argocd-notification">05. ArgoCD Notification<a class="headerlink" href="#05-argocd-notification" title="Permanent link">&para;</a></h2>

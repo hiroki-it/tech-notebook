@@ -34720,7 +34720,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <span class="c"># Global ARG</span>
 <span class="c">#===================</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">GO_VERSION</span><span class="o">=</span><span class="m">1</span>.16.5
-<span class="k">ARG</span><span class="w"> </span><span class="nv">LABEL</span><span class="o">=</span><span class="s2">&quot;Hiroki &lt;example@gmail.com&gt;&quot;</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">LABEL</span><span class="o">=</span><span class="s2">"Hiroki &lt;example@gmail.com&gt;"</span>
 
 <span class="c">#===================</span>
 <span class="c"># Build Stage</span>
@@ -34764,7 +34764,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 
 <span class="k">WORKDIR</span><span class="w"> </span><span class="s">/go/src</span>
 
-<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/go/bin/cmd&quot;</span><span class="p">]</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"/go/bin/cmd"</span><span class="p">]</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_3">アップグレード<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -34927,7 +34927,7 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 <h3 id="import">import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h3>
 <h4 id="import_1">▼ import とは<a class="headerlink" href="#import_1" title="Permanent link">&para;</a></h4>
 <p>ビルトインパッケージ、内部パッケージ、事前にインストールされた外部パッケージを読み込む。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="s">&quot;&lt;パッケージ名&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="s">"&lt;パッケージ名&gt;"</span>
 </code></pre></div>
 <p>インポートするということは対象に依存するということであり、互いに依存し合う循環参照エラー (<code>import cycle not allowed</code>) になる。</p>
 <p>インターフェースと構造体の両方を同じパッケージに配置していると、インターフェースが他からインポートされ、構造体が他をインポートするようになり、発生しやすい。</p>
@@ -34965,7 +34965,7 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 <span class="kd">type</span><span class="w"> </span><span class="nx">Bar</span><span class="w"> </span><span class="kt">string</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Baz</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -35065,23 +35065,23 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"log"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">userIds</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">userIds</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span>
+<span class="w">        </span><span class="s">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// user_idキーが存在する場合、okにtrueが返却される。</span>
-<span class="w">    </span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">userIds</span><span class="p">[</span><span class="s">&quot;user_id&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">userIds</span><span class="p">[</span><span class="s">"user_id"</span><span class="p">]</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;user_id does not exist&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 2009/11/10 23:00:00 user_id does not exist</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">"user_id does not exist"</span><span class="p">)</span><span class="w"> </span><span class="c1">// 2009/11/10 23:00:00 user_id does not exist</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">userId</span><span class="p">)</span><span class="w"> </span><span class="c1">// 1</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">userId</span><span class="p">)</span><span class="w"> </span><span class="c1">// 1</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -35110,7 +35110,7 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 <p>ほかの型と共存できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
@@ -35124,7 +35124,7 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// オブジェクトの状態を設定する</span>
-<span class="w">    </span><span class="nx">u</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">u</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"Alice"</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">}</span>
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">IsAdult</span><span class="p">(</span><span class="nx">u</span><span class="p">))</span><span class="w"> </span><span class="c1">// true</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -35134,10 +35134,10 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 <p>関数の返り値を使用しない場合、意図的に無視することを伝える場合、<code>_</code> を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;os&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"os"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">readConfig</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;config.yaml&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">"config.yaml"</span><span class="p">)</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">    </span><span class="p">}</span>
@@ -35149,7 +35149,7 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 
 <span class="w">        </span><span class="c1">// 関数の終了時にファイルを閉じる</span>
 <span class="w">        </span><span class="c1">// Closeのエラーを処理しない場合は _ に代入する</span>
-<span class="w">        </span><span class="nx">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">file</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+<span class="w">        </span><span class="nx">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">file</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
 <span class="w">    </span><span class="p">}()</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>

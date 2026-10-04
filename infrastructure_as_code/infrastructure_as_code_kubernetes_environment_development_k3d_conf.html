@@ -34094,7 +34094,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">kubeAPI</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
 <span class="w">  </span><span class="nt">hostIP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1</span>
-<span class="w">  </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6445&quot;</span>
+<span class="w">  </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="s">"6445"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34103,7 +34103,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="image">image<a class="headerlink" href="#image" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;rancher/k3s:v1.20.4-k3s1&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">"rancher/k3s:v1.20.4-k3s1"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34140,10 +34140,10 @@
 <p><br></p>
 <h2 id="volumes">volumes<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">volume</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/foo/path:/path/node&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">volume</span><span class="p">:</span><span class="w"> </span><span class="s">"/foo/path:/path/node"</span>
 <span class="w">    </span><span class="nt">nodeFilters</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;server:0&quot;</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;agent:*&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"server:0"</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"agent:*"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34153,7 +34153,7 @@
 <p><br></p>
 <h2 id="ports">ports<a class="headerlink" href="#ports" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nt">ports</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8080:80&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s">"8080:80"</span>
 <span class="w">    </span><span class="nt">nodeFilters</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loadbalancer</span>
 </code></pre></div>
@@ -34167,7 +34167,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">envVar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo=foo</span>
 <span class="w">    </span><span class="nt">nodeFilters</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;server:0&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"server:0"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34181,19 +34181,19 @@
 <span class="w">  </span><span class="nt">create</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.localhost</span>
 <span class="w">    </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0</span>
-<span class="w">    </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;5000&quot;</span>
+<span class="w">    </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="s">"5000"</span>
 <span class="w">    </span><span class="nt">proxy</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">remoteURL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://registry-1.docker.io&quot;</span>
-<span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">remoteURL</span><span class="p">:</span><span class="w"> </span><span class="s">"https://registry-1.docker.io"</span>
+<span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/some/path:/var/lib/registry&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"/some/path:/var/lib/registry"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="use">use<a class="headerlink" href="#use" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">registries</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">use</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;foo-registries:5000&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"foo-registries:5000"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="config">config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h3>
@@ -34209,7 +34209,7 @@
 <span class="w">    </span><span class="no">mirrors:</span>
 <span class="w">      </span><span class="no">&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com:</span>
 <span class="w">        </span><span class="no">endpoint:</span>
-<span class="w">          </span><span class="no">- &quot;https://&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com&quot;</span>
+<span class="w">          </span><span class="no">- "https://&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com"</span>
 </code></pre></div>
 <h4 id="config_2">▼ config<a class="headerlink" href="#config_2" title="Permanent link">&para;</a></h4>
 <p>プライベートリポジトリからイメージをプルする場合に、その資格情報を設定する。</p>
@@ -34275,13 +34275,13 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">settings.workerConnections=2048</span>
 <span class="w">  </span><span class="nt">k3s</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">extraArgs</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">arg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;--tls-san=foo.host.domain&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">arg</span><span class="p">:</span><span class="w"> </span><span class="s">"--tls-san=foo.host.domain"</span>
 <span class="w">        </span><span class="nt">nodeFilters</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;server:*&quot;</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"server:*"</span>
 <span class="w">    </span><span class="nt">nodeLabels</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo=foo</span>
 <span class="w">        </span><span class="nt">nodeFilters</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;agent:1&quot;</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"agent:1"</span>
 <span class="w">  </span><span class="nt">kubeconfig</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">updateDefaultKubeconfig</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">switchCurrentContext</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -34290,7 +34290,7 @@
 <span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo=foo</span>
 <span class="w">        </span><span class="nt">nodeFilters</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;agent:1&quot;</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"agent:1"</span>
 <span class="w">    </span><span class="nt">ulimits</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nofile</span>
 <span class="w">        </span><span class="nt">soft</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">26677</span>

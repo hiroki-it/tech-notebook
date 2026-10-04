@@ -35510,13 +35510,13 @@
 
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">sayhello</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Echo</span><span class="nv"> </span><span class="s">hello</span><span class="nv"> </span><span class="s">world&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Echo</span><span class="nv"> </span><span class="s">hello</span><span class="nv"> </span><span class="s">world"</span>
 <span class="w">    </span><span class="c1"># 引数の定義</span>
 <span class="w">    </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">to</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">        </span><span class="c1"># デフォルト値</span>
-<span class="w">        </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello</span><span class="nv"> </span><span class="s">World&quot;</span>
+<span class="w">        </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">"Hello</span><span class="nv"> </span><span class="s">World"</span>
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &lt;&lt; parameters.to &gt;&gt;</span>
 </code></pre></div>
@@ -35533,11 +35533,11 @@
 
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">sayhello</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Echo</span><span class="nv"> </span><span class="s">hello</span><span class="nv"> </span><span class="s">world&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Echo</span><span class="nv"> </span><span class="s">hello</span><span class="nv"> </span><span class="s">world"</span>
 <span class="w">    </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">to</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">        </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello</span><span class="nv"> </span><span class="s">World&quot;</span>
+<span class="w">        </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">"Hello</span><span class="nv"> </span><span class="s">World"</span>
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &lt;&lt; parameters.to &gt;&gt;</span>
 </code></pre></div>
@@ -35589,14 +35589,14 @@
 <span class="w">      </span><span class="nt">custom_checkout</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
 <span class="w">        </span><span class="c1"># デフォルト値</span>
-<span class="w">        </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
-<span class="w">    </span><span class="nt">machine</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">        </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
+<span class="w">    </span><span class="nt">machine</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">when</span><span class="p">:</span>
 <span class="w">          </span><span class="c1"># 引数が true の場合</span>
 <span class="w">          </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;&lt; parameters.custom_checkout &gt;&gt;</span>
 <span class="w">          </span><span class="nt">steps</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;my custom checkout&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "my custom checkout"</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">unless</span><span class="p">:</span>
 <span class="w">          </span><span class="c1"># 引数の false の場合</span>
 <span class="w">          </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;&lt; parameters.custom_checkout &gt;&gt;</span>
@@ -35608,7 +35608,7 @@
 <span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_with_optional_custom_checkout</span><span class="p">:</span>
 <span class="w">          </span><span class="c1"># workflow にて boolean 型の値を設定</span>
-<span class="w">          </span><span class="nt">custom_checkout</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">custom_checkout</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <h4 id="enum">▼ enum 型<a class="headerlink" href="#enum" title="Permanent link">&para;</a></h4>
 <p>引数として、特定の文字列や整数のみを渡したいときに使用する。</p>
@@ -35622,9 +35622,9 @@
 <span class="w">      </span><span class="c1"># 引数を定義</span>
 <span class="w">      </span><span class="nt">environment</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># デフォルト値</span>
-<span class="w">        </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tes&quot;</span>
+<span class="w">        </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">"tes"</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enum</span>
-<span class="w">        </span><span class="nt">enum</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;tes&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;stg&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;prd&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">enum</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"tes"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"stg"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"prd"</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># デフォルト値 test を与える時は何も設定しない</span>
@@ -35669,9 +35669,9 @@
 <span class="w">  </span><span class="nt">build</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">executor</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python</span>
-<span class="w">      </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2.7&quot;</span>
+<span class="w">      </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="s">"2.7"</span>
 <span class="w">      </span><span class="c1"># job にて string 型の値を設定</span>
-<span class="w">      </span><span class="nt">myspecialvar</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;myspecialvalue&quot;</span>
+<span class="w">      </span><span class="nt">myspecialvar</span><span class="p">:</span><span class="w"> </span><span class="s">"myspecialvalue"</span>
 </code></pre></div>
 <h4 id="workflow">▼ workflow で値を設定する<a class="headerlink" href="#workflow" title="Permanent link">&para;</a></h4>
 <p>公式リファレンスには載っていないため、この方法は非推奨。</p>
@@ -35684,7 +35684,7 @@
 <span class="w">    </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enum</span>
-<span class="w">        </span><span class="nt">enum</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;2.7&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;3.5&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">enum</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"2.7"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"3.5"</span><span class="p p-Indicator">]</span>
 <span class="w">      </span><span class="nt">myspecialvar</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">    </span><span class="nt">docker</span><span class="p">:</span>
@@ -35710,14 +35710,14 @@
 <span class="w">          </span><span class="nt">executor_param</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python</span>
 <span class="w">            </span><span class="c1"># バージョン 3.5 を設定</span>
-<span class="w">            </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2.7&quot;</span>
-<span class="w">            </span><span class="nt">myspecialvar</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;myspecialvalue&quot;</span>
+<span class="w">            </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="s">"2.7"</span>
+<span class="w">            </span><span class="nt">myspecialvar</span><span class="p">:</span><span class="w"> </span><span class="s">"myspecialvalue"</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">build</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">executor_param</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python</span>
 <span class="w">            </span><span class="c1"># バージョン 3.5 を設定</span>
-<span class="w">            </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.5&quot;</span>
-<span class="w">            </span><span class="nt">myspecialvar</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;myspecialvalue&quot;</span>
+<span class="w">            </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="s">"3.5"</span>
+<span class="w">            </span><span class="nt">myspecialvar</span><span class="p">:</span><span class="w"> </span><span class="s">"myspecialvalue"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="pipeline-parameters">pipeline parameters<a class="headerlink" href="#pipeline-parameters" title="Permanent link">&para;</a></h3>
@@ -35735,10 +35735,10 @@
 <span class="w">  </span><span class="nt">image-tag</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">    </span><span class="c1"># デフォルト値</span>
-<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;latest&quot;</span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">"latest"</span>
 <span class="w">  </span><span class="nt">workingdir</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;~/main&quot;</span>
+<span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">"~/main"</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">build</span><span class="p">:</span>
@@ -35751,16 +35751,16 @@
 <span class="w">      </span><span class="nt">IMAGETAG</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;&lt; pipeline.parameters.image-tag &gt;&gt;</span>
 <span class="w">    </span><span class="nt">working_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;&lt; pipeline.parameters.workingdir &gt;&gt;</span>
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;Image tag used was ${IMAGETAG}&quot;</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;$(pwd) == &lt;&lt; pipeline.parameters.workingdir &gt;&gt;&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "Image tag used was ${IMAGETAG}"</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "$(pwd) == &lt;&lt; pipeline.parameters.workingdir &gt;&gt;"</span>
 
 <span class="nt">workflows</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">my-workflow</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">build</span><span class="p">:</span>
 <span class="w">          </span><span class="c1"># 引数名: 渡す値</span>
-<span class="w">          </span><span class="nt">image-tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.0&quot;</span>
-<span class="w">          </span><span class="nt">workdir</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/tmp&quot;</span>
+<span class="w">          </span><span class="nt">image-tag</span><span class="p">:</span><span class="w"> </span><span class="s">"1.0"</span>
+<span class="w">          </span><span class="nt">workdir</span><span class="p">:</span><span class="w"> </span><span class="s">"/tmp"</span>
 </code></pre></div>
 <h2 id="03-jobs">03. jobs<a class="headerlink" href="#03-jobs" title="Permanent link">&para;</a></h2>
 <h3 id="jobs">jobs<a class="headerlink" href="#jobs" title="Permanent link">&para;</a></h3>
@@ -35820,7 +35820,7 @@
 <span class="w">      </span><span class="c1"># コンテナが入れ子にならないようにする。</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">setup_remote_docker</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"> </span><span class="c1"># DockerHub に対するログイン</span>
-<span class="w">          </span><span class="no">echo &quot;$DOCKER_PASS&quot; \</span>
+<span class="w">          </span><span class="no">echo "$DOCKER_PASS" \</span>
 <span class="w">            </span><span class="no">| docker login --username $DOCKER_USER --password-stdin</span>
 <span class="w">          </span><span class="no">docker run -d --name db company/proprietary-db:1.2.3</span>
 
@@ -35843,11 +35843,11 @@
 
 <span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">build</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">machine</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">machine</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"> </span><span class="c1"># DockerHub に対するログイン</span>
-<span class="w">          </span><span class="no">echo &quot;$DOCKER_PASS&quot; \</span>
+<span class="w">          </span><span class="no">echo "$DOCKER_PASS" \</span>
 <span class="w">            </span><span class="no">| docker login --username $DOCKER_USER --password-stdin</span>
 <span class="w">          </span><span class="no">docker run -d --name db company/proprietary-db:1.2.3</span>
 
@@ -35890,14 +35890,14 @@
 <span class="w">      </span><span class="nt">custom_checkout_parameters</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bool</span>
 <span class="w">        </span><span class="c1"># デフォルト値は false</span>
-<span class="w">        </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
-<span class="w">    </span><span class="nt">machine</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">        </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
+<span class="w">    </span><span class="nt">machine</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># 引数が true の場合</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">when</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;&lt; parameters.custom_checkout_parameters &gt;&gt;</span>
 <span class="w">          </span><span class="nt">steps</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;ユーザー定義のチェックアウト処理&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "ユーザー定義のチェックアウト処理"</span>
 <span class="w">      </span><span class="c1"># 引数が false の場合</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">unless</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;&lt; parameters.custom_checkout_parameters &gt;&gt;</span>
@@ -35910,7 +35910,7 @@
 <span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">custom_checkout</span><span class="p">:</span>
 <span class="w">          </span><span class="c1"># 引数名: 渡す値</span>
-<span class="w">          </span><span class="nt">custom_checkout_parameters</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">custom_checkout_parameters</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <h4 id="restore_cachesave_cache">▼ restore_cache、save_cache<a class="headerlink" href="#restore_cachesave_cache" title="Permanent link">&para;</a></h4>
 <p><img alt="CircleCIキャッシュ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CircleCIキャッシュ.png" /></p>
@@ -35935,7 +35935,7 @@
 <span class="w">      </span><span class="c1"># composer.json が変更されている場合は処理をスキップ。</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">restore_cache</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">key</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1-dependecies-{{ checksum &quot;composer.json&quot; }}</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1-dependecies-{{ checksum "composer.json" }}</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1-dependencies-</span>
 <span class="w">      </span><span class="c1"># 取得した composer.json を元に、差分の vendor をインストール</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
@@ -35944,7 +35944,7 @@
 <span class="w">            </span><span class="no">composer install -n --prefer-dist</span>
 <span class="w">      </span><span class="c1"># 最新の vendor ディレクトリのキャッシュを作成</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">save_cache</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1-dependecies-{{ checksum &quot;composer.json&quot; }}</span>
+<span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1-dependecies-{{ checksum "composer.json" }}</span>
 <span class="w">          </span><span class="nt">paths</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./vendor</span>
 </code></pre></div>
@@ -35960,7 +35960,7 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">restore_cache</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">keys</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1-dependencies-{{ checksum &quot;package.json&quot; }}</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1-dependencies-{{ checksum "package.json" }}</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1-dependencies-</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run yarn install</span>
@@ -35969,7 +35969,7 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">save_cache</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">paths</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node_modules</span>
-<span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1-dependencies-{{ checksum &quot;yarn.lock&quot; }}</span>
+<span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1-dependencies-{{ checksum "yarn.lock" }}</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run yarn build</span>
 <span class="w">          </span><span class="nt">commands</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -35989,14 +35989,14 @@
 <span class="w">      </span><span class="c1"># composer.json の実装が変更されていない場合は処理をスキップ。</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">restore_cache</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">key</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1-dependencies-{{ checksum &quot;composer.json&quot; }}</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1-dependencies-{{ checksum "composer.json" }}</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1-dependencies-</span>
 
 <span class="w">  </span><span class="nt">save_vendor</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># 最新の vendor を保管。</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">save_cache</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1-dependencies-{{ checksum &quot;composer.json&quot; }}</span>
+<span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1-dependencies-{{ checksum "composer.json" }}</span>
 <span class="w">          </span><span class="nt">paths</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./vendor</span>
 
@@ -36024,7 +36024,7 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">persist_to_workspace</span><span class="p">:</span>
 <span class="w">          </span><span class="c1"># jobA にて、Workspace とするディレクトリの root</span>
 <span class="w">          </span><span class="nt">root</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp/workspace</span>
-<span class="w">          </span><span class="c1"># Root ディレクトリを基準とした相対パス (&quot;./&quot;以外の場合は、ディレクトリの作成が必要)</span>
+<span class="w">          </span><span class="c1"># Root ディレクトリを基準とした相対パス ("./"以外の場合は、ディレクトリの作成が必要)</span>
 <span class="w">          </span><span class="c1"># パラメーターは環境変数として出力できないので注意</span>
 <span class="w">          </span><span class="nt">paths</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">target/application.jar</span>
@@ -36063,11 +36063,11 @@
 
 <span class="nt">commands</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">sayhello</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Echo</span><span class="nv"> </span><span class="s">hello</span><span class="nv"> </span><span class="s">world&quot;</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Echo</span><span class="nv"> </span><span class="s">hello</span><span class="nv"> </span><span class="s">world"</span>
 <span class="w">    </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">text</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">        </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello</span><span class="nv"> </span><span class="s">World&quot;</span>
+<span class="w">        </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">"Hello</span><span class="nv"> </span><span class="s">World"</span>
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># parameters の値を渡す</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &lt;&lt; parameters.text &gt;&gt;</span>
@@ -36075,12 +36075,12 @@
 <span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">myjob</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">docker</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;circleci/node:9.6.1&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">"circleci/node:9.6.1"</span>
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># command 名</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">sayhello</span><span class="p">:</span>
 <span class="w">          </span><span class="c1"># 引数名: 渡す値</span>
-<span class="w">          </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Lev&quot;</span>
+<span class="w">          </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="s">"Lev"</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="05-executors">05. executors<a class="headerlink" href="#05-executors" title="Permanent link">&para;</a></h2>
@@ -36107,7 +36107,7 @@
 <span class="w">  </span><span class="nt">my-job</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">executor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-executor</span>
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;${XX}と${YY}です&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "${XX}と${YY}です"</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="06-workflow">06. workflow<a class="headerlink" href="#06-workflow" title="Permanent link">&para;</a></h2>
@@ -36174,15 +36174,15 @@
 
 <span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">bar</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">machine</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">machine</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">            </span><span class="no">echo &quot;building&quot;</span>
+<span class="w">            </span><span class="no">echo "building"</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">            </span><span class="no">echo &quot;testing&quot;</span>
+<span class="w">            </span><span class="no">echo "testing"</span>
 
 <span class="nt">workflows</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">build</span><span class="p">:</span>
@@ -36192,12 +36192,12 @@
 <span class="w">          </span><span class="nt">pre-steps</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">                  </span><span class="no">echo &quot;install custom dependency&quot;</span>
+<span class="w">                  </span><span class="no">echo "install custom dependency"</span>
 <span class="w">          </span><span class="c1"># Workspace 後に実行する処理</span>
 <span class="w">          </span><span class="nt">post-steps</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">                  </span><span class="no">echo &quot;upload artifact to s3&quot;</span>
+<span class="w">                  </span><span class="no">echo "upload artifact to s3"</span>
 </code></pre></div>
 <p>Orbs を使用する場合は、オプションに引数を渡す前に定義する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -36209,12 +36209,12 @@
 <span class="w">          </span><span class="nt">pre-steps</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">                  </span><span class="no">echo &quot;FOO&quot;</span>
+<span class="w">                  </span><span class="no">echo "FOO"</span>
 <span class="w">          </span><span class="c1"># Workspace 後に実行する処理</span>
 <span class="w">          </span><span class="nt">post-steps</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">                  </span><span class="no">echo &quot;FOO&quot;</span>
+<span class="w">                  </span><span class="no">echo "FOO"</span>
 <span class="w">          </span><span class="c1"># Orbs のオプション</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="w">          </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
@@ -36368,7 +36368,7 @@
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo FOO</span>
 <span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">        </span><span class="no">echo ${FOO}</span>
-<span class="w">        </span><span class="no">echo &quot;This is &quot;${FOO}&quot;&quot;</span>
+<span class="w">        </span><span class="no">echo "This is "${FOO}""</span>
 </code></pre></div>
 <h4 id="env">▼ <code>.env</code> ファイルの安全なコピー方法<a class="headerlink" href="#env" title="Permanent link">&para;</a></h4>
 <p>アプリケーションの <code>.env</code> ファイルを CircleCI 内で使用したいときは、あらかじめエンコードされた環境変数を Project 変数として管理しておき、CircleCI 内でデコードするようにすれば、env ファイルを安全にコピーできる。</p>
@@ -36422,11 +36422,11 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update PATH and Define Environment Variable at Runtime</span>
 <span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">            </span><span class="no">echo &quot;export PATH=/path/to/foo/bin:$PATH&quot; &gt;&gt; $BASH_ENV</span>
-<span class="w">            </span><span class="no">echo &quot;export VERY_IMPORTANT=$(cat important_value)&quot; &gt;&gt; $BASH_ENV</span>
+<span class="w">            </span><span class="no">echo "export PATH=/path/to/foo/bin:$PATH" &gt;&gt; $BASH_ENV</span>
+<span class="w">            </span><span class="no">echo "export VERY_IMPORTANT=$(cat important_value)" &gt;&gt; $BASH_ENV</span>
 <span class="w">            </span><span class="no">source $BASH_ENV</span>
-<span class="w">            </span><span class="no">echo &quot;$PATH&quot;</span>
-<span class="w">            </span><span class="no">echo &quot;$VERY_IMPORTANT&quot;</span>
+<span class="w">            </span><span class="no">echo "$PATH"</span>
+<span class="w">            </span><span class="no">echo "$VERY_IMPORTANT"</span>
 </code></pre></div>
 <p>CircleCI では <code>run</code> キーを実行すると、『<code>$BASH_ENV</code>』が自動的に読み込まれる。</p>
 <p>そのため、『<code>$BASH_ENV</code>』は複数の <code>run</code> キー間』で共有できる。</p>
@@ -36444,13 +36444,13 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update PATH and Define Environment Variable at Runtime</span>
 <span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">            </span><span class="no">echo &quot;export PATH=/path/to/foo/bin:$PATH&quot; &gt;&gt; $BASH_ENV</span>
-<span class="w">            </span><span class="no">echo &quot;export VERY_IMPORTANT=$(cat important_value)&quot; &gt;&gt; $BASH_ENV</span>
+<span class="w">            </span><span class="no">echo "export PATH=/path/to/foo/bin:$PATH" &gt;&gt; $BASH_ENV</span>
+<span class="w">            </span><span class="no">echo "export VERY_IMPORTANT=$(cat important_value)" &gt;&gt; $BASH_ENV</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Echo</span><span class="w"> </span><span class="c1"># BASH_ENV が自動的に読み込まれる。</span>
 <span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">            </span><span class="no">echo &quot;$PATH&quot;</span>
-<span class="w">            </span><span class="no">echo &quot;$VERY_IMPORTANT&quot;</span>
+<span class="w">            </span><span class="no">echo "$PATH"</span>
+<span class="w">            </span><span class="no">echo "$VERY_IMPORTANT"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36474,15 +36474,15 @@
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update PATH and Define Environment Variable at Runtime</span>
 <span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">            </span><span class="no">source export_envs.sh</span>
-<span class="w">            </span><span class="no">echo &quot;$PATH&quot;</span>
-<span class="w">            </span><span class="no">echo &quot;$VERY_IMPORTANT&quot;</span>
+<span class="w">            </span><span class="no">echo "$PATH"</span>
+<span class="w">            </span><span class="no">echo "$VERY_IMPORTANT"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="nb">set</span><span class="w"> </span>-xeuo<span class="w"> </span>pipefail
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export PATH=/path/to/foo/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$BASH_ENV</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export VERY_IMPORTANT=</span><span class="k">$(</span>cat<span class="w"> </span>important_value<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$BASH_ENV</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"export PATH=/path/to/foo/bin:</span><span class="nv">$PATH</span><span class="s2">"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$BASH_ENV</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"export VERY_IMPORTANT=</span><span class="k">$(</span>cat<span class="w"> </span>important_value<span class="k">)</span><span class="s2">"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$BASH_ENV</span>
 
 <span class="c1"># 環境変数を出力する</span>
 <span class="nb">source</span><span class="w"> </span><span class="nv">$BASH_ENV</span>
@@ -36492,11 +36492,11 @@
 <p>ヒアドキュメントでは、各行で echo が実行される。</p>
 <p>そのため、echo の実装が不要であることに注意する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; &quot;export_envs.sh&quot;</span>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; "export_envs.sh"</span>
 <span class="s">#!/bin/bash</span>
 <span class="s">set -xeuo pipefail</span>
-<span class="s">&quot;export PATH=/path/to/foo/bin:$PATH&quot; &gt;&gt; $BASH_ENV</span>
-<span class="s">&quot;export VERY_IMPORTANT=$(cat important_value)&quot; &gt;&gt; $BASH_ENV</span>
+<span class="s">"export PATH=/path/to/foo/bin:$PATH" &gt;&gt; $BASH_ENV</span>
+<span class="s">"export VERY_IMPORTANT=$(cat important_value)" &gt;&gt; $BASH_ENV</span>
 <span class="s">source $BASH_ENV</span>
 <span class="s">EOF</span>
 </code></pre></div>
@@ -36603,7 +36603,7 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Make env file</span>
 <span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">            </span><span class="no">echo &quot;${ENV}&quot; | base64 -d &gt; .env</span>
+<span class="w">            </span><span class="no">echo "${ENV}" | base64 -d &gt; .env</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Make env docker file</span>
 <span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -36670,7 +36670,7 @@
 <span class="w">    </span><span class="nt">machine</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-1604:201903-01</span>
 <span class="w">      </span><span class="c1"># DLC を有効化</span>
-<span class="w">      </span><span class="nt">docker_layer_caching</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">      </span><span class="nt">docker_layer_caching</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
@@ -36698,7 +36698,7 @@
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">setup_remote_docker</span><span class="p">:</span>
 <span class="w">          </span><span class="c1"># DLC を有効化</span>
-<span class="w">          </span><span class="nt">docker_layer_caching</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">docker_layer_caching</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/check</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">docker/build</span><span class="p">:</span>

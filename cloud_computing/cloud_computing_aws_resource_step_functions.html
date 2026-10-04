@@ -33754,26 +33754,26 @@
 <h4 id="aws-lambda">▼ AWS Lambda<a class="headerlink" href="#aws-lambda" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;StartAt&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Call</span><span class="nv"> </span><span class="s">AWS</span><span class="nv"> </span><span class="s">Lambda&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;States&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"StartAt"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Call</span><span class="nv"> </span><span class="s">AWS</span><span class="nv"> </span><span class="s">Lambda"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"States"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;Call</span><span class="nv"> </span><span class="s">AWS</span><span class="nv"> </span><span class="s">Lambda&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">      </span><span class="s">"Call</span><span class="nv"> </span><span class="s">AWS</span><span class="nv"> </span><span class="s">Lambda"</span><span class="p p-Indicator">:</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
-<span class="w">          </span><span class="s">&quot;Type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Task&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:states:::lambda:invoke.waitForTaskToken&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;Parameters&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="s">"Type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Task"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:states:::lambda:invoke.waitForTaskToken"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"Parameters"</span><span class="p p-Indicator">:</span>
 <span class="w">            </span><span class="p p-Indicator">{</span>
-<span class="w">              </span><span class="s">&quot;FunctionName&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:lambda:ap-northeast-1:&lt;AWSアカウントID&gt;:foo-function:1&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">"FunctionName"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:lambda:ap-northeast-1:&lt;AWSアカウントID&gt;:foo-function:1"</span><span class="p p-Indicator">,</span>
 <span class="w">            </span><span class="p p-Indicator">},</span>
-<span class="w">          </span><span class="s">&quot;Retry&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="s">"Retry"</span><span class="p p-Indicator">:</span>
 <span class="w">            </span><span class="p p-Indicator">[</span>
 <span class="w">              </span><span class="p p-Indicator">{</span>
-<span class="w">                </span><span class="s">&quot;ErrorEquals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;リトライの対象とするエラー&gt;&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">                </span><span class="s">&quot;MaxAttempts&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">"ErrorEquals"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"&lt;リトライの対象とするエラー&gt;"</span><span class="p p-Indicator">],</span>
+<span class="w">                </span><span class="s">"MaxAttempts"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
 <span class="w">              </span><span class="p p-Indicator">},</span>
 <span class="w">            </span><span class="p p-Indicator">],</span>
-<span class="w">          </span><span class="s">&quot;End&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;Comment&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;The</span><span class="nv"> </span><span class="s">state</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">call</span><span class="nv"> </span><span class="s">AWS</span><span class="nv"> </span><span class="s">Lambda&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"End"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"Comment"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"The</span><span class="nv"> </span><span class="s">state</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">call</span><span class="nv"> </span><span class="s">AWS</span><span class="nv"> </span><span class="s">Lambda"</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
@@ -33813,13 +33813,13 @@
 </ul>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;states:StartExecution&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:states:*:&lt;AWSアカウントID&gt;:stateMachine:*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"states:StartExecution"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:states:*:&lt;AWSアカウントID&gt;:stateMachine:*"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
@@ -33827,8 +33827,8 @@
 <h4 id="_3">▼ レスポンス構造<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>以下がレスポンスされれば、Amazon API Gateway が Step Functions をコールできたことになる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;executionArn&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:states:ap-northeast-1:&lt;AWSアカウントID&gt;:execution:prd-foo-doing-state-machine:*****&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;startDate&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1.638244285498E9</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"executionArn"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:states:ap-northeast-1:&lt;AWSアカウントID&gt;:execution:prd-foo-doing-state-machine:*****"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"startDate"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1.638244285498E9</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>

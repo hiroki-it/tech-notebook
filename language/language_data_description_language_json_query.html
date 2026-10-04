@@ -34104,25 +34104,25 @@
 <h3 id="json">例で使用する JSON<a class="headerlink" href="#json" title="Permanent link">&para;</a></h3>
 <p>以降で使用する JSON 型データを以下の通りとする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># data.json</span>
-<span class="p p-Indicator">{</span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;BAR&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;baz&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="s">&quot;qux&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;QUX&quot;</span><span class="p p-Indicator">},</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;quux&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;QUUX&quot;</span><span class="p p-Indicator">}]}</span>
+<span class="p p-Indicator">{</span><span class="s">"foo"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"FOO"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"bar"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"BAR"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"baz"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="s">"qux"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"QUX"</span><span class="p p-Indicator">},</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"quux"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"QUUX"</span><span class="p p-Indicator">}]}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># list.json ファイル</span>
 <span class="c1"># 配列内のオブジェクトごとに、foo キーの値が異なる。</span>
 <span class="p p-Indicator">[</span>
-<span class="w">  </span><span class="p p-Indicator">{</span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;BAR&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;baz&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;BAZ&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="p p-Indicator">{</span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;BAR&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;BAZ&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;baz&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="p p-Indicator">{</span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;BAZ&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;baz&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;BAR&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="p p-Indicator">{</span><span class="s">"foo"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"FOO"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"bar"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"BAR"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"baz"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"BAZ"</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="p p-Indicator">{</span><span class="s">"foo"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"BAR"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"bar"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"BAZ"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"baz"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"FOO"</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="p p-Indicator">{</span><span class="s">"foo"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"BAZ"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"bar"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"FOO"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"baz"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"BAR"</span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">]</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_3">ファイル読み込み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>標準入力に入力することにより、JSON ファイルを読み込む。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.foo[]&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'.foo[]'</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="-r">-r<a class="headerlink" href="#-r" title="Permanent link">&para;</a></h3>
 <p>出力結果のダブルクオーテーションを削除する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.foo[]&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.foo[]'</span>
 
 FOO
 BAR
@@ -34136,14 +34136,14 @@ BAZ
 <p><br></p>
 <h3 id="-s">-s<a class="headerlink" href="#-s" title="Permanent link">&para;</a></h3>
 <p>JSON 型データのリストから複数のオブジェクトを取得する場合、取得したオブジェクトを再びリストに入れる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.baz[]&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-s
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'.baz[]'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-s
 
 <span class="o">[</span>
 <span class="w">  </span><span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;qux&quot;</span>:<span class="w"> </span><span class="s2">&quot;QUX&quot;</span>
+<span class="w">    </span><span class="s2">"qux"</span>:<span class="w"> </span><span class="s2">"QUX"</span>
 <span class="w">  </span><span class="o">}</span>,
 <span class="w">  </span><span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;quux&quot;</span>:<span class="w"> </span><span class="s2">&quot;QUUX&quot;</span>
+<span class="w">    </span><span class="s2">"quux"</span>:<span class="w"> </span><span class="s2">"QUUX"</span>
 <span class="w">  </span><span class="o">}</span>
 <span class="o">]</span>
 </code></pre></div>
@@ -34152,17 +34152,17 @@ BAZ
 <h3 id="_4">パス指定によるフィルタリング<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ <code>.</code> (ドット)<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>パスの起点を表す。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'.'</span>
 
 <span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;foo&quot;</span>:<span class="w"> </span><span class="s2">&quot;FOO&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;bar&quot;</span>:<span class="w"> </span><span class="s2">&quot;BAR&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;baz&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">  </span><span class="s2">"foo"</span>:<span class="w"> </span><span class="s2">"FOO"</span>,
+<span class="w">  </span><span class="s2">"bar"</span>:<span class="w"> </span><span class="s2">"BAR"</span>,
+<span class="w">  </span><span class="s2">"baz"</span>:<span class="w"> </span><span class="o">[</span>
 <span class="w">    </span><span class="o">{</span>
-<span class="w">      </span><span class="s2">&quot;qux&quot;</span>:<span class="w"> </span><span class="s2">&quot;QUX&quot;</span>
+<span class="w">      </span><span class="s2">"qux"</span>:<span class="w"> </span><span class="s2">"QUX"</span>
 <span class="w">    </span><span class="o">}</span>,
 <span class="w">    </span><span class="o">{</span>
-<span class="w">      </span><span class="s2">&quot;quux&quot;</span>:<span class="w"> </span><span class="s2">&quot;QUUX&quot;</span>
+<span class="w">      </span><span class="s2">"quux"</span>:<span class="w"> </span><span class="s2">"QUUX"</span>
 <span class="w">    </span><span class="o">}</span>
 <span class="w">  </span><span class="o">]</span>
 <span class="o">}</span>
@@ -34175,37 +34175,37 @@ BAZ
 <h4 id="_6">▼ <code>[]</code><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>リストへのパスを表す。もし JSON 型データが起点からリストだった場合は、『<code>.[]</code>』になる。</p>
 <p>オブジェクトを取得できるだけなため、取得したオブジェクトを再びリストに入れたい場合は、加えて <code>-s</code> オプションを有効化した <code>jq</code> コマンドに渡す必要がある。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.baz[]&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'.baz[]'</span>
 
 <span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;qux&quot;</span>:<span class="w"> </span><span class="s2">&quot;QUX&quot;</span>
+<span class="w">  </span><span class="s2">"qux"</span>:<span class="w"> </span><span class="s2">"QUX"</span>
 <span class="o">}</span>
 <span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;quux&quot;</span>:<span class="w"> </span><span class="s2">&quot;QUUX&quot;</span>
+<span class="w">  </span><span class="s2">"quux"</span>:<span class="w"> </span><span class="s2">"QUUX"</span>
 <span class="o">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.baz[0]&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'.baz[0]'</span>
 
 <span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;qux&quot;</span>:<span class="w"> </span><span class="s2">&quot;QUX&quot;</span>
+<span class="w">  </span><span class="s2">"qux"</span>:<span class="w"> </span><span class="s2">"QUX"</span>
 <span class="o">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>list.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.[]&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>list.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'.[]'</span>
 
 <span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;foo&quot;</span>:<span class="w"> </span><span class="s2">&quot;FOO&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;bar&quot;</span>:<span class="w"> </span><span class="s2">&quot;BAR&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;baz&quot;</span>:<span class="w"> </span><span class="s2">&quot;BAZ&quot;</span>
+<span class="w">  </span><span class="s2">"foo"</span>:<span class="w"> </span><span class="s2">"FOO"</span>,
+<span class="w">  </span><span class="s2">"bar"</span>:<span class="w"> </span><span class="s2">"BAR"</span>,
+<span class="w">  </span><span class="s2">"baz"</span>:<span class="w"> </span><span class="s2">"BAZ"</span>
 <span class="o">}</span>
 <span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;foo&quot;</span>:<span class="w"> </span><span class="s2">&quot;BAR&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;bar&quot;</span>:<span class="w"> </span><span class="s2">&quot;BAZ&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;baz&quot;</span>:<span class="w"> </span><span class="s2">&quot;FOO&quot;</span>
+<span class="w">  </span><span class="s2">"foo"</span>:<span class="w"> </span><span class="s2">"BAR"</span>,
+<span class="w">  </span><span class="s2">"bar"</span>:<span class="w"> </span><span class="s2">"BAZ"</span>,
+<span class="w">  </span><span class="s2">"baz"</span>:<span class="w"> </span><span class="s2">"FOO"</span>
 <span class="o">}</span>
 <span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;foo&quot;</span>:<span class="w"> </span><span class="s2">&quot;BAZ&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;bar&quot;</span>:<span class="w"> </span><span class="s2">&quot;FOO&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;baz&quot;</span>:<span class="w"> </span><span class="s2">&quot;BAR&quot;</span>
+<span class="w">  </span><span class="s2">"foo"</span>:<span class="w"> </span><span class="s2">"BAZ"</span>,
+<span class="w">  </span><span class="s2">"bar"</span>:<span class="w"> </span><span class="s2">"FOO"</span>,
+<span class="w">  </span><span class="s2">"baz"</span>:<span class="w"> </span><span class="s2">"BAR"</span>
 <span class="o">}</span>
 </code></pre></div>
 <blockquote>
@@ -34217,13 +34217,13 @@ BAZ
 <p>パスに変数を出力する場合は、変数を『<code>''"$VAR"''</code>』のようにダブルクオーテーションとシングルクオーテーションで囲う。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">KEY_NAME</span><span class="o">=</span>baz
 
-$<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="s2">&quot;</span><span class="nv">$KEY_NAME</span><span class="s2">&quot;</span><span class="s1">&#39;[]&#39;</span>
+$<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'.'</span><span class="s2">"</span><span class="nv">$KEY_NAME</span><span class="s2">"</span><span class="s1">'[]'</span>
 
 <span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;qux&quot;</span>:<span class="w"> </span><span class="s2">&quot;QUX&quot;</span>
+<span class="w">  </span><span class="s2">"qux"</span>:<span class="w"> </span><span class="s2">"QUX"</span>
 <span class="o">}</span>
 <span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;quux&quot;</span>:<span class="w"> </span><span class="s2">&quot;QUUX&quot;</span>
+<span class="w">  </span><span class="s2">"quux"</span>:<span class="w"> </span><span class="s2">"QUUX"</span>
 <span class="o">}</span>
 </code></pre></div>
 <p><br></p>
@@ -34231,19 +34231,19 @@ $<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </
 <h4 id="select">▼ select<a class="headerlink" href="#select" title="Permanent link">&para;</a></h4>
 <p>パスによる取得結果のなかから、特定のキーや値を持つオブジェクトを取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># fooキーを持ち、値がFOOやBAZであるオブジェクトを取得する。</span>
-$<span class="w"> </span>cat<span class="w"> </span>list.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.[] | select (.foo == &quot;FOO&quot; or .foo == &quot;BAZ&quot;)&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;.&#39;</span>
+$<span class="w"> </span>cat<span class="w"> </span>list.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'.[] | select (.foo == "FOO" or .foo == "BAZ")'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-s<span class="w"> </span><span class="s1">'.'</span>
 
 <span class="c1"># 合致するオブジェクトのみを取得できる。</span>
 <span class="o">[</span>
 <span class="w">  </span><span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;foo&quot;</span>:<span class="w"> </span><span class="s2">&quot;FOO&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;bar&quot;</span>:<span class="w"> </span><span class="s2">&quot;BAR&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;baz&quot;</span>:<span class="w"> </span><span class="s2">&quot;BAZ&quot;</span>
+<span class="w">    </span><span class="s2">"foo"</span>:<span class="w"> </span><span class="s2">"FOO"</span>,
+<span class="w">    </span><span class="s2">"bar"</span>:<span class="w"> </span><span class="s2">"BAR"</span>,
+<span class="w">    </span><span class="s2">"baz"</span>:<span class="w"> </span><span class="s2">"BAZ"</span>
 <span class="w">  </span><span class="o">}</span>,
 <span class="w">  </span><span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;foo&quot;</span>:<span class="w"> </span><span class="s2">&quot;BAZ&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;bar&quot;</span>:<span class="w"> </span><span class="s2">&quot;FOO&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;baz&quot;</span>:<span class="w"> </span><span class="s2">&quot;BAR&quot;</span>
+<span class="w">    </span><span class="s2">"foo"</span>:<span class="w"> </span><span class="s2">"BAZ"</span>,
+<span class="w">    </span><span class="s2">"bar"</span>:<span class="w"> </span><span class="s2">"FOO"</span>,
+<span class="w">    </span><span class="s2">"baz"</span>:<span class="w"> </span><span class="s2">"BAR"</span>
 <span class="w">  </span><span class="o">}</span>,
 <span class="o">]</span>
 </code></pre></div>
@@ -34258,7 +34258,7 @@ $<span class="w"> </span>cat<span class="w"> </span>list.json<span class="w"> </
 <h3 id="join">join<a class="headerlink" href="#join" title="Permanent link">&para;</a></h3>
 <p><code>jq</code> コマンドの実行結果を任意の文字で結合する。</p>
 <p>リストを扱う場合には、パスを『<code>[]</code>』で囲う必要がある。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>list.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;[.[].foo] | join(&quot; &quot;)&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>list.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'[.[].foo] | join(" ")'</span>
 
 FOO<span class="w"> </span>BAR<span class="w"> </span>BAZ
 </code></pre></div>
@@ -34271,7 +34271,7 @@ FOO<span class="w"> </span>BAR<span class="w"> </span>BAZ
 <h2 id="05">05. 変換<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="text">text<a class="headerlink" href="#text" title="Permanent link">&para;</a></h3>
 <p>text 形式に変換する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>list.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;. | @text&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>list.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'. | @text'</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34281,7 +34281,7 @@ FOO<span class="w"> </span>BAR<span class="w"> </span>BAZ
 <p><br></p>
 <h3 id="tsv">tsv<a class="headerlink" href="#tsv" title="Permanent link">&para;</a></h3>
 <p>tsv 形式 (タブ切り) に変換する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>list.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;. | @tsv&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>list.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'. | @tsv'</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34291,7 +34291,7 @@ FOO<span class="w"> </span>BAR<span class="w"> </span>BAZ
 <p><br></p>
 <h3 id="csv">csv<a class="headerlink" href="#csv" title="Permanent link">&para;</a></h3>
 <p>csv 形式 (カンマ切り) に変換する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>list.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;. | @csv&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>list.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'. | @csv'</span>
 </code></pre></div>
 <blockquote>
 <ul>

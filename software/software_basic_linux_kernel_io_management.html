@@ -34409,7 +34409,7 @@
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"text"</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
 </code></pre></div>
 <p>また、プロセスの標準出力は <code>/proc/&lt;プロセスID&gt;/fd</code> ディレクトリのファイルディスクリプタ番号 (<code>1</code> 番) で確認できる。プロセス ID は <code>ps</code> コマンドで事前に確認する。</p>
 <p><strong>＊例＊</strong></p>
@@ -34433,7 +34433,7 @@ $<span class="w"> </span>cat<span class="w"> </span>/proc/1/fd/1
 </blockquote>
 <h4 id="_5">▼ 標準出力とファイルに出力<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>パイプラインで <code>tee</code> コマンドを繋ぐと、標準出力とファイルの両方に出力できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>stdout.log
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"text"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>stdout.log
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34442,7 +34442,7 @@ $<span class="w"> </span>cat<span class="w"> </span>/proc/1/fd/1
 </blockquote>
 <h4 id="_6">▼ ファイルのみに出力<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>パイプラインと <code>&amp;</code> で <code>tee</code> コマンドを繋ぐと、標準出力とファイルの両方に出力できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w"> </span><span class="p">|&amp;</span><span class="w"> </span>tee<span class="w"> </span>stdout.log
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"text"</span><span class="w"> </span><span class="p">|&amp;</span><span class="w"> </span>tee<span class="w"> </span>stdout.log
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34463,11 +34463,11 @@ $<span class="w"> </span>cat<span class="w"> </span>/proc/1/fd/1
 <li><a href="https://teratail.com/questions/1285">2&gt;&amp;1はどういう意味？ | teratail</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w"> </span><span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"text"</span><span class="w"> </span><span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span>
 
 <span class="c1"># または</span>
 
-$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"text"</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
 </code></pre></div>
 <p>また、プロセスの標準出力は <code>/proc/&lt;プロセスID&gt;/fd</code> ディレクトリのファイルディスクリプタ番号 (2 番) で確認できる。プロセス ID は <code>ps</code> コマンドで事前に確認する。</p>
 <p><strong>＊例＊</strong></p>
@@ -34514,16 +34514,16 @@ Hello<span class="w"> </span>World
 <h3 id="_11">ファイルに対するリダイレクト例<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="2">▼ <code>2&gt;</code><a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
 <p>リダイレクト前に <code>stdout.txt</code> ファイルを新しく作成し、<code>echo</code> コマンドの標準出力をこれにリダイレクトする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Hello World&#39;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>stdout.txt
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">'Hello World'</span><span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>stdout.txt
 </code></pre></div>
 <h4 id="_12">▼ <code>&gt;|</code><a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>リダイレクト前に <code>stdout.txt</code> ファイルを新しく作成し、<code>echo</code> コマンドの標準出力をこれにリダイレクトする。</p>
 <p>また、すでにファイルが存在している場合は、ファイルを上書き (再作成) する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Hello World&#39;</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>stdout.txt
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">'Hello World'</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>stdout.txt
 </code></pre></div>
 <h4 id="_13">▼ <code>&gt;&gt;</code><a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p><code>echo</code> コマンドの標準出力を既存の <code>stdout.txt</code> ファイルにリダイレクトし、加えて追記する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Hello World&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>stdout.txt
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">'Hello World'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>stdout.txt
 </code></pre></div>
 <p><br></p>
 <h2 id="02-03">02-03. パイプライン<a class="headerlink" href="#02-03" title="Permanent link">&para;</a></h2>
@@ -34544,19 +34544,19 @@ Hello<span class="w"> </span>World
 <p>コマンドの出力結果に対して、<code>awk</code> コマンドを実行する。</p>
 <p><strong>＊例＊</strong></p>
 <p>検索で取得されたファイルのサイズを合計する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.js&quot;</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-printf<span class="w"> </span><span class="s2">&quot;%s\n&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s2">&quot;{ sum += </span><span class="nv">$1</span><span class="s2">; } END { print sum; }&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.js"</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-printf<span class="w"> </span><span class="s2">"%s\n"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s2">"{ sum += </span><span class="nv">$1</span><span class="s2">; } END { print sum; }"</span>
 
-$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.css&quot;</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-printf<span class="w"> </span><span class="s2">&quot;%s\n&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s2">&quot;{ sum += </span><span class="nv">$1</span><span class="s2">; } END { print sum; }&quot;</span>
+$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.css"</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-printf<span class="w"> </span><span class="s2">"%s\n"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s2">"{ sum += </span><span class="nv">$1</span><span class="s2">; } END { print sum; }"</span>
 
-$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.png&quot;</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-printf<span class="w"> </span><span class="s2">&quot;%s\n&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s2">&quot;{ sum += </span><span class="nv">$1</span><span class="s2">; } END { print sum; }&quot;</span>
+$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.png"</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-printf<span class="w"> </span><span class="s2">"%s\n"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s2">"{ sum += </span><span class="nv">$1</span><span class="s2">; } END { print sum; }"</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p>パケットのうちで、<code>443</code> 番ポートに送信しているもののみを取得し、出力結果の３列目のみをフィルタリングする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>tcpdump<span class="w"> </span>dst<span class="w"> </span>port<span class="w"> </span><span class="m">443</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="s1">&#39;{print $3}&#39;</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="w"> </span><span class="s1">' '</span><span class="w"> </span><span class="s1">'{print $3}'</span>
 
 *.*.*.*
 *.*.*.*
@@ -34576,7 +34576,7 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 <p><strong>＊例＊</strong></p>
 <p>検索されたファイル内で、加えて文字列を検索する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;&lt;検索文字&gt;&quot;</span>
+<span class="w">  </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>grep<span class="w"> </span><span class="s2">"&lt;検索文字&gt;"</span>
 </code></pre></div>
 <h4 id="kill">▼ kill プロセスに対する入力<a class="headerlink" href="#kill" title="Permanent link">&para;</a></h4>
 <p>コマンドの出力結果に対して、<code>kill</code> コマンドを実行する。</p>
@@ -34647,7 +34647,7 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 <p>コマンドの出力結果で行が重複する場合は、<code>1</code> 個だけ残して削除する。</p>
 <p>隣り合っている重複しか削除できないため、あらかじめ <code>sort</code> コマンドを実行しておく必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>tcpdump<span class="w"> </span>dst<span class="w"> </span>port<span class="w"> </span><span class="m">443</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="s1">&#39;{print $3}&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>source_ips.txt
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="w"> </span><span class="s1">' '</span><span class="w"> </span><span class="s1">'{print $3}'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>source_ips.txt
 
 <span class="c1"># 必ずsortの結果を渡す</span>
 $<span class="w"> </span>cat<span class="w"> </span>source_ips.txt<span class="w"> </span><span class="se">\</span>

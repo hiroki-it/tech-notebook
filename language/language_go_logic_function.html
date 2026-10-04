@@ -36627,10 +36627,10 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello world!&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="s">"Hello world!"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>当然、<code>main</code> パッケージや <code>main()</code> 関数がないと、go のプログラムの起動時にエラーが発生する。</p>
@@ -36653,13 +36653,13 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nb">panic</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
+<span class="w">        </span><span class="nb">panic</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><code>Exit()</code> 関数は、設定した終了コード (<code>0</code> 以外) でプロセスを強制的に終了する。</p>
@@ -36667,17 +36667,17 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p><code>defer()</code> 関数があても、これを実行せずにプロセスを終了する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;os&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"os"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><code>Goexit()</code> 関数は、プロセスを強制的に終了する。</p>
@@ -36686,17 +36686,17 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p><code>main()</code> 関数では実行しないほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;runtime&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"runtime"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">Goexit</span><span class="p">()</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -36719,7 +36719,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="c1">// 頭文字を大文字する</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">foo</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -36727,7 +36727,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">Foo</span><span class="p">(</span><span class="s">&quot;Hello world!&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">Foo</span><span class="p">(</span><span class="s">"Hello world!"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_6">▼ 関数名の取得<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
@@ -36737,9 +36737,9 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;runtime&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"runtime"</span>
 <span class="p">)</span>
 
 <span class="c1">// 関数名を取得する</span>
@@ -36750,16 +36750,16 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="c1">// @see https://pkg.go.dev/runtime#Caller</span>
 <span class="w">    </span><span class="nx">pc</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">Caller</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Failed to get function name&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;unknown&quot;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">"Failed to get function name"</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">"unknown"</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">fn</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">FuncForPC</span><span class="p">(</span><span class="nx">pc</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">fn</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Failed to get function name&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;unknown&quot;</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">"Failed to get function name"</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">"unknown"</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fn</span><span class="p">.</span><span class="nx">Name</span><span class="p">()</span>
@@ -36787,18 +36787,18 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;runtime/debug&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"runtime/debug"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">GetCurrentModuleName</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">info</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">debug</span><span class="p">.</span><span class="nx">ReadBuildInfo</span><span class="p">()</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Failed to read build info&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;unknown&quot;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">"Failed to read build info"</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">"unknown"</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">info</span><span class="p">.</span><span class="nx">Path</span>
@@ -36827,14 +36827,14 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p>main 関数で即時関数を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Closure is working!&quot;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">"Closure is working!"</span>
 <span class="w">    </span><span class="p">}()</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
@@ -36842,7 +36842,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p>その場合、仮引数と引数の両方を設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 仮引数を設定</span>
@@ -36850,9 +36850,9 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">x</span>
 
-<span class="w">    </span><span class="p">}(</span><span class="s">&quot;Closure is working!&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 引数に値を渡す</span>
+<span class="w">    </span><span class="p">}(</span><span class="s">"Closure is working!"</span><span class="p">)</span><span class="w"> </span><span class="c1">// 引数に値を渡す</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -36873,25 +36873,25 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p>integer 型を値レシーバとして渡し、構造体に関数を紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Age</span><span class="w"> </span><span class="kt">int</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="nx">Age</span><span class="p">)</span><span class="w"> </span><span class="nx">PrintAge</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%dです。&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"%dです。"</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="nx">Age</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">20</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="nx">Age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="p">.</span><span class="nx">printAge</span><span class="p">())</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="p">.</span><span class="nx">printAge</span><span class="p">())</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <p>構造体を値レシーバとして渡し、構造体に関数を紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="c1">// 構造体を定義</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
@@ -36913,9 +36913,9 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="c1">// 構造体から関数をコール</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 構造体を初期化</span>
-<span class="w">    </span><span class="nx">person</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewPerson</span><span class="p">(</span><span class="s">&quot;Hiroki&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">person</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewPerson</span><span class="p">(</span><span class="s">"Hiroki"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">.</span><span class="nx">GetName</span><span class="p">())</span><span class="w"> </span><span class="c1">// &quot;Hiroki&quot;</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">.</span><span class="nx">GetName</span><span class="p">())</span><span class="w"> </span><span class="c1">// "Hiroki"</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_14">▼ 値レシーバ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
@@ -36927,7 +36927,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p>構造体を値レシーバとして渡し、構造体に関数を紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
@@ -36943,7 +36943,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="c1">// 値レシーバ</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="nx">Person</span><span class="p">)</span><span class="w"> </span><span class="nx">SetName</span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 引数の構造体をコピーしてから使用</span>
-<span class="w">    </span><span class="nx">p</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">name</span>
+<span class="w">    </span><span class="nx">p</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="nx">Person</span><span class="p">)</span><span class="w"> </span><span class="nx">GetName</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
@@ -36951,11 +36951,11 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">person</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewPerson</span><span class="p">(</span><span class="s">&quot;Gopher&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">person</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewPerson</span><span class="p">(</span><span class="s">"Gopher"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">person</span><span class="p">.</span><span class="nx">SetName</span><span class="p">(</span><span class="s">&quot;Hiroki&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">person</span><span class="p">.</span><span class="nx">SetName</span><span class="p">(</span><span class="s">"Hiroki"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">.</span><span class="nx">GetName</span><span class="p">())</span><span class="w"> </span><span class="c1">// &quot;Gopher&quot;</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">.</span><span class="nx">GetName</span><span class="p">())</span><span class="w"> </span><span class="c1">// "Gopher"</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_15">▼ ポインタレシーバ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
@@ -36968,7 +36968,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
@@ -36977,7 +36977,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="c1">// ポインタレシーバ</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="o">*</span><span class="nx">Person</span><span class="p">)</span><span class="w"> </span><span class="nx">SetName</span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 引数の構造体をそのまま使用</span>
-<span class="w">    </span><span class="nx">p</span><span class="p">.</span><span class="nx">Name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">name</span>
+<span class="w">    </span><span class="nx">p</span><span class="p">.</span><span class="nx">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="o">*</span><span class="nx">Person</span><span class="p">)</span><span class="w"> </span><span class="nx">GetName</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
@@ -36985,11 +36985,11 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">person</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">Person</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Gopher&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">person</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">Person</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"Gopher"</span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">person</span><span class="p">.</span><span class="nx">SetName</span><span class="p">(</span><span class="s">&quot;Hiroki&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">person</span><span class="p">.</span><span class="nx">SetName</span><span class="p">(</span><span class="s">"Hiroki"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">.</span><span class="nx">GetName</span><span class="p">())</span><span class="w"> </span><span class="c1">// &quot;Hiroki&quot;</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">.</span><span class="nx">GetName</span><span class="p">())</span><span class="w"> </span><span class="c1">// "Hiroki"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -37003,17 +37003,17 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Start&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"Start"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;2&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;3&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"1"</span><span class="p">)</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"2"</span><span class="p">)</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"3"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;End&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"End"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">// Start</span>
@@ -37026,20 +37026,20 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"log"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Start&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"Start"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 事後処理</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;End&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"End"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}()</span>
 
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Processing...&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"Processing..."</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_17">▼ リカバリー処理<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
@@ -37049,10 +37049,10 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Start&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"Start"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 事後処理</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -37061,18 +37061,18 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">        </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">recover</span><span class="p">()</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to run application: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to run application: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;End&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"End"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}()</span>
 
 <span class="w">    </span><span class="c1">// ここで意図的に処理を停止させている。</span>
-<span class="w">    </span><span class="nb">panic</span><span class="p">(</span><span class="s">&quot;Runtime error&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">panic</span><span class="p">(</span><span class="s">"Runtime error"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">// Start</span>
-<span class="c1">// Recover: &quot;Runtime error&quot;</span>
+<span class="c1">// Recover: "Runtime error"</span>
 <span class="c1">// End</span>
 </code></pre></div>
 <blockquote>
@@ -37089,14 +37089,14 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <h4 id="_18">▼ 通常のインポート<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;&lt;パッケージ名&gt;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"&lt;パッケージ名&gt;"</span>
 </code></pre></div>
 <h4 id="_19">▼ ブランクインポート<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>パッケージ内の <code>init()</code> 関数のみを実行したい場合がある。</p>
 <p>この場合、パッケージ名を <code>_</code> で宣言する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="s">&quot;&lt;パッケージ名&gt;&quot;</span><span class="w"> </span><span class="c1">// init関数のみを実行する</span>
+<span class="kn">import</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="s">"&lt;パッケージ名&gt;"</span><span class="w"> </span><span class="c1">// init関数のみを実行する</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -37112,14 +37112,14 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
 <span class="p">)</span>
 
 <span class="c1">// 可変な引数</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">showSlice</span><span class="p">(</span><span class="nx">args</span><span class="w"> </span><span class="o">...</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">showSlice</span><span class="p">(</span><span class="nx">args</span><span class="w"> </span><span class="p">...</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">index</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">args</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;s[%d] = %d\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"s[%d] = %d\n"</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -37130,7 +37130,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="nx">val</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// 変数をアンパックして渡す</span>
-<span class="w">    </span><span class="nx">showSlice</span><span class="p">(</span><span class="nx">val</span><span class="o">...</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">showSlice</span><span class="p">(</span><span class="nx">val</span><span class="p">...)</span>
 
 <span class="w">    </span><span class="c1">// 個別に渡しても同じ</span>
 <span class="w">    </span><span class="nx">showSlice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
@@ -37156,13 +37156,13 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="w">    </span><span class="c1">// 無名関数</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">Server</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">Timeout</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span>
+<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">Timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">NewServer</span><span class="p">(</span><span class="nx">addr</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">...</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">Server</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewServer</span><span class="p">(</span><span class="nx">addr</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="p">...</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">Server</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">l</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nx">Listen</span><span class="p">(</span><span class="s">&quot;tcp&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">addr</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">l</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nx">Listen</span><span class="p">(</span><span class="s">"tcp"</span><span class="p">,</span><span class="w"> </span><span class="nx">addr</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
@@ -37183,15 +37183,15 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="nx">srv</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewServer</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;localhost&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"localhost"</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// Timeout関数を引数に渡す</span>
 <span class="w">        </span><span class="nx">Timeout</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -37208,30 +37208,30 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"net/http"</span>
 
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel/trace"</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">HttpServerMiddleware</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">HttpServerMiddleware</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="w"> </span><span class="p">...</span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">NewHandler</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">next</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;foo-service&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"foo-service"</span><span class="p">,</span>
 <span class="w">        </span><span class="nb">append</span><span class="p">(</span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">Option</span><span class="p">{</span>
 <span class="w">            </span><span class="c1">// デフォルト値</span>
 <span class="w">            </span><span class="nx">filterHealthCheck</span><span class="p">(),</span>
 <span class="w">            </span><span class="nx">WithSpanNameFormatter</span><span class="p">(),</span>
-<span class="w">        </span><span class="p">}</span><span class="o">...</span><span class="p">)</span><span class="o">...</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}...)...,</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">// ヘルスチェックパスではスパンを作成しない</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">filterHealthCheck</span><span class="p">()</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">Option</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">WithFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">All</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Path</span><span class="p">(</span><span class="s">&quot;/health&quot;</span><span class="p">))))</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">WithFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">All</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Path</span><span class="p">(</span><span class="s">"/health"</span><span class="p">))))</span>
 <span class="p">}</span>
 
 <span class="c1">// スパン名を作成する関数を設定する</span>
@@ -37240,8 +37240,8 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">WithSpanNameFormatter</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">operation</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// URLパスをスパン名とする</span>
 <span class="w">        </span><span class="nx">spanName</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">Path</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">spanName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">spanName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;HTTP %s route not found&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Method</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">spanName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">spanName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"HTTP %s route not found"</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Method</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">spanName</span>
 <span class="w">    </span><span class="p">})</span>
@@ -37251,35 +37251,35 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters&quot;</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 
-<span class="w">    </span><span class="nx">grpc_recovery</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/recovery&quot;</span>
+<span class="w">    </span><span class="nx">grpc_recovery</span><span class="w"> </span><span class="s">"github.com/grpc-ecosystem/go-grpc-middleware/recovery"</span>
 <span class="p">)</span>
 
 <span class="c1">// リクエストを単位としてスパンを自動的に開始/終了する</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">ChainUnaryServerInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ServerOption</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">ChainUnaryServerInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="p">...</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ServerOption</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainUnaryInterceptor</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">grpc_recovery</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(),</span>
 <span class="w">        </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span>
 <span class="w">            </span><span class="nb">append</span><span class="p">(</span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">{</span>
 <span class="w">                </span><span class="c1">// デフォルト値</span>
 <span class="w">                </span><span class="nx">InterceptorFilterHealthCheck</span><span class="p">(),</span>
-<span class="w">            </span><span class="p">}</span><span class="o">...</span><span class="p">)</span><span class="o">...</span><span class="p">,</span>
+<span class="w">            </span><span class="p">}...)...,</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">// リクエストを単位としてスパンを自動的に開始/終了する</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">ChainStreamServerInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ServerOption</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">ChainStreamServerInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="p">...</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ServerOption</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainStreamInterceptor</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">grpc_recovery</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(),</span>
 <span class="w">        </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(</span>
 <span class="w">            </span><span class="nb">append</span><span class="p">(</span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">{</span>
 <span class="w">                </span><span class="c1">// デフォルト値</span>
 <span class="w">                </span><span class="nx">InterceptorFilterHealthCheck</span><span class="p">(),</span>
-<span class="w">            </span><span class="p">}</span><span class="o">...</span><span class="p">)</span><span class="o">...</span><span class="p">,</span>
+<span class="w">            </span><span class="p">}...)...,</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="p">}</span>
@@ -37296,7 +37296,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">division</span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
@@ -37313,7 +37313,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 10÷3を計算する。</span>
 <span class="w">    </span><span class="nx">q</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">division</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;商=%d、余り=%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">q</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"商=%d、余り=%d"</span><span class="p">,</span><span class="w"> </span><span class="nx">q</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_23">▼ 返却値の破棄<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
@@ -37322,16 +37322,16 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"os"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// errorインターフェースを破棄</span>
-<span class="w">    </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;filename.txt&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">"filename.txt"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// エラーキャッチする必要がなくなる</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_24">▼ 関数の返却<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
@@ -37373,13 +37373,13 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
-<span class="w">    </span><span class="s">&quot;os/signal&quot;</span>
-<span class="w">    </span><span class="s">&quot;syscall&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"net/http"</span>
+<span class="w">    </span><span class="s">"os/signal"</span>
+<span class="w">    </span><span class="s">"syscall"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/gorilla/mux&quot;</span>
+<span class="w">    </span><span class="s">"github.com/gorilla/mux"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -37405,7 +37405,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="c1">// Goroutineでサーバーを起動する</span>
 <span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">srv</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">();</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}()</span>
 
@@ -37423,7 +37423,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cancel</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// Graceful Shutdown処理を実行する</span>
-<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">srv</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">srv</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
@@ -37448,27 +37448,27 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;shutdown&quot;</span>
+<span class="w">    </span><span class="s">"shutdown"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span>
 
 <span class="w">    </span><span class="nx">shutdown</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;start hook1&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"start hook1"</span><span class="p">)</span>
 <span class="w">        </span><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;end hook1&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"end hook1"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="nx">shutdown</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;start hook2&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"start hook2"</span><span class="p">)</span>
 <span class="w">        </span><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;end hook2&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"end hook2"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="nx">shutdown</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;start hook3&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"start hook3"</span><span class="p">)</span>
 <span class="w">        </span><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;end hook3&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"end hook3"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="c1">// タイムアウト時間を設定し、コンテキストを作成する</span>
@@ -37486,8 +37486,8 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">shutdown</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;sync&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
+<span class="w">    </span><span class="s">"sync"</span>
 <span class="p">)</span>
 
 <span class="kd">var</span><span class="w"> </span><span class="p">(</span>
@@ -37501,7 +37501,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
 
-<span class="w">    </span><span class="nx">hooks</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">hooks</span><span class="p">,</span><span class="w"> </span><span class="nx">h</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">hooks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">hooks</span><span class="p">,</span><span class="w"> </span><span class="nx">h</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">// 追加した関数を並行的にコールする関数</span>
@@ -37523,7 +37523,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// Goroutineを中断するためのdoneチャネルを作成</span>
-<span class="w">    </span><span class="nx">done</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kd">struct</span><span class="p">{})</span>
+<span class="w">    </span><span class="nx">done</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kt">chan</span><span class="w"> </span><span class="kd">struct</span><span class="p">{})</span>
 
 <span class="w">    </span><span class="c1">// Goroutineを宣言して並行化</span>
 <span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -37553,7 +37553,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;shutdown&quot;</span>
+<span class="w">    </span><span class="s">"shutdown"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -37576,12 +37576,12 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">shutdown</span>
 
-<span class="kd">var</span><span class="w"> </span><span class="nx">hooks</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">hooks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1">// プロセスの終了前に実行したい関数を追加する</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">AddShutdownHook</span><span class="p">(</span><span class="nx">hook</span><span class="w"> </span><span class="kd">func</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">hooks</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">hooks</span><span class="p">,</span><span class="w"> </span><span class="nx">hook</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">hooks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">hooks</span><span class="p">,</span><span class="w"> </span><span class="nx">hook</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">// プロセスをGraceful Shutdownする</span>
@@ -37601,14 +37601,14 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 1個の変数を定義 (宣言と代入が同時でない)</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="kt">int</span>
-<span class="nx">number</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span>
+<span class="nx">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
 
 <span class="c1">// 1個の変数を定義 (宣言と代入が同時)</span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
 
 <span class="c1">// 複数の変数を定義</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="p">,</span><span class="w"> </span><span class="nx">baz</span><span class="w"> </span><span class="kt">int</span>
-<span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="p">,</span><span class="w"> </span><span class="nx">baz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span>
+<span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="p">,</span><span class="w"> </span><span class="nx">baz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span>
 </code></pre></div>
 <h4 id="_29">▼ 暗黙的な定義 (型推論)<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
@@ -37616,19 +37616,19 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="nx">w</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span>
 <span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kc">true</span>
 <span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mf">3.14</span>
-<span class="nx">z</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;abc&quot;</span>
+<span class="nx">z</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">"abc"</span>
 
-<span class="kd">var</span><span class="w"> </span><span class="nx">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
 
 <span class="kd">var</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">    </span><span class="nx">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">3.14</span>
-<span class="w">    </span><span class="nx">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;abc&quot;</span>
+<span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span>
+<span class="w">    </span><span class="nx">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"abc"</span>
 <span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">quotient</span><span class="p">(</span><span class="nx">x</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
 
@@ -37649,7 +37649,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span>
@@ -37657,8 +37657,8 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="c1">// 新しい変数の宣言が含まれている</span>
 <span class="w">    </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="c1">// 2</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="p">)</span><span class="w"> </span><span class="c1">// 3</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="c1">// 2</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="p">)</span><span class="w"> </span><span class="c1">// 3</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -37670,26 +37670,26 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p>グローバル変数を宣言し、関数内で値を代入する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="c1">// グローバル変数</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="kt">string</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">text</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hello World!"</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>変数に対する代入は関数内でしかできないため、宣言と代入を同時に実行する型推論を使用するとエラーになってしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="c1">// エラーになってしまう。</span>
-<span class="nx">text</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span>
+<span class="nx">text</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">"Hello World!"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -37703,12 +37703,12 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// ローカル変数</span>
-<span class="w">    </span><span class="nx">text</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;Hello World!&quot;</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">text</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">"Hello World!"</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -37724,21 +37724,21 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <h4 id="_35">▼ アプリ側の環境変数<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">config</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;os&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"os"</span>
 
 <span class="c1">// 環境変数名を設定する</span>
 <span class="kd">const</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">FooEnvKey</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span>
-<span class="w">    </span><span class="nx">BarEnvKey</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;BAR&quot;</span>
-<span class="w">    </span><span class="nx">BazEnvKey</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;BAZ&quot;</span>
+<span class="w">    </span><span class="nx">FooEnvKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"FOO"</span>
+<span class="w">    </span><span class="nx">BarEnvKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"BAR"</span>
+<span class="w">    </span><span class="nx">BazEnvKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"BAZ"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// 環境変数名を指定して値を格納する</span>
-<span class="w">    </span><span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="nx">FooEnvKey</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="nx">BarEnvKey</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="nx">BazEnvKey</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;baz&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="nx">FooEnvKey</span><span class="p">,</span><span class="w"> </span><span class="s">"foo"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="nx">BarEnvKey</span><span class="p">,</span><span class="w"> </span><span class="s">"bar"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="nx">BazEnvKey</span><span class="p">,</span><span class="w"> </span><span class="s">"baz"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_36">▼ パッケージ側の環境変数<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
@@ -37748,15 +37748,15 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">config</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;os&quot;</span>
-<span class="w">    </span><span class="s">&quot;strconv&quot;</span>
+<span class="w">    </span><span class="s">"os"</span>
+<span class="w">    </span><span class="s">"strconv"</span>
 <span class="p">)</span>
 
 <span class="c1">// 環境変数名を設定する</span>
 <span class="kd">const</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">FooEnvKey</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span>
-<span class="w">    </span><span class="nx">BarEnvKey</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;BAR&quot;</span>
-<span class="w">    </span><span class="nx">BazEnvKey</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Baz&quot;</span>
+<span class="w">    </span><span class="nx">FooEnvKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"FOO"</span>
+<span class="w">    </span><span class="nx">BarEnvKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"BAR"</span>
+<span class="w">    </span><span class="nx">BazEnvKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Baz"</span>
 <span class="p">)</span>
 
 <span class="kd">var</span><span class="w"> </span><span class="p">(</span>
@@ -37774,10 +37774,10 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="kd">func</span><span class="w"> </span><span class="nx">getEnvs</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// 環境変数名を指定して値を取得する</span>
-<span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">getStringEnv</span><span class="p">(</span><span class="nx">FooEnvKey</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">bar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">getStringEnv</span><span class="p">(</span><span class="nx">BarEnvKey</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">baz</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">getFloatEnv</span><span class="p">(</span><span class="nx">BazEnvKey</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">qux</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">getBoolEnv</span><span class="p">(</span><span class="nx">QuxEnvKey</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getStringEnv</span><span class="p">(</span><span class="nx">FooEnvKey</span><span class="p">,</span><span class="w"> </span><span class="s">"foo"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">bar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getStringEnv</span><span class="p">(</span><span class="nx">BarEnvKey</span><span class="p">,</span><span class="w"> </span><span class="s">"bar"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">baz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getFloatEnv</span><span class="p">(</span><span class="nx">BazEnvKey</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">qux</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getBoolEnv</span><span class="p">(</span><span class="nx">QuxEnvKey</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">// 環境変数をstring型で取得する</span>
@@ -37797,7 +37797,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="c1">// 環境変数をfloat64型で取得する</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">getFloatEnv</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">fallback</span><span class="w"> </span><span class="kt">float64</span><span class="p">)</span><span class="w"> </span><span class="kt">float64</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseFloat</span><span class="p">(</span><span class="nx">getStringEnv</span><span class="p">(</span><span class="nx">strconv</span><span class="p">.</span><span class="nx">FormatFloat</span><span class="p">(</span><span class="nx">fallback</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;f&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">)),</span><span class="w"> </span><span class="mi">64</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseFloat</span><span class="p">(</span><span class="nx">getStringEnv</span><span class="p">(</span><span class="nx">strconv</span><span class="p">.</span><span class="nx">FormatFloat</span><span class="p">(</span><span class="nx">fallback</span><span class="p">,</span><span class="w"> </span><span class="sc">'f'</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">)),</span><span class="w"> </span><span class="mi">64</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">fallback</span>
@@ -37829,10 +37829,10 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p>環境変数はすべて string 型で定義する必要がある。</p>
 <p>そのため、出入力前に string 型への (からの) 変換が必要になる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// int型をstring型に変換した上で、環境変数として設定する</span>
-<span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="s">&quot;FOO_TIMEOUT&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">Itoa</span><span class="p">(</span><span class="mi">300</span><span class="p">))</span>
+<span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="s">"FOO_TIMEOUT"</span><span class="p">,</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">Itoa</span><span class="p">(</span><span class="mi">300</span><span class="p">))</span>
 
 <span class="c1">// bool型をstring型に変換した上で、環境変数として設定する</span>
-<span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="s">&quot;FOO_ENABLED&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">FormatBool</span><span class="p">(</span><span class="kc">true</span><span class="p">))</span>
+<span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="s">"FOO_ENABLED"</span><span class="p">,</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">FormatBool</span><span class="p">(</span><span class="kc">true</span><span class="p">))</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="04">04. スコープ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
@@ -37844,15 +37844,15 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="c1">// 定数を定義する。</span>
 <span class="kd">const</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">Foo</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;foo&quot;</span>
+<span class="w">    </span><span class="nx">Foo</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">"foo"</span>
 <span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Foo</span><span class="p">)</span><span class="w"> </span><span class="c1">// foo</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">Foo</span><span class="p">)</span><span class="w"> </span><span class="c1">// foo</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_39">▼ パッケージ内のみ参照可能<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
@@ -37862,15 +37862,15 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="c1">// 定数を定義する。</span>
 <span class="kd">const</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">Bar</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;bar&quot;</span>
+<span class="w">    </span><span class="nx">Bar</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">"bar"</span>
 <span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Bar</span><span class="p">)</span><span class="w"> </span><span class="c1">// コールできずにエラーになる</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">Bar</span><span class="p">)</span><span class="w"> </span><span class="c1">// コールできずにエラーになる</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -37910,8 +37910,8 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"log"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -37920,11 +37920,11 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="nx">value</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">getNum</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// 通常の記法</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v: 20より大きいです\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v: 20より大きいです\n"</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v: 20より小さいです\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v: 20より小さいです\n"</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>初期化ステートメントでは、条件に処理の結果を使用できる。</p>
@@ -37932,18 +37932,18 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// 簡易記法</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">getNum</span><span class="p">();</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">getNum</span><span class="p">();</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// value変数は条件内でしか使用できない</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v: 20より大きいです\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v: 20より大きいです\n"</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v: 20より小さいです\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v: 20より小さいです\n"</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">getNum</span><span class="p">()</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
@@ -37963,19 +37963,19 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">getFooX</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;FooX&quot;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"FooX"</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">getFooY</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;FooY&quot;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"FooY"</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">getFooZ</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;FooZ&quot;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"FooZ"</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -37983,15 +37983,15 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="kt">string</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">isX</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">getFooX</span><span class="p">()</span>
+<span class="w">        </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getFooX</span><span class="p">()</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">isY</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">getFooY</span><span class="p">()</span>
+<span class="w">        </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getFooY</span><span class="p">()</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">isZ</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">getFooZ</span><span class="p">()</span>
+<span class="w">        </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getFooZ</span><span class="p">()</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span>
@@ -38003,19 +38003,19 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">getFooX</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;FooX&quot;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"FooX"</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">getFooY</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;FooY&quot;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"FooY"</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">getFooZ</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;FooZ&quot;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"FooZ"</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -38024,13 +38024,13 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">isX</span><span class="p">:</span>
-<span class="w">        </span><span class="nx">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">getFooX</span><span class="p">()</span>
+<span class="w">        </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getFooX</span><span class="p">()</span>
 
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">isY</span><span class="p">:</span>
-<span class="w">        </span><span class="nx">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">getFooY</span><span class="p">()</span>
+<span class="w">        </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getFooY</span><span class="p">()</span>
 
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">isZ</span><span class="p">:</span>
-<span class="w">        </span><span class="nx">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">getFooZ</span><span class="p">()</span>
+<span class="w">        </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getFooZ</span><span class="p">()</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span>
@@ -38043,11 +38043,11 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p>PHP の <code>foreach</code> に相当する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">slice</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">slice</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"a"</span><span class="p">,</span><span class="w"> </span><span class="s">"b"</span><span class="p">,</span><span class="w"> </span><span class="s">"c"</span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">slice</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
@@ -38066,12 +38066,12 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;2&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;3&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"1"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"2"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"3"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">// 1</span>
@@ -38104,15 +38104,15 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;main&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"main"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;hoge&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"hoge"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}()</span>
 
 <span class="w">    </span><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
@@ -38128,7 +38128,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -38148,19 +38148,19 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// &quot;unexpected go&quot; というエラーになる</span>
+<span class="w">    </span><span class="c1">// "unexpected go" というエラーになる</span>
 <span class="w">    </span><span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">go</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span>
 
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;foo&quot;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"foo"</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -38174,7 +38174,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -38182,17 +38182,17 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// Goroutineを宣言したfoo関数の完了を待たない</span>
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;baz&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"baz"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;bar&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"bar"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// Goroutineを宣言した無名関数の完了を待たない</span>
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"foo"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -38209,18 +38209,18 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p><img alt="go_channel" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/go_channel.png" /></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// チャネルを作成</span>
-<span class="w">    </span><span class="nx">channel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">channel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kt">chan</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// Goroutineを宣言して並行化</span>
 <span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 時間のかかる処理</span>
 <span class="w">        </span><span class="c1">// チャネルに値を送信する。</span>
-<span class="w">        </span><span class="nx">channel</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;ping&quot;</span>
+<span class="w">        </span><span class="nx">channel</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">"ping"</span>
 <span class="w">    </span><span class="p">}()</span>
 
 <span class="w">    </span><span class="c1">// チャネルから値を受信する。</span>
@@ -38240,23 +38240,23 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"log"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// チャネルを作成</span>
-<span class="w">    </span><span class="nx">channel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">channel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kt">chan</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
 <span class="w">    </span><span class="c1">// Goroutineを中断するためのdoneチャネルを作成</span>
 <span class="w">    </span><span class="c1">// 空構造体はサイズがゼロなため、使い捨てのチャネルと相性がいい</span>
-<span class="w">    </span><span class="nx">done</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kd">struct</span><span class="p">{})</span>
+<span class="w">    </span><span class="nx">done</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kt">chan</span><span class="w"> </span><span class="kd">struct</span><span class="p">{})</span>
 
 <span class="w">    </span><span class="c1">// Goroutineを宣言して並行化</span>
 <span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 時間のかかる処理</span>
 <span class="w">        </span><span class="c1">// チャネルに値を送信する。</span>
-<span class="w">        </span><span class="nx">channel</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;ping&quot;</span>
+<span class="w">        </span><span class="nx">channel</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">"ping"</span>
 <span class="w">        </span><span class="c1">// Goroutineを中断する</span>
 <span class="w">        </span><span class="nb">close</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}()</span>
@@ -38271,7 +38271,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="w">        </span><span class="c1">// cancel関数が実行された場合</span>
 <span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">done</span><span class="p">:</span>
-<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Goroutineが完了しました&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Goroutineが完了しました"</span><span class="p">)</span>
 <span class="w">            </span><span class="k">return</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -38291,9 +38291,9 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"log"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -38305,13 +38305,13 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// チャネルを作成</span>
-<span class="w">    </span><span class="nx">channel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">channel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kt">chan</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// Goroutineを宣言して並行化</span>
 <span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 時間のかかる処理</span>
 <span class="w">        </span><span class="c1">// チャネルに値を送信する。</span>
-<span class="w">        </span><span class="nx">channel</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;ping&quot;</span>
+<span class="w">        </span><span class="nx">channel</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">"ping"</span>
 <span class="w">        </span><span class="c1">// Goroutineを中断する</span>
 <span class="w">        </span><span class="nx">cancel</span><span class="p">()</span>
 <span class="w">    </span><span class="p">}()</span>
@@ -38326,7 +38326,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 
 <span class="w">        </span><span class="c1">// cancel関数が実行された場合</span>
 <span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">():</span>
-<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Goroutineが完了しました&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Goroutineが完了しました"</span><span class="p">)</span>
 <span class="w">            </span><span class="k">return</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -38344,15 +38344,15 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;time&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"time"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// チャネルを作成する。</span>
-<span class="w">    </span><span class="nx">channel1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">channel2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">channel1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kt">chan</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">channel2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kt">chan</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// Goroutineを宣言して並行化</span>
 <span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -38360,7 +38360,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">        </span><span class="c1">// 完了までに2秒かかるとする。</span>
 <span class="w">        </span><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 <span class="w">        </span><span class="c1">// 値を送信する。</span>
-<span class="w">        </span><span class="nx">channel1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;one&quot;</span>
+<span class="w">        </span><span class="nx">channel1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">"one"</span>
 <span class="w">    </span><span class="p">}()</span>
 
 <span class="w">    </span><span class="c1">// Goroutineを宣言して並行化</span>
@@ -38369,22 +38369,22 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">        </span><span class="c1">// 完了までに1秒かかるとする。</span>
 <span class="w">        </span><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 <span class="w">        </span><span class="c1">// 値を送信する。</span>
-<span class="w">        </span><span class="nx">channel2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;two&quot;</span>
+<span class="w">        </span><span class="nx">channel2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">"two"</span>
 <span class="w">    </span><span class="p">}()</span>
 
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">select</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// Goroutineの処理の完了タイミングがバラバラになる</span>
 <span class="w">        </span><span class="c1">// channel1とchannel2の受信を非同期で待機し、受信した順番で処理する。</span>
-<span class="w">        </span><span class="c1">// channel1 &lt;- &quot;one&quot; を受信したタイミングで出力する</span>
+<span class="w">        </span><span class="c1">// channel1 &lt;- "one" を受信したタイミングで出力する</span>
 <span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nx">msg1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">channel1</span><span class="p">:</span>
-<span class="w">            </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">msg1</span><span class="p">)</span>
-<span class="w">        </span><span class="c1">// channel2 &lt;- &quot;two&quot; を受信したタイミングで出力する</span>
+<span class="w">            </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"received"</span><span class="p">,</span><span class="w"> </span><span class="nx">msg1</span><span class="p">)</span>
+<span class="w">        </span><span class="c1">// channel2 &lt;- "two" を受信したタイミングで出力する</span>
 <span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nx">msg2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">channel2</span><span class="p">:</span>
-<span class="w">            </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">msg2</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"received"</span><span class="p">,</span><span class="w"> </span><span class="nx">msg2</span><span class="p">)</span>
 <span class="w">        </span><span class="c1">// 受信が成功しなければ、defaultで処理する。</span>
 <span class="w">        </span><span class="k">default</span><span class="p">:</span>
-<span class="w">            </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;default&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"default"</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -38419,14 +38419,14 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;sync&quot;</span>
-<span class="w">    </span><span class="s">&quot;time&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"sync"</span>
+<span class="w">    </span><span class="s">"time"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">slice</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">slice</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"a"</span><span class="p">,</span><span class="w"> </span><span class="s">"b"</span><span class="p">,</span><span class="w"> </span><span class="s">"c"</span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">wg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sync</span><span class="p">.</span><span class="nx">WaitGroup</span><span class="p">{}</span>
 
@@ -38456,7 +38456,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="nx">wg</span><span class="p">.</span><span class="nx">Wait</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// 開始時刻から経過した秒数を取得する</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;経過秒数: %s\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Since</span><span class="p">(</span><span class="nx">start</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"経過秒数: %s\n"</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Since</span><span class="p">(</span><span class="nx">start</span><span class="p">))</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nb">print</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -38514,12 +38514,12 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p>一方で、成功の場合は何をどう実行することに成功したのか (<code>Do something successfully</code>) を出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 失敗</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="k">return</span>
 <span class="p">}</span>
 
 <span class="c1">// 成功</span>
-<span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">&quot;Do something successfully&quot;</span><span class="p">)</span>
+<span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">"Do something successfully"</span><span class="p">)</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="error">error インターフェース<a class="headerlink" href="#error" title="Permanent link">&para;</a></h3>
@@ -38536,22 +38536,22 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"os"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 処理結果とerrorインターフェースが返却される。</span>
-<span class="w">    </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;filename.txt&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">"filename.txt"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// エラーの内容を出力する。</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="new">▼ <code>New()</code> 関数による自前エラー<a class="headerlink" href="#new" title="Permanent link">&para;</a></h4>
@@ -38562,27 +38562,27 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;errors&quot;</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="w">    </span><span class="s">"errors"</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"os"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">NewError</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;&lt;エラーメッセージ&gt;&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">"&lt;エラーメッセージ&gt;"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;filename.txt&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">"filename.txt"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 自前エラーメッセージを設定する。</span>
 <span class="w">        </span><span class="nx">myErr</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewError</span><span class="p">()</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">myErr</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">myErr</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -38599,20 +38599,20 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"os"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;filename.txt&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">"filename.txt"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_53">▼ 構造体による自前エラー<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h4>
@@ -38623,8 +38623,8 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"os"</span>
 <span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Error</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
@@ -38632,22 +38632,22 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="kt">error</span><span class="w"> </span><span class="o">*</span><span class="nx">Error</span><span class="p">)</span><span class="w"> </span><span class="nx">Error</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">.</span><span class="nx">Message</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">.</span><span class="nx">Message</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;filename.txt&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">"filename.txt"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 構造体に値を設定する。</span>
-<span class="w">        </span><span class="nx">myError</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Error</span><span class="p">{</span><span class="nx">Message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;エラーが発生したため、処理を完了しました。&quot;</span><span class="p">}</span>
+<span class="w">        </span><span class="nx">myError</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Error</span><span class="p">{</span><span class="nx">Message</span><span class="p">:</span><span class="w"> </span><span class="s">"エラーが発生したため、処理を完了しました。"</span><span class="p">}</span>
 <span class="w">        </span><span class="c1">// 構造体をコールするのみで、Error関数が実行される。</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">myError</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">myError</span><span class="p">)</span>
 <span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -38665,51 +38665,51 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;golang.org/x/xerrors&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="w">    </span><span class="s">"golang.org/x/xerrors"</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"os"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">NewErrorWithTrace</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">xerrors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;&lt;エラーメッセージ&gt;&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">xerrors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">"&lt;エラーメッセージ&gt;"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;filename.txt&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">"filename.txt"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// errorインターフェースが返却された行数が付与される。</span>
 <span class="w">        </span><span class="nx">errWithStack</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewErrorWithTrace</span><span class="p">()</span>
 <span class="w">        </span><span class="c1">// %+v\n を使用する。</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %+v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">errWithStack</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %+v\n"</span><span class="p">,</span><span class="w"> </span><span class="nx">errWithStack</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="errorf">▼ <code>Errorf()</code> 関数によるトレース付与<a class="headerlink" href="#errorf" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;golang.org/x/xerrors&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="w">    </span><span class="s">"golang.org/x/xerrors"</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"os"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;filename.txt&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">file</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">"filename.txt"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// errorインターフェースが返却された行数が付与される。</span>
-<span class="w">        </span><span class="nx">errWithStack</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">xerrors</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">errWithStack</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">xerrors</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"Failed to do something: %w"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="c1">// %+v\n を使用する。</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %+v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">errWithStack</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %+v\n"</span><span class="p">,</span><span class="w"> </span><span class="nx">errWithStack</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">file</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -38737,7 +38737,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p>これを文字として使用する場合は、ロジックとして認識されないようにエスケープする必要がある。</p>
 <h4 id="_59">▼ {{ "&lt;記号&gt;" }}<a class="headerlink" href="#_59" title="Permanent link">&para;</a></h4>
 <p>各記号を <code>{{ "&lt;記号&gt;" }}</code> のように挟み、エスケープする。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="w"> </span><span class="s">&quot;</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo {{ &quot; }} &quot; }}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="w"> </span><span class="s">"</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">"</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo {{ " }} " }}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -38770,18 +38770,18 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p>アプリケーション外 (例：ConfigMap、<code>.env</code> ファイルなど) で環境変数を管理している場合、これをテスト時は事前に出入力する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;os&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"os"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">setup</span><span class="p">()</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// 環境変数を設定する</span>
-<span class="w">    </span><span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="s">&quot;FOO_TIMEOUT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;300&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="s">&quot;FOO_ENABLED&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="s">"FOO_TIMEOUT"</span><span class="p">,</span><span class="w"> </span><span class="s">"300"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">os</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="s">"FOO_ENABLED"</span><span class="p">,</span><span class="w"> </span><span class="s">"false"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 事後処理</span>
-<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Unsetenv</span><span class="p">(</span><span class="s">&quot;FOO_TIMEOUT&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Unsetenv</span><span class="p">(</span><span class="s">&quot;FOO_ENABLED&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Unsetenv</span><span class="p">(</span><span class="s">"FOO_TIMEOUT"</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Unsetenv</span><span class="p">(</span><span class="s">"FOO_ENABLED"</span><span class="p">,</span><span class="w"> </span><span class="s">"false"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -38791,15 +38791,15 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="nx">teardown</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">setup</span><span class="p">()</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">teardown</span><span class="p">()</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
-<span class="w">    </span><span class="s">&quot;testing&quot;</span>
+<span class="w">    </span><span class="s">"net/http"</span>
+<span class="w">    </span><span class="s">"testing"</span>
 <span class="p">)</span>
 
 <span class="c1">// setup ユニットテストの前処理の結果と，後処理の関数を返却する</span>
@@ -38820,7 +38820,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="nx">client</span><span class="p">,</span><span class="w"> </span><span class="nx">teardown</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">setup</span><span class="p">()</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">teardown</span><span class="p">()</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>

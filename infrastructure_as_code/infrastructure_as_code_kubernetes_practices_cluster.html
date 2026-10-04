@@ -34417,14 +34417,14 @@ ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>NotReady,Sched
 <p>ArgoCD を Namespaced スコープで分割している場合、カスタムリソースが Cluster 内に 1 つしかない CRD を共有しているため、CRD をアップグレードすると全サービスのカスタムリソースに影響が出る。</p>
 <p>この場合、カスタムリソースへの影響を考えて、CRD の差分がないバージョンまでは ArgoCD をアップグレードできる。</p>
 <p><code>kubectl diff</code> コマンドで、現在と新 CRD の間に差分があるかどうかを確認できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/argoproj/argo-cd/manifests/crds?ref=&lt;アップグレード先のArgoCDのバージョン&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">"https://github.com/argoproj/argo-cd/manifests/crds?ref=&lt;アップグレード先のArgoCDのバージョン&gt;"</span>
 </code></pre></div>
 <p>もし CRD に差分がある大きなアップグレードの場合、別の Cluster を新しく構築し、そのうえで新 ArgoCD も構築することとする。</p>
 <h4 id="aws-loadbalancer-controller">▼ aws-loadbalancer-controller<a class="headerlink" href="#aws-loadbalancer-controller" title="Permanent link">&para;</a></h4>
 <p>aws-loadbalancer-controller の場合、チャートをアップグレードする。</p>
 <p>各サービスの ALB への影響を考えて、CRD の差分がないバージョンまでは aws-loadbalancer-controller をアップグレードできる。</p>
 <p><code>kubectl diff</code> コマンドで、現在と新 CRD の間に差分があるかどうかを確認できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=&lt;アップグレード先のaws-loadbalancer-controllerのバージョン&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">"https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=&lt;アップグレード先のaws-loadbalancer-controllerのバージョン&gt;"</span>
 </code></pre></div>
 <h4 id="descheduler">▼ descheduler<a class="headerlink" href="#descheduler" title="Permanent link">&para;</a></h4>
 <p>descheduler の場合、チャートをアップグレードする。</p>

@@ -38525,7 +38525,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">to</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">operation</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">paths</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/login&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">            </span><span class="nt">paths</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"/login"</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <p>OAuth2 Proxy の Pod に紐づく Service を識別できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -38568,10 +38568,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">from</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">principals</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;cluster.local/ns/default/sa/inventory-sa&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">            </span><span class="nt">principals</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"cluster.local/ns/default/sa/inventory-sa"</span><span class="p p-Indicator">]</span>
 <span class="w">      </span><span class="nt">to</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">operation</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">methods</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;GET&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">            </span><span class="nt">methods</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"GET"</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -38588,10 +38588,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">from</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">namespaces</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">            </span><span class="nt">namespaces</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"foo"</span><span class="p p-Indicator">]</span>
 <span class="w">      </span><span class="nt">to</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">operation</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">methods</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;GET&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">            </span><span class="nt">methods</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"GET"</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -38612,7 +38612,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">when</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">request.auth.claims[iss]</span>
 <span class="w">          </span><span class="c1"># JWT トークンがある場合にのみ許可する</span>
-<span class="w">          </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;JWTトークンの発行元IDプロバイダーの識別子</span><span class="nv"> </span><span class="s">(issuer)&gt;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"&lt;JWTトークンの発行元IDプロバイダーの識別子</span><span class="nv"> </span><span class="s">(issuer)&gt;"</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
@@ -38680,7 +38680,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">from</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">notPrincipals</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">            </span><span class="nt">notPrincipals</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -38729,7 +38729,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingressgateway</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-inressgateway.istio-inress.svc.cluster.local</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -38738,7 +38738,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">egressgateway</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-egressgateway.istio-egress.svc.cluster.local</span>
 </code></pre></div>
 <h4 id="_9">▼ <code>.</code> (ドット)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
@@ -38752,7 +38752,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;.&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"."</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="spechost">.spec.host<a class="headerlink" href="#spechost" title="Permanent link">&para;</a></h3>
@@ -38777,7 +38777,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">egressgateway</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-egressgateway.istio-egress.svc.cluster.local</span>
 </code></pre></div>
 <blockquote>
@@ -39168,12 +39168,12 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">loadBalancer</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">localityLbSetting</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">        </span><span class="nt">distribute</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;リージョン名&gt;/&lt;ゾーン名&gt;/*</span>
 <span class="w">            </span><span class="nt">to</span><span class="p">:</span>
-<span class="w">              </span><span class="s">&quot;&lt;リージョン名1&gt;/&lt;ゾーン名1&gt;/*&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
-<span class="w">              </span><span class="s">&quot;&lt;リージョン名2&gt;/&lt;ゾーン名2&gt;/*&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="w">              </span><span class="s">"&lt;リージョン名1&gt;/&lt;ゾーン名1&gt;/*"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
+<span class="w">              </span><span class="s">"&lt;リージョン名2&gt;/&lt;ゾーン名2&gt;/*"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -39559,7 +39559,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 <span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
 <span class="w">            </span><span class="c1"># ネットワークフィルター (http_connection_manager) を指定する</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -39610,13 +39610,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">filterChain</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">filter</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;envoy.filters.network.http_connection_manager&quot;</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"envoy.filters.network.http_connection_manager"</span>
 <span class="w">      </span><span class="nt">patch</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INSERT_BEFORE</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.local_ratelimit</span>
 <span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
 <span class="w">            </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http_local_rate_limiter</span>
@@ -39639,7 +39639,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">append</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">                  </span><span class="nt">header</span><span class="p">:</span>
 <span class="w">                    </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x-local-rate-limit</span>
-<span class="w">                    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">                    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="nn">---</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -39658,13 +39658,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">filterChain</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">filter</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;envoy.filters.network.http_connection_manager&quot;</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"envoy.filters.network.http_connection_manager"</span>
 <span class="w">      </span><span class="nt">patch</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INSERT_BEFORE</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.local_ratelimit</span>
 <span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
 <span class="w">            </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http_local_rate_limiter</span>
@@ -39674,7 +39674,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIDECAR_INBOUND</span>
 <span class="w">        </span><span class="nt">routeConfiguration</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">vhost</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;inbound|http|9080&quot;</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"inbound|http|9080"</span>
 <span class="w">            </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ANY</span>
 <span class="w">      </span><span class="nt">patch</span><span class="p">:</span>
@@ -39682,7 +39682,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">typed_per_filter_config</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">envoy.filters.http.local_ratelimit</span><span class="p">:</span>
-<span class="w">              </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
+<span class="w">              </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
 <span class="w">              </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit</span>
 <span class="w">              </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http_local_rate_limiter</span>
@@ -39705,7 +39705,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">append</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">                    </span><span class="nt">header</span><span class="p">:</span>
 <span class="w">                      </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x-local-rate-limit</span>
-<span class="w">                      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">                      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -39736,7 +39736,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.ratelimit</span>
 <span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimit</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimit</span>
 <span class="w">            </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mydomain</span>
 <span class="w">            </span><span class="nt">rate_limit_service</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">grpc_service</span><span class="p">:</span>
@@ -39747,8 +39747,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">              </span><span class="nt">rate_limit_descriptor_sets</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">descriptors</span><span class="p">:</span>
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">entries</span><span class="p">:</span>
-<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;identified_user_daily_limit&quot;</span>
-<span class="w">                        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;%DYNAMIC_METADATA(envoy.filters.http.jwt_authn.jwt_payload.sub)%&quot;</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">"identified_user_daily_limit"</span>
+<span class="w">                        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"%DYNAMIC_METADATA(envoy.filters.http.jwt_authn.jwt_payload.sub)%"</span>
 </code></pre></div>
 <h3 id="_12">グローバルレートリミット<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ グローバルレートリミットとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
@@ -39761,12 +39761,12 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="no">domain: ratelimit</span>
 <span class="w">    </span><span class="no">descriptors:</span>
 <span class="w">      </span><span class="no">- key: PATH</span>
-<span class="w">        </span><span class="no">value: &quot;/productpage&quot;</span>
+<span class="w">        </span><span class="no">value: "/productpage"</span>
 <span class="w">        </span><span class="no">rate_limit:</span>
 <span class="w">          </span><span class="no">unit: minute</span>
 <span class="w">          </span><span class="no">requests_per_unit: 1</span>
 <span class="w">      </span><span class="no">- key: PATH</span>
-<span class="w">        </span><span class="no">value: &quot;api&quot;</span>
+<span class="w">        </span><span class="no">value: "api"</span>
 <span class="w">        </span><span class="no">rate_limit:</span>
 <span class="w">          </span><span class="no">unit: minute</span>
 <span class="w">          </span><span class="no">requests_per_unit: 2</span>
@@ -39795,16 +39795,16 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">filterChain</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">filter</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;envoy.filters.network.http_connection_manager&quot;</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"envoy.filters.network.http_connection_manager"</span>
 <span class="w">              </span><span class="nt">subFilter</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;envoy.filters.http.router&quot;</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"envoy.filters.http.router"</span>
 <span class="w">      </span><span class="c1"># 変更内容を設定する</span>
 <span class="w">      </span><span class="nt">patch</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INSERT_BEFORE</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.ratelimit</span>
 <span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimit</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimit</span>
 <span class="w">            </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ratelimit</span>
 <span class="w">            </span><span class="c1"># true：istio-proxy コンテナが失敗のレスポンスを返信する</span>
 <span class="w">            </span><span class="c1"># false：マイクロサービスが失敗のレスポンスを返信する</span>
@@ -39835,7 +39835,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GATEWAY</span>
 <span class="w">        </span><span class="nt">routeConfiguration</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">vhost</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 <span class="w">            </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ANY</span>
 <span class="w">      </span><span class="c1"># 変更内容を設定する</span>
@@ -39845,8 +39845,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">          </span><span class="nt">rate_limits</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">actions</span><span class="p">:</span>
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">request_headers</span><span class="p">:</span>
-<span class="w">                    </span><span class="nt">header_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;:path&quot;</span>
-<span class="w">                    </span><span class="nt">descriptor_key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;PATH&quot;</span>
+<span class="w">                    </span><span class="nt">header_name</span><span class="p">:</span><span class="w"> </span><span class="s">":path"</span>
+<span class="w">                    </span><span class="nt">descriptor_key</span><span class="p">:</span><span class="w"> </span><span class="s">"PATH"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -39954,11 +39954,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">                </span><span class="c1"># istio-proxy コンテナが、必ずマイクロサービスよりも後に終了する。</span>
 <span class="w">                </span><span class="c1"># envoy プロセスと pilot-agent プロセスの終了を待機する。</span>
 <span class="w">                </span><span class="nt">command</span><span class="p">:</span>
-<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/bin/bash&quot;</span>
-<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;-c&quot;</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"/bin/bash"</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"-c"</span>
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">                    </span><span class="no">sleep 5</span>
-<span class="w">                    </span><span class="no">while [ $(netstat -plnt | grep tcp | egrep -v &#39;envoy|pilot-agent&#39; | wc -l) -ne 0 ]; do sleep 1; done</span>
+<span class="w">                    </span><span class="no">while [ $(netstat -plnt | grep tcp | egrep -v 'envoy|pilot-agent' | wc -l) -ne 0 ]; do sleep 1; done</span>
 <span class="w">      </span><span class="c1"># マイクロサービスと istio-proxy コンテナの両方が終了するのを待つ</span>
 <span class="w">      </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45</span>
 </code></pre></div>
@@ -40106,7 +40106,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">servers</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -40115,7 +40115,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">servers</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="specserverstlscacertificates">.spec.servers.tls.caCertificates<a class="headerlink" href="#specserverstlscacertificates" title="Permanent link">&para;</a></h3>
@@ -40366,7 +40366,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">environmentVariables</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># 値をダブルクオートで囲う</span>
-<span class="w">    </span><span class="nt">ISTIO_META_DNS_CAPTURE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">    </span><span class="nt">ISTIO_META_DNS_CAPTURE</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -40407,7 +40407,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="c1"># Authorization ヘッダーを指定する</span>
 <span class="w">      </span><span class="nt">fromHeaders</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
-<span class="w">          </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Bearer</span><span class="nv"> </span><span class="s">&quot;</span>
+<span class="w">          </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">"Bearer</span><span class="nv"> </span><span class="s">"</span>
 <span class="nn">---</span>
 <span class="c1"># RequestAuthentication で設定した Authorization ヘッダーがない場合には認可エラーとする</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
@@ -40421,7 +40421,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">when</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">request.auth.claims[iss]</span>
 <span class="w">          </span><span class="c1"># JWT トークンがある場合にのみ許可する</span>
-<span class="w">          </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;https://foo-issuer.com&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"https://foo-issuer.com"</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -40518,7 +40518,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">fromHeaders</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># Authorization ヘッダーを指定する</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
-<span class="w">          </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Bearer</span><span class="nv"> </span><span class="s">&quot;</span>
+<span class="w">          </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">"Bearer</span><span class="nv"> </span><span class="s">"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -40548,7 +40548,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RequestAuthentication</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-request-authentication-jwt&quot;</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-request-authentication-jwt"</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
@@ -40576,10 +40576,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-mysql</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># L4 プロトコルでは、この設定は実際には使われない</span>
-<span class="w">    </span><span class="c1"># VirtualService では &quot;.&quot; をつけないとエラーになるため、ServiceEntry も合わせておく</span>
+<span class="w">    </span><span class="c1"># VirtualService では "." をつけないとエラーになるため、ServiceEntry も合わせておく</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tcp</span>
 <span class="w">  </span><span class="nt">addresses</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># L4 プロトコルでは、この設定でルーティングする</span>
@@ -40598,7 +40598,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-mysql</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;DBクラスター名&gt;.cluster-&lt;id&gt;.ap-northeast-1.rds.amazonaws.com</span>
 <span class="w">  </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MESH_EXTERNAL</span>
@@ -40627,7 +40627,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-entry</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="spechosts">.spec.hosts<a class="headerlink" href="#spechosts" title="Permanent link">&para;</a></h3>
@@ -40971,13 +40971,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-igress</span>
 <span class="w">  </span><span class="c1"># Istio Ingress Gateway は複数の種類の API へのリクエストを受信する</span>
 <span class="w">  </span><span class="c1"># そのため、後続の VirtualService では、複数の種類の Host ヘッダー値を受信するため、ワイルドカードとする</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 </code></pre></div>
 <h4 id="_15">▼ <code>.</code> (ドット)<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>通信元が同じ Namespace にある場合、<code>.</code> で同じ Namespace 内だけに公開できる。</p>
@@ -40990,7 +40990,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;.&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"."</span>
 <span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># デフォルト値のため、設定は不要である</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
@@ -41038,7 +41038,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="c1"># Istio Ingress Gateway は複数の種類の API へのリクエストを受信する</span>
 <span class="w">  </span><span class="c1"># そのため、後続の VirtualService では、複数の種類の Host ヘッダー値を受信するため、ワイルドカードとする</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 </code></pre></div>
 <h4 id="gateway">▼ <code>&lt;Gateway名&gt;</code><a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h4>
 <p>いずれの Gateway の条件に合致したリクエストを処理するかを設定する。</p>
@@ -41056,7 +41056,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="c1"># Istio Ingress Gateway は複数の種類の API へのリクエストを受信する</span>
 <span class="w">  </span><span class="c1"># そのため、後続の VirtualService では、複数の種類の Host ヘッダー値を受信するため、ワイルドカードとする</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -41151,7 +41151,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service-egress</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># アプリは DB の FQDN を指定する</span>
 <span class="w">    </span><span class="c1"># VirtualSErvice ではこれを指定する</span>
@@ -41326,7 +41326,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-ingress</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">httpbin.org</span>
 <span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>

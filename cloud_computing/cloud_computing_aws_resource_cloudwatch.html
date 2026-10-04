@@ -35108,14 +35108,14 @@
 <p>Amazon CloudWatch Logs に送る構造化ログには、<code>metrics</code> オブジェクトを定義する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 構造化ログ</span>
 <span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;message&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;hello</span><span class="nv"> </span><span class="s">world&quot;</span>
+<span class="w">  </span><span class="s">"message"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"hello</span><span class="nv"> </span><span class="s">world"</span>
 <span class="w">  </span><span class="c1"># metrics オブジェクト</span>
-<span class="w">  </span><span class="s">&quot;metrics&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">  </span><span class="s">"metrics"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;namespace&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;MyApp&quot;</span>
-<span class="w">      </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;NumRequests&quot;</span>
-<span class="w">      </span><span class="s">&quot;unit&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Count&quot;</span>
-<span class="w">      </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">155</span>
+<span class="w">      </span><span class="s">"namespace"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"MyApp"</span>
+<span class="w">      </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"NumRequests"</span>
+<span class="w">      </span><span class="s">"unit"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Count"</span>
+<span class="w">      </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">155</span>
 <span class="w">    </span><span class="p p-Indicator">}</span>
 <span class="w">  </span><span class="p p-Indicator">]</span>
 <span class="p p-Indicator">}</span>
@@ -35128,39 +35128,39 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-02-terraform">01-02. セットアップ (Terraform の場合)<a class="headerlink" href="#01-02-terraform" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;cloudwatch_metric_alarm_ses_foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/cloudwatch/aws//modules/metric-alarms-by-multiple-dimensions&quot;</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;= 5.3.0&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"cloudwatch_metric_alarm_ses_foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/cloudwatch/aws//modules/metric-alarms-by-multiple-dimensions"</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"= 5.3.0"</span>
 
 <span class="w">  </span><span class="nb">for_each</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">    # SESから外部メールサーバーへのメール送信の失敗が5分間に1件以上起こった場合に通知する</span>
-<span class="w">    </span><span class="s2">&quot;ses-foo-Bounce-&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">metric_name</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Bounce&quot;</span>
-<span class="w">      </span><span class="na">comparison_operator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;GreaterThanOrEqualToThreshold&quot;</span>
-<span class="w">      </span><span class="na">evaluation_periods</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1&quot;</span>
-<span class="w">      </span><span class="na">namespace</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;AWS/SES&quot;</span>
-<span class="w">      </span><span class="na">period</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;300&quot;</span>
-<span class="w">      </span><span class="na">statistic</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Sum&quot;</span>
+<span class="w">    </span><span class="s2">"ses-foo-Bounce-"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="na">metric_name</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">"Bounce"</span>
+<span class="w">      </span><span class="na">comparison_operator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"GreaterThanOrEqualToThreshold"</span>
+<span class="w">      </span><span class="na">evaluation_periods</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"1"</span>
+<span class="w">      </span><span class="na">namespace</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"AWS/SES"</span>
+<span class="w">      </span><span class="na">period</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">"300"</span>
+<span class="w">      </span><span class="na">statistic</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sum"</span>
 <span class="w">      </span><span class="na">threshold</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">1.0</span>
-<span class="w">      </span><span class="na">alarm_description</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;SES ${aws_ses_configuration_set.foo.name} Bounce: SESから外部メールサーバーへのメール送信に失敗しました&quot;</span>
+<span class="w">      </span><span class="na">alarm_description</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"SES ${aws_ses_configuration_set.foo.name} Bounce: SESから外部メールサーバーへのメール送信に失敗しました"</span>
 <span class="w">      </span><span class="nb">dimensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">&quot;ConfigurationSet&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">"ConfigurationSet"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">          </span><span class="na">ConfigurationSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_ses_configuration_set.foo.name</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="c1">    # SESへのメール送信の失敗が5分間に1件以上起こった場合に通知する</span>
-<span class="w">    </span><span class="s2">&quot;ses-foo-Reject-&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">metric_name</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Reject&quot;</span>
-<span class="w">      </span><span class="na">comparison_operator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;GreaterThanOrEqualToThreshold&quot;</span>
-<span class="w">      </span><span class="na">evaluation_periods</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1&quot;</span>
-<span class="w">      </span><span class="na">namespace</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;AWS/SES&quot;</span>
-<span class="w">      </span><span class="na">period</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;300&quot;</span>
-<span class="w">      </span><span class="na">statistic</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Sum&quot;</span>
+<span class="w">    </span><span class="s2">"ses-foo-Reject-"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="na">metric_name</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">"Reject"</span>
+<span class="w">      </span><span class="na">comparison_operator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"GreaterThanOrEqualToThreshold"</span>
+<span class="w">      </span><span class="na">evaluation_periods</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"1"</span>
+<span class="w">      </span><span class="na">namespace</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"AWS/SES"</span>
+<span class="w">      </span><span class="na">period</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">"300"</span>
+<span class="w">      </span><span class="na">statistic</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sum"</span>
 <span class="w">      </span><span class="na">threshold</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">1.0</span>
-<span class="w">      </span><span class="na">alarm_description</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;SES ${aws_ses_configuration_set.foo.name} Reject: SESへのメール送信に失敗しました&quot;</span>
+<span class="w">      </span><span class="na">alarm_description</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"SES ${aws_ses_configuration_set.foo.name} Reject: SESへのメール送信に失敗しました"</span>
 <span class="w">      </span><span class="nb">dimensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">&quot;ConfigurationSet&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">"ConfigurationSet"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">          </span><span class="na">ConfigurationSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_ses_configuration_set.foo.name</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">}</span>
@@ -35175,9 +35175,9 @@
 <span class="w">    </span><span class="na">period</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">each.value.period</span>
 <span class="w">    </span><span class="na">statistic</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">each.value.statistic</span>
 <span class="w">    </span><span class="na">threshold</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">each.value.threshold</span>
-<span class="w">    </span><span class="na">treat_missing_data</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;notBreaching&quot;</span>
+<span class="w">    </span><span class="na">treat_missing_data</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"notBreaching"</span>
 <span class="w">    </span><span class="na">alarm_description</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">each.value.alarm_description</span>
-<span class="w">    </span><span class="na">alarm_actions</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;arn:aws:sns:ap-northeast-1:123456789012:********&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="na">alarm_actions</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"arn:aws:sns:ap-northeast-1:123456789012:********"</span><span class="p">]</span>
 <span class="w">    </span><span class="na">dimensions</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="nv">each.value.dimensions</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -35241,7 +35241,7 @@
 <li>『<code>&lt;ログレベル&gt;:</code>』が含まれる</li>
 </ul>
 <p>ここでコロンを含まているのは、ログに含まれるファイル名やメソッド名が誤って検知されないようするためである。</p>
-<div class="highlight"><pre><span></span><code>?<span class="s2">&quot;WARNING:&quot;</span><span class="w"> </span>?<span class="s2">&quot;Warning:&quot;</span><span class="w"> </span>?<span class="s2">&quot;ERROR:&quot;</span><span class="w"> </span>?<span class="s2">&quot;Error:&quot;</span><span class="w"> </span>?<span class="s2">&quot;CRITICAL:&quot;</span><span class="w"> </span>?<span class="s2">&quot;Critical:&quot;</span><span class="w"> </span>?<span class="s2">&quot;EMERGENCY:&quot;</span><span class="w"> </span>?<span class="s2">&quot;Emergency:&quot;</span><span class="w"> </span>?<span class="s2">&quot;ALERT:&quot;</span><span class="w"> </span>?<span class="s2">&quot;Alert:&quot;</span>
+<div class="highlight"><pre><span></span><code>?<span class="s2">"WARNING:"</span><span class="w"> </span>?<span class="s2">"Warning:"</span><span class="w"> </span>?<span class="s2">"ERROR:"</span><span class="w"> </span>?<span class="s2">"Error:"</span><span class="w"> </span>?<span class="s2">"CRITICAL:"</span><span class="w"> </span>?<span class="s2">"Critical:"</span><span class="w"> </span>?<span class="s2">"EMERGENCY:"</span><span class="w"> </span>?<span class="s2">"Emergency:"</span><span class="w"> </span>?<span class="s2">"ALERT:"</span><span class="w"> </span>?<span class="s2">"Alert:"</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p>次のログを検出する。</p>
@@ -35251,7 +35251,7 @@
 <li>大文字小文字を網羅</li>
 <li>『<code>&lt;ログレベル&gt; message</code>』が含まれる</li>
 </ul>
-<div class="highlight"><pre><span></span><code>?<span class="s2">&quot;WARNING message&quot;</span><span class="w"> </span>?<span class="s2">&quot;Warning message&quot;</span><span class="w"> </span>?<span class="s2">&quot;ERROR message&quot;</span><span class="w"> </span>?<span class="s2">&quot;Error message&quot;</span><span class="w"> </span>?<span class="s2">&quot;CRITICAL message&quot;</span><span class="w"> </span>?<span class="s2">&quot;Critical message&quot;</span><span class="w"> </span>?<span class="s2">&quot;EMERGENCY message&quot;</span><span class="w"> </span>?<span class="s2">&quot;Emergency message&quot;</span><span class="w"> </span>?<span class="s2">&quot;ALERT message&quot;</span><span class="w"> </span>?<span class="s2">&quot;Alert message&quot;</span>
+<div class="highlight"><pre><span></span><code>?<span class="s2">"WARNING message"</span><span class="w"> </span>?<span class="s2">"Warning message"</span><span class="w"> </span>?<span class="s2">"ERROR message"</span><span class="w"> </span>?<span class="s2">"Error message"</span><span class="w"> </span>?<span class="s2">"CRITICAL message"</span><span class="w"> </span>?<span class="s2">"Critical message"</span><span class="w"> </span>?<span class="s2">"EMERGENCY message"</span><span class="w"> </span>?<span class="s2">"Emergency message"</span><span class="w"> </span>?<span class="s2">"ALERT message"</span><span class="w"> </span>?<span class="s2">"Alert message"</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p>次のログを検出する。</p>
@@ -35272,7 +35272,7 @@
 </ul>
 <p>OR 条件と除外条件を組み合わせようとすると、OR 条件が認識されずに除外条件だけが適用されてしまう。</p>
 <p>そのため、ここでは OR 条件を使用していない。</p>
-<div class="highlight"><pre><span></span><code><span class="s2">&quot;ERROR:&quot;</span><span class="w"> </span>-MethodNotAllowedHttpException
+<div class="highlight"><pre><span></span><code><span class="s2">"ERROR:"</span><span class="w"> </span>-MethodNotAllowedHttpException
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35434,7 +35434,7 @@ $<span class="w"> </span>service<span class="w"> </span>awslogs<span class="w"> 
 </code></pre></div>
 <p><code>like</code> の代わりに書き方として、<code>=~</code> で正規表現を使用できる。</p>
 <div class="highlight"><pre><span></span><code><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">logStream</span>
-<span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">kubernetes</span><span class="p">.</span><span class="n">container_name</span><span class="o">=~</span><span class="ss">&quot;foo-app&quot;</span>
+<span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">kubernetes</span><span class="p">.</span><span class="n">container_name</span><span class="o">=~</span><span class="ss">"foo-app"</span>
 <span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
 <span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">100</span>
 </code></pre></div>
@@ -35581,12 +35581,12 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </ul>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;agent&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">"agent"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">      </span><span class="err">`</span><span class="c1"># プロセスのユーザー名を設定する。`</span>
-<span class="w">      </span><span class="s">&quot;run_as_user&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cwagent&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;metrics_collection_interval&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"run_as_user"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"cwagent"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"metrics_collection_interval"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="err">`</span><span class="c1"># 別の AWS アカウントにログを送信する場合に、必要な認可スコープを付与した AWS IAM ロール`</span>
-<span class="w">      </span><span class="s">&quot;credentials&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:role/&lt;AWS</span><span class="nv"> </span><span class="s">IAMロール名&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"credentials"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:iam::&lt;AWSアカウントID&gt;:role/&lt;AWS</span><span class="nv"> </span><span class="s">IAMロール名&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <h4 id="metrics">▼ <code>metrics</code> セクション<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h4>
@@ -35594,54 +35594,54 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p>ウィザードを使用した場合、このセクションの設定はスキップされる。</p>
 <p>実装しなかった場合、何も設定されない。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;agent&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;run_as_user&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cwagent&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">"agent"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"run_as_user"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"cwagent"</span><span class="p p-Indicator">},</span>
 <span class="w">  </span><span class="c1"># メトリクス</span>
-<span class="w">  </span><span class="s">&quot;metrics&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">"metrics"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">      </span><span class="c1"># メトリクスの集約とする名前空間のユーザー定義名</span>
 <span class="w">      </span><span class="c1"># デフォルトで CWAgent になる。</span>
-<span class="w">      </span><span class="s">&quot;namespace&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;CWAgent&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"namespace"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"CWAgent"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="c1"># メトリクスの集約とするディメンション</span>
-<span class="w">      </span><span class="s">&quot;aggregation_dimensions&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">      </span><span class="s">"aggregation_dimensions"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">          </span><span class="p p-Indicator">[</span>
 <span class="w">            </span><span class="c1"># インスタンス ID</span>
-<span class="w">            </span><span class="s">&quot;InstanceId&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"InstanceId"</span><span class="p p-Indicator">,</span>
 <span class="w">            </span><span class="c1"># パーティションに紐づくファイルシステムのパス</span>
-<span class="w">            </span><span class="s">&quot;path&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"path"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">],</span>
 <span class="w">        </span><span class="p p-Indicator">],</span>
 <span class="w">      </span><span class="c1"># ディメンションのユーザー定義名</span>
-<span class="w">      </span><span class="s">&quot;append_dimensions&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">      </span><span class="s">"append_dimensions"</span><span class="p p-Indicator">:</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
-<span class="w">          </span><span class="s">&quot;AutoScalingGroupName&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;${aws:AutoScalingGroupName}&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;ImageId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;${aws:ImageId}&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;InstanceId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;${aws:InstanceId}&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;InstanceType&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;${aws:InstanceType}&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"AutoScalingGroupName"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"${aws:AutoScalingGroupName}"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"ImageId"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"${aws:ImageId}"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"InstanceId"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"${aws:InstanceId}"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"InstanceType"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"${aws:InstanceType}"</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="c1"># メモリ上のバッファーの保管時間</span>
-<span class="w">      </span><span class="s">&quot;force_flush_interval&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"force_flush_interval"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="c1"># 収集対象のカスタムメトリクスの一覧 (collectd パッケージまたは StatsD パッケージを使用する場合)</span>
-<span class="w">      </span><span class="s">&quot;metrics_collected&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">"metrics_collected"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">          </span><span class="c1"># collectd パッケージの使用を宣言する。必ず設定する必要がある。</span>
-<span class="w">          </span><span class="s">&quot;collectd&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;metrics_aggregation_interval&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="s">"collectd"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"metrics_aggregation_interval"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="c1"># ストレージ系</span>
-<span class="w">          </span><span class="s">&quot;disk&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">              </span><span class="s">&quot;measurement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">          </span><span class="s">"disk"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">              </span><span class="s">"measurement"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">                  </span><span class="c1"># ディスク使用率メトリクス</span>
-<span class="w">                  </span><span class="s">&quot;used_percent&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                  </span><span class="s">"used_percent"</span><span class="p p-Indicator">,</span>
 <span class="w">                </span><span class="p p-Indicator">],</span>
-<span class="w">              </span><span class="s">&quot;metrics_collection_interval&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">"metrics_collection_interval"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">,</span>
 <span class="w">              </span><span class="c1"># マウントポイントを設定する。</span>
-<span class="w">              </span><span class="s">&quot;resources&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">              </span><span class="s">"resources"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">],</span>
 <span class="w">            </span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="c1"># メモリ系</span>
-<span class="w">          </span><span class="s">&quot;mem&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">          </span><span class="s">"mem"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">              </span><span class="c1"># 計測</span>
-<span class="w">              </span><span class="s">&quot;measurement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">              </span><span class="s">"measurement"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">                  </span><span class="c1"># メモリ使用率メトリクス</span>
-<span class="w">                  </span><span class="s">&quot;mem_used_percent&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                  </span><span class="s">"mem_used_percent"</span><span class="p p-Indicator">,</span>
 <span class="w">                </span><span class="p p-Indicator">],</span>
 <span class="w">              </span><span class="c1"># 計測間隔</span>
-<span class="w">              </span><span class="s">&quot;metrics_collection_interval&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">"metrics_collection_interval"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">,</span>
 <span class="w">            </span><span class="p p-Indicator">},</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
@@ -35657,26 +35657,26 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p>ログの収集について設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;agent&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;run_as_user&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cwagent&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">"agent"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"run_as_user"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"cwagent"</span><span class="p p-Indicator">},</span>
 <span class="w">  </span><span class="c1"># ログ</span>
-<span class="w">  </span><span class="s">&quot;logs&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">"logs"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">      </span><span class="c1"># メモリ上のバッファーの保管時間</span>
-<span class="w">      </span><span class="s">&quot;force_flush_interval&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;logs_collected&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;files&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">"force_flush_interval"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"logs_collected"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"files"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">              </span><span class="c1"># 収集対象のログの一覧</span>
-<span class="w">              </span><span class="s">&quot;collect_list&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">              </span><span class="s">"collect_list"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">                  </span><span class="p p-Indicator">{</span>
 <span class="w">                    </span><span class="c1"># 収集対象のログのディレクトリ</span>
-<span class="w">                    </span><span class="s">&quot;file_path&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/var/log/nginx/error.log&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="s">"file_path"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/var/log/nginx/error.log"</span><span class="p p-Indicator">,</span>
 <span class="w">                    </span><span class="c1"># Amazon CloudWatch Logs 上でのロググループ名</span>
-<span class="w">                    </span><span class="s">&quot;log_group_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/foo-www/var/log/nginx/error_log&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="s">"log_group_name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/foo-www/var/log/nginx/error_log"</span><span class="p p-Indicator">,</span>
 <span class="w">                    </span><span class="c1"># Amazon CloudWatch Logs 上でのログストリーム名</span>
-<span class="w">                    </span><span class="s">&quot;log_stream_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;{instance_id}&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="s">"log_stream_name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"{instance_id}"</span><span class="p p-Indicator">,</span>
 <span class="w">                  </span><span class="p p-Indicator">},</span>
 <span class="w">                  </span><span class="p p-Indicator">{</span>
-<span class="w">                    </span><span class="s">&quot;file_path&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/var/log/php-fpm/error.log&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                    </span><span class="s">&quot;log_group_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/foo-www/var/log/php-fpm/error_log&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                    </span><span class="s">&quot;log_stream_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;{instance_id}&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="s">"file_path"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/var/log/php-fpm/error.log"</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="s">"log_group_name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/foo-www/var/log/php-fpm/error_log"</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="s">"log_stream_name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"{instance_id}"</span><span class="p p-Indicator">,</span>
 <span class="w">                  </span><span class="p p-Indicator">},</span>
 <span class="w">                </span><span class="p p-Indicator">],</span>
 <span class="w">            </span><span class="p p-Indicator">}},</span>

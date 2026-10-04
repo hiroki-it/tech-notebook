@@ -33537,8 +33537,8 @@
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">charting {</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">indicators {</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">lowerBound = 20</span><span class="w">        </span><span class="c1"># Lower bound for the requests&#39; response time to track in the reports and the console summary</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">higherBound = 200</span><span class="w">      </span><span class="c1"># Higher bound for the requests&#39; response time to track in the reports and the console summary</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">lowerBound = 20</span><span class="w">        </span><span class="c1"># Lower bound for the requests' response time to track in the reports and the console summary</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">higherBound = 200</span><span class="w">      </span><span class="c1"># Higher bound for the requests' response time to track in the reports and the console summary</span>
 <span class="w">      </span><span class="c1"># percentile1 = 50      # Value for the 1st percentile to track in the reports, the console summary and Graphite</span>
 <span class="w">      </span><span class="c1"># percentile2 = 75      # Value for the 2nd percentile to track in the reports, the console summary and Graphite</span>
 <span class="w">      </span><span class="c1"># percentile3 = 95      # Value for the 3rd percentile to track in the reports, the console summary and Graphite</span>
@@ -33573,7 +33573,7 @@
 <span class="c1"># DrampUpDuration (Simulation に渡すスロースタート期間) ：20秒かけてユーザー数を増やす</span>
 <span class="c1"># DconstantDuration (Simulation に渡す維持期間) ：120秒間、仮想ユーザー5人を維持する</span>
 <span class="c1"># testOnly (実行するシナリオ)：特定のシナリオファイルを指定する</span>
-$<span class="w"> </span>sbt<span class="w"> </span>-Dusers<span class="o">=</span><span class="m">5</span><span class="w"> </span>-DrampUpDuration<span class="o">=</span><span class="m">20</span><span class="w"> </span>-DconstantDuration<span class="o">=</span><span class="m">120</span><span class="w"> </span><span class="s2">&quot;gatling:testOnly {scala製のシナリオファイル名}&quot;</span>
+$<span class="w"> </span>sbt<span class="w"> </span>-Dusers<span class="o">=</span><span class="m">5</span><span class="w"> </span>-DrampUpDuration<span class="o">=</span><span class="m">20</span><span class="w"> </span>-DconstantDuration<span class="o">=</span><span class="m">120</span><span class="w"> </span><span class="s2">"gatling:testOnly {scala製のシナリオファイル名}"</span>
 
 Choose<span class="w"> </span>a<span class="w"> </span>simulation<span class="w"> </span>number:
 <span class="w">     </span><span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="w"> </span>computerdatabase.BasicSimulation

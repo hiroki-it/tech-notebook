@@ -34122,11 +34122,11 @@
 </table>
 <p><br></p>
 <h2 id="03-terraform">03. セットアップ (Terraform の場合)<a class="headerlink" href="#03-terraform" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_sesv2_configuration_set&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">configuration_set_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_sesv2_configuration_set"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">configuration_set_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span>
 
 <span class="w">  </span><span class="nb">delivery_options</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">tls_policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;REQUIRE&quot;</span>
+<span class="w">    </span><span class="na">tls_policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"REQUIRE"</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">reputation_options</span><span class="w"> </span><span class="p">{</span>
@@ -34138,83 +34138,83 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_sesv2_configuration_set_event_destination&quot;</span><span class="w"> </span><span class="nv">&quot;cloudwatch_foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_sesv2_configuration_set_event_destination"</span><span class="w"> </span><span class="nv">"cloudwatch_foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">configuration_set_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_sesv2_configuration_set.foo.configuration_set_name</span>
-<span class="w">  </span><span class="na">event_destination_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
+<span class="w">  </span><span class="na">event_destination_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span>
 
 <span class="c1">  # SESのイベントをCloudWatchに送信する</span>
 <span class="w">  </span><span class="nb">event_destination</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nb">cloud_watch_destination</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nb">dimension_configuration</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="na">default_dimension_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;default&quot;</span>
-<span class="w">        </span><span class="na">dimension_name</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ses:configuration-set&quot;</span>
-<span class="w">        </span><span class="na">dimension_value_source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;MESSAGE_TAG&quot;</span>
+<span class="w">        </span><span class="na">default_dimension_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"default"</span>
+<span class="w">        </span><span class="na">dimension_name</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">"ses:configuration-set"</span>
+<span class="w">        </span><span class="na">dimension_value_source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"MESSAGE_TAG"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">    </span><span class="na">matching_event_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="c1">      # SESから外部メールサーバーへの送信に失敗した場合</span>
-<span class="w">      </span><span class="s2">&quot;BOUNCE&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"BOUNCE"</span><span class="p">,</span>
 <span class="c1">      # SESへの送信に失敗した場合</span>
-<span class="w">      </span><span class="s2">&quot;REJECT&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"REJECT"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_sesv2_email_identity&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_sesv2_email_identity"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">email_identity</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="nv">var.ses_foo_domain_identity</span>
 <span class="w">  </span><span class="na">configuration_set_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_sesv2_configuration_set.foo.configuration_set_name</span>
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_ses_domain_identity&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_ses_domain_identity"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">domain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_sesv2_email_identity.foo.email_identity</span>
 <span class="p">}</span>
 
 <span class="c1"># Amazon Route 53のDKIMレコードで使用するためのドメイン</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_ses_domain_dkim&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_ses_domain_dkim"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">domain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_sesv2_email_identity.foo.email_identity</span>
 <span class="p">}</span>
 
 <span class="c1"># TXTレコード</span>
 <span class="c1"># メールアドレスのドメインの所有者であることを証明する</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_route53_record&quot;</span><span class="w"> </span><span class="nv">&quot;ses_verification_foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">zone_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;********&quot;</span>
-<span class="w">  </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;_amazonses.${var.ses_foo_domain_identity}&quot;</span>
-<span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;TXT&quot;</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_route53_record"</span><span class="w"> </span><span class="nv">"ses_verification_foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">zone_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"********"</span>
+<span class="w">  </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"_amazonses.${var.ses_foo_domain_identity}"</span>
+<span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"TXT"</span>
 <span class="w">  </span><span class="na">ttl</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">300</span>
 <span class="w">  </span><span class="na">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nv">aws_ses_domain_identity.foo.verification_token</span><span class="p">]</span>
 <span class="p">}</span>
 
 <span class="c1"># DKIMレコード</span>
 <span class="c1"># 送信メールにDKIM署名を付与することで、受信側でドメインなりすましを防止し、またスパムとして誤判定されるリスクを減らす</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_route53_record&quot;</span><span class="w"> </span><span class="nv">&quot;ses_dkim_foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">count</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">var.ses_foo_domain_identity</span><span class="w"> </span><span class="p">!=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="m">0</span>
-<span class="w">  </span><span class="na">zone_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;********&quot;</span>
-<span class="w">  </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${aws_ses_domain_dkim.foo.dkim_tokens[count.index]}._domainkey.${var.ses_foo_domain_identity}&quot;</span>
-<span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;CNAME&quot;</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_route53_record"</span><span class="w"> </span><span class="nv">"ses_dkim_foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">count</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">var.ses_foo_domain_identity</span><span class="w"> </span><span class="p">!=</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="m">0</span>
+<span class="w">  </span><span class="na">zone_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"********"</span>
+<span class="w">  </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"${aws_ses_domain_dkim.foo.dkim_tokens[count.index]}._domainkey.${var.ses_foo_domain_identity}"</span>
+<span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"CNAME"</span>
 <span class="w">  </span><span class="na">ttl</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">300</span>
-<span class="w">  </span><span class="na">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;${aws_ses_domain_dkim.foo.dkim_tokens[count.index]}.dkim.amazonses.com&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="na">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"${aws_ses_domain_dkim.foo.dkim_tokens[count.index]}.dkim.amazonses.com"</span><span class="p">]</span>
 <span class="p">}</span>
 
 <span class="c1"># SPFレコード</span>
 <span class="c1"># メールアドレスのドメインから送信されるメールがAmazon SESからの送信であることを受信側に示すことで、正当な送信元として識別させる</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_route53_record&quot;</span><span class="w"> </span><span class="nv">&quot;ses_spf_foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">zone_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;********&quot;</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_route53_record"</span><span class="w"> </span><span class="nv">"ses_spf_foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">zone_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"********"</span>
 <span class="w">  </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nv">var.ses_foo_domain_identity</span>
-<span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;TXT&quot;</span>
+<span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"TXT"</span>
 <span class="w">  </span><span class="na">ttl</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">300</span>
-<span class="w">  </span><span class="na">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;v=spf1 include:amazonses.com ~all&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="na">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"v=spf1 include:amazonses.com ~all"</span><span class="p">]</span>
 <span class="p">}</span>
 
 <span class="c1"># DMARCレコード</span>
 <span class="c1"># なりすましメールをどのように処理するかを受信側に伝えることで、ドメインを保護し、またスパムとして誤判定されるリスクを減らす</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_route53_record&quot;</span><span class="w"> </span><span class="nv">&quot;ses_dmarc_foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">zone_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;********&quot;</span>
-<span class="w">  </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;_dmarc.${var.ses_foo_domain_identity}&quot;</span>
-<span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;TXT&quot;</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_route53_record"</span><span class="w"> </span><span class="nv">"ses_dmarc_foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">zone_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"********"</span>
+<span class="w">  </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"_dmarc.${var.ses_foo_domain_identity}"</span>
+<span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"TXT"</span>
 <span class="w">  </span><span class="na">ttl</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">300</span>
-<span class="w">  </span><span class="na">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;v=DMARC1; p=quarantine; rua=mailto:dmarc-reports@${var.ses_foo_domain_identity}&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="na">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"v=DMARC1; p=quarantine; rua=mailto:dmarc-reports@${var.ses_foo_domain_identity}"</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>

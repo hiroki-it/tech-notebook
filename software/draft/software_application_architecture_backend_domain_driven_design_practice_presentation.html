@@ -33647,12 +33647,12 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 </code></pre></div>
 <h4 id="_3">▼ 動作確認<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p><code>src/Presentation/Express/index.ts</code> を作成し、まずは <code>Hello World!</code> を返信してみる。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;express&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"express"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">"Hello World!"</span><span class="p">);</span>
 <span class="p">});</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Example app listening on port </span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
@@ -33665,31 +33665,31 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <p>プレゼンテーション層で API を実装していく。</p>
 <h4 id="api">▼ API の共有処理<a class="headerlink" href="#api" title="Permanent link">&para;</a></h4>
 <p><code>CatalogService/src/Presentation/Express/index.ts</code> の API の共有処理の実装である。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">Response</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;express&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">Response</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"express"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">RegisterBookCommand</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">RegisterBookService</span><span class="p">,</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;Application/Book/RegisterBookService/RegisterBookService&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"Application/Book/RegisterBookService/RegisterBookService"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">AddReviewCommand</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">AddReviewService</span><span class="p">,</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;Application/Review/AddReviewService/AddReviewService&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"Application/Review/AddReviewService/AddReviewService"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">DeleteReviewCommand</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">DeleteReviewService</span><span class="p">,</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;Application/Review/DeleteReviewService/DeleteReviewService&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"Application/Review/DeleteReviewService/DeleteReviewService"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">EditReviewCommand</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">EditReviewService</span><span class="p">,</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;Application/Review/EditReviewService/EditReviewService&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"Application/Review/EditReviewService/EditReviewService"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">GetRecommendedBooksCommand</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">GetRecommendedBooksService</span><span class="p">,</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;Application/Review/GetRecommendedBooksService/GetRecommendedBooksService&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">SQLBookRepository</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;Infrastructure/SQL/Book/SQLBookRepository&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">SQLReviewRepository</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;Infrastructure/SQL/Review/SQLReviewRepository&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">SQLClientManager</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;Infrastructure/SQL/SQLClientManager&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">SQLTransactionManager</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;Infrastructure/SQL/SQLTransactionManager&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"Application/Review/GetRecommendedBooksService/GetRecommendedBooksService"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">SQLBookRepository</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"Infrastructure/SQL/Book/SQLBookRepository"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">SQLReviewRepository</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"Infrastructure/SQL/Review/SQLReviewRepository"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">SQLClientManager</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"Infrastructure/SQL/SQLClientManager"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">SQLTransactionManager</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"Infrastructure/SQL/SQLTransactionManager"</span><span class="p">;</span>
 
 <span class="c1">// リクエストの受信</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
@@ -33703,17 +33703,17 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <span class="kd">const</span><span class="w"> </span><span class="nx">reviewRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">SQLReviewRepository</span><span class="p">(</span><span class="nx">clientManager</span><span class="p">);</span>
 
 <span class="c1">// 受信データのバリデーション</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">isStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">isNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;number&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">isStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"string"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">isNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">typeof</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"number"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">v</span><span class="p">);</span>
 
 <span class="c1">// レスポンスの返信</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">invalid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="o">:</span><span class="w"> </span><span class="kt">Response</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span>
-<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="nx">ok</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Invalid request&quot;</span><span class="p">});</span>
+<span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="nx">ok</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">"Invalid request"</span><span class="p">});</span>
 </code></pre></div>
 <h4 id="api_1">▼ 書籍登録 API<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h4>
 <p><code>CatalogService/src/Presentation/Express/index.ts</code> の書籍登録 API の実装である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// POST</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&quot;/book&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">"/book"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 例外処理</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// リクエストの受信</span>
@@ -33739,7 +33739,7 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <h4 id="api_2">▼ 推薦書籍取得 API（中核ユースケースに対応）<a class="headerlink" href="#api_2" title="Permanent link">&para;</a></h4>
 <p><code>CatalogService/src/Presentation/Express/index.ts</code> の推薦書籍取得 API の実装である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// GET</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/book/:isbn/recommendations&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/book/:isbn/recommendations"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 例外処理</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// リクエストの受信</span>
@@ -33768,7 +33768,7 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <h4 id="api_3">▼ レビュー登録 API<a class="headerlink" href="#api_3" title="Permanent link">&para;</a></h4>
 <p><code>CatalogService/src/Presentation/Express/index.ts</code> のレビュー登録 API の実装である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// POST</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&quot;/book/:isbn/review&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">"/book/:isbn/review"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 例外処理</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// リクエストの受信</span>
@@ -33798,7 +33798,7 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <h4 id="api_4">▼ レビュー編集 API<a class="headerlink" href="#api_4" title="Permanent link">&para;</a></h4>
 <p><code>CatalogService/src/Presentation/Express/index.ts</code> のレビュー編集 API の実装である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// PUT</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s2">&quot;/review/:reviewId&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s2">"/review/:reviewId"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 例外処理</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// リクエストの受信</span>
@@ -33826,7 +33826,7 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <h4 id="api_5">▼ レビュー削除 API<a class="headerlink" href="#api_5" title="Permanent link">&para;</a></h4>
 <p><code>CatalogService/src/Presentation/Express/index.ts</code> のレビュー削除 API の実装である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// DELETE</span>
-<span class="nx">app</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s2">&quot;/review/:reviewId&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="nx">app</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s2">"/review/:reviewId"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 例外処理</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// リクエストの受信</span>
@@ -33856,21 +33856,21 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <p>書籍登録 API で書籍を登録する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s2">&quot;{\&quot;isbn\&quot;:\&quot;9784814400737\&quot;,\&quot;title\&quot;:\&quot;ドメイン駆動設計をはじめよう\&quot;,\&quot;author\&quot;:\&quot;Vlad Khononov\&quot;,\&quot;price\&quot;:3960}&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s2">"{\"isbn\":\"9784814400737\",\"title\":\"ドメイン駆動設計をはじめよう\",\"author\":\"Vlad Khononov\",\"price\":3960}"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>http://localhost:3000/book
 </code></pre></div>
 <p>書籍登録 API は、以下のように書籍情報を <code>201</code> レスポンスで返信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 201レスポンス</span>
 <span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;ok&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;book&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9784814400737&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ドメイン駆動設計をはじめよう&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Vlad Khononov&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3960</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JPY&quot;</span>
+<span class="w">  </span><span class="nt">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"book"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9784814400737"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ドメイン駆動設計をはじめよう"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vlad Khononov"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3960</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JPY"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -33882,12 +33882,12 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <p>推薦書籍取得 API は、以下のように推薦書籍情報を <code>200</code> レスポンスで返信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 200レスポンス</span>
 <span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;ok&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;recommendedBooks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;sourceBookId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9784814400737&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;recommendedBooks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot; 実践ドメイン駆動設計 &quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot; エリック・エヴァンスのドメイン駆動設計 &quot;</span>
+<span class="w">  </span><span class="nt">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"recommendedBooks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"sourceBookId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9784814400737"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"recommendedBooks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">" 実践ドメイン駆動設計 "</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">" エリック・エヴァンスのドメイン駆動設計 "</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -33896,21 +33896,21 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <p>レビュー登録 API でレビューを登録する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s2">&quot;{\&quot;name\&quot;:\&quot; 山田太郎 \&quot;,\&quot;rating\&quot;:5,\&quot;comment\&quot;:\&quot; 素晴らしい本でした。『実践ドメイン駆動設計』を先に読むことを推奨します。\&quot;}&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s2">"{\"name\":\" 山田太郎 \",\"rating\":5,\"comment\":\" 素晴らしい本でした。『実践ドメイン駆動設計』を先に読むことを推奨します。\"}"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>http://localhost:3000/book/9784814400737/review
 </code></pre></div>
 <p>レビュー登録 API は、以下のようにレビュー情報を <code>201</code> レスポンスで返信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 201レスポンス</span>
 <span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;ok&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;review&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-L3ru-W1auxLZSCiGmIvG&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"review"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-L3ru-W1auxLZSCiGmIvG"</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// この部分は実際の ID に置き換わります</span>
-<span class="w">    </span><span class="nt">&quot;bookId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9784814400737&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; 山田太郎 &quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;rating&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; 素晴らしい本でした。『実践ドメイン駆動設計』を先に読むことを推奨します。&quot;</span>
+<span class="w">    </span><span class="nt">"bookId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9784814400737"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">" 山田太郎 "</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">" 素晴らしい本でした。『実践ドメイン駆動設計』を先に読むことを推奨します。"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -33918,20 +33918,20 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <p>レビュー編集 API でレビューを編集する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s2">&quot;{\&quot;rating\&quot;:3,\&quot;comment\&quot;:\&quot; 再読したところ、初心者には少し難しいかもしれません。\&quot;}&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s2">"{\"rating\":3,\"comment\":\" 再読したところ、初心者には少し難しいかもしれません。\"}"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>http://localhost:3000/review/-L3ru-W1auxLZSCiGmIvG
 </code></pre></div>
 <p>レビュー編集 API は、以下のように更新後のレビュー情報を <code>200</code> レスポンスで返信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 200レスポンス</span>
 <span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;ok&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;review&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-L3ru-W1auxLZSCiGmIvG&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;bookId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9784814400737&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; 山田太郎 &quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;rating&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; 再読したところ、初心者には少し難しいかもしれません。&quot;</span>
+<span class="w">  </span><span class="nt">"ok"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"review"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-L3ru-W1auxLZSCiGmIvG"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"bookId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9784814400737"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">" 山田太郎 "</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">" 再読したところ、初心者には少し難しいかもしれません。"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>

@@ -33862,18 +33862,18 @@
 
 <span class="c1">// ステートソーシングに基づいてモデリング</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">review</span><span class="o">:</span><span class="w"> </span><span class="kt">Review</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;REV001&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;B001&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="s2">"REV001"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="s2">"B001"</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">5</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">comment</span><span class="o">:</span>
-<span class="w">    </span><span class="s2">&quot;実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします"</span><span class="p">,</span>
 <span class="p">};</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// 解説を補足するために長谷川で追加</span>
 
 <span class="kr">type</span><span class="w"> </span><span class="nx">ReviewEvent</span><span class="w"> </span><span class="o">=</span>
 <span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCreated&quot;</span><span class="p">;</span>
+<span class="w">      </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"ReviewCreated"</span><span class="p">;</span>
 <span class="w">      </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">        </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
@@ -33881,35 +33881,35 @@
 <span class="w">        </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">      </span><span class="p">};</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCommentEdited&quot;</span><span class="p">;</span><span class="w"> </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">}}</span>
-<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewRatingChanged&quot;</span><span class="p">;</span><span class="w"> </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">}};</span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"ReviewCommentEdited"</span><span class="p">;</span><span class="w"> </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">}}</span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"ReviewRatingChanged"</span><span class="p">;</span><span class="w"> </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">}};</span>
 
 <span class="c1">// イベントソーシングに基づいてモデリング</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">reviewEvents</span><span class="o">:</span><span class="w"> </span><span class="kt">ReviewEvent</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCreated&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"ReviewCreated"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;REV001&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;B001&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="s2">"REV001"</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="s2">"B001"</span><span class="p">,</span>
 <span class="w">      </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">4</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;実践的な内容で良かったです&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="s2">"実践的な内容で良かったです"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCommentEdited&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"ReviewCommentEdited"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;実践的な内容で良かったです。ただし初心者には少し難しいかも&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="s2">"実践的な内容で良かったです。ただし初心者には少し難しいかも"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCommentEdited&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"ReviewCommentEdited"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">comment</span><span class="o">:</span>
-<span class="w">        </span><span class="s2">&quot;実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewRatingChanged&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"ReviewRatingChanged"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">5</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
@@ -34029,13 +34029,13 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <span class="w">  </span><span class="c1">// 取得したイベントを古い順に適用してオブジェクトの最新の状態を取得する必要があり、イベント種別が増えるほどこの分岐も増えていく</span>
 <span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">event</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">events</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="kr">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;ReviewCreated&quot;</span><span class="o">:</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">"ReviewCreated"</span><span class="o">:</span>
 <span class="w">        </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">payload</span><span class="p">);</span>
 <span class="w">        </span><span class="k">break</span><span class="p">;</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;ReviewCommentEdited&quot;</span><span class="o">:</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">"ReviewCommentEdited"</span><span class="o">:</span>
 <span class="w">        </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">editComment</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">comment</span><span class="p">);</span>
 <span class="w">        </span><span class="k">break</span><span class="p">;</span>
-<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;ReviewRatingChanged&quot;</span><span class="o">:</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">"ReviewRatingChanged"</span><span class="o">:</span>
 <span class="w">        </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">changeRating</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">rating</span><span class="p">);</span>
 <span class="w">        </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
@@ -34104,17 +34104,17 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 <span class="c1">// まずはステートソーシングでReview集約を設計する</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">review</span><span class="o">:</span><span class="w"> </span><span class="kt">Review</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;REV001&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;B001&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="s2">"REV001"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="s2">"B001"</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">5</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">comment</span><span class="o">:</span>
-<span class="w">    </span><span class="s2">&quot;実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします"</span><span class="p">,</span>
 <span class="p">};</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// イベントソーシングを導入したくなったら、Review集約をイベント列で表現する</span>
 <span class="kr">type</span><span class="w"> </span><span class="nx">ReviewEvent</span><span class="w"> </span><span class="o">=</span>
 <span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCreated&quot;</span><span class="p">;</span>
+<span class="w">      </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"ReviewCreated"</span><span class="p">;</span>
 <span class="w">      </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">        </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
@@ -34122,38 +34122,38 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <span class="w">        </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">      </span><span class="p">};</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCommentEdited&quot;</span><span class="p">;</span><span class="w"> </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">}}</span>
-<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewRatingChanged&quot;</span><span class="p">;</span><span class="w"> </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">}};</span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"ReviewCommentEdited"</span><span class="p">;</span><span class="w"> </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">}}</span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"ReviewRatingChanged"</span><span class="p">;</span><span class="w"> </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">}};</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">reviewEvents</span><span class="o">:</span><span class="w"> </span><span class="kt">ReviewEvent</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 初回作成時点の状態をイベントとして残す</span>
-<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCreated&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"ReviewCreated"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;REV001&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;B001&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="s2">"REV001"</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="s2">"B001"</span><span class="p">,</span>
 <span class="w">      </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">4</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;実践的な内容で良かったです&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="s2">"実践的な内容で良かったです"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// コメント変更を上書きではなくイベントとして追加する</span>
-<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCommentEdited&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"ReviewCommentEdited"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;実践的な内容で良かったです。ただし初心者には少し難しいかも&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="s2">"実践的な内容で良かったです。ただし初心者には少し難しいかも"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// さらにコメント変更をイベントとして追加する</span>
-<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCommentEdited&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"ReviewCommentEdited"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">comment</span><span class="o">:</span>
-<span class="w">        </span><span class="s2">&quot;実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 評価変更もイベントとして追加する</span>
-<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewRatingChanged&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"ReviewRatingChanged"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">5</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
@@ -34286,16 +34286,16 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 <span class="kr">type</span><span class="w"> </span><span class="nx">AggregatePersistencePolicy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">aggregate</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">persistence</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;state-based&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">&quot;event-sourcing&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">persistence</span><span class="o">:</span><span class="w"> </span><span class="s2">"state-based"</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">"event-sourcing"</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="c1">// 同じシステム内で、集約ごとに保存方式を使い分ける</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">aggregatePolicies</span><span class="o">:</span><span class="w"> </span><span class="kt">AggregatePersistencePolicy</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">  </span><span class="c1">// Review集約は履歴の価値が高いためイベントソーシングを採用</span>
-<span class="w">  </span><span class="p">{</span><span class="nx">aggregate</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Review集約&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">persistence</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;event-sourcing&quot;</span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="nx">aggregate</span><span class="o">:</span><span class="w"> </span><span class="s2">"Review集約"</span><span class="p">,</span><span class="w"> </span><span class="nx">persistence</span><span class="o">:</span><span class="w"> </span><span class="s2">"event-sourcing"</span><span class="p">},</span>
 
 <span class="w">  </span><span class="c1">// Book集約は現在状態を扱えれば十分なためステートソーシングを採用</span>
-<span class="w">  </span><span class="p">{</span><span class="nx">aggregate</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Book集約&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">persistence</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;state-based&quot;</span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span><span class="nx">aggregate</span><span class="o">:</span><span class="w"> </span><span class="s2">"Book集約"</span><span class="p">,</span><span class="w"> </span><span class="nx">persistence</span><span class="o">:</span><span class="w"> </span><span class="s2">"state-based"</span><span class="p">},</span>
 <span class="p">];</span>
 </code></pre></div>
 <h2 id="21-7">21-7 パフォーマンスとスケーラビリティ<a class="headerlink" href="#21-7" title="Permanent link">&para;</a></h2>
@@ -34424,7 +34424,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">addReview</span><span class="p">(</span><span class="nx">command</span><span class="o">:</span><span class="w"> </span><span class="kt">AddReviewCommand</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// コマンドサイドではイベントストアにレビュー作成イベントを書き込む</span>
 <span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">eventStore</span><span class="p">.</span><span class="nx">append</span><span class="p">({</span>
-<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCreated&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"ReviewCreated"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">command.reviewId</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">command.bookId</span><span class="p">,</span>

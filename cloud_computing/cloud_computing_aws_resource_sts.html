@@ -34290,17 +34290,17 @@
 <p>これにより、その AWS IAM ユーザーに対して、AWS IAM ロールを紐付けできるようになる。</p>
 <p>このときに使用するユーザーは、AWS IAM ユーザーではなく、AWS リソースやフェデレーテッドユーザーでもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="p p-Indicator">{</span><span class="s">&quot;AWS&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:user/&lt;ユーザー名&gt;&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sts:AssumeRole&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="p p-Indicator">{</span><span class="s">"AWS"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:iam::&lt;AWSアカウントID&gt;:user/&lt;ユーザー名&gt;"</span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"sts:AssumeRole"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Condition"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">            </span><span class="c1"># 完全一致</span>
-<span class="w">            </span><span class="s">&quot;StringEquals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;sts:ExternalId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;適当な文字列&gt;&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="s">"StringEquals"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"sts:ExternalId"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;適当な文字列&gt;"</span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
@@ -34316,44 +34316,44 @@
 <span class="nb">set</span><span class="w"> </span>-xeuo<span class="w"> </span>pipefail
 
 <span class="c1"># 事前に環境変数に実行環境名を代入する。</span>
-<span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
-<span class="w">    </span><span class="s2">&quot;tes&quot;</span><span class="o">)</span>
-<span class="w">        </span><span class="nv">aws_account_id</span><span class="o">=</span><span class="s2">&quot;&lt;テスト環境アカウントID&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_access_key_id</span><span class="o">=</span><span class="s2">&quot;&lt;テスト環境アクセスキーID&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_secret_access_key</span><span class="o">=</span><span class="s2">&quot;&lt;テスト環境シークレットアクセスキー&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_iam_role_external_id</span><span class="o">=</span><span class="s2">&quot;&lt;信頼ポリシーに設定した外部ID&gt;&quot;</span>
+<span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span>
+<span class="w">    </span><span class="s2">"tes"</span><span class="o">)</span>
+<span class="w">        </span><span class="nv">aws_account_id</span><span class="o">=</span><span class="s2">"&lt;テスト環境アカウントID&gt;"</span>
+<span class="w">        </span><span class="nv">aws_access_key_id</span><span class="o">=</span><span class="s2">"&lt;テスト環境アクセスキーID&gt;"</span>
+<span class="w">        </span><span class="nv">aws_secret_access_key</span><span class="o">=</span><span class="s2">"&lt;テスト環境シークレットアクセスキー&gt;"</span>
+<span class="w">        </span><span class="nv">aws_iam_role_external_id</span><span class="o">=</span><span class="s2">"&lt;信頼ポリシーに設定した外部ID&gt;"</span>
 <span class="w">    </span><span class="p">;;</span>
-<span class="w">    </span><span class="s2">&quot;stg&quot;</span><span class="o">)</span>
-<span class="w">        </span><span class="nv">aws_account_id</span><span class="o">=</span><span class="s2">&quot;&lt;ステージング環境アカウントID&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_access_key_id</span><span class="o">=</span><span class="s2">&quot;&lt;ステージング環境アクセスキーID&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_secret_access_key</span><span class="o">=</span><span class="s2">&quot;&lt;ステージング環境シークレットアクセスキー&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_iam_role_external_id</span><span class="o">=</span><span class="s2">&quot;&lt;信頼ポリシーに設定した外部ID&gt;&quot;</span>
+<span class="w">    </span><span class="s2">"stg"</span><span class="o">)</span>
+<span class="w">        </span><span class="nv">aws_account_id</span><span class="o">=</span><span class="s2">"&lt;ステージング環境アカウントID&gt;"</span>
+<span class="w">        </span><span class="nv">aws_access_key_id</span><span class="o">=</span><span class="s2">"&lt;ステージング環境アクセスキーID&gt;"</span>
+<span class="w">        </span><span class="nv">aws_secret_access_key</span><span class="o">=</span><span class="s2">"&lt;ステージング環境シークレットアクセスキー&gt;"</span>
+<span class="w">        </span><span class="nv">aws_iam_role_external_id</span><span class="o">=</span><span class="s2">"&lt;信頼ポリシーに設定した外部ID&gt;"</span>
 <span class="w">    </span><span class="p">;;</span>
-<span class="w">    </span><span class="s2">&quot;prd&quot;</span><span class="o">)</span>
-<span class="w">        </span><span class="nv">aws_account_id</span><span class="o">=</span><span class="s2">&quot;&lt;本番環境アカウントID&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_access_key_id</span><span class="o">=</span><span class="s2">&quot;&lt;本番環境アクセスキーID&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_secret_access_key</span><span class="o">=</span><span class="s2">&quot;&lt;本番環境シークレットアクセスキー&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_iam_role_external_id</span><span class="o">=</span><span class="s2">&quot;&lt;信頼ポリシーに設定した外部ID&gt;&quot;</span>
+<span class="w">    </span><span class="s2">"prd"</span><span class="o">)</span>
+<span class="w">        </span><span class="nv">aws_account_id</span><span class="o">=</span><span class="s2">"&lt;本番環境アカウントID&gt;"</span>
+<span class="w">        </span><span class="nv">aws_access_key_id</span><span class="o">=</span><span class="s2">"&lt;本番環境アクセスキーID&gt;"</span>
+<span class="w">        </span><span class="nv">aws_secret_access_key</span><span class="o">=</span><span class="s2">"&lt;本番環境シークレットアクセスキー&gt;"</span>
+<span class="w">        </span><span class="nv">aws_iam_role_external_id</span><span class="o">=</span><span class="s2">"&lt;信頼ポリシーに設定した外部ID&gt;"</span>
 <span class="w">    </span><span class="p">;;</span>
 <span class="w">    </span>*<span class="o">)</span>
-<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;The parameter &quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot; is invalid.&quot;</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"The parameter "</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">" is invalid."</span>
 <span class="w">        </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
 <span class="w">    </span><span class="p">;;</span>
 <span class="k">esac</span>
 
 <span class="c1"># 信頼されたエンティティの資格情報を設定する。</span>
-aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$aws_account_id</span><span class="s2">&quot;</span>
-aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$aws_secret_access_key</span><span class="s2">&quot;</span>
-aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_default_region<span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="s2">"</span><span class="nv">$aws_account_id</span><span class="s2">"</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="s2">"</span><span class="nv">$aws_secret_access_key</span><span class="s2">"</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_default_region<span class="w"> </span><span class="s2">"ap-northeast-1"</span>
 
 <span class="c1"># https://sts.amazonaws.com に、ロールの紐付けをリクエストする。</span>
-<span class="nv">aws_sts_credentials</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>assume-role<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--role-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::</span><span class="si">${</span><span class="nv">aws_access_key_id</span><span class="si">}</span><span class="s2">:role/&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;-&lt;紐付けしたいAWS IAMロール名&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--role-session-name<span class="w"> </span><span class="s2">&quot;&lt;任意のセッション名&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--external-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$aws_iam_role_external_id</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--duration-seconds<span class="w"> </span><span class="s2">&quot;&lt;セッションデータの失効秒数&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;Credentials&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--output<span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
+<span class="nv">aws_sts_credentials</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>assume-role<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--role-arn<span class="w"> </span><span class="s2">"arn:aws:iam::</span><span class="si">${</span><span class="nv">aws_access_key_id</span><span class="si">}</span><span class="s2">:role/"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"-&lt;紐付けしたいAWS IAMロール名&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--role-session-name<span class="w"> </span><span class="s2">"&lt;任意のセッション名&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--external-id<span class="w"> </span><span class="s2">"</span><span class="nv">$aws_iam_role_external_id</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--duration-seconds<span class="w"> </span><span class="s2">"&lt;セッションデータの失効秒数&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--query<span class="w"> </span><span class="s2">"Credentials"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output<span class="w"> </span><span class="s2">"json"</span><span class="k">)</span><span class="s2">"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="3">3. 返信されたレスポンスから資格情報を取得<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
@@ -34361,30 +34361,30 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
 <p>また同時に、この資格情報は、ローカルマシンの <code>~/.aws/cli/cache</code> ディレクトリ配下にも <code>json</code> ファイルで保管される。</p>
 <p>資格情報の失効時間に合わせて、STS はこの <code>json</code> ファイルを定期的に更新する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Credentials&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Credentials"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;AccessKeyId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;アクセスキーID&gt;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;SecretAccessKey&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;シークレットアクセスキー&gt;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;SessionToken&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;セッショントークン文字列&gt;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;Expiration&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;セッションデータの有効期限&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"AccessKeyId"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;アクセスキーID&gt;"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"SecretAccessKey"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;シークレットアクセスキー&gt;"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"SessionToken"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;セッショントークン文字列&gt;"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"Expiration"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;セッションデータの有効期限&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;AssumeRoleUser&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"AssumeRoleUser"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;AssumedRoleId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;セッションID&gt;:&lt;セッション名&gt;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;Arn&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:sts:&lt;新しいアカウントID&gt;:assumed-role/&lt;AWS</span><span class="nv"> </span><span class="s">IAMロール名&gt;/&lt;セッション名&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"AssumedRoleId"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;セッションID&gt;:&lt;セッション名&gt;"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"Arn"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:sts:&lt;新しいアカウントID&gt;:assumed-role/&lt;AWS</span><span class="nv"> </span><span class="s">IAMロール名&gt;/&lt;セッション名&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;ResponseMetadata&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"ResponseMetadata"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;RequestId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;HTTPStatusCode&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;HTTPHeaders&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">      </span><span class="s">"RequestId"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*****"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"HTTPStatusCode"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"HTTPHeaders"</span><span class="p p-Indicator">:</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
-<span class="w">          </span><span class="s">&quot;x-amzn-requestid&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;content-type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;text/xml&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;content-length&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;1472&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;date&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Fri,</span><span class="nv"> </span><span class="s">01</span><span class="nv"> </span><span class="s">Jul</span><span class="nv"> </span><span class="s">2022</span><span class="nv"> </span><span class="s">13:00:00</span><span class="nv"> </span><span class="s">GMT&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"x-amzn-requestid"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*****"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"content-type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"text/xml"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"content-length"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"1472"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"date"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Fri,</span><span class="nv"> </span><span class="s">01</span><span class="nv"> </span><span class="s">Jul</span><span class="nv"> </span><span class="s">2022</span><span class="nv"> </span><span class="s">13:00:00</span><span class="nv"> </span><span class="s">GMT"</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="s">&quot;RetryAttempts&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"RetryAttempts"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
@@ -34402,24 +34402,24 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; assumed_user.sh</span>
-<span class="s">export AWS_ACCESS_KEY_ID=&quot;$(echo &quot;$aws_sts_credentials&quot; | jq -r &quot;.AccessKeyId&quot;)&quot;</span>
-<span class="s">export AWS_SECRET_ACCESS_KEY=&quot;$(echo &quot;$aws_sts_credentials&quot; | jq -r &quot;.SecretAccessKey&quot;)&quot;</span>
-<span class="s">export AWS_SESSION_TOKEN=&quot;$(echo &quot;$aws_sts_credentials&quot; | jq -r &quot;.SessionToken&quot;)&quot;</span>
-<span class="s">export AWS_ACCOUNT_ID=&quot;$aws_account_id&quot;</span>
-<span class="s">export AWS_DEFAULT_REGION=&quot;ap-northeast-1&quot;</span>
+<span class="s">export AWS_ACCESS_KEY_ID="$(echo "$aws_sts_credentials" | jq -r ".AccessKeyId")"</span>
+<span class="s">export AWS_SECRET_ACCESS_KEY="$(echo "$aws_sts_credentials" | jq -r ".SecretAccessKey")"</span>
+<span class="s">export AWS_SESSION_TOKEN="$(echo "$aws_sts_credentials" | jq -r ".SessionToken")"</span>
+<span class="s">export AWS_ACCOUNT_ID="$aws_account_id"</span>
+<span class="s">export AWS_DEFAULT_REGION="ap-northeast-1"</span>
 <span class="s">EOF</span>
 </code></pre></div>
 <p>環境変数に登録する代わりとして、AWS の資格情報ファイルを作成してもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-aws<span class="w"> </span>configure<span class="w"> </span>--profile<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span>-repository<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
-<span class="s">$(echo &quot;$aws_sts_credentials&quot; | jq -r &quot;.AccessKeyId&quot;)</span>
-<span class="s">$(echo &quot;$aws_sts_credentials&quot; | jq -r &quot;.SecretAccessKey&quot;)</span>
+aws<span class="w"> </span>configure<span class="w"> </span>--profile<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span>-repository<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">$(echo "$aws_sts_credentials" | jq -r ".AccessKeyId")</span>
+<span class="s">$(echo "$aws_sts_credentials" | jq -r ".SecretAccessKey")</span>
 <span class="s">ap-northeast-1</span>
 <span class="s">json</span>
 <span class="s">EOF</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="nv">aws_session_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$aws_sts_credentials</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;.SessionToken&quot;</span><span class="k">)</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.aws/credentials
+<span class="nb">echo</span><span class="w"> </span><span class="nv">aws_session_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$aws_sts_credentials</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s2">".SessionToken"</span><span class="k">)</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.aws/credentials
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34483,17 +34483,17 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
 <h4 id="cognito-id">▼ Cognito を ID プロバイダーとする場合<a class="headerlink" href="#cognito-id" title="Permanent link">&para;</a></h4>
 <p>Cognito を ID プロバイダーとして使用するように、信頼されたエンティティを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;Federated&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cognito-identity.amazonaws.com&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sts:AssumeRoleWithWebIdentity&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"Federated"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"cognito-identity.amazonaws.com"</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"sts:AssumeRoleWithWebIdentity"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"Condition"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">          </span><span class="c1"># 完全一致</span>
-<span class="w">          </span><span class="s">&quot;StringEquals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;cognito-identity.amazonaws.com:aud&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">          </span><span class="s">&quot;ForAnyValue:StringLike&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">&quot;cognito-identity.amazonaws.com:amr&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;unauthenticated&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="s">"StringEquals"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"cognito-identity.amazonaws.com:aud"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*****"</span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="s">"ForAnyValue:StringLike"</span><span class="p p-Indicator">:</span>
+<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">"cognito-identity.amazonaws.com:amr"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"unauthenticated"</span><span class="p p-Indicator">},</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
@@ -34504,23 +34504,23 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
 <p>これにより、Amazon EKS Cluster 内で認証済みの ServiceAccount に AWS IAM ロールを紐付けられるようになる。</p>
 <p>また、<code>Condition</code> キーで特定の ServiceAccount を指定できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Sid&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"Sid"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">""</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;Federated&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:oidc-provider/&lt;Amazon</span><span class="nv"> </span><span class="s">EKS</span><span class="nv"> </span><span class="s">ClusterのOpenID</span><span class="nv"> </span><span class="s">ConnectプロバイダーURL&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"Federated"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:iam::&lt;AWSアカウントID&gt;:oidc-provider/&lt;Amazon</span><span class="nv"> </span><span class="s">EKS</span><span class="nv"> </span><span class="s">ClusterのOpenID</span><span class="nv"> </span><span class="s">ConnectプロバイダーURL&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sts:AssumeRoleWithWebIdentity&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"sts:AssumeRoleWithWebIdentity"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Condition"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">            </span><span class="c1"># 完全一致</span>
-<span class="w">            </span><span class="s">&quot;StringEquals&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">            </span><span class="s">"StringEquals"</span><span class="p p-Indicator">:</span>
 <span class="w">              </span><span class="p p-Indicator">{</span>
-<span class="w">                </span><span class="s">&quot;&lt;Amazon</span><span class="nv"> </span><span class="s">EKS</span><span class="nv"> </span><span class="s">ClusterのOpenID</span><span class="nv"> </span><span class="s">ConnectプロバイダーURL&gt;:sub&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">                  </span><span class="p p-Indicator">[</span><span class="s">&quot;system:serviceaccount:&lt;Namespace名&gt;:&lt;ServiceAccount名&gt;&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">                </span><span class="s">"&lt;Amazon</span><span class="nv"> </span><span class="s">EKS</span><span class="nv"> </span><span class="s">ClusterのOpenID</span><span class="nv"> </span><span class="s">ConnectプロバイダーURL&gt;:sub"</span><span class="p p-Indicator">:</span>
+<span class="w">                  </span><span class="p p-Indicator">[</span><span class="s">"system:serviceaccount:&lt;Namespace名&gt;:&lt;ServiceAccount名&gt;"</span><span class="p p-Indicator">],</span>
 <span class="w">              </span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
@@ -34602,17 +34602,17 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
 <p>AWS IAM ロールの信頼されたエンティティに、AWS OIDC で発行されたユーザーを設定する。</p>
 <p>フェデレーテッドユーザーは任意の IP プロバイダーで発行する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;Federated&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cognito-identity.amazonaws.com&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sts:AssumeRoleWithWebIdentity&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"Federated"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"cognito-identity.amazonaws.com"</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"sts:AssumeRoleWithWebIdentity"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"Condition"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">          </span><span class="c1"># 完全一致</span>
-<span class="w">          </span><span class="s">&quot;StringEquals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;cognito-identity.amazonaws.com:aud&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">          </span><span class="s">&quot;ForAnyValue:StringLike&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">&quot;cognito-identity.amazonaws.com:amr&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;unauthenticated&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="s">"StringEquals"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"cognito-identity.amazonaws.com:aud"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*****"</span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="s">"ForAnyValue:StringLike"</span><span class="p p-Indicator">:</span>
+<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">"cognito-identity.amazonaws.com:amr"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"unauthenticated"</span><span class="p p-Indicator">},</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
@@ -34625,17 +34625,17 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
 <h4 id="oidc">▼ 外部 OIDC<a class="headerlink" href="#oidc" title="Permanent link">&para;</a></h4>
 <p>AWS IAM ロールの信頼されたエンティティに、外部 OIDC サービスで発行されたユーザーを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;Federated&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;accounts.google.com&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sts:AssumeRoleWithWebIdentity&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"Federated"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"accounts.google.com"</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"sts:AssumeRoleWithWebIdentity"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"Condition"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">          </span><span class="c1"># 完全一致</span>
-<span class="w">          </span><span class="s">&quot;StringEquals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;accounts.google.com:aud&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">          </span><span class="s">&quot;ForAnyValue:StringLike&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">&quot;accounts.google.com:amr&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;unauthenticated&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="s">"StringEquals"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"accounts.google.com:aud"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*****"</span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="s">"ForAnyValue:StringLike"</span><span class="p p-Indicator">:</span>
+<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">"accounts.google.com:amr"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"unauthenticated"</span><span class="p p-Indicator">},</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
@@ -34648,19 +34648,19 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
 <h4 id="aws-saml">▼ AWS SAML<a class="headerlink" href="#aws-saml" title="Permanent link">&para;</a></h4>
 <p>AWS IAM ロールの信頼されたエンティティに、AWS SAML で発行されたユーザーを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;Federated&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:saml-provider/&lt;プロバイダー名&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"Federated"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:iam::&lt;AWSアカウントID&gt;:saml-provider/&lt;プロバイダー名&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sts:AssumeRole&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"sts:AssumeRole"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Condition"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">            </span><span class="c1"># 完全一致</span>
-<span class="w">            </span><span class="s">&quot;StringEquals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;SAML:aud&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://signin.aws.amazon.com/saml&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="s">"StringEquals"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"SAML:aud"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"https://signin.aws.amazon.com/saml"</span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>

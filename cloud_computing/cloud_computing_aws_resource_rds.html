@@ -34298,7 +34298,7 @@
 <p>Linux x86_64 (AMD64) が使用されているところまでは確認できるが、Linux のバージョンは隠蔽されている。</p>
 <p>Amazon Aurora でも確認方法は同じである。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Amazon RDSの場合</span>
-<span class="k">SHOW</span><span class="w"> </span><span class="k">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%version%&#39;</span><span class="p">;</span>
+<span class="k">SHOW</span><span class="w"> </span><span class="k">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'%version%'</span><span class="p">;</span>
 
 <span class="o">+-------------------------+------------------------------+</span>
 <span class="o">|</span><span class="w"> </span><span class="n">Variable_name</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="k">Value</span><span class="w">                        </span><span class="o">|</span>
@@ -34307,7 +34307,7 @@
 <span class="o">|</span><span class="w"> </span><span class="n">protocol_version</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="mi">10</span><span class="w">                           </span><span class="o">|</span>
 <span class="o">|</span><span class="w"> </span><span class="n">slave_type_conversions</span><span class="w">  </span><span class="o">|</span><span class="w">                              </span><span class="o">|</span>
 <span class="o">|</span><span class="w"> </span><span class="n">tls_version</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="n">TLSv1</span><span class="p">,</span><span class="n">TLSv1</span><span class="mf">.1</span><span class="p">,</span><span class="n">TLSv1</span><span class="mf">.2</span><span class="w">        </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">version</span><span class="w">                 </span><span class="o">|</span><span class="w"> </span><span class="mf">5.7.0</span><span class="o">-</span><span class="n">log</span><span class="w">                    </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">version</span><span class="w">                 </span><span class="o">|</span><span class="w"> </span><span class="mf">5.7.0</span><span class="o">-</span><span class="k">log</span><span class="w">                    </span><span class="o">|</span>
 <span class="o">|</span><span class="w"> </span><span class="n">version_comment</span><span class="w">         </span><span class="o">|</span><span class="w"> </span><span class="k">Source</span><span class="w"> </span><span class="n">distribution</span><span class="w">          </span><span class="o">|</span>
 <span class="o">|</span><span class="w"> </span><span class="n">version_compile_machine</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">x86_64</span><span class="w">                       </span><span class="o">|</span>
 <span class="o">|</span><span class="w"> </span><span class="n">version_compile_os</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">Linux</span><span class="w">                        </span><span class="o">|</span>

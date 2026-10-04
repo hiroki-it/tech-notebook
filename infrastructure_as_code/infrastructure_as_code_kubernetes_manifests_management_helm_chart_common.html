@@ -33784,8 +33784,8 @@
 <p>Helm の各リリースに紐づいており、別のリリースであれば、Kubernetes リソースを再作成することになる。</p>
 <p>そのため、一部の Kubernetes リソースを別のチャートでリリースし直したい場合、Kubernetes リソース、カスタムリソース、スタムリソース定義の <code>meta.helm.sh</code> キーを手動で書き換える必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># CRDの場合</span>
-$<span class="w"> </span>kubectl<span class="w"> </span>annotate<span class="w"> </span>--overwrite<span class="w"> </span>crd<span class="w"> </span>&lt;CRD名&gt;<span class="w"> </span>meta.helm.sh/release-namespace<span class="o">=</span><span class="s2">&quot;&lt;新しいNamespace&gt;&quot;</span>
-$<span class="w"> </span>kubectl<span class="w"> </span>annotate<span class="w"> </span>--overwrite<span class="w"> </span>crd<span class="w"> </span>&lt;CRD名&gt;<span class="w"> </span>meta.helm.sh/release-name<span class="o">=</span><span class="s2">&quot;&lt;新しいリリース名&gt;&quot;</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>annotate<span class="w"> </span>--overwrite<span class="w"> </span>crd<span class="w"> </span>&lt;CRD名&gt;<span class="w"> </span>meta.helm.sh/release-namespace<span class="o">=</span><span class="s2">"&lt;新しいNamespace&gt;"</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>annotate<span class="w"> </span>--overwrite<span class="w"> </span>crd<span class="w"> </span>&lt;CRD名&gt;<span class="w"> </span>meta.helm.sh/release-name<span class="o">=</span><span class="s2">"&lt;新しいリリース名&gt;"</span>
 </code></pre></div>
 <p>また反対に、特定の Kubernetes リソース (例：CRD) を Helm の管理外としたい場合、このキーを削除する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>annotate<span class="w"> </span>--overwrite<span class="w"> </span>crd<span class="w"> </span>&lt;CRD名&gt;<span class="w"> </span>meta.helm.sh/release-namespace-

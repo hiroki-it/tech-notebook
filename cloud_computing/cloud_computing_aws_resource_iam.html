@@ -34540,17 +34540,17 @@
 <p>AWS IAM ロールにインラインポリシーを紐付ける。</p>
 <p>このロールを持つユーザーは、ユーザーアカウントのすべての AWS Certificate Manager のサーバー証明書を一覧表示できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="p p-Indicator">[{</span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;acm:ListCertificates&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">}],</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">[{</span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"acm:ListCertificates"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">}],</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <p>AWS IAM ロールにインラインポリシーを紐付ける。</p>
 <p>このロールを持つユーザーは、すべての AWS リソースに、任意のアクションを実行できる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">}],</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">}],</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
@@ -34562,26 +34562,26 @@
 <p>以下に、EC2 の読み出しのみ認可スコープ (<code>AmazonEC2ReadOnlyAccess</code>) を紐付けできるポリシーを示す。</p>
 <p>この AWS IAM ポリシーには、他の AWS リソースに対する認可スコープも含まれている。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
-<span class="w">      </span><span class="p p-Indicator">{</span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ec2:Describe*&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="p p-Indicator">{</span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"ec2:Describe*"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;elasticloadbalancing:Describe*&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"elasticloadbalancing:Describe*"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">[</span>
-<span class="w">            </span><span class="s">&quot;cloudwatch:ListMetrics&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;cloudwatch:GetMetricStatistics&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;cloudwatch:Describe*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"cloudwatch:ListMetrics"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"cloudwatch:GetMetricStatistics"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"cloudwatch:Describe*"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="p p-Indicator">{</span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;autoscaling:Describe*&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="p p-Indicator">{</span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"autoscaling:Describe*"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
@@ -34592,29 +34592,29 @@
 <p>コンソール画面から入力できるため、基本的にポリシーの実装は不要であるが、IaC ツール (例：Terraform) では必要になる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;rules&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"rules"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;rulePriority&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Keep</span><span class="nv"> </span><span class="s">last</span><span class="nv"> </span><span class="s">10</span><span class="nv"> </span><span class="s">images</span><span class="nv"> </span><span class="s">untagged&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;selection&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"rulePriority"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"description"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Keep</span><span class="nv"> </span><span class="s">last</span><span class="nv"> </span><span class="s">10</span><span class="nv"> </span><span class="s">images</span><span class="nv"> </span><span class="s">untagged"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"selection"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;tagStatus&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;untagged&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;countType&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;imageCountMoreThan&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;countNumber&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"tagStatus"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"untagged"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"countType"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"imageCountMoreThan"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"countNumber"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="s">&quot;action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;expire&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="s">"action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"expire"</span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;rulePriority&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Keep</span><span class="nv"> </span><span class="s">last</span><span class="nv"> </span><span class="s">10</span><span class="nv"> </span><span class="s">images</span><span class="nv"> </span><span class="s">any&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;selection&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"rulePriority"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"description"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Keep</span><span class="nv"> </span><span class="s">last</span><span class="nv"> </span><span class="s">10</span><span class="nv"> </span><span class="s">images</span><span class="nv"> </span><span class="s">any"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"selection"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;tagStatus&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;any&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;countType&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;imageCountMoreThan&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;countNumber&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"tagStatus"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"any"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"countType"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"imageCountMoreThan"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"countNumber"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="s">&quot;action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;expire&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="s">"action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"expire"</span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
@@ -34624,13 +34624,13 @@
 <p><strong>＊実装例＊</strong></p>
 <p>例えば、以下の信頼ポリシーを任意のロールに紐付けしたとする。その場合、<code>Principal</code> の <code>ecs-tasks</code> が信頼されたエンティティと見なされ、ECS タスクにロールを紐付けできるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;Service&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ecs-tasks.amazonaws.com&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sts:AssumeRole&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"Service"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"ecs-tasks.amazonaws.com"</span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"sts:AssumeRole"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
@@ -34640,17 +34640,17 @@
 <p>例えば、以下の信頼ポリシーを任意のロールに紐付けしたとする。</p>
 <p>その場合、<code>Principal</code> の AWS IAM ユーザーが信頼されたエンティティと見なされ、ロールを紐付けできるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="p p-Indicator">{</span><span class="s">&quot;AWS&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:user/&lt;ユーザー名&gt;&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sts:AssumeRole&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="p p-Indicator">{</span><span class="s">"AWS"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:iam::&lt;AWSアカウントID&gt;:user/&lt;ユーザー名&gt;"</span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"sts:AssumeRole"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Condition"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">            </span><span class="c1"># 完全一致</span>
-<span class="w">            </span><span class="s">&quot;StringEquals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;sts:ExternalId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;適当な文字列&gt;&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="s">"StringEquals"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"sts:ExternalId"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;適当な文字列&gt;"</span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
@@ -34664,18 +34664,18 @@
 <h3 id="_15">構造<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="c1"># Sid</span>
-<span class="w">  </span><span class="s">&quot;Sid&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Sid"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="c1"># Version</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="c1"># Statement (AWS IAM ステートメント)</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
 <span class="w">        </span><span class="c1"># 許可する</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="c1"># SSM の API への GetParameters のコールを指定する</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ssm:GetParameters&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ssm:GetParameters"</span><span class="p p-Indicator">],</span>
 <span class="w">        </span><span class="c1"># 任意の AWS ソースを対象とする</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
@@ -34731,11 +34731,11 @@
 <p>ARN で AWS リソースの識別子を設定する。</p>
 <p>リージョンのグループには、<code>aws</code>、<code>aws-cn</code> (中国系ネットワーク) 、<code>aws-cn</code> (政府系ネットワーク) がある。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:&lt;リージョンのグループ&gt;:&lt;AWSリソース&gt;:ap-northeast-1:&lt;AWSアカウントID&gt;:&lt;AWSリソースID&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:&lt;リージョンのグループ&gt;:&lt;AWSリソース&gt;:ap-northeast-1:&lt;AWSアカウントID&gt;:&lt;AWSリソースID&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
@@ -34749,36 +34749,36 @@
 <p>信頼されたエンティティの設定でよく使用する。</p>
 <p>AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="p p-Indicator">{</span><span class="s">&quot;AWS&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:user/&lt;ユーザー名&gt;&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sts:AssumeRole&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="p p-Indicator">{</span><span class="s">"AWS"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:iam::&lt;AWSアカウントID&gt;:user/&lt;ユーザー名&gt;"</span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"sts:AssumeRole"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Condition"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">            </span><span class="c1"># 完全一致</span>
-<span class="w">            </span><span class="s">&quot;StringEqual&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;sts:ExternalId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="s">"StringEqual"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"sts:ExternalId"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="p p-Indicator">{</span><span class="s">&quot;AWS&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:user/&lt;ユーザー名&gt;&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sts:AssumeRole&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="p p-Indicator">{</span><span class="s">"AWS"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:iam::&lt;AWSアカウントID&gt;:user/&lt;ユーザー名&gt;"</span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"sts:AssumeRole"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Condition"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">            </span><span class="c1"># OR 条件</span>
-<span class="w">            </span><span class="s">&quot;StringEqual&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="s">"StringEqual"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">                </span><span class="c1"># リスト型にすることで OR 上限になる</span>
-<span class="w">                </span><span class="s">&quot;sts:ExternalId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">                </span><span class="s">"sts:ExternalId"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"foo"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"bar"</span><span class="p p-Indicator">],</span>
 <span class="w">              </span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
@@ -34786,17 +34786,17 @@
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="p p-Indicator">{</span><span class="s">&quot;AWS&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:user/&lt;ユーザー名&gt;&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sts:AssumeRole&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="p p-Indicator">{</span><span class="s">"AWS"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:iam::&lt;AWSアカウントID&gt;:user/&lt;ユーザー名&gt;"</span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"sts:AssumeRole"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Condition"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">            </span><span class="c1"># 部分一致 (ワイルドカードを使用できる)</span>
-<span class="w">            </span><span class="s">&quot;StringLike&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;sts:ExternalId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo-*&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="s">"StringLike"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"sts:ExternalId"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"foo-*"</span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
@@ -34809,15 +34809,15 @@
 </ul>
 </blockquote>
 <p>タグを条件として使用できる。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="c1"># EC2 を起動する</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ec2:RunInstances&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:ec2:*:account-id:launch-template/*&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"ec2:RunInstances"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:ec2:*:account-id:launch-template/*"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Condition"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">            </span><span class="c1"># 特定のタグを持つ起動テンプレートのみを指定できる</span>
-<span class="w">            </span><span class="s">&quot;StringEquals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;ec2:ResourceTag/foo&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="s">"StringEquals"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"ec2:ResourceTag/foo"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">]}</span>

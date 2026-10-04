@@ -35313,18 +35313,18 @@
 <h4 id="_7">▼ インラインスクリプト<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p><code>js</code> ファイルを直接的に組み込む。</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;JavaScriptを直接的に組み込んでいます。&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">"JavaScriptを直接的に組み込んでいます。"</span><span class="p">);</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <h4 id="_8">▼ 外部スクリプト<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>外部 <code>js</code> ファイルを組み込む。</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;sample.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"sample.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>CDN (グローバルなキャッシュサーバー) の仕組みを使用して、Web 上から Web ページを取得もできる。</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span>
-  <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js&quot;</span>
-  <span class="na">integrity</span><span class="o">=</span><span class="s">&quot;sha256-WzuqEKxV9O7ODH5mbq3dUYcrjOknNnFia8zOyPhurXg=&quot;</span>
-  <span class="na">crossorigin</span><span class="o">=</span><span class="s">&quot;anonymous&quot;</span>
+  <span class="na">src</span><span class="o">=</span><span class="s">"https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"</span>
+  <span class="na">integrity</span><span class="o">=</span><span class="s">"sha256-WzuqEKxV9O7ODH5mbq3dUYcrjOknNnFia8zOyPhurXg="</span>
+  <span class="na">crossorigin</span><span class="o">=</span><span class="s">"anonymous"</span>
 <span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <h4 id="script">▼ script タグが複数ある場合<a class="headerlink" href="#script" title="Permanent link">&para;</a></h4>
@@ -35348,25 +35348,25 @@
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>見出し３<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;&lt;p&gt;結果は&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">globalNum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;です&lt;/p&gt;&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">"&lt;p&gt;結果は"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">globalNum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"です&lt;/p&gt;"</span><span class="p">);</span>
 <span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;sample.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"sample.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// sample.js</span>
 <span class="c1">// 無名関数の即時実行。定義と呼び出しを同時に実行する。</span>
 <span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 外側の変数 (foo) を参照できる。</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;外部ファイルを読み出しました&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"外部ファイルを読み出しました"</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">localNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
 
 <span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">localMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 外側の変数 (localNum) を参照できる。</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;localNum&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"localNum"</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="c1">// 定義した関数を実行</span>
@@ -35383,21 +35383,21 @@
 
 <span class="w">  </span><span class="nx">localNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">localNum</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
 
-<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;&lt;p&gt;結果は&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;です&lt;/p&gt;&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">"&lt;p&gt;結果は"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"です&lt;/p&gt;"</span><span class="p">);</span>
 <span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// 無名関数の即時実行。定義と呼び出しを同時に実行する。</span>
 <span class="w">  </span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 外側の変数 (foo) を参照できる。</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;外部ファイルを読み出しました&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"外部ファイルを読み出しました"</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">localNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
 
 <span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">localMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1">// 外側の変数 (localNum) を参照できる。</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;localNum&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"localNum"</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// 定義した関数を実行</span>
@@ -35447,17 +35447,17 @@
 <p>優先度の高い分割 Web ページでは、次の Parse 処理や Scripting 処理も行われる。</p>
 <p>そのため、JS ファイルの Scripting 処理が、以降の image ファイルの Downloading 処理よりも早くに行われることがある。</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span> <span class="p">/&gt;</span>
   <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Title<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
   <span class="cm">&lt;!-- preloadしたいものを宣言 --&gt;</span>
-  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;preload&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;style.css&quot;</span> <span class="na">as</span><span class="o">=</span><span class="s">&quot;style&quot;</span> <span class="p">/&gt;</span>
-  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;preload&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;main.js&quot;</span> <span class="na">as</span><span class="o">=</span><span class="s">&quot;script&quot;</span> <span class="p">/&gt;</span>
-  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;style.css&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"preload"</span> <span class="na">href</span><span class="o">=</span><span class="s">"style.css"</span> <span class="na">as</span><span class="o">=</span><span class="s">"style"</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"preload"</span> <span class="na">href</span><span class="o">=</span><span class="s">"main.js"</span> <span class="na">as</span><span class="o">=</span><span class="s">"script"</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"style.css"</span> <span class="p">/&gt;</span>
 <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello World<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;main.js&quot;</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"main.js"</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </code></pre></div>
 <p><br></p>
@@ -35474,7 +35474,7 @@
 <p>例えば、交差率の閾値を『<code>0.5</code>』と設定すると、ターゲットエレメントの交差率が『<code>0.5</code>』を超えた要素を随時読み込む。</p>
 <p><img alt="intersection-observer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/intersection-observer.png" /></p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useRef</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="p">,</span><span class="w"> </span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="nx">ReactNode</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useRef</span><span class="p">,</span><span class="w"> </span><span class="nx">useState</span><span class="p">,</span><span class="w"> </span><span class="nx">useEffect</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="nx">ReactNode</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"react"</span><span class="p">;</span>
 
 <span class="nx">type</span>
 <span class="nx">LazyRenderWithIntersectionObserverProps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -35506,7 +35506,7 @@
 <span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">LazyRenderWithIntersectionObserver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span>
 <span class="w">  </span><span class="nx">children</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">minHeight</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">rootMargin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;200px&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">rootMargin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"200px"</span><span class="p">,</span>
 <span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="nx">LazyRenderWithIntersectionObserverProps</span><span class="p">)</span>
 <span class="o">:</span>
 <span class="nx">JSX</span><span class="p">.</span><span class="nx">Element</span>
@@ -35580,15 +35580,15 @@
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;!doctype html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width,initial-scale=1&quot;</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;style.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"viewport"</span> <span class="na">content</span><span class="o">=</span><span class="s">"width=device-width,initial-scale=1"</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">"style.css"</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="p">/&gt;</span>
     <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Critical Path<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Hello <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>web performance<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> students!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;awesome-photo.jpg&quot;</span> <span class="p">/&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width: 50%&quot;</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width: 50%&quot;</span><span class="p">&gt;</span>Hello world!<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">"awesome-photo.jpg"</span> <span class="p">/&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">"width: 50%"</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">"width: 50%"</span><span class="p">&gt;</span>Hello world!<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
@@ -35675,11 +35675,11 @@
 <p>『Web ページのローディング』というイベントが発火すると、イベントハンドラ関数をコールする。</p>
 <h4 id="onclick">▼ <code>onclick</code><a class="headerlink" href="#onclick" title="Permanent link">&para;</a></h4>
 <p>『要素のクリック』というイベントが発火すると、イベントハンドラ関数をコールする。</p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;ボタン1&quot;</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;methodA()&quot;</span> <span class="p">/&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">value</span><span class="o">=</span><span class="s">"ボタン1"</span> <span class="na">onclick</span><span class="o">=</span><span class="s">"methodA()"</span> <span class="p">/&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">methodA</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"イベントが発火しました"</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
@@ -35689,8 +35689,8 @@
 <p>指定した ID に対して、<code>1</code> 個のイベントと <code>1</code> 個のイベントハンドラ関数を紐付ける。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 指定したIDで、クリックイベントが発火した時に、処理を実行する。</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn&quot;</span><span class="p">).</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました&quot;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"btn"</span><span class="p">).</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"イベントが発火しました"</span><span class="p">);</span>
 <span class="p">};</span>
 </code></pre></div>
 <h4 id="documentaddeventlistener">▼ <code>document.addEventListener()</code> 関数<a class="headerlink" href="#documentaddeventlistener" title="Permanent link">&para;</a></h4>
@@ -35698,38 +35698,38 @@
 <p>第一引数で、<code>click</code> などのイベントを設定し、第二引数で関数 (無名関数でも可) を渡す。</p>
 <p><code>false</code> を設定することで、イベントバブリングを行わせない。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;btn&quot;</span><span class="p">&gt;</span>表示<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"btn"</span><span class="p">&gt;</span>表示<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"btn"</span><span class="p">);</span>
 <span class="w">  </span><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
-<span class="w">    </span><span class="s2">&quot;click&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"click"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;クリックされました！&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"クリックされました！"</span><span class="p">);</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">  </span><span class="p">);</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// DOMContentLoadedイベントが発火した時に、処理を実行する。</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;DOMContentLoaded&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました&quot;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"DOMContentLoaded"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"イベントが発火しました"</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// 1つ目</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span>
-<span class="w">  </span><span class="s2">&quot;click&quot;</span><span class="p">,</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"btn"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">  </span><span class="s2">"click"</span><span class="p">,</span>
 <span class="w">  </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました`(1)`&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"イベントが発火しました`(1)`"</span><span class="p">);</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="kc">false</span><span class="p">,</span>
 <span class="p">);</span>
 
 <span class="c1">// 2つ目</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span>
-<span class="w">  </span><span class="s2">&quot;click&quot;</span><span class="p">,</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"btn"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">  </span><span class="s2">"click"</span><span class="p">,</span>
 <span class="w">  </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました`(2)`&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"イベントが発火しました`(2)`"</span><span class="p">);</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="kc">false</span><span class="p">,</span>
 <span class="p">);</span>

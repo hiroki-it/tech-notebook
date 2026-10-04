@@ -35414,7 +35414,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span>--config.file<span class="o">=</span>/opt/prometheus/prometheus.yml<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--web.console.templates<span class="o">=</span>/opt/prometheus/consoles<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--web.console.libraries<span class="o">=</span>/opt/prometheus/console_libraries<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--web.external-url<span class="o">=</span><span class="s2">&quot;https://prometheus.example.com/&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--web.external-url<span class="o">=</span><span class="s2">"https://prometheus.example.com/"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--web.route-prefix<span class="o">=</span>/<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--storage.tsdb.retention.time<span class="o">=</span>3d<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--storage.tsdb.path<span class="o">=</span>/var/lib/prometheus
@@ -35423,7 +35423,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>/opt/alertmanager/alertmanager<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--config.file<span class="o">=</span>/opt/alertmanager/alertmanager.yml<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--web.listen-address<span class="o">=</span>:9093<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--web.external-url<span class="o">=</span><span class="s2">&quot;https://alertmanager.example.com/&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--web.external-url<span class="o">=</span><span class="s2">"https://alertmanager.example.com/"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--web.route-prefix<span class="o">=</span>/<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--log.format<span class="o">=</span>json<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--data.retention<span class="o">=</span>120h<span class="w"> </span><span class="se">\</span>
@@ -35677,7 +35677,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-app</span>
 <span class="w">        </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">standard</span>
 <span class="w">        </span><span class="nt">accessModes</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;ReadWriteOnce&quot;</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"ReadWriteOnce"</span>
 <span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">limits</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
@@ -35788,7 +35788,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;quay.io/prometheus/prometheus:v1.0.0&quot;</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">"quay.io/prometheus/prometheus:v1.0.0"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="specretention">.spec.retention<a class="headerlink" href="#specretention" title="Permanent link">&para;</a></h3>
@@ -35822,8 +35822,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">remoteWrite</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">victoria-metrics</span>
 <span class="w">      </span><span class="nt">tlsConfig</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">insecureSkipVerify</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://*.*.*.*:8248/api/v1/write&quot;</span>
+<span class="w">        </span><span class="nt">insecureSkipVerify</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">"https://*.*.*.*:8248/api/v1/write"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="specstorage">.spec.storage<a class="headerlink" href="#specstorage" title="Permanent link">&para;</a></h3>
@@ -35868,9 +35868,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <div class="highlight"><pre><span></span><code><span class="c1"># 分析結果を node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate というレコーディング名で保管しておく</span>
 <span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">  </span><span class="no">sum by (cluster, namespace, pod, container) (</span>
-<span class="w">    </span><span class="no">irate(container_cpu_usage_seconds_total{job=&quot;cadvisor&quot;, image!=&quot;&quot;}[5m])</span>
+<span class="w">    </span><span class="no">irate(container_cpu_usage_seconds_total{job="cadvisor", image!=""}[5m])</span>
 <span class="w">  </span><span class="no">) * on (cluster, namespace, pod) group_left(node) topk by (cluster, namespace, pod) (</span>
-<span class="w">    </span><span class="no">1, max by(cluster, namespace, pod, node) (kube_pod_info{node!=&quot;&quot;})</span>
+<span class="w">    </span><span class="no">1, max by(cluster, namespace, pod, node) (kube_pod_info{node!=""})</span>
 <span class="w">  </span><span class="no">)</span>
 <span class="nt">record</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate</span>
 </code></pre></div>
@@ -36042,8 +36042,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">         </span><span class="c1"># アッパーキャメルケース</span>
 <span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FooPodCpuUtilization</span>
 <span class="w">           </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">             </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">【{{ {{&quot;{{&quot;}} $labels.app {{&quot;}}&quot;}} }}】Pod内のコンテナのCPU使用率の上昇しました。</span>
-<span class="w">             </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="s">&quot;{{&quot;</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="nv">$labels.source</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="s">&quot;}}&quot;</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">コンテナのCPU使用率が{{ {{&quot;{{&quot;}} $value {{&quot;}}&quot;}} }}になりました。</span>
+<span class="w">             </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">【{{ {{"{{"}} $labels.app {{"}}"}} }}】Pod内のコンテナのCPU使用率の上昇しました。</span>
+<span class="w">             </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="s">"{{"</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="nv">$labels.source</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="s">"}}"</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">コンテナのCPU使用率が{{ {{"{{"}} $value {{"}}"}} }}になりました。</span>
 <span class="w">           </span><span class="c1"># PromQL</span>
 <span class="w">           </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 <span class="w">           </span><span class="c1"># 受信したアラートの通知のクールダウン期間</span>
@@ -36117,7 +36117,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-foo</span>
 <span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/metrics</span>
 <span class="w">  </span><span class="nt">namespaceSelector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">any</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">any</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-servive</span>
@@ -36150,7 +36150,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="nt">tlsConfig</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">caFile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/run/secrets/kubernetes.io/serviceaccount/ca.crt</span>
 <span class="w">        </span><span class="nt">serverName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span>
-<span class="w">        </span><span class="nt">insecureSkipVerify</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">        </span><span class="nt">insecureSkipVerify</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 <span class="w">  </span><span class="nt">jobLabel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">component</span>
 <span class="w">  </span><span class="nt">namespaceSelector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">matchNames</span><span class="p">:</span>
@@ -36305,7 +36305,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">namespaceSelector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">any</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">any</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <h4 id="matchnames">▼ matchNames<a class="headerlink" href="#matchnames" title="Permanent link">&para;</a></h4>
 <p>特定の Namespace を収集対象として設定する。</p>

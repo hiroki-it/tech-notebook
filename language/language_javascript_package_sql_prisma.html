@@ -34507,7 +34507,7 @@ $<span class="w"> </span>yarn<span class="w"> </span>upgrade<span class="w"> </s
 ✔<span class="w"> </span>Generated<span class="w"> </span>Prisma<span class="w"> </span>Client<span class="w"> </span><span class="o">(</span><span class="m">4</span>.16.2<span class="w"> </span><span class="p">|</span><span class="w"> </span>library<span class="o">)</span><span class="w"> </span>to<span class="w"> </span>./node_modules/@prisma/client<span class="w"> </span><span class="k">in</span><span class="w"> </span>177ms
 You<span class="w"> </span>can<span class="w"> </span>now<span class="w"> </span>start<span class="w"> </span>using<span class="w"> </span>Prisma<span class="w"> </span>Client<span class="w"> </span><span class="k">in</span><span class="w"> </span>your<span class="w"> </span>code.<span class="w"> </span>Reference:<span class="w"> </span>https://pris.ly/d/client
 
-import<span class="w"> </span><span class="o">{</span><span class="w"> </span>PrismaClient<span class="w"> </span><span class="o">}</span><span class="w"> </span>from<span class="w"> </span><span class="s1">&#39;@prisma/client&#39;</span>
+import<span class="w"> </span><span class="o">{</span><span class="w"> </span>PrismaClient<span class="w"> </span><span class="o">}</span><span class="w"> </span>from<span class="w"> </span><span class="s1">'@prisma/client'</span>
 const<span class="w"> </span><span class="nv">prisma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>new<span class="w"> </span>PrismaClient<span class="o">()</span>
 </code></pre></div>
 <blockquote>
@@ -34577,22 +34577,22 @@ const<span class="w"> </span><span class="nv">prisma</span><span class="w"> </sp
 <h4 id="url">▼ url<a class="headerlink" href="#url" title="Permanent link">&para;</a></h4>
 <p>プロトコル名として、<code>mysql</code> や <code>postgresql</code> を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">datasource</span><span class="w"> </span><span class="nx">db</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;プロトコル名&gt;&quot;</span>
+<span class="w">  </span><span class="nx">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;プロトコル名&gt;"</span>
 <span class="w">  </span><span class="c1">// 例：mysql://user:password@&lt;Amazon Auroraクラスターのリーダーエンドポイント&gt;:3306/foo</span>
-<span class="w">  </span><span class="nx">url</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;プロトコル名&gt;://&lt;DBユーザー&gt;:&lt;DBパスワード&gt;@&lt;DBホスト&gt;:&lt;ポート番号&gt;/&lt;DB名&gt;?schema=public&amp;connection_limit=30&amp;pool_timeout=60&quot;</span>
+<span class="w">  </span><span class="nx">url</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;プロトコル名&gt;://&lt;DBユーザー&gt;:&lt;DBパスワード&gt;@&lt;DBホスト&gt;:&lt;ポート番号&gt;/&lt;DB名&gt;?schema=public&amp;connection_limit=30&amp;pool_timeout=60"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>注意点として、Prisma の仕様で、DB パスワードに特殊記号が含まれている場合には URL エンコードする必要がある。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><span class="nv">urldecode</span><span class="o">=</span><span class="s1">&#39;python3 -c &quot;import sys, urllib.parse as ul; \</span>
-<span class="s1">    print(ul.unquote_plus(sys.argv[1]))&quot;&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><span class="nv">urldecode</span><span class="o">=</span><span class="s1">'python3 -c "import sys, urllib.parse as ul; \</span>
+<span class="s1">    print(ul.unquote_plus(sys.argv[1]))"'</span>
 
-$<span class="w"> </span>urldecode<span class="w"> </span><span class="s1">&#39;q+werty%3D%2F%3B&#39;</span>
+$<span class="w"> </span>urldecode<span class="w"> </span><span class="s1">'q+werty%3D%2F%3B'</span>
 q<span class="w"> </span><span class="nv">werty</span><span class="o">=</span>/<span class="p">;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><span class="nv">urlencode</span><span class="o">=</span><span class="s1">&#39;python3 -c &quot;import sys, urllib.parse as ul; \</span>
-<span class="s1">    print (ul.quote_plus(sys.argv[1]))&quot;&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><span class="nv">urlencode</span><span class="o">=</span><span class="s1">'python3 -c "import sys, urllib.parse as ul; \</span>
+<span class="s1">    print (ul.quote_plus(sys.argv[1]))"'</span>
 
-$<span class="w"> </span>urlencode<span class="w"> </span><span class="s1">&#39;q werty=/;&#39;</span>
+$<span class="w"> </span>urlencode<span class="w"> </span><span class="s1">'q werty=/;'</span>
 q+werty%3D%2F%3B
 </code></pre></div>
 <blockquote>
@@ -34616,8 +34616,8 @@ q+werty%3D%2F%3B
 <p><br></p>
 <h3 id="generator">generator<a class="headerlink" href="#generator" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nx">generator</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">provider</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prisma-client-js&quot;</span>
-<span class="w">  </span><span class="nx">engineType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;library&quot;</span>
+<span class="w">  </span><span class="nx">provider</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"prisma-client-js"</span>
+<span class="w">  </span><span class="nx">engineType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"library"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -34626,7 +34626,7 @@ q+werty%3D%2F%3B
 <h4 id="transaction_1">▼ $transaction<a class="headerlink" href="#transaction_1" title="Permanent link">&para;</a></h4>
 <p>複数のクエリ処理を実行するトランザクション処理を定義する。</p>
 <p>トランザクション内に含まれる一連の処理（トランザクション開始、コミット、ロールバック）を管理してくれる。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">prisma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PrismaClient</span><span class="p">();</span>
 
@@ -34646,7 +34646,7 @@ q+werty%3D%2F%3B
 <span class="w">    </span><span class="p">});</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sender</span><span class="p">.</span><span class="nx">balance</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="kr">from</span><span class="si">}</span><span class="sb"> doesn&#39;t have enough to send </span><span class="si">${</span><span class="nx">amount</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="kr">from</span><span class="si">}</span><span class="sb"> doesn't have enough to send </span><span class="si">${</span><span class="nx">amount</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// 2つ目のCRUD処理</span>
@@ -34668,8 +34668,8 @@ q+werty%3D%2F%3B
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// $transaction関数の実行をtry-catchで囲む</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">transfer</span><span class="p">(</span><span class="s2">&quot;alice@prisma.io&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bob@prisma.io&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
-<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">transfer</span><span class="p">(</span><span class="s2">&quot;alice@prisma.io&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bob@prisma.io&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">transfer</span><span class="p">(</span><span class="s2">"alice@prisma.io"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bob@prisma.io"</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">transfer</span><span class="p">(</span><span class="s2">"alice@prisma.io"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bob@prisma.io"</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
 
@@ -34681,7 +34681,7 @@ q+werty%3D%2F%3B
 </ul>
 </blockquote>
 <h4 id="_3">▼ オプション<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@prisma/client&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@prisma/client'</span>
 
 <span class="c1">// トランザクションのオプションはトランザクション全体で統一する</span>
 <span class="kd">let</span><span class="w"> </span><span class="nx">prismaClientOption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -34718,7 +34718,7 @@ q+werty%3D%2F%3B
 
 <span class="nx">main</span><span class="p">()</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@prisma/client&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@prisma/client'</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">prisma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PrismaClient</span><span class="p">()</span>
 
@@ -34776,7 +34776,7 @@ q+werty%3D%2F%3B
 <p>SQL 文自体を変数にしたい場合に使用する。</p>
 <p>例えば、<code>SELECT * FROM</code> を含む SQL 文全体を変数にする。</p>
 <p>ただし 、意図しないSQLを実行される『SQL インジェクション』を受ける危険性がある。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;SELECT * FROM User&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"SELECT * FROM User"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">$queryRawUnsafe</span><span class="o">&lt;</span><span class="nx">User</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">sql</span><span class="p">);</span>
 </code></pre></div>
@@ -34792,27 +34792,27 @@ q+werty%3D%2F%3B
 <p>初期データの定義と挿入を実装する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;foo@gmail.com&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">hashedPassword</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;password&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">roleName</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Administrator&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">"foo@gmail.com"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">hashedPassword</span><span class="o">:</span><span class="w"> </span><span class="s2">"password"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">roleName</span><span class="o">:</span><span class="w"> </span><span class="s2">"Administrator"</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bar@gmail.com&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">hashedPassword</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;password&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">roleName</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Operator&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">"bar@gmail.com"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">hashedPassword</span><span class="o">:</span><span class="w"> </span><span class="s2">"password"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">roleName</span><span class="o">:</span><span class="w"> </span><span class="s2">"Operator"</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="p">];</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">roles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Administrator&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">scope</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;All&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Administrator"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">scope</span><span class="o">:</span><span class="w"> </span><span class="s2">"All"</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Operator&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">scope</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReadOnly&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Operator"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">scope</span><span class="o">:</span><span class="w"> </span><span class="s2">"ReadOnly"</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="p">];</span>
 
@@ -34825,11 +34825,11 @@ q+werty%3D%2F%3B
 <span class="w">  </span><span class="p">);</span>
 
 <span class="w">  </span><span class="c1">// 開発環境でのみ初期データを挿入する</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;development&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"development"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// ここで、開発環境でのみ一部の初期データを挿入する</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">&quot;初期データの挿入に成功しました&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">"初期データの挿入に成功しました"</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="nx">seed</span><span class="p">()</span>
@@ -34873,7 +34873,7 @@ q+werty%3D%2F%3B
 </blockquote>
 <h4 id="try-catch">▼ インフラストラクチャレイヤーで <code>try-catch</code> を実行する<a class="headerlink" href="#try-catch" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1">// ユースケースレイヤー</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">,</span><span class="w"> </span><span class="nx">Prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">,</span><span class="w"> </span><span class="nx">Prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
 
 <span class="kd">class</span><span class="w"> </span><span class="nx">UserUseCase</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">repository</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepository</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -34899,7 +34899,7 @@ q+werty%3D%2F%3B
 <span class="w">            </span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span>
 <span class="w">          </span><span class="si">}</span><span class="sb">, Meta: </span><span class="si">${</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">meta</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
 <span class="w">        </span><span class="p">);</span>
-<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;データベース処理中に不明なエラーが発生しました&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">"データベース処理中に不明なエラーが発生しました"</span><span class="p">);</span>
 
 <span class="w">        </span><span class="c1">// エラーコードのない例外の場合、PrismaClientUnknownRequestErrorになる</span>
 <span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="nx">Prisma</span><span class="p">.</span><span class="nx">PrismaClientUnknownRequestError</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -34908,7 +34908,7 @@ q+werty%3D%2F%3B
 <span class="w">            </span><span class="nx">e</span><span class="p">.</span><span class="nx">meta</span><span class="p">,</span>
 <span class="w">          </span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
 <span class="w">        </span><span class="p">);</span>
-<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;データベース処理中に不明なエラーが発生しました&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">"データベース処理中に不明なエラーが発生しました"</span><span class="p">);</span>
 <span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// それ以外の場合、予期せぬエラーとして例外をスローする</span>
 <span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span>
@@ -34916,7 +34916,7 @@ q+werty%3D%2F%3B
 <span class="w">            </span><span class="nx">e</span><span class="p">.</span><span class="nx">meta</span><span class="p">,</span>
 <span class="w">          </span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
 <span class="w">        </span><span class="p">);</span>
-<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;システムエラーが発生しました&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">"システムエラーが発生しました"</span><span class="p">);</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1">// 接続を閉じる</span>
@@ -34927,7 +34927,7 @@ q+werty%3D%2F%3B
 </code></pre></div>
 <h4 id="try-catch_1">▼ インフラストラクチャレイヤーより上位のレイヤーで <code>try-catch</code> を実行する<a class="headerlink" href="#try-catch_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1">// インフラストラクチャレイヤー</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">,</span><span class="w"> </span><span class="nx">Prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">,</span><span class="w"> </span><span class="nx">Prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
 
 <span class="kd">class</span><span class="w"> </span><span class="nx">UserUseCase</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">repository</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepository</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -34947,7 +34947,7 @@ q+werty%3D%2F%3B
 <span class="w">            </span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span>
 <span class="w">          </span><span class="si">}</span><span class="sb">, Meta: </span><span class="si">${</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">meta</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
 <span class="w">        </span><span class="p">);</span>
-<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;データベース処理中に不明なエラーが発生しました&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">"データベース処理中に不明なエラーが発生しました"</span><span class="p">);</span>
 
 <span class="w">        </span><span class="c1">// エラーコードのない例外の場合、PrismaClientUnknownRequestErrorになる</span>
 <span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="nx">Prisma</span><span class="p">.</span><span class="nx">PrismaClientUnknownRequestError</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -34956,7 +34956,7 @@ q+werty%3D%2F%3B
 <span class="w">            </span><span class="nx">e</span><span class="p">.</span><span class="nx">meta</span><span class="p">,</span>
 <span class="w">          </span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
 <span class="w">        </span><span class="p">);</span>
-<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;データベース処理中に不明なエラーが発生しました&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">"データベース処理中に不明なエラーが発生しました"</span><span class="p">);</span>
 <span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// それ以外の場合、予期せぬエラーとして例外をスローする</span>
 <span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span>
@@ -34964,14 +34964,14 @@ q+werty%3D%2F%3B
 <span class="w">            </span><span class="nx">e</span><span class="p">.</span><span class="nx">meta</span><span class="p">,</span>
 <span class="w">          </span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
 <span class="w">        </span><span class="p">);</span>
-<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;システムエラーが発生しました&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">"システムエラーが発生しました"</span><span class="p">);</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// リポジトリ</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">,</span><span class="w"> </span><span class="nx">Prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">,</span><span class="w"> </span><span class="nx">Prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
 
 <span class="kd">class</span><span class="w"> </span><span class="nx">UserRepository</span><span class="w"> </span><span class="p">{</span>
 

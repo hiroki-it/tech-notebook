@@ -34651,7 +34651,7 @@
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sc-datasources-volume</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/run/secrets/kubernetes.io/serviceaccount</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-api-access-****</span>
-<span class="w">          </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34677,7 +34677,7 @@
 <span class="w">      </span><span class="no">- name: Prometheus</span>
 <span class="w">        </span><span class="no">type: prometheus</span>
 <span class="w">        </span><span class="no">url: http://&lt;PrometheusのService名&gt;.&lt;PrometheusのNamespace名&gt;:9090</span>
-<span class="w">        </span><span class="no">isDefault: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">isDefault: "true"</span>
 <span class="w">        </span><span class="no"># メトリクスとトレース間を相関させる</span>
 <span class="w">        </span><span class="no"># Prometheus で --enable-feature=exemplar-storage を有効にしておく必要がある</span>
 <span class="w">        </span><span class="no">jsonData:</span>
@@ -34710,7 +34710,7 @@
 <span class="w">        </span><span class="no">type: prometheus</span>
 <span class="w">        </span><span class="no">url: http://&lt;VictoriaMetricsのサーバーのIPアドレス&gt;:8248</span>
 <span class="w">        </span><span class="no">access: proxy</span>
-<span class="w">        </span><span class="no">isDefault: &quot;false&quot;</span>
+<span class="w">        </span><span class="no">isDefault: "false"</span>
 <span class="w">        </span><span class="no">jsonData:</span>
 <span class="w">          </span><span class="no">timeInterval: 30s</span>
 </code></pre></div>
@@ -34767,7 +34767,7 @@
 <span class="w">          </span><span class="no">derivedFields:</span>
 <span class="w">            </span><span class="no">- name: trace_id</span>
 <span class="w">              </span><span class="no"># trace_id がネストされた場所にあっても検知できるようにする</span>
-<span class="w">              </span><span class="no">matcherRegex: &#39;&quot;trace_id&quot;:\s*&quot;([^&quot;]+)&quot;&#39;</span>
+<span class="w">              </span><span class="no">matcherRegex: '"trace_id":\s*"([^"]+)"'</span>
 <span class="w">              </span><span class="no">url: $${__value.raw}</span>
 <span class="w">              </span><span class="no">urlDisplayLabel: View Grafana Tempo</span>
 <span class="w">              </span><span class="no">datasourceUid: Tempo</span>
@@ -34840,7 +34840,7 @@
 <span class="w">            </span><span class="no">spanEndTimeShift: 10m</span>
 <span class="w">            </span><span class="no">queries:</span>
 <span class="w">              </span><span class="no">- name: Memory Usage</span>
-<span class="w">                </span><span class="no">query: avg(container_memory_usage_bytes{__ignore_usage__=&quot;&quot;,$$__tags})</span>
+<span class="w">                </span><span class="no">query: avg(container_memory_usage_bytes{__ignore_usage__="",$$__tags})</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34908,7 +34908,7 @@
 <span class="w">    </span><span class="no">auth_url = http://keycloak.foo-namespace.svc.cluster.local/realms/&lt;realm名&gt;/protocol/openid-connect/auth</span>
 <span class="w">    </span><span class="no">token_url = http://keycloak.foo-namespace.svc.cluster.local/realms/&lt;realm名&gt;/protocol/openid-connect/token</span>
 <span class="w">    </span><span class="no">api_url = http://keycloak.foo-namespace.svc.cluster.local/realms/&lt;realm名&gt;/protocol/openid-connect/userinfo</span>
-<span class="w">    </span><span class="no">role_attribute_path = contains(roles[*], &#39;admin&#39;) &amp;&amp; &#39;Admin&#39; || contains(roles[*], &#39;editor&#39;) &amp;&amp; &#39;Editor&#39; || &#39;Viewer&#39;</span>
+<span class="w">    </span><span class="no">role_attribute_path = contains(roles[*], 'admin') &amp;&amp; 'Admin' || contains(roles[*], 'editor') &amp;&amp; 'Editor' || 'Viewer'</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34936,9 +34936,9 @@
 <span class="w">    </span><span class="no">allow_sign_up = true</span>
 <span class="w">    </span><span class="no">auto_login = false</span>
 <span class="w">    </span><span class="no">team_ids = 150,300</span>
-<span class="w">    </span><span class="no">allowed_organizations = [&quot;My Organization&quot;, &quot;Octocats&quot;]</span>
+<span class="w">    </span><span class="no">allowed_organizations = ["My Organization", "Octocats"]</span>
 <span class="w">    </span><span class="no">allowed_domains = mycompany.com mycompany.org</span>
-<span class="w">    </span><span class="no">role_attribute_path = [login==&#39;octocat&#39;][0] &amp;&amp; &#39;GrafanaAdmin&#39; || &#39;Viewer&#39;</span>
+<span class="w">    </span><span class="no">role_attribute_path = [login=='octocat'][0] &amp;&amp; 'GrafanaAdmin' || 'Viewer'</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35142,10 +35142,10 @@
 <span class="w">    </span><span class="no">curl -skf \</span>
 <span class="w">      </span><span class="no">--connect-timeout 60 \</span>
 <span class="w">      </span><span class="no">--max-time 60 \</span>
-<span class="w">      </span><span class="no">-H &quot;Accept: application/json&quot; \</span>
-<span class="w">      </span><span class="no">-H &quot;Content-Type: application/json;charset=UTF-8&quot; \</span>
-<span class="w">      </span><span class="no">&quot;https://raw.githubusercontent.com/example/foo.json&quot; \</span>
-<span class="w">      </span><span class="no">&gt; &quot;/var/lib/grafana/dashboards/remote/foo.json&quot;</span>
+<span class="w">      </span><span class="no">-H "Accept: application/json" \</span>
+<span class="w">      </span><span class="no">-H "Content-Type: application/json;charset=UTF-8" \</span>
+<span class="w">      </span><span class="no">"https://raw.githubusercontent.com/example/foo.json" \</span>
+<span class="w">      </span><span class="no">&gt; "/var/lib/grafana/dashboards/remote/foo.json"</span>
 <span class="w">  </span><span class="c1"># 必ず dashboardproviders.yaml ファイルが必要である</span>
 <span class="w">  </span><span class="nt">dashboardproviders.yaml</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">apiVersion: 1</span>
@@ -35177,29 +35177,29 @@
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana</span>
-<span class="w">            </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;docker.io/grafana/grafana:10.0.3&quot;</span>
+<span class="w">            </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">"docker.io/grafana/grafana:10.0.3"</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana-sc-dashboard</span>
-<span class="w">            </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;quay.io/kiwigrid/k8s-sidecar:1.24.6&quot;</span>
+<span class="w">            </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">"quay.io/kiwigrid/k8s-sidecar:1.24.6"</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana-sc-datasources</span>
-<span class="w">            </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;quay.io/kiwigrid/k8s-sidecar:1.24.6&quot;</span>
+<span class="w">            </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">"quay.io/kiwigrid/k8s-sidecar:1.24.6"</span>
 <span class="w">        </span><span class="nt">initContainers</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">download-dashboards</span>
-<span class="w">            </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;docker.io/curlimages/curl:7.85.0&quot;</span>
+<span class="w">            </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">"docker.io/curlimages/curl:7.85.0"</span>
 <span class="w">            </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
-<span class="w">            </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/sh&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">            </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"/bin/sh"</span><span class="p p-Indicator">]</span>
 <span class="w">            </span><span class="c1"># ダウンロードスクリプトを実行する</span>
 <span class="w">            </span><span class="nt">args</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">[</span>
-<span class="w">                </span><span class="s">&quot;-c&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                </span><span class="s">&quot;mkdir</span><span class="nv"> </span><span class="s">-p</span><span class="nv"> </span><span class="s">/var/lib/grafana/dashboards/remote</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">/bin/sh</span><span class="nv"> </span><span class="s">-x</span><span class="nv"> </span><span class="s">/etc/grafana/download_dashboards.sh&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">"-c"</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">"mkdir</span><span class="nv"> </span><span class="s">-p</span><span class="nv"> </span><span class="s">/var/lib/grafana/dashboards/remote</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">/bin/sh</span><span class="nv"> </span><span class="s">-x</span><span class="nv"> </span><span class="s">/etc/grafana/download_dashboards.sh"</span><span class="p p-Indicator">,</span>
 <span class="w">              </span><span class="p p-Indicator">]</span>
 <span class="w">            </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">              </span><span class="c1"># ダウンロードスクリプトをマウントする</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config</span>
-<span class="w">                </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/etc/grafana/download_dashboards.sh&quot;</span>
+<span class="w">                </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s">"/etc/grafana/download_dashboards.sh"</span>
 <span class="w">                </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">download_dashboards.sh</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage</span>
-<span class="w">                </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/var/lib/grafana&quot;</span>
+<span class="w">                </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s">"/var/lib/grafana"</span>
 <span class="w">        </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config</span>
 <span class="w">            </span><span class="nt">configMap</span><span class="p">:</span>
@@ -35255,15 +35255,15 @@
 <span class="w">  </span><span class="nt">provider.yaml</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">apiVersion: 1</span>
 <span class="w">    </span><span class="no">providers:</span>
-<span class="w">      </span><span class="no">- name: &#39;sidecarProvider&#39;</span>
+<span class="w">      </span><span class="no">- name: 'sidecarProvider'</span>
 <span class="w">        </span><span class="no">orgId: 1</span>
-<span class="w">        </span><span class="no">folder: &#39;&#39;</span>
+<span class="w">        </span><span class="no">folder: ''</span>
 <span class="w">        </span><span class="no">type: file</span>
-<span class="w">        </span><span class="no">disableDeletion: &quot;false&quot;</span>
-<span class="w">        </span><span class="no">allowUiUpdates: &quot;false&quot;</span>
+<span class="w">        </span><span class="no">disableDeletion: "false"</span>
+<span class="w">        </span><span class="no">allowUiUpdates: "false"</span>
 <span class="w">        </span><span class="no">updateIntervalSeconds: 30</span>
 <span class="w">        </span><span class="no">options:</span>
-<span class="w">          </span><span class="no">foldersFromFilesStructure: &quot;false&quot;</span>
+<span class="w">          </span><span class="no">foldersFromFilesStructure: "false"</span>
 <span class="w">          </span><span class="no">path: /tmp/dashboards</span>
 </code></pre></div>
 <p><br></p>
@@ -35315,7 +35315,7 @@
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sc-dashboard-volume</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/run/secrets/kubernetes.io/serviceaccount</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-api-access-*****</span>
-<span class="w">          </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <p>サイドカーが ConfigMap を検知できるように、<code>metadata.labels</code> キーにデフォルトで <code>grafana_dashboard: "1"</code> を設定する必要がある。</p>
 <p>言い方を変えれば、`grafana_dashboard: "1"キーを持つ ConfigMap のみをダッシュボードの設定として読み込ませられる。</p>
@@ -35325,7 +35325,7 @@
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-dashboard</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">grafana_dashboard</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">    </span><span class="nt">grafana_dashboard</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo.json</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span>
 <span class="w">    </span><span class="no">{{ `</span>
@@ -35366,7 +35366,7 @@
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-grafana-dashboard</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">grafana_dashboard</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;labelValueに設定した値&gt;&quot;</span>
+<span class="w">    </span><span class="nt">grafana_dashboard</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;labelValueに設定した値&gt;"</span>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo.json</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span>
 <span class="w">    </span><span class="no">{{ `</span>
@@ -35391,7 +35391,7 @@
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain"># サイドカー検知用の.metadata.labels キー</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">label</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana_dashboard</span>
 <span class="w">      </span><span class="c1"># .metadata.labels キーの値</span>
-<span class="w">      </span><span class="nt">labelValue</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">      </span><span class="nt">labelValue</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
 
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
@@ -35400,7 +35400,7 @@
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">label</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana_datasource</span>
-<span class="w">      </span><span class="nt">labelValue</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">      </span><span class="nt">labelValue</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35415,7 +35415,7 @@
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-grafana-dashboard</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">grafana_dashboard</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">    </span><span class="nt">grafana_dashboard</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo.json</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span>
 <span class="w">    </span><span class="no">{{ `</span>

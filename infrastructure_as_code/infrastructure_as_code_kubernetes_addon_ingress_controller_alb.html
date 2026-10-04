@@ -34236,18 +34236,18 @@
 <p>AWS Load Balancer Controller のセットアップのうち、AWS 側で必要なものをまとめる。</p>
 <p>ここでは、Terraform の公式モジュールを使用する。</p>
 <p>コマンド (例：<code>eksctl</code> コマンド) を使用してもよい。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_aws_load_balancer_controller&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"iam_assumable_role_with_oidc_aws_load_balancer_controller"</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"</span>
 
-<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;バージョン&gt;"</span>
 
 <span class="c1">  # AWS Load Balancer ControllerのPodに紐付けるIAMロール</span>
 <span class="w">  </span><span class="na">create_role</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-aws-load-balancer-controller&quot;</span>
+<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-aws-load-balancer-controller"</span>
 
 <span class="c1">  # Amazon EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの</span>
-<span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://&quot;, &quot;&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://", ""</span><span class="p">)</span>
 
 <span class="c1">  # AWS IAMロールに紐付けるIAMポリシー</span>
 <span class="w">  </span><span class="na">role_policy_arns</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
@@ -34257,21 +34257,21 @@
 <span class="c1">  # AWS Load Balancer ControllerのPodのServiceAccount名</span>
 <span class="c1">  # ServiceAccountは、Terraformではなく、マニフェストで定義したほうが良い</span>
 <span class="w">  </span><span class="na">oidc_fully_qualified_subjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;system:serviceaccount:kube-system:foo-aws-load-balancer-controller&quot;</span>
+<span class="w">    </span><span class="s2">"system:serviceaccount:kube-system:foo-aws-load-balancer-controller"</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 
 <span class="c1"># GitHubにリクエストを送信し、IAMポリシーのファイルを取得する</span>
-<span class="kr">data</span><span class="w"> </span><span class="nc">&quot;http&quot;</span><span class="w"> </span><span class="nv">&quot;aws_load_balancer_controller_policy&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">data</span><span class="w"> </span><span class="nc">"http"</span><span class="w"> </span><span class="nv">"aws_load_balancer_controller_policy"</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">  # チャートバージョンが提供するIAMポリシーのURLを指定する</span>
 <span class="c1">  # (例) チャートのバージョンが 1.5.3 の場合</span>
 <span class="c1">  # https://github.com/kubernetes-sigs/aws-load-balancer-controller/blob/v2.5.2/helm/aws-load-balancer-controller/Chart.yaml#L4</span>
-<span class="w">  </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.2/docs/install/iam_policy.json&quot;</span>
+<span class="w">  </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.2/docs/install/iam_policy.json"</span>
 <span class="p">}</span>
 
 <span class="c1"># レスポンスからJSONファイルの内容を取得する</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_iam_policy&quot;</span><span class="w"> </span><span class="nv">&quot;aws_load_balancer_controller&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-aws-load-balancer-controller&quot;</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_iam_policy"</span><span class="w"> </span><span class="nv">"aws_load_balancer_controller"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-aws-load-balancer-controller"</span>
 <span class="c1">  # GitHubリポジトリが返信したIAMポリシーのjsonを設定する</span>
 <span class="w">  </span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.http.aws_load_balancer_controller_policy.response_body</span>
 <span class="p">}</span>
@@ -34338,7 +34338,7 @@
 
 <span class="m">2022</span>-05-30<span class="w"> </span><span class="m">23</span>:39:04<span class="w"> </span><span class="o">[</span>ℹ<span class="o">]</span><span class="w">  </span>eksctl<span class="w"> </span>version<span class="w"> </span><span class="m">0</span>.96.0
 <span class="m">2022</span>-05-30<span class="w"> </span><span class="m">23</span>:39:04<span class="w"> </span><span class="o">[</span>ℹ<span class="o">]</span><span class="w">  </span>using<span class="w"> </span>region<span class="w"> </span>ap-northeast-1
-<span class="m">2022</span>-05-30<span class="w"> </span><span class="m">23</span>:39:05<span class="w"> </span><span class="o">[</span>ℹ<span class="o">]</span><span class="w">  </span>IAM<span class="w"> </span>Open<span class="w"> </span>ID<span class="w"> </span>Connect<span class="w"> </span>provider<span class="w"> </span>is<span class="w"> </span>already<span class="w"> </span>associated<span class="w"> </span>with<span class="w"> </span>cluster<span class="w"> </span><span class="s2">&quot;foo-eks-cluster&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="m">2022</span>-05-30<span class="w"> </span><span class="m">23</span>:39:05<span class="w"> </span><span class="o">[</span>ℹ<span class="o">]</span><span class="w">  </span>IAM<span class="w"> </span>Open<span class="w"> </span>ID<span class="w"> </span>Connect<span class="w"> </span>provider<span class="w"> </span>is<span class="w"> </span>already<span class="w"> </span>associated<span class="w"> </span>with<span class="w"> </span>cluster<span class="w"> </span><span class="s2">"foo-eks-cluster"</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span>
 </code></pre></div>
 <p><br></p>
 <dl>
@@ -34384,12 +34384,12 @@ kube-system<span class="w">     </span>foo-aws-load-balancer-controller<span cla
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">eks.amazonaws.com/role-arn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:iam::&lt;AWSアカウントID&gt;:role/eksctl-foo-eks-cluster-addon-i-Role1-****</span>
-<span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2022-05-29T12:59:15Z&quot;</span>
+<span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="s">"2022-05-29T12:59:15Z"</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">app.kubernetes.io/managed-by</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eksctl</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-aws-load-balancer-controller</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span>
-<span class="w">  </span><span class="nt">resourceVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2103515&quot;</span>
+<span class="w">  </span><span class="nt">resourceVersion</span><span class="p">:</span><span class="w"> </span><span class="s">"2103515"</span>
 <span class="w">  </span><span class="nt">uid</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
 <span class="nt">secrets</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-aws-load-balancer-controller-token-****</span>
@@ -34469,13 +34469,13 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;level&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;ts&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****.*****&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;logger&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;controller-runtime.manager.controller.ingress&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;msg&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Reconciler</span><span class="nv"> </span><span class="s">error&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo-ingress&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;namespace&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;error&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ingress:</span><span class="nv"> </span><span class="s">foo/foo-ingress:</span><span class="nv"> </span><span class="s">WebIdentityErr:</span><span class="nv"> </span><span class="s">failed</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">retrieve</span><span class="nv"> </span><span class="s">credentials\ncaused</span><span class="nv"> </span><span class="s">by:</span><span class="nv"> </span><span class="s">RequestError:</span><span class="nv"> </span><span class="s">send</span><span class="nv"> </span><span class="s">request</span><span class="nv"> </span><span class="s">failed\ncaused</span><span class="nv"> </span><span class="s">by:</span><span class="nv"> </span><span class="s">Post</span><span class="nv"> </span><span class="s">\&quot;https://sts.ap-northeast-1.amazonaws.com/\&quot;:</span><span class="nv"> </span><span class="s">dial</span><span class="nv"> </span><span class="s">tcp:</span><span class="nv"> </span><span class="s">lookup</span><span class="nv"> </span><span class="s">sts.ap-northeast-1.amazonaws.com</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">*.*.*.*:53:</span><span class="nv"> </span><span class="s">read</span><span class="nv"> </span><span class="s">udp</span><span class="nv"> </span><span class="s">*.*.*.*:43958-&gt;*.*.*.*:53:</span><span class="nv"> </span><span class="s">read:</span><span class="nv"> </span><span class="s">connection</span><span class="nv"> </span><span class="s">refused&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"level"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"error"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"ts"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*****.*****"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"logger"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"controller-runtime.manager.controller.ingress"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"msg"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Reconciler</span><span class="nv"> </span><span class="s">error"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"foo-ingress"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"namespace"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"error"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"ingress:</span><span class="nv"> </span><span class="s">foo/foo-ingress:</span><span class="nv"> </span><span class="s">WebIdentityErr:</span><span class="nv"> </span><span class="s">failed</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">retrieve</span><span class="nv"> </span><span class="s">credentials\ncaused</span><span class="nv"> </span><span class="s">by:</span><span class="nv"> </span><span class="s">RequestError:</span><span class="nv"> </span><span class="s">send</span><span class="nv"> </span><span class="s">request</span><span class="nv"> </span><span class="s">failed\ncaused</span><span class="nv"> </span><span class="s">by:</span><span class="nv"> </span><span class="s">Post</span><span class="nv"> </span><span class="s">\"https://sts.ap-northeast-1.amazonaws.com/\":</span><span class="nv"> </span><span class="s">dial</span><span class="nv"> </span><span class="s">tcp:</span><span class="nv"> </span><span class="s">lookup</span><span class="nv"> </span><span class="s">sts.ap-northeast-1.amazonaws.com</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">*.*.*.*:53:</span><span class="nv"> </span><span class="s">read</span><span class="nv"> </span><span class="s">udp</span><span class="nv"> </span><span class="s">*.*.*.*:43958-&gt;*.*.*.*:53:</span><span class="nv"> </span><span class="s">read:</span><span class="nv"> </span><span class="s">connection</span><span class="nv"> </span><span class="s">refused"</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <dl>
@@ -34507,13 +34507,13 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
 <span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">args</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># AWS ALB で L7 ロードバランシングする Cluster 名を設定する</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--cluster-name=foo-cluster&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"--cluster-name=foo-cluster"</span>
 <span class="w">        </span><span class="c1"># Ingress に紐づける IngressClass を設定する</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--ingress-class=alb&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"--ingress-class=alb"</span>
 <span class="w">        </span><span class="c1"># AWS ALB のあるリージョンを設定する</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--aws-region=ap-northeast-1&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"--aws-region=ap-northeast-1"</span>
 <span class="w">        </span><span class="c1"># AWS ALB のある VPC の ID を設定する</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--aws-vpc-id=vpc-*****&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"--aws-vpc-id=vpc-*****"</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-load-balancer-controller</span>
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">public.ecr.aws/eks/aws-load-balancer-controller:v2.4.0</span>
 <span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
@@ -34569,14 +34569,14 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
 <span class="w">    </span><span class="nt">reinvocationPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
 <span class="w">    </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">""</span>
 <span class="w">        </span><span class="nt">apiVersions</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="w">        </span><span class="nt">operations</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CREATE</span>
 <span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pods</span>
-<span class="w">        </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">        </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">    </span><span class="nt">sideEffects</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
 <span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">admissionReviewVersions</span><span class="p">:</span>
@@ -34604,7 +34604,7 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UPDATE</span>
 <span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">targetgroupbindings</span>
-<span class="w">        </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">        </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">    </span><span class="nt">sideEffects</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
 <span class="w">    </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
 </code></pre></div>

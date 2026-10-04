@@ -33809,14 +33809,14 @@
 <p>ログメッセージが <code>json</code> 形式の場合は、以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># わかりやすいように改行している。</span>
 <span class="m">2023</span>-03-16T19:48:25.824524924+09:00<span class="w"> </span>stderr<span class="w"> </span>F<span class="w"> </span><span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;addr&quot;</span>:<span class="w"> </span><span class="s2">&quot;*.*.*.*:9000&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;caller&quot;</span>:<span class="w"> </span><span class="s2">&quot;cluster.go:461&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;component&quot;</span>:<span class="w"> </span><span class="s2">&quot;cluster&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;err&quot;</span>:<span class="w"> </span><span class="s2">&quot;This is ERROR&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;level&quot;</span>:<span class="w"> </span><span class="s2">&quot;error&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;msg&quot;</span>:<span class="w"> </span><span class="s2">&quot;refresh&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;result&quot;</span>:<span class="w"> </span><span class="s2">&quot;failure&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;ts&quot;</span>:<span class="w"> </span><span class="s2">&quot;2023-03-16T10:48:25.824Z&quot;</span>
+<span class="w">  </span><span class="s2">"addr"</span>:<span class="w"> </span><span class="s2">"*.*.*.*:9000"</span>,
+<span class="w">  </span><span class="s2">"caller"</span>:<span class="w"> </span><span class="s2">"cluster.go:461"</span>,
+<span class="w">  </span><span class="s2">"component"</span>:<span class="w"> </span><span class="s2">"cluster"</span>,
+<span class="w">  </span><span class="s2">"err"</span>:<span class="w"> </span><span class="s2">"This is ERROR"</span>,
+<span class="w">  </span><span class="s2">"level"</span>:<span class="w"> </span><span class="s2">"error"</span>,
+<span class="w">  </span><span class="s2">"msg"</span>:<span class="w"> </span><span class="s2">"refresh"</span>,
+<span class="w">  </span><span class="s2">"result"</span>:<span class="w"> </span><span class="s2">"failure"</span>,
+<span class="w">  </span><span class="s2">"ts"</span>:<span class="w"> </span><span class="s2">"2023-03-16T10:48:25.824Z"</span>
 <span class="o">}</span>
 </code></pre></div>
 <blockquote>
@@ -33828,9 +33828,9 @@
 <h3 id="docker">Docker のログとの比較<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
 <p>Docker は、<code>json</code> 形式をログを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="err">　</span><span class="s">&quot;log&quot;</span><span class="p p-Indicator">:</span><span class="s">&quot;2021/12/17</span><span class="nv"> </span><span class="s">08:03:23</span><span class="nv"> </span><span class="s">[INFO]</span><span class="nv"> </span><span class="s">start</span><span class="nv"> </span><span class="s">worker</span><span class="nv"> </span><span class="s">processes&quot;</span><span class="p p-Indicator">,</span>
-<span class="err">　</span><span class="s">&quot;stream&quot;</span><span class="p p-Indicator">:</span><span class="s">&quot;stdout&quot;</span><span class="p p-Indicator">,</span>
-<span class="err">　</span><span class="s">&quot;time&quot;</span><span class="p p-Indicator">:</span><span class="s">&quot;2021-12-16T23:32:06.226055453Z&quot;</span>
+<span class="err">　</span><span class="s">"log"</span><span class="p p-Indicator">:</span><span class="s">"2021/12/17</span><span class="nv"> </span><span class="s">08:03:23</span><span class="nv"> </span><span class="s">[INFO]</span><span class="nv"> </span><span class="s">start</span><span class="nv"> </span><span class="s">worker</span><span class="nv"> </span><span class="s">processes"</span><span class="p p-Indicator">,</span>
+<span class="err">　</span><span class="s">"stream"</span><span class="p p-Indicator">:</span><span class="s">"stdout"</span><span class="p p-Indicator">,</span>
+<span class="err">　</span><span class="s">"time"</span><span class="p p-Indicator">:</span><span class="s">"2021-12-16T23:32:06.226055453Z"</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>

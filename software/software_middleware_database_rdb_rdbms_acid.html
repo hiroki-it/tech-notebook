@@ -35192,8 +35192,8 @@
     <span class="c1">// トランザクション処理を開始する。</span>
     <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">beginTransaction</span><span class="p">();</span>
     <span class="c1">// いくつかのWrite処理を実行する。※もし失敗した場合、ERRMODE_EXCEPTIONを実行。</span>
-    <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">exec</span><span class="p">(</span><span class="s2">&quot;INSERT INTO movie(title, price) VALUES(&quot;</span><span class="nx">ハリポタ</span><span class="s2">&quot;, 2000)&quot;</span><span class="p">)</span>
-    <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">exec</span><span class="p">(</span><span class="s2">&quot;INSERT INTO movie(title, price) VALUES(&quot;</span><span class="nx">シスター</span><span class="s2">&quot;, 2000)&quot;</span><span class="p">)</span>
+    <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">exec</span><span class="p">(</span><span class="s2">"INSERT INTO movie(title, price) VALUES("</span><span class="nx">ハリポタ</span><span class="s2">", 2000)"</span><span class="p">)</span>
+    <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">exec</span><span class="p">(</span><span class="s2">"INSERT INTO movie(title, price) VALUES("</span><span class="nx">シスター</span><span class="s2">", 2000)"</span><span class="p">)</span>
 
     <span class="c1">// コミットを実行する</span>
     <span class="c1">// トランザクション内の一連のSQLステートメントが成功したら、ログファイルにコミット。</span>
@@ -35202,7 +35202,7 @@
 <span class="p">}</span> <span class="k">catch</span><span class="p">{</span>
     <span class="c1">// 例外が発生したらロールバックし、エラーメッセージを出力。</span>
     <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">rollBack</span><span class="p">();</span>
-    <span class="k">print</span> <span class="s2">&quot;失敗しました。：</span><span class="si">{</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">print</span> <span class="s2">"失敗しました。：</span><span class="si">{</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_5">▼ トランザクション全体の非同期化<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
@@ -35316,7 +35316,7 @@
 <span class="cm">/*!40101 SET NAMES utf8 */</span><span class="p">;</span>
 <span class="cm">/*!50503 SET NAMES utf8mb4 */</span><span class="p">;</span>
 <span class="cm">/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */</span><span class="p">;</span>
-<span class="cm">/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE=&quot;NO_AUTO_VALUE_ON_ZERO&quot; */</span><span class="p">;</span>
+<span class="cm">/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE="NO_AUTO_VALUE_ON_ZERO" */</span><span class="p">;</span>
 
 <span class="c1"># DB作成</span>
 <span class="c1">-- Dumping database structure for kizukeba_pronami_php</span>
@@ -35336,11 +35336,11 @@
 <span class="c1">-- Dumping data for table kizukeba_pronami_php.mst_staff: ~8 rows (approximately)</span>
 <span class="cm">/*!40000 ALTER TABLE `mst_staff` DISABLE KEYS */</span><span class="p">;</span>
 <span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n n-Quoted">`mst_staff`</span><span class="w"> </span><span class="p">(</span><span class="n n-Quoted">`code`</span><span class="p">,</span><span class="w"> </span><span class="n n-Quoted">`name`</span><span class="p">,</span><span class="w"> </span><span class="n n-Quoted">`password`</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
-<span class="w">    </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;秦基博&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span><span class="p">),</span>
-<span class="w">    </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;藤原基央&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s2">"秦基博"</span><span class="p">,</span><span class="w"> </span><span class="s2">"*****"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s2">"藤原基央"</span><span class="p">,</span><span class="w"> </span><span class="s2">"*****"</span><span class="p">);</span>
 <span class="cm">/*!40000 ALTER TABLE `mst_staff` ENABLE KEYS */</span><span class="p">;</span>
 
-<span class="cm">/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, &quot;&quot;) */</span><span class="p">;</span>
+<span class="cm">/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, "") */</span><span class="p">;</span>
 <span class="cm">/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */</span><span class="p">;</span>
 <span class="cm">/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */</span><span class="p">;</span>
 </code></pre></div>

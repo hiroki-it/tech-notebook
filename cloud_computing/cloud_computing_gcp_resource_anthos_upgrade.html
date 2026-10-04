@@ -34208,12 +34208,12 @@ $<span class="w"> </span>chmod<span class="w"> </span>a+x<span class="w"> </span
 <p><code>asmcli</code> コマンドが指定している <code>POINT</code> 値と <code>REV</code> 値を確認する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;MAJOR=&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;MINOR=&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;POINT=&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;REV=&#39;</span><span class="w"> </span>asmcli
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span><span class="s1">'MAJOR='</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">'MINOR='</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">'POINT='</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">'REV='</span><span class="w"> </span>asmcli
 
-<span class="nv">MAJOR</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MAJOR</span><span class="p">:=1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">readonly</span><span class="w"> </span>MAJOR<span class="p">;</span>
-<span class="nv">MINOR</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MINOR</span><span class="p">:=14</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">readonly</span><span class="w"> </span>MINOR<span class="p">;</span>
-<span class="nv">POINT</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">POINT</span><span class="p">:=0</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">readonly</span><span class="w"> </span>POINT<span class="p">;</span><span class="w"> </span><span class="c1"># POINT値</span>
-<span class="nv">REV</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">REV</span><span class="p">:=0</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">readonly</span><span class="w"> </span>REV<span class="p">;</span><span class="w">       </span><span class="c1"># REV値</span>
+<span class="nv">MAJOR</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">MAJOR</span><span class="p">:=1</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="nb">readonly</span><span class="w"> </span>MAJOR<span class="p">;</span>
+<span class="nv">MINOR</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">MINOR</span><span class="p">:=14</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="nb">readonly</span><span class="w"> </span>MINOR<span class="p">;</span>
+<span class="nv">POINT</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">POINT</span><span class="p">:=0</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="nb">readonly</span><span class="w"> </span>POINT<span class="p">;</span><span class="w"> </span><span class="c1"># POINT値</span>
+<span class="nv">REV</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">REV</span><span class="p">:=0</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="nb">readonly</span><span class="w"> </span>REV<span class="p">;</span><span class="w">       </span><span class="c1"># REV値</span>
 ...
 </code></pre></div>
 <dl>
@@ -34421,7 +34421,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </
 <div class="highlight"><pre><span></span><code><span class="c1"># 新バージョンのリビジョン：asm-1140-0</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>istio-ingress<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">={</span>.items<span class="o">[</span>*<span class="o">]</span>.spec.containers<span class="o">[</span>*<span class="o">]</span>.image<span class="o">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/ /\n/g&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span>
+<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">={</span>.items<span class="o">[</span>*<span class="o">]</span>.spec.containers<span class="o">[</span>*<span class="o">]</span>.image<span class="o">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s/ /\n/g'</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span>
 
 
 gcr.io/gke-release/asm/proxyv2:1.14.0-asm.1
@@ -34450,7 +34450,7 @@ $<span class="w"> </span>istioctl<span class="w"> </span>version
 <div class="highlight"><pre><span></span><code><span class="c1"># 新バージョンのリビジョン：asm-1140-0</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>app<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">={</span>.items<span class="o">[</span>*<span class="o">]</span>.spec.containers<span class="o">[</span>*<span class="o">]</span>.image<span class="o">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/ /\n/g&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span>
+<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">={</span>.items<span class="o">[</span>*<span class="o">]</span>.spec.containers<span class="o">[</span>*<span class="o">]</span>.image<span class="o">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s/ /\n/g'</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span>
 
 
 gcr.io/gke-release/asm/proxyv2:1.14.0-asm.1

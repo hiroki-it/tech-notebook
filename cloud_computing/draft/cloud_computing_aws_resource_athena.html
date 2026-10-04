@@ -33414,14 +33414,14 @@
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="terraform">Terraform<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h3>
 <p>保存されたクエリをTerraformで定義しておく。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_athena_named_query&quot;</span><span class="w"> </span><span class="nv">&quot;create_table_foo_alb_logs&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">name</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${local.name}-create-table-foo-alb-logs&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_athena_named_query"</span><span class="w"> </span><span class="nv">"create_table_foo_alb_logs"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">"${local.name}-create-table-foo-alb-logs"</span>
 <span class="w">  </span><span class="na">workgroup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_athena_workgroup.platform_logs.id</span>
 <span class="w">  </span><span class="na">database</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_athena_database.elb_logs.name</span>
-<span class="w">  </span><span class="na">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">templatefile</span><span class="p">(</span><span class="s2">&quot;${path.module}/athena_query/create-table-foo-alb-logs.sql.tpl&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">table_name</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="s2">&quot;${local.name}-foo-alb-logs&quot;, &quot;-&quot;, &quot;_&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="na">query</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">templatefile</span><span class="p">(</span><span class="s2">"${path.module}/athena_query/create-table-foo-alb-logs.sql.tpl"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">table_name</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="s2">"${local.name}-foo-alb-logs", "-", "_"</span><span class="p">)</span>
 <span class="w">    </span><span class="na">s3_bucket_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.s3_elb_logs.s3_bucket_id</span>
-<span class="w">    </span><span class="na">alb_name</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${local.name}-foo-alb&quot;</span>
+<span class="w">    </span><span class="na">alb_name</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">"${local.name}-foo-alb"</span>
 <span class="w">    </span><span class="na">account_id</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_caller_identity.current.account_id</span>
 <span class="w">    </span><span class="na">region</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_region.current.name</span>
 <span class="w">  </span><span class="p">})</span>
@@ -33467,20 +33467,20 @@
 <span class="n">PARTITIONED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="p">(</span>
 <span class="w">  </span><span class="o">`</span><span class="nb">date</span><span class="o">`</span><span class="w"> </span><span class="n">string</span>
 <span class="p">)</span>
-<span class="k">ROW</span><span class="w"> </span><span class="n">FORMAT</span><span class="w"> </span><span class="n">SERDE</span><span class="w"> </span><span class="s1">&#39;org.apache.hadoop.hive.serde2.RegexSerDe&#39;</span>
+<span class="k">ROW</span><span class="w"> </span><span class="n">FORMAT</span><span class="w"> </span><span class="n">SERDE</span><span class="w"> </span><span class="s1">'org.apache.hadoop.hive.serde2.RegexSerDe'</span>
 <span class="k">WITH</span><span class="w"> </span><span class="n">SERDEPROPERTIES</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="s1">&#39;serialization.format&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="s1">&#39;input.regex&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*):([0-9]*) ([^ ]*)[:-]([0-9]*) ([-.0-9]*) ([-.0-9]*) ([-.0-9]*) (|[-0-9]*) (-|[-0-9]*) ([-0-9]*) ([-0-9]*) \&quot;([^ ]*) (.*) (- |[^ ]*)\&quot; \&quot;([^\&quot;]*)\&quot; ([A-Z0-9-_]+) ([A-Za-z0-9.-]*) ([^ ]*) \&quot;([^\&quot;]*)\&quot; \&quot;([^\&quot;]*)\&quot; \&quot;([^\&quot;]*)\&quot; ([-.0-9]*) ([^ ]*) \&quot;([^\&quot;]*)\&quot; \&quot;([^\&quot;]*)\&quot; \&quot;([^ ]*)\&quot; \&quot;([^\s]+?)\&quot; \&quot;([^\s]+)\&quot; \&quot;([^ ]*)\&quot; \&quot;([^ ]*)\&quot; ?([^ ]*)?( .*)?&#39;</span>
+<span class="w">  </span><span class="s1">'serialization.format'</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'1'</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">'input.regex'</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'([^ ]*) ([^ ]*) ([^ ]*) ([^ ]*):([0-9]*) ([^ ]*)[:-]([0-9]*) ([-.0-9]*) ([-.0-9]*) ([-.0-9]*) (|[-0-9]*) (-|[-0-9]*) ([-0-9]*) ([-0-9]*) \"([^ ]*) (.*) (- |[^ ]*)\" \"([^\"]*)\" ([A-Z0-9-_]+) ([A-Za-z0-9.-]*) ([^ ]*) \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" ([-.0-9]*) ([^ ]*) \"([^\"]*)\" \"([^\"]*)\" \"([^ ]*)\" \"([^\s]+?)\" \"([^\s]+)\" \"([^ ]*)\" \"([^ ]*)\" ?([^ ]*)?( .*)?'</span>
 <span class="p">)</span>
-<span class="k">LOCATION</span><span class="w"> </span><span class="s1">&#39;s3://${s3_bucket_name}/${alb_name}/AWSLogs/${account_id}/elasticloadbalancing/${region}/&#39;</span>
+<span class="k">LOCATION</span><span class="w"> </span><span class="s1">'s3://${s3_bucket_name}/${alb_name}/AWSLogs/${account_id}/elasticloadbalancing/${region}/'</span>
 <span class="n">TBLPROPERTIES</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="s1">&#39;projection.enabled&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;true&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="s1">&#39;projection.date.type&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;date&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="s1">&#39;projection.date.range&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;NOW-1YEARS,NOW&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="s1">&#39;projection.date.format&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;yyyy/MM/dd&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="s1">&#39;projection.date.interval&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="s1">&#39;projection.date.interval.unit&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;DAYS&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="s1">&#39;storage.location.template&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;s3://${s3_bucket_name}/${elb_name}/AWSLogs/${account_id}/elasticloadbalancing/${region}/$${date}&#39;</span>
+<span class="w">  </span><span class="s1">'projection.enabled'</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'true'</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">'projection.date.type'</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'date'</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">'projection.date.range'</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'NOW-1YEARS,NOW'</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">'projection.date.format'</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'yyyy/MM/dd'</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">'projection.date.interval'</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'1'</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">'projection.date.interval.unit'</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'DAYS'</span><span class="p">,</span>
+<span class="w">  </span><span class="s1">'storage.location.template'</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'s3://${s3_bucket_name}/${elb_name}/AWSLogs/${account_id}/elasticloadbalancing/${region}/$${date}'</span>
 <span class="p">);</span>
 </code></pre></div>
 <ol>
@@ -33490,7 +33490,7 @@
 </ol>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">alb_logs</span>
-<span class="k">WHERE</span><span class="w"> </span><span class="nb">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date_format</span><span class="p">(</span><span class="k">current_date</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%Y/%m/%d&#39;</span><span class="p">)</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="nb">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date_format</span><span class="p">(</span><span class="k">current_date</span><span class="p">,</span><span class="w"> </span><span class="s1">'%Y/%m/%d'</span><span class="p">)</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">from_iso8601_timestamp</span><span class="p">(</span><span class="k">time</span><span class="p">)</span><span class="w"> </span><span class="k">DESC</span>
 <span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
 </code></pre></div>

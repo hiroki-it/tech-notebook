@@ -34784,16 +34784,16 @@
 </ul>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="c1"># インストーラーをダウンロードする。</span>
-$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;copy(&#39;https://getcomposer.org/installer&#39;, &#39;composer-setup.php&#39;);&quot;</span>
+$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s2">"copy('https://getcomposer.org/installer', 'composer-setup.php');"</span>
 
 <span class="c1"># インストーラーのハッシュ値を確認する。</span>
-$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;if (hash_file(&#39;sha384&#39;, &#39;composer-setup.php&#39;) === &#39;906a84df04cea2aa72f40b5f787e49f22d4c2f19492ac310e8cba5b96ac8b64115ac402c8cd292b8a03482574915d1a8&#39;) { echo &#39;Installer verified&#39;; } else { echo &#39;Installer corrupt&#39;; unlink(&#39;composer-setup.php&#39;); } echo PHP_EOL;&quot;</span>
+$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s2">"if (hash_file('sha384', 'composer-setup.php') === '906a84df04cea2aa72f40b5f787e49f22d4c2f19492ac310e8cba5b96ac8b64115ac402c8cd292b8a03482574915d1a8') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"</span>
 
 <span class="c1"># インストーラーを実行する。</span>
 $<span class="w"> </span>php<span class="w"> </span>composer-setup.php
 
 <span class="c1"># インストーラーを削除する。</span>
-$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;unlink(&#39;composer-setup.php&#39;);&quot;</span>
+$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s2">"unlink('composer-setup.php');"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="composerjson"><code>composer.json</code> ファイル<a class="headerlink" href="#composerjson" title="Permanent link">&para;</a></h3>
@@ -34804,16 +34804,16 @@ $<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><s
 
 <span class="w">    </span><span class="nv">...</span>
 
-<span class="w">    </span><span class="nv">&quot;autoload&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;psr-4&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="c1"># &quot;&lt;名前空間&gt;&quot;: &quot;&lt;パス&gt;&quot;,</span>
-<span class="w">            </span><span class="s">&quot;App\\&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;app/&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;Database\\Factories\\Infrastructure\\DTO\\&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;database/factories/production&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;Database\\Seeders\\&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;database/seeds/production&quot;</span>
+<span class="w">    </span><span class="nv">"autoload"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">"psr-4"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="c1"># "&lt;名前空間&gt;": "&lt;パス&gt;",</span>
+<span class="w">            </span><span class="s">"App\\"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"app/"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"Database\\Factories\\Infrastructure\\DTO\\"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"database/factories/production"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"Database\\Seeders\\"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"database/seeds/production"</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="s">&quot;classmap&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
-<span class="w">            </span><span class="s">&quot;database/seeds&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;database/factories&quot;</span>
+<span class="w">        </span><span class="s">"classmap"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">            </span><span class="s">"database/seeds"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"database/factories"</span>
 <span class="w">        </span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="p p-Indicator">}</span>
 
@@ -34833,10 +34833,10 @@ $<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><s
 
 <span class="w">    </span><span class="nv">...</span>
 
-<span class="w">    </span><span class="nv">&quot;config&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;preferred-install&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;dist&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;sort-packages&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;optimize-autoloader&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nv">"config"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">"preferred-install"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"dist"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"sort-packages"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"optimize-autoloader"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="p p-Indicator">}</span>
 
 <span class="w">    </span><span class="nv">...</span>
@@ -34857,10 +34857,10 @@ $<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><s
 
 <span class="w">    </span>...
 
-<span class="w">    </span><span class="s2">&quot;require&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;foo&quot;</span>:<span class="w"> </span><span class="s2">&quot;^1.1.1&quot;</span>,<span class="w">  </span><span class="c1"># &gt;=1.1.1 and &lt;1.2.0</span>
-<span class="w">        </span><span class="s2">&quot;bar&quot;</span>:<span class="w"> </span><span class="s2">&quot;^1.1&quot;</span>,<span class="w">    </span><span class="c1"># &gt;=1.1.0 and &lt;1.2.0</span>
-<span class="w">        </span><span class="s2">&quot;baz&quot;</span>:<span class="w"> </span><span class="s2">&quot;^0.0.1&quot;</span><span class="w">   </span><span class="c1"># &gt;=0.0.1 and &lt;0.0.2</span>
+<span class="w">    </span><span class="s2">"require"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">"foo"</span>:<span class="w"> </span><span class="s2">"^1.1.1"</span>,<span class="w">  </span><span class="c1"># &gt;=1.1.1 and &lt;1.2.0</span>
+<span class="w">        </span><span class="s2">"bar"</span>:<span class="w"> </span><span class="s2">"^1.1"</span>,<span class="w">    </span><span class="c1"># &gt;=1.1.0 and &lt;1.2.0</span>
+<span class="w">        </span><span class="s2">"baz"</span>:<span class="w"> </span><span class="s2">"^0.0.1"</span><span class="w">   </span><span class="c1"># &gt;=0.0.1 and &lt;0.0.2</span>
 <span class="w">    </span><span class="o">}</span>
 
 <span class="w">    </span>...
@@ -34873,10 +34873,10 @@ $<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><s
 
 <span class="w">    </span>...
 
-<span class="w">    </span><span class="s2">&quot;require&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;foo&quot;</span>:<span class="w"> </span><span class="s2">&quot;~1.1.1&quot;</span>,<span class="w">  </span><span class="c1"># &gt;=1.1.1 and &lt;2.0.0</span>
-<span class="w">        </span><span class="s2">&quot;bar&quot;</span>:<span class="w"> </span><span class="s2">&quot;~1.1&quot;</span>,<span class="w">    </span><span class="c1"># &gt;=1.1.0 and &lt;2.0.0</span>
-<span class="w">        </span><span class="s2">&quot;baz&quot;</span>:<span class="w"> </span><span class="s2">&quot;~1&quot;</span><span class="w">       </span><span class="c1"># &gt;=1.1.0 and &lt;2.0.0</span>
+<span class="w">    </span><span class="s2">"require"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">"foo"</span>:<span class="w"> </span><span class="s2">"~1.1.1"</span>,<span class="w">  </span><span class="c1"># &gt;=1.1.1 and &lt;2.0.0</span>
+<span class="w">        </span><span class="s2">"bar"</span>:<span class="w"> </span><span class="s2">"~1.1"</span>,<span class="w">    </span><span class="c1"># &gt;=1.1.0 and &lt;2.0.0</span>
+<span class="w">        </span><span class="s2">"baz"</span>:<span class="w"> </span><span class="s2">"~1"</span><span class="w">       </span><span class="c1"># &gt;=1.1.0 and &lt;2.0.0</span>
 <span class="w">    </span><span class="o">}</span>
 
 <span class="w">    </span>...
@@ -34888,11 +34888,11 @@ $<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><s
 
 <span class="w">    </span>...
 
-<span class="w">    </span><span class="s2">&quot;require&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;foo&quot;</span>:<span class="w"> </span><span class="s2">&quot;*&quot;</span>,<span class="w">     </span><span class="c1"># どんなバージョンでもOK</span>
-<span class="w">        </span><span class="s2">&quot;bar&quot;</span>:<span class="w"> </span><span class="s2">&quot;1.1.x&quot;</span>,<span class="w"> </span><span class="c1"># &gt;=1.1.0 and &lt;1.2.0</span>
-<span class="w">        </span><span class="s2">&quot;baz&quot;</span>:<span class="w"> </span><span class="s2">&quot;1.X&quot;</span>,<span class="w">   </span><span class="c1"># &gt;=1.0.0 and &lt;2.0.0</span>
-<span class="w">        </span><span class="s2">&quot;qux&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">       </span><span class="c1"># &quot;*&quot;と同じことになる = どんなバージョンでもOK</span>
+<span class="w">    </span><span class="s2">"require"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">"foo"</span>:<span class="w"> </span><span class="s2">"*"</span>,<span class="w">     </span><span class="c1"># どんなバージョンでもOK</span>
+<span class="w">        </span><span class="s2">"bar"</span>:<span class="w"> </span><span class="s2">"1.1.x"</span>,<span class="w"> </span><span class="c1"># &gt;=1.1.0 and &lt;1.2.0</span>
+<span class="w">        </span><span class="s2">"baz"</span>:<span class="w"> </span><span class="s2">"1.X"</span>,<span class="w">   </span><span class="c1"># &gt;=1.0.0 and &lt;2.0.0</span>
+<span class="w">        </span><span class="s2">"qux"</span>:<span class="w"> </span><span class="s2">""</span><span class="w">       </span><span class="c1"># "*"と同じことになる = どんなバージョンでもOK</span>
 <span class="w">    </span><span class="o">}</span>
 
 <span class="w">    </span>...
@@ -34904,8 +34904,8 @@ $<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><s
 
 <span class="w">    </span>...
 
-<span class="w">    </span><span class="s2">&quot;require&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;bar&quot;</span>:<span class="w"> </span><span class="s2">&quot;1.1.1&quot;</span>,<span class="w"> </span><span class="c1"># 1.1.1</span>
+<span class="w">    </span><span class="s2">"require"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">"bar"</span>:<span class="w"> </span><span class="s2">"1.1.1"</span>,<span class="w"> </span><span class="c1"># 1.1.1</span>
 <span class="w">    </span><span class="o">}</span>
 
 <span class="w">    </span>...
@@ -34923,18 +34923,18 @@ $<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><s
 
 <span class="w">    </span><span class="nv">...</span>
 
-<span class="w">    </span><span class="nv">&quot;scripts&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">    </span><span class="nv">"scripts"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">        </span><span class="c1"># エイリアス</span>
-<span class="w">        </span><span class="s">&quot;post-autoload-dump&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">        </span><span class="s">"post-autoload-dump"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">            </span><span class="c1"># 実行するコマンド</span>
-<span class="w">            </span><span class="s">&quot;Illuminate\\Foundation\\ComposerScripts::postAutoloadDump&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;@php</span><span class="nv"> </span><span class="s">artisan</span><span class="nv"> </span><span class="s">package:discover</span><span class="nv"> </span><span class="s">--ansi&quot;</span>
+<span class="w">            </span><span class="s">"Illuminate\\Foundation\\ComposerScripts::postAutoloadDump"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"@php</span><span class="nv"> </span><span class="s">artisan</span><span class="nv"> </span><span class="s">package:discover</span><span class="nv"> </span><span class="s">--ansi"</span>
 <span class="w">        </span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;post-root-package-install&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
-<span class="w">            </span><span class="s">&quot;@php</span><span class="nv"> </span><span class="s">-r</span><span class="nv"> </span><span class="s">\&quot;file_exists(&quot;</span><span class="nv">.env&quot;) || copy(&quot;.env.example&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;.env&quot;</span><span class="nv">);\&quot;&quot;</span>
+<span class="w">        </span><span class="s">"post-root-package-install"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">            </span><span class="s">"@php</span><span class="nv"> </span><span class="s">-r</span><span class="nv"> </span><span class="s">\"file_exists("</span><span class="nv">.env") || copy(".env.example"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">".env"</span><span class="nv">);\""</span>
 <span class="w">        </span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;post-create-project-cmd&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
-<span class="w">            </span><span class="s">&quot;@php</span><span class="nv"> </span><span class="s">artisan</span><span class="nv"> </span><span class="s">key:generate</span><span class="nv"> </span><span class="s">--ansi&quot;</span>
+<span class="w">        </span><span class="s">"post-create-project-cmd"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">            </span><span class="s">"@php</span><span class="nv"> </span><span class="s">artisan</span><span class="nv"> </span><span class="s">key:generate</span><span class="nv"> </span><span class="s">--ansi"</span>
 <span class="w">        </span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="p p-Indicator">}</span>
 
@@ -34953,7 +34953,7 @@ $<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><s
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">    </span><span class="nv">...</span>
 
-<span class="w">    </span><span class="nv">&quot;version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;1.10.23&quot;</span>
+<span class="w">    </span><span class="nv">"version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"1.10.23"</span>
 
 <span class="w">    </span><span class="nv">...</span>
 <span class="p p-Indicator">}</span>
@@ -34978,7 +34978,7 @@ $<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><s
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="c1"># エントリーポイント</span>
 
-<span class="k">require_once</span> <span class="nb">realpath</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">&quot;/vendor/autoload.php&quot;</span><span class="p">);</span>
+<span class="k">require_once</span> <span class="nb">realpath</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">"/vendor/autoload.php"</span><span class="p">);</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="c1"># autoload.phpファイルの一部</span>
@@ -34990,23 +34990,23 @@ $<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><s
 
 <span class="c1"># 名前空間とファイルの対応関係</span>
 <span class="k">return</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;App\\Console\\Kernel&#39;</span> <span class="o">=&gt;</span> <span class="nv">$baseDir</span> <span class="o">.</span> <span class="s1">&#39;/app/Console/Kernel.php&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;App\\Events\\Event&#39;</span> <span class="o">=&gt;</span> <span class="nv">$baseDir</span> <span class="o">.</span> <span class="s1">&#39;/app/Events/Event.php&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;App\\Events\\ExampleEvent&#39;</span> <span class="o">=&gt;</span> <span class="nv">$baseDir</span> <span class="o">.</span> <span class="s1">&#39;/app/Events/ExampleEvent.php&#39;</span><span class="p">,</span>
+    <span class="s1">'App\\Console\\Kernel'</span> <span class="o">=&gt;</span> <span class="nv">$baseDir</span> <span class="o">.</span> <span class="s1">'/app/Console/Kernel.php'</span><span class="p">,</span>
+    <span class="s1">'App\\Events\\Event'</span> <span class="o">=&gt;</span> <span class="nv">$baseDir</span> <span class="o">.</span> <span class="s1">'/app/Events/Event.php'</span><span class="p">,</span>
+    <span class="s1">'App\\Events\\ExampleEvent'</span> <span class="o">=&gt;</span> <span class="nv">$baseDir</span> <span class="o">.</span> <span class="s1">'/app/Events/ExampleEvent.php'</span><span class="p">,</span>
 
     <span class="o">...</span>
 
-    <span class="s1">&#39;phpDocumentor\\Reflection\\Types\\Void_&#39;</span> <span class="o">=&gt;</span> <span class="nv">$vendorDir</span> <span class="o">.</span> <span class="s1">&#39;/phpdocumentor/type-resolver/src/Types/Void_.php&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;phpDocumentor\\Reflection\\Utils&#39;</span> <span class="o">=&gt;</span> <span class="nv">$vendorDir</span> <span class="o">.</span> <span class="s1">&#39;/phpdocumentor/reflection-docblock/src/Utils.php&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;voku\\helper\\ASCII&#39;</span> <span class="o">=&gt;</span> <span class="nv">$vendorDir</span> <span class="o">.</span> <span class="s1">&#39;/voku/portable-ascii/src/voku/helper/ASCII.php&#39;</span><span class="p">,</span>
+    <span class="s1">'phpDocumentor\\Reflection\\Types\\Void_'</span> <span class="o">=&gt;</span> <span class="nv">$vendorDir</span> <span class="o">.</span> <span class="s1">'/phpdocumentor/type-resolver/src/Types/Void_.php'</span><span class="p">,</span>
+    <span class="s1">'phpDocumentor\\Reflection\\Utils'</span> <span class="o">=&gt;</span> <span class="nv">$vendorDir</span> <span class="o">.</span> <span class="s1">'/phpdocumentor/reflection-docblock/src/Utils.php'</span><span class="p">,</span>
+    <span class="s1">'voku\\helper\\ASCII'</span> <span class="o">=&gt;</span> <span class="nv">$vendorDir</span> <span class="o">.</span> <span class="s1">'/voku/portable-ascii/src/voku/helper/ASCII.php'</span><span class="p">,</span>
 <span class="p">);</span>
 </code></pre></div>
 <h4 id="_4">▼ 確認方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>登録済みの php ファイルと名前空間の対応関係は、<code>php</code> コマンドで確認するとよい。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;</span>
-<span class="s1">    $autoloader = require &quot;vendor/autoload.php&quot;;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">'</span>
+<span class="s1">    $autoloader = require "vendor/autoload.php";</span>
 <span class="s1">    echo json_encode($autoloader-&gt;getPrefixesPsr4(), JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES);</span>
-<span class="s1">  &#39;</span>
+<span class="s1">  '</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02-02-composer">02-02. composer コマンド<a class="headerlink" href="#02-02-composer" title="Permanent link">&para;</a></h2>
@@ -35050,7 +35050,7 @@ Checking<span class="w"> </span>https<span class="w"> </span>connectivity<span c
 <div class="highlight"><pre><span></span><code><span class="w"> </span>Exception<span class="w"> </span>:<span class="w"> </span>Target<span class="w"> </span>class<span class="w"> </span><span class="o">[</span>FooClass<span class="o">]</span><span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>exist.
 </code></pre></div>
 <p>また、<code>autoload</code> プロパティに登録されているパスが誤っていないかも確認したほうがよい。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;autoload&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;psr-4&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{}}}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"autoload"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"psr-4"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{}}}</span>
 </code></pre></div>
 <blockquote>
 <ul>

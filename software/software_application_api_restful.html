@@ -34781,7 +34781,7 @@
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com</span>
 <span class="nn">---</span>
 <span class="c1"># ボディ</span>
-<span class="p p-Indicator">{</span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">}</span>
+<span class="p p-Indicator">{</span><span class="s">"id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="_15">▼ リクエストヘッダーへの割り当て<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>リクエストヘッダーにパラメーターを割り当てて送信する。</p>
@@ -34823,15 +34823,15 @@
 </blockquote>
 <h4 id="_17">▼ ステータスコードは不要<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>正常系レスポンスの場合、オブジェクトデータへのステータスコードの割り当ては不要である。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Taro</span><span class="nv"> </span><span class="s">Yamada&quot;</span><span class="p p-Indicator">}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Taro</span><span class="nv"> </span><span class="s">Yamada"</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="_18">▼ フラットなデータ構造にすること<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>JSON の場合、階層構造にすると、データサイズが増えてしまう。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Taro</span><span class="nv"> </span><span class="s">Yamada&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;age&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;interest&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;sports&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;soccer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;baseball&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">&quot;subjects&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;math&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Taro</span><span class="nv"> </span><span class="s">Yamada"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"age"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"interest"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"sports"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"soccer"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"baseball"</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">"subjects"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"math"</span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>そこで、できるだけデータ構造をフラットにする。</p>
@@ -34843,10 +34843,10 @@
 </blockquote>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Taro</span><span class="nv"> </span><span class="s">Yamada&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;age&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;sports&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;soccer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;baseball&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">  </span><span class="s">&quot;subjects&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;math&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Taro</span><span class="nv"> </span><span class="s">Yamada"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"age"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"sports"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"soccer"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"baseball"</span><span class="p p-Indicator">],</span>
+<span class="w">  </span><span class="s">"subjects"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"math"</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>代わりに、<code>Content-Type</code> ヘッダーに『<code>application/hal+json</code>』『<code>application/vnd.api+json</code>』『<code>application/vnd.collection+json</code>』といったより JSON ベースの強い制約のフォーマットを利用してもよい。</p>
@@ -34902,9 +34902,9 @@
 </tbody>
 </table>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;code&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">400</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;errors&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;〇〇は必ず入力してください。&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;□□は必ず入力してください。&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">  </span><span class="s">&quot;url&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://foo-api-doc.co.jp&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"code"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">400</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"errors"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"〇〇は必ず入力してください。"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"□□は必ず入力してください。"</span><span class="p p-Indicator">],</span>
+<span class="w">  </span><span class="s">"url"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"https://foo-api-doc.co.jp"</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>

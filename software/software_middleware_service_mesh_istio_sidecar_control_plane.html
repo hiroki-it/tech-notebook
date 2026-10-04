@@ -34760,7 +34760,7 @@
 </ul>
 </blockquote>
 <p>Dockerfile では、最後に <code>pilot-discovery</code> コマンドで Istio コントロールプレーンを実行している。</p>
-<div class="highlight"><pre><span></span><code><span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/local/bin/pilot-discovery&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">"/usr/local/bin/pilot-discovery"</span><span class="p">]</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34861,18 +34861,18 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rev.namespace.sidecar-injector.istio.io</span>
 <span class="w">    </span><span class="c1"># mutating-admission ステップ発火条件を登録する。</span>
 <span class="w">    </span><span class="nt">rules</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">apiVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;v1&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">operations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;CREATE&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;UPDATE&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;pods&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">apiVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"v1"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">operations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"CREATE"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"UPDATE"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"pods"</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">    </span><span class="c1"># Istiod の Service の宛先情報を登録する。</span>
 <span class="w">    </span><span class="nt">clientConfig</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">service</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod-&lt;リビジョン&gt;</span>
 <span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
 <span class="w">        </span><span class="c1"># エンドポイント</span>
-<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/inject&quot;</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">"/inject"</span>
 <span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">      </span><span class="nt">caBundle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ci0tLS0tQk...</span>
 <span class="w">    </span><span class="c1"># webhook サーバーのコールに失敗した場合の処理を設定する。</span>
@@ -34976,7 +34976,7 @@
 <h4 id="xds-api_1">▼ XDS-API の実装<a class="headerlink" href="#xds-api_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">xds</span>
 
-<span class="o">...</span>
+<span class="p">...</span>
 
 <span class="c1">// ADS-APIからEnvoyに宛先情報をリモートプロシージャーコールする。</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">DiscoveryServer</span><span class="p">)</span><span class="w"> </span><span class="nx">StreamAggregatedResources</span><span class="p">(</span><span class="nx">stream</span><span class="w"> </span><span class="nx">DiscoveryStream</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
@@ -34985,7 +34985,7 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">DiscoveryServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Stream</span><span class="p">(</span><span class="nx">stream</span><span class="w"> </span><span class="nx">DiscoveryStream</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">{</span>
 
@@ -35188,11 +35188,11 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debu
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pilot-discovery<span class="w"> </span>discovery<span class="w"> </span>--log_as_json
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;level&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;info&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2025-04-21T07:07:32.114867Z&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;scope&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;xdsproxy&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;msg&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;connected</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">delta</span><span class="nv"> </span><span class="s">upstream</span><span class="nv"> </span><span class="s">XDS</span><span class="nv"> </span><span class="s">server:</span><span class="nv"> </span><span class="s">istiod-1-25-0.istio-system.svc:15012&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"level"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"info"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"time"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2025-04-21T07:07:32.114867Z"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"scope"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"xdsproxy"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"msg"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"connected</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">delta</span><span class="nv"> </span><span class="s">upstream</span><span class="nv"> </span><span class="s">XDS</span><span class="nv"> </span><span class="s">server:</span><span class="nv"> </span><span class="s">istiod-1-25-0.istio-system.svc:15012"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="monitoringaddr">▼ monitoringAddr<a class="headerlink" href="#monitoringaddr" title="Permanent link">&para;</a></h4>

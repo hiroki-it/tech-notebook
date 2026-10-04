@@ -35184,7 +35184,7 @@
 <span class="kd">var</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="kt">int</span>
 
 <span class="c1">// 代入</span>
-<span class="nx">number</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span>
+<span class="nx">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="defined-type">Defined Type によるユーザー定義のプリミティブ型<a class="headerlink" href="#defined-type" title="Permanent link">&para;</a></h3>
@@ -35350,7 +35350,7 @@
 <p>まずは、タグ付きリテラル表記。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
@@ -35359,16 +35359,16 @@
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">person</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Person</span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// タグ付きリテラル表記</span>
-<span class="w">        </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hiroki&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"Hiroki"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span><span class="w"> </span><span class="c1">// &quot;Hiroki&quot;</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span><span class="w"> </span><span class="c1">// "Hiroki"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>2 つ目に、タグ無しリテラル表記がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
@@ -35377,10 +35377,10 @@
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">person</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Person</span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// タグ無しリテラル表記</span>
-<span class="w">        </span><span class="s">&quot;Hiroki&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Hiroki"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span><span class="w"> </span><span class="c1">// &quot;Hiroki&quot;</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span><span class="w"> </span><span class="c1">// "Hiroki"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><code>3</code> 個目に、<code>new()</code> 関数とデータ代入による初期化がある。</p>
@@ -35389,7 +35389,7 @@
 <p>ポインタ型の構造体を返却する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
@@ -35405,17 +35405,17 @@
 <span class="w">    </span><span class="nx">person</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">new</span><span class="p">(</span><span class="nx">Person</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// ポインタ型の初期化された構造体が返却される。</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">)</span><span class="w"> </span><span class="c1">// &amp;main.Person{Name:&quot;&quot;}</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">)</span><span class="w"> </span><span class="c1">// &amp;main.Person{Name:""}</span>
 
 <span class="w">    </span><span class="c1">// フィールドに代入する</span>
-<span class="w">    </span><span class="nx">person</span><span class="p">.</span><span class="nx">Name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">name</span>
+<span class="w">    </span><span class="nx">person</span><span class="p">.</span><span class="nx">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">person</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">person</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">newPerson</span><span class="p">(</span><span class="s">&quot;Hiroki&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span><span class="w"> </span><span class="c1">// &quot;Hiroki&quot;</span>
+<span class="w">    </span><span class="nx">person</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">newPerson</span><span class="p">(</span><span class="s">"Hiroki"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span><span class="w"> </span><span class="c1">// "Hiroki"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -35427,7 +35427,7 @@
 <p>詳しくは、以下のリンクを参考にせよ。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="c1">//========================</span>
 <span class="c1">// サプライヤー側</span>
@@ -35446,7 +35446,7 @@
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="nx">Name</span><span class="p">)</span><span class="w"> </span><span class="nx">fullName</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%s %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">FirstName</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">LastName</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"%s %s"</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">FirstName</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">LastName</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">//========================</span>
@@ -35467,12 +35467,12 @@
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewName</span><span class="p">(</span><span class="s">&quot;Hiroki&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hasegawa&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewName</span><span class="p">(</span><span class="s">"Hiroki"</span><span class="p">,</span><span class="w"> </span><span class="s">"Hasegawa"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// コンストラクタインジェクションによるDI</span>
 <span class="w">    </span><span class="nx">person</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewPerson</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">.</span><span class="nx">getName</span><span class="p">().</span><span class="nx">fullName</span><span class="p">())</span><span class="w"> </span><span class="c1">// &quot;Hiroki Hasegawa&quot;</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">.</span><span class="nx">getName</span><span class="p">().</span><span class="nx">fullName</span><span class="p">())</span><span class="w"> </span><span class="c1">// "Hiroki Hasegawa"</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -35491,7 +35491,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="c1">//========================</span>
 <span class="c1">// 委譲する側 (埋め込む構造体)</span>
@@ -35502,7 +35502,7 @@
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="nx">Name</span><span class="p">)</span><span class="w"> </span><span class="nx">fullName</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%s %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">FirstName</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">LastName</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"%s %s"</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">FirstName</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">LastName</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">//========================</span>
@@ -35526,16 +35526,16 @@
 <span class="c1">// main</span>
 <span class="c1">//================</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">myName</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewMyName</span><span class="p">(</span><span class="s">&quot;Hiroki&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hasegawa&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">myName</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewMyName</span><span class="p">(</span><span class="s">"Hiroki"</span><span class="p">,</span><span class="w"> </span><span class="s">"Hasegawa"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// myName構造体は、Name構造体の関数をコールできる。</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">myName</span><span class="p">.</span><span class="nx">fullName</span><span class="p">())</span><span class="w"> </span><span class="c1">// &quot;Hiroki Hasegawa&quot;</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">myName</span><span class="p">.</span><span class="nx">fullName</span><span class="p">())</span><span class="w"> </span><span class="c1">// "Hiroki Hasegawa"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>もし、委譲する側と委譲される側に、同じ名前の関数/フィールドが存在する場合は、委譲された側のものが優先してコールされる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="c1">//========================</span>
 <span class="c1">// 委譲する側 (埋め込む構造体)</span>
@@ -35546,7 +35546,7 @@
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="nx">Name</span><span class="p">)</span><span class="w"> </span><span class="nx">fullName</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%s %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">FirstName</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">LastName</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"%s %s"</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">FirstName</span><span class="p">,</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">LastName</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">//========================</span>
@@ -35568,17 +35568,17 @@
 
 <span class="c1">// 委譲する側と委譲される側で同じ関数</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="nx">MyName</span><span class="p">)</span><span class="w"> </span><span class="nx">fullName</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;委譲された構造体です&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span><span class="w"> </span><span class="s">"委譲された構造体です"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">//================</span>
 <span class="c1">// main</span>
 <span class="c1">//================</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">myName</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewMyName</span><span class="p">(</span><span class="s">&quot;Hiroki&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hasegawa&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">myName</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewMyName</span><span class="p">(</span><span class="s">"Hiroki"</span><span class="p">,</span><span class="w"> </span><span class="s">"Hasegawa"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 同じ関数がある場合、委譲された側が優先。</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">myName</span><span class="p">.</span><span class="nx">fullName</span><span class="p">())</span><span class="w"> </span><span class="c1">// &quot;委譲された構造体です&quot;</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">myName</span><span class="p">.</span><span class="nx">fullName</span><span class="p">())</span><span class="w"> </span><span class="c1">// "委譲された構造体です"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -35588,7 +35588,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
@@ -35599,10 +35599,10 @@
 <span class="w">        </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
 <span class="w">    </span><span class="p">}{</span>
 <span class="w">        </span><span class="c1">// タグ付きリテラル表記 (タグ無しリテラル表記も可能)</span>
-<span class="w">        </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hiroki&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"Hiroki"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span><span class="w"> </span><span class="c1">// &quot;Hiroki&quot;</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span><span class="w"> </span><span class="c1">// "Hiroki"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -35613,28 +35613,28 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;encoding/json&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">"encoding/json"</span>
+<span class="w">    </span><span class="s">"log"</span>
 <span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;name&quot;`</span>
+<span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:"name"`</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">person</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Person</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hiroki&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"Hiroki"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">byteJson</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">person</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// エンコード結果を出力</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nx">byteJson</span><span class="p">))</span><span class="w"> </span><span class="c1">// &quot;{\&quot;Name\&quot;:\&quot;Hiroki\&quot;}&quot;</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="p">(</span><span class="nx">byteJson</span><span class="p">))</span><span class="w"> </span><span class="c1">// "{\"Name\":\"Hiroki\"}"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -35645,22 +35645,22 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;encoding/json&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">"encoding/json"</span>
+<span class="w">    </span><span class="s">"log"</span>
 <span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// false、0、nil、空配列、空slice、空map、空文字を除外できる。</span>
-<span class="w">    </span><span class="nx">Id</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="s">`json:&quot;id&quot;`</span>
+<span class="w">    </span><span class="nx">Id</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="s">`json:"id"`</span>
 
 <span class="w">    </span><span class="c1">// 構造体はポインタ型としておく</span>
-<span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="o">*</span><span class="nx">Name</span><span class="w"> </span><span class="s">`json:&quot;name,omitempty&quot;`</span>
+<span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="o">*</span><span class="nx">Name</span><span class="w"> </span><span class="s">`json:"name,omitempty"`</span>
 <span class="p">}</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Name</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">FirstName</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;first_name&quot;`</span>
-<span class="w">    </span><span class="nx">LastName</span><span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;last_name&quot;`</span>
+<span class="w">    </span><span class="nx">FirstName</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:"first_name"`</span>
+<span class="w">    </span><span class="nx">LastName</span><span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:"last_name"`</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -35671,12 +35671,12 @@
 <span class="w">    </span><span class="nx">byteJson</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">person</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// エンコード結果を出力</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nx">byteJson</span><span class="p">))</span><span class="w"> </span><span class="c1">// &quot;{\&quot;id\&quot;:1}&quot;</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="p">(</span><span class="nx">byteJson</span><span class="p">))</span><span class="w"> </span><span class="c1">// "{\"id\":1}"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -35692,44 +35692,44 @@
 <p>また、要素数の定義が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">z</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="kt">string</span>
-<span class="w">    </span><span class="nx">z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Hiroki&quot;</span>
-<span class="w">    </span><span class="nx">z</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Gopher&quot;</span>
+<span class="w">    </span><span class="nx">z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hiroki"</span>
+<span class="w">    </span><span class="nx">z</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Gopher"</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">z</span><span class="p">)</span><span class="w"> </span><span class="c1">// [Hiroki Gopher]</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">z</span><span class="p">)</span><span class="w"> </span><span class="c1">// [2]string{&quot;Hiroki&quot;, &quot;Gopher&quot;}</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">z</span><span class="p">)</span><span class="w"> </span><span class="c1">// [Hiroki Gopher]</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">z</span><span class="p">)</span><span class="w"> </span><span class="c1">// [2]string{"Hiroki", "Gopher"}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>宣言と代入を同時に実行する。</p>
 <p>また、要素数の定義が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="kt">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Hiroki&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Gopher&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">"Hiroki"</span><span class="p">,</span><span class="w"> </span><span class="s">"Gopher"</span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// [Hiroki Gopher]</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// [2]string{&quot;Hiroki&quot;, &quot;Gopher&quot;}</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// [Hiroki Gopher]</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// [2]string{"Hiroki", "Gopher"}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>宣言と代入を同時に実行する。</p>
 <p>また、型推論と要素数を省略する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Hiroki&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Gopher&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[...]</span><span class="kt">string</span><span class="p">{</span><span class="s">"Hiroki"</span><span class="p">,</span><span class="w"> </span><span class="s">"Gopher"</span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// [Hiroki Gopher]</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// [2]string{&quot;Hiroki&quot;, &quot;Gopher&quot;}</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// [Hiroki Gopher]</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// [2]string{"Hiroki", "Gopher"}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -35750,20 +35750,20 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;a&quot;</span>
+<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">"a"</span>
 
 <span class="w">    </span><span class="c1">// メモリアドレスを参照する。</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="o">*</span><span class="kt">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">x</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="o">*</span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">x</span>
 <span class="w">    </span><span class="c1">// p := &amp;x と同じ</span>
 
 <span class="w">    </span><span class="c1">// メモリアドレスを参照する前</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// &quot;a&quot;</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// "a"</span>
 
 <span class="w">    </span><span class="c1">// メモリアドレスを参照した後</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">p</span><span class="p">)</span><span class="w"> </span><span class="c1">// (*string)(0xc0000841e0)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">p</span><span class="p">)</span><span class="w"> </span><span class="c1">// (*string)(0xc0000841e0)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -35773,11 +35773,11 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;a&quot;</span>
+<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">"a"</span>
 
 <span class="w">    </span><span class="nx">p</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">x</span>
 
@@ -35785,13 +35785,13 @@
 <span class="w">    </span><span class="nx">y</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">*</span><span class="nx">p</span>
 
 <span class="w">    </span><span class="c1">// メモリアドレスを参照する前</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// &quot;a&quot;</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// "a"</span>
 
 <span class="w">    </span><span class="c1">// メモリアドレスを参照した後</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">p</span><span class="p">)</span><span class="w"> </span><span class="c1">// (*string)(0xc0000841e0)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">p</span><span class="p">)</span><span class="w"> </span><span class="c1">// (*string)(0xc0000841e0)</span>
 
 <span class="w">    </span><span class="c1">// メモリアドレスに割り当てられたデータ</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// &quot;a&quot;</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// "a"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -35846,52 +35846,52 @@
 <p>インターフェース型を使用してもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// var y []string = []interface{}{&quot;Hiroki&quot;, &quot;Gopher&quot;} でもよい</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Hiroki&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Gopher&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// var y []string = []interface{}{"Hiroki", "Gopher"} でもよい</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"Hiroki"</span><span class="p">,</span><span class="w"> </span><span class="s">"Gopher"</span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// [Hiroki Gopher]</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// [Hiroki&quot;, &quot;Gopher&quot;}</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// [Hiroki Gopher]</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// [Hiroki", "Gopher"}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>文字列の宣言と代入を同時に実行する。</p>
 <p>また、型推論する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// x := []interface{}{&quot;Hiroki&quot;, &quot;Gopher&quot;} でもよい</span>
-<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Hiroki&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Gopher&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// x := []interface{}{"Hiroki", "Gopher"} でもよい</span>
+<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"Hiroki"</span><span class="p">,</span><span class="w"> </span><span class="s">"Gopher"</span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// [Hiroki Gopher]</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// [Hiroki&quot;, &quot;Gopher&quot;}</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// [Hiroki Gopher]</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// [Hiroki", "Gopher"}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>バイト文字列の宣言と代入を同時に実行する。</p>
 <p>また、型推論する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// []byte{&quot;abc&quot;} でもよい</span>
-<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// []byte{"abc"} でもよい</span>
+<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">byte</span><span class="p">(</span><span class="s">"abc"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// [97 98 99]</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// []byte{0x61, 0x62, 0x63}</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// [97 98 99]</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// []byte{0x61, 0x62, 0x63}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>構造体の slice の宣言と代入を同時に実行する。</p>
 <p>また、型推論する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
@@ -35899,11 +35899,11 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// []Person{{ Name: &quot;Hiroki&quot; }} でもよい</span>
-<span class="w">    </span><span class="nx">person</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="nx">Person</span><span class="p">{{</span><span class="w"> </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hiroki&quot;</span><span class="w"> </span><span class="p">}}</span>
+<span class="w">    </span><span class="c1">// []Person{{ Name: "Hiroki" }} でもよい</span>
+<span class="w">    </span><span class="nx">person</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="nx">Person</span><span class="p">{{</span><span class="w"> </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"Hiroki"</span><span class="w"> </span><span class="p">}}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">)</span><span class="w"> </span><span class="c1">// [{Name:Hiroki}]</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">)</span><span class="w"> </span><span class="c1">// []main.Person{main.Person{Name:&quot;Hiroki&quot;}}</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">)</span><span class="w"> </span><span class="c1">// [{Name:Hiroki}]</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">)</span><span class="w"> </span><span class="c1">// []main.Person{main.Person{Name:"Hiroki"}}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -35912,48 +35912,48 @@
 <p>slice で、指定したインデックスの値を参照する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;あ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;い&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;う&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;え&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;お&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"あ"</span><span class="p">,</span><span class="w"> </span><span class="s">"い"</span><span class="p">,</span><span class="w"> </span><span class="s">"う"</span><span class="p">,</span><span class="w"> </span><span class="s">"え"</span><span class="p">,</span><span class="w"> </span><span class="s">"お"</span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// 要素番号は0から始まることに注意する</span>
 <span class="w">    </span><span class="c1">// 4番の要素を参照する</span>
 <span class="w">    </span><span class="nx">xb</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// [お]</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// [お]</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_25">▼ <code>[&lt;数値&gt;:]</code><a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
 <p>slice で、指定したインデックス以上の値を参照する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;あ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;い&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;う&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;え&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;お&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"あ"</span><span class="p">,</span><span class="w"> </span><span class="s">"い"</span><span class="p">,</span><span class="w"> </span><span class="s">"う"</span><span class="p">,</span><span class="w"> </span><span class="s">"え"</span><span class="p">,</span><span class="w"> </span><span class="s">"お"</span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// 要素番号は0から始まることに注意する</span>
 <span class="w">    </span><span class="c1">// 1番目以上を参照する</span>
 <span class="w">    </span><span class="nx">xb</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">xb</span><span class="p">)</span><span class="w"> </span><span class="c1">// [い, う, え, お]</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">xb</span><span class="p">)</span><span class="w"> </span><span class="c1">// [い, う, え, お]</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_26">▼ <code>[:&lt;数値&gt;]</code><a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
 <p>slice で、指定したインデックス未満の値を参照する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;あ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;い&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;う&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;え&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;お&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"あ"</span><span class="p">,</span><span class="w"> </span><span class="s">"い"</span><span class="p">,</span><span class="w"> </span><span class="s">"う"</span><span class="p">,</span><span class="w"> </span><span class="s">"え"</span><span class="p">,</span><span class="w"> </span><span class="s">"お"</span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// 要素番号は0から始まることに注意する</span>
 <span class="w">    </span><span class="c1">// 1番目未満を参照する</span>
 <span class="w">    </span><span class="nx">xb</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">xb</span><span class="p">)</span><span class="w"> </span><span class="c1">// [あ]</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">xb</span><span class="p">)</span><span class="w"> </span><span class="c1">// [あ]</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -35965,16 +35965,16 @@
 <p>slice で、指定したインデックスの範囲 (以上、未満) の値を参照する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;あ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;い&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;う&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;え&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;お&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"あ"</span><span class="p">,</span><span class="w"> </span><span class="s">"い"</span><span class="p">,</span><span class="w"> </span><span class="s">"う"</span><span class="p">,</span><span class="w"> </span><span class="s">"え"</span><span class="p">,</span><span class="w"> </span><span class="s">"お"</span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// 要素番号は0から始まることに注意する</span>
 <span class="w">    </span><span class="c1">// 1番目から3番目未満 (2番目) までを参照する</span>
 <span class="w">    </span><span class="nx">xb</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">xb</span><span class="p">)</span><span class="w"> </span><span class="c1">// [い, う]</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">xb</span><span class="p">)</span><span class="w"> </span><span class="c1">// [い, う]</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -35988,14 +35988,14 @@
 <p>渡された slice で、後ろから要素を追加する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">s</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">}</span>
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="w"> </span><span class="c1">// [10 20 30 40]</span>
 
 <span class="w">    </span><span class="c1">// 要素を追加。</span>
-<span class="w">    </span><span class="nx">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="w"> </span><span class="c1">// [10 20 30 40 50 60 70 80]</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36004,14 +36004,14 @@
 <p>slice をアンパック (<code>...</code>) する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">s1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">}</span>
 <span class="w">    </span><span class="nx">s2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">70</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// 要素を追加</span>
-<span class="w">    </span><span class="nx">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">s1</span><span class="p">,</span><span class="w"> </span><span class="nx">s2</span><span class="o">...</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">s1</span><span class="p">,</span><span class="w"> </span><span class="nx">s2</span><span class="p">...)</span>
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="w"> </span><span class="c1">// [10 20 30 40 50 60 70 80]</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36028,14 +36028,14 @@
 <p>インターフェースのエイリアスである <code>any</code> 型でもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 『文字列:任意の値』のmap</span>
-<span class="w">    </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}{</span>
-<span class="w">        </span><span class="s">&quot;foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;baz&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}{</span>
+<span class="w">        </span><span class="s">"foo"</span><span class="p">:</span><span class="w"> </span><span class="s">"FOO"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"bar"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"baz"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span><span class="w"> </span><span class="c1">// map[0:Hiroki 1:Hiroko 2:Hiroshi]</span>
@@ -36045,14 +36045,14 @@
 <p>map の定義と代入を同時に実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 『数値:文字列』のmap</span>
-<span class="w">    </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hiroki&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hiroko&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hiroshi&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="s">"Hiroki"</span><span class="p">,</span>
+<span class="w">        </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="s">"Hiroko"</span><span class="p">,</span>
+<span class="w">        </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="s">"Hiroshi"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span><span class="w"> </span><span class="c1">// map[0:Hiroki 1:Hiroko 2:Hiroshi]</span>
@@ -36061,15 +36061,15 @@
 <p>定義と代入を別々に実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 『数値:文字列』のmap</span>
-<span class="w">    </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">{}</span>
+<span class="w">    </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">{}</span>
 
-<span class="w">    </span><span class="nx">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Hiroki&quot;</span>
-<span class="w">    </span><span class="nx">m</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Hiroshi&quot;</span>
-<span class="w">    </span><span class="nx">m</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Hiroshi&quot;</span>
+<span class="w">    </span><span class="nx">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hiroki"</span>
+<span class="w">    </span><span class="nx">m</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hiroshi"</span>
+<span class="w">    </span><span class="nx">m</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hiroshi"</span>
 
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span><span class="w"> </span><span class="c1">// map[0:Hiroki 1:Hiroko 2:Hiroshi]</span>
 <span class="p">}</span>
@@ -36077,15 +36077,15 @@
 <p>または、<code>make()</code> 関数を使用して map を作成もできる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 『数値:文字列』のmap</span>
-<span class="w">    </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kt">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Hiroki&quot;</span>
-<span class="w">    </span><span class="nx">m</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Hiroshi&quot;</span>
-<span class="w">    </span><span class="nx">m</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Hiroshi&quot;</span>
+<span class="w">    </span><span class="nx">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hiroki"</span>
+<span class="w">    </span><span class="nx">m</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hiroshi"</span>
+<span class="w">    </span><span class="nx">m</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hiroshi"</span>
 
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span><span class="w"> </span><span class="c1">// map[0:Hiroki 1:Hiroko 2:Hiroshi]</span>
 <span class="p">}</span>
@@ -36094,15 +36094,15 @@
 <h3 id="slice-map">slice 型を値に持つ map<a class="headerlink" href="#slice-map" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 『文字列:slice』のmap</span>
-<span class="w">    </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;errors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;エラーメッセージ0&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;エラーメッセージ1&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;エラーメッセージ2&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="s">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="mi">0</span><span class="p">:</span><span class="w"> </span><span class="s">"エラーメッセージ0"</span><span class="p">,</span>
+<span class="w">            </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="s">"エラーメッセージ1"</span><span class="p">,</span>
+<span class="w">            </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="s">"エラーメッセージ2"</span><span class="p">,</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -36114,13 +36114,13 @@
 <p>map 型データの値をインターフェース型とすることにより、複数のデータ型を表現できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 『文字列:複数のプリミティブ型』のmap</span>
-<span class="w">    </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}{</span>
-<span class="w">        </span><span class="s">&quot;id&quot;</span><span class="p">:</span><span class="w">   </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hiroki Hasegawa&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}{</span>
+<span class="w">        </span><span class="s">"id"</span><span class="p">:</span><span class="w">   </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"Hiroki Hasegawa"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span><span class="w"> </span><span class="c1">// map[id:1 name:Hiroki Hasegawa]</span>
@@ -36130,21 +36130,21 @@
 <h3 id="map_2">map 値の抽出<a class="headerlink" href="#map_2" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hiroki&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hiroko&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hiroshi&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="mi">1</span><span class="p">:</span><span class="w"> </span><span class="s">"Hiroki"</span><span class="p">,</span>
+<span class="w">        </span><span class="mi">2</span><span class="p">:</span><span class="w"> </span><span class="s">"Hiroko"</span><span class="p">,</span>
+<span class="w">        </span><span class="mi">3</span><span class="p">:</span><span class="w"> </span><span class="s">"Hiroshi"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// 値の抽出</span>
 <span class="w">    </span><span class="nx">v</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">m</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="w">    </span><span class="c1">// エラーハンドリング</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Value is not found.&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// Value is not found.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"Value is not found."</span><span class="p">)</span><span class="w"> </span><span class="c1">// Value is not found.</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span><span class="w"> </span><span class="c1">// Hiroki</span>
@@ -36161,7 +36161,7 @@
 <p>InspectImpl 構造体に Animal インターフェースを埋め込み、構造体に <code>Eat()</code> 関数、<code>Sleep()</code> 関数、<code>Mating()</code> 関数の処理を委譲する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="c1">// インターフェースとその関数を定義する。</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">AnimalInterface</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
@@ -36196,18 +36196,18 @@
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="nx">InsectImpl</span><span class="p">)</span><span class="w"> </span><span class="nx">Eat</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;食べる&quot;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"食べる"</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="nx">InsectImpl</span><span class="p">)</span><span class="w"> </span><span class="nx">Sleep</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;眠る&quot;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"眠る"</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">insect</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewInsect</span><span class="p">(</span><span class="s">&quot;カブトムシ&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">insect</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewInsect</span><span class="p">(</span><span class="s">"カブトムシ"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -36247,10 +36247,10 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="c1">// アップキャストの可否を使用して、構造体がインターフェースを満たしているを検証する。</span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="nx">AnimalInterface</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">InsectImpl</span><span class="p">{}</span><span class="w"> </span><span class="c1">// もしくは (*InsectImpl)(nil)</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="nx">AnimalInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">InsectImpl</span><span class="p">{}</span><span class="w"> </span><span class="c1">// もしくは (*InsectImpl)(nil)</span>
 
 <span class="c1">// インターフェースとその関数を定義する。</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">AnimalInterface</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
@@ -36275,10 +36275,10 @@
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">insect</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewInsect</span><span class="p">(</span><span class="s">&quot;カブトムシ&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">insect</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewInsect</span><span class="p">(</span><span class="s">"カブトムシ"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -36298,42 +36298,42 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="kd">interface</span><span class="p">{}</span>
 
-<span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="c1">// 1</span>
+<span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="c1">// 1</span>
 
-<span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">3.14</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="c1">// 3.14</span>
+<span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="c1">// 3.14</span>
 
-<span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Hiroki&quot;</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="c1">// &quot;Hiroki&quot;</span>
+<span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Hiroki"</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="c1">// "Hiroki"</span>
 
-<span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">uint8</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">}</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// [5]uint8{0x1, 0x2, 0x3, 0x4, 0x5}</span>
+<span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[...]</span><span class="kt">uint8</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">}</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// [5]uint8{0x1, 0x2, 0x3, 0x4, 0x5}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>注意点として、インターフェース型は演算できない。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="w"> </span><span class="kd">interface</span><span class="p">{}</span>
 
 <span class="w">    </span><span class="c1">// インターフェース型</span>
-<span class="w">    </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="c1">// 1</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="p">)</span><span class="w"> </span><span class="c1">// 2</span>
+<span class="w">    </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="c1">// 1</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="p">)</span><span class="w"> </span><span class="c1">// 2</span>
 
 <span class="w">    </span><span class="c1">// エラーになってしまう。</span>
 <span class="w">    </span><span class="c1">// invalid operation: foo + bar (operator + not defined on interface)</span>
 <span class="w">    </span><span class="nx">baz</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">bar</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">baz</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">baz</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -36347,20 +36347,20 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
 <p>インターフェース型の変数で『<code>.(データ型)</code>』を宣言する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="w"> </span><span class="kd">interface</span><span class="p">{}</span>
 
 <span class="w">    </span><span class="c1">// インターフェース型</span>
-<span class="w">    </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span>
 
 <span class="w">    </span><span class="c1">// インターフェース型からinteger型に変換 (変換しないと演算できない)</span>
 <span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">foo</span><span class="p">.(</span><span class="kt">int</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">bar</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">bar</span><span class="p">.(</span><span class="kt">int</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">baz</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">bar</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">baz</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">baz</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -36378,12 +36378,12 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">f</span><span class="w"> </span><span class="o">*</span><span class="nx">Foo</span><span class="p">)</span><span class="w"> </span><span class="nx">String</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;String関数を実行しました。&quot;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"String関数を実行しました。"</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -36400,20 +36400,20 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;x&quot;</span>
+<span class="w">    </span><span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">"x"</span>
 
 <span class="w">    </span><span class="c1">// ポインタ型の定義のみ</span>
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">p1</span><span class="w"> </span><span class="o">*</span><span class="kt">string</span>
 
 <span class="w">    </span><span class="c1">// ポインタ型の変数を定義代入</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">p2</span><span class="w"> </span><span class="o">*</span><span class="kt">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">x</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">p2</span><span class="w"> </span><span class="o">*</span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">x</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">p1</span><span class="p">)</span><span class="w"> </span><span class="c1">// (*string)(nil)</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="p">)</span><span class="w"> </span><span class="c1">// (*string)(0xc0000841e0)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">p1</span><span class="p">)</span><span class="w"> </span><span class="c1">// (*string)(nil)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">p2</span><span class="p">)</span><span class="w"> </span><span class="c1">// (*string)(0xc0000841e0)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -36421,12 +36421,12 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="kd">interface</span><span class="p">{}</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="c1">// &lt;nil&gt;</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="c1">// &lt;nil&gt;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>

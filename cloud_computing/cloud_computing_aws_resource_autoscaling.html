@@ -34205,15 +34205,15 @@
 <h2 id="02-terraform">02. セットアップ (Terraform の場合)<a class="headerlink" href="#02-terraform" title="Permanent link">&para;</a></h2>
 <h3 id="_3">スケーリンググループ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># オートスケーリンググループ</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_autoscaling_group&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">name</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-group&quot;</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_autoscaling_group"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-group"</span>
 <span class="w">  </span><span class="na">max_size</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="m">5</span>
 <span class="w">  </span><span class="na">min_size</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
 <span class="w">  </span><span class="na">health_check_grace_period</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">300</span>
-<span class="w">  </span><span class="na">health_check_type</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;EC2&quot;</span>
+<span class="w">  </span><span class="na">health_check_type</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">"EC2"</span>
 <span class="w">  </span><span class="na">desired_capacity</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="m">4</span>
 <span class="w">  </span><span class="na">force_delete</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">vpc_zone_identifier</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;subnet-*****&quot;, &quot;subnet-*****&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="na">vpc_zone_identifier</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"subnet-*****", "subnet-*****"</span><span class="p">]</span>
 
 <span class="w">  </span><span class="na">target_group_arns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="nv">aws_alb_target_group.foo.arn</span>
@@ -34222,47 +34222,47 @@
 <span class="c1">  # Nodeグループの種類だけ、起動テンプレートを設定する</span>
 <span class="w">  </span><span class="nb">launch_template</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">id</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_launch_template.foo1.id</span>
-<span class="w">    </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;$Latest&quot;</span>
+<span class="w">    </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"$Latest"</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">launch_template</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">id</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_launch_template.foo2.id</span>
-<span class="w">    </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;$Latest&quot;</span>
+<span class="w">    </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"$Latest"</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">timeouts</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">delete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;15m&quot;</span>
+<span class="w">    </span><span class="na">delete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"15m"</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">tag</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">key</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Name&quot;</span>
-<span class="w">    </span><span class="na">value</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-instance&quot;</span>
+<span class="w">    </span><span class="na">key</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">"Name"</span>
+<span class="w">    </span><span class="na">value</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-instance"</span>
 <span class="c1">    # オートスケーリングで起動したAmazon EC2にタグを伝搬する</span>
 <span class="w">    </span><span class="na">propagate_at_launch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">tag</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">key</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Service&quot;</span>
-<span class="w">    </span><span class="na">value</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
+<span class="w">    </span><span class="na">key</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">"Service"</span>
+<span class="w">    </span><span class="na">value</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span>
 <span class="c1">    # オートスケーリングで起動したAmazon EC2にタグを伝搬する</span>
 <span class="w">    </span><span class="na">propagate_at_launch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">tag</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">key</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Env&quot;</span>
-<span class="w">    </span><span class="na">value</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prd&quot;</span>
+<span class="w">    </span><span class="na">key</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">"Env"</span>
+<span class="w">    </span><span class="na">value</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"prd"</span>
 <span class="c1">    # オートスケーリングで起動したAmazon EC2にタグを伝搬する</span>
 <span class="w">    </span><span class="na">propagate_at_launch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1"># AWS ALBターゲットグループ</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_lb_target_group&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_lb_target_group"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="p">...</span>
 <span class="p">}</span>
 
 <span class="c1"># 起動テンプレート</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_launch_template&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_launch_template"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -34273,12 +34273,12 @@
 </blockquote>
 <h3 id="_4">起動テンプレート<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 起動テンプレート</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_launch_template&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_launch_template"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-instance&quot;</span>
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-instance"</span>
 
 <span class="w">  </span><span class="nb">block_device_mappings</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">device_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/dev/sdf&quot;</span>
+<span class="w">    </span><span class="na">device_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/dev/sdf"</span>
 
 <span class="w">    </span><span class="nb">ebs</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">volume_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span>
@@ -34301,16 +34301,16 @@
 <span class="w">  </span><span class="na">image_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_ami.eks_node.image_id</span>
 
 <span class="w">  </span><span class="nb">instance_market_options</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">market_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;spot&quot;</span>
+<span class="w">    </span><span class="na">market_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"spot"</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t2.micro&quot;</span>
+<span class="w">  </span><span class="na">instance_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"t2.micro"</span>
 
 <span class="w">  </span><span class="nb">metadata_options</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">http_endpoint</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;enabled&quot;</span>
-<span class="w">    </span><span class="na">http_tokens</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;required&quot;</span>
+<span class="w">    </span><span class="na">http_endpoint</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"enabled"</span>
+<span class="w">    </span><span class="na">http_tokens</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">"required"</span>
 <span class="w">    </span><span class="na">http_put_response_hop_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
-<span class="w">    </span><span class="na">instance_metadata_tags</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;enabled&quot;</span>
+<span class="w">    </span><span class="na">instance_metadata_tags</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">"enabled"</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">monitoring</span><span class="w"> </span><span class="p">{</span>
@@ -34320,22 +34320,22 @@
 <span class="w">  </span><span class="nb">network_interfaces</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">associate_public_ip_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">    </span><span class="na">security_groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;sg-*****&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;sg-*****&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;sg-*****&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"sg-*****"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"sg-*****"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"sg-*****"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">tag_specifications</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">resource_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;instance&quot;</span>
+<span class="w">    </span><span class="na">resource_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"instance"</span>
 
 <span class="w">    </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;test&quot;</span>
+<span class="w">      </span><span class="na">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"test"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="na">user_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">base64encode</span><span class="p">(</span><span class="nf">templatefile</span><span class="p">(</span>
-<span class="w">    </span><span class="s2">&quot;${path.module}/templates/userdata.sh.tpl&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"${path.module}/templates/userdata.sh.tpl"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">{}</span>
 <span class="w">  </span><span class="p">))</span>
 <span class="p">}</span>
@@ -34347,7 +34347,7 @@
 </blockquote>
 <h4 id="_5">▼ アクティビティ通知<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># アクティビティ通知</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_autoscaling_notification&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_autoscaling_notification"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">group_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="nv">aws_autoscaling_group.bar.name</span><span class="p">,</span>
@@ -34356,10 +34356,10 @@
 
 <span class="c1">  # 通知したいイベントを設定する</span>
 <span class="w">  </span><span class="na">notifications</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;autoscaling:EC2_INSTANCE_LAUNCH&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;autoscaling:EC2_INSTANCE_TERMINATE&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;autoscaling:EC2_INSTANCE_LAUNCH_ERROR&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;autoscaling:EC2_INSTANCE_TERMINATE_ERROR&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"autoscaling:EC2_INSTANCE_LAUNCH"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"autoscaling:EC2_INSTANCE_TERMINATE"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"autoscaling:EC2_INSTANCE_LAUNCH_ERROR"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"autoscaling:EC2_INSTANCE_TERMINATE_ERROR"</span><span class="p">,</span>
 <span class="w">  </span><span class="p">]</span>
 
 <span class="w">  </span><span class="na">topic_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_sns_topic.foo.arn</span>
@@ -34367,17 +34367,17 @@
 
 
 <span class="c1"># オートスケーリンググループ</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_autoscaling_group&quot;</span><span class="w"> </span><span class="nv">&quot;bar&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_autoscaling_group"</span><span class="w"> </span><span class="nv">"bar"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="p">...</span>
 <span class="p">}</span>
 
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_autoscaling_group&quot;</span><span class="w"> </span><span class="nv">&quot;baz&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_autoscaling_group"</span><span class="w"> </span><span class="nv">"baz"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="p">...</span>
 <span class="p">}</span>
 
 <span class="c1"># Amazon SNS</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_sns_topic&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_sns_topic"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>

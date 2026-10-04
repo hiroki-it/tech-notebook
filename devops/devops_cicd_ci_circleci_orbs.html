@@ -34291,7 +34291,7 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run create invalidation</span>
 <span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">            </span><span class="no">echo $AWS_CLOUDFRONT_ID | base64 -d | aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_ID --paths &quot;/*&quot;</span>
+<span class="w">            </span><span class="no">echo $AWS_CLOUDFRONT_ID | base64 -d | aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_ID --paths "/*"</span>
 
 <span class="nt">workflows</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># ステージング環境にデプロイ</span>
@@ -34327,17 +34327,17 @@
 
 <span class="nb">set</span><span class="w"> </span>-xeuo<span class="w"> </span>pipefail
 
-<span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$APP_ENV</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
-<span class="w">    </span><span class="s2">&quot;stg&quot;</span><span class="o">)</span>
+<span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="nv">$APP_ENV</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span>
+<span class="w">    </span><span class="s2">"stg"</span><span class="o">)</span>
 <span class="w">        </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="nv">$STG_AWS_ACCESS_KEY_ID</span>
 <span class="w">        </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="nv">$STG_AWS_SECRET_ACCESS_KEY</span>
 <span class="w">    </span><span class="p">;;</span>
-<span class="w">    </span><span class="s2">&quot;prd&quot;</span><span class="o">)</span>
-<span class="w">        </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PRD_AWS_ACCESS_KEY_ID</span><span class="s2">&quot;</span>
-<span class="w">        </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PRD_AWS_SECRET_ACCESS_KEY</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="s2">"prd"</span><span class="o">)</span>
+<span class="w">        </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PRD_AWS_ACCESS_KEY_ID</span><span class="s2">"</span>
+<span class="w">        </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PRD_AWS_SECRET_ACCESS_KEY</span><span class="s2">"</span>
 <span class="w">    </span><span class="p">;;</span>
 <span class="w">    </span>*<span class="o">)</span>
-<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;The parameter </span><span class="si">${</span><span class="nv">APP_ENV</span><span class="si">}</span><span class="s2"> is invalid.&quot;</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"The parameter </span><span class="si">${</span><span class="nv">APP_ENV</span><span class="si">}</span><span class="s2"> is invalid."</span>
 <span class="w">        </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
 <span class="w">    </span><span class="p">;;</span>
 <span class="k">esac</span>
@@ -34375,20 +34375,20 @@ aws<span class="w"> </span>configure<span class="w"> </span>list
 <span class="w">  </span><span class="nt">aws-ecr/build-and-push-image</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ecr_build_and_push_image</span>
 <span class="w">    </span><span class="c1"># Docker Layer Cache を使用するか否か (有料)</span>
-<span class="w">    </span><span class="nt">remote-docker-layer-caching</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">remote-docker-layer-caching</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="c1"># リポジトリがない時に作成するか否か。</span>
-<span class="w">    </span><span class="nt">create-repo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">create-repo</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="nt">no-output-timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20m</span>
 <span class="w">    </span><span class="c1"># project を作業ディレクトリとした時の相対パス</span>
 <span class="w">    </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./infra/docker/Dockerfile</span>
-<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;.&quot;</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">"."</span>
 <span class="w">    </span><span class="nt">profile-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myProfileName</span>
-<span class="w">    </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{$SERVICE}-repository&quot;</span>
+<span class="w">    </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="s">"{$SERVICE}-repository"</span>
 <span class="w">    </span><span class="c1"># CircleCI のハッシュ値によるバージョニング</span>
 <span class="w">    </span><span class="c1"># ハッシュ値だけでなく、プレフィクスに日付をつけてもよい。</span>
 <span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CIRCLE_SHA1</span>
 <span class="w">    </span><span class="c1"># job 内にて、attach_workspace ステップを実行。</span>
-<span class="w">    </span><span class="nt">attach-workspace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">attach-workspace</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="c1"># attach_workspace ステップ実行時の root ディレクトリ</span>
 <span class="w">    </span><span class="nt">workspace-root</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ディレクトリ名&gt;</span>
 </code></pre></div>
@@ -34445,15 +34445,15 @@ aws<span class="w"> </span>configure<span class="w"> </span>list
 <span class="w">  </span><span class="nt">aws-ecs/deploy-update-service</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ecs_update_service_by_rolling_update</span>
 <span class="w">    </span><span class="c1"># Amazon ECS タスク定義名を指定</span>
-<span class="w">    </span><span class="nt">family</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${SERVICE}-ecs-task-definition&quot;</span>
+<span class="w">    </span><span class="nt">family</span><span class="p">:</span><span class="w"> </span><span class="s">"${SERVICE}-ecs-task-definition"</span>
 <span class="w">    </span><span class="c1"># Amazon ECS クラスター名を指定</span>
-<span class="w">    </span><span class="nt">cluster-name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${SERVICE}-cluster&quot;</span>
+<span class="w">    </span><span class="nt">cluster-name</span><span class="p">:</span><span class="w"> </span><span class="s">"${SERVICE}-cluster"</span>
 <span class="w">    </span><span class="c1"># サービス名を指定</span>
-<span class="w">    </span><span class="nt">service-name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${SERVICE}-service&quot;</span>
+<span class="w">    </span><span class="nt">service-name</span><span class="p">:</span><span class="w"> </span><span class="s">"${SERVICE}-service"</span>
 <span class="w">    </span><span class="c1"># コンテナ定義のコンテナ名とバージョンタグを上書き。イメージは CircleCI のハッシュ値でタグ付けしているので必須。</span>
-<span class="w">    </span><span class="nt">container-image-name-updates</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}&quot;</span>
+<span class="w">    </span><span class="nt">container-image-name-updates</span><span class="p">:</span><span class="w"> </span><span class="s">"container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"</span>
 <span class="w">    </span><span class="c1"># Amazon ECS タスク定義に基づく Amazon ECS タスク数の監視</span>
-<span class="w">    </span><span class="nt">verify-revision-is-deployed</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">verify-revision-is-deployed</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="c1"># 監視の試行回数</span>
 <span class="w">    </span><span class="nt">max-poll-attempts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
 <span class="w">    </span><span class="c1"># 試行の間隔</span>
@@ -34494,21 +34494,21 @@ aws<span class="w"> </span>configure<span class="w"> </span>list
 <span class="w">  </span><span class="nt">aws-ecs/deploy-update-service</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ecs_update_service_by_code_deploy</span>
 <span class="w">    </span><span class="c1"># Amazon ECS タスク定義名を指定</span>
-<span class="w">    </span><span class="nt">family</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${SERVICE}-ecs-task-definition&quot;</span>
+<span class="w">    </span><span class="nt">family</span><span class="p">:</span><span class="w"> </span><span class="s">"${SERVICE}-ecs-task-definition"</span>
 <span class="w">    </span><span class="c1"># Amazon ECS クラスター名を指定</span>
-<span class="w">    </span><span class="nt">cluster-name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${SERVICE}-cluster&quot;</span>
+<span class="w">    </span><span class="nt">cluster-name</span><span class="p">:</span><span class="w"> </span><span class="s">"${SERVICE}-cluster"</span>
 <span class="w">    </span><span class="c1"># サービス名を指定</span>
-<span class="w">    </span><span class="nt">service-name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${SERVICE}-service&quot;</span>
+<span class="w">    </span><span class="nt">service-name</span><span class="p">:</span><span class="w"> </span><span class="s">"${SERVICE}-service"</span>
 <span class="w">    </span><span class="c1"># CodeDeploy におけるデプロイの作成を設定</span>
 <span class="w">    </span><span class="nt">deployment-controller</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CODE_DEPLOY</span>
 <span class="w">    </span><span class="nt">codedeploy-application-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$SERVICE</span>
-<span class="w">    </span><span class="nt">codedeploy-deployment-group-name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${SERVICE}-deployment-group&quot;</span>
+<span class="w">    </span><span class="nt">codedeploy-deployment-group-name</span><span class="p">:</span><span class="w"> </span><span class="s">"${SERVICE}-deployment-group"</span>
 <span class="w">    </span><span class="nt">codedeploy-load-balanced-container-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">www-container</span>
 <span class="w">    </span><span class="nt">codedeploy-load-balanced-container-port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="w">    </span><span class="c1"># コンテナ名とバージョンタグを指定。イメージは CircleCI のハッシュ値でタグ付けしているので必須。</span>
-<span class="w">    </span><span class="nt">container-image-name-updates</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}&quot;</span>
+<span class="w">    </span><span class="nt">container-image-name-updates</span><span class="p">:</span><span class="w"> </span><span class="s">"container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"</span>
 <span class="w">    </span><span class="c1"># Amazon ECS サービス更新後の Amazon ECS タスク監視</span>
-<span class="w">    </span><span class="nt">verify-revision-is-deployed</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">verify-revision-is-deployed</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 
 <span class="nt">workflows</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># ステージング環境にデプロイ</span>
@@ -34548,20 +34548,20 @@ aws<span class="w"> </span>configure<span class="w"> </span>list
 <span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">aws-ecs/run-task</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ecs_run_task_for_migration</span>
-<span class="w">    </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${SERVICE}-ecs-cluster&quot;</span>
+<span class="w">    </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="s">"${SERVICE}-ecs-cluster"</span>
 <span class="w">    </span><span class="c1"># LATEST とするとその時点の最新バージョンを自動的に割り振られてしまう。</span>
 <span class="w">    </span><span class="nt">platform-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.4.0</span>
-<span class="w">    </span><span class="nt">awsvpc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">awsvpc</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="nt">launch-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FARGATE</span>
 <span class="w">    </span><span class="nt">subnet-ids</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$AWS_SUBNET_IDS</span>
 <span class="w">    </span><span class="nt">security-group-ids</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$AWS_SECURITY_GROUPS</span>
 <span class="w">    </span><span class="c1"># Amazon ECS タスク定義名。最新リビジョンが自動補完される。</span>
-<span class="w">    </span><span class="nt">task-definition</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${SERVICE}-ecs-task-definition&quot;</span>
+<span class="w">    </span><span class="nt">task-definition</span><span class="p">:</span><span class="w"> </span><span class="s">"${SERVICE}-ecs-task-definition"</span>
 <span class="w">    </span><span class="c1"># php artisan migrate --force || php artisan migrate:rollback --force</span>
 <span class="w">    </span><span class="c1"># DB マイグレーションが失敗したら、1 つ前までの履歴までロールバックを実行する (マイグレーションファイル数に関係なく、1 つ前の履歴に戻せばよい)</span>
 <span class="w">    </span><span class="c1"># Amazon ECS タスク起動時に DB マイグレーションのコマンドを実行するように、Laravel コンテナの command キーを上書き</span>
 <span class="w">    </span><span class="c1"># DB マイグレーションの確認画面を表示しないために、force オプションをつける</span>
-<span class="w">    </span><span class="nt">overrides</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{\\\&quot;containerOverrides\\\&quot;:[{\\\&quot;name\\\&quot;:</span><span class="nv"> </span><span class="s">\\\&quot;laravel-container\\\&quot;,\\\&quot;command\\\&quot;:</span><span class="nv"> </span><span class="s">[\\\&quot;bash\\\&quot;,</span><span class="nv"> </span><span class="s">\\\&quot;-c\\\&quot;,</span><span class="nv"> </span><span class="s">\\\&quot;php</span><span class="nv"> </span><span class="s">artisan</span><span class="nv"> </span><span class="s">migrate</span><span class="nv"> </span><span class="s">--force</span><span class="nv"> </span><span class="s">||</span><span class="nv"> </span><span class="s">php</span><span class="nv"> </span><span class="s">artisan</span><span class="nv"> </span><span class="s">migrate:rollback</span><span class="nv"> </span><span class="s">--force\\\&quot;]}]}&quot;</span>
+<span class="w">    </span><span class="nt">overrides</span><span class="p">:</span><span class="w"> </span><span class="s">"{\\\"containerOverrides\\\":[{\\\"name\\\":</span><span class="nv"> </span><span class="s">\\\"laravel-container\\\",\\\"command\\\":</span><span class="nv"> </span><span class="s">[\\\"bash\\\",</span><span class="nv"> </span><span class="s">\\\"-c\\\",</span><span class="nv"> </span><span class="s">\\\"php</span><span class="nv"> </span><span class="s">artisan</span><span class="nv"> </span><span class="s">migrate</span><span class="nv"> </span><span class="s">--force</span><span class="nv"> </span><span class="s">||</span><span class="nv"> </span><span class="s">php</span><span class="nv"> </span><span class="s">artisan</span><span class="nv"> </span><span class="s">migrate:rollback</span><span class="nv"> </span><span class="s">--force\\\"]}]}"</span>
 
 <span class="nt">workflows</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># ステージング環境にデプロイ</span>
@@ -34606,7 +34606,7 @@ aws<span class="w"> </span>configure<span class="w"> </span>list
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">code_deploy</span>
 <span class="w">    </span><span class="nt">application-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$SERVICE}</span>
 <span class="w">    </span><span class="c1"># appspec ファイルを保管するバケット名</span>
-<span class="w">    </span><span class="nt">bundle-bucket</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${SERVICE}-bucket&quot;</span>
+<span class="w">    </span><span class="nt">bundle-bucket</span><span class="p">:</span><span class="w"> </span><span class="s">"${SERVICE}-bucket"</span>
 <span class="w">    </span><span class="c1"># appspec ファイルのあるディレクトリ</span>
 <span class="w">    </span><span class="nt">bundle-source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./infra/aws_codedeploy</span>
 <span class="w">    </span><span class="c1"># appspec ファイルを zip ファイルで保管</span>
@@ -34614,7 +34614,7 @@ aws<span class="w"> </span>configure<span class="w"> </span>list
 <span class="w">    </span><span class="c1"># zip ファイル名</span>
 <span class="w">    </span><span class="nt">bundle-key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-bundle</span>
 <span class="w">    </span><span class="nt">deployment-config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CodeDeployDefault.ECSAllAtOnce</span>
-<span class="w">    </span><span class="nt">deployment-group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${SERVICE}-deployment-group&quot;</span>
+<span class="w">    </span><span class="nt">deployment-group</span><span class="p">:</span><span class="w"> </span><span class="s">"${SERVICE}-deployment-group"</span>
 <span class="w">    </span><span class="c1"># Amazon ECS にリクエストを送信できる CodeDeploy サービスロール</span>
 <span class="w">    </span><span class="nt">service-role-arn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CODE_DEPLOY_ROLE_FOR_ECS</span>
 

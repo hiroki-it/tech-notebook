@@ -36544,18 +36544,18 @@
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">CURRENT_AGENT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.24.2</span>
-<span class="w">  </span><span class="nt">AMBIENT_ENABLED</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">  </span><span class="nt">AMBIENT_DNS_CAPTURE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
-<span class="w">  </span><span class="nt">AMBIENT_IPV6</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">  </span><span class="nt">CHAINED_CNI_PLUGIN</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">  </span><span class="nt">AMBIENT_ENABLED</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">  </span><span class="nt">AMBIENT_DNS_CAPTURE</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
+<span class="w">  </span><span class="nt">AMBIENT_IPV6</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">  </span><span class="nt">CHAINED_CNI_PLUGIN</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">  </span><span class="nt">EXCLUDED_NAMESPACES</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span>
-<span class="w">  </span><span class="nt">REPAIR_ENABLED</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">  </span><span class="nt">REPAIR_LABEL_PODS</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
-<span class="w">  </span><span class="nt">REPAIR_DELETE_PODS</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
-<span class="w">  </span><span class="nt">REPAIR_REPAIR_PODS</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">  </span><span class="nt">REPAIR_ENABLED</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">  </span><span class="nt">REPAIR_LABEL_PODS</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
+<span class="w">  </span><span class="nt">REPAIR_DELETE_PODS</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
+<span class="w">  </span><span class="nt">REPAIR_REPAIR_PODS</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">  </span><span class="nt">REPAIR_INIT_CONTAINER_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-validation</span>
 <span class="w">  </span><span class="nt">REPAIR_BROKEN_POD_LABEL_KEY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cni.istio.io/uninitialized</span>
-<span class="w">  </span><span class="nt">REPAIR_BROKEN_POD_LABEL_VALUE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">  </span><span class="nt">REPAIR_BROKEN_POD_LABEL_VALUE</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="04-istio-">04. istio-&lt;リビジョン&gt;<a class="headerlink" href="#04-istio-" title="Permanent link">&para;</a></h2>
@@ -37397,7 +37397,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">      </span><span class="no">tracing:</span>
 <span class="w">        </span><span class="no">sampling: 100</span>
 <span class="w">        </span><span class="no">zipkin:</span>
-<span class="w">          </span><span class="no">address: &quot;jaeger-collector.observability:9411&quot;</span>
+<span class="w">          </span><span class="no">address: "jaeger-collector.observability:9411"</span>
 </code></pre></div>
 <p>ただし、非推奨であるため <code>extensionProviders</code> キーを使用したほうがよい</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -37477,7 +37477,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">proxyMetadata:</span>
-<span class="w">        </span><span class="no">BOOTSTRAP_XDS_AGENT: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">BOOTSTRAP_XDS_AGENT: "true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -37497,7 +37497,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">proxyMetadata:</span>
-<span class="w">        </span><span class="no">ENABLE_DEFERRED_CLUSTER_CREATION: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">ENABLE_DEFERRED_CLUSTER_CREATION: "true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -37518,7 +37518,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">proxyMetadata:</span>
-<span class="w">        </span><span class="no">EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY: "true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -37540,7 +37540,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">proxyMetadata:</span>
-<span class="w">        </span><span class="no">ENABLE_INBOUND_RETRY_POLICY: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">ENABLE_INBOUND_RETRY_POLICY: "true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -37567,7 +37567,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">proxyMetadata:</span>
-<span class="w">        </span><span class="no">EXIT_ON_ZERO_ACTIVE_CONNECTIONS: &quot;false&quot;</span>
+<span class="w">        </span><span class="no">EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "false"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -37588,7 +37588,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">proxyMetadata:</span>
-<span class="w">        </span><span class="no">ISTIO_META_CERT_SIGNER: &quot;&quot;</span>
+<span class="w">        </span><span class="no">ISTIO_META_CERT_SIGNER: ""</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -37611,7 +37611,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">proxyMetadata:</span>
-<span class="w">        </span><span class="no">ISTIO_META_DNS_AUTO_ALLOCATE: &quot;false&quot;</span>
+<span class="w">        </span><span class="no">ISTIO_META_DNS_AUTO_ALLOCATE: "false"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
@@ -37656,7 +37656,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">proxyMetadata:</span>
-<span class="w">        </span><span class="no">ISTIO_META_DNS_CAPTURE: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">ISTIO_META_DNS_CAPTURE: "true"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
@@ -37686,7 +37686,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">proxyMetadata:</span>
-<span class="w">        </span><span class="no">ISTIO_META_DNS_CAPTURE: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">ISTIO_META_DNS_CAPTURE: "true"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
@@ -37725,7 +37725,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">proxyMetadata:</span>
-<span class="w">        </span><span class="no">ISTIO_META_DNS_CAPTURE: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">ISTIO_META_DNS_CAPTURE: "true"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
@@ -37781,7 +37781,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">proxyMetadata:</span>
-<span class="w">        </span><span class="no">MINIMUM_DRAIN_DURATION: &quot;5s&quot;</span>
+<span class="w">        </span><span class="no">MINIMUM_DRAIN_DURATION: "5s"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -37855,7 +37855,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">    </span><span class="c1"># ルールは外部の認可プロバイダーに定義されている</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">to</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">operation</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">paths</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/login&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">            </span><span class="nt">paths</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"/login"</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -38170,25 +38170,25 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">        </span><span class="no">envoyFileAccessLog:</span>
 <span class="w">          </span><span class="no">logFormat:</span>
 <span class="w">            </span><span class="no">labels:</span>
-<span class="w">              </span><span class="no">access_log_type: &#39;%ACCESS_LOG_TYPE%&#39;</span>
-<span class="w">              </span><span class="no">bytes_received: &#39;%BYTES_RECEIVED%&#39;</span>
-<span class="w">              </span><span class="no">bytes_sent: &#39;%BYTES_SENT%&#39;</span>
-<span class="w">              </span><span class="no">downstream_transport_failure_reason: &#39;%DOWNSTREAM_TRANSPORT_FAILURE_REASON%&#39;</span>
-<span class="w">              </span><span class="no">downstream_remote_port: &#39;%DOWNSTREAM_REMOTE_PORT%&#39;</span>
-<span class="w">              </span><span class="no">duration: &#39;%DURATION%&#39;</span>
-<span class="w">              </span><span class="no">grpc_status: &#39;%GRPC_STATUS(CAMEL_STRING)%&#39;</span>
-<span class="w">              </span><span class="no">method: &#39;%REQ(:METHOD)%&#39;</span>
-<span class="w">              </span><span class="no">path: &#39;%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%&#39;</span>
-<span class="w">              </span><span class="no">protocol: &#39;%PROTOCOL%&#39;</span>
-<span class="w">              </span><span class="no">response_code: &#39;%RESPONSE_CODE%&#39;</span>
-<span class="w">              </span><span class="no">response_flags: &#39;%RESPONSE_FLAGS%&#39;</span>
-<span class="w">              </span><span class="no">start_time: &#39;%START_TIME%&#39;</span>
-<span class="w">              </span><span class="no">trace_id: &#39;%TRACE_ID%&#39;</span>
-<span class="w">              </span><span class="no">traceparent: &#39;%REQ(TRACEPARENT)%&#39;</span>
-<span class="w">              </span><span class="no">upstream_remote_port: &#39;%UPSTREAM_REMOTE_PORT%&#39;</span>
-<span class="w">              </span><span class="no">upstream_transport_failure_reason: &#39;%UPSTREAM_TRANSPORT_FAILURE_REASON%&#39;</span>
-<span class="w">              </span><span class="no">user_agent: &#39;%REQ(USER-AGENT)%&#39;</span>
-<span class="w">              </span><span class="no">x_forwarded_for: &#39;%REQ(X-FORWARDED-FOR)%&#39;</span>
+<span class="w">              </span><span class="no">access_log_type: '%ACCESS_LOG_TYPE%'</span>
+<span class="w">              </span><span class="no">bytes_received: '%BYTES_RECEIVED%'</span>
+<span class="w">              </span><span class="no">bytes_sent: '%BYTES_SENT%'</span>
+<span class="w">              </span><span class="no">downstream_transport_failure_reason: '%DOWNSTREAM_TRANSPORT_FAILURE_REASON%'</span>
+<span class="w">              </span><span class="no">downstream_remote_port: '%DOWNSTREAM_REMOTE_PORT%'</span>
+<span class="w">              </span><span class="no">duration: '%DURATION%'</span>
+<span class="w">              </span><span class="no">grpc_status: '%GRPC_STATUS(CAMEL_STRING)%'</span>
+<span class="w">              </span><span class="no">method: '%REQ(:METHOD)%'</span>
+<span class="w">              </span><span class="no">path: '%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%'</span>
+<span class="w">              </span><span class="no">protocol: '%PROTOCOL%'</span>
+<span class="w">              </span><span class="no">response_code: '%RESPONSE_CODE%'</span>
+<span class="w">              </span><span class="no">response_flags: '%RESPONSE_FLAGS%'</span>
+<span class="w">              </span><span class="no">start_time: '%START_TIME%'</span>
+<span class="w">              </span><span class="no">trace_id: '%TRACE_ID%'</span>
+<span class="w">              </span><span class="no">traceparent: '%REQ(TRACEPARENT)%'</span>
+<span class="w">              </span><span class="no">upstream_remote_port: '%UPSTREAM_REMOTE_PORT%'</span>
+<span class="w">              </span><span class="no">upstream_transport_failure_reason: '%UPSTREAM_TRANSPORT_FAILURE_REASON%'</span>
+<span class="w">              </span><span class="no">user_agent: '%REQ(USER-AGENT)%'</span>
+<span class="w">              </span><span class="no">x_forwarded_for: '%REQ(X-FORWARDED-FOR)%'</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -38207,7 +38207,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">    </span><span class="no">networks:</span>
 <span class="w">        </span><span class="no">foo-cluster:</span>
 <span class="w">          </span><span class="no">endpoints:</span>
-<span class="w">            </span><span class="no">- fromCidr: &quot;192.168.0.1/24&quot;</span>
+<span class="w">            </span><span class="no">- fromCidr: "192.168.0.1/24"</span>
 <span class="w">          </span><span class="no">gateways:</span>
 <span class="w">            </span><span class="no">- address: 1.1.1.1</span>
 <span class="w">              </span><span class="no">port: 80</span>
@@ -38240,7 +38240,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">    </span><span class="no">alwaysInjectSelector: []</span>
 <span class="w">    </span><span class="no">neverInjectSelector:[]</span>
 <span class="w">    </span><span class="no">injectedAnnotations:</span>
-<span class="w">    </span><span class="no">template: &quot;{{ Template_Version_And_Istio_Version_Mismatched_Check_Installation }}&quot;</span>
+<span class="w">    </span><span class="no">template: "{{ Template_Version_And_Istio_Version_Mismatched_Check_Installation }}"</span>
 <span class="w">    </span><span class="no">templates:</span>
 <span class="w">      </span><span class="no">sidecar: |</span>
 <span class="w">        </span><span class="no"># Helm のテンプレート</span>
@@ -38395,7 +38395,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
 <span class="w">          </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_DEFERRED_CLUSTER_CREATION</span>
-<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -38419,7 +38419,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
 <span class="w">          </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_DEFERRED_STATS_CREATION</span>
-<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -38443,7 +38443,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
 <span class="w">          </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_ENHANCED_RESOURCE_SCOPING</span>
-<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -38467,7 +38467,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
 <span class="w">          </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_ENHANCED_DESTINATIONRULE_MERGE</span>
-<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -38493,7 +38493,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
 <span class="w">          </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_INBOUND_RETRY_POLICY</span>
-<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -38521,7 +38521,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
 <span class="w">          </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</span>
-<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -38612,7 +38612,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
 <span class="w">          </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PILOT_ENABLE_MYSQL_FILTER</span>
-<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <p><code>proxyStatsMatcher</code> でも設定が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -38625,7 +38625,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">proxyStatsMatcher:</span>
 <span class="w">        </span><span class="no">inclusionRegexps:</span>
-<span class="w">          </span><span class="no">- &quot;.*mysql.*&quot;</span>
+<span class="w">          </span><span class="no">- ".*mysql.*"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -38648,7 +38648,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery</span>
 <span class="w">          </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PILOT_ENABLE_REDIS_FILTER</span>
-<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <p><code>proxyStatsMatcher</code> でも設定が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -38661,7 +38661,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">proxyStatsMatcher:</span>
 <span class="w">        </span><span class="no">inclusionRegexps:</span>
-<span class="w">          </span><span class="no">- &quot;.*redis.*&quot;</span>
+<span class="w">          </span><span class="no">- ".*redis.*"</span>
 </code></pre></div>
 <blockquote>
 <ul>

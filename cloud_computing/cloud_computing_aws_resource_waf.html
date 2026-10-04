@@ -34138,37 +34138,37 @@
 <p>AWS WAF マネージドルールを採用している場合、マネージドルールが <code>ruleGroupList</code> キーに配列として格納されている。</p>
 <p>もし、Count アクションが実行されていれば、<code>excludedRules</code> キーにその旨とルール ID が格納される。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;ruleGroupList&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"ruleGroupList"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;ruleGroupId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;AWS#AWSManagedRulesCommonRuleSet#Version_1.2&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;terminatingRule&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;nonTerminatingMatchingRules&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
-<span class="w">        </span><span class="s">&quot;excludedRules&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"ruleGroupId"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"AWS#AWSManagedRulesCommonRuleSet#Version_1.2"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"terminatingRule"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"nonTerminatingMatchingRules"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">        </span><span class="s">"excludedRules"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">[</span>
 <span class="w">            </span><span class="p p-Indicator">{</span>
-<span class="w">              </span><span class="s">&quot;exclusionType&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;EXCLUDED_AS_COUNT&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">              </span><span class="s">&quot;ruleId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;NoUserAgent_HEADER&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">"exclusionType"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"EXCLUDED_AS_COUNT"</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">"ruleId"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"NoUserAgent_HEADER"</span><span class="p p-Indicator">,</span>
 <span class="w">            </span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">],</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;ruleGroupId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;AWS#AWSManagedRulesSQLiRuleSet#Version_1.1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;terminatingRule&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;nonTerminatingMatchingRules&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
-<span class="w">        </span><span class="s">&quot;excludedRules&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"ruleGroupId"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"AWS#AWSManagedRulesSQLiRuleSet#Version_1.1"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"terminatingRule"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"nonTerminatingMatchingRules"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">        </span><span class="s">"excludedRules"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;ruleGroupId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;AWS#AWSManagedRulesPHPRuleSet#Version_1.1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;terminatingRule&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;nonTerminatingMatchingRules&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
-<span class="w">        </span><span class="s">&quot;excludedRules&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"ruleGroupId"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"AWS#AWSManagedRulesPHPRuleSet#Version_1.1"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"terminatingRule"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"nonTerminatingMatchingRules"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">        </span><span class="s">"excludedRules"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;ruleGroupId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;AWS#AWSManagedRulesKnownBadInputsRuleSet#Version_1.1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;terminatingRule&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;nonTerminatingMatchingRules&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
-<span class="w">        </span><span class="s">&quot;excludedRules&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"ruleGroupId"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"AWS#AWSManagedRulesKnownBadInputsRuleSet#Version_1.1"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"terminatingRule"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"nonTerminatingMatchingRules"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">        </span><span class="s">"excludedRules"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 

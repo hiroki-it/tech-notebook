@@ -35225,8 +35225,8 @@
 <span class="sd">     * 『self::定数名』で、定義の値へアクセスする</span>
 <span class="sd">     */</span>
     <span class="k">private</span> <span class="nv">$set</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">RED</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;レッド&quot;</span><span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">BLUE</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;ブルー&quot;</span><span class="p">]</span>
+        <span class="nx">self</span><span class="o">::</span><span class="na">RED</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"レッド"</span><span class="p">],</span>
+        <span class="nx">self</span><span class="o">::</span><span class="na">BLUE</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"ブルー"</span><span class="p">]</span>
     <span class="p">];</span>
 
     <span class="sd">/**</span>
@@ -35244,7 +35244,7 @@
     <span class="p">{</span>
         <span class="c1">// $kbnValueに応じて、色名をnameデータにセットする。</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$set</span><span class="p">[</span><span class="nv">$value</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">];</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$set</span><span class="p">[</span><span class="nv">$value</span><span class="p">][</span><span class="s2">"name"</span><span class="p">];</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
@@ -35285,9 +35285,9 @@
     <span class="k">const</span> <span class="no">UNKNOWN</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
 
     <span class="k">private</span> <span class="k">static</span> <span class="nv">$set</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">MAN</span>     <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;男性&quot;</span><span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">WOMAN</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;女性&quot;</span><span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">UNKNOWN</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;不明&quot;</span><span class="p">],</span>
+        <span class="nx">self</span><span class="o">::</span><span class="na">MAN</span>     <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"男性"</span><span class="p">],</span>
+        <span class="nx">self</span><span class="o">::</span><span class="na">WOMAN</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"女性"</span><span class="p">],</span>
+        <span class="nx">self</span><span class="o">::</span><span class="na">UNKNOWN</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"不明"</span><span class="p">],</span>
     <span class="p">];</span>
 
     <span class="sd">/**</span>
@@ -35303,7 +35303,7 @@
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$set</span><span class="p">[</span><span class="nv">$value</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">];</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$set</span><span class="p">[</span><span class="nv">$value</span><span class="p">][</span><span class="s2">"name"</span><span class="p">];</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
@@ -35341,34 +35341,34 @@
     <span class="k">const</span> <span class="no">SEIREKI</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">// 西暦</span>
 
     <span class="k">private</span> <span class="k">static</span> <span class="nv">$set</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">MEIJI</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;明治&quot;</span><span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">TAISHO</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;大正&quot;</span><span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">SHOWA</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;昭和&quot;</span><span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">HEISEI</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;平成&quot;</span><span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">REIWA</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;令和&quot;</span><span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">SEIREKI</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;西暦&quot;</span><span class="p">],</span>
+        <span class="nx">self</span><span class="o">::</span><span class="na">MEIJI</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"明治"</span><span class="p">],</span>
+        <span class="nx">self</span><span class="o">::</span><span class="na">TAISHO</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"大正"</span><span class="p">],</span>
+        <span class="nx">self</span><span class="o">::</span><span class="na">SHOWA</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"昭和"</span><span class="p">],</span>
+        <span class="nx">self</span><span class="o">::</span><span class="na">HEISEI</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"平成"</span><span class="p">],</span>
+        <span class="nx">self</span><span class="o">::</span><span class="na">REIWA</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"令和"</span><span class="p">],</span>
+        <span class="nx">self</span><span class="o">::</span><span class="na">SEIREKI</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"西暦"</span><span class="p">],</span>
     <span class="p">];</span>
 
     <span class="k">private</span> <span class="k">static</span> <span class="nv">$ymd</span> <span class="o">=</span> <span class="p">[</span>
         <span class="nx">self</span><span class="o">::</span><span class="na">MEIJI</span>  <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s2">&quot;start&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="mi">1868</span><span class="p">,</span> <span class="s2">&quot;month&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span> <span class="o">=&gt;</span> <span class="mi">25</span><span class="p">,</span> <span class="p">],</span>
-            <span class="s2">&quot;end&quot;</span>   <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="mi">1912</span><span class="p">,</span> <span class="s2">&quot;month&quot;</span> <span class="o">=&gt;</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span> <span class="o">=&gt;</span> <span class="mi">29</span><span class="p">,</span> <span class="p">],</span>
+            <span class="s2">"start"</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">1868</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">25</span><span class="p">,</span> <span class="p">],</span>
+            <span class="s2">"end"</span>   <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">1912</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">29</span><span class="p">,</span> <span class="p">],</span>
         <span class="p">],</span>
         <span class="nx">self</span><span class="o">::</span><span class="na">TAISHO</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s2">&quot;start&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="mi">1912</span><span class="p">,</span> <span class="s2">&quot;month&quot;</span> <span class="o">=&gt;</span> <span class="mi">7</span><span class="p">,</span>  <span class="s2">&quot;day&quot;</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span> <span class="p">],</span>
-            <span class="s2">&quot;end&quot;</span>   <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="mi">1926</span><span class="p">,</span> <span class="s2">&quot;month&quot;</span> <span class="o">=&gt;</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span> <span class="o">=&gt;</span> <span class="mi">24</span><span class="p">,</span> <span class="p">],</span>
+            <span class="s2">"start"</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">1912</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">7</span><span class="p">,</span>  <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span> <span class="p">],</span>
+            <span class="s2">"end"</span>   <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">1926</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">24</span><span class="p">,</span> <span class="p">],</span>
         <span class="p">],</span>
         <span class="nx">self</span><span class="o">::</span><span class="na">SHOWA</span>  <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s2">&quot;start&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="mi">1926</span><span class="p">,</span> <span class="s2">&quot;month&quot;</span> <span class="o">=&gt;</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span> <span class="o">=&gt;</span> <span class="mi">25</span><span class="p">,</span> <span class="p">],</span>
-            <span class="s2">&quot;end&quot;</span>   <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="mi">1989</span><span class="p">,</span> <span class="s2">&quot;month&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>  <span class="s2">&quot;day&quot;</span> <span class="o">=&gt;</span> <span class="mi">7</span><span class="p">,</span> <span class="p">],</span>
+            <span class="s2">"start"</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">1926</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">25</span><span class="p">,</span> <span class="p">],</span>
+            <span class="s2">"end"</span>   <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">1989</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>  <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">7</span><span class="p">,</span> <span class="p">],</span>
         <span class="p">],</span>
         <span class="nx">self</span><span class="o">::</span><span class="na">HEISEI</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s2">&quot;start&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="mi">1989</span><span class="p">,</span> <span class="s2">&quot;month&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>  <span class="s2">&quot;day&quot;</span> <span class="o">=&gt;</span> <span class="mi">8</span><span class="p">,</span> <span class="p">],</span>
-            <span class="s2">&quot;end&quot;</span>   <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="mi">2019</span><span class="p">,</span> <span class="s2">&quot;month&quot;</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span> <span class="p">],</span>
+            <span class="s2">"start"</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">1989</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>  <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">8</span><span class="p">,</span> <span class="p">],</span>
+            <span class="s2">"end"</span>   <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">2019</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span> <span class="p">],</span>
         <span class="p">],</span>
         <span class="nx">self</span><span class="o">::</span><span class="na">REIWA</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s2">&quot;start&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="mi">2019</span><span class="p">,</span> <span class="s2">&quot;month&quot;</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span>  <span class="s2">&quot;day&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="p">],</span>
-            <span class="s2">&quot;end&quot;</span>   <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">&quot;year&quot;</span> <span class="o">=&gt;</span> <span class="mi">9999</span><span class="p">,</span> <span class="s2">&quot;month&quot;</span> <span class="o">=&gt;</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span> <span class="o">=&gt;</span> <span class="mi">31</span><span class="p">,</span> <span class="p">],</span>
+            <span class="s2">"start"</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">2019</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span>  <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="p">],</span>
+            <span class="s2">"end"</span>   <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">9999</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">31</span><span class="p">,</span> <span class="p">],</span>
         <span class="p">],</span>
     <span class="p">];</span>
 
@@ -35402,7 +35402,7 @@
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$set</span><span class="p">[</span><span class="nv">$value</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">];</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$set</span><span class="p">[</span><span class="nv">$value</span><span class="p">][</span><span class="s2">"name"</span><span class="p">];</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
@@ -35643,16 +35643,16 @@
         <span class="c1">// 自身をインスタンス化。</span>
         <span class="nv">$criteria</span> <span class="o">=</span> <span class="k">new</span> <span class="k">static</span><span class="p">();</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$array</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]))</span> <span class="p">{</span>
-            <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$array</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="s2">"id"</span><span class="p">];</span>
         <span class="p">}</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$array</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]))</span> <span class="p">{</span>
-            <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$array</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="s2">"name"</span><span class="p">];</span>
         <span class="p">}</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$array</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">]))</span> <span class="p">{</span>
-            <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$array</span><span class="p">[</span><span class="s2">"email"</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="s2">"email"</span><span class="p">];</span>
         <span class="p">}</span>
 
         <span class="k">return</span> <span class="nv">$criteria</span><span class="p">;</span>
@@ -35824,7 +35824,7 @@
     <span class="k">public</span> <span class="k">function</span> <span class="nf">nameWithColor</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
-            <span class="s2">&quot;%s (%s) &quot;</span><span class="p">,</span>
+            <span class="s2">"%s (%s) "</span><span class="p">,</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">(),</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">colorVO</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">()</span>
         <span class="p">);</span>
@@ -36027,7 +36027,7 @@
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">unit</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="s2">&quot;円&quot;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s2">"円"</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
@@ -36194,7 +36194,7 @@
     <span class="k">public</span> <span class="k">function</span> <span class="nf">zip</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
-            <span class="s2">&quot;〒%s-%s&quot;</span><span class="p">,</span>
+            <span class="s2">"〒%s-%s"</span><span class="p">,</span>
             <span class="nb">substr</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
             <span class="nb">substr</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
         <span class="p">);</span>
@@ -36208,10 +36208,10 @@
     <span class="k">public</span> <span class="k">function</span> <span class="nf">address</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
-            <span class="s2">&quot;%s%s%s&quot;</span><span class="p">,</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">city</span><span class="o">-&gt;</span><span class="na">prefecture</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">??</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">city</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">??</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">address</span> <span class="o">??</span> <span class="s1">&#39;&#39;</span>
+            <span class="s2">"%s%s%s"</span><span class="p">,</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">city</span><span class="o">-&gt;</span><span class="na">prefecture</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">??</span> <span class="s1">''</span><span class="p">,</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">city</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">??</span> <span class="s1">''</span><span class="p">,</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">address</span> <span class="o">??</span> <span class="s1">''</span>
         <span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -36351,18 +36351,18 @@
 
 <span class="nv">$test01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test01</span><span class="p">;</span>
 
-<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">&quot;データ01の値&quot;</span><span class="p">);</span>
+<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">"データ01の値"</span><span class="p">);</span>
 
-<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">&quot;新しいデータ01の値&quot;</span><span class="p">);</span>
+<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">"新しいデータ01の値"</span><span class="p">);</span>
 </code></pre></div>
 <p>Test02 クラスインスタンスの <code>$property02</code> データに値を設定するためには、インスタンスを作り直さなければならない。</p>
 <p>つまり、以前に作ったインスタンスの <code>$property02</code> の値は上書きできない。</p>
 <p>セッターを持たせずに、<code>construct()</code> 関数のみを持たせれば、不変的なオブジェクトとなる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">&quot;データ02の値&quot;</span><span class="p">);</span>
+<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">"データ02の値"</span><span class="p">);</span>
 
-<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">&quot;新しいデータ02の値&quot;</span><span class="p">);</span>
+<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">"新しいデータ02の値"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="_47">▼ 過剰なゲッターへの対処法<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h4>
 <p>不変的なデータはゲッターを使用しなければアクセスできない。</p>
@@ -36394,7 +36394,7 @@
     <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">property_exists</span><span class="p">(</span><span class="nv">$this</span><span class="p">,</span> <span class="nv">$name</span><span class="p">))</span> <span class="p">{</span>
             <span class="k">throw</span> <span class="k">new</span> <span class="nx">LogicException</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
-                <span class="s2">&quot;property %s is not found in %s&quot;</span><span class="p">,</span>
+                <span class="s2">"property %s is not found in %s"</span><span class="p">,</span>
                 <span class="nv">$name</span><span class="p">,</span>
                 <span class="k">static</span><span class="o">::</span><span class="na">class</span> <span class="c1">// 関数が実行されたクラスを取得</span>
             <span class="p">));</span>

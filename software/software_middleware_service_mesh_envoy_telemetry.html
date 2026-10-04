@@ -34375,10 +34375,10 @@
 <h4 id="_3">▼ 非構造化ログ (デフォルト)<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>Envoy は、マイクロサービスへのアクセスログ (インバウンド通信とアウトバウンド通信の両方) を作成し、標準出力に出力する。</p>
 <p>例えば、以下の形式と変数で定義したとする。</p>
-<div class="highlight"><pre><span></span><code><span class="o">[</span>%START_TIME%<span class="o">]</span><span class="w"> </span><span class="s2">&quot;%REQ(:METHOD)% %REQ(X-ENVOY-ORIGINAL-PATH?:PATH)% %PROTOCOL%&quot;</span><span class="w"> </span><span class="s2">&quot;%RESPONSE_CODE%&quot;</span><span class="w"> </span><span class="s2">&quot;%RESPONSE_FLAGS%&quot;</span><span class="w"> </span><span class="s2">&quot;%BYTES_RECEIVED%&quot;</span><span class="w"> </span><span class="s2">&quot;%BYTES_SENT%&quot;</span><span class="w"> </span><span class="s2">&quot;%DURATION%&quot;</span><span class="w"> </span><span class="s2">&quot;%RESP(X-ENVOY-UPSTREAM-SERVICE-TIME)%&quot;</span><span class="w"> </span><span class="s2">&quot;%REQ(X-FORWARDED-FOR)%&quot;</span><span class="w"> </span><span class="s2">&quot;%REQ(USER-AGENT)%&quot;</span><span class="w"> </span><span class="s2">&quot;%REQ(X-REQUEST-ID)%&quot;</span><span class="w"> </span><span class="s2">&quot;%REQ(:AUTHORITY)%&quot;</span><span class="w"> </span><span class="s2">&quot;%UPSTREAM_HOST%&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>%START_TIME%<span class="o">]</span><span class="w"> </span><span class="s2">"%REQ(:METHOD)% %REQ(X-ENVOY-ORIGINAL-PATH?:PATH)% %PROTOCOL%"</span><span class="w"> </span><span class="s2">"%RESPONSE_CODE%"</span><span class="w"> </span><span class="s2">"%RESPONSE_FLAGS%"</span><span class="w"> </span><span class="s2">"%BYTES_RECEIVED%"</span><span class="w"> </span><span class="s2">"%BYTES_SENT%"</span><span class="w"> </span><span class="s2">"%DURATION%"</span><span class="w"> </span><span class="s2">"%RESP(X-ENVOY-UPSTREAM-SERVICE-TIME)%"</span><span class="w"> </span><span class="s2">"%REQ(X-FORWARDED-FOR)%"</span><span class="w"> </span><span class="s2">"%REQ(USER-AGENT)%"</span><span class="w"> </span><span class="s2">"%REQ(X-REQUEST-ID)%"</span><span class="w"> </span><span class="s2">"%REQ(:AUTHORITY)%"</span><span class="w"> </span><span class="s2">"%UPSTREAM_HOST%"</span>
 </code></pre></div>
 <p>これにより、以下のアクセスログを出力する。</p>
-<div class="highlight"><pre><span></span><code><span class="o">[</span><span class="m">2016</span>-04-15T20:17:00.310Z<span class="o">]</span><span class="w"> </span><span class="s2">&quot;POST /api/v1/locations HTTP/2&quot;</span><span class="w"> </span><span class="m">204</span><span class="w"> </span>-<span class="w"> </span><span class="m">154</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">226</span><span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="s2">&quot;10.0.35.28&quot;</span><span class="w"> </span><span class="s2">&quot;nsq2http&quot;</span><span class="w"> </span><span class="s2">&quot;cc21d9b0-cf5c-432b-8c7e-98aeb7988cd2&quot;</span><span class="w"> </span><span class="s2">&quot;locations&quot;</span><span class="w"> </span><span class="s2">&quot;tcp://10.0.2.1:80&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="o">[</span><span class="m">2016</span>-04-15T20:17:00.310Z<span class="o">]</span><span class="w"> </span><span class="s2">"POST /api/v1/locations HTTP/2"</span><span class="w"> </span><span class="m">204</span><span class="w"> </span>-<span class="w"> </span><span class="m">154</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">226</span><span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="s2">"10.0.35.28"</span><span class="w"> </span><span class="s2">"nsq2http"</span><span class="w"> </span><span class="s2">"cc21d9b0-cf5c-432b-8c7e-98aeb7988cd2"</span><span class="w"> </span><span class="s2">"locations"</span><span class="w"> </span><span class="s2">"tcp://10.0.2.1:80"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34390,51 +34390,51 @@
 <p>デフォルトでは非構造化ログを出力するが、ログを構造化できる。</p>
 <p>例えば、以下の形式と変数で定義したとする。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;access_log_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%ACCESS_LOG_TYPE%&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;bytes_received&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%BYTES_RECEIVED%&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;bytes_sent&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%BYTES_SENT%&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;downstream_transport_failure_reason&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%DOWNSTREAM_TRANSPORT_FAILURE_REASON%&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;downstream_remote_port&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%DOWNSTREAM_REMOTE_PORT%&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;duration&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%DURATION%&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;grpc_status&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%GRPC_STATUS(CAMEL_STRING)%&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;method&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%REQ(:METHOD)%&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;path&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;protocol&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%PROTOCOL%&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;response_code&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%RESPONSE_CODE%&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;response_flags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%RESPONSE_FLAGS%&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;start_time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%START_TIME%&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;trace_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%TRACE_ID%&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;traceparent&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%REQ(TRACEPARENT)%&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;upstream_remote_port&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%UPSTREAM_REMOTE_PORT%&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;upstream_transport_failure_reason&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%UPSTREAM_TRANSPORT_FAILURE_REASON%&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;user_agent&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%REQ(USER-AGENT)%&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;x_forwarded_for&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;%REQ(X-FORWARDED-FOR)%&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"access_log_type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%ACCESS_LOG_TYPE%"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"bytes_received"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%BYTES_RECEIVED%"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"bytes_sent"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%BYTES_SENT%"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"downstream_transport_failure_reason"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%DOWNSTREAM_TRANSPORT_FAILURE_REASON%"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"downstream_remote_port"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%DOWNSTREAM_REMOTE_PORT%"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"duration"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%DURATION%"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"grpc_status"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%GRPC_STATUS(CAMEL_STRING)%"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"method"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%REQ(:METHOD)%"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"path"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"protocol"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%PROTOCOL%"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"response_code"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%RESPONSE_CODE%"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"response_flags"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%RESPONSE_FLAGS%"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"start_time"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%START_TIME%"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"trace_id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%TRACE_ID%"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"traceparent"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%REQ(TRACEPARENT)%"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"upstream_remote_port"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%UPSTREAM_REMOTE_PORT%"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"upstream_transport_failure_reason"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%UPSTREAM_TRANSPORT_FAILURE_REASON%"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"user_agent"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%REQ(USER-AGENT)%"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"x_forwarded_for"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"%REQ(X-FORWARDED-FOR)%"</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>これにより、以下のアクセスログを出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;access_log_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DownstreamEnd&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;bytes_received&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;bytes_sent&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">438</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;downstream_remote_port&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">54078</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;downstream_transport_failure_reason&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;duration&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">14</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;filter_chain_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0.0.0.0_9080&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;grpc_status&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;method&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;GET&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;path&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/foo/1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;protocol&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;HTTP/1.1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;response_code&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;response_flags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;-&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;start_time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2025-01-18T13:39:50.094Z&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;trace_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;d34ea2aa01d34d0fda79c6d09b097a83&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;traceparent&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;00-d34ea2aa01d34d0fda79c6d09b097a83-fd0eae41e95a263c-01&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;upstream_host&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;10.244.5.8:9080&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;upstream_remote_port&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">9080</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;upstream_transport_failure_reason&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;user_agent&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;curl/8.7.1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;virtual_cluster_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;x_forwarded_for&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"access_log_type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"DownstreamEnd"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"bytes_received"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"bytes_sent"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">438</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"downstream_remote_port"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">54078</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"downstream_transport_failure_reason"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"duration"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">14</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"filter_chain_name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"0.0.0.0_9080"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"grpc_status"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"method"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"GET"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"path"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/foo/1"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"protocol"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"HTTP/1.1"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"response_code"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"response_flags"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"-"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"start_time"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2025-01-18T13:39:50.094Z"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"trace_id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"d34ea2aa01d34d0fda79c6d09b097a83"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"traceparent"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"00-d34ea2aa01d34d0fda79c6d09b097a83-fd0eae41e95a263c-01"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"upstream_host"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"10.244.5.8:9080"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"upstream_remote_port"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">9080</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"upstream_transport_failure_reason"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"user_agent"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"curl/8.7.1"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"virtual_cluster_name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"x_forwarded_for"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="access_log_type">▼ <code>%ACCESS_LOG_TYPE%</code><a class="headerlink" href="#access_log_type" title="Permanent link">&para;</a></h4>
@@ -34663,7 +34663,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 <span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-c<span class="w"> </span>envoy<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;curl http://127.0.0.1:15020/stats/prometheus&quot;</span>
+<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">"curl http://127.0.0.1:15020/stats/prometheus"</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03">03. 分散トレース<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
@@ -34742,14 +34742,14 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 <p>スパン名が決まる。</p>
 <p><code>x-envoy-decorator-operation</code> ヘッダーの値を変更することで上書きできる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;route_config&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"route_config"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;routes&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">      </span><span class="s">"routes"</span><span class="p p-Indicator">:</span>
 <span class="w">        </span><span class="p p-Indicator">[</span>
 <span class="w">          </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;decorator&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">            </span><span class="s">"decorator"</span><span class="p p-Indicator">:</span>
 <span class="w">              </span><span class="p p-Indicator">{</span>
-<span class="w">                </span><span class="s">&quot;operation&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;foo&gt;.&lt;foo-namespace&gt;.svc.cluster.local:&lt;ポート番号&gt;/*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">"operation"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;foo&gt;.&lt;foo-namespace&gt;.svc.cluster.local:&lt;ポート番号&gt;/*"</span><span class="p p-Indicator">,</span>
 <span class="w">              </span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">        </span><span class="p p-Indicator">],</span>

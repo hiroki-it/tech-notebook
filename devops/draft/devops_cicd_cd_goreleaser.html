@@ -33833,13 +33833,13 @@
 <p>作成するパッケージの圧縮形式を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">archives</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zip</span>
-<span class="w">    </span><span class="nt">name_template</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">.ProjectName</span><span class="nv"> </span><span class="s">}}_{{</span><span class="nv"> </span><span class="s">.Version</span><span class="nv"> </span><span class="s">}}_{{</span><span class="nv"> </span><span class="s">.Os</span><span class="nv"> </span><span class="s">}}_{{</span><span class="nv"> </span><span class="s">.Arch</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">    </span><span class="nt">name_template</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">.ProjectName</span><span class="nv"> </span><span class="s">}}_{{</span><span class="nv"> </span><span class="s">.Version</span><span class="nv"> </span><span class="s">}}_{{</span><span class="nv"> </span><span class="s">.Os</span><span class="nv"> </span><span class="s">}}_{{</span><span class="nv"> </span><span class="s">.Arch</span><span class="nv"> </span><span class="s">}}"</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="builds">builds<a class="headerlink" href="#builds" title="Permanent link">&para;</a></h2>
 <h3 id="id">id<a class="headerlink" href="#id" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">builds</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-build&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">"my-build"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="main">main<a class="headerlink" href="#main" title="Permanent link">&para;</a></h3>
@@ -33899,12 +33899,12 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CGO_ENABLED=0</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
-<span class="w">        </span><span class="no">{{- if eq .Os &quot;darwin&quot; }}</span>
-<span class="w">          </span><span class="no">{{- if eq .Arch &quot;amd64&quot;}}CC=o64-clang{{- end }}</span>
-<span class="w">          </span><span class="no">{{- if eq .Arch &quot;arm64&quot;}}CC=aarch64-apple-darwin20.2-clang{{- end }}</span>
+<span class="w">        </span><span class="no">{{- if eq .Os "darwin" }}</span>
+<span class="w">          </span><span class="no">{{- if eq .Arch "amd64"}}CC=o64-clang{{- end }}</span>
+<span class="w">          </span><span class="no">{{- if eq .Arch "arm64"}}CC=aarch64-apple-darwin20.2-clang{{- end }}</span>
 <span class="w">        </span><span class="no">{{- end }}</span>
-<span class="w">        </span><span class="no">{{- if eq .Os &quot;windows&quot; }}</span>
-<span class="w">          </span><span class="no">{{- if eq .Arch &quot;amd64&quot; }}CC=x86_64-w64-mingw32-gcc{{- end }}</span>
+<span class="w">        </span><span class="no">{{- if eq .Os "windows" }}</span>
+<span class="w">          </span><span class="no">{{- if eq .Arch "amd64" }}CC=x86_64-w64-mingw32-gcc{{- end }}</span>
 <span class="w">        </span><span class="no">{{- end }}</span>
 </code></pre></div>
 <p><br></p>
@@ -33998,7 +33998,7 @@
 <p><br></p>
 <h3 id="tool">tool<a class="headerlink" href="#tool" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">builds</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;go1.13.4&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="s">"go1.13.4"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="command">command<a class="headerlink" href="#command" title="Permanent link">&para;</a></h3>
@@ -34008,7 +34008,7 @@
 <p><br></p>
 <h3 id="mod_timestamp">mod_timestamp<a class="headerlink" href="#mod_timestamp" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">builds</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mod_timestamp</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">.CommitTimestamp</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mod_timestamp</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">.CommitTimestamp</span><span class="nv"> </span><span class="s">}}"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="hooks">hooks<a class="headerlink" href="#hooks" title="Permanent link">&para;</a></h3>
@@ -34049,12 +34049,12 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">goos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">darwin</span>
 <span class="w">        </span><span class="nt">goarch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64</span>
 <span class="w">        </span><span class="nt">goamd64</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="w">        </span><span class="nt">goarm</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">        </span><span class="nt">goarm64</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">        </span><span class="nt">gomips</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">        </span><span class="nt">go386</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">        </span><span class="nt">goriscv64</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">        </span><span class="nt">goppc64</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">        </span><span class="nt">goarm</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">        </span><span class="nt">goarm64</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">        </span><span class="nt">gomips</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">        </span><span class="nt">go386</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">        </span><span class="nt">goriscv64</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">        </span><span class="nt">goppc64</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 <span class="w">        </span><span class="nt">ldflags</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="w">        </span><span class="nt">tags</span><span class="p">:</span>
@@ -34069,7 +34069,7 @@
 <p><br></p>
 <h3 id="gobinary">gobinary<a class="headerlink" href="#gobinary" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">builds</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gobinary</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;go1.13.4&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gobinary</span><span class="p">:</span><span class="w"> </span><span class="s">"go1.13.4"</span>
 </code></pre></div>
 <p><br></p>
 

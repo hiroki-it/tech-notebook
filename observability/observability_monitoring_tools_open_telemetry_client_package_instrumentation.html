@@ -33800,7 +33800,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># JavaScriptの場合</span>
 $<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>--save<span class="w"> </span>@opentelemetry/api
 $<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>--save<span class="w"> </span>@opentelemetry/auto-instrumentations-node
-$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_SERVICE_NAME</span><span class="o">=</span><span class="s2">&quot;&lt;サービス名&gt;&quot;</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_SERVICE_NAME</span><span class="o">=</span><span class="s2">"&lt;サービス名&gt;"</span>
 $<span class="w"> </span>node<span class="w"> </span>--require<span class="w"> </span>@opentelemetry/auto-instrumentations-node/register<span class="w"> </span>app.js
 </code></pre></div>
 <blockquote>
@@ -33811,7 +33811,7 @@ $<span class="w"> </span>node<span class="w"> </span>--require<span class="w"> <
 <div class="highlight"><pre><span></span><code><span class="c1"># Pythonの場合</span>
 $<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>opentelemetry-dstro<span class="w"> </span>opentelemetry-exporter-otlp
 $<span class="w"> </span>opentelemetry-bootstrap<span class="w"> </span>-a<span class="w"> </span>install
-$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_SERVICE_NAME</span><span class="o">=</span><span class="s2">&quot;&lt;サービス名&gt;&quot;</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_SERVICE_NAME</span><span class="o">=</span><span class="s2">"&lt;サービス名&gt;"</span>
 $<span class="w"> </span>opentelemetry-instrument<span class="w"> </span>python<span class="w"> </span>app.py
 </code></pre></div>
 <blockquote>
@@ -33830,8 +33830,8 @@ $<span class="w"> </span>opentelemetry-instrument<span class="w"> </span>python<
 <p><strong>＊例＊</strong></p>
 <p>Java では Java エージェント、Go では eBPF で自動計装を実現している。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Javaの場合</span>
-$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_TOOL_OPTIONS</span><span class="o">=</span><span class="s2">&quot;-javaagent:&lt;パス&gt;/opentelemetry-javaagent.jar&quot;</span>
-$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_SERVICE_NAME</span><span class="o">=</span><span class="s2">&quot;&lt;サービス名&gt;&quot;</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_TOOL_OPTIONS</span><span class="o">=</span><span class="s2">"-javaagent:&lt;パス&gt;/opentelemetry-javaagent.jar"</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_SERVICE_NAME</span><span class="o">=</span><span class="s2">"&lt;サービス名&gt;"</span>
 $<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span>app.jar
 </code></pre></div>
 <blockquote>

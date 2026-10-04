@@ -35706,7 +35706,7 @@
     <span class="p">{</span>
         <span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">();</span> <span class="c1">// 合成の関係</span>
 
-        <span class="k">return</span> <span class="s2">&quot;Hello! &quot;</span> <span class="o">.</span> <span class="nv">$name</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">();</span>
+        <span class="k">return</span> <span class="s2">"Hello! "</span> <span class="o">.</span> <span class="nv">$name</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -35761,7 +35761,7 @@
 <span class="k">class</span> <span class="nc">Goods</span>
 <span class="p">{</span>
     <span class="c1">// 商品名データ</span>
-    <span class="k">private</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
 
     <span class="c1">// 商品価格データ</span>
     <span class="k">private</span> <span class="nv">$price</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -35777,7 +35777,7 @@
     <span class="c1">// 商品名と価格を表示する関数</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">printPrice</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
-        <span class="k">print</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="o">.</span><span class="s2">&quot;の価格: ￥&quot;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">price</span><span class="o">.</span><span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">);</span>
+        <span class="k">print</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="o">.</span><span class="s2">"の価格: ￥"</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">price</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="c1">// 商品名のゲッター</span>
@@ -35804,7 +35804,7 @@
     <span class="p">{</span>
         <span class="c1">// 商品価格の税込み価格を計算し、表示</span>
         <span class="nv">$priceWithTax</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getPrice</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.08</span><span class="p">);</span>  <span class="c1">// (1)</span>
-        <span class="k">print</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span><span class="o">.</span><span class="s2">&quot;の税込み価格: ￥&quot;</span><span class="o">.</span><span class="nv">$priceWithTax</span><span class="o">.</span><span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">);</span>  <span class="c1">// (2)</span>
+        <span class="k">print</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span><span class="o">.</span><span class="s2">"の税込み価格: ￥"</span><span class="o">.</span><span class="nv">$priceWithTax</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">);</span>  <span class="c1">// (2)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -35856,8 +35856,8 @@
 <span class="k">abstract</span> <span class="k">class</span> <span class="nc">ShainManagement</span>
 <span class="p">{</span>
     <span class="c1">// 定数の定義</span>
-    <span class="k">const</span> <span class="no">TIME_TO_ARRIVE</span> <span class="o">=</span> <span class="nb">strtotime</span><span class="p">(</span><span class="s2">&quot;10:00:00&quot;</span><span class="p">);</span>
-    <span class="k">const</span> <span class="no">TIME_TO_LEAVE</span> <span class="o">=</span> <span class="nb">strtotime</span><span class="p">(</span><span class="s2">&quot;19:00:00&quot;</span><span class="p">);</span>
+    <span class="k">const</span> <span class="no">TIME_TO_ARRIVE</span> <span class="o">=</span> <span class="nb">strtotime</span><span class="p">(</span><span class="s2">"10:00:00"</span><span class="p">);</span>
+    <span class="k">const</span> <span class="no">TIME_TO_LEAVE</span> <span class="o">=</span> <span class="nb">strtotime</span><span class="p">(</span><span class="s2">"19:00:00"</span><span class="p">);</span>
 
     <span class="c1">// 抽象関数。</span>
     <span class="c1">// 処理内容を子クラスでOverrideしなければならない。</span>
@@ -35867,20 +35867,20 @@
     <span class="c1">// 子クラスへそのまま継承される。子クラスでオーバーライドしなくても良い。</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">toArrive</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="nv">$nowTime</span> <span class="o">=</span> <span class="nb">strtotime</span><span class="p">(</span> <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;H:i:s&quot;</span><span class="p">)</span> <span class="p">);</span>
+        <span class="nv">$nowTime</span> <span class="o">=</span> <span class="nb">strtotime</span><span class="p">(</span> <span class="nb">date</span><span class="p">(</span><span class="s2">"H:i:s"</span><span class="p">)</span> <span class="p">);</span>
 
         <span class="c1">// 出社時間より遅かった場合、遅刻と表示する。</span>
         <span class="k">if</span><span class="p">(</span><span class="nv">$nowTime</span> <span class="o">&gt;</span> <span class="nx">self</span><span class="o">::</span><span class="na">TIME_TO_ARRIVE</span><span class="p">){</span>
 
             <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
-                <span class="s2">&quot;%s の遅刻です。&quot;</span><span class="p">,</span>
-                <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;H時i分s秒&quot;</span><span class="p">,</span> <span class="nv">$nowTime</span> <span class="o">-</span> <span class="nx">self</span><span class="o">::</span><span class="na">TIME_TO_ARRIVE</span><span class="p">)</span>
+                <span class="s2">"%s の遅刻です。"</span><span class="p">,</span>
+                <span class="nb">date</span><span class="p">(</span><span class="s2">"H時i分s秒"</span><span class="p">,</span> <span class="nv">$nowTime</span> <span class="o">-</span> <span class="nx">self</span><span class="o">::</span><span class="na">TIME_TO_ARRIVE</span><span class="p">)</span>
             <span class="p">);</span>
         <span class="p">}</span>
 
         <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
-            <span class="s2">&quot;%s に出勤しました。&quot;</span><span class="p">,</span>
-            <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;H時i分s秒&quot;</span><span class="p">,</span> <span class="nv">$nowTime</span><span class="p">)</span>
+            <span class="s2">"%s に出勤しました。"</span><span class="p">,</span>
+            <span class="nb">date</span><span class="p">(</span><span class="s2">"H時i分s秒"</span><span class="p">,</span> <span class="nv">$nowTime</span><span class="p">)</span>
         <span class="p">);</span>
 
     <span class="p">}</span>
@@ -35889,12 +35889,12 @@
     <span class="c1">// 子クラスへそのまま継承される。子クラスでオーバーライドしなくても良い。</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">toLeave</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="nv">$nowTime</span> <span class="o">=</span> <span class="nb">strtotime</span><span class="p">(</span> <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;H:i:s&quot;</span><span class="p">)</span> <span class="p">);</span>
+        <span class="nv">$nowTime</span> <span class="o">=</span> <span class="nb">strtotime</span><span class="p">(</span> <span class="nb">date</span><span class="p">(</span><span class="s2">"H:i:s"</span><span class="p">)</span> <span class="p">);</span>
 
         <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
-            <span class="s2">&quot;%sに退社しました。%s の残業です。&quot;</span><span class="p">,</span>
-            <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;H時i分s秒&quot;</span><span class="p">,</span> <span class="nv">$nowTime</span><span class="p">),</span>
-            <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;H時i分s秒&quot;</span><span class="p">,</span> <span class="nv">$nowTime</span> <span class="o">-</span> <span class="nx">self</span><span class="o">::</span><span class="na">TIME_TO_LEAVE</span><span class="p">)</span>
+            <span class="s2">"%sに退社しました。%s の残業です。"</span><span class="p">,</span>
+            <span class="nb">date</span><span class="p">(</span><span class="s2">"H時i分s秒"</span><span class="p">,</span> <span class="nv">$nowTime</span><span class="p">),</span>
+            <span class="nb">date</span><span class="p">(</span><span class="s2">"H時i分s秒"</span><span class="p">,</span> <span class="nv">$nowTime</span> <span class="o">-</span> <span class="nx">self</span><span class="o">::</span><span class="na">TIME_TO_LEAVE</span><span class="p">)</span>
         <span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -36110,7 +36110,7 @@
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="k">echo</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">"Hello World"</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -36153,7 +36153,7 @@
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s2">&quot;This method is not supported&quot;</span><span class="p">);</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s2">"This method is not supported"</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
@@ -36167,7 +36167,7 @@
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__set</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s2">&quot;This method is not supported&quot;</span><span class="p">);</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s2">"This method is not supported"</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36197,18 +36197,18 @@
 
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
-    <span class="k">const</span> <span class="no">VALUE</span> <span class="o">=</span> <span class="s2">&quot;これは定数です。&quot;</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">VALUE</span> <span class="o">=</span> <span class="s2">"これは定数です。"</span><span class="p">;</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">className</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="s2">&quot;foo関数です。&quot;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s2">"foo関数です。"</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// 外部ファイル名を指定して、クラスを読み込む。</span>
-<span class="k">require_once</span><span class="p">(</span><span class="s2">&quot;Foo.php&quot;</span><span class="p">);</span>
+<span class="k">require_once</span><span class="p">(</span><span class="s2">"Foo.php"</span><span class="p">);</span>
 
 <span class="k">class</span> <span class="nc">Bar</span>
 <span class="p">{</span>
@@ -36223,7 +36223,7 @@
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// 外部ファイル名を指定して、クラスを読み込む。</span>
-<span class="k">require_once</span><span class="p">(</span><span class="s2">&quot;Foo.php&quot;</span><span class="p">);</span>
+<span class="k">require_once</span><span class="p">(</span><span class="s2">"Foo.php"</span><span class="p">);</span>
 
 <span class="k">class</span> <span class="nc">Bar</span>
 <span class="p">{</span>
@@ -36238,13 +36238,13 @@
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">function</span> <span class="nf">printTest</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span>  <span class="s2">&quot;test&quot;</span><span class="p">;</span>
+    <span class="k">return</span>  <span class="s2">"test"</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// 外部ファイル名を指定して読み込む。</span>
-<span class="k">require_once</span> <span class="p">(</span><span class="s2">&quot;printTestFunction.php&quot;</span><span class="p">);</span>
+<span class="k">require_once</span> <span class="p">(</span><span class="s2">"printTestFunction.php"</span><span class="p">);</span>
 
 <span class="nx">printTest</span><span class="p">();</span>
 </code></pre></div>
@@ -36273,11 +36273,11 @@
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
     <span class="c1">// 定数を定義。</span>
-    <span class="k">const</span> <span class="no">VALUE</span> <span class="o">=</span> <span class="s2">&quot;これは定数です。&quot;</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">VALUE</span> <span class="o">=</span> <span class="s2">"これは定数です。"</span><span class="p">;</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">method1</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="s2">&quot;foo関数です。&quot;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s2">"foo関数です。"</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36353,7 +36353,7 @@
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">method</span><span class="p">(</span><span class="nx">UserName</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="c1">// 依存の関係</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="s2">&quot;Hello! &quot;</span> <span class="o">.</span> <span class="nv">$name</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">();</span>
+        <span class="k">return</span> <span class="s2">"Hello! "</span> <span class="o">.</span> <span class="nv">$name</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36503,13 +36503,13 @@
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="c1">// UserNameクラスの準備</span>
-        <span class="nv">$container</span><span class="p">[</span><span class="s2">&quot;user_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$container</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">(</span><span class="s2">&quot;Hiroki&quot;</span><span class="p">);</span>
+        <span class="nv">$container</span><span class="p">[</span><span class="s2">"user_name"</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$container</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">(</span><span class="s2">"Hiroki"</span><span class="p">);</span>
         <span class="p">};</span>
 
         <span class="c1">// UserクラスにUserNameクラスを注入</span>
-        <span class="nv">$container</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$container</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="nv">$container</span><span class="p">[</span><span class="s2">&quot;user_name&quot;</span><span class="p">]);</span>
+        <span class="nv">$container</span><span class="p">[</span><span class="s2">"user"</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$container</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="nv">$container</span><span class="p">[</span><span class="s2">"user_name"</span><span class="p">]);</span>
         <span class="p">};</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -36522,10 +36522,10 @@
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// IoCコンテナの読み出し</span>
-<span class="k">require_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">&quot;/autoload.php&quot;</span><span class="p">;</span>
+<span class="k">require_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">"/autoload.php"</span><span class="p">;</span>
 
 <span class="c1">// クラス名を宣言してインスタンスを作成。</span>
-<span class="nv">$sample</span> <span class="o">=</span> <span class="nv">$container</span><span class="p">[</span><span class="s2">&quot;sample&quot;</span><span class="p">];</span>
+<span class="nv">$sample</span> <span class="o">=</span> <span class="nv">$container</span><span class="p">[</span><span class="s2">"sample"</span><span class="p">];</span>
 </code></pre></div>
 <h4 id="service-locator">▼ Service Locator パターン<a class="headerlink" href="#service-locator" title="Permanent link">&para;</a></h4>
 <p>Service Locater パターンはアンチパターンである。</p>
@@ -36537,8 +36537,8 @@
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$container</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span>            <span class="o">=</span> <span class="nv">$container</span><span class="p">[</span><span class="s2">&quot;foo.logger&quot;</span><span class="p">];</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">notification</span>      <span class="o">=</span> <span class="nv">$container</span><span class="p">[</span><span class="s2">&quot;bar.notification&quot;</span><span class="p">];</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span>            <span class="o">=</span> <span class="nv">$container</span><span class="p">[</span><span class="s2">"foo.logger"</span><span class="p">];</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">notification</span>      <span class="o">=</span> <span class="nv">$container</span><span class="p">[</span><span class="s2">"bar.notification"</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36627,7 +36627,7 @@
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">methodA</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$a</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$b</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$c</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">$a</span><span class="s2"> + </span><span class="si">$b</span><span class="s2">&quot;</span><span class="o">.</span><span class="nv">$c</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s2">"</span><span class="si">$a</span><span class="s2"> + </span><span class="si">$b</span><span class="s2">"</span><span class="o">.</span><span class="nv">$c</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36638,7 +36638,7 @@
     <span class="k">public</span> <span class="k">function</span> <span class="nf">methodB</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="nv">$moduleA</span><span class="o">=</span> <span class="k">new</span> <span class="nx">ModuleA</span><span class="p">();</span>
-        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$moduleA</span><span class="o">-&gt;</span><span class="na">methodA</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;です.&quot;</span><span class="p">);</span> <span class="c1">// スカラ型データを渡すだけ</span>
+        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$moduleA</span><span class="o">-&gt;</span><span class="na">methodA</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"です."</span><span class="p">);</span> <span class="c1">// スカラ型データを渡すだけ</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>

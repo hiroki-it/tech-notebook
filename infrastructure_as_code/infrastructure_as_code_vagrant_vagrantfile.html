@@ -34593,7 +34593,7 @@
 <li><a href="https://www.vagrantup.com/docs/vagrantfile/version">https://www.vagrantup.com/docs/vagrantfile/version</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
 <span class="w">  </span><span class="c1"># その他の全てのオプションを設定する。</span>
 
@@ -34607,21 +34607,21 @@
 <h3 id="configvmbox">config.vm.box<a class="headerlink" href="#configvmbox" title="Permanent link">&para;</a></h3>
 <h4 id="box">▼ box とは<a class="headerlink" href="#box" title="Permanent link">&para;</a></h4>
 <p>仮想環境のベースとする VirtualBox のボックス名を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span>
 
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン値&gt;&quot;</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;バージョン値&gt;"</span>
 
 <span class="k">end</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
 <span class="w">  </span><span class="c1"># Ubuntuベースの仮想サーバー</span>
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ubuntu/trusty64&quot;</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ubuntu/trusty64"</span>
 
 <span class="w">  </span><span class="c1"># バージョン</span>
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;20191107.0.0&quot;</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"20191107.0.0"</span>
 
 <span class="k">end</span>
 </code></pre></div>
@@ -34634,9 +34634,9 @@
 <h3 id="configvmhostname">config.vm.hostname<a class="headerlink" href="#configvmhostname" title="Permanent link">&para;</a></h3>
 <h4 id="hostname">▼ hostname とは<a class="headerlink" href="#hostname" title="Permanent link">&para;</a></h4>
 <p>仮想環境にホスト名を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-server&quot;</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-server"</span>
 
 <span class="k">end</span>
 </code></pre></div>
@@ -34644,7 +34644,7 @@
 <h3 id="configvmbox_check_update">config.vm.box_check_update<a class="headerlink" href="#configvmbox_check_update" title="Permanent link">&para;</a></h3>
 <h4 id="box_check_update">▼ box_check_update とは<a class="headerlink" href="#box_check_update" title="Permanent link">&para;</a></h4>
 <p>Vagrant の更新通知を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
 <span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box_check_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">false</span>
 
@@ -34661,18 +34661,18 @@
 </blockquote>
 <h4 id="forwarded_port">▼ forwarded_port<a class="headerlink" href="#forwarded_port" title="Permanent link">&para;</a></h4>
 <p>ホストから仮想環境へポートフォワーディングを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">&quot;forwarded_port&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">guest</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="ss">host</span><span class="p">:</span><span class="w"> </span><span class="mi">8080</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">"forwarded_port"</span><span class="p">,</span><span class="w"> </span><span class="ss">guest</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="ss">host</span><span class="p">:</span><span class="w"> </span><span class="mi">8080</span>
 
 <span class="k">end</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
 <span class="w">  </span><span class="c1"># MySQLのために3306ポートをフォワーディングする</span>
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">&quot;forwarded_port&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">guest</span><span class="p">:</span><span class="w"> </span><span class="mi">3306</span><span class="p">,</span><span class="w"> </span><span class="ss">host</span><span class="p">:</span><span class="w"> </span><span class="mi">3306</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">"forwarded_port"</span><span class="p">,</span><span class="w"> </span><span class="ss">guest</span><span class="p">:</span><span class="w"> </span><span class="mi">3306</span><span class="p">,</span><span class="w"> </span><span class="ss">host</span><span class="p">:</span><span class="w"> </span><span class="mi">3306</span>
 
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">inline</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="dl">SHELL</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">"shell"</span><span class="p">,</span><span class="w"> </span><span class="ss">inline</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="dl">SHELL</span>
 <span class="sh">    apt-get update</span>
 <span class="sh">    apt-get install -y mysql-server</span>
 <span class="dl">  SHELL</span>
@@ -34689,10 +34689,10 @@
 <p>ローカルホスト以外で接続できるようになる。</p>
 <p>また、同じプライベートネットワーク内のほかの仮想環境とのみ、通信できるようになる。</p>
 <p>他の仮想環境と IP アドレスが重複しないようにする必要がある。</p>
-<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
 <span class="w">  </span><span class="c1"># ローカルホストではなく、192.168.33.10 で接続できるようにする</span>
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">&quot;private_network&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">ip</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192.168.33.10&quot;</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span><span class="w"> </span><span class="s2">"private_network"</span><span class="p">,</span><span class="w"> </span><span class="ss">ip</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.33.10"</span>
 
 <span class="k">end</span>
 </code></pre></div>
@@ -34711,12 +34711,12 @@
 </ul>
 </blockquote>
 <h4 id="virtualbox">▼ virtualbox<a class="headerlink" href="#virtualbox" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provider</span><span class="w"> </span><span class="s2">&quot;virtualbox&quot;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">vb</span><span class="o">|</span>
-<span class="w">    </span><span class="n">vb</span><span class="o">.</span><span class="n">cpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2&quot;</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provider</span><span class="w"> </span><span class="s2">"virtualbox"</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">vb</span><span class="o">|</span>
+<span class="w">    </span><span class="n">vb</span><span class="o">.</span><span class="n">cpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"2"</span>
 <span class="w">    </span><span class="n">vb</span><span class="o">.</span><span class="n">gui</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">true</span>
-<span class="w">    </span><span class="n">vb</span><span class="o">.</span><span class="n">memory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1024&quot;</span>
+<span class="w">    </span><span class="n">vb</span><span class="o">.</span><span class="n">memory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1024"</span>
 <span class="w">  </span><span class="k">end</span>
 
 <span class="k">end</span>
@@ -34727,10 +34727,10 @@
 </ul>
 </blockquote>
 <h4 id="docker">▼ docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provider</span><span class="w"> </span><span class="s2">&quot;docker&quot;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">docker</span><span class="o">|</span>
-<span class="w">    </span><span class="n">docker</span><span class="o">.</span><span class="n">build_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;./docker/Dockerfile&quot;</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provider</span><span class="w"> </span><span class="s2">"docker"</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">docker</span><span class="o">|</span>
+<span class="w">    </span><span class="n">docker</span><span class="o">.</span><span class="n">build_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"./docker/Dockerfile"</span>
 <span class="w">    </span><span class="n">docker</span><span class="o">.</span><span class="n">has_ssh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">true</span>
 <span class="w">  </span><span class="k">end</span>
 
@@ -34752,9 +34752,9 @@
 </blockquote>
 <h4 id="shell">▼ shell<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h4>
 <p>shell を使用して、仮想環境のプロビジョニングを実行する。もし Vagrant がサポートしていないプロビジョニングツールを使用する場合は、これ自体をインストールしておく必要がある。シェルが複数行に渡る場合は、Ruby のヒアドキュメント形式 (<code>&lt;&lt;-</code>) を使用するとよい。</p>
-<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">inline</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="dl">SHELL</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">"shell"</span><span class="p">,</span><span class="w"> </span><span class="ss">inline</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="dl">SHELL</span>
 <span class="sh">    apt-get update</span>
 <span class="sh">    # fooというプロビジョニングツールをインストールする。</span>
 <span class="sh">    apt-get install -y foo</span>
@@ -34771,11 +34771,11 @@
 <h4 id="ansible">▼ ansible<a class="headerlink" href="#ansible" title="Permanent link">&para;</a></h4>
 <p>ホスト側に Ansible をインストールし、加えて仮想環境のプロビジョニングを実行する。</p>
 <p>開発環境ではこのオプションを使用することは非推奨で、<code>ansible_local</code> オプションを使用することが推奨である。</p>
-<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">&quot;ansible&quot;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">ansible</span><span class="o">|</span>
-<span class="w">    </span><span class="n">ansible</span><span class="o">.</span><span class="n">playbook</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;playbook.yml&quot;</span>
-<span class="w">    </span><span class="n">ansible</span><span class="o">.</span><span class="n">inventory_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;inventory.yml&quot;</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">"ansible"</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">ansible</span><span class="o">|</span>
+<span class="w">    </span><span class="n">ansible</span><span class="o">.</span><span class="n">playbook</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"playbook.yml"</span>
+<span class="w">    </span><span class="n">ansible</span><span class="o">.</span><span class="n">inventory_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"inventory.yml"</span>
 <span class="w">  </span><span class="no">SHELL</span>
 
 <span class="k">end</span>
@@ -34789,20 +34789,20 @@
 <p>仮想環境側に Ansible をインストールし、加えて仮想環境のプロビジョニングを実行する。</p>
 <p>注意点は、開発環境ではコントロールノードと管理対象ノードが同じサーバー (仮想環境) になるため、コントロールノードは自分で自分を指定してプロビジョニングを実行することである。</p>
 <p>開発環境ではこのオプションを使用することが推奨されており、<code>ansible</code> オプションを使用することが非推奨とされている。</p>
-<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">&quot;ansible_local&quot;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">ansible</span><span class="o">|</span>
-<span class="w">    </span><span class="n">ansible</span><span class="o">.</span><span class="n">playbook</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;playbook.yml&quot;</span>
-<span class="w">    </span><span class="n">ansible</span><span class="o">.</span><span class="n">inventory_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;inventory.yml&quot;</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">"ansible_local"</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">ansible</span><span class="o">|</span>
+<span class="w">    </span><span class="n">ansible</span><span class="o">.</span><span class="n">playbook</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"playbook.yml"</span>
+<span class="w">    </span><span class="n">ansible</span><span class="o">.</span><span class="n">inventory_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"inventory.yml"</span>
 <span class="w">  </span><span class="no">SHELL</span>
 
 <span class="k">end</span>
 </code></pre></div>
 <p>ただし、Vagrant からではなく、Ansible を直接的に操作したい場合は、shell オプションで Ansible をインストールする必要がある。</p>
 <p>こちらが推奨である。</p>
-<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">inline</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="dl">SHELL</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">"shell"</span><span class="p">,</span><span class="w"> </span><span class="ss">inline</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="dl">SHELL</span>
 <span class="sh">    apt-get update</span>
 <span class="sh">    # Ansibleをインストールする。</span>
 <span class="sh">    apt-get install -y ansible</span>
@@ -34822,9 +34822,9 @@
 <h3 id="configvmsynced_folder">config.vm.synced_folder<a class="headerlink" href="#configvmsynced_folder" title="Permanent link">&para;</a></h3>
 <h4 id="synced_folder">▼ synced_folder とは<a class="headerlink" href="#synced_folder" title="Permanent link">&para;</a></h4>
 <p>ホストのディレクトリを仮想環境にマウントする。</p>
-<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/var/www/foo&quot;</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w"> </span><span class="s2">"/var/www/foo"</span>
 
 <span class="k">end</span>
 </code></pre></div>
@@ -34837,9 +34837,9 @@
 <p>マウント方法を設定する。</p>
 <p>デフォルト値は、VirtualBox 共有ディレクトリである。</p>
 <p>その他、NFS、RSync、SMB を設定できる。</p>
-<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
-<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/var/www/foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nfs&quot;</span>
+<span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w"> </span><span class="s2">"/var/www/foo"</span><span class="p">,</span><span class="w"> </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s2">"nfs"</span>
 
 <span class="k">end</span>
 </code></pre></div>

@@ -34228,7 +34228,7 @@
 <h2 id="02">02. 文法<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">キー名<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>JSON のキー名はローワーキャメルケースにする。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;propertyName&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;propertyValue&quot;</span><span class="p p-Indicator">}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"propertyName"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"propertyValue"</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34237,11 +34237,11 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">配列<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;account&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;fruit&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;banana&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;apple&quot;</span><span class="p p-Indicator">]}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"account"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"fruit"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"banana"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"apple"</span><span class="p p-Indicator">]}</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_4">オブジェクト<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;account&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;fruit&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;banana&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;BANANA&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;apple&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;APPLE&quot;</span><span class="p p-Indicator">}}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"account"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"fruit"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"banana"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"BANANA"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"apple"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"APPLE"</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_5">コメントアウト<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
@@ -34249,12 +34249,12 @@
 <p>代わりに、<code>_comment</code> キーを定義する。</p>
 <p>アプリ側で、JSON の <code>_comment</code> キーを無視するような処理を実装する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;_comment&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;金額&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;account&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;_comment&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;フルーツ&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;fruit&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">    </span><span class="s">&quot;banana&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;BANANA&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">    </span><span class="s">&quot;apple&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;APPLE&quot;</span>
+<span class="w">  </span><span class="s">"_comment"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"金額"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"account"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"_comment"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"フルーツ"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"fruit"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">    </span><span class="s">"banana"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"BANANA"</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"apple"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"APPLE"</span>
 <span class="w">  </span><span class="p p-Indicator">}</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
@@ -34284,7 +34284,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">account</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">fruit</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;banana&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;apple&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">fruit</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"banana"</span><span class="p">,</span><span class="w"> </span><span class="s2">"apple"</span><span class="p">],</span>
 <span class="p">};</span>
 </code></pre></div>
 <h4 id="_9">▼ キーと値の変更方法<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
@@ -34297,33 +34297,33 @@
 <span class="p">};</span>
 
 <span class="nx">json</span><span class="p">.</span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30</span><span class="p">;</span>
-<span class="nx">json</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;taro&quot;</span><span class="p">;</span>
-<span class="nx">json</span><span class="p">.</span><span class="nx">tel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;090-0123-4567&quot;</span><span class="p">;</span>
+<span class="nx">json</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"taro"</span><span class="p">;</span>
+<span class="nx">json</span><span class="p">.</span><span class="nx">tel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"090-0123-4567"</span><span class="p">;</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
 
 <span class="c1">// areaというキーの値を追加</span>
-<span class="nx">json</span><span class="p">.</span><span class="nx">prefecture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Tokyo&quot;</span><span class="p">;</span>
+<span class="nx">json</span><span class="p">.</span><span class="nx">prefecture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Tokyo"</span><span class="p">;</span>
 
 <span class="c1">// もしくは、</span>
-<span class="nx">json</span><span class="p">[</span><span class="s2">&quot;prefecture&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Tokyo&quot;</span><span class="p">;</span>
+<span class="nx">json</span><span class="p">[</span><span class="s2">"prefecture"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Tokyo"</span><span class="p">;</span>
 
 <span class="c1">// 以下は。undefined になる。二段階の定義はできない。</span>
-<span class="c1">//// json.prefecture.area = &quot;Shibuya&quot;;</span>
+<span class="c1">//// json.prefecture.area = "Shibuya";</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">30</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;taro&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">tel</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;090-0123-4567&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"taro"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">tel</span><span class="o">:</span><span class="w"> </span><span class="s2">"090-0123-4567"</span><span class="p">,</span>
 <span class="p">};</span>
 
 <span class="c1">// areaというキーの値を追加</span>
-<span class="nx">json</span><span class="p">.</span><span class="nx">prefecture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Tokyo&quot;</span><span class="p">;</span>
+<span class="nx">json</span><span class="p">.</span><span class="nx">prefecture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Tokyo"</span><span class="p">;</span>
 
 <span class="c1">// もしくは、</span>
-<span class="nx">json</span><span class="p">[</span><span class="s2">&quot;prefecture&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Tokyo&quot;</span><span class="p">;</span>
+<span class="nx">json</span><span class="p">[</span><span class="s2">"prefecture"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Tokyo"</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="_10">▼ キーの並び順<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>キーはアルファベット順に並べるとよい。</p>
@@ -34340,7 +34340,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">account</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">fruit</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;banana&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;apple&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">fruit</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"banana"</span><span class="p">,</span><span class="w"> </span><span class="s2">"apple"</span><span class="p">],</span>
 <span class="p">};</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="p">{</span>
@@ -34378,7 +34378,7 @@
 <p>JS 型オブジェクトから JSON への変換には、<code>JSON.stringfy()</code> 関数を使用する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">fruit</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;banana&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;apple&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">fruit</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"banana"</span><span class="p">,</span><span class="w"> </span><span class="s2">"apple"</span><span class="p">],</span>
 <span class="w">  </span><span class="nx">account</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
 <span class="p">};</span>
 
@@ -34386,21 +34386,21 @@
 <span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">object</span><span class="p">);</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span>
-<span class="c1">// {&quot;fruit&quot;:[&quot;banana&quot;,&quot;apple&quot;],&quot;account&quot;:200}</span>
+<span class="c1">// {"fruit":["banana","apple"],"account":200}</span>
 </code></pre></div>
 <h4 id="json-js">▼ デシリアライズ：JSON から JS 型<a class="headerlink" href="#json-js" title="Permanent link">&para;</a></h4>
 <p>JSON から JS 型オブジェクトへの変換には、<code>JSON.parse()</code> 関数を使用する。</p>
 <p>レスポンスされた JSON はエスケープされていることに注意する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">escapedJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;{&quot;fruit&quot;:[&quot;banana&quot;,&quot;apple&quot;],&quot;account&quot;:200}&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">escapedJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'{"fruit":["banana","apple"],"account":200}'</span><span class="p">;</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">escapedJson</span><span class="p">);</span><span class="w"> </span><span class="c1">// {&quot;fruit&quot;:[&quot;banana&quot;,&quot;apple&quot;],&quot;account&quot;:200}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">escapedJson</span><span class="p">);</span><span class="w"> </span><span class="c1">// {"fruit":["banana","apple"],"account":200}</span>
 
 <span class="c1">// デシリアライズ</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">escapedJson</span><span class="p">);</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">object</span><span class="p">);</span>
-<span class="c1">// { fruit: [ &#39;banana&#39;, &#39;apple&#39; ], account: 200 }</span>
+<span class="c1">// { fruit: [ 'banana', 'apple' ], account: 200 }</span>
 </code></pre></div>
 <h4 id="_16">▼ 相互パース関数を持つクラス<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
@@ -34455,21 +34455,21 @@
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// リクエストで取得したJSON</span>
-<span class="nv">$escapedJson</span> <span class="o">=</span> <span class="s1">&#39;{\&quot;fruit\&quot;:[\&quot;banana\&quot;,\&quot;apple\&quot;],\&quot;account\&quot;:200}&#39;</span><span class="p">;</span>
+<span class="nv">$escapedJson</span> <span class="o">=</span> <span class="s1">'{\"fruit\":[\"banana\",\"apple\"],\"account\":200}'</span><span class="p">;</span>
 
 <span class="c1">// object形式オブジェクトに変換</span>
 <span class="nv">$object</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$escapedJson</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
 
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$object</span><span class="p">);</span>
 <span class="c1">//  object(stdClass)#1 (2) {</span>
-<span class="c1">//    [&quot;fruit&quot;]=&gt;</span>
+<span class="c1">//    ["fruit"]=&gt;</span>
 <span class="c1">//    array(2) {</span>
 <span class="c1">//      [0]=&gt;</span>
-<span class="c1">//      string(9) &quot;banana&quot;</span>
+<span class="c1">//      string(9) "banana"</span>
 <span class="c1">//      [1]=&gt;</span>
-<span class="c1">//      string(9) &quot;apple&quot;</span>
+<span class="c1">//      string(9) "apple"</span>
 <span class="c1">//    }</span>
-<span class="c1">//    [&quot;account&quot;]=&gt;</span>
+<span class="c1">//    ["account"]=&gt;</span>
 <span class="c1">//    int(200)</span>
 <span class="c1">//  }</span>
 </code></pre></div>
@@ -34477,34 +34477,34 @@
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// リクエストで取得したJSON</span>
-<span class="nv">$escapedJson</span> <span class="o">=</span> <span class="s1">&#39;{\&quot;fruit\&quot;:[\&quot;banana\&quot;,\&quot;apple\&quot;],\&quot;account\&quot;:200}&#39;</span><span class="p">;</span>
+<span class="nv">$escapedJson</span> <span class="o">=</span> <span class="s1">'{\"fruit\":[\"banana\",\"apple\"],\"account\":200}'</span><span class="p">;</span>
 
 <span class="c1">// 連想配列形式オブジェクトに変換</span>
 <span class="nv">$array</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$escapedJson</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
 <span class="c1">//  array(2) {</span>
-<span class="c1">//    [&quot;fruit&quot;]=&gt;</span>
+<span class="c1">//    ["fruit"]=&gt;</span>
 <span class="c1">//    array(2) {</span>
 <span class="c1">//      [0]=&gt;</span>
-<span class="c1">//      string(9) &quot;banana&quot;</span>
+<span class="c1">//      string(9) "banana"</span>
 <span class="c1">//      [1]=&gt;</span>
-<span class="c1">//      string(9) &quot;apple&quot;</span>
+<span class="c1">//      string(9) "apple"</span>
 <span class="c1">//    }</span>
-<span class="c1">//    [&quot;account&quot;]=&gt;</span>
+<span class="c1">//    ["account"]=&gt;</span>
 <span class="c1">//    int(200)</span>
 <span class="c1">//  }</span>
 </code></pre></div>
 <h4 id="php-json">▼ シリアライズ：PHP 型から JSON<a class="headerlink" href="#php-json" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$object</span> <span class="o">=</span> <span class="s1">&#39;{&quot;fruit&quot;:[&quot;banana&quot;,&quot;apple&quot;],&quot;account&quot;:200}&#39;</span><span class="p">;</span>
+<span class="nv">$object</span> <span class="o">=</span> <span class="s1">'{"fruit":["banana","apple"],"account":200}'</span><span class="p">;</span>
 
 <span class="c1">// JSONに変換</span>
 <span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$object</span><span class="p">);</span>
 
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$json</span><span class="p">);</span>
-<span class="c1">// &quot;&quot;{\&quot;fruit\&quot;:[\&quot;banana\&quot;,\&quot;apple\&quot;],\&quot;account\&quot;:200}&quot;&quot;</span>
+<span class="c1">// ""{\"fruit\":[\"banana\",\"apple\"],\"account\":200}""</span>
 </code></pre></div>
 <p><br></p>
 

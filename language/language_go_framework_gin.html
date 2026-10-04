@@ -34578,7 +34578,7 @@
 
 <span class="w">    </span><span class="nx">Params</span><span class="w"> </span><span class="nx">Params</span>
 
-<span class="w">    </span><span class="nx">Keys</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span>
+<span class="w">    </span><span class="nx">Keys</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span>
 
 <span class="w">    </span><span class="nx">Errors</span><span class="w"> </span><span class="nx">errorMsgs</span>
 
@@ -34599,18 +34599,18 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>Gin の計装で必要なコンテキストも <code>gin.Context.Request.Context</code> である。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">Middleware</span><span class="p">(</span><span class="nx">service</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">Middleware</span><span class="p">(</span><span class="nx">service</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="w"> </span><span class="p">...</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">        </span><span class="o">...</span>
+<span class="w">        </span><span class="p">...</span>
 
 <span class="w">        </span><span class="nx">savedCtx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">()</span>
 
-<span class="w">        </span><span class="o">...</span>
+<span class="w">        </span><span class="p">...</span>
 
 <span class="w">        </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">Propagators</span><span class="p">.</span><span class="nx">Extract</span><span class="p">(</span>
 <span class="w">            </span><span class="nx">savedCtx</span><span class="p">,</span>
@@ -34618,12 +34618,12 @@
 <span class="w">            </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">HeaderCarrier</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="p">)</span>
 <span class="w">        </span><span class="p">)</span>
 
-<span class="w">        </span><span class="o">...</span>
+<span class="w">        </span><span class="p">...</span>
 
-<span class="w">        </span><span class="nx">tracer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;&lt;計装パッケージ名&gt;&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">spanName</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="o">...</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">tracer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">"&lt;計装パッケージ名&gt;"</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">spanName</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="p">...)</span>
 
-<span class="w">        </span><span class="o">...</span>
+<span class="w">        </span><span class="p">...</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -34648,8 +34648,8 @@
 <p><code>Content-Type</code> ヘッダーの MIME タイプは <code>application/json</code> であることが前提である。</p>
 <p>リクエストから JSON 型データを取得し、構造体に紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">Id</span><span class="w">   </span><span class="kt">int</span><span class="w">    </span><span class="s">`json:&quot;id&quot;   binding:&quot;required&quot;`</span>
-<span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;name&quot; binding:&quot;required&quot;`</span>
+<span class="w">    </span><span class="nx">Id</span><span class="w">   </span><span class="kt">int</span><span class="w">    </span><span class="s">`json:"id"   binding:"required"`</span>
+<span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:"name" binding:"required"`</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -34685,43 +34685,43 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
 <span class="w">        </span><span class="mi">200</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hiroki hasegawa&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"hiroki hasegawa"</span><span class="p">},</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>構造体型データを渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
 <span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">id</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nx">json</span><span class="p">:</span><span class="s">&quot;id&quot;</span>
-<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nx">json</span><span class="p">:</span><span class="s">&quot;name&quot;</span>
+<span class="w">    </span><span class="nx">id</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nx">json</span><span class="p">:</span><span class="s">"id"</span>
+<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nx">json</span><span class="p">:</span><span class="s">"name"</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
 <span class="w">        </span><span class="mi">200</span><span class="p">,</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="nx">Foo</span><span class="p">{</span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hiroki hasegawa&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="nx">Foo</span><span class="p">{</span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">"hiroki hasegawa"</span><span class="p">},</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -34744,9 +34744,9 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">getRequestContext</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="w"> </span><span class="p">{</span>
@@ -34763,15 +34763,15 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">"log"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">getRequestHeader</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// HTTPヘッダーの特定の値を取得する</span>
-<span class="w">    </span><span class="nx">val</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;&lt;ヘッダーのキー名&gt;&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">val</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">"&lt;ヘッダーのキー名&gt;"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span>
 
@@ -34787,18 +34787,18 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">"log"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">printRequestHeaderList</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// HTTPヘッダーのリストを取得する</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">k</span><span class="p">,</span><span class="w"> </span><span class="nx">vals</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">k</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">k</span><span class="p">)</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">vals</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -34830,9 +34830,9 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middlewares</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;strconv&quot;</span>
+<span class="w">    </span><span class="s">"strconv"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
 <span class="p">)</span>
 
 <span class="c1">// ConvertId パスパラメーターのidのデータ型を変換します。</span>
@@ -34840,14 +34840,14 @@
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">        </span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Param</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">))</span>
+<span class="w">        </span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Param</span><span class="p">(</span><span class="s">"id"</span><span class="p">))</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
+<span class="w">            </span><span class="nx">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
 <span class="w">            </span><span class="k">return</span>
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">        </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">"id"</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="p">)</span>
 
 <span class="w">        </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Next</span><span class="p">()</span>
 <span class="w">    </span><span class="p">}</span>
@@ -34863,13 +34863,13 @@
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">uc</span><span class="w"> </span><span class="o">*</span><span class="nx">UserController</span><span class="p">)</span><span class="w"> </span><span class="nx">GetUser</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// インターフェース型になってしまう。</span>
-<span class="w">    </span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">"id"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">uc</span><span class="p">.</span><span class="nx">SendErrorJson</span><span class="p">(</span>
 <span class="w">            </span><span class="nx">ginCtx</span><span class="p">,</span>
 <span class="w">            </span><span class="mi">400</span><span class="p">,</span>
-<span class="w">            </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Parameters are not found.&quot;</span><span class="p">},</span>
+<span class="w">            </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"Parameters are not found."</span><span class="p">},</span>
 <span class="w">        </span><span class="p">)</span>
 
 <span class="w">        </span><span class="k">return</span>
@@ -34892,12 +34892,12 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="nx">router</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">New</span><span class="p">()</span>
 <span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">FooMiddleware</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">FooMiddleware</span><span class="p">()</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="w"> </span><span class="p">{</span>
@@ -34913,12 +34913,12 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">gin</span><span class="p">.</span><span class="nx">WrapH</span><span class="p">(</span><span class="nx">BarMiddleware</span><span class="p">(</span><span class="nx">router</span><span class="p">)))</span>
 <span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">gin</span><span class="p">.</span><span class="nx">WrapF</span><span class="p">(</span><span class="nx">BazMiddleware</span><span class="p">(</span><span class="nx">router</span><span class="p">)))</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">BarMiddleware</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
@@ -34950,16 +34950,16 @@
 <h2 id="util">Util<a class="headerlink" href="#util" title="Permanent link">&para;</a></h2>
 <h3 id="h">H<a class="headerlink" href="#h" title="Permanent link">&para;</a></h3>
 <p>map 型の変数のエイリアスとして働く。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">H</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">H</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
 <span class="w">  </span><span class="mi">200</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hiroki hasegawa&quot;</span><span class="p">},</span>
+<span class="w">  </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">"name"</span><span class="p">:</span><span class="w"> </span><span class="s">"hiroki hasegawa"</span><span class="p">},</span>
 <span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
 <span class="w">  </span><span class="mi">400</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&quot;errors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Fooエラーメッセージ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Barエラーメッセージ&quot;</span><span class="p">}},</span>
+<span class="w">  </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"Fooエラーメッセージ"</span><span class="p">,</span><span class="w"> </span><span class="s">"Barエラーメッセージ"</span><span class="p">}},</span>
 <span class="p">)</span>
 </code></pre></div>
 <p><br></p>

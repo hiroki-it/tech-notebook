@@ -34424,16 +34424,16 @@
 <p><br></p>
 <h3 id="_5">ログ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;grpc.method&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Watch&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;grpc.request.claims&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;アカウントの情報&gt;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;grpc.request.content&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;grpc.service&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;application.ApplicationService&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;grpc.start_time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2023-01-27T07:08:59Z&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;level&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;info&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;msg&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;span.kind&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;server&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;system&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;grpc&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2023-01-27T07:08:59Z&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"grpc.method"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Watch"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"grpc.request.claims"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;アカウントの情報&gt;"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"grpc.request.content"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">"grpc.service"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"application.ApplicationService"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"grpc.start_time"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2023-01-27T07:08:59Z"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"level"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"info"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"msg"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"..."</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"span.kind"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"server"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"system"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"grpc"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"time"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2023-01-27T07:08:59Z"</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
@@ -34469,7 +34469,7 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>-it<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>foo-argocd-repo-server<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-c<span class="w"> </span>repo-server<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;sops --version&quot;</span>
+<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">"sops --version"</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p><code>/tmp/_argocd-repo/&lt;URLに基づくUUID&gt;</code> ディレクトリ配下で、<code>helm template</code> コマンドを使用して Secret の値を確認する。</p>
@@ -34477,7 +34477,7 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>-it<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>foo-argocd-repo-server<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-c<span class="w"> </span>repo-server<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;cd /tmp/_argocd-repo/&lt;URLに基づくUUID&gt; &amp;&amp; helm template . -f foo-values.yaml | nl&quot;</span>
+<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">"cd /tmp/_argocd-repo/&lt;URLに基づくUUID&gt; &amp;&amp; helm template . -f foo-values.yaml | nl"</span>
 </code></pre></div>
 <blockquote>
 <ul>

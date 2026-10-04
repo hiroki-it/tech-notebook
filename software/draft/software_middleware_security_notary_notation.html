@@ -33462,17 +33462,17 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>notation<span class="w"> </span>policy<span class="w"> </span>import<span class="w"> </span>aws/signer_policy.json
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;1.0&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;trustPolicies&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"1.0"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"trustPolicies"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;aws-signer-tp&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;registryScopes&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;signatureVerification&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;level&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;strict&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="s">&quot;trustStores&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;signingAuthority:aws-signer-ts&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;trustedIdentities&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"aws-signer-tp"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"registryScopes"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="s">"signatureVerification"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"level"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"strict"</span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="s">"trustStores"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"signingAuthority:aws-signer-ts"</span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="s">"trustedIdentities"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">[</span>
-<span class="w">            </span><span class="s">&quot;arn:aws:signer:&lt;リージョン&gt;:&lt;AWSアカウントID&gt;:/signing-profiles/&lt;署名プロファイル名&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"arn:aws:signer:&lt;リージョン&gt;:&lt;AWSアカウントID&gt;:/signing-profiles/&lt;署名プロファイル名&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">],</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
@@ -33491,7 +33491,7 @@
 <p><strong>＊実行例＊</strong></p>
 <p>AWS Signer にある署名プロファイルを使用し、Amazon ECR 上でのコンテナイメージを署名する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>notation<span class="w"> </span>sign<span class="w"> </span>&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--plugin<span class="w"> </span><span class="s2">&quot;com.amazonaws.signer.notation.plugin&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--plugin<span class="w"> </span><span class="s2">"com.amazonaws.signer.notation.plugin"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--id<span class="w"> </span>arn:aws:signer:ap-northeast:&lt;AWSアカウントID&gt;:/signing-profiles/&lt;署名プロファイル名&gt;
 </code></pre></div>
 <p><br></p>

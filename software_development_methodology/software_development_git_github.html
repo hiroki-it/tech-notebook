@@ -34916,9 +34916,9 @@
 <h3 id="_22">最新リリース<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <p>GitHub の API を使用することで、リリースページにある最新のバイナリをインストールできる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># リリースページの最新のバイナリへのURLを取得する</span>
-$<span class="w"> </span><span class="nv">LATEST_DOWNLOAD_URL</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-sL<span class="w"> </span>https://api.github.com/repos/hiroki-hasegawa/foo-repository/releases/latest<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;.assets[].browser_download_url&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>linux_amd64<span class="k">)</span>
+$<span class="w"> </span><span class="nv">LATEST_DOWNLOAD_URL</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-sL<span class="w"> </span>https://api.github.com/repos/hiroki-hasegawa/foo-repository/releases/latest<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s2">".assets[].browser_download_url"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>linux_amd64<span class="k">)</span>
 
-$<span class="w"> </span>curl<span class="w"> </span>-sL<span class="w"> </span>-O<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">LATEST_DOWNLOAD_URL</span><span class="si">}</span><span class="s2">&quot;</span>
+$<span class="w"> </span>curl<span class="w"> </span>-sL<span class="w"> </span>-O<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">LATEST_DOWNLOAD_URL</span><span class="si">}</span><span class="s2">"</span>
 
 <span class="c1"># 解凍する</span>
 $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>*.tar.gz
@@ -35088,8 +35088,8 @@ $<span class="w"> </span>./foo-bainary<span class="w"> </span>--version
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>Unmerged<span class="w"> </span>paths:
-<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git restore --staged &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>unstage<span class="o">)</span>
-<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>mark<span class="w"> </span>resolution<span class="o">)</span>
+<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git restore --staged &lt;file&gt;..."</span><span class="w"> </span>to<span class="w"> </span>unstage<span class="o">)</span>
+<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">"git add &lt;file&gt;..."</span><span class="w"> </span>to<span class="w"> </span>mark<span class="w"> </span>resolution<span class="o">)</span>
 <span class="w">        </span>both<span class="w"> </span>modified:<span class="w">   </span>foo/bar.twig
 </code></pre></div>
 <dl>
@@ -35129,7 +35129,7 @@ Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </sp
 <p><code>git commit</code> (<code>-m</code> はつけてはいけない) を行い、vim エディタが表示される。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code><span class="w"> </span>Merge<span class="w"> </span>branch<span class="w"> </span><span class="s2">&quot;ブランチ名&quot;</span><span class="w"> </span>into<span class="w"> </span>ブランチ名
+<div class="highlight"><pre><span></span><code><span class="w"> </span>Merge<span class="w"> </span>branch<span class="w"> </span><span class="s2">"ブランチ名"</span><span class="w"> </span>into<span class="w"> </span>ブランチ名
 </code></pre></div>
 <dl>
 <dt><code>(6)</code></dt>
@@ -35141,7 +35141,7 @@ Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </sp
 <p><code>git status</code> を実行する。場合によっては、差分のコミット数が表示されるが問題ない。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>Your<span class="w"> </span>branch<span class="w"> </span>is<span class="w"> </span>ahead<span class="w"> </span>of<span class="w"> </span><span class="s2">&quot;origin/feature/update_foo&quot;</span><span class="w"> </span>by<span class="w"> </span><span class="m">10</span><span class="w"> </span>commits.
+<div class="highlight"><pre><span></span><code>Your<span class="w"> </span>branch<span class="w"> </span>is<span class="w"> </span>ahead<span class="w"> </span>of<span class="w"> </span><span class="s2">"origin/feature/update_foo"</span><span class="w"> </span>by<span class="w"> </span><span class="m">10</span><span class="w"> </span>commits.
 </code></pre></div>
 <dl>
 <dt><code>(8)</code></dt>

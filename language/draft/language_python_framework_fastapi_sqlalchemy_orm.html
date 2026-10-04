@@ -33460,12 +33460,12 @@
     <span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">sessionmaker</span>
 
-    <span class="n">db_url</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{db_driver}</span><span class="s2">://</span><span class="si">{db_user}</span><span class="s2">:</span><span class="si">{db_password}</span><span class="s2">@</span><span class="si">{db_host}</span><span class="s2">/</span><span class="si">{db_database}</span><span class="s2">?charset=utf8&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-        <span class="n">db_driver</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_DRIVER&quot;</span><span class="p">),</span>
-        <span class="n">db_user</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_USER&quot;</span><span class="p">),</span>
-        <span class="n">db_password</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_PASSWORD&quot;</span><span class="p">),</span>
-        <span class="n">db_host</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_HOST&quot;</span><span class="p">),</span>
-        <span class="n">db_database</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_DATABASE&quot;</span><span class="p">),</span>
+    <span class="n">db_url</span> <span class="o">=</span> <span class="s2">"</span><span class="si">{db_driver}</span><span class="s2">://</span><span class="si">{db_user}</span><span class="s2">:</span><span class="si">{db_password}</span><span class="s2">@</span><span class="si">{db_host}</span><span class="s2">/</span><span class="si">{db_database}</span><span class="s2">?charset=utf8"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">db_driver</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"DB_DRIVER"</span><span class="p">),</span>
+        <span class="n">db_user</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"DB_USER"</span><span class="p">),</span>
+        <span class="n">db_password</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"DB_PASSWORD"</span><span class="p">),</span>
+        <span class="n">db_host</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"DB_HOST"</span><span class="p">),</span>
+        <span class="n">db_database</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"DB_DATABASE"</span><span class="p">),</span>
     <span class="p">)</span>
 
     <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">db_url</span><span class="p">)</span>
@@ -33504,7 +33504,7 @@
 
  <span class="c1"># 基底モデルクラスを継承する。</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
-    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;users&quot;</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">"users"</span>
 
     <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="o">...</span>
@@ -33532,7 +33532,7 @@
      <span class="c1"># @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-data</span>
      <span class="k">def</span><span class="w"> </span><span class="nf">createFoo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
-         <span class="n">foo</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">(</span><span class="n">first_name</span><span class="o">=</span><span class="s2">&quot;hiroki&quot;</span><span class="p">,</span> <span class="n">last_name</span><span class="o">=</span><span class="s2">&quot;hasegawa&quot;</span><span class="p">)</span>
+         <span class="n">foo</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">(</span><span class="n">first_name</span><span class="o">=</span><span class="s2">"hiroki"</span><span class="p">,</span> <span class="n">last_name</span><span class="o">=</span><span class="s2">"hasegawa"</span><span class="p">)</span>
 
          <span class="c1"># CREATE処理を実行する (セッションにクラスを追加する)</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>

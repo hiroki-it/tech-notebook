@@ -34175,10 +34175,10 @@
 <span class="k">function</span> <span class="nf">foo</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$foo</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$foo</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">throw</span> <span class="k">new</span> <span class="nx">FooNotFoundException</span><span class="p">(</span><span class="s2">&quot;foo is not found.&quot;</span><span class="p">);</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">FooNotFoundException</span><span class="p">(</span><span class="s2">"foo is not found."</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="k">return</span> <span class="s2">&quot;これは </span><span class="si">${</span><span class="nv">foo</span><span class="si">}</span><span class="s2"> です。&quot;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s2">"これは </span><span class="si">${</span><span class="nv">foo</span><span class="si">}</span><span class="s2"> です。"</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_5">▼ 命名規則<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
@@ -34209,10 +34209,10 @@
 
     <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$value</span><span class="p">))</span> <span class="p">{</span>
         <span class="c1">// 例外クラスを返却</span>
-        <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">&quot;Value is empty&quot;</span><span class="p">);</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">"Value is empty"</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="k">return</span> <span class="s2">&quot;これは </span><span class="si">${</span><span class="nv">value</span><span class="si">}</span><span class="s2"> です。&quot;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s2">"これは </span><span class="si">${</span><span class="nv">value</span><span class="si">}</span><span class="s2"> です。"</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>ただし、if-throw では、都度例外を検証するがあり、さまざまな可能性を考慮しなければいけなくなる。</p>
@@ -34228,7 +34228,7 @@
         <span class="k">throw</span> <span class="k">new</span> <span class="nx">FooInvalidArgumentException</span><span class="p">();</span>
     <span class="p">}</span>
 
-    <span class="k">return</span> <span class="s2">&quot;成功です。&quot;</span>
+    <span class="k">return</span> <span class="s2">"成功です。"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -34293,37 +34293,37 @@
             <span class="c1">// `(1)`</span>
 
 <span class="o">:</span>
-            <span class="k">echo</span> <span class="s2">&quot;Aの直前です&quot;</span><span class="p">;</span>
-            <span class="k">return</span> <span class="s2">&quot;Aです。&quot;</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s2">"Aの直前です"</span><span class="p">;</span>
+            <span class="k">return</span> <span class="s2">"Aです。"</span><span class="p">;</span>
 
         <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ExternalApiErrorException</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
             <span class="c1">// `(2)`</span>
 
 <span class="o">:</span>
-            <span class="k">echo</span> <span class="s2">&quot;Bの直前です&quot;</span><span class="p">;</span>
-            <span class="k">return</span> <span class="s2">&quot;Bです。&quot;</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s2">"Bの直前です"</span><span class="p">;</span>
+            <span class="k">return</span> <span class="s2">"Bです。"</span><span class="p">;</span>
 
         <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">HttpRequestErrorException</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
             <span class="c1">// `(3)`</span>
 
 <span class="o">:</span>
-            <span class="k">echo</span> <span class="s2">&quot;Cの直前です&quot;</span><span class="p">;</span>
-            <span class="k">return</span> <span class="s2">&quot;Cです。&quot;</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s2">"Cの直前です"</span><span class="p">;</span>
+            <span class="k">return</span> <span class="s2">"Cです。"</span><span class="p">;</span>
 
         <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
             <span class="c1">// `(4)`</span>
 
 <span class="o">:</span>
-            <span class="k">echo</span> <span class="s2">&quot;Dの直前です&quot;</span><span class="p">;</span>
-            <span class="k">return</span> <span class="s2">&quot;Dです。&quot;</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s2">"Dの直前です"</span><span class="p">;</span>
+            <span class="k">return</span> <span class="s2">"Dです。"</span><span class="p">;</span>
 
         <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
 
             <span class="c1">// returnやcontinueを使用しない</span>
-            <span class="k">echo</span> <span class="s2">&quot;Eです。&quot;</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s2">"Eです。"</span><span class="p">;</span>
 
         <span class="p">}</span>
     <span class="p">}</span>
@@ -34404,9 +34404,9 @@
 </ul>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="x">error_log(</span>
-<span class="x">    &quot;&lt;エラーメッセージ&gt;&quot;,</span>
-<span class="x">    &quot;&lt;メッセージの出力先 (3の場合にファイル出力) &gt;&quot;,</span>
-<span class="x">    &quot;&lt;ログファイルへのパス&gt;&quot;</span>
+<span class="x">    "&lt;エラーメッセージ&gt;",</span>
+<span class="x">    "&lt;メッセージの出力先 (3の場合にファイル出力) &gt;",</span>
+<span class="x">    "&lt;ログファイルへのパス&gt;"</span>
 <span class="x">)</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
@@ -34424,13 +34424,13 @@
 
             <span class="nb">error_log</span><span class="p">(</span>
                 <span class="nb">sprintf</span><span class="p">(</span>
-                    <span class="s2">&quot;ERROR: %s at %s line %s&quot;</span><span class="p">,</span>
+                    <span class="s2">"ERROR: %s at %s line %s"</span><span class="p">,</span>
                     <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span>
                     <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(),</span>
                     <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">()</span>
                 <span class="p">),</span>
                 <span class="mi">3</span><span class="p">,</span>
-                <span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">&quot;/error.log&quot;</span>
+                <span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">"/error.log"</span>
             <span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -34464,7 +34464,7 @@
         <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\exception</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
-                <span class="s2">&quot;ERROR: %s at %s line %s&quot;</span><span class="p">,</span>
+                <span class="s2">"ERROR: %s at %s line %s"</span><span class="p">,</span>
                 <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span>
                 <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(),</span>
                 <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">()</span>
@@ -34503,7 +34503,7 @@
 
             <span class="c1">// 外部APIとの接続失敗によるエラーをロギング</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
-                <span class="s2">&quot;ERROR: %s at %s line %s&quot;</span><span class="p">,</span>
+                <span class="s2">"ERROR: %s at %s line %s"</span><span class="p">,</span>
                 <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span>
                 <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(),</span>
                 <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">()</span>
@@ -34515,7 +34515,7 @@
 
             <span class="c1">// 外部APIのソフトウェアエラーをロギング</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
-                <span class="s2">&quot;ERROR: %s at %s line %s&quot;</span><span class="p">,</span>
+                <span class="s2">"ERROR: %s at %s line %s"</span><span class="p">,</span>
                 <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span>
                 <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(),</span>
                 <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">()</span>
@@ -34527,7 +34527,7 @@
 
             <span class="c1">// その他 (例：自社ソフトウェアなど) によるエラーをロギング</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
-                <span class="s2">&quot;ERROR: %s at %s line %s&quot;</span><span class="p">,</span>
+                <span class="s2">"ERROR: %s at %s line %s"</span><span class="p">,</span>
                 <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span>
                 <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(),</span>
                 <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">()</span>

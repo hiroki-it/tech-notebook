@@ -33988,12 +33988,12 @@
 <li><a href="https://kubernetes.io/docs/contribute/style/style-guide/#use-upper-camel-case-for-api-objects">https://kubernetes.io/docs/contribute/style/style-guide/#use-upper-camel-case-for-api-objects</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="nt">fooBarBaz</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">fooBarBaz</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 </code></pre></div>
 <h4 id="_4">▼ スネークケース<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>中頻度で使用されている。</p>
 <p>例えば、Envoy ではスネークケースに統一されている。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">foo_bar_baz</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">foo_bar_baz</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34002,20 +34002,20 @@
 </blockquote>
 <h4 id="_5">▼ ケバブケース<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>低頻度で使用されている。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">foo-bar-baz</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">foo-bar-baz</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03">03. 文法<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_6">配列<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ <code>[]</code> (括弧)<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">account</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
-<span class="nt">fruit</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;banana&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;apple&quot;</span><span class="p p-Indicator">]</span>
+<span class="nt">fruit</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"banana"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"apple"</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <h4 id="-">▼ <code>-</code> (マイナス)<a class="headerlink" href="#-" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">account</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
 <span class="nt">fruit</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;banana&quot;</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;apple&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"banana"</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"apple"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_8">改行<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
@@ -34028,7 +34028,7 @@
 <span class="w">  </span><span class="no">echo bar</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 処理中の構造</span>
-<span class="p p-Indicator">{</span><span class="w"> </span><span class="s">&quot;command&quot;</span><span class="w"> </span><span class="nv">=&gt; &quot;echo foo\necho bar\n&quot;</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="p p-Indicator">{</span><span class="w"> </span><span class="s">"command"</span><span class="w"> </span><span class="nv">=&gt; "echo foo\necho bar\n"</span><span class="w"> </span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34044,7 +34044,7 @@
 <span class="w">  </span><span class="no">echo bar</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 処理中の構造</span>
-<span class="p p-Indicator">{</span><span class="w"> </span><span class="s">&quot;command&quot;</span><span class="w"> </span><span class="nv">=&gt; &quot;echo foo\necho bar\n&quot;</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="p p-Indicator">{</span><span class="w"> </span><span class="s">"command"</span><span class="w"> </span><span class="nv">=&gt; "echo foo\necho bar\n"</span><span class="w"> </span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34060,7 +34060,7 @@
 <span class="w">  </span><span class="no">echo bar</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 処理中の構造</span>
-<span class="p p-Indicator">{</span><span class="w"> </span><span class="s">&quot;command&quot;</span><span class="w"> </span><span class="nv">=&gt; &quot;echo foo\necho bar&quot;</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="p p-Indicator">{</span><span class="w"> </span><span class="s">"command"</span><span class="w"> </span><span class="nv">=&gt; "echo foo\necho bar"</span><span class="w"> </span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34076,13 +34076,13 @@
 <span class="w">  </span><span class="no">echo bar</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 処理中の構造</span>
-<span class="p p-Indicator">{</span><span class="w"> </span><span class="s">&quot;command&quot;</span><span class="w"> </span><span class="nv">=&gt; &quot;echo foo;echo bar\n&quot;</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="p p-Indicator">{</span><span class="w"> </span><span class="s">"command"</span><span class="w"> </span><span class="nv">=&gt; "echo foo;echo bar\n"</span><span class="w"> </span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><code>&gt;</code> を使用すれば、１行の条件文を複数行で定義できる。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">if [ -z &quot;$VAR&quot; ];then echo foo; else echo bar; fi</span>
+<div class="highlight"><pre><span></span><code><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">if [ -z "$VAR" ];then echo foo; else echo bar; fi</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">  </span><span class="no">if [ -z &quot;$VAR&quot; ];then</span>
+<span class="w">  </span><span class="no">if [ -z "$VAR" ];then</span>
 <span class="w">    </span><span class="no">echo foo;</span>
 <span class="w">  </span><span class="no">else</span>
 <span class="w">    </span><span class="no">echo bar;</span>
@@ -34103,7 +34103,7 @@
 <span class="w">  </span><span class="no">echo bar</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 処理中の構造</span>
-<span class="p p-Indicator">{</span><span class="w"> </span><span class="s">&quot;command&quot;</span><span class="w"> </span><span class="nv">=&gt; &quot;echo foo &amp;&amp; echo bar\n&quot;</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="p p-Indicator">{</span><span class="w"> </span><span class="s">"command"</span><span class="w"> </span><span class="nv">=&gt; "echo foo &amp;&amp; echo bar\n"</span><span class="w"> </span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34120,7 +34120,7 @@
 <span class="w">  </span><span class="no">echo bar</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 処理中の構造</span>
-<span class="p p-Indicator">{</span><span class="w"> </span><span class="s">&quot;command&quot;</span><span class="w"> </span><span class="nv">=&gt; &quot;echo foo &amp;&amp; echo bar&quot;</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="p p-Indicator">{</span><span class="w"> </span><span class="s">"command"</span><span class="w"> </span><span class="nv">=&gt; "echo foo &amp;&amp; echo bar"</span><span class="w"> </span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
 <ul>

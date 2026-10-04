@@ -33829,9 +33829,9 @@
 
 <span class="c1"># 任意のトレースコンテキストを設定する</span>
 <span class="n">resource</span> <span class="o">=</span> <span class="n">Resource</span><span class="o">.</span><span class="n">create</span><span class="p">({</span>
-        <span class="s2">&quot;service.name&quot;</span><span class="p">:</span> <span class="s2">&quot;flask_e2e_client&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;service.namespace&quot;</span><span class="p">:</span> <span class="s2">&quot;examples&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;service.instance.id&quot;</span><span class="p">:</span> <span class="s2">&quot;instance554&quot;</span><span class="p">,</span>
+        <span class="s2">"service.name"</span><span class="p">:</span> <span class="s2">"flask_e2e_client"</span><span class="p">,</span>
+        <span class="s2">"service.namespace"</span><span class="p">:</span> <span class="s2">"examples"</span><span class="p">,</span>
+        <span class="s2">"service.instance.id"</span><span class="p">:</span> <span class="s2">"instance554"</span><span class="p">,</span>
     <span class="p">})</span>
 
 <span class="n">tracer_provider</span> <span class="o">=</span> <span class="n">TracerProvider</span><span class="p">()</span>
@@ -33859,7 +33859,7 @@
 
 <span class="n">RequestsInstrumentor</span><span class="p">()</span><span class="o">.</span><span class="n">instrument</span><span class="p">()</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://flask-app:6000&quot;</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"http://flask-app:6000"</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
@@ -33884,13 +33884,13 @@
 
 <span class="n">FlaskInstrumentor</span><span class="p">()</span><span class="o">.</span><span class="n">instrument_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">hello_world</span><span class="p">():</span>
 
     <span class="o">...</span>
 
     <span class="c1"># Carrierにトレースコンテキストを注入する。</span>
-    <span class="k">with</span> <span class="n">tracer</span><span class="o">.</span><span class="n">start_as_current_span</span><span class="p">(</span><span class="s2">&quot;do_work&quot;</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">tracer</span><span class="o">.</span><span class="n">start_as_current_span</span><span class="p">(</span><span class="s2">"do_work"</span><span class="p">):</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 
     <span class="o">...</span>
@@ -33915,13 +33915,13 @@
 
 <span class="n">FlaskInstrumentor</span><span class="p">()</span><span class="o">.</span><span class="n">instrument_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">hello_world</span><span class="p">():</span>
 
     <span class="o">...</span>
 
     <span class="c1"># Carrierにトレースコンテキストを注入する。</span>
-    <span class="k">with</span> <span class="n">tracer</span><span class="o">.</span><span class="n">start_as_current_span</span><span class="p">(</span><span class="s2">&quot;do_work&quot;</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">tracer</span><span class="o">.</span><span class="n">start_as_current_span</span><span class="p">(</span><span class="s2">"do_work"</span><span class="p">):</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 
     <span class="o">...</span>

@@ -35122,7 +35122,7 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>https://helm.baltorepo.com/organization/signing.asc<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
 $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>apt-transport-https<span class="w"> </span>--yes
-$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb https://baltocdn.com/helm/stable/debian/ all main&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/helm-stable-debian.list
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"deb https://baltocdn.com/helm/stable/debian/ all main"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/helm-stable-debian.list
 $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
 $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>helm
 </code></pre></div>
@@ -35156,7 +35156,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <h3 id="generated">generated<a class="headerlink" href="#generated" title="Permanent link">&para;</a></h3>
 <h4 id="generated_1">▼ generated とは<a class="headerlink" href="#generated_1" title="Permanent link">&para;</a></h4>
 <p>コマンドによって <code>index.yaml</code> ファイルが作成された日付を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">generated</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2022-01-01T12:00:00.197173+09:00&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">generated</span><span class="p">:</span><span class="w"> </span><span class="s">"2022-01-01T12:00:00.197173+09:00"</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03-chartyaml">03. <code>Chart.yaml</code> ファイル<a class="headerlink" href="#03-chartyaml" title="Permanent link">&para;</a></h2>
@@ -35249,7 +35249,7 @@ $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span
 <p><br></p>
 <h3 id="kubeversion">kubeVersion<a class="headerlink" href="#kubeversion" title="Permanent link">&para;</a></h3>
 <p>チャート内のマニフェストが最低限対応可能な kube-apiserver のバージョンを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">kubeVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&gt;=1.22.0-0&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">kubeVersion</span><span class="p">:</span><span class="w"> </span><span class="s">"&gt;=1.22.0-0"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="maintainers">maintainers<a class="headerlink" href="#maintainers" title="Permanent link">&para;</a></h3>
@@ -35319,7 +35319,7 @@ $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span
 <h3 id="metadatalabels"><code>.metadata.labels</code> キーの出力<a class="headerlink" href="#metadatalabels" title="Permanent link">&para;</a></h3>
 <p><code>_helpers.tpl</code> ファイルで <code>.metadata.labels</code> キーのセットをテンプレートとして定義しておく。</p>
 <p>マニフェストで、これらをまとめて出力する。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- define &quot;global.template.labels&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- define "global.template.labels"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="c1"># Helm リリース名</span>
 <span class="nt">app.kubernetes.io/instance</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Release.Name</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="c1"># ツール名 (v2 なら Tiller、v3 なら Helm)</span>
@@ -35333,7 +35333,7 @@ $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">include &quot;global.template.labels&quot; . | indent 4</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># まとめて出力する。</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">include "global.template.labels" . | indent 4</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># まとめて出力する。</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35491,22 +35491,22 @@ $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span
 <h3 id="valuesschemajson">スキーマ (<code>values.schema.json</code> ファイル)<a class="headerlink" href="#valuesschemajson" title="Permanent link">&para;</a></h3>
 <p><code>values.yaml</code> ファイルの各設定値で要求するデータ型を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;$schema&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://json-schema.org/draft-07/schema#&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;properties&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"$schema"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"https://json-schema.org/draft-07/schema#"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"properties"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;image&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">      </span><span class="s">"image"</span><span class="p p-Indicator">:</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
-<span class="w">          </span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Container</span><span class="nv"> </span><span class="s">Image&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;properties&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;repo&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="p p-Indicator">},</span><span class="w"> </span><span class="s">&quot;tag&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="p p-Indicator">}},</span>
-<span class="w">          </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;object&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"description"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Container</span><span class="nv"> </span><span class="s">Image"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"properties"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"repo"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"string"</span><span class="p p-Indicator">},</span><span class="w"> </span><span class="s">"tag"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"string"</span><span class="p p-Indicator">}},</span>
+<span class="w">          </span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"object"</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Service</span><span class="nv"> </span><span class="s">name&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="s">&quot;port&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Port&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;minimum&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="s">&quot;protocol&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"description"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Service</span><span class="nv"> </span><span class="s">name"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"string"</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"port"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"description"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Port"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"minimum"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"integer"</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"protocol"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"string"</span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;required&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;protocol&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;port&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">  </span><span class="s">&quot;title&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Values&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;object&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"required"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"protocol"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"port"</span><span class="p p-Indicator">],</span>
+<span class="w">  </span><span class="s">"title"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Values"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"object"</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>

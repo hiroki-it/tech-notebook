@@ -33455,28 +33455,28 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/open-feature/go-sdk/openfeature&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"context"</span>
+<span class="w">    </span><span class="s">"github.com/open-feature/go-sdk/openfeature"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">openfeature</span><span class="p">.</span><span class="nx">SetProvider</span><span class="p">(</span><span class="nx">openfeature</span><span class="p">.</span><span class="nx">NoopProvider</span><span class="p">{})</span>
 
-<span class="w">    </span><span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">openfeature</span><span class="p">.</span><span class="nx">NewClient</span><span class="p">(</span><span class="s">&quot;app&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">openfeature</span><span class="p">.</span><span class="nx">NewClient</span><span class="p">(</span><span class="s">"app"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 機能フラグサービス (例：unleash、flagdなど) から、フラグのboolean値を取得する</span>
 <span class="w">    </span><span class="nx">v2Enabled</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">BooleanValue</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
-<span class="w">        </span><span class="s">&quot;v2_enabled&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"v2_enabled"</span><span class="p">,</span>
 <span class="w">        </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">openfeature</span><span class="p">.</span><span class="nx">EvaluationContext</span><span class="p">{},</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 機能フラグが有効な場合</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">v2Enabled</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;v2 is enabled&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"v2 is enabled"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>

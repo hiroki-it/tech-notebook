@@ -33637,8 +33637,8 @@
 <p>Terraform が Kubernetes の kube-apiserver と通信できるようにする。</p>
 <p>これにより、Terraform を使用して Kubernetes リソースを作成できるようになる。</p>
 <p>もしクラウドプロバイダーの Cluster (例：Amazon EKS、Google Cloud GKE、Azure AKE など) を使用している場合、その Cluster の kube-apiserver である。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;kubernetes&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">alias</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo_eks_cluster&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kr">provider</span><span class="w"> </span><span class="nv">"kubernetes"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">alias</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo_eks_cluster"</span>
 <span class="w">  </span><span class="na">host</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="nv">foo_eks_cluster.cluster_endpoint</span>
 <span class="w">  </span><span class="na">cluster_ca_certificate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">foo_eks_cluster.cluster_ca_certificate</span>
 <span class="w">  </span><span class="na">token</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nv">foo_eks_cluster.cluster_token</span>

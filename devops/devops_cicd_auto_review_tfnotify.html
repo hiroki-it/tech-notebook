@@ -33720,9 +33720,9 @@
 
 <span class="nb">set</span><span class="w"> </span>-xeuo<span class="w"> </span>pipefail
 
-terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-out<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span>.tfplan<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-parallelism<span class="o">=</span><span class="m">30</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>./ops/tfnotify<span class="w"> </span>--config<span class="w"> </span>./<span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span>/tfnotify.yml<span class="w"> </span>plan
+terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-out<span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span>.tfplan<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-parallelism<span class="o">=</span><span class="m">30</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>./ops/tfnotify<span class="w"> </span>--config<span class="w"> </span>./<span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span>/tfnotify.yml<span class="w"> </span>plan
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -33731,9 +33731,9 @@ terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2
 <span class="c1"># 資格情報を出力する</span>
 <span class="nb">source</span><span class="w"> </span>./aws_envs.sh
 
-terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>apply<span class="w"> </span><span class="se">\</span>
+terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>apply<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-parallelism<span class="o">=</span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span>.tfplan<span class="w"> </span><span class="p">|</span><span class="w"> </span>./ops/tfnotify<span class="w"> </span>--config<span class="w"> </span>./<span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span>/tfnotify.yml<span class="w"> </span>apply
+<span class="w">  </span><span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span>.tfplan<span class="w"> </span><span class="p">|</span><span class="w"> </span>./ops/tfnotify<span class="w"> </span>--config<span class="w"> </span>./<span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span>/tfnotify.yml<span class="w"> </span>apply
 </code></pre></div>
 <p><br></p>
 <h2 id="03-tfnotifyyml">03. <code>tfnotify.yml</code> ファイル<a class="headerlink" href="#03-tfnotifyyml" title="Permanent link">&para;</a></h2>
@@ -33754,8 +33754,8 @@ terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2
 <span class="w">    </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$GITHUB_TOKEN</span>
 <span class="w">    </span><span class="nt">repository</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># 宛先のユーザー名もしくは組織名</span>
-<span class="w">      </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo-company&quot;</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo-repository&quot;</span>
+<span class="w">      </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="s">"foo-company"</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"foo-repository"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="terraform">terraform<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h3>

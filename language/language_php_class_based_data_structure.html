@@ -34893,7 +34893,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;あ&quot;</span><span class="p">,</span> <span class="s2">&quot;い&quot;</span><span class="p">,</span> <span class="s2">&quot;う&quot;</span><span class="p">);</span>
+<span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"あ"</span><span class="p">,</span> <span class="s2">"い"</span><span class="p">,</span> <span class="s2">"う"</span><span class="p">);</span>
 <span class="nv">$a</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
 <span class="nv">$i</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
 <span class="nv">$u</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
@@ -34904,7 +34904,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="k">list</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$i</span><span class="p">,</span> <span class="nv">$u</span><span class="p">)</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;あ&quot;</span><span class="p">,</span> <span class="s2">&quot;い&quot;</span><span class="p">,</span> <span class="s2">&quot;う&quot;</span><span class="p">);</span>
+<span class="k">list</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$i</span><span class="p">,</span> <span class="nv">$u</span><span class="p">)</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"あ"</span><span class="p">,</span> <span class="s2">"い"</span><span class="p">,</span> <span class="s2">"う"</span><span class="p">);</span>
 
 <span class="k">echo</span> <span class="nv">$a</span><span class="o">.</span><span class="nv">$i</span><span class="o">.</span><span class="nv">$u</span><span class="p">;</span> <span class="c1">// あいう</span>
 </code></pre></div>
@@ -34918,10 +34918,10 @@
 <p>PHP では、<code>array_push()</code> 関数と <code>array_shift()</code> 関数を組み合わせることにより、実装できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Blue&quot;</span><span class="p">,</span> <span class="s2">&quot;Green&quot;</span><span class="p">);</span>
+<span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"Blue"</span><span class="p">,</span> <span class="s2">"Green"</span><span class="p">);</span>
 
 <span class="c1">// 引数を、配列の最後に、要素として追加する。</span>
-<span class="nb">array_push</span><span class="p">(</span><span class="nv">$array</span><span class="p">,</span> <span class="s2">&quot;Red&quot;</span><span class="p">);</span>
+<span class="nb">array_push</span><span class="p">(</span><span class="nv">$array</span><span class="p">,</span> <span class="s2">"Red"</span><span class="p">);</span>
 <span class="nb">print_r</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
 
 <span class="c1">// 出力結果</span>
@@ -35088,14 +35088,14 @@
 
 <span class="k">class</span> <span class="nc">A</span>
 <span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">&quot;Hiroki&quot;</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">"Hiroki"</span><span class="p">;</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">HelloWorld</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
-            <span class="s2">&quot;%s, %s&quot;</span><span class="p">,</span>
+            <span class="s2">"%s, %s"</span><span class="p">,</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
-            <span class="s2">&quot;Hello World!&quot;</span>
+            <span class="s2">"Hello World!"</span>
             <span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -35105,8 +35105,8 @@
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$a</span><span class="p">);</span>
 
 <span class="c1">// object(A)#1 (1) {</span>
-<span class="c1">//  [&quot;name&quot;:&quot;A&quot;:private]=&gt;</span>
-<span class="c1">//  string(6) &quot;Hiroki&quot;</span>
+<span class="c1">//  ["name":"A":private]=&gt;</span>
+<span class="c1">//  string(6) "Hiroki"</span>
 <span class="c1">//}</span>
 
 <span class="nb">print_r</span><span class="p">(</span><span class="nv">$a</span><span class="p">);</span>
@@ -35192,7 +35192,7 @@
 <h4 id="float_1">▼ <code>(float)</code><a class="headerlink" href="#float_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;1.0&quot;</span><span class="p">;</span>
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"1.0"</span><span class="p">;</span>
 
 <span class="c1">// Float型</span>
 <span class="nv">$var</span> <span class="o">=</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$var</span><span class="p">;</span>

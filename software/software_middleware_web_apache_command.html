@@ -33873,8 +33873,8 @@
 <p>読み込まれた <code>conf</code> ファイルの一覧を取得する。</p>
 <p>この結果から、使われていない <code>conf</code> ファイルもを検出できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>httpd<span class="w"> </span>-t<span class="w"> </span>-D<span class="w"> </span>DUMP_CONFIG<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;# In&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s2">&quot;{print </span><span class="nv">$4</span><span class="s2">}&quot;</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"# In"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s2">"{print </span><span class="nv">$4</span><span class="s2">}"</span>
 </code></pre></div>
 <blockquote>
 <ul>

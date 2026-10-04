@@ -34525,18 +34525,18 @@
 <p>ここでは、X-Ray に接続すると仮定する。</p>
 <p>OpenTelemetry Collector のセットアップのうち、AWS 側で必要なものをまとめる。</p>
 <p>ここでは、Terraform の公式モジュールを使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_opentelemetry_collector&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"iam_assumable_role_with_opentelemetry_collector"</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"</span>
 
-<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;バージョン&gt;"</span>
 
 <span class="c1">  # karpenterコントローラーのPodに紐付けるAWS IAMロール</span>
 <span class="w">  </span><span class="na">create_role</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-opentelemetry-collector&quot;</span>
+<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-opentelemetry-collector"</span>
 
 <span class="c1">  # Amazon EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの</span>
-<span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://&quot;, &quot;&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://", ""</span><span class="p">)</span>
 
 <span class="c1">  # AWS IAMロールに紐付けるAWS IAMポリシー</span>
 <span class="w">  </span><span class="na">role_policy_arns</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_iam_policy.opentelemetry_collector.arn</span>
@@ -34544,28 +34544,28 @@
 <span class="c1">  # OpenTelemetry CollectorのPodのServiceAccount名</span>
 <span class="c1">  # ServiceAccountは、Terraformではなく、マニフェストで定義したほうが良い</span>
 <span class="w">  </span><span class="na">oidc_fully_qualified_subjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;system:serviceaccount:opentelemetry:opentelemetry-collector&quot;</span>
+<span class="w">    </span><span class="s2">"system:serviceaccount:opentelemetry:opentelemetry-collector"</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_iam_policy&quot;</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_opentelemetry_collector&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-opentelemetry-collector-policy&quot;</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_iam_policy"</span><span class="w"> </span><span class="nv">"iam_assumable_role_with_oidc_opentelemetry_collector"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-opentelemetry-collector-policy"</span>
 <span class="w">  </span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_iam_policy_document.opentelemetry_collector_policy.json</span>
 <span class="p">}</span>
 
-<span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aws_iam_policy_document&quot;</span><span class="w"> </span><span class="nv">&quot;opentelemetry_collector_policy&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">data</span><span class="w"> </span><span class="nc">"aws_iam_policy_document"</span><span class="w"> </span><span class="nv">"opentelemetry_collector_policy"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="c1">  # X-Rayにアクセスできるようにする</span>
 <span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
+<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Allow"</span>
 <span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;xray:PutTraceSegments&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;xray:PutTelemetryRecords&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;xray:GetSamplingRules&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;xray:GetSamplingTargets&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;xray:GetSamplingStatisticSummaries&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"xray:PutTraceSegments"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"xray:PutTelemetryRecords"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"xray:GetSamplingRules"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"xray:GetSamplingTargets"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"xray:GetSamplingStatisticSummaries"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"*"</span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -34650,7 +34650,7 @@
 <span class="w">          </span><span class="nt">command</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/otelcol-contrib</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--config=/conf/config.yaml</span>
-<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;otel/opentelemetry-collector-contrib:0.93.0&quot;</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">"otel/opentelemetry-collector-contrib:0.93.0"</span>
 <span class="w">          </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
 <span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jaeger-compact</span>
@@ -34740,7 +34740,7 @@
 <span class="w">          </span><span class="nt">command</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/otelcol-contrib</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--config=/conf/config.yaml</span>
-<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;otel/opentelemetry-collector-contrib:0.93.0&quot;</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">"otel/opentelemetry-collector-contrib:0.93.0"</span>
 <span class="w">          </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
 <span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otlp</span>

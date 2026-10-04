@@ -34471,13 +34471,13 @@
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="nx">DogToy</span> <span class="nv">$dogToy</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
-        <span class="nx">DB</span><span class="o">::</span><span class="na">table</span><span class="p">(</span><span class="s2">&quot;dog_toy_table&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">([</span>
+        <span class="nx">DB</span><span class="o">::</span><span class="na">table</span><span class="p">(</span><span class="s2">"dog_toy_table"</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">([</span>
             <span class="c1">// ルートエンティティの要素をカラム値として設定する。</span>
             <span class="c1">// IDは自動増分</span>
-            <span class="s2">&quot;name&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$dogToy</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">(),</span>
-            <span class="s2">&quot;type&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$dogToy</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">(),</span>
-            <span class="s2">&quot;price&quot;</span> <span class="o">=&gt;</span> <span class="nv">$dogToy</span><span class="o">-&gt;</span><span class="na">getPriceVO</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">(),</span>
-            <span class="s2">&quot;color&quot;</span> <span class="o">=&gt;</span> <span class="nv">$dogToy</span><span class="o">-&gt;</span><span class="na">getColorVO</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">(),</span>
+            <span class="s2">"name"</span>  <span class="o">=&gt;</span> <span class="nv">$dogToy</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">(),</span>
+            <span class="s2">"type"</span>  <span class="o">=&gt;</span> <span class="nv">$dogToy</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">(),</span>
+            <span class="s2">"price"</span> <span class="o">=&gt;</span> <span class="nv">$dogToy</span><span class="o">-&gt;</span><span class="na">getPriceVO</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">(),</span>
+            <span class="s2">"color"</span> <span class="o">=&gt;</span> <span class="nv">$dogToy</span><span class="o">-&gt;</span><span class="na">getColorVO</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">(),</span>
         <span class="p">]);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -34500,14 +34500,14 @@
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nx">DogToy</span> <span class="nv">$dogToy</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
-        <span class="nx">DB</span><span class="o">::</span><span class="na">table</span><span class="p">(</span><span class="s2">&quot;dog_toy_table&quot;</span><span class="p">)</span>
+        <span class="nx">DB</span><span class="o">::</span><span class="na">table</span><span class="p">(</span><span class="s2">"dog_toy_table"</span><span class="p">)</span>
             <span class="c1">// ルートエンティティの要素をカラム値として設定する。</span>
-            <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="nv">$dogToy</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">())</span>
+            <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s2">"id"</span><span class="p">,</span> <span class="nv">$dogToy</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">())</span>
             <span class="o">-&gt;</span><span class="na">update</span><span class="p">([</span>
-                <span class="s2">&quot;name&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$dogToy</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">(),</span>
-                <span class="s2">&quot;type&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$dogToy</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">(),</span>
-                <span class="s2">&quot;price&quot;</span> <span class="o">=&gt;</span> <span class="nv">$dogToy</span><span class="o">-&gt;</span><span class="na">getPriceVO</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">(),</span>
-                <span class="s2">&quot;color&quot;</span> <span class="o">=&gt;</span> <span class="nv">$dogToy</span><span class="o">-&gt;</span><span class="na">getColorVO</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">(),</span>
+                <span class="s2">"name"</span>  <span class="o">=&gt;</span> <span class="nv">$dogToy</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">(),</span>
+                <span class="s2">"type"</span>  <span class="o">=&gt;</span> <span class="nv">$dogToy</span><span class="o">-&gt;</span><span class="na">getType</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">(),</span>
+                <span class="s2">"price"</span> <span class="o">=&gt;</span> <span class="nv">$dogToy</span><span class="o">-&gt;</span><span class="na">getPriceVO</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">(),</span>
+                <span class="s2">"color"</span> <span class="o">=&gt;</span> <span class="nv">$dogToy</span><span class="o">-&gt;</span><span class="na">getColorVO</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">(),</span>
             <span class="p">]);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -34531,11 +34531,11 @@
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nx">ToyId</span> <span class="nv">$toyId</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
-        <span class="nx">DB</span><span class="o">::</span><span class="na">table</span><span class="p">(</span><span class="s2">&quot;dog_toy_table&quot;</span><span class="p">)</span>
+        <span class="nx">DB</span><span class="o">::</span><span class="na">table</span><span class="p">(</span><span class="s2">"dog_toy_table"</span><span class="p">)</span>
             <span class="c1">// 論理削除</span>
-            <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="nv">$toyId</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">())</span>
+            <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s2">"id"</span><span class="p">,</span> <span class="nv">$toyId</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">())</span>
             <span class="o">-&gt;</span><span class="na">update</span><span class="p">([</span>
-                <span class="s2">&quot;is_deleted&quot;</span> <span class="o">=&gt;</span> <span class="nx">FlagConstant</span><span class="o">::</span><span class="na">IS_ON</span><span class="p">,</span>
+                <span class="s2">"is_deleted"</span> <span class="o">=&gt;</span> <span class="nx">FlagConstant</span><span class="o">::</span><span class="na">IS_ON</span><span class="p">,</span>
             <span class="p">]);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -34592,15 +34592,15 @@
 
         <span class="c1">// SQLを設定する。</span>
         <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span>
-            <span class="s2">&quot;dog_toy.id    AS dog_toy_id&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;dog_toy.name  AS dog_toy_name&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;dog_toy.type  AS dog_toy_type&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;dog_toy.price AS dog_toy_price&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;dog_toy.color AS dog_toy_color&quot;</span>
+            <span class="s2">"dog_toy.id    AS dog_toy_id"</span><span class="p">,</span>
+            <span class="s2">"dog_toy.name  AS dog_toy_name"</span><span class="p">,</span>
+            <span class="s2">"dog_toy.type  AS dog_toy_type"</span><span class="p">,</span>
+            <span class="s2">"dog_toy.price AS dog_toy_price"</span><span class="p">,</span>
+            <span class="s2">"dog_toy.color AS dog_toy_color"</span>
         <span class="p">)</span>
-        <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="s2">&quot;dog_toy_table&quot;</span><span class="p">,</span> <span class="s2">&quot;dog_toy&quot;</span><span class="p">)</span>
+        <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="s2">"dog_toy_table"</span><span class="p">,</span> <span class="s2">"dog_toy"</span><span class="p">)</span>
         <span class="c1">// 論理削除されていないもののみ</span>
-        <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s2">&quot;dog_toy.is_deleted&quot;</span><span class="p">,</span> <span class="nx">FlagConstant</span><span class="o">::</span><span class="na">IS_OFF</span><span class="p">)</span>
+        <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s2">"dog_toy.is_deleted"</span><span class="p">,</span> <span class="nx">FlagConstant</span><span class="o">::</span><span class="na">IS_OFF</span><span class="p">)</span>
         <span class="o">-&gt;</span><span class="na">getQuery</span><span class="p">();</span>
 
         <span class="c1">// Read処理を実行する。</span>
@@ -34621,11 +34621,11 @@
     <span class="k">private</span> <span class="k">function</span> <span class="nf">toDogToy</span><span class="p">(</span><span class="k">array</span> <span class="nv">$entity</span><span class="p">)</span><span class="o">:</span> <span class="nx">DogToy</span>
     <span class="p">{</span>
         <span class="nv">$dogToy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DogToy</span><span class="p">(</span>
-            <span class="k">new</span> <span class="nx">DogId</span><span class="p">(</span><span class="nv">$entity</span><span class="p">[</span><span class="s2">&quot;dog_toy_id&quot;</span><span class="p">]),</span>
-            <span class="k">new</span> <span class="nx">DogName</span><span class="p">(</span><span class="nv">$entity</span><span class="p">[</span><span class="s2">&quot;dog_toy_name&quot;</span><span class="p">]),</span>
-            <span class="k">new</span> <span class="nx">DogToyType</span><span class="p">(</span><span class="nv">$entity</span><span class="p">[</span><span class="s2">&quot;dog_toy_type&quot;</span><span class="p">]),</span>
-            <span class="k">new</span> <span class="nx">PriceVO</span><span class="p">(</span><span class="nv">$entity</span><span class="p">[</span><span class="s2">&quot;dog_toy_price&quot;</span><span class="p">],</span>
-            <span class="k">new</span> <span class="nx">ColorVO</span><span class="p">(</span><span class="nv">$entity</span><span class="p">[</span><span class="s2">&quot;dog_toy_color&quot;</span><span class="p">]</span>
+            <span class="k">new</span> <span class="nx">DogId</span><span class="p">(</span><span class="nv">$entity</span><span class="p">[</span><span class="s2">"dog_toy_id"</span><span class="p">]),</span>
+            <span class="k">new</span> <span class="nx">DogName</span><span class="p">(</span><span class="nv">$entity</span><span class="p">[</span><span class="s2">"dog_toy_name"</span><span class="p">]),</span>
+            <span class="k">new</span> <span class="nx">DogToyType</span><span class="p">(</span><span class="nv">$entity</span><span class="p">[</span><span class="s2">"dog_toy_type"</span><span class="p">]),</span>
+            <span class="k">new</span> <span class="nx">PriceVO</span><span class="p">(</span><span class="nv">$entity</span><span class="p">[</span><span class="s2">"dog_toy_price"</span><span class="p">],</span>
+            <span class="k">new</span> <span class="nx">ColorVO</span><span class="p">(</span><span class="nv">$entity</span><span class="p">[</span><span class="s2">"dog_toy_color"</span><span class="p">]</span>
         <span class="p">);</span>
 
         <span class="k">return</span> <span class="nv">$dogToy</span><span class="p">;</span>
@@ -34667,18 +34667,18 @@
     <span class="p">{</span>
         <span class="k">return</span> <span class="k">new</span> <span class="nx">DogCombo</span><span class="p">(</span>
             <span class="k">new</span> <span class="nx">DogToy</span><span class="p">(</span>
-                <span class="nv">$data</span><span class="p">[</span><span class="s2">&quot;dog_toy_id&quot;</span><span class="p">],</span>
-                <span class="nv">$data</span><span class="p">[</span><span class="s2">&quot;dog_toy_name&quot;</span><span class="p">],</span>
-                <span class="nv">$data</span><span class="p">[</span><span class="s2">&quot;dog_toy_type&quot;</span><span class="p">],</span>
-                <span class="nv">$data</span><span class="p">[</span><span class="s2">&quot;dog_toy_price&quot;</span><span class="p">],</span>
-                <span class="nv">$data</span><span class="p">[</span><span class="s2">&quot;dog_toy_color&quot;</span><span class="p">],</span>
+                <span class="nv">$data</span><span class="p">[</span><span class="s2">"dog_toy_id"</span><span class="p">],</span>
+                <span class="nv">$data</span><span class="p">[</span><span class="s2">"dog_toy_name"</span><span class="p">],</span>
+                <span class="nv">$data</span><span class="p">[</span><span class="s2">"dog_toy_type"</span><span class="p">],</span>
+                <span class="nv">$data</span><span class="p">[</span><span class="s2">"dog_toy_price"</span><span class="p">],</span>
+                <span class="nv">$data</span><span class="p">[</span><span class="s2">"dog_toy_color"</span><span class="p">],</span>
             <span class="p">),</span>
             <span class="k">new</span> <span class="nx">DogFood</span><span class="p">(</span>
-                <span class="nv">$data</span><span class="p">[</span><span class="s2">&quot;dog_food_id&quot;</span><span class="p">],</span>
-                <span class="nv">$data</span><span class="p">[</span><span class="s2">&quot;dog_food_name&quot;</span><span class="p">],</span>
-                <span class="nv">$data</span><span class="p">[</span><span class="s2">&quot;dog_food_type&quot;</span><span class="p">],</span>
-                <span class="nv">$data</span><span class="p">[</span><span class="s2">&quot;dog_food_price&quot;</span><span class="p">],</span>
-                <span class="nv">$data</span><span class="p">[</span><span class="s2">&quot;dog_food_flavor&quot;</span><span class="p">],</span>
+                <span class="nv">$data</span><span class="p">[</span><span class="s2">"dog_food_id"</span><span class="p">],</span>
+                <span class="nv">$data</span><span class="p">[</span><span class="s2">"dog_food_name"</span><span class="p">],</span>
+                <span class="nv">$data</span><span class="p">[</span><span class="s2">"dog_food_type"</span><span class="p">],</span>
+                <span class="nv">$data</span><span class="p">[</span><span class="s2">"dog_food_price"</span><span class="p">],</span>
+                <span class="nv">$data</span><span class="p">[</span><span class="s2">"dog_food_flavor"</span><span class="p">],</span>
             <span class="p">)</span>
         <span class="p">);</span>
     <span class="p">}</span>

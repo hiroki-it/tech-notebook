@@ -33464,28 +33464,28 @@
 <h2 id="01">01. 構造化ログ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="semantic_logger">semantic_logger<a class="headerlink" href="#semantic_logger" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ セットアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">source</span><span class="w"> </span><span class="s1">&#39;https://rubygems.org&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="n">source</span><span class="w"> </span><span class="s1">'https://rubygems.org'</span>
 
-<span class="n">gem</span><span class="w"> </span><span class="s2">&quot;webrick&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;~&gt; 1.7&quot;</span>
-<span class="n">gem</span><span class="w"> </span><span class="s2">&quot;semantic_logger&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;~&gt; 4.16.1&quot;</span>
+<span class="n">gem</span><span class="w"> </span><span class="s2">"webrick"</span><span class="p">,</span><span class="w"> </span><span class="s2">"~&gt; 1.7"</span>
+<span class="n">gem</span><span class="w"> </span><span class="s2">"semantic_logger"</span><span class="p">,</span><span class="w"> </span><span class="s2">"~&gt; 4.16.1"</span>
 </code></pre></div>
 <h4 id="_3">▼ ログ構造<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;host&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo-fb5d575bc-65k2b&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;application&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Foo</span><span class="nv"> </span><span class="s">Logger&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;timestamp&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2025-04-15T13:49:54.101890Z&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;level&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;info&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;level_index&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;pid&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;thread&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;3440&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Details&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;message&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Do</span><span class="nv"> </span><span class="s">something</span><span class="nv"> </span><span class="s">successfully&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;payload&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;trace_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;340f39b78a31c1f999195198c436f158&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">"host"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"foo-fb5d575bc-65k2b"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"application"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Foo</span><span class="nv"> </span><span class="s">Logger"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"timestamp"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2025-04-15T13:49:54.101890Z"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"level"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"info"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"level_index"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"pid"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"thread"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"3440"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Details"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"message"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Do</span><span class="nv"> </span><span class="s">something</span><span class="nv"> </span><span class="s">successfully"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"payload"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"trace_id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"340f39b78a31c1f999195198c436f158"</span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="add_appender">▼ add_appender<a class="headerlink" href="#add_appender" title="Permanent link">&para;</a></h4>
 <p><code>formatter</code> を <code>json</code> とし、ログを構造化する。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">require</span><span class="w"> </span><span class="s1">&#39;semantic_logger&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="nb">require</span><span class="w"> </span><span class="s1">'semantic_logger'</span>
 
 <span class="c1"># ログをメモリ上に保管せずにフラッシュする</span>
 <span class="vg">$stdout</span><span class="o">.</span><span class="n">sync</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">true</span>
@@ -33497,9 +33497,9 @@
 <span class="w">    </span><span class="c1"># 必要なフィールドのみを設定する</span>
 <span class="w">    </span><span class="n">record</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1"># タイムスタンプの形式を変更する</span>
-<span class="w">      </span><span class="s2">&quot;timestamp&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">log</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">utc</span><span class="o">.</span><span class="n">iso8601</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
-<span class="w">      </span><span class="s2">&quot;level&quot;</span><span class="w">     </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">log</span><span class="o">.</span><span class="n">level</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;message&quot;</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">log</span><span class="o">.</span><span class="n">message</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"timestamp"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">log</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">utc</span><span class="o">.</span><span class="n">iso8601</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
+<span class="w">      </span><span class="s2">"level"</span><span class="w">     </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">log</span><span class="o">.</span><span class="n">level</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"message"</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">log</span><span class="o">.</span><span class="n">message</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1"># payloadフィールドを展開する</span>
@@ -33510,10 +33510,10 @@
 <span class="w">    </span><span class="no">JSON</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">)</span>
-<span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">SemanticLogger</span><span class="o">[</span><span class="s1">&#39;Foo&#39;</span><span class="o">]</span>
+<span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">SemanticLogger</span><span class="o">[</span><span class="s1">'Foo'</span><span class="o">]</span>
 
 <span class="n">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">WEBrick</span><span class="o">::</span><span class="no">HTTPServer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-<span class="w">  </span><span class="ss">:BindAddress</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;*&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="ss">:BindAddress</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">'*'</span><span class="p">,</span>
 <span class="w">  </span><span class="ss">:Port</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">port</span><span class="p">,</span>
 <span class="w">  </span><span class="ss">:AcceptCallback</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">s</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="no">Socket</span><span class="o">::</span><span class="no">IPPROTO_TCP</span><span class="p">,</span><span class="w"> </span><span class="no">Socket</span><span class="o">::</span><span class="no">TCP_NODELAY</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">},</span>
 <span class="w">  </span><span class="c1"># SemanticLoggerをWEBrickで使用する</span>
@@ -33522,11 +33522,11 @@
 <span class="w">  </span><span class="ss">:AccessLog</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">[]</span>
 <span class="p">)</span>
 
-<span class="n">server</span><span class="o">.</span><span class="n">mount_proc</span><span class="w"> </span><span class="s1">&#39;/details&#39;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">req</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="o">|</span>
+<span class="n">server</span><span class="o">.</span><span class="n">mount_proc</span><span class="w"> </span><span class="s1">'/details'</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">req</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="o">|</span>
 
 <span class="w">  </span><span class="o">...</span>
 
-<span class="w">  </span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Do something successfully&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Do something successfully"</span><span class="p">)</span>
 
 <span class="w">  </span><span class="o">...</span>
 
@@ -33538,10 +33538,10 @@
 </ul>
 </blockquote>
 <h4 id="_4">▼ フィールドの追加<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nb">require</span><span class="w"> </span><span class="s1">&#39;webrick&#39;</span>
-<span class="nb">require</span><span class="w"> </span><span class="s1">&#39;json&#39;</span>
-<span class="nb">require</span><span class="w"> </span><span class="s1">&#39;net/http&#39;</span>
-<span class="nb">require</span><span class="w"> </span><span class="s1">&#39;semantic_logger&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="nb">require</span><span class="w"> </span><span class="s1">'webrick'</span>
+<span class="nb">require</span><span class="w"> </span><span class="s1">'json'</span>
+<span class="nb">require</span><span class="w"> </span><span class="s1">'net/http'</span>
+<span class="nb">require</span><span class="w"> </span><span class="s1">'semantic_logger'</span>
 
 <span class="c1"># ログをメモリ上に保管せずにフラッシュする</span>
 <span class="vg">$stdout</span><span class="o">.</span><span class="n">sync</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">true</span>
@@ -33553,9 +33553,9 @@
 <span class="w">    </span><span class="c1"># 必要なフィールドのみを設定する</span>
 <span class="w">    </span><span class="n">record</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1"># タイムスタンプの形式を変更する</span>
-<span class="w">      </span><span class="s2">&quot;timestamp&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">log</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">utc</span><span class="o">.</span><span class="n">iso8601</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
-<span class="w">      </span><span class="s2">&quot;level&quot;</span><span class="w">     </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">log</span><span class="o">.</span><span class="n">level</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;message&quot;</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">log</span><span class="o">.</span><span class="n">message</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"timestamp"</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">log</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">utc</span><span class="o">.</span><span class="n">iso8601</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
+<span class="w">      </span><span class="s2">"level"</span><span class="w">     </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">log</span><span class="o">.</span><span class="n">level</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"message"</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">log</span><span class="o">.</span><span class="n">message</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1"># payloadフィールドを展開する</span>
@@ -33566,11 +33566,11 @@
 <span class="w">    </span><span class="no">JSON</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">)</span>
-<span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">SemanticLogger</span><span class="o">[</span><span class="s1">&#39;Foo&#39;</span><span class="o">]</span>
+<span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">SemanticLogger</span><span class="o">[</span><span class="s1">'Foo'</span><span class="o">]</span>
 
 
 <span class="n">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">WEBrick</span><span class="o">::</span><span class="no">HTTPServer</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
-<span class="w">  </span><span class="ss">:BindAddress</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;*&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="ss">:BindAddress</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">'*'</span><span class="p">,</span>
 <span class="w">  </span><span class="ss">:Port</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">port</span><span class="p">,</span>
 <span class="w">  </span><span class="ss">:AcceptCallback</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">s</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="no">Socket</span><span class="o">::</span><span class="no">IPPROTO_TCP</span><span class="p">,</span><span class="w"> </span><span class="no">Socket</span><span class="o">::</span><span class="no">TCP_NODELAY</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">},</span>
 <span class="w">  </span><span class="c1"># SemanticLoggerをWEBrickで使用する</span>
@@ -33579,7 +33579,7 @@
 <span class="w">  </span><span class="ss">:AccessLog</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">[]</span>
 <span class="p">)</span>
 
-<span class="n">server</span><span class="o">.</span><span class="n">mount_proc</span><span class="w"> </span><span class="s1">&#39;/details&#39;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">req</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="o">|</span>
+<span class="n">server</span><span class="o">.</span><span class="n">mount_proc</span><span class="w"> </span><span class="s1">'/details'</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">req</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="o">|</span>
 
 <span class="w">  </span><span class="k">begin</span>
 
@@ -33588,12 +33588,12 @@
 <span class="w">    </span><span class="n">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1"># フィールドを追加する</span>
-<span class="w">    </span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Do something successfully&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">trace_id</span><span class="p">:</span><span class="w"> </span><span class="n">get_trace_id</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="p">))</span>
+<span class="w">    </span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Do something successfully"</span><span class="p">,</span><span class="w"> </span><span class="ss">trace_id</span><span class="p">:</span><span class="w"> </span><span class="n">get_trace_id</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="p">))</span>
 
 <span class="w">  </span><span class="k">rescue</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">error</span>
 
 <span class="w">    </span><span class="c1"># フィールドを追加する</span>
-<span class="w">    </span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">error</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">trace_id</span><span class="p">:</span><span class="w"> </span><span class="n">get_trace_id</span><span class="p">(</span><span class="n">headers</span><span class="p">))</span>
+<span class="w">    </span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">error</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span><span class="w"> </span><span class="ss">trace_id</span><span class="p">:</span><span class="w"> </span><span class="n">get_trace_id</span><span class="p">(</span><span class="n">headers</span><span class="p">))</span>
 
 <span class="w">  </span><span class="k">end</span>
 <span class="k">end</span>
@@ -33602,18 +33602,18 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">get_trace_id</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="w">  </span><span class="c1"># 受信したリクエストのtraceparentヘッダーから値を取得する</span>
-<span class="w">  </span><span class="n">traceparent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">headers</span><span class="o">[</span><span class="s1">&#39;traceparent&#39;</span><span class="o">]</span>
+<span class="w">  </span><span class="n">traceparent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">headers</span><span class="o">[</span><span class="s1">'traceparent'</span><span class="o">]</span>
 
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">traceparent</span>
 <span class="w">    </span><span class="c1"># W3C Trace Context</span>
 <span class="w">    </span><span class="c1"># traceparent: 00-&lt;trace_id&gt;-&lt;span_id&gt;-01</span>
-<span class="w">    </span><span class="n">parts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">traceparent</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">parts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">traceparent</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'-'</span><span class="p">)</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">parts</span><span class="o">.</span><span class="n">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">parts</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
 <span class="w">    </span><span class="k">end</span>
 <span class="w">  </span><span class="k">end</span>
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s1">&#39;unknown&#39;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s1">'unknown'</span>
 <span class="k">end</span>
 </code></pre></div>
 <blockquote>

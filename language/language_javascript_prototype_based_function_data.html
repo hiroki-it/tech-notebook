@@ -34623,7 +34623,7 @@
 <h4 id="_4">▼ リテラル表記による関数オブジェクト<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1">// 定義</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;FOO&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="s2">"FOO"</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">42</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">baz</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">myProp</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">},</span>
 <span class="p">};</span>
@@ -34638,7 +34638,7 @@
 <span class="p">}</span>
 
 <span class="c1">// コール</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">mycar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">car</span><span class="p">(</span><span class="s2">&quot;Eagle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Talon TSi&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1993</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">mycar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">car</span><span class="p">(</span><span class="s2">"Eagle"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Talon TSi"</span><span class="p">,</span><span class="w"> </span><span class="mf">1993</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="function">function 命令<a class="headerlink" href="#function" title="Permanent link">&para;</a></h3>
@@ -34647,7 +34647,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 定義 (コールする場所が前後しても無関係)</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// コール</span>
@@ -34659,7 +34659,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 定義</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">$</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>jQuery では、パッケージの読み出し宣言時に、『Jquery』という名前の代わりにドルマークを使用する仕様になってる。</p>
@@ -34696,12 +34696,12 @@
 <p><strong>＊実装例＊</strong></p>
 <p>関数の定義と <code>export</code> の宣言を同時に実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>あるいは、別々に実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">foo</span><span class="p">;</span>
@@ -34781,13 +34781,13 @@
 <p>基本的には、宣言に <code>const</code> を使用する</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ブロック外からアクセス不可</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// 再宣言不可</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR</span>
 
 <span class="w">  </span><span class="c1">// 再代入不可</span>
-<span class="w">  </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR</span>
+<span class="w">  </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"baz"</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR</span>
 <span class="p">}</span>
 
 <span class="c1">// ブロック内のconstにアクセス不可</span>
@@ -34797,13 +34797,13 @@
 <p>繰り返し処理で再代入が必要であれば、<code>const</code> ではなく <code>let</code> を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ブロック外からアクセス不可</span>
-<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// 再宣言不可</span>
-<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">;</span><span class="w"> </span><span class="c1">// ERROR</span>
 
 <span class="w">  </span><span class="c1">// 再代入可能</span>
-<span class="w">  </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"baz"</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="c1">// ブロック内のletにアクセス不可</span>
@@ -34815,7 +34815,7 @@
 <span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
 
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;https://example.com&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"https://example.com"</span><span class="p">);</span>
 <span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
@@ -34827,13 +34827,13 @@
 <h4 id="var">▼ <code>var</code><a class="headerlink" href="#var" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ブロック外からアクセス可</span>
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// 再宣言</span>
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// 再代入可能</span>
-<span class="w">  </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="c1">// ブロック内のvarにアクセスできる。</span>
@@ -34847,7 +34847,7 @@
 <p>しかし実際は、宣言がすでに済んでおり、<code>foo</code> に値が代入されていないことを示す『undefined』となる。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="c1">// undefined</span>
 
-<span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 宣言と代入</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">;</span><span class="w"> </span><span class="c1">// 宣言と代入</span>
 </code></pre></div>
 <p>これは、スコープの範囲内で宣言と代入した変数で、宣言処理はスコープの最初で行ったことになるという仕様のためである。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 内部的には、最初に宣言処理したことになる</span>
@@ -34855,7 +34855,7 @@
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="c1">// undefined</span>
 
-<span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 宣言と代入により、実際は宣言処理を実装していなくとも、行なったことになる。</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">;</span><span class="w"> </span><span class="c1">// 宣言と代入により、実際は宣言処理を実装していなくとも、行なったことになる。</span>
 </code></pre></div>
 <p>これは関数の代入時にも起こる。</p>
 <blockquote>
@@ -34869,18 +34869,18 @@
 <span class="nx">foo</span><span class="p">();</span><span class="w"> </span><span class="c1">// foo is not a function</span>
 
 <span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
 <h4 id="var_1">▼ <code>var</code> 使用時の対策<a class="headerlink" href="#var_1" title="Permanent link">&para;</a></h4>
 <p>意図しない挙動を防ぐため、変数の宣言と代入はスコープの最初で行うようにする。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// スコープの最初に宣言する。</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">;</span><span class="w"> </span><span class="c1">// スコープの最初に宣言する。</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="c1">// foo</span>
 </code></pre></div>
 <p>これは関数の代入時も同じである。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="nx">foo</span><span class="p">();</span><span class="w"> </span><span class="c1">// foo</span>
@@ -34889,7 +34889,7 @@
 <p>宣言に <code>let</code>、<code>const</code> を使用した場合、巻き上げは起こらないため、宣言と代入の場所を気にしなくともよくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="c1">// foo is not defined</span>
 
-<span class="kd">let</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_13">分割代入<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
@@ -34928,7 +34928,7 @@
 <p>オブジェクトに対して <code>entires()</code> 関数を使用して、一度配列に変換すれば、オブジェクトでも <code>for  of</code> を使用できる。</p>
 <p><code>for  in</code> を使用するより、こちらを使用したほうがよい。</p>
 <h4 id="_16">▼ 配列の場合<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"foo"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">,</span><span class="w"> </span><span class="s2">"baz"</span><span class="p">];</span>
 
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
@@ -34939,7 +34939,7 @@
 <span class="c1">// baz</span>
 </code></pre></div>
 <p>配列の <code>entires()</code> 関数を使用すれば、インデックス番号を取得もできる。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"foo"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">,</span><span class="w"> </span><span class="s2">"baz"</span><span class="p">];</span>
 
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">]</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">array</span><span class="p">.</span><span class="nx">entries</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
@@ -34952,9 +34952,9 @@
 <h4 id="_17">▼ オブジェクトの場合<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>オブジェクトに対して <code>entires()</code> 関数を実行し、一度連想配列に変換すれば、オブジェクトでも <code>for ... of</code> を使用できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">z</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">z</span><span class="o">:</span><span class="w"> </span><span class="s2">"baz"</span><span class="p">,</span>
 <span class="p">};</span>
 
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">property</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">]</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">object</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
@@ -34971,7 +34971,7 @@
 <p>ドット <code>3</code> 個で記載する。</p>
 <p>順序を保ったまま配列を走査し、値を取得する。</p>
 <p>オブジェクトは捜査できない。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"foo"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">,</span><span class="w"> </span><span class="s2">"baz"</span><span class="p">];</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(...</span><span class="nx">array</span><span class="p">);</span>
 
@@ -34985,7 +34985,7 @@
 <h4 id="for-in_1">▼ <code>for  in</code> とは<a class="headerlink" href="#for-in_1" title="Permanent link">&para;</a></h4>
 <p>配列/オブジェクト (連想配列) を順序を保たずに走査し、オブジェクトのプロパティ名や配列のキー名を取得する。</p>
 <h4 id="_20">▼ 配列の場合<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"foo"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">,</span><span class="w"> </span><span class="s2">"baz"</span><span class="p">];</span>
 
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">array</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
@@ -34997,9 +34997,9 @@
 </code></pre></div>
 <h4 id="_21">▼ オブジェクトの場合<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">z</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">z</span><span class="o">:</span><span class="w"> </span><span class="s2">"baz"</span><span class="p">,</span>
 <span class="p">};</span>
 
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">property</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">object</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -35016,7 +35016,7 @@
 </code></pre></div>
 <h4 id="continue_1">▼ continue とは<a class="headerlink" href="#continue_1" title="Permanent link">&para;</a></h4>
 <p>反復処理の現在のループをスキップし、次のループを開始する。</p>
-<div class="highlight"><pre><span></span><code><span class="x">const array = [&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;];</span>
+<div class="highlight"><pre><span></span><code><span class="x">const array = ["foo", "bar", "baz"];</span>
 
 <span class="x">for (const [key, value] of array.entries()) {</span>
 
@@ -35051,7 +35051,7 @@
 <li><a href="https://hiroki-it.github.io/tech-notebook/language/language_php_logic_iteration.html">【IT技術の知見】反復ロジック＠PHP - 俺の技術ノート</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"foo"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">,</span><span class="w"> </span><span class="s2">"baz"</span><span class="p">];</span>
 
 <span class="nx">array</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// キーが偶数の組をスキップする。</span>

@@ -34001,7 +34001,7 @@
 <span class="w">    </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enum</span>
-<span class="w">        </span><span class="nt">enum</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;tes&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;stg&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;prd&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">enum</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"tes"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"stg"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"prd"</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">docker</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hashicorp/terraform:1.0.0</span>
 <span class="w">    </span><span class="nt">working_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/foo_infrastructure</span>
@@ -34204,52 +34204,52 @@
 <span class="nb">set</span><span class="w"> </span>-xeuo<span class="w"> </span>pipefail
 
 <span class="c1"># 事前に環境変数に実行環境名を代入する。</span>
-<span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
-<span class="w">    </span><span class="s2">&quot;tes&quot;</span><span class="o">)</span>
-<span class="w">        </span><span class="nv">aws_account_id</span><span class="o">=</span><span class="s2">&quot;&lt;テスト環境アカウントID&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_access_key_id</span><span class="o">=</span><span class="s2">&quot;&lt;テスト環境アクセスキーID&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_secret_access_key</span><span class="o">=</span><span class="s2">&quot;&lt;テスト環境シークレットアクセスキー&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_iam_role_external_id</span><span class="o">=</span><span class="s2">&quot;&lt;信頼ポリシーに設定した外部ID&gt;&quot;</span>
+<span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span>
+<span class="w">    </span><span class="s2">"tes"</span><span class="o">)</span>
+<span class="w">        </span><span class="nv">aws_account_id</span><span class="o">=</span><span class="s2">"&lt;テスト環境アカウントID&gt;"</span>
+<span class="w">        </span><span class="nv">aws_access_key_id</span><span class="o">=</span><span class="s2">"&lt;テスト環境アクセスキーID&gt;"</span>
+<span class="w">        </span><span class="nv">aws_secret_access_key</span><span class="o">=</span><span class="s2">"&lt;テスト環境シークレットアクセスキー&gt;"</span>
+<span class="w">        </span><span class="nv">aws_iam_role_external_id</span><span class="o">=</span><span class="s2">"&lt;信頼ポリシーに設定した外部ID&gt;"</span>
 <span class="w">    </span><span class="p">;;</span>
-<span class="w">    </span><span class="s2">&quot;stg&quot;</span><span class="o">)</span>
-<span class="w">        </span><span class="nv">aws_account_id</span><span class="o">=</span><span class="s2">&quot;&lt;ステージング環境アカウントID&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_access_key_id</span><span class="o">=</span><span class="s2">&quot;&lt;ステージング環境アクセスキーID&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_secret_access_key</span><span class="o">=</span><span class="s2">&quot;&lt;ステージング環境シークレットアクセスキー&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_iam_role_external_id</span><span class="o">=</span><span class="s2">&quot;&lt;信頼ポリシーに設定した外部ID&gt;&quot;</span>
+<span class="w">    </span><span class="s2">"stg"</span><span class="o">)</span>
+<span class="w">        </span><span class="nv">aws_account_id</span><span class="o">=</span><span class="s2">"&lt;ステージング環境アカウントID&gt;"</span>
+<span class="w">        </span><span class="nv">aws_access_key_id</span><span class="o">=</span><span class="s2">"&lt;ステージング環境アクセスキーID&gt;"</span>
+<span class="w">        </span><span class="nv">aws_secret_access_key</span><span class="o">=</span><span class="s2">"&lt;ステージング環境シークレットアクセスキー&gt;"</span>
+<span class="w">        </span><span class="nv">aws_iam_role_external_id</span><span class="o">=</span><span class="s2">"&lt;信頼ポリシーに設定した外部ID&gt;"</span>
 <span class="w">    </span><span class="p">;;</span>
-<span class="w">    </span><span class="s2">&quot;prd&quot;</span><span class="o">)</span>
-<span class="w">        </span><span class="nv">aws_account_id</span><span class="o">=</span><span class="s2">&quot;&lt;本番環境アカウントID&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_access_key_id</span><span class="o">=</span><span class="s2">&quot;&lt;本番環境アクセスキーID&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_secret_access_key</span><span class="o">=</span><span class="s2">&quot;&lt;本番環境シークレットアクセスキー&gt;&quot;</span>
-<span class="w">        </span><span class="nv">aws_iam_role_external_id</span><span class="o">=</span><span class="s2">&quot;&lt;信頼ポリシーに設定した外部ID&gt;&quot;</span>
+<span class="w">    </span><span class="s2">"prd"</span><span class="o">)</span>
+<span class="w">        </span><span class="nv">aws_account_id</span><span class="o">=</span><span class="s2">"&lt;本番環境アカウントID&gt;"</span>
+<span class="w">        </span><span class="nv">aws_access_key_id</span><span class="o">=</span><span class="s2">"&lt;本番環境アクセスキーID&gt;"</span>
+<span class="w">        </span><span class="nv">aws_secret_access_key</span><span class="o">=</span><span class="s2">"&lt;本番環境シークレットアクセスキー&gt;"</span>
+<span class="w">        </span><span class="nv">aws_iam_role_external_id</span><span class="o">=</span><span class="s2">"&lt;信頼ポリシーに設定した外部ID&gt;"</span>
 <span class="w">    </span><span class="p">;;</span>
 <span class="w">    </span>*<span class="o">)</span>
-<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;The parameter &quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot; is invalid.&quot;</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"The parameter "</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">" is invalid."</span>
 <span class="w">        </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
 <span class="w">    </span><span class="p">;;</span>
 <span class="k">esac</span>
 
 <span class="c1"># 信頼されたエンティティの資格情報を設定する。</span>
-aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$aws_account_id</span><span class="s2">&quot;</span>
-aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$aws_secret_access_key</span><span class="s2">&quot;</span>
-aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_default_region<span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="s2">"</span><span class="nv">$aws_account_id</span><span class="s2">"</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="s2">"</span><span class="nv">$aws_secret_access_key</span><span class="s2">"</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_default_region<span class="w"> </span><span class="s2">"ap-northeast-1"</span>
 
 <span class="c1"># https://sts.amazonaws.com に、ロールの紐付けをリクエストする。</span>
-<span class="nv">aws_sts_credentials</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>assume-role<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--role-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::</span><span class="si">${</span><span class="nv">aws_access_key_id</span><span class="si">}</span><span class="s2">:role/&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;-&lt;紐付けしたいIAMロール名&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--role-session-name<span class="w"> </span><span class="s2">&quot;&lt;任意のセッション名&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--external-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$aws_iam_role_external_id</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--duration-seconds<span class="w"> </span><span class="s2">&quot;&lt;セッションデータの失効秒数&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;Credentials&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--output<span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
+<span class="nv">aws_sts_credentials</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>assume-role<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--role-arn<span class="w"> </span><span class="s2">"arn:aws:iam::</span><span class="si">${</span><span class="nv">aws_access_key_id</span><span class="si">}</span><span class="s2">:role/"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"-&lt;紐付けしたいIAMロール名&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--role-session-name<span class="w"> </span><span class="s2">"&lt;任意のセッション名&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--external-id<span class="w"> </span><span class="s2">"</span><span class="nv">$aws_iam_role_external_id</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--duration-seconds<span class="w"> </span><span class="s2">"&lt;セッションデータの失効秒数&gt;"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--query<span class="w"> </span><span class="s2">"Credentials"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output<span class="w"> </span><span class="s2">"json"</span><span class="k">)</span><span class="s2">"</span>
 
 <span class="c1"># 資格情報を環境変数に出力するためのスクリプトを作成する。</span>
-cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; &quot;export_aws_envs.sh&quot;</span>
-<span class="s">export AWS_ACCESS_KEY_ID=&quot;$(echo &quot;$aws_sts_credentials&quot; | jq -r &#39;.AccessKeyId&#39;)&quot;</span>
-<span class="s">export AWS_SECRET_ACCESS_KEY=&quot;$(echo &quot;$aws_sts_credentials&quot; | jq -r &#39;.SecretAccessKey&#39;)&quot;</span>
-<span class="s">export AWS_SESSION_TOKEN=&quot;$(echo &quot;$aws_sts_credentials&quot; | jq -r &#39;.SessionToken&#39;)&quot;</span>
-<span class="s">export AWS_ACCOUNT_ID=&quot;$aws_account_id&quot;</span>
-<span class="s">export AWS_DEFAULT_REGION=&quot;ap-northeast-1&quot;</span>
+cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; "export_aws_envs.sh"</span>
+<span class="s">export AWS_ACCESS_KEY_ID="$(echo "$aws_sts_credentials" | jq -r '.AccessKeyId')"</span>
+<span class="s">export AWS_SECRET_ACCESS_KEY="$(echo "$aws_sts_credentials" | jq -r '.SecretAccessKey')"</span>
+<span class="s">export AWS_SESSION_TOKEN="$(echo "$aws_sts_credentials" | jq -r '.SessionToken')"</span>
+<span class="s">export AWS_ACCOUNT_ID="$aws_account_id"</span>
+<span class="s">export AWS_DEFAULT_REGION="ap-northeast-1"</span>
 <span class="s">EOF</span>
 </code></pre></div>
 <h4 id="terraform_applysh">▼ <code>terraform_apply.sh</code> ファイル<a class="headerlink" href="#terraform_applysh" title="Permanent link">&para;</a></h4>
@@ -34262,9 +34262,9 @@ cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; &quot;export_aws_env
 <span class="c1"># credentialsの情報を出力します。</span>
 <span class="nb">source</span><span class="w"> </span>./aws_envs.sh
 
-terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>apply<span class="w"> </span><span class="se">\</span>
+terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>apply<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-parallelism<span class="o">=</span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span>.tfplan
+<span class="w">  </span><span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span>.tfplan
 </code></pre></div>
 <h4 id="terraform_fmtsh">▼ <code>terraform_fmt.sh</code> ファイル<a class="headerlink" href="#terraform_fmtsh" title="Permanent link">&para;</a></h4>
 <p>GitHub リポジトリにプッシュされたコードに対して <code>terraform fmt</code> コマンドを実行する。</p>
@@ -34287,13 +34287,13 @@ terraform<span class="w"> </span>fmt<span class="w"> </span><span class="se">\</
 <span class="c1"># credentialsの情報を出力します。</span>
 <span class="nb">source</span><span class="w"> </span>./aws_envs.sh
 
-terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>init<span class="w"> </span><span class="se">\</span>
+terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>init<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-upgrade<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-reconfigure<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-backend<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-backend-config<span class="o">=</span><span class="s2">&quot;bucket=&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;-tfstate-bucket&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-backend-config<span class="o">=</span><span class="s2">&quot;key=terraform.tfstate&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-backend-config<span class="o">=</span><span class="s2">&quot;encrypt=true&quot;</span>
+<span class="w">  </span>-backend-config<span class="o">=</span><span class="s2">"bucket="</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"-tfstate-bucket"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-backend-config<span class="o">=</span><span class="s2">"key=terraform.tfstate"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-backend-config<span class="o">=</span><span class="s2">"encrypt=true"</span>
 </code></pre></div>
 <h4 id="terraform_plansh">▼ <code>terraform_plan.sh</code> ファイル<a class="headerlink" href="#terraform_plansh" title="Permanent link">&para;</a></h4>
 <p>特定の AWS アカウントに対して <code>terraform plan</code> コマンドを実行する。</p>
@@ -34305,9 +34305,9 @@ terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2
 <span class="c1"># credentialsの情報を出力します。</span>
 <span class="nb">source</span><span class="w"> </span>./aws_envs.sh
 
-terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-var-file<span class="o">=</span>./<span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span>/foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-out<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span>.tfplan<span class="w"> </span><span class="se">\</span>
+terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-var-file<span class="o">=</span>./<span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span>/foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-out<span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span>.tfplan<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-parallelism<span class="o">=</span><span class="m">30</span>
 </code></pre></div>
 <h4 id="terraform_validatesh">▼ <code>terraform_validate.sh</code> ファイル<a class="headerlink" href="#terraform_validatesh" title="Permanent link">&para;</a></h4>
@@ -34317,7 +34317,7 @@ terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2
 
 <span class="nb">set</span><span class="w"> </span>-xeuo<span class="w"> </span>pipefail
 
-terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>validate
+terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2">"</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span>validate
 </code></pre></div>
 <p><br></p>
 

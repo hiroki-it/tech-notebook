@@ -34049,9 +34049,9 @@
 <span class="nv">$staff</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Staff</span><span class="p">();</span>
 
 <span class="c1">// DBから読み込んだ区分値 (開発職：2) からenum型のクラスを作成</span>
-<span class="nv">$staff</span><span class="o">-&gt;</span><span class="na">roleType</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RoleType</span><span class="p">(</span><span class="nv">$fetched</span><span class="p">[</span><span class="s2">&quot;role_type&quot;</span><span class="p">]);</span>
+<span class="nv">$staff</span><span class="o">-&gt;</span><span class="na">roleType</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RoleType</span><span class="p">(</span><span class="nv">$fetched</span><span class="p">[</span><span class="s2">"role_type"</span><span class="p">]);</span>
 <span class="c1">// 以下の方法でも良い。</span>
-<span class="c1">// $staff-&gt;roleType = RoleType::fromValue($fetched[&quot;role_type&quot;]);</span>
+<span class="c1">// $staff-&gt;roleType = RoleType::fromValue($fetched["role_type"]);</span>
 
 <span class="c1">// StaffがいずれのRoleTypeを持つか</span>
 <span class="nv">$staff</span><span class="o">-&gt;</span><span class="na">roleType</span><span class="o">-&gt;</span><span class="na">isDevelopmentRole</span><span class="p">();</span> <span class="c1">// true</span>
@@ -34074,12 +34074,12 @@
 
     <span class="c1">// ...</span>
 
-    <span class="s1">&#39;providers&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'providers'</span> <span class="o">=&gt;</span> <span class="p">[</span>
 
         <span class="c1">// ...</span>
 
         <span class="c1">// Laravel IDE helper</span>
-        <span class="s1">&#39;Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class&#39;</span><span class="p">,</span>
+        <span class="s1">'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class'</span><span class="p">,</span>
     <span class="p">],</span>
 
     <span class="c1">// ...</span>

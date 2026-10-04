@@ -33940,7 +33940,7 @@
 <p>Cypress のためだけに UI レンダリングロジックにつける要素のこと。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">SubmitButton</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="w"> </span><span class="na">data-cy</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="w"> </span><span class="na">data-cy</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>
 <span class="w">      </span><span class="nx">保存</span>
 <span class="w">    </span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 <span class="w">  </span><span class="p">);</span>
@@ -33977,11 +33977,11 @@
 <h3 id="_3">テストスイート、テストケース<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p><code>describe()</code> 関数を使用して、テストスイートを定義できる。</p>
 <p>テストスイートは階層的に定義でき、最大２階層まではあってもよい。</p>
-<div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;パブリックな関数名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s2">"&lt;パブリックな関数名&gt;"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;テストスイートの種別&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s2">"&lt;テストスイートの種別&gt;"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;&lt;テストケース名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">"&lt;テストケース名&gt;"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -33989,40 +33989,40 @@
 <h3 id="_4">テストケースの設計<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 正常系、異常系、境界値<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>正常系、異常系、境界値のテストケースをテストスイートの種別におく。</p>
-<div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;パブリックな関数名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s2">"&lt;パブリックな関数名&gt;"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;テストスイートの種別&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s2">"&lt;テストスイートの種別&gt;"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// 正常系</span>
-<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;&lt;テストケース名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">"&lt;テストケース名&gt;"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// 異常系</span>
-<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;&lt;テストケース名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">"&lt;テストケース名&gt;"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// 境界値</span>
-<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;&lt;テストケース名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">"&lt;テストケース名&gt;"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;パブリックな関数名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s2">"&lt;パブリックな関数名&gt;"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;テストスイートの種別&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">describe</span><span class="p">(</span><span class="s2">"&lt;テストスイートの種別&gt;"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;正常系：&lt;テストケース名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;異常系：&lt;テストケース名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">"正常系：&lt;テストケース名&gt;"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;境界値：&lt;テストケース名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">"異常系：&lt;テストケース名&gt;"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">test</span><span class="p">(</span><span class="s2">"境界値：&lt;テストケース名&gt;"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
@@ -34032,9 +34032,9 @@
 <p><code>test()</code> 関数と <code>it()</code> 関数は、振る舞いの主語（濁した主語）としての <code>it</code> または <code>test</code> として見ることができる。</p>
 <p>つぎのように命名すると、<code>it</code> または <code>test</code> がテストケース名の主語になって、振る舞いに着目してる感がでる。</p>
 <p>例えば、<code>&lt;期待される動作&gt; when &lt;入力内容&gt;</code> で命名する。</p>
-<div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;テストスイート&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s2">"&lt;テストスイート&gt;"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// テストケース</span>
-<span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;should return user when id is valid&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{});</span>
+<span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s2">"should return user when id is valid"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{});</span>
 <span class="p">});</span>
 </code></pre></div>
 <p>Cypress のドキュメントに BDD（振る舞い駆動開発）の記載がある。</p>
@@ -34045,11 +34045,11 @@
 <h2 id="04">04. 事前処理<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="cypressconfigts">cypress.config.ts<a class="headerlink" href="#cypressconfigts" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// 初期データの事前セットを読み込む</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">seed</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;fixtures/seed.json&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">seed</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"fixtures/seed.json"</span><span class="p">;</span>
 
 <span class="nx">setupNodeEvents</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">on</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;task&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">on</span><span class="p">(</span><span class="s2">"task"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">dbSeed</span><span class="o">:</span><span class="w"> </span><span class="kt">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">user1</span><span class="p">,</span><span class="w"> </span><span class="nx">user2</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">seed</span><span class="p">.</span><span class="nx">user</span><span class="p">;</span>
 
@@ -34081,19 +34081,19 @@
 <p><code>fixtures/expected/foo.json</code> ファイル（期待値データ）の値と同じになる可能性がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 初期データ</span>
 <span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;users&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"users"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;user1&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">      </span><span class="s">"user1"</span><span class="p p-Indicator">:</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
-<span class="w">          </span><span class="s">&quot;email&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;user1@gmail.com&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;testUser1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;password&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;password&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"email"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"user1@gmail.com"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"testUser1"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"password"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"password"</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="s">&quot;user2&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">      </span><span class="s">"user2"</span><span class="p p-Indicator">:</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
-<span class="w">          </span><span class="s">&quot;email&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;user2@gmail.com&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;testUser2&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;password&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;password&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"email"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"user2@gmail.com"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"testUser2"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"password"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"password"</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="nv">...</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
@@ -34104,19 +34104,19 @@
 <p>テストに使用する期待値データを設定する。</p>
 <p><code>fixtures/foo/data.json</code> ファイル（初期データ）の値と同じになる可能性がある。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;users&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"users"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;user1&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">      </span><span class="s">"user1"</span><span class="p p-Indicator">:</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
-<span class="w">          </span><span class="s">&quot;email&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;user1@gmail.com&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;testUser1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;password&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;password&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"email"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"user1@gmail.com"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"testUser1"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"password"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"password"</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="s">&quot;user2&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">      </span><span class="s">"user2"</span><span class="p p-Indicator">:</span>
 <span class="w">        </span><span class="p p-Indicator">{</span>
-<span class="w">          </span><span class="s">&quot;email&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;user2@gmail.com&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;testUser2&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;password&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;password&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"email"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"user2@gmail.com"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"testUser2"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"password"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"password"</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="nv">...</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
@@ -34124,36 +34124,36 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_7">ヘルパー<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nx">Cypress</span><span class="p">.</span><span class="nx">Commands</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;login&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="nx">Cypress</span><span class="p">.</span><span class="nx">Commands</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">"login"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// fixture/users/data.jsonファイルを使用する</span>
-<span class="w">  </span><span class="nx">cy</span><span class="p">.</span><span class="nx">fixture</span><span class="p">(</span><span class="s2">&quot;users/data&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">seed</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">visit</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">cy</span><span class="p">.</span><span class="nx">fixture</span><span class="p">(</span><span class="s2">"users/data"</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">seed</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">visit</span><span class="p">(</span><span class="s2">"/"</span><span class="p">);</span>
 <span class="w">    </span><span class="c1">// 待機することで、Cypressがハイドレーション前に画面をロードし、エラーが発生することを避ける</span>
 <span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">wait</span><span class="p">(</span><span class="mf">1000</span><span class="p">);</span>
 <span class="w">    </span><span class="c1">// アサーションを実行し、実際値と期待値と一致するかを検証する</span>
-<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">url</span><span class="p">().</span><span class="nx">should</span><span class="p">(</span><span class="s2">&quot;eq&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Cypress</span><span class="p">.</span><span class="nx">config</span><span class="p">().</span><span class="nx">baseUrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/signup&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">url</span><span class="p">().</span><span class="nx">should</span><span class="p">(</span><span class="s2">"eq"</span><span class="p">,</span><span class="w"> </span><span class="nx">Cypress</span><span class="p">.</span><span class="nx">config</span><span class="p">().</span><span class="nx">baseUrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"/signup"</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// data-cy=&quot;signin&quot; 要素をクリックする</span>
-<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;[data-cy=signin]&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// data-cy="signin" 要素をクリックする</span>
+<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"[data-cy=signin]"</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
 <span class="w">    </span><span class="c1">// URLの実際値を取得し、期待値と一致するかを検証する</span>
-<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">url</span><span class="p">().</span><span class="nx">should</span><span class="p">(</span><span class="s2">&quot;eq&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Cypress</span><span class="p">.</span><span class="nx">config</span><span class="p">().</span><span class="nx">baseUrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/signin&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">url</span><span class="p">().</span><span class="nx">should</span><span class="p">(</span><span class="s2">"eq"</span><span class="p">,</span><span class="w"> </span><span class="nx">Cypress</span><span class="p">.</span><span class="nx">config</span><span class="p">().</span><span class="nx">baseUrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"/signin"</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// 初期データをフォームに入力する</span>
 <span class="w">    </span><span class="c1">// データベースに挿入したユーザー情報を使用する</span>
-<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;[data-cy=email]&quot;</span><span class="p">).</span><span class="kr">type</span><span class="p">(</span><span class="nx">seed</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">user1</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;[data-cy=password]&quot;</span><span class="p">).</span><span class="kr">type</span><span class="p">(</span><span class="nx">seed</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">user1</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span>
-<span class="w">    </span><span class="c1">// data-cy=&quot;submit&quot; 要素をクリックし、送信する</span>
-<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;[data-cy=submit]&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"[data-cy=email]"</span><span class="p">).</span><span class="kr">type</span><span class="p">(</span><span class="nx">seed</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">user1</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"[data-cy=password]"</span><span class="p">).</span><span class="kr">type</span><span class="p">(</span><span class="nx">seed</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">user1</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// data-cy="submit" 要素をクリックし、送信する</span>
+<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"[data-cy=submit]"</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
 <span class="w">    </span><span class="c1">// URLの実際値を取得し、期待値と一致するかを検証する</span>
-<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">url</span><span class="p">().</span><span class="nx">should</span><span class="p">(</span><span class="s2">&quot;eq&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Cypress</span><span class="p">.</span><span class="nx">config</span><span class="p">().</span><span class="nx">baseUrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">url</span><span class="p">().</span><span class="nx">should</span><span class="p">(</span><span class="s2">"eq"</span><span class="p">,</span><span class="w"> </span><span class="nx">Cypress</span><span class="p">.</span><span class="nx">config</span><span class="p">().</span><span class="nx">baseUrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"/"</span><span class="p">);</span>
 
-<span class="w">    </span><span class="c1">// data-cy=&quot;profileEmail&quot; 要素をクリックする</span>
-<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;[data-cy=profile]&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// data-cy="profileEmail" 要素をクリックする</span>
+<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"[data-cy=profile]"</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
 
-<span class="w">    </span><span class="c1">// data-cy=&quot;profileName&quot; 要素から実際値を取得し、実際値と期待値と一致するかを検証する</span>
-<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;[data-cy=profileName]&quot;</span><span class="p">).</span><span class="nx">should</span><span class="p">(</span><span class="s2">&quot;have.text&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">seed</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">user1</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-<span class="w">    </span><span class="c1">// data-cy=&quot;profileEmail&quot; 要素から実際値を取得し、実際値と期待値と一致するかを検証する</span>
-<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;[data-cy=profileEmail]&quot;</span><span class="p">).</span><span class="nx">should</span><span class="p">(</span><span class="s2">&quot;have.text&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">seed</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">user1</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// data-cy="profileName" 要素から実際値を取得し、実際値と期待値と一致するかを検証する</span>
+<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"[data-cy=profileName]"</span><span class="p">).</span><span class="nx">should</span><span class="p">(</span><span class="s2">"have.text"</span><span class="p">,</span><span class="w"> </span><span class="nx">seed</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">user1</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// data-cy="profileEmail" 要素から実際値を取得し、実際値と期待値と一致するかを検証する</span>
+<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"[data-cy=profileEmail]"</span><span class="p">).</span><span class="nx">should</span><span class="p">(</span><span class="s2">"have.text"</span><span class="p">,</span><span class="w"> </span><span class="nx">seed</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">user1</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
 <span class="w">  </span><span class="p">});</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -34161,74 +34161,74 @@
 <h2 id="05">05. テストスイート<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <p>テストスイートはテストケース (テスト関数) に分類できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// テストスイート</span>
-<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;ユーザーの一覧を表示するテスト&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s2">"ユーザーの一覧を表示するテスト"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 各テストケースに共通する処理をテスト</span>
 <span class="w">  </span><span class="nx">beforeEach</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 基本的な初期データをデータベースに挿入する</span>
-<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="s2">&quot;yarn ts-node --require tsconfig-paths/register prisma/seed.ts&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="s2">"yarn ts-node --require tsconfig-paths/register prisma/seed.ts"</span><span class="p">);</span>
 <span class="w">    </span><span class="c1">// cypress.config.ts ファイルで定義したdbSeed関数を実行する</span>
-<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">&quot;dbSeed&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">"dbSeed"</span><span class="p">);</span>
 <span class="w">    </span><span class="c1">// テスト用の初期データをデータベースに挿入する</span>
 <span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span>
-<span class="w">      </span><span class="s1">&#39;yarn ts-node --require tsconfig-paths/register &quot;cypress/seed/users.ts&quot;&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="s1">'yarn ts-node --require tsconfig-paths/register "cypress/seed/users.ts"'</span><span class="p">,</span>
 <span class="w">    </span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// エラーハンドリングをイベントリスナーとして登録する</span>
-<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;uncaught:exception&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"uncaught:exception"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">});</span>
 
 <span class="w">    </span><span class="c1">// ヘルパーを使用してログインする</span>
 <span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">login</span><span class="p">();</span>
-<span class="w">    </span><span class="c1">// data-cy=&quot;users&quot; 要素をクリックする</span>
-<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;[data-cy=users]&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// data-cy="users" 要素をクリックする</span>
+<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"[data-cy=users]"</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
 <span class="w">  </span><span class="p">});</span>
 
 <span class="w">  </span><span class="c1">// 正常系テストケース</span>
-<span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;ユーザーの一覧を表示できる&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s2">"ユーザーの一覧を表示できる"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// テストケース固有の初期データ</span>
 <span class="w">    </span><span class="c1">// fixture/expected/users.jsonファイルを使用する</span>
-<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">fixture</span><span class="p">(</span><span class="s2">&quot;users/data&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">expected</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">fixture</span><span class="p">(</span><span class="s2">"users/data"</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">expected</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1">// URLの実際値を取得し、期待値と一致するかを検証する</span>
-<span class="w">      </span><span class="nx">cy</span><span class="p">.</span><span class="nx">url</span><span class="p">().</span><span class="nx">should</span><span class="p">(</span><span class="s2">&quot;eq&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Cypress</span><span class="p">.</span><span class="nx">config</span><span class="p">().</span><span class="nx">baseUrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/users&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">cy</span><span class="p">.</span><span class="nx">url</span><span class="p">().</span><span class="nx">should</span><span class="p">(</span><span class="s2">"eq"</span><span class="p">,</span><span class="w"> </span><span class="nx">Cypress</span><span class="p">.</span><span class="nx">config</span><span class="p">().</span><span class="nx">baseUrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"/users"</span><span class="p">);</span>
 
-<span class="w">      </span><span class="c1">// data-cy=&quot;userName&quot; 要素から実際値を取得し、実際値と期待値と一致するかを検証する</span>
-<span class="w">      </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;[data-cy=userName]&quot;</span><span class="p">)</span>
+<span class="w">      </span><span class="c1">// data-cy="userName" 要素から実際値を取得し、実際値と期待値と一致するかを検証する</span>
+<span class="w">      </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"[data-cy=userName]"</span><span class="p">)</span>
 <span class="w">        </span><span class="p">.</span><span class="nx">its</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="nx">should</span><span class="p">(</span><span class="s2">&quot;contain.text&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">expected</span><span class="p">.</span><span class="nx">user1</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-<span class="w">      </span><span class="c1">// data-cy=&quot;userEmail&quot; 要素から実際値を取得し、実際値と期待値と一致するかを検証する</span>
-<span class="w">      </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;[data-cy=userEmail]&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">should</span><span class="p">(</span><span class="s2">"contain.text"</span><span class="p">,</span><span class="w"> </span><span class="nx">expected</span><span class="p">.</span><span class="nx">user1</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="w">      </span><span class="c1">// data-cy="userEmail" 要素から実際値を取得し、実際値と期待値と一致するかを検証する</span>
+<span class="w">      </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"[data-cy=userEmail]"</span><span class="p">)</span>
 <span class="w">        </span><span class="p">.</span><span class="nx">its</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="nx">should</span><span class="p">(</span><span class="s2">&quot;contain.text&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">expected</span><span class="p">.</span><span class="nx">user1</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
+<span class="w">        </span><span class="p">.</span><span class="nx">should</span><span class="p">(</span><span class="s2">"contain.text"</span><span class="p">,</span><span class="w"> </span><span class="nx">expected</span><span class="p">.</span><span class="nx">user1</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
 <span class="w">    </span><span class="p">});</span>
 <span class="w">  </span><span class="p">});</span>
 
 <span class="w">  </span><span class="c1">// 正常系テストケース</span>
-<span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;ページネーションを実行できる&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">test</span><span class="p">(</span><span class="s2">"ページネーションを実行できる"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 汎用的な初期データ</span>
-<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">fixture</span><span class="p">(</span><span class="s2">&quot;dbSeed&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">expected</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">cy</span><span class="p">.</span><span class="nx">fixture</span><span class="p">(</span><span class="s2">"dbSeed"</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">expected</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1">// テストケース固有の初期データ</span>
 <span class="w">      </span><span class="c1">// fixture/expected/users.jsonファイルを使用する</span>
-<span class="w">      </span><span class="nx">cy</span><span class="p">.</span><span class="nx">fixture</span><span class="p">(</span><span class="s2">&quot;users/data&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">expected</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">cy</span><span class="p">.</span><span class="nx">fixture</span><span class="p">(</span><span class="s2">"users/data"</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">expected</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">user2</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">expected</span><span class="p">.</span><span class="nx">user</span><span class="p">;</span>
 <span class="w">        </span><span class="nx">cy</span><span class="p">.</span><span class="nx">wait</span><span class="p">(</span><span class="mf">1000</span><span class="p">);</span>
 
-<span class="w">        </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;[data-cy=next]&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+<span class="w">        </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"[data-cy=next]"</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
 <span class="w">        </span><span class="c1">// URLの実際値を取得し、期待値と一致するかを検証する</span>
-<span class="w">        </span><span class="nx">cy</span><span class="p">.</span><span class="nx">url</span><span class="p">().</span><span class="nx">should</span><span class="p">(</span><span class="s2">&quot;eq&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Cypress</span><span class="p">.</span><span class="nx">config</span><span class="p">().</span><span class="nx">baseUrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/users/?page=2&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="c1">// data-cy=&quot;previous&quot; 要素から実際値を取得し、期待値と一致するかを検証する</span>
-<span class="w">        </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;[data-cy=userName]&quot;</span><span class="p">).</span><span class="nx">its</span><span class="p">(</span><span class="mf">0</span><span class="p">).</span><span class="nx">should</span><span class="p">(</span><span class="s2">&quot;contain.text&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">user2</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">cy</span><span class="p">.</span><span class="nx">url</span><span class="p">().</span><span class="nx">should</span><span class="p">(</span><span class="s2">"eq"</span><span class="p">,</span><span class="w"> </span><span class="nx">Cypress</span><span class="p">.</span><span class="nx">config</span><span class="p">().</span><span class="nx">baseUrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"/users/?page=2"</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// data-cy="previous" 要素から実際値を取得し、期待値と一致するかを検証する</span>
+<span class="w">        </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"[data-cy=userName]"</span><span class="p">).</span><span class="nx">its</span><span class="p">(</span><span class="mf">0</span><span class="p">).</span><span class="nx">should</span><span class="p">(</span><span class="s2">"contain.text"</span><span class="p">,</span><span class="w"> </span><span class="nx">user2</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
 
-<span class="w">        </span><span class="c1">// data-cy=&quot;previous&quot; 要素をクリックする</span>
-<span class="w">        </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;[data-cy=previous]&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+<span class="w">        </span><span class="c1">// data-cy="previous" 要素をクリックする</span>
+<span class="w">        </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"[data-cy=previous]"</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
 <span class="w">        </span><span class="c1">// アサーションを実行し、実際値と期待値と一致するかを検証する</span>
-<span class="w">        </span><span class="nx">cy</span><span class="p">.</span><span class="nx">url</span><span class="p">().</span><span class="nx">should</span><span class="p">(</span><span class="s2">&quot;eq&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Cypress</span><span class="p">.</span><span class="nx">config</span><span class="p">().</span><span class="nx">baseUrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/users/?page=1&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">cy</span><span class="p">.</span><span class="nx">url</span><span class="p">().</span><span class="nx">should</span><span class="p">(</span><span class="s2">"eq"</span><span class="p">,</span><span class="w"> </span><span class="nx">Cypress</span><span class="p">.</span><span class="nx">config</span><span class="p">().</span><span class="nx">baseUrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"/users/?page=1"</span><span class="p">);</span>
 
-<span class="w">        </span><span class="c1">// data-cy=&quot;userName&quot; 要素から実際値を取得し、期待値と一致するかを検証する</span>
-<span class="w">        </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;[data-cy=userName]&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="c1">// data-cy="userName" 要素から実際値を取得し、期待値と一致するかを検証する</span>
+<span class="w">        </span><span class="nx">cy</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"[data-cy=userName]"</span><span class="p">)</span>
 <span class="w">          </span><span class="p">.</span><span class="nx">its</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span>
-<span class="w">          </span><span class="p">.</span><span class="nx">should</span><span class="p">(</span><span class="s2">&quot;contain.text&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">expected</span><span class="p">.</span><span class="nx">user1</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="w">          </span><span class="p">.</span><span class="nx">should</span><span class="p">(</span><span class="s2">"contain.text"</span><span class="p">,</span><span class="w"> </span><span class="nx">expected</span><span class="p">.</span><span class="nx">user1</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
 <span class="w">      </span><span class="p">});</span>
 <span class="w">    </span><span class="p">});</span>
 <span class="w">  </span><span class="p">});</span>

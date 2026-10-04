@@ -33618,7 +33618,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>chmod<span class="w"> </spa
 <h3 id="_3"><code>{}</code><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>標準入力からファイル名を入力する。</p>
 <p><code>find</code> コマンドと組み合わせて、複数のファイルを操作する場合に使用する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.yaml&quot;</span><span class="w"> </span>-exec<span class="w"> </span>yq<span class="w"> </span><span class="s1">&#39;del(.spec.foo)&#39;</span><span class="w"> </span>-i<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.yaml"</span><span class="w"> </span>-exec<span class="w"> </span>yq<span class="w"> </span><span class="s1">'del(.spec.foo)'</span><span class="w"> </span>-i<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -33630,7 +33630,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>chmod<span class="w"> </spa
 <h4 id="keys_1">▼ keys とは<a class="headerlink" href="#keys_1" title="Permanent link">&para;</a></h4>
 <p>キー名を取得する。</p>
 <p>配列型のキー名を取得する場合は、<code>[]</code> を使用する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>data.yaml<span class="w"> </span><span class="p">|</span><span class="w"> </span>yq<span class="w"> </span><span class="s1">&#39;.baz[] | keys&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>data.yaml<span class="w"> </span><span class="p">|</span><span class="w"> </span>yq<span class="w"> </span><span class="s1">'.baz[] | keys'</span>
 
 -<span class="w"> </span>qux
 -<span class="w"> </span>quux
@@ -33638,7 +33638,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>chmod<span class="w"> </spa
 <p><br></p>
 <h3 id="-i">-i<a class="headerlink" href="#-i" title="Permanent link">&para;</a></h3>
 <p>指定したファイルのパスの値を変更する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>yq<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;.metadata.namespace = &quot;foo&quot;&#39;</span><span class="w"> </span>manifest.yaml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>yq<span class="w"> </span>-i<span class="w"> </span><span class="s1">'.metadata.namespace = "foo"'</span><span class="w"> </span>manifest.yaml
 </code></pre></div>
 <p><br></p>
 <h3 id="-p">-P<a class="headerlink" href="#-p" title="Permanent link">&para;</a></h3>
@@ -33653,7 +33653,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>chmod<span class="w"> </spa
 <p><br></p>
 <h2 id="01-04-ireduce">01-04. ireduce<a class="headerlink" href="#01-04-ireduce" title="Permanent link">&para;</a></h2>
 <h3 id="ireduce">ireduce とは<a class="headerlink" href="#ireduce" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>yq<span class="w"> </span>eval-all<span class="w"> </span><span class="s1">&#39;. as $item ireduce ({}; . * $item )&#39;</span><span class="w"> </span>foo.yaml<span class="w"> </span>bar.yaml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>yq<span class="w"> </span>eval-all<span class="w"> </span><span class="s1">'. as $item ireduce ({}; . * $item )'</span><span class="w"> </span>foo.yaml<span class="w"> </span>bar.yaml
 </code></pre></div>
 <blockquote>
 <ul>

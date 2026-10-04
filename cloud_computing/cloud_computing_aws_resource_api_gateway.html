@@ -34675,17 +34675,17 @@
 <h4 id="_11">▼ リクエスト時のマッピング<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>Amazon API Gateway 側でプロキシ統合を有効化すると、Amazon API Gateway を経由したクライアントからのリクエストは、ハンドラ関数の event オブジェクトの JSON 型データにマッピングされる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Resource</span><span class="nv"> </span><span class="s">path&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;path&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Path</span><span class="nv"> </span><span class="s">parameter&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;httpMethod&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Incoming</span><span class="nv"> </span><span class="s">request&#39;s</span><span class="nv"> </span><span class="s">method</span><span class="nv"> </span><span class="s">name&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;headers&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">"resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Resource</span><span class="nv"> </span><span class="s">path"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"path"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Path</span><span class="nv"> </span><span class="s">parameter"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"httpMethod"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Incoming</span><span class="nv"> </span><span class="s">request's</span><span class="nv"> </span><span class="s">method</span><span class="nv"> </span><span class="s">name"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"headers"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">      </span><span class="nv">String</span>
 <span class="w">      </span><span class="nv">containing</span>
 <span class="w">      </span><span class="nv">incoming</span>
 <span class="w">      </span><span class="nv">request</span>
 <span class="w">      </span><span class="nv">headers</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;multiValueHeaders&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">"multiValueHeaders"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">      </span><span class="nv">List</span>
 <span class="w">      </span><span class="nv">of</span>
 <span class="w">      </span><span class="nv">strings</span>
@@ -34694,28 +34694,28 @@
 <span class="w">      </span><span class="nv">request</span>
 <span class="w">      </span><span class="nv">headers</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;queryStringParameters&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">"queryStringParameters"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">      </span><span class="nv">query</span>
 <span class="w">      </span><span class="nv">string</span>
 <span class="w">      </span><span class="nv">parameters</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;multiValueQueryStringParameters&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">"multiValueQueryStringParameters"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">      </span><span class="nv">List</span>
 <span class="w">      </span><span class="nv">of</span>
 <span class="w">      </span><span class="nv">query</span>
 <span class="w">      </span><span class="nv">string</span>
 <span class="w">      </span><span class="nv">parameters</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;pathParameters&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">"pathParameters"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">      </span><span class="nv">path</span>
 <span class="w">      </span><span class="nv">parameters</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;stageVariables&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">"stageVariables"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">      </span><span class="nv">Applicable</span>
 <span class="w">      </span><span class="nv">stage</span>
 <span class="w">      </span><span class="nv">variables</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;requestContext&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">"requestContext"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">      </span><span class="nv">Request</span>
 <span class="w">      </span><span class="nv">context</span>
 <span class="w">      </span><span class="nv">including</span>
@@ -34723,24 +34723,24 @@
 <span class="w">      </span><span class="nv">key-value</span>
 <span class="w">      </span><span class="nv">pairs</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;body&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;A</span><span class="nv"> </span><span class="s">JSON</span><span class="nv"> </span><span class="s">string</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">request</span><span class="nv"> </span><span class="s">payload.&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;isBase64Encoded&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;A</span><span class="nv"> </span><span class="s">boolean</span><span class="nv"> </span><span class="s">flag</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">indicate</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">applicable</span><span class="nv"> </span><span class="s">request</span><span class="nv"> </span><span class="s">payload</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">Base64-encoded&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"body"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"A</span><span class="nv"> </span><span class="s">JSON</span><span class="nv"> </span><span class="s">string</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">request</span><span class="nv"> </span><span class="s">payload."</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"isBase64Encoded"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"A</span><span class="nv"> </span><span class="s">boolean</span><span class="nv"> </span><span class="s">flag</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">indicate</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">applicable</span><span class="nv"> </span><span class="s">request</span><span class="nv"> </span><span class="s">payload</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">Base64-encoded"</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="_12">▼ レスポンス時のマッピング<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>Amazon API Gateway は、AWS Lambda からのレスポンスを、以下の JSON 型データにマッピングする。</p>
 <p>これ以外の構造の JSON 型データを送信すると、Amazon API Gateway で『<code>Internal Server Error</code>』のエラーが起こる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;isBase64Encoded&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;statusCode&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">httpStatusCode</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;headers&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;headerName&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;headerValue&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">...</span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;multiValueHeaders&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="p p-Indicator">{</span><span class="s">&quot;headerName&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;headerValue&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;headerValue2&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">...</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="nv">...</span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;body&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Hello</span><span class="nv"> </span><span class="s">AWS</span><span class="nv"> </span><span class="s">Lambda&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"isBase64Encoded"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"statusCode"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">httpStatusCode</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"headers"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"headerName"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"headerValue"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">...</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">"multiValueHeaders"</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">{</span><span class="s">"headerName"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"headerValue"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"headerValue2"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">...</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="nv">...</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">"body"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Hello</span><span class="nv"> </span><span class="s">AWS</span><span class="nv"> </span><span class="s">Lambda"</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>Amazon API Gateway は上記の JSON 型データを受信した後、<code>body</code> のみ値をレスポンスのメッセージボディに持たせ、クライアントに送信する。</p>
-<div class="highlight"><pre><span></span><code><span class="s2">&quot;Hello AWS Lambda&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="s2">"Hello AWS Lambda"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_13">ステージ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>

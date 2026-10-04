@@ -33436,18 +33436,18 @@
 <h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h2 id="01_1">01. セットアップ<a class="headerlink" href="#01_1" title="Permanent link">&para;</a></h2>
 <h3 id="aws">AWS 側<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_grafana_tempo&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"iam_assumable_role_with_oidc_grafana_tempo"</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"</span>
 
-<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;バージョン&gt;"</span>
 
 <span class="c1">  # Grafana LokiのPodに紐付けるIAMロール</span>
 <span class="w">  </span><span class="na">create_role</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-grafana-tempo&quot;</span>
+<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-grafana-tempo"</span>
 
 <span class="c1">  # Amazon EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの</span>
-<span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://&quot;, &quot;&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://", ""</span><span class="p">)</span>
 
 <span class="c1">  # AWS IAMロールに紐付けるIAMポリシー</span>
 <span class="w">  </span><span class="na">role_policy_arns</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_iam_policy.grafana_tempo.arn</span>
@@ -33455,42 +33455,42 @@
 <span class="c1">  # Grafana LokirのPodのServiceAccount名</span>
 <span class="c1">  # ServiceAccountは、Terraformではなく、マニフェストで定義したほうが良い</span>
 <span class="w">  </span><span class="na">oidc_fully_qualified_subjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;system:serviceaccount:grafana-tempo:grafana-tempo&quot;</span>
+<span class="w">    </span><span class="s2">"system:serviceaccount:grafana-tempo:grafana-tempo"</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_iam_role_policy&quot;</span><span class="w"> </span><span class="nv">&quot;grafana_tempo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;grafana-tempo&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_iam_role_policy"</span><span class="w"> </span><span class="nv">"grafana_tempo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"grafana-tempo"</span>
 <span class="w">  </span><span class="na">role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_iam_role.grafana_tempo.id</span>
 
 <span class="c1">  # Amazon S3をトレースのオブジェクトストレージとして使用する</span>
 <span class="w">  </span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">jsonencode</span><span class="p">({</span>
-<span class="w">    </span><span class="s2">&quot;Version&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;Statement&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">"Version"</span><span class="o">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"Statement"</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">&quot;Effect&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;Action&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">          </span><span class="s2">&quot;s3:GetObject&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">&quot;s3:PutObject&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">&quot;s3:DeleteObject&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">&quot;s3:ListBucket&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">&quot;s3:GetBucketLocation&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">&quot;s3:DeleteObject&quot;</span>
+<span class="w">        </span><span class="s2">"Effect"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"Action"</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">"s3:GetObject"</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">"s3:PutObject"</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">"s3:DeleteObject"</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">"s3:ListBucket"</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">"s3:GetBucketLocation"</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">"s3:DeleteObject"</span>
 <span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="s2">&quot;Resource&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">          </span><span class="s2">&quot;*&quot;</span>
+<span class="w">        </span><span class="s2">"Resource"</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">"*"</span>
 <span class="w">        </span><span class="p">]</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">})</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;s3_grafana_tempo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/s3-bucket/aws&quot;</span>
-<span class="w">    </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;4.6.0&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"s3_grafana_tempo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/s3-bucket/aws"</span>
+<span class="w">    </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"4.6.0"</span>
 
-<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;grafana-tempo-logs-bucket&quot;</span>
-<span class="w">    </span><span class="na">object_ownership</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;BucketOwnerPreferred&quot;</span>
+<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"grafana-tempo-logs-bucket"</span>
+<span class="w">    </span><span class="na">object_ownership</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"BucketOwnerPreferred"</span>
 
 <span class="w">    </span><span class="nb">versioning</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="na">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>

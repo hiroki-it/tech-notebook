@@ -34676,12 +34676,12 @@
 <h4 id="_6">▼ テーブルのエクスポート<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>DB からテーブルをエクスポートする。</p>
 <p>エクスポートしたいテーブルの数だけ、テーブル名を連ねる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mysqldump<span class="w"> </span>--force<span class="w"> </span>-h<span class="w"> </span><span class="s2">&quot;&lt;DBのホスト名&gt;&quot;</span><span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;&lt;ユーザー名&gt;&quot;</span><span class="w"> </span>-p<span class="s1">&#39;&lt;パスワード&gt;&#39;</span><span class="w"> </span><span class="s2">&quot;&lt;DB名&gt;&quot;</span><span class="w"> </span><span class="s2">&quot;&lt;テーブル名1&gt;&quot;</span><span class="w"> </span><span class="s2">&quot;&lt;テーブル名2&gt;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>table.sql
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mysqldump<span class="w"> </span>--force<span class="w"> </span>-h<span class="w"> </span><span class="s2">"&lt;DBのホスト名&gt;"</span><span class="w"> </span>-u<span class="w"> </span><span class="s2">"&lt;ユーザー名&gt;"</span><span class="w"> </span>-p<span class="s1">'&lt;パスワード&gt;'</span><span class="w"> </span><span class="s2">"&lt;DB名&gt;"</span><span class="w"> </span><span class="s2">"&lt;テーブル名1&gt;"</span><span class="w"> </span><span class="s2">"&lt;テーブル名2&gt;"</span><span class="w"> </span>&gt;<span class="w"> </span>table.sql
 </code></pre></div>
 <h4 id="_7">▼ テーブルのインポート<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>DB にテーブルをインポートする。</p>
 <p>force オプションで、エラーが出ても強制的にインポート。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mysql<span class="w"> </span>--force<span class="w"> </span>-h<span class="w"> </span><span class="s2">&quot;&lt;DBのホスト名&gt;&quot;</span><span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;&lt;ユーザー名&gt;&quot;</span><span class="w"> </span>-p<span class="s1">&#39;&lt;パスワード&gt;&#39;</span><span class="w"> </span><span class="s2">&quot;&lt;DB名&gt;&quot;</span><span class="w"> </span>&lt;<span class="w"> </span>table.sql
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mysql<span class="w"> </span>--force<span class="w"> </span>-h<span class="w"> </span><span class="s2">"&lt;DBのホスト名&gt;"</span><span class="w"> </span>-u<span class="w"> </span><span class="s2">"&lt;ユーザー名&gt;"</span><span class="w"> </span>-p<span class="s1">'&lt;パスワード&gt;'</span><span class="w"> </span><span class="s2">"&lt;DB名&gt;"</span><span class="w"> </span>&lt;<span class="w"> </span>table.sql
 </code></pre></div>
 <p><br></p>
 <h3 id="db">DB カラム型<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
@@ -34834,7 +34834,7 @@
 <li><a href="https://www.sukerou.com/2020/09/mysql.html">MySQLで改行コードを挿入/置換する方法-スケ郎のお話</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">foo_table</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="k">description</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;前の行</span><span class="se">\r\n</span><span class="s1">後の行&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">foo_table</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="k">description</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">'前の行</span><span class="se">\r\n</span><span class="s1">後の行'</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_11">制約<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
@@ -35024,7 +35024,7 @@
 <h3 id="_22">エラーログ<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <h4 id="aborted-connection">▼ Aborted connection<a class="headerlink" href="#aborted-connection" title="Permanent link">&para;</a></h4>
 <p>MySQL クライアントが接続を切断した場合、MySQL 側では <code>Aborted connection</code> エラーとなる。</p>
-<div class="highlight"><pre><span></span><code><span class="o">[</span>Note<span class="o">]</span><span class="w"> </span>Aborted<span class="w"> </span>connection<span class="w"> </span><span class="m">251</span><span class="w"> </span>to<span class="w"> </span>db:<span class="w"> </span><span class="s1">&#39;db_name&#39;</span><span class="w"> </span>user:<span class="w"> </span><span class="s1">&#39;user_name&#39;</span><span class="w"> </span>host:<span class="w"> </span><span class="s1">&#39;host_name&#39;</span><span class="w"> </span><span class="o">(</span>Got<span class="w"> </span>an<span class="w"> </span>error<span class="w"> </span>reading<span class="w"> </span>communication<span class="w"> </span>packets<span class="o">)</span>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>Note<span class="o">]</span><span class="w"> </span>Aborted<span class="w"> </span>connection<span class="w"> </span><span class="m">251</span><span class="w"> </span>to<span class="w"> </span>db:<span class="w"> </span><span class="s1">'db_name'</span><span class="w"> </span>user:<span class="w"> </span><span class="s1">'user_name'</span><span class="w"> </span>host:<span class="w"> </span><span class="s1">'host_name'</span><span class="w"> </span><span class="o">(</span>Got<span class="w"> </span>an<span class="w"> </span>error<span class="w"> </span>reading<span class="w"> </span>communication<span class="w"> </span>packets<span class="o">)</span>
 </code></pre></div>
 <blockquote>
 <ul>

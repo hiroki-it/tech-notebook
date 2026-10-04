@@ -35478,8 +35478,8 @@ $<span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> 
 <span class="w">    </span>-parallelism<span class="o">=</span><span class="m">30</span>
 </code></pre></div>
 <p>オプションで毎回設定するのが大変なため、環境変数で設定してもよい。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">TF_CLI_ARGS_plan</span><span class="o">=</span><span class="s2">&quot;--parallelism=50&quot;</span>
-$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">TF_CLI_ARGS_apply</span><span class="o">=</span><span class="s2">&quot;--parallelism=50&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">TF_CLI_ARGS_plan</span><span class="o">=</span><span class="s2">"--parallelism=50"</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">TF_CLI_ARGS_apply</span><span class="o">=</span><span class="s2">"--parallelism=50"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35524,17 +35524,17 @@ Apply<span class="w"> </span>complete!<span class="w"> </span>Resources:<span cl
 <p>リリース用のブランチに、今回はリリースしたくない差分が含まれてしまっているような場合、特定の差分のみをプロビジョニングできる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">'&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;'</span>
 </code></pre></div>
 <p><code>module</code> ブロックを採用している場合、指定の方法が異なる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">'module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;'</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;aws_instance.bastion&#39;</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">'aws_instance.bastion'</span>
 </code></pre></div>
 <h4 id="-var-file">▼ -var-file<a class="headerlink" href="#-var-file" title="Permanent link">&para;</a></h4>
 <p>クラウドプロバイダー上にクラウドインフラを作成する。</p>
@@ -35597,12 +35597,12 @@ $<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">
 <span class="w">    </span>-backend<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-reconfigure<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="sb">`</span><span class="c1"># バケット名` \</span>
-<span class="w">    </span>-backend-config<span class="o">=</span><span class="s2">&quot;bucket=prd-foo-tfstate-bucket&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-backend-config<span class="o">=</span><span class="s2">"bucket=prd-foo-tfstate-bucket"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="sb">`</span><span class="c1"># tfstateファイル名` \</span>
-<span class="w">    </span>-backend-config<span class="o">=</span><span class="s2">&quot;key=terraform.tfstate&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-backend-config<span class="o">=</span><span class="s2">"key=terraform.tfstate"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="sb">`</span><span class="c1"># 資格情報ファイルのプロファイル名` \</span>
-<span class="w">    </span>-backend-config<span class="o">=</span><span class="s2">&quot;profile=bar&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-backend-config<span class="o">=</span><span class="s2">&quot;encrypt=true&quot;</span>
+<span class="w">    </span>-backend-config<span class="o">=</span><span class="s2">"profile=bar"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-backend-config<span class="o">=</span><span class="s2">"encrypt=true"</span>
 </code></pre></div>
 <h4 id="-reconfigure">▼ -reconfigure<a class="headerlink" href="#-reconfigure" title="Permanent link">&para;</a></h4>
 <p>初期化のための <code>terraform init</code> コマンドのとき、今現在で設定しているバックエンドにある <code>tfstate</code> ファイルをそのまま使用する。</p>
@@ -35657,14 +35657,14 @@ $<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span><sp
 $<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>--reconfigure
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># プロバイダーの置き換え</span>
-$<span class="w"> </span><span class="nv">PROVIDER_VER</span><span class="o">=</span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
-$<span class="w"> </span><span class="nv">PROVIDER_NAME</span><span class="o">=</span><span class="s2">&quot;aws&quot;</span>
-$<span class="w"> </span><span class="nv">ARCH</span><span class="o">=</span><span class="k">$(if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="sb">`</span>uname<span class="w"> </span>-m<span class="sb">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;arm64&#39;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;darwin_arm64&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;darwin_amd64&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">fi)</span>
+$<span class="w"> </span><span class="nv">PROVIDER_VER</span><span class="o">=</span><span class="s2">"&lt;バージョン&gt;"</span>
+$<span class="w"> </span><span class="nv">PROVIDER_NAME</span><span class="o">=</span><span class="s2">"aws"</span>
+$<span class="w"> </span><span class="nv">ARCH</span><span class="o">=</span><span class="k">$(if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="sb">`</span>uname<span class="w"> </span>-m<span class="sb">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'arm64'</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"darwin_arm64"</span><span class="p">;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"darwin_amd64"</span><span class="p">;</span><span class="w"> </span><span class="k">fi)</span>
 
 $<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/.terraform.d/plugins/registry.terraform.io/hashicorp/<span class="si">${</span><span class="nv">PROVIDER_NAME</span><span class="si">}</span>/<span class="si">${</span><span class="nv">PROVIDER_VER</span><span class="si">}</span>/<span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span>/<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>wget<span class="w"> </span><span class="s2">&quot;https://releases.hashicorp.com/terraform-provider-</span><span class="si">${</span><span class="nv">PROVIDER_NAME</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">PROVIDER_VER</span><span class="si">}</span><span class="s2">/terraform-provider-</span><span class="si">${</span><span class="nv">PROVIDER_NAME</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">PROVIDER_VER</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span><span class="s2">.zip&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>unzip<span class="w"> </span><span class="s2">&quot;terraform-provider-</span><span class="si">${</span><span class="nv">PROVIDER_NAME</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">PROVIDER_VER</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span><span class="s2">.zip&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$HOME</span>/.terraform.d/plugins/registry.terraform.io/hashicorp/<span class="si">${</span><span class="nv">PROVIDER_NAME</span><span class="si">}</span>/<span class="si">${</span><span class="nv">PROVIDER_VER</span><span class="si">}</span>/<span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span>/<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;terraform-provider-</span><span class="si">${</span><span class="nv">PROVIDER_NAME</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">PROVIDER_VER</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span><span class="s2">.zip&quot;</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>wget<span class="w"> </span><span class="s2">"https://releases.hashicorp.com/terraform-provider-</span><span class="si">${</span><span class="nv">PROVIDER_NAME</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">PROVIDER_VER</span><span class="si">}</span><span class="s2">/terraform-provider-</span><span class="si">${</span><span class="nv">PROVIDER_NAME</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">PROVIDER_VER</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span><span class="s2">.zip"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>unzip<span class="w"> </span><span class="s2">"terraform-provider-</span><span class="si">${</span><span class="nv">PROVIDER_NAME</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">PROVIDER_VER</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span><span class="s2">.zip"</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$HOME</span>/.terraform.d/plugins/registry.terraform.io/hashicorp/<span class="si">${</span><span class="nv">PROVIDER_NAME</span><span class="si">}</span>/<span class="si">${</span><span class="nv">PROVIDER_VER</span><span class="si">}</span>/<span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span>/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span><span class="s2">"terraform-provider-</span><span class="si">${</span><span class="nv">PROVIDER_NAME</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">PROVIDER_VER</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span><span class="s2">.zip"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="fmt">fmt<a class="headerlink" href="#fmt" title="Permanent link">&para;</a></h3>
@@ -35791,10 +35791,10 @@ your<span class="w"> </span>Terraform<span class="w"> </span>state<span class="w
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>output<span class="w"> </span>-json
 
 <span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;vpc_id&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;sensitive&quot;</span>:<span class="w"> </span><span class="s2">&quot;false&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;type&quot;</span>:<span class="w"> </span><span class="s2">&quot;string&quot;</span>,
-<span class="w">    </span><span class="s2">&quot;value&quot;</span>:<span class="w"> </span><span class="s2">&quot;vpc-004c2d1ba7394b3d6&quot;</span>
+<span class="w">  </span><span class="s2">"vpc_id"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">"sensitive"</span>:<span class="w"> </span><span class="s2">"false"</span>,
+<span class="w">    </span><span class="s2">"type"</span>:<span class="w"> </span><span class="s2">"string"</span>,
+<span class="w">    </span><span class="s2">"value"</span>:<span class="w"> </span><span class="s2">"vpc-004c2d1ba7394b3d6"</span>
 <span class="w">  </span><span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
@@ -35844,12 +35844,12 @@ actions<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </
 </blockquote>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">'&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;'</span>
 </code></pre></div>
 <p><code>module</code> ブロックを使用している場合、指定の方法が異なる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">'module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;'</span>
 </code></pre></div>
 <p>指定方法は、すべてのブロックを対象とした <code>terraform plan</code> コマンドが参考になる。</p>
 <p><code>grep</code> コマンドを使用して resource タイプ名や <code>module</code> ブロック名で抽出すると、指定方法がわかる。</p>
@@ -35861,8 +35861,8 @@ $<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> <
 
 $<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;foo.bar&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;foo.baz&#39;</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">'foo.bar'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">'foo.baz'</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># moduleブロックの指定方法を調べる。</span>
 $<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>&lt;moduleブロック名&gt;
@@ -35873,9 +35873,9 @@ $<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> <
 
 $<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;module.qux.quux&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;module.qux.corge&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;module.grault&#39;</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">'module.qux.quux'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">'module.qux.corge'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">'module.grault'</span>
 </code></pre></div>
 <h4 id="-refresh">▼ -refresh<a class="headerlink" href="#-refresh" title="Permanent link">&para;</a></h4>
 <p>このオプションをつければ、<code>terraform refresh</code> コマンドを同時に実行してくれる。</p>
@@ -35910,7 +35910,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> <
 <h4 id="_5">▼ 出力内容の読み方<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>リソースの作成 (<code>+</code>) 、更新 (<code>~</code>) 、削除 (<code>-</code>) 、再作成 (<code>-/+</code>) で表す。</p>
 <div class="highlight"><pre><span></span><code>+<span class="w"> </span>create
-~<span class="w"> </span>update<span class="w"> </span><span class="k">in</span>-place
+~<span class="w"> </span>update<span class="w"> </span>in-place
 -<span class="w"> </span>destroy
 -/+<span class="w"> </span>destroy<span class="w"> </span>and<span class="w"> </span><span class="k">then</span><span class="w"> </span>create<span class="w"> </span>replacement
 </code></pre></div>
@@ -35923,7 +35923,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> <
 <div class="highlight"><pre><span></span><code>Note:<span class="w"> </span>Objects<span class="w"> </span>have<span class="w"> </span>changed<span class="w"> </span>outside<span class="w"> </span>of<span class="w"> </span>Terraform
 
 Terraform<span class="w"> </span>detected<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>changes<span class="w"> </span>made<span class="w"> </span>outside<span class="w"> </span>of<span class="w"> </span>Terraform<span class="w"> </span>since<span class="w"> </span>the
-last<span class="w"> </span><span class="s2">&quot;terraform apply&quot;</span>:
+last<span class="w"> </span><span class="s2">"terraform apply"</span>:
 
 <span class="w">  </span><span class="c1"># Terraform管理外の方法 (画面上、他ツール) による実インフラの変更について、その変更前後を検出。</span>
 
@@ -35935,7 +35935,7 @@ actions<span class="w"> </span>to<span class="w"> </span>undo<span class="w"> </
 
 Terraform<span class="w"> </span>used<span class="w"> </span>the<span class="w"> </span>selected<span class="w"> </span>providers<span class="w"> </span>to<span class="w"> </span>generate<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>execution
 plan.<span class="w"> </span>Resource<span class="w"> </span>actions<span class="w"> </span>are<span class="w"> </span>indicated<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>symbols:
-<span class="w">  </span>~<span class="w"> </span>update<span class="w"> </span><span class="k">in</span>-place
+<span class="w">  </span>~<span class="w"> </span>update<span class="w"> </span>in-place
 
 Terraform<span class="w"> </span>will<span class="w"> </span>perform<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>actions:
 
@@ -36062,40 +36062,40 @@ Removed<span class="w"> </span>module.ec2.aws_instance.bastion
 Successfully<span class="w"> </span>removed<span class="w"> </span><span class="m">1</span><span class="w"> </span>resource<span class="w"> </span>instance<span class="o">(</span>s<span class="o">)</span>.
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># for_each関数で定義されている場合</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;aws_instance.bastion[&quot;&lt;キー名1&gt;&quot;]&#39;</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;aws_instance.bastion[&quot;&lt;キー名1&gt;&quot;]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">'aws_instance.bastion["&lt;キー名1&gt;"]'</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">'aws_instance.bastion["&lt;キー名1&gt;"]'</span>
 
-Removed<span class="w"> </span>aws_instance.bastion<span class="o">[</span><span class="s2">&quot;&lt;キー名1&gt;&quot;</span><span class="o">]</span>
+Removed<span class="w"> </span>aws_instance.bastion<span class="o">[</span><span class="s2">"&lt;キー名1&gt;"</span><span class="o">]</span>
 Successfully<span class="w"> </span>removed<span class="w"> </span><span class="m">1</span><span class="w"> </span>resource<span class="w"> </span>instance<span class="o">(</span>s<span class="o">)</span>.
 
 
 <span class="c1"># その他のキー名も削除が必要になる。</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;aws_instance.bastion[&quot;&lt;キー名2&gt;&quot;]&#39;</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;aws_instance.bastion[&quot;&lt;キー名2&gt;&quot;]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">'aws_instance.bastion["&lt;キー名2&gt;"]'</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">'aws_instance.bastion["&lt;キー名2&gt;"]'</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># count関数で定義されている場合</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;aws_instance.bastion[0]&#39;</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;aws_instance.bastion[0]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">'aws_instance.bastion[0]'</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">'aws_instance.bastion[0]'</span>
 
 Removed<span class="w"> </span>aws_instance.bastion<span class="o">[</span><span class="m">0</span><span class="o">]</span>
 Successfully<span class="w"> </span>removed<span class="w"> </span><span class="m">1</span><span class="w"> </span>resource<span class="w"> </span>instance<span class="o">(</span>s<span class="o">)</span>.
 
 
 <span class="c1"># その他のインデックス番号も削除が必要になる。</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;aws_instance.bastion[1]&#39;</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;aws_instance.bastion[1]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">'aws_instance.bastion[1]'</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">'aws_instance.bastion[1]'</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># moduleブロックを使用して、for_each関数で定義されている場合</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;module.ec2.aws_instance.bastion[&quot;&lt;キー名1&gt;&quot;]&#39;</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;module.ec2.aws_instance.bastion[&quot;&lt;キー名1&gt;&quot;]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">'module.ec2.aws_instance.bastion["&lt;キー名1&gt;"]'</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">'module.ec2.aws_instance.bastion["&lt;キー名1&gt;"]'</span>
 
-Removed<span class="w"> </span>module.ec2.aws_instance.bastion<span class="o">[</span><span class="s2">&quot;&lt;キー名1&gt;&quot;</span><span class="o">]</span>
+Removed<span class="w"> </span>module.ec2.aws_instance.bastion<span class="o">[</span><span class="s2">"&lt;キー名1&gt;"</span><span class="o">]</span>
 Successfully<span class="w"> </span>removed<span class="w"> </span><span class="m">1</span><span class="w"> </span>resource<span class="w"> </span>instance<span class="o">(</span>s<span class="o">)</span>.
 
 
 <span class="c1"># その他のキー名も削除が必要になる。</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;module.ec2.aws_instance.bastion[&quot;&lt;キー名2&gt;&quot;]&#39;</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;module.ec2.aws_instance.bastion[&quot;&lt;キー名2&gt;&quot;]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">'module.ec2.aws_instance.bastion["&lt;キー名2&gt;"]'</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">'module.ec2.aws_instance.bastion["&lt;キー名2&gt;"]'</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36110,54 +36110,54 @@ $<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>state
 
 <span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;version&quot;</span>:<span class="w"> </span><span class="m">4</span>,
-<span class="w">  </span><span class="s2">&quot;terraform_version&quot;</span>:<span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;serial&quot;</span>:<span class="w"> </span><span class="m">3</span>,
-<span class="w">  </span><span class="s2">&quot;lineage&quot;</span>:<span class="w"> </span><span class="s2">&quot;*****-*****-*****-*****-*****&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;outputs&quot;</span>:<span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="c1"># outputブロックのapplyで追加される。</span>
-<span class="w">    </span><span class="s2">&quot;foo_ids&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">      </span><span class="s2">&quot;value&quot;</span>:<span class="w"> </span><span class="s2">&quot;*****&quot;</span>,
-<span class="w">      </span><span class="s2">&quot;type&quot;</span>:<span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">  </span><span class="s2">"version"</span>:<span class="w"> </span><span class="m">4</span>,
+<span class="w">  </span><span class="s2">"terraform_version"</span>:<span class="w"> </span><span class="s2">"1.0.0"</span>,
+<span class="w">  </span><span class="s2">"serial"</span>:<span class="w"> </span><span class="m">3</span>,
+<span class="w">  </span><span class="s2">"lineage"</span>:<span class="w"> </span><span class="s2">"*****-*****-*****-*****-*****"</span>,
+<span class="w">  </span><span class="s2">"outputs"</span>:<span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="c1"># outputブロックのapplyで追加される。</span>
+<span class="w">    </span><span class="s2">"foo_ids"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">"value"</span>:<span class="w"> </span><span class="s2">"*****"</span>,
+<span class="w">      </span><span class="s2">"type"</span>:<span class="w"> </span><span class="s2">"string"</span>
 <span class="w">    </span><span class="o">}</span>
 <span class="w">  </span><span class="o">}</span>,
-<span class="w">  </span><span class="s2">&quot;resources&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">  </span><span class="s2">"resources"</span>:<span class="w"> </span><span class="o">[</span>
 <span class="w">    </span><span class="o">{</span>
-<span class="w">      </span><span class="s2">&quot;mode&quot;</span>:<span class="w"> </span><span class="s2">&quot;data&quot;</span>,<span class="w"> </span><span class="c1"># dataブロックのapplyで追加される。</span>
-<span class="w">      </span><span class="s2">&quot;type&quot;</span>:<span class="w"> </span><span class="s2">&quot;aws_caller_identity&quot;</span>,<span class="w"> </span><span class="c1"># resourceタイプ</span>
-<span class="w">      </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;current&quot;</span>,<span class="w"> </span><span class="c1"># リソース名</span>
-<span class="w">      </span><span class="s2">&quot;provider&quot;</span>:<span class="w"> </span><span class="s2">&quot;provider[\&quot;registry.terraform.io/hashicorp/aws\&quot;]&quot;</span>,
-<span class="w">      </span><span class="s2">&quot;instances&quot;</span>:<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="c1"># 設定値</span>
+<span class="w">      </span><span class="s2">"mode"</span>:<span class="w"> </span><span class="s2">"data"</span>,<span class="w"> </span><span class="c1"># dataブロックのapplyで追加される。</span>
+<span class="w">      </span><span class="s2">"type"</span>:<span class="w"> </span><span class="s2">"aws_caller_identity"</span>,<span class="w"> </span><span class="c1"># resourceタイプ</span>
+<span class="w">      </span><span class="s2">"name"</span>:<span class="w"> </span><span class="s2">"current"</span>,<span class="w"> </span><span class="c1"># リソース名</span>
+<span class="w">      </span><span class="s2">"provider"</span>:<span class="w"> </span><span class="s2">"provider[\"registry.terraform.io/hashicorp/aws\"]"</span>,
+<span class="w">      </span><span class="s2">"instances"</span>:<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="c1"># 設定値</span>
 <span class="w">        </span><span class="o">{</span>
-<span class="w">          </span><span class="s2">&quot;schema_version&quot;</span>:<span class="w"> </span><span class="m">0</span>,
-<span class="w">          </span><span class="s2">&quot;attributes&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">            </span><span class="s2">&quot;account_id&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;AWSアカウントID&gt;&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;arn&quot;</span>:<span class="w"> </span><span class="s2">&quot;*****&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;id&quot;</span>:<span class="w"> </span><span class="s2">&quot;*****&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;user_id&quot;</span>:<span class="w"> </span><span class="s2">&quot;*****&quot;</span>
+<span class="w">          </span><span class="s2">"schema_version"</span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">"attributes"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">"account_id"</span>:<span class="w"> </span><span class="s2">"&lt;AWSアカウントID&gt;"</span>,
+<span class="w">            </span><span class="s2">"arn"</span>:<span class="w"> </span><span class="s2">"*****"</span>,
+<span class="w">            </span><span class="s2">"id"</span>:<span class="w"> </span><span class="s2">"*****"</span>,
+<span class="w">            </span><span class="s2">"user_id"</span>:<span class="w"> </span><span class="s2">"*****"</span>
 <span class="w">            </span>...
 <span class="w">          </span><span class="o">}</span>,
-<span class="w">          </span><span class="s2">&quot;sensitive_attributes&quot;</span>:<span class="w"> </span><span class="o">[]</span>
+<span class="w">          </span><span class="s2">"sensitive_attributes"</span>:<span class="w"> </span><span class="o">[]</span>
 <span class="w">        </span><span class="o">}</span>
 <span class="w">      </span><span class="o">]</span>
 <span class="w">    </span><span class="o">}</span>,
 <span class="w">    </span><span class="o">{</span>
-<span class="w">      </span><span class="s2">&quot;module&quot;</span>:<span class="w"> </span><span class="s2">&quot;module.ec2&quot;</span>,<span class="w"> </span><span class="c1"># moduleブロックの場合に追加される。</span>
-<span class="w">      </span><span class="s2">&quot;mode&quot;</span>:<span class="w"> </span><span class="s2">&quot;managed&quot;</span>,<span class="w"> </span><span class="c1"># importや、resourceブロックのapplyで追加される。</span>
-<span class="w">      </span><span class="s2">&quot;type&quot;</span>:<span class="w"> </span><span class="s2">&quot;aws_instance&quot;</span>,<span class="w"> </span><span class="c1"># resourceタイプ</span>
-<span class="w">      </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;bastion&quot;</span>,<span class="w"> </span><span class="c1"># リソース名</span>
-<span class="w">      </span><span class="s2">&quot;provider&quot;</span>:<span class="w"> </span><span class="s2">&quot;provider[\&quot;registry.terraform.io/hashicorp/aws\&quot;]&quot;</span>,
-<span class="w">      </span><span class="s2">&quot;instances&quot;</span>:<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="c1"># 設定値</span>
+<span class="w">      </span><span class="s2">"module"</span>:<span class="w"> </span><span class="s2">"module.ec2"</span>,<span class="w"> </span><span class="c1"># moduleブロックの場合に追加される。</span>
+<span class="w">      </span><span class="s2">"mode"</span>:<span class="w"> </span><span class="s2">"managed"</span>,<span class="w"> </span><span class="c1"># importや、resourceブロックのapplyで追加される。</span>
+<span class="w">      </span><span class="s2">"type"</span>:<span class="w"> </span><span class="s2">"aws_instance"</span>,<span class="w"> </span><span class="c1"># resourceタイプ</span>
+<span class="w">      </span><span class="s2">"name"</span>:<span class="w"> </span><span class="s2">"bastion"</span>,<span class="w"> </span><span class="c1"># リソース名</span>
+<span class="w">      </span><span class="s2">"provider"</span>:<span class="w"> </span><span class="s2">"provider[\"registry.terraform.io/hashicorp/aws\"]"</span>,
+<span class="w">      </span><span class="s2">"instances"</span>:<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="c1"># 設定値</span>
 <span class="w">        </span><span class="o">{</span>
-<span class="w">          </span><span class="s2">&quot;schema_version&quot;</span>:<span class="w"> </span><span class="m">0</span>,
-<span class="w">          </span><span class="s2">&quot;attributes&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">            </span><span class="s2">&quot;arn&quot;</span>:<span class="w"> </span><span class="s2">&quot;*****&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;prd-foo-instance&quot;</span>
-<span class="w">            </span><span class="s2">&quot;tags&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">              </span><span class="s2">&quot;Env&quot;</span>:<span class="w"> </span><span class="s2">&quot;prd&quot;</span>,
-<span class="w">              </span><span class="s2">&quot;ManagedBy&quot;</span>:<span class="w"> </span><span class="s2">&quot;terraform&quot;</span>
-<span class="w">              </span><span class="s2">&quot;Repository&quot;</span>:<span class="w"> </span><span class="s2">&quot;https://github.com/*****&quot;</span>
+<span class="w">          </span><span class="s2">"schema_version"</span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">"attributes"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">"arn"</span>:<span class="w"> </span><span class="s2">"*****"</span>,
+<span class="w">            </span><span class="s2">"name"</span>:<span class="w"> </span><span class="s2">"prd-foo-instance"</span>
+<span class="w">            </span><span class="s2">"tags"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">              </span><span class="s2">"Env"</span>:<span class="w"> </span><span class="s2">"prd"</span>,
+<span class="w">              </span><span class="s2">"ManagedBy"</span>:<span class="w"> </span><span class="s2">"terraform"</span>
+<span class="w">              </span><span class="s2">"Repository"</span>:<span class="w"> </span><span class="s2">"https://github.com/*****"</span>
 <span class="w">            </span><span class="o">}</span>,
-<span class="w">            </span><span class="s2">&quot;description&quot;</span>:<span class="w"> </span><span class="s2">&quot;*****&quot;</span>,
+<span class="w">            </span><span class="s2">"description"</span>:<span class="w"> </span><span class="s2">"*****"</span>,
 <span class="w">            </span>...
 <span class="w">          </span><span class="o">}</span>
 <span class="w">        </span><span class="o">}</span>
@@ -36167,7 +36167,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> 
 <span class="o">}</span>
 </code></pre></div>
 <p>特定の <code>resource</code> ブロックのみを表示できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>show<span class="w"> </span><span class="s1">&#39;aws_instance.bastion&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>show<span class="w"> </span><span class="s1">'aws_instance.bastion'</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="taint">taint<a class="headerlink" href="#taint" title="Permanent link">&para;</a></h3>
@@ -36190,7 +36190,7 @@ Resource<span class="w"> </span>actions<span class="w"> </span>are<span class="w
 Terraform<span class="w"> </span>will<span class="w"> </span>perform<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>actions:
 
 -/+<span class="w"> </span>&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;<span class="w"> </span><span class="o">(</span>tainted<span class="o">)</span><span class="w"> </span><span class="o">(</span>new<span class="w"> </span>resource<span class="w"> </span>required<span class="o">)</span>
-<span class="w">      </span>id:<span class="w"> </span><span class="s1">&#39;1492336661259070634&#39;</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;computed&gt;<span class="w"> </span><span class="o">(</span>forces<span class="w"> </span>new<span class="w"> </span>resource<span class="o">)</span>
+<span class="w">      </span>id:<span class="w"> </span><span class="s1">'1492336661259070634'</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;computed&gt;<span class="w"> </span><span class="o">(</span>forces<span class="w"> </span>new<span class="w"> </span>resource<span class="o">)</span>
 
 
 Plan:<span class="w"> </span><span class="m">1</span><span class="w"> </span>to<span class="w"> </span>add,<span class="w"> </span><span class="m">0</span><span class="w"> </span>to<span class="w"> </span>change,<span class="w"> </span><span class="m">1</span><span class="w"> </span>to<span class="w"> </span>destroy.
@@ -36241,8 +36241,8 @@ $<span class="w"> </span>gsutil<span class="w"> </span>cp<span class="w"> </span
 <div class="highlight"><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 
 <span class="c1">  # ローカルマシンで管理するように設定</span>
-<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;local&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform.tfstate&quot;</span>
+<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">"local"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform.tfstate"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36264,7 +36264,7 @@ $<span class="w"> </span>gsutil<span class="w"> </span>cp<span class="w"> </span
 <p>手動で作成する場合は、頑張るしかない。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code><span class="err">resource</span><span class="w"> </span><span class="s2">&quot;&lt;resourceタイプ&gt;&quot; &quot;&lt;resourceブロック名&gt;&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="err">resource</span><span class="w"> </span><span class="s2">"&lt;resourceタイプ&gt;" "&lt;resourceブロック名&gt;"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36272,7 +36272,7 @@ $<span class="w"> </span>gsutil<span class="w"> </span>cp<span class="w"> </span
 <p><code>import</code> ブロックを使用すると、<code>.tf</code> ファイルを自動生成できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">import</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">  # リソースの識別子</span>
-<span class="w">  </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;ID&gt;&quot;</span>
+<span class="w">  </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;ID&gt;"</span>
 <span class="c1">  # 自動生成するresourceブロック</span>
 <span class="w">  </span><span class="na">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">&lt;リソースタイプ&gt;</span><span class="p">.</span><span class="err">&lt;リソース名&gt;</span>
 <span class="p">}</span>
@@ -36281,7 +36281,7 @@ $<span class="w"> </span>gsutil<span class="w"> </span>cp<span class="w"> </span
 <p><code>import</code> ブロックを使用して、<code>resource "aws_instance" "ec2" {...}</code> という実装を自動作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">import</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">  # リソースの識別子</span>
-<span class="w">  </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;i-xxxxxxxx&quot;</span>
+<span class="w">  </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"i-xxxxxxxx"</span>
 <span class="c1">  # import対象</span>
 <span class="w">  </span><span class="na">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.foo</span>
 <span class="p">}</span>
@@ -36291,10 +36291,10 @@ $<span class="w"> </span>gsutil<span class="w"> </span>cp<span class="w"> </span
 <p>これにより、<code>aws_instance.tf</code> ファイルを自動作成できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># __generated__ by Terraform</span>
 <span class="c1"># Please review these resources and move them into your main configuration files.</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">ami</span><span class="w">                                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-xxxxxxxx&quot;</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_instance"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">ami</span><span class="w">                                  </span><span class="o">=</span><span class="w"> </span><span class="s2">"ami-xxxxxxxx"</span>
 <span class="w">  </span><span class="na">associate_public_ip_address</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">availability_zone</span><span class="w">                    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1a&quot;</span>
+<span class="w">  </span><span class="na">availability_zone</span><span class="w">                    </span><span class="o">=</span><span class="w"> </span><span class="s2">"ap-northeast-1a"</span>
 <span class="w">  </span><span class="na">cpu_core_count</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
 <span class="w">  </span><span class="na">cpu_threads_per_core</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
 <span class="w">  </span><span class="na">disable_api_stop</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
@@ -36327,76 +36327,76 @@ $<span class="w"> </span>gsutil<span class="w"> </span>cp<span class="w"> </span
 <div class="highlight"><pre><span></span><code><span class="c1"># 関数を使用せずに定義されている場合</span>
 $<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
+<span class="w">    </span><span class="s1">'&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;'</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
 
 
 <span class="c1"># もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">'&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;'</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">'&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;'</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># moduleブロックを使用して定義されている場合</span>
 $<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
+<span class="w">    </span><span class="s1">'module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;'</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
 
 
 <span class="c1"># もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">'module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;'</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">'module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;'</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># for_each関数で定義されている場合</span>
 $<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名1&gt;&quot;]&#39;</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
+<span class="w">    </span><span class="s1">'&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;["&lt;キー名1&gt;"]'</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
 
 
 <span class="c1"># その他のキー名もimportが必要になる</span>
 $<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名2&gt;&quot;]&#39;</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
+<span class="w">    </span><span class="s1">'&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;["&lt;キー名2&gt;"]'</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
 
 
 <span class="c1"># もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名1&gt;&quot;]&#39;</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名2&gt;&quot;]&#39;</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名1&gt;&quot;]&#39;</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名2&gt;&quot;]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">'&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;["&lt;キー名1&gt;"]'</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">'&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;["&lt;キー名2&gt;"]'</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">'&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;["&lt;キー名1&gt;"]'</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">'&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;["&lt;キー名2&gt;"]'</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># count関数で定義されている場合</span>
 $<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[0]&#39;</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
+<span class="w">    </span><span class="s1">'&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[0]'</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
 
 
 <span class="c1"># その他のインデックス番号もimportが必要になる</span>
 $<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[1]&#39;</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
+<span class="w">    </span><span class="s1">'&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[1]'</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
 
 
 <span class="c1"># もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[0]&#39;</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[1]&#39;</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[0]&#39;</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[1]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">'&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[0]'</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">'&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[1]'</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">'&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[0]'</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">'&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[1]'</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># moduleブロックを使用して、for_each関数で定義されている場合</span>
 $<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名1&gt;&quot;]&#39;</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
+<span class="w">    </span><span class="s1">'module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;["&lt;キー名1&gt;"]'</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
 
 
 <span class="c1"># その他のキー名もimportが必要になる</span>
 $<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名2&gt;&quot;]&#39;</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
+<span class="w">    </span><span class="s1">'module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;["&lt;キー名2&gt;"]'</span><span class="w"> </span>&lt;実体リソースのARN、ID、名前など&gt;
 
 
 <span class="c1"># もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名1&gt;&quot;]&#39;</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名2&gt;&quot;]&#39;</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名1&gt;&quot;]&#39;</span>
-$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名2&gt;&quot;]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">'module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;["&lt;キー名1&gt;"]'</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">'module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;["&lt;キー名2&gt;"]'</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">'module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;["&lt;キー名1&gt;"]'</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">'module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;["&lt;キー名2&gt;"]'</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36447,7 +36447,7 @@ No<span class="w"> </span>changes.<span class="w"> </span>Infrastructure<span cl
 <div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>InvalidParameterException:<span class="w"> </span>Creation<span class="w"> </span>of<span class="w"> </span>service<span class="w"> </span>was<span class="w"> </span>not<span class="w"> </span>idempotent.
 </code></pre></div>
 <p>(エラー例 2)</p>
-<div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>error<span class="w"> </span>creating<span class="w"> </span>ECR<span class="w"> </span>repository:<span class="w"> </span>RepositoryAlreadyExistsException:<span class="w"> </span>The<span class="w"> </span>repository<span class="w"> </span>with<span class="w"> </span>name<span class="w"> </span><span class="s1">&#39;f&#39;</span><span class="w"> </span>already<span class="w"> </span>exists<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>registry<span class="w"> </span>with<span class="w"> </span>id<span class="w"> </span><span class="s1">&#39;*****&#39;</span>
+<div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>error<span class="w"> </span>creating<span class="w"> </span>ECR<span class="w"> </span>repository:<span class="w"> </span>RepositoryAlreadyExistsException:<span class="w"> </span>The<span class="w"> </span>repository<span class="w"> </span>with<span class="w"> </span>name<span class="w"> </span><span class="s1">'f'</span><span class="w"> </span>already<span class="w"> </span>exists<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>registry<span class="w"> </span>with<span class="w"> </span>id<span class="w"> </span><span class="s1">'*****'</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03-tfstate">03. 実インフラの一部の設定値を <code>tfstate</code> ファイルに取り込む<a class="headerlink" href="#03-tfstate" title="Permanent link">&para;</a></h2>

@@ -33621,8 +33621,8 @@
 <span class="w">  </span><span class="nt">claude</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># メンションを含む、許可された投稿者の新規コメントだけを処理する。</span>
 <span class="w">    </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
-<span class="w">      </span><span class="no">contains(github.event.comment.body, &#39;@claude&#39;) &amp;&amp;</span>
-<span class="w">      </span><span class="no">contains(fromJSON(&#39;[&quot;OWNER&quot;,&quot;MEMBER&quot;,&quot;COLLABORATOR&quot;]&#39;),</span>
+<span class="w">      </span><span class="no">contains(github.event.comment.body, '@claude') &amp;&amp;</span>
+<span class="w">      </span><span class="no">contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'),</span>
 <span class="w">               </span><span class="no">github.event.comment.author_association)</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
 <span class="w">    </span><span class="nt">timeout-minutes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
@@ -33645,9 +33645,9 @@
 <span class="w">          </span><span class="c1"># ユーザーが投稿した「@claude ...」のコメント全文を、依頼のプロンプトとして受け取る。</span>
 <span class="w">          </span><span class="c1"># ActionがIssue・PRの参考データと依頼を取り込み、Claudeへ渡す。</span>
 <span class="w">          </span><span class="c1"># promptは指定せず、メンションへの応答モードを使用する。</span>
-<span class="w">          </span><span class="nt">trigger_phrase</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;@claude&#39;</span>
+<span class="w">          </span><span class="nt">trigger_phrase</span><span class="p">:</span><span class="w"> </span><span class="s">'@claude'</span>
 <span class="w">          </span><span class="c1"># CLI引数で、エージェントの最大ターン数を指定する。</span>
-<span class="w">          </span><span class="nt">claude_args</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;--max-turns</span><span class="nv"> </span><span class="s">50&#39;</span>
+<span class="w">          </span><span class="nt">claude_args</span><span class="p">:</span><span class="w"> </span><span class="s">'--max-turns</span><span class="nv"> </span><span class="s">50'</span>
 </code></pre></div>
 <blockquote>
 <ul>

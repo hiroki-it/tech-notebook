@@ -35470,7 +35470,7 @@ $<span class="w"> </span>docker<span class="w"> </span>container<span class="w">
 <h4 id="rmi">▼ rmi<a class="headerlink" href="#rmi" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
 <p>タグ名のないイメージのみをすべて削除する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>rmi<span class="w"> </span>--force<span class="w"> </span><span class="k">$(</span>sudo<span class="w"> </span>docker<span class="w"> </span>images<span class="w"> </span>--filter<span class="w"> </span><span class="s2">&quot;dangling=true&quot;</span><span class="w"> </span>--all<span class="w"> </span>--quiet<span class="k">)</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>rmi<span class="w"> </span>--force<span class="w"> </span><span class="k">$(</span>sudo<span class="w"> </span>docker<span class="w"> </span>images<span class="w"> </span>--filter<span class="w"> </span><span class="s2">"dangling=true"</span><span class="w"> </span>--all<span class="w"> </span>--quiet<span class="k">)</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="inspect_1">inspect<a class="headerlink" href="#inspect_1" title="Permanent link">&para;</a></h3>
@@ -35486,7 +35486,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <p>json-file ドライバーを使用しているときに、ログファイルの出力先を確認する。</p>
 <div class="highlight"><pre><span></span><code><span class="w"> </span>$<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> </span>&lt;起動中コンテナ名&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>LogPath
 
-<span class="w"> </span><span class="s2">&quot;LogPath&quot;</span>:<span class="w"> </span><span class="s2">&quot;/var/lib/docker/containers/*****-json.log&quot;</span>,
+<span class="w"> </span><span class="s2">"LogPath"</span>:<span class="w"> </span><span class="s2">"/var/lib/docker/containers/*****-json.log"</span>,
 </code></pre></div>
 <p><br></p>
 <h3 id="log">log<a class="headerlink" href="#log" title="Permanent link">&para;</a></h3>
@@ -35505,7 +35505,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <p>イメージレジストリにログインする。</p>
 <h4 id="-password-stdin">▼ --password-stdin<a class="headerlink" href="#-password-stdin" title="Permanent link">&para;</a></h4>
 <p>コマンドへの標準入力をパスワードとしつつ、<code>docker login</code> コマンドを実行する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;pass&quot;</span><span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"pass"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>--username<span class="w"> </span>foo<span class="w"> </span>--password-stdin
 </code></pre></div>
 <p><br></p>
@@ -35617,7 +35617,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 </code></pre></div>
 <p>コンテナの起動時に <code>bash</code> プロセスを実行すると、以下のようなエラーが発生する。</p>
 <p>その場合は、<code>shell</code> プロセスを実行する。</p>
-<div class="highlight"><pre><span></span><code>docker:<span class="w"> </span>Error<span class="w"> </span>response<span class="w"> </span>from<span class="w"> </span>daemon:<span class="w"> </span>OCI<span class="w"> </span>runtime<span class="w"> </span>create<span class="w"> </span>failed:<span class="w"> </span>container_linux.go:370:<span class="w"> </span>starting<span class="w"> </span>container<span class="w"> </span>process<span class="w"> </span>caused:<span class="w"> </span>exec:<span class="w"> </span><span class="s2">&quot;/bin/bash&quot;</span>:<span class="w"> </span>stat<span class="w"> </span>/bin/bash:<span class="w"> </span>no<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory:<span class="w"> </span>unknown.
+<div class="highlight"><pre><span></span><code>docker:<span class="w"> </span>Error<span class="w"> </span>response<span class="w"> </span>from<span class="w"> </span>daemon:<span class="w"> </span>OCI<span class="w"> </span>runtime<span class="w"> </span>create<span class="w"> </span>failed:<span class="w"> </span>container_linux.go:370:<span class="w"> </span>starting<span class="w"> </span>container<span class="w"> </span>process<span class="w"> </span>caused:<span class="w"> </span>exec:<span class="w"> </span><span class="s2">"/bin/bash"</span>:<span class="w"> </span>stat<span class="w"> </span>/bin/bash:<span class="w"> </span>no<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory:<span class="w"> </span>unknown.
 </code></pre></div>
 <p>アタッチモードは、フォアグラウンド起動である。</p>
 <p>ターミナルにプロセスのログが表示されないため、同一ターミナルで他のコマンドを入力できる。</p>
@@ -35655,13 +35655,13 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 
 <span class="o">[</span>
 <span class="w">  </span><span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;Name&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;&quot;</span>
-<span class="w">    </span><span class="s2">&quot;SignedTags&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">    </span><span class="s2">"Name"</span>:<span class="w"> </span><span class="s2">"&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;"</span>
+<span class="w">    </span><span class="s2">"SignedTags"</span>:<span class="w"> </span><span class="o">[</span>
 <span class="w">      </span><span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;SignedTag&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;バージョンタグ&gt;&quot;</span>
-<span class="w">        </span><span class="s2">&quot;Digest&quot;</span>:<span class="w"> </span><span class="s2">&quot;8be25...&quot;</span>
-<span class="w">        </span><span class="s2">&quot;Signers&quot;</span>:<span class="w"> </span><span class="o">[</span>
-<span class="w">          </span><span class="s2">&quot;&lt;署名者の名前&gt;&quot;</span>
+<span class="w">        </span><span class="s2">"SignedTag"</span>:<span class="w"> </span><span class="s2">"&lt;バージョンタグ&gt;"</span>
+<span class="w">        </span><span class="s2">"Digest"</span>:<span class="w"> </span><span class="s2">"8be25..."</span>
+<span class="w">        </span><span class="s2">"Signers"</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">          </span><span class="s2">"&lt;署名者の名前&gt;"</span>
 <span class="w">        </span><span class="o">]</span>
 <span class="w">      </span><span class="o">}</span>
 <span class="w">    </span><span class="o">]</span>,
@@ -35713,17 +35713,17 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 
 <span class="o">[</span>
 <span class="w">    </span><span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;CreatedAt&quot;</span>:<span class="w"> </span><span class="s2">&quot;2020-09-06T15:04:02Z&quot;</span>,
-<span class="w">        </span><span class="s2">&quot;Driver&quot;</span>:<span class="w"> </span><span class="s2">&quot;local&quot;</span>,
-<span class="w">        </span><span class="s2">&quot;Labels&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">            </span><span class="s2">&quot;com.docker.compose.project&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;プロジェクト名&gt;&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;com.docker.compose.version&quot;</span>:<span class="w"> </span><span class="s2">&quot;1.26.2&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;com.docker.compose.volume&quot;</span>:<span class="w"> </span><span class="s2">&quot;foo&quot;</span>
+<span class="w">        </span><span class="s2">"CreatedAt"</span>:<span class="w"> </span><span class="s2">"2020-09-06T15:04:02Z"</span>,
+<span class="w">        </span><span class="s2">"Driver"</span>:<span class="w"> </span><span class="s2">"local"</span>,
+<span class="w">        </span><span class="s2">"Labels"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">"com.docker.compose.project"</span>:<span class="w"> </span><span class="s2">"&lt;プロジェクト名&gt;"</span>,
+<span class="w">            </span><span class="s2">"com.docker.compose.version"</span>:<span class="w"> </span><span class="s2">"1.26.2"</span>,
+<span class="w">            </span><span class="s2">"com.docker.compose.volume"</span>:<span class="w"> </span><span class="s2">"foo"</span>
 <span class="w">        </span><span class="o">}</span>,
-<span class="w">        </span><span class="s2">&quot;Mountpoint&quot;</span>:<span class="w"> </span><span class="s2">&quot;/var/lib/docker/volumes/&lt;プロジェクト名&gt;_foo/_data&quot;</span>,
-<span class="w">        </span><span class="s2">&quot;Name&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;プロジェクト名&gt;_foo&quot;</span>,
-<span class="w">        </span><span class="s2">&quot;Options&quot;</span>:<span class="w"> </span>null,
-<span class="w">        </span><span class="s2">&quot;Scope&quot;</span>:<span class="w"> </span><span class="s2">&quot;local&quot;</span>
+<span class="w">        </span><span class="s2">"Mountpoint"</span>:<span class="w"> </span><span class="s2">"/var/lib/docker/volumes/&lt;プロジェクト名&gt;_foo/_data"</span>,
+<span class="w">        </span><span class="s2">"Name"</span>:<span class="w"> </span><span class="s2">"&lt;プロジェクト名&gt;_foo"</span>,
+<span class="w">        </span><span class="s2">"Options"</span>:<span class="w"> </span>null,
+<span class="w">        </span><span class="s2">"Scope"</span>:<span class="w"> </span><span class="s2">"local"</span>
 <span class="w">    </span><span class="o">}</span>
 <span class="o">]</span>
 </code></pre></div>
@@ -35738,7 +35738,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <p>Docker Compose で実行することが推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu</span>
 <span class="k">RUN</span><span class="w"> </span>mkdir<span class="w"> </span>/myvol
-<span class="k">RUN</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hello world&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/myvol/greeting
+<span class="k">RUN</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"hello world"</span><span class="w"> </span>&gt;<span class="w"> </span>/myvol/greeting
 
 <span class="c"># マウントポイント</span>
 <span class="k">VOLUME</span><span class="w"> </span><span class="s">/myvol</span>

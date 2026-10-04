@@ -34099,10 +34099,10 @@
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain"># 統合</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">#===========================</span>
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">x-amazon-apigateway-integration</span><span class="p p-Indicator">:</span>
-<span class="w">        </span><span class="nt">httpMethod</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;GET&quot;</span><span class="w"> </span><span class="c1"># フォワーディングする HTTP メソッド</span>
-<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://&lt;NLBのDNS名&gt;/api/v1/users/&quot;</span><span class="w"> </span><span class="c1"># フォワーディング先のバックエンド URL</span>
+<span class="w">        </span><span class="nt">httpMethod</span><span class="p">:</span><span class="w"> </span><span class="s">"GET"</span><span class="w"> </span><span class="c1"># フォワーディングする HTTP メソッド</span>
+<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">"http://&lt;NLBのDNS名&gt;/api/v1/users/"</span><span class="w"> </span><span class="c1"># フォワーディング先のバックエンド URL</span>
 <span class="w">        </span><span class="nt">requestParameters</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;*****&#39;&quot;</span><span class="w"> </span><span class="c1"># フォワーディングするカスタムヘッダーと API キー</span>
+<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">"'*****'"</span><span class="w"> </span><span class="c1"># フォワーディングするカスタムヘッダーと API キー</span>
 <span class="w">          </span><span class="nt">integration.request.querystring.userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method.request.querystring.userId</span><span class="w"> </span><span class="c1"># マッピングするクエリパラメーター</span>
 <span class="w">          </span><span class="c1"># パスパラメーター間のマッピングであれば、integration.request.path.userId: method.request.path.userId</span>
 <span class="w">          </span><span class="c1"># 他パラメーターからボディへのマッピングであれば、integration.request.header.userId: method.request.body.userId</span>
@@ -34121,11 +34121,11 @@
 <span class="w">    </span><span class="nt">post</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">x-amazon-apigateway-integration</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">httpMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POST</span>
-<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://&lt;NLBのDNS名&gt;/api/v1/users/&quot;</span>
+<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">"http://&lt;NLBのDNS名&gt;/api/v1/users/"</span>
 <span class="w">        </span><span class="nt">requestParameters</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;*****&#39;&quot;</span>
+<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">"'*****'"</span>
 <span class="w">        </span><span class="nt">requestTemplates</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;body&quot;</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">$input.json(&quot;$&quot;)}&#39;</span>
+<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">'{"body"</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">$input.json("$")}'</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_templates</span><span class="w"> </span><span class="c1"># 統合リクエストのマッピングテンプレートのパススルー条件を選択</span>
 <span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span>
 <span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;Amazon VPCリンクID&gt;</span>
@@ -34134,7 +34134,7 @@
 <span class="w">          </span><span class="nt">200</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
 <span class="w">            </span><span class="nt">responseTemplates</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;body&quot;</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">$input.json(&quot;$&quot;)}&#39;</span><span class="w"> </span><span class="c1"># レスポンス統合のマッピングテンプレート</span>
+<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">'{"body"</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">$input.json("$")}'</span><span class="w"> </span><span class="c1"># レスポンス統合のマッピングテンプレート</span>
 <span class="w">          </span><span class="nt">400</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">          </span><span class="nt">401</span><span class="p">:</span>
@@ -34149,13 +34149,13 @@
 <span class="w">      </span><span class="nt">x-amazon-apigateway-integration</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mock</span><span class="w"> </span><span class="c1"># モック統合を使用</span>
 <span class="w">        </span><span class="nt">requestTemplates</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;statusCode&quot;:</span><span class="nv"> </span><span class="s">200}&#39;</span><span class="w"> </span><span class="c1"># リクエストの処理</span>
+<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">'{"statusCode":</span><span class="nv"> </span><span class="s">200}'</span><span class="w"> </span><span class="c1"># リクエストの処理</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_templates</span><span class="w"> </span><span class="c1"># 統合リクエストのマッピングテンプレートのパススルー条件を選択</span>
 <span class="w">        </span><span class="nt">responses</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">200</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
 <span class="w">            </span><span class="nt">responseTemplates</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;id&quot;:</span><span class="nv"> </span><span class="s">1}&#39;</span><span class="w"> </span><span class="c1"># レスポンスの処理</span>
+<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">'{"id":</span><span class="nv"> </span><span class="s">1}'</span><span class="w"> </span><span class="c1"># レスポンスの処理</span>
 <span class="w">          </span><span class="nt">400</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">          </span><span class="nt">401</span><span class="p">:</span>
@@ -34177,11 +34177,11 @@
 <span class="c1">#===========================</span>
 <span class="nt">x-amazon-apigateway-request-validators</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">本文、クエリ文字列パラメーター、およびヘッダーの検証</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="c1"># クエリパラメーターとヘッダー</span>
-<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="c1"># ボディ</span>
+<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span><span class="w"> </span><span class="c1"># クエリパラメーターとヘッダー</span>
+<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span><span class="w"> </span><span class="c1"># ボディ</span>
 <span class="w">  </span><span class="nt">クエリ文字列パラメーターおよびヘッダーの検証</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="x-amazon-apigateway-request-validator"><code>x-amazon-apigateway-request-validator</code> キー<a class="headerlink" href="#x-amazon-apigateway-request-validator" title="Permanent link">&para;</a></h3>
@@ -34207,11 +34207,11 @@
 <span class="c1">#===========================</span>
 <span class="nt">x-amazon-apigateway-request-validators</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">本文、クエリ文字列パラメーター、およびヘッダーの検証</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="c1"># クエリパラメーターとヘッダー</span>
-<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="c1"># ボディ</span>
+<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span><span class="w"> </span><span class="c1"># クエリパラメーターとヘッダー</span>
+<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span><span class="w"> </span><span class="c1"># ボディ</span>
 <span class="w">  </span><span class="nt">クエリ文字列パラメーターおよびヘッダーの検証</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02-yaml">02. サンプル YAML<a class="headerlink" href="#02-yaml" title="Permanent link">&para;</a></h2>
@@ -34293,7 +34293,7 @@
 <span class="w">      </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">query</span><span class="w"> </span><span class="c1"># パスにパラメーターを割り当てる。</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">userId</span>
-<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザーID</span>
 <span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -34303,7 +34303,7 @@
 <span class="w">      </span><span class="c1"># メソッドレスポンス</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34313,8 +34313,8 @@
 <span class="w">                    </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">                    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hiroki</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/user&quot;</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34322,19 +34322,19 @@
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;不正なリクエストです。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"不正なリクエストです。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/responses/unauthorized&quot;</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="c1"># 統合</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">x-amazon-apigateway-integration</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">httpMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span>
-<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://&lt;NLBのDNS名&gt;/api/v1/users/&quot;</span>
+<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">"http://&lt;NLBのDNS名&gt;/api/v1/users/"</span>
 <span class="w">        </span><span class="nt">requestParameters</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;*****&#39;&quot;</span>
+<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">"'*****'"</span>
 <span class="w">          </span><span class="nt">integration.request.querystring.userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method.request.querystring.userId</span><span class="w"> </span><span class="c1"># マッピングするクエリパラメーター</span>
 <span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span>
 <span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;Amazon VPCリンクID&gt;</span>
@@ -34365,20 +34365,20 @@
 <span class="w">            </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="c1"># リクエストボディ例</span>
 <span class="w">              </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">            </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="c1"># API スキーマ</span>
-<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/user&quot;</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="c1"># メソッドレスポンス</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
 <span class="w">              </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="c1"># レスポンスボディ例</span>
 <span class="w">                </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/normal&quot;</span><span class="w"> </span><span class="c1"># 正常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/normal"</span><span class="w"> </span><span class="c1"># 正常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34386,19 +34386,19 @@
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ユーザーIDは必ず指定してください。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ユーザーIDは必ず指定してください。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/responses/unauthorized&quot;</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="c1"># 統合</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">x-amazon-apigateway-integration</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">httpMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POST</span>
-<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://&lt;NLBのDNS名&gt;/api/v1/users/&quot;</span>
+<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">"http://&lt;NLBのDNS名&gt;/api/v1/users/"</span>
 <span class="w">        </span><span class="nt">requestParameters</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;*****&#39;&quot;</span>
+<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">"'*****'"</span>
 <span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span>
 <span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;Amazon VPCリンクID&gt;</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http_proxy</span>
@@ -34427,7 +34427,7 @@
 <span class="w">      </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path</span><span class="w"> </span><span class="c1"># パスにパラメーターを割り当てる。</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">userId</span>
-<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザーID</span>
 <span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -34437,7 +34437,7 @@
 <span class="w">      </span><span class="c1"># メソッドレスポンス</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34445,8 +34445,8 @@
 <span class="w">                </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hiroki</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="c1"># API スキーマ</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/user&quot;</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34454,12 +34454,12 @@
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ユーザーIDは必ず指定してください。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ユーザーIDは必ず指定してください。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/responses/unauthorized&quot;</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
-<span class="w">        </span><span class="s">&quot;404&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">        </span><span class="s">"404"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34467,17 +34467,17 @@
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">404</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;対象のユーザーが見つかりませんでした。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"対象のユーザーが見つかりませんでした。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="c1"># 統合</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">x-amazon-apigateway-integration</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">httpMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span>
-<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://&lt;NLBのDNS名&gt;/api/v1/users/{userId}&quot;</span>
+<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">"http://&lt;NLBのDNS名&gt;/api/v1/users/{userId}"</span>
 <span class="w">        </span><span class="nt">requestParameters</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;*****&#39;&quot;</span>
+<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">"'*****'"</span>
 <span class="w">          </span><span class="nt">integration.request.path.userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method.request.path.userId</span>
 <span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span>
 <span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;Amazon VPCリンクID&gt;</span>
@@ -34503,7 +34503,7 @@
 <span class="w">      </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path</span><span class="w"> </span><span class="c1"># パスにパラメーターを割り当てる。</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">userId</span>
-<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザーID</span>
 <span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -34513,7 +34513,7 @@
 <span class="w">      </span><span class="c1"># メソッドレスポンス</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34521,8 +34521,8 @@
 <span class="w">                </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hiroki</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="c1"># API スキーマ</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/user&quot;</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34530,12 +34530,12 @@
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ユーザーIDは必ず指定してください。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ユーザーIDは必ず指定してください。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/responses/unauthorized&quot;</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
-<span class="w">        </span><span class="s">&quot;404&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">        </span><span class="s">"404"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34543,17 +34543,17 @@
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">404</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;対象のユーザーが見つかりませんでした。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"対象のユーザーが見つかりませんでした。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="c1"># 統合</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">x-amazon-apigateway-integration</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">httpMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PUT</span>
-<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://&lt;NLBのDNS名&gt;/api/v1/users/{userId}&quot;</span>
+<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">"http://&lt;NLBのDNS名&gt;/api/v1/users/{userId}"</span>
 <span class="w">        </span><span class="nt">requestParameters</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;*****&#39;&quot;</span>
+<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">"'*****'"</span>
 <span class="w">          </span><span class="nt">integration.request.path.userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method.request.path.userId</span>
 <span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span>
 <span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;Amazon VPCリンクID&gt;</span>
@@ -34567,11 +34567,11 @@
 <span class="c1">#===========================</span>
 <span class="nt">x-amazon-apigateway-request-validators</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">本文、クエリ文字列パラメーター、およびヘッダーの検証</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="c1"># クエリパラメーターとヘッダー</span>
-<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="c1"># ボディ</span>
+<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span><span class="w"> </span><span class="c1"># クエリパラメーターとヘッダー</span>
+<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span><span class="w"> </span><span class="c1"># ボディ</span>
 <span class="w">  </span><span class="nt">クエリ文字列パラメーターおよびヘッダーの検証</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 
 <span class="nt">components</span><span class="p">:</span>
 <span class="w">  </span><span class="c1">#===========================</span>
@@ -34594,9 +34594,9 @@
 <span class="w">            </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">401</span>
 <span class="w">            </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unauthorized</span>
 <span class="w">            </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;認証に失敗しました。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">              </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"認証に失敗しました。"</span><span class="p p-Indicator">]</span>
 <span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">            </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
 <span class="w">  </span><span class="c1">#===========================</span>
 <span class="w">  </span><span class="c1"># schema キーの共通化</span>
 <span class="w">  </span><span class="c1">#===========================</span>
@@ -34685,7 +34685,7 @@
 <span class="w">      </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">query</span><span class="w"> </span><span class="c1"># パスにパラメーターを割り当てる。</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">userId</span>
-<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザーID</span>
 <span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -34695,7 +34695,7 @@
 <span class="w">      </span><span class="c1"># メソッドレスポンス</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34705,8 +34705,8 @@
 <span class="w">                    </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">                    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hiroki</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/user&quot;</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34714,19 +34714,19 @@
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;不正なリクエストです。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"不正なリクエストです。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/responses/unauthorized&quot;</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="c1"># 統合</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">x-amazon-apigateway-integration</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">httpMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span>
-<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://&lt;NLBのDNS名&gt;/api/v1/users/&quot;</span>
+<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">"http://&lt;NLBのDNS名&gt;/api/v1/users/"</span>
 <span class="w">        </span><span class="nt">requestParameters</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;*****&#39;&quot;</span>
+<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">"'*****'"</span>
 <span class="w">          </span><span class="nt">integration.request.querystring.userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method.request.querystring.userId</span><span class="w"> </span><span class="c1"># マッピングするクエリパラメーター</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_templates</span>
 <span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span>
@@ -34736,7 +34736,7 @@
 <span class="w">          </span><span class="nt">200</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
 <span class="w">            </span><span class="nt">responseTemplates</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;body&quot;</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">$input.json(&quot;$&quot;)}&#39;</span>
+<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">'{"body"</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">$input.json("$")}'</span>
 <span class="w">          </span><span class="nt">400</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">          </span><span class="nt">401</span><span class="p">:</span>
@@ -34763,20 +34763,20 @@
 <span class="w">            </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="c1"># リクエストボディ例</span>
 <span class="w">              </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">            </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="c1"># API スキーマ</span>
-<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/user&quot;</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="c1"># メソッドレスポンス</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
 <span class="w">              </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="c1"># レスポンスボディ例</span>
 <span class="w">                </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/normal&quot;</span><span class="w"> </span><span class="c1"># 正常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/normal"</span><span class="w"> </span><span class="c1"># 正常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34784,21 +34784,21 @@
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ユーザーIDは必ず指定してください。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ユーザーIDは必ず指定してください。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/responses/unauthorized&quot;</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="c1"># 統合</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">x-amazon-apigateway-integration</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">httpMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POST</span>
-<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://&lt;NLBのDNS名&gt;/api/v1/users/&quot;</span>
+<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">"http://&lt;NLBのDNS名&gt;/api/v1/users/"</span>
 <span class="w">        </span><span class="nt">requestParameters</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;*****&#39;&quot;</span>
+<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">"'*****'"</span>
 <span class="w">        </span><span class="nt">requestTemplates</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;body&quot;</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">$input.json(&quot;$&quot;)}&#39;</span>
+<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">'{"body"</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">$input.json("$")}'</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_templates</span>
 <span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span>
 <span class="w">        </span><span class="nt">connectionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;Amazon VPCリンクID&gt;</span>
@@ -34807,7 +34807,7 @@
 <span class="w">          </span><span class="nt">200</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
 <span class="w">            </span><span class="nt">responseTemplates</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;body&quot;</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">$input.json(&quot;$&quot;)}&#39;</span>
+<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">'{"body"</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">$input.json("$")}'</span>
 <span class="w">          </span><span class="nt">400</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">          </span><span class="nt">401</span><span class="p">:</span>
@@ -34834,7 +34834,7 @@
 <span class="w">      </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path</span><span class="w"> </span><span class="c1"># パスにパラメーターを割り当てる。</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">userId</span>
-<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザーID</span>
 <span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -34844,7 +34844,7 @@
 <span class="w">      </span><span class="c1"># メソッドレスポンス</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34852,8 +34852,8 @@
 <span class="w">                </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hiroki</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="c1"># API スキーマ</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/user&quot;</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34861,12 +34861,12 @@
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ユーザーIDは必ず指定してください。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ユーザーIDは必ず指定してください。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/responses/unauthorized&quot;</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
-<span class="w">        </span><span class="s">&quot;404&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">        </span><span class="s">"404"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34874,17 +34874,17 @@
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">404</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;対象のユーザーが見つかりませんでした。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"対象のユーザーが見つかりませんでした。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="c1"># 統合</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">x-amazon-apigateway-integration</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">httpMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span>
-<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://&lt;NLBのDNS名&gt;/api/v1/users/{userId}&quot;</span>
+<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">"http://&lt;NLBのDNS名&gt;/api/v1/users/{userId}"</span>
 <span class="w">        </span><span class="nt">requestParameters</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;*****&#39;&quot;</span>
+<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">"'*****'"</span>
 <span class="w">          </span><span class="nt">integration.request.path.userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method.request.path.userId</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_templates</span>
 <span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span>
@@ -34894,7 +34894,7 @@
 <span class="w">          </span><span class="nt">200</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
 <span class="w">            </span><span class="nt">responseTemplates</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;body&quot;</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">$input.json(&quot;$&quot;)}&#39;</span>
+<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">'{"body"</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">$input.json("$")}'</span>
 <span class="w">          </span><span class="nt">400</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">          </span><span class="nt">401</span><span class="p">:</span>
@@ -34918,7 +34918,7 @@
 <span class="w">      </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path</span><span class="w"> </span><span class="c1"># パスにパラメーターを割り当てる。</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">userId</span>
-<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザーID</span>
 <span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -34928,7 +34928,7 @@
 <span class="w">      </span><span class="c1"># メソッドレスポンス</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34936,8 +34936,8 @@
 <span class="w">                </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hiroki</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="c1"># API スキーマ</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/user&quot;</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34945,12 +34945,12 @@
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ユーザーIDは必ず指定してください。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ユーザーIDは必ず指定してください。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/responses/unauthorized&quot;</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
-<span class="w">        </span><span class="s">&quot;404&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">        </span><span class="s">"404"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34958,17 +34958,17 @@
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">404</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;対象のユーザーが見つかりませんでした。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"対象のユーザーが見つかりませんでした。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="c1"># 統合</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">x-amazon-apigateway-integration</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">httpMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PUT</span>
-<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://&lt;NLBのDNS名&gt;/api/v1/users/{userId}&quot;</span>
+<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="s">"http://&lt;NLBのDNS名&gt;/api/v1/users/{userId}"</span>
 <span class="w">        </span><span class="nt">requestParameters</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;*****&#39;&quot;</span>
+<span class="w">          </span><span class="nt">integration.request.header.X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">"'*****'"</span>
 <span class="w">          </span><span class="nt">integration.request.path.userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">method.request.path.userId</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_templates</span>
 <span class="w">        </span><span class="nt">connectionType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_LINK</span>
@@ -34978,7 +34978,7 @@
 <span class="w">          </span><span class="nt">200</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
 <span class="w">            </span><span class="nt">responseTemplates</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;body&quot;</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">$input.json(&quot;$&quot;)}&#39;</span>
+<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">'{"body"</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">$input.json("$")}'</span>
 <span class="w">          </span><span class="nt">400</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">          </span><span class="nt">401</span><span class="p">:</span>
@@ -34988,11 +34988,11 @@
 <span class="c1">#===========================</span>
 <span class="nt">x-amazon-apigateway-request-validators</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">本文、クエリ文字列パラメーター、およびヘッダーの検証</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="c1"># クエリパラメーターとヘッダー</span>
-<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="c1"># ボディ</span>
+<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span><span class="w"> </span><span class="c1"># クエリパラメーターとヘッダー</span>
+<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span><span class="w"> </span><span class="c1"># ボディ</span>
 <span class="w">  </span><span class="nt">クエリ文字列パラメーターおよびヘッダーの検証</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 
 <span class="nt">components</span><span class="p">:</span>
 <span class="w">  </span><span class="c1">#===========================</span>
@@ -35015,9 +35015,9 @@
 <span class="w">            </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">401</span>
 <span class="w">            </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unauthorized</span>
 <span class="w">            </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;認証に失敗しました。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">              </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"認証に失敗しました。"</span><span class="p p-Indicator">]</span>
 <span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">            </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
 <span class="w">  </span><span class="c1">#===========================</span>
 <span class="w">  </span><span class="c1"># schema キーの共通化</span>
 <span class="w">  </span><span class="c1">#===========================</span>
@@ -35111,7 +35111,7 @@
 <span class="w">      </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">query</span><span class="w"> </span><span class="c1"># パスにパラメーターを割り当てる。</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">userId</span>
-<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザーID</span>
 <span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -35121,7 +35121,7 @@
 <span class="w">      </span><span class="c1"># メソッドレスポンス</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -35131,8 +35131,8 @@
 <span class="w">                    </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">                    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hiroki</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/user&quot;</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -35140,24 +35140,24 @@
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;不正なリクエストです。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"不正なリクエストです。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/responses/unauthorized&quot;</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="c1"># 統合</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">x-amazon-apigateway-integration</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">requestTemplates</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;statusCode&quot;:</span><span class="nv"> </span><span class="s">200}&#39;</span>
+<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">'{"statusCode":</span><span class="nv"> </span><span class="s">200}'</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_templates</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mock</span>
 <span class="w">        </span><span class="nt">responses</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">200</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
 <span class="w">            </span><span class="nt">responseTemplates</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{[{&quot;id&quot;:</span><span class="nv"> </span><span class="s">1,&quot;name&quot;:</span><span class="nv"> </span><span class="s">test}]}&#39;</span>
+<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">'{[{"id":</span><span class="nv"> </span><span class="s">1,"name":</span><span class="nv"> </span><span class="s">test}]}'</span>
 <span class="w">          </span><span class="nt">400</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">          </span><span class="nt">401</span><span class="p">:</span>
@@ -35184,20 +35184,20 @@
 <span class="w">            </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="c1"># リクエストボディ例</span>
 <span class="w">              </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">            </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="c1"># API スキーマ</span>
-<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/user&quot;</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="c1"># メソッドレスポンス</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
 <span class="w">              </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="c1"># レスポンスボディ例</span>
 <span class="w">                </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/normal&quot;</span><span class="w"> </span><span class="c1"># 正常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/normal"</span><span class="w"> </span><span class="c1"># 正常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -35205,24 +35205,24 @@
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ユーザーIDは必ず指定してください。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ユーザーIDは必ず指定してください。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/responses/unauthorized&quot;</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="c1"># 統合</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">x-amazon-apigateway-integration</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">requestTemplates</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;statusCode&quot;:</span><span class="nv"> </span><span class="s">200}&#39;</span>
+<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">'{"statusCode":</span><span class="nv"> </span><span class="s">200}'</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_templates</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mock</span>
 <span class="w">        </span><span class="nt">responses</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">200</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
 <span class="w">            </span><span class="nt">responseTemplates</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;id&quot;:</span><span class="nv"> </span><span class="s">1}&#39;</span>
+<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">'{"id":</span><span class="nv"> </span><span class="s">1}'</span>
 <span class="w">          </span><span class="nt">400</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">          </span><span class="nt">401</span><span class="p">:</span>
@@ -35249,7 +35249,7 @@
 <span class="w">      </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path</span><span class="w"> </span><span class="c1"># パスにパラメーターを割り当てる。</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">userId</span>
-<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザーID</span>
 <span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -35259,7 +35259,7 @@
 <span class="w">      </span><span class="c1"># メソッドレスポンス</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -35267,8 +35267,8 @@
 <span class="w">                </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hiroki</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="c1"># API スキーマ</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/user&quot;</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -35276,12 +35276,12 @@
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ユーザーIDは必ず指定してください。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ユーザーIDは必ず指定してください。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/responses/unauthorized&quot;</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
-<span class="w">        </span><span class="s">&quot;404&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">        </span><span class="s">"404"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -35289,22 +35289,22 @@
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">404</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;対象のユーザーが見つかりませんでした。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"対象のユーザーが見つかりませんでした。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="c1"># 統合</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">x-amazon-apigateway-integration</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">requestTemplates</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;statusCode&quot;:</span><span class="nv"> </span><span class="s">200}&#39;</span>
+<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">'{"statusCode":</span><span class="nv"> </span><span class="s">200}'</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_templates</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mock</span>
 <span class="w">        </span><span class="nt">responses</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">200</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
 <span class="w">            </span><span class="nt">responseTemplates</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{[{&quot;id&quot;:</span><span class="nv"> </span><span class="s">1,&quot;name&quot;:</span><span class="nv"> </span><span class="s">test}]}&#39;</span>
+<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">'{[{"id":</span><span class="nv"> </span><span class="s">1,"name":</span><span class="nv"> </span><span class="s">test}]}'</span>
 <span class="w">          </span><span class="nt">400</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">          </span><span class="nt">401</span><span class="p">:</span>
@@ -35328,7 +35328,7 @@
 <span class="w">      </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path</span><span class="w"> </span><span class="c1"># パスにパラメーターを割り当てる。</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">userId</span>
-<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザーID</span>
 <span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -35338,7 +35338,7 @@
 <span class="w">      </span><span class="c1"># メソッドレスポンス</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -35346,8 +35346,8 @@
 <span class="w">                </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hiroki</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="c1"># API スキーマ</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/user&quot;</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -35355,12 +35355,12 @@
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ユーザーIDは必ず指定してください。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ユーザーIDは必ず指定してください。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/responses/unauthorized&quot;</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
-<span class="w">        </span><span class="s">&quot;404&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">        </span><span class="s">"404"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -35368,22 +35368,22 @@
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">404</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;対象のユーザーが見つかりませんでした。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"対象のユーザーが見つかりませんでした。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="c1"># 統合</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">x-amazon-apigateway-integration</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">requestTemplates</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;statusCode&quot;:</span><span class="nv"> </span><span class="s">200}&#39;</span>
+<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">'{"statusCode":</span><span class="nv"> </span><span class="s">200}'</span>
 <span class="w">        </span><span class="nt">passthroughBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">when_no_templates</span>
 <span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mock</span>
 <span class="w">        </span><span class="nt">responses</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">200</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
 <span class="w">            </span><span class="nt">responseTemplates</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{&quot;id&quot;:</span><span class="nv"> </span><span class="s">1}&#39;</span>
+<span class="w">              </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="s">'{"id":</span><span class="nv"> </span><span class="s">1}'</span>
 <span class="w">          </span><span class="nt">400</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">          </span><span class="nt">401</span><span class="p">:</span>
@@ -35393,11 +35393,11 @@
 <span class="c1">#===========================</span>
 <span class="nt">x-amazon-apigateway-request-validators</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">本文、クエリ文字列パラメーター、およびヘッダーの検証</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="c1"># クエリパラメーターとヘッダー</span>
-<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="c1"># ボディ</span>
+<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span><span class="w"> </span><span class="c1"># クエリパラメーターとヘッダー</span>
+<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span><span class="w"> </span><span class="c1"># ボディ</span>
 <span class="w">  </span><span class="nt">クエリ文字列パラメーターおよびヘッダーの検証</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">    </span><span class="nt">validateRequestParameters</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">    </span><span class="nt">validateRequestBody</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 
 <span class="nt">components</span><span class="p">:</span>
 <span class="w">  </span><span class="c1">#===========================</span>
@@ -35420,9 +35420,9 @@
 <span class="w">            </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">401</span>
 <span class="w">            </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unauthorized</span>
 <span class="w">            </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;認証に失敗しました。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">              </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"認証に失敗しました。"</span><span class="p p-Indicator">]</span>
 <span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">            </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
 <span class="w">  </span><span class="c1">#===========================</span>
 <span class="w">  </span><span class="c1"># schema キーの共通化</span>
 <span class="w">  </span><span class="c1">#===========================</span>

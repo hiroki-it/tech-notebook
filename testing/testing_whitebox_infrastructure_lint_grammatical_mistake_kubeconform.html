@@ -33977,7 +33977,7 @@ $<span class="w"> </span>wget<span class="w"> </span>https://github.com/hiroki-h
 <h4 id="_5">▼ スキーマの作成<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p><code>openapi2jsonschema</code> を使い、CRD のマニフェストから各カスタムリソースのスキーマを <code>json</code> 形式で作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 各カスタムリソースのJSONスキーマのファイル形式を設定する</span>
-$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">FILENAME_FORMAT</span><span class="o">=</span><span class="s1">&#39;{kind}-{version}&#39;</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">FILENAME_FORMAT</span><span class="o">=</span><span class="s1">'{kind}-{version}'</span>
 
 <span class="c1"># 各カスタムリソースのスキーマをjson形式で作成する</span>
 $<span class="w"> </span>./openapi2jsonschema.py<span class="w"> </span>crds.yaml
@@ -34038,7 +34038,7 @@ $<span class="w"> </span>kubeconform<span class="w"> </span><span class="se">\</
 <p>Go テンプレートのように、マニフェスト内の値をスキーマのパスに出力できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubeconform<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-schema-location<span class="w"> </span>default<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-schema-location<span class="w"> </span><span class="s1">&#39;https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{ .Group }}/{{ .ResourceKind }}_{{ .ResourceAPIVersion }}.json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-schema-location<span class="w"> </span><span class="s1">'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{ .Group }}/{{ .ResourceKind }}_{{ .ResourceAPIVersion }}.json'</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>manifest.yaml
 </code></pre></div>
 <p>Kubernetes リソースのスキーマは、<code>default</code> エイリアス (<code>https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/{{.NormalizedKubernetesVersion}}-standalone{{.StrictSuffix}}/{{.ResourceKind}}{{.KindSuffix}}.json</code>) にある。</p>

@@ -33499,7 +33499,7 @@
 <p>フィルターパターンに合致した文字列を持つログをトリガーとして、データポイントを発生させる。</p>
 <p>このデータポイントからメトリクスを集約し、このアラートをトリガーするメトリクスとして使用できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Google Cloud Run Functionsの正常性をデータポイント化する</span>
-resource.type<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cloud_run_revision&quot;</span><span class="w"> </span>AND<span class="w"> </span>metric.type<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cloudfunctions.googleapis.com/function/execution_count&quot;</span><span class="w"> </span>AND<span class="w"> </span>metric.labels.status<span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span>
+resource.type<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"cloud_run_revision"</span><span class="w"> </span>AND<span class="w"> </span>metric.type<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"cloudfunctions.googleapis.com/function/execution_count"</span><span class="w"> </span>AND<span class="w"> </span>metric.labels.status<span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">"ok"</span>
 </code></pre></div>
 <blockquote>
 <ul>

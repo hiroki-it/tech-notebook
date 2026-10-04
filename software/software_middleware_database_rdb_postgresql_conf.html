@@ -34131,15 +34131,15 @@ drwx------.<span class="w"> </span><span class="m">20</span><span class="w"> </s
 </code></pre></div>
 <h4 id="_10">▼ クエリの確認<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>実行ログから、クエリを確認できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/var/lib/postgresql-Sun.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;^2023-01-01 12:00&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;statement: SELECT&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/var/lib/postgresql-Sun.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">"^2023-01-01 12:00"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"statement: SELECT"</span>
 
-$<span class="w"> </span>cat<span class="w"> </span>/var/lib/postgresql-Sun.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;^2023-01-01 12:00&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;statement: INSERT&quot;</span>
+$<span class="w"> </span>cat<span class="w"> </span>/var/lib/postgresql-Sun.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">"^2023-01-01 12:00"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"statement: INSERT"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="log_line_prefix">log_line_prefix<a class="headerlink" href="#log_line_prefix" title="Permanent link">&para;</a></h3>
 <h4 id="log_line_prefix_1">▼ log_line_prefix とは<a class="headerlink" href="#log_line_prefix_1" title="Permanent link">&para;</a></h4>
 <p>ログのプレフィクスの形式を設定する。</p>
-<div class="highlight"><pre><span></span><code>log_line_prefix = &#39;%m [%p]: user=%u,db=%d,app=%a,client=%r,xid=%x &#39;
+<div class="highlight"><pre><span></span><code>log_line_prefix = '%m [%p]: user=%u,db=%d,app=%a,client=%r,xid=%x '
 </code></pre></div>
 <blockquote>
 <ul>

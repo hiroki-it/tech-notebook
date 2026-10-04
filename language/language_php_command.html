@@ -33710,7 +33710,7 @@ zlib
 <span class="o">[</span>Zend<span class="w"> </span>Modules<span class="o">]</span>
 </code></pre></div>
 <p>注意点として、実際に読み込まれているか否かは、<code>get_loaded_extensions()</code> 関数で確認できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;print_r(get_loaded_extensions());&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">'print_r(get_loaded_extensions());'</span>
 
 Array
 <span class="o">(</span>
@@ -33735,25 +33735,25 @@ Array
 <p>コマンドラインからコードを実行できる。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># PHPなため、最後にセミコロンが必要</span>
-$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;&lt;何らかの処理&gt;&#39;</span>
+$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">'&lt;何らかの処理&gt;'</span>
 
 <span class="c1"># Hello Worldを出力</span>
-$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;echo &quot;Hello World&quot;;&#39;</span>
+$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">'echo "Hello World";'</span>
 
 <span class="c1"># phpinfo関数を実行</span>
-$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;phpinfo();&#39;</span>
+$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">'phpinfo();'</span>
 
 <span class="c1"># phpinfo関数の実行結果から、特定の設定のみを取り出す。</span>
-$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;phpinfo();&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>php.ini
+$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">'phpinfo();'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>php.ini
 
 <span class="c1"># phpinfo関数の実行結果をテキストファイルに保管</span>
-$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;phpinfo();&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>phpinfo.txt
+$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">'phpinfo();'</span><span class="w"> </span>&gt;<span class="w"> </span>phpinfo.txt
 
 <span class="c1"># 複数行のコードを実行する場合</span>
-$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;</span>
-<span class="s1">    $foo = &quot;foo&quot;;</span>
+$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">'</span>
+<span class="s1">    $foo = "foo";</span>
 <span class="s1">    echo $foo;</span>
-<span class="s1">  &#39;</span>
+<span class="s1">  '</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -33773,11 +33773,11 @@ Core
 PHP<span class="w"> </span><span class="nv">Version</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="m">7</span>.4.9
 
 <span class="nv">Directive</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>Local<span class="w"> </span><span class="nv">Value</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>Master<span class="w"> </span>Value
-highlight.comment<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">&quot;color: #FF8000&quot;</span>&gt;#FF8000&lt;/font&gt;<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">&quot;color: #FF8000&quot;</span>&gt;#FF8000&lt;/font&gt;
-highlight.default<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">&quot;color: #0000BB&quot;</span>&gt;#0000BB&lt;/font&gt;<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">&quot;color: #0000BB&quot;</span>&gt;#0000BB&lt;/font&gt;
-highlight.html<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">&quot;color: #000000&quot;</span>&gt;#000000&lt;/font&gt;<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">&quot;color: #000000&quot;</span>&gt;#000000&lt;/font&gt;
-highlight.keyword<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">&quot;color: #007700&quot;</span>&gt;#007700&lt;/font&gt;<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">&quot;color: #007700&quot;</span>&gt;#007700&lt;/font&gt;
-highlight.string<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">&quot;color: #DD0000&quot;</span>&gt;#DD0000&lt;/font&gt;<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">&quot;color: #DD0000&quot;</span>&gt;#DD0000&lt;/font&gt;
+highlight.comment<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">"color: #FF8000"</span>&gt;#FF8000&lt;/font&gt;<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">"color: #FF8000"</span>&gt;#FF8000&lt;/font&gt;
+highlight.default<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">"color: #0000BB"</span>&gt;#0000BB&lt;/font&gt;<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">"color: #0000BB"</span>&gt;#0000BB&lt;/font&gt;
+highlight.html<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">"color: #000000"</span>&gt;#000000&lt;/font&gt;<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">"color: #000000"</span>&gt;#000000&lt;/font&gt;
+highlight.keyword<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">"color: #007700"</span>&gt;#007700&lt;/font&gt;<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">"color: #007700"</span>&gt;#007700&lt;/font&gt;
+highlight.string<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">"color: #DD0000"</span>&gt;#DD0000&lt;/font&gt;<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;font<span class="w"> </span><span class="nv">style</span><span class="o">=</span><span class="s2">"color: #DD0000"</span>&gt;#DD0000&lt;/font&gt;
 <span class="nv">display_errors</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="nv">STDOUT</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>STDOUT
 <span class="nv">display_startup_errors</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="nv">Off</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>Off
 <span class="nv">enable_dl</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="nv">On</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>On

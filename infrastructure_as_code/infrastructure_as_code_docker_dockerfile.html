@@ -34871,28 +34871,28 @@
 <p>似た命令として <code>ENV</code> がある。</p>
 <p><code>ARG</code> も <code>ENV</code> と同様に、<code>RUN</code> 命令内で変数展開できる。ただし、<code>ARG</code> はビルド時のみ有効で、コンテナ実行時には参照できない点が異なる。</p>
 <div class="highlight"><pre><span></span><code><span class="c"># ARGは、ビルド時のRUN命令内で変数展開できる。</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="s2">&quot;3.8.0&quot;</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="s2">"3.8.0"</span>
 <span class="c"># 変数を展開できる</span>
 <span class="k">RUN</span><span class="w"> </span>pyenv<span class="w"> </span>install<span class="w"> </span><span class="si">${</span><span class="nv">PYTHON_VERSION</span><span class="si">}</span>
 
 <span class="c"># ENVは、ビルド時だけでなくコンテナ実行時も変数を参照できる。</span>
-<span class="k">ENV</span><span class="w"> </span><span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="s2">&quot;3.8.0&quot;</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="s2">"3.8.0"</span>
 <span class="k">RUN</span><span class="w"> </span>pyenv<span class="w"> </span>install<span class="w"> </span><span class="si">${</span><span class="nv">PYTHON_VERSION</span><span class="si">}</span>
 </code></pre></div>
 <p>一方で、Dockerfile の命令に展開するための変数として定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c"># ARGは、Dockerfileの命令に展開するための変数として定義できる。</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">OS_VERSION</span><span class="o">=</span><span class="s2">&quot;8&quot;</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">OS_VERSION</span><span class="o">=</span><span class="s2">"8"</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">centos:${OS_VERSION}</span>
 
 <span class="c"># ENVは、Dockerfileの命令に展開するため変数として定義できない。</span>
-<span class="k">ENV</span><span class="w"> </span>OS_VERSION<span class="w"> </span><span class="s2">&quot;8&quot;</span>
+<span class="k">ENV</span><span class="w"> </span>OS_VERSION<span class="w"> </span><span class="s2">"8"</span>
 <span class="c"># 変数を展開できない</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">centos:${OS_VERSION}</span>
 </code></pre></div>
 <p>そのため、以下のように使い分けることになる。</p>
 <div class="highlight"><pre><span></span><code><span class="c"># 最初に全て、ARGで定義</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">CENTOS_VERSION</span><span class="o">=</span><span class="s2">&quot;8&quot;</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="s2">&quot;3.8.0&quot;</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">CENTOS_VERSION</span><span class="o">=</span><span class="s2">"8"</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="s2">"3.8.0"</span>
 
 <span class="c"># 変数展開できる</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">centos:${CENTOS_VERSION}</span>
@@ -34909,7 +34909,7 @@
 <h3 id="_4">スコープ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="from-arg">▼ FROM より前の ARG<a class="headerlink" href="#from-arg" title="Permanent link">&para;</a></h4>
 <p><code>FROM</code> より前で使用した <code>ARGS</code> は、後続含めて <code>FROM</code> でしか使用できない。</p>
-<div class="highlight"><pre><span></span><code><span class="k">ARG</span><span class="w"> </span><span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="s2">&quot;3.8.0&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="k">ARG</span><span class="w"> </span><span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="s2">"3.8.0"</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">python:${PYTHON_VERSION}</span>
 
 <span class="c"># 変数の値を使えない</span>
@@ -34920,7 +34920,7 @@
 </code></pre></div>
 <p>もし <code>FROM</code> 内で使用する場合は、変数の再宣言が必要である。</p>
 <p>値の格納は不要である。</p>
-<div class="highlight"><pre><span></span><code><span class="k">ARG</span><span class="w"> </span><span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="s2">&quot;3.8.0&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="k">ARG</span><span class="w"> </span><span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="s2">"3.8.0"</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">python:${PYTHON_VERSION}</span>
 
 <span class="c"># 変数の再宣言</span>
@@ -34952,13 +34952,13 @@
 <p>Dockerfile で <code>CMD</code> を指定しない場合、コンテナイメージのデフォルトのバイナリファイルが割り当てられる。</p>
 <p>いったん、デフォルトのバイナリファイルを確認した後に、これを Dockerfile に明示的に実装する。</p>
 <div class="highlight"><pre><span></span><code>CONTAINER<span class="w"> </span>ID<span class="w">   </span>IMAGE<span class="w">   </span>COMMAND<span class="w">     </span>CREATED<span class="w">          </span>STATUS<span class="w">         </span>PORTS<span class="w">                    </span>NAMES
-2b2d3dfafee8<span class="w">   </span>*****<span class="w">   </span><span class="s2">&quot;/bin/sh&quot;</span><span class="w">   </span><span class="m">11</span><span class="w"> </span>seconds<span class="w"> </span>ago<span class="w">   </span>Up<span class="w"> </span><span class="m">8</span><span class="w"> </span>seconds<span class="w">   </span><span class="m">0</span>.0.0.0:8000-&gt;8000/tcp<span class="w">   </span>foo-image
+2b2d3dfafee8<span class="w">   </span>*****<span class="w">   </span><span class="s2">"/bin/sh"</span><span class="w">   </span><span class="m">11</span><span class="w"> </span>seconds<span class="w"> </span>ago<span class="w">   </span>Up<span class="w"> </span><span class="m">8</span><span class="w"> </span>seconds<span class="w">   </span><span class="m">0</span>.0.0.0:8000-&gt;8000/tcp<span class="w">   </span>foo-image
 </code></pre></div>
 <p>静的型付け言語ではプロセスの起動時に、代わりにアーティファクトのバイナリファイルを実行してもよい。</p>
 <p>その場合、<code>bin</code> ディレクトリにバイナリファイルとしてのアーティファクトを配置することになる。</p>
 <p>しかし、<code>bin</code> ディレクトリへの認可スコープがない場合もある。その場合は、1 つ下にディレクトリを作成し、そこにバイナリファイルを配置するようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># /go/bin にアクセスできない時は、/go/bin/cmdにアーティファクトを配置する。</span>
-ERROR:<span class="w"> </span><span class="k">for</span><span class="w"> </span>xxx-container<span class="w">  </span>Cannot<span class="w"> </span>start<span class="w"> </span>service<span class="w"> </span>go:<span class="w"> </span>OCI<span class="w"> </span>runtime<span class="w"> </span>create<span class="w"> </span>failed:<span class="w"> </span>container_linux.go:367:<span class="w"> </span>starting<span class="w"> </span>container<span class="w"> </span>process<span class="w"> </span>caused:<span class="w"> </span>exec:<span class="w"> </span><span class="s2">&quot;/go/bin&quot;</span>:<span class="w"> </span>permission<span class="w"> </span>denied:<span class="w"> </span>unknown
+ERROR:<span class="w"> </span><span class="k">for</span><span class="w"> </span>xxx-container<span class="w">  </span>Cannot<span class="w"> </span>start<span class="w"> </span>service<span class="w"> </span>go:<span class="w"> </span>OCI<span class="w"> </span>runtime<span class="w"> </span>create<span class="w"> </span>failed:<span class="w"> </span>container_linux.go:367:<span class="w"> </span>starting<span class="w"> </span>container<span class="w"> </span>process<span class="w"> </span>caused:<span class="w"> </span>exec:<span class="w"> </span><span class="s2">"/go/bin"</span>:<span class="w"> </span>permission<span class="w"> </span>denied:<span class="w"> </span>unknown
 </code></pre></div>
 <p><br></p>
 <h2 id="05-copy">05. COPY<a class="headerlink" href="#05-copy" title="Permanent link">&para;</a></h2>
@@ -35132,14 +35132,14 @@ $<span class="w"> </span>crane<span class="w"> </span>copy<span class="w"> </spa
 <span class="c1"># ----------------------------</span>
 
 <span class="c1"># 最新のDocker buildxリリースをGitHubから取得</span>
-<span class="nv">latest_release</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>https://api.github.com/repos/docker/buildx/releases/latest<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>tag_name<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;&quot;&#39;</span><span class="w"> </span>-f<span class="w"> </span><span class="m">4</span><span class="k">)</span>
-<span class="nv">download_url</span><span class="o">=</span><span class="s2">&quot;https://github.com/docker/buildx/releases/download/</span><span class="si">${</span><span class="nv">latest_release</span><span class="si">}</span><span class="s2">/buildx-</span><span class="si">${</span><span class="nv">latest_release</span><span class="si">}</span><span class="s2">.linux-amd64&quot;</span>
+<span class="nv">latest_release</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>https://api.github.com/repos/docker/buildx/releases/latest<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>tag_name<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s1">'"'</span><span class="w"> </span>-f<span class="w"> </span><span class="m">4</span><span class="k">)</span>
+<span class="nv">download_url</span><span class="o">=</span><span class="s2">"https://github.com/docker/buildx/releases/download/</span><span class="si">${</span><span class="nv">latest_release</span><span class="si">}</span><span class="s2">/buildx-</span><span class="si">${</span><span class="nv">latest_release</span><span class="si">}</span><span class="s2">.linux-amd64"</span>
 
 <span class="c1"># ダウンロードディレクトリを作成</span>
 $<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.docker/cli-plugins/
 
 <span class="c1"># バイナリをダウンロードし、適切な場所に配置</span>
-$<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$download_url</span><span class="s2">&quot;</span><span class="w"> </span>-o<span class="w"> </span>~/.docker/cli-plugins/docker-buildx
+$<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span><span class="s2">"</span><span class="nv">$download_url</span><span class="s2">"</span><span class="w"> </span>-o<span class="w"> </span>~/.docker/cli-plugins/docker-buildx
 
 <span class="c1"># 実行権限を付与</span>
 $<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>~/.docker/cli-plugins/docker-buildx

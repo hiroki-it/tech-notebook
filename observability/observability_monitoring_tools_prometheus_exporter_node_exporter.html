@@ -33940,7 +33940,7 @@ $<span class="w"> </span>tar<span class="w"> </span>-xvf<span class="w"> </span>
 $<span class="w"> </span>mv<span class="w"> </span>/tmp/node_exporter/node_exporter-1.0.0.linux-amd64<span class="w"> </span>/usr/local/bin/node_exporter
 </code></pre></div>
 <p>バイナリに直接的にパラメーターを渡せる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/usr/local/bin/node_exporter<span class="w"> </span>--web.listen-address<span class="o">=</span><span class="s2">&quot;:9100&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/usr/local/bin/node_exporter<span class="w"> </span>--web.listen-address<span class="o">=</span><span class="s2">":9100"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -33981,7 +33981,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="03">03. 設定<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="-weblisten-address">--web.listen-address<a class="headerlink" href="#-weblisten-address" title="Permanent link">&para;</a></h3>
 <p>待ち受けるポート番号を設定する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>node_exporter<span class="w"> </span>--web.listen-address<span class="o">=</span><span class="s1">&#39;:9100&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>node_exporter<span class="w"> </span>--web.listen-address<span class="o">=</span><span class="s1">':9100'</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="04">04. メトリクスの一覧<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
@@ -33992,7 +33992,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:9100/metri
 
 ...
 
-node_exporter_build_info<span class="o">{</span><span class="nv">branch</span><span class="o">=</span><span class="s2">&quot;HEAD&quot;</span>,goversion<span class="o">=</span><span class="s2">&quot;go1.15.8&quot;</span>,revision<span class="o">=</span><span class="s2">&quot;4e837d4da79cc59ee3ed1471ba9a0d9547e95540&quot;</span>,version<span class="o">=</span><span class="s2">&quot;1.1.1&quot;</span><span class="o">}</span><span class="w"> </span><span class="m">1</span>
+node_exporter_build_info<span class="o">{</span><span class="nv">branch</span><span class="o">=</span><span class="s2">"HEAD"</span>,goversion<span class="o">=</span><span class="s2">"go1.15.8"</span>,revision<span class="o">=</span><span class="s2">"4e837d4da79cc59ee3ed1471ba9a0d9547e95540"</span>,version<span class="o">=</span><span class="s2">"1.1.1"</span><span class="o">}</span><span class="w"> </span><span class="m">1</span>
 
 ...
 </code></pre></div>
@@ -34030,10 +34030,10 @@ rate<span class="o">(</span>node_cpu_seconds_total<span class="o">[</span>1m<spa
 <div class="highlight"><pre><span></span><code><span class="m">100</span><span class="w"> </span>-<span class="w"> </span><span class="o">(</span>node_filesystem_avail_bytes<span class="w"> </span>/<span class="w"> </span>node_filesystem_size_bytes<span class="o">)</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
 </code></pre></div>
 <p><code>mountpoint</code> ディメンションを使用して、マウントポイント別のディスク使用率を取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="m">100</span><span class="w"> </span>-<span class="w"> </span><span class="o">(</span>node_filesystem_avail_bytes<span class="o">{</span><span class="nv">mountpoint</span><span class="o">=</span><span class="s2">&quot;/var/lib/data&quot;</span><span class="o">}</span><span class="w"> </span>/<span class="w"> </span>node_filesystem_size_bytes<span class="o">{</span><span class="nv">mountpoint</span><span class="o">=</span><span class="s2">&quot;/var/lib/data&quot;</span><span class="o">}</span><span class="w"> </span><span class="o">)</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
+<div class="highlight"><pre><span></span><code><span class="m">100</span><span class="w"> </span>-<span class="w"> </span><span class="o">(</span>node_filesystem_avail_bytes<span class="o">{</span><span class="nv">mountpoint</span><span class="o">=</span><span class="s2">"/var/lib/data"</span><span class="o">}</span><span class="w"> </span>/<span class="w"> </span>node_filesystem_size_bytes<span class="o">{</span><span class="nv">mountpoint</span><span class="o">=</span><span class="s2">"/var/lib/data"</span><span class="o">}</span><span class="w"> </span><span class="o">)</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
 </code></pre></div>
 <p><code>job</code> ディメンションを使用して、収集対象別にのディスク使用率を取得する。</p>
-<div class="highlight"><pre><span></span><code><span class="m">100</span><span class="w"> </span>-<span class="w"> </span><span class="o">(</span>node_filesystem_avail_bytes<span class="o">{</span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-node&quot;</span><span class="o">}</span><span class="w"> </span>/<span class="w"> </span>node_filesystem_size_bytes<span class="o">{</span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-node&quot;</span><span class="o">}</span><span class="w"> </span><span class="o">)</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
+<div class="highlight"><pre><span></span><code><span class="m">100</span><span class="w"> </span>-<span class="w"> </span><span class="o">(</span>node_filesystem_avail_bytes<span class="o">{</span><span class="nv">job</span><span class="o">=</span><span class="s2">"foo-node"</span><span class="o">}</span><span class="w"> </span>/<span class="w"> </span>node_filesystem_size_bytes<span class="o">{</span><span class="nv">job</span><span class="o">=</span><span class="s2">"foo-node"</span><span class="o">}</span><span class="w"> </span><span class="o">)</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
 </code></pre></div>
 <blockquote>
 <ul>

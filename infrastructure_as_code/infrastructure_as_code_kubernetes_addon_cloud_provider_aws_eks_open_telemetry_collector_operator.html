@@ -33699,23 +33699,23 @@
 <p>EKS アドオンは、OpenTelemetry Collector Operator をデプロイする。</p>
 <p>Terraform の <code>aws_eks_addon</code> で EKS アドオンをインストールし、OpenTelemetry Collector の Operator に関する Kubernetes リソースを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Amazon EKSアドオンをインストールする。</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;adot&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_eks_addon"</span><span class="w"> </span><span class="nv">"adot"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">cluster_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_eks_cluster.cluster.name</span>
-<span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;adot&quot;</span>
-<span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">"adot"</span>
+<span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;バージョン&gt;"</span>
 <span class="w">  </span><span class="na">service_account_role_arn</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nv">module.iam_assumable_role_open_telemetry_operator[0].iam_role_arn</span>
 <span class="c1">  # Terraformで設定を上書きできるようにする</span>
-<span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
+<span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"OVERWRITE"</span>
 <span class="p">}</span>
 
 <span class="c1"># X-Ray</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_xray_group&quot;</span><span class="w"> </span><span class="nv">&quot;environment&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_xray_group"</span><span class="w"> </span><span class="nv">"environment"</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="na">group_name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-prd&quot;</span>
+<span class="w">  </span><span class="na">group_name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-prd"</span>
 
 <span class="w">  </span><span class="na">filter_expression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="dl">EOF</span>
-<span class="sh">(annotation.otel_resource_system_name = &quot;foo&quot;) AND (annotation.otel_resource_environment = &quot;prd&quot;)</span>
+<span class="sh">(annotation.otel_resource_system_name = "foo") AND (annotation.otel_resource_environment = "prd")</span>
 <span class="dl">EOF</span>
 
 <span class="w">  </span><span class="nb">insights_configuration</span><span class="w"> </span><span class="p">{</span>

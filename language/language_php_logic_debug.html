@@ -34125,7 +34125,7 @@
 <span class="p">}</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="nv">$foo</span> <span class="o">=</span> <span class="mi">2</span><span class="p">){</span>
-  <span class="nb">var_dump</span><span class="p">(</span><span class="s2">&quot;文字列&quot;</span><span class="p">);</span> <span class="c1">// echo &quot;文字列&quot; でも良い。</span>
+  <span class="nb">var_dump</span><span class="p">(</span><span class="s2">"文字列"</span><span class="p">);</span> <span class="c1">// echo "文字列" でも良い。</span>
   <span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -34157,7 +34157,7 @@
 <p>文字コードが異なっていることが原因。</p>
 <p>以下を、<code>var_dump()</code> 関数よりも送信元に追加する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="nb">header</span><span class="p">(</span><span class="s2">&quot;Content-Type: text/html; charset=UTF-8&quot;</span><span class="p">);</span>
+<span class="nb">header</span><span class="p">(</span><span class="s2">"Content-Type: text/html; charset=UTF-8"</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02-xdebug">02. Xdebug によるデバッグ<a class="headerlink" href="#02-xdebug" title="Permanent link">&para;</a></h2>

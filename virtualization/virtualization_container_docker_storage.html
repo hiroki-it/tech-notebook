@@ -33999,7 +33999,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <li><a href="https://stackoverflow.com/a/47942216">https://stackoverflow.com/a/47942216</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.9"</span>
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">nextjs</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
@@ -34028,15 +34028,15 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 
 <span class="w">  </span>...
 
-<span class="w">  </span><span class="s2">&quot;dataFolder&quot;</span>:<span class="w"> </span><span class="s2">&quot;/Users/&lt;ユーザー名&gt;/Library/Containers/com.docker.docker/Data/vms/0/data&quot;</span>,
+<span class="w">  </span><span class="s2">"dataFolder"</span>:<span class="w"> </span><span class="s2">"/Users/&lt;ユーザー名&gt;/Library/Containers/com.docker.docker/Data/vms/0/data"</span>,
 
 <span class="w">  </span>...
 
-<span class="w">  </span><span class="s2">&quot;filesharingDirectories&quot;</span>:<span class="w"> </span><span class="o">[</span>
-<span class="w">      </span><span class="s2">&quot;/tmp&quot;</span>,
-<span class="w">      </span><span class="s2">&quot;/Users&quot;</span>,
-<span class="w">      </span><span class="s2">&quot;/Volumes&quot;</span>,
-<span class="w">      </span><span class="s2">&quot;/private&quot;</span>
+<span class="w">  </span><span class="s2">"filesharingDirectories"</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">      </span><span class="s2">"/tmp"</span>,
+<span class="w">      </span><span class="s2">"/Users"</span>,
+<span class="w">      </span><span class="s2">"/Volumes"</span>,
+<span class="w">      </span><span class="s2">"/private"</span>
 <span class="w">  </span><span class="o">]</span>,
 
 <span class="w">  </span>...
@@ -34076,7 +34076,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:latest</span>
 <span class="k">RUN</span><span class="w"> </span>mkdir<span class="w"> </span>/data
 <span class="k">WORKDIR</span><span class="w"> </span><span class="s">/data</span>
-<span class="k">RUN</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello from Volume&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>test
+<span class="k">RUN</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Hello from Volume"</span><span class="w"> </span>&gt;<span class="w"> </span>test
 <span class="k">VOLUME</span><span class="w"> </span><span class="s">/data</span>
 </code></pre></div>
 <blockquote>
@@ -34084,7 +34084,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <li><a href="https://github.com/collabnix/dockerlabs/blob/master/beginners/volume/create-a-volume-mount-from-dockerfile.md">https://github.com/collabnix/dockerlabs/blob/master/beginners/volume/create-a-volume-mount-from-dockerfile.md</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.9"</span>
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">nextjs</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ports</span><span class="p">:</span>

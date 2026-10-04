@@ -35223,7 +35223,7 @@
 <p>DB に接続する。</p>
 <p>p オプションの値にはスペースが不要であることに注意する。</p>
 <p>開発環境では、DB ホスト名は仮想サーバーやコンテナのホスト名である。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mysql<span class="w"> </span>-h<span class="w"> </span><span class="s2">&quot;&lt;DBホスト名&gt;&quot;</span><span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;&lt;ユーザー名&gt;&quot;</span><span class="w"> </span>-p<span class="s1">&#39;&lt;パスワード&gt;&#39;</span><span class="w"> </span>-P<span class="w"> </span><span class="s2">&quot;&lt;ポート番号&gt;&quot;</span><span class="w"> </span><span class="s2">&quot;&lt;DB名&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>mysql<span class="w"> </span>-h<span class="w"> </span><span class="s2">"&lt;DBホスト名&gt;"</span><span class="w"> </span>-u<span class="w"> </span><span class="s2">"&lt;ユーザー名&gt;"</span><span class="w"> </span>-p<span class="s1">'&lt;パスワード&gt;'</span><span class="w"> </span>-P<span class="w"> </span><span class="s2">"&lt;ポート番号&gt;"</span><span class="w"> </span><span class="s2">"&lt;DB名&gt;"</span>
 
 <span class="c1"># MySQLのユーザーを確認する</span>
 mysql&gt;<span class="w"> </span>SELECT<span class="w"> </span>user,<span class="w"> </span>host<span class="w"> </span>FROM<span class="w"> </span>mysql.user<span class="p">;</span>
@@ -35271,10 +35271,10 @@ mysql&gt;<span class="w"> </span>SELECT<span class="w"> </span>user,<span class=
 <h4 id="_8">▼ パラメーターの設定<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>パラメーターは、すべてのセッションに共通する『グローバルパラメーター』と各セッションのみの『セッションパラメーター』がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- グローバルパラメーターの場合</span>
-<span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">time_zone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Asia/Tokyo&quot;</span><span class="p">;</span>
+<span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">time_zone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Asia/Tokyo"</span><span class="p">;</span>
 
 <span class="c1">-- セッションパラメーターの場合</span>
-<span class="k">SET</span><span class="w"> </span><span class="n">time_zone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Asia/Tokyo&quot;</span><span class="p">;</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">time_zone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Asia/Tokyo"</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="_9">▼ パラメーターの表示<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>DB に登録されているグローバルパラメーターとセッションパラメーターを取得する。</p>
@@ -35283,8 +35283,8 @@ mysql&gt;<span class="w"> </span>SELECT<span class="w"> </span>user,<span class=
 <span class="k">SHOW</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="k">VARIABLES</span><span class="p">;</span>
 
 <span class="c1">-- OSとDBのタイムゾーンに関するパラメーターを表示</span>
-<span class="k">SHOW</span><span class="w"> </span><span class="k">SESSION</span><span class="w"> </span><span class="k">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s2">&quot;%time_zone&quot;</span><span class="p">;</span>
-<span class="k">SHOW</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="k">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s2">&quot;%time_zone&quot;</span><span class="p">;</span>
+<span class="k">SHOW</span><span class="w"> </span><span class="k">SESSION</span><span class="w"> </span><span class="k">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s2">"%time_zone"</span><span class="p">;</span>
+<span class="k">SHOW</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="k">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s2">"%time_zone"</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02-docker">02. 設定ファイルの種類 (※ Docker の場合)<a class="headerlink" href="#02-docker" title="Permanent link">&para;</a></h2>
@@ -35324,7 +35324,7 @@ mysql&gt;<span class="w"> </span>SELECT<span class="w"> </span>user,<span class=
 <p>MySQL プロセスの実行ログを出力する。</p>
 <h4 id="temporary-password">▼ temporary password<a class="headerlink" href="#temporary-password" title="Permanent link">&para;</a></h4>
 <p>初期パスワードが出力されている。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>less<span class="w"> </span>mysqld.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;temporary password&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>less<span class="w"> </span>mysqld.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"temporary password"</span>
 </code></pre></div>
 <blockquote>
 <ul>

@@ -34606,13 +34606,13 @@
 <span class="w">  </span><span class="p">};</span>
 
 <span class="w">  </span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">200</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hello World!&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hello World!"</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// もしくはthrowを使用して、レスポンスを返信する。</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">aws</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;aws-sdk&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">aws</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"aws-sdk"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">s3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">S3</span><span class="p">();</span>
 
@@ -34730,18 +34730,18 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/aws/aws-lambda-go/lambda&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/lambda"</span>
 <span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">MyEvent</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;name&quot;`</span>
+<span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:"name"`</span>
 <span class="p">}</span>
 
 <span class="c1">// HandleRequest リクエストをハンドリングします。</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">HandleRequest</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="nx">MyEvent</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Hello %s!&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">.</span><span class="nx">Name</span><span class="p">),</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"Hello %s!"</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">.</span><span class="nx">Name</span><span class="p">),</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -34773,11 +34773,11 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/aws/aws-lambda-go/events&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/aws/aws-lambda-go/lambda&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/aws/aws-lambda-go/lambdacontext&quot;</span>
+<span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/events"</span>
+<span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/lambda"</span>
+<span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/lambdacontext"</span>
 <span class="p">)</span>
 
 <span class="cm">/**</span>
@@ -34795,11 +34795,11 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/aws/aws-lambda-go/events&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/aws/aws-lambda-go/lambda&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/aws/aws-lambda-go/lambdacontext&quot;</span>
+<span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/events"</span>
+<span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/lambda"</span>
+<span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/lambdacontext"</span>
 <span class="p">)</span>
 
 <span class="cm">/**</span>
@@ -34817,11 +34817,11 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/aws/aws-lambda-go/events&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/aws/aws-lambda-go/lambda&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/aws/aws-lambda-go/lambdacontext&quot;</span>
+<span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/events"</span>
+<span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/lambda"</span>
+<span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/lambdacontext"</span>
 <span class="p">)</span>
 
 <span class="cm">/**</span>
@@ -34864,18 +34864,18 @@
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/golang-exceptions.html#go-exceptions-createfunction">https://docs.aws.amazon.com/lambda/latest/dg/golang-exceptions.html#go-exceptions-createfunction</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;errorMessage&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;エラーメッセージ&gt;&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;errorType&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;エラータイプ&gt;&quot;</span><span class="p p-Indicator">}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"errorMessage"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;エラーメッセージ&gt;"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"errorType"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;エラータイプ&gt;"</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>errors パッケージの <code>New()</code> 関数を使用すると、内部で発生したエラーメッセージをオーバーライドできる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;errors&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/aws/aws-lambda-go/lambda&quot;</span>
+<span class="w">    </span><span class="s">"errors"</span>
+<span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/lambda"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">HandleRequest</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;something went wrong!&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">"something went wrong!"</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -34884,8 +34884,8 @@
 
 <span class="cm">/* 結果</span>
 <span class="cm">{</span>
-<span class="cm">  &quot;errorMessage&quot;: &quot;something went wrong!&quot;,</span>
-<span class="cm">  &quot;errorType&quot;: &quot;errorString&quot;</span>
+<span class="cm">  "errorMessage": "something went wrong!",</span>
+<span class="cm">  "errorType": "errorString"</span>
 <span class="cm">}</span>
 <span class="cm">*/</span>
 </code></pre></div>
@@ -34976,16 +34976,16 @@
 <h4 id="aws-sdkjs">▼ aws-sdk.js の場合<a class="headerlink" href="#aws-sdkjs" title="Permanent link">&para;</a></h4>
 <p>各 AWS オブジェクトの関数の後に、<code>promise()</code> 関数をチェーンできる。</p>
 <p>これにより、各関数の非同期処理の成否を Promise オブジェクトで管理できるようになる。</p>
-<div class="highlight"><pre><span></span><code><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="s2">"use strict"</span><span class="p">;</span>
 
-<span class="k">import</span><span class="w"> </span><span class="nx">aws</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;aws-sdk&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">aws</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"aws-sdk"</span><span class="p">;</span>
 
 <span class="cm">/**</span>
 <span class="cm"> * @param event</span>
 <span class="cm"> * @returns Promise&lt;json&gt;</span>
 <span class="cm"> */</span>
 <span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ec2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">EC2</span><span class="p">({</span><span class="nx">apiVersion</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2014-10-01&quot;</span><span class="p">});</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ec2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">EC2</span><span class="p">({</span><span class="nx">apiVersion</span><span class="o">:</span><span class="w"> </span><span class="s2">"2014-10-01"</span><span class="p">});</span>
 
 <span class="w">  </span><span class="c1">// Promiseオブジェクトを返却する</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ec2Instances</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ec2</span><span class="p">.</span><span class="nx">describeInstances</span><span class="p">().</span><span class="nx">promise</span><span class="p">();</span>
@@ -35010,11 +35010,11 @@
 <h3 id="aws-amplify-amazon-eventbridge-aws-lambda-slack-api_1">AWS Amplify ➡️ Amazon EventBridge ➡️ AWS Lambda ➡️ Slack-API<a class="headerlink" href="#aws-amplify-amazon-eventbridge-aws-lambda-slack-api_1" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
 <p>AWS Amplify のイベントを Amazon EventBridge でキャッチし、これを AWS Lambda にフォワーディングする。AWS Lambda では、メッセージを構成し、Slack-API に送信する。</p>
-<div class="highlight"><pre><span></span><code><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="s2">"use strict"</span><span class="p">;</span>
 
-<span class="k">import</span><span class="w"> </span><span class="nx">aws</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;aws-sdk&quot;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;https&quot;</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">format</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;util&quot;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">aws</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"aws-sdk"</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"https"</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">format</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"util"</span>
 
 <span class="cm">/**</span>
 <span class="cm"> * @param event</span>
@@ -35023,7 +35023,7 @@
 <span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">event</span><span class="p">},</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">));</span>
 
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">amplify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">AWS</span><span class="w"> </span><span class="nx">Amplify</span><span class="p">({</span><span class="nx">apiVersion</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2017-07-25&quot;</span><span class="p">});</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">amplify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">AWS</span><span class="w"> </span><span class="nx">Amplify</span><span class="p">({</span><span class="nx">apiVersion</span><span class="o">:</span><span class="w"> </span><span class="s2">"2017-07-25"</span><span class="p">});</span>
 
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">option</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">appId</span><span class="o">:</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">appId</span><span class="p">,</span>
@@ -35064,63 +35064,63 @@
 <span class="kd">const</span><span class="w"> </span><span class="nx">buildMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">,</span><span class="w"> </span><span class="nx">app</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">channel</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">SLACK_CHANNEL_ID</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;develop環境 通知&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s2">"develop環境 通知"</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">attachments</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">jobStatus</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;SUCCEED&quot;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;#00FF00&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#ff0000&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">jobStatus</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"SUCCEED"</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">"#00FF00"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">"#ff0000"</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">blocks</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;section&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"section"</span><span class="p">,</span>
 <span class="w">            </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;mrkdwn&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"mrkdwn"</span><span class="p">,</span>
 <span class="w">              </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">format</span><span class="p">(</span>
-<span class="w">                </span><span class="s2">&quot;%s環境&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">"%s環境"</span><span class="p">,</span>
 <span class="w">                </span><span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">appId</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">AMPLIFY_APP_ID_PC</span>
-<span class="w">                  </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;:computer: PC&quot;</span>
-<span class="w">                  </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;:iphone: SP&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="o">?</span><span class="w"> </span><span class="s2">":computer: PC"</span>
+<span class="w">                  </span><span class="o">:</span><span class="w"> </span><span class="s2">":iphone: SP"</span><span class="p">,</span>
 <span class="w">              </span><span class="p">),</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">          </span><span class="p">},</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;context&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"context"</span><span class="p">,</span>
 <span class="w">            </span><span class="nx">elements</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">              </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;mrkdwn&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"mrkdwn"</span><span class="p">,</span>
 <span class="w">                </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">format</span><span class="p">(</span>
-<span class="w">                  </span><span class="s2">&quot;*結果*: %s&quot;</span><span class="p">,</span>
-<span class="w">                  </span><span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">jobStatus</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;SUCCEED&quot;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">&quot;成功&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;失敗&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="s2">"*結果*: %s"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">jobStatus</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"SUCCEED"</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s2">"成功"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">"失敗"</span><span class="p">,</span>
 <span class="w">                </span><span class="p">),</span>
 <span class="w">              </span><span class="p">},</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">          </span><span class="p">},</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;context&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"context"</span><span class="p">,</span>
 <span class="w">            </span><span class="nx">elements</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">              </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;mrkdwn&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">format</span><span class="p">(</span><span class="s2">&quot;*ブランチ名*: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">branchName</span><span class="p">),</span>
+<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"mrkdwn"</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">format</span><span class="p">(</span><span class="s2">"*ブランチ名*: %s"</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">branchName</span><span class="p">),</span>
 <span class="w">              </span><span class="p">},</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">          </span><span class="p">},</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;context&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"context"</span><span class="p">,</span>
 <span class="w">            </span><span class="nx">elements</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">              </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;mrkdwn&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"mrkdwn"</span><span class="p">,</span>
 <span class="w">                </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">format</span><span class="p">(</span>
-<span class="w">                  </span><span class="s2">&quot;*プルリクエストURL*: https://github.com/foo-repository/compare/%s&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="s2">"*プルリクエストURL*: https://github.com/foo-repository/compare/%s"</span><span class="p">,</span>
 <span class="w">                  </span><span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">branchName</span><span class="p">,</span>
 <span class="w">                </span><span class="p">),</span>
 <span class="w">              </span><span class="p">},</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">          </span><span class="p">},</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;context&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"context"</span><span class="p">,</span>
 <span class="w">            </span><span class="nx">elements</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">              </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;mrkdwn&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"mrkdwn"</span><span class="p">,</span>
 <span class="w">                </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">format</span><span class="p">(</span>
-<span class="w">                  </span><span class="s2">&quot;*検証URL*: https://%s.%s.amplifyapp.com&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="s2">"*検証URL*: https://%s.%s.amplifyapp.com"</span><span class="p">,</span>
 <span class="w">                  </span><span class="nx">app</span><span class="p">.</span><span class="nx">branch</span><span class="p">.</span><span class="nx">displayName</span><span class="p">,</span>
 <span class="w">                  </span><span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">appId</span><span class="p">,</span>
 <span class="w">                </span><span class="p">),</span>
@@ -35128,12 +35128,12 @@
 <span class="w">            </span><span class="p">],</span>
 <span class="w">          </span><span class="p">},</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;context&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"context"</span><span class="p">,</span>
 <span class="w">            </span><span class="nx">elements</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">              </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;mrkdwn&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"mrkdwn"</span><span class="p">,</span>
 <span class="w">                </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">format</span><span class="p">(</span>
-<span class="w">                  </span><span class="s2">&quot;:amplify: &lt;https://%s.console.aws.amazon.com/amplify/home?region=%s#/%s/%s/%s|*AWS Amplifyコンソール画面はこちら*&gt;&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="s2">":amplify: &lt;https://%s.console.aws.amazon.com/amplify/home?region=%s#/%s/%s/%s|*AWS Amplifyコンソール画面はこちら*&gt;"</span><span class="p">,</span>
 <span class="w">                  </span><span class="nx">event</span><span class="p">.</span><span class="nx">region</span><span class="p">,</span>
 <span class="w">                  </span><span class="nx">event</span><span class="p">.</span><span class="nx">region</span><span class="p">,</span>
 <span class="w">                  </span><span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">appId</span><span class="p">,</span>
@@ -35144,7 +35144,7 @@
 <span class="w">            </span><span class="p">],</span>
 <span class="w">          </span><span class="p">},</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;divider&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"divider"</span><span class="p">,</span>
 <span class="w">          </span><span class="p">},</span>
 <span class="w">        </span><span class="p">],</span>
 <span class="w">      </span><span class="p">},</span>
@@ -35164,13 +35164,13 @@
 <span class="w">  </span><span class="c1">// 非同期処理を持つ関数をコンストラクタに渡し、非同期処理を管理します。</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;slack.com&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/api/chat.postMessage&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">host</span><span class="o">:</span><span class="w"> </span><span class="s2">"slack.com"</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s2">"/api/chat.postMessage"</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="p">,</span>
 <span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">&quot;Content-Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">Authorization</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Bearer &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">SLACK_API_TOKEN</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;Content-Length&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">Buffer</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">(</span><span class="nx">message</span><span class="p">),</span>
+<span class="w">        </span><span class="s2">"Content-Type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"application/json"</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Authorization</span><span class="o">:</span><span class="w"> </span><span class="s2">"Bearer "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">SLACK_API_TOKEN</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"Content-Length"</span><span class="o">:</span><span class="w"> </span><span class="nx">Buffer</span><span class="p">.</span><span class="nx">byteLength</span><span class="p">(</span><span class="nx">message</span><span class="p">),</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">    </span><span class="p">};</span>
 
@@ -35181,18 +35181,18 @@
 <span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">tmp</span><span class="p">;</span>
 
 <span class="w">      </span><span class="c1">// 正常なレスポンスからデータを取り出します。</span>
-<span class="w">      </span><span class="nx">response</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">response</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"data"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">;</span>
 <span class="w">      </span><span class="p">});</span>
 
 <span class="w">      </span><span class="c1">// 異常なレスポンスからエラーを取り出します。</span>
-<span class="w">      </span><span class="nx">response</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">response</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"error"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
 <span class="w">      </span><span class="p">});</span>
 
 <span class="w">      </span><span class="c1">//  data、error、endの間でawaitの効力は横断できない。</span>
 <span class="w">      </span><span class="c1">// そのため、できるだけendで事後処理を実装し、awaitを使用する。</span>
-<span class="w">      </span><span class="nx">response</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;end&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">response</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"end"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">param</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">tmp</span><span class="p">);</span>
 <span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">tmp</span><span class="p">);</span>
 <span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -35206,7 +35206,7 @@
 <span class="w">      </span><span class="p">});</span>
 <span class="w">    </span><span class="p">});</span>
 
-<span class="w">    </span><span class="nx">request</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">request</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"error"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">error</span><span class="p">},</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">));</span>
 <span class="w">    </span><span class="p">});</span>
 
@@ -35230,9 +35230,9 @@
 <p><strong>＊実装例＊</strong></p>
 <p>Amazon API Gateway でリクエストを受信し、それに応じて特定のデータを Amazon S3 に保管する。</p>
 <p>AWS Lambda が Amazon S3 に対してアクションを実行できるように、事前に、AWS 管理ポリシーの『<code>LambdaExecute</code>』が紐付けられたロールを AWS Lambda に紐付けしておく必要がある。</p>
-<div class="highlight"><pre><span></span><code><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="s2">"use strict"</span><span class="p">;</span>
 
-<span class="k">import</span><span class="w"> </span><span class="nx">aws</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;aws-sdk&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">aws</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"aws-sdk"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">s3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">S3</span><span class="p">();</span>
 
@@ -35245,33 +35245,33 @@
 <span class="w">  </span><span class="p">};</span>
 
 <span class="w">  </span><span class="c1">// 認証バリデーション</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s2">&quot;X-API-Key&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">X_API_KEY</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s2">"X-API-Key"</span><span class="p">]</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">X_API_KEY</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">401</span><span class="p">;</span>
-<span class="w">    </span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;An API key is invalid.&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"An API key is invalid."</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="c1">// リクエストバリデーション</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">event</span><span class="p">.</span><span class="nx">headers</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">event</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">400</span><span class="p">;</span>
-<span class="w">    </span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Parameters are not found.&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Parameters are not found."</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nx">s3</span><span class="p">.</span><span class="nx">putObject</span><span class="p">(</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">Bucket</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;バケット名&gt;&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">Key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;パスを含む保管先ファイル&gt;&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">Body</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;保管データ&gt;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">Bucket</span><span class="o">:</span><span class="w"> </span><span class="s2">"&lt;バケット名&gt;"</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">Key</span><span class="o">:</span><span class="w"> </span><span class="s2">"&lt;パスを含む保管先ファイル&gt;"</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">Body</span><span class="o">:</span><span class="w"> </span><span class="s2">"&lt;保管データ&gt;"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">500</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;[ERROR] &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">err</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"[ERROR] "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">err</span><span class="p">;</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">);</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">      </span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">200</span><span class="p">;</span>
-<span class="w">      </span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OK&quot;</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">response</span><span class="p">.</span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">;</span>
 <span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">);</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">);</span>
@@ -35284,7 +35284,7 @@
 <p>event オブジェクトの <code>domainName</code> と <code>host.value</code> に代入されたバケットのドメイン名によって、フォワーディング先のバケットが決まる。</p>
 <p>そのため、この値を切り替えれば動的オリジンを実現できる。</p>
 <p>注意点として、各バケットには同じオリジンアクセスアイデンティティを設定する必要がある。</p>
-<div class="highlight"><pre><span></span><code><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="s2">"use strict"</span><span class="p">;</span>
 
 <span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">callback</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">Records</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">cf</span><span class="p">.</span><span class="nx">request</span><span class="p">;</span>
@@ -35310,26 +35310,26 @@
 <span class="cm"> * @returns {string} pcBucket|spBucket</span>
 <span class="cm"> */</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">getBacketBasedOnDeviceType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">headers</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">pcBucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">env</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;-bucket.s3.amazonaws.com&quot;</span><span class="p">;</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">spBucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">env</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;-bucket.s3.amazonaws.com&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">pcBucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">env</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"-bucket.s3.amazonaws.com"</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">spBucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">env</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"-bucket.s3.amazonaws.com"</span><span class="p">;</span>
 
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">headers</span><span class="p">[</span><span class="s2">&quot;cloudfront-is-desktop-viewer&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">    </span><span class="nx">headers</span><span class="p">[</span><span class="s2">&quot;cloudfront-is-desktop-viewer&quot;</span><span class="p">][</span><span class="mf">0</span><span class="p">].</span><span class="nx">value</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
+<span class="w">    </span><span class="nx">headers</span><span class="p">[</span><span class="s2">"cloudfront-is-desktop-viewer"</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">    </span><span class="nx">headers</span><span class="p">[</span><span class="s2">"cloudfront-is-desktop-viewer"</span><span class="p">][</span><span class="mf">0</span><span class="p">].</span><span class="nx">value</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"true"</span>
 <span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">pcBucket</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">headers</span><span class="p">[</span><span class="s2">&quot;cloudfront-is-tablet-viewer&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">    </span><span class="nx">headers</span><span class="p">[</span><span class="s2">&quot;cloudfront-is-tablet-viewer&quot;</span><span class="p">][</span><span class="mf">0</span><span class="p">].</span><span class="nx">value</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
+<span class="w">    </span><span class="nx">headers</span><span class="p">[</span><span class="s2">"cloudfront-is-tablet-viewer"</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">    </span><span class="nx">headers</span><span class="p">[</span><span class="s2">"cloudfront-is-tablet-viewer"</span><span class="p">][</span><span class="mf">0</span><span class="p">].</span><span class="nx">value</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"true"</span>
 <span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">pcBucket</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">headers</span><span class="p">[</span><span class="s2">&quot;cloudfront-is-mobile-viewer&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">    </span><span class="nx">headers</span><span class="p">[</span><span class="s2">&quot;cloudfront-is-mobile-viewer&quot;</span><span class="p">][</span><span class="mf">0</span><span class="p">].</span><span class="nx">value</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
+<span class="w">    </span><span class="nx">headers</span><span class="p">[</span><span class="s2">"cloudfront-is-mobile-viewer"</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">    </span><span class="nx">headers</span><span class="p">[</span><span class="s2">"cloudfront-is-mobile-viewer"</span><span class="p">][</span><span class="mf">0</span><span class="p">].</span><span class="nx">value</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"true"</span>
 <span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">spBucket</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
@@ -35340,68 +35340,68 @@
 <p>オリジンリクエストは、以下の event オブジェクトの JSON 型データにマッピングされている。</p>
 <p>注意点として、一部のキーは省略している。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Records&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Records"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;cf&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"cf"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;request&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">            </span><span class="s">"request"</span><span class="p p-Indicator">:</span>
 <span class="w">              </span><span class="p p-Indicator">{</span>
-<span class="w">                </span><span class="s">&quot;body&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="s">"body"</span><span class="p p-Indicator">:</span>
 <span class="w">                  </span><span class="p p-Indicator">{</span>
-<span class="w">                    </span><span class="s">&quot;action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;read-only&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                    </span><span class="s">&quot;data&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                    </span><span class="s">&quot;encoding&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;base64&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                    </span><span class="s">&quot;inputTruncated&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="s">"action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"read-only"</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="s">"data"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">""</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="s">"encoding"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"base64"</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="s">"inputTruncated"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"false"</span><span class="p p-Indicator">,</span>
 <span class="w">                  </span><span class="p p-Indicator">},</span>
-<span class="w">                </span><span class="s">&quot;clientIp&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*.*.*.*&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                </span><span class="s">&quot;headers&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="s">"clientIp"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*.*.*.*"</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">"headers"</span><span class="p p-Indicator">:</span>
 <span class="w">                  </span><span class="p p-Indicator">{</span>
-<span class="w">                    </span><span class="s">&quot;host&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                    </span><span class="s">"host"</span><span class="p p-Indicator">:</span>
 <span class="w">                      </span><span class="p p-Indicator">[</span>
 <span class="w">                        </span><span class="p p-Indicator">{</span>
-<span class="w">                          </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Host&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                          </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sp-bucket.s3.ap-northeast-1.amazonaws.com&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                          </span><span class="s">"key"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Host"</span><span class="p p-Indicator">,</span>
+<span class="w">                          </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"sp-bucket.s3.ap-northeast-1.amazonaws.com"</span><span class="p p-Indicator">,</span>
 <span class="w">                        </span><span class="p p-Indicator">},</span>
 <span class="w">                      </span><span class="p p-Indicator">],</span>
-<span class="w">                    </span><span class="s">&quot;cloudfront-is-mobile-viewer&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">                      </span><span class="p p-Indicator">[{</span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;CloudFront-Is-Mobile-Viewer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">}],</span>
-<span class="w">                    </span><span class="s">&quot;cloudfront-is-tablet-viewer&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">                      </span><span class="p p-Indicator">[{</span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;loudFront-Is-Tablet-Viewer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p p-Indicator">}],</span>
-<span class="w">                    </span><span class="s">&quot;cloudfront-is-smarttv-viewer&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                    </span><span class="s">"cloudfront-is-mobile-viewer"</span><span class="p p-Indicator">:</span>
+<span class="w">                      </span><span class="p p-Indicator">[{</span><span class="s">"key"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"CloudFront-Is-Mobile-Viewer"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="p p-Indicator">}],</span>
+<span class="w">                    </span><span class="s">"cloudfront-is-tablet-viewer"</span><span class="p p-Indicator">:</span>
+<span class="w">                      </span><span class="p p-Indicator">[{</span><span class="s">"key"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"loudFront-Is-Tablet-Viewer"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"false"</span><span class="p p-Indicator">}],</span>
+<span class="w">                    </span><span class="s">"cloudfront-is-smarttv-viewer"</span><span class="p p-Indicator">:</span>
 <span class="w">                      </span><span class="p p-Indicator">[</span>
 <span class="w">                        </span><span class="p p-Indicator">{</span>
-<span class="w">                          </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;CloudFront-Is-SmartTV-Viewer&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                          </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                          </span><span class="s">"key"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"CloudFront-Is-SmartTV-Viewer"</span><span class="p p-Indicator">,</span>
+<span class="w">                          </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"false"</span><span class="p p-Indicator">,</span>
 <span class="w">                        </span><span class="p p-Indicator">},</span>
 <span class="w">                      </span><span class="p p-Indicator">],</span>
-<span class="w">                    </span><span class="s">&quot;cloudfront-is-desktop-viewer&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                    </span><span class="s">"cloudfront-is-desktop-viewer"</span><span class="p p-Indicator">:</span>
 <span class="w">                      </span><span class="p p-Indicator">[</span>
 <span class="w">                        </span><span class="p p-Indicator">{</span>
-<span class="w">                          </span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;CloudFront-Is-Desktop-Viewer&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                          </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                          </span><span class="s">"key"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"CloudFront-Is-Desktop-Viewer"</span><span class="p p-Indicator">,</span>
+<span class="w">                          </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"false"</span><span class="p p-Indicator">,</span>
 <span class="w">                        </span><span class="p p-Indicator">},</span>
 <span class="w">                      </span><span class="p p-Indicator">],</span>
-<span class="w">                    </span><span class="s">&quot;user-agent&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">                      </span><span class="p p-Indicator">[{</span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;User-Agent&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Amazon</span><span class="nv"> </span><span class="s">CloudFront&quot;</span><span class="p p-Indicator">}],</span>
+<span class="w">                    </span><span class="s">"user-agent"</span><span class="p p-Indicator">:</span>
+<span class="w">                      </span><span class="p p-Indicator">[{</span><span class="s">"key"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"User-Agent"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Amazon</span><span class="nv"> </span><span class="s">CloudFront"</span><span class="p p-Indicator">}],</span>
 <span class="w">                  </span><span class="p p-Indicator">},</span>
-<span class="w">                </span><span class="s">&quot;method&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;GET&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                </span><span class="s">&quot;origin&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="s">"method"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"GET"</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">"origin"</span><span class="p p-Indicator">:</span>
 <span class="w">                  </span><span class="p p-Indicator">{</span>
-<span class="w">                    </span><span class="s">&quot;s3&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                    </span><span class="s">"s3"</span><span class="p p-Indicator">:</span>
 <span class="w">                      </span><span class="p p-Indicator">{</span>
-<span class="w">                        </span><span class="s">&quot;authMethod&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;origin-access-identity&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                        </span><span class="s">&quot;customHeaders&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">                          </span><span class="p p-Indicator">{</span><span class="s">&quot;env&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="s">&quot;key&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;env&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;prd&quot;</span><span class="p p-Indicator">}]},</span>
-<span class="w">                        </span><span class="s">&quot;domainName&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sp-bucket.s3.amazonaws.com&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                        </span><span class="s">&quot;path&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                        </span><span class="s">&quot;port&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">443</span><span class="p p-Indicator">,</span>
-<span class="w">                        </span><span class="s">&quot;protocol&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                        </span><span class="s">&quot;region&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ap-northeast-1&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                        </span><span class="s">"authMethod"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"origin-access-identity"</span><span class="p p-Indicator">,</span>
+<span class="w">                        </span><span class="s">"customHeaders"</span><span class="p p-Indicator">:</span>
+<span class="w">                          </span><span class="p p-Indicator">{</span><span class="s">"env"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="s">"key"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"env"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"prd"</span><span class="p p-Indicator">}]},</span>
+<span class="w">                        </span><span class="s">"domainName"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"sp-bucket.s3.amazonaws.com"</span><span class="p p-Indicator">,</span>
+<span class="w">                        </span><span class="s">"path"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">""</span><span class="p p-Indicator">,</span>
+<span class="w">                        </span><span class="s">"port"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">443</span><span class="p p-Indicator">,</span>
+<span class="w">                        </span><span class="s">"protocol"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"https"</span><span class="p p-Indicator">,</span>
+<span class="w">                        </span><span class="s">"region"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"ap-northeast-1"</span><span class="p p-Indicator">,</span>
 <span class="w">                      </span><span class="p p-Indicator">},</span>
 <span class="w">                  </span><span class="p p-Indicator">},</span>
-<span class="w">                </span><span class="s">&quot;querystring&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                </span><span class="s">&quot;uri&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/images/12345&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">"querystring"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">""</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">"uri"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/images/12345"</span><span class="p p-Indicator">,</span>
 <span class="w">              </span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
@@ -35419,30 +35419,30 @@
 
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
 
-    <span class="n">client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;rds&#39;</span><span class="p">)</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">'rds'</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">instances</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">describe_db_instances</span><span class="p">()</span>
 
         <span class="n">instances</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">describe_db_instances</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">instances</span><span class="p">[</span><span class="s1">&#39;DBInstances&#39;</span><span class="p">]:</span>
-            <span class="k">if</span> <span class="n">instance</span><span class="p">[</span><span class="s1">&#39;DBInstanceStatus&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;stopped&quot;</span><span class="p">:</span>
-                <span class="n">tags</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">list_tags_for_resource</span><span class="p">(</span><span class="n">ResourceName</span><span class="o">=</span><span class="n">instance</span><span class="p">[</span><span class="s1">&#39;DBInstanceArn&#39;</span><span class="p">])</span>
-                <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">[</span><span class="s1">&#39;TagList&#39;</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">instances</span><span class="p">[</span><span class="s1">'DBInstances'</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">instance</span><span class="p">[</span><span class="s1">'DBInstanceStatus'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"stopped"</span><span class="p">:</span>
+                <span class="n">tags</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">list_tags_for_resource</span><span class="p">(</span><span class="n">ResourceName</span><span class="o">=</span><span class="n">instance</span><span class="p">[</span><span class="s1">'DBInstanceArn'</span><span class="p">])</span>
+                <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">[</span><span class="s1">'TagList'</span><span class="p">]:</span>
                     <span class="c1"># 起動タグがある場合</span>
-                    <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="s1">&#39;Key&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;enabled_start_scheduling&#39;</span> <span class="ow">and</span> <span class="n">tag</span><span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span><span class="p">:</span>
-                        <span class="n">client</span><span class="o">.</span><span class="n">start_db_instance</span><span class="p">(</span><span class="n">DBInstanceIdentifier</span><span class="o">=</span><span class="n">instance</span><span class="p">[</span><span class="s1">&#39;DBInstanceIdentifier&#39;</span><span class="p">])</span>
+                    <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="s1">'Key'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'enabled_start_scheduling'</span> <span class="ow">and</span> <span class="n">tag</span><span class="p">[</span><span class="s1">'Value'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'true'</span><span class="p">:</span>
+                        <span class="n">client</span><span class="o">.</span><span class="n">start_db_instance</span><span class="p">(</span><span class="n">DBInstanceIdentifier</span><span class="o">=</span><span class="n">instance</span><span class="p">[</span><span class="s1">'DBInstanceIdentifier'</span><span class="p">])</span>
 
         <span class="k">return</span> <span class="p">{</span>
-            <span class="s1">&#39;statusCode&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-            <span class="s1">&#39;body&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="s2">&quot;Amazon RDS instance start operation successfully&quot;</span><span class="p">)</span>
+            <span class="s1">'statusCode'</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+            <span class="s1">'body'</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="s2">"Amazon RDS instance start operation successfully"</span><span class="p">)</span>
         <span class="p">}</span>
 
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error: </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">{</span>
-            <span class="s1">&#39;statusCode&#39;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
-            <span class="s1">&#39;body&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="s1">'statusCode'</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+            <span class="s1">'body'</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error: </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="p">}</span>
 </code></pre></div>
 <h4 id="_17">▼ 自動停止<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
@@ -35451,30 +35451,30 @@
 
 <span class="k">def</span><span class="w"> </span><span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
 
-    <span class="n">client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;rds&#39;</span><span class="p">)</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">'rds'</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">instances</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">describe_db_instances</span><span class="p">()</span>
 
         <span class="n">instances</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">describe_db_instances</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">instances</span><span class="p">[</span><span class="s1">&#39;DBInstances&#39;</span><span class="p">]:</span>
-            <span class="k">if</span> <span class="n">instance</span><span class="p">[</span><span class="s1">&#39;DBInstanceStatus&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;available&quot;</span><span class="p">:</span>
-                <span class="n">tags</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">list_tags_for_resource</span><span class="p">(</span><span class="n">ResourceName</span><span class="o">=</span><span class="n">instance</span><span class="p">[</span><span class="s1">&#39;DBInstanceArn&#39;</span><span class="p">])</span>
-                <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">[</span><span class="s1">&#39;TagList&#39;</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">instances</span><span class="p">[</span><span class="s1">'DBInstances'</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">instance</span><span class="p">[</span><span class="s1">'DBInstanceStatus'</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"available"</span><span class="p">:</span>
+                <span class="n">tags</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">list_tags_for_resource</span><span class="p">(</span><span class="n">ResourceName</span><span class="o">=</span><span class="n">instance</span><span class="p">[</span><span class="s1">'DBInstanceArn'</span><span class="p">])</span>
+                <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">[</span><span class="s1">'TagList'</span><span class="p">]:</span>
                     <span class="c1"># 停止タグがある場合</span>
-                    <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="s1">&#39;Key&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;enabled_stop_scheduling&#39;</span> <span class="ow">and</span> <span class="n">tag</span><span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span><span class="p">:</span>
-                        <span class="n">client</span><span class="o">.</span><span class="n">stop_db_instance</span><span class="p">(</span><span class="n">DBInstanceIdentifier</span><span class="o">=</span><span class="n">instance</span><span class="p">[</span><span class="s1">&#39;DBInstanceIdentifier&#39;</span><span class="p">])</span>
+                    <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="s1">'Key'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'enabled_stop_scheduling'</span> <span class="ow">and</span> <span class="n">tag</span><span class="p">[</span><span class="s1">'Value'</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'true'</span><span class="p">:</span>
+                        <span class="n">client</span><span class="o">.</span><span class="n">stop_db_instance</span><span class="p">(</span><span class="n">DBInstanceIdentifier</span><span class="o">=</span><span class="n">instance</span><span class="p">[</span><span class="s1">'DBInstanceIdentifier'</span><span class="p">])</span>
 
         <span class="k">return</span> <span class="p">{</span>
-            <span class="s1">&#39;statusCode&#39;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-            <span class="s1">&#39;body&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="s2">&quot;Amazon RDS instance stop operation successfully&quot;</span><span class="p">)</span>
+            <span class="s1">'statusCode'</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+            <span class="s1">'body'</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="s2">"Amazon RDS instance stop operation successfully"</span><span class="p">)</span>
         <span class="p">}</span>
 
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error: </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">{</span>
-            <span class="s1">&#39;statusCode&#39;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
-            <span class="s1">&#39;body&#39;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="s1">'statusCode'</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+            <span class="s1">'body'</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error: </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="p">}</span>
 </code></pre></div>
 <p><br></p>

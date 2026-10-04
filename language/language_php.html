@@ -33874,9 +33874,9 @@ $<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>in
 <div class="highlight"><pre><span></span><code><span class="c">#===================</span>
 <span class="c"># Global ARG</span>
 <span class="c">#===================</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_FPM_VERSION</span><span class="o">=</span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_COMPOSER_VERSION</span><span class="o">=</span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">LABEL</span><span class="o">=</span><span class="s2">&quot;Hiroki &lt;example@gmail.com&gt;&quot;</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_FPM_VERSION</span><span class="o">=</span><span class="s2">"&lt;バージョン&gt;"</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_COMPOSER_VERSION</span><span class="o">=</span><span class="s2">"&lt;バージョン&gt;"</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">LABEL</span><span class="o">=</span><span class="s2">"Hiroki &lt;example@gmail.com&gt;"</span>
 
 <span class="c">#===================</span>
 <span class="c"># Base Stage</span>
@@ -33947,8 +33947,8 @@ $<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>in
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">isAdult</span><span class="p">()</span> <span class="o">?</span> <span class="s2">&quot;true&quot;</span> <span class="o">:</span> <span class="s2">&quot;false&quot;</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="s2">"Alice"</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">isAdult</span><span class="p">()</span> <span class="o">?</span> <span class="s2">"true"</span> <span class="o">:</span> <span class="s2">"false"</span><span class="p">;</span> <span class="c1">// true</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_4">関数型<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
@@ -33960,16 +33960,16 @@ $<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>in
 
 <span class="c1">// オブジェクトの状態を設定する</span>
 <span class="nv">$user</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;age&quot;</span> <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"Alice"</span><span class="p">,</span>
+    <span class="s2">"age"</span> <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span>
 <span class="p">];</span>
 
 <span class="c1">// 振る舞い</span>
 <span class="k">function</span> <span class="nf">isAdult</span><span class="p">(</span><span class="k">array</span> <span class="nv">$user</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nv">$user</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nv">$user</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">echo</span> <span class="nx">isAdult</span><span class="p">(</span><span class="nv">$user</span><span class="p">)</span> <span class="o">?</span> <span class="s2">&quot;true&quot;</span> <span class="o">:</span> <span class="s2">&quot;false&quot;</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="k">echo</span> <span class="nx">isAdult</span><span class="p">(</span><span class="nv">$user</span><span class="p">)</span> <span class="o">?</span> <span class="s2">"true"</span> <span class="o">:</span> <span class="s2">"false"</span><span class="p">;</span> <span class="c1">// true</span>
 </code></pre></div>
 <p><br></p>
 

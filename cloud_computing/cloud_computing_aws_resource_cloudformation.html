@@ -33833,12 +33833,12 @@
 <span class="w">  </span><span class="nt">AllowAddresses</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IP list allowed to access</span>
 <span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CommaDelimitedList</span>
-<span class="w">    </span><span class="nt">Default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*.*.*.*/*&quot;</span>
+<span class="w">    </span><span class="nt">Default</span><span class="p">:</span><span class="w"> </span><span class="s">"*.*.*.*/*"</span>
 
 <span class="c1"># スタック</span>
 <span class="nt">Resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">IPWhiteList</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;AWS::WAFv2::IPSet&quot;</span>
+<span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s">"AWS::WAFv2::IPSet"</span>
 <span class="w">    </span><span class="nt">Properties</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-ip-white-list</span>
 <span class="w">      </span><span class="nt">Scope</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REGIONAL</span>

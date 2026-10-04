@@ -34044,8 +34044,8 @@
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nv">$queryBuilder</span>
-    <span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span>
-    <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="s2">&quot;mst_users&quot;</span><span class="p">);</span>
+    <span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s2">"id"</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="s2">"mst_users"</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_3">書き込み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -34055,7 +34055,7 @@
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nv">$queryBuilder</span>
-    <span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span><span class="s2">&quot;mst_users&quot;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span><span class="s2">"mst_users"</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="update">▼ <code>update()</code> 関数<a class="headerlink" href="#update" title="Permanent link">&para;</a></h4>
 <p>QueryBuilder クラスの <code>update()</code> 関数に、値を設定する。</p>
@@ -34063,7 +34063,7 @@
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nv">$queryBuilder</span>
-    <span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="s2">&quot;mst_users&quot;</span><span class="p">);</span>
+    <span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="s2">"mst_users"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="delete">▼ <code>delete()</code> 関数<a class="headerlink" href="#delete" title="Permanent link">&para;</a></h4>
 <p>QueryBuilder クラスの <code>delete()</code> 関数に、値を設定する。</p>
@@ -34071,7 +34071,7 @@
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nv">$queryBuilder</span>
-    <span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s2">&quot;mst_users&quot;</span><span class="p">);</span>
+    <span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="s2">"mst_users"</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_4">実行<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
@@ -34107,21 +34107,21 @@
 
         <span class="c1">// プリペアードステートメントの定義</span>
         <span class="nv">$queryBuilder</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">([</span>
-          <span class="s2">&quot;dog_toy.type AS dog_toy_type&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;dog_toy.name AS dog_toy_name&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;dog_toy.number AS number&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;dog_toy.price AS dog_toy_price&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;dog_toy.color_value AS color_value&quot;</span>
+          <span class="s2">"dog_toy.type AS dog_toy_type"</span><span class="p">,</span>
+          <span class="s2">"dog_toy.name AS dog_toy_name"</span><span class="p">,</span>
+          <span class="s2">"dog_toy.number AS number"</span><span class="p">,</span>
+          <span class="s2">"dog_toy.price AS dog_toy_price"</span><span class="p">,</span>
+          <span class="s2">"dog_toy.color_value AS color_value"</span>
         <span class="p">])</span>
 
           <span class="c1">// FROMを設定する。</span>
-          <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="s2">&quot;mst_dog_toy&quot;</span><span class="p">,</span> <span class="s2">&quot;dog_toy&quot;</span><span class="p">)</span>
+          <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="s2">"mst_dog_toy"</span><span class="p">,</span> <span class="s2">"dog_toy"</span><span class="p">)</span>
 
           <span class="c1">// WHEREを設定する。この時、値はプレースホルダーとしておく。</span>
-          <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s2">&quot;dog_toy.type = :type&quot;</span><span class="p">)</span>
+          <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s2">"dog_toy.type = :type"</span><span class="p">)</span>
 
           <span class="c1">// プレースホルダーに値を設定する。ここでは、引数で渡す『$toyType』とする。</span>
-          <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="nv">$toyType</span><span class="p">);</span>
+          <span class="o">-&gt;</span><span class="na">setParameter</span><span class="p">(</span><span class="s2">"type"</span><span class="p">,</span> <span class="nv">$toyType</span><span class="p">);</span>
 
         <span class="c1">// DBに接続。</span>
         <span class="k">return</span> <span class="nv">$queryBuilder</span><span class="o">-&gt;</span><span class="na">getConnection</span><span class="p">()</span>

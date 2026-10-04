@@ -34682,7 +34682,7 @@ Last<span class="w"> </span>login:<span class="w"> </span>Mon<span class="w"> </
 <p>そのため、<code>source</code> コマンド以外の方法で実行されたシェルスクリプトでは、親プロセスで定義したシェル変数を使用できない。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1"># foo.shファイル</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FOO</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">FOO</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">FOO</span><span class="o">=</span>foo<span class="w"> </span><span class="c1"># シェル変数を定義する。</span>
 
@@ -34690,7 +34690,7 @@ $<span class="w"> </span>bash<span class="w"> </span>foo.sh
 <span class="c1"># 出力されない</span>
 </code></pre></div>
 <p>補足として、標準出力に対する出力をシェル変数に代入できる。</p>
-<div class="highlight"><pre><span></span><code><span class="nv">FOO</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="k">)</span>
+<div class="highlight"><pre><span></span><code><span class="nv">FOO</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"foo"</span><span class="k">)</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34703,7 +34703,7 @@ $<span class="w"> </span>bash<span class="w"> </span>foo.sh
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1"># foo.shファイル</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FOO</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">FOO</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">FOO</span><span class="o">=</span>foo<span class="w"> </span><span class="c1"># 環境変数を定義する。</span>
 
@@ -34721,7 +34721,7 @@ foo<span class="w"> </span><span class="c1"># 出力される</span>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.0.0<span class="w"> </span><span class="c1"># シェル変数を定義する。</span>
 
 <span class="c1"># 文字列内の全てのドットをハイフンに置換する</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">VERSION</span><span class="p">//</span><span class="se">\.</span><span class="p">/-</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">VERSION</span><span class="p">//</span><span class="se">\.</span><span class="p">/-</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34846,7 +34846,7 @@ foo<span class="w"> </span><span class="c1"># 出力される</span>
 <p><br></p>
 <h3 id="_23"><code>$?</code><a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <p>コマンドの終了コードを出力する</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
 
 <span class="m">0</span><span class="w"> </span><span class="c1"># 終了コードが 0 である</span>
 </code></pre></div>

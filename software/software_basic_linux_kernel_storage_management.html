@@ -35069,13 +35069,13 @@ $<span class="w"> </span>mke2fs<span class="w"> </span>-t<span class="w"> </span
 </ul>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="c1"># マウントオプションを設定する。</span>
-$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;</span>
-<span class="s1">  &quot;/System/Volumes/Data/Users/hiroki.hasegawa/projects/&lt;マウント元のディレクトリ&gt;&quot;</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">'</span>
+<span class="s1">  "/System/Volumes/Data/Users/hiroki.hasegawa/projects/&lt;マウント元のディレクトリ&gt;"</span>
 <span class="s1">  -network &lt;マウント先のサーバーのIPアドレス&gt;</span>
 <span class="s1">  -mask 255.255.255.0</span>
 <span class="s1">  -alldirs</span>
 <span class="s1">  -maproot=root:wheel</span>
-<span class="s1">  &#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/exports
+<span class="s1">  '</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/exports
 
 <span class="c1"># 検証</span>
 $<span class="w"> </span>nfsd<span class="w"> </span>checkexports

@@ -34842,7 +34842,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">[www]</span>
 <span class="na">env[FOO]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">foo</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;echo ${FOO};&#39;</span><span class="w"> </span><span class="c1"># プロセスが異なるため、何も出力されない。</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">'echo ${FOO};'</span><span class="w"> </span><span class="c1"># プロセスが異なるため、何も出力されない。</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="group">group<a class="headerlink" href="#group" title="Permanent link">&para;</a></h3>
@@ -34969,7 +34969,7 @@
 </ul>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="k">[www]</span>
-<span class="na">php_value[session.save_path]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;tcp://foo-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379&quot;</span>
+<span class="na">php_value[session.save_path]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"tcp://foo-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"</span>
 </code></pre></div>
 <h4 id="php_valuesoapwsdl_cache_dir">▼ php_value[soap.wsdl_cache_dir]<a class="headerlink" href="#php_valuesoapwsdl_cache_dir" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="k">[www]</span>

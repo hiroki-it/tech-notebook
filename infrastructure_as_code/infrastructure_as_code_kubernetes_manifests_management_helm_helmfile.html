@@ -34719,10 +34719,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;バージョンタグ&gt;</span>
 <span class="w">    </span><span class="c1"># 実行環境ごとに、読み込む values.yaml.gotmpl ファイルを切り替える。</span>
 <span class="w">    </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">{{</span><span class="nv">- if or (eq .Environment.Name &quot;tes&quot;) (eq .Environment.Name &quot;stg&quot;)</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">      </span><span class="p p-Indicator">{{</span><span class="nv">- if or (eq .Environment.Name "tes") (eq .Environment.Name "stg")</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common-values-nonprd.yaml.gotmpl</span>
 <span class="w">      </span><span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
-<span class="w">      </span><span class="p p-Indicator">{{</span><span class="nv">- if eq .Environment.Name &quot;prd&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">      </span><span class="p p-Indicator">{{</span><span class="nv">- if eq .Environment.Name "prd"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common-values-prd.yaml.gotmpl</span>
 <span class="w">      </span><span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 </code></pre></div>
@@ -34833,7 +34833,7 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 <p>デフォルト値は <code>true</code> になっており、Helm リリース前に Namespace を自動的に作成するようになっている。</p>
 <p>ただし、Namespace ので出どころがわからなくなるため、Helmfile の <code>createNamespace</code> オプションは無効化し、Namespace のマニフェストを定義しておくほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">createNamespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">createNamespace</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 </code></pre></div>
 <h4 id="dependencies">▼ dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h4>
 <p>依存先のチャートを設定する。</p>
@@ -34852,8 +34852,8 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 <p>依存先チャートで <code>values</code> ファイルの指定はいらないが、extra チャート側でデフォルト値を設定しておく必要がある</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># extra チャートのデフォルト値</span>
 
-<span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 </code></pre></div>
 <p>また、依存対象のサブチャートのリポジトリを <code>helm repo add</code> するため、<code>repositories</code> キーが必要になる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">repositories</span><span class="p">:</span>
@@ -34897,7 +34897,7 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar\.enabled</span>
-<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <h4 id="name">▼ name<a class="headerlink" href="#name" title="Permanent link">&para;</a></h4>
 <p>Helm リリース名を設定する。</p>

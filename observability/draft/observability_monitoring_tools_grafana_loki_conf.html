@@ -33774,14 +33774,14 @@
 <h3 id="bloom_build">bloom_build<a class="headerlink" href="#bloom_build" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">bloom_build</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">builder</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">planner_address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">planner_address</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="bloom_gateway">bloom_gateway<a class="headerlink" href="#bloom_gateway" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">bloom_gateway</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">client</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">addresses</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">addresses</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <p><br></p>
@@ -33867,7 +33867,7 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HighPercentageError</span>
 <span class="w">        </span><span class="c1"># 5 分あたりに 5 つ以上のエラーログが出る</span>
 <span class="w">        </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">count_over_time({app=&quot;foo&quot;, namespace=&quot;foo&quot;} |= &quot;ERROR&quot; [5m]) &gt; 5</span>
+<span class="w">          </span><span class="no">count_over_time({app="foo", namespace="foo"} |= "ERROR" [5m]) &gt; 5</span>
 <span class="w">        </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1m</span>
 <span class="w">        </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">error</span>
@@ -33875,11 +33875,11 @@
 <span class="w">          </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">High error rate</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;timestamp&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2025-05-13T09:00:00Z&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;level&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;message&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ERROR:</span><span class="nv"> </span><span class="s">Failed</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">connect</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">database&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;app&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;env&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;production&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"timestamp"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2025-05-13T09:00:00Z"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"level"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"error"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"message"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"ERROR:</span><span class="nv"> </span><span class="s">Failed</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">connect</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">database"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"app"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"env"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"production"</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
@@ -34015,14 +34015,14 @@
 <span class="w">    </span><span class="nt">working_directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/loki/data/bloomshipper</span>
 <span class="w">  </span><span class="nt">boltdb_shipper</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">index_gateway_client</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">server_address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">server_address</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 <span class="w">  </span><span class="nt">hedging</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">at</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">250ms</span>
 <span class="w">    </span><span class="nt">max_per_second</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
 <span class="w">    </span><span class="nt">up_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">  </span><span class="nt">tsdb_shipper</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">index_gateway_client</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">server_address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">server_address</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="tracing">tracing<a class="headerlink" href="#tracing" title="Permanent link">&para;</a></h3>

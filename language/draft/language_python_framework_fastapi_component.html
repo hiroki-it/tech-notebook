@@ -33494,8 +33494,8 @@
 
 <span class="n">router</span> <span class="o">=</span> <span class="n">APIRouter</span><span class="p">()</span>
 
-<span class="n">PREFIX_FOO</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span>
-<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/</span><span class="si">{PREFIX}</span><span class="s2">/show&quot;</span><span class="p">)</span>
+<span class="n">PREFIX_FOO</span> <span class="o">=</span> <span class="s2">"foo"</span>
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/</span><span class="si">{PREFIX}</span><span class="s2">/show"</span><span class="p">)</span>
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">show</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)):</span>
         <span class="c1"># DBへのアクセス処理</span>
 

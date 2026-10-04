@@ -34205,7 +34205,7 @@ $<span class="w"> </span>amplify<span class="w"> </span>publish
 <span class="w">      </span><span class="nt">commands</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm install</span>
 <span class="w">        </span><span class="c1"># base64 方式エンコード値をデコード</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;${ENV}&quot; | base64 -d &gt; .env</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "${ENV}" | base64 -d &gt; .env</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat .env</span>
 <span class="w">    </span><span class="nt">build</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">commands</span><span class="p">:</span>
@@ -34215,7 +34215,7 @@ $<span class="w"> </span>amplify<span class="w"> </span>publish
 <span class="w">    </span><span class="c1"># デプロイ先のディレクトリ</span>
 <span class="w">    </span><span class="nt">files</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># 全てのディレクトリ</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;**/*&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"**/*"</span>
 <span class="w">    </span><span class="nt">discard-paths</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
 <span class="w">    </span><span class="c1"># ビルドのアーティファクトを配置するディレクトリ</span>
 <span class="w">    </span><span class="nt">baseDirectory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dist</span>
@@ -34242,7 +34242,7 @@ $<span class="w"> </span>amplify<span class="w"> </span>publish
 <span class="w">    </span><span class="c1"># デプロイ先のディレクトリ</span>
 <span class="w">    </span><span class="nt">files</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># 全てのディレクトリ</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;**/*&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"**/*"</span>
 <span class="w">    </span><span class="nt">configFilePath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;パス&gt;</span>
 <span class="w">    </span><span class="c1"># ビルドのアーティファクトのディレクトリ</span>
 <span class="w">    </span><span class="nt">baseDirectory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;パス&gt;</span>

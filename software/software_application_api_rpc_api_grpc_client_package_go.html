@@ -35499,14 +35499,14 @@ protoc-gen-go-grpc<span class="w"> </span>&lt;バージョン&gt;
 <span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>go<span class="w"> </span>install<span class="w"> </span>google.golang.org/grpc/cmd/protoc-gen-go-grpc@&lt;バージョン&gt;
 
 <span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>/
-<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/protocol_buffer_compiler.sh&quot;</span><span class="p">]</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"/protocol_buffer_compiler.sh"</span><span class="p">]</span>
 </code></pre></div>
 <p><code>protocol_buffer_compiler.sh</code> ファイルは以下の通りである。</p>
 <p>バックアップも兼ねて、<code>pb.go</code> ファイルを作業日付ごとに作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 
 <span class="c1"># 日付ごとにディレクトリを作成する</span>
-<span class="nv">DATE</span><span class="o">=</span><span class="sb">`</span>date<span class="w"> </span><span class="s1">&#39;+%Y%m%d%H%M%S&#39;</span><span class="sb">`</span>
+<span class="nv">DATE</span><span class="o">=</span><span class="sb">`</span>date<span class="w"> </span><span class="s1">'+%Y%m%d%H%M%S'</span><span class="sb">`</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span><span class="si">${</span><span class="nv">DATE</span><span class="si">}</span>
 
 protoc<span class="w"> </span><span class="se">\</span>
@@ -35588,45 +35588,45 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 
-<span class="w">    </span><span class="nx">grpc_prometheus</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-prometheus&quot;</span>
+<span class="w">    </span><span class="nx">grpc_prometheus</span><span class="w"> </span><span class="s">"github.com/grpc-ecosystem/go-grpc-prometheus"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとの接続を作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">":7777"</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithChainUnaryInterceptor</span><span class="p">(</span><span class="nx">grpc_prometheus</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_8">▼ 分散トレース系<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとの接続を作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">":7777"</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithChainUnaryInterceptor</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -35641,7 +35641,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="nx">reply</span><span class="w"> </span><span class="kd">interface</span><span class="p">{},</span>
 <span class="w">    </span><span class="nx">cc</span><span class="w"> </span><span class="o">*</span><span class="nx">ClientConn</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">invoker</span><span class="w"> </span><span class="nx">UnaryInvoker</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">CallOption</span>
+<span class="w">    </span><span class="nx">opts</span><span class="w"> </span><span class="p">...</span><span class="nx">CallOption</span>
 <span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
 </code></pre></div>
 <p>この関数は、リクエストでエラーが起こった場合に、内部的に <code>SetStatus()</code> 関数を実行する。</p>
@@ -35655,21 +35655,21 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 
 <span class="w">    </span><span class="c1">// pb.goファイルを読み込む。</span>
-<span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">&quot;github.com/hiroki-hasegawa/foo/foo&quot;</span>
+<span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">"github.com/hiroki-hasegawa/foo/foo"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとの接続を作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">":7777"</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithChainUnaryInterceptor</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -35681,10 +35681,10 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="c1">// goサーバーをリモートプロシージャーコールする。</span>
 <span class="w">    </span><span class="nx">response</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">SayHello</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">Message</span><span class="p">{</span><span class="nx">Body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello From Client!&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">Message</span><span class="p">{</span><span class="nx">Body</span><span class="p">:</span><span class="w"> </span><span class="s">"Hello From Client!"</span><span class="p">},</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -35697,7 +35697,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">intercetor</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">UnaryClientInterceptor</span><span class="p">(</span>
@@ -35707,12 +35707,12 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="nx">reply</span><span class="w"> </span><span class="kd">interface</span><span class="p">{},</span>
 <span class="w">    </span><span class="nx">cc</span><span class="w"> </span><span class="o">*</span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ClientConn</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">invoker</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryInvoker</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">callOpts</span><span class="w"> </span><span class="o">...</span><span class="nx">grpc</span><span class="p">.</span><span class="nx">CallOption</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">callOpts</span><span class="w"> </span><span class="p">...</span><span class="nx">grpc</span><span class="p">.</span><span class="nx">CallOption</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// リクエスト送信の事前処理</span>
 
-<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">invoker</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">reply</span><span class="p">,</span><span class="w"> </span><span class="nx">cc</span><span class="p">,</span><span class="w"> </span><span class="nx">callOpts</span><span class="o">...</span><span class="p">)</span><span class="w"> </span><span class="c1">// 単項RPC処理</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">invoker</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">reply</span><span class="p">,</span><span class="w"> </span><span class="nx">cc</span><span class="p">,</span><span class="w"> </span><span class="nx">callOpts</span><span class="p">...)</span><span class="w"> </span><span class="c1">// 単項RPC処理</span>
 
 <span class="w">    </span><span class="c1">// リクエスト送信の事後処理</span>
 
@@ -35723,10 +35723,10 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">intercetor</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">UnaryClientInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">fooOption</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">UnaryClientInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="p">...</span><span class="nx">fooOption</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// オプションを使用してパラメーターを作成する</span>
 
@@ -35737,12 +35737,12 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">        </span><span class="nx">reply</span><span class="w"> </span><span class="kd">interface</span><span class="p">{},</span>
 <span class="w">        </span><span class="nx">cc</span><span class="w"> </span><span class="o">*</span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ClientConn</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">invoker</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryInvoker</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">callOpts</span><span class="w"> </span><span class="o">...</span><span class="nx">grpc</span><span class="p">.</span><span class="nx">CallOption</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">callOpts</span><span class="w"> </span><span class="p">...</span><span class="nx">grpc</span><span class="p">.</span><span class="nx">CallOption</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">        </span><span class="c1">// リクエスト送信の事前処理</span>
 
-<span class="w">        </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">invoker</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">reply</span><span class="p">,</span><span class="w"> </span><span class="nx">cc</span><span class="p">,</span><span class="w"> </span><span class="nx">callOpts</span><span class="o">...</span><span class="p">)</span><span class="w"> </span><span class="c1">// 単項RPC処理</span>
+<span class="w">        </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">invoker</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">reply</span><span class="p">,</span><span class="w"> </span><span class="nx">cc</span><span class="p">,</span><span class="w"> </span><span class="nx">callOpts</span><span class="p">...)</span><span class="w"> </span><span class="c1">// 単項RPC処理</span>
 
 <span class="w">        </span><span class="c1">// リクエスト送信の事後処理</span>
 
@@ -35765,7 +35765,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="nx">cc</span><span class="w"> </span><span class="o">*</span><span class="nx">ClientConn</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">method</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">streamer</span><span class="w"> </span><span class="nx">Streamer</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">CallOption</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">opts</span><span class="w"> </span><span class="p">...</span><span class="nx">CallOption</span><span class="p">,</span>
 <span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">ClientStream</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
 </code></pre></div>
 <p>この関数は、リクエストでエラーが起こった場合に、内部的に <code>SetStatus()</code> 関数を実行する。</p>
@@ -35779,21 +35779,21 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 
 <span class="w">    </span><span class="c1">// pb.goファイルを読み込む。</span>
-<span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">&quot;github.com/hiroki-hasegawa/foo/foo&quot;</span>
+<span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">"github.com/hiroki-hasegawa/foo/foo"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとの接続を作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">":7777"</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithChainStreamInterceptor</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">StreamClientInterceptor</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -35805,10 +35805,10 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="c1">// goサーバーをリモートプロシージャーコールする。</span>
 <span class="w">    </span><span class="nx">response</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">SayHello</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">Message</span><span class="p">{</span><span class="nx">Body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello From Client!&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">Message</span><span class="p">{</span><span class="nx">Body</span><span class="p">:</span><span class="w"> </span><span class="s">"Hello From Client!"</span><span class="p">},</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -35821,7 +35821,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">intercetor</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">StreamClientInterceptor</span><span class="p">(</span>
@@ -35830,12 +35830,12 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="nx">cc</span><span class="w"> </span><span class="o">*</span><span class="nx">ClientConn</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">method</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">streamer</span><span class="w"> </span><span class="nx">Streamer</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">CallOption</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">opts</span><span class="w"> </span><span class="p">...</span><span class="nx">CallOption</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ClientStream</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">        </span><span class="c1">// 事前処理</span>
 
-<span class="w">        </span><span class="nx">streamer</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">streamer</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">desc</span><span class="p">,</span><span class="w"> </span><span class="nx">cc</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="nx">callOpts</span><span class="o">...</span><span class="p">)</span><span class="w"> </span><span class="c1">// ストリーミングRPC処理</span>
+<span class="w">        </span><span class="nx">streamer</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">streamer</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">desc</span><span class="p">,</span><span class="w"> </span><span class="nx">cc</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="nx">callOpts</span><span class="p">...)</span><span class="w"> </span><span class="c1">// ストリーミングRPC処理</span>
 
 <span class="w">        </span><span class="c1">// 事後処理</span>
 
@@ -35850,10 +35850,10 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">intercetor</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">StreamClientInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">fooOption</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">StreamClientInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="p">...</span><span class="nx">fooOption</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// オプションを使用してパラメーターを作成する</span>
 
@@ -35863,12 +35863,12 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">        </span><span class="nx">cc</span><span class="w"> </span><span class="o">*</span><span class="nx">ClientConn</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">method</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">streamer</span><span class="w"> </span><span class="nx">Streamer</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">CallOption</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">opts</span><span class="w"> </span><span class="p">...</span><span class="nx">CallOption</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ClientStream</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">        </span><span class="c1">// 事前処理</span>
 
-<span class="w">        </span><span class="nx">streamer</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">streamer</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">desc</span><span class="p">,</span><span class="w"> </span><span class="nx">cc</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="nx">callOpts</span><span class="o">...</span><span class="p">)</span><span class="w"> </span><span class="c1">// ストリーミングRPC処理</span>
+<span class="w">        </span><span class="nx">streamer</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">streamer</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">desc</span><span class="p">,</span><span class="w"> </span><span class="nx">cc</span><span class="p">,</span><span class="w"> </span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="nx">callOpts</span><span class="p">...)</span><span class="w"> </span><span class="c1">// ストリーミングRPC処理</span>
 
 <span class="w">        </span><span class="c1">// 事後処理</span>
 
@@ -35903,11 +35903,11 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 
-<span class="w">    </span><span class="nx">grpc_recovery</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/interceptors/recovery&quot;</span>
+<span class="w">    </span><span class="nx">grpc_recovery</span><span class="w"> </span><span class="s">"github.com/grpc-ecosystem/go-grpc-middleware/interceptors/recovery"</span>
 
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">)</span>
 
@@ -35918,11 +35918,11 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">        </span><span class="c1">// 単項RPCのサーバーインターセプター処理</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainUnaryInterceptor</span><span class="p">(</span>
 <span class="w">            </span><span class="c1">// リカバー処理</span>
-<span class="w">            </span><span class="nx">grpc_recovery</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="o">...</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">grpc_recovery</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(...),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -35940,13 +35940,13 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 
-<span class="w">    </span><span class="nx">grpc_recovery</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/interceptors/recovery&quot;</span>
+<span class="w">    </span><span class="nx">grpc_recovery</span><span class="w"> </span><span class="s">"github.com/grpc-ecosystem/go-grpc-middleware/interceptors/recovery"</span>
 
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters&quot;</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">)</span>
 
@@ -35961,7 +35961,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -35987,10 +35987,10 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">interceptor</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
 
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span>
@@ -36013,13 +36013,13 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">interceptor</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
 
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">fooOption</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="p">...</span><span class="nx">fooOption</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// オプションを使用してパラメーターを作成する</span>
 
@@ -36061,8 +36061,8 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">interceptor</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">StreamServerInterceptor</span><span class="p">(</span>
@@ -36085,11 +36085,11 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">interceptor</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">StreamServerInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">fooOption</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">StreamServerInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="p">...</span><span class="nx">fooOption</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// オプションを使用してパラメーターを作成する</span>
 
@@ -36117,15 +36117,15 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;net&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"net"</span>
 
 <span class="w">    </span><span class="c1">// pb.goファイルを読み込む。</span>
-<span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">&quot;github.com/hiroki-hasegawa/foo/foo&quot;</span>
+<span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">"github.com/hiroki-hasegawa/foo/foo"</span>
 
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="c1">// goサーバー</span>
@@ -36134,8 +36134,8 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 
 <span class="c1">// Helloを返信する関数</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">Server</span><span class="p">)</span><span class="w"> </span><span class="nx">SayHello</span><span class="w"> </span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">in</span><span class="w"> </span><span class="o">*</span><span class="nx">pb</span><span class="p">.</span><span class="nx">Message</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">Message</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Received message body from client: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">in</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">Message</span><span class="p">{</span><span class="nx">Body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello From the Server!&quot;</span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Received message body from client: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">in</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">Message</span><span class="p">{</span><span class="nx">Body</span><span class="p">:</span><span class="w"> </span><span class="s">"Hello From the Server!"</span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -36148,18 +36148,18 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="nx">pb</span><span class="p">.</span><span class="nx">RegisterFooServiceServer</span><span class="p">(</span><span class="nx">grpcServer</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Server</span><span class="p">{})</span>
 
 <span class="w">    </span><span class="c1">// goサーバーで待ち受けるポート番号を設定する。</span>
-<span class="w">    </span><span class="nx">listenPort</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nx">Listen</span><span class="p">(</span><span class="s">&quot;tcp&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;:%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">9000</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">listenPort</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nx">Listen</span><span class="p">(</span><span class="s">"tcp"</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">":%d"</span><span class="p">,</span><span class="w"> </span><span class="mi">9000</span><span class="p">))</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to listen: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to listen: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとして、goサーバーで通信を受信する。</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpcServer</span><span class="p">.</span><span class="nx">Serve</span><span class="p">(</span><span class="nx">listenPort</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to serve: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to serve: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -36177,22 +36177,22 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;net&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"net"</span>
 
 <span class="w">    </span><span class="c1">// pb.goファイルを読み込む。</span>
-<span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">&quot;github.com/hiroki-hasegawa/foo/foo&quot;</span>
+<span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">"github.com/hiroki-hasegawa/foo/foo"</span>
 
-<span class="w">    </span><span class="nx">grpc_prometheus</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus&quot;</span>
-<span class="w">    </span><span class="nx">grpc_auth</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/interceptors/auth&quot;</span>
-<span class="w">    </span><span class="nx">grpc_logging</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/interceptors/logging&quot;</span>
-<span class="w">    </span><span class="nx">grpc_recovery</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/interceptors/recovery&quot;</span>
-<span class="w">    </span><span class="nx">grpc_selector</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/interceptors/selector&quot;</span>
+<span class="w">    </span><span class="nx">grpc_prometheus</span><span class="w"> </span><span class="s">"github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus"</span>
+<span class="w">    </span><span class="nx">grpc_auth</span><span class="w"> </span><span class="s">"github.com/grpc-ecosystem/go-grpc-middleware/interceptors/auth"</span>
+<span class="w">    </span><span class="nx">grpc_logging</span><span class="w"> </span><span class="s">"github.com/grpc-ecosystem/go-grpc-middleware/interceptors/logging"</span>
+<span class="w">    </span><span class="nx">grpc_recovery</span><span class="w"> </span><span class="s">"github.com/grpc-ecosystem/go-grpc-middleware/interceptors/recovery"</span>
+<span class="w">    </span><span class="nx">grpc_selector</span><span class="w"> </span><span class="s">"github.com/grpc-ecosystem/go-grpc-middleware/interceptors/selector"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/interceptors&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"github.com/grpc-ecosystem/go-grpc-middleware/interceptors"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -36202,35 +36202,35 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">        </span><span class="c1">// 単項RPCのサーバーインターセプター処理</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainUnaryInterceptor</span><span class="p">(</span>
 <span class="w">            </span><span class="c1">// 認証処理</span>
-<span class="w">            </span><span class="nx">grpc_selector</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="o">...</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">grpc_selector</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(...),</span>
 <span class="w">            </span><span class="c1">// メトリクス処理</span>
-<span class="w">            </span><span class="nx">grpc_prometheus</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="o">...</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">grpc_prometheus</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(...),</span>
 <span class="w">            </span><span class="c1">// ロギング処理</span>
-<span class="w">            </span><span class="nx">grpc_logging</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="o">...</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">grpc_logging</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(...),</span>
 <span class="w">            </span><span class="c1">// 分散トレースのスパン作成処理</span>
-<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="o">...</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(...),</span>
 <span class="w">            </span><span class="c1">// リカバー処理</span>
-<span class="w">            </span><span class="nx">grpc_recovery</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="o">...</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">grpc_recovery</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(...),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">        </span><span class="c1">// ストリーミングRPCのサーバーインターセプター処理</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainStreamInterceptor</span><span class="p">(</span>
-<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(</span><span class="o">...</span><span class="p">),</span>
-<span class="w">            </span><span class="nx">recovery</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(</span><span class="o">...</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(...),</span>
+<span class="w">            </span><span class="nx">recovery</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(...),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 
 <span class="w">    </span><span class="c1">// goサーバーで待ち受けるポート番号を設定する。</span>
-<span class="w">    </span><span class="nx">listenPort</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nx">Listen</span><span class="p">(</span><span class="s">&quot;tcp&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;:%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">9000</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">listenPort</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nx">Listen</span><span class="p">(</span><span class="s">"tcp"</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">":%d"</span><span class="p">,</span><span class="w"> </span><span class="mi">9000</span><span class="p">))</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとして、goサーバーで通信を受信する。</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpcServer</span><span class="p">.</span><span class="nx">Serve</span><span class="p">(</span><span class="nx">listenPort</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to serve: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to serve: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -36245,39 +36245,39 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;net&quot;</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"net"</span>
 
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/health&quot;</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/health/grpc_health_v1&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc/health"</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc/health/grpc_health_v1"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーを作成する。</span>
 <span class="w">    </span><span class="nx">grpcServer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
-<span class="w">        </span><span class="o">...</span>
+<span class="w">        </span><span class="p">...</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="nx">healthCheckServer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">health</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">()</span>
-<span class="w">    </span><span class="nx">healthCheckServer</span><span class="p">.</span><span class="nx">SetServingStatus</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">healthpb</span><span class="p">.</span><span class="nx">HealthCheckResponse_SERVING</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">healthCheckServer</span><span class="p">.</span><span class="nx">SetServingStatus</span><span class="p">(</span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="nx">healthpb</span><span class="p">.</span><span class="nx">HealthCheckResponse_SERVING</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">grpc_health_v1</span><span class="p">.</span><span class="nx">RegisterHealthServer</span><span class="p">(</span><span class="nx">grpcServer</span><span class="p">,</span><span class="w"> </span><span class="nx">healthCheckServer</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// goサーバーで待ち受けるポート番号を設定する。</span>
-<span class="w">    </span><span class="nx">listenPort</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nx">Listen</span><span class="p">(</span><span class="s">&quot;tcp&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;:%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">9000</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">listenPort</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nx">Listen</span><span class="p">(</span><span class="s">"tcp"</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">":%d"</span><span class="p">,</span><span class="w"> </span><span class="mi">9000</span><span class="p">))</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとして、goサーバーで通信を受信する。</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpcServer</span><span class="p">.</span><span class="nx">Serve</span><span class="p">(</span><span class="nx">listenPort</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to serve: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to serve: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -36295,13 +36295,13 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">"log"</span>
 
-<span class="w">    </span><span class="s">&quot;golang.org/x/net/context&quot;</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"golang.org/x/net/context"</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 
 <span class="w">    </span><span class="c1">// pb.goファイルを読み込む。</span>
-<span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">&quot;github.com/hiroki-hasegawa/foo/foo&quot;</span>
+<span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">"github.com/hiroki-hasegawa/foo/foo"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -36309,12 +36309,12 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="c1">// gRPCサーバーとの接続を作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">":7777"</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithInsecure</span><span class="p">(),</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;did not connect: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"did not connect: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">conn</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
@@ -36325,15 +36325,15 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="c1">// goサーバーをリモートプロシージャーコールする。</span>
 <span class="w">    </span><span class="nx">response</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">SayHello</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">Message</span><span class="p">{</span><span class="nx">Body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello From Client!&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">Message</span><span class="p">{</span><span class="nx">Body</span><span class="p">:</span><span class="w"> </span><span class="s">"Hello From Client!"</span><span class="p">},</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Error when calling SayHello: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Error when calling SayHello: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// goサーバーからの返却を確認する。</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Response from server: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Response from server: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -36350,17 +36350,17 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとの接続を作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">":7777"</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// ストリーミングRPCのインターセプター処理</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithChainStreamInterceptor</span><span class="p">(</span>
 <span class="w">            </span><span class="nx">myStreamClientInteceptor1</span><span class="p">,</span>
@@ -36370,7 +36370,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithBlock</span><span class="p">(),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -36384,9 +36384,9 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <h3 id="proto_1"><code>proto</code> ファイル<a class="headerlink" href="#proto_1" title="Permanent link">&para;</a></h3>
 <p>クライアントからのコールで返信する構造体や関数を定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// protoファイルの構文のバージョンを設定する。</span>
-<span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
+<span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"proto3"</span><span class="p">;</span>
 
-<span class="k">import</span><span class="w"> </span><span class="s">&quot;google/api/annotations.proto&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="s">"google/api/annotations.proto"</span><span class="p">;</span>
 
 <span class="c1">// pb.goファイルでコンパイルされる時のパッケージ名</span>
 <span class="kn">package</span><span class="w"> </span><span class="nn">foo</span><span class="p">;</span>
@@ -36402,7 +36402,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="kd">service</span><span class="w"> </span><span class="n">FooService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">SayHello</span><span class="p">(</span><span class="n">Message</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// エンドポイント</span>
-<span class="w">    </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">get</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/foo&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">get</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"/foo"</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36453,23 +36453,23 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc/metadata"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
-<span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;Foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;Bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="s">"Foo"</span><span class="p">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Bar"</span><span class="p">:</span><span class="w"> </span><span class="s">"bar"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="c1">// メタデータにキーを設定する</span>
-<span class="w">    </span><span class="nx">md</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="s">&quot;Baz&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;baz&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">md</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="s">"Baz"</span><span class="p">,</span><span class="w"> </span><span class="s">"baz"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36484,17 +36484,17 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc/metadata"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// メタデータをコンテキストに設定する</span>
-<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">AppendToOutgoingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">AppendToOutgoingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">"Foo"</span><span class="p">,</span><span class="w"> </span><span class="s">"foo"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36509,24 +36509,24 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc/metadata"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// コンテキストにメタデータがあれば取得する</span>
 <span class="w">    </span><span class="nx">md</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">FromIncomingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// メタデータがなければ作成する</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">md</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span><span class="p">{}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">md</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span><span class="p">{}</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">md</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36539,11 +36539,11 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <p>このキー名は、<code>NewIncomingContext()</code> 関数がメタデータ付きのコンテキスト作成時に設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">ValueFromIncomingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="nx">md</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Value</span><span class="p">(</span><span class="nx">mdIncomingKey</span><span class="p">{}).(</span><span class="nx">MD</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 
@@ -36561,22 +36561,22 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc/metadata"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// コンテキストにメタデータがあれば取得する</span>
 <span class="w">    </span><span class="nx">md</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">FromOutgoingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// メタデータがなければ作成する</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">md</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span><span class="p">{}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">md</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span><span class="p">{}</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -36588,11 +36588,11 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <p>このキー名は、<code>NewOutgoingContext()</code> 関数がメタデータ付きのコンテキスト作成時に設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">ValueFromIncomingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="nx">md</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Value</span><span class="p">(</span><span class="nx">mdIncomingKey</span><span class="p">{}).(</span><span class="nx">MD</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 
@@ -36610,23 +36610,23 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc/metadata"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
-<span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;Foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;Bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="s">"Foo"</span><span class="p">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Bar"</span><span class="p">:</span><span class="w"> </span><span class="s">"bar"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="c1">// メタデータから値を取得する</span>
-<span class="w">    </span><span class="nx">val</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">md</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">md</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">"foo"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36641,20 +36641,20 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc/metadata"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
-<span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;Foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;Bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="s">"Foo"</span><span class="p">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Bar"</span><span class="p">:</span><span class="w"> </span><span class="s">"bar"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36662,17 +36662,17 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc/metadata"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
 <span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span><span class="p">{}</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36687,23 +36687,23 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc/metadata"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
-<span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;Foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;Bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="s">"Foo"</span><span class="p">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Bar"</span><span class="p">:</span><span class="w"> </span><span class="s">"bar"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="c1">// メタデータをコンテキストに設定する</span>
-<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">NewIncomingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">md</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">NewIncomingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">md</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36719,23 +36719,23 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc/metadata"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
-<span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;Foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;Bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="s">"Foo"</span><span class="p">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Bar"</span><span class="p">:</span><span class="w"> </span><span class="s">"bar"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="c1">// メタデータをコンテキストに設定する</span>
-<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">NewOutgoingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">md</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">NewOutgoingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">md</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36750,23 +36750,23 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc/metadata"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
-<span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;Foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;Bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="s">"Foo"</span><span class="p">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Bar"</span><span class="p">:</span><span class="w"> </span><span class="s">"bar"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="c1">// メタデータにキーを設定する</span>
-<span class="w">    </span><span class="nx">md</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Baz&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;baz&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">md</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">"Baz"</span><span class="p">,</span><span class="w"> </span><span class="s">"baz"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36782,21 +36782,21 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc/metadata"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
-<span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;Foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;Bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">md</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="s">"Foo"</span><span class="p">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Bar"</span><span class="p">:</span><span class="w"> </span><span class="s">"bar"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="c1">// メタデータをコンテキストに設定する</span>
-<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">NewOutgoingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">md</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">NewOutgoingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">md</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36811,7 +36811,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc/metadata"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -36820,13 +36820,13 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="nx">md</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">FromIncomingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// メタデータがなければ作成する</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">md</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span><span class="p">{}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">md</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span><span class="p">{}</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">md</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36841,15 +36841,15 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc/metadata"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// メタデータを作成する</span>
-<span class="w">    </span><span class="nx">headMd</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;Foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;Bar&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">headMd</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="s">"Foo"</span><span class="p">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Bar"</span><span class="p">:</span><span class="w"> </span><span class="s">"bar"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
 <span class="w">    </span><span class="c1">// メタデータをヘッダーに設定する</span>
@@ -36862,7 +36862,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36875,7 +36875,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/metadata&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc/metadata"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">fooServer</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">foopb</span><span class="p">.</span><span class="nx">FooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -36891,12 +36891,12 @@ $<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">md</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span><span class="p">{}</span>
+<span class="w">        </span><span class="nx">md</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span><span class="p">{}</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nx">md</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>

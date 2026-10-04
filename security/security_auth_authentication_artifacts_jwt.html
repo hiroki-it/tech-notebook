@@ -34249,9 +34249,9 @@
 <div class="highlight"><pre><span></span><code><span class="c1">// &lt;ヘッダーエンコード値&gt;.&lt;ペイロードエンコード値&gt;.&lt;署名エンコード値&gt;</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span>
 <span class="w">  </span><span class="nx">base64urlEncoding</span><span class="p">(</span><span class="nx">header</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-<span class="w">  </span><span class="s2">&quot;.&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="s2">"."</span><span class="w"> </span><span class="o">+</span>
 <span class="w">  </span><span class="nx">base64urlEncoding</span><span class="p">(</span><span class="nx">payload</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-<span class="w">  </span><span class="s2">&quot;.&quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="s2">"."</span><span class="w"> </span><span class="o">+</span>
 <span class="w">  </span><span class="nx">base64urlEncoding</span><span class="p">(</span><span class="nx">signature</span><span class="p">);</span>
 </code></pre></div>
 <blockquote>
@@ -34265,8 +34265,8 @@
 <p>ヘッダーは以下の JSON 型データで定義される。</p>
 <p>署名のためのアルゴリズムは、『<code>HS256</code> (共通鍵方式) 』『<code>RS256</code> (公開鍵方式) 』『<code>ES256</code>』『<code>none</code> (署名なし) 』から選択できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">typ</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;JWT&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// JWTトークンの使用</span>
-<span class="w">  </span><span class="nx">alg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;HS256&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// 署名のためのアルゴリズム</span>
+<span class="w">  </span><span class="nx">typ</span><span class="o">:</span><span class="w"> </span><span class="s2">"JWT"</span><span class="p">,</span><span class="w"> </span><span class="c1">// JWTトークンの使用</span>
+<span class="w">  </span><span class="nx">alg</span><span class="o">:</span><span class="w"> </span><span class="s2">"HS256"</span><span class="p">,</span><span class="w"> </span><span class="c1">// 署名のためのアルゴリズム</span>
 <span class="p">};</span>
 </code></pre></div>
 <blockquote>
@@ -34334,12 +34334,12 @@
 </tbody>
 </table>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">aud</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">aud</span><span class="o">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">exp</span><span class="o">:</span><span class="w"> </span><span class="mf">1452565628</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">iat</span><span class="o">:</span><span class="w"> </span><span class="mf">1452565568</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">iss</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">jti</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">sub</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">iss</span><span class="o">:</span><span class="w"> </span><span class="s2">"https://example.com"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">jti</span><span class="o">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">sub</span><span class="o">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span>
 <span class="p">};</span>
 </code></pre></div>
 <blockquote>
@@ -34354,7 +34354,7 @@
 <p>例えば JavaScript であれば、以下のような処理が実行されている。</p>
 <p>JWT を検証する場合、この署名の値を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">signature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">HMACSHA256</span><span class="p">(</span>
-<span class="w">  </span><span class="nx">base64urlEncoding</span><span class="p">(</span><span class="nx">header</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">base64urlEncoding</span><span class="p">(</span><span class="nx">payload</span><span class="p">),</span>
+<span class="w">  </span><span class="nx">base64urlEncoding</span><span class="p">(</span><span class="nx">header</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"."</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">base64urlEncoding</span><span class="p">(</span><span class="nx">payload</span><span class="p">),</span>
 <span class="w">  </span><span class="nx">secret</span><span class="p">,</span>
 <span class="p">);</span>
 </code></pre></div>

@@ -37226,7 +37226,7 @@
 <span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-app</span>
 <span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-app:1.0.0</span>
-<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;マイグレーションを実行するためのコマンド&gt;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"&lt;マイグレーションを実行するためのコマンド&gt;"</span><span class="p p-Indicator">]</span>
 <span class="w">          </span><span class="nt">envFrom</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">secretRef</span><span class="p">:</span>
 <span class="w">                </span><span class="c1"># DB の接続情報 (ホスト、ユーザー名、パスワード) は Secret に設定しておく。</span>
@@ -37240,7 +37240,7 @@
 ...
 
 <span class="c"># Nodeアプリケーションの起動直前にDBマイグレーションを実行してしまう</span>
-<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;npx prisma migrate deploy&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;npm run start&quot;</span><span class="p">]</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">"npx prisma migrate deploy"</span><span class="p">,</span><span class="w"> </span><span class="s2">"npm run start"</span><span class="p">]</span>
 </code></pre></div>
 <p>もし手動でマイグレーションを実行する運用であれば、<code>kubectl exec</code> コマンドで接続した後に、マイグレーションコマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>--<span class="w"> </span>bash
@@ -37475,20 +37475,20 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <span class="w">  </span><span class="nt">phase</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Running</span>
 <span class="w">  </span><span class="nt">conditions</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">lastProbeTime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
-<span class="w">      </span><span class="nt">lastTransitionTime</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2022-12-01T18:00:06Z&quot;</span>
-<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;True&quot;</span>
+<span class="w">      </span><span class="nt">lastTransitionTime</span><span class="p">:</span><span class="w"> </span><span class="s">"2022-12-01T18:00:06Z"</span>
+<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">"True"</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Initialized</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">lastProbeTime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
-<span class="w">      </span><span class="nt">lastTransitionTime</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2022-12-01T18:00:49Z&quot;</span>
-<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;True&quot;</span>
+<span class="w">      </span><span class="nt">lastTransitionTime</span><span class="p">:</span><span class="w"> </span><span class="s">"2022-12-01T18:00:49Z"</span>
+<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">"True"</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ready</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">lastProbeTime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
-<span class="w">      </span><span class="nt">lastTransitionTime</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2022-12-01T18:00:49Z&quot;</span>
-<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;True&quot;</span>
+<span class="w">      </span><span class="nt">lastTransitionTime</span><span class="p">:</span><span class="w"> </span><span class="s">"2022-12-01T18:00:49Z"</span>
+<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">"True"</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ContainersReady</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">lastProbeTime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
-<span class="w">      </span><span class="nt">lastTransitionTime</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2022-12-01T18:00:02Z&quot;</span>
-<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;True&quot;</span>
+<span class="w">      </span><span class="nt">lastTransitionTime</span><span class="p">:</span><span class="w"> </span><span class="s">"2022-12-01T18:00:02Z"</span>
+<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">"True"</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PodScheduled</span>
 </code></pre></div>
 <p>例えば <code>Running</code> フェーズであっても、<code>Ready</code> コンディションになっていない可能性がある。</p>
@@ -37809,7 +37809,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <h3 id="deployment-statefulset">Deployment と StatefulSet との違い<a class="headerlink" href="#deployment-statefulset" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ 設定値<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>StatefulSet では、一部の設定変更が禁止されている。</p>
-<div class="highlight"><pre><span></span><code>The<span class="w"> </span>StatefulSet<span class="w"> </span><span class="s2">&quot;foo-pod&quot;</span><span class="w"> </span>is<span class="w"> </span>invalid:<span class="w"> </span>spec:<span class="w"> </span>Forbidden:<span class="w"> </span>updates<span class="w"> </span>to<span class="w"> </span>statefulset<span class="w"> </span>spec<span class="w"> </span><span class="k">for</span><span class="w"> </span>fields<span class="w"> </span>other<span class="w"> </span>than<span class="w"> </span><span class="s1">&#39;replicas&#39;</span>,<span class="w"> </span><span class="s1">&#39;template&#39;</span>,<span class="w"> </span><span class="s1">&#39;updateStrategy&#39;</span><span class="w"> </span>and<span class="w"> </span><span class="s1">&#39;minReadySeconds&#39;</span><span class="w"> </span>are<span class="w"> </span>forbidden
+<div class="highlight"><pre><span></span><code>The<span class="w"> </span>StatefulSet<span class="w"> </span><span class="s2">"foo-pod"</span><span class="w"> </span>is<span class="w"> </span>invalid:<span class="w"> </span>spec:<span class="w"> </span>Forbidden:<span class="w"> </span>updates<span class="w"> </span>to<span class="w"> </span>statefulset<span class="w"> </span>spec<span class="w"> </span><span class="k">for</span><span class="w"> </span>fields<span class="w"> </span>other<span class="w"> </span>than<span class="w"> </span><span class="s1">'replicas'</span>,<span class="w"> </span><span class="s1">'template'</span>,<span class="w"> </span><span class="s1">'updateStrategy'</span><span class="w"> </span>and<span class="w"> </span><span class="s1">'minReadySeconds'</span><span class="w"> </span>are<span class="w"> </span>forbidden
 </code></pre></div>
 <h4 id="persistentvolume">▼ PersistentVolume<a class="headerlink" href="#persistentvolume" title="Permanent link">&para;</a></h4>
 <p>Deployment 配下の Pod は、すべてが同じ PersistentVolumeClaim を共有する。</p>
@@ -38542,11 +38542,11 @@ tmpfs<span class="w">           </span><span class="m">3</span>.9G<span class="w
 
 Volumes:
 <span class="w">  </span>foo-volume:
-<span class="w">    </span>Type:<span class="w">       </span>EmptyDir<span class="w"> </span><span class="o">(</span>a<span class="w"> </span>temporary<span class="w"> </span>directory<span class="w"> </span>that<span class="w"> </span>shares<span class="w"> </span>a<span class="w"> </span>pod<span class="s1">&#39;s lifetime)</span>
+<span class="w">    </span>Type:<span class="w">       </span>EmptyDir<span class="w"> </span><span class="o">(</span>a<span class="w"> </span>temporary<span class="w"> </span>directory<span class="w"> </span>that<span class="w"> </span>shares<span class="w"> </span>a<span class="w"> </span>pod<span class="s1">'s lifetime)</span>
 <span class="s1">    Medium:</span>
 <span class="s1">    SizeLimit:  &lt;unset&gt;</span>
 <span class="s1">  bar-volume:</span>
-<span class="s1">    Type:       EmptyDir (a temporary directory that shares a pod&#39;</span>s<span class="w"> </span>lifetime<span class="o">)</span>
+<span class="s1">    Type:       EmptyDir (a temporary directory that shares a pod'</span>s<span class="w"> </span>lifetime<span class="o">)</span>
 <span class="w">    </span>Medium:
 <span class="w">    </span>SizeLimit:<span class="w">  </span>&lt;unset&gt;
 <span class="w">  </span>baz-volume:
@@ -38579,12 +38579,12 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 
 <span class="w">        </span>...
 
-<span class="w">        </span><span class="s2">&quot;HostConfig&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">            </span><span class="s2">&quot;Binds&quot;</span>:<span class="w"> </span><span class="o">[</span>
-<span class="w">                </span><span class="s2">&quot;/data:/var/www/foo&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;/var/lib/kubelet/pods/&lt;PodのUUID&gt;/volumes/kubernetes.io~projected/kube-api-access-*****:/var/run/secrets/kubernetes.io/serviceaccount:ro&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;/var/lib/kubelet/pods/&lt;PodのUUID&gt;/etc-hosts:/etc/hosts&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;/var/lib/kubelet/pods/&lt;PodのUUID&gt;/containers/foo/*****:/dev/termination-log&quot;</span>
+<span class="w">        </span><span class="s2">"HostConfig"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">"Binds"</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">                </span><span class="s2">"/data:/var/www/foo"</span>,
+<span class="w">                </span><span class="s2">"/var/lib/kubelet/pods/&lt;PodのUUID&gt;/volumes/kubernetes.io~projected/kube-api-access-*****:/var/run/secrets/kubernetes.io/serviceaccount:ro"</span>,
+<span class="w">                </span><span class="s2">"/var/lib/kubelet/pods/&lt;PodのUUID&gt;/etc-hosts:/etc/hosts"</span>,
+<span class="w">                </span><span class="s2">"/var/lib/kubelet/pods/&lt;PodのUUID&gt;/containers/foo/*****:/dev/termination-log"</span>
 <span class="w">            </span><span class="o">]</span>,
 
 <span class="w">            </span>...
@@ -38592,17 +38592,17 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 
 <span class="w">        </span>...
 
-<span class="w">        </span><span class="s2">&quot;Mounts&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">        </span><span class="s2">"Mounts"</span>:<span class="w"> </span><span class="o">[</span>
 
 <span class="w">            </span>...
 
 <span class="w">            </span><span class="o">{</span>
-<span class="w">                </span><span class="s2">&quot;Type&quot;</span>:<span class="w"> </span><span class="s2">&quot;bind&quot;</span>,<span class="w"> </span><span class="c1"># バインドマウントが使用されている。</span>
-<span class="w">                </span><span class="s2">&quot;Source&quot;</span>:<span class="w"> </span><span class="s2">&quot;/data&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;Destination&quot;</span>:<span class="w"> </span><span class="s2">&quot;/var/www/foo&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;Mode&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;RW&quot;</span>:<span class="w"> </span><span class="s2">&quot;true&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;Propagation&quot;</span>:<span class="w"> </span><span class="s2">&quot;rprivate&quot;</span>
+<span class="w">                </span><span class="s2">"Type"</span>:<span class="w"> </span><span class="s2">"bind"</span>,<span class="w"> </span><span class="c1"># バインドマウントが使用されている。</span>
+<span class="w">                </span><span class="s2">"Source"</span>:<span class="w"> </span><span class="s2">"/data"</span>,
+<span class="w">                </span><span class="s2">"Destination"</span>:<span class="w"> </span><span class="s2">"/var/www/foo"</span>,
+<span class="w">                </span><span class="s2">"Mode"</span>:<span class="w"> </span><span class="s2">""</span>,
+<span class="w">                </span><span class="s2">"RW"</span>:<span class="w"> </span><span class="s2">"true"</span>,
+<span class="w">                </span><span class="s2">"Propagation"</span>:<span class="w"> </span><span class="s2">"rprivate"</span>
 <span class="w">            </span><span class="o">}</span>,
 
 <span class="w">            </span>...
@@ -38680,7 +38680,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <p>PersistentVolumeClaim は、<code>annotation</code> キー配下の <code>volume.kubernetes.io/selected-node</code> キーで、紐づく PersistentVolume が配置されている Node 名を指定している。</p>
 <p>PersistentVolumeClaim は、条件に応じて PersistentVolume を探す。</p>
 <p>しかし、PersistentVolumeClaim が <code>volume.kubernetes.io/selected-node</code> キーで指定する Node と、Pod をスケジューリングさせている Node が異なる AZ であると、以下のエラーになってしまう。</p>
-<div class="highlight"><pre><span></span><code>N<span class="w"> </span>node<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>had<span class="w"> </span>volume<span class="w"> </span>node<span class="w"> </span>affinity<span class="w"> </span>conflict,<span class="w"> </span>N<span class="w"> </span>node<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>didn<span class="s1">&#39;t match Pod&#39;</span>s<span class="w"> </span>node<span class="w"> </span>affinity/selector
+<div class="highlight"><pre><span></span><code>N<span class="w"> </span>node<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>had<span class="w"> </span>volume<span class="w"> </span>node<span class="w"> </span>affinity<span class="w"> </span>conflict,<span class="w"> </span>N<span class="w"> </span>node<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>didn<span class="s1">'t match Pod'</span>s<span class="w"> </span>node<span class="w"> </span>affinity/selector
 </code></pre></div>
 <p>これが起こる原因はさまざまある (例：Node の再作成時に Pod のある Node の AZ が変わる、AWS のスポットインスタンスで特定の AZ にしか Node が作成されない)。</p>
 <p><strong>＊解決例＊</strong></p>
@@ -38755,7 +38755,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <h4 id="_20">▼ サイズを拡張する<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>PersitentVolumeClaim の値が変われば、使用する PersistentVolume を変えられる。</p>
 <p><code>--cascade</code> オプションで Pod を残して StatefulSet を</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>patch<span class="w"> </span>prometheus<span class="w"> </span>foo<span class="w"> </span>--patch<span class="w"> </span><span class="s1">&#39;{&quot;spec&quot;: {&quot;paused&quot;: &quot;true&quot;, &quot;storage&quot;: {&quot;volumeClaimTemplate&quot;: {&quot;spec&quot;: {&quot;resources&quot;: {&quot;requests&quot;: {&quot;storage&quot;:&quot;10Gi&quot;}}}}}}}&#39;</span><span class="w"> </span>--type<span class="w"> </span>merge
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>patch<span class="w"> </span>prometheus<span class="w"> </span>foo<span class="w"> </span>--patch<span class="w"> </span><span class="s1">'{"spec": {"paused": "true", "storage": {"volumeClaimTemplate": {"spec": {"resources": {"requests": {"storage":"10Gi"}}}}}}}'</span><span class="w"> </span>--type<span class="w"> </span>merge
 
 $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>statefulset<span class="w"> </span>-l<span class="w"> </span>operator.prometheus.io/name<span class="o">=</span>foo-operator<span class="w"> </span>--cascade<span class="o">=</span>orphan
 </code></pre></div>

@@ -33410,23 +33410,23 @@
 <p><br></p>
 <h2 id="terraform">セットアップ (Terraform の場合)<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1">// ファイルを保管するバケット</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;google_storage_bucket&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">name</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-bucket&quot;</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"google_storage_bucket"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-bucket"</span>
 <span class="w">  </span><span class="na">location</span><span class="w">                    </span><span class="o">=</span><span class="w"> </span><span class="nv">data.google_client_config.current.region</span>
 <span class="w">  </span><span class="na">project</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="nv">data.google_client_config.current.project</span>
-<span class="w">  </span><span class="na">storage_class</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;REGIONAL&quot;</span>
+<span class="w">  </span><span class="na">storage_class</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"REGIONAL"</span>
 <span class="w">  </span><span class="na">uniform_bucket_level_access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="na">force_destroy</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="p">}</span>
 
 <span class="c1">// バケットへのファイルの保管</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;google_storage_bucket_object&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"google_storage_bucket_object"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">bucket</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">google_storage_bucket.foo.name</span>
 <span class="c1">  # 元のファイル</span>
-<span class="w">  </span><span class="na">source</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/images/foo.jpg&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">"/images/foo.jpg"</span>
 <span class="c1">  # 保管先での名前</span>
-<span class="w">  </span><span class="na">name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/images/foo.jpg&quot;</span>
-<span class="w">  </span><span class="na">content_disposition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;attachment&quot;</span>
+<span class="w">  </span><span class="na">name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="s2">"/images/foo.jpg"</span>
+<span class="w">  </span><span class="na">content_disposition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"attachment"</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>

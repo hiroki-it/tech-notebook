@@ -38447,10 +38447,10 @@ Eviction が発生した場合には、他の QoS (Burstable、BestEffort) よ�
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">init-2</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;custom-columns=&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s2">&quot;NAME:.metadata.name,&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s2">&quot;INIT:.spec.initContainers[*].name,&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s2">&quot;CONTAINERS:.spec.containers[*].name&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-o<span class="w"> </span><span class="s2">"custom-columns="</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">"NAME:.metadata.name,"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">"INIT:.spec.initContainers[*].name,"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">"CONTAINERS:.spec.containers[*].name"</span>
 
 <span class="c1"># 定義した順番 (init-1、init-2) で起動する</span>
 NAME<span class="w">        </span>INIT<span class="w">            </span>CONTAINERS

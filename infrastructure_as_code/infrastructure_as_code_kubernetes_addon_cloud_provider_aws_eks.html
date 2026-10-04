@@ -33999,17 +33999,17 @@
 <h4 id="terraform">▼ Terraform の場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h4>
 <p>Terraform を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># AWS CoreDNS</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;coredns&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_eks_addon"</span><span class="w"> </span><span class="nv">"coredns"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">cluster_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo.name</span>
-<span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
-<span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;coredns&quot;</span>
+<span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;バージョン&gt;"</span>
+<span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">"coredns"</span>
 <span class="c1">  # Terraformで設定を上書きできるようにする</span>
-<span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
+<span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"OVERWRITE"</span>
 <span class="c1">  # スケジューリングさせるNodeを設定する</span>
 <span class="w">  </span><span class="na">configuration_values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">jsonencode</span><span class="p">(</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nb">nodeSelector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">&quot;node.kubernetes.io/nodetype&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;system&quot;</span>
+<span class="w">        </span><span class="s2">"node.kubernetes.io/nodetype"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"system"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">)</span>
@@ -34017,29 +34017,29 @@
 
 
 <span class="c1"># AWS kube-proxy</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;kube_proxy&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_eks_addon"</span><span class="w"> </span><span class="nv">"kube_proxy"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">cluster_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo.name</span>
-<span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
-<span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;kube-proxy&quot;</span>
+<span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;バージョン&gt;"</span>
+<span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">"kube-proxy"</span>
 <span class="c1">  # Terraformで設定を上書きできるようにする</span>
-<span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
+<span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"OVERWRITE"</span>
 <span class="p">}</span>
 
 
 <span class="c1"># Amazon VPC CNI</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;vpc_cni&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_eks_addon"</span><span class="w"> </span><span class="nv">"vpc_cni"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">cluster_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo.name</span>
-<span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
-<span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;vpc-cni&quot;</span>
+<span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;バージョン&gt;"</span>
+<span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">"vpc-cni"</span>
 <span class="c1">  # Terraformで設定を上書きできるようにする</span>
-<span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
+<span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"OVERWRITE"</span>
 <span class="c1">  # 環境変数を設定する</span>
 <span class="w">  </span><span class="na">configuration_values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">jsonencode</span><span class="p">(</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nb">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">        # Podの上限数を変更する</span>
-<span class="w">        </span><span class="na">MINIMUM_IP_TARGET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10&quot;</span>
-<span class="w">        </span><span class="na">WARM_IP_TARGET</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;5&quot;</span>
+<span class="w">        </span><span class="na">MINIMUM_IP_TARGET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"10"</span>
+<span class="w">        </span><span class="na">WARM_IP_TARGET</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"5"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">)</span>

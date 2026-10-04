@@ -35352,13 +35352,13 @@
 <p><strong>＊実装例＊</strong></p>
 <p>アプリケーションから Amazon CloudWatch Logs にログを送信するために、Amazon ECS タスクロールにカスタマー管理ポリシーを紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;logs:CreateLogStream&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;logs:PutLogEvents&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;arn:aws:logs:*:*:*&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"logs:CreateLogStream"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"logs:PutLogEvents"</span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"arn:aws:logs:*:*:*"</span><span class="p p-Indicator">],</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
@@ -35366,9 +35366,9 @@
 <p><strong>＊実装例＊</strong></p>
 <p>パラメーターストアから変数を取得するために、Amazon ECS タスクロールにインラインポリシーを紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="p p-Indicator">[{</span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ssm:GetParameters&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">}],</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">[{</span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ssm:GetParameters"</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">}],</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="_12">▼ タスク実行ロール<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
@@ -35378,21 +35378,21 @@
 <p>このポリシーには、Amazon ECR への認可スコープのほか、Amazon CloudWatch Logs にログを作成するための認可スコープが設定されている。</p>
 <p>Amazon ECS タスク内のコンテナがリソースにリクエストを送信するために必要なタスクロールとは区別すること。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">[</span>
-<span class="w">            </span><span class="s">&quot;ecr:GetAuthorizationToken&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;ecr:BatchCheckLayerAvailability&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;ecr:GetDownloadUrlForLayer&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;ecr:BatchGetImage&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;logs:CreateLogStream&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;logs:PutLogEvents&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ecr:GetAuthorizationToken"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ecr:BatchCheckLayerAvailability"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ecr:GetDownloadUrlForLayer"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ecr:BatchGetImage"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"logs:CreateLogStream"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"logs:PutLogEvents"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
@@ -35400,18 +35400,18 @@
 <p><strong>＊実装例＊</strong></p>
 <p>datadog エージェントが Amazon ECS クラスターやコンテナにリクエストを送信できるように、Amazon ECS タスク実行ロールにカスタマー管理ポリシーを紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">[</span>
-<span class="w">            </span><span class="s">&quot;ecs:ListClusters&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;ecs:ListContainerInstances&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;ecs:DescribeContainerInstances&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ecs:ListClusters"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ecs:ListContainerInstances"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ecs:DescribeContainerInstances"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
@@ -35866,37 +35866,37 @@
 
 <span class="nb">set</span><span class="w"> </span>-x
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Set Variables&quot;</span>
-<span class="nv">SERVICE_NAME</span><span class="o">=</span><span class="s2">&quot;dev-foo-ecs-service&quot;</span>
-<span class="nv">CLUSTER_NAME</span><span class="o">=</span><span class="s2">&quot;dev-foo-ecs-cluster&quot;</span>
-<span class="nv">TASK_NAME</span><span class="o">=</span><span class="s2">&quot;dev-foo-ecs-task-definition&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Set Variables"</span>
+<span class="nv">SERVICE_NAME</span><span class="o">=</span><span class="s2">"dev-foo-ecs-service"</span>
+<span class="nv">CLUSTER_NAME</span><span class="o">=</span><span class="s2">"dev-foo-ecs-cluster"</span>
+<span class="nv">TASK_NAME</span><span class="o">=</span><span class="s2">"dev-foo-ecs-task-definition"</span>
 <span class="nv">SUBNETS_CONFIG</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ecs<span class="w"> </span>describe-services<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--services<span class="w"> </span><span class="si">${</span><span class="nv">SERVICE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;services[].deployments[].networkConfiguration[].awsvpcConfiguration[].subnets[]&quot;</span><span class="k">)</span>
+<span class="w">  </span>--query<span class="w"> </span><span class="s2">"services[].deployments[].networkConfiguration[].awsvpcConfiguration[].subnets[]"</span><span class="k">)</span>
 <span class="nv">SGS_CONFIG</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ecs<span class="w"> </span>describe-services<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--services<span class="w"> </span><span class="si">${</span><span class="nv">SERVICE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;services[].deployments[].networkConfiguration[].awsvpcConfiguration[].securityGroups[]&quot;</span><span class="k">)</span>
+<span class="w">  </span>--query<span class="w"> </span><span class="s2">"services[].deployments[].networkConfiguration[].awsvpcConfiguration[].securityGroups[]"</span><span class="k">)</span>
 
 <span class="c1"># 実行したいコマンドをoverridesに設定する</span>
 <span class="c1"># AWSのステージング環境では、動作確認のために使用する初期データを挿入する</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Run Task&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Run Task"</span>
 <span class="nv">TASK_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ecs<span class="w"> </span>run-task<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--launch-type<span class="w"> </span>FARGATE<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--platform-version<span class="w"> </span><span class="s2">&quot;1.4.0&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--network-configuration<span class="w"> </span><span class="s2">&quot;awsvpcConfiguration={subnets=</span><span class="si">${</span><span class="nv">SUBNETS_CONFIG</span><span class="si">}</span><span class="s2">,securityGroups=</span><span class="si">${</span><span class="nv">SGS_CONFIG</span><span class="si">}</span><span class="s2">}&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--platform-version<span class="w"> </span><span class="s2">"1.4.0"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--network-configuration<span class="w"> </span><span class="s2">"awsvpcConfiguration={subnets=</span><span class="si">${</span><span class="nv">SUBNETS_CONFIG</span><span class="si">}</span><span class="s2">,securityGroups=</span><span class="si">${</span><span class="nv">SGS_CONFIG</span><span class="si">}</span><span class="s2">}"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--task-definition<span class="w"> </span><span class="si">${</span><span class="nv">TASK_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--overrides<span class="w"> </span><span class="s1">&#39;{\&quot;containerOverrides\&quot;: [{\&quot;name\&quot;: \&quot;laravel-container\&quot;,\&quot;command\&quot;: [\&quot;php\&quot;, \&quot;artisan\&quot;, \&quot;db:seed\&quot;, \&quot;--class=DummySeeder\&quot;, \&quot;--force\&quot;]}]}&#39;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;tasks[0].taskArn&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;&quot;&quot;)</span>
+<span class="w">  </span>--overrides<span class="w"> </span><span class="s1">'{\"containerOverrides\": [{\"name\": \"laravel-container\",\"command\": [\"php\", \"artisan\", \"db:seed\", \"--class=DummySeeder\", \"--force\"]}]}'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--query<span class="w"> </span><span class="s2">"tasks[0].taskArn"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s2">""")</span>
 
-<span class="s2">echo &quot;</span>Wait<span class="w"> </span><span class="k">until</span><span class="w"> </span>task<span class="w"> </span>stopped<span class="s2">&quot;</span>
+<span class="s2">echo "</span>Wait<span class="w"> </span><span class="k">until</span><span class="w"> </span>task<span class="w"> </span>stopped<span class="s2">"</span>
 <span class="s2">aws ecs wait tasks-stopped \</span>
 <span class="s2">  --cluster </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="s2"> \</span>
 <span class="s2">  --tasks </span><span class="si">${</span><span class="nv">TASK_ARN</span><span class="si">}</span>
 
-<span class="s2">echo &quot;</span>Get<span class="w"> </span>task<span class="w"> </span>result<span class="s2">&quot;</span>
+<span class="s2">echo "</span>Get<span class="w"> </span>task<span class="w"> </span>result<span class="s2">"</span>
 <span class="s2">RESULT=</span><span class="k">$(</span>aws<span class="w"> </span>ecs<span class="w"> </span>describe-tasks<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tasks<span class="w"> </span><span class="si">${</span><span class="nv">TASK_ARN</span><span class="si">}</span><span class="k">)</span>
@@ -35908,24 +35908,24 @@
 </code></pre></div>
 <p>注意点として、実行 IAM ユーザーを作成し、Amazon ECS タスクを起動できる必要最低限の認可スコープを紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">[</span>
-<span class="w">            </span><span class="s">&quot;iam:PassRole&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;ecs:RunTask&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;ecs:DescribeServices&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;ecs:DescribeTasks&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"iam:PassRole"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ecs:RunTask"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ecs:DescribeServices"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ecs:DescribeTasks"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">[</span>
-<span class="w">            </span><span class="s">&quot;arn:aws:ecs:*:&lt;AWSアカウントID&gt;:service/*&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;arn:aws:ecs:*:&lt;AWSアカウントID&gt;:task/*&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;arn:aws:ecs:*:&lt;AWSアカウントID&gt;:task-definition/*&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:role/*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"arn:aws:ecs:*:&lt;AWSアカウントID&gt;:service/*"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"arn:aws:ecs:*:&lt;AWSアカウントID&gt;:task/*"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"arn:aws:ecs:*:&lt;AWSアカウントID&gt;:task-definition/*"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"arn:aws:iam::&lt;AWSアカウントID&gt;:role/*"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">],</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
@@ -36047,19 +36047,19 @@
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">[</span>
-<span class="w">            </span><span class="s">&quot;ssmmessages:CreateControlChannel&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;ssmmessages:CreateDataChannel&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;ssmmessages:OpenControlChannel&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;ssmmessages:OpenDataChannel&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ssmmessages:CreateControlChannel"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ssmmessages:CreateDataChannel"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ssmmessages:OpenControlChannel"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"ssmmessages:OpenDataChannel"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
@@ -36071,16 +36071,16 @@
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ecs:ExecuteCommand&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ecs:ExecuteCommand"</span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">[</span>
-<span class="w">            </span><span class="s">&quot;arn:aws:ecs:*:&lt;AWSアカウントID&gt;:cluster/*&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;arn:aws:ecs:*:&lt;AWSアカウントID&gt;:task/*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"arn:aws:ecs:*:&lt;AWSアカウントID&gt;:cluster/*"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"arn:aws:ecs:*:&lt;AWSアカウントID&gt;:task/*"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">],</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
@@ -36127,7 +36127,7 @@ aws<span class="w"> </span>ecs<span class="w"> </span>execute-command<span class
 <span class="w">    </span>--container<span class="w"> </span><span class="nv">$ECS_CONTAINER_NAME</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--interactive<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--debug<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--command<span class="w"> </span><span class="s2">&quot;bash&quot;</span>
+<span class="w">    </span>--command<span class="w"> </span><span class="s2">"bash"</span>
 </code></pre></div>
 <blockquote>
 <ul>

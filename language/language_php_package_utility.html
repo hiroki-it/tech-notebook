@@ -34303,7 +34303,7 @@
 <p>DateTime インスタンスを引数として、Carbon インスタンスを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$datetime</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\DateTime</span><span class="p">(</span><span class="s2">&quot;2019-07-07 19:07:07&quot;</span><span class="p">);</span>
+<span class="nv">$datetime</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\DateTime</span><span class="p">(</span><span class="s2">"2019-07-07 19:07:07"</span><span class="p">);</span>
 <span class="nv">$carbon</span> <span class="o">=</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">instance</span><span class="p">(</span><span class="nv">$datetime</span><span class="p">);</span>
 
 <span class="k">echo</span> <span class="nv">$carbon</span><span class="p">;</span> <span class="c1">// 2019-07-07 19:07:07</span>
@@ -34342,7 +34342,7 @@
 
 <span class="c1">// 日付、時間、日時フォーマットから、Carbonインスタンスを作成する。</span>
 <span class="c1">// 第一引数でフォーマットを指定する必要がある。</span>
-<span class="nv">$carbonFromFormat</span> <span class="o">=</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">createFromFormat</span><span class="p">(</span><span class="s2">&quot;Y-m-d H:m:s&quot;</span><span class="p">,</span> <span class="s2">&quot;2019-07-07 19:07:07&quot;</span><span class="p">);</span>
+<span class="nv">$carbonFromFormat</span> <span class="o">=</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">createFromFormat</span><span class="p">(</span><span class="s2">"Y-m-d H:m:s"</span><span class="p">,</span> <span class="s2">"2019-07-07 19:07:07"</span><span class="p">);</span>
 
 <span class="k">echo</span> <span class="nv">$carbonFromFormat</span><span class="p">;</span> <span class="c1">// 2019-07-07 19:07:07</span>
 </code></pre></div>
@@ -34360,7 +34360,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$carbon</span> <span class="o">=</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s2">&quot;2019-07-07 19:07:07&quot;</span><span class="p">)</span>
+<span class="nv">$carbon</span> <span class="o">=</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s2">"2019-07-07 19:07:07"</span><span class="p">)</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02-pinq-php-integrated-query">02. Pinq パッケージ：Php Integrated Query<a class="headerlink" href="#02-pinq-php-integrated-query" title="Permanent link">&para;</a></h2>
@@ -34387,7 +34387,7 @@
     <span class="p">{</span>
 
         <span class="k">return</span> <span class="p">[</span>
-          <span class="s2">&quot;data&quot;</span> <span class="o">=&gt;</span> <span class="nx">Traversable</span><span class="o">::</span><span class="na">from</span><span class="p">(</span><span class="nv">$entities</span><span class="p">)</span>
+          <span class="s2">"data"</span> <span class="o">=&gt;</span> <span class="nx">Traversable</span><span class="o">::</span><span class="na">from</span><span class="p">(</span><span class="nv">$entities</span><span class="p">)</span>
             <span class="c1">// 1つずつ要素を取り出し、関数に渡す。</span>
             <span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span>
               <span class="k">function</span> <span class="p">(</span><span class="nv">$entity</span><span class="p">)</span> <span class="p">{</span>
@@ -34421,11 +34421,11 @@
 
 <span class="c1">// GETリクエスト</span>
 <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
-    <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span>
+    <span class="s2">"GET"</span><span class="p">,</span>
+    <span class="s2">"https://example.com"</span><span class="p">,</span>
     <span class="p">[</span>
-        <span class="s2">&quot;query&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span>
+        <span class="s2">"query"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="mi">1</span>
         <span class="p">]</span>
     <span class="p">]</span>
 <span class="p">);</span>
@@ -34443,21 +34443,21 @@
 <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
 
 <span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">([</span>
-    <span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Hello World!&quot;</span>
+    <span class="s2">"message"</span> <span class="o">=&gt;</span> <span class="s2">"Hello World!"</span>
 <span class="p">]);</span>
 
 <span class="c1">// POSTリクエスト</span>
 <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
-    <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span>
+    <span class="s2">"POST"</span><span class="p">,</span>
+    <span class="s2">"https://example.com"</span><span class="p">,</span>
     <span class="p">[</span>
-        <span class="s2">&quot;headers&quot;</span>     <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s2">&quot;Authorization&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span><span class="p">,</span>
-            <span class="s2">&quot;Content-Length&quot;</span> <span class="o">=&gt;</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$json</span><span class="p">),</span>
-            <span class="s2">&quot;Content-Type&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+        <span class="s2">"headers"</span>     <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">"Authorization"</span>  <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span><span class="p">,</span>
+            <span class="s2">"Content-Length"</span> <span class="o">=&gt;</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$json</span><span class="p">),</span>
+            <span class="s2">"Content-Type"</span>   <span class="o">=&gt;</span> <span class="s2">"application/json"</span><span class="p">,</span>
         <span class="p">],</span>
-        <span class="s2">&quot;form_params&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s2">&quot;body&quot;</span> <span class="o">=&gt;</span> <span class="nv">$message</span>
+        <span class="s2">"form_params"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">"body"</span> <span class="o">=&gt;</span> <span class="nv">$message</span>
         <span class="p">]</span>
     <span class="p">]</span>
 <span class="p">);</span>
@@ -34478,21 +34478,21 @@
 <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
 
 <span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">([</span>
-    <span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Hello World!&quot;</span>
+    <span class="s2">"message"</span> <span class="o">=&gt;</span> <span class="s2">"Hello World!"</span>
 <span class="p">]);</span>
 
 <span class="c1">// POSTリクエスト</span>
 <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
-    <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span>
+    <span class="s2">"POST"</span><span class="p">,</span>
+    <span class="s2">"https://example.com"</span><span class="p">,</span>
     <span class="p">[</span>
-        <span class="s2">&quot;headers&quot;</span>     <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s2">&quot;Authorization&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span><span class="p">,</span>
-            <span class="s2">&quot;Content-Length&quot;</span> <span class="o">=&gt;</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$json</span><span class="p">),</span>
-            <span class="s2">&quot;Content-Type&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+        <span class="s2">"headers"</span>     <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">"Authorization"</span>  <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span><span class="p">,</span>
+            <span class="s2">"Content-Length"</span> <span class="o">=&gt;</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$json</span><span class="p">),</span>
+            <span class="s2">"Content-Type"</span>   <span class="o">=&gt;</span> <span class="s2">"application/json"</span><span class="p">,</span>
         <span class="p">],</span>
-        <span class="s2">&quot;form_params&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s2">&quot;body&quot;</span> <span class="o">=&gt;</span> <span class="nv">$message</span>
+        <span class="s2">"form_params"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">"body"</span> <span class="o">=&gt;</span> <span class="nv">$message</span>
         <span class="p">]</span>
     <span class="p">]</span>
 <span class="p">);</span>
@@ -34515,9 +34515,9 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$snappy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Pdf</span><span class="p">(</span><span class="s2">&quot;/usr/local/bin/wkhtmltopdf&quot;</span><span class="p">);</span>
+<span class="nv">$snappy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Pdf</span><span class="p">(</span><span class="s2">"/usr/local/bin/wkhtmltopdf"</span><span class="p">);</span>
 
-<span class="nv">$snappy</span><span class="o">-&gt;</span><span class="na">generateFromHtml</span><span class="p">(</span><span class="s2">&quot;foo.html&quot;</span><span class="p">,</span> <span class="s2">&quot;.../foo.pdf&quot;</span><span class="p">);</span>
+<span class="nv">$snappy</span><span class="o">-&gt;</span><span class="na">generateFromHtml</span><span class="p">(</span><span class="s2">"foo.html"</span><span class="p">,</span> <span class="s2">".../foo.pdf"</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="05-respectvalidation">05. Respect/Validation パッケージ<a class="headerlink" href="#05-respectvalidation" title="Permanent link">&para;</a></h2>

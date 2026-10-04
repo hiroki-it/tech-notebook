@@ -33616,7 +33616,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">  </span><span class="no">wget https://github.com/mikefarah/yq/releases/download/v4.22.1/yq_linux_amd64</span>
 <span class="w">  </span><span class="no">sudo chmod +x /usr/local/bin/yq</span>
-<span class="w">  </span><span class="no">yq e -i &#39;.image |=&quot;&lt;コミットハッシュ値&gt;&quot;&#39; ./values.yaml</span>
+<span class="w">  </span><span class="no">yq e -i '.image |="&lt;コミットハッシュ値&gt;"' ./values.yaml</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="updatecli">Updatecli<a class="headerlink" href="#updatecli" title="Permanent link">&para;</a></h3>
@@ -33635,7 +33635,7 @@
 <span class="w">  </span><span class="nt">imageTag</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shell</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;{{ env &quot;CI_COMMIT_TAG&quot; }}&quot;</span>
+<span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "{{ env "CI_COMMIT_TAG" }}"</span>
 
 <span class="c1"># 変更対象</span>
 <span class="nt">targets</span><span class="p">:</span>
@@ -33656,8 +33656,8 @@
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">automerge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">        </span><span class="no">values.yamlのイメージタグを `{{ env &quot;CI_COMMIT_TAG&quot; }}` に更新しました</span>
-<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Update</span><span class="nv"> </span><span class="s">image</span><span class="nv"> </span><span class="s">tag</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">env</span><span class="nv"> </span><span class="s">&quot;</span><span class="l l-Scalar l-Scalar-Plain">CI_COMMIT_TAG&quot; }} on values.yaml&quot;</span>
+<span class="w">        </span><span class="no">values.yamlのイメージタグを `{{ env "CI_COMMIT_TAG" }}` に更新しました</span>
+<span class="w">      </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"Update</span><span class="nv"> </span><span class="s">image</span><span class="nv"> </span><span class="s">tag</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">env</span><span class="nv"> </span><span class="s">"</span><span class="l l-Scalar l-Scalar-Plain">CI_COMMIT_TAG" }} on values.yaml"</span>
 </code></pre></div>
 <blockquote>
 <ul>

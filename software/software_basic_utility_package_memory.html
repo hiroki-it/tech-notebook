@@ -35941,7 +35941,7 @@ mq959<span class="w"> </span>/usr/sbin/rsyslogd<span class="w"> </span>-n
 <span class="k">[Service]</span>
 <span class="na">Type</span><span class="o">=</span><span class="s">oneshot</span>
 <span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/bin/bash -c </span>\
-<span class="w">    </span><span class="s">&#39;systemctl status %i | /mailx -Ssendwait -s &quot;[SYSTEMD_%i] Fail&quot; example@gmail.com&#39;</span>
+<span class="w">    </span><span class="s">'systemctl status %i | /mailx -Ssendwait -s "[SYSTEMD_%i] Fail" example@gmail.com'</span>
 
 <span class="k">[Install]</span>
 <span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>

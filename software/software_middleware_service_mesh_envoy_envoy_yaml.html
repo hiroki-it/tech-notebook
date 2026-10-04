@@ -36011,7 +36011,7 @@
 <span class="w">                </span><span class="nt">access_log</span><span class="p">:</span>
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.access_loggers.stdout</span>
 <span class="w">                    </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">                      </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog</span>
+<span class="w">                      </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36023,7 +36023,7 @@
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">typed_extension_protocol_options</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span><span class="p">:</span>
-<span class="w">          </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span>
+<span class="w">          </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span>
 <span class="w">          </span><span class="nt">http_protocol_options</span><span class="p">:</span>
 </code></pre></div>
 <blockquote>
@@ -36071,7 +36071,7 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.tcp_proxy</span>
 <span class="w">              </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy</span>
+<span class="w">                </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy</span>
 <span class="w">                </span><span class="c1"># クラスター</span>
 <span class="w">                </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_cluster</span>
 <span class="w">                </span><span class="l l-Scalar l-Scalar-Plain">...</span>
@@ -36093,7 +36093,7 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 <span class="w">              </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+<span class="w">                </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
 <span class="w">                </span><span class="c1"># ルート</span>
 <span class="w">                </span><span class="nt">route_config</span><span class="p">:</span>
 <span class="w">                   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_route</span>
@@ -36114,7 +36114,7 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 <span class="w">              </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+<span class="w">                </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
 <span class="w">                </span><span class="nt">route_config</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_route</span>
 <span class="w">                  </span><span class="nt">virtual_hosts</span><span class="p">:</span>
@@ -36127,7 +36127,7 @@
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.router</span>
 <span class="w">                    </span><span class="nt">typed_config</span><span class="p">:</span>
 <span class="w">                      </span><span class="c1"># HTTP フィルターを指定する</span>
-<span class="w">                      </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.router.v3.Router</span>
+<span class="w">                      </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.router.v3.Router</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36146,7 +36146,7 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 <span class="w">              </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+<span class="w">                </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
 <span class="w">                </span><span class="nt">route_config</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_route</span>
 <span class="w">                  </span><span class="nt">virtual_hosts</span><span class="p">:</span>
@@ -36159,7 +36159,7 @@
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.grpc_web</span>
 <span class="w">                    </span><span class="nt">typed_config</span><span class="p">:</span>
 <span class="w">                      </span><span class="c1"># HTTP フィルターを指定する</span>
-<span class="w">                      </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.grpc_web.v3.GrpcWeb</span>
+<span class="w">                      </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.grpc_web.v3.GrpcWeb</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36184,7 +36184,7 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 <span class="w">              </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+<span class="w">                </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
 <span class="w">                </span><span class="nt">route_config</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_route</span>
 <span class="w">                  </span><span class="nt">virtual_hosts</span><span class="p">:</span>
@@ -36192,11 +36192,11 @@
 <span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_service</span>
 <span class="w">                      </span><span class="c1"># ホストベースルーティング</span>
 <span class="w">                      </span><span class="nt">domains</span><span class="p">:</span>
-<span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">                      </span><span class="nt">routes</span><span class="p">:</span>
 <span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">                            </span><span class="c1"># パスベースルーティング</span>
-<span class="w">                            </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/&quot;</span>
+<span class="w">                            </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">"/"</span>
 <span class="w">                          </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">                            </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_cluster</span>
 
@@ -36206,7 +36206,7 @@
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.router</span>
 <span class="w">                    </span><span class="nt">typed_config</span><span class="p">:</span>
 <span class="w">                      </span><span class="c1"># HTTP フィルターを指定する</span>
-<span class="w">                      </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.router.v3.Router</span>
+<span class="w">                      </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.router.v3.Router</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36225,7 +36225,7 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 <span class="w">              </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+<span class="w">                </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
 <span class="w">                </span><span class="nt">route_config</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_route</span>
 <span class="w">                  </span><span class="nt">virtual_hosts</span><span class="p">:</span>
@@ -36233,11 +36233,11 @@
 <span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_service</span>
 <span class="w">                      </span><span class="c1"># ホストベースルーティング</span>
 <span class="w">                      </span><span class="nt">domains</span><span class="p">:</span>
-<span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">                      </span><span class="nt">routes</span><span class="p">:</span>
 <span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">                            </span><span class="c1"># パスベースルーティング</span>
-<span class="w">                            </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/&quot;</span>
+<span class="w">                            </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">"/"</span>
 <span class="w">                          </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">                            </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_cluster</span>
 <span class="w">                            </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
@@ -36254,7 +36254,7 @@
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.router</span>
 <span class="w">                    </span><span class="nt">typed_config</span><span class="p">:</span>
 <span class="w">                      </span><span class="c1"># HTTP フィルターを指定する</span>
-<span class="w">                      </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.router.v3.Router</span>
+<span class="w">                      </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.router.v3.Router</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36392,14 +36392,14 @@
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">circuit_breakers</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">thresholds</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;priority&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DEFAULT&quot;</span><span class="err">,</span>
-<span class="w">            </span><span class="s">&quot;max_connections&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100000,</span>
-<span class="w">            </span><span class="s">&quot;max_pending_requests&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100000,</span>
-<span class="w">            </span><span class="s">&quot;max_requests&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100000</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;priority&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;HIGH&quot;</span><span class="err">,</span>
-<span class="w">            </span><span class="s">&quot;max_connections&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100000,</span>
-<span class="w">            </span><span class="s">&quot;max_pending_requests&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100000,</span>
-<span class="w">            </span><span class="s">&quot;max_requests&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100000</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"priority"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"DEFAULT"</span><span class="err">,</span>
+<span class="w">            </span><span class="s">"max_connections"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100000,</span>
+<span class="w">            </span><span class="s">"max_pending_requests"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100000,</span>
+<span class="w">            </span><span class="s">"max_requests"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100000</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"priority"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"HIGH"</span><span class="err">,</span>
+<span class="w">            </span><span class="s">"max_connections"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100000,</span>
+<span class="w">            </span><span class="s">"max_pending_requests"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100000,</span>
+<span class="w">            </span><span class="s">"max_requests"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100000</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36505,7 +36505,7 @@
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.transport_sockets.tls</span>
 <span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
 <span class="w">            </span><span class="c1"># transport_sockets.tls を指定する</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext</span>
 <span class="w">            </span><span class="nt">common_tls_context</span><span class="p">:</span>
 <span class="w">              </span><span class="c1"># static_resources.secrets キーで定義したクライアント証明書を設定する。</span>
 <span class="w">              </span><span class="nt">tls_certificate_sds_secret_configs</span><span class="p">:</span>
@@ -36519,7 +36519,7 @@
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.transport_sockets.tls</span>
 <span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
 <span class="w">            </span><span class="c1"># transport_sockets.tls を指定する</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext</span>
 <span class="w">            </span><span class="nt">common_tls_context</span><span class="p">:</span>
 <span class="w">              </span><span class="c1"># static_resources.secrets キーで定義したサーバー証明書を設定する。</span>
 <span class="w">              </span><span class="nt">tls_certificate_sds_secret_configs</span><span class="p">:</span>
@@ -36581,7 +36581,7 @@
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">typed_extension_protocol_options</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span><span class="p">:</span>
-<span class="w">          </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span>
+<span class="w">          </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span>
 <span class="w">          </span><span class="nt">common_http_protocol_options</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">idle_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1s</span>
 </code></pre></div>
@@ -36590,7 +36590,7 @@
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">typed_extension_protocol_options</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span><span class="p">:</span>
-<span class="w">          </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span>
+<span class="w">          </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span>
 <span class="w">          </span><span class="nt">connect_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
 </code></pre></div>
 <h4 id="http2_protocol_options">▼ http2_protocol_options<a class="headerlink" href="#http2_protocol_options" title="Permanent link">&para;</a></h4>
@@ -36599,7 +36599,7 @@
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">typed_extension_protocol_options</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span><span class="p">:</span>
-<span class="w">          </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span>
+<span class="w">          </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span>
 <span class="w">          </span><span class="nt">http2_protocol_options</span><span class="p">:</span>
 <span class="w">            </span><span class="c1"># ストリーミング RPC の最大同時接続数を設定する</span>
 <span class="w">            </span><span class="nt">max_concurrent_streams</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
@@ -36614,9 +36614,9 @@
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">typed_extension_protocol_options</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span><span class="p">:</span>
-<span class="w">          </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span>
+<span class="w">          </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span>
 <span class="w">          </span><span class="nt">upstream_http_protocol_options</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">auto_sni</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">            </span><span class="nt">auto_sni</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="07-dynamic_resources">07. dynamic_resources<a class="headerlink" href="#07-dynamic_resources" title="Permanent link">&para;</a></h2>
@@ -36736,7 +36736,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">dynamic_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ads_config</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">set_node_on_first_message_only</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">set_node_on_first_message_only</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <h4 id="transport_api_version">▼ transport_api_version<a class="headerlink" href="#transport_api_version" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
@@ -36780,9 +36780,9 @@
 <h4 id="global_downstream_max_connections">▼ global_downstream_max_connections<a class="headerlink" href="#global_downstream_max_connections" title="Permanent link">&para;</a></h4>
 <p>送信元の接続の上限数を設定する</p>
 <div class="highlight"><pre><span></span><code><span class="nt">resource_monitors</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;envoy.resource_monitors.global_downstream_max_connections&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"envoy.resource_monitors.global_downstream_max_connections"</span>
 <span class="w">    </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">      </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.resource_monitors.downstream_connections.v3.DownstreamConnectionsConfig</span>
+<span class="w">      </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.resource_monitors.downstream_connections.v3.DownstreamConnectionsConfig</span>
 <span class="w">      </span><span class="nt">max_active_downstream_connections</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 </code></pre></div>
 <blockquote>

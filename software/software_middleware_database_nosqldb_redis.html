@@ -33841,16 +33841,16 @@
 <span class="n">client</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">Redis</span><span class="p">()</span>
 
 <span class="c1"># ロックを定義する</span>
-<span class="n">client</span><span class="o">.</span><span class="n">setnx</span><span class="p">(</span><span class="s1">&#39;LOCK_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;foo_lock&#39;</span><span class="p">)</span>  <span class="c1"># True</span>
+<span class="n">client</span><span class="o">.</span><span class="n">setnx</span><span class="p">(</span><span class="s1">'LOCK_NAME'</span><span class="p">,</span> <span class="s1">'foo_lock'</span><span class="p">)</span>  <span class="c1"># True</span>
 
 <span class="c1"># 確認する</span>
-<span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;LOCK_NAME&#39;</span><span class="p">)</span>  <span class="c1"># &#39;foo_lock&#39;</span>
+<span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'LOCK_NAME'</span><span class="p">)</span>  <span class="c1"># 'foo_lock'</span>
 
 <span class="c1"># 同じキーで登録を試みると失敗する。この判定を排他制御のために使用する。</span>
-<span class="n">client</span><span class="o">.</span><span class="n">setnx</span><span class="p">(</span><span class="s1">&#39;LOCK_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;foo_lock&#39;</span><span class="p">)</span>  <span class="c1"># False</span>
+<span class="n">client</span><span class="o">.</span><span class="n">setnx</span><span class="p">(</span><span class="s1">'LOCK_NAME'</span><span class="p">,</span> <span class="s1">'foo_lock'</span><span class="p">)</span>  <span class="c1"># False</span>
 
 <span class="c1"># アンロックする</span>
-<span class="n">client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;LOCK_NAME&#39;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">'LOCK_NAME'</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -33858,7 +33858,7 @@
 </ul>
 </blockquote>
 <h4 id="typescript">▼ TypeScript<a class="headerlink" href="#typescript" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">redisClient</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;redis&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">redisClient</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"redis"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">newLock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">client</span><span class="o">:</span><span class="w"> </span><span class="kt">ReturnType</span><span class="o">&lt;</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">redisClient</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nx">timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50000</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span>
@@ -33869,8 +33869,8 @@
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">keyName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`lock:</span><span class="si">${</span><span class="nx">lockName</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1">// キー名を指定し、Redisにキャッシュを保存する</span>
-<span class="w">      </span><span class="c1">// 成功時は&quot;OK&quot; 、失敗時はnullが返却される</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">keyName</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;{}&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// 成功時は"OK" 、失敗時はnullが返却される</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">keyName</span><span class="p">,</span><span class="w"> </span><span class="s2">"{}"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// PXオプションで、ロックの有効期限を設定する</span>
 <span class="w">        </span><span class="nx">PX</span><span class="o">:</span><span class="w"> </span><span class="kt">timeout</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// NX (Redisのキーが存在しない場合のみ設定) オプションで、キーによる排他制御を実現する</span>
@@ -33906,26 +33906,26 @@
 
 <span class="w">        </span><span class="c1">// ロックする</span>
 <span class="w">        </span><span class="c1">// ロックのクライアントで障害が起こってアンロックできなくなることを防ぐために、ロックの失効時間を設定しておく</span>
-<span class="w">        </span><span class="nx">nx</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">cli</span><span class="p">.</span><span class="nx">SetNX</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;lock:&quot;</span><span class="o">+</span><span class="nx">contentID</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">lockTTL</span><span class="p">).</span><span class="nx">Result</span><span class="p">()</span>
+<span class="w">        </span><span class="nx">nx</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">cli</span><span class="p">.</span><span class="nx">SetNX</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">"lock:"</span><span class="o">+</span><span class="nx">contentID</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">lockTTL</span><span class="p">).</span><span class="nx">Result</span><span class="p">()</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">nx</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">&quot;failed to lock&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="nx">nx</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">"failed to lock"</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="c1">// 処理の最後にアンロックする</span>
 <span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">c</span><span class="p">.</span><span class="nx">cli</span><span class="p">.</span><span class="nx">Del</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;lock:&quot;</span><span class="o">+</span><span class="nx">contentID</span><span class="p">)</span>
+<span class="w">                </span><span class="nx">c</span><span class="p">.</span><span class="nx">cli</span><span class="p">.</span><span class="nx">Del</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">"lock:"</span><span class="o">+</span><span class="nx">contentID</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}()</span>
 
 <span class="w">        </span><span class="c1">// なんらかの永続処理</span>
 <span class="w">        </span><span class="c1">// ...</span>
 
 <span class="w">        </span><span class="c1">// 処理結果のキャッシュを作成する</span>
-<span class="w">        </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">cli</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">contentID</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="p">,</span><span class="w"> </span><span class="nx">cacheTTL</span><span class="p">).</span><span class="nx">Result</span><span class="p">()</span>
+<span class="w">        </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">cli</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">contentID</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="p">,</span><span class="w"> </span><span class="nx">cacheTTL</span><span class="p">).</span><span class="nx">Result</span><span class="p">()</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>

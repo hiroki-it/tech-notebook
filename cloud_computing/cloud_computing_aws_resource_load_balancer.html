@@ -34643,27 +34643,27 @@
 <p><br></p>
 <h3 id="terraform">Terraform の場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-eks-alb">▼ Amazon EKS に紐づける ALB<a class="headerlink" href="#amazon-eks-alb" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;alb_eks&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/alb/aws&quot;</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;= 9.13.0&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"alb_eks"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/alb/aws"</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"= 9.13.0"</span>
 
-<span class="w">  </span><span class="na">name</span><span class="w">                             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-alb-eks&quot;</span>
+<span class="w">  </span><span class="na">name</span><span class="w">                             </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-alb-eks"</span>
 <span class="w">  </span><span class="na">enable_cross_zone_load_balancing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">vpc_id</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span>
-<span class="w">  </span><span class="na">subnets</span><span class="w">                          </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*****&quot;, &quot;*****&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="na">vpc_id</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
+<span class="w">  </span><span class="na">subnets</span><span class="w">                          </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"*****", "*****"</span><span class="p">]</span>
 <span class="w">  </span><span class="na">associate_web_acl</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">web_acl_arn</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span>
+<span class="w">  </span><span class="na">web_acl_arn</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
 <span class="w">  </span><span class="nb">access_logs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span>
-<span class="w">    </span><span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-alb-eks&quot;</span>
+<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
+<span class="w">    </span><span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-alb-eks"</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">security_group_egress_rules</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nb">all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">from_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
 <span class="w">      </span><span class="na">to_port</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">65535</span>
-<span class="w">      </span><span class="na">protocol</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;-1&quot;</span>
-<span class="w">      </span><span class="na">cidr_ipv4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.0.0.0/0&quot;</span>
+<span class="w">      </span><span class="na">protocol</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"-1"</span>
+<span class="w">      </span><span class="na">cidr_ipv4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 
@@ -34671,8 +34671,8 @@
 <span class="w">    </span><span class="nb">https</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">from_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">443</span>
 <span class="w">      </span><span class="na">to_port</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">443</span>
-<span class="w">      </span><span class="na">protocol</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;-1&quot;</span>
-<span class="w">      </span><span class="na">cidr_ipv4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.0.0.0/0&quot;</span>
+<span class="w">      </span><span class="na">protocol</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"-1"</span>
+<span class="w">      </span><span class="na">cidr_ipv4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 
@@ -34680,22 +34680,22 @@
 
 <span class="w">    </span><span class="nb">https</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">port</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="m">443</span>
-<span class="w">      </span><span class="na">protocol</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;HTTPS&quot;</span>
-<span class="w">      </span><span class="na">certificate_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span>
+<span class="w">      </span><span class="na">protocol</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTPS"</span>
+<span class="w">      </span><span class="na">certificate_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
 <span class="w">      </span><span class="nb">forward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">        # ターゲットグループのキー名を指定する</span>
-<span class="w">        </span><span class="na">target_group_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;eks&quot;</span>
+<span class="w">        </span><span class="na">target_group_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"eks"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nb">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">port</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="m">80</span>
-<span class="w">      </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;HTTP&quot;</span>
-<span class="w">      </span><span class="na">action_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;redirect&quot;</span>
+<span class="w">      </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTP"</span>
+<span class="w">      </span><span class="na">action_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"redirect"</span>
 <span class="w">      </span><span class="nb">redirect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="na">port</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="m">443</span>
-<span class="w">        </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;HTTPS&quot;</span>
-<span class="w">        </span><span class="na">status_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;HTTP_301&quot;</span>
+<span class="w">        </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTPS"</span>
+<span class="w">        </span><span class="na">status_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTP_301"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
@@ -34707,51 +34707,51 @@
 <span class="c1">    # 自由にキー名を設定する</span>
 <span class="w">    </span><span class="nb">eks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">port</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="m">30180</span>
-<span class="w">      </span><span class="na">protocol</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;HTTP&quot;</span>
+<span class="w">      </span><span class="na">protocol</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTP"</span>
 <span class="c1">      # Nodeにルーティングするためにinstanceとする</span>
-<span class="w">      </span><span class="na">target_type</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;instance&quot;</span>
+<span class="w">      </span><span class="na">target_type</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">"instance"</span>
 <span class="c1">      # ターゲットグループへのEC2の登録はEKSマネージドNodeグループに委譲する</span>
 <span class="w">      </span><span class="na">create_attachment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 
 <span class="w">      </span><span class="nb">health_check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="na">enabled</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">        </span><span class="na">path</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/healthz/ready&quot;</span>
+<span class="w">        </span><span class="na">path</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"/healthz/ready"</span>
 <span class="w">        </span><span class="na">port</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">30000</span>
-<span class="w">        </span><span class="na">protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;HTTP&quot;</span>
-<span class="w">        </span><span class="na">matcher</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;200&quot;</span>
+<span class="w">        </span><span class="na">protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTP"</span>
+<span class="w">        </span><span class="na">matcher</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"200"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1"># ターゲットグループとマネージドNodeグループを紐づける</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_autoscaling_attachment&quot;</span><span class="w"> </span><span class="nv">&quot;alb_eks&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_autoscaling_attachment"</span><span class="w"> </span><span class="nv">"alb_eks"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">autoscaling_group_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_node_group.foo.resources[0].autoscaling_groups[0].name</span>
-<span class="w">  </span><span class="na">lb_target_group_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.alb_eks.target_group_arns</span><span class="p">[</span><span class="s2">&quot;eks&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="na">lb_target_group_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.alb_eks.target_group_arns</span><span class="p">[</span><span class="s2">"eks"</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="alb_1">▼ メンテナンス用 ALB<a class="headerlink" href="#alb_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;alb_eks_maintenance&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/alb/aws&quot;</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;= 9.13.0&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"alb_eks_maintenance"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/alb/aws"</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"= 9.13.0"</span>
 
-<span class="w">  </span><span class="na">name</span><span class="w">                             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-alb-maintenance&quot;</span>
+<span class="w">  </span><span class="na">name</span><span class="w">                             </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-alb-maintenance"</span>
 <span class="w">  </span><span class="na">enable_cross_zone_load_balancing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">vpc_id</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span>
-<span class="w">  </span><span class="na">subnets</span><span class="w">                          </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*****&quot;, &quot;*****&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="na">vpc_id</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
+<span class="w">  </span><span class="na">subnets</span><span class="w">                          </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"*****", "*****"</span><span class="p">]</span>
 <span class="w">  </span><span class="na">associate_web_acl</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">web_acl_arn</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span>
+<span class="w">  </span><span class="na">web_acl_arn</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
 <span class="w">  </span><span class="nb">access_logs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span>
-<span class="w">    </span><span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-alb-maintenance&quot;</span>
+<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
+<span class="w">    </span><span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-alb-maintenance"</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">security_group_egress_rules</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nb">all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">from_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
 <span class="w">      </span><span class="na">to_port</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">65535</span>
-<span class="w">      </span><span class="na">protocol</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;-1&quot;</span>
-<span class="w">      </span><span class="na">cidr_ipv4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.0.0.0/0&quot;</span>
+<span class="w">      </span><span class="na">protocol</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"-1"</span>
+<span class="w">      </span><span class="na">cidr_ipv4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 
@@ -34759,8 +34759,8 @@
 <span class="w">    </span><span class="nb">https</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">from_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">443</span>
 <span class="w">      </span><span class="na">to_port</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">443</span>
-<span class="w">      </span><span class="na">protocol</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;-1&quot;</span>
-<span class="w">      </span><span class="na">cidr_ipv4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.0.0.0/0&quot;</span>
+<span class="w">      </span><span class="na">protocol</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"-1"</span>
+<span class="w">      </span><span class="na">cidr_ipv4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 
@@ -34768,42 +34768,42 @@
 
 <span class="w">    </span><span class="nb">https</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">port</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="m">443</span>
-<span class="w">      </span><span class="na">protocol</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;HTTPS&quot;</span>
-<span class="w">      </span><span class="na">certificate_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span>
+<span class="w">      </span><span class="na">protocol</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTPS"</span>
+<span class="w">      </span><span class="na">certificate_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
 
 <span class="c1">      # JSONデータを含む固定レスポンス</span>
-<span class="w">      </span><span class="na">action_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;fixed-response&quot;</span>
+<span class="w">      </span><span class="na">action_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"fixed-response"</span>
 <span class="w">      </span><span class="nb">fixed_response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="na">content_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span>
+<span class="w">        </span><span class="na">content_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"application/json"</span>
 <span class="w">        </span><span class="na">message_body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">jsonencode</span><span class="p">({</span>
-<span class="w">          </span><span class="na">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;9999&quot;</span>
+<span class="w">          </span><span class="na">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"9999"</span>
 <span class="c1">          # メンテナンスモード時の業務コード</span>
-<span class="w">          </span><span class="na">reason</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;MAINTENANCE&quot;</span>
+<span class="w">          </span><span class="na">reason</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MAINTENANCE"</span>
 <span class="w">        </span><span class="p">})</span>
-<span class="w">        </span><span class="na">status_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;503&quot;</span>
+<span class="w">        </span><span class="na">status_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"503"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="c1">      # XMLデータを含む固定レスポンスの場合</span>
 <span class="c1">      # fixed_response = {</span>
-<span class="c1">      #   content_type = &quot;text/xml;charset=UTF-8&quot;</span>
+<span class="c1">      #   content_type = "text/xml;charset=UTF-8"</span>
 <span class="c1">      #   message_body = &lt;&lt;-XML</span>
-<span class="c1">      #     &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="c1">      #     &lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="c1">      #     &lt;error&gt;</span>
 <span class="c1">      #       &lt;code&gt;9999&lt;/status&gt;</span>
 <span class="c1">      #       &lt;reason&gt;MAINTENANCE&lt;/statusReason&gt;</span>
 <span class="c1">      #     &lt;/error&gt;</span>
 <span class="c1">      #   XML</span>
-<span class="c1">      #   status_code = &quot;503&quot;</span>
+<span class="c1">      #   status_code = "503"</span>
 <span class="c1">      # }</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nb">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">port</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="m">80</span>
-<span class="w">      </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;HTTP&quot;</span>
-<span class="w">      </span><span class="na">action_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;redirect&quot;</span>
+<span class="w">      </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTP"</span>
+<span class="w">      </span><span class="na">action_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"redirect"</span>
 <span class="w">      </span><span class="nb">redirect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="na">port</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="m">443</span>
-<span class="w">        </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;HTTPS&quot;</span>
-<span class="w">        </span><span class="na">status_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;HTTP_301&quot;</span>
+<span class="w">        </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTPS"</span>
+<span class="w">        </span><span class="na">status_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTP_301"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
@@ -34911,9 +34911,9 @@
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// index.php</span>
-<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_X_FORWARDED_PROTO&quot;</span><span class="p">])</span>
-    <span class="o">&amp;&amp;</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTP_X_FORWARDED_PROTO&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;https&quot;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">&quot;HTTPS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;on&quot;</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTP_X_FORWARDED_PROTO"</span><span class="p">])</span>
+    <span class="o">&amp;&amp;</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTP_X_FORWARDED_PROTO"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"https"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTPS"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"on"</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -34952,7 +34952,7 @@
 <h3 id="_16">アクセスログ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="https">▼ HTTPS リクエストの場合<a class="headerlink" href="#https" title="Permanent link">&para;</a></h4>
 <p>HTTPS リクエストのアクセスログのフォーマットは以下の通りである。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">https 2018-07-02T22:23:00.186641Z app/my-loadbalancer/50dc6c495c0c9188 192.168.131.39:2817 10.0.0.1:80 0.086 0.048 0.037 200 200 0 57 &quot;GET https://www.example.com:443/ HTTP/1.1&quot; &quot;curl/7.46.0&quot; ECDHE-RSA-AES128-GCM-SHA256 TLSv1.2 arn:aws:elasticloadbalancing:us-east-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067 &quot;Root=1-58337281-1d84f3d73c47ec4e58577259&quot; &quot;www.example.com&quot; &quot;arn:aws:acm:us-east-2:123456789012:certificate/12345678-1234-1234-1234-123456789012&quot; 1 2018-07-02T22:22:48.364000Z &quot;authenticate,forward&quot; &quot;-&quot; &quot;-&quot; &quot;10.0.0.1:80&quot; &quot;200&quot; &quot;-&quot; &quot;-&quot; TID_123456</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">https 2018-07-02T22:23:00.186641Z app/my-loadbalancer/50dc6c495c0c9188 192.168.131.39:2817 10.0.0.1:80 0.086 0.048 0.037 200 200 0 57 "GET https://www.example.com:443/ HTTP/1.1" "curl/7.46.0" ECDHE-RSA-AES128-GCM-SHA256 TLSv1.2 arn:aws:elasticloadbalancing:us-east-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067 "Root=1-58337281-1d84f3d73c47ec4e58577259" "www.example.com" "arn:aws:acm:us-east-2:123456789012:certificate/12345678-1234-1234-1234-123456789012" 1 2018-07-02T22:22:48.364000Z "authenticate,forward" "-" "-" "10.0.0.1:80" "200" "-" "-" TID_123456</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">https</span><span class="w"> </span><span class="c1"># リクエストタイプ</span>
 <span class="l l-Scalar l-Scalar-Plain">2018-07-02T22:23:00.186641Z</span>
@@ -34966,22 +34966,22 @@
 <span class="l l-Scalar l-Scalar-Plain">200</span>
 <span class="l l-Scalar l-Scalar-Plain">0</span>
 <span class="l l-Scalar l-Scalar-Plain">57</span>
-<span class="l l-Scalar l-Scalar-Plain">&quot;GET https://www.example.com:443/ HTTP/1.1&quot;</span>
-<span class="l l-Scalar l-Scalar-Plain">&quot;curl/7.46.0&quot;</span><span class="w"> </span><span class="c1"># ユーザーエージェント</span>
+<span class="l l-Scalar l-Scalar-Plain">"GET https://www.example.com:443/ HTTP/1.1"</span>
+<span class="l l-Scalar l-Scalar-Plain">"curl/7.46.0"</span><span class="w"> </span><span class="c1"># ユーザーエージェント</span>
 <span class="l l-Scalar l-Scalar-Plain">ECDHE-RSA-AES128-GCM-SHA256 TLSv1.2</span>
 <span class="l l-Scalar l-Scalar-Plain">arn:aws:elasticloadbalancing:us-east-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067</span>
-<span class="l l-Scalar l-Scalar-Plain">&quot;Root=1-58337281-1d84f3d73c47ec4e58577259&quot;</span>
-<span class="l l-Scalar l-Scalar-Plain">&quot;www.example.com&quot;</span>
-<span class="l l-Scalar l-Scalar-Plain">&quot;arn:aws:acm:us-east-2:123456789012:certificate/12345678-1234-1234-1234-123456789012&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">"Root=1-58337281-1d84f3d73c47ec4e58577259"</span>
+<span class="l l-Scalar l-Scalar-Plain">"www.example.com"</span>
+<span class="l l-Scalar l-Scalar-Plain">"arn:aws:acm:us-east-2:123456789012:certificate/12345678-1234-1234-1234-123456789012"</span>
 <span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="l l-Scalar l-Scalar-Plain">2018-07-02T22:22:48.364000Z</span>
-<span class="l l-Scalar l-Scalar-Plain">&quot;waf,authenticate,forward&quot;</span><span class="w"> </span><span class="c1"># AWS WAF を通過している場合はここに記録される</span>
-<span class="s">&quot;-&quot;</span>
-<span class="s">&quot;-&quot;</span>
-<span class="s">&quot;10.0.0.1:80&quot;</span>
-<span class="s">&quot;200&quot;</span><span class="w"> </span><span class="c1"># サーバー側のレスポンスのステータスコード</span>
-<span class="s">&quot;-&quot;</span>
-<span class="s">&quot;-&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">"waf,authenticate,forward"</span><span class="w"> </span><span class="c1"># AWS WAF を通過している場合はここに記録される</span>
+<span class="s">"-"</span>
+<span class="s">"-"</span>
+<span class="s">"10.0.0.1:80"</span>
+<span class="s">"200"</span><span class="w"> </span><span class="c1"># サーバー側のレスポンスのステータスコード</span>
+<span class="s">"-"</span>
+<span class="s">"-"</span>
 <span class="l l-Scalar l-Scalar-Plain">TID_123456</span>
 </code></pre></div>
 <blockquote>

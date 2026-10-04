@@ -35158,7 +35158,7 @@
 <span class="w">  </span><span class="nt">debug</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">verbosity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">basic</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="m">2024</span>-03-26T04:41:52.163Z<span class="w">    </span>info<span class="w">    </span>TracesExporter<span class="w">  </span><span class="o">{</span><span class="s2">&quot;kind&quot;</span>:<span class="w"> </span><span class="s2">&quot;exporter&quot;</span>,<span class="w"> </span><span class="s2">&quot;data_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;traces&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;debug&quot;</span>,<span class="w"> </span><span class="s2">&quot;resource spans&quot;</span>:<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="s2">&quot;spans&quot;</span>:<span class="w"> </span>&lt;フォワーディングしたスパン数&gt;<span class="o">}</span>
+<div class="highlight"><pre><span></span><code><span class="m">2024</span>-03-26T04:41:52.163Z<span class="w">    </span>info<span class="w">    </span>TracesExporter<span class="w">  </span><span class="o">{</span><span class="s2">"kind"</span>:<span class="w"> </span><span class="s2">"exporter"</span>,<span class="w"> </span><span class="s2">"data_type"</span>:<span class="w"> </span><span class="s2">"traces"</span>,<span class="w"> </span><span class="s2">"name"</span>:<span class="w"> </span><span class="s2">"debug"</span>,<span class="w"> </span><span class="s2">"resource spans"</span>:<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="s2">"spans"</span>:<span class="w"> </span>&lt;フォワーディングしたスパン数&gt;<span class="o">}</span>
 </code></pre></div>
 <p>スパンを標準出力により詳細に出力したい場合、<code>detailed</code> とする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
@@ -35172,12 +35172,12 @@ Resource<span class="w"> </span>attributes:
 <span class="w">  </span>-&gt;<span class="w"> </span>service.name:<span class="w"> </span>Str<span class="o">(</span>foo-service<span class="o">)</span>
 <span class="w">  </span>ScopeSpans<span class="w"> </span><span class="c1">#0</span>
 ScopeSpans<span class="w"> </span>SchemaURL:
-<span class="w">  </span>InstrumentationScope<span class="w"> </span><span class="s2">&quot;&lt;トレースパッケージ名&gt;&quot;</span>
+<span class="w">  </span>InstrumentationScope<span class="w"> </span><span class="s2">"&lt;トレースパッケージ名&gt;"</span>
 <span class="w">  </span>Span<span class="w"> </span><span class="c1">#0</span>
 Trace<span class="w"> </span>ID:<span class="w"> </span>*****
 Parent<span class="w"> </span>ID:
 ID:<span class="w"> </span>*****
-Name:<span class="w"> </span><span class="s2">&quot;&lt;スパン名&gt;&quot;</span>
+Name:<span class="w"> </span><span class="s2">"&lt;スパン名&gt;"</span>
 Kind:<span class="w"> </span>Server
 Start<span class="w"> </span>time:<span class="w"> </span><span class="m">2024</span>-03-26<span class="w"> </span><span class="m">04</span>:19:41.041<span class="w"> </span>+0000<span class="w"> </span>UTC
 End<span class="w"> </span>time:<span class="w"> </span><span class="m">2024</span>-03-26<span class="w"> </span><span class="m">04</span>:19:41.085<span class="w"> </span>+0000<span class="w"> </span>UTC
@@ -35185,7 +35185,7 @@ Status<span class="w"> </span>code:<span class="w"> </span>Unset
 Status<span class="w"> </span>message:
 Attributes:
 <span class="w">  </span>-&gt;<span class="w"> </span>http.method:<span class="w"> </span>Str<span class="o">(</span>GET<span class="o">)</span>
-<span class="w">  </span>-&gt;<span class="w"> </span>http.target:<span class="w"> </span>Str<span class="o">(</span><span class="s2">&quot;&lt;スパン名&gt;&quot;</span><span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>http.target:<span class="w"> </span>Str<span class="o">(</span><span class="s2">"&lt;スパン名&gt;"</span><span class="o">)</span>
 <span class="w">  </span>-&gt;<span class="w"> </span>http.route:<span class="w"> </span>Str<span class="o">(</span>/<span class="o">)</span>
 <span class="w">  </span>-&gt;<span class="w"> </span>http.scheme:<span class="w"> </span>Str<span class="o">(</span>http<span class="o">)</span>
 <span class="w">  </span>-&gt;<span class="w"> </span>http.flavor:<span class="w"> </span>Str<span class="o">(</span><span class="m">1</span>.1<span class="o">)</span>
@@ -35194,12 +35194,12 @@ Attributes:
 <span class="w">  </span>-&gt;<span class="w"> </span>http.response_content_length:<span class="w"> </span>Int<span class="o">(</span><span class="m">905</span><span class="o">)</span>
 <span class="w">  </span>-&gt;<span class="w"> </span>http.status_code:<span class="w"> </span>Int<span class="o">(</span><span class="m">200</span><span class="o">)</span>
 <span class="w">  </span>-&gt;<span class="w"> </span>net.host.name:<span class="w"> </span>Str<span class="o">(</span>_<span class="o">)</span>
-<span class="w">  </span>-&gt;<span class="w"> </span>net.host.port:<span class="w"> </span>Int<span class="o">(</span><span class="s2">&quot;&lt;ポート番号&gt;&quot;</span><span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>net.host.port:<span class="w"> </span>Int<span class="o">(</span><span class="s2">"&lt;ポート番号&gt;"</span><span class="o">)</span>
 <span class="w">  </span>-&gt;<span class="w"> </span>net.sock.peer.addr:<span class="w"> </span>Str<span class="o">(</span><span class="m">127</span>.0.0.6<span class="o">)</span>
-<span class="w">  </span>-&gt;<span class="w"> </span>net.sock.peer.port:<span class="w"> </span>Int<span class="o">(</span><span class="s2">&quot;&lt;ポート番号&gt;&quot;</span><span class="o">)</span>
-<span class="w">  </span>-&gt;<span class="w"> </span>env:<span class="w"> </span>Str<span class="o">(</span><span class="s2">&quot;&lt;実行環境名&gt;&quot;</span><span class="o">)</span>
-<span class="w">  </span>-&gt;<span class="w"> </span>service:<span class="w"> </span>Str<span class="o">(</span><span class="s2">&quot;&lt;サービス名&gt;&quot;</span><span class="o">)</span>
-<span class="w">  </span><span class="o">{</span><span class="w"> </span><span class="s2">&quot;kind&quot;</span>:<span class="w"> </span><span class="s2">&quot;exporter&quot;</span>,<span class="w"> </span><span class="s2">&quot;data_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;traces&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;debug&quot;</span><span class="w"> </span><span class="o">}</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>net.sock.peer.port:<span class="w"> </span>Int<span class="o">(</span><span class="s2">"&lt;ポート番号&gt;"</span><span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>env:<span class="w"> </span>Str<span class="o">(</span><span class="s2">"&lt;実行環境名&gt;"</span><span class="o">)</span>
+<span class="w">  </span>-&gt;<span class="w"> </span>service:<span class="w"> </span>Str<span class="o">(</span><span class="s2">"&lt;サービス名&gt;"</span><span class="o">)</span>
+<span class="w">  </span><span class="o">{</span><span class="w"> </span><span class="s2">"kind"</span>:<span class="w"> </span><span class="s2">"exporter"</span>,<span class="w"> </span><span class="s2">"data_type"</span>:<span class="w"> </span><span class="s2">"traces"</span>,<span class="w"> </span><span class="s2">"name"</span>:<span class="w"> </span><span class="s2">"debug"</span><span class="w"> </span><span class="o">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35351,7 +35351,7 @@ Attributes:
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http.method</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http.url.path</span>
 <span class="w">      </span><span class="c1"># GET /foo のようなスパンになる</span>
-<span class="w">      </span><span class="nt">separator</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv"> </span><span class="s">&quot;</span>
+<span class="w">      </span><span class="nt">separator</span><span class="p">:</span><span class="w"> </span><span class="s">"</span><span class="nv"> </span><span class="s">"</span>
 <span class="w">    </span><span class="nt">include</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">match_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">strict</span>
 <span class="w">      </span><span class="c1"># istio-proxy コンテナの作成したスパンのみを対象とする</span>
@@ -35377,8 +35377,8 @@ Attributes:
 <p>設定したエンドポイントに応じて、受信サーバーが起動する。</p>
 <div class="highlight"><pre><span></span><code>...
 
-<span class="m">2024</span>-03-14T03:06:00.860Z<span class="w">    </span>info<span class="w">    </span>otlpreceiver@v0.93.0/otlp.go:102<span class="w">    </span>Starting<span class="w"> </span>GRPC<span class="w"> </span>server<span class="w">    </span><span class="o">{</span><span class="s2">&quot;kind&quot;</span>:<span class="w"> </span><span class="s2">&quot;receiver&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;otlp&quot;</span>,<span class="w"> </span><span class="s2">&quot;data_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;traces&quot;</span>,<span class="w"> </span><span class="s2">&quot;endpoint&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;Pod (自分) のIPアドレス&gt;:4317&quot;</span><span class="o">}</span>
-<span class="m">2024</span>-03-14T03:06:00.860Z<span class="w">    </span>info<span class="w">    </span>otlpreceiver@v0.93.0/otlp.go:152<span class="w">    </span>Starting<span class="w"> </span>HTTP<span class="w"> </span>server<span class="w">    </span><span class="o">{</span><span class="s2">&quot;kind&quot;</span>:<span class="w"> </span><span class="s2">&quot;receiver&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;otlp&quot;</span>,<span class="w"> </span><span class="s2">&quot;data_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;traces&quot;</span>,<span class="w"> </span><span class="s2">&quot;endpoint&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;Pod (自分) のIPアドレス&gt;:4318&quot;</span><span class="o">}</span>
+<span class="m">2024</span>-03-14T03:06:00.860Z<span class="w">    </span>info<span class="w">    </span>otlpreceiver@v0.93.0/otlp.go:102<span class="w">    </span>Starting<span class="w"> </span>GRPC<span class="w"> </span>server<span class="w">    </span><span class="o">{</span><span class="s2">"kind"</span>:<span class="w"> </span><span class="s2">"receiver"</span>,<span class="w"> </span><span class="s2">"name"</span>:<span class="w"> </span><span class="s2">"otlp"</span>,<span class="w"> </span><span class="s2">"data_type"</span>:<span class="w"> </span><span class="s2">"traces"</span>,<span class="w"> </span><span class="s2">"endpoint"</span>:<span class="w"> </span><span class="s2">"&lt;Pod (自分) のIPアドレス&gt;:4317"</span><span class="o">}</span>
+<span class="m">2024</span>-03-14T03:06:00.860Z<span class="w">    </span>info<span class="w">    </span>otlpreceiver@v0.93.0/otlp.go:152<span class="w">    </span>Starting<span class="w"> </span>HTTP<span class="w"> </span>server<span class="w">    </span><span class="o">{</span><span class="s2">"kind"</span>:<span class="w"> </span><span class="s2">"receiver"</span>,<span class="w"> </span><span class="s2">"name"</span>:<span class="w"> </span><span class="s2">"otlp"</span>,<span class="w"> </span><span class="s2">"data_type"</span>:<span class="w"> </span><span class="s2">"traces"</span>,<span class="w"> </span><span class="s2">"endpoint"</span>:<span class="w"> </span><span class="s2">"&lt;Pod (自分) のIPアドレス&gt;:4318"</span><span class="o">}</span>
 
 ...
 </code></pre></div>
@@ -35475,7 +35475,7 @@ Attributes:
 </ul>
 </blockquote>
 <p>ログレベルが <code>debug</code> の場合、例えば以下になる。</p>
-<div class="highlight"><pre><span></span><code><span class="m">2024</span>-03-25T03:22:08.220Z<span class="w">    </span>debug<span class="w">   </span>awsxrayexporter@v0.96.0/awsxray.go:57<span class="w">   </span>TracesExporter<span class="w">  </span><span class="o">{</span><span class="s2">&quot;kind&quot;</span>:<span class="w"> </span><span class="s2">&quot;exporter&quot;</span>,<span class="w"> </span><span class="s2">&quot;data_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;traces&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;awsxray&quot;</span>,<span class="w"> </span><span class="s2">&quot;type&quot;</span>:<span class="w"> </span><span class="s2">&quot;awsxray&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;awsxray&quot;</span>,<span class="w"> </span><span class="s2">&quot;#spans&quot;</span>:<span class="w"> </span><span class="m">1</span><span class="o">}</span>
+<div class="highlight"><pre><span></span><code><span class="m">2024</span>-03-25T03:22:08.220Z<span class="w">    </span>debug<span class="w">   </span>awsxrayexporter@v0.96.0/awsxray.go:57<span class="w">   </span>TracesExporter<span class="w">  </span><span class="o">{</span><span class="s2">"kind"</span>:<span class="w"> </span><span class="s2">"exporter"</span>,<span class="w"> </span><span class="s2">"data_type"</span>:<span class="w"> </span><span class="s2">"traces"</span>,<span class="w"> </span><span class="s2">"name"</span>:<span class="w"> </span><span class="s2">"awsxray"</span>,<span class="w"> </span><span class="s2">"type"</span>:<span class="w"> </span><span class="s2">"awsxray"</span>,<span class="w"> </span><span class="s2">"name"</span>:<span class="w"> </span><span class="s2">"awsxray"</span>,<span class="w"> </span><span class="s2">"#spans"</span>:<span class="w"> </span><span class="m">1</span><span class="o">}</span>
 </code></pre></div>
 <h4 id="metrics">▼ metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h4>
 <p>OpenTelemetry Collector のメトリクスの作成方法を設定する。</p>

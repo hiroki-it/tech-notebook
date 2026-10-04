@@ -34990,7 +34990,7 @@
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
 <span class="nt">data</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">exec.enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">  </span><span class="nt">exec.enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <p>argocd-server に紐づける ClusterRole では、Pod の <code>exec</code> リソースと <code>create</code> アクションを許可する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
@@ -35002,7 +35002,7 @@
 <span class="w">    </span><span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
 <span class="nt">rules</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">""</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pods/exec</span>
 <span class="w">    </span><span class="nt">verbs</span><span class="p">:</span>
@@ -35227,7 +35227,7 @@
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-cm</span>
 <span class="nt">data</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">admin.enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">  </span><span class="nt">admin.enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 
 <span class="w">  </span><span class="c1"># OIDC に必要な ID やトークンを設定する</span>
 <span class="w">  </span><span class="nt">oidc.config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -35261,7 +35261,7 @@
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-cm</span>
 <span class="nt">data</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">admin.enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">  </span><span class="nt">admin.enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 
 <span class="w">  </span><span class="c1"># 必要な ID やトークンを設定する。</span>
 <span class="w">  </span><span class="nt">dex.config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -35362,11 +35362,11 @@
 <span class="w">  </span><span class="nt">application.namespaces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="w">  </span><span class="nt">controller.log.format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">text</span>
 <span class="w">  </span><span class="nt">controller.log.level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warn</span>
-<span class="w">  </span><span class="nt">controller.operation.processors</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10&quot;</span>
-<span class="w">  </span><span class="nt">controller.repo.server.timeout.seconds</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;60&quot;</span>
-<span class="w">  </span><span class="nt">controller.self.heal.timeout.seconds</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;5&quot;</span>
-<span class="w">  </span><span class="nt">controller.status.processors</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;20&quot;</span>
-<span class="w">  </span><span class="nt">otlp.address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">  </span><span class="nt">controller.operation.processors</span><span class="p">:</span><span class="w"> </span><span class="s">"10"</span>
+<span class="w">  </span><span class="nt">controller.repo.server.timeout.seconds</span><span class="p">:</span><span class="w"> </span><span class="s">"60"</span>
+<span class="w">  </span><span class="nt">controller.self.heal.timeout.seconds</span><span class="p">:</span><span class="w"> </span><span class="s">"5"</span>
+<span class="w">  </span><span class="nt">controller.status.processors</span><span class="p">:</span><span class="w"> </span><span class="s">"20"</span>
+<span class="w">  </span><span class="nt">otlp.address</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="redis-server">redis-server<a class="headerlink" href="#redis-server" title="Permanent link">&para;</a></h3>
@@ -35391,7 +35391,7 @@
 <span class="w">  </span><span class="nt">repo.server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-repo-server:8081</span>
 <span class="w">  </span><span class="nt">reposerver.log.format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">text</span>
 <span class="w">  </span><span class="nt">reposerver.log.level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warn</span>
-<span class="w">  </span><span class="nt">reposerver.parallelism.limit</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0&quot;</span>
+<span class="w">  </span><span class="nt">reposerver.parallelism.limit</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="argocd-server">argocd-server<a class="headerlink" href="#argocd-server" title="Permanent link">&para;</a></h3>
@@ -35404,15 +35404,15 @@
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">server.basehref</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
 <span class="w">  </span><span class="nt">server.dex.server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://argocd-dex-server:5556</span>
-<span class="w">  </span><span class="nt">server.dex.server.strict.tls</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
-<span class="w">  </span><span class="nt">server.disable.auth</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
-<span class="w">  </span><span class="nt">server.enable.gzip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">  </span><span class="nt">server.dex.server.strict.tls</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
+<span class="w">  </span><span class="nt">server.disable.auth</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
+<span class="w">  </span><span class="nt">server.enable.gzip</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 <span class="w">  </span><span class="c1"># ロードバランサーで、リクエストを HTTP でフォワーディングするように設定している場合、argocd-server で HTTP リクエストの受信を許可する</span>
-<span class="w">  </span><span class="nt">server.insecure</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">  </span><span class="nt">server.insecure</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">  </span><span class="nt">server.log.format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">text</span>
 <span class="w">  </span><span class="nt">server.log.level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warn</span>
-<span class="w">  </span><span class="nt">server.repo.server.strict.tls</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
-<span class="w">  </span><span class="nt">server.rootpath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">  </span><span class="nt">server.repo.server.strict.tls</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
+<span class="w">  </span><span class="nt">server.rootpath</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 <span class="w">  </span><span class="nt">server.staticassets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/shared/app</span>
 <span class="w">  </span><span class="nt">server.x.frame.options</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sameorigin</span>
 </code></pre></div>
@@ -35492,7 +35492,7 @@
 <span class="w">    </span><span class="no">g, app-team, role:app</span>
 <span class="w">    </span><span class="no">g, infra-team, role:infra</span>
 <span class="w">    </span><span class="no">g, admin, role:maintainer</span>
-<span class="w">  </span><span class="nt">scopes</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[groups]&quot;</span>
+<span class="w">  </span><span class="nt">scopes</span><span class="p">:</span><span class="w"> </span><span class="s">"[groups]"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35527,7 +35527,7 @@
 <span class="w">    </span><span class="no"># グループにロールを紐付ける</span>
 <span class="w">    </span><span class="no">g, developers, role:developer</span>
 <span class="w">    </span><span class="no">g, maintainers, role:maintainer</span>
-<span class="w">  </span><span class="nt">scopes</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[groups]&quot;</span>
+<span class="w">  </span><span class="nt">scopes</span><span class="p">:</span><span class="w"> </span><span class="s">"[groups]"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="argocd-id-sso">ArgoCD の認証を ID プロバイダーに委譲する場合 (SSO の場合)<a class="headerlink" href="#argocd-id-sso" title="Permanent link">&para;</a></h3>
@@ -35561,7 +35561,7 @@
 <span class="w">    </span><span class="no">g, example-org.github.com:app-team, role:app</span>
 <span class="w">    </span><span class="no">g, example-org.github.com:infra-team, role:infra</span>
 <span class="w">    </span><span class="no">g, example-org.github.com:maintainer, role:maintainer</span>
-<span class="w">  </span><span class="nt">scopes</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[groups]&quot;</span>
+<span class="w">  </span><span class="nt">scopes</span><span class="p">:</span><span class="w"> </span><span class="s">"[groups]"</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <p>ID プロバイダー側で、チームによる認証グループがすでに存在しているとする。</p>
@@ -35592,7 +35592,7 @@
 <span class="w">    </span><span class="no">g, example-org.github.com:app-team, role:app</span>
 <span class="w">    </span><span class="no">g, example-org.github.com:infra-team, role:infra</span>
 <span class="w">    </span><span class="no">g, example-org.github.com:maintainer, role:maintainer</span>
-<span class="w">  </span><span class="nt">scopes</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[groups]&quot;</span>
+<span class="w">  </span><span class="nt">scopes</span><span class="p">:</span><span class="w"> </span><span class="s">"[groups]"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35629,7 +35629,7 @@
 <span class="w">    </span><span class="no">g, app-team@gmail.com, role:app</span>
 <span class="w">    </span><span class="no">g, infra-team@gmail.com, role:infra</span>
 <span class="w">    </span><span class="no">g, maintainer@gmail.com, role:maintainer</span>
-<span class="w">  </span><span class="nt">scopes</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[email]&quot;</span>
+<span class="w">  </span><span class="nt">scopes</span><span class="p">:</span><span class="w"> </span><span class="s">"[email]"</span>
 </code></pre></div>
 <blockquote>
 <ul>

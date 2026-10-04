@@ -33647,12 +33647,12 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">provider</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/hashicorp/terraform-plugin-framework/datasource&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/hashicorp/terraform-plugin-framework/provider&quot;</span>
-<span class="w">    </span><span class="nx">providerschema</span><span class="w"> </span><span class="s">&quot;github.com/hashicorp/terraform-plugin-framework/provider/schema&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/hashicorp/terraform-plugin-framework/resource&quot;</span>
+<span class="w">    </span><span class="s">"github.com/hashicorp/terraform-plugin-framework/datasource"</span>
+<span class="w">    </span><span class="s">"github.com/hashicorp/terraform-plugin-framework/provider"</span>
+<span class="w">    </span><span class="nx">providerschema</span><span class="w"> </span><span class="s">"github.com/hashicorp/terraform-plugin-framework/provider/schema"</span>
+<span class="w">    </span><span class="s">"github.com/hashicorp/terraform-plugin-framework/resource"</span>
 <span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">exampleProvider</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
@@ -33663,7 +33663,7 @@
 <span class="w">    </span><span class="nx">resp</span><span class="w"> </span><span class="o">*</span><span class="nx">provider</span><span class="p">.</span><span class="nx">MetadataResponse</span><span class="p">,</span>
 <span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// fooリソースを定義する</span>
-<span class="w">    </span><span class="nx">resp</span><span class="p">.</span><span class="nx">TypeName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;foo&quot;</span>
+<span class="w">    </span><span class="nx">resp</span><span class="p">.</span><span class="nx">TypeName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"foo"</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="o">*</span><span class="nx">exampleProvider</span><span class="p">)</span><span class="w"> </span><span class="nx">Schema</span><span class="p">(</span>
@@ -33671,7 +33671,7 @@
 <span class="w">    </span><span class="nx">_</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">SchemaRequest</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">resp</span><span class="w"> </span><span class="o">*</span><span class="nx">provider</span><span class="p">.</span><span class="nx">SchemaResponse</span><span class="p">,</span>
 <span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">resp</span><span class="p">.</span><span class="nx">Schema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">providerschema</span><span class="p">.</span><span class="nx">Schema</span><span class="p">{}</span>
+<span class="w">    </span><span class="nx">resp</span><span class="p">.</span><span class="nx">Schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">providerschema</span><span class="p">.</span><span class="nx">Schema</span><span class="p">{}</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="o">*</span><span class="nx">exampleProvider</span><span class="p">)</span><span class="w"> </span><span class="nx">Configure</span><span class="p">(</span>
@@ -33700,22 +33700,22 @@
 <h2 id="resource">最小限のResource<a class="headerlink" href="#resource" title="Permanent link">&para;</a></h2>
 <p>Resource は、Terraform で作成、読み取り、更新、削除する対象を表す。</p>
 <p>次のような <code>resource</code> を定義するための Data Source を実装する。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;foo_bar&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"foo_bar"</span><span class="w"> </span><span class="nv">"this"</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">provider</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/hashicorp/terraform-plugin-framework/resource&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/hashicorp/terraform-plugin-framework/resource/schema&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/hashicorp/terraform-plugin-framework/types&quot;</span>
+<span class="w">    </span><span class="s">"github.com/hashicorp/terraform-plugin-framework/resource"</span>
+<span class="w">    </span><span class="s">"github.com/hashicorp/terraform-plugin-framework/resource/schema"</span>
+<span class="w">    </span><span class="s">"github.com/hashicorp/terraform-plugin-framework/types"</span>
 <span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">fooResource</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">fooResourceModel</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">ID</span><span class="w"> </span><span class="nx">types</span><span class="p">.</span><span class="nx">String</span><span class="w"> </span><span class="s">`tfsdk:&quot;id&quot;`</span>
+<span class="w">    </span><span class="nx">ID</span><span class="w"> </span><span class="nx">types</span><span class="p">.</span><span class="nx">String</span><span class="w"> </span><span class="s">`tfsdk:"id"`</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">fooResource</span><span class="p">)</span><span class="w"> </span><span class="nx">Metadata</span><span class="p">(</span>
@@ -33725,8 +33725,8 @@
 <span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// barタイプを定義する</span>
 <span class="w">    </span><span class="c1">// fooリソースはプロバイダーのMetadataで定義している</span>
-<span class="w">    </span><span class="c1">// resource &quot;foo_bar&quot; になる</span>
-<span class="w">    </span><span class="nx">resp</span><span class="p">.</span><span class="nx">TypeName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">ProviderTypeName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;_bar&quot;</span>
+<span class="w">    </span><span class="c1">// resource "foo_bar" になる</span>
+<span class="w">    </span><span class="nx">resp</span><span class="p">.</span><span class="nx">TypeName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">ProviderTypeName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"_bar"</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">fooResource</span><span class="p">)</span><span class="w"> </span><span class="nx">Schema</span><span class="p">(</span>
@@ -33734,9 +33734,9 @@
 <span class="w">    </span><span class="nx">_</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">SchemaRequest</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">resp</span><span class="w"> </span><span class="o">*</span><span class="nx">resource</span><span class="p">.</span><span class="nx">SchemaResponse</span><span class="p">,</span>
 <span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">resp</span><span class="p">.</span><span class="nx">Schema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">schema</span><span class="p">.</span><span class="nx">Schema</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">Attributes</span><span class="p">:</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">schema</span><span class="p">.</span><span class="nx">Attribute</span><span class="p">{</span>
-<span class="w">            </span><span class="s">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="nx">schema</span><span class="p">.</span><span class="nx">StringAttribute</span><span class="p">{</span><span class="nx">Computed</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">},</span>
+<span class="w">    </span><span class="nx">resp</span><span class="p">.</span><span class="nx">Schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">schema</span><span class="p">.</span><span class="nx">Schema</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Attributes</span><span class="p">:</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">schema</span><span class="p">.</span><span class="nx">Attribute</span><span class="p">{</span>
+<span class="w">            </span><span class="s">"id"</span><span class="p">:</span><span class="w"> </span><span class="nx">schema</span><span class="p">.</span><span class="nx">StringAttribute</span><span class="p">{</span><span class="nx">Computed</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">},</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -33747,8 +33747,8 @@
 <span class="w">    </span><span class="nx">resp</span><span class="w"> </span><span class="o">*</span><span class="nx">resource</span><span class="p">.</span><span class="nx">CreateResponse</span><span class="p">,</span>
 <span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">resp</span><span class="p">.</span><span class="nx">Diagnostics</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">State</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">fooResourceModel</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">ID</span><span class="p">:</span><span class="w"> </span><span class="nx">types</span><span class="p">.</span><span class="nx">StringValue</span><span class="p">(</span><span class="s">&quot;example-id&quot;</span><span class="p">),</span>
-<span class="w">    </span><span class="p">})</span><span class="o">...</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">ID</span><span class="p">:</span><span class="w"> </span><span class="nx">types</span><span class="p">.</span><span class="nx">StringValue</span><span class="p">(</span><span class="s">"example-id"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">})...)</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">fooResource</span><span class="p">)</span><span class="w"> </span><span class="nx">Read</span><span class="p">(</span>
@@ -33776,22 +33776,22 @@
 <h2 id="data-source">最小限のData Source<a class="headerlink" href="#data-source" title="Permanent link">&para;</a></h2>
 <p>Data Source は、既存の情報を読み取って State に保存する。</p>
 <p>次のような <code>data</code> を定義するための Data Source を実装する。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">data</span><span class="w"> </span><span class="nc">&quot;foo_bar&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="kr">data</span><span class="w"> </span><span class="nc">"foo_bar"</span><span class="w"> </span><span class="nv">"this"</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">provider</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/hashicorp/terraform-plugin-framework/datasource&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/hashicorp/terraform-plugin-framework/datasource/schema&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/hashicorp/terraform-plugin-framework/types&quot;</span>
+<span class="w">    </span><span class="s">"github.com/hashicorp/terraform-plugin-framework/datasource"</span>
+<span class="w">    </span><span class="s">"github.com/hashicorp/terraform-plugin-framework/datasource/schema"</span>
+<span class="w">    </span><span class="s">"github.com/hashicorp/terraform-plugin-framework/types"</span>
 <span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">barDataSource</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">barDataSourceModel</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">Message</span><span class="w"> </span><span class="nx">types</span><span class="p">.</span><span class="nx">String</span><span class="w"> </span><span class="s">`tfsdk:&quot;message&quot;`</span>
+<span class="w">    </span><span class="nx">Message</span><span class="w"> </span><span class="nx">types</span><span class="p">.</span><span class="nx">String</span><span class="w"> </span><span class="s">`tfsdk:"message"`</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">d</span><span class="w"> </span><span class="o">*</span><span class="nx">barDataSource</span><span class="p">)</span><span class="w"> </span><span class="nx">Metadata</span><span class="p">(</span>
@@ -33801,8 +33801,8 @@
 <span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// barタイプを定義する</span>
 <span class="w">    </span><span class="c1">// fooリソースはプロバイダーのMetadataで定義している</span>
-<span class="w">    </span><span class="c1">// data &quot;foo_bar&quot; になる</span>
-<span class="w">    </span><span class="nx">resp</span><span class="p">.</span><span class="nx">TypeName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">ProviderTypeName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;_bar&quot;</span>
+<span class="w">    </span><span class="c1">// data "foo_bar" になる</span>
+<span class="w">    </span><span class="nx">resp</span><span class="p">.</span><span class="nx">TypeName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">ProviderTypeName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"_bar"</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">d</span><span class="w"> </span><span class="o">*</span><span class="nx">barDataSource</span><span class="p">)</span><span class="w"> </span><span class="nx">Schema</span><span class="p">(</span>
@@ -33810,9 +33810,9 @@
 <span class="w">    </span><span class="nx">_</span><span class="w"> </span><span class="nx">datasource</span><span class="p">.</span><span class="nx">SchemaRequest</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">resp</span><span class="w"> </span><span class="o">*</span><span class="nx">datasource</span><span class="p">.</span><span class="nx">SchemaResponse</span><span class="p">,</span>
 <span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">resp</span><span class="p">.</span><span class="nx">Schema</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">schema</span><span class="p">.</span><span class="nx">Schema</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">Attributes</span><span class="p">:</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">schema</span><span class="p">.</span><span class="nx">Attribute</span><span class="p">{</span>
-<span class="w">            </span><span class="s">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="nx">schema</span><span class="p">.</span><span class="nx">StringAttribute</span><span class="p">{</span><span class="nx">Computed</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">},</span>
+<span class="w">    </span><span class="nx">resp</span><span class="p">.</span><span class="nx">Schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">schema</span><span class="p">.</span><span class="nx">Schema</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Attributes</span><span class="p">:</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">schema</span><span class="p">.</span><span class="nx">Attribute</span><span class="p">{</span>
+<span class="w">            </span><span class="s">"message"</span><span class="p">:</span><span class="w"> </span><span class="nx">schema</span><span class="p">.</span><span class="nx">StringAttribute</span><span class="p">{</span><span class="nx">Computed</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">},</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -33823,8 +33823,8 @@
 <span class="w">    </span><span class="nx">resp</span><span class="w"> </span><span class="o">*</span><span class="nx">datasource</span><span class="p">.</span><span class="nx">ReadResponse</span><span class="p">,</span>
 <span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">resp</span><span class="p">.</span><span class="nx">Diagnostics</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">State</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">barDataSourceModel</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">Message</span><span class="p">:</span><span class="w"> </span><span class="nx">types</span><span class="p">.</span><span class="nx">StringValue</span><span class="p">(</span><span class="s">&quot;Hello, Terraform!&quot;</span><span class="p">),</span>
-<span class="w">    </span><span class="p">})</span><span class="o">...</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">Message</span><span class="p">:</span><span class="w"> </span><span class="nx">types</span><span class="p">.</span><span class="nx">StringValue</span><span class="p">(</span><span class="s">"Hello, Terraform!"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">})...)</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="_3">受け入れテスト<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
@@ -33835,17 +33835,17 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">provider_test</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;testing&quot;</span>
+<span class="w">    </span><span class="s">"testing"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/hashicorp/terraform-plugin-framework/providerserver&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/hashicorp/terraform-plugin-go/tfprotov6&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/hashicorp/terraform-plugin-testing/helper/resource&quot;</span>
+<span class="w">    </span><span class="s">"github.com/hashicorp/terraform-plugin-framework/providerserver"</span>
+<span class="w">    </span><span class="s">"github.com/hashicorp/terraform-plugin-go/tfprotov6"</span>
+<span class="w">    </span><span class="s">"github.com/hashicorp/terraform-plugin-testing/helper/resource"</span>
 
-<span class="w">    </span><span class="nx">exampleprovider</span><span class="w"> </span><span class="s">&quot;example.com/example/internal/provider&quot;</span>
+<span class="w">    </span><span class="nx">exampleprovider</span><span class="w"> </span><span class="s">"example.com/example/internal/provider"</span>
 <span class="p">)</span>
 
-<span class="kd">var</span><span class="w"> </span><span class="nx">testProviderFactories</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="nx">tfprotov6</span><span class="p">.</span><span class="nx">ProviderServer</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">){</span>
-<span class="w">    </span><span class="s">&quot;foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="nx">providerserver</span><span class="p">.</span><span class="nx">NewProtocol6WithError</span><span class="p">(</span><span class="nx">exampleprovider</span><span class="p">.</span><span class="nx">New</span><span class="p">()),</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">testProviderFactories</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="nx">tfprotov6</span><span class="p">.</span><span class="nx">ProviderServer</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">){</span>
+<span class="w">    </span><span class="s">"foo"</span><span class="p">:</span><span class="w"> </span><span class="nx">providerserver</span><span class="p">.</span><span class="nx">NewProtocol6WithError</span><span class="p">(</span><span class="nx">exampleprovider</span><span class="p">.</span><span class="nx">New</span><span class="p">()),</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">TestAccProvider</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -33857,21 +33857,21 @@
 <span class="s">terraform {</span>
 <span class="s">  required_providers {</span>
 <span class="s">    foo = {</span>
-<span class="s">      source = &quot;example.com/example/example&quot;</span>
+<span class="s">      source = "example.com/example/example"</span>
 <span class="s">    }</span>
 <span class="s">  }</span>
 <span class="s">}</span>
 
-<span class="s">resource &quot;foo_bar&quot; &quot;this&quot; {}</span>
+<span class="s">resource "foo_bar" "this" {}</span>
 
-<span class="s">data &quot;foo_bar&quot; &quot;this&quot; {}</span>
+<span class="s">data "foo_bar" "this" {}</span>
 <span class="s">`</span><span class="p">,</span>
 <span class="w">                </span><span class="nx">Check</span><span class="p">:</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">ComposeAggregateTestCheckFunc</span><span class="p">(</span>
 <span class="w">                    </span><span class="nx">resource</span><span class="p">.</span><span class="nx">TestCheckResourceAttr</span><span class="p">(</span>
-<span class="w">                        </span><span class="s">&quot;foo_bar.this&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;example-id&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s">"foo_bar.this"</span><span class="p">,</span><span class="w"> </span><span class="s">"id"</span><span class="p">,</span><span class="w"> </span><span class="s">"example-id"</span><span class="p">,</span>
 <span class="w">                    </span><span class="p">),</span>
 <span class="w">                    </span><span class="nx">resource</span><span class="p">.</span><span class="nx">TestCheckResourceAttr</span><span class="p">(</span>
-<span class="w">                        </span><span class="s">&quot;data.foo_bar.this&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;message&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello, Terraform!&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s">"data.foo_bar.this"</span><span class="p">,</span><span class="w"> </span><span class="s">"message"</span><span class="p">,</span><span class="w"> </span><span class="s">"Hello, Terraform!"</span><span class="p">,</span>
 <span class="w">                    </span><span class="p">),</span>
 <span class="w">                </span><span class="p">),</span>
 <span class="w">            </span><span class="p">},</span>

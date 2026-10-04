@@ -34315,10 +34315,10 @@
 <span class="c1">    # awsプロバイダを定義</span>
 <span class="w">    </span><span class="nb">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">      # グローバルソースアドレスを指定</span>
-<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hashicorp/aws&quot;</span>
+<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"hashicorp/aws"</span>
 
 <span class="c1">      # プロバイダーのバージョン変更時は initを実行</span>
-<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;3.0&quot;</span>
+<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"3.0"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -34340,8 +34340,8 @@
 <span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 
 <span class="c1">  # ローカルマシンで管理するように設定</span>
-<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;local&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${path.module}/terraform.tfstate&quot;</span>
+<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">"local"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"${path.module}/terraform.tfstate"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -34350,30 +34350,30 @@
 <span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 
 <span class="c1">  # Amazon S3で管理するように設定</span>
-<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;s3&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">"s3"</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">    # バケット名</span>
-<span class="w">    </span><span class="na">bucket</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prd-foo-tfstate-bucket&quot;</span>
+<span class="w">    </span><span class="na">bucket</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">"prd-foo-tfstate-bucket"</span>
 <span class="c1">    # tfstateファイル名</span>
-<span class="w">    </span><span class="na">key</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform.tfstate&quot;</span>
-<span class="w">    </span><span class="na">region</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="w">    </span><span class="na">key</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform.tfstate"</span>
+<span class="w">    </span><span class="na">region</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span>
 <span class="c1">    # 資格情報ファイルへのパス</span>
-<span class="w">    </span><span class="na">shared_credentials_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;$HOME/.aws/credentials&quot;</span>
+<span class="w">    </span><span class="na">shared_credentials_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"$HOME/.aws/credentials"</span>
 <span class="c1">    # 資格情報ファイルのプロファイル名</span>
-<span class="w">    </span><span class="na">profile</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bar-profile&quot;</span>
+<span class="w">    </span><span class="na">profile</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">"bar-profile"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>どのユーザーもバケット内のオブジェクトを削除できないように、ポリシーを設定しておくとよい。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2008-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2008-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Deny&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;s3:DeleteObject&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:s3:::prd-foo-tfstate-bucket/*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Deny"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"s3:DeleteObject"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:s3:::prd-foo-tfstate-bucket/*"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
@@ -34387,7 +34387,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
 
 <span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">required_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.3.0&quot;</span>
+<span class="w">  </span><span class="na">required_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1.3.0"</span>
 
 <span class="w">  </span><span class="nb">required_providers</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">    # awsプロバイダを定義</span>
@@ -34396,17 +34396,17 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;s3&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">"s3"</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">    # 何らかの設定</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1"># awsプロバイダを指定</span>
-<span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">provider</span><span class="w"> </span><span class="nv">"aws"</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">  # アクセスキー、シークレットアクセスキー、はハードコーディングしない。</span>
 
 <span class="c1">  # デフォルト値とするリージョン名</span>
-<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
@@ -34418,20 +34418,20 @@
 <span class="p">}</span>
 
 <span class="c1"># awsプロバイダを指定</span>
-<span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">provider</span><span class="w"> </span><span class="nv">"aws"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="c1">  # 出力</span>
 <span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.region</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># リージョンは変数として定義しておく</span>
-<span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
 
 <span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">required_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.3.0&quot;</span>
+<span class="w">  </span><span class="na">required_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1.3.0"</span>
 
 <span class="w">  </span><span class="nb">required_providers</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">    # gcpプロバイダを定義</span>
@@ -34440,47 +34440,47 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;gcs&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">"gcs"</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">    # 何らかの設定</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1"># gcpプロバイダを指定</span>
-<span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;google&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">provider</span><span class="w"> </span><span class="nv">"google"</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">  # アクセスキー、シークレットアクセスキー、はハードコーディングしない。</span>
 
 <span class="c1">  # デフォルト値とするリージョン名</span>
-<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;asia-northeast1&quot;</span>
+<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"asia-northeast1"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <p>PagerDuty の状態を Amazon S3 バケットで管理する場合。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;s3&quot;</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">"s3"</span><span class="w"> </span><span class="p">{}</span>
 
-<span class="w">  </span><span class="na">required_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.3.0&quot;</span>
+<span class="w">  </span><span class="na">required_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1.3.0"</span>
 
 <span class="w">  </span><span class="nb">required_providers</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nb">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hashicorp/aws&quot;</span>
-<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&gt;= 3.19.0&quot;</span>
+<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"hashicorp/aws"</span>
+<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&gt;= 3.19.0"</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nb">pagerduty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pagerduty/pagerduty&quot;</span>
-<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&gt;= 2.0&quot;</span>
+<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"pagerduty/pagerduty"</span>
+<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&gt;= 2.0"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="kr">provider</span><span class="w"> </span><span class="nv">"aws"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span>
 <span class="p">}</span>
 
-<span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;pagerduty&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;PagerDutyのトークン&gt;&quot;</span>
+<span class="kr">provider</span><span class="w"> </span><span class="nv">"pagerduty"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;PagerDutyのトークン&gt;"</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="providers">▼ マルチ providers とは<a class="headerlink" href="#providers" title="Permanent link">&para;</a></h4>
@@ -34489,25 +34489,25 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
 
 <span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">required_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.3.0&quot;</span>
+<span class="w">  </span><span class="na">required_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1.3.0"</span>
 
 <span class="w">  </span><span class="nb">required_providers</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nb">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hashicorp/aws&quot;</span>
-<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;3.0&quot;</span>
+<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"hashicorp/aws"</span>
+<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"3.0"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">provider</span><span class="w"> </span><span class="nv">"aws"</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">  # デフォルト値とするリージョン</span>
-<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span>
 <span class="p">}</span>
 
-<span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">provider</span><span class="w"> </span><span class="nv">"aws"</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">  # 別リージョン</span>
-<span class="w">  </span><span class="na">alias</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ue1&quot;</span>
-<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
+<span class="w">  </span><span class="na">alias</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"ue1"</span>
+<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"us-east-1"</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="default_tags">▼ default_tags<a class="headerlink" href="#default_tags" title="Permanent link">&para;</a></h4>
@@ -34516,14 +34516,14 @@
 <div class="highlight"><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nb">required_providers</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nb">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hashicorp/aws&quot;</span>
-<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;4.67.0&quot;</span>
+<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"hashicorp/aws"</span>
+<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"4.67.0"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="kr">provider</span><span class="w"> </span><span class="nv">"aws"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span>
 
 <span class="w">  </span><span class="nb">default_tags</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">local.tags</span>
@@ -34531,15 +34531,15 @@
 <span class="p">}</span>
 
 <span class="nb">locals</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
+<span class="w">  </span><span class="na">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span>
 <span class="c1">  # プロダクト名</span>
-<span class="w">  </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span>
+<span class="w">  </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"bar"</span>
 
 <span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">Service</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">local.service</span>
 <span class="w">    </span><span class="na">Env</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">var.env</span>
 <span class="c1">    # 管理するリポジトリ</span>
-<span class="w">    </span><span class="na">ManagedBy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://github.com/hiroki-hasegawa/foo-terraform.git&quot;</span>
+<span class="w">    </span><span class="na">ManagedBy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"https://github.com/hiroki-hasegawa/foo-terraform.git"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -34548,14 +34548,14 @@
 <div class="highlight"><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nb">required_providers</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nb">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hashicorp/aws&quot;</span>
-<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;4.67.0&quot;</span>
+<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"hashicorp/aws"</span>
+<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"4.67.0"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="kr">provider</span><span class="w"> </span><span class="nv">"aws"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span>
 
 <span class="w">  </span><span class="nb">default_tags</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">local.tags</span>
@@ -34563,21 +34563,21 @@
 <span class="p">}</span>
 
 <span class="c1"># デフォルトタグを無効化したいリソースでは、こちらのプロバイダーを設定する</span>
-<span class="kr">provider</span><span class="w"> </span><span class="nv">&quot;aws&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
-<span class="w">  </span><span class="na">alias</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;disable_default_tags&quot;</span>
+<span class="kr">provider</span><span class="w"> </span><span class="nv">"aws"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span>
+<span class="w">  </span><span class="na">alias</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"disable_default_tags"</span>
 <span class="p">}</span>
 
 <span class="c1"># デフォルトタグあり</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_s3_bucket&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-bucket&quot;</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_s3_bucket"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-bucket"</span>
 <span class="p">}</span>
 
 <span class="c1"># デフォルトタグ無し</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_s3_bucket&quot;</span><span class="w"> </span><span class="nv">&quot;bar&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_s3_bucket"</span><span class="w"> </span><span class="nv">"bar"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws.disable_default_tags</span>
 
-<span class="w">  </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bar-bucket&quot;</span>
+<span class="w">  </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"bar-bucket"</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -34590,8 +34590,8 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
 
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;route53_foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../modules/route53&quot;</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"route53_foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"../modules/route53"</span>
 
 <span class="w">  </span><span class="nb">providers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws.ue1</span>
@@ -34607,18 +34607,18 @@
 <span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Amazon Route 53</span>
 <span class="c1"># ---------------------------------------------</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_acm_certificate&quot;</span><span class="w"> </span><span class="nv">&quot;example&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_acm_certificate"</span><span class="w"> </span><span class="nv">"example"</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">  # CloudFrontの仕様のため、us-east-1リージョンでサーバー証明書を作成します。</span>
 <span class="w">  </span><span class="na">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">aws</span>
 
-<span class="w">  </span><span class="na">domain_name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example.com&quot;</span>
+<span class="w">  </span><span class="na">domain_name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"example.com"</span>
 <span class="w">  </span><span class="na">subject_alternative_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;*.example.com&quot;</span>
+<span class="w">    </span><span class="s2">"*.example.com"</span>
 <span class="w">  </span><span class="p">]</span>
-<span class="w">  </span><span class="na">validation_method</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;DNS&quot;</span>
+<span class="w">  </span><span class="na">validation_method</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">"DNS"</span>
 
 <span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prd-foo-cert&quot;</span>
+<span class="w">    </span><span class="na">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"prd-foo-cert"</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
@@ -34669,9 +34669,9 @@
 <span class="c1"># ---------------------------------------------</span>
 <span class="c1"># ALB</span>
 <span class="c1"># ---------------------------------------------</span>
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;alb_foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"alb_foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">  # ローカルモジュールを参照する。</span>
-<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../modules/alb&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"../modules/alb"</span>
 
 <span class="c1">  # ローカルモジュールに、他のローカルモジュールのoutputブロックを渡す。</span>
 <span class="w">  </span><span class="na">acm_certificate_api_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.acm.acm_certificate_api_arn</span>
@@ -34687,10 +34687,10 @@
 <span class="c1"># ---------------------------------------------</span>
 <span class="c1"># ALB</span>
 <span class="c1"># ---------------------------------------------</span>
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;alb_foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"alb_foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">  # リモートモジュールを参照する。</span>
 <span class="c1">  # SSHの場合</span>
-<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git"</span>
 
 <span class="c1">  # ローカルモジュールに、他のリモートモジュールのoutputブロックを渡す。</span>
 <span class="w">  </span><span class="na">acm_certificate_api_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.acm.acm_certificate_api_arn</span>
@@ -34703,10 +34703,10 @@
 <span class="c1"># ---------------------------------------------</span>
 <span class="c1"># ALB</span>
 <span class="c1"># ---------------------------------------------</span>
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;alb_foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"alb_foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">  # リモートモジュールを参照する。</span>
 <span class="c1">  # SSHの場合</span>
-<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git//module/sub-directory&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git//module/sub-directory"</span>
 
 <span class="c1">  # ローカルモジュールに、他のリモートモジュールのoutputブロックを渡す。</span>
 <span class="w">  </span><span class="na">acm_certificate_api_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.acm.acm_certificate_api_arn</span>
@@ -34724,10 +34724,10 @@
 <span class="c1"># ---------------------------------------------</span>
 <span class="c1"># ALB</span>
 <span class="c1"># ---------------------------------------------</span>
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;alb_foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"alb_foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">  # リモートモジュールを参照する</span>
 <span class="c1">  # タグを指定する</span>
-<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git?ref=v1.2.0&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git?ref=v1.2.0"</span>
 
 <span class="c1">  # ローカルモジュールに、他のリモートモジュールのoutputブロックを渡す</span>
 <span class="w">  </span><span class="na">acm_certificate_api_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.acm.acm_certificate_api_arn</span>
@@ -34744,10 +34744,10 @@
 <span class="c1"># ---------------------------------------------</span>
 <span class="c1"># ALB</span>
 <span class="c1"># ---------------------------------------------</span>
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;alb_foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"alb_foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">  # リモートモジュールを参照する</span>
 <span class="c1">  # ブランチを指定する</span>
-<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git?ref=foo_branch&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git?ref=foo_branch"</span>
 
 <span class="c1">  # ローカルモジュールに、他のリモートモジュールのoutputブロックを渡す</span>
 <span class="w">  </span><span class="na">acm_certificate_api_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.acm.acm_certificate_api_arn</span>
@@ -34764,10 +34764,10 @@
 <span class="c1"># ---------------------------------------------</span>
 <span class="c1"># ALB</span>
 <span class="c1"># ---------------------------------------------</span>
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;alb_foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"alb_foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="c1">  # リモートモジュールを参照する</span>
 <span class="c1">  # コミットIDを指定する</span>
-<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git?ref=51d462976d84fdea54b47d80dcabbf680badcdb8&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git?ref=51d462976d84fdea54b47d80dcabbf680badcdb8"</span>
 
 <span class="c1">  # ローカルモジュールに、他のリモートモジュールのoutputブロックを渡す</span>
 <span class="w">  </span><span class="na">acm_certificate_api_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.acm.acm_certificate_api_arn</span>
@@ -34787,8 +34787,8 @@
 </ul>
 </blockquote>
 <h4 id="-var-var-file">▼ <code>-var</code>、<code>-var-file</code><a class="headerlink" href="#-var-var-file" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span>-var<span class="o">=</span><span class="s2">&quot;foo=foo&quot;</span>
-$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span>-var<span class="o">=</span><span class="s2">&quot;foo=foo&quot;</span><span class="w"> </span>-var<span class="o">=</span><span class="s2">&quot;bar=bar&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span>-var<span class="o">=</span><span class="s2">"foo=foo"</span>
+$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span>-var<span class="o">=</span><span class="s2">"foo=foo"</span><span class="w"> </span>-var<span class="o">=</span><span class="s2">"bar=bar"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span>-var-file<span class="o">=</span>foo.tfvars
 </code></pre></div>
@@ -34807,13 +34807,13 @@ $<span class="w"> </span>terraform<span class="w"> </span>plan
 <span class="c1"># Variables RDS</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="nb">rds_parameter_group_values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">time_zone</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;asia/tokyo&quot;</span>
-<span class="w">  </span><span class="na">character_set_client</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;utf8mb4&quot;</span>
-<span class="w">  </span><span class="na">character_set_connection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;utf8mb4&quot;</span>
-<span class="w">  </span><span class="na">character_set_database</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;utf8mb4&quot;</span>
-<span class="w">  </span><span class="na">character_set_results</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;utf8mb4&quot;</span>
-<span class="w">  </span><span class="na">character_set_server</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;utf8mb4&quot;</span>
-<span class="w">  </span><span class="na">server_audit_events</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;connect,query,query_dcl,query_ddl,query_dml,table&quot;</span>
+<span class="w">  </span><span class="na">time_zone</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="s2">"asia/tokyo"</span>
+<span class="w">  </span><span class="na">character_set_client</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"utf8mb4"</span>
+<span class="w">  </span><span class="na">character_set_connection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"utf8mb4"</span>
+<span class="w">  </span><span class="na">character_set_database</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"utf8mb4"</span>
+<span class="w">  </span><span class="na">character_set_results</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"utf8mb4"</span>
+<span class="w">  </span><span class="na">character_set_server</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"utf8mb4"</span>
+<span class="w">  </span><span class="na">server_audit_events</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">"connect,query,query_dcl,query_ddl,query_dml,table"</span>
 <span class="w">  </span><span class="na">server_audit_logging</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
 <span class="w">  </span><span class="na">server_audit_logs_upload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
 <span class="w">  </span><span class="na">general_log</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
@@ -34824,23 +34824,23 @@ $<span class="w"> </span>terraform<span class="w"> </span>plan
 <span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Variables VPC</span>
 <span class="c1"># ---------------------------------------------</span>
-<span class="nb">vpc_availability_zones</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;a&quot;, c = &quot;c&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="na">vpc_cidr</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*.*.*.*/23&quot;</span>
-<span class="nb">vpc_subnet_private_datastore_cidrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*.*.*.*/27&quot;, c = &quot;*.*.*.*/27&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="nb">vpc_subnet_private_app_cidrs</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*.*.*.*/25&quot;, c = &quot;*.*.*.*/25&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="nb">vpc_subnet_public_cidrs</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*.*.*.*/27&quot;, c = &quot;*.*.*.*/27&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="nb">vpc_availability_zones</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"a", c = "c"</span><span class="w"> </span><span class="p">}</span>
+<span class="na">vpc_cidr</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="s2">"*.*.*.*/23"</span>
+<span class="nb">vpc_subnet_private_datastore_cidrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*.*.*.*/27", c = "*.*.*.*/27"</span><span class="w"> </span><span class="p">}</span>
+<span class="nb">vpc_subnet_private_app_cidrs</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*.*.*.*/25", c = "*.*.*.*/25"</span><span class="w"> </span><span class="p">}</span>
+<span class="nb">vpc_subnet_public_cidrs</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*.*.*.*/27", c = "*.*.*.*/27"</span><span class="w"> </span><span class="p">}</span>
 
 <span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Variables WAF</span>
 <span class="c1"># ---------------------------------------------</span>
 <span class="na">waf_allowed_global_ip_addresses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">  </span><span class="s2">&quot;*.*.*.*/32&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;*.*.*.*/32&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"*.*.*.*/32"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"*.*.*.*/32"</span><span class="p">,</span>
 <span class="p">]</span>
 
 <span class="na">waf_blocked_user_agents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">  </span><span class="s2">&quot;baz-agent&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;qux-agent&quot;</span>
+<span class="w">  </span><span class="s2">"baz-agent"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"qux-agent"</span>
 <span class="p">]</span>
 </code></pre></div>
 <h4 id="tf_var_">▼ <code>TF_VAR_&lt;環境変数名&gt;</code><a class="headerlink" href="#tf_var_" title="Permanent link">&para;</a></h4>

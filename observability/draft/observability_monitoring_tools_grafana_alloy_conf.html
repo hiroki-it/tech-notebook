@@ -33563,8 +33563,8 @@
 <p><br></p>
 <h2 id="01-discovery">01. discovery<a class="headerlink" href="#01-discovery" title="Permanent link">&para;</a></h2>
 <h3 id="discoverykubernetes">discovery.kubernetes<a class="headerlink" href="#discoverykubernetes" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>discovery.kubernetes<span class="w"> </span><span class="s2">&quot;pod&quot;</span><span class="w"> </span><span class="o">{</span>
-<span class="w">      </span><span class="nv">role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pod&quot;</span>
+<div class="highlight"><pre><span></span><code>discovery.kubernetes<span class="w"> </span><span class="s2">"pod"</span><span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="nv">role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"pod"</span>
 <span class="o">}</span>
 </code></pre></div>
 <blockquote>
@@ -33574,56 +33574,56 @@
 </blockquote>
 <p><br></p>
 <h3 id="discoveryrelabel">discovery.relabel<a class="headerlink" href="#discoveryrelabel" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>discovery.relabel<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span><span class="w"> </span><span class="o">{</span>
+<div class="highlight"><pre><span></span><code>discovery.relabel<span class="w"> </span><span class="s2">"pod_logs"</span><span class="w"> </span><span class="o">{</span>
 
 <span class="w">  </span><span class="nv">targets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>discovery.kubernetes.pod.targets
 
 <span class="w">  </span>rule<span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;__meta_kubernetes_namespace&quot;</span><span class="o">]</span>
-<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;replace&quot;</span>
-<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;namespace&quot;</span>
+<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">"__meta_kubernetes_namespace"</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"replace"</span>
+<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"namespace"</span>
 <span class="w">  </span><span class="o">}</span>
 
 <span class="w">  </span>rule<span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;__meta_kubernetes_pod_name&quot;</span><span class="o">]</span>
-<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;replace&quot;</span>
-<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pod&quot;</span>
+<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">"__meta_kubernetes_pod_name"</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"replace"</span>
+<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"pod"</span>
 <span class="w">  </span><span class="o">}</span>
 
 <span class="w">  </span>rule<span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;__meta_kubernetes_pod_container_name&quot;</span><span class="o">]</span>
-<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;replace&quot;</span>
-<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;container&quot;</span>
+<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">"__meta_kubernetes_pod_container_name"</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"replace"</span>
+<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"container"</span>
 <span class="w">  </span><span class="o">}</span>
 
 <span class="w">  </span>rule<span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;__meta_kubernetes_pod_label_app&quot;</span><span class="o">]</span>
-<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;replace&quot;</span>
-<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;app&quot;</span>
+<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">"__meta_kubernetes_pod_label_app"</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"replace"</span>
+<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"app"</span>
 <span class="w">  </span><span class="o">}</span>
 
 <span class="w">  </span>rule<span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;__meta_kubernetes_namespace&quot;</span>,<span class="w"> </span><span class="s2">&quot;__meta_kubernetes_pod_container_name&quot;</span><span class="o">]</span>
-<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;replace&quot;</span>
-<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;job&quot;</span>
-<span class="w">    </span><span class="nv">separator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/&quot;</span>
-<span class="w">    </span><span class="nv">replacement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">"__meta_kubernetes_namespace"</span>,<span class="w"> </span><span class="s2">"__meta_kubernetes_pod_container_name"</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"replace"</span>
+<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"job"</span>
+<span class="w">    </span><span class="nv">separator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/"</span>
+<span class="w">    </span><span class="nv">replacement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
 <span class="w">  </span><span class="o">}</span>
 
 <span class="w">  </span>rule<span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;__meta_kubernetes_pod_uid&quot;</span>,<span class="w"> </span><span class="s2">&quot;__meta_kubernetes_pod_container_name&quot;</span><span class="o">]</span>
-<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;replace&quot;</span>
-<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;__path__&quot;</span>
-<span class="w">    </span><span class="nv">separator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/&quot;</span>
-<span class="w">    </span><span class="nv">replacement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/var/log/pods/*</span><span class="nv">$1</span><span class="s2">/*.log&quot;</span>
+<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">"__meta_kubernetes_pod_uid"</span>,<span class="w"> </span><span class="s2">"__meta_kubernetes_pod_container_name"</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"replace"</span>
+<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"__path__"</span>
+<span class="w">    </span><span class="nv">separator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/"</span>
+<span class="w">    </span><span class="nv">replacement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/var/log/pods/*</span><span class="nv">$1</span><span class="s2">/*.log"</span>
 <span class="w">  </span><span class="o">}</span>
 
 <span class="w">  </span>rule<span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;__meta_kubernetes_pod_container_id&quot;</span><span class="o">]</span>
-<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;replace&quot;</span>
-<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;container_runtime&quot;</span>
-<span class="w">    </span><span class="nv">regex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;^(\\S+):\\/\\/.+</span>$<span class="s2">&quot;</span>
-<span class="w">    </span><span class="nv">replacement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nv">source_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">"__meta_kubernetes_pod_container_id"</span><span class="o">]</span>
+<span class="w">    </span><span class="nv">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"replace"</span>
+<span class="w">    </span><span class="nv">target_label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"container_runtime"</span>
+<span class="w">    </span><span class="nv">regex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"^(\\S+):\\/\\/.+</span>$<span class="s2">"</span>
+<span class="w">    </span><span class="nv">replacement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
 <span class="w">  </span><span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
@@ -33636,7 +33636,7 @@
 <p><br></p>
 <h2 id="02-local">02. local<a class="headerlink" href="#02-local" title="Permanent link">&para;</a></h2>
 <h3 id="localfile_match">local.file_match<a class="headerlink" href="#localfile_match" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>local.file_match<span class="w"> </span><span class="s2">&quot;kubernetes_pods&quot;</span><span class="w"> </span><span class="o">{</span>
+<div class="highlight"><pre><span></span><code>local.file_match<span class="w"> </span><span class="s2">"kubernetes_pods"</span><span class="w"> </span><span class="o">{</span>
 <span class="w">    </span><span class="nv">path_targets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>discovery.relabel.kubernetes_pods.output
 <span class="o">}</span>
 </code></pre></div>
@@ -33648,17 +33648,17 @@
 <p><br></p>
 <h2 id="03-loki">03. loki<a class="headerlink" href="#03-loki" title="Permanent link">&para;</a></h2>
 <h3 id="lokiprocess">loki.process<a class="headerlink" href="#lokiprocess" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>loki.process<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span><span class="w"> </span><span class="o">{</span>
+<div class="highlight"><pre><span></span><code>loki.process<span class="w"> </span><span class="s2">"pod_logs"</span><span class="w"> </span><span class="o">{</span>
 <span class="w">  </span>stage.static_labels<span class="w"> </span><span class="o">{</span>
 <span class="w">      </span><span class="nv">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span>
-<span class="w">        </span><span class="nv">cluster</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-cluster&quot;</span>,
+<span class="w">        </span><span class="nv">cluster</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-cluster"</span>,
 <span class="w">      </span><span class="o">}</span>
 <span class="w">  </span><span class="o">}</span>
 
 <span class="w">  </span><span class="nv">forward_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>loki.write.grafana_loki.receiver<span class="o">]</span>
 <span class="o">}</span>
 
-loki.source.kubernetes<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span><span class="w"> </span><span class="o">{</span>
+loki.source.kubernetes<span class="w"> </span><span class="s2">"pod_logs"</span><span class="w"> </span><span class="o">{</span>
 <span class="w">  </span><span class="nv">targets</span><span class="w">    </span><span class="o">=</span><span class="w"> </span>discovery.relabel.pod_logs.output
 <span class="w">  </span><span class="nv">forward_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>loki.process.pod_logs.receiver<span class="o">]</span>
 <span class="o">}</span>
@@ -33670,10 +33670,10 @@ loki.source.kubernetes<span class="w"> </span><span class="s2">&quot;pod_logs&qu
 </blockquote>
 <p><br></p>
 <h3 id="lokisourcefile">loki.source.file<a class="headerlink" href="#lokisourcefile" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>loki.source.file<span class="w"> </span><span class="s2">&quot;kubernetes_pods&quot;</span><span class="w"> </span><span class="o">{</span>
+<div class="highlight"><pre><span></span><code>loki.source.file<span class="w"> </span><span class="s2">"kubernetes_pods"</span><span class="w"> </span><span class="o">{</span>
 <span class="w">    </span><span class="nv">targets</span><span class="w">               </span><span class="o">=</span><span class="w"> </span>local.file_match.kubernetes_pods.targets
 <span class="w">    </span><span class="nv">forward_to</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>loki.process.kubernetes_pods.receiver<span class="o">]</span>
-<span class="w">    </span><span class="nv">legacy_positions_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/run/promtail/positions.yaml&quot;</span>
+<span class="w">    </span><span class="nv">legacy_positions_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/run/promtail/positions.yaml"</span>
 <span class="o">}</span>
 </code></pre></div>
 <blockquote>
@@ -33683,15 +33683,15 @@ loki.source.kubernetes<span class="w"> </span><span class="s2">&quot;pod_logs&qu
 </blockquote>
 <p><br></p>
 <h3 id="lokisourcekubernetes">loki.source.kubernetes<a class="headerlink" href="#lokisourcekubernetes" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>loki.source.kubernetes<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span><span class="w"> </span><span class="o">{</span>
+<div class="highlight"><pre><span></span><code>loki.source.kubernetes<span class="w"> </span><span class="s2">"pod_logs"</span><span class="w"> </span><span class="o">{</span>
 <span class="w">  </span><span class="nv">targets</span><span class="w">    </span><span class="o">=</span><span class="w"> </span>discovery.relabel.pod_logs.output
 <span class="w">  </span><span class="nv">forward_to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>loki.process.pod_logs.receiver<span class="o">]</span>
 <span class="o">}</span>
 
-loki.process<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span><span class="w"> </span><span class="o">{</span>
+loki.process<span class="w"> </span><span class="s2">"pod_logs"</span><span class="w"> </span><span class="o">{</span>
 <span class="w">  </span>stage.static_labels<span class="w"> </span><span class="o">{</span>
 <span class="w">      </span><span class="nv">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span>
-<span class="w">        </span><span class="nv">cluster</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-cluster&quot;</span>,
+<span class="w">        </span><span class="nv">cluster</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-cluster"</span>,
 <span class="w">      </span><span class="o">}</span>
 <span class="w">  </span><span class="o">}</span>
 
@@ -33705,9 +33705,9 @@ loki.process<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span>
 </blockquote>
 <p><br></p>
 <h3 id="lokiwrite">loki.write<a class="headerlink" href="#lokiwrite" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>loki.write<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span><span class="w"> </span><span class="o">{</span>
+<div class="highlight"><pre><span></span><code>loki.write<span class="w"> </span><span class="s2">"pod_logs"</span><span class="w"> </span><span class="o">{</span>
 <span class="w">  </span>endpoint<span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="nv">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;http://grafana-loki.foo-namespace.svc.cluster.local:3100/loki/api/v1/push&quot;</span>
+<span class="w">    </span><span class="nv">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"http://grafana-loki.foo-namespace.svc.cluster.local:3100/loki/api/v1/push"</span>
 <span class="w">  </span><span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
@@ -33719,9 +33719,9 @@ loki.process<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span>
 <p><br></p>
 <h2 id="04-otelcol">04. otelcol<a class="headerlink" href="#04-otelcol" title="Permanent link">&para;</a></h2>
 <h3 id="otelcolexporterotlp">otelcol.exporter.otlp<a class="headerlink" href="#otelcolexporterotlp" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>otelcol.exporter.otlp<span class="w"> </span><span class="s2">&quot;trace&quot;</span><span class="w"> </span><span class="o">{</span>
+<div class="highlight"><pre><span></span><code>otelcol.exporter.otlp<span class="w"> </span><span class="s2">"trace"</span><span class="w"> </span><span class="o">{</span>
 <span class="w">  </span>client<span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="nv">endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;granafa-tempo.granafa-tempo.svc.cluster.local:4317&quot;</span>
+<span class="w">    </span><span class="nv">endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"granafa-tempo.granafa-tempo.svc.cluster.local:4317"</span>
 <span class="w">    </span>tls<span class="w"> </span><span class="o">{</span>
 <span class="w">      </span><span class="nv">insecure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
 <span class="w">    </span><span class="o">}</span>
@@ -33730,7 +33730,7 @@ loki.process<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="otelcolreceiverotlp">otelcol.receiver.otlp<a class="headerlink" href="#otelcolreceiverotlp" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>otelcol.receiver.otlp<span class="w"> </span><span class="s2">&quot;trace&quot;</span><span class="w"> </span><span class="o">{</span>
+<div class="highlight"><pre><span></span><code>otelcol.receiver.otlp<span class="w"> </span><span class="s2">"trace"</span><span class="w"> </span><span class="o">{</span>
 <span class="w">  </span>output<span class="w"> </span><span class="o">{</span>
 <span class="w">    </span><span class="nv">traces</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>otelcol.processor.k8sattributes.trace.input<span class="o">]</span>
 <span class="w">  </span><span class="o">}</span>
@@ -33738,12 +33738,12 @@ loki.process<span class="w"> </span><span class="s2">&quot;pod_logs&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="otelcolprocessork8sattributes">otelcol.processor.k8sattributes<a class="headerlink" href="#otelcolprocessork8sattributes" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>otelcol.processor.k8sattributes<span class="w"> </span><span class="s2">&quot;trace&quot;</span><span class="w"> </span><span class="o">{</span>
+<div class="highlight"><pre><span></span><code>otelcol.processor.k8sattributes<span class="w"> </span><span class="s2">"trace"</span><span class="w"> </span><span class="o">{</span>
 <span class="w">  </span>extract<span class="w"> </span><span class="o">{</span>
 <span class="w">    </span><span class="nv">metadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span>
-<span class="w">      </span><span class="s2">&quot;k8s.namespace.name&quot;</span>,
-<span class="w">      </span><span class="s2">&quot;k8s.pod.name&quot;</span>,
-<span class="w">      </span><span class="s2">&quot;k8s.container.name&quot;</span>,
+<span class="w">      </span><span class="s2">"k8s.namespace.name"</span>,
+<span class="w">      </span><span class="s2">"k8s.pod.name"</span>,
+<span class="w">      </span><span class="s2">"k8s.container.name"</span>,
 <span class="w">    </span><span class="o">]</span>
 <span class="w">  </span><span class="o">}</span>
 

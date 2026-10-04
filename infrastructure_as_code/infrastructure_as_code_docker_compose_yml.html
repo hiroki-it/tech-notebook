@@ -34695,7 +34695,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">web</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">expose</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;80&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"80"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="extra_host"><code>extra_host</code><a class="headerlink" href="#extra_host" title="Permanent link">&para;</a></h3>
@@ -34739,14 +34739,14 @@ ff02::2<span class="w"> </span>ip6-allrouters
 <span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">test</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">[</span>
-<span class="w">          </span><span class="s">&quot;CMD&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;mysqladmin&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;ping&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;-h&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;localhost&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;-u&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;root&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">          </span><span class="s">&quot;-p$MYSQL_ROOT_PASSWORD&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"CMD"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"mysqladmin"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"ping"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"-h"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"localhost"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"-u"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"root"</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">"-p$MYSQL_ROOT_PASSWORD"</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="p p-Indicator">]</span>
 <span class="w">      </span><span class="c1"># 頻度が高すぎると MySQL の起動前にヘルスチェック処理が終わってしまうため、10 秒くらいがちょうどいい</span>
 <span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
@@ -34833,7 +34833,7 @@ ff02::2<span class="w"> </span>ip6-allrouters
 <span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
 <span class="w">      </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./docker/fluentd/Dockerfile</span>
 <span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;24224:24224&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"24224:24224"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="networks"><code>networks</code><a class="headerlink" href="#networks" title="Permanent link">&para;</a></h3>
@@ -34851,32 +34851,32 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 
 <span class="o">[</span>
 <span class="w">    </span><span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;Name&quot;</span>:<span class="w"> </span><span class="s2">&quot;foo-network&quot;</span>,
+<span class="w">        </span><span class="s2">"Name"</span>:<span class="w"> </span><span class="s2">"foo-network"</span>,
 
 <span class="w">        </span>...
 
-<span class="w">        </span><span class="s2">&quot;Containers&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">            </span><span class="s2">&quot;e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">                </span><span class="s2">&quot;Name&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;コンテナ名&gt;&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;EndpointID&quot;</span>:<span class="w"> </span><span class="s2">&quot;ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;MacAddress&quot;</span>:<span class="w"> </span><span class="s2">&quot;**:**:**:**:**:**&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;IPv4Address&quot;</span>:<span class="w"> </span><span class="s2">&quot;*.*.*.*/*&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;IPv6Address&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>
-<span class="w">            </span><span class="s2">&quot;33632947e4210126874a7c26dce281642a6040e1acbebbdbbe8ba333c281dff8&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">                </span><span class="s2">&quot;Name&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;コンテナ名&gt;&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;EndpointID&quot;</span>:<span class="w"> </span><span class="s2">&quot;ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;MacAddress&quot;</span>:<span class="w"> </span><span class="s2">&quot;**:**:**:**:**:**&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;IPv4Address&quot;</span>:<span class="w"> </span><span class="s2">&quot;*.*.*.*/*&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;IPv6Address&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="s2">"Containers"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">"e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">                </span><span class="s2">"Name"</span>:<span class="w"> </span><span class="s2">"&lt;コンテナ名&gt;"</span>,
+<span class="w">                </span><span class="s2">"EndpointID"</span>:<span class="w"> </span><span class="s2">"ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409"</span>,
+<span class="w">                </span><span class="s2">"MacAddress"</span>:<span class="w"> </span><span class="s2">"**:**:**:**:**:**"</span>,
+<span class="w">                </span><span class="s2">"IPv4Address"</span>:<span class="w"> </span><span class="s2">"*.*.*.*/*"</span>,
+<span class="w">                </span><span class="s2">"IPv6Address"</span>:<span class="w"> </span><span class="s2">""</span>
+<span class="w">            </span><span class="s2">"33632947e4210126874a7c26dce281642a6040e1acbebbdbbe8ba333c281dff8"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">                </span><span class="s2">"Name"</span>:<span class="w"> </span><span class="s2">"&lt;コンテナ名&gt;"</span>,
+<span class="w">                </span><span class="s2">"EndpointID"</span>:<span class="w"> </span><span class="s2">"ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409"</span>,
+<span class="w">                </span><span class="s2">"MacAddress"</span>:<span class="w"> </span><span class="s2">"**:**:**:**:**:**"</span>,
+<span class="w">                </span><span class="s2">"IPv4Address"</span>:<span class="w"> </span><span class="s2">"*.*.*.*/*"</span>,
+<span class="w">                </span><span class="s2">"IPv6Address"</span>:<span class="w"> </span><span class="s2">""</span>
 <span class="w">            </span><span class="o">}</span>
 <span class="w">        </span><span class="o">}</span>,
 
 <span class="w">        </span>...
 
-<span class="w">        </span><span class="s2">&quot;Labels&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">            </span><span class="s2">&quot;com.docker.compose.network&quot;</span>:<span class="w"> </span><span class="s2">&quot;foo-network&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;com.docker.compose.project&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;プロジェクト名&gt;&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;com.docker.compose.version&quot;</span>:<span class="w"> </span><span class="s2">&quot;1.29.0&quot;</span>
+<span class="w">        </span><span class="s2">"Labels"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">"com.docker.compose.network"</span>:<span class="w"> </span><span class="s2">"foo-network"</span>,
+<span class="w">            </span><span class="s2">"com.docker.compose.project"</span>:<span class="w"> </span><span class="s2">"&lt;プロジェクト名&gt;"</span>,
+<span class="w">            </span><span class="s2">"com.docker.compose.version"</span>:<span class="w"> </span><span class="s2">"1.29.0"</span>
 <span class="w">        </span><span class="o">}</span>
 <span class="w">    </span><span class="o">}</span>
 <span class="o">]</span>
@@ -34892,32 +34892,32 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 
 <span class="o">[</span>
 <span class="w">    </span><span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;Name&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;プロジェクト名&gt;_default&quot;</span>,
+<span class="w">        </span><span class="s2">"Name"</span>:<span class="w"> </span><span class="s2">"&lt;プロジェクト名&gt;_default"</span>,
 
 <span class="w">        </span>...
 
-<span class="w">        </span><span class="s2">&quot;Containers&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">            </span><span class="s2">&quot;e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">                </span><span class="s2">&quot;Name&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;コンテナ名&gt;&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;EndpointID&quot;</span>:<span class="w"> </span><span class="s2">&quot;ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;MacAddress&quot;</span>:<span class="w"> </span><span class="s2">&quot;**:**:**:**:**:**&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;IPv4Address&quot;</span>:<span class="w"> </span><span class="s2">&quot;*.*.*.*/*&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;IPv6Address&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>
-<span class="w">            </span><span class="s2">&quot;33632947e4210126874a7c26dce281642a6040e1acbebbdbbe8ba333c281dff8&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">                </span><span class="s2">&quot;Name&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;コンテナ名&gt;&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;EndpointID&quot;</span>:<span class="w"> </span><span class="s2">&quot;ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;MacAddress&quot;</span>:<span class="w"> </span><span class="s2">&quot;**:**:**:**:**:**&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;IPv4Address&quot;</span>:<span class="w"> </span><span class="s2">&quot;*.*.*.*/*&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;IPv6Address&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="s2">"Containers"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">"e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">                </span><span class="s2">"Name"</span>:<span class="w"> </span><span class="s2">"&lt;コンテナ名&gt;"</span>,
+<span class="w">                </span><span class="s2">"EndpointID"</span>:<span class="w"> </span><span class="s2">"ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409"</span>,
+<span class="w">                </span><span class="s2">"MacAddress"</span>:<span class="w"> </span><span class="s2">"**:**:**:**:**:**"</span>,
+<span class="w">                </span><span class="s2">"IPv4Address"</span>:<span class="w"> </span><span class="s2">"*.*.*.*/*"</span>,
+<span class="w">                </span><span class="s2">"IPv6Address"</span>:<span class="w"> </span><span class="s2">""</span>
+<span class="w">            </span><span class="s2">"33632947e4210126874a7c26dce281642a6040e1acbebbdbbe8ba333c281dff8"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">                </span><span class="s2">"Name"</span>:<span class="w"> </span><span class="s2">"&lt;コンテナ名&gt;"</span>,
+<span class="w">                </span><span class="s2">"EndpointID"</span>:<span class="w"> </span><span class="s2">"ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409"</span>,
+<span class="w">                </span><span class="s2">"MacAddress"</span>:<span class="w"> </span><span class="s2">"**:**:**:**:**:**"</span>,
+<span class="w">                </span><span class="s2">"IPv4Address"</span>:<span class="w"> </span><span class="s2">"*.*.*.*/*"</span>,
+<span class="w">                </span><span class="s2">"IPv6Address"</span>:<span class="w"> </span><span class="s2">""</span>
 <span class="w">            </span><span class="o">}</span>
 <span class="w">        </span><span class="o">}</span>,
 
 <span class="w">        </span>...
 
-<span class="w">        </span><span class="s2">&quot;Labels&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">            </span><span class="s2">&quot;com.docker.compose.network&quot;</span>:<span class="w"> </span><span class="s2">&quot;default&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;com.docker.compose.project&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;プロジェクト名&gt;&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;com.docker.compose.version&quot;</span>:<span class="w"> </span><span class="s2">&quot;1.29.0&quot;</span>
+<span class="w">        </span><span class="s2">"Labels"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">"com.docker.compose.network"</span>:<span class="w"> </span><span class="s2">"default"</span>,
+<span class="w">            </span><span class="s2">"com.docker.compose.project"</span>:<span class="w"> </span><span class="s2">"&lt;プロジェクト名&gt;"</span>,
+<span class="w">            </span><span class="s2">"com.docker.compose.version"</span>:<span class="w"> </span><span class="s2">"1.29.0"</span>
 <span class="w">        </span><span class="o">}</span>
 <span class="w">    </span><span class="o">}</span>
 <span class="o">]</span>
@@ -34938,13 +34938,13 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">web</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8080:80&quot;</span><span class="w"> </span><span class="c1"># &lt;ホスト側のポート番号&gt;:&lt;コンテナのポート番号&gt;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"8080:80"</span><span class="w"> </span><span class="c1"># &lt;ホスト側のポート番号&gt;:&lt;コンテナのポート番号&gt;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">web</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># ホスト側のポート番号はランダムになる</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;:80&quot;</span><span class="w"> </span><span class="c1"># :&lt;コンテナのポート番号&gt;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">":80"</span><span class="w"> </span><span class="c1"># :&lt;コンテナのポート番号&gt;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="stdin_open"><code>stdin_open</code><a class="headerlink" href="#stdin_open" title="Permanent link">&para;</a></h3>
@@ -34952,7 +34952,7 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">stdin_open</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">stdin_open</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="tty"><code>tty</code><a class="headerlink" href="#tty" title="Permanent link">&para;</a></h3>
@@ -34961,7 +34961,7 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">tty</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">tty</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="user"><code>user</code><a class="headerlink" href="#user" title="Permanent link">&para;</a></h3>
@@ -34971,7 +34971,7 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${UID}:${GID}&quot;</span>
+<span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s">"${UID}:${GID}"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="volumes"><code>volumes</code> (バインドマウント)<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h3>
@@ -35019,7 +35019,7 @@ DRIVER<span class="w">    </span>VOLUME<span class="w"> </span>NAME
 <span class="nb">local</span><span class="w">     </span>mysql_db_data
 </code></pre></div>
 <p>権限、バインドマウントで <code>datadir</code> ディレクトリにマウントしようとすると、権限エラーになってしまう。</p>
-<div class="highlight"><pre><span></span><code>mysqld:<span class="w"> </span>Can<span class="s1">&#39;t create/write to file &#39;</span>/var/lib/mysql/is_writable<span class="err">&#39;</span><span class="w"> </span><span class="o">(</span>Errcode:<span class="w"> </span><span class="m">13</span><span class="w"> </span>-<span class="w"> </span>Permission<span class="w"> </span>denied<span class="o">)</span>
+<div class="highlight"><pre><span></span><code>mysqld:<span class="w"> </span>Can<span class="s1">'t create/write to file '</span>/var/lib/mysql/is_writable<span class="err">'</span><span class="w"> </span><span class="o">(</span>Errcode:<span class="w"> </span><span class="m">13</span><span class="w"> </span>-<span class="w"> </span>Permission<span class="w"> </span>denied<span class="o">)</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35066,32 +35066,32 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 
 <span class="o">[</span>
 <span class="w">    </span><span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;Name&quot;</span>:<span class="w"> </span><span class="s2">&quot;foo-network&quot;</span>,
+<span class="w">        </span><span class="s2">"Name"</span>:<span class="w"> </span><span class="s2">"foo-network"</span>,
 
 <span class="w">        </span>...
 
-<span class="w">        </span><span class="s2">&quot;Containers&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">            </span><span class="s2">&quot;e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">                </span><span class="s2">&quot;Name&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;コンテナ名&gt;&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;EndpointID&quot;</span>:<span class="w"> </span><span class="s2">&quot;ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;MacAddress&quot;</span>:<span class="w"> </span><span class="s2">&quot;**:**:**:**:**:**&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;IPv4Address&quot;</span>:<span class="w"> </span><span class="s2">&quot;*.*.*.*/*&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;IPv6Address&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>
-<span class="w">            </span><span class="s2">&quot;33632947e4210126874a7c26dce281642a6040e1acbebbdbbe8ba333c281dff8&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">                </span><span class="s2">&quot;Name&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;コンテナ名&gt;&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;EndpointID&quot;</span>:<span class="w"> </span><span class="s2">&quot;ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;MacAddress&quot;</span>:<span class="w"> </span><span class="s2">&quot;**:**:**:**:**:**&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;IPv4Address&quot;</span>:<span class="w"> </span><span class="s2">&quot;*.*.*.*/*&quot;</span>,
-<span class="w">                </span><span class="s2">&quot;IPv6Address&quot;</span>:<span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="s2">"Containers"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">"e681fb35e6aa5c94c85acf3522a324d7d75aad8eada13ed1779a4f8417c3fb44"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">                </span><span class="s2">"Name"</span>:<span class="w"> </span><span class="s2">"&lt;コンテナ名&gt;"</span>,
+<span class="w">                </span><span class="s2">"EndpointID"</span>:<span class="w"> </span><span class="s2">"ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409"</span>,
+<span class="w">                </span><span class="s2">"MacAddress"</span>:<span class="w"> </span><span class="s2">"**:**:**:**:**:**"</span>,
+<span class="w">                </span><span class="s2">"IPv4Address"</span>:<span class="w"> </span><span class="s2">"*.*.*.*/*"</span>,
+<span class="w">                </span><span class="s2">"IPv6Address"</span>:<span class="w"> </span><span class="s2">""</span>
+<span class="w">            </span><span class="s2">"33632947e4210126874a7c26dce281642a6040e1acbebbdbbe8ba333c281dff8"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">                </span><span class="s2">"Name"</span>:<span class="w"> </span><span class="s2">"&lt;コンテナ名&gt;"</span>,
+<span class="w">                </span><span class="s2">"EndpointID"</span>:<span class="w"> </span><span class="s2">"ef04da88901646359086eeb45aab81d2393c2f71b4266ccadc042ae49d684409"</span>,
+<span class="w">                </span><span class="s2">"MacAddress"</span>:<span class="w"> </span><span class="s2">"**:**:**:**:**:**"</span>,
+<span class="w">                </span><span class="s2">"IPv4Address"</span>:<span class="w"> </span><span class="s2">"*.*.*.*/*"</span>,
+<span class="w">                </span><span class="s2">"IPv6Address"</span>:<span class="w"> </span><span class="s2">""</span>
 <span class="w">            </span><span class="o">}</span>
 <span class="w">        </span><span class="o">}</span>,
 
 <span class="w">        </span>...
 
-<span class="w">        </span><span class="s2">&quot;Labels&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">            </span><span class="s2">&quot;com.docker.compose.network&quot;</span>:<span class="w"> </span><span class="s2">&quot;foo-network&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;com.docker.compose.project&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;プロジェクト名&gt;&quot;</span>,
-<span class="w">            </span><span class="s2">&quot;com.docker.compose.version&quot;</span>:<span class="w"> </span><span class="s2">&quot;1.29.0&quot;</span>
+<span class="w">        </span><span class="s2">"Labels"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">"com.docker.compose.network"</span>:<span class="w"> </span><span class="s2">"foo-network"</span>,
+<span class="w">            </span><span class="s2">"com.docker.compose.project"</span>:<span class="w"> </span><span class="s2">"&lt;プロジェクト名&gt;"</span>,
+<span class="w">            </span><span class="s2">"com.docker.compose.version"</span>:<span class="w"> </span><span class="s2">"1.29.0"</span>
 <span class="w">        </span><span class="o">}</span>
 <span class="w">    </span><span class="o">}</span>
 <span class="o">]</span>
@@ -35163,7 +35163,7 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 <p>NFS プラグインを使用することで、永続データを <code>/var/lib/docker/volumes</code> ディレクトリではなく、NFS ストレージに保管する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>以下に docker-compose を使用した場合を示す。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.9"</span>
 
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
@@ -35173,9 +35173,9 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 <span class="nt">volumes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app_data</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">driver_opts</span><span class="p">:</span><span class="w"> </span><span class="c1"># NFS プラグインを使用して、NFS ストレージに保管。</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nfs&quot;</span>
-<span class="w">      </span><span class="nt">o</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;addr=10.40.0.199,nolock,soft,rw&quot;</span>
-<span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;:/nfs/example&quot;</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"nfs"</span>
+<span class="w">      </span><span class="nt">o</span><span class="p">:</span><span class="w"> </span><span class="s">"addr=10.40.0.199,nolock,soft,rw"</span>
+<span class="w">      </span><span class="nt">device</span><span class="p">:</span><span class="w"> </span><span class="s">":/nfs/example"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>volume<span class="w"> </span>ls
 <span class="w">                                                                                                                                                                                      </span><span class="o">(</span>minikube/default<span class="o">)</span>
@@ -35197,7 +35197,7 @@ DRIVER<span class="w">    </span>VOLUME<span class="w"> </span>NAME
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
 <p>mysql コンテナに、PHPUnit の実行時のみ使用する DB を追加する。以下のような、<code>docker-compose.yml</code> ファイルを作成する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.9"</span>
 
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">db</span><span class="p">:</span>
@@ -35205,7 +35205,7 @@ DRIVER<span class="w">    </span>VOLUME<span class="w"> </span>NAME
 <span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-mysql</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:5.7</span>
 <span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3307:3306&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"3307:3306"</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db_data:/var/lib/mysql</span>
 <span class="w">      </span><span class="c1"># docker-entrypoint-initdb.d ディレクトリにバインドマウントを実行する。</span>
@@ -35215,7 +35215,7 @@ DRIVER<span class="w">    </span>VOLUME<span class="w"> </span>NAME
 <span class="w">      </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="w">      </span><span class="nt">MYSQL_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="w">      </span><span class="nt">MYSQL_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
-<span class="w">      </span><span class="nt">TZ</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Asia/Tokyo&quot;</span>
+<span class="w">      </span><span class="nt">TZ</span><span class="p">:</span><span class="w"> </span><span class="s">"Asia/Tokyo"</span>
 <span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">      </span><span class="no">mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci</span>
 <span class="w">    </span><span class="nt">networks</span><span class="p">:</span>
@@ -35231,8 +35231,8 @@ DRIVER<span class="w">    </span>VOLUME<span class="w"> </span>NAME
 <span class="l l-Scalar l-Scalar-Plain">└── bar.sql</span>
 </code></pre></div>
 <p>この SQL では、<code>test</code> という DB を作成し、ユーザーが <code>test</code>DB へ接続できるようにする。</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n n-Quoted">`test`</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="s1">&#39;utf8mb4_general_ci&#39;</span><span class="w"> </span><span class="k">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="s1">&#39;utf8mb4&#39;</span><span class="p">;</span>
-<span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;foo&#39;</span><span class="nv">@&#39;%&#39;</span><span class="w"> </span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n n-Quoted">`test`</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="s1">'utf8mb4_general_ci'</span><span class="w"> </span><span class="k">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="s1">'utf8mb4'</span><span class="p">;</span>
+<span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">'foo'</span><span class="nv">@'%'</span><span class="w"> </span><span class="p">;</span>
 </code></pre></div>
 <p>PHPUnit で接続する DB を指定する方法については、以下のリンクを参考にせよ。</p>
 <blockquote>

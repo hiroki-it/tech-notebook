@@ -33952,10 +33952,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">datastores</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">&lt;任意の名前&gt;</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">cassandra</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span>
-<span class="w">        </span><span class="nt">keyspace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;temporal&quot;</span>
-<span class="w">        </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;username&quot;</span>
-<span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;password&quot;</span>
+<span class="w">        </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="s">"127.0.0.1"</span>
+<span class="w">        </span><span class="nt">keyspace</span><span class="p">:</span><span class="w"> </span><span class="s">"temporal"</span>
+<span class="w">        </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s">"username"</span>
+<span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">"password"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -33967,11 +33967,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">datastores</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">&lt;任意の名前&gt;</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">elasticsearch</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;v7&quot;</span>
-<span class="w">        </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span>
+<span class="w">        </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"v7"</span>
+<span class="w">        </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="s">"error"</span>
 <span class="w">        </span><span class="nt">url</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http&quot;</span>
-<span class="w">          </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1:9200&quot;</span>
+<span class="w">          </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="s">"http"</span>
+<span class="w">          </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">"127.0.0.1:9200"</span>
 <span class="w">        </span><span class="nt">indices</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">visibility</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">temporal_visibility_v1_dev</span>
 <span class="w">        </span><span class="nt">closeIdleConnectionsInterval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
@@ -33981,16 +33981,16 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">datastores</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">&lt;任意の名前&gt;</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">sql</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mysql&quot;</span>
+<span class="w">        </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="s">"mysql"</span>
 <span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_HOST_</span>
 <span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span>
 <span class="w">        </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">temporal</span>
 <span class="w">        </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_USERNAME_</span>
 <span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_PASSWORD_</span>
 <span class="w">        </span><span class="nt">maxConns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
-<span class="w">        </span><span class="nt">maxConnLifetime</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1h&quot;</span>
+<span class="w">        </span><span class="nt">maxConnLifetime</span><span class="p">:</span><span class="w"> </span><span class="s">"1h"</span>
 <span class="w">        </span><span class="nt">connectAttributes</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">tx_isolation</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;READ-COMMITTED&quot;</span>
+<span class="w">          </span><span class="nt">tx_isolation</span><span class="p">:</span><span class="w"> </span><span class="s">"READ-COMMITTED"</span>
 </code></pre></div>
 <blockquote>
 <ul>

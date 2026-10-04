@@ -35904,7 +35904,7 @@
 <p><br></p>
 <h3 id="_4">ローカルスコープの変数<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>同じファイル内で使用できる変数を定義する。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- $domain</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= &quot;https</span><span class="p p-Indicator">:</span><span class="nv">//</span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.serviceName</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="nv">.argocd.com&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- $domain</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= "https</span><span class="p p-Indicator">:</span><span class="nv">//</span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.serviceName</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="nv">.argocd.com"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35917,26 +35917,26 @@
 <p>条件分岐の前に <code>:=</code> で値を代入し、条件分岐内で <code>=</code> でこれを代入する。</p>
 <p>これにより、条件分岐の外に変数のスコープを広げられる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 変数を定義する</span>
-<span class="p p-Indicator">{{</span><span class="nv">- $prefix</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= &quot;&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- $prefix</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= ""</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 
 <span class="p p-Indicator">{{</span><span class="nv">- if .Values.isProduction</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 
 <span class="w">  </span><span class="c1"># 再代入する</span>
-<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- $prefix = &quot;prd&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- $prefix = "prd"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># 変数を使用する。</span>
 
 <span class="p p-Indicator">{{</span><span class="nv">- else if</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 
 <span class="w">  </span><span class="c1"># 再代入する</span>
-<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- $prefix = &quot;stg&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- $prefix = "stg"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># 変数を使用する。</span>
 
 <span class="p p-Indicator">{{</span><span class="nv">- else</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 
 <span class="w">  </span><span class="c1"># 再代入する</span>
-<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- $prefix = &quot;dev&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- $prefix = "dev"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># 変数を使用する。</span>
 
@@ -35945,8 +35945,8 @@
 <p>条件数が 2`個しかない場合であれば、三項演算子の結果を変数に格納できる。</p>
 <p>そのため、<code>{{- if }}</code> から <code>{{- end }}</code> の外側でも変数を使用できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 実行環境は dev か prd しかないものとする。</span>
-<span class="c1"># .values.environment が &quot;prd&quot; の場合は printf 関数でサブドメインを作成し、それではない場合は空文字とする</span>
-<span class="p p-Indicator">{{</span><span class="nv">- $subDomain</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= ternary (printf &quot;%s.&quot; .values.environment ) &quot;&quot; .values.environment &quot;prd&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="c1"># .values.environment が "prd" の場合は printf 関数でサブドメインを作成し、それではない場合は空文字とする</span>
+<span class="p p-Indicator">{{</span><span class="nv">- $subDomain</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= ternary (printf "%s." .values.environment ) "" .values.environment "prd"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://{{ $subDomain }}{{.Values.serviceName }}.com</span>
 </code></pre></div>
 <blockquote>
@@ -36043,7 +36043,7 @@
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># マニフェストで、int 型で出力しようとする。</span>
-<span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
@@ -36051,7 +36051,7 @@
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># int 型にならないように、ダブルクオーテーションで囲う。</span>
-<span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">.Values.metadata.labels.id</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">.Values.metadata.labels.id</span><span class="nv"> </span><span class="s">}}"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36063,7 +36063,7 @@
 <h4 id="default_1">▼ default とは<a class="headerlink" href="#default_1" title="Permanent link">&para;</a></h4>
 <p>出力された値が空文字 (<code>""</code>) や <code>false</code> の場合に、それを上書きしてデフォルト値として出力する。</p>
 <p>キー自体は存在しなければならず、省略できないことに注意する。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">.Values.foo | default &quot;foo&quot;</span><span class="p p-Indicator">}}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">.Values.foo | default "foo"</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36079,7 +36079,7 @@
 <span class="nt">bar</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">params</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- if hasKey .Values.foo &quot;isFoo&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- if hasKey .Values.foo "isFoo"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="p p-Indicator">{{</span><span class="nv">- if eq .Values.foo.isFoo true</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 <span class="l l-Scalar l-Scalar-Plain">{{- end }}</span>
@@ -36137,7 +36137,7 @@
 <p>テンプレートの内容をルートから出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="err">*</span><span class="w"> </span><span class="nv">tplファイル *</span><span class="p p-Indicator">}</span>
 
-<span class="p p-Indicator">{{</span><span class="nv">- define &quot;foo-template&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- define "foo-template"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
 <span class="w">  </span><span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
@@ -36145,7 +36145,7 @@
 <span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">baz</span><span class="p">:</span>
-<span class="p p-Indicator">{{</span><span class="nv">- include &quot;foo-template&quot; .</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- include "foo-template" .</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 結果</span>
 <span class="nt">baz</span><span class="p">:</span>
@@ -36231,7 +36231,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># マニフェスト全体を range 関数で囲う場合は、区切り記号 (---) を入れる</span>
 <span class="p p-Indicator">{{</span><span class="nv">- range $key</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">$value</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= .Values.config</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="nn">---</span>
-<span class="p p-Indicator">{{</span><span class="nv">- if or (eq $key &quot;foo&quot;) (eq $key &quot;baz&quot;)</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- if or (eq $key "foo") (eq $key "baz")</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36340,7 +36340,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-repository.git</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># printf 関数を使用して、一度 strig 型に変換している。</span>
-<span class="p p-Indicator">{{</span><span class="nv">- printf &quot;%s&quot; .Values.url | splitList &quot;/&quot;</span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- printf "%s" .Values.url | splitList "/"</span><span class="p p-Indicator">}}</span>
 <span class="c1"># [https:  github.com hiroki-hasegawa foo-repository.git]</span>
 </code></pre></div>
 <blockquote>
@@ -36352,7 +36352,7 @@
 <h2 id="08-string">08. string 型の関数<a class="headerlink" href="#08-string" title="Permanent link">&para;</a></h2>
 <h3 id="contains">contains<a class="headerlink" href="#contains" title="Permanent link">&para;</a></h3>
 <p>指定した文字列が含まれているかを検証する。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- if contains .Values.env &quot;prd&quot;</span><span class="p p-Indicator">}}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- if contains .Values.env "prd"</span><span class="p p-Indicator">}}</span>
 <span class="nn">...</span><span class="w"> </span><span class="c1"># prd という文字が含まれている場合</span>
 
 <span class="p p-Indicator">{{</span><span class="nv">- else</span><span class="p p-Indicator">}}</span>
@@ -36390,10 +36390,10 @@
 <span class="w">        </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">{{`{{ range .Alerts }}`}}</span>
 <span class="w">          </span><span class="no">{{`*Summary:* {{ .Annotations.summary }}`}}</span>
-<span class="w">          </span><span class="no">{{ printf &quot;*Severity:* `{{ .Labels.severity }}`&quot; }}</span>
+<span class="w">          </span><span class="no">{{ printf "*Severity:* `{{ .Labels.severity }}`" }}</span>
 <span class="w">          </span><span class="no">{{`*Description:* {{ .Annotations.description }}`}}</span>
 <span class="w">          </span><span class="no">*Details:*</span>
-<span class="w">          </span><span class="no">{{ printf &quot;{{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`&quot; }}</span>
+<span class="w">          </span><span class="no">{{ printf "{{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`" }}</span>
 <span class="w">          </span><span class="no">{{`{{ end }}`}}</span>
 <span class="w">          </span><span class="no">{{`{{ end }}`}}</span>
 </code></pre></div>
@@ -36409,13 +36409,13 @@
 <div class="highlight"><pre><span></span><code><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-repository.git</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># printf 関数を使用して、一度 strig 型に変換している。</span>
-<span class="p p-Indicator">{{</span><span class="nv">- $list</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= printf &quot;%s&quot; .Values.url | splitList &quot;/&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- $list</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= printf "%s" .Values.url | splitList "/"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 
 <span class="c1"># [https:  github.com hiroki-hasegawa foo-repository.git]</span>
 
 
 <span class="c1"># リポジトリ名のみを取得する。</span>
-<span class="p p-Indicator">{{</span><span class="nv">- $repositoryName</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= last $list | trimSuffix &quot;.git&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- $repositoryName</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= last $list | trimSuffix ".git"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 
 <span class="c1"># foo-repository</span>
 </code></pre></div>
@@ -36468,24 +36468,24 @@
 <span class="p p-Indicator">{{</span><span class="nv">- /*</span>
 <span class="w">  </span><span class="nv">URLからリポジトリ名を抽出する</span>
 <span class="w">  </span><span class="nv">Kubernetesのリソース名では一部の文字や記号を使用できないため、これに対処する</span>
-<span class="w">  </span><span class="nv">(例) &quot;https</span><span class="p p-Indicator">:</span><span class="nv">//github.com/argoproj/argo-cd.git&quot; から &quot;argo-cd&quot; のみを取得する</span>
+<span class="w">  </span><span class="nv">(例) "https</span><span class="p p-Indicator">:</span><span class="nv">//github.com/argoproj/argo-cd.git" から "argo-cd" のみを取得する</span>
 <span class="nv">*/</span><span class="p p-Indicator">}}</span>
-<span class="p p-Indicator">{{</span><span class="nv">- $repositoryName</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= printf &quot;%s&quot; . | splitList &quot;/&quot; | last | trimSuffix &quot;.git&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
-<span class="p p-Indicator">{{</span><span class="nv">- $name</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= regexReplaceAllLiteral &quot;_&quot; $repositoryName &quot;-&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- $repositoryName</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= printf "%s" . | splitList "/" | last | trimSuffix ".git"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- $name</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= regexReplaceAllLiteral "_" $repositoryName "-"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 
 
 <span class="p p-Indicator">{{</span><span class="nv">- /*</span>
 <span class="w">  </span><span class="nv">URLのbase64方式エンコード値を取得する</span>
 <span class="w">  </span><span class="nv">Kubernetesのリソース名では一部の文字や記号を使用できないため、これに対処する</span>
-<span class="w">  </span><span class="nv">(例) &quot;https</span><span class="p p-Indicator">:</span><span class="nv">//github.com/argoproj/argo-cd.git&quot; から &quot;ahr0chm6ly9naxrodwiuy29tl2fyz29wcm9ql2fyz28ty2quz2l0&quot; を取得する</span>
+<span class="w">  </span><span class="nv">(例) "https</span><span class="p p-Indicator">:</span><span class="nv">//github.com/argoproj/argo-cd.git" から "ahr0chm6ly9naxrodwiuy29tl2fyz29wcm9ql2fyz28ty2quz2l0" を取得する</span>
 <span class="nv">*/</span><span class="p p-Indicator">}}</span>
 <span class="p p-Indicator">{{</span><span class="nv">- $lowerbase64EncodedUrl</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= . | b64enc | lower</span><span class="w"> </span><span class="p p-Indicator">}}</span>
-<span class="p p-Indicator">{{</span><span class="nv">- $id</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= regexReplaceAllLiteral &quot;</span><span class="p p-Indicator">[</span><span class="nv">^a-z0-9</span><span class="p p-Indicator">]</span><span class="s">&quot;</span><span class="nv"> </span><span class="s">$lowerbase64EncodedUrl</span><span class="nv"> </span><span class="s">&quot;&quot;</span><span class="nv"> </span><span class="s">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- $id</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= regexReplaceAllLiteral "</span><span class="p p-Indicator">[</span><span class="nv">^a-z0-9</span><span class="p p-Indicator">]</span><span class="s">"</span><span class="nv"> </span><span class="s">$lowerbase64EncodedUrl</span><span class="nv"> </span><span class="s">""</span><span class="nv"> </span><span class="s">}}</span>
 
 
 <span class="s">{{-</span><span class="nv"> </span><span class="s">/*</span>
 <span class="w">  </span><span class="s">Secretの名前が必ず一意になるように、リポジトリ名とURLエンコード値で命名する</span>
-<span class="w">  </span><span class="s">(例)</span><span class="nv"> </span><span class="s">&quot;</span><span class="nv">https</span><span class="p p-Indicator">:</span><span class="nv">//github.com/argoproj/argo-cd.git&quot; のSecretの名前は &quot;argo-cd-ahr0chm6ly9naxrodwiuy29tl2fyz29wcm9ql2fyz28ty2quz2l0&quot; になる</span>
+<span class="w">  </span><span class="s">(例)</span><span class="nv"> </span><span class="s">"</span><span class="nv">https</span><span class="p p-Indicator">:</span><span class="nv">//github.com/argoproj/argo-cd.git" のSecretの名前は "argo-cd-ahr0chm6ly9naxrodwiuy29tl2fyz29wcm9ql2fyz28ty2quz2l0" になる</span>
 <span class="nv">*/</span><span class="p p-Indicator">}}</span>
 
 
@@ -36523,7 +36523,7 @@
 <h4 id="genca_1">▼ genCA<a class="headerlink" href="#genca_1" title="Permanent link">&para;</a></h4>
 <p>サーバー証明書とペアになる秘密鍵を作成する。</p>
 <p>サーバー証明書は <code>.Cert</code>、秘密鍵は <code>.Key</code> でリクエストできる。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- $ca</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= genCA &quot;foo-ca&quot; 3650</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- $ca</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= genCA "foo-ca" 3650</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admissionregistration.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MutatingWebhookConfiguration</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36561,8 +36561,8 @@
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">checksum/secret</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">include</span><span class="nv"> </span><span class="s">(print</span><span class="nv"> </span><span class="s">$.Template.BasePath</span><span class="nv"> </span><span class="s">&#39;/foo-secret.yaml&#39;)</span><span class="nv"> </span><span class="s">.</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">sha256sum</span><span class="nv"> </span><span class="s">}}&quot;</span>
-<span class="w">        </span><span class="nt">checksum/configmap</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">include</span><span class="nv"> </span><span class="s">(print</span><span class="nv"> </span><span class="s">$.Template.BasePath</span><span class="nv"> </span><span class="s">&#39;/foo-configmap.yaml&#39;)</span><span class="nv"> </span><span class="s">.</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">sha256sum</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">checksum/secret</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">include</span><span class="nv"> </span><span class="s">(print</span><span class="nv"> </span><span class="s">$.Template.BasePath</span><span class="nv"> </span><span class="s">'/foo-secret.yaml')</span><span class="nv"> </span><span class="s">.</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">sha256sum</span><span class="nv"> </span><span class="s">}}"</span>
+<span class="w">        </span><span class="nt">checksum/configmap</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">include</span><span class="nv"> </span><span class="s">(print</span><span class="nv"> </span><span class="s">$.Template.BasePath</span><span class="nv"> </span><span class="s">'/foo-configmap.yaml')</span><span class="nv"> </span><span class="s">.</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">sha256sum</span><span class="nv"> </span><span class="s">}}"</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
@@ -36589,14 +36589,14 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="err">*</span><span class="w"> </span><span class="nv">tplファイル *</span><span class="p p-Indicator">}</span>
 
-<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- define &quot;foo-template&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- define "foo-template"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
 <span class="w">  </span><span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
 
 <span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">baz</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">- include &quot;foo-template&quot; .</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># 『{{-』の前にあるインデントは削除される。</span>
+<div class="highlight"><pre><span></span><code><span class="nt">baz</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">- include "foo-template" .</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># 『{{-』の前にあるインデントは削除される。</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 結果</span>
 <span class="nt">baz</span><span class="p">:</span>
@@ -36626,7 +36626,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="err">*</span><span class="w"> </span><span class="nv">tplファイル *</span><span class="p p-Indicator">}</span>
 
-<span class="p p-Indicator">{{</span><span class="nv">- define &quot;foo-template&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- define "foo-template"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
 <span class="w">  </span><span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
@@ -36635,7 +36635,7 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 2 つ分のスペースを挿入した上で、出力する。</span>
 <span class="nt">baz</span><span class="p">:</span>
-<span class="p p-Indicator">{{</span><span class="nv">- include &quot;foo-template&quot; . | indent 2</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- include "foo-template" . | indent 2</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 結果</span>
 <span class="nt">baz</span><span class="p">:</span>
@@ -36656,7 +36656,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="err">*</span><span class="w"> </span><span class="nv">tplファイル *</span><span class="p p-Indicator">}</span>
 
-<span class="p p-Indicator">{{</span><span class="nv">- define &quot;foo-template&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- define "foo-template"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
 <span class="w">  </span><span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
@@ -36665,7 +36665,7 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 改行しつつ、2 つ分のスペースを挿入した上で、出力する。</span>
 <span class="nt">baz</span><span class="p">:</span>
-<span class="p p-Indicator">{{</span><span class="nv">- include &quot;foo-template&quot; . | nindent 2</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- include "foo-template" . | nindent 2</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 結果</span>
 <span class="nt">baz</span><span class="p">:</span>
@@ -36692,7 +36692,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">foo</span><span class="p">:</span>
-<span class="p p-Indicator">{{</span><span class="nv">- if hasKey .Values.foo &quot;baz&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- if hasKey .Values.foo "baz"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="w">  </span><span class="nt">baz</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">{{</span><span class="nv">- range .Values.foo.baz</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.</span><span class="w"> </span><span class="p p-Indicator">}}</span>
@@ -36715,7 +36715,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">foo</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- if (index .Values.foo &quot;baz&quot;)</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- if (index .Values.foo "baz")</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="w">  </span><span class="nt">baz</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">{{</span><span class="nv">- range .Values.foo.baz</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.</span><span class="w"> </span><span class="p p-Indicator">}}</span>
@@ -36746,7 +36746,7 @@
 <p><br></p>
 <h3 id="or">OR 条件<a class="headerlink" href="#or" title="Permanent link">&para;</a></h3>
 <p><code>or</code> 演算子と <code>()</code> 記号を使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- if or (eq .Values.global.env &quot;tes&quot;) (eq .Values.global.env &quot;stg&quot;)</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- if or (eq .Values.global.env "tes") (eq .Values.global.env "stg")</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 <span class="l l-Scalar l-Scalar-Plain">{{- end }}</span>
 </code></pre></div>
@@ -36758,7 +36758,7 @@
 <p><br></p>
 <h3 id="not">NOT 条件<a class="headerlink" href="#not" title="Permanent link">&para;</a></h3>
 <p><code>ne</code> 演算子 (not equal の略) を使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- if ne .Values.global.env &quot;tes&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- if ne .Values.global.env "tes"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 <span class="l l-Scalar l-Scalar-Plain">{{- end }}</span>
 </code></pre></div>
@@ -36773,15 +36773,15 @@
 <p>ファイルから内容を取得する。</p>
 <p><code>.Files.Get</code> 関数でファイルから取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># マニフェスト全体を range 関数で囲う場合は、区切り記号 (---) を入れる</span>
-<span class="p p-Indicator">{{</span><span class="nv">- range $file</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">$_</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= .Files.Glob &quot;dashboards/*.json&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- range $file</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">$_</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= .Files.Glob "dashboards/*.json"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="nn">---</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana-dashboard-{{- base $file | replace &quot;.json&quot; &quot;&quot; }}</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana-dashboard-{{- base $file | replace ".json" "" }}</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">grafana_dashboard</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">    </span><span class="nt">grafana_dashboard</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">base $file</span><span class="w"> </span><span class="p p-Indicator">}}:</span>
 <span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">tpl ($.Files.Get $file) $ | toYaml | indent 4</span><span class="w"> </span><span class="p p-Indicator">}}</span>
@@ -36801,7 +36801,7 @@
 <p>エラーメッセージを含む例外をスローし、意図的に処理を失敗させる。</p>
 <p>他のメンバーに設計方針を強制したり、必須値を定義する場合に使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- if not (contains .Values.foo $bar)</span><span class="w"> </span><span class="p p-Indicator">}}</span>
-<span class="p p-Indicator">{{</span><span class="nv">- fail &quot;〇〇であると△△のため、barにはfooを含むようにしてください&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- fail "〇〇であると△△のため、barにはfooを含むようにしてください"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="p p-Indicator">{{</span><span class="nv">- else</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="nn">...</span>
 <span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>

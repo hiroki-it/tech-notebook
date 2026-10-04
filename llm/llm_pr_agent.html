@@ -34452,7 +34452,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_TAG</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_BRANCH</span>
 <span class="w">    </span><span class="c1"># もし workflow のルールを設定している場合、merge_request_event をルールの条件としないと、ワークフローが起動しない</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &quot;merge_request_event&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == "merge_request_event"</span>
 
 <span class="nt">stages</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
@@ -34463,28 +34463,28 @@
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pr_agent</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pr-agent:latest</span>
-<span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
 <span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># Cross-region-inference に対応するために us を指定する</span>
 <span class="w">    </span><span class="c1"># 対応不要の場合は ap-northeast-1 でもよい</span>
-<span class="w">    </span><span class="nt">AWS_REGION_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;us-east-1&quot;</span>
+<span class="w">    </span><span class="nt">AWS_REGION_NAME</span><span class="p">:</span><span class="w"> </span><span class="s">"us-east-1"</span>
 <span class="w">  </span><span class="nt">before_script</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># もし AWS Bedlock を使用する場合は、資格情報を取得する</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cd /app</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;Running PR Agent action step&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export MR_URL=&quot;$CI_MERGE_REQUEST_PROJECT_URL/merge_requests/$CI_MERGE_REQUEST_IID&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;MR_URL=$MR_URL&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "Running PR Agent action step"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export MR_URL="$CI_MERGE_REQUEST_PROJECT_URL/merge_requests/$CI_MERGE_REQUEST_IID"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "MR_URL=$MR_URL"</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export gitlab__url=$CI_SERVER_PROTOCOL://$CI_SERVER_FQDN</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export gitlab__PERSONAL_ACCESS_TOKEN=$GITLAB_PERSONAL_ACCESS_TOKEN</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export config__git_provider=&quot;gitlab&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m pr_agent.cli --pr_url=&quot;$MR_URL&quot; describe</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m pr_agent.cli --pr_url=&quot;$MR_URL&quot; review</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m pr_agent.cli --pr_url=&quot;$MR_URL&quot; improve</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export config__git_provider="gitlab"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m pr_agent.cli --pr_url="$MR_URL" describe</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m pr_agent.cli --pr_url="$MR_URL" review</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m pr_agent.cli --pr_url="$MR_URL" improve</span>
 <span class="w">  </span><span class="nt">allow_failure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># merge_request_event の時に Job を発火させないと、PR Agent は MR の情報を取得できずにエラーになってしまう</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &quot;merge_request_event&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == "merge_request_event"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34508,12 +34508,12 @@
 <span class="w">  </span><span class="nt">pr-agent</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># Bot、自動レビュー対象外のfork、通常のIssueへのコメントは処理しない。</span>
 <span class="w">    </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
-<span class="w">      </span><span class="no">github.event.sender.type != &#39;Bot&#39; &amp;&amp;</span>
-<span class="w">      </span><span class="no">((github.event_name == &#39;pull_request&#39; &amp;&amp;</span>
+<span class="w">      </span><span class="no">github.event.sender.type != 'Bot' &amp;&amp;</span>
+<span class="w">      </span><span class="no">((github.event_name == 'pull_request' &amp;&amp;</span>
 <span class="w">        </span><span class="no">github.event.pull_request.head.repo.full_name == github.repository) ||</span>
-<span class="w">       </span><span class="no">(github.event_name == &#39;issue_comment&#39; &amp;&amp; github.event.issue.pull_request &amp;&amp;</span>
-<span class="w">        </span><span class="no">startsWith(github.event.comment.body, &#39;/&#39;) &amp;&amp;</span>
-<span class="w">        </span><span class="no">contains(fromJSON(&#39;[&quot;OWNER&quot;,&quot;MEMBER&quot;,&quot;COLLABORATOR&quot;]&#39;),</span>
+<span class="w">       </span><span class="no">(github.event_name == 'issue_comment' &amp;&amp; github.event.issue.pull_request &amp;&amp;</span>
+<span class="w">        </span><span class="no">startsWith(github.event.comment.body, '/') &amp;&amp;</span>
+<span class="w">        </span><span class="no">contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'),</span>
 <span class="w">                 </span><span class="no">github.event.comment.author_association)))</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
 <span class="w">    </span><span class="nt">timeout-minutes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span>
@@ -34578,21 +34578,21 @@
 <p>メインで使用する model を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[config]</span>
 
-<span class="n">model</span><span class="o">=</span><span class="s2">&quot;bedrock/us.anthropic.claude-3-7-sonnet-20250219-v1:0&quot;</span>
+<span class="n">model</span><span class="o">=</span><span class="s2">"bedrock/us.anthropic.claude-3-7-sonnet-20250219-v1:0"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="fallback_models">fallback_models<a class="headerlink" href="#fallback_models" title="Permanent link">&para;</a></h3>
 <p>処理に失敗した際の fallback で使用する model を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[config]</span>
 
-<span class="n">fallback_models</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;bedrock/anthropic.claude-3-haiku-20240307-v1:0&quot;</span><span class="p">]</span>
+<span class="n">fallback_models</span><span class="o">=</span><span class="p">[</span><span class="s2">"bedrock/anthropic.claude-3-haiku-20240307-v1:0"</span><span class="p">]</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="response_language">response_language<a class="headerlink" href="#response_language" title="Permanent link">&para;</a></h3>
 <p>言語を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[config]</span>
 
-<span class="n">response_language</span><span class="o">=</span><span class="s2">&quot;ja-JP&quot;</span>
+<span class="n">response_language</span><span class="o">=</span><span class="s2">"ja-JP"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="verbosity_level">verbosity_level<a class="headerlink" href="#verbosity_level" title="Permanent link">&para;</a></h3>
@@ -34605,7 +34605,7 @@
 <h3 id="log_level">log_level<a class="headerlink" href="#log_level" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">[config]</span>
 
-<span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span>
+<span class="n">log_level</span><span class="o">=</span><span class="s2">"INFO"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="use">use<a class="headerlink" href="#use" title="Permanent link">&para;</a></h3>
@@ -34671,9 +34671,9 @@
 <p>PR の説明欄に関するプロンプトを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[pr_description]</span>
 
-<span class="n">extra_instructions</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="n">extra_instructions</span><span class="o">=</span><span class="s2">"""</span><span class="se">\</span>
 <span class="s2">- impactレベルは「high」または「medium」のみを使用すること。「low」のimpactレベルを提案することは禁止である。</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34693,9 +34693,9 @@
 <p>PR レビューに関するプロンプトを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[pr_reviewer]</span>
 
-<span class="n">extra_instructions</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="n">extra_instructions</span><span class="o">=</span><span class="s2">"""</span><span class="se">\</span>
 <span class="s2">- impactレベルは「high」または「medium」のみを使用すること。「low」のimpactレベルを提案することは禁止である。</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="require_score_review">require_score_review<a class="headerlink" href="#require_score_review" title="Permanent link">&para;</a></h3>
@@ -34715,9 +34715,9 @@
 <p>コード提案に関するプロンプトを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[pr_code_suggestions]</span>
 
-<span class="n">extra_instructions</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="n">extra_instructions</span><span class="o">=</span><span class="s2">"""</span><span class="se">\</span>
 <span class="s2">- impactレベルは「high」または「medium」のみを使用すること。「low」のimpactレベルを提案することは禁止である。</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="persistent_comment">persistent_comment<a class="headerlink" href="#persistent_comment" title="Permanent link">&para;</a></h3>

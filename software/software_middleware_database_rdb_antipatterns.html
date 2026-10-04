@@ -34695,8 +34695,8 @@
 <p>DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかかる。</p>
 <p><br></p>
 <h3 id="typescript">実装例（TypeScript）<a class="headerlink" href="#typescript" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;~/services/prisma.server&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/services/prisma.server"</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">handler</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 毎回、PrismaClientを作成してしまっている</span>
@@ -34715,31 +34715,31 @@
 <h4 id="_4">▼ 問題がある実装<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">birthDate</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2000-01-01&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">birthDate</span><span class="o">:</span><span class="w"> </span><span class="s2">"2000-01-01"</span><span class="p">,</span>
 <span class="p">};</span>
 </code></pre></div>
 <h4 id="_5">▼ 解決方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>日付として比較や計算をする値には、<code>VARCHAR</code> 型のカラムではなく <code>DATE</code> 型のカラムを使用する。</p>
 <p>同様に、金額には <code>DECIMAL</code> 型のカラム、件数には <code>INT</code> 型のカラム、真偽値には <code>BOOLEAN</code> 型のカラムを使用する。</p>
 <p>ただし、電話番号、郵便番号、商品コードなど、数字で構成されていても計算を目的としない値には <code>VARCHAR</code> 型のカラムを使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span>
 <span class="w">  </span><span class="c1">// 日付（DBではDATE型のカラムにする）</span>
-<span class="w">  </span><span class="nx">birthDate</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="s2">&quot;2000-01-01&quot;</span><span class="p">),</span>
+<span class="w">  </span><span class="nx">birthDate</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="s2">"2000-01-01"</span><span class="p">),</span>
 <span class="w">  </span><span class="c1">// 金額（DBではDECIMAL型のカラムにする）</span>
-<span class="w">  </span><span class="nx">accountBalance</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nx">Prisma</span><span class="p">.</span><span class="nx">Decimal</span><span class="p">(</span><span class="s2">&quot;1000.50&quot;</span><span class="p">),</span>
+<span class="w">  </span><span class="nx">accountBalance</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nx">Prisma</span><span class="p">.</span><span class="nx">Decimal</span><span class="p">(</span><span class="s2">"1000.50"</span><span class="p">),</span>
 <span class="w">  </span><span class="c1">// 件数（DBではINT型のカラムにする）</span>
 <span class="w">  </span><span class="nx">loginCount</span><span class="o">:</span><span class="w"> </span><span class="kt">10</span><span class="p">,</span>
 <span class="w">  </span><span class="c1">// 真偽値（DBではBOOLEAN型のカラムにする）</span>
 <span class="w">  </span><span class="nx">isActive</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
 <span class="w">  </span><span class="c1">// 電話番号（DBではVARCHAR型のカラムにする）</span>
-<span class="w">  </span><span class="nx">phoneNumber</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;03-1234-5678&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">phoneNumber</span><span class="o">:</span><span class="w"> </span><span class="s2">"03-1234-5678"</span><span class="p">,</span>
 <span class="w">  </span><span class="c1">// 郵便番号（DBではVARCHAR型のカラムにする）</span>
-<span class="w">  </span><span class="nx">postalCode</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;012-3456&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">postalCode</span><span class="o">:</span><span class="w"> </span><span class="s2">"012-3456"</span><span class="p">,</span>
 <span class="w">  </span><span class="c1">// 商品コード（DBではVARCHAR型のカラムにする）</span>
-<span class="w">  </span><span class="nx">productCode</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;001234&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">productCode</span><span class="o">:</span><span class="w"> </span><span class="s2">"001234"</span><span class="p">,</span>
 <span class="p">};</span>
 </code></pre></div>
 <p><br></p>
@@ -34748,8 +34748,8 @@
 <p>不要な DB レコードやカラムを取得すると、DB 処理に時間がかかる。</p>
 <p><br></p>
 <h3 id="typescript_2">実装例（TypeScript）<a class="headerlink" href="#typescript_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;~/services/prisma.server&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/services/prisma.server"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">findUnique</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="p">},</span>
@@ -34793,7 +34793,7 @@
 
 <span class="c1">// SQL発行 (2回)</span>
 <span class="c1">// 内部的にIN句</span>
-<span class="nv">$departments</span> <span class="o">=</span> <span class="nx">Department</span><span class="o">::</span><span class="na">with</span><span class="p">(</span><span class="s1">&#39;employees&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+<span class="nv">$departments</span> <span class="o">=</span> <span class="nx">Department</span><span class="o">::</span><span class="na">with</span><span class="p">(</span><span class="s1">'employees'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
 
 <span class="k">foreach</span><span class="p">(</span><span class="nv">$departments</span> <span class="k">as</span> <span class="nv">$department</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// キャッシュを使用するのでSQLの発行はされない (0回)</span>
@@ -34809,8 +34809,8 @@
 <h4 id="1">▼ 問題がある実装（１）<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
 <p>反復処理のなかで子テーブルのレコードにアクセスしてしまう場合、N+1 問題が起こる。</p>
 <p>内部的には、親テーブルへの SQL と、Where 句を持つ SQL が親テーブルのレコード数分だけ発行される。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;~/services/prisma.server&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/services/prisma.server"</span><span class="p">;</span>
 
 <span class="c1">// 親テーブルにSQLを発行 (1回)</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">findMany</span><span class="p">({</span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">teamId</span><span class="p">}});</span>
@@ -34824,8 +34824,8 @@
 </code></pre></div>
 <h4 id="2">▼ 問題がある実装（２）<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
 <p><code>map()</code> 関数を使用した反復処理でも、もちろん N+1 問題が起こる。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;~/services/prisma.server&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/services/prisma.server"</span><span class="p">;</span>
 
 <span class="c1">// 親テーブルにSQLを発行 (1回)</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">findMany</span><span class="p">({</span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">teamId</span><span class="p">}});</span>
@@ -34843,8 +34843,8 @@
 <h4 id="_9">▼ 解決方法<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>レコード取得時に IN 句や JOIN 句を使用すると、N+1 問題を解消できる。</p>
 <p>Prisma では、<code>in</code> プロパティを使用すると、IN 句を含む SQL が発行され、最終的に 2 回で済む。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;~/services/prisma.server&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/services/prisma.server"</span><span class="p">;</span>
 
 <span class="c1">// 親テーブルにSQLを発行 (1回)</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">findMany</span><span class="p">({</span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">teamId</span><span class="p">}});</span>
@@ -34871,7 +34871,7 @@
 <span class="w">  </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">teamId</span><span class="p">},</span>
 <span class="w">  </span><span class="nx">skip</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">page</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">limit</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">take</span><span class="o">:</span><span class="w"> </span><span class="kt">limit</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">orderBy</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">createdAt</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;desc&quot;</span><span class="p">},</span>
+<span class="w">  </span><span class="nx">orderBy</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">createdAt</span><span class="o">:</span><span class="w"> </span><span class="s2">"desc"</span><span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
 <p><br></p>
@@ -34926,7 +34926,7 @@ model EventHourlySummary {
   updatedAt DateTime @updatedAt
 
   @@id([tenantId, hour])
-  @@map(&quot;event_hourly_summaries&quot;)
+  @@map("event_hourly_summaries")
 }
 </code></pre></div>
 <p>バックエンドでは、共有の集計テーブルから集計結果を取得する。</p>
@@ -34994,7 +34994,7 @@ model EventHourlySummary {
 <h4 id="_20">▼ 解決方法<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>Prisma の <code>groupBy()</code> 関数を使用し、チームごとのユーザー数を集計する処理をアプリケーションのインフラストラクチャ層から DB に委譲する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">userCountByTeam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">groupBy</span><span class="p">({</span>
-<span class="w">  </span><span class="nx">by</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;teamId&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">by</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"teamId"</span><span class="p">],</span>
 <span class="w">  </span><span class="nx">_count</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">_all</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>

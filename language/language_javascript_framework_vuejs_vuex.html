@@ -34011,7 +34011,7 @@
 <p>クラスベースオブジェクト指向でいうところの、Setter 関数に相当する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Vuexパッケージを読み込む。</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">vuex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;vuex&quot;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">vuex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"vuex"</span><span class="p">);</span>
 
 <span class="c1">// 外部ファイルが、このStoreインスタンスを読み込めるようにする。</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vuex</span><span class="p">.</span><span class="nx">Store</span><span class="p">({</span>
@@ -34059,7 +34059,7 @@
 <span class="w">  </span><span class="nx">actions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 省略記法 (Argument destructuring)</span>
 <span class="w">    </span><span class="nx">mutate</span><span class="p">({</span><span class="nx">commit</span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">commit</span><span class="p">(</span><span class="s2">&quot;mutate&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">commit</span><span class="p">(</span><span class="s2">"mutate"</span><span class="p">);</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="p">});</span>
@@ -34087,28 +34087,28 @@
 <span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span> ...<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="w">  </span><span class="c1">// Vuex.Store()を読み込む。</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">store</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./_store&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">store</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"./_store"</span><span class="p">);</span>
 
 <span class="w">  </span><span class="c1">// Vuex.Store()のgetters、mutations、actionsをマッピングできるように読み込む。</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mapGetters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;vuex&quot;</span><span class="p">).</span><span class="nx">mapGetters</span><span class="p">;</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mapActions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;vuex&quot;</span><span class="p">).</span><span class="nx">mapActions</span><span class="p">;</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mapMutations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;vuex&quot;</span><span class="p">).</span><span class="nx">mapMutations</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mapGetters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"vuex"</span><span class="p">).</span><span class="nx">mapGetters</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mapActions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"vuex"</span><span class="p">).</span><span class="nx">mapActions</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mapMutations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"vuex"</span><span class="p">).</span><span class="nx">mapMutations</span><span class="p">;</span>
 
 <span class="w">  </span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// イベントハンドラ関数を定義 (※状態の変更を保持したくないもの)</span>
 <span class="w">    </span><span class="nx">computed</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1">// mapGettersヘルパー</span>
 <span class="w">      </span><span class="c1">// StoreのGetterをローカルマシンのcomputed:{}にマッピングし、コールできるように。</span>
-<span class="w">      </span><span class="p">...</span><span class="nx">mapGetters</span><span class="p">([</span><span class="s2">&quot;x-Function&quot;</span><span class="p">]),</span>
+<span class="w">      </span><span class="p">...</span><span class="nx">mapGetters</span><span class="p">([</span><span class="s2">"x-Function"</span><span class="p">]),</span>
 <span class="w">    </span><span class="p">},</span>
 
 <span class="w">    </span><span class="c1">// イベントハンドラ関数を定義 (※状態の変更を保持したいもの)</span>
 <span class="w">    </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1">// mapMutationsヘルパー</span>
-<span class="w">      </span><span class="p">...</span><span class="nx">mapMutations</span><span class="p">([</span><span class="s2">&quot;y-Function&quot;</span><span class="p">]),</span>
+<span class="w">      </span><span class="p">...</span><span class="nx">mapMutations</span><span class="p">([</span><span class="s2">"y-Function"</span><span class="p">]),</span>
 
 <span class="w">      </span><span class="c1">// mapActionsヘルパー</span>
-<span class="w">      </span><span class="p">...</span><span class="nx">mapActions</span><span class="p">([</span><span class="s2">&quot;z-Function&quot;</span><span class="p">]),</span>
+<span class="w">      </span><span class="p">...</span><span class="nx">mapActions</span><span class="p">([</span><span class="s2">"z-Function"</span><span class="p">]),</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">};</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>

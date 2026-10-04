@@ -33473,8 +33473,8 @@
 <span class="w">    </span><span class="nt">name_template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
 <span class="w">      </span><span class="no">{{ .ProjectName }}_</span>
 <span class="w">      </span><span class="no">{{- title .Os }}_</span>
-<span class="w">      </span><span class="no">{{- if eq .Arch &quot;amd64&quot; }}x86_64</span>
-<span class="w">      </span><span class="no">{{- else if eq .Arch &quot;386&quot; }}i386</span>
+<span class="w">      </span><span class="no">{{- if eq .Arch "amd64" }}x86_64</span>
+<span class="w">      </span><span class="no">{{- else if eq .Arch "386" }}i386</span>
 <span class="w">      </span><span class="no">{{- else }}{{ .Arch }}{{ end }}</span>
 <span class="w">      </span><span class="no">{{- if .Arm }}v{{ .Arm }}{{ end }}</span>
 <span class="w">    </span><span class="nt">format_overrides</span><span class="p">:</span>
@@ -33511,8 +33511,8 @@
 <span class="w">  </span><span class="nt">sort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">asc</span>
 <span class="w">  </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">exclude</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;^docs:&quot;</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;^test:&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"^docs:"</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"^test:"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="version">version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h3>

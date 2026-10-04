@@ -34452,7 +34452,7 @@ $<span class="w"> </span>yarn<span class="w"> </span>start
 <h3 id="nuxtconfigjs"><code>nuxt.config.js</code> ファイルとは<a class="headerlink" href="#nuxtconfigjs" title="Permanent link">&para;</a></h3>
 <p>Nuxt がデフォルトで用意している設定をプロパティの設定値で上書きできる。</p>
 <p>各プロパティは以下のリンクを参考にせよ。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nuxt/types&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@nuxt/types"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">nuxtConfig</span><span class="o">:</span><span class="w"> </span><span class="nx">Configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// プロパティ</span>
@@ -34484,7 +34484,7 @@ $<span class="w"> </span>yarn<span class="w"> </span>start
 <span class="c1"># ホームパス</span>
 <span class="nv">HOME_PATH</span><span class="o">=</span>/
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nuxt/types&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@nuxt/types"</span><span class="p">;</span>
 
 <span class="c1">// envファイルから読み込んだ値を定数に格納する</span>
 <span class="kd">const</span><span class="w"> </span><span class="p">{</span>
@@ -34525,11 +34525,11 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 <h4 id="hardsource">▼ hardSource<a class="headerlink" href="#hardsource" title="Permanent link">&para;</a></h4>
 <p>ビルド時のキャッシュを有効化するか否かを設定する。</p>
 <p>ビルドの完了が早くなる。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nuxt/types&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@nuxt/types"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">nuxtConfig</span><span class="o">:</span><span class="w"> </span><span class="nx">Configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">build</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">hardSource</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">hardSource</span><span class="o">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="p">};</span>
 </code></pre></div>
@@ -34545,7 +34545,7 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 <p>ブラウザの JavaScript ソースタブで公開されてしまうため、機密な変数は設定しないようにする。</p>
 <p>もし <code>publicRuntimeConfig</code> で同じ名前の変数が設定されていた場合は、この値を上書きする。</p>
 <p>環境変数は、<code>context</code> オブジェクトの <code>config</code> 変数から取得できる。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nuxt/types&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@nuxt/types"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">API_KEY</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">;</span>
 
@@ -34577,7 +34577,7 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 <p>つまり、全モード (SSG/CSR/SSR モード) が対応している。</p>
 <p>環境変数は、<code>pages</code>、<code>store</code>、<code>components</code>、<code>plugin</code> ディレクトリで使用できる。</p>
 <p>環境変数は、<code>context</code> オブジェクトの <code>config</code> 変数から取得できる。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nuxt/types&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@nuxt/types"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">API_URL</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">;</span>
 
@@ -34606,11 +34606,11 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 <h4 id="quiet">▼ quiet<a class="headerlink" href="#quiet" title="Permanent link">&para;</a></h4>
 <p>ビルド時にログを最小限にする。</p>
 <p>CI ツールでログが確認できなくなるため、無効化しておいたほうがよい。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nuxt/types&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@nuxt/types"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">nuxtConfig</span><span class="o">:</span><span class="w"> </span><span class="nx">Configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">build</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">quiet</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">quiet</span><span class="o">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="p">};</span>
 </code></pre></div>
@@ -34621,13 +34621,13 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 </blockquote>
 <h4 id="servermiddleware">▼ serverMiddleware<a class="headerlink" href="#servermiddleware" title="Permanent link">&para;</a></h4>
 <p>リクエストを受信できるエンドポイントと、紐付けるハンドラー関数を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nuxt/types&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@nuxt/types"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">nuxtConfig</span><span class="o">:</span><span class="w"> </span><span class="nx">Configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">serverMiddleware</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/foo&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">handler</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;~/foo/index.js&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s2">"/foo"</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">handler</span><span class="o">:</span><span class="w"> </span><span class="s2">"~/foo/index.js"</span><span class="p">,</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">    </span><span class="p">],</span>
 <span class="p">};</span>
@@ -34640,10 +34640,10 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 <p><br></p>
 <h3 id="buildmodules">buildModules<a class="headerlink" href="#buildmodules" title="Permanent link">&para;</a></h3>
 <p>SSG/SSR モードの <code>yarn dev</code> (開発用コマンド) 、また SSR モードの <code>yarn build</code> のときのみ、<code>node_module</code> ディレクトリ内に作成するパッケージを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@nuxt/types&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Configuration</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@nuxt/types"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">nuxtConfig</span><span class="o">:</span><span class="w"> </span><span class="nx">Configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">buildModules</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;@nuxt/typescript-build&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;@nuxtjs/composition-api&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nx">buildModules</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"@nuxt/typescript-build"</span><span class="p">,</span><span class="w"> </span><span class="s2">"@nuxtjs/composition-api"</span><span class="p">],</span>
 <span class="p">};</span>
 </code></pre></div>
 <blockquote>

@@ -33971,7 +33971,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-policy</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kyverno</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">background</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">  </span><span class="nt">background</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34002,8 +34002,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">patchStrategicMerge</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">(image)</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*:latest&quot;</span>
-<span class="w">                </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;IfNotPresent&quot;</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">(image)</span><span class="p">:</span><span class="w"> </span><span class="s">"*:latest"</span>
+<span class="w">                </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="s">"IfNotPresent"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34027,11 +34027,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">              </span><span class="nt">kinds</span><span class="p">:</span>
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="w">      </span><span class="nt">validate</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Label</span><span class="nv"> </span><span class="s">(&#39;app.kubernetes.io/name&#39;)</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">required&quot;</span>
+<span class="w">        </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">"Label</span><span class="nv"> </span><span class="s">('app.kubernetes.io/name')</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">required"</span>
 <span class="w">        </span><span class="nt">pattern</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;?*&quot;</span>
+<span class="w">              </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="s">"?*"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34055,18 +34055,18 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">          </span><span class="nt">namespaces</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="w">      </span><span class="nt">validate</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Container</span><span class="nv"> </span><span class="s">resources</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">required&quot;</span>
+<span class="w">        </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">"Container</span><span class="nv"> </span><span class="s">resources</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">required"</span>
 <span class="w">        </span><span class="nt">pattern</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">                </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">limits</span><span class="p">:</span>
-<span class="w">                    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;?*&quot;</span>
-<span class="w">                    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;?*&quot;</span>
+<span class="w">                    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"?*"</span>
+<span class="w">                    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"?*"</span>
 <span class="w">                  </span><span class="nt">requests</span><span class="p">:</span>
-<span class="w">                    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;?*&quot;</span>
-<span class="w">                    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;?*&quot;</span>
+<span class="w">                    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"?*"</span>
+<span class="w">                    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"?*"</span>
 </code></pre></div>
 <blockquote>
 <ul>

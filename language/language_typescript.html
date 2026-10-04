@@ -35523,7 +35523,7 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// トランスパイルされてJavaScriptになる</span>
 <span class="c1">// undefinedは型不一致のため、コンパイルの型検証によってエラーになる</span>
-<span class="nx">error</span><span class="w"> </span><span class="nx">TS2554</span><span class="o">:</span><span class="w"> </span><span class="nx">Expected</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="nx">arguments</span><span class="p">,</span><span class="w"> </span><span class="nx">but</span><span class="w"> </span><span class="nx">got</span><span class="w"> </span><span class="mf">0.</span>
+<span class="nx">error</span><span class="w"> </span><span class="nx">TS2554</span><span class="o">:</span><span class="w"> </span><span class="nx">Expected</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="nb">arguments</span><span class="p">,</span><span class="w"> </span><span class="nx">but</span><span class="w"> </span><span class="nx">got</span><span class="w"> </span><span class="mf">0.</span>
 </code></pre></div>
 <h4 id="_5">▼ トランスパイルのみ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -35548,15 +35548,15 @@
 <p>型がより複雑な配列やオブジェクトリテラルで使用すると便利である。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">obj</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">readonly</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;pikachu&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">readonly</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"pikachu"</span><span class="p">;</span>
 <span class="w">    </span><span class="k">readonly</span><span class="w"> </span><span class="nx">no</span><span class="o">:</span><span class="w"> </span><span class="kt">25</span><span class="p">;</span>
-<span class="w">    </span><span class="k">readonly</span><span class="w"> </span><span class="nx">genre</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;mouse pokémon&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">readonly</span><span class="w"> </span><span class="nx">genre</span><span class="o">:</span><span class="w"> </span><span class="s2">"mouse pokémon"</span><span class="p">;</span>
 <span class="w">    </span><span class="k">readonly</span><span class="w"> </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="kt">0.4</span><span class="p">;</span>
 <span class="w">    </span><span class="k">readonly</span><span class="w"> </span><span class="nx">weight</span><span class="o">:</span><span class="w"> </span><span class="kt">6</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;pikachu&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"pikachu"</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">no</span><span class="o">:</span><span class="w"> </span><span class="kt">25</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">genre</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;mouse pokémon&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">genre</span><span class="o">:</span><span class="w"> </span><span class="s2">"mouse pokémon"</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="kt">0.4</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">weight</span><span class="o">:</span><span class="w"> </span><span class="kt">6.0</span><span class="p">,</span>
 <span class="p">}</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">;</span>
@@ -35570,7 +35570,7 @@
 <h2 id="02-02">02-02. 型<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">プリミティブ型<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="string">▼ 文字列 (String)<a class="headerlink" href="#string" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">str</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">str</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"hello"</span><span class="p">;</span>
 <span class="nx">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// これはエラーになる</span>
 </code></pre></div>
 <blockquote>
@@ -35580,7 +35580,7 @@
 </blockquote>
 <h4 id="number">▼ 数値 (Number)<a class="headerlink" href="#number" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">num</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-<span class="nx">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// これはエラーになる</span>
+<span class="nx">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0"</span><span class="p">;</span><span class="w"> </span><span class="c1">// これはエラーになる</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35625,7 +35625,7 @@
 </blockquote>
 <h4 id="symbol">▼ シンボル (Symbol)<a class="headerlink" href="#symbol" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">sym</span><span class="o">:</span><span class="w"> </span><span class="kt">symbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Symbol</span><span class="p">();</span>
-<span class="nx">sym</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// これはエラーになる</span>
+<span class="nx">sym</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">;</span><span class="w"> </span><span class="c1">// これはエラーになる</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35639,7 +35639,7 @@
 <span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
 <span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;taro&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"taro"</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">20</span><span class="p">,</span>
 <span class="p">};</span>
 </code></pre></div>
@@ -35647,10 +35647,10 @@
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="kt">123</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">bar</span><span class="o">:</span><span class="w"> </span><span class="kt">456</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;baz-qux&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">789</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"baz-qux"</span><span class="o">:</span><span class="w"> </span><span class="mf">789</span><span class="p">,</span>
 <span class="p">};</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">;</span>
 
 <span class="c1">// ドット記法</span>
 <span class="c1">// キー名が静的で変わらない場合に適している</span>
@@ -35659,18 +35659,18 @@
 <span class="c1">// ブラケット記法</span>
 <span class="c1">// キー名が動的な場合や記号を含む場合に適している</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">value2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span><span class="w"> </span><span class="c1">// 456</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">value3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">[</span><span class="s2">&quot;baz-qux&quot;</span><span class="p">];</span><span class="w"> </span><span class="c1">// 789</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">value3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">[</span><span class="s2">"baz-qux"</span><span class="p">];</span><span class="w"> </span><span class="c1">// 789</span>
 </code></pre></div>
 <h4 id="record">▼ Record による定義<a class="headerlink" href="#record" title="Permanent link">&para;</a></h4>
 <p>Record を使用することで、オブジェクト型をわかりやすく定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">object</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;taro&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;20&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"taro"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span>
 <span class="p">};</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">object</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">unknown</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;taro&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;20&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"taro"</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="s2">"20"</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">bar</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
 <span class="p">};</span>
@@ -35680,13 +35680,13 @@
 <h4 id="_10">▼ 配列とは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>可変的な要素数、順序は自由、型はすべて同じデータ型である。</p>
 <h4 id="_11">▼ 変数<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">strArray</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">strArray</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"c"</span><span class="p">];</span>
 
 <span class="nx">strArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">numArray</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
 
-<span class="nx">numArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span>
+<span class="nx">numArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">"a"</span><span class="p">);</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35717,19 +35717,19 @@
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">];</span>
 <span class="p">};</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">foo</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">foo</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="s2">"Alice"</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_16">ジェネリクス型<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="_17">▼ 変数<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1">// string[] と同じ</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">str</span><span class="o">:</span><span class="w"> </span><span class="kt">Array</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">];</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">str</span><span class="o">:</span><span class="w"> </span><span class="kt">Array</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"c"</span><span class="p">];</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// (string|number)[] と同じ</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">strOrNum</span><span class="o">:</span><span class="w"> </span><span class="kt">Array</span><span class="o">&lt;</span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">];</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">strOrNum</span><span class="o">:</span><span class="w"> </span><span class="kt">Array</span><span class="o">&lt;</span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">];</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// string{} と同じ</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">str</span><span class="o">:</span><span class="w"> </span><span class="kt">Map</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">};</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">str</span><span class="o">:</span><span class="w"> </span><span class="kt">Map</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="s2">"c"</span><span class="p">};</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35740,7 +35740,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1">// Promise&lt;型&gt;</span>
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">asyncFn</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 非同期処理</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;executed&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">"executed"</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">asyncFn</span><span class="p">());</span>
@@ -35769,7 +35769,7 @@
 <span class="p">}</span>
 
 <span class="c1">// 型変数に文字を代入すると、これを推論し、string型の引数型と返却値型を定義していたことになる</span>
-<span class="nx">foo</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span>
+<span class="nx">foo</span><span class="p">(</span><span class="s2">"a"</span><span class="p">);</span>
 
 <span class="c1">// number型の引数型と返却値型を定義していたことになる</span>
 <span class="nx">foo</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
@@ -35781,7 +35781,7 @@
 <span class="p">};</span>
 
 <span class="c1">// 型変数に文字を代入すると、これを推論し、Promise&lt;string&gt;型の引数型と返却値型を定義していたことになる</span>
-<span class="nx">foo</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">);</span>
+<span class="nx">foo</span><span class="p">(</span><span class="s2">"a"</span><span class="p">);</span>
 
 <span class="c1">// Promise&lt;string&gt;型の引数型と返却値型を定義していたことになる</span>
 <span class="nx">foo</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
@@ -35793,7 +35793,7 @@
 <span class="p">};</span>
 
 <span class="c1">// 型変数に文字を代入すると、これを推論し、string型の引数型と返却値型を定義していたことになる</span>
-<span class="nx">foo</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">);</span>
+<span class="nx">foo</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="s2">"b"</span><span class="p">);</span>
 
 <span class="c1">// number型の引数型と返却値型を定義していたことになる</span>
 <span class="nx">foo</span><span class="o">&lt;</span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="kt">number</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
@@ -35802,7 +35802,7 @@
 <span class="nx">foo</span><span class="o">&lt;</span><span class="kt">boolean</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
 
 <span class="c1">// 複数の型を組み合わせることもできる</span>
-<span class="nx">foo</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">number</span><span class="o">&gt;</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="nx">foo</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">number</span><span class="o">&gt;</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">measureFunctionExecutionTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span>
 <span class="w">  </span><span class="nx">fn</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">,</span>
@@ -35848,7 +35848,7 @@
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">));</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">));</span><span class="w"> </span><span class="c1">// Argument of type &#39;string&#39; is not assignable to parameter of type &#39;number&#39;.</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="s2">"2"</span><span class="p">));</span><span class="w"> </span><span class="c1">// Argument of type 'string' is not assignable to parameter of type 'number'.</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sum</span><span class="p">(</span><span class="mf">1</span><span class="p">));</span><span class="w"> </span><span class="c1">// Expected 2 arguments, but got 1.</span>
 </code></pre></div>
@@ -35866,7 +35866,7 @@
 <h3 id="_23">返却値なし<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// 返却値がないという型</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"log"</span><span class="p">);</span>
 <span class="p">};</span>
 </code></pre></div>
 <blockquote>
@@ -35897,7 +35897,7 @@
 <span class="w">    </span><span class="nb">Object</span><span class="p">.</span><span class="nx">setPrototypeOf</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="ow">new</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// 親のErrorオブジェクトのプロパティに設定</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;FooError&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"FooError"</span><span class="p">;</span>
 <span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">400</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -35915,7 +35915,7 @@
 <span class="w">    </span><span class="nb">Object</span><span class="p">.</span><span class="nx">setPrototypeOf</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="ow">new</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// 親のErrorオブジェクトのプロパティに設定</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;FooError&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"FooError"</span><span class="p">;</span>
 <span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">code</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -35965,14 +35965,14 @@
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 何らかの処理</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">"success"</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">unknown</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="ne">Error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1">// unknownを使用したため、Error型として暗黙的に処理される</span>
 <span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1">// unknownを使用したため、Error型以外の型として暗黙的に処理される</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Unknown error:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Unknown error:"</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
@@ -35989,14 +35989,14 @@
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 何らかの処理</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">"success"</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="ne">Error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1">// anyを使用したため、Error型ではなく型無しとして暗黙的に処理される</span>
 <span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1">// anyを使用したため、型無しとして暗黙的に処理される</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;Unknown error:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Unknown error:"</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
@@ -36010,7 +36010,7 @@
 <p><br></p>
 <h2 id="03">03. 型推論<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_26">暗黙的<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 変数nameは文字列として推論されます</span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"John"</span><span class="p">;</span><span class="w"> </span><span class="c1">// 変数nameは文字列として推論されます</span>
 <span class="kd">let</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30</span><span class="p">;</span><span class="w"> </span><span class="c1">// 変数ageは数値として推論されます</span>
 <span class="kd">let</span><span class="w"> </span><span class="nx">isProgrammer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// 変数isProgrammerはブール値として推論されます</span>
 </code></pre></div>
@@ -36021,7 +36021,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_27">明示的<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"John"</span><span class="p">;</span>
 <span class="kd">let</span><span class="w"> </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30</span><span class="p">;</span>
 <span class="kd">let</span><span class="w"> </span><span class="nx">isProgrammer</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 </code></pre></div>
@@ -36042,7 +36042,7 @@
 </blockquote>
 <h4 id="as">▼ <code>as</code> 構文<a class="headerlink" href="#as" title="Permanent link">&para;</a></h4>
 <p>指定した型に上書きする。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;this is a string&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"this is a string"</span><span class="p">;</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">strLength</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -36052,7 +36052,7 @@
 </blockquote>
 <h4 id="_30">▼ アングルブラケット構文<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
 <p>指定した型に上書きする。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;this is a string&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"this is a string"</span><span class="p">;</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">strLength</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="nx">value</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -36092,7 +36092,7 @@
 <p>より寛容な型 (<code>any</code>) ほど、型ガードのパターンが増える。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// string型またはnumber型を許容する</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">(</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">"string"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// string型として扱われる</span>
 <span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">());</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
@@ -36111,8 +36111,8 @@
 <span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">user1</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="p">};</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">user2</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;abc123&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Bob&quot;</span><span class="p">};</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">user1</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Alice"</span><span class="p">};</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">user2</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">"abc123"</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">};</span>
 </code></pre></div>
 <h4 id="_34">▼ オブジェクト全体で複数の型を用意<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
 <p><code>name</code> プロパティが <code>string</code> 型の User と、<code>undefined</code> 型の UserWithoutName を別々に定義している。</p>
@@ -36127,7 +36127,7 @@
 <span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">undefined</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">user1</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="p">};</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">user1</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">"Alice"</span><span class="p">};</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">user2</span><span class="o">:</span><span class="w"> </span><span class="kt">UserWithoutName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">undefined</span><span class="p">};</span>
 </code></pre></div>
 <p><br></p>
@@ -36189,13 +36189,13 @@
 
 <span class="c1">// fooやbarが存在しない場合も許容する</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">method</span><span class="p">(</span><span class="nx">arg</span><span class="o">:</span><span class="w"> </span><span class="kt">A</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fooValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arg</span><span class="p">.</span><span class="nx">foo</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s2">&quot;(fooなし)&quot;</span><span class="p">;</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">barValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arg</span><span class="p">.</span><span class="nx">bar</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s2">&quot;(barなし)&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fooValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arg</span><span class="p">.</span><span class="nx">foo</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s2">"(fooなし)"</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">barValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">arg</span><span class="p">.</span><span class="nx">bar</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s2">"(barなし)"</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`foo: </span><span class="si">${</span><span class="nx">fooValue</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span><span class="w"> </span><span class="sb">`bar: </span><span class="si">${</span><span class="nx">barValue</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="c1">// fooのみでもOK</span>
-<span class="nx">method</span><span class="p">({</span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;FOO&quot;</span><span class="p">});</span>
+<span class="nx">method</span><span class="p">({</span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="s2">"FOO"</span><span class="p">});</span>
 
 <span class="c1">// barのみでもOK</span>
 <span class="nx">method</span><span class="p">({</span><span class="nx">bar</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">});</span>
@@ -36233,7 +36233,7 @@
 
 <span class="kd">function</span><span class="w"> </span><span class="nx">method</span><span class="p">(</span><span class="nx">arg</span><span class="o">:</span><span class="w"> </span><span class="kt">AB</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// いずれかの型を指定しないといけない</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">arg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="s2">"foo"</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">arg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`foo: </span><span class="si">${</span><span class="nx">arg</span><span class="p">.</span><span class="nx">foo</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
@@ -36268,7 +36268,7 @@
 <h4 id="dotenv">▼ dotenv パッケージ<a class="headerlink" href="#dotenv" title="Permanent link">&para;</a></h4>
 <p><code>dotenv</code> パッケージ</p>
 <p>なお、依存パッケージが増えてしまうため、代替の方法があるならそちらのほうがよい。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">dotenv</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;dotenv&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">dotenv</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"dotenv"</span><span class="p">;</span>
 
 <span class="c1">// .envファイルを読み込む</span>
 <span class="nx">dotenv</span><span class="p">.</span><span class="nx">config</span><span class="p">();</span>
@@ -36289,7 +36289,7 @@
 <span class="p">}</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">myEnv</span><span class="o">:</span><span class="w"> </span><span class="kt">Env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">DATABASE_NAME</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DATABASE_NAME</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">DATABASE_NAME</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DATABASE_NAME</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">DATABASE_PORT</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DATABASE_PORT</span>
 <span class="w">    </span><span class="o">?</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DATABASE_PORT</span><span class="p">)</span>
 <span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="kc">undefined</span><span class="p">,</span>
@@ -36304,7 +36304,7 @@
 <h2 id="06">06. パッケージ<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="import">import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h3>
 <h4 id="import_1">▼ import とは<a class="headerlink" href="#import_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">logger</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./logger&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">logger</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./logger"</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="_40">▼ 型と関数が混在<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
 <p>型と関数が混在する場合、いくつかの記法（型と関数で <code>import</code> を分けるなど）があるが、次の実装方法が一番よい。</p>
@@ -36315,7 +36315,7 @@
 <span class="w">  </span><span class="kr">type</span><span class="w"> </span><span class="nx">foo4</span><span class="p">,</span>
 <span class="w">  </span><span class="kr">type</span><span class="w"> </span><span class="nx">foo5</span><span class="p">,</span>
 <span class="w">  </span><span class="kr">type</span><span class="w"> </span><span class="nx">foo6</span><span class="p">,</span>
-<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./foo&quot;</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./foo"</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="import_2">▼ 動的 import<a class="headerlink" href="#import_2" title="Permanent link">&para;</a></h4>
 <p>一部のモジュールはサーダーレンダリング中に読み込むことができず、ファイルの上部で import するとエラーになることがある。</p>
@@ -36324,7 +36324,7 @@
 <span class="w">  </span><span class="c1">// react-apexchartsは内部でブラウザのwindowを参照するため、本ファイルの上部でimportするとSSRモードのサーバーレンダリング中にwindowを参照できずにエラーになる</span>
 <span class="w">  </span><span class="c1">// 動的importを使用することで、react-apexchartsの部分だけをCSRモードのクライアントレンダリング中に読み込むようにする</span>
 <span class="w">  </span><span class="c1">// @see https://github.com/apexcharts/react-apexcharts/issues/526</span>
-<span class="w">  </span><span class="k">import</span><span class="p">(</span><span class="s2">&quot;react-apexcharts&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">module</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">import</span><span class="p">(</span><span class="s2">"react-apexcharts"</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">module</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kr">module</span><span class="w"> </span><span class="nx">as</span><span class="w"> </span><span class="nx">any</span><span class="p">).</span><span class="k">default</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// 検証したところ、動的importで出力されるreactコンポーネントの型や構造はビルド方法（yarn dev、yarn build）や実行環境（ローカルPC、CI、AWS）ごとに異なっている模様</span>
@@ -36332,13 +36332,13 @@
 <span class="w">    </span><span class="c1">// そこで、動的importの返却値に含まれるfunction型のComponentを確実に使用できるように、型と構造を検証する</span>
 
 <span class="w">    </span><span class="c1">// Componentの構造に関する対処</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;function&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">"function"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1">// function型のComponentを再代入できたことを期待する</span>
 <span class="w">      </span><span class="nx">Component</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">Component</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">any</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="k">default</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// Componentの型に関する対処</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;function&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">"function"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="c1">// 再代入したComponentがfunction型でない場合、コンポーネントが想定外の型であるため、コンポーネントを表示しない</span>
 <span class="w">      </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
@@ -36350,22 +36350,22 @@
 <p><br></p>
 <h3 id="export">export<a class="headerlink" href="#export" title="Permanent link">&para;</a></h3>
 <h4 id="export_1">▼ export とは<a class="headerlink" href="#export_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="nx">logger</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./logger&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="nx">logger</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./logger"</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="indexts">▼ index.ts<a class="headerlink" href="#indexts" title="Permanent link">&para;</a></h4>
 <p>各ディレクトリのエントリポイントとして使える。</p>
 <p><code>index.ts</code> ファイルで <code>export</code> しておくと、コールする側がディレクトリ単位でインポートできるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// utils/index.ts</span>
-<span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="nx">logger</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./logger&quot;</span><span class="p">;</span>
-<span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="nx">logger</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./errorHandler&quot;</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="nx">logger</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./logger"</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="nx">logger</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./errorHandler"</span><span class="p">;</span>
 </code></pre></div>
 <p>アスタリスクで一括エクスポートしてもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// utils/index.ts</span>
-<span class="k">export</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./logger&quot;</span><span class="p">;</span>
-<span class="k">export</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./errorHandler&quot;</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./logger"</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./errorHandler"</span><span class="p">;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// ファイルを個別に指定する必要がなくなる</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">fooLogger</span><span class="p">,</span><span class="w"> </span><span class="nx">fooErrorHandler</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;~/utils&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">fooLogger</span><span class="p">,</span><span class="w"> </span><span class="nx">fooErrorHandler</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/utils"</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
 <ul>

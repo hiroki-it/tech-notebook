@@ -34491,13 +34491,13 @@
 <p>イメージレイヤーの実体は、<code>/var/lib/docker/overlay2</code> ディレクトリ配下にハッシュ値の名前からなるファイルとして保管されている。</p>
 <p>Docker は、オーバーレイファイルシステムを使用して、各ファイルを層状に管理する。</p>
 <p>1 つの命令につき、1 つのコンテナイメージレイヤーを積み重ねるようになっている。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>container<span class="w"> </span>inspect<span class="w"> </span>foo-container<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;{{json .GraphDriver.Data}}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>container<span class="w"> </span>inspect<span class="w"> </span>foo-container<span class="w"> </span>-f<span class="w"> </span><span class="s2">"{{json .GraphDriver.Data}}"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
 
 <span class="o">{</span>
-<span class="w">  </span><span class="s2">&quot;LowerDir&quot;</span>:<span class="w"> </span><span class="s2">&quot;/var/lib/docker/overlay2/*****-init/diff:/var/lib/docker/overlay2/*****/diff:/var/lib/docker/overlay2/*****/diff:/var/lib/docker/overlay2/*****/diff:/var/lib/docker/overlay2/*****/diff&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;MergedDir&quot;</span>:<span class="w"> </span><span class="s2">&quot;/var/lib/docker/overlay2/*****/merged&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;UpperDir&quot;</span>:<span class="w"> </span><span class="s2">&quot;/var/lib/docker/overlay2/*****/diff&quot;</span>,
-<span class="w">  </span><span class="s2">&quot;WorkDir&quot;</span>:<span class="w"> </span><span class="s2">&quot;/var/lib/docker/overlay2/*****/work&quot;</span>
+<span class="w">  </span><span class="s2">"LowerDir"</span>:<span class="w"> </span><span class="s2">"/var/lib/docker/overlay2/*****-init/diff:/var/lib/docker/overlay2/*****/diff:/var/lib/docker/overlay2/*****/diff:/var/lib/docker/overlay2/*****/diff:/var/lib/docker/overlay2/*****/diff"</span>,
+<span class="w">  </span><span class="s2">"MergedDir"</span>:<span class="w"> </span><span class="s2">"/var/lib/docker/overlay2/*****/merged"</span>,
+<span class="w">  </span><span class="s2">"UpperDir"</span>:<span class="w"> </span><span class="s2">"/var/lib/docker/overlay2/*****/diff"</span>,
+<span class="w">  </span><span class="s2">"WorkDir"</span>:<span class="w"> </span><span class="s2">"/var/lib/docker/overlay2/*****/work"</span>
 <span class="o">}</span>
 </code></pre></div>
 <blockquote>
@@ -34653,13 +34653,13 @@
 <p>デフォルトの設定値である。</p>
 <p><code>labels</code> キーで文字列リストを設定すると、属性キーを付与できる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;log-driver&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;json-file&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"log-driver"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"json-file"</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="c1"># ドライバーのオプション</span>
-<span class="w">  </span><span class="s">&quot;log-opts&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;max-size&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;10m&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;max-file&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;3&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"log-opts"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">"max-size"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"10m"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"max-file"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"3"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="c1"># JSON に付与する属性キー</span>
-<span class="w">      </span><span class="s">&quot;labels&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;app,env&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"labels"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"app,env"</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
@@ -34672,10 +34672,10 @@
 <p>構造化ログに変換し、サイドカーとして稼働する Fluentd コンテナに送信する。</p>
 <p>Amazon ECS コンテナの awsfirelens ドライバーは、fluentd ドライバーをラッピングしたものである。</p>
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="o">{</span>
-<span class="w">   </span><span class="s2">&quot;log-driver&quot;</span>:<span class="w"> </span><span class="s2">&quot;fluentd&quot;</span>,
+<span class="w">   </span><span class="s2">"log-driver"</span>:<span class="w"> </span><span class="s2">"fluentd"</span>,
 <span class="w">    </span><span class="c1"># ドライバーのオプション</span>
-<span class="w">   </span><span class="s2">&quot;log-opts&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">     </span><span class="s2">&quot;fluentd-address&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;Fluentdコンテナのホスト名&gt;:24224&quot;</span>
+<span class="w">   </span><span class="s2">"log-opts"</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">     </span><span class="s2">"fluentd-address"</span>:<span class="w"> </span><span class="s2">"&lt;Fluentdコンテナのホスト名&gt;:24224"</span>
 <span class="w">   </span><span class="o">}</span>
 <span class="w"> </span><span class="o">}</span>
 </code></pre></div>
@@ -34691,9 +34691,9 @@
 <h4 id="awslogs">▼ awslogs<a class="headerlink" href="#awslogs" title="Permanent link">&para;</a></h4>
 <p>標準出力/標準エラー出力に出力されたログを Amazon CloudWatch-API に送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;log-driver&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;awslogs&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"log-driver"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"awslogs"</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="c1"># ドライバーのオプション</span>
-<span class="w">  </span><span class="s">&quot;log-opts&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;awslogs-region&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;us-east-1&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">"log-opts"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"awslogs-region"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"us-east-1"</span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
@@ -34704,9 +34704,9 @@
 <h4 id="gcplogs">▼ gcplogs<a class="headerlink" href="#gcplogs" title="Permanent link">&para;</a></h4>
 <p>標準出力/標準エラー出力に出力されたログを、Google Cloud Logging の API にフォワーディングする。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;log-driver&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;gcplogs&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"log-driver"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"gcplogs"</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="c1"># ドライバーのオプション</span>
-<span class="w">  </span><span class="s">&quot;log-opts&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;gcp-meta-name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;example-instance-12345&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">"log-opts"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"gcp-meta-name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"example-instance-12345"</span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>

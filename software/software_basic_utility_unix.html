@@ -39267,7 +39267,7 @@ $<span class="w"> </span>cp<span class="w"> </span>-Rp<span class="w"> </span>/&
 <p><br></p>
 <h3 id="-p">-p<a class="headerlink" href="#-p" title="Permanent link">&para;</a></h3>
 <p>『<code>&lt;ファイルへのパス&gt;.YYYYmmdd</code>』の形式でバックアップファイルを作成する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cp<span class="w"> </span>-p<span class="w"> </span>&lt;コピー元ファイルへのパス&gt;<span class="w"> </span>&lt;コピー先ファイルへのパス&gt;.<span class="sb">`</span>date<span class="w"> </span>+<span class="s2">&quot;%Y%m%d&quot;</span><span class="sb">`</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cp<span class="w"> </span>-p<span class="w"> </span>&lt;コピー元ファイルへのパス&gt;<span class="w"> </span>&lt;コピー先ファイルへのパス&gt;.<span class="sb">`</span>date<span class="w"> </span>+<span class="s2">"%Y%m%d"</span><span class="sb">`</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="cron">cron<a class="headerlink" href="#cron" title="Permanent link">&para;</a></h2>
@@ -39331,7 +39331,7 @@ $<span class="w"> </span>cp<span class="w"> </span>-Rp<span class="w"> </span>/&
 <div class="highlight"><pre><span></span><code><span class="c1"># 設定</span>
 <span class="nv">SHELL</span><span class="o">=</span>/bin/bash
 <span class="nv">PATH</span><span class="o">=</span>/sbin:/bin:/usr/sbin:/usr/bin
-<span class="nv">MAILTO</span><span class="o">=</span><span class="s2">&quot;example@gmail.com&quot;</span>
+<span class="nv">MAILTO</span><span class="o">=</span><span class="s2">"example@gmail.com"</span>
 <span class="nv">LANG</span><span class="o">=</span>ja_JP.UTF-8
 <span class="nv">LC_ALL</span><span class="o">=</span>ja_JP.UTF-8
 <span class="nv">CONTENT_TYPE</span><span class="o">=</span>text/plain<span class="p">;</span><span class="w"> </span><span class="nv">charset</span><span class="o">=</span>UTF-8
@@ -39499,7 +39499,7 @@ foo.txt:<span class="w"> </span>ASCII<span class="w"> </span>text
 <h3 id="-d">-d<a class="headerlink" href="#-d" title="Permanent link">&para;</a></h3>
 <p>メッセージボディを設定する。</p>
 <p><strong>＊例＊</strong></p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type:application/json&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;{}&#39;</span><span class="w"> </span>https://example.com/foo
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Content-Type:application/json"</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">'{}'</span><span class="w"> </span>https://example.com/foo
 </code></pre></div>
 <p><br></p>
 <h3 id="-s_1">-s (小文字)<a class="headerlink" href="#-s_1" title="Permanent link">&para;</a></h3>
@@ -39508,7 +39508,7 @@ foo.txt:<span class="w"> </span>ASCII<span class="w"> </span>text
 </code></pre></div>
 <p><code>curl</code> コマンドの結果から、特定の文字を抽出できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 『=』より後ろのバージョンを取得する</span>
-$<span class="w"> </span>curl<span class="w"> </span>-s<span class="w"> </span>https://example.com/foo.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/^[^=]*=//&#39;</span>
+$<span class="w"> </span>curl<span class="w"> </span>-s<span class="w"> </span>https://example.com/foo.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">'s/^[^=]*=//'</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -39524,7 +39524,7 @@ $<span class="w"> </span>curl<span class="w"> </span>-s<span class="w"> </span>h
 <h3 id="-k">-k<a class="headerlink" href="#-k" title="Permanent link">&para;</a></h3>
 <p>サーバー証明書のエラーを無視する。</p>
 <p>自己署名サーバー証明書を使用している場合に、以下のようなエラーで HTTPS リクエストを送信できないため、これを無視する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>https://*.*.*.*<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Host:example.com&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>https://*.*.*.*<span class="w"> </span>-H<span class="w"> </span><span class="s1">'Host:example.com'</span>
 
 curl:<span class="w"> </span><span class="o">(</span><span class="m">60</span><span class="o">)</span><span class="w"> </span>SSL<span class="w"> </span>certificate<span class="w"> </span>problem:<span class="w"> </span>self<span class="w"> </span>signed<span class="w"> </span>certificate
 More<span class="w"> </span>details<span class="w"> </span>here:<span class="w"> </span>https://curl.se/docs/sslcerts.html
@@ -39534,7 +39534,7 @@ establish<span class="w"> </span>a<span class="w"> </span>secure<span class="w">
 how<span class="w"> </span>to<span class="w"> </span>fix<span class="w"> </span>it,<span class="w"> </span>please<span class="w"> </span>visit<span class="w"> </span>the<span class="w"> </span>web<span class="w"> </span>page<span class="w"> </span>mentioned<span class="w"> </span>above.
 
 <span class="c1"># kオプションを有効化する。</span>
-$<span class="w"> </span>curl<span class="w"> </span>https://*.*.*.*<span class="w"> </span>-k<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Host:example.com&#39;</span>
+$<span class="w"> </span>curl<span class="w"> </span>https://*.*.*.*<span class="w"> </span>-k<span class="w"> </span>-H<span class="w"> </span><span class="s1">'Host:example.com'</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="-l_1">-L<a class="headerlink" href="#-l_1" title="Permanent link">&para;</a></h3>
@@ -39643,7 +39643,7 @@ total<span class="w">                                 </span><span class="m">557
 <p><br></p>
 <h3 id="_5">リダイレクトの比較<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>リダイレクトしたテキストを比較する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>diff<span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;test&#39;</span><span class="o">)</span><span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;tests&#39;</span><span class="o">)</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>diff<span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s1">'test'</span><span class="o">)</span><span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s1">'tests'</span><span class="o">)</span>
 
 -test
 +tests
@@ -39716,7 +39716,7 @@ $<span class="w"> </span>du<span class="w"> </span>./<span class="w"> </span><sp
 
 $<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>$&lt;変数名&gt;
 
-$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span>$<span class="s2">&lt;変数名&gt;&quot;</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span>$<span class="s2">&lt;変数名&gt;"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="-e_1">-e<a class="headerlink" href="#-e_1" title="Permanent link">&para;</a></h3>
@@ -39766,14 +39766,14 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 <span class="k">fi</span>
 
 <span class="c1"># User specific environment</span>
-<span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.local/bin:</span><span class="nv">$HOME</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.local/bin:</span><span class="nv">$HOME</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
 
 <span class="c1"># fooバイナリファイルのパスを追加 を追加 &lt;--- ここに追加</span>
 <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/usr/local/sbin/foo
 
 <span class="nb">export</span><span class="w"> </span>PATH
 
-<span class="c1"># Uncomment the following line if you don&quot;t like systemctl&quot;s auto-paging feature:</span>
+<span class="c1"># Uncomment the following line if you don"t like systemctl"s auto-paging feature:</span>
 <span class="c1"># export SYSTEMD_PAGER=</span>
 
 <span class="c1"># User specific aliases and functions</span>
@@ -39824,31 +39824,31 @@ foo.txt:<span class="w"> </span>ASCII<span class="w"> </span>text,<span class="w
 <h3 id="-type">-type<a class="headerlink" href="#-type" title="Permanent link">&para;</a></h3>
 <p>ファイルを検索する。</p>
 <p>アスタリスクを付けなくとも、自動的にワイルドカード (<code>*</code>) が働く。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;&lt;検索文字&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>grep<span class="w"> </span><span class="s2">"&lt;検索文字&gt;"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># パーミッションエラーなどのログを破棄して検索。</span>
-$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;&lt;検索文字&gt;&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>/dev/null
+$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>grep<span class="w"> </span><span class="s2">"&lt;検索文字&gt;"</span><span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>/dev/null
 </code></pre></div>
 <p><strong>実行例</strong></p>
 <p>設定ファイルの場所を探す。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;.conf&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>/dev/null
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>grep<span class="w"> </span><span class="s2">".conf"</span><span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>/dev/null
 </code></pre></div>
 <p>サーバー証明書の場所を探す。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;.crt&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>/dev/null
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>grep<span class="w"> </span><span class="s2">".crt"</span><span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>/dev/null
 </code></pre></div>
 <p><br></p>
 <h3 id="-name">-name<a class="headerlink" href="#-name" title="Permanent link">&para;</a></h3>
 <p>ファイル名が <code>.conf</code> で終了するものをすべて検索する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.conf&quot;</span><span class="w"> </span>-type<span class="w"> </span>f
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.conf"</span><span class="w"> </span>-type<span class="w"> </span>f
 </code></pre></div>
 <p>名前が dir で終了するディレクトリをすべて検索する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*dir&quot;</span><span class="w"> </span>-type<span class="w"> </span>d
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*dir"</span><span class="w"> </span>-type<span class="w"> </span>d
 </code></pre></div>
 <p>ルートディレクトリ配下で、 <code>&lt;検索文字&gt;</code> という文字をもち、ファイル名が <code>.conf</code> で終了するファイルをすべて検索する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.conf&quot;</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;&lt;検索文字&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.conf"</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>grep<span class="w"> </span><span class="s2">"&lt;検索文字&gt;"</span>
 </code></pre></div>
 <p>指定した拡張子のファイルをすべて削除する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.txt&quot;</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>rm<span class="w"> </span>-rf
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*.txt"</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>rm<span class="w"> </span>-rf
 </code></pre></div>
 <p><br></p>
 <h2 id="free">free<a class="headerlink" href="#free" title="Permanent link">&para;</a></h2>
@@ -39914,7 +39914,7 @@ usage:<span class="w"> </span>grep<span class="w"> </span><span class="o">[</spa
 <p><br></p>
 <h3 id="-"><code>--</code><a class="headerlink" href="#-" title="Permanent link">&para;</a></h3>
 <p>ハイフンを含む文字列を取得する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>--<span class="w"> </span><span class="s2">&quot;--bar&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>--<span class="w"> </span><span class="s2">"--bar"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="-a-b-c">-A、-B、-C<a class="headerlink" href="#-a-b-c" title="Permanent link">&para;</a></h3>
@@ -39937,7 +39937,7 @@ $<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </sp
 <h3 id="-e_3">-E<a class="headerlink" href="#-e_3" title="Permanent link">&para;</a></h3>
 <p>標準出力に出力された文字列のうち、正規表現で文字列を取得する。</p>
 <p>ログの最初のタイムスタンプに基づいてログをフィルタリングしたいときに役立つ。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;^2023-01-01 12:00&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">"^2023-01-01 12:00"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="-i">-i<a class="headerlink" href="#-i" title="Permanent link">&para;</a></h3>
@@ -39964,7 +39964,7 @@ $<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </sp
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">history</span><span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>&lt;過去のコマンド&gt;
 </code></pre></div>
 <p>番号を除きたい場合、<code>awk</code> コマンドを使用する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">history</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{$1=&quot;&quot;; print $0}&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">history</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{$1=""; print $0}'</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="id">id<a class="headerlink" href="#id" title="Permanent link">&para;</a></h2>
@@ -40478,7 +40478,7 @@ Connection<span class="w"> </span>to<span class="w"> </span><span class="m">127<
 <p><br></p>
 <h3 id="http">http で送信 (オプション無し)<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
 <p><code>echo</code> コマンドと組み合わせることにより、HTTP でリクエストを送信できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">&quot;GET / HTTP/1.1\n\n&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>nc<span class="w"> </span>-v<span class="w"> </span>&lt;ドメイン&gt;<span class="w"> </span><span class="m">80</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>-en<span class="w"> </span><span class="s2">"GET / HTTP/1.1\n\n"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>nc<span class="w"> </span>-v<span class="w"> </span>&lt;ドメイン&gt;<span class="w"> </span><span class="m">80</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -40642,19 +40642,19 @@ $<span class="w"> </span>ps<span class="w"> </span>-ef<span class="w"> </span><s
 <h3 id="-i-e-sg">-i -e <code>s/&lt;置換前&gt;/&lt;置換後&gt;/g</code><a class="headerlink" href="#-i-e-sg" title="Permanent link">&para;</a></h3>
 <p>文字列を置換する。また、<code>-i</code> オプションで元のファイルを上書きする。<code>find</code> コマンドと組み合わせて、特定のファイルのみで置換できるようにするとよい。複数の置換をする場合は、<code>-e</code> オプションを並べる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-name<span class="w"> </span><span class="s2">&quot;*.md&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/、/、/g&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/。/。/g&#39;</span>
+<span class="w">    </span>-name<span class="w"> </span><span class="s2">"*.md"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span>-e<span class="w"> </span><span class="s1">'s/、/、/g'</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">'s/。/。/g'</span>
 </code></pre></div>
 <p>スラッシュを含む文字列を置換する場合には、スラッシュをエスケープする必要である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-name<span class="w"> </span><span class="s2">&quot;*.md&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/foo\/bar/FooBar/g&#39;</span>
+<span class="w">    </span>-name<span class="w"> </span><span class="s2">"*.md"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span>-e<span class="w"> </span><span class="s1">'s/foo\/bar/FooBar/g'</span>
 </code></pre></div>
 <p>補足として MacOS で <code>-i</code> オプションを使用する場合は、オプションの引数に空文字を渡す必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># MacOSの場合</span>
 $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-name<span class="w"> </span><span class="s2">&quot;*.md&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/foo\/bar/FooBar/g&#39;</span>
+<span class="w">    </span>-name<span class="w"> </span><span class="s2">"*.md"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">''</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">'s/foo\/bar/FooBar/g'</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="s"><code>&lt;行数&gt;s/^</code><a class="headerlink" href="#s" title="Permanent link">&para;</a></h3>
@@ -40662,14 +40662,14 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 <p>ファイルの指定した行の先頭にテキストを追加する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># １行目先頭に挿入しつつ、改行する</span>
 $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-name<span class="w"> </span><span class="s2">&quot;*.md&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;1s/^/Foo\n\n/g&#39;</span>
+<span class="w">    </span>-name<span class="w"> </span><span class="s2">"*.md"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'1s/^/Foo\n\n/g'</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># MacOSの場合</span>
 <span class="c1"># １行目先頭に挿入しつつ、改行する</span>
 $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-name<span class="w"> </span><span class="s2">&quot;*.md&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="s1">&#39;1s/^/Foo\n\n/g&#39;</span>
+<span class="w">    </span>-name<span class="w"> </span><span class="s2">"*.md"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">''</span><span class="w"> </span><span class="s1">'1s/^/Foo\n\n/g'</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -40683,8 +40683,8 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 <div class="highlight"><pre><span></span><code><span class="c1"># MacOSの場合</span>
 <span class="c1"># ２行目末尾に挿入しする</span>
 $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-name<span class="w"> </span><span class="s2">&quot;*.md&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="s1">&#39;2s/$/Foo/g&#39;</span>
+<span class="w">    </span>-name<span class="w"> </span><span class="s2">"*.md"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">''</span><span class="w"> </span><span class="s1">'2s/$/Foo/g'</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -40697,8 +40697,8 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 <p>ブロックを使用し、OR 条件を定義する。注意点として、<code>;</code> を使用して、ブロック内の処理の終了を宣言する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># MacOSの場合</span>
 $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-name<span class="w"> </span><span class="s2">&quot;*.md&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;/foo/! {/bar/! {/baz/! {/qux/! s/before/after/g;} ;} ;}&#39;</span>
+<span class="w">    </span>-name<span class="w"> </span><span class="s2">"*.md"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">''</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">'/foo/! {/bar/! {/baz/! {/qux/! s/before/after/g;} ;} ;}'</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -40824,8 +40824,8 @@ setsockopt<span class="o">(</span><span class="m">3</span>,<span class="w"> </sp
 
 ...
 
-<span class="nv">sin_addr</span><span class="o">=</span>inet_addr<span class="o">(</span><span class="s2">&quot;*.*.*.*&quot;</span><span class="o">)}</span>,<span class="w"> </span><span class="o">[</span><span class="m">128</span>-&gt;16<span class="o">])</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
-getsockname<span class="o">(</span><span class="m">3</span>,<span class="w"> </span><span class="o">{</span><span class="nv">sa_family</span><span class="o">=</span>AF_INET,<span class="w"> </span><span class="nv">sin_port</span><span class="o">=</span>htons<span class="o">(</span><span class="m">60714</span><span class="o">)</span>,<span class="w"> </span><span class="nv">sin_addr</span><span class="o">=</span>inet_addr<span class="o">(</span><span class="s2">&quot;*.*.*.*&quot;</span><span class="o">)}</span>,<span class="w"> </span><span class="o">[</span><span class="m">128</span>-&gt;16<span class="o">])</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+<span class="nv">sin_addr</span><span class="o">=</span>inet_addr<span class="o">(</span><span class="s2">"*.*.*.*"</span><span class="o">)}</span>,<span class="w"> </span><span class="o">[</span><span class="m">128</span>-&gt;16<span class="o">])</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+getsockname<span class="o">(</span><span class="m">3</span>,<span class="w"> </span><span class="o">{</span><span class="nv">sa_family</span><span class="o">=</span>AF_INET,<span class="w"> </span><span class="nv">sin_port</span><span class="o">=</span>htons<span class="o">(</span><span class="m">60714</span><span class="o">)</span>,<span class="w"> </span><span class="nv">sin_addr</span><span class="o">=</span>inet_addr<span class="o">(</span><span class="s2">"*.*.*.*"</span><span class="o">)}</span>,<span class="w"> </span><span class="o">[</span><span class="m">128</span>-&gt;16<span class="o">])</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
 
 +++<span class="w"> </span>exited<span class="w"> </span>with<span class="w"> </span><span class="m">0</span><span class="w"> </span>+++
 </code></pre></div>
@@ -40968,7 +40968,7 @@ $<span class="w"> </span>date
 <p><strong>＊実行例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-cat<span class="w"> </span>./src.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s2">&quot;\n&quot;</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>./dst.txt
+cat<span class="w"> </span>./src.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s2">"\n"</span><span class="w"> </span><span class="s2">","</span><span class="w"> </span>&gt;<span class="w"> </span>./dst.txt
 </code></pre></div>
 <p><br></p>
 <h2 id="uname">uname<a class="headerlink" href="#uname" title="Permanent link">&para;</a></h2>

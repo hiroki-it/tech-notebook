@@ -35125,7 +35125,7 @@
     <span class="sd">/**</span>
 <span class="sd">     * @var string</span>
 <span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s2">&quot;foos&quot;</span><span class="p">;</span> <span class="c1">// Eloquentモデルと関連しているテーブル</span>
+    <span class="k">protected</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s2">"foos"</span><span class="p">;</span> <span class="c1">// Eloquentモデルと関連しているテーブル</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_4">▼ テーブル間リレーションシップの定義<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
@@ -35145,7 +35145,7 @@
     <span class="sd">/**</span>
 <span class="sd">     * @var string</span>
 <span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">&quot;department_id&quot;</span><span class="p">;</span> <span class="c1">// 主キーとするカラム</span>
+    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">"department_id"</span><span class="p">;</span> <span class="c1">// 主キーとするカラム</span>
 
      <span class="sd">/**</span>
 <span class="sd">     * @return HasMany</span>
@@ -35171,7 +35171,7 @@
     <span class="sd">/**</span>
 <span class="sd">     * @var string</span>
 <span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">&quot;employee_id&quot;</span><span class="p">;</span> <span class="c1">// 主キーとするカラム</span>
+    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">"employee_id"</span><span class="p">;</span> <span class="c1">// 主キーとするカラム</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * @return BelongsTo</span>
@@ -35216,12 +35216,12 @@
     <span class="sd">/**</span>
 <span class="sd">     * @var string</span>
 <span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">&quot;foo_id&quot;</span><span class="p">;</span> <span class="c1">// 主キーとするカラム (デフォルトではidが主キー)</span>
+    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">"foo_id"</span><span class="p">;</span> <span class="c1">// 主キーとするカラム (デフォルトではidが主キー)</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * @var string</span>
 <span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$keyType</span> <span class="o">=</span> <span class="s2">&quot;int&quot;</span><span class="p">;</span> <span class="c1">// 主キーのデータ型</span>
+    <span class="k">protected</span> <span class="nv">$keyType</span> <span class="o">=</span> <span class="s2">"int"</span><span class="p">;</span> <span class="c1">// 主キーのデータ型</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * @var bool</span>
@@ -35241,8 +35241,8 @@
 
 <span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
 <span class="p">{</span>
-    <span class="k">const</span> <span class="no">CREATED_AT</span> <span class="o">=</span> <span class="s2">&quot;created_date_time&quot;</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">UPDATED_AT</span> <span class="o">=</span> <span class="s2">&quot;updated_data_time&quot;</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">CREATED_AT</span> <span class="o">=</span> <span class="s2">"created_date_time"</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">UPDATED_AT</span> <span class="o">=</span> <span class="s2">"updated_data_time"</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * @var bool</span>
@@ -35267,9 +35267,9 @@
 <span class="sd">     * @var array</span>
 <span class="sd">     */</span>
     <span class="k">protected</span> <span class="nv">$dates</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;created_at&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;updated_at&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;deleted_at&quot;</span>
+        <span class="s2">"created_at"</span><span class="p">,</span>
+        <span class="s2">"updated_at"</span><span class="p">,</span>
+        <span class="s2">"deleted_at"</span>
     <span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -35290,7 +35290,7 @@
 <span class="sd">     * @var array</span>
 <span class="sd">     */</span>
     <span class="k">protected</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;is_deleted&quot;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+        <span class="s2">"is_deleted"</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
     <span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -35312,7 +35312,7 @@
 <span class="sd">     * @var array</span>
 <span class="sd">     */</span>
     <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+        <span class="s2">"name"</span><span class="p">,</span>
     <span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -35332,7 +35332,7 @@
 <span class="sd">     * @var array</span>
 <span class="sd">     */</span>
     <span class="k">protected</span> <span class="nv">$guarded</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+        <span class="s2">"bar"</span><span class="p">,</span>
     <span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -35395,7 +35395,7 @@
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getNameAttribute</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooName</span> <span class="o">.</span> <span class="s2">&quot;です。&quot;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooName</span> <span class="o">.</span> <span class="s2">"です。"</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -35415,12 +35415,12 @@
 
 <span class="nv">$collection</span> <span class="o">=</span> <span class="nx">collect</span><span class="p">([</span>
     <span class="p">[</span>
-        <span class="s2">&quot;user_id&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;name&quot;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;佐藤太郎&quot;</span><span class="p">,</span>
+        <span class="s2">"user_id"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">"name"</span>    <span class="o">=&gt;</span> <span class="s2">"佐藤太郎"</span><span class="p">,</span>
     <span class="p">],</span>
     <span class="p">[</span>
-        <span class="s2">&quot;user_id&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="s2">&quot;name&quot;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;山田次郎&quot;</span><span class="p">,</span>
+        <span class="s2">"user_id"</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">"name"</span>    <span class="o">=&gt;</span> <span class="s2">"山田次郎"</span><span class="p">,</span>
     <span class="p">],</span>
 <span class="p">]);</span>
 
@@ -35457,13 +35457,13 @@
 </code></pre></div>
 <p>補足として、複数の条件を設定したいときは、早期リターンを使用する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="x">$collection = collect([1, 2, 3, 4, &quot;yes&quot;]);</span>
+<div class="highlight"><pre><span></span><code><span class="x">$collection = collect([1, 2, 3, 4, "yes"]);</span>
 
 <span class="x">// 複数の条件で抽出する。</span>
 <span class="x">$filtered = $collection-&gt;filter(function ($value, $key) {</span>
 
 <span class="x">    // まずはyesを検証する。</span>
-<span class="x">    if($value == &quot;yes&quot;) {</span>
+<span class="x">    if($value == "yes") {</span>
 <span class="x">        return true;</span>
 <span class="x">    }</span>
 
@@ -35472,7 +35472,7 @@
 
 <span class="x">$filtered-&gt;all();</span>
 
-<span class="x">// [3, 4, &quot;yes&quot;]</span>
+<span class="x">// [3, 4, "yes"]</span>
 </code></pre></div>
 <h4 id="first">▼ <code>first()</code> 関数<a class="headerlink" href="#first" title="Permanent link">&para;</a></h4>
 <p>コールバック関数の返り値が <code>true</code> であった最初の要素のみを抽出する。</p>
@@ -35666,8 +35666,8 @@
 <span class="p">{</span>
     <span class="c1">// 更新できるカラム</span>
     <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;age&quot;</span><span class="p">,</span>
+        <span class="s2">"name"</span><span class="p">,</span>
+        <span class="s2">"age"</span><span class="p">,</span>
     <span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -35772,7 +35772,7 @@
     <span class="p">{</span>
         <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
 
-        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;foo_email&#39;</span><span class="p">,</span> <span class="nv">$emailAddress</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">'foo_email'</span><span class="p">,</span> <span class="nv">$emailAddress</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -35834,7 +35834,7 @@
         <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
 
         <span class="c1">// 昇順</span>
-        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s1">&#39;foo_id&#39;</span><span class="p">,</span> <span class="s1">&#39;asc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s1">'foo_id'</span><span class="p">,</span> <span class="s1">'asc'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
@@ -35845,7 +35845,7 @@
         <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
 
         <span class="c1">// 降順</span>
-        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s1">&#39;foo_id&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s1">'foo_id'</span><span class="p">,</span> <span class="s1">'desc'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -35874,7 +35874,7 @@
     <span class="p">{</span>
         <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
 
-        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">sortBy</span><span class="p">(</span><span class="s1">&#39;foo_id&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">sortBy</span><span class="p">(</span><span class="s1">'foo_id'</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -35902,7 +35902,7 @@
     <span class="p">{</span>
         <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
 
-        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">sortByDesc</span><span class="p">(</span><span class="s1">&#39;foo_id&#39;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">sortByDesc</span><span class="p">(</span><span class="s1">'foo_id'</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -35945,7 +35945,7 @@
 
         <span class="c1">// Departmentに属するEmployeesを全て読み出します。</span>
         <span class="c1">// (departments : employees = 1 : 多)</span>
-        <span class="nv">$employees</span> <span class="o">=</span> <span class="nv">$department</span><span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="s2">&quot;employees&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+        <span class="nv">$employees</span> <span class="o">=</span> <span class="nv">$department</span><span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="s2">"employees"</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
 
         <span class="k">foreach</span> <span class="p">(</span><span class="nv">$employees</span> <span class="k">as</span> <span class="nv">$employee</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// ここではDBアクセスはせずに、プロパティに保持された値を取得するだけ。</span>
@@ -35972,7 +35972,7 @@
 <span class="sd">     *</span>
 <span class="sd">     * @var string</span>
 <span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">&quot;department_id&quot;</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">"department_id"</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 一対多の関係を定義します。</span>
@@ -36003,7 +36003,7 @@
 <span class="sd">     *</span>
 <span class="sd">     * @var string</span>
 <span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">&quot;employee_id&quot;</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">"employee_id"</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 多対一の関係を定義します。</span>
@@ -36064,8 +36064,8 @@
 <span class="p">{</span>
     <span class="c1">// 更新できるカラム</span>
     <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;age&quot;</span><span class="p">,</span>
+        <span class="s2">"name"</span><span class="p">,</span>
+        <span class="s2">"age"</span><span class="p">,</span>
     <span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36108,7 +36108,7 @@
 <span class="sd">     * @var array</span>
 <span class="sd">     */</span>
     <span class="k">protected</span> <span class="nv">$dates</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;deleted_at&quot;</span>
+        <span class="s2">"deleted_at"</span>
     <span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36129,7 +36129,7 @@
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">up</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="nx">Schema</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">Schema</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
 
             <span class="o">...</span>
 
@@ -36148,7 +36148,7 @@
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">down</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="nx">Schema</span><span class="o">::</span><span class="na">drop</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span>
+        <span class="nx">Schema</span><span class="o">::</span><span class="na">drop</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36191,17 +36191,17 @@
 <span class="sd">     * @var array</span>
 <span class="sd">     */</span>
     <span class="k">protected</span> <span class="nv">$dates</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s1">&#39;created_at&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;updated_at&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;deleted_at&#39;</span><span class="p">,</span>
+        <span class="s1">'created_at'</span><span class="p">,</span>
+        <span class="s1">'updated_at'</span><span class="p">,</span>
+        <span class="s1">'deleted_at'</span><span class="p">,</span>
     <span class="p">];</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * @var array</span>
 <span class="sd">     */</span>
     <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;age&#39;</span><span class="p">,</span>
+        <span class="s1">'name'</span><span class="p">,</span>
+        <span class="s1">'age'</span><span class="p">,</span>
     <span class="p">];</span>
     <span class="sd">/**</span>
 <span class="sd">     * @var int</span>
@@ -36272,15 +36272,15 @@
               <span class="c1">// INSERT文を実行する。</span>
               <span class="o">-&gt;</span><span class="na">create</span><span class="p">([</span>
                   <span class="c1">// ドメインモデルのデータをDTOに詰め替える。</span>
-                  <span class="s2">&quot;name&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(),</span>
-                  <span class="s2">&quot;age&quot;</span>   <span class="o">=&gt;</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">(),</span>
+                  <span class="s2">"name"</span>  <span class="o">=&gt;</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(),</span>
+                  <span class="s2">"age"</span>   <span class="o">=&gt;</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">(),</span>
               <span class="p">]);</span>
 
 <span class="c1">//          以下の実装でも良い。</span>
 <span class="c1">//          $this-&gt;fooDTO</span>
 <span class="c1">//              -&gt;fill([</span>
-<span class="c1">//                  &quot;name&quot;  =&gt; $foo-&gt;name(),</span>
-<span class="c1">//                  &quot;age&quot;   =&gt; $foo-&gt;age(),</span>
+<span class="c1">//                  "name"  =&gt; $foo-&gt;name(),</span>
+<span class="c1">//                  "age"   =&gt; $foo-&gt;age(),</span>
 <span class="c1">//              ])</span>
 <span class="c1">//              -&gt;save();</span>
           <span class="p">}</span>
@@ -36297,8 +36297,8 @@
 <span class="p">{</span>
     <span class="c1">// 更新できるカラム</span>
     <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;age&quot;</span><span class="p">,</span>
+        <span class="s2">"name"</span><span class="p">,</span>
+        <span class="s2">"age"</span><span class="p">,</span>
     <span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36426,8 +36426,8 @@
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span>
                 <span class="c1">// ドメインモデルのデータをDTOに詰め替える。</span>
                 <span class="o">-&gt;</span><span class="na">fill</span><span class="p">([</span>
-                    <span class="s2">&quot;name&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(),</span>
-                    <span class="s2">&quot;age&quot;</span>   <span class="o">=&gt;</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">(),</span>
+                    <span class="s2">"name"</span>  <span class="o">=&gt;</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(),</span>
+                    <span class="s2">"age"</span>   <span class="o">=&gt;</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">(),</span>
                 <span class="p">])</span>
                 <span class="c1">// UPDATE文を実行する。</span>
                 <span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
@@ -36445,8 +36445,8 @@
 <span class="p">{</span>
     <span class="c1">// 更新できるカラム</span>
     <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;age&quot;</span><span class="p">,</span>
+        <span class="s2">"name"</span><span class="p">,</span>
+        <span class="s2">"age"</span><span class="p">,</span>
     <span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36511,7 +36511,7 @@
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span>
             <span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$fooId</span><span class="p">);</span>
 
-        <span class="k">return</span> <span class="nx">response</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">view</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nx">response</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">view</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">)</span>
             <span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>

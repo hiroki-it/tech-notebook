@@ -34029,14 +34029,14 @@
 <p>Terraform を使用する。</p>
 <p>Terraform の <code>aws_eks_addon</code> で EKS アドオンをインストールし、AWS EBS CSI ドライバーに関する Kubernetes リソースを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Amazon EKSアドオンをインストールする。</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;aws_ebs_csi_driver&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_eks_addon"</span><span class="w"> </span><span class="nv">"aws_ebs_csi_driver"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">cluster_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_eks_cluster.cluster.name</span>
-<span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-ebs-csi-driver&quot;</span>
-<span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">"aws-ebs-csi-driver"</span>
+<span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;バージョン&gt;"</span>
 <span class="w">  </span><span class="na">service_account_role_arn</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nv">module.iam_assumable_role_ebs_csi_driver[0].iam_role_arn</span>
 <span class="c1">  # Terraformで設定を上書きできるようにする</span>
-<span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
+<span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"OVERWRITE"</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -34045,29 +34045,29 @@
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html">https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_ebs_csi_driver&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"iam_assumable_role_with_oidc_ebs_csi_driver"</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
+<span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"</span>
 
-<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;バージョン&gt;"</span>
 
 <span class="c1">  # AWS EBS CSI ControllerのPodに紐付けるIAMロール</span>
 <span class="w">  </span><span class="na">create_role</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-ebs-csi-driver&quot;</span>
+<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-ebs-csi-driver"</span>
 
 <span class="c1">  # Amazon EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの</span>
 <span class="c1">  # ArgoCDは、デプロイ専用のAmazon EKS Cluster上で稼働している</span>
-<span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://&quot;, &quot;&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://", ""</span><span class="p">)</span>
 
 <span class="c1">  # AWS IAMロールに紐付けるIAMポリシー</span>
 <span class="w">  </span><span class="na">role_policy_arns</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy&quot;</span>
+<span class="w">    </span><span class="s2">"arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"</span>
 <span class="w">  </span><span class="p">]</span>
 
 <span class="c1">  # AWS EBS CSI ControllerのPodのServiceAccount名</span>
 <span class="c1">  # ServiceAccountは、Terraformではなく、マニフェストで定義したほうが良い</span>
 <span class="w">  </span><span class="na">oidc_fully_qualified_subjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;system:serviceaccount:kube-system:foo-ebs-csi-controller&quot;</span>
+<span class="w">    </span><span class="s2">"system:serviceaccount:kube-system:foo-ebs-csi-controller"</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -34079,26 +34079,26 @@
 <p>また、StorageClass を定義する必要があるが、Terraform かマニフェストでよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># KubernetesのStorageClassをTerraformで作成する。</span>
 <span class="c1"># マニフェストとして定義しても良い。</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;kubernetes_storage_class&quot;</span><span class="w"> </span><span class="nv">&quot;gp3_encrypted&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"kubernetes_storage_class"</span><span class="w"> </span><span class="nv">"gp3_encrypted"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="nb">metadata</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gp3-encrypted&quot;</span>
+<span class="w">    </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"gp3-encrypted"</span>
 <span class="w">    </span><span class="nb">annotations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="s2">&quot;storageclass.kubernetes.io/is-default-class&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
+<span class="w">      </span><span class="s2">"storageclass.kubernetes.io/is-default-class"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"true"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="c1">  # AWS EBS CSIドライバーをプロビジョナーに設定する</span>
-<span class="w">  </span><span class="na">storage_provisioner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ebs.csi.aws.com&quot;</span>
+<span class="w">  </span><span class="na">storage_provisioner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ebs.csi.aws.com"</span>
 
 <span class="w">  </span><span class="nb">parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">encrypted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
-<span class="w">    </span><span class="na">fsType</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ext4&quot;</span>
-<span class="w">    </span><span class="na">type</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gp3&quot;</span>
+<span class="w">    </span><span class="na">encrypted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"true"</span>
+<span class="w">    </span><span class="na">fsType</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"ext4"</span>
+<span class="w">    </span><span class="na">type</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">"gp3"</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="na">reclaim_policy</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Delete&quot;</span>
-<span class="w">  </span><span class="na">volume_binding_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;WaitForFirstConsumer&quot;</span>
+<span class="w">  </span><span class="na">reclaim_policy</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">"Delete"</span>
+<span class="w">  </span><span class="na">volume_binding_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"WaitForFirstConsumer"</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -34198,7 +34198,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="nt">requests</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10Gi</span>
 <span class="w">  </span><span class="c1"># デフォルトの動的プロビジョニングを確実に無効化する</span>
-<span class="w">  </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">  </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
@@ -34259,22 +34259,22 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">volumeBindingMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaitForFirstConsumer</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># Terraformで定義した場合</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;kubernetes_storage_class&quot;</span><span class="w"> </span><span class="nv">&quot;gp3_encrypted&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"kubernetes_storage_class"</span><span class="w"> </span><span class="nv">"gp3_encrypted"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="nb">metadata</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-storage-class&quot;</span>
+<span class="w">    </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-storage-class"</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="c1">  # AWS EBS CSIドライバーをプロビジョナーに設定する</span>
-<span class="w">  </span><span class="na">storage_provisioner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ebs.csi.aws.com&quot;</span>
+<span class="w">  </span><span class="na">storage_provisioner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ebs.csi.aws.com"</span>
 
 <span class="w">  </span><span class="nb">parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">encrypted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
-<span class="w">    </span><span class="na">fsType</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ext4&quot;</span>
-<span class="w">    </span><span class="na">type</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gp3&quot;</span>
+<span class="w">    </span><span class="na">encrypted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"true"</span>
+<span class="w">    </span><span class="na">fsType</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"ext4"</span>
+<span class="w">    </span><span class="na">type</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">"gp3"</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="na">volume_binding_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;WaitForFirstConsumer&quot;</span>
+<span class="w">  </span><span class="na">volume_binding_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"WaitForFirstConsumer"</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>

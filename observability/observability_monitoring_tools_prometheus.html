@@ -34710,11 +34710,11 @@ $<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>/v
 <p>受信したアラートの通知を一時的に無効化する。</p>
 <p>Silence されている期間、無効化されたアラートは Alertmanager の UI 上から削除され、通知されなくなる。</p>
 <p>例えば、リモートストレージのアップグレード中にアラートが通知されないように、以下を matchers に設定したサイレンスを作成する。</p>
-<div class="highlight"><pre><span></span><code><span class="nv">alertname</span><span class="o">=</span><span class="s2">&quot;PrometheusRemoteStorageFailures&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nv">alertname</span><span class="o">=</span><span class="s2">"PrometheusRemoteStorageFailures"</span>
 
-<span class="nv">alertname</span><span class="o">=</span><span class="s2">&quot;PrometheusRemoteWriteBehind&quot;</span>
+<span class="nv">alertname</span><span class="o">=</span><span class="s2">"PrometheusRemoteWriteBehind"</span>
 
-<span class="nv">alertname</span><span class="o">=</span><span class="s2">&quot;PrometheusRemoteWriteDesiredShards&quot;</span>
+<span class="nv">alertname</span><span class="o">=</span><span class="s2">"PrometheusRemoteWriteDesiredShards"</span>
 </code></pre></div>
 <blockquote>
 <ul>

@@ -33915,28 +33915,28 @@
 <p>AWS KMS のリクエスト制限を設定する。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Sid&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">external</span><span class="nv"> </span><span class="s">account</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">AWS</span><span class="nv"> </span><span class="s">KMS</span><span class="nv"> </span><span class="s">key&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"Sid"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">external</span><span class="nv"> </span><span class="s">account</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">AWS</span><span class="nv"> </span><span class="s">KMS</span><span class="nv"> </span><span class="s">key"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;AWS&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">            </span><span class="s">"AWS"</span><span class="p p-Indicator">:</span>
 <span class="w">              </span><span class="p p-Indicator">[</span>
-<span class="w">                </span><span class="s">&quot;&lt;ここで、他のAWSアカウントのIAMユーザーが利用できるように、IAMユーザーやIAMロールのARNを設定する&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">"&lt;ここで、他のAWSアカウントのIAMユーザーが利用できるように、IAMユーザーやIAMロールのARNを設定する&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">              </span><span class="p p-Indicator">],</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">[</span>
-<span class="w">            </span><span class="s">&quot;kms:Encrypt&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;kms:Decrypt&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;kms:ReEncrypt*&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;kms:GenerateDataKey*&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;kms:DescribeKey&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"kms:Encrypt"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"kms:Decrypt"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"kms:ReEncrypt*"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"kms:GenerateDataKey*"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"kms:DescribeKey"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>

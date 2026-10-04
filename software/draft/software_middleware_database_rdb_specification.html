@@ -33436,17 +33436,17 @@
 <span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">"log"</span>
 
-<span class="w">    </span><span class="s">&quot;gorm.io/driver/mysql&quot;</span>
-<span class="w">    </span><span class="s">&quot;gorm.io/gen&quot;</span>
-<span class="w">    </span><span class="s">&quot;gorm.io/gorm&quot;</span>
+<span class="w">    </span><span class="s">"gorm.io/driver/mysql"</span>
+<span class="w">    </span><span class="s">"gorm.io/gen"</span>
+<span class="w">    </span><span class="s">"gorm.io/gorm"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// DBに接続する</span>
-<span class="w">    </span><span class="nx">dsn</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;user:pass@tcp(127.0.0.1:3306)/app?charset=utf8mb4&amp;parseTime=True&amp;loc=Local&quot;</span>
+<span class="w">    </span><span class="nx">dsn</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">"user:pass@tcp(127.0.0.1:3306)/app?charset=utf8mb4&amp;parseTime=True&amp;loc=Local"</span>
 <span class="w">    </span><span class="nx">db</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">mysql</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">dsn</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Config</span><span class="p">{})</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -33454,8 +33454,8 @@
 
 <span class="w">    </span><span class="c1">// Generatorを作成する</span>
 <span class="w">    </span><span class="nx">g</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gen</span><span class="p">.</span><span class="nx">NewGenerator</span><span class="p">(</span><span class="nx">gen</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">OutPath</span><span class="p">:</span><span class="w">      </span><span class="s">&quot;internal/query&quot;</span><span class="p">,</span><span class="w">   </span><span class="c1">// クエリコード生成先</span>
-<span class="w">        </span><span class="nx">ModelPkgPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;internal/dbmodel&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// モデル生成先</span>
+<span class="w">        </span><span class="nx">OutPath</span><span class="p">:</span><span class="w">      </span><span class="s">"internal/query"</span><span class="p">,</span><span class="w">   </span><span class="c1">// クエリコード生成先</span>
+<span class="w">        </span><span class="nx">ModelPkgPath</span><span class="p">:</span><span class="w"> </span><span class="s">"internal/dbmodel"</span><span class="p">,</span><span class="w"> </span><span class="c1">// モデル生成先</span>
 <span class="w">        </span><span class="nx">Mode</span><span class="p">:</span><span class="w">         </span><span class="nx">gen</span><span class="p">.</span><span class="nx">WithoutContext</span><span class="p">,</span><span class="w"> </span><span class="c1">// contextなしのAPIを生成</span>
 <span class="w">    </span><span class="p">})</span>
 
@@ -33463,7 +33463,7 @@
 <span class="w">    </span><span class="nx">g</span><span class="p">.</span><span class="nx">UseDB</span><span class="p">(</span><span class="nx">db</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// userテーブルのスキーマからORMのデータモデルやCRUDのような実装を自動作成する</span>
-<span class="w">    </span><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">g</span><span class="p">.</span><span class="nx">GenerateModel</span><span class="p">(</span><span class="s">&quot;users&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">g</span><span class="p">.</span><span class="nx">GenerateModel</span><span class="p">(</span><span class="s">"users"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// Queryに登録して自動作成する</span>
 <span class="w">    </span><span class="nx">g</span><span class="p">.</span><span class="nx">ApplyBasic</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>

@@ -44221,7 +44221,7 @@
 $<span class="w"> </span>kubectl<span class="w"> </span>certificate<span class="w"> </span>approve<span class="w"> </span>foo-csr
 
 <span class="c1"># サーバー証明書を取得する。</span>
-$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>csr<span class="w"> </span>foo-csr<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.certificate}&#39;</span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-d<span class="w"> </span>&gt;<span class="w"> </span>foo.crt
+$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>csr<span class="w"> </span>foo-csr<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.status.certificate}'</span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-d<span class="w"> </span>&gt;<span class="w"> </span>foo.crt
 </code></pre></div>
 <p><br></p>
 <h2 id="config">Config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h2>
@@ -44402,7 +44402,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get-token</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--cluster-name</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prd-foo-eks-cluster</span>
-<span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;aws&quot;</span>
+<span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="s">"aws"</span>
 
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
@@ -44439,7 +44439,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-config-map</span>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enableFoo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># ダブルクオーテーションで囲う。</span>
-<span class="w">  </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">  </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -44487,7 +44487,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cronjob</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># 毎日 00:00 (JST) に実行する</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0</span><span class="nv"> </span><span class="s">15</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">15</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
 <span class="w">  </span><span class="nt">jobTemplate</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">template</span><span class="p">:</span>
@@ -44524,7 +44524,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cronjob</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># 1 時間ごとに実行する</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;00</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s">"00</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
 </code></pre></div>
 <p>なお、タイムゾーンは Kubernetes Cluster の設定による。</p>
 <p>例えば、Amazon EKS Cluster は UTC で時間を管理しているため、9 時間分ずらす必要がある。</p>
@@ -44534,7 +44534,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cronjob</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># 毎日 00:00 (JST) に実行する</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0</span><span class="nv"> </span><span class="s">15</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">15</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -44699,7 +44699,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">        </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 </code></pre></div>
 <p>すると、以下のようなエラーになってしまう。</p>
-<div class="highlight"><pre><span></span><code>v1.LabelSelector<span class="o">{</span>MatchLabels:map<span class="o">[</span>string<span class="o">]</span>string<span class="o">{</span><span class="s2">&quot;app.kubernetes.io/name&quot;</span>:<span class="s2">&quot;foo-pod&quot;</span>,<span class="w"> </span><span class="s2">&quot;app.kubernetes.io/component&quot;</span>:<span class="s2">&quot;app&quot;</span><span class="o">}</span>,<span class="w"> </span>MatchExpressions:<span class="o">[]</span>v1.LabelSelectorRequirement<span class="o">(</span>nil<span class="o">)}</span>:<span class="w"> </span>field<span class="w"> </span>is<span class="w"> </span>immutable
+<div class="highlight"><pre><span></span><code>v1.LabelSelector<span class="o">{</span>MatchLabels:map<span class="o">[</span>string<span class="o">]</span>string<span class="o">{</span><span class="s2">"app.kubernetes.io/name"</span>:<span class="s2">"foo-pod"</span>,<span class="w"> </span><span class="s2">"app.kubernetes.io/component"</span>:<span class="s2">"app"</span><span class="o">}</span>,<span class="w"> </span>MatchExpressions:<span class="o">[]</span>v1.LabelSelectorRequirement<span class="o">(</span>nil<span class="o">)}</span>:<span class="w"> </span>field<span class="w"> </span>is<span class="w"> </span>immutable
 </code></pre></div>
 <blockquote>
 <ul>
@@ -45456,13 +45456,13 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">  </span><span class="nt">gatewayClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*.example.com&quot;</span>
+<span class="w">      </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">"*.example.com"</span>
 <span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTPS</span>
 <span class="w">      </span><span class="nt">tls</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">certificateRefs</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
-<span class="w">            </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">            </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 <span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">self-signed-cert</span>
 <span class="w">            </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingress</span>
 <span class="w">      </span><span class="nt">allowedRoutes</span><span class="p">:</span>
@@ -45484,7 +45484,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-gateway</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">controllerName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example.net/gateway-controller&quot;</span>
+<span class="w">  </span><span class="nt">controllerName</span><span class="p">:</span><span class="w"> </span><span class="s">"example.net/gateway-controller"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -45780,9 +45780,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">limits</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">max</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;500m&quot;</span>
+<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"500m"</span>
 <span class="w">      </span><span class="nt">min</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;200m&quot;</span>
+<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"200m"</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Container</span>
 </code></pre></div>
 <blockquote>
@@ -46436,7 +46436,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><code>.spec.affinity.nodeAffinity</code> キーのアンチ Pod 版である。</p>
 <h4 id="node-affinity-conflict">▼ node affinity conflict<a class="headerlink" href="#node-affinity-conflict" title="Permanent link">&para;</a></h4>
 <p>ただし、AWS のスポットインスタンスと相性が悪く、特定の AZ でしか Node が作成されなかった場合に、以下のようなエラーになってしまう。</p>
-<div class="highlight"><pre><span></span><code>N<span class="w"> </span>node<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>had<span class="w"> </span>volume<span class="w"> </span>node<span class="w"> </span>affinity<span class="w"> </span>conflict,<span class="w"> </span>N<span class="w"> </span>node<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>didn<span class="s1">&#39;t match Pod&#39;</span>s<span class="w"> </span>node<span class="w"> </span>affinity/selector
+<div class="highlight"><pre><span></span><code>N<span class="w"> </span>node<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>had<span class="w"> </span>volume<span class="w"> </span>node<span class="w"> </span>affinity<span class="w"> </span>conflict,<span class="w"> </span>N<span class="w"> </span>node<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>didn<span class="s1">'t match Pod'</span>s<span class="w"> </span>node<span class="w"> </span>affinity/selector
 </code></pre></div>
 <blockquote>
 <ul>
@@ -47174,7 +47174,7 @@ NAME<span class="w">       </span>READY<span class="w">   </span>STATUS<span cla
 foo-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">     </span>Running<span class="w">            </span><span class="m">0</span><span class="w">             </span>14m
 bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">     </span>Running<span class="w">            </span><span class="m">0</span><span class="w">             </span>14m
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>Readiness<span class="w"> </span>probe<span class="w"> </span>failed:<span class="w"> </span>Get<span class="w"> </span><span class="s2">&quot;http://*.*.*.*:*/ready&quot;</span>:<span class="w"> </span>dial<span class="w"> </span>tcp<span class="w"> </span>*.*.*.*:*:<span class="w"> </span>connect:<span class="w"> </span>connection<span class="w"> </span>refused
+<div class="highlight"><pre><span></span><code>Readiness<span class="w"> </span>probe<span class="w"> </span>failed:<span class="w"> </span>Get<span class="w"> </span><span class="s2">"http://*.*.*.*:*/ready"</span>:<span class="w"> </span>dial<span class="w"> </span>tcp<span class="w"> </span>*.*.*.*:*:<span class="w"> </span>connect:<span class="w"> </span>connection<span class="w"> </span>refused
 </code></pre></div>
 <blockquote>
 <ul>
@@ -48511,7 +48511,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-role</span>
 <span class="nt">rules</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -48527,9 +48527,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-role</span>
 <span class="nt">rules</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;apps&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"apps"</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="c1"># Namespace、Deployment、に対してアクションを可能にする。</span>
-<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;namespaces&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;deployments&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"namespaces"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"deployments"</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="rulesverbs">rules.verbs<a class="headerlink" href="#rulesverbs" title="Permanent link">&para;</a></h3>
@@ -48540,10 +48540,10 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-role</span>
 <span class="nt">rules</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;pods&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">""</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"pods"</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="c1"># Get、Watch、List のアクションを実行可能にする。</span>
-<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;get&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;watch&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;list&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"watch"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"list"</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <p>全 Kubernetes リソースへの全アクションを許可する認可スコープの場合、以下の通りとなる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
@@ -48551,9 +48551,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-role</span>
 <span class="nt">rules</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="rolebindingclusterrolebinding">RoleBinding、ClusterRoleBinding<a class="headerlink" href="#rolebindingclusterrolebinding" title="Permanent link">&para;</a></h2>
@@ -48593,7 +48593,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-role-binding</span>
 <span class="nt">subjects</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 <span class="w">    </span><span class="c1"># ServiceAccount に紐付ける。</span>
 <span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
 <span class="w">    </span><span class="c1"># ServiceAccount のユーザー名 (system:useraccounts:foo-service-account) でもよい。</span>
@@ -48646,8 +48646,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-secret</span>
 <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Opaque</span>
 <span class="nt">data</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">enableFoo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span>
-<span class="w">  </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span>
+<span class="w">  </span><span class="nt">enableFoo</span><span class="p">:</span><span class="w"> </span><span class="s">"*****"</span>
+<span class="w">  </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="s">"*****"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -48702,7 +48702,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="nt">stringData</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># ダブルクオーテーションで囲う。</span>
 <span class="w">  </span><span class="nt">enableFoo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">  </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -48718,7 +48718,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Opaque</span>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">config.yaml</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">apiUrl: &quot;https://my.api.com/api/v1&quot;</span>
+<span class="w">    </span><span class="no">apiUrl: "https://my.api.com/api/v1"</span>
 <span class="w">    </span><span class="no">username: bar</span>
 <span class="w">    </span><span class="no">password: baz</span>
 </code></pre></div>
@@ -49299,16 +49299,16 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">root@&lt;foo-pod</span><span class="p p-Indicator">:</span><span class="nv">/</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$ cat /var/run/secrets/kubernetes.io/serviceaccount/token | base64 -d; echo</span>
 
 <span class="l l-Scalar l-Scalar-Plain">{</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">&quot;alg&quot;:&quot;RS256&quot;,</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">&quot;kid&quot;:&quot;*****&quot;</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">"alg":"RS256",</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">"kid":"*****"</span>
 <span class="l l-Scalar l-Scalar-Plain">}</span>
 
 <span class="l l-Scalar l-Scalar-Plain"># Amazon EKS を使用している場合</span>
 <span class="l l-Scalar l-Scalar-Plain">[root@&lt;foo-pod:/] $ cat /var/run/secrets/eks.amazonaws.com/serviceaccount/token | base64 -d; echo</span>
 
 <span class="l l-Scalar l-Scalar-Plain">{</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">&quot;alg&quot;:&quot;RS256&quot;,</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">&quot;kid&quot;:&quot;*****&quot;</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">"alg":"RS256",</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">"kid":"*****"</span>
 <span class="l l-Scalar l-Scalar-Plain">}</span>
 </code></pre></div>
 <blockquote>

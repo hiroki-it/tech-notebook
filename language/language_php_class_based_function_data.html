@@ -36467,7 +36467,7 @@
     <span class="k">return</span> <span class="nv">$state</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="nv">$state</span> <span class="o">=</span> <span class="s2">&quot;状態&quot;</span><span class="p">;</span>
+<span class="nv">$state</span> <span class="o">=</span> <span class="s2">"状態"</span><span class="p">;</span>
 <span class="nx">foo</span><span class="p">(</span><span class="nv">$state</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
@@ -36507,7 +36507,7 @@
     <span class="k">return</span> <span class="nv">$state</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="nv">$state</span> <span class="o">=</span> <span class="s2">&quot;状態&quot;</span><span class="p">;</span>
+<span class="nv">$state</span> <span class="o">=</span> <span class="s2">"状態"</span><span class="p">;</span>
 <span class="nx">foo</span><span class="p">(</span><span class="nv">$state</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
@@ -36538,7 +36538,7 @@
     <span class="c1">// クラス内からしかアクセスできない</span>
     <span class="k">private</span> <span class="k">function</span> <span class="nf">Desu</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="s2">&quot;です。&quot;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s2">"です。"</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36551,7 +36551,7 @@
     <span class="k">return</span> <span class="nv">$state</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="nv">$state</span> <span class="o">=</span> <span class="s2">&quot;状態&quot;</span><span class="p">;</span>
+<span class="nv">$state</span> <span class="o">=</span> <span class="s2">"状態"</span><span class="p">;</span>
 <span class="nx">foo</span><span class="p">(</span><span class="nv">$state</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="encapsulation">▼ Encapsulation (カプセル化)<a class="headerlink" href="#encapsulation" title="Permanent link">&para;</a></h4>
@@ -36605,7 +36605,7 @@
     <span class="p">{</span>
         <span class="c1">// 単なるGetterではなく、例外処理も加える。</span>
         <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">property</span><span class="p">)){</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">ErrorException</span><span class="p">(</span><span class="s2">&quot;データに値がセットされていません。&quot;</span><span class="p">);</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">ErrorException</span><span class="p">(</span><span class="s2">"データに値がセットされていません。"</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">property</span><span class="p">;</span>
     <span class="p">}</span>
@@ -36659,9 +36659,9 @@
 
 <span class="nv">$test01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test01</span><span class="p">;</span>
 
-<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">&quot;データ01の値&quot;</span><span class="p">);</span>
+<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">"データ01の値"</span><span class="p">);</span>
 
-<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">&quot;新しいデータ01の値&quot;</span><span class="p">);</span>
+<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">"新しいデータ01の値"</span><span class="p">);</span>
 </code></pre></div>
 <p>一方で、Test02 クラスインスタンスの <code>$property02</code> に値を設定するためには、インスタンスを作り直さなければならない。</p>
 <p>つまり、以前に作ったインスタンスの <code>$property02</code> の値は上書きできない。</p>
@@ -36673,9 +36673,9 @@
     <span class="c1">// 中身は省略</span>
 <span class="p">}</span>
 
-<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">&quot;データ02の値&quot;</span><span class="p">);</span>
+<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">"データ02の値"</span><span class="p">);</span>
 
-<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">&quot;新しいデータ02の値&quot;</span><span class="p">);</span>
+<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">"新しいデータ02の値"</span><span class="p">);</span>
 </code></pre></div>
 <p>Entity は、ミュータブルであるため、Setter と <code>__construct()</code> 関数の両方を持てる。</p>
 <p>ValueObject は、イミュータブルのため、<code>__construct()</code> 関数しか持てる。</p>
@@ -36698,7 +36698,7 @@
     <span class="c1">// 引数と返却値のデータ型を指定</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{</span><span class="nv">$name</span><span class="si">}</span><span class="s2">データは存在しないため、データ値を取得できません。&quot;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s2">"</span><span class="si">{</span><span class="nv">$name</span><span class="si">}</span><span class="s2">データは存在しないため、データ値を取得できません。"</span><span class="p">;</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -36739,7 +36739,7 @@
     <span class="c1">// 引数と返り値のデータ型を指定</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__set</span><span class="p">(</span><span class="nx">String</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">String</span> <span class="nv">$value</span><span class="p">)</span><span class="o">:</span> <span class="nx">String</span>
     <span class="p">{</span>
-        <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">{</span><span class="nv">$name</span><span class="si">}</span><span class="s2">データは存在しないため、</span><span class="si">{</span><span class="nv">$value</span><span class="si">}</span><span class="s2">を設定できません。&quot;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="s2">"</span><span class="si">{</span><span class="nv">$name</span><span class="si">}</span><span class="s2">データは存在しないため、</span><span class="si">{</span><span class="nv">$value</span><span class="si">}</span><span class="s2">を設定できません。"</span><span class="p">;</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
@@ -36750,7 +36750,7 @@
 
 <span class="x">// 存在しないデータに値をセット。</span>
 <span class="x">$foo = new Foo();</span>
-<span class="x">$foo-&gt;bar = &quot;bar&quot;;</span>
+<span class="x">$foo-&gt;bar = "bar";</span>
 
 <span class="x">// 結果</span>
 <span class="x">// barデータは存在しないため、barを設定できません。</span>
@@ -36782,18 +36782,18 @@
 
 <span class="nv">$test01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test01</span><span class="p">;</span>
 
-<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">&quot;データ01の値&quot;</span><span class="p">);</span>
+<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">"データ01の値"</span><span class="p">);</span>
 
-<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">&quot;新しいデータ01の値&quot;</span><span class="p">);</span>
+<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">"新しいデータ01の値"</span><span class="p">);</span>
 </code></pre></div>
 <p>一方で、Test02 クラスインスタンスの <code>$property02</code> に値を設定するためには、インスタンスを作り直さなければならない。</p>
 <p>つまり、以前に作ったインスタンスの <code>$property02</code> の値は上書きできない。</p>
 <p>Setter を持たせずに、<code>__construct()</code> 関数のみを持たせれば、『イミュータブル』なオブジェクトとなる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">&quot;データ02の値&quot;</span><span class="p">);</span>
+<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">"データ02の値"</span><span class="p">);</span>
 
-<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">&quot;新しいデータ02の値&quot;</span><span class="p">);</span>
+<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">"新しいデータ02の値"</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_20">マジック関数 (その他)<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
@@ -37033,7 +37033,7 @@
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">returnMethod</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="k">print</span> <span class="s2">&quot;returnMethod()です。</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+        <span class="k">print</span> <span class="s2">"returnMethod()です。</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
         <span class="k">return</span><span class="p">;</span> <span class="c1">// 何も返さない。</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -37051,7 +37051,7 @@
 
     <span class="k">function</span> <span class="nf">exitMethod</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="k">print</span> <span class="s2">&quot;exitMethod()です。</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+        <span class="k">print</span> <span class="s2">"exitMethod()です。</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
         <span class="k">exit</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -37088,7 +37088,7 @@
 <span class="nv">$oneToThree</span> <span class="o">=</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">oneToThree</span><span class="p">();</span>
 
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$oneToThree</span> <span class="k">as</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">{</span><span class="nv">$value</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"</span><span class="si">{</span><span class="nv">$value</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="c1">// 1</span>
@@ -37108,7 +37108,7 @@
 
 <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dispatcher</span><span class="p">;</span>
 
-<span class="nv">$name</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="nv">$name</span> <span class="o">=</span> <span class="s2">"foo"</span><span class="p">;</span>
 
 <span class="c1">// 名前に紐付ける関数を定義。</span>
 <span class="nv">$listener</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$param</span><span class="p">){</span>
@@ -37119,7 +37119,7 @@
 <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">addListener</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$listener</span><span class="p">);</span>
 
 <span class="c1">// 文字列から関数をコール。ついでに、引数を渡す。</span>
-<span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">);</span>
+<span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">,</span> <span class="s2">"test"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="_28">▼ イベント名と関数の紐付け<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
 <p>名前としてイベント名を定義し、これに関数を紐付ける。</p>
@@ -37194,7 +37194,7 @@
     <span class="k">private</span> <span class="k">function</span> <span class="nf">addListener</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="p">[</span>
-            <span class="s2">&quot;computeRevenue&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nv">$this</span><span class="p">,</span> <span class="s2">&quot;computeRevenue&quot;</span><span class="p">]</span>
+            <span class="s2">"computeRevenue"</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nv">$this</span><span class="p">,</span> <span class="s2">"computeRevenue"</span><span class="p">]</span>
         <span class="p">];</span>
     <span class="p">}</span>
 
@@ -37256,7 +37256,7 @@
 <span class="p">};</span>
 
 <span class="c1">// コール時、$paramをfunction()に渡す。</span>
-<span class="k">echo</span> <span class="nv">$optionName</span><span class="p">(</span><span class="s2">&quot;BC&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$optionName</span><span class="p">(</span><span class="s2">"BC"</span><span class="p">);</span>
 
 <span class="c1">// 出力結果</span>
 <span class="c1">// オプションABC</span>
@@ -37288,7 +37288,7 @@
 <span class="p">};</span>
 
 <span class="c1">// コール時、$paramをfunction()に渡す。</span>
-<span class="k">echo</span> <span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s2">&quot;BC&quot;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s2">"BC"</span><span class="p">);</span>
 
 <span class="c1">// 出力結果</span>
 <span class="c1">// オプションABC</span>
@@ -37306,7 +37306,7 @@
 <span class="p">}</span>
 
 <span class="nv">$item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Item</span><span class="p">;</span>
-<span class="nv">$param</span> <span class="o">=</span> <span class="s2">&quot;BC&quot;</span><span class="p">;</span>
+<span class="nv">$param</span> <span class="o">=</span> <span class="s2">"BC"</span><span class="p">;</span>
 
 <span class="c1">// use()に、親関数のスコープの$itemを渡す。</span>
 <span class="c1">// 無名関数を定義し、同時にcall_user_func()で即コールする。</span>
@@ -37352,13 +37352,13 @@
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">callbackMethod</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="s2">&quot;出力に成功しました。&quot;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s2">"出力に成功しました。"</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
 <span class="c1">// 高階関数の引数として、コールバック関数を渡す</span>
-<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">test</span><span class="p">(</span><span class="s2">&quot;callbackMethod&quot;</span><span class="p">);</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">test</span><span class="p">(</span><span class="s2">"callbackMethod"</span><span class="p">);</span>
 
 <span class="c1">// 出力結果</span>
 <span class="c1">// 出力に成功しました。</span>
@@ -37389,14 +37389,14 @@
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">callbackMethod</span><span class="p">(</span><span class="nv">$param</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$param</span><span class="o">.</span><span class="s2">&quot;の出力に成功しました。&quot;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nv">$param</span><span class="o">.</span><span class="s2">"の出力に成功しました。"</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
 
 <span class="c1">// 高階関数の第一引数にコールバック関数の引数、第二引数にコールバック関数を渡す</span>
-<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">higherOrder</span><span class="p">(</span><span class="s2">&quot;第一引数&quot;</span><span class="p">,</span> <span class="s2">&quot;callbackMethod&quot;</span><span class="p">);</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">higherOrder</span><span class="p">(</span><span class="s2">"第一引数"</span><span class="p">,</span> <span class="s2">"callbackMethod"</span><span class="p">);</span>
 
 <span class="c1">// 出力結果</span>
 <span class="c1">// 第一引数の出力に成功しました。</span>
@@ -37418,7 +37418,7 @@
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">higherOrder</span><span class="p">(</span><span class="nv">$parentVar</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="nv">$parentVar</span> <span class="o">=</span> <span class="s2">&quot;&amp;親関数のスコープの変数&quot;</span><span class="p">;</span>
+        <span class="nv">$parentVar</span> <span class="o">=</span> <span class="s2">"&amp;親関数のスコープの変数"</span><span class="p">;</span>
         <span class="k">return</span> <span class="nv">$callback</span><span class="p">(</span><span class="nv">$parentVar</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -37429,7 +37429,7 @@
 <span class="c1">// コールバック関数は再利用されないため、名前をつけずに無名関数とすることが多い。</span>
 <span class="c1">// 親関数のスコープで定義されている変数を引数として渡す。</span>
 <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">higherOrder</span><span class="p">(</span><span class="nv">$parentVar</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$parentVar</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nv">$parentVar</span> <span class="o">.</span> <span class="s2">&quot;の出力に成功しました。&quot;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nv">$parentVar</span> <span class="o">.</span> <span class="s2">"の出力に成功しました。"</span><span class="p">;</span>
 <span class="p">});</span>
 
 <span class="c1">// 出力結果</span>
@@ -37552,7 +37552,7 @@
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1"># /var/www/foo/vendor/autoload.php</span>
-<span class="k">require_once</span> <span class="nb">realpath</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">&quot;/vendor/autoload.php&quot;</span><span class="p">);</span>
+<span class="k">require_once</span> <span class="nb">realpath</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">"/vendor/autoload.php"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="__function__">▼ <code>__FUNCTION__</code><a class="headerlink" href="#__function__" title="Permanent link">&para;</a></h4>
 <p>この定数には、コールされた関数名が格納されている。</p>
@@ -37605,20 +37605,20 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">&quot;リンゴ&quot;</span><span class="p">;</span>
+<span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">"リンゴ"</span><span class="p">;</span>
 
 <span class="c1">// 出力結果</span>
-<span class="k">echo</span> <span class="s1">&#39;これは$fruitです。&#39;</span><span class="p">;</span> <span class="c1">// これは、$fruitです。</span>
+<span class="k">echo</span> <span class="s1">'これは$fruitです。'</span><span class="p">;</span> <span class="c1">// これは、$fruitです。</span>
 </code></pre></div>
 <h4 id="_44">▼ シングルクオーテーションと波括弧による変数展開<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h4>
 <p>シングルクオーテーションの中身はすべて文字列として認識され、変数は展開されない。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">&quot;リンゴ&quot;</span><span class="p">;</span>
+<span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">"リンゴ"</span><span class="p">;</span>
 
 <span class="c1">// 出力結果</span>
-<span class="k">echo</span> <span class="s1">&#39;これは{$fruit}です。&#39;</span><span class="p">;</span> <span class="c1">// これは、{$fruit}です。</span>
+<span class="k">echo</span> <span class="s1">'これは{$fruit}です。'</span><span class="p">;</span> <span class="c1">// これは、{$fruit}です。</span>
 </code></pre></div>
 <h4 id="_45">▼ ダブルクオーテーションによる変数展開<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
 <p>変数の前後に半角スペースを置いた場合にのみ、変数は展開される。</p>
@@ -37626,20 +37626,20 @@
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 
-<span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">&quot;リンゴ&quot;</span><span class="p">;</span>
+<span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">"リンゴ"</span><span class="p">;</span>
 
 <span class="c1">// 出力結果</span>
-<span class="k">echo</span> <span class="s2">&quot;これは </span><span class="si">$fruit</span><span class="s2"> です。&quot;</span><span class="p">;</span> <span class="c1">// これは リンゴ です。</span>
+<span class="k">echo</span> <span class="s2">"これは </span><span class="si">$fruit</span><span class="s2"> です。"</span><span class="p">;</span> <span class="c1">// これは リンゴ です。</span>
 </code></pre></div>
 <h4 id="_46">▼ ダブルクオーテーションと波括弧による変数展開<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
 <p>波括弧を使用すると、明示的に変数として扱える。</p>
 <p>これによって、変数の前後に半角スペースを配置しなくとも、変数は展開される。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">&quot;リンゴ&quot;</span><span class="p">;</span>
+<span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">"リンゴ"</span><span class="p">;</span>
 
 <span class="c1">// 出力結果</span>
-<span class="k">echo</span> <span class="s2">&quot;これは</span><span class="si">{</span><span class="nv">$fruit</span><span class="si">}</span><span class="s2">です。&quot;</span><span class="p">;</span> <span class="c1">// これは、リンゴです。</span>
+<span class="k">echo</span> <span class="s2">"これは</span><span class="si">{</span><span class="nv">$fruit</span><span class="si">}</span><span class="s2">です。"</span><span class="p">;</span> <span class="c1">// これは、リンゴです。</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_47">参照渡しと値渡し<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h3>
@@ -37691,7 +37691,7 @@
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// ログを読み出す</span>
-<span class="nv">$stdin</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;php://stdin&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">);</span>
+<span class="nv">$stdin</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">"php://stdin"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="phpstdout">▼ php://stdout<a class="headerlink" href="#phpstdout" title="Permanent link">&para;</a></h4>
 <p>stdout：standard out (標準出力) を意味する。</p>
@@ -37699,8 +37699,8 @@
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// ログを書き込む</span>
-<span class="nv">$stderr</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;php://stdout&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">);</span>
-<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$stderr</span><span class="p">,</span> <span class="s2">&quot;ログです。&quot;</span><span class="p">);</span>
+<span class="nv">$stderr</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">"php://stdout"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">);</span>
+<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$stderr</span><span class="p">,</span> <span class="s2">"ログです。"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="phpstderr">▼ php://stderr<a class="headerlink" href="#phpstderr" title="Permanent link">&para;</a></h4>
 <p>stderr：standard error (標準出力エラー) を意味する。</p>
@@ -37708,8 +37708,8 @@
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// エラーログを書き込む</span>
-<span class="nv">$stderr</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;php://stderr&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">);</span>
-<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$stderr</span><span class="p">,</span> <span class="s2">&quot;エラーログです。&quot;</span><span class="p">);</span>
+<span class="nv">$stderr</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">"php://stderr"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">);</span>
+<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$stderr</span><span class="p">,</span> <span class="s2">"エラーログです。"</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="06">06. その他の関数<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
@@ -37726,7 +37726,7 @@
 
 <span class="c1">// fopen()、fwrite()、fclose()を実行できる。</span>
 <span class="nb">file_put_contents</span><span class="p">(</span>
-    <span class="s2">&quot;data.json&quot;</span><span class="p">,</span>
+    <span class="s2">"data.json"</span><span class="p">,</span>
     <span class="nv">$json</span>
 <span class="p">);</span>
 </code></pre></div>
@@ -37742,10 +37742,10 @@
 <p>『<code>0</code> から <code>9</code> のいずれか』の数字を意味する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;0123456789&quot;</span><span class="p">;</span>
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"0123456789"</span><span class="p">;</span>
 
 <span class="c1">// OR条件と範囲指定</span>
-<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/[0-9]/&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">)</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/[0-9]/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">)</span>
 
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// true</span>
 </code></pre></div>
@@ -37754,10 +37754,10 @@
 <p>『<code>a</code> から <code>z</code> のいずれか』または『A から Z のいずれか』のアルファベットを意味する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;aAbBcC&quot;</span><span class="p">;</span>
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"aAbBcC"</span><span class="p">;</span>
 
 <span class="c1">// OR条件と範囲指定</span>
-<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/[a-zA-Z]/&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">)</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/[a-zA-Z]/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">)</span>
 
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// true</span>
 </code></pre></div>
@@ -37772,9 +37772,9 @@
 <p>『<code>?</code>』『<code>.</code>』『<code>*</code>』『<code>$</code>』のいずれかのメタ文字を意味する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;?&quot;</span><span class="p">;</span>
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"?"</span><span class="p">;</span>
 
-<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/[\?.*$]/&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">)</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/[\?.*$]/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">)</span>
 
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
 </code></pre></div>
@@ -37789,19 +37789,19 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;FooBarBaz&quot;</span><span class="p">;</span>
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"FooBarBaz"</span><span class="p">;</span>
 
 <span class="c1">// 前方の一致</span>
-<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/Foo.*/&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/Foo.*/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
 
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;FooBarBaz&quot;</span><span class="p">;</span>
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"FooBarBaz"</span><span class="p">;</span>
 
 <span class="c1">// 後方の一致</span>
-<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/.*Baz/&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/.*Baz/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
 
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
 </code></pre></div>
@@ -37814,10 +37814,10 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;FooBarBaz&quot;</span><span class="p">;</span>
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"FooBarBaz"</span><span class="p">;</span>
 
 <span class="c1"># zはあってもなくてもも</span>
-<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/FooBarBaz?/&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/FooBarBaz?/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
 
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
 </code></pre></div>
@@ -37825,19 +37825,19 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;jpeg&quot;</span><span class="p">;</span>
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"jpeg"</span><span class="p">;</span>
 
 <span class="c1">// jpegの大文字小文字</span>
-<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/jpeg$/i&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/jpeg$/i"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
 
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;JPEG&quot;</span><span class="p">;</span>
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"JPEG"</span><span class="p">;</span>
 
 <span class="c1">// jpegの大文字小文字</span>
-<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/jpeg$/i&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/jpeg$/i"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
 
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
 </code></pre></div>
@@ -37851,10 +37851,10 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;abcabcabc&quot;</span><span class="p">;</span>
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"abcabcabc"</span><span class="p">;</span>
 
 <span class="c1"># abcが任意数だけ反復する</span>
-<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/(abc)*/&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/(abc)*/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
 
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
 </code></pre></div>

@@ -34625,16 +34625,16 @@
 </ul>
 </blockquote>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span>https://apt.releases.hashicorp.com/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
-$<span class="w"> </span>sudo<span class="w"> </span>apt-add-repository<span class="w"> </span><span class="s2">&quot;deb [arch=amd64] https://apt.releases.hashicorp.com </span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> main&quot;</span>
+$<span class="w"> </span>sudo<span class="w"> </span>apt-add-repository<span class="w"> </span><span class="s2">"deb [arch=amd64] https://apt.releases.hashicorp.com </span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> main"</span>
 $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>packer
 </code></pre></div>
 <p><br></p>
 <h3 id="ci">CI による自動化<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h3>
 <h4 id="gitlab-ci">▼ GitLab CI<a class="headerlink" href="#gitlab-ci" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">AWS_DEFAULT_REGION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ap-northeast-1&quot;</span>
-<span class="w">  </span><span class="nt">AWS_ACCOUNT_ID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span>
-<span class="w">  </span><span class="nt">AWS_IAM_ROLE</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;gitlab-ci-packer&quot;</span>
+<span class="w">  </span><span class="nt">AWS_DEFAULT_REGION</span><span class="p">:</span><span class="w"> </span><span class="s">"ap-northeast-1"</span>
+<span class="w">  </span><span class="nt">AWS_ACCOUNT_ID</span><span class="p">:</span><span class="w"> </span><span class="s">"*****"</span>
+<span class="w">  </span><span class="nt">AWS_IAM_ROLE</span><span class="p">:</span><span class="w"> </span><span class="s">"gitlab-ci-packer"</span>
 
 <span class="nt">stages</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
@@ -34647,7 +34647,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <span class="w">  </span><span class="nt">services</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker:19.03.0-dind</span>
 <span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">GIT_SUBMODULE_STRATEGY</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;recursive&quot;</span>
+<span class="w">    </span><span class="nt">GIT_SUBMODULE_STRATEGY</span><span class="p">:</span><span class="w"> </span><span class="s">"recursive"</span>
 <span class="w">  </span><span class="nt">id_tokens</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">GITLAB_OIDC_TOKEN</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">aud</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;GitLabのURL&gt;</span>
@@ -34655,30 +34655,30 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apt-get update &amp;&amp; apt-get install -y git jq awscli</span>
 <span class="w">    </span><span class="c1"># 資格情報を取得する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">echo &quot;sleeping random seconds (&lt;15s)&quot;</span>
+<span class="w">      </span><span class="no">echo "sleeping random seconds (&lt;15s)"</span>
 <span class="w">      </span><span class="no">sleep $(( $RANDOM % 15 ))</span>
 <span class="w">      </span><span class="no">count=0</span>
 <span class="w">      </span><span class="no">backoff=1</span>
 <span class="w">      </span><span class="no">until STS=($(aws sts assume-role-with-web-identity \</span>
 <span class="w">      </span><span class="no">--role-arn arn:aws:iam::${AWS_ACCOUNT_ID}:role/${AWS_IAM_ROLE} \</span>
-<span class="w">      </span><span class="no">--role-session-name &quot;&quot;&lt;任意のセッション名&gt;&quot; \</span>
+<span class="w">      </span><span class="no">--role-session-name ""&lt;任意のセッション名&gt;" \</span>
 <span class="w">      </span><span class="no">--web-identity-token $GITLAB_OIDC_TOKEN \</span>
 <span class="w">      </span><span class="no">--duration-seconds 1800 \</span>
-<span class="w">      </span><span class="no">--query &#39;Credentials.[AccessKeyId,SecretAccessKey,SessionToken]&#39; \</span>
-<span class="w">      </span><span class="no">--output text)) || (( count++ &gt;= 5 )); do echo &quot;Retrying: $backoff&quot;; sleep $backoff; (( backoff*=2 )); done</span>
-<span class="w">      </span><span class="no">export AWS_ACCESS_KEY_ID=&quot;${STS[0]}&quot;</span>
-<span class="w">      </span><span class="no">export AWS_SECRET_ACCESS_KEY=&quot;${STS[1]}&quot;</span>
-<span class="w">      </span><span class="no">export AWS_SESSION_TOKEN=&quot;${STS[2]}&quot;</span>
+<span class="w">      </span><span class="no">--query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' \</span>
+<span class="w">      </span><span class="no">--output text)) || (( count++ &gt;= 5 )); do echo "Retrying: $backoff"; sleep $backoff; (( backoff*=2 )); done</span>
+<span class="w">      </span><span class="no">export AWS_ACCESS_KEY_ID="${STS[0]}"</span>
+<span class="w">      </span><span class="no">export AWS_SECRET_ACCESS_KEY="${STS[1]}"</span>
+<span class="w">      </span><span class="no">export AWS_SESSION_TOKEN="${STS[2]}"</span>
 <span class="w">      </span><span class="no">aws sts get-caller-identity</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export SOURCE_IMAGE_ID=$(aws ssm get-parameters --names /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64 --region ${AWS_DEFAULT_REGION} --query &#39;Parameters[0].Value&#39; --output text)</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;source ami-id</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$SOURCE_IMAGE_ID&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export SOURCE_IMAGE_ID=$(aws ssm get-parameters --names /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64 --region ${AWS_DEFAULT_REGION} --query 'Parameters[0].Value' --output text)</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo "source ami-id</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$SOURCE_IMAGE_ID"</span>
 <span class="w">    </span><span class="c1"># Packer を実行する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">packer init template.pkr.hcl</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">packer build template.pkr.hcl</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMI_NAME=&quot;foo-$(date &quot;+%Y-%m-%d&quot;)&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMI_ID=$(aws ec2 describe-images --region ${AWS_DEFAULT_REGION} --owners self --filters &quot;Name=name,Values=${AMI_NAME}&quot; --query &#39;Images[*][ImageId]&#39; --output text)</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SOURCE_IMAGE_NAME=$(git tag -l $CI_COMMIT_TAG -n | awk &#39;{print $2}&#39; | jq -r .image_name)</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMI_NAME="foo-$(date "+%Y-%m-%d")"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AMI_ID=$(aws ec2 describe-images --region ${AWS_DEFAULT_REGION} --owners self --filters "Name=name,Values=${AMI_NAME}" --query 'Images[*][ImageId]' --output text)</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SOURCE_IMAGE_NAME=$(git tag -l $CI_COMMIT_TAG -n | awk '{print $2}' | jq -r .image_name)</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo $SOURCE_IMAGE_NAME</span>
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_TAG</span>
@@ -34696,7 +34696,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <span class="nt">on</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">push</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;v*&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'v*'</span><span class="p p-Indicator">]</span>
 
 <span class="nt">permissions</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
@@ -34720,14 +34720,14 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <span class="w">          </span><span class="nt">aws-region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ env.AWS_REGION }}</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hashicorp/setup-packer@v3</span>
 <span class="w">        </span><span class="nt">with</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1.14.0&#39;</span>
+<span class="w">          </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">'1.14.0'</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Resolve source AMI</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">SOURCE_IMAGE_ID=$(aws ssm get-parameter \</span>
 <span class="w">            </span><span class="no">--name /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64 \</span>
-<span class="w">            </span><span class="no">--query &#39;Parameter.Value&#39; --output text)</span>
+<span class="w">            </span><span class="no">--query 'Parameter.Value' --output text)</span>
 <span class="w">          </span><span class="no"># Packerの実行ステップにAMI IDを渡す。</span>
-<span class="w">          </span><span class="no">echo &quot;SOURCE_IMAGE_ID=$SOURCE_IMAGE_ID&quot; &gt;&gt; &quot;$GITHUB_ENV&quot;</span>
+<span class="w">          </span><span class="no">echo "SOURCE_IMAGE_ID=$SOURCE_IMAGE_ID" &gt;&gt; "$GITHUB_ENV"</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build AMI</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">packer init template.pkr.hcl</span>
@@ -34746,28 +34746,28 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <h3 id="sources">sources<a class="headerlink" href="#sources" title="Permanent link">&para;</a></h3>
 <p>実行する <code>source</code> を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">build</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;source.amazon-ebs.foo&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="na">sources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"source.amazon-ebs.foo"</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="provisioner">provisioner<a class="headerlink" href="#provisioner" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nb">build</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">&quot;shell-local&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">"shell-local"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nb">build</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">&quot;shell&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">"shell"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nb">build</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">&quot;ansible&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">"ansible"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -34781,16 +34781,16 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <h4 id="playbook_file">▼ playbook_file<a class="headerlink" href="#playbook_file" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nb">build</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">&quot;ansible&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">playbook_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;playbook.yml&quot;</span>
+<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">"ansible"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">playbook_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"playbook.yml"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="user">▼ user<a class="headerlink" href="#user" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nb">build</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">&quot;ansible&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ec2-user&quot;</span>
+<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">"ansible"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ec2-user"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -34802,8 +34802,8 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <h4 id="inline">▼ inline<a class="headerlink" href="#inline" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nb">build</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">&quot;shell-local&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ansible-galaxy install -f -r requirements.yml -p roles&quot;</span>
+<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">"shell-local"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ansible-galaxy install -f -r requirements.yml -p roles"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -34815,8 +34815,8 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <h4 id="inline_1">▼ inline<a class="headerlink" href="#inline_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nb">build</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">&quot;shell&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">inline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;echo Hello World&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="kr">provisioner</span><span class="w"> </span><span class="nv">"shell"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">inline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"echo Hello World"</span><span class="p">]</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -34829,12 +34829,12 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 
 <span class="w">  </span><span class="nb">required_plugins</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nb">amazon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;github.com/hashicorp/amazon&quot;</span>
-<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 1&quot;</span>
+<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"github.com/hashicorp/amazon"</span>
+<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~&gt; 1"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="nb">ansible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;github.com/hashicorp/ansible&quot;</span>
-<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 1&quot;</span>
+<span class="w">      </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"github.com/hashicorp/ansible"</span>
+<span class="w">      </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~&gt; 1"</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -34847,23 +34847,23 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <h3 id="amazon-ebs">amazon-ebs の場合<a class="headerlink" href="#amazon-ebs" title="Permanent link">&para;</a></h3>
 <h4 id="ami_name">▼ ami_name<a class="headerlink" href="#ami_name" title="Permanent link">&para;</a></h4>
 <p>AWS AMI の名前を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;ami_name&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bar-ami&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">"amazon-ebs" "foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"ami_name"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"bar-ami"</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="ami_users">▼ ami_users<a class="headerlink" href="#ami_users" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;ami_users&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;AWSアカウントID&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">"amazon-ebs" "foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"ami_users"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;AWSアカウントID&gt;"</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="ena_support">▼ ena_support<a class="headerlink" href="#ena_support" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;ena_support&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">"amazon-ebs" "foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"ena_support"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="encrypt_boot">▼ encrypt_boot<a class="headerlink" href="#encrypt_boot" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;encrypt_boot&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
+<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">"amazon-ebs" "foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"encrypt_boot"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="force_deregister">▼ force_deregister<a class="headerlink" href="#force_deregister" title="Permanent link">&para;</a></h4>
@@ -34871,45 +34871,45 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <p>Packer の作成するマシンイメージの名前は、ランダム値をつけない限り、常に同じである。</p>
 <p>マシンイメージの名前の重複を許可しないプロバイダー (例：AWS) では、<code>1</code> 個の名前のマシンイメージを 1 回しか作成できないことになってしまう。</p>
 <p>そういった場合に使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;force_deregister&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">"amazon-ebs" "foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"force_deregister"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="instance_type">▼ instance_type<a class="headerlink" href="#instance_type" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;instance_type&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t2.micro&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">"amazon-ebs" "foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"instance_type"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"t2.micro"</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="launch_block_device_mappings">▼ launch_block_device_mappings<a class="headerlink" href="#launch_block_device_mappings" title="Permanent link">&para;</a></h4>
 <p>EC2 に紐付けるルートデバイスボリュームを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;launch_block_device_mappings&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">"amazon-ebs" "foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"launch_block_device_mappings"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="c1">      # ルートボリューム</span>
-<span class="w">      </span><span class="s2">&quot;device_name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/dev/xvda&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;volume_type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;gp2&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"device_name"</span><span class="o">:</span><span class="w"> </span><span class="s2">"/dev/xvda"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"volume_type"</span><span class="o">:</span><span class="w"> </span><span class="s2">"gp2"</span><span class="p">,</span>
 <span class="c1">      # AWS AMIの作成後に、元となったEC2のボリュームを削除する</span>
-<span class="w">      </span><span class="s2">&quot;delete_on_termination&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;volume_size&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;300&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"delete_on_termination"</span><span class="o">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">"volume_size"</span><span class="o">:</span><span class="w"> </span><span class="s2">"300"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="region">▼ region<a class="headerlink" href="#region" title="Permanent link">&para;</a></h4>
 <p>AWS AMI を作成するリージョンを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;region&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">"amazon-ebs" "foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"region"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="snapshot_users">▼ snapshot_users<a class="headerlink" href="#snapshot_users" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;snapshot_users&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;AWSアカウントID&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">"amazon-ebs" "foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"snapshot_users"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;AWSアカウントID&gt;"</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="source_ami">▼ source_ami<a class="headerlink" href="#source_ami" title="Permanent link">&para;</a></h4>
 <p>AWS AMI の基とする AWS AMI (例：Amazon Linux 2 AMI) を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;source_ami&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-0b7546e839d7ace12&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">"amazon-ebs" "foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"source_ami"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ami-0b7546e839d7ace12"</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -34919,8 +34919,8 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 </blockquote>
 <h4 id="ssh_username">▼ ssh_username<a class="headerlink" href="#ssh_username" title="Permanent link">&para;</a></h4>
 <p>EC2 への SSH 公開鍵認証時に使用するユーザー名を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;ssh_username&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ec2-user&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">"amazon-ebs" "foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"ssh_username"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ec2-user"</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -34930,8 +34930,8 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 </blockquote>
 <h4 id="temporary_key_pair_type">▼ temporary_key_pair_type<a class="headerlink" href="#temporary_key_pair_type" title="Permanent link">&para;</a></h4>
 <p>暗号化キーの種類を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;temporary_key_pair_type&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;rsa&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="err">source</span><span class="w"> </span><span class="s2">"amazon-ebs" "foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"temporary_key_pair_type"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"rsa"</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -34943,13 +34943,13 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <h2 id="06-variable">06. variable<a class="headerlink" href="#06-variable" title="Permanent link">&para;</a></h2>
 <h3 id="variable">variable とは<a class="headerlink" href="#variable" title="Permanent link">&para;</a></h3>
 <p>ファイル内で使用する変数を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;region&quot;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">"region"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="w">  </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span>
 <span class="p">}</span>
 
-<span class="err">source</span><span class="w"> </span><span class="s2">&quot;amazon-ebs&quot; &quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;region&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${var.region}&quot;</span>
+<span class="err">source</span><span class="w"> </span><span class="s2">"amazon-ebs" "foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="s2">"region"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"${var.region}"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>

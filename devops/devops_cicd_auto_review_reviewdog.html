@@ -33826,20 +33826,20 @@ yamllint<span class="w">        </span><span class="o">(</span>yamllint<span cla
 <span class="w">  </span><span class="nt">errcheck</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">errcheck -asserts -ignoretests -blank $(go list ./... | grep -v /vendor/)</span>
 <span class="w">    </span><span class="nt">errorformat</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;%f:%l:%c:%m&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"%f:%l:%c:%m"</span>
 <span class="w">    </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warning</span>
 <span class="w">  </span><span class="nt">staticcheck</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">staticcheck $(go list ./... | grep -v /vendor/)</span>
 <span class="w">    </span><span class="nt">errorformat</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;%f:%l:%c:</span><span class="nv"> </span><span class="s">%m&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"%f:%l:%c:</span><span class="nv"> </span><span class="s">%m"</span>
 <span class="w">  </span><span class="nt">misspell</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">misspell $(git ls-files)</span>
 <span class="w">    </span><span class="nt">errorformat</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;%f:%l:%c:</span><span class="nv"> </span><span class="s">%m&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"%f:%l:%c:</span><span class="nv"> </span><span class="s">%m"</span>
 <span class="w">  </span><span class="nt">unparam</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unparam $(go list ./... | grep -v /vendor/)</span>
 <span class="w">    </span><span class="nt">errorformat</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;%f:%l:%c:</span><span class="nv"> </span><span class="s">%m&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"%f:%l:%c:</span><span class="nv"> </span><span class="s">%m"</span>
 <span class="w">  </span><span class="nt">revive</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">revive -config=.revive.toml $(go list ./... | grep -v /vendor/)</span>
 <span class="w">    </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">golint</span>
@@ -33847,9 +33847,9 @@ yamllint<span class="w">        </span><span class="o">(</span>yamllint<span cla
 <span class="w">  </span><span class="nt">golangci</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">golangci-lint run --out-format=line-number ./...</span>
 <span class="w">    </span><span class="nt">errorformat</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;%E%f:%l:%c:</span><span class="nv"> </span><span class="s">%m&quot;</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;%E%f:%l:</span><span class="nv"> </span><span class="s">%m&quot;</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;%C%.%#&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"%E%f:%l:%c:</span><span class="nv"> </span><span class="s">%m"</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"%E%f:%l:</span><span class="nv"> </span><span class="s">%m"</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"%C%.%#"</span>
 <span class="w">    </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warning</span>
 </code></pre></div>
 <blockquote>

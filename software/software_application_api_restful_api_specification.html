@@ -34228,7 +34228,7 @@
 <span class="w">    </span><span class="nt">get</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Usersを取得するAPIです。</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTPステータスコード200と以下の情報を含むJSONオブジェクトを返します。</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
@@ -34333,28 +34333,28 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="c1"># --template-dirを使用すると、ユーザー定義のテンプレートからコードを作成できる</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// テンプレートファイル (mustache形式)</span>
-<span class="p">{{&gt;</span><span class="nx">partial_header</span><span class="p">}}</span>
+<span class="p">{{</span><span class="o">&gt;</span><span class="nx">partial_header</span><span class="p">}}</span>
 <span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="c1">// WARNING!</span>
 <span class="w">    </span><span class="c1">// Change this to a fully-qualified import path</span>
 <span class="w">    </span><span class="c1">// once you place this file into your project.</span>
 <span class="w">    </span><span class="c1">// For example,</span>
 <span class="w">    </span><span class="c1">//</span>
-<span class="w">    </span><span class="c1">//    sw &quot;github.com/myname/myrepo/{{apiPath}}&quot;</span>
+<span class="w">    </span><span class="c1">//    sw "github.com/myname/myrepo/{{apiPath}}"</span>
 <span class="w">    </span><span class="c1">//</span>
-<span class="w">    </span><span class="nx">sw</span><span class="w"> </span><span class="s">&quot;openapi-gin-server/{{apiPath}}&quot;</span>
+<span class="w">    </span><span class="nx">sw</span><span class="w"> </span><span class="s">"openapi-gin-server/{{apiPath}}"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Server started&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Server started"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">router</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sw</span><span class="p">.</span><span class="nx">NewRouter</span><span class="p">()</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">router</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="s">&quot;:{{serverPort}}&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">router</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="s">":{{serverPort}}"</span><span class="p">))</span>
 <span class="p">}</span>
 </code></pre></div>
 <dl>
@@ -34375,9 +34375,9 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="kn">package</span><span class="w"> </span><span class="nx">openapi</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">"net/http"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
 <span class="p">)</span>
 
 <span class="c1">// DeleteProductById - Cancel a specified product</span>
@@ -34476,7 +34476,7 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="w">      </span><span class="c1"># レスポンス</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34486,8 +34486,8 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="w">                    </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">                    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hiroki</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/user&quot;</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34495,11 +34495,11 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;不正なリクエストです。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"不正なリクエストです。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/responses/unauthorized&quot;</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
 <span class="w">    </span><span class="c1">#===========================</span>
 <span class="w">    </span><span class="c1"># path item オブジェクト</span>
 <span class="w">    </span><span class="c1">#===========================</span>
@@ -34519,20 +34519,20 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="w">            </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="c1"># メッセージボディ例</span>
 <span class="w">              </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">            </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="c1"># API スキーマ</span>
-<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/user&quot;</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="c1"># レスポンス</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
 <span class="w">              </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="c1"># レスポンスボディ例</span>
 <span class="w">                </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/normal&quot;</span><span class="w"> </span><span class="c1"># API スキーマとして、正常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/normal"</span><span class="w"> </span><span class="c1"># API スキーマとして、正常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34540,11 +34540,11 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ユーザーIDは必ず指定してください。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ユーザーIDは必ず指定してください。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># API スキーマとして、異常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/responses/unauthorized&quot;</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># API スキーマとして、異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
 <span class="w">  </span><span class="c1">#===========================</span>
 <span class="w">  </span><span class="c1"># paths オブジェクト</span>
 <span class="w">  </span><span class="c1">#===========================</span>
@@ -34563,7 +34563,7 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="w">      </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path</span><span class="w"> </span><span class="c1"># パスにパラメーターを割り当てる。</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">userId</span>
-<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザーID</span>
 <span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -34573,7 +34573,7 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="w">      </span><span class="c1"># レスポンス</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34581,8 +34581,8 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="w">                </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hiroki</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="c1"># API スキーマ</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/user&quot;</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34590,12 +34590,12 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ユーザーIDは必ず指定してください。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ユーザーIDは必ず指定してください。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/responses/unauthorized&quot;</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
-<span class="w">        </span><span class="s">&quot;404&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">        </span><span class="s">"404"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
@@ -34603,9 +34603,9 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">404</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;対象のユーザーが見つかりませんでした。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"対象のユーザーが見つかりませんでした。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
 <span class="w">    </span><span class="c1">#===========================</span>
 <span class="w">    </span><span class="c1"># path item オブジェクト</span>
 <span class="w">    </span><span class="c1">#===========================</span>
@@ -34620,7 +34620,7 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="w">      </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path</span><span class="w"> </span><span class="c1"># パスにパラメーターを割り当てる。</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">userId</span>
-<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザーID</span>
 <span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
@@ -34630,7 +34630,7 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="w">      </span><span class="c1"># レスポンス</span>
 <span class="w">      </span><span class="c1">#===========================</span>
 <span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># Content-Type</span>
@@ -34638,8 +34638,8 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="w">                </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hiroki</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="c1"># API スキーマ</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/user&quot;</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;400&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># Content-Type</span>
@@ -34647,12 +34647,12 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ユーザーIDは必ず指定してください。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ユーザーIDは必ず指定してください。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
-<span class="w">        </span><span class="s">&quot;401&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/responses/unauthorized&quot;</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
-<span class="w">        </span><span class="s">&quot;404&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">        </span><span class="s">"404"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found レスポンス</span>
 <span class="w">          </span><span class="nt">content</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># Content-Type</span>
@@ -34660,9 +34660,9 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">404</span>
 <span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found</span>
 <span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;対象のユーザーが見つかりませんでした。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"対象のユーザーが見つかりませんでした。"</span><span class="p p-Indicator">]</span>
 <span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="components">components フィールド (必須)<a class="headerlink" href="#components" title="Permanent link">&para;</a></h3>
@@ -34688,9 +34688,9 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="w">            </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">401</span>
 <span class="w">            </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unauthorized</span>
 <span class="w">            </span><span class="nt">errors</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;APIキーの認可に失敗しました。&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">              </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"APIキーの認可に失敗しました。"</span><span class="p p-Indicator">]</span>
 <span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#/components/schemas/error&quot;</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">            </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
 <span class="w">  </span><span class="c1">#===========================</span>
 <span class="w">  </span><span class="c1"># schema キーの共通化</span>
 <span class="w">  </span><span class="c1">#===========================</span>
@@ -34775,26 +34775,26 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <p><strong>＊実装例＊</strong></p>
 <p>例えば、API がレスポンス時に以下のような JSON 型データを返信する例を考える。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Taro</span><span class="nv"> </span><span class="s">Yamada&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;age&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;sports&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;soccer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;baseball&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">  </span><span class="s">&quot;subjects&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;math&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Taro</span><span class="nv"> </span><span class="s">Yamada"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"age"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"sports"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"soccer"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"baseball"</span><span class="p p-Indicator">],</span>
+<span class="w">  </span><span class="s">"subjects"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"math"</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>ここで、API スキーマを以下のように定義しておき、API からデータをレスポンスするときのバリデーションを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;$schema&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://json-schema.org/draft-04/schema#&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;object&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;properties&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"$schema"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"https://json-schema.org/draft-04/schema#"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"object"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"properties"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;minimum&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="s">&quot;age&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;minimum&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="s">&quot;sports&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;array&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;items&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="p p-Indicator">}},</span>
-<span class="w">      </span><span class="s">&quot;subjects&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"integer"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"minimum"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"string"</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"age"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"integer"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"minimum"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"sports"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"array"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"items"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"string"</span><span class="p p-Indicator">}},</span>
+<span class="w">      </span><span class="s">"subjects"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"string"</span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;required&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">  </span><span class="s">"required"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"id"</span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>

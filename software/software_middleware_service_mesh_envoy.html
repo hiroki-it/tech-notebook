@@ -35460,59 +35460,59 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">resource</span>
 
-<span class="o">...</span>
+<span class="p">...</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">FetchEndpoints</span><span class="w">        </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;/v3/discovery:endpoints&quot;</span>
-<span class="w">    </span><span class="nx">FetchClusters</span><span class="w">         </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;/v3/discovery:clusters&quot;</span>
-<span class="w">    </span><span class="nx">FetchListeners</span><span class="w">        </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;/v3/discovery:listeners&quot;</span>
-<span class="w">    </span><span class="nx">FetchRoutes</span><span class="w">           </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;/v3/discovery:routes&quot;</span>
-<span class="w">    </span><span class="nx">FetchScopedRoutes</span><span class="w">     </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;/v3/discovery:scoped-routes&quot;</span>
-<span class="w">    </span><span class="nx">FetchSecrets</span><span class="w">          </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;/v3/discovery:secrets&quot;</span>
-<span class="w">    </span><span class="nx">FetchRuntimes</span><span class="w">         </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;/v3/discovery:runtime&quot;</span>
-<span class="w">    </span><span class="nx">FetchExtensionConfigs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;/v3/discovery:extension_configs&quot;</span>
+<span class="w">    </span><span class="nx">FetchEndpoints</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">"/v3/discovery:endpoints"</span>
+<span class="w">    </span><span class="nx">FetchClusters</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">"/v3/discovery:clusters"</span>
+<span class="w">    </span><span class="nx">FetchListeners</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s">"/v3/discovery:listeners"</span>
+<span class="w">    </span><span class="nx">FetchRoutes</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s">"/v3/discovery:routes"</span>
+<span class="w">    </span><span class="nx">FetchScopedRoutes</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">"/v3/discovery:scoped-routes"</span>
+<span class="w">    </span><span class="nx">FetchSecrets</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s">"/v3/discovery:secrets"</span>
+<span class="w">    </span><span class="nx">FetchRuntimes</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">"/v3/discovery:runtime"</span>
+<span class="w">    </span><span class="nx">FetchExtensionConfigs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"/v3/discovery:extension_configs"</span>
 <span class="p">)</span>
 
-<span class="o">...</span>
+<span class="p">...</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
-<span class="o">...</span>
+<span class="p">...</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">h</span><span class="w"> </span><span class="o">*</span><span class="nx">HTTPGateway</span><span class="p">)</span><span class="w"> </span><span class="nx">ServeHTTP</span><span class="p">(</span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">p</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">Clean</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">Path</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">typeURL</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nx">typeURL</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">""</span>
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="nx">p</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">FetchEndpoints</span><span class="p">:</span>
-<span class="w">        </span><span class="nx">typeURL</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">EndpointType</span>
+<span class="w">        </span><span class="nx">typeURL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">EndpointType</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">FetchClusters</span><span class="p">:</span>
-<span class="w">        </span><span class="nx">typeURL</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">ClusterType</span>
+<span class="w">        </span><span class="nx">typeURL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">ClusterType</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">FetchListeners</span><span class="p">:</span>
-<span class="w">        </span><span class="nx">typeURL</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">ListenerType</span>
+<span class="w">        </span><span class="nx">typeURL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">ListenerType</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">FetchRoutes</span><span class="p">:</span>
-<span class="w">        </span><span class="nx">typeURL</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">RouteType</span>
+<span class="w">        </span><span class="nx">typeURL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">RouteType</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">FetchScopedRoutes</span><span class="p">:</span>
-<span class="w">        </span><span class="nx">typeURL</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">ScopedRouteType</span>
+<span class="w">        </span><span class="nx">typeURL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">ScopedRouteType</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">FetchSecrets</span><span class="p">:</span>
-<span class="w">        </span><span class="nx">typeURL</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">SecretType</span>
+<span class="w">        </span><span class="nx">typeURL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">SecretType</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">FetchRuntimes</span><span class="p">:</span>
-<span class="w">        </span><span class="nx">typeURL</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">RuntimeType</span>
+<span class="w">        </span><span class="nx">typeURL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">RuntimeType</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">FetchExtensionConfigs</span><span class="p">:</span>
-<span class="w">        </span><span class="nx">typeURL</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">ExtensionConfigType</span>
+<span class="w">        </span><span class="nx">typeURL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">ExtensionConfigType</span>
 <span class="w">    </span><span class="k">default</span><span class="p">:</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;no endpoint&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"no endpoint"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
-<span class="w">    </span><span class="nx">out</span><span class="p">.</span><span class="nx">TypeUrl</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">typeURL</span>
+<span class="w">    </span><span class="nx">out</span><span class="p">.</span><span class="nx">TypeUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">typeURL</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">h</span><span class="p">.</span><span class="nx">Server</span><span class="p">.</span><span class="nx">Fetch</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span><span class="w"> </span><span class="nx">out</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -35584,14 +35584,14 @@
 </dl>
 <h4 id="_10">▼ 実装<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">DiscoveryRequest</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">udpa.annotations.versioning</span><span class="p">)</span><span class="o">.</span><span class="na">previous_message_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;envoy.api.v2.DiscoveryRequest&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">udpa.annotations.versioning</span><span class="p">)</span><span class="o">.</span><span class="na">previous_message_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"envoy.api.v2.DiscoveryRequest"</span><span class="p">;</span>
 
 <span class="w">  </span><span class="o">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">DiscoveryResponse</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">udpa.annotations.versioning</span><span class="p">)</span><span class="o">.</span><span class="na">previous_message_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;envoy.api.v2.DiscoveryResponse&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">udpa.annotations.versioning</span><span class="p">)</span><span class="o">.</span><span class="na">previous_message_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"envoy.api.v2.DiscoveryResponse"</span><span class="p">;</span>
 
 <span class="w">  </span><span class="o">...</span>
 
@@ -35637,22 +35637,22 @@
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 <span class="w">              </span><span class="nt">typed_config</span><span class="p">:</span>
 <span class="w">                </span><span class="c1"># ネットワークフィルター (http_connection_manager) を指定する</span>
-<span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+<span class="w">                </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
 <span class="w">                </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingress_http</span>
 <span class="w">                </span><span class="nt">codec_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AUTO</span>
 <span class="w">                </span><span class="nt">http_filters</span><span class="p">:</span>
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.router</span>
 <span class="w">                    </span><span class="nt">typed_config</span><span class="p">:</span>
 <span class="w">                      </span><span class="c1"># HTTP フィルターを指定する</span>
-<span class="w">                      </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.router.v3.Router</span>
+<span class="w">                      </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.router.v3.Router</span>
 <span class="w">                </span><span class="nt">route_config</span><span class="p">:</span>
-<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50001&quot;</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"50001"</span>
 <span class="w">                    </span><span class="nt">virtual_hosts</span><span class="p">:</span>
 <span class="w">                      </span><span class="c1"># 仮想ホスト名</span>
 <span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_service</span>
 <span class="w">                        </span><span class="c1"># ホストベースルーティング</span>
 <span class="w">                        </span><span class="nt">domains</span><span class="p">:</span>
-<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">                        </span><span class="c1"># ルートのリスト</span>
 <span class="w">                        </span><span class="nt">routes</span><span class="p">:</span>
 <span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
@@ -35664,18 +35664,18 @@
 <span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow_any</span>
 <span class="w">                        </span><span class="c1"># ホストベースルーティング</span>
 <span class="w">                        </span><span class="nt">domains</span><span class="p">:</span>
-<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">                        </span><span class="nt">routes</span><span class="p">:</span>
 <span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">                              </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
 <span class="w">                            </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">                              </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PassthroughCluster</span>
-<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50002&quot;</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"50002"</span>
 <span class="w">                    </span><span class="nt">virtual_hosts</span><span class="p">:</span>
 <span class="w">                      </span><span class="c1"># 仮想ホスト名</span>
 <span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar_service</span>
 <span class="w">                        </span><span class="nt">domains</span><span class="p">:</span>
-<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">                        </span><span class="nt">routes</span><span class="p">:</span>
 <span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">                              </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
@@ -35683,19 +35683,19 @@
 <span class="w">                              </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-cluster</span>
 <span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow_any</span>
 <span class="w">                        </span><span class="nt">domains</span><span class="p">:</span>
-<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">                        </span><span class="nt">routes</span><span class="p">:</span>
 <span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">                              </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
 <span class="w">                            </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">                              </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PassthroughCluster</span>
-<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50003&quot;</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"50003"</span>
 <span class="w">                    </span><span class="nt">virtual_hosts</span><span class="p">:</span>
 <span class="w">                      </span><span class="c1"># 仮想ホスト名</span>
 <span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz_service</span>
 <span class="w">                        </span><span class="c1"># ホストベースルーティング</span>
 <span class="w">                        </span><span class="nt">domains</span><span class="p">:</span>
-<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">                        </span><span class="nt">routes</span><span class="p">:</span>
 <span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">                              </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
@@ -35704,7 +35704,7 @@
 <span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow_any</span>
 <span class="w">                        </span><span class="c1"># ホストベースルーティング</span>
 <span class="w">                        </span><span class="nt">domains</span><span class="p">:</span>
-<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">                        </span><span class="nt">routes</span><span class="p">:</span>
 <span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">                              </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
@@ -35724,7 +35724,7 @@
 
 <span class="c1">// リモートプロシージャーコール</span>
 <span class="kd">service</span><span class="w"> </span><span class="n">ListenerDiscoveryService</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">envoy.annotations.resource</span><span class="p">)</span><span class="o">.</span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;envoy.config.listener.v3.Listener&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">envoy.annotations.resource</span><span class="p">)</span><span class="o">.</span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"envoy.config.listener.v3.Listener"</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// 双方向ストリーミングRPC</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">StreamListeners</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">discovery.v3.DiscoveryRequest</span><span class="p">)</span>
@@ -35737,8 +35737,8 @@
 
 <span class="w">  </span><span class="c1">// 単項RPC</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">FetchListeners</span><span class="p">(</span><span class="n">discovery.v3.DiscoveryRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">discovery.v3.DiscoveryResponse</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">post</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/v3/discovery:listeners&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">post</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"/v3/discovery:listeners"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"*"</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -35763,7 +35763,7 @@
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NR</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.access_loggers.file</span>
 <span class="w">      </span><span class="nt">typedConfig</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog</span>
+<span class="w">        </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog</span>
 <span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/stdout</span>
 <span class="w">  </span><span class="nt">address</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># 宛先 IP アドレスとポート番号が合致した場合に、このリスナーで処理される。</span>
@@ -35772,21 +35772,21 @@
 <span class="w">      </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.16.0.1</span><span class="w"> </span><span class="c1"># 全ての宛先 IP アドレスを合致させる場合は、0.0.0.0 とする。</span>
 <span class="w">      </span><span class="c1"># Service のポート番号</span>
 <span class="w">      </span><span class="nt">portValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50001</span>
-<span class="w">  </span><span class="nt">bindToPort</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">  </span><span class="nt">bindToPort</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 <span class="w">  </span><span class="nt">filterChains</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.stats</span>
 <span class="w">          </span><span class="nt">typedConfig</span><span class="p">:</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
 <span class="w">            </span><span class="nt">typeUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.wasm.v3.Wasm</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.tcp_proxy</span>
 <span class="w">          </span><span class="nt">typedConfig</span><span class="p">:</span>
 <span class="w">            </span><span class="c1"># ネットワークフィルター (tcp_proxy) を指定する</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy</span>
 <span class="w">            </span><span class="nt">accessLog</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.access_loggers.file</span>
 <span class="w">                </span><span class="nt">typedConfig</span><span class="p">:</span>
-<span class="w">                  </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog</span>
+<span class="w">                  </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog</span>
 <span class="w">                  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/stdout</span>
 <span class="w">            </span><span class="c1"># ネットワークフィルター (tcp_proxy) の場合、ルートがなく、直接クラスターを指定することになる</span>
 <span class="w">            </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50001|v1|foo-service.foo.svc.cluster.local</span>
@@ -35802,27 +35802,27 @@
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NR</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.access_loggers.file</span>
 <span class="w">      </span><span class="nt">typedConfig</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog</span>
+<span class="w">        </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog</span>
 <span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/stdout</span>
 <span class="w">  </span><span class="nt">address</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">socketAddress</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.16.0.2</span>
 <span class="w">      </span><span class="nt">portValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50002</span>
-<span class="w">  </span><span class="nt">bindToPort</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">  </span><span class="nt">bindToPort</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 <span class="w">  </span><span class="nt">filterChains</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.stats</span>
 <span class="w">          </span><span class="nt">typedConfig</span><span class="p">:</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
 <span class="w">            </span><span class="nt">typeUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.wasm.v3.Wasm</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.tcp_proxy</span>
 <span class="w">          </span><span class="nt">typedConfig</span><span class="p">:</span>
 <span class="w">            </span><span class="c1"># ネットワークフィルター (tcp_proxy) を指定する</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy</span>
 <span class="w">            </span><span class="nt">accessLog</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.access_loggers.file</span>
 <span class="w">                </span><span class="nt">typedConfig</span><span class="p">:</span>
-<span class="w">                  </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog</span>
+<span class="w">                  </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog</span>
 <span class="w">                  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/stdout</span>
 <span class="w">            </span><span class="c1"># ネットワークフィルター (tcp_proxy) の場合、ルートがなく、直接クラスターを指定することになる</span>
 <span class="w">            </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar.svc.cluster.local</span>
@@ -35837,27 +35837,27 @@
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NR</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.access_loggers.file</span>
 <span class="w">      </span><span class="nt">typedConfig</span><span class="p">:</span>
-<span class="w">        </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog</span>
+<span class="w">        </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog</span>
 <span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/stdout</span>
 <span class="w">  </span><span class="nt">address</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">socketAddress</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.16.0.3</span>
 <span class="w">      </span><span class="nt">portValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50003</span>
-<span class="w">  </span><span class="nt">bindToPort</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">  </span><span class="nt">bindToPort</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 <span class="w">  </span><span class="nt">filterChains</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.stats</span>
 <span class="w">          </span><span class="nt">typedConfig</span><span class="p">:</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
 <span class="w">            </span><span class="nt">typeUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.wasm.v3.Wasm</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.tcp_proxy</span>
 <span class="w">          </span><span class="nt">typedConfig</span><span class="p">:</span>
 <span class="w">            </span><span class="c1"># ネットワークフィルター (tcp_proxy) を指定する</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy</span>
+<span class="w">            </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy</span>
 <span class="w">            </span><span class="nt">accessLog</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.access_loggers.file</span>
 <span class="w">                </span><span class="nt">typedConfig</span><span class="p">:</span>
-<span class="w">                  </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog</span>
+<span class="w">                  </span><span class="s">"@type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog</span>
 <span class="w">                  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/stdout</span>
 <span class="w">            </span><span class="c1"># ネットワークフィルター (tcp_proxy) の場合、ルートがなく、直接クラスターを指定することになる</span>
 <span class="w">            </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50003|v1|baz-service.baz.svc.cluster.local</span>
@@ -35959,7 +35959,7 @@
 
 <span class="c1">// リモートプロシージャーコール</span>
 <span class="kd">service</span><span class="w"> </span><span class="n">RouteDiscoveryService</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">envoy.annotations.resource</span><span class="p">)</span><span class="o">.</span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;envoy.config.route.v3.RouteConfiguration&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">envoy.annotations.resource</span><span class="p">)</span><span class="o">.</span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"envoy.config.route.v3.RouteConfiguration"</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// 双方向ストリーミングRPC</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">StreamRoutes</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">discovery.v3.DiscoveryRequest</span><span class="p">)</span>
@@ -35972,8 +35972,8 @@
 
 <span class="w">  </span><span class="c1">// 単項RPC</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">FetchRoutes</span><span class="p">(</span><span class="n">discovery.v3.DiscoveryRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">discovery.v3.DiscoveryResponse</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">post</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/v3/discovery:routes&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">post</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"/v3/discovery:routes"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"*"</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -35988,7 +35988,7 @@
 <p><strong>＊実装例＊</strong></p>
 <p>Istio を使用して、<code>envoy</code> コンテナを稼働させるとする。</p>
 <p>Kubernetes では、YAML ファイルのキー名の設計規約がローワーキャメルケースであることに注意する。</p>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50001&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"50001"</span>
 <span class="w">  </span><span class="nt">virtualHosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local:50001</span>
 <span class="w">      </span><span class="c1"># ホストベースルーティング</span>
@@ -36013,14 +36013,14 @@
 <span class="w">            </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow_any</span>
 <span class="w">      </span><span class="nt">domains</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">      </span><span class="nt">routes</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
 <span class="w">          </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PassthroughCluster</span>
 <span class="c1"># Node 外から bar-pod にリクエストを送信する時に選ばれる。</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50002&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"50002"</span>
 <span class="w">  </span><span class="nt">virtualHosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace.svc.cluster.local:50002</span>
 <span class="w">      </span><span class="c1"># ホストベースルーティング</span>
@@ -36042,14 +36042,14 @@
 <span class="w">            </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow_any</span>
 <span class="w">      </span><span class="nt">domains</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">      </span><span class="nt">routes</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
 <span class="w">          </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PassthroughCluster</span>
 <span class="c1"># Node 外から baz-pod にリクエストを送信する時に選ばれる。</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50003&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"50003"</span>
 <span class="w">  </span><span class="nt">virtualHosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz-service.baz-namespace.svc.cluster.local:50003</span>
 <span class="w">      </span><span class="c1"># ホストベースルーティング</span>
@@ -36071,7 +36071,7 @@
 <span class="w">            </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50003|v1|baz-service.baz-namespace.svc.cluster.local</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow_any</span>
 <span class="w">      </span><span class="nt">domains</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*"</span>
 <span class="w">      </span><span class="nt">routes</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
@@ -36169,7 +36169,7 @@
 
 <span class="c1">// リモートプロシージャーコール</span>
 <span class="kd">service</span><span class="w"> </span><span class="n">ClusterDiscoveryService</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">envoy.annotations.resource</span><span class="p">)</span><span class="o">.</span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;envoy.config.cluster.v3.Cluster&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">envoy.annotations.resource</span><span class="p">)</span><span class="o">.</span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"envoy.config.cluster.v3.Cluster"</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// 双方向ストリーミングRPC</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">StreamClusters</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">discovery.v3.DiscoveryRequest</span><span class="p">)</span>
@@ -36182,8 +36182,8 @@
 
 <span class="w">  </span><span class="c1">// 単項RPC</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">FetchClusters</span><span class="p">(</span><span class="n">discovery.v3.DiscoveryRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">discovery.v3.DiscoveryResponse</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">post</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/v3/discovery:clusters&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">post</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"/v3/discovery:clusters"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"*"</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -36308,7 +36308,7 @@
 
 <span class="c1">// リモートプロシージャーコール</span>
 <span class="kd">service</span><span class="w"> </span><span class="n">EndpointDiscoveryService</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">envoy.annotations.resource</span><span class="p">)</span><span class="o">.</span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;envoy.config.endpoint.v3.ClusterLoadAssignment&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">envoy.annotations.resource</span><span class="p">)</span><span class="o">.</span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"envoy.config.endpoint.v3.ClusterLoadAssignment"</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// 双方向ストリーミングRPC</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">StreamEndpoints</span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">discovery.v3.DiscoveryRequest</span><span class="p">)</span>
@@ -36321,8 +36321,8 @@
 
 <span class="w">  </span><span class="c1">// 単項RPC</span>
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">FetchEndpoints</span><span class="p">(</span><span class="n">discovery.v3.DiscoveryRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">discovery.v3.DiscoveryResponse</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">post</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/v3/discovery:endpoints&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">post</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"/v3/discovery:endpoints"</span><span class="p">;</span>
+<span class="w">    </span><span class="k">option</span><span class="w"> </span><span class="p">(</span><span class="n">google.api.http</span><span class="p">)</span><span class="o">.</span><span class="na">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"*"</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 

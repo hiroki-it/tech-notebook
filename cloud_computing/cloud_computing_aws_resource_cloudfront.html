@@ -34899,10 +34899,10 @@
 <span class="nt">sec-fetch-user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">?1</span>
 <span class="nt">sec-fetch-dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">document</span>
 <span class="c1"># デバイスタイプ</span>
-<span class="nt">CloudFront-Is-Mobile-Viewer</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="nt">CloudFront-Is-Tablet-Viewer</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
-<span class="nt">CloudFront-Is-SmartTV-Viewer</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
-<span class="nt">CloudFront-Is-Desktop-Viewer</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="nt">CloudFront-Is-Mobile-Viewer</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="nt">CloudFront-Is-Tablet-Viewer</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
+<span class="nt">CloudFront-Is-SmartTV-Viewer</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
+<span class="nt">CloudFront-Is-Desktop-Viewer</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 <span class="c1"># クライアント側の国名</span>
 <span class="nt">CloudFront-Viewer-Country</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JP</span>
 <span class="c1"># リクエストのプロトコル</span>
@@ -34953,7 +34953,7 @@
 <p>Amazon CloudFront には、エッジロケーションの数だけエッジサーバーがあり、各サーバーに IP アドレスが割り当てられている。</p>
 <p>以下のコマンドで、すべてのエッジサーバーの IP アドレスを確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>https://ip-ranges.amazonaws.com/ip-ranges.json<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s2">&quot;.prefixes[]| select(.service==&quot;</span>CLOUDFRONT<span class="s2">&quot;) | .ip_prefix&quot;</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s2">".prefixes[]| select(.service=="</span>CLOUDFRONT<span class="s2">") | .ip_prefix"</span>
 </code></pre></div>
 <p>もしくは、以下のリンクを直接的に参考し、『<code>"service": "CLOUDFRONT"</code>』となっている部分を探す。</p>
 <blockquote>

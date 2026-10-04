@@ -34973,45 +34973,45 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 <h4 id="kubelet-configjson-kubeletconfiguration">▼ <code>kubelet-config.json</code> ファイル (KubeletConfiguration)<a class="headerlink" href="#kubelet-configjson-kubeletconfiguration" title="Permanent link">&para;</a></h4>
 <p>kubelet を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;kind&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;KubeletConfiguration&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;apiVersion&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;kubelet.config.k8s.io/v1beta1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;address&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0.0.0.0&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;authentication&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"kind"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"KubeletConfiguration"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"apiVersion"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"kubelet.config.k8s.io/v1beta1"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"address"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"0.0.0.0"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"authentication"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;anonymous&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;enabled&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="s">&quot;webhook&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;cacheTTL&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2m0s&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;enabled&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">      </span><span class="s">&quot;x509&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;clientCAFile&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/etc/kubernetes/pki/ca.crt&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"anonymous"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"enabled"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"false"</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"webhook"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"cacheTTL"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2m0s"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"enabled"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"x509"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"clientCAFile"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/etc/kubernetes/pki/ca.crt"</span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;authorization&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"authorization"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">      </span><span class="s">&quot;mode&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Webhook&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;webhook&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;cacheAuthorizedTTL&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;5m0s&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;cacheUnauthorizedTTL&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;30s&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"mode"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Webhook"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"webhook"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"cacheAuthorizedTTL"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"5m0s"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"cacheUnauthorizedTTL"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"30s"</span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;clusterDomain&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cluster.local&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;hairpinMode&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;hairpin-veth&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;readOnlyPort&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;cgroupDriver&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cgroupfs&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;cgroupRoot&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;featureGates&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;RotateKubeletServerCertificate&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">  </span><span class="s">&quot;protectKernelDefaults&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;serializeImagePulls&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;serverTLSBootstrap&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"clusterDomain"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"cluster.local"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"hairpinMode"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"hairpin-veth"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"readOnlyPort"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"cgroupDriver"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"cgroupfs"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"cgroupRoot"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"featureGates"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"RotateKubeletServerCertificate"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">"protectKernelDefaults"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"serializeImagePulls"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"false"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"serverTLSBootstrap"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="c1"># 暗号スイート</span>
-<span class="w">  </span><span class="s">&quot;tlsCipherSuites&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"tlsCipherSuites"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
-<span class="w">      </span><span class="s">&quot;TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;TLS_RSA_WITH_AES_256_GCM_SHA384&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">      </span><span class="s">&quot;TLS_RSA_WITH_AES_128_GCM_SHA256&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"TLS_RSA_WITH_AES_256_GCM_SHA384"</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">"TLS_RSA_WITH_AES_128_GCM_SHA256"</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="w">  </span><span class="c1"># コンテナのログローテーションの閾値</span>
-<span class="w">  </span><span class="s">&quot;containerLogMaxSize&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;100Mi&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"containerLogMaxSize"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"100Mi"</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="c1"># コンテナのログの最大世代数</span>
-<span class="w">  </span><span class="s">&quot;containerLogMaxFiles&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"containerLogMaxFiles"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
@@ -35052,9 +35052,9 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 </code></pre></div>
 <h4 id="kubelet_2">▼ kubelet のバージョン<a class="headerlink" href="#kubelet_2" title="Permanent link">&para;</a></h4>
 <p>ログ内に kubelet のバージョンが定義されている。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>kubelet.service<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Kubelet version&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>kubelet.service<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"Kubelet version"</span>
 
-kubelet<span class="o">[</span><span class="m">405976</span><span class="o">]</span>:<span class="w"> </span>I0421<span class="w"> </span><span class="m">14</span>:22:01.838974<span class="w">  </span><span class="m">405976</span><span class="w"> </span>server.go:440<span class="o">]</span><span class="w"> </span><span class="s2">&quot;Kubelet version&quot;</span><span class="w"> </span><span class="nv">kubeletVersion</span><span class="o">=</span><span class="s2">&quot;v1.22&quot;</span>
+kubelet<span class="o">[</span><span class="m">405976</span><span class="o">]</span>:<span class="w"> </span>I0421<span class="w"> </span><span class="m">14</span>:22:01.838974<span class="w">  </span><span class="m">405976</span><span class="w"> </span>server.go:440<span class="o">]</span><span class="w"> </span><span class="s2">"Kubelet version"</span><span class="w"> </span><span class="nv">kubeletVersion</span><span class="o">=</span><span class="s2">"v1.22"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_12">ユニットファイル<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
@@ -35171,9 +35171,9 @@ net.bridge.bridge-nf-call-ip6tables<span class="o">=</span><span class="m">1</sp
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>add-apt-repository<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="s2">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span>
+<span class="w">    </span><span class="s2">"deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span>
 <span class="s2">    </span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> \</span>
-<span class="s2">    stable&quot;</span>
+<span class="s2">    stable"</span>
 </code></pre></div>
 <dl>
 <dt><code>(4)</code></dt>

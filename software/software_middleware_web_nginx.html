@@ -34300,9 +34300,9 @@ ngx_stream_geoip_module.so
 <div class="highlight"><pre><span></span><code><span class="c1"># クライアント側</span>
 <span class="k">http</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1"># $_request_id</span>
-<span class="w">    </span><span class="kn">log_format</span><span class="w">  </span><span class="s">main</span><span class="w">  </span><span class="s">&#39;</span><span class="nv">$remote_addr</span><span class="w"> </span><span class="s">-</span><span class="w"> </span><span class="nv">$remote_user</span><span class="w"> </span><span class="s">[</span><span class="nv">$time_local]</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$request_uri&quot;</span><span class="w"> </span><span class="s">&#39;</span>
-<span class="w">                      </span><span class="s">&#39;</span><span class="nv">$status</span><span class="w"> </span><span class="nv">$body_bytes_sent</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$http_referer&quot;</span><span class="w"> </span><span class="s">&#39;</span>
-<span class="w">                      </span><span class="s">&#39;&quot;</span><span class="nv">$http_user_agent&quot;</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$http_x_forwarded_for&quot;</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$_request_id&quot;&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">log_format</span><span class="w">  </span><span class="s">main</span><span class="w">  </span><span class="s">'</span><span class="nv">$remote_addr</span><span class="w"> </span><span class="s">-</span><span class="w"> </span><span class="nv">$remote_user</span><span class="w"> </span><span class="s">[</span><span class="nv">$time_local]</span><span class="w"> </span><span class="s">"</span><span class="nv">$request_uri"</span><span class="w"> </span><span class="s">'</span>
+<span class="w">                      </span><span class="s">'</span><span class="nv">$status</span><span class="w"> </span><span class="nv">$body_bytes_sent</span><span class="w"> </span><span class="s">"</span><span class="nv">$http_referer"</span><span class="w"> </span><span class="s">'</span>
+<span class="w">                      </span><span class="s">'"</span><span class="nv">$http_user_agent"</span><span class="w"> </span><span class="s">"</span><span class="nv">$http_x_forwarded_for"</span><span class="w"> </span><span class="s">"</span><span class="nv">$_request_id"'</span><span class="p">;</span>
 
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
 
@@ -34329,9 +34329,9 @@ ngx_stream_geoip_module.so
 <div class="highlight"><pre><span></span><code><span class="c1"># サーバー側</span>
 <span class="k">http</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1"># $_request_id を参照する</span>
-<span class="w">    </span><span class="kn">log_format</span><span class="w">  </span><span class="s">main</span><span class="w">  </span><span class="s">&#39;</span><span class="nv">$remote_addr</span><span class="w"> </span><span class="s">-</span><span class="w"> </span><span class="nv">$remote_user</span><span class="w"> </span><span class="s">[</span><span class="nv">$time_local]</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$request_uri&quot;</span><span class="w"> </span><span class="s">&#39;</span>
-<span class="w">                      </span><span class="s">&#39;</span><span class="nv">$status</span><span class="w"> </span><span class="nv">$body_bytes_sent</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$http_referer&quot;</span><span class="w"> </span><span class="s">&#39;</span>
-<span class="w">                      </span><span class="s">&#39;&quot;</span><span class="nv">$http_user_agent&quot;</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$http_x_forwarded_for&quot;</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$_request_id&quot;&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">log_format</span><span class="w">  </span><span class="s">main</span><span class="w">  </span><span class="s">'</span><span class="nv">$remote_addr</span><span class="w"> </span><span class="s">-</span><span class="w"> </span><span class="nv">$remote_user</span><span class="w"> </span><span class="s">[</span><span class="nv">$time_local]</span><span class="w"> </span><span class="s">"</span><span class="nv">$request_uri"</span><span class="w"> </span><span class="s">'</span>
+<span class="w">                      </span><span class="s">'</span><span class="nv">$status</span><span class="w"> </span><span class="nv">$body_bytes_sent</span><span class="w"> </span><span class="s">"</span><span class="nv">$http_referer"</span><span class="w"> </span><span class="s">'</span>
+<span class="w">                      </span><span class="s">'"</span><span class="nv">$http_user_agent"</span><span class="w"> </span><span class="s">"</span><span class="nv">$http_x_forwarded_for"</span><span class="w"> </span><span class="s">"</span><span class="nv">$_request_id"'</span><span class="p">;</span>
 
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
 
@@ -34348,7 +34348,7 @@ ngx_stream_geoip_module.so
 <span class="w">        </span><span class="kn">access_log</span><span class="w"> </span><span class="s">logs/access.log</span><span class="w">  </span><span class="s">main</span><span class="p">;</span>
 
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">/server</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kn">echo</span><span class="w"> </span><span class="s">&quot;This</span><span class="w"> </span><span class="s">is</span><span class="w"> </span><span class="s">server</span><span class="w"> </span><span class="s">side&quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">echo</span><span class="w"> </span><span class="s">"This</span><span class="w"> </span><span class="s">is</span><span class="w"> </span><span class="s">server</span><span class="w"> </span><span class="s">side"</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -34534,11 +34534,11 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <span class="w">        </span><span class="kn">ssl</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">ssl_certificate</span><span class="w"> </span><span class="s">/etc/nginx/ssl/server.crt</span><span class="p">;</span>
 <span class="w">        </span><span class="kn">ssl_certificate_key</span><span class="w"> </span><span class="s">/etc/nginx/ssl/server.key</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Strict-Transport-Security</span><span class="w"> </span><span class="s">&quot;max-age=86400&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Strict-Transport-Security</span><span class="w"> </span><span class="s">"max-age=86400"</span><span class="p">;</span>
 
 <span class="w">        </span><span class="c1"># IPアドレスを動的に設定する</span>
 <span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="s">unix:/var/run/ip_addresses.sock</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$ip_addresses</span><span class="w"> </span><span class="s">&quot;example.com&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$ip_addresses</span><span class="w"> </span><span class="s">"example.com"</span><span class="p">;</span>
 
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$ip_addresses</span><span class="p">;</span>
@@ -34580,7 +34580,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 
 <span class="w">        </span><span class="c1"># IPアドレスを動的に設定する</span>
 <span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="s">unix:/var/run/ip_addresses.sock</span><span class="p">;</span>
-<span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$ip_addresses</span><span class="w"> </span><span class="s">&quot;example.com&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$ip_addresses</span><span class="w"> </span><span class="s">"example.com"</span><span class="p">;</span>
 
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="nv">$scheme://$ip_addresses</span><span class="p">;</span>

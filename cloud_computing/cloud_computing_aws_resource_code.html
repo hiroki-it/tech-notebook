@@ -34443,7 +34443,7 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker push $REPOSITORY_URI:latest</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker push $REPOSITORY_URI:$IMAGE_TAG</span>
 <span class="w">      </span><span class="c1"># Amazon ECR にあるデプロイ先のコンテナイメージの情報 (imageDetail.json)</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">printf &#39;[{&quot;name&quot;:&quot;hello-world&quot;,&quot;imageUri&quot;:&quot;%s&quot;}]&#39; $REPOSITORY_URI:$IMAGE_TAG &gt; imagedefinitions.json</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">printf '[{"name":"hello-world","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG &gt; imagedefinitions.json</span>
 
 <span class="c1"># デプロイ対象とするビルドのアーティファクト</span>
 <span class="nt">artifacts</span><span class="p">:</span>
@@ -34518,8 +34518,8 @@
 <p>リポジトリへ事前に配置するのではなく、CI/CD パイプライン上で動的に作成するようにしたほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span>
 <span class="w">  </span><span class="p p-Indicator">{</span>
-<span class="w">    </span><span class="s">&quot;imageUri&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;イメージリポジトリURL&gt;&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># &lt;AWS アカウント ID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/&lt;イメージリポジトリ名&gt;:latest</span>
-<span class="w">    </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;コンテナ名&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"imageUri"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;イメージリポジトリURL&gt;"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># &lt;AWS アカウント ID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/&lt;イメージリポジトリ名&gt;:latest</span>
+<span class="w">    </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;コンテナ名&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">]</span>
 </code></pre></div>
@@ -34585,12 +34585,12 @@
 <span class="w">      </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Amazon ECS::Service</span>
 <span class="w">      </span><span class="nt">Properties</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># 使用する Amazon ECS タスク定義</span>
-<span class="w">        </span><span class="nt">TaskDefinition</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;TASK_DEFINITION&gt;&quot;</span>
+<span class="w">        </span><span class="nt">TaskDefinition</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;TASK_DEFINITION&gt;"</span>
 <span class="w">        </span><span class="c1"># 使用するロードバランサー</span>
 <span class="w">        </span><span class="nt">LoadBalancerInfo</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">ContainerName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;コンテナ名&gt;&quot;</span>
-<span class="w">          </span><span class="nt">ContainerPort</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;80&quot;</span>
-<span class="w">        </span><span class="nt">PlatformVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.4.0&quot;</span>
+<span class="w">          </span><span class="nt">ContainerName</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;コンテナ名&gt;"</span>
+<span class="w">          </span><span class="nt">ContainerPort</span><span class="p">:</span><span class="w"> </span><span class="s">"80"</span>
+<span class="w">        </span><span class="nt">PlatformVersion</span><span class="p">:</span><span class="w"> </span><span class="s">"1.4.0"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34611,48 +34611,48 @@
 <p>CodeDeploy は、CodeBuild から渡された <code>imageDetail.json</code> ファイルを検知し、Amazon ECR からコンテナイメージを取得する。</p>
 <p>このとき、<code>taskdef.json</code> ファイルのコンテナイメージ名を <code>&lt;IMAGE1_NAME&gt;</code> としておくと、<code>imageDetail.json</code> ファイルの値を元にして、新バージョンタグを含むイメージリポジトリ URL が自動的に代入される。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;family&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;Amazon</span><span class="nv"> </span><span class="s">ECSタスク定義名&gt;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;requiresCompatibilities&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;FARGATE&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">  </span><span class="s">&quot;networkMode&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;awsvpc&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;taskRoleArn&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;タスクロールのARN&gt;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;executionRoleArn&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;タスク実行ロールのARN&gt;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;cpu&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;512&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;memory&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;1024&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;containerDefinitions&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"family"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;Amazon</span><span class="nv"> </span><span class="s">ECSタスク定義名&gt;"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"requiresCompatibilities"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"FARGATE"</span><span class="p p-Indicator">],</span>
+<span class="w">  </span><span class="s">"networkMode"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"awsvpc"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"taskRoleArn"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;タスクロールのARN&gt;"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"executionRoleArn"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;タスク実行ロールのARN&gt;"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"cpu"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"512"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"memory"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"1024"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"containerDefinitions"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;コンテナ名&gt;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;image&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;IMAGE1_NAME&gt;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;essential&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;portMappings&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">        </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;コンテナ名&gt;"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"image"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;IMAGE1_NAME&gt;"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"essential"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"portMappings"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">            </span><span class="p p-Indicator">{</span>
 <span class="w">              </span><span class="c1"># コンテナポート</span>
-<span class="w">              </span><span class="s">&quot;containerPort&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">80</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">"containerPort"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">80</span><span class="p p-Indicator">,</span>
 <span class="w">              </span><span class="c1"># Amazon ECS のホストのポート</span>
-<span class="w">              </span><span class="s">&quot;hostPort&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">80</span><span class="p p-Indicator">,</span>
-<span class="w">              </span><span class="s">&quot;protocol&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;tcp&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">"hostPort"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">80</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">"protocol"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"tcp"</span><span class="p p-Indicator">,</span>
 <span class="w">            </span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;secrets&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">        </span><span class="s">"secrets"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">            </span><span class="c1"># データ永続化用の DB の接続情報</span>
-<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DB_HOST&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;valueFrom&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/ecs/DB_HOST&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DB_DATABASE&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;valueFrom&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/ecs/DB_DATABASE&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DB_PASSWORD&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;valueFrom&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/ecs/DB_PASSWORD&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DB_USERNAME&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;valueFrom&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/ecs/DB_USERNAME&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"DB_HOST"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"valueFrom"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/ecs/DB_HOST"</span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"DB_DATABASE"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"valueFrom"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/ecs/DB_DATABASE"</span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"DB_PASSWORD"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"valueFrom"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/ecs/DB_PASSWORD"</span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"DB_USERNAME"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"valueFrom"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/ecs/DB_USERNAME"</span><span class="p p-Indicator">},</span>
 <span class="w">            </span><span class="c1"># セッションキャッシュ用のインメモリ DB の接続情報</span>
-<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;REDIS_HOST&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;valueFrom&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/ecs/REDIS_HOST&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;REDIS_PASSWORD&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;valueFrom&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/ecs/REDIS_PASSWORD&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;REDIS_PORT&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;valueFrom&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/ecs/REDIS_PORT&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"REDIS_HOST"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"valueFrom"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/ecs/REDIS_HOST"</span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"REDIS_PASSWORD"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"valueFrom"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/ecs/REDIS_PASSWORD"</span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"REDIS_PORT"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"valueFrom"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/ecs/REDIS_PORT"</span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;logConfiguration&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">"logConfiguration"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">            </span><span class="c1"># ログドライバー</span>
-<span class="w">            </span><span class="s">&quot;logDriver&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;awslogs&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;options&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">                </span><span class="s">&quot;awslogs-group&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;ログストリーム名&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"logDriver"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"awslogs"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"options"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                </span><span class="s">"awslogs-group"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;ログストリーム名&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">                </span><span class="c1"># スタックトレースのログを紐付けられるように、日付で区切るようにする。</span>
-<span class="w">                </span><span class="s">&quot;awslogs-datetime-format&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;\\[%Y-%m-%d</span><span class="nv"> </span><span class="s">%H:%M:%S\\]&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                </span><span class="s">&quot;awslogs-region&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ap-northeast-1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                </span><span class="s">&quot;awslogs-stream-prefix&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;ログストリーム名の接頭辞&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">"awslogs-datetime-format"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"\\[%Y-%m-%d</span><span class="nv"> </span><span class="s">%H:%M:%S\\]"</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">"awslogs-region"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"ap-northeast-1"</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">"awslogs-stream-prefix"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;ログストリーム名の接頭辞&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">              </span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>

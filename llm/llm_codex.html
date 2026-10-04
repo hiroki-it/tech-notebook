@@ -33982,45 +33982,45 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># 思考過程の出力を非表示にする</span>
 <span class="n">hide_agent_reasoning</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 
-<span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-5.2&quot;</span>
+<span class="n">model</span><span class="o">=</span><span class="s2">"gpt-5.2"</span>
 
-<span class="n">model_provider</span><span class="o">=</span><span class="s2">&quot;&lt;プロバイダー名&gt;&quot;</span>
+<span class="n">model_provider</span><span class="o">=</span><span class="s2">"&lt;プロバイダー名&gt;"</span>
 
 <span class="c1"># 思考にかける時間</span>
-<span class="n">model_reasoning_effort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;low&quot;</span>
+<span class="n">model_reasoning_effort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"low"</span>
 
 <span class="c1"># Macで通知を有効化する</span>
-<span class="n">notify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;bash&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/Users/hiroki.hasegawa/.codex/notify_macos.sh&quot;</span><span class="p">]</span>
+<span class="n">notify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"bash"</span><span class="p">,</span><span class="w"> </span><span class="s2">"/Users/hiroki.hasegawa/.codex/notify_macos.sh"</span><span class="p">]</span>
 
 <span class="c1"># インターネット検索を有効化する</span>
-<span class="n">web_search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;live&quot;</span>
+<span class="n">web_search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"live"</span>
 
 <span class="c1"># 承認なしで進める</span>
-<span class="n">approval_policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;never&quot;</span>
+<span class="n">approval_policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"never"</span>
 
 <span class="c1"># ファイルとネットワークへのアクセスを制限しない</span>
-<span class="n">sandbox_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;danger-full-access&quot;</span>
+<span class="n">sandbox_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"danger-full-access"</span>
 
 <span class="k">[model_providers.lite_llm]</span>
-<span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;&lt;APIのURL&gt;&quot;</span>
-<span class="n">env_key</span><span class="o">=</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span>
-<span class="n">name</span><span class="o">=</span><span class="s2">&quot;&lt;プロバイダー名&gt;&quot;</span>
-<span class="n">wire_api</span><span class="o">=</span><span class="s2">&quot;responses&quot;</span>
+<span class="n">base_url</span><span class="o">=</span><span class="s2">"&lt;APIのURL&gt;"</span>
+<span class="n">env_key</span><span class="o">=</span><span class="s2">"OPENAI_API_KEY"</span>
+<span class="n">name</span><span class="o">=</span><span class="s2">"&lt;プロバイダー名&gt;"</span>
+<span class="n">wire_api</span><span class="o">=</span><span class="s2">"responses"</span>
 </code></pre></div>
 <p>MacOS での通知スクリプトは次のとおり。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1"># JSONから最後のエージェント発言を抽出</span>
-<span class="nv">RAW_MESSAGE</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.[&quot;last-assistant-message&quot;] // &quot;Codex task completed&quot;&#39;</span><span class="k">)</span>
+<span class="nv">RAW_MESSAGE</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.["last-assistant-message"] // "Codex task completed"'</span><span class="k">)</span>
 
 <span class="c1"># 長すぎるとAppleScriptが壊れやすいので先頭80文字にトリム</span>
-<span class="nv">TRIMMED_MESSAGE</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$RAW_MESSAGE</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-c<span class="w"> </span><span class="m">80</span><span class="k">)</span>
+<span class="nv">TRIMMED_MESSAGE</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$RAW_MESSAGE</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-c<span class="w"> </span><span class="m">80</span><span class="k">)</span>
 
 <span class="c1"># AppleScript用に改行とダブルクオートを安全な形に変換</span>
-<span class="nv">SAFE_MESSAGE</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TRIMMED_MESSAGE</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/&quot;/\\&quot;/g&#39;</span><span class="k">)</span>
+<span class="nv">SAFE_MESSAGE</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$TRIMMED_MESSAGE</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">'\n'</span><span class="w"> </span><span class="s1">' '</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">'s/"/\\"/g'</span><span class="k">)</span>
 
 <span class="c1"># osascriptで通知表示</span>
-osascript<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;display notification \&quot;</span><span class="nv">$SAFE_MESSAGE</span><span class="s2">\&quot; with title \&quot;Codexの作業が完了\&quot;&quot;</span>
+osascript<span class="w"> </span>-e<span class="w"> </span><span class="s2">"display notification \"</span><span class="nv">$SAFE_MESSAGE</span><span class="s2">\" with title \"Codexの作業が完了\""</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34035,38 +34035,38 @@ osascript<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quo
 <h3 id="chrome-dev-tools">Chrome dev tools の場合<a class="headerlink" href="#chrome-dev-tools" title="Permanent link">&para;</a></h3>
 <p>Codex がブラウザを読めるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[mcp_servers.chrome-devtools]</span>
-<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;npx&quot;</span>
-<span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;-y&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;chrome-devtools-mcp@latest&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--no-usage-statistics&quot;</span><span class="p">]</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"npx"</span>
+<span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"-y"</span><span class="p">,</span><span class="w"> </span><span class="s2">"chrome-devtools-mcp@latest"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--no-usage-statistics"</span><span class="p">]</span>
 <span class="n">startup_timeout_sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">60.0</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="confluence">Confluence の場合<a class="headerlink" href="#confluence" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">[mcp_servers.confluence]</span>
 <span class="n">startup_timeout_sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span>
-<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;uv&quot;</span>
-<span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--native-tls&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mcp-atlassian&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--confluence-url=https://confluence.foo.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--confluence-personal-token=&lt;Confluenceで発行したパーソナルアクセストークン&gt;&quot;</span><span class="p">]</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"uv"</span>
+<span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"run"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--native-tls"</span><span class="p">,</span><span class="w"> </span><span class="s2">"mcp-atlassian"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--confluence-url=https://confluence.foo.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--confluence-personal-token=&lt;Confluenceで発行したパーソナルアクセストークン&gt;"</span><span class="p">]</span>
 
 <span class="k">[mcp_servers.confluence.env]</span>
-<span class="n">REQUESTS_CA_BUNDLE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;必要であれば、リモートワークのプロキシの証明書&gt;&quot;</span>
+<span class="n">REQUESTS_CA_BUNDLE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;必要であれば、リモートワークのプロキシの証明書&gt;"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="github">GitHub の場合<a class="headerlink" href="#github" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">[mcp_servers.github]</span>
-<span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://api.githubcopilot.com/mcp/&quot;</span>
-<span class="n">http_headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Authorization</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;Bearer &lt;ここにパーソナルアクセストークン&gt;&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"https://api.githubcopilot.com/mcp/"</span>
+<span class="n">http_headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Authorization</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"Bearer &lt;ここにパーソナルアクセストークン&gt;"</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="playwright">Playwright の場合<a class="headerlink" href="#playwright" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">[mcp_servers.playwright]</span>
-<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;npx&quot;</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"npx"</span>
 <span class="c1"># memoryを指定することで、ログファイルを作成させない</span>
-<span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;-y&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;@playwright/mcp@latest&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--output-mode=memory&quot;</span><span class="p">]</span>
+<span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"-y"</span><span class="p">,</span><span class="w"> </span><span class="s2">"@playwright/mcp@latest"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--output-mode=memory"</span><span class="p">]</span>
 <span class="n">startup_timeout_sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">60.0</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="intellij">IntelliJ の場合<a class="headerlink" href="#intellij" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">[mcp_servers.idea]</span>
-<span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;http://127.0.0.1:64342/stream&quot;</span>
+<span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"http://127.0.0.1:64342/stream"</span>
 </code></pre></div>
 <h2 id="04-skills">04. Skills<a class="headerlink" href="#04-skills" title="Permanent link">&para;</a></h2>
 <h3 id="_3">ディレクトリ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -34093,8 +34093,8 @@ osascript<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quo
 <div class="highlight"><pre><span></span><code><span class="c1"># openai.yaml</span>
 <span class="nt">interface</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># ドルマークで検索したときに表示されるスキル名</span>
-<span class="w">  </span><span class="nt">display_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;do-something&quot;</span>
-<span class="w">  </span><span class="nt">short_description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Help</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">Do</span><span class="nv"> </span><span class="s">something</span><span class="nv"> </span><span class="s">tasks&quot;</span>
+<span class="w">  </span><span class="nt">display_name</span><span class="p">:</span><span class="w"> </span><span class="s">"do-something"</span>
+<span class="w">  </span><span class="nt">short_description</span><span class="p">:</span><span class="w"> </span><span class="s">"Help</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">Do</span><span class="nv"> </span><span class="s">something</span><span class="nv"> </span><span class="s">tasks"</span>
 </code></pre></div>
 <h4 id="skillmd">▼ SKILL.md<a class="headerlink" href="#skillmd" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>---

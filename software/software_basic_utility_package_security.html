@@ -33877,16 +33877,16 @@ sops:
 <span class="w">    </span><span class="c1"># AWS KMS</span>
 <span class="w">    </span>kms:
 <span class="w">      </span>-<span class="w"> </span>arn:<span class="w"> </span>arn:aws:kms:ap-northeast-1:&lt;AWSアカウントID&gt;:key/&lt;AWS<span class="w"> </span>KMSのID&gt;
-<span class="w">        </span>created_at:<span class="w"> </span><span class="s1">&#39;2021-01-01T12:00:00Z&#39;</span>
+<span class="w">        </span>created_at:<span class="w"> </span><span class="s1">'2021-01-01T12:00:00Z'</span>
 <span class="w">        </span>enc:<span class="w"> </span>*****
-<span class="w">        </span>aws_profile:<span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span>aws_profile:<span class="w"> </span><span class="s2">""</span>
 <span class="w">    </span><span class="c1"># Google Cloud CKM</span>
 <span class="w">    </span>gcp_kms:<span class="w"> </span><span class="o">[]</span>
 <span class="w">    </span><span class="c1"># Azure Key Vault</span>
 <span class="w">    </span>azure_kv:<span class="w"> </span><span class="o">[]</span>
 <span class="w">    </span><span class="c1"># HashiCorp Vault</span>
 <span class="w">    </span>hc_vault:<span class="w"> </span><span class="o">[]</span>
-<span class="w">    </span>lastmodified:<span class="w"> </span><span class="s1">&#39;2021-01-01T12:00:00Z&#39;</span>
+<span class="w">    </span>lastmodified:<span class="w"> </span><span class="s1">'2021-01-01T12:00:00Z'</span>
 <span class="w">    </span>mac:<span class="w"> </span>ENC<span class="o">[</span>AES256...
 <span class="w">    </span>pgp:<span class="w"> </span><span class="o">[]</span>
 <span class="w">    </span>unencrypted_suffix:<span class="w"> </span>_unencrypted
@@ -33905,20 +33905,20 @@ sops:
 <span class="w">  </span><span class="c1"># 特定の平文ファイル名を設定する。</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path_regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./values/value\.yaml</span>
 <span class="w">    </span><span class="c1"># AWS KMS を暗号化キーとして使用する。</span>
-<span class="w">    </span><span class="nt">kms</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;arn:aws:kms:ap-northeast-1:&lt;AWSアカウントID&gt;:key/*****&quot;</span>
+<span class="w">    </span><span class="nt">kms</span><span class="p">:</span><span class="w"> </span><span class="s">"arn:aws:kms:ap-northeast-1:&lt;AWSアカウントID&gt;:key/*****"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">creation_rules</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># ワイルドカードで平文ファイルを再帰的に指定できる。</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path_regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./values/*\.yaml</span>
 <span class="w">    </span><span class="c1"># Google Cloud CKM を暗号化キーとして使用する。</span>
-<span class="w">    </span><span class="nt">gcp_kms</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;projects/foo-project/locations/global/keyRings/sops/cryptoKeys/sops-key&quot;</span>
+<span class="w">    </span><span class="nt">gcp_kms</span><span class="p">:</span><span class="w"> </span><span class="s">"projects/foo-project/locations/global/keyRings/sops/cryptoKeys/sops-key"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># ファイル名が path_regexキーのルールに該当するため、AWS KMSを使用して暗号化される。</span>
 $<span class="w"> </span>sops<span class="w"> </span>-e<span class="w"> </span>./values/foo-values.yaml
 </code></pre></div>
 <h4 id="sopsyaml_1">▼ <code>.sops.yaml</code> ファイルを使用しない場合<a class="headerlink" href="#sopsyaml_1" title="Permanent link">&para;</a></h4>
 <p><code>.sops.yaml</code> ファイルを使用しない場合は、環境変数でパラメーターを渡す必要がある。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SOPS_KMS_ARN</span><span class="o">=</span><span class="s2">&quot;arn:aws:kms:ap-northeast-1:&lt;AWSアカウントID&gt;:key/*****&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SOPS_KMS_ARN</span><span class="o">=</span><span class="s2">"arn:aws:kms:ap-northeast-1:&lt;AWSアカウントID&gt;:key/*****"</span>
 
 $<span class="w"> </span>sops<span class="w"> </span>-e<span class="w"> </span>./values/foo-values.yaml<span class="w"> </span>-k<span class="w"> </span><span class="nv">$SOPS_KMS_ARN</span>
 </code></pre></div>
@@ -33950,7 +33950,7 @@ $<span class="w"> </span>sops<span class="w"> </span>-e<span class="w"> </span>.
 <p>環境変数や <code>.sops.yaml</code> ファイルで暗号化ルールを定義しておく必要がある。</p>
 <p>標準出力に出力されるため、ファイルへ書き出すようにするとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># AWS KMSを暗号化キーとして使用する。</span>
-$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SOPS_KMS_ARN</span><span class="o">=</span><span class="s2">&quot;arn:aws:kms:ap-northeast-1:&lt;AWSアカウントID&gt;:key/*****&quot;</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">SOPS_KMS_ARN</span><span class="o">=</span><span class="s2">"arn:aws:kms:ap-northeast-1:&lt;AWSアカウントID&gt;:key/*****"</span>
 
 $<span class="w"> </span>sops<span class="w"> </span>-e<span class="w"> </span>&lt;平文の.yamlファイル/.jsonファイル&gt;<span class="w"> </span>&gt;<span class="w"> </span>&lt;暗号化された.yamlファイル/.jsonファイル&gt;
 </code></pre></div>

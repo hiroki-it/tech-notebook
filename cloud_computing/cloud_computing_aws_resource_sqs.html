@@ -33768,11 +33768,11 @@
 <h2 id="02">02. セットアップ (コンソールの場合)<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h2 id="2-02-terraform">2-02. セットアップ (Terraform の場合)<a class="headerlink" href="#2-02-terraform" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># 通常キュー</span>
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;sqs_foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/sqs/aws&quot;</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 4.0&quot;</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"sqs_foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/sqs/aws"</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~&gt; 4.0"</span>
 
-<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span>
 <span class="w">  </span><span class="na">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">local.tags</span>
 
 <span class="w">  </span><span class="na">visibility_timeout_seconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">300</span>
@@ -33782,60 +33782,60 @@
 <span class="w">  </span><span class="na">receive_wait_time_seconds</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="c1"> # ロングポーリング</span>
 
 <span class="w">  </span><span class="nb">redrive_policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">deadLetterTargetArn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arn:aws:sqs:ap-northeast-1:123456789012:foo-deadletter&quot;</span>
+<span class="w">    </span><span class="na">deadLetterTargetArn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"arn:aws:sqs:ap-northeast-1:123456789012:foo-deadletter"</span>
 <span class="w">    </span><span class="na">maxReceiveCount</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">3</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="na">kms_master_key_id</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arn:aws:kms:ap-northeast-1:123456789012:key/11111111-2222-3333-4444-555555555555&quot;</span>
+<span class="w">  </span><span class="na">kms_master_key_id</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">"arn:aws:kms:ap-northeast-1:123456789012:key/11111111-2222-3333-4444-555555555555"</span>
 <span class="w">  </span><span class="na">kms_data_key_reuse_period_seconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">300</span>
 <span class="p">}</span>
 
 <span class="c1"># デッドレターキュー</span>
 <span class="c1"># 通常キューは処理に失敗し続けた処理不可能なタスクをデッドレターキューに転送する</span>
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;sqs_foo_deadletter&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/sqs/aws&quot;</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 4.0&quot;</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"sqs_foo_deadletter"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/sqs/aws"</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"~&gt; 4.0"</span>
 
-<span class="w">  </span><span class="na">name</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-deadletter&quot;</span>
+<span class="w">  </span><span class="na">name</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-deadletter"</span>
 <span class="w">  </span><span class="na">tags</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="nv">local.tags</span>
 <span class="w">  </span><span class="na">message_retention_seconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1209600</span><span class="c1"> # 14日</span>
 
-<span class="w">  </span><span class="na">kms_master_key_id</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arn:aws:kms:ap-northeast-1:123456789012:key/11111111-2222-3333-4444-555555555555&quot;</span>
+<span class="w">  </span><span class="na">kms_master_key_id</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">"arn:aws:kms:ap-northeast-1:123456789012:key/11111111-2222-3333-4444-555555555555"</span>
 <span class="w">  </span><span class="na">kms_data_key_reuse_period_seconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">300</span>
 <span class="p">}</span>
 
-<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;kms_sqs_foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/kms/aws&quot;</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;= 3.1.0&quot;</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"kms_sqs_foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/kms/aws"</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"= 3.1.0"</span>
 
-<span class="w">  </span><span class="na">aliases</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sqs-foo&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="na">aliases</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"sqs-foo"</span><span class="p">]</span>
 <span class="w">  </span><span class="na">deletion_window_in_days</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">30</span>
 <span class="w">  </span><span class="na">enable_key_rotation</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="na">tags</span><span class="w">                    </span><span class="o">=</span><span class="w"> </span><span class="nv">local.tags</span>
 
 <span class="w">  </span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">jsonencode</span><span class="p">({</span>
-<span class="w">    </span><span class="na">Version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span>
+<span class="w">    </span><span class="na">Version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"2012-10-17"</span>
 <span class="w">    </span><span class="na">Statement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="na">Sid</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Default&quot;</span>
-<span class="w">        </span><span class="na">Effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
+<span class="w">        </span><span class="na">Sid</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"Default"</span>
+<span class="w">        </span><span class="na">Effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Allow"</span>
 <span class="w">        </span><span class="nb">Principal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="na">AWS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;arn:aws:iam::${data.aws_caller_identity.current.id}:root&quot;</span>
+<span class="w">          </span><span class="na">AWS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"arn:aws:iam::${data.aws_caller_identity.current.id}:root"</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="na">Action</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;kms:*&quot;</span>
-<span class="w">        </span><span class="na">Resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*&quot;</span>
+<span class="w">        </span><span class="na">Action</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"kms:*"</span>
+<span class="w">        </span><span class="na">Resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*"</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="na">Sid</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow SQS to use the key&quot;</span>
-<span class="w">        </span><span class="na">Effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
+<span class="w">        </span><span class="na">Sid</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"Allow SQS to use the key"</span>
+<span class="w">        </span><span class="na">Effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Allow"</span>
 <span class="w">        </span><span class="nb">Principal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="na">Service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sqs.amazonaws.com&quot;</span>
+<span class="w">          </span><span class="na">Service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"sqs.amazonaws.com"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="na">Action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">          </span><span class="s2">&quot;kms:Decrypt&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">&quot;kms:GenerateDataKey&quot;</span>
+<span class="w">          </span><span class="s2">"kms:Decrypt"</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">"kms:GenerateDataKey"</span>
 <span class="w">        </span><span class="p">]</span>
-<span class="w">        </span><span class="na">Resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*&quot;</span>
+<span class="w">        </span><span class="na">Resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">})</span>

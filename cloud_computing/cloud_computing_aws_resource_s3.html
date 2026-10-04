@@ -34033,31 +34033,31 @@
 <p><br></p>
 <h2 id="02">02. セットアップ (コンソールの場合)<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h2 id="2-02-terraform">2-02. セットアップ (Terraform の場合)<a class="headerlink" href="#2-02-terraform" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;s3_foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/s3-bucket/aws&quot;</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;= 4.1.0&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"s3_foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/s3-bucket/aws"</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"= 4.1.0"</span>
 
-<span class="w">  </span><span class="na">bucket</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
+<span class="w">  </span><span class="na">bucket</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span>
 <span class="w">  </span><span class="na">tags</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="nv">local.tags</span>
 <span class="w">  </span><span class="na">block_public_acls</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="na">block_public_policy</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="na">restrict_public_buckets</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="na">control_object_ownership</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">object_ownership</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ObjectWriter&quot;</span>
+<span class="w">  </span><span class="na">object_ownership</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">"ObjectWriter"</span>
 
 <span class="w">  </span><span class="na">lifecycle_rule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="na">id</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;archive-old-files&quot;</span>
-<span class="w">      </span><span class="na">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Enabled&quot;</span>
+<span class="w">      </span><span class="na">id</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"archive-old-files"</span>
+<span class="w">      </span><span class="na">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Enabled"</span>
 <span class="w">      </span><span class="nb">filter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">        </span><span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="c1">      # バックアップ</span>
 <span class="c1">      # 70日後にGlacier Deep Archiveへ移行</span>
 <span class="w">      </span><span class="na">transition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">          </span><span class="na">days</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="m">70</span>
-<span class="w">          </span><span class="na">storage_class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;DEEP_ARCHIVE&quot;</span>
+<span class="w">          </span><span class="na">storage_class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"DEEP_ARCHIVE"</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="c1">      # 保持期間</span>
@@ -34071,7 +34071,7 @@
 <span class="w">  </span><span class="nb">server_side_encryption_configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nb">rule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nb">apply_server_side_encryption_by_default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="na">sse_algorithm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;AES256&quot;</span>
+<span class="w">        </span><span class="na">sse_algorithm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"AES256"</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
@@ -34252,14 +34252,14 @@
 <p>これは、東京リージョンのアカウント ID である。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;AWS&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:iam::582318560864:root&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;s3:PutObject&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:s3:::&lt;バケット名&gt;/*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"AWS"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:iam::582318560864:root"</span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"s3:PutObject"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:s3:::&lt;バケット名&gt;/*"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
@@ -34274,18 +34274,18 @@
 <p>補足として 2022/08/31 時点で、オリジンアクセスアイデンティティを識別情報として使用する方法は非推奨になり、オリジンアクセスコントロールが推奨になった。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2008-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;PolicyForCloudFrontPrivateContent&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2008-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"PolicyForCloudFrontPrivateContent"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;AWS&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:iam::cloudfront:user/CloudFront</span><span class="nv"> </span><span class="s">Origin</span><span class="nv"> </span><span class="s">Access</span><span class="nv"> </span><span class="s">Identity</span><span class="nv"> </span><span class="s">&lt;オリジンアクセスアイデンティティのID番号&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"AWS"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:iam::cloudfront:user/CloudFront</span><span class="nv"> </span><span class="s">Origin</span><span class="nv"> </span><span class="s">Access</span><span class="nv"> </span><span class="s">Identity</span><span class="nv"> </span><span class="s">&lt;オリジンアクセスアイデンティティのID番号&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;s3:GetObject&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:s3:::&lt;バケット名&gt;/*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"s3:GetObject"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:s3:::&lt;バケット名&gt;/*"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
@@ -34305,18 +34305,18 @@
 <p>代わりに、AWS 管理ポリシーの『<code>AWSLambdaExecute</code>』が紐付けられたロールを AWS Lambda に紐付ける必要がある。</p>
 <p>このポリシーには、Amazon S3 への認可スコープのほか、Amazon CloudWatch Logs にログを作成するための認可スコープが設定されている。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;logs:*&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:logs:*:*:*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"logs:*"</span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:logs:*:*:*"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;s3:GetObject&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;s3:PutObject&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:s3:::*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"s3:GetObject"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"s3:PutObject"</span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:s3:::*"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
@@ -34324,16 +34324,16 @@
 <h4 id="ip">▼ 特定の IP アドレスからのリクエストを許可<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h4>
 <p>パブリックネットワーク上の特定の IP アドレスからのリクエストを許可したい場合、その IP アドレスをポリシーに設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;S3PolicyId1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"S3PolicyId1"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;s3:GetObject&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:s3:::&lt;バケット名&gt;/*&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;IpAddress&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;aws:SourceIp&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*.*.*.*/32&quot;</span><span class="p p-Indicator">}},</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Principal"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"s3:GetObject"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:s3:::&lt;バケット名&gt;/*"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Condition"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"IpAddress"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"aws:SourceIp"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*.*.*.*/32"</span><span class="p p-Indicator">}},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
@@ -34349,10 +34349,10 @@
 <p>サーバー側の Amazon S3 では、<code>Access-Control-Allow-Origin</code> ヘッダーに必要な値を設定して返却する。</p>
 <p>クライアント側 (例：Amazon API Gateway を介したブラウザ) では <code>Origin</code> ヘッダーは、デフォルトで『プロトコル + ドメイン + ポート番号』に設定されるため、特に対処する必要はない。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 任意のドメインを許可する</span>
-<span class="p p-Indicator">[{</span><span class="s">&quot;AllowedOrigins&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]}]</span>
+<span class="p p-Indicator">[{</span><span class="s">"AllowedOrigins"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]}]</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 特定のドメインを許可する</span>
-<span class="p p-Indicator">[{</span><span class="s">&quot;AllowedOrigins&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;https://example.jp&quot;</span><span class="p p-Indicator">]}]</span>
+<span class="p p-Indicator">[{</span><span class="s">"AllowedOrigins"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"https://example.jp"</span><span class="p p-Indicator">]}]</span>
 </code></pre></div>
 <blockquote>
 <ul>

@@ -33814,9 +33814,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 </ul>
 </blockquote>
 <p>リモートにある <code>kustomize.yaml</code> ファイルを使用する場合も、同じく <code>kustomize.yaml</code> ファイルのあるディレクトリの URL を指定する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;&lt;リポジトリのURL&gt;/&lt;kustomize.yamlファイルのあるディレクトリ&gt;?ref=&lt;タグ&gt;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>kustomize.diff
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">"&lt;リポジトリのURL&gt;/&lt;kustomize.yamlファイルのあるディレクトリ&gt;?ref=&lt;タグ&gt;"</span><span class="w"> </span>&gt;<span class="w"> </span>kustomize.diff
 
-$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;&lt;リポジトリのURL&gt;/&lt;kustomize.yamlファイルのあるディレクトリ&gt;?ref=&lt;タグ&gt;&quot;</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">"&lt;リポジトリのURL&gt;/&lt;kustomize.yamlファイルのあるディレクトリ&gt;?ref=&lt;タグ&gt;"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -33825,14 +33825,14 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 </blockquote>
 <p><strong>＊実行例＊</strong></p>
 <p>例えば、argocd-cd チャートの <code>5.28.0</code> を使用する場合、これは ArgoCD の <code>2.6.7</code> に対応しているため、以下の値で作成/変更する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">"https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7"</span>
 
-$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7&quot;</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">"https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7"</span>
 </code></pre></div>
 <p>例えば、aws-load-balancer-controller チャートの <code>1.5.2</code> を使用する場合、これは aws-load-balancer-controller の <code>2.5.1</code> に対応しているため、以下の値で作成/変更する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=v2.5.1&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">"https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=v2.5.1"</span>
 
-$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=v2.5.1&quot;</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">"https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=v2.5.1"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="kustomize_1">kustomize<a class="headerlink" href="#kustomize_1" title="Permanent link">&para;</a></h3>

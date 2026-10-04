@@ -34743,11 +34743,11 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># ハンドラー関数の引数に合ったJSON型データを送信する。</span>
 $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XPOST<span class="w"> </span><span class="s2">&quot;http://127.0.0.1:9000/2015-03-31/functions/function/invocations&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{}&#39;</span>
+<span class="w">    </span>-XPOST<span class="w"> </span><span class="s2">"http://127.0.0.1:9000/2015-03-31/functions/function/invocations"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{}'</span>
 </code></pre></div>
 <p><strong>＊参考＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.7&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.7"</span>
 
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">lambda</span><span class="p">:</span>
@@ -34769,8 +34769,8 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>lambda
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-XPOST<span class="w"> </span><span class="s2">&quot;http://127.0.0.1:9000/2015-03-31/functions/function/invocations&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{}&#39;</span>
+<span class="w">    </span>-XPOST<span class="w"> </span><span class="s2">"http://127.0.0.1:9000/2015-03-31/functions/function/invocations"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="s1">'{}'</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_7">同時実行<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
@@ -34801,13 +34801,13 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <p>AWS Lambda を実行するためには、デプロイされた関数を使用する認可スコープが必要である。</p>
 <p>そのため、関数を取得するためのステートメントを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;lambda:InvokeFunction&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:lambda:ap-northeast-1:&lt;AWSアカウントID&gt;:function:&lt;関数名&gt;*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"lambda:InvokeFunction"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:lambda:ap-northeast-1:&lt;AWSアカウントID&gt;:function:&lt;関数名&gt;*"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
@@ -34893,23 +34893,23 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <h4 id="_17">▼ 実行に必要な最低限のポリシー<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>AWS Lambda@Edge を実行するためには、最低限、以下の認可スコープが必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;iam:CreateServiceLinkedRole&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"iam:CreateServiceLinkedRole"</span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;lambda:GetFunction&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;lambda:EnableReplication*&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:lambda:ap-northeast-1:&lt;AWSアカウントID&gt;:function:&lt;関数名&gt;:&lt;バージョン&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"lambda:GetFunction"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"lambda:EnableReplication*"</span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:lambda:ap-northeast-1:&lt;AWSアカウントID&gt;:function:&lt;関数名&gt;:&lt;バージョン&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;cloudfront:UpdateDistribution&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:cloudfront::&lt;AWSアカウントID&gt;:distribution/&lt;DistributionID&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Effect"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Allow"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"Action"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"cloudfront:UpdateDistribution"</span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="s">"Resource"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"arn:aws:cloudfront::&lt;AWSアカウントID&gt;:distribution/&lt;DistributionID&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
@@ -34944,7 +34944,7 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <span class="k">RUN</span><span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/tmp/cache<span class="w"> </span>./.next/cache
 <span class="k">EXPOSE</span><span class="w"> </span><span class="s">3000</span>
 <span class="k">ENV</span><span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="m">3000</span>
-<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;node&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;server.js&quot;</span><span class="p">]</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">"node"</span><span class="p">,</span><span class="w"> </span><span class="s2">"server.js"</span><span class="p">]</span>
 </code></pre></div>
 <p><br></p>
 

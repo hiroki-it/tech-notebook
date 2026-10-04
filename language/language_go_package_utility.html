@@ -37059,17 +37059,17 @@
 <span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;os&quot;</span>
-<span class="w">    </span><span class="s">&quot;os/signal&quot;</span>
-<span class="w">    </span><span class="s">&quot;syscall&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
+<span class="w">    </span><span class="s">"os"</span>
+<span class="w">    </span><span class="s">"os/signal"</span>
+<span class="w">    </span><span class="s">"syscall"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/hiroki-hasegawa/foo-repository/cmd&quot;</span>
+<span class="w">    </span><span class="s">"github.com/hiroki-hasegawa/foo-repository/cmd"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">cancel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithCancel</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">())</span>
-<span class="w">    </span><span class="nx">sigCh</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Signal</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">sigCh</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kt">chan</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Signal</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">signal</span><span class="p">.</span><span class="nx">Notify</span><span class="p">(</span><span class="nx">sigCh</span><span class="p">,</span><span class="w"> </span><span class="nx">syscall</span><span class="p">.</span><span class="nx">SIGINT</span><span class="p">,</span><span class="w"> </span><span class="nx">syscall</span><span class="p">.</span><span class="nx">SIGTERM</span><span class="p">,</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Interrupt</span><span class="p">)</span>
 <span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="o">&lt;-</span><span class="nx">sigCh</span>
@@ -37078,14 +37078,14 @@
 
 <span class="w">    </span><span class="nx">cmd</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">{</span>
 <span class="w">        </span><span class="nx">Run</span><span class="p">:</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">cmd</span><span class="w"> </span><span class="o">*</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">,</span><span class="w"> </span><span class="nx">args</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">Help</span><span class="p">()</span>
+<span class="w">            </span><span class="nx">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">Help</span><span class="p">()</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">AddCommand</span><span class="p">(</span><span class="nx">foo</span><span class="p">.</span><span class="nx">NewFooCmd</span><span class="p">())</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">ExecuteContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -37095,22 +37095,22 @@
 <span class="kn">package</span><span class="w"> </span><span class="nx">foo</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;time&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
+<span class="w">    </span><span class="s">"time"</span>
+<span class="w">    </span><span class="s">"log"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/spf13/cobra&quot;</span>
+<span class="w">    </span><span class="s">"github.com/spf13/cobra"</span>
 <span class="p">)</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">DefaultPeriod</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">3</span>
-<span class="w">    </span><span class="nx">DefaultLimit</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1000</span>
+<span class="w">    </span><span class="nx">DefaultPeriod</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">    </span><span class="nx">DefaultLimit</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">NewFooCmd</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">cmd</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">Use</span><span class="p">:</span><span class="w">           </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">Short</span><span class="p">:</span><span class="w">         </span><span class="s">&quot;Foo command help&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Use</span><span class="p">:</span><span class="w">           </span><span class="s">"foo"</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Short</span><span class="p">:</span><span class="w">         </span><span class="s">"Foo command help"</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">SilenceUsage</span><span class="p">:</span><span class="w">  </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">SilenceErrors</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">RunE</span><span class="p">:</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">cmd</span><span class="w"> </span><span class="o">*</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">,</span><span class="w"> </span><span class="nx">args</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
@@ -37127,41 +37127,41 @@
 <span class="kn">package</span><span class="w"> </span><span class="nx">foo</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;time&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
+<span class="w">    </span><span class="s">"time"</span>
+<span class="w">    </span><span class="s">"log"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/spf13/cobra&quot;</span>
+<span class="w">    </span><span class="s">"github.com/spf13/cobra"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">NewDoCmd</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">cmd</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">Use</span><span class="p">:</span><span class="w">           </span><span class="s">&quot;do&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">Short</span><span class="p">:</span><span class="w">         </span><span class="s">&quot;Do command&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Use</span><span class="p">:</span><span class="w">           </span><span class="s">"do"</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Short</span><span class="p">:</span><span class="w">         </span><span class="s">"Do command"</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">SilenceUsage</span><span class="p">:</span><span class="w">  </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">SilenceErrors</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">RunE</span><span class="p">:</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">cmd</span><span class="w"> </span><span class="o">*</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">,</span><span class="w"> </span><span class="nx">args</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1">// --period</span>
 <span class="w">            </span><span class="c1">// 指定した月数以前のログを削除する</span>
-<span class="w">            </span><span class="nx">period</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">Flags</span><span class="p">().</span><span class="nx">GetInt</span><span class="p">(</span><span class="s">&quot;period&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">period</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">Flags</span><span class="p">().</span><span class="nx">GetInt</span><span class="p">(</span><span class="s">"period"</span><span class="p">)</span>
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;failed to get period flags %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
-<span class="w">                </span><span class="nx">period</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">DefaultPeriod</span>
+<span class="w">                </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"failed to get period flags %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">                </span><span class="nx">period</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">DefaultPeriod</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">            </span><span class="c1">// --limit</span>
 <span class="w">            </span><span class="c1">// 指定したログ数をDBから読み込み、削除する</span>
-<span class="w">            </span><span class="nx">limit</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">Flags</span><span class="p">().</span><span class="nx">GetInt</span><span class="p">(</span><span class="s">&quot;limit&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">limit</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">Flags</span><span class="p">().</span><span class="nx">GetInt</span><span class="p">(</span><span class="s">"limit"</span><span class="p">)</span>
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;failed to get limit flags %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
-<span class="w">                </span><span class="nx">limit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">DefaultLimit</span>
+<span class="w">                </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"failed to get limit flags %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">                </span><span class="nx">limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">DefaultLimit</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">            </span><span class="nx">startDate</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">AddDate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="nx">period</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="w">            </span><span class="c1">// オプションをコマンドに渡す</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">RunDo</span><span class="p">(</span><span class="nx">cmd</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span><span class="w"> </span><span class="nx">startDate</span><span class="p">,</span><span class="w"> </span><span class="nx">limit</span><span class="p">)</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">Flags</span><span class="p">().</span><span class="nx">Int</span><span class="p">(</span><span class="s">&quot;period&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">DefaultPeriod</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Do older than the specified month&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">Flags</span><span class="p">().</span><span class="nx">Int</span><span class="p">(</span><span class="s">&quot;limit&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">DefaultLimit</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Do the specified number of something&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">Flags</span><span class="p">().</span><span class="nx">Int</span><span class="p">(</span><span class="s">"period"</span><span class="p">,</span><span class="w"> </span><span class="nx">DefaultPeriod</span><span class="p">,</span><span class="w"> </span><span class="s">"Do older than the specified month"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">Flags</span><span class="p">().</span><span class="nx">Int</span><span class="p">(</span><span class="s">"limit"</span><span class="p">,</span><span class="w"> </span><span class="nx">DefaultLimit</span><span class="p">,</span><span class="w"> </span><span class="s">"Do the specified number of something"</span><span class="p">)</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">cmd</span>
 <span class="p">}</span>
 
@@ -37180,10 +37180,10 @@ $<span class="w"> </span>foo<span class="w"> </span><span class="k">do</span><sp
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">"net/http"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/go-chi/chi/v5&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/go-chi/chi/v5/middleware&quot;</span>
+<span class="w">    </span><span class="s">"github.com/go-chi/chi/v5"</span>
+<span class="w">    </span><span class="s">"github.com/go-chi/chi/v5/middleware"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -37192,11 +37192,11 @@ $<span class="w"> </span>foo<span class="w"> </span><span class="k">do</span><sp
 
 <span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">middleware</span><span class="p">.</span><span class="nx">Logger</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">w</span><span class="p">.</span><span class="nx">Write</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&quot;welcome&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">w</span><span class="p">.</span><span class="nx">Write</span><span class="p">([]</span><span class="kt">byte</span><span class="p">(</span><span class="s">"welcome"</span><span class="p">))</span>
 <span class="w">    </span><span class="p">})</span>
 
-<span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:3000&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">":3000"</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -37231,7 +37231,7 @@ $<span class="w"> </span>foo<span class="w"> </span><span class="k">do</span><sp
 <p>CI 上で <code>gomarkdoc</code> コマンドを実行する。</p>
 <p>差分があれば、CI を失敗させる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">GO_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.19.13&quot;</span>
+<span class="w">  </span><span class="nt">GO_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">"1.19.13"</span>
 
 <span class="nt">stages</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
@@ -37245,8 +37245,8 @@ $<span class="w"> </span>foo<span class="w"> </span><span class="k">do</span><sp
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">      </span><span class="no">DIFF=$(git diff origin/${CI_COMMIT_BRANCH} --name-only --relative ./)</span>
 <span class="w">      </span><span class="no">echo $DIFF</span>
-<span class="w">      </span><span class="no">if [ -n &quot;$DIFF&quot; ] ; then</span>
-<span class="w">        </span><span class="no">echo &quot;ローカルマシンでgomarkdocを実行し、ドキュメントを更新してください&quot;</span>
+<span class="w">      </span><span class="no">if [ -n "$DIFF" ] ; then</span>
+<span class="w">        </span><span class="no">echo "ローカルマシンでgomarkdocを実行し、ドキュメントを更新してください"</span>
 <span class="w">        </span><span class="no">exit 1</span>
 <span class="w">      </span><span class="no">fi</span>
 </code></pre></div>
@@ -37267,7 +37267,7 @@ $<span class="w"> </span>foo<span class="w"> </span><span class="k">do</span><sp
 <h3 id="-config">--config<a class="headerlink" href="#-config" title="Permanent link">&para;</a></h3>
 <p>設定ファイルを指定して、<code>gomarkdoc</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># .gomarkdoc.yml ファイル</span>
-<span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{.Dir}}/DOCUMENT.md&quot;</span><span class="w"> </span><span class="c1"># ダブルクオーテーションで囲わないとエラーになる</span>
+<span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="s">"{{.Dir}}/DOCUMENT.md"</span><span class="w"> </span><span class="c1"># ダブルクオーテーションで囲わないとエラーになる</span>
 <span class="nt">repository</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">defaultBranch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
 <span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-repository.git</span>
@@ -37399,33 +37399,33 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;http&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;runtime&quot;</span>
-<span class="w">    </span><span class="s">&quot;strings&quot;</span>
+<span class="w">    </span><span class="s">"http"</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"runtime"</span>
+<span class="w">    </span><span class="s">"strings"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="nx">mux</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">NewServeMux</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">WithIncomingHeaderMatcher</span><span class="p">(</span><span class="nx">matcher</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">WithForwardResponseOption</span><span class="p">(</span><span class="nx">filter</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">mux</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">":8080"</span><span class="p">,</span><span class="w"> </span><span class="nx">mux</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">matcher</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">HasPrefix</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nx">ToLower</span><span class="p">(</span><span class="nx">key</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;x-&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">HasPrefix</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nx">ToLower</span><span class="p">(</span><span class="nx">key</span><span class="p">),</span><span class="w"> </span><span class="s">"x-"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -37448,8 +37448,8 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <h4 id="dial">▼ Dial<a class="headerlink" href="#dial" title="Permanent link">&para;</a></h4>
 <p><code>DialContext()</code> 関数のラッパーであり、新しいコンテキストで gRPC サーバーとの接続を作成する。</p>
 <p>執筆時点 (2024/04/06) で <code>Dial()</code> 関数は非推奨であり、<code>NewClient()</code> 関数が推奨である。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">Dial</span><span class="p">(</span><span class="nx">target</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">DialOption</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">ClientConn</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">DialContext</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">target</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="o">...</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">Dial</span><span class="p">(</span><span class="nx">target</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="w"> </span><span class="p">...</span><span class="nx">DialOption</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">ClientConn</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">DialContext</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">target</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="p">...)</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -37463,22 +37463,22 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとの接続を作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">":7777"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -37497,23 +37497,23 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとの接続を作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">":7777"</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithBlock</span><span class="p">(),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="withtransportcredentials">▼ WithTransportCredentials<a class="headerlink" href="#withtransportcredentials" title="Permanent link">&para;</a></h4>
@@ -37521,24 +37521,24 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/credentials/insecure&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc/credentials/insecure"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとの接続を作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">":7777"</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithTransportCredentials</span><span class="p">(</span><span class="nx">insecure</span><span class="p">.</span><span class="nx">NewCredentials</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -37548,17 +37548,17 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーを作成する</span>
 <span class="w">    </span><span class="nx">grpcServer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">()</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -37572,7 +37572,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
@@ -37580,22 +37580,22 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="w">    </span><span class="c1">// ここでOpenTelemetryのミドルウェアを使用すると仮定する</span>
 <span class="w">    </span><span class="c1">// main関数のスパンを自動的に作成する</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// main関数の子スパンとして、foo関数のスパンを手動的に作成する</span>
 <span class="w">    </span><span class="nx">foo</span><span class="p">()</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// Tracerを作成する</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;計装パッケージ名&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">"計装パッケージ名"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"foo"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
@@ -37609,14 +37609,14 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">"net/http"</span>
 
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel/propagation"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// Carrierのトレースコンテキストを抽出して、既存コンテキストに設定する</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">GetTextMapPropagator</span><span class="p">().</span><span class="nx">Extract</span><span class="p">(</span>
@@ -37626,7 +37626,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">HeaderCarrier</span><span class="p">(</span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -37642,14 +37642,14 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">"net/http"</span>
 
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel/propagation"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">GetTextMapPropagator</span><span class="p">().</span><span class="nx">Inject</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// トレースコンテキストを持つ既存コンテキストを設定する</span>
@@ -37658,7 +37658,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">HeaderCarrier</span><span class="p">(</span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -37683,14 +37683,14 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">"net/http"</span>
 
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel/propagation"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// Carrierのトレースコンテキストを抽出して、既存コンテキストに設定する</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">GetTextMapPropagator</span><span class="p">().</span><span class="nx">Extract</span><span class="p">(</span>
@@ -37700,7 +37700,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">HeaderCarrier</span><span class="p">(</span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -37713,14 +37713,14 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
 
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel/propagation"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// Carrierのトレースコンテキストを抽出して、既存コンテキストに設定する</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">GetTextMapPropagator</span><span class="p">().</span><span class="nx">Extract</span><span class="p">(</span>
@@ -37730,7 +37730,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">HeaderCarrier</span><span class="p">(</span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Header</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -37749,13 +37749,13 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/propagators/autoprop&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/propagators/autoprop"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel/propagation"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="nx">propagator</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">autoprop</span><span class="p">.</span><span class="nx">NewTextMapPropagator</span><span class="p">()</span>
 
@@ -37771,9 +37771,9 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="w">    </span><span class="nx">sort</span><span class="p">.</span><span class="nx">Strings</span><span class="p">(</span><span class="nx">propagatorList</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// ログにpropagator名を出力しておく</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Propagator %v initialize successfully&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">propagatorList</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Propagator %v initialize successfully"</span><span class="p">,</span><span class="w"> </span><span class="nx">propagatorList</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -37796,14 +37796,14 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">ContextWithSpanContext</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// Ginコンテキストのデッドライン値やキャンセル関数を引き継ぎたくないため、新しくコンテキストを作成する</span>
@@ -37812,7 +37812,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="w">        </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanContextFromContext</span><span class="p">(</span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -37828,30 +37828,30 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="nx">foo</span><span class="p">()</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// Tracerを作成する</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;計装パッケージ名&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">"計装パッケージ名"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;foo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"foo"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// スパンを処理中の場合は true になる</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;recording span: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">IsRecording</span><span class="p">())</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"recording span: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">IsRecording</span><span class="p">())</span>
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
 <span class="p">}</span>
@@ -37870,38 +37870,38 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
+<span class="w">    </span><span class="s">"net/http"</span>
 
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/codes&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel/codes"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
-<span class="w">    </span><span class="nx">tracer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;&lt;計装パッケージ名&gt;&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">tracer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">"&lt;計装パッケージ名&gt;"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;foo-service&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"foo-service"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">NewRequest</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;GET&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"GET"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"https://example.com"</span><span class="p">,</span>
 <span class="w">        </span><span class="kc">nil</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">http</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">()),</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">http</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">()),</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span>
 <span class="w">        </span><span class="c1">// エラーをスパンに設定する</span>
-<span class="w">        </span><span class="nx">span</span><span class="p">.</span><span class="nx">RecordError</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">()))</span>
+<span class="w">        </span><span class="nx">span</span><span class="p">.</span><span class="nx">RecordError</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">()))</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -37917,38 +37917,38 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
+<span class="w">    </span><span class="s">"net/http"</span>
 
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/codes&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel/codes"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
-<span class="w">    </span><span class="nx">tracer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;&lt;計装パッケージ名&gt;&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">tracer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">"&lt;計装パッケージ名&gt;"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;foo-service&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"foo-service"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">NewRequest</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;GET&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"GET"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"https://example.com"</span><span class="p">,</span>
 <span class="w">        </span><span class="kc">nil</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">http</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">(),</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span>
 <span class="w">        </span><span class="c1">// ステータスとエラーをスパンに設定する</span>
-<span class="w">        </span><span class="nx">span</span><span class="p">.</span><span class="nx">SetStatus</span><span class="p">(</span><span class="nx">codes</span><span class="p">.</span><span class="nx">Error</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">()))</span>
+<span class="w">        </span><span class="nx">span</span><span class="p">.</span><span class="nx">SetStatus</span><span class="p">(</span><span class="nx">codes</span><span class="p">.</span><span class="nx">Error</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">()))</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -37981,27 +37981,27 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="nx">spanCtx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanContextFromContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// トレースIDを確認する</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;traceid: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">spanCtx</span><span class="p">.</span><span class="nx">TraceID</span><span class="p">())</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"traceid: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">spanCtx</span><span class="p">.</span><span class="nx">TraceID</span><span class="p">())</span>
 
 <span class="w">    </span><span class="c1">// スパンIDを確認する</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;spanid: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">spanCtx</span><span class="p">.</span><span class="nx">SpanID</span><span class="p">())</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"spanid: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">spanCtx</span><span class="p">.</span><span class="nx">SpanID</span><span class="p">())</span>
 
 <span class="w">    </span><span class="c1">// tracestate値を確認する</span>
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;tracestate: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">spanCtx</span><span class="p">.</span><span class="nx">TraceState</span><span class="p">())</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"tracestate: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">spanCtx</span><span class="p">.</span><span class="nx">TraceState</span><span class="p">())</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -38009,14 +38009,14 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">ContextWithSpanContext</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// Ginコンテキストのデッドライン値やキャンセル関数を引き継ぎたくないため、新しくコンテキストを作成する</span>
@@ -38025,7 +38025,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="w">        </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanContextFromContext</span><span class="p">(</span><span class="nx">ginCtx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -38041,27 +38041,27 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
-<span class="w">    </span><span class="nx">tracer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;&lt;計装パッケージ名&gt;&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">tracer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">"&lt;計装パッケージ名&gt;"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;foo-service&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"foo-service"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanFromContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -38076,25 +38076,25 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
-<span class="w">    </span><span class="nx">tracer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;&lt;計装パッケージ名&gt;&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">tracer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">"&lt;計装パッケージ名&gt;"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;foo-service&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"foo-service"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">span</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -38115,21 +38115,21 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin&quot;</span>
+<span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="nx">router</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">New</span><span class="p">()</span>
 
-<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">otelgin</span><span class="p">.</span><span class="nx">Middleware</span><span class="p">(</span><span class="s">&quot;foo-service&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">otelgin</span><span class="p">.</span><span class="nx">Middleware</span><span class="p">(</span><span class="s">"foo-service"</span><span class="p">))</span>
 
-<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">GET</span><span class="p">(</span><span class="s">&quot;/foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">GET</span><span class="p">(</span><span class="s">"/foo"</span><span class="p">,</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">router</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="s">":8080"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -38145,60 +38145,60 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><code>otelgorm</code> パッケージを使用しない場合、これらを自前で実装する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="o">*</span><span class="nx">otelPlugin</span><span class="p">)</span><span class="w"> </span><span class="nx">before</span><span class="p">(</span><span class="nx">spanName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="nx">gormHookFunc</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">tx</span><span class="w"> </span><span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">DryRun</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">!</span><span class="nx">p</span><span class="p">.</span><span class="nx">includeDryRunSpans</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">DryRun</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="nx">p</span><span class="p">.</span><span class="nx">includeDryRunSpans</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="c1">// 実行中のgormクエリからコンテキストを取得する</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Context</span>
-<span class="w">        </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithValue</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">parentCtxKey</span><span class="p">{},</span><span class="w"> </span><span class="nx">ctx</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithValue</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">parentCtxKey</span><span class="p">{},</span><span class="w"> </span><span class="nx">ctx</span><span class="p">)</span>
 <span class="w">        </span><span class="c1">// スパンを作成する</span>
 <span class="w">        </span><span class="c1">// スパン名は、gorm.Create、gorm.Query、gorm.Delete、gorm.Updateなどになる</span>
-<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">spanName</span><span class="p">,</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">WithSpanKind</span><span class="p">(</span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanKindClient</span><span class="p">))</span>
-<span class="w">        </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Context</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">ctx</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">spanName</span><span class="p">,</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">WithSpanKind</span><span class="p">(</span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanKindClient</span><span class="p">))</span>
+<span class="w">        </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ctx</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="o">*</span><span class="nx">otelPlugin</span><span class="p">)</span><span class="w"> </span><span class="nx">after</span><span class="p">()</span><span class="w"> </span><span class="nx">gormHookFunc</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">tx</span><span class="w"> </span><span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">DryRun</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">!</span><span class="nx">p</span><span class="p">.</span><span class="nx">includeDryRunSpans</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">DryRun</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="nx">p</span><span class="p">.</span><span class="nx">includeDryRunSpans</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanFromContext</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span>
 <span class="w">        </span><span class="c1">// スパンを処理していない場合は、処理を終える</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">span</span><span class="p">.</span><span class="nx">IsRecording</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="nx">span</span><span class="p">.</span><span class="nx">IsRecording</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
 
 <span class="w">        </span><span class="nx">attrs</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="nx">attribute</span><span class="p">.</span><span class="nx">KeyValue</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">attrs</span><span class="p">)</span><span class="o">+</span><span class="mi">4</span><span class="p">)</span>
-<span class="w">        </span><span class="nx">attrs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">attrs</span><span class="p">,</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">attrs</span><span class="o">...</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">attrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">attrs</span><span class="p">,</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">attrs</span><span class="p">...)</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">sys</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">dbSystem</span><span class="p">(</span><span class="nx">tx</span><span class="p">);</span><span class="w"> </span><span class="nx">sys</span><span class="p">.</span><span class="nx">Valid</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">attrs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">attrs</span><span class="p">,</span><span class="w"> </span><span class="nx">sys</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">attrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">attrs</span><span class="p">,</span><span class="w"> </span><span class="nx">sys</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="nx">vars</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Vars</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">excludeQueryVars</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">vars</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kd">interface</span><span class="p">{},</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Vars</span><span class="p">))</span>
+<span class="w">            </span><span class="nx">vars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kd">interface</span><span class="p">{},</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Vars</span><span class="p">))</span>
 
-<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">vars</span><span class="p">);</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">vars</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;?&quot;</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">vars</span><span class="p">);</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">vars</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"?"</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="c1">// SQLステートメントを取得する</span>
-<span class="w">        </span><span class="nx">query</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Dialector</span><span class="p">.</span><span class="nx">Explain</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">SQL</span><span class="p">.</span><span class="nx">String</span><span class="p">(),</span><span class="w"> </span><span class="nx">vars</span><span class="o">...</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">query</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Dialector</span><span class="p">.</span><span class="nx">Explain</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">SQL</span><span class="p">.</span><span class="nx">String</span><span class="p">(),</span><span class="w"> </span><span class="nx">vars</span><span class="p">...)</span>
 
 <span class="w">        </span><span class="c1">// SQLステートメントをスパンの属性に設定する</span>
-<span class="w">        </span><span class="nx">attrs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">attrs</span><span class="p">,</span><span class="w"> </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">DBStatementKey</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">formatQuery</span><span class="p">(</span><span class="nx">query</span><span class="p">)))</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Table</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">attrs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">attrs</span><span class="p">,</span><span class="w"> </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">DBSQLTableKey</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Table</span><span class="p">))</span>
+<span class="w">        </span><span class="nx">attrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">attrs</span><span class="p">,</span><span class="w"> </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">DBStatementKey</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">formatQuery</span><span class="p">(</span><span class="nx">query</span><span class="p">)))</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Table</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">attrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">attrs</span><span class="p">,</span><span class="w"> </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">DBSQLTableKey</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Table</span><span class="p">))</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">RowsAffected</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">attrs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">attrs</span><span class="p">,</span><span class="w"> </span><span class="nx">dbRowsAffected</span><span class="p">.</span><span class="nx">Int64</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">RowsAffected</span><span class="p">))</span>
+<span class="w">            </span><span class="nx">attrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">attrs</span><span class="p">,</span><span class="w"> </span><span class="nx">dbRowsAffected</span><span class="p">.</span><span class="nx">Int64</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">RowsAffected</span><span class="p">))</span>
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">        </span><span class="nx">span</span><span class="p">.</span><span class="nx">SetAttributes</span><span class="p">(</span><span class="nx">attrs</span><span class="o">...</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">span</span><span class="p">.</span><span class="nx">SetAttributes</span><span class="p">(</span><span class="nx">attrs</span><span class="p">...)</span>
 <span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Error</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span>
 <span class="w">            </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">ErrRecordNotFound</span><span class="p">,</span>
@@ -38212,7 +38212,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 
 <span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="nx">parentCtx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Context</span><span class="p">.</span><span class="nx">Value</span><span class="p">(</span><span class="nx">parentCtxKey</span><span class="p">{}).(</span><span class="kd">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">:</span>
-<span class="w">            </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Context</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">parentCtx</span>
+<span class="w">            </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Statement</span><span class="p">.</span><span class="nx">Context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">parentCtx</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -38228,24 +38228,24 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">db</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;github.com/uptrace/opentelemetry-go-extra/otelgorm&quot;</span>
-<span class="w">    </span><span class="s">&quot;gorm.io/gorm&quot;</span>
+<span class="w">    </span><span class="s">"github.com/uptrace/opentelemetry-go-extra/otelgorm"</span>
+<span class="w">    </span><span class="s">"gorm.io/gorm"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">NewDb</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">db</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">mysql</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;&lt;DBのURL&gt;&quot;</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Config</span><span class="p">{})</span>
+<span class="w">    </span><span class="nx">db</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">mysql</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">"&lt;DBのURL&gt;"</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Config</span><span class="p">{})</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nb">panic</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
+<span class="w">        </span><span class="nb">panic</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// ミドルウェアを設定する</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">otelgorm</span><span class="p">.</span><span class="nx">NewPlugin</span><span class="p">());</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nb">panic</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
+<span class="w">        </span><span class="nb">panic</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -38292,28 +38292,28 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters&quot;</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとの接続を作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">":7777"</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// クライアント側のミドルウェアパターンとしてUnaryClientInterceptorを挿入する</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithChainUnaryInterceptor</span><span class="p">(</span>
 <span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">(),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>内部的には、リクエストの送信直前のミドルウェアパターンとして、注入処理を実行している。</p>
@@ -38323,8 +38323,8 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="w">    </span><span class="nx">md</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">FromOutgoingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// メタデータがなければ作成する</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">md</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span><span class="p">{}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">md</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span><span class="p">{}</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">propagators</span><span class="p">.</span><span class="nx">Inject</span><span class="p">(</span>
@@ -38350,23 +38350,23 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとの接続を作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">":7777"</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// クライアント側を一括でセットアップする</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithStatsHandler</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">NewClientHandler</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -38383,8 +38383,8 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="w">    </span><span class="nx">md</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">FromIncomingContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// メタデータがなければ作成する</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">md</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span><span class="p">{}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">md</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">metadata</span><span class="p">.</span><span class="nx">MD</span><span class="p">{}</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">propagators</span><span class="p">.</span><span class="nx">Extract</span><span class="p">(</span>
@@ -38407,14 +38407,14 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters&quot;</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーを作成する</span>
 <span class="w">    </span><span class="nx">grpcServer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
@@ -38432,14 +38432,14 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters&quot;</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーを作成する</span>
 <span class="w">    </span><span class="nx">grpcServer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
@@ -38465,14 +38465,14 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters&quot;</span>
-<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"</span>
+<span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーを作成する</span>
 <span class="w">    </span><span class="nx">grpcServer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
@@ -38482,9 +38482,9 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="w">                </span><span class="c1">// ヘルスチェックパスではスパンを作成しない</span>
 <span class="w">                </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">HealthCheck</span><span class="p">())),</span>
 <span class="w">                </span><span class="c1">// 指定したgRPCサービスではスパンを作成しない</span>
-<span class="w">                </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">ServiceName</span><span class="p">(</span><span class="s">&quot;&lt;gRPCサービス名&gt;&quot;</span><span class="p">))),</span>
+<span class="w">                </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">ServiceName</span><span class="p">(</span><span class="s">"&lt;gRPCサービス名&gt;"</span><span class="p">))),</span>
 <span class="w">                </span><span class="c1">// 指定したgRPC関数ではスパンを作成しない</span>
-<span class="w">                </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">MethodName</span><span class="p">(</span><span class="s">&quot;&lt;gRPC関数名&gt;&quot;</span><span class="p">))),</span>
+<span class="w">                </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">MethodName</span><span class="p">(</span><span class="s">"&lt;gRPC関数名&gt;"</span><span class="p">))),</span>
 <span class="w">            </span><span class="p">),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
@@ -38504,8 +38504,8 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">grpc</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/attribute&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel/attribute"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">ChainUnaryServerInterceptor</span><span class="p">()</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="w"> </span><span class="p">{</span>
@@ -38514,7 +38514,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithSpanOptions</span><span class="p">(</span>
 <span class="w">            </span><span class="c1">// 属性を設定する</span>
-<span class="w">            </span><span class="nx">trace</span><span class="p">.</span><span class="nx">WithAttributes</span><span class="p">(</span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;env&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;実行環境名&gt;&quot;</span><span class="p">)),</span>
+<span class="w">            </span><span class="nx">trace</span><span class="p">.</span><span class="nx">WithAttributes</span><span class="p">(</span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">"env"</span><span class="p">,</span><span class="w"> </span><span class="s">"&lt;実行環境名&gt;"</span><span class="p">)),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="p">}</span>
@@ -38544,21 +38544,21 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">"net/http"</span>
 
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// HTTPサーバーとの接続を作成する</span>
 <span class="w">    </span><span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Client</span><span class="p">{</span>
 <span class="w">        </span><span class="nx">Transport</span><span class="p">:</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">NewTransport</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">DefaultTransport</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -38575,23 +38575,23 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">"net/http"</span>
 
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// HttpHandlerを作成する</span>
 <span class="w">    </span><span class="nx">fn</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="o">...</span>
+<span class="w">        </span><span class="p">...</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// サーバー側のミドルウェアパターンとしてNewHandlerを挿入する</span>
 <span class="w">    </span><span class="nx">otelMiddleware</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">NewHandler</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">fn</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// Operation名を設定する</span>
-<span class="w">        </span><span class="s">&quot;foo-service&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"foo-service"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -38606,24 +38606,24 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">"net/http"</span>
 
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// HttpHandlerを作成する</span>
 <span class="w">    </span><span class="nx">fn</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="o">...</span>
+<span class="w">        </span><span class="p">...</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// サーバー側のミドルウェアパターンとしてNewHandlerを挿入する</span>
 <span class="w">    </span><span class="nx">otelMiddleware</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">NewHandler</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">fn</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// Operation名を設定する</span>
-<span class="w">        </span><span class="s">&quot;foo-service&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">WithFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">All</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Path</span><span class="p">(</span><span class="s">&quot;ヘルスチェックパス&quot;</span><span class="p">)))),</span>
+<span class="w">        </span><span class="s">"foo-service"</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">WithFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">All</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Path</span><span class="p">(</span><span class="s">"ヘルスチェックパス"</span><span class="p">)))),</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -38639,15 +38639,15 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">http</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">"net/http"</span>
 
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">SetSpanOptions</span><span class="p">()</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">Option</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">WithSpanOptions</span><span class="p">(</span>
-<span class="w">        </span><span class="nx">trace</span><span class="p">.</span><span class="nx">WithAttributes</span><span class="p">(</span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;env&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;実行環境名&gt;&quot;</span><span class="p">)),</span>
+<span class="w">        </span><span class="nx">trace</span><span class="p">.</span><span class="nx">WithAttributes</span><span class="p">(</span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">"env"</span><span class="p">,</span><span class="w"> </span><span class="s">"&lt;実行環境名&gt;"</span><span class="p">)),</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -38662,10 +38662,10 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">http</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"net/http"</span>
 
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">SetSpanNameFormatter</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
@@ -38673,8 +38673,8 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">WithSpanNameFormatter</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">operation</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// URLパスをスパン名とする</span>
 <span class="w">        </span><span class="nx">spanName</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">Path</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">spanName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">spanName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;HTTP %s route not found&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Method</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">spanName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">spanName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"HTTP %s route not found"</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Method</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">spanName</span>
 <span class="w">    </span><span class="p">})</span>
@@ -38713,11 +38713,11 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p>gorm で発行した SQL にスパンの情報をコメントアウトとして付与する。</p>
 <p>コメントアウトであるため、SQL の動作には影響がない。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;database/sql&quot;</span>
+<span class="w">    </span><span class="s">"database/sql"</span>
 
-<span class="w">    </span><span class="nx">gosql</span><span class="w"> </span><span class="s">&quot;github.com/google/sqlcommenter/go/database/sql&quot;</span>
-<span class="w">    </span><span class="nx">sqlcommentercore</span><span class="w"> </span><span class="s">&quot;github.com/google/sqlcommenter/go/core&quot;</span>
-<span class="w">    </span><span class="nx">_</span><span class="w"> </span><span class="s">&quot;github.com/lib/pq&quot;</span><span class="w"> </span><span class="c1">// or any other database driver</span>
+<span class="w">    </span><span class="nx">gosql</span><span class="w"> </span><span class="s">"github.com/google/sqlcommenter/go/database/sql"</span>
+<span class="w">    </span><span class="nx">sqlcommentercore</span><span class="w"> </span><span class="s">"github.com/google/sqlcommenter/go/core"</span>
+<span class="w">    </span><span class="nx">_</span><span class="w"> </span><span class="s">"github.com/lib/pq"</span><span class="w"> </span><span class="c1">// or any other database driver</span>
 <span class="p">)</span>
 
 <span class="kd">var</span><span class="w"> </span><span class="p">(</span>
@@ -38727,17 +38727,17 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">NewDB</span><span class="p">(</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
-<span class="w">    </span><span class="nx">db</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">gosql</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">&quot;&lt;driver&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;connectionString&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">db</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">gosql</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">"&lt;driver&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s">"&lt;connectionString&gt;"</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// SQLに付与するコメント</span>
 <span class="w">        </span><span class="nx">sqlcommentercore</span><span class="p">.</span><span class="nx">CommenterOptions</span><span class="p">{</span>
-<span class="w">            </span><span class="nx">Config</span><span class="p">:</span><span class="w"> </span><span class="nx">sqlcommentercore</span><span class="p">.</span><span class="nx">CommenterConfig</span><span class="p">{&lt;</span><span class="nx">flag</span><span class="p">&gt;:</span><span class="kt">bool</span><span class="p">}</span>
-<span class="w">            </span><span class="nx">Tags</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nx">sqlcommentercore</span><span class="p">.</span><span class="nx">StaticTags</span><span class="p">{&lt;</span><span class="nx">tag</span><span class="p">&gt;:</span><span class="w"> </span><span class="kt">string</span><span class="p">}</span>
+<span class="w">            </span><span class="nx">Config</span><span class="p">:</span><span class="w"> </span><span class="nx">sqlcommentercore</span><span class="p">.</span><span class="nx">CommenterConfig</span><span class="p">{</span><span class="o">&lt;</span><span class="nx">flag</span><span class="o">&gt;</span><span class="p">:</span><span class="kt">bool</span><span class="p">}</span>
+<span class="w">            </span><span class="nx">Tags</span><span class="w">  </span><span class="p">:</span><span class="w"> </span><span class="nx">sqlcommentercore</span><span class="p">.</span><span class="nx">StaticTags</span><span class="p">{</span><span class="o">&lt;</span><span class="nx">tag</span><span class="o">&gt;</span><span class="p">:</span><span class="w"> </span><span class="kt">string</span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">)</span>
 </code></pre></div>
@@ -38799,31 +38799,31 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel/propagation"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// デフォルトでは、W3C Trace ContextとBaggageになる</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span><span class="nx">autoprop</span><span class="p">.</span><span class="nx">NewTextMapPropagator</span><span class="p">())</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/propagators/aws/xray&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/propagators/aws/xray"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel/propagation"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="w">    </span><span class="c1">// Propagatorを追加する場合は、明示的に指定する</span>
 <span class="w">    </span><span class="c1">// 環境変数でも良い</span>
@@ -38833,7 +38833,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="w">        </span><span class="nx">xray</span><span class="p">.</span><span class="nx">Propagator</span><span class="p">{},</span>
 <span class="w">    </span><span class="p">))</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -38849,15 +38849,15 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">validators</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/go-playground/validator&quot;</span>
+<span class="w">    </span><span class="s">"github.com/go-playground/validator"</span>
 <span class="p">)</span>
 
 <span class="kd">type</span><span class="w">  </span><span class="nx">foobarbazValidator</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">Foo</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;foo&quot; validate:&quot;required&quot;`</span>
-<span class="w">    </span><span class="nx">Bar</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;bar&quot; validate:&quot;required&quot;`</span>
-<span class="w">    </span><span class="nx">Baz</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;baz&quot; validate:&quot;required&quot;`</span>
+<span class="w">    </span><span class="nx">Foo</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:"foo" validate:"required"`</span>
+<span class="w">    </span><span class="nx">Bar</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:"bar" validate:"required"`</span>
+<span class="w">    </span><span class="nx">Baz</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:"baz" validate:"required"`</span>
 <span class="p">}</span>
 
 <span class="c1">// NewValidator コンストラクタ</span>
@@ -38867,24 +38867,24 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="p">}</span>
 
 <span class="c1">// Validate バリデーションを実行する</span>
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">foobarbazValidator</span><span class="p">)</span><span class="w"> </span><span class="nx">Validate</span><span class="p">()</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">foobarbazValidator</span><span class="p">)</span><span class="w"> </span><span class="nx">Validate</span><span class="p">()</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">validator</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">Struct</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
 
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">errorMessages</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">errorMessages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">err</span><span class="p">.(</span><span class="nx">validator</span><span class="p">.</span><span class="nx">ValidationErrors</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">switch</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Field</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1">// フィールドごとにmapでバリデーションメッセージを構成する</span>
-<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">:</span>
-<span class="w">                </span><span class="nx">errorMessages</span><span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">stringValidation</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
-<span class="w">                </span><span class="nx">errorMessages</span><span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">requiredValidation</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
-<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">:</span>
-<span class="w">                </span><span class="nx">errorMessages</span><span class="p">[</span><span class="s">&quot;bar&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">stringValidation</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
-<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;baz&quot;</span><span class="p">:</span>
-<span class="w">                </span><span class="nx">errorMessages</span><span class="p">[</span><span class="s">&quot;baz&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">stringValidation</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
-<span class="w">                </span><span class="nx">errorMessages</span><span class="p">[</span><span class="s">&quot;baz&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">requiredValidation</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s">"foo"</span><span class="p">:</span>
+<span class="w">                </span><span class="nx">errorMessages</span><span class="p">[</span><span class="s">"foo"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">stringValidation</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
+<span class="w">                </span><span class="nx">errorMessages</span><span class="p">[</span><span class="s">"foo"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">requiredValidation</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s">"bar"</span><span class="p">:</span>
+<span class="w">                </span><span class="nx">errorMessages</span><span class="p">[</span><span class="s">"bar"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">stringValidation</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s">"baz"</span><span class="p">:</span>
+<span class="w">                </span><span class="nx">errorMessages</span><span class="p">[</span><span class="s">"baz"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">stringValidation</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
+<span class="w">                </span><span class="nx">errorMessages</span><span class="p">[</span><span class="s">"baz"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">requiredValidation</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -38894,22 +38894,22 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 
 <span class="c1">// stringValidation string型指定のメッセージを返却する</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">foobarbazValidator</span><span class="p">)</span><span class="w"> </span><span class="nx">stringValidation</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="nx">validator</span><span class="p">.</span><span class="nx">FieldError</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%s は文字列のみ有効です&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Field</span><span class="p">())</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"%s は文字列のみ有効です"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Field</span><span class="p">())</span>
 <span class="p">}</span>
 
 <span class="c1">// requiredValidation 必須メッセージを返却する</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">foobarbazValidator</span><span class="p">)</span><span class="w"> </span><span class="nx">requiredValidation</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="nx">validator</span><span class="p">.</span><span class="nx">FieldError</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%s は必須です&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Field</span><span class="p">())</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"%s は必須です"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Field</span><span class="p">())</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;encoding/json&quot;</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">"encoding/json"</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"log"</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/foobarbaz-repository/validators&quot;</span>
+<span class="w">    </span><span class="s">"github.com/foobarbaz-repository/validators"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -38917,24 +38917,24 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="w">    </span><span class="nx">v</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">New</span><span class="w"> </span><span class="nx">foobarbazValidator</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// JSONを構造体にマッピングする</span>
-<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="s">`{&quot;foo&quot;: &quot;test&quot;, &quot;bar&quot;: &quot;test&quot;, &quot;baz&quot;: &quot;test&quot;}`</span><span class="p">),</span><span class="w"> </span><span class="nx">v</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">([]</span><span class="kt">byte</span><span class="p">(</span><span class="s">`{"foo": "test", "bar": "test", "baz": "test"}`</span><span class="p">),</span><span class="w"> </span><span class="nx">v</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to do something: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// バリデーションを実行する</span>
 <span class="w">    </span><span class="nx">errorMessages</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">Validate</span><span class="p">()</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">errorMessages</span><span class="p">)</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">errorMessages</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// mapをJSONに変換する</span>
 <span class="w">        </span><span class="nx">byteJson</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">errorMessages</span><span class="p">)</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">byteJson</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">byteJson</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// エンコード結果を出力する</span>
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;データに問題はありません。&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"データに問題はありません。"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -38944,8 +38944,8 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;os&quot;</span>
-<span class="w">    </span><span class="s">&quot;strconv&quot;</span>
+<span class="w">    </span><span class="s">"os"</span>
+<span class="w">    </span><span class="s">"strconv"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -38953,12 +38953,12 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="w">    </span><span class="c1">// 中略</span>
 
 <span class="w">    </span><span class="c1">// 環境変数の取得</span>
-<span class="w">    </span><span class="nx">portStr</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;PORT&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">portStr</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">"PORT"</span><span class="p">)</span>
 <span class="w">    </span><span class="c1">// 型変換</span>
 <span class="w">    </span><span class="nx">port</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">portStr</span><span class="p">)</span>
 <span class="w">    </span><span class="c1">// エラーハンドリング</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">port</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">8080</span>
+<span class="w">        </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8080</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// 中略</span>
@@ -38970,7 +38970,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;github.com/spf13/viper&quot;</span>
+<span class="w">    </span><span class="s">"github.com/spf13/viper"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -38981,7 +38981,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="w">    </span><span class="nx">viper</span><span class="p">.</span><span class="nx">AutomaticEnv</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// 環境変数の取得と型変換</span>
-<span class="w">    </span><span class="nx">port</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">viper</span><span class="p">.</span><span class="nx">GetInt</span><span class="p">(</span><span class="s">&quot;port&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">port</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">viper</span><span class="p">.</span><span class="nx">GetInt</span><span class="p">(</span><span class="s">"port"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 中略</span>
 <span class="p">}</span>
@@ -38994,7 +38994,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.uber.org/zap&quot;</span>
+<span class="w">    </span><span class="s">"go.uber.org/zap"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -39003,7 +39003,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="w">    </span><span class="nx">logger</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">zap</span><span class="p">.</span><span class="nx">NewProduction</span><span class="p">()</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Sync</span><span class="p">()</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -39017,7 +39017,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.uber.org/zap&quot;</span>
+<span class="w">    </span><span class="s">"go.uber.org/zap"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -39028,20 +39028,20 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 
 <span class="w">    </span><span class="c1">// キーバリューの対応が明確</span>
 <span class="w">    </span><span class="nx">logger</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">logger</span><span class="p">.</span><span class="nx">With</span><span class="p">(</span>
-<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span><span class="p">),</span>
-<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;BAR&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span><span class="w"> </span><span class="s">"FOO"</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">"bar"</span><span class="p">,</span><span class="w"> </span><span class="s">"BAR"</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="s">&quot;Do successfully&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="s">"Do successfully"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.uber.org/zap&quot;</span>
+<span class="w">    </span><span class="s">"go.uber.org/zap"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -39052,13 +39052,13 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 
 <span class="w">    </span><span class="c1">// キーバリューの対応が曖昧</span>
 <span class="w">    </span><span class="nx">logger</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">logger</span><span class="p">.</span><span class="nx">With</span><span class="p">(</span>
-<span class="w">        </span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;BAR&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"foo"</span><span class="p">,</span><span class="w"> </span><span class="s">"FOO"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"foo"</span><span class="p">,</span><span class="w"> </span><span class="s">"BAR"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="s">&quot;Do successfully&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="s">"Do successfully"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="p">...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -39076,7 +39076,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.uber.org/zap&quot;</span>
+<span class="w">    </span><span class="s">"go.uber.org/zap"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -39090,14 +39090,14 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 
 <span class="w">    </span><span class="nx">sugar</span><span class="p">.</span><span class="nx">Infow</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// ログメッセージ</span>
-<span class="w">        </span><span class="s">&quot;Do successfully&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"Do successfully"</span><span class="p">,</span>
 <span class="w">        </span><span class="c1">// 構造化データ</span>
-<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">Int</span><span class="p">(</span><span class="s">&quot;int num&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span>
-<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">Time</span><span class="p">(</span><span class="s">&quot;Time&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()),</span>
-<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;String&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello, Zap&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">Int</span><span class="p">(</span><span class="s">"int num"</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">Time</span><span class="p">(</span><span class="s">"Time"</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()),</span>
+<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">"String"</span><span class="p">,</span><span class="w"> </span><span class="s">"Hello, Zap"</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">sugar</span><span class="p">.</span><span class="nx">Infof</span><span class="p">(</span><span class="s">&quot;Do successfully&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">sugar</span><span class="p">.</span><span class="nx">Infof</span><span class="p">(</span><span class="s">"Do successfully"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -39110,7 +39110,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.uber.org/zap&quot;</span>
+<span class="w">    </span><span class="s">"go.uber.org/zap"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -39124,17 +39124,17 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 
 <span class="w">    </span><span class="nx">sugar</span><span class="p">.</span><span class="nx">With</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// キーバリューの対応が明確</span>
-<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span><span class="p">),</span>
-<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;BAR&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span><span class="w"> </span><span class="s">"FOO"</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">"bar"</span><span class="p">,</span><span class="w"> </span><span class="s">"BAR"</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">sugar</span><span class="p">.</span><span class="nx">Infof</span><span class="p">(</span><span class="s">&quot;Do successfully&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">sugar</span><span class="p">.</span><span class="nx">Infof</span><span class="p">(</span><span class="s">"Do successfully"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.uber.org/zap&quot;</span>
+<span class="w">    </span><span class="s">"go.uber.org/zap"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -39148,11 +39148,11 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 
 <span class="w">    </span><span class="nx">sugar</span><span class="p">.</span><span class="nx">With</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// キーバリューの対応が曖昧</span>
-<span class="w">        </span><span class="s">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;BAZ&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"foo"</span><span class="p">,</span><span class="w"> </span><span class="s">"FOO"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"bar"</span><span class="p">,</span><span class="w"> </span><span class="s">"BAZ"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">sugar</span><span class="p">.</span><span class="nx">Infof</span><span class="p">(</span><span class="s">&quot;Do successfully&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">sugar</span><span class="p">.</span><span class="nx">Infof</span><span class="p">(</span><span class="s">"Do successfully"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>

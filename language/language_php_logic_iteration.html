@@ -34412,7 +34412,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$array</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;あ&#39;</span><span class="p">,</span> <span class="s1">&#39;い&#39;</span><span class="p">,</span> <span class="s1">&#39;う&#39;</span><span class="p">];</span>
+<span class="nv">$array</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'あ'</span><span class="p">,</span> <span class="s1">'い'</span><span class="p">,</span> <span class="s1">'う'</span><span class="p">];</span>
 
 <span class="c1">// 内部ポインタが現在指定している要素を出力。</span>
 <span class="k">echo</span> <span class="nb">current</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span> <span class="c1">// あ</span>
@@ -34477,23 +34477,23 @@
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">printOption</span><span class="p">(</span><span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="nv">$result</span> <span class="o">=</span> <span class="s1">&#39;何も設定されていません。</span>
+        <span class="nv">$result</span> <span class="o">=</span> <span class="s1">'何も設定されていません。</span>
 
-<span class="s1">&#39;</span>
+<span class="s1">'</span>
 
         <span class="c1">// $options配列には、OptionA,B,Cエンティティのいずれかが格納されていると想定</span>
         <span class="k">foreach</span> <span class="p">(</span><span class="nv">$options</span> <span class="k">as</span> <span class="nv">$option</span><span class="p">)</span> <span class="p">{</span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;オプションA&#39;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nv">$result</span> <span class="o">=</span> <span class="s1">&#39;オプションAが設定されています。&#39;</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'オプションA'</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$result</span> <span class="o">=</span> <span class="s1">'オプションAが設定されています。'</span><span class="p">;</span>
             <span class="p">}</span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;オプションB&#39;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nv">$result</span> <span class="o">=</span> <span class="s1">&#39;オプションBが設定されています。&#39;</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'オプションB'</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$result</span> <span class="o">=</span> <span class="s1">'オプションBが設定されています。'</span><span class="p">;</span>
             <span class="p">}</span>
 
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;オプションC&#39;</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nv">$result</span> <span class="o">=</span> <span class="s1">&#39;オプションCが設定されています。&#39;</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'オプションC'</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$result</span> <span class="o">=</span> <span class="s1">'オプションCが設定されています。'</span><span class="p">;</span>
             <span class="p">}</span>
 
             <span class="k">return</span> <span class="nv">$result</span><span class="p">;</span>
@@ -34565,19 +34565,19 @@
 
 <span class="nv">$twoDimension</span> <span class="o">=</span> <span class="p">[</span>
   <span class="p">[</span>
-    <span class="s1">&#39;date&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;2015/11/1&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;score&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
-    <span class="s1">&#39;color&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span>
+    <span class="s1">'date'</span>  <span class="o">=&gt;</span> <span class="s1">'2015/11/1'</span><span class="p">,</span>
+    <span class="s1">'score'</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="s1">'color'</span> <span class="o">=&gt;</span> <span class="s1">'red'</span><span class="p">,</span>
   <span class="p">],</span>
   <span class="p">[</span>
-    <span class="s1">&#39;date&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;2015/11/2&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;score&#39;</span> <span class="o">=&gt;</span> <span class="mi">75</span><span class="p">,</span>
-    <span class="s1">&#39;color&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span>
+    <span class="s1">'date'</span>  <span class="o">=&gt;</span> <span class="s1">'2015/11/2'</span><span class="p">,</span>
+    <span class="s1">'score'</span> <span class="o">=&gt;</span> <span class="mi">75</span><span class="p">,</span>
+    <span class="s1">'color'</span> <span class="o">=&gt;</span> <span class="s1">'blue'</span><span class="p">,</span>
   <span class="p">]</span>
 <span class="p">];</span>
 
 <span class="nv">$oneDimension</span> <span class="o">=</span> <span class="nb">call_user_func_array</span><span class="p">(</span>
-  <span class="s1">&#39;array_merge&#39;</span><span class="p">,</span>
+  <span class="s1">'array_merge'</span><span class="p">,</span>
   <span class="c1">// 二次元配列</span>
   <span class="nv">$twoDimension</span>
 <span class="p">);</span>
@@ -34590,19 +34590,19 @@
 
 <span class="nv">$twoDimension</span> <span class="o">=</span> <span class="p">[</span>
   <span class="p">[</span>
-    <span class="s1">&#39;date&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;2015/11/1&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;score&#39;</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
-    <span class="s1">&#39;color&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span>
+    <span class="s1">'date'</span>  <span class="o">=&gt;</span> <span class="s1">'2015/11/1'</span><span class="p">,</span>
+    <span class="s1">'score'</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="s1">'color'</span> <span class="o">=&gt;</span> <span class="s1">'red'</span><span class="p">,</span>
   <span class="p">],</span>
   <span class="p">[</span>
-    <span class="s1">&#39;date&#39;</span>  <span class="o">=&gt;</span> <span class="s1">&#39;2015/11/2&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;score&#39;</span> <span class="o">=&gt;</span> <span class="mi">75</span><span class="p">,</span>
-    <span class="s1">&#39;color&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span>
+    <span class="s1">'date'</span>  <span class="o">=&gt;</span> <span class="s1">'2015/11/2'</span><span class="p">,</span>
+    <span class="s1">'score'</span> <span class="o">=&gt;</span> <span class="mi">75</span><span class="p">,</span>
+    <span class="s1">'color'</span> <span class="o">=&gt;</span> <span class="s1">'blue'</span><span class="p">,</span>
   <span class="p">]</span>
 <span class="p">];</span>
 
 <span class="c1">// この配列のscoreキーから値を取り出し、一次元配列を作成する。</span>
-<span class="nv">$oneDimension</span> <span class="o">=</span> <span class="nb">array_column</span><span class="p">(</span><span class="nv">$twoDimension</span><span class="p">,</span> <span class="s1">&#39;score&#39;</span><span class="p">);</span>
+<span class="nv">$oneDimension</span> <span class="o">=</span> <span class="nb">array_column</span><span class="p">(</span><span class="nv">$twoDimension</span><span class="p">,</span> <span class="s1">'score'</span><span class="p">);</span>
 
 <span class="c1">// Array</span>
 <span class="c1">// (</span>
@@ -34712,7 +34712,7 @@
         <span class="k">continue</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="k">echo</span> <span class="nv">$value</span> <span class="o">.</span> <span class="s1">&#39;は奇数です&#39;</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nv">$value</span> <span class="o">.</span> <span class="s1">'は奇数です'</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="c1">// 1は奇数です</span>
@@ -34733,7 +34733,7 @@
         <span class="k">return</span><span class="p">;</span> <span class="c1">// continueと同じ動作を早期リターンで実現する。</span>
     <span class="p">}</span>
 
-    <span class="k">echo</span> <span class="nv">$value</span> <span class="o">.</span> <span class="s1">&#39;は奇数です&#39;</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nv">$value</span> <span class="o">.</span> <span class="s1">'は奇数です'</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <span class="p">});</span>
 
 <span class="c1">// 1は奇数です</span>
@@ -34746,7 +34746,7 @@
 <p>反復処理の現在のループを停止し、以降のループも実行しない。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+<span class="nv">$array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
 
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$array</span> <span class="k">as</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
 

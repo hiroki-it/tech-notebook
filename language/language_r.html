@@ -33962,7 +33962,7 @@
 <p><img alt="相関分析" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/相関分析.png" /></p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># データを読み込む。</span>
-<span class="n">sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.table</span><span class="p">(</span><span class="s">&quot;sample_edit.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">)</span>
+<span class="n">sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.table</span><span class="p">(</span><span class="s">"sample_edit.txt"</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">)</span>
 
 
 <span class="c1"># 純広告とCV_純広告の散布図を作成。</span>
@@ -33973,7 +33973,7 @@
 
 <span class="c1"># 純広告とCV_純広告の相関分析を実行する。</span>
 <span class="n">ts</span><span class="o">&lt;-</span><span class="nf">ts</span><span class="p">(</span><span class="n">sample</span><span class="p">[,</span><span class="m">2</span><span class="o">:</span><span class="m">5</span><span class="p">])</span>
-<span class="nf">cor</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pearson&quot;</span><span class="p">)</span>
+<span class="nf">cor</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"pearson"</span><span class="p">)</span>
 
 
 <span class="c1"># 分析結果</span>
@@ -33995,7 +33995,7 @@
 <p><img alt="単回帰式" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/単回帰式.png" /></p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># データを読み込む。</span>
-<span class="n">sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.table</span><span class="p">(</span><span class="s">&quot;sample_edit.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">)</span>
+<span class="n">sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.table</span><span class="p">(</span><span class="s">"sample_edit.txt"</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">)</span>
 <span class="n">ts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ts</span><span class="p">(</span><span class="n">sample</span><span class="p">[,</span><span class="m">2</span><span class="o">:</span><span class="m">5</span><span class="p">])</span>
 
 
@@ -34026,7 +34026,7 @@
 <p><img alt="重回帰式" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/重回帰式.png" /></p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># データを読み込む。</span>
-<span class="n">sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.table</span><span class="p">(</span><span class="s">&quot;sample_edit.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">)</span>
+<span class="n">sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.table</span><span class="p">(</span><span class="s">"sample_edit.txt"</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">)</span>
 
 
 <span class="n">days</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">weekdays</span><span class="p">(</span><span class="nf">as.Date</span><span class="p">(</span><span class="n">sample</span><span class="o">$</span><span class="n">DATE</span><span class="p">))</span>
@@ -34081,7 +34081,7 @@
 <p><img alt="ロジスティック回帰式" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ロジスティック回帰式.png" /></p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># データを読み込む。</span>
-<span class="n">sample</span><span class="o">&lt;-</span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;CV_data2.csv&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+<span class="n">sample</span><span class="o">&lt;-</span><span class="nf">read.csv</span><span class="p">(</span><span class="s">"CV_data2.csv"</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
 
 
 <span class="c1"># リンク関数をロジットとし、非線形モデルを一般化する。</span>
@@ -34109,7 +34109,7 @@
 <p><img alt="決定木分析_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/決定木分析_2.png" /></p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># データを読み込む。</span>
-<span class="n">sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;CV_data.csv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">)</span>
+<span class="n">sample</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">"CV_data.csv"</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">)</span>
 
 
 <span class="c1"># 識別値のidを説明変数から除いたうえで、決定木を作成。</span>
@@ -34134,7 +34134,7 @@
 <p><img alt="階層クラスター分析" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/階層クラスター分析.png" /></p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># データを読み込む。</span>
-<span class="n">sample1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;CV_data.csv&quot;</span><span class="p">)</span>
+<span class="n">sample1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">"CV_data.csv"</span><span class="p">)</span>
 
 
 <span class="c1"># ダミー変数に変換するために必要な情報が格納されたリストを作成。</span>
@@ -34155,7 +34155,7 @@
 
 
 <span class="c1"># ウォード法による階層クラスター分析を行い、グラフ化。</span>
-<span class="n">cluster1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">hclust</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ward.D2&quot;</span><span class="p">)</span>
+<span class="n">cluster1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">hclust</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"ward.D2"</span><span class="p">)</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">cluster1</span><span class="p">)</span>
 </code></pre></div>
 <p><br></p>

@@ -35536,12 +35536,12 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">saga</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;time&quot;</span>
+<span class="w">    </span><span class="s">"time"</span>
 
-<span class="w">    </span><span class="s">&quot;go.uber.org/multierr&quot;</span>
+<span class="w">    </span><span class="s">"go.uber.org/multierr"</span>
 
-<span class="w">    </span><span class="s">&quot;go.temporal.io/sdk/temporal&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.temporal.io/sdk/workflow&quot;</span>
+<span class="w">    </span><span class="s">"go.temporal.io/sdk/temporal"</span>
+<span class="w">    </span><span class="s">"go.temporal.io/sdk/workflow"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">TransferMoney</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="w"> </span><span class="nx">TransferDetails</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -35557,9 +35557,9 @@
 <span class="w">        </span><span class="nx">RetryPolicy</span><span class="p">:</span><span class="w">         </span><span class="nx">retryPolicy</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">WithActivityOptions</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">WithActivityOptions</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">Withdraw</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">Withdraw</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">    </span><span class="p">}</span>
@@ -35568,14 +35568,14 @@
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">errCompensation</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">WithdrawCompensation</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
-<span class="w">            </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">multierr</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">errCompensation</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">multierr</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">errCompensation</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}()</span>
 
 <span class="w">    </span><span class="c1">// ローカルトランザクション</span>
 <span class="w">    </span><span class="c1">// 失敗した場合、まずは自身のトランザクション処理をロールバックする</span>
 <span class="w">    </span><span class="c1">// その後、前のdefer関数を実行し、前のローカルトランザクション処理を元に戻す補償トランザクション処理を実行する</span>
-<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">Deposit</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">Deposit</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">    </span><span class="p">}</span>
@@ -35584,7 +35584,7 @@
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">errCompensation</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">DepositCompensation</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
-<span class="w">            </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">multierr</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">errCompensation</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">multierr</span><span class="p">.</span><span class="nx">Append</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">errCompensation</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="c1">// uncomment to have time to shut down worker to simulate worker rolling update and ensure that compensation sequence preserves after restart</span>
@@ -35594,7 +35594,7 @@
 <span class="w">    </span><span class="c1">// ローカルトランザクション</span>
 <span class="w">    </span><span class="c1">// 失敗した場合、まずは自身のトランザクション処理をロールバックする</span>
 <span class="w">    </span><span class="c1">// その後、前のdefer関数を実行し、前のローカルトランザクション処理を元に戻す補償トランザクション処理を実行する</span>
-<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">StepWithError</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">StepWithError</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">    </span><span class="p">}</span>
@@ -35613,8 +35613,8 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;errors&quot;</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"errors"</span>
 <span class="p">)</span>
 
 <span class="c1">// ローカルトランザクション処理を表Cookieす関数型</span>
@@ -35644,7 +35644,7 @@
 <span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">Steps</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">--</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">Steps</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">Compensate</span><span class="p">();</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                    </span><span class="c1">// 補償トランザクションが失敗した場合はエラーメッセージを返す</span>
-<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;failed to compensate for step %d: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"failed to compensate for step %d: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">))</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">            </span><span class="c1">// 最初のエラーを返す</span>
@@ -35684,9 +35684,9 @@
 
 <span class="w">    </span><span class="c1">// Sagaの実行</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">saga</span><span class="p">.</span><span class="nx">Execute</span><span class="p">();</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;saga failed:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="c1">// エラーが発生した場合</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"saga failed:"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="c1">// エラーが発生した場合</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;saga succeeded&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 正常に完了した場合</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"saga succeeded"</span><span class="p">)</span><span class="w"> </span><span class="c1">// 正常に完了した場合</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -35699,8 +35699,8 @@
 <h4 id="typescript">▼ 実装例 (TypeScript の配列)<a class="headerlink" href="#typescript" title="Permanent link">&para;</a></h4>
 <p>この例では、Azure の Durable Function にて、TypeScript の配列で補償トランザクションの仕組みを実装している。</p>
 <p>スライス内のローカルトランザクション処理を順番に実行し、どこかで失敗した場合は逆順に補償トランザクション処理を実行する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">df</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;durable-functions&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Task</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;durable-functions/lib/src/classes&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">df</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"durable-functions"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Task</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"durable-functions/lib/src/classes"</span><span class="p">;</span>
 
 <span class="c1">// APIError型の定義。ステータスコードとボディを持つ</span>
 <span class="kr">type</span><span class="w"> </span><span class="nx">APIError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -35711,13 +35711,13 @@
 <span class="c1">// APIErrorかどうかをチェックする関数</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">isAPIError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">arg</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">arg</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">APIError</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 引数がオブジェクトでない場合は、トランザクション不可とする</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">arg</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">arg</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">"object"</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// ステータスコードが200, 400, 500のいずれかでない場合は、トランザクション不可とする</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">arg</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">[</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">400</span><span class="p">,</span><span class="w"> </span><span class="mf">500</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">arg</span><span class="p">.</span><span class="nx">status</span><span class="p">)))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// メッセージが文字列でない場合は、トランザクション不可とする</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">arg</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">arg</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">"string"</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// 全ての条件を満たす場合はトランザクション可とする</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
@@ -35733,33 +35733,33 @@
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">input</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">getInput</span><span class="p">();</span>
 
 <span class="w">    </span><span class="c1">// ローカルトランザクションとして、doActivityAを実行する</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;doActivityA&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">"doActivityA"</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// 補償トランザクションとして、rejectActivityAを追加する</span>
 <span class="w">    </span><span class="nx">compensatingTransactions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
-<span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;rejectActivityA&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">body</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">"rejectActivityA"</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">.</span><span class="nx">body</span><span class="p">),</span>
 <span class="w">    </span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// ローカルトランザクションとして、doActivityBを実行する</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;doActivityB&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">"doActivityB"</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// 補償トランザクションとして、rejectActivityBを追加する</span>
 <span class="w">    </span><span class="nx">compensatingTransactions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
-<span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;rejectActivityB&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">"rejectActivityB"</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">),</span>
 <span class="w">    </span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// ローカルトランザクションとして、doActivityCを実行する</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;doActivityC&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">"doActivityC"</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// 補償トランザクションとして、rejectActivityCを追加する</span>
 <span class="w">    </span><span class="nx">compensatingTransactions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
-<span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">&quot;rejectActivityC&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">callActivity</span><span class="p">(</span><span class="s2">"rejectActivityC"</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">),</span>
 <span class="w">    </span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// Sagaオーケストレーターのクライアントに正常終了のレスポンスを返す</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">200</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;The process has succeeded.&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s2">"The process has succeeded."</span><span class="p">,</span>
 <span class="w">    </span><span class="p">};</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 例外発生時に補償トランザクション処理をまとめて実行する</span>
@@ -35787,11 +35787,11 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">saga</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;database/sql&quot;</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/google/uuid&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.example/saga/pkg/jsonmap&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
+<span class="w">    </span><span class="s">"database/sql"</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"github.com/google/uuid"</span>
+<span class="w">    </span><span class="s">"go.example/saga/pkg/jsonmap"</span>
 <span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">SagaState</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
@@ -35819,26 +35819,26 @@
 <span class="w">        </span><span class="nx">Type</span><span class="p">:</span><span class="w">        </span><span class="nx">sagaType</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">Payload</span><span class="p">:</span><span class="w">     </span><span class="nx">payload</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">CurrentStep</span><span class="p">:</span><span class="w"> </span><span class="nx">currentStep</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">StepStatus</span><span class="p">:</span><span class="w">  </span><span class="nx">jsonmap</span><span class="p">.</span><span class="nx">JSONMap</span><span class="p">{</span><span class="nb">string</span><span class="p">(</span><span class="nx">currentStep</span><span class="p">):</span><span class="w"> </span><span class="nx">SagaStepStatusStarted</span><span class="p">},</span>
+<span class="w">        </span><span class="nx">StepStatus</span><span class="p">:</span><span class="w">  </span><span class="nx">jsonmap</span><span class="p">.</span><span class="nx">JSONMap</span><span class="p">{</span><span class="kt">string</span><span class="p">(</span><span class="nx">currentStep</span><span class="p">):</span><span class="w"> </span><span class="nx">SagaStepStatusStarted</span><span class="p">},</span>
 <span class="w">        </span><span class="nx">SagaStatus</span><span class="p">:</span><span class="w">  </span><span class="nx">SagaStatusStarted</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// NextSagaStatus evaluate current SagaStepStatuses and set SagaStatus</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">SagaState</span><span class="p">)</span><span class="w"> </span><span class="nx">NextSagaStatus</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">ss</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">bool</span><span class="p">{}</span>
+<span class="w">    </span><span class="nx">ss</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">bool</span><span class="p">{}</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">StepStatus</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">ss</span><span class="p">[</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="p">)]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="nx">ss</span><span class="p">[</span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">ss</span><span class="p">[</span><span class="nx">SagaStepStatusSucceeded</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">ss</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">SagaStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">SagaStatusCompleted</span>
+<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">SagaStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">SagaStatusCompleted</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">ss</span><span class="p">[</span><span class="nx">SagaStepStatusStarted</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">ss</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="nx">ss</span><span class="p">[</span><span class="nx">SagaStepStatusSucceeded</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">ss</span><span class="p">[</span><span class="nx">SagaStepStatusStarted</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">ss</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">SagaStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">SagaStatusStarted</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ss</span><span class="p">[</span><span class="nx">SagaStepStatusCompensating</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">SagaStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">SagaStatusAborted</span>
+<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">SagaStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">SagaStatusStarted</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="nx">ss</span><span class="p">[</span><span class="nx">SagaStepStatusCompensating</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">SagaStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">SagaStatusAborted</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">SagaStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">SagaStatusAborting</span>
+<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">SagaStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">SagaStatusAborting</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -35852,10 +35852,10 @@
 
 <span class="c1">// SagaStatus type</span>
 <span class="kd">const</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">SagaStatusStarted</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;STARTED&quot;</span>
-<span class="w">    </span><span class="nx">SagaStatusAborting</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;ABORTING&quot;</span>
-<span class="w">    </span><span class="nx">SagaStatusAborted</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;ABORTED&quot;</span>
-<span class="w">    </span><span class="nx">SagaStatusCompleted</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;COMPLETED&quot;</span>
+<span class="w">    </span><span class="nx">SagaStatusStarted</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">"STARTED"</span>
+<span class="w">    </span><span class="nx">SagaStatusAborting</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">"ABORTING"</span>
+<span class="w">    </span><span class="nx">SagaStatusAborted</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">"ABORTED"</span>
+<span class="w">    </span><span class="nx">SagaStatusCompleted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"COMPLETED"</span>
 <span class="p">)</span>
 
 <span class="c1">// SagaStepStatus represent current saga step status</span>
@@ -35863,11 +35863,11 @@
 
 <span class="c1">// SagaStepStatus type</span>
 <span class="kd">const</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">SagaStepStatusStarted</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;STARTED&quot;</span>
-<span class="w">    </span><span class="nx">SagaStepStatusFailed</span><span class="w">       </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;FAILED&quot;</span>
-<span class="w">    </span><span class="nx">SagaStepStatusSucceeded</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;SUCCEEDED&quot;</span>
-<span class="w">    </span><span class="nx">SagaStepStatusCompensating</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;COMPENSATING&quot;</span>
-<span class="w">    </span><span class="nx">SagaStepStatusCompensated</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;COMPENSATED&quot;</span>
+<span class="w">    </span><span class="nx">SagaStepStatusStarted</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">"STARTED"</span>
+<span class="w">    </span><span class="nx">SagaStepStatusFailed</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s">"FAILED"</span>
+<span class="w">    </span><span class="nx">SagaStepStatusSucceeded</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">"SUCCEEDED"</span>
+<span class="w">    </span><span class="nx">SagaStepStatusCompensating</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"COMPENSATING"</span>
+<span class="w">    </span><span class="nx">SagaStepStatusCompensated</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">"COMPENSATED"</span>
 <span class="p">)</span>
 
 <span class="c1">// SagaStep define saga service step in order to follow</span>
@@ -35875,20 +35875,20 @@
 
 <span class="c1">// NextSagaStep find saga next step from provided steps and current saga step</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">NextSagaStep</span><span class="p">(</span><span class="nx">steps</span><span class="w"> </span><span class="p">[]</span><span class="nx">SagaStep</span><span class="p">,</span><span class="w"> </span><span class="nx">currentStep</span><span class="w"> </span><span class="nx">SagaStep</span><span class="p">)</span><span class="w"> </span><span class="nx">SagaStep</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">currentStep</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">currentStep</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">steps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">curr</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">steps</span><span class="p">);</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">steps</span><span class="p">);</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">steps</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">currentStep</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">curr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">i</span>
+<span class="w">            </span><span class="nx">curr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">i</span>
 <span class="w">            </span><span class="k">break</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">curr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">curr</span><span class="o">+</span><span class="mi">1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">steps</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">""</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">steps</span><span class="p">[</span><span class="nx">curr</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
@@ -35897,15 +35897,15 @@
 <span class="c1">// PrevSagaStep find saga previous step from provided steps and current saga step</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">PrevSagaStep</span><span class="p">(</span><span class="nx">steps</span><span class="w"> </span><span class="p">[]</span><span class="nx">SagaStep</span><span class="p">,</span><span class="w"> </span><span class="nx">currentStep</span><span class="w"> </span><span class="nx">SagaStep</span><span class="p">)</span><span class="w"> </span><span class="nx">SagaStep</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">curr</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">steps</span><span class="p">);</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">steps</span><span class="p">);</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">steps</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">currentStep</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">curr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">i</span>
+<span class="w">            </span><span class="nx">curr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">i</span>
 <span class="w">            </span><span class="k">break</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">curr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">curr</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">""</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">steps</span><span class="p">[</span><span class="nx">curr</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -35914,16 +35914,16 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">reservation</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;database/sql&quot;</span>
-<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.example/saga/pkg/saga&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.example/saga/pkg/store/postgres&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.example/saga/reservation/pkg/model&quot;</span>
-<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">"context"</span>
+<span class="w">    </span><span class="s">"database/sql"</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"go.example/saga/pkg/saga"</span>
+<span class="w">    </span><span class="s">"go.example/saga/pkg/store/postgres"</span>
+<span class="w">    </span><span class="s">"go.example/saga/reservation/pkg/model"</span>
+<span class="w">    </span><span class="s">"log"</span>
 <span class="p">)</span>
 
-<span class="o">...</span>
+<span class="p">...</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">Controller</span><span class="p">)</span><span class="w"> </span><span class="nx">PostReservation</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">cmd</span><span class="w"> </span><span class="nx">model</span><span class="p">.</span><span class="nx">ReservationCmd</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">model</span><span class="p">.</span><span class="nx">Reservation</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">r</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">model</span><span class="p">.</span><span class="nx">NewReservation</span><span class="p">(</span><span class="nx">cmd</span><span class="p">.</span><span class="nx">HotelID</span><span class="p">,</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">RoomID</span><span class="p">,</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">GuestID</span><span class="p">,</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">PaymentDue</span><span class="p">,</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">StartDate</span><span class="p">,</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">EndDate</span><span class="p">,</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">CreditCardNO</span><span class="p">)</span>
@@ -35936,19 +35936,19 @@
 <span class="w">        </span><span class="p">}</span>
 
 <span class="w">        </span><span class="nx">payload</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">ToJSONMap</span><span class="p">()</span>
-<span class="w">        </span><span class="nx">currStep</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">saga</span><span class="p">.</span><span class="nx">NextSagaStep</span><span class="p">(</span><span class="nx">sagaSteps</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">currStep</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">saga</span><span class="p">.</span><span class="nx">NextSagaStep</span><span class="p">(</span><span class="nx">sagaSteps</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">)</span>
 <span class="w">        </span><span class="nx">sagaState</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">saga</span><span class="p">.</span><span class="nx">NewSaga</span><span class="p">(</span><span class="nx">roomReservationSaga</span><span class="p">,</span><span class="w"> </span><span class="nx">payload</span><span class="p">,</span><span class="w"> </span><span class="nx">currStep</span><span class="p">)</span>
 
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">sagaRepository</span><span class="p">.</span><span class="nx">Persist</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="p">,</span><span class="w"> </span><span class="nx">sagaState</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">        </span><span class="nx">outboxEvent</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">postgres</span><span class="p">.</span><span class="nx">NewEvent</span><span class="p">(</span><span class="nx">sagaState</span><span class="p">.</span><span class="nx">ID</span><span class="p">.</span><span class="nx">String</span><span class="p">(),</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nx">currStep</span><span class="p">),</span><span class="w"> </span><span class="nx">postgres</span><span class="p">.</span><span class="nx">RequestEventType</span><span class="p">,</span><span class="w"> </span><span class="nx">payload</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">outboxEvent</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">postgres</span><span class="p">.</span><span class="nx">NewEvent</span><span class="p">(</span><span class="nx">sagaState</span><span class="p">.</span><span class="nx">ID</span><span class="p">.</span><span class="nx">String</span><span class="p">(),</span><span class="w"> </span><span class="kt">string</span><span class="p">(</span><span class="nx">currStep</span><span class="p">),</span><span class="w"> </span><span class="nx">postgres</span><span class="p">.</span><span class="nx">RequestEventType</span><span class="p">,</span><span class="w"> </span><span class="nx">payload</span><span class="p">)</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">outboxEvent</span><span class="p">.</span><span class="nx">Persist</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Started Saga for reservationID %s sagaID %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">ID</span><span class="p">,</span><span class="w"> </span><span class="nx">sagaState</span><span class="p">.</span><span class="nx">ID</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Started Saga for reservationID %s sagaID %s"</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">ID</span><span class="p">,</span><span class="w"> </span><span class="nx">sagaState</span><span class="p">.</span><span class="nx">ID</span><span class="p">)</span>
 
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">r</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="w">    </span><span class="p">});</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
@@ -35958,7 +35958,7 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">r</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 
-<span class="o">...</span>
+<span class="p">...</span>
 </code></pre></div>
 <blockquote>
 <ul>

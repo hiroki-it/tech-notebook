@@ -34062,11 +34062,11 @@
 <p>イベントの項目名と値の対応関係を持つログのこと。</p>
 <p>JSON 型で表すが、拡張子が <code>json</code> であるというわけでないことに注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;client_ip&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;192.168.0.1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;timestamp&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2021-01-01</span><span class="nv"> </span><span class="s">12:00:00&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;method&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;GET&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;url&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/foo/1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;status_code&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"client_ip"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"192.168.0.1"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"timestamp"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2021-01-01</span><span class="nv"> </span><span class="s">12:00:00"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"method"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"GET"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"url"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/foo/1"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"status_code"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
@@ -34084,7 +34084,7 @@
 <p>各コンテナ (例：マイクロサービス、サービスメッシュサイドカー) が作成するログに一意な ID を割り当て、人繋ぎに紐付ける必要がある。</p>
 <p>例えば、監視バックエンドでこのログをクエリしさえすれば、リクエストの経路がわかる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Cloud Loggingでログをクエリする</span>
-jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレースID&gt;&quot;</span>
+jsonPayload.traceId<span class="o">=</span><span class="s2">"&lt;トレースID&gt;"</span>
 </code></pre></div>
 <blockquote>
 <ul>

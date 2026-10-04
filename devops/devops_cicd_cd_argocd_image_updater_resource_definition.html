@@ -33919,7 +33919,7 @@
 <span class="w">    </span><span class="nt">argocd-image-updater.argoproj.io/image-list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-image=&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/&lt;イメージリポジトリ名&gt;</span>
 <span class="w">    </span><span class="c1"># 変更対象のファイルの相対パスを設定する</span>
 <span class="w">    </span><span class="c1"># .spec.source.path キーを基準とする</span>
-<span class="w">    </span><span class="nt">argocd-image-updater.argoproj.io/write-back-target</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;helmvalues:values.yaml&quot;</span>
+<span class="w">    </span><span class="nt">argocd-image-updater.argoproj.io/write-back-target</span><span class="p">:</span><span class="w"> </span><span class="s">"helmvalues:values.yaml"</span>
 <span class="w">    </span><span class="c1"># コンテナイメージのタグ名をフィルタリングする</span>
 <span class="w">    </span><span class="nt">argocd-image-updater.argoproj.io/foo-image.allow-tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">regexp:^v[0-9]+\.[0-9]+\.[0-9]+$</span>
 <span class="w">    </span><span class="c1"># YAML ファイルのコンテナイメージ名のパスを設定する</span>
@@ -33928,7 +33928,7 @@
 <span class="w">    </span><span class="nt">argocd-image-updater.argoproj.io/foo-image.helm.image-tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">image.tag</span>
 <span class="w">    </span><span class="nt">argocd-image-updater.argoproj.io/write-back-method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git</span>
 <span class="w">    </span><span class="nt">argocd-image-updater.argoproj.io/git.branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
-<span class="w">    </span><span class="nt">argocd-image-updater.argoproj.io/git.commit-message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;イメージのタグを</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">.tag</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">に更新しました&quot;</span>
+<span class="w">    </span><span class="nt">argocd-image-updater.argoproj.io/git.commit-message</span><span class="p">:</span><span class="w"> </span><span class="s">"イメージのタグを</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">.tag</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">に更新しました"</span>
 <span class="nt">spec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <blockquote>
@@ -33960,7 +33960,7 @@
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-image-updater-cm</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
 <span class="nt">data</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd.grpcWeb</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">  </span><span class="nt">argocd.grpcWeb</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">  </span><span class="nt">registries.conf</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">registries:  </span>
 <span class="w">      </span><span class="no">- name: foo-image</span>
@@ -33983,7 +33983,7 @@
 <span class="w">    </span><span class="nt">ecr-login.sh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">      </span><span class="no">#!/bin/sh</span>
 <span class="w">      </span><span class="no">HOME=/tmp \</span>
-<span class="w">      </span><span class="no">aws ecr get-authorization-token --region ap-northeast-1 --output text --query &#39;authorizationData[].authorizationToken&#39; | base64 -d</span>
+<span class="w">      </span><span class="no">aws ecr get-authorization-token --region ap-northeast-1 --output text --query 'authorizationData[].authorizationToken' | base64 -d</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="argocd-rbac-cm">argocd-rbac-cm<a class="headerlink" href="#argocd-rbac-cm" title="Permanent link">&para;</a></h3>

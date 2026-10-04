@@ -35568,7 +35568,7 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 <p>ポート名の命名規則に関する情報メッセージが出力された場合を以下に示す。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>analyze
 
-Info<span class="w"> </span><span class="o">[</span>IST0118<span class="o">]</span><span class="w"> </span><span class="o">(</span>Service<span class="w"> </span>default/foo-service<span class="o">)</span><span class="w"> </span>Port<span class="w"> </span>name<span class="w"> </span><span class="o">(</span>port:<span class="w"> </span><span class="m">80</span>,<span class="w"> </span>targetPort:<span class="w"> </span><span class="m">80</span><span class="o">)</span><span class="w"> </span>doesn<span class="err">&#39;</span>t<span class="w"> </span>follow<span class="w"> </span>the<span class="w"> </span>naming<span class="w"> </span>convention<span class="w"> </span>of<span class="w"> </span>Istio<span class="w"> </span>port.
+Info<span class="w"> </span><span class="o">[</span>IST0118<span class="o">]</span><span class="w"> </span><span class="o">(</span>Service<span class="w"> </span>default/foo-service<span class="o">)</span><span class="w"> </span>Port<span class="w"> </span>name<span class="w"> </span><span class="o">(</span>port:<span class="w"> </span><span class="m">80</span>,<span class="w"> </span>targetPort:<span class="w"> </span><span class="m">80</span><span class="o">)</span><span class="w"> </span>doesn<span class="err">'</span>t<span class="w"> </span>follow<span class="w"> </span>the<span class="w"> </span>naming<span class="w"> </span>convention<span class="w"> </span>of<span class="w"> </span>Istio<span class="w"> </span>port.
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35779,14 +35779,14 @@ $<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>all<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-o<span class="w"> </span>yaml<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>yq<span class="w"> </span><span class="s1">&#39;.configs[] | keys&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-f
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>yq<span class="w"> </span><span class="s1">'.configs[] | keys'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-f
 ---
--<span class="w"> </span><span class="s2">&quot;@type&quot;</span>
--<span class="w"> </span><span class="s2">&quot;@type&quot;</span>
--<span class="w"> </span><span class="s2">&quot;@type&quot;</span>
--<span class="w"> </span><span class="s2">&quot;@type&quot;</span>
--<span class="w"> </span><span class="s2">&quot;@type&quot;</span>
--<span class="w"> </span><span class="s2">&quot;@type&quot;</span>
+-<span class="w"> </span><span class="s2">"@type"</span>
+-<span class="w"> </span><span class="s2">"@type"</span>
+-<span class="w"> </span><span class="s2">"@type"</span>
+-<span class="w"> </span><span class="s2">"@type"</span>
+-<span class="w"> </span><span class="s2">"@type"</span>
+-<span class="w"> </span><span class="s2">"@type"</span>
 -<span class="w"> </span>bootstrap
 -<span class="w"> </span>dynamic_active_clusters
 -<span class="w"> </span>dynamic_active_secrets
@@ -35821,7 +35821,7 @@ $<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class
 <span class="w">      </span><span class="nt">grpcServices</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">envoyGrpc</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">clusterName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xds-grpc</span>
-<span class="w">      </span><span class="nt">setNodeOnFirstMessageOnly</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">      </span><span class="nt">setNodeOnFirstMessageOnly</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">      </span><span class="nt">transportApiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">V3</span>
 <span class="w">    </span><span class="nt">cdsConfig</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># ADS-API から取得した宛先情報のうち、クラスターを設定する。</span>
@@ -35843,7 +35843,7 @@ $<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class
 
 <span class="w">  </span><span class="nt">tracing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
-<span class="nt">lastUpdated</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2022-11-16T08:12:07.162Z&quot;</span>
+<span class="nt">lastUpdated</span><span class="p">:</span><span class="w"> </span><span class="s">"2022-11-16T08:12:07.162Z"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="cluster">cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h3>
@@ -35900,7 +35900,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-o<span class="w"> </span>yaml<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--fqdn<span class="w"> </span>foo-service.foo-namespace.svc.cluster.local<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>yq<span class="w"> </span><span class="s1">&#39;.[0]&#39;</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>yq<span class="w"> </span><span class="s1">'.[0]'</span>
 </code></pre></div>
 <h4 id="-port">▼ --port<a class="headerlink" href="#-port" title="Permanent link">&para;</a></h4>
 <p>宛先 Service のポート番号でフィルタリングし、クラスターを取得する。</p>
@@ -35939,13 +35939,13 @@ unix://./etc/istio/proxy/XDS<span class="w">                         </span>HEAL
 <p><code>yaml</code> 形式で取得すれば、より詳細な設定値を確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ istioctl proxy-config endpoints foo-pod \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--cluster &quot;outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local&quot; \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--cluster "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local" \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-o yaml \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">| yq</span>
 <span class="nn">---</span>
 <span class="c1"># クラスター名</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local</span>
-<span class="w">  </span><span class="nt">addedViaApi</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">  </span><span class="nt">addedViaApi</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">  </span><span class="nt">observabilityName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local</span>
 <span class="w">  </span><span class="nt">hostStatuses</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span>
@@ -35995,7 +35995,7 @@ unix://./etc/istio/proxy/XDS<span class="w">                         </span>HEAL
 <p>エンドポイントに紐づくクラスター名でフィルタリングし、エンドポイントを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>endpoints<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--cluster<span class="w"> </span><span class="s2">&quot;outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local&quot;</span>
+<span class="w">    </span>--cluster<span class="w"> </span><span class="s2">"outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="listeners">listeners<a class="headerlink" href="#listeners" title="Permanent link">&para;</a></h3>
@@ -36059,7 +36059,7 @@ NAME<span class="w">                         </span>DOMAINS<span class="w">     
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">| yq</span>
 <span class="nn">---</span>
 <span class="c1"># ルート名</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;50001&#39;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">'50001'</span>
 <span class="w">  </span><span class="c1"># Envoy で仮想ホストを実行し、Envoy の稼働するコンテナが複数のドメインを仮想的に持てるようにしている。</span>
 <span class="w">  </span><span class="nt">virtualHosts</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># Node 外から foo-pod にリクエストを送信する時に選ばれる。</span>
@@ -36090,7 +36090,7 @@ NAME<span class="w">                         </span>DOMAINS<span class="w">     
 
 <span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
-<span class="w">      </span><span class="nt">includeRequestAttemptCount</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">      </span><span class="nt">includeRequestAttemptCount</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="c1"># foo-pod から bar-pod にリクエストを送信する時に選ばれる。</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace.svc.cluster.local:50002</span>
 <span class="w">      </span><span class="nt">domains</span><span class="p">:</span>
@@ -36117,7 +36117,7 @@ NAME<span class="w">                         </span>DOMAINS<span class="w">     
 
 <span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
-<span class="w">      </span><span class="nt">includeRequestAttemptCount</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">      </span><span class="nt">includeRequestAttemptCount</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">    </span><span class="c1"># foo-pod から baz-pod にリクエストを送信する時に選ばれる。</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz-service.baz-namespace.svc.cluster.local:50003</span>
 <span class="w">      </span><span class="nt">domains</span><span class="p">:</span>
@@ -36141,14 +36141,14 @@ NAME<span class="w">                         </span>DOMAINS<span class="w">     
 <span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
 <span class="w">          </span><span class="nt">maxGrpcTimeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10800s</span>
-<span class="w">      </span><span class="nt">includeRequestAttemptCount</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">      </span><span class="nt">includeRequestAttemptCount</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
 <span class="w">    </span><span class="c1"># 条件に合致しない任意のリクエストを送信する時に選ばれる。</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow_any</span>
 <span class="w">      </span><span class="nt">domains</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;*&#39;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'*'</span>
 <span class="w">      </span><span class="nt">routes</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow_any</span>
 <span class="w">          </span><span class="nt">match</span><span class="p">:</span>
@@ -36157,8 +36157,8 @@ NAME<span class="w">                         </span>DOMAINS<span class="w">     
 <span class="w">            </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PassthroughCluster</span>
 <span class="w">            </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0s</span>
 <span class="w">            </span><span class="nt">maxGrpcTimeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0s</span>
-<span class="w">      </span><span class="nt">includeRequestAttemptCount</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">  </span><span class="nt">validateClusters</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">      </span><span class="nt">includeRequestAttemptCount</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">  </span><span class="nt">validateClusters</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 
 <span class="nn">...</span>
 </code></pre></div>
@@ -36373,7 +36373,7 @@ baz-pod.default<span class="w">                           </span>SYNCED<span cla
 <p>指定した設定を使用して Istio をインプレースアップグレードする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>upgrade
 
-This<span class="w"> </span>will<span class="w"> </span>install<span class="w"> </span>the<span class="w"> </span>Istio<span class="w"> </span>&lt;バージョンタグ&gt;<span class="w"> </span>default<span class="w"> </span>profile<span class="w"> </span>with<span class="w"> </span><span class="o">[</span><span class="s2">&quot;Istio core&quot;</span><span class="w"> </span><span class="s2">&quot;Istiod&quot;</span><span class="w"> </span><span class="s2">&quot;Ingress gateways&quot;</span><span class="o">]</span><span class="w"> </span>components<span class="w"> </span>into<span class="w"> </span>the<span class="w"> </span>cluster.<span class="w"> </span>Proceed?<span class="w"> </span><span class="o">(</span>y/N<span class="o">)</span><span class="w"> </span>y
+This<span class="w"> </span>will<span class="w"> </span>install<span class="w"> </span>the<span class="w"> </span>Istio<span class="w"> </span>&lt;バージョンタグ&gt;<span class="w"> </span>default<span class="w"> </span>profile<span class="w"> </span>with<span class="w"> </span><span class="o">[</span><span class="s2">"Istio core"</span><span class="w"> </span><span class="s2">"Istiod"</span><span class="w"> </span><span class="s2">"Ingress gateways"</span><span class="o">]</span><span class="w"> </span>components<span class="w"> </span>into<span class="w"> </span>the<span class="w"> </span>cluster.<span class="w"> </span>Proceed?<span class="w"> </span><span class="o">(</span>y/N<span class="o">)</span><span class="w"> </span>y
 
 ✅<span class="w"> </span>Istio<span class="w"> </span>core<span class="w"> </span>installed
 ✅<span class="w"> </span>Istiod<span class="w"> </span>installed
@@ -36391,7 +36391,7 @@ This<span class="w"> </span>will<span class="w"> </span>install<span class="w"> 
 <p>Istio リソースが正しく作成されたかを検証する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>verify-install
 
-<span class="m">1</span><span class="w"> </span>Istio<span class="w"> </span>control<span class="w"> </span>planes<span class="w"> </span>detected,<span class="w"> </span>checking<span class="w"> </span>--revision<span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="w"> </span>only
+<span class="m">1</span><span class="w"> </span>Istio<span class="w"> </span>control<span class="w"> </span>planes<span class="w"> </span>detected,<span class="w"> </span>checking<span class="w"> </span>--revision<span class="w"> </span><span class="s2">"default"</span><span class="w"> </span>only
 ✅<span class="w"> </span>ClusterRole:<span class="w"> </span>istiod-istio-system.istio-system<span class="w"> </span>checked<span class="w"> </span>successfully
 ✅<span class="w"> </span>ClusterRole:<span class="w"> </span>istio-reader-istio-system.istio-system<span class="w"> </span>checked<span class="w"> </span>successfully
 

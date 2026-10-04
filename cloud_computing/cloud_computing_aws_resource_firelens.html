@@ -34342,10 +34342,10 @@
 <span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="nt">foo-firelens-*****</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">    </span><span class="err">*****</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
-<span class="w">        </span><span class="s">&quot;log&quot;</span><span class="nv">=&gt;&quot;127.0.0.1 -  01/01/2022</span><span class="p p-Indicator">:</span><span class="nv">0</span><span class="p p-Indicator">:</span><span class="nv">00</span><span class="p p-Indicator">:</span><span class="nv">00 +0000 &quot;GET /index.php&quot; 200&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;container_id&quot;</span><span class="nv">=&gt;&quot;*****&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;container_name&quot;</span><span class="nv">=&gt;&quot;foo&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;source&quot;</span><span class="nv">=&gt;&quot;stderr&quot;</span>
+<span class="w">        </span><span class="s">"log"</span><span class="nv">=&gt;"127.0.0.1 -  01/01/2022</span><span class="p p-Indicator">:</span><span class="nv">0</span><span class="p p-Indicator">:</span><span class="nv">00</span><span class="p p-Indicator">:</span><span class="nv">00 +0000 "GET /index.php" 200"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"container_id"</span><span class="nv">=&gt;"*****"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"container_name"</span><span class="nv">=&gt;"foo"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"source"</span><span class="nv">=&gt;"stderr"</span>
 <span class="w">    </span><span class="p p-Indicator">}</span>
 <span class="p p-Indicator">]</span>
 </code></pre></div>
@@ -34422,49 +34422,49 @@
 <p>log_router という名前以外を設定できないことに注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span>
 <span class="w">  </span><span class="p p-Indicator">{</span>
-<span class="w">    </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">    </span><span class="s">&quot;image&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;イメージリポジトリURL&gt;:&lt;バージョンタグ&gt;&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># &lt;AWS アカウント ID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/&lt;イメージリポジトリ名&gt;:latest</span>
-<span class="w">    </span><span class="s">&quot;essential&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">    </span><span class="s">&quot;logConfiguration&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">    </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"image"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;イメージリポジトリURL&gt;:&lt;バージョンタグ&gt;"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># &lt;AWS アカウント ID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/&lt;イメージリポジトリ名&gt;:latest</span>
+<span class="w">    </span><span class="s">"essential"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"false"</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"logConfiguration"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">        </span><span class="c1"># FluentBit の設定は conf ファイルで実行するため、options キーは何も設定しない。</span>
-<span class="w">        </span><span class="s">&quot;logDriver&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;awsfirelens&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"logDriver"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"awsfirelens"</span><span class="p p-Indicator">,</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">  </span><span class="p p-Indicator">},</span>
 <span class="w">  </span><span class="p p-Indicator">{</span>
 <span class="w">    </span><span class="c1"># log_router 以外の名前を設定できない</span>
-<span class="w">    </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;log_router&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">    </span><span class="s">&quot;image&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;イメージリポジトリURL&gt;:&lt;バージョンタグ&gt;&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># &lt;AWS アカウント ID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/&lt;イメージリポジトリ名&gt;:latest</span>
-<span class="w">    </span><span class="s">&quot;essential&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">    </span><span class="s">&quot;logConfiguration&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">    </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"log_router"</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"image"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;イメージリポジトリURL&gt;:&lt;バージョンタグ&gt;"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># &lt;AWS アカウント ID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/&lt;イメージリポジトリ名&gt;:latest</span>
+<span class="w">    </span><span class="s">"essential"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"false"</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"logConfiguration"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">        </span><span class="c1"># ログドライバー</span>
-<span class="w">        </span><span class="s">&quot;logDriver&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;awslogs&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;options&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">"logDriver"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"awslogs"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"options"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">            </span><span class="c1"># FireLens コンテナ自体が Amazon CloudWatch Logs にログアウトプット</span>
-<span class="w">            </span><span class="s">&quot;awslogs-group&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;ログストリーム名&gt;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;awslogs-region&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ap-northeast-1&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">            </span><span class="s">&quot;awslogs-stream-prefix&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;ログストリームの接頭辞&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"awslogs-group"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;ログストリーム名&gt;"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"awslogs-region"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"ap-northeast-1"</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"awslogs-stream-prefix"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;ログストリームの接頭辞&gt;"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
-<span class="w">    </span><span class="s">&quot;firelensConfiguration&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">    </span><span class="s">"firelensConfiguration"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">        </span><span class="c1"># FireLens コンテナで FluentBit を稼働させる</span>
-<span class="w">        </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;fluentbit&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;options&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;config-file-type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;file&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"fluentbit"</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">"options"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="s">"config-file-type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"file"</span><span class="p p-Indicator">,</span>
 <span class="w">            </span><span class="c1"># 設定上書きのため読み出し</span>
-<span class="w">            </span><span class="s">&quot;config-file-value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/fluent-bit/etc/fluent-bit_custom.conf&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"config-file-value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/fluent-bit/etc/fluent-bit_custom.conf"</span><span class="p p-Indicator">,</span>
 <span class="w">            </span><span class="c1"># Amazon ECS の情報を FireLens コンテナに送信するか否か</span>
-<span class="w">            </span><span class="s">&quot;enable-ecs-log-metadata&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">"enable-ecs-log-metadata"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"true"</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
-<span class="w">    </span><span class="s">&quot;portMappings&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
-<span class="w">    </span><span class="s">&quot;memoryReservation&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">50</span><span class="p p-Indicator">,</span>
-<span class="w">    </span><span class="s">&quot;environment&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="s">"portMappings"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">    </span><span class="s">"memoryReservation"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">50</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"environment"</span><span class="p p-Indicator">:</span>
 <span class="w">      </span><span class="p p-Indicator">[</span>
-<span class="w">        </span><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DD_ENV&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;prd&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DD_SERVICE&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">},</span>
-<span class="w">        </span><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;REGION&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ap-northeast-1&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="p p-Indicator">{</span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"DD_ENV"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"prd"</span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="p p-Indicator">{</span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"DD_SERVICE"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"foo"</span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="p p-Indicator">{</span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"REGION"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"value"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"ap-northeast-1"</span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">],</span>
-<span class="w">    </span><span class="s">&quot;secrets&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DD_API_KEY&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;valueFrom&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;DD_API_KEY&quot;</span><span class="p p-Indicator">}],</span>
+<span class="w">    </span><span class="s">"secrets"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"DD_API_KEY"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"valueFrom"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"DD_API_KEY"</span><span class="p p-Indicator">}],</span>
 <span class="w">  </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">]</span>
 </code></pre></div>
@@ -34631,22 +34631,22 @@
 <h4 id="output">▼ OUTPUT セクションとプラグイン<a class="headerlink" href="#output" title="Permanent link">&para;</a></h4>
 <p>AWS や Datadog にルーティングするための設定が必要である。</p>
 <p>もし <code>fluent-bit_custom.conf</code> ファイルで OUTPUT セクションを設定した場合は、awsfirelens ログドライバーの <code>options</code> キーは何も設定する必要がない。</p>
-<div class="highlight"><pre><span></span><code><span class="s">&quot;logConfiguration&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">    </span><span class="s">&quot;logDriver&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;awsfirelens&quot;</span><span class="p p-Indicator">,</span>
+<div class="highlight"><pre><span></span><code><span class="s">"logConfiguration"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">    </span><span class="s">"logDriver"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"awsfirelens"</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>ファイルで設定する代わりに、<code>options</code> キーで OUTPUT セクションを設定もできる。</p>
-<div class="highlight"><pre><span></span><code><span class="s">&quot;logConfiguration&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">    </span><span class="s">&quot;logDriver&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;awsfirelens&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">    </span><span class="s">&quot;options&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">       </span><span class="s">&quot;Name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;datadog&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">       </span><span class="s">&quot;Host&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;http-intake.logs.datadoghq.com&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">       </span><span class="s">&quot;TLS&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;on&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">       </span><span class="s">&quot;apikey&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;DATADOG_API_KEY&gt;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">       </span><span class="s">&quot;dd_service&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;prd-foo&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">       </span><span class="s">&quot;dd_source&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;prd-foo&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">       </span><span class="s">&quot;dd_tags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;env:prd-foo&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">       </span><span class="s">&quot;provider&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ecs&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="s">"logConfiguration"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">    </span><span class="s">"logDriver"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"awsfirelens"</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"options"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">       </span><span class="s">"Name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"datadog"</span><span class="p p-Indicator">,</span>
+<span class="w">       </span><span class="s">"Host"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"http-intake.logs.datadoghq.com"</span><span class="p p-Indicator">,</span>
+<span class="w">       </span><span class="s">"TLS"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"on"</span><span class="p p-Indicator">,</span>
+<span class="w">       </span><span class="s">"apikey"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;DATADOG_API_KEY&gt;"</span><span class="p p-Indicator">,</span>
+<span class="w">       </span><span class="s">"dd_service"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"prd-foo"</span><span class="p p-Indicator">,</span>
+<span class="w">       </span><span class="s">"dd_source"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"prd-foo"</span><span class="p p-Indicator">,</span>
+<span class="w">       </span><span class="s">"dd_tags"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"env:prd-foo"</span><span class="p p-Indicator">,</span>
+<span class="w">       </span><span class="s">"provider"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"ecs"</span>
 <span class="w">   </span><span class="p p-Indicator">}</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
@@ -34707,7 +34707,7 @@
 <span class="o">[</span>STREAM_TASK<span class="o">]</span>
 <span class="w">    </span>Name<span class="w"> </span>foo-stream-task
 <span class="w">    </span><span class="c1"># SELECT句の結果に、WITH句でfooタグを付与し、fooデータストリームを作成する。</span>
-<span class="w">    </span>Exec<span class="w"> </span>CREATE<span class="w"> </span>STREAM<span class="w"> </span>foo<span class="w"> </span>WITH<span class="w"> </span><span class="o">(</span><span class="nv">tag</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="o">)</span><span class="w"> </span>AS<span class="w"> </span>SELECT<span class="w"> </span>log<span class="w"> </span>FROM<span class="w"> </span>TAG:<span class="s1">&#39;*-firelens-*&#39;</span><span class="w"> </span>WHERE<span class="w"> </span><span class="nv">container_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;foo&#39;</span><span class="p">;</span>
+<span class="w">    </span>Exec<span class="w"> </span>CREATE<span class="w"> </span>STREAM<span class="w"> </span>foo<span class="w"> </span>WITH<span class="w"> </span><span class="o">(</span><span class="nv">tag</span><span class="o">=</span><span class="s1">'foo'</span><span class="o">)</span><span class="w"> </span>AS<span class="w"> </span>SELECT<span class="w"> </span>log<span class="w"> </span>FROM<span class="w"> </span>TAG:<span class="s1">'*-firelens-*'</span><span class="w"> </span>WHERE<span class="w"> </span><span class="nv">container_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'foo'</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="fluent-bitetcparsers_multilineconf"><code>/fluent-bit/etc/parsers_multiline.conf</code> ファイル<a class="headerlink" href="#fluent-bitetcparsers_multilineconf" title="Permanent link">&para;</a></h3>
@@ -34723,8 +34723,8 @@
 <span class="w">    </span>name<span class="w">          </span>laravel
 <span class="w">    </span><span class="nb">type</span><span class="w">          </span>regex
 <span class="w">    </span>flush_timeout<span class="w"> </span><span class="m">1000</span>
-<span class="w">    </span>rule<span class="w">          </span><span class="s2">&quot;start_state&quot;</span><span class="w">   </span><span class="s2">&quot;/(Dec \d+ \d+\:\d+\:\d+)(.*)/&quot;</span><span class="w">  </span><span class="s2">&quot;cont&quot;</span>
-<span class="w">    </span>rule<span class="w">          </span><span class="s2">&quot;cont&quot;</span><span class="w">          </span><span class="s2">&quot;/^\s+at.*/&quot;</span><span class="w">                     </span><span class="s2">&quot;cont&quot;</span>
+<span class="w">    </span>rule<span class="w">          </span><span class="s2">"start_state"</span><span class="w">   </span><span class="s2">"/(Dec \d+ \d+\:\d+\:\d+)(.*)/"</span><span class="w">  </span><span class="s2">"cont"</span>
+<span class="w">    </span>rule<span class="w">          </span><span class="s2">"cont"</span><span class="w">          </span><span class="s2">"/^\s+at.*/"</span><span class="w">                     </span><span class="s2">"cont"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>SERVICE<span class="o">]</span>
 <span class="w">    </span>...
@@ -34750,18 +34750,18 @@
 <span class="o">[</span>STREAM_TASK<span class="o">]</span>
 <span class="w">    </span>Name<span class="w"> </span>laravel
 <span class="w">    </span><span class="c1"># SELECT句の結果に、WITH句でfooタグを付与し、laravelデータストリームを作成する。</span>
-<span class="w">    </span>Exec<span class="w"> </span>CREATE<span class="w"> </span>STREAM<span class="w"> </span>laravel<span class="w"> </span>WITH<span class="w"> </span><span class="o">(</span><span class="nv">tag</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="o">)</span><span class="w"> </span>AS<span class="w"> </span>SELECT<span class="w"> </span>log<span class="w"> </span>FROM<span class="w"> </span>TAG:<span class="s1">&#39;*-firelens-*&#39;</span><span class="w"> </span>WHERE<span class="w"> </span><span class="nv">container_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;foo&#39;</span><span class="p">;</span>
+<span class="w">    </span>Exec<span class="w"> </span>CREATE<span class="w"> </span>STREAM<span class="w"> </span>laravel<span class="w"> </span>WITH<span class="w"> </span><span class="o">(</span><span class="nv">tag</span><span class="o">=</span><span class="s1">'foo'</span><span class="o">)</span><span class="w"> </span>AS<span class="w"> </span>SELECT<span class="w"> </span>log<span class="w"> </span>FROM<span class="w"> </span>TAG:<span class="s1">'*-firelens-*'</span><span class="w"> </span>WHERE<span class="w"> </span><span class="nv">container_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'foo'</span><span class="p">;</span>
 
 <span class="c1"># nginxコンテナのログへのタグ付け</span>
 <span class="o">[</span>STREAM_TASK<span class="o">]</span>
 <span class="w">    </span>Name<span class="w"> </span>nginx
 <span class="w">    </span><span class="c1"># SELECT句の結果に、WITH句でbarタグを付与し、nginxデータストリームを作成する。</span>
-<span class="w">    </span>Exec<span class="w"> </span>CREATE<span class="w"> </span>STREAM<span class="w"> </span>nginx<span class="w"> </span>WITH<span class="w"> </span><span class="o">(</span><span class="nv">tag</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="o">)</span><span class="w"> </span>AS<span class="w"> </span>SELECT<span class="w"> </span>log<span class="w"> </span>FROM<span class="w"> </span>TAG:<span class="s1">&#39;*-firelens-*&#39;</span><span class="w"> </span>WHERE<span class="w"> </span><span class="nv">container_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;bar&#39;</span><span class="p">;</span>
+<span class="w">    </span>Exec<span class="w"> </span>CREATE<span class="w"> </span>STREAM<span class="w"> </span>nginx<span class="w"> </span>WITH<span class="w"> </span><span class="o">(</span><span class="nv">tag</span><span class="o">=</span><span class="s1">'bar'</span><span class="o">)</span><span class="w"> </span>AS<span class="w"> </span>SELECT<span class="w"> </span>log<span class="w"> </span>FROM<span class="w"> </span>TAG:<span class="s1">'*-firelens-*'</span><span class="w"> </span>WHERE<span class="w"> </span><span class="nv">container_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'bar'</span><span class="p">;</span>
 
 <span class="c1"># 全てのコンテナのログへのタグ付け</span>
 <span class="o">[</span>STREAM_TASK<span class="o">]</span>
 <span class="w">    </span>Name<span class="w"> </span>containers
-<span class="w">    </span>Exec<span class="w"> </span>CREATE<span class="w"> </span>STREAM<span class="w"> </span>container<span class="w"> </span>WITH<span class="w"> </span><span class="o">(</span><span class="nv">tag</span><span class="o">=</span><span class="s1">&#39;containers&#39;</span><span class="o">)</span><span class="w"> </span>AS<span class="w"> </span>SELECT<span class="w"> </span>*<span class="w"> </span>FROM<span class="w"> </span>TAG:<span class="s1">&#39;*-firelens-*&#39;</span><span class="p">;</span>
+<span class="w">    </span>Exec<span class="w"> </span>CREATE<span class="w"> </span>STREAM<span class="w"> </span>container<span class="w"> </span>WITH<span class="w"> </span><span class="o">(</span><span class="nv">tag</span><span class="o">=</span><span class="s1">'containers'</span><span class="o">)</span><span class="w"> </span>AS<span class="w"> </span>SELECT<span class="w"> </span>*<span class="w"> </span>FROM<span class="w"> </span>TAG:<span class="s1">'*-firelens-*'</span><span class="p">;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>SERVICE<span class="o">]</span>
 <span class="w">    </span>...

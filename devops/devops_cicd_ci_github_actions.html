@@ -35324,7 +35324,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">build</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">continue-on-error</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">continue-on-error</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">exit 1</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">failure()</span><span class="w"> </span><span class="c1"># 成功扱いのため、このステップには入らない。</span>
@@ -35369,8 +35369,8 @@
 <span class="w">      </span><span class="c1"># bot ユーザーが PR 上にコメントなどを送信できるようになる</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Git config</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">git config --local user.email &quot;example@gmail.com&quot;</span>
-<span class="w">          </span><span class="no">git config --local user.name &quot;github-actions&quot;</span>
+<span class="w">          </span><span class="no">git config --local user.email "example@gmail.com"</span>
+<span class="w">          </span><span class="no">git config --local user.name "github-actions"</span>
 <span class="w">          </span><span class="no">git config pull.rebase false</span>
 </code></pre></div>
 <h4 id="uses">▼ uses<a class="headerlink" href="#uses" title="Permanent link">&para;</a></h4>
@@ -35496,7 +35496,7 @@
 <span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./.github/workflows/composite/bar</span>
 </code></pre></div>
 <p>ファイル名は、『<code>action</code>』とする必要がある。</p>
-<div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>Can<span class="s1">&#39;t find &#39;</span>action.yml<span class="s1">&#39;, &#39;</span>action.yaml<span class="err">&#39;</span><span class="w"> </span>...
+<div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>Can<span class="s1">'t find '</span>action.yml<span class="s1">', '</span>action.yaml<span class="err">'</span><span class="w"> </span>...
 </code></pre></div>
 <h4 id="secrets">▼ Secrets は使用不可<a class="headerlink" href="#secrets" title="Permanent link">&para;</a></h4>
 <p>composite では、Secrets を使用できない。</p>
@@ -35516,10 +35516,10 @@
 <div class="highlight"><pre><span></span><code><span class="nt">inputs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 
 <span class="nt">runs</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">using</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;composite&quot;</span>
+<span class="w">  </span><span class="nt">using</span><span class="p">:</span><span class="w"> </span><span class="s">"composite"</span>
 <span class="w">  </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Echo</span>
 <span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash</span>
@@ -35534,7 +35534,7 @@
 <h4 id="checkout">▼ Checkout は使用不可<a class="headerlink" href="#checkout" title="Permanent link">&para;</a></h4>
 <p>チェックアウト処理は定義できない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">runs</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">using</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;composite&quot;</span>
+<span class="w">  </span><span class="nt">using</span><span class="p">:</span><span class="w"> </span><span class="s">"composite"</span>
 <span class="w">  </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout</span><span class="w"> </span><span class="c1"># これはエラーになってしまう。</span>
 <span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
@@ -35546,7 +35546,7 @@
 <h4 id="_8">▼ シェルの種類を要指定<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>もし <code>steps</code> を定義する場合は、<code>shell</code> キーでシェルの種類を指定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">runs</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">using</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;composite&quot;</span>
+<span class="w">  </span><span class="nt">using</span><span class="p">:</span><span class="w"> </span><span class="s">"composite"</span>
 <span class="w">  </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Echo</span>
 <span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash</span><span class="w"> </span><span class="c1"># シェルの種類を設定する。</span>
@@ -35613,7 +35613,7 @@
 <span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Export envs</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">echo &quot;FOO=foo&quot; &gt;&gt; $GITHUB_ENV</span>
+<span class="w">          </span><span class="no">echo "FOO=foo" &gt;&gt; $GITHUB_ENV</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Echo</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">echo ${FOO}</span>
@@ -35665,10 +35665,10 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">inputs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">bar</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 
 <span class="nt">runs</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">using</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;composite&quot;</span>
+<span class="w">  </span><span class="nt">using</span><span class="p">:</span><span class="w"> </span><span class="s">"composite"</span>
 <span class="w">  </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Echo</span>
 <span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash</span>
@@ -35702,10 +35702,10 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">inputs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="c1"># マスキングされ、.yaml ファイルの構文解析でエラーになってしまう</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 
 <span class="nt">runs</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">using</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;composite&quot;</span>
+<span class="w">  </span><span class="nt">using</span><span class="p">:</span><span class="w"> </span><span class="s">"composite"</span>
 <span class="w">  </span><span class="nt">steps</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Echo</span>
 <span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash</span>
@@ -35827,7 +35827,7 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Echo</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">FOO=foo</span>
-<span class="w">          </span><span class="no">echo &quot;::add-mask::${FOO}&quot;</span>
+<span class="w">          </span><span class="no">echo "::add-mask::${FOO}"</span>
 <span class="w">          </span><span class="no">echo ${FOO}</span>
 </code></pre></div>
 <blockquote>
@@ -35848,7 +35848,7 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set output</span>
 <span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_id</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">echo &quot;::set-output name=FOO::foo&quot;</span>
+<span class="w">          </span><span class="no">echo "::set-output name=FOO::foo"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35866,7 +35866,7 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set output</span>
 <span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_id</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">echo &quot;::set-output name=FOO::foo&quot;</span>
+<span class="w">          </span><span class="no">echo "::set-output name=FOO::foo"</span>
 <span class="w">          </span><span class="no">echo ${{ steps.foo_id.outputs.FOO }}</span>
 </code></pre></div>
 <h4 id="step_4">▼ 異なる step 間での共有<a class="headerlink" href="#step_4" title="Permanent link">&para;</a></h4>
@@ -35880,10 +35880,10 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set output</span>
 <span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_id</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">echo &quot;::set-output name=FOO::foo&quot;</span>
+<span class="w">          </span><span class="no">echo "::set-output name=FOO::foo"</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Echo</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">echo &quot;${{ steps.foo_id.outputs.FOO }}&quot;</span>
+<span class="w">          </span><span class="no">echo "${{ steps.foo_id.outputs.FOO }}"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35901,12 +35901,12 @@
 <span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_id</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">FOO=foo</span>
-<span class="w">          </span><span class="no">echo &quot;::add-mask::${FOO}&quot;</span>
-<span class="w">          </span><span class="no">echo &quot;::set-output name=FOO::${FOO}&quot;</span>
+<span class="w">          </span><span class="no">echo "::add-mask::${FOO}"</span>
+<span class="w">          </span><span class="no">echo "::set-output name=FOO::${FOO}"</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Echo</span>
 <span class="w">        </span><span class="c1"># 共有可能。マスキング維持可能。</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">echo &quot;${{ steps.foo_id.outputs.FOO }}&quot;</span>
+<span class="w">          </span><span class="no">echo "${{ steps.foo_id.outputs.FOO }}"</span>
 </code></pre></div>
 <h4 id="job">▼ 異なる job 間での共有<a class="headerlink" href="#job" title="Permanent link">&para;</a></h4>
 <p>入力したパラメーターは、異なる <code>job</code> の間で出力できる。</p>
@@ -35920,7 +35920,7 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set output</span>
 <span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_id</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">echo &quot;::set-output name=FOO::foo&quot;</span>
+<span class="w">          </span><span class="no">echo "::set-output name=FOO::foo"</span>
 <span class="w">    </span><span class="c1"># 後続の job に渡すパラメーター</span>
 <span class="w">    </span><span class="nt">output</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">FOO</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.foo_id.outputs.FOO }}</span>
@@ -35932,7 +35932,7 @@
 <span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Echo</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">echo &quot;${{ needs.foo.outputs.FOO }}&quot;</span>
+<span class="w">          </span><span class="no">echo "${{ needs.foo.outputs.FOO }}"</span>
 </code></pre></div>
 <p>ただし異なる <code>job</code> では、Secrets や <code>add-mask</code> コマンドでマスキングされた値は共有できず、空になってしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
@@ -35945,8 +35945,8 @@
 <span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_id</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">FOO=foo</span>
-<span class="w">          </span><span class="no">echo &quot;::add-mask::${FOO}&quot;</span>
-<span class="w">          </span><span class="no">echo &quot;::set-output name=FOO::${FOO}&quot;</span>
+<span class="w">          </span><span class="no">echo "::add-mask::${FOO}"</span>
+<span class="w">          </span><span class="no">echo "::set-output name=FOO::${FOO}"</span>
 <span class="w">    </span><span class="nt">output</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">FOO</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.foo_id.outputs.FOO }}</span>
 <span class="w">  </span><span class="nt">bar</span><span class="p">:</span>
@@ -35958,7 +35958,7 @@
 <span class="w">      </span><span class="c1"># 空になってしまう。</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Echo</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">echo &quot;${{ needs.foo.outputs.FOO }}&quot;</span>
+<span class="w">          </span><span class="no">echo "${{ needs.foo.outputs.FOO }}"</span>
 </code></pre></div>
 <blockquote>
 <ul>

@@ -34515,7 +34515,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;traceroute 11.0.0.1 -p 80&quot;</span>
+<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">"traceroute 11.0.0.1 -p 80"</span>
 
 traceroute<span class="w"> </span>to<span class="w"> </span><span class="m">11</span>.0.0.1<span class="w"> </span><span class="o">(</span><span class="m">11</span>.0.0.1<span class="o">)</span>,<span class="w"> </span><span class="m">30</span><span class="w"> </span>hops<span class="w"> </span>max,<span class="w"> </span><span class="m">46</span><span class="w"> </span>byte<span class="w"> </span>packets
 <span class="w"> </span><span class="m">1</span><span class="w">  </span>*-*-*-*.prometheus-kube-proxy.kube-system.svc.cluster.local<span class="w"> </span><span class="o">(</span>*.*.*.*<span class="o">)</span><span class="w">    </span><span class="m">0</span>.007<span class="w"> </span>ms<span class="w">  </span><span class="m">0</span>.022<span class="w"> </span>ms<span class="w">  </span><span class="m">0</span>.005<span class="w"> </span>ms
@@ -34525,7 +34525,7 @@ traceroute<span class="w"> </span>to<span class="w"> </span><span class="m">11</
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;traceroute -n 11.0.0.1 -p 80&quot;</span>
+<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">"traceroute -n 11.0.0.1 -p 80"</span>
 
 traceroute<span class="w"> </span>to<span class="w"> </span><span class="m">11</span>.0.0.1<span class="w"> </span><span class="o">(</span><span class="m">11</span>.0.0.1<span class="o">)</span>,<span class="w"> </span><span class="m">30</span><span class="w"> </span>hops<span class="w"> </span>max,<span class="w"> </span><span class="m">46</span><span class="w"> </span>byte<span class="w"> </span>packets
 <span class="w"> </span><span class="m">1</span><span class="w">  </span>*.*.*.*<span class="w">   </span><span class="m">0</span>.007<span class="w"> </span>ms<span class="w">  </span><span class="m">0</span>.022<span class="w"> </span>ms<span class="w">  </span><span class="m">0</span>.005<span class="w"> </span>ms

@@ -36748,7 +36748,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <span class="w">    </span>file://example.json
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># example.json ファイル</span>
-<span class="p p-Indicator">[{</span><span class="s">&quot;DeviceName&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/dev/sda1&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Ebs&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;DeleteOnTermination&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p p-Indicator">}}]</span>
+<span class="p p-Indicator">[{</span><span class="s">"DeviceName"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"/dev/sda1"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"Ebs"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"DeleteOnTermination"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"false"</span><span class="p p-Indicator">}}]</span>
 </code></pre></div>
 <h4 id="_23">▼ 注意点<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
 <p>Amazon EC2 に AutoScaling グループを適用している場合は、AWS EBS ボリュームを永続化しないほうがよいかもしれない。</p>
@@ -37052,22 +37052,22 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <p>ツールを使用して、CIDR が断片化されているかを確認するとよい。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>python3<span class="w"> </span>describe_unused_ips.py<span class="w"> </span>subnet-***
 
-<span class="nv">subnet_id</span><span class="o">=</span><span class="s1">&#39;subnet-***&#39;</span><span class="w"> </span><span class="nv">mode</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span>
-<span class="nv">cidr</span><span class="o">=</span><span class="s1">&#39;*.*.*.*/*&#39;</span>
-<span class="nv">cidr_ips</span><span class="o">=[</span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span>...<span class="o">]</span>
+<span class="nv">subnet_id</span><span class="o">=</span><span class="s1">'subnet-***'</span><span class="w"> </span><span class="nv">mode</span><span class="o">=</span><span class="s1">'normal'</span>
+<span class="nv">cidr</span><span class="o">=</span><span class="s1">'*.*.*.*/*'</span>
+<span class="nv">cidr_ips</span><span class="o">=[</span><span class="s1">'*.*.*.*'</span>,<span class="w"> </span><span class="s1">'*.*.*.*'</span>,<span class="w"> </span>...<span class="o">]</span>
 
 -----------
 
 <span class="c1"># サブネットで予約したCIDRのうちで、実際に予約済みのIPアドレス</span>
-<span class="nv">reserved_ips</span><span class="o">=[</span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span>...<span class="o">]</span>
+<span class="nv">reserved_ips</span><span class="o">=[</span><span class="s1">'*.*.*.*'</span>,<span class="w"> </span><span class="s1">'*.*.*.*'</span>,<span class="w"> </span>...<span class="o">]</span>
 -----------
 
 <span class="c1"># サブネット内で使用中のIPアドレス</span>
-<span class="nv">used_ips</span><span class="o">=[</span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span>...<span class="o">]</span>
+<span class="nv">used_ips</span><span class="o">=[</span><span class="s1">'*.*.*.*'</span>,<span class="w"> </span><span class="s1">'*.*.*.*'</span>,<span class="w"> </span>...<span class="o">]</span>
 -----------
 
 <span class="c1"># サブネット内で未使用のIPアドレス</span>
-<span class="nv">unused_ips</span><span class="o">=[</span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span>...<span class="o">]</span>
+<span class="nv">unused_ips</span><span class="o">=[</span><span class="s1">'*.*.*.*'</span>,<span class="w"> </span><span class="s1">'*.*.*.*'</span>,<span class="w"> </span>...<span class="o">]</span>
 -----------
 
 <span class="nv">cidr</span><span class="o">=</span>*.*.*.*/*<span class="w"> </span><span class="nv">cidr_ips</span><span class="o">=</span>&lt;全てのIPアドレス数&gt;<span class="w"> </span><span class="nv">reserved</span><span class="o">=</span>&lt;予約されたIPアドレス数&gt;<span class="w"> </span><span class="nv">used</span><span class="o">=</span>&lt;使用中のIPアドレス数&gt;<span class="w"> </span><span class="nv">unused</span><span class="o">=</span>&lt;未使用のIPアドレス数&gt;

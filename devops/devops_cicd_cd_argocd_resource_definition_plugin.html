@@ -34977,7 +34977,7 @@ argocd@cmp-server:/usr/local/bin<span class="o">]</span><span class="w"> </span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/argocd/cmp-server/plugins</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plugins</span>
 <span class="w">    </span><span class="c1"># ConfigManagementPlugin に定義した処理を実行するサイドカー</span>
-<span class="w">    </span><span class="c1"># argocd-cmp-server コマンドは &quot;plugin.yaml&quot; の名前しか指定できないため、ConfigManagementPlugin ごとにサイドカーを作成する</span>
+<span class="w">    </span><span class="c1"># argocd-cmp-server コマンドは "plugin.yaml" の名前しか指定できないため、ConfigManagementPlugin ごとにサイドカーを作成する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-plugin-cmp-server</span>
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu:latest</span>
 <span class="w">      </span><span class="nt">command</span><span class="p">:</span>
@@ -34996,7 +34996,7 @@ argocd@cmp-server:/usr/local/bin<span class="o">]</span><span class="w"> </span>
 <span class="w">        </span><span class="c1"># リポジトリから取得したクローンを保管するディレクトリをコンテナにマウントする</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmp</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp</span>
-<span class="w">        </span><span class="c1"># ConfigManagementPlugin のマニフェスト (foo-plugin.yaml) を &quot;plugin.yaml&quot; の名前でコンテナにマウントする</span>
+<span class="w">        </span><span class="c1"># ConfigManagementPlugin のマニフェスト (foo-plugin.yaml) を "plugin.yaml" の名前でコンテナにマウントする</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-cmp-cm</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/argocd/cmp-server/config/plugin.yaml</span>
 <span class="w">          </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-plugin.yaml</span>
@@ -35053,26 +35053,26 @@ argocd@cmp-server:/usr/local/bin<span class="o">]</span><span class="w"> </span>
 <p><code>argocd-cmp-server</code> コマンドは、実行に成功すると Volume に Unix ドメインソケットファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>logs<span class="w"> </span>argocd-repo-server<span class="w"> </span>-c<span class="w"> </span>foo-plugin-cmp-server
 
-<span class="nv">time</span><span class="o">=</span><span class="s2">&quot;2023-04-17T12:35:39Z&quot;</span><span class="w"> </span><span class="nv">level</span><span class="o">=</span>info<span class="w"> </span><span class="nv">msg</span><span class="o">=</span><span class="s2">&quot;argocd-cmp-server v2.6.7+5bcd846 serving on /home/argocd/cmp-server/plugins/foo-plugin.sock&quot;</span>
+<span class="nv">time</span><span class="o">=</span><span class="s2">"2023-04-17T12:35:39Z"</span><span class="w"> </span><span class="nv">level</span><span class="o">=</span>info<span class="w"> </span><span class="nv">msg</span><span class="o">=</span><span class="s2">"argocd-cmp-server v2.6.7+5bcd846 serving on /home/argocd/cmp-server/plugins/foo-plugin.sock"</span>
 
 $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>argocd-repo-server<span class="w"> </span>-c<span class="w"> </span>foo-plugin-cmp-server<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;ls /home/argocd/cmp-server/plugins/&quot;</span>
+<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">"ls /home/argocd/cmp-server/plugins/"</span>
 
 foo-plugin.sock
 </code></pre></div>
 <p>なお、<code>plugin.yaml</code> ファイルと別のディレクトリに配置したい場合は、<code>argocd-cmp-server</code> コマンドの <code>--config-dir-path</code> オプションを使用する (<code>plugin.yaml</code>
 ファイルは、これ以外の名前を設定できない)。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>argocd-repo-server<span class="w"> </span>-c<span class="w"> </span>foo-plugin-cmp-server<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;argocd-cmp-server -h&quot;</span>
+<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">"argocd-cmp-server -h"</span>
 
 Usage:
 <span class="w">  </span>argocd-cmp-server<span class="w"> </span><span class="o">[</span>flags<span class="o">]</span>
 
 Flags:
-<span class="w">      </span>--config-dir-path<span class="w"> </span>string<span class="w">   </span>Config<span class="w"> </span>management<span class="w"> </span>plugin<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span>location,<span class="w"> </span>Default<span class="w"> </span>is<span class="w"> </span><span class="s1">&#39;/home/argocd/cmp-server/config/&#39;</span><span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="s2">&quot;/home/argocd/cmp-server/config&quot;</span><span class="o">)</span>
+<span class="w">      </span>--config-dir-path<span class="w"> </span>string<span class="w">   </span>Config<span class="w"> </span>management<span class="w"> </span>plugin<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span>location,<span class="w"> </span>Default<span class="w"> </span>is<span class="w"> </span><span class="s1">'/home/argocd/cmp-server/config/'</span><span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="s2">"/home/argocd/cmp-server/config"</span><span class="o">)</span>
 <span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">                     </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>argocd-cmp-server
-<span class="w">      </span>--logformat<span class="w"> </span>string<span class="w">         </span>Set<span class="w"> </span>the<span class="w"> </span>logging<span class="w"> </span>format.<span class="w"> </span>One<span class="w"> </span>of:<span class="w"> </span>text<span class="p">|</span>json<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="o">)</span>
-<span class="w">      </span>--loglevel<span class="w"> </span>string<span class="w">          </span>Set<span class="w"> </span>the<span class="w"> </span>logging<span class="w"> </span>level.<span class="w"> </span>One<span class="w"> </span>of:<span class="w"> </span>debug<span class="p">|</span>info<span class="p">|</span>warn<span class="p">|</span>error<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="s2">&quot;info&quot;</span><span class="o">)</span>
+<span class="w">      </span>--logformat<span class="w"> </span>string<span class="w">         </span>Set<span class="w"> </span>the<span class="w"> </span>logging<span class="w"> </span>format.<span class="w"> </span>One<span class="w"> </span>of:<span class="w"> </span>text<span class="p">|</span>json<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="s2">"text"</span><span class="o">)</span>
+<span class="w">      </span>--loglevel<span class="w"> </span>string<span class="w">          </span>Set<span class="w"> </span>the<span class="w"> </span>logging<span class="w"> </span>level.<span class="w"> </span>One<span class="w"> </span>of:<span class="w"> </span>debug<span class="p">|</span>info<span class="p">|</span>warn<span class="p">|</span>error<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="s2">"info"</span><span class="o">)</span>
 <span class="w">      </span>--otlp-address<span class="w"> </span>string<span class="w">      </span>OpenTelemetry<span class="w"> </span>collector<span class="w"> </span>address<span class="w"> </span>to<span class="w"> </span>send<span class="w"> </span>traces<span class="w"> </span>to
 </code></pre></div>
 <blockquote>
@@ -35114,7 +35114,7 @@ Flags:
 <span class="w">      </span><span class="no"># マニフェストの作成前に必要なファイル (例：Chart.yaml など) がリポジトリにあるかの確認処理を定義する</span>
 <span class="w">      </span><span class="no">discover:</span>
 <span class="w">        </span><span class="no">find:</span>
-<span class="w">          </span><span class="no">glob: &quot;&lt;正規表現&gt;&quot; </span>
+<span class="w">          </span><span class="no">glob: "&lt;正規表現&gt;" </span>
 <span class="w">      </span><span class="no"># マニフェストの作成前に実行したい処理を定義する</span>
 <span class="w">      </span><span class="no">init:</span>
 <span class="w">        </span><span class="no">command: </span>
@@ -35466,9 +35466,9 @@ Flags:
 <span class="w">      </span><span class="nt">args</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">apk --update add wget</span>
-<span class="w">          </span><span class="no">ARGOCD_VERSION=$(curl -s https://raw.githubusercontent.com/argoproj/argo-helm/argo-cd-&lt;バージョン&gt;/charts/argo-cd/Chart.yaml | grep appVersion | sed -e &#39;s/^[^: ]*: //&#39;)</span>
-<span class="w">          </span><span class="no">HELM_RECOMMENDED_VERSION=$(curl -s https://raw.githubusercontent.com/argoproj/argo-cd/&quot;${ARGOCD_VERSION}&quot;/hack/tool-versions.sh | grep helm3_version | sed -e &#39;s/^[^=]*=//&#39;)</span>
-<span class="w">          </span><span class="no">wget -q https://get.helm.sh/helm-v&quot;${HELM_RECOMMENDED_VERSION}&quot;-linux-amd64.tar.gz</span>
+<span class="w">          </span><span class="no">ARGOCD_VERSION=$(curl -s https://raw.githubusercontent.com/argoproj/argo-helm/argo-cd-&lt;バージョン&gt;/charts/argo-cd/Chart.yaml | grep appVersion | sed -e 's/^[^: ]*: //')</span>
+<span class="w">          </span><span class="no">HELM_RECOMMENDED_VERSION=$(curl -s https://raw.githubusercontent.com/argoproj/argo-cd/"${ARGOCD_VERSION}"/hack/tool-versions.sh | grep helm3_version | sed -e 's/^[^=]*=//')</span>
+<span class="w">          </span><span class="no">wget -q https://get.helm.sh/helm-v"${HELM_RECOMMENDED_VERSION}"-linux-amd64.tar.gz</span>
 <span class="w">          </span><span class="no">tar -xvf helm-&lt;バージョン&gt;-linux-amd64.tar.gz</span>
 <span class="w">          </span><span class="no">cp ./linux-amd64/helm /custom-tools/</span>
 <span class="w">          </span><span class="no">chmod +x /custom-tools</span>
@@ -35564,7 +35564,7 @@ Flags:
 <span class="w">        </span><span class="no">args:</span>
 <span class="w">          </span><span class="no">- &gt;</span>
 <span class="w">            </span><span class="no">set -euo pipefail;</span>
-<span class="w">            </span><span class="no">if [ -z &quot;$VALUES&quot; ];then</span>
+<span class="w">            </span><span class="no">if [ -z "$VALUES" ];then</span>
 <span class="w">              </span><span class="no">helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE;</span>
 <span class="w">            </span><span class="no">else              </span>
 <span class="w">              </span><span class="no">helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE -f $ARGOCD_ENV_VALUES_FILE;</span>
@@ -35601,10 +35601,10 @@ Flags:
 <span class="w">        </span><span class="no">args:</span>
 <span class="w">          </span><span class="no">- &gt;</span>
 <span class="w">            </span><span class="no">set -euo pipefail;</span>
-<span class="w">            </span><span class="no">if [ -z &quot;$VALUES&quot; ];then</span>
-<span class="w">              </span><span class="no">helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE | sed &#39;$d&#39;;</span>
+<span class="w">            </span><span class="no">if [ -z "$VALUES" ];then</span>
+<span class="w">              </span><span class="no">helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE | sed '$d';</span>
 <span class="w">            </span><span class="no">else              </span>
-<span class="w">              </span><span class="no">helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE -f $ARGOCD_ENV_VALUES_FILE | sed &#39;$d&#39;;</span>
+<span class="w">              </span><span class="no">helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE -f $ARGOCD_ENV_VALUES_FILE | sed '$d';</span>
 <span class="w">            </span><span class="no">fi</span>
 </code></pre></div>
 <blockquote>
@@ -35663,7 +35663,7 @@ Flags:
 <div class="highlight"><pre><span></span><code><span class="nn">---</span>
 <span class="nt">creation_rules</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;AWS KMSのARN&gt;</span>
-<span class="w">    </span><span class="nt">encrypted_regex</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;^secureJsonData$&quot;</span>
+<span class="w">    </span><span class="nt">encrypted_regex</span><span class="p">:</span><span class="w"> </span><span class="s">"^secureJsonData$"</span>
 </code></pre></div>
 <p>helm-secrets プラグインを使用するために、<code>.spec.source.helm.valueFiles</code> キー配下で <code>secrets://&lt;secretsファイル&gt;</code> を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>

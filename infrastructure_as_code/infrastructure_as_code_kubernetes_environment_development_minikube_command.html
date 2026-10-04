@@ -35018,12 +35018,12 @@ foo-ingress<span class="w">   </span>nginx<span class="w">   </span>*<span class
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>docker-env
 
-<span class="nb">export</span><span class="w"> </span><span class="nv">DOCKER_TLS_VERIFY</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">DOCKER_HOST</span><span class="o">=</span><span class="s2">&quot;tcp://127.0.0.1:52838&quot;</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">DOCKER_CERT_PATH</span><span class="o">=</span><span class="s2">&quot;/Users/*****/.minikube/certs&quot;</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">MINIKUBE_ACTIVE_DOCKERD</span><span class="o">=</span><span class="s2">&quot;minikube&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DOCKER_TLS_VERIFY</span><span class="o">=</span><span class="s2">"1"</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DOCKER_HOST</span><span class="o">=</span><span class="s2">"tcp://127.0.0.1:52838"</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DOCKER_CERT_PATH</span><span class="o">=</span><span class="s2">"/Users/*****/.minikube/certs"</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MINIKUBE_ACTIVE_DOCKERD</span><span class="o">=</span><span class="s2">"minikube"</span>
 
-<span class="c1"># To point your shell to minikube&#39;s docker-daemon, run:</span>
+<span class="c1"># To point your shell to minikube's docker-daemon, run:</span>
 <span class="c1"># eval $(minikube -p minikube docker-env)</span>
 
 $<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="k">$(</span>minikube<span class="w"> </span>-p<span class="w"> </span>minikube<span class="w"> </span>docker-env<span class="k">)</span>
@@ -35066,28 +35066,28 @@ $<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><sp
 
 <span class="c1"># kubectlコマンドのバージョン</span>
 Client<span class="w"> </span>Version:<span class="w"> </span>version.Info<span class="o">{</span>
-<span class="w">  </span>Major:<span class="s2">&quot;1&quot;</span>,
-<span class="w">  </span>Minor:<span class="s2">&quot;22&quot;</span>,
-<span class="w">  </span>GitVersion:<span class="s2">&quot;v1.22.3&quot;</span>,
-<span class="w">  </span>GitCommit:<span class="s2">&quot;*****&quot;</span>,
-<span class="w">  </span>GitTreeState:<span class="s2">&quot;clean&quot;</span>,
-<span class="w">  </span>BuildDate:<span class="s2">&quot;2021-11-17T15:41:42Z&quot;</span>,
-<span class="w">  </span>GoVersion:<span class="s2">&quot;go1.16.10&quot;</span>,
-<span class="w">  </span>Compiler:<span class="s2">&quot;gc&quot;</span>,
-<span class="w">  </span>Platform:<span class="s2">&quot;darwin/amd64&quot;</span>
+<span class="w">  </span>Major:<span class="s2">"1"</span>,
+<span class="w">  </span>Minor:<span class="s2">"22"</span>,
+<span class="w">  </span>GitVersion:<span class="s2">"v1.22.3"</span>,
+<span class="w">  </span>GitCommit:<span class="s2">"*****"</span>,
+<span class="w">  </span>GitTreeState:<span class="s2">"clean"</span>,
+<span class="w">  </span>BuildDate:<span class="s2">"2021-11-17T15:41:42Z"</span>,
+<span class="w">  </span>GoVersion:<span class="s2">"go1.16.10"</span>,
+<span class="w">  </span>Compiler:<span class="s2">"gc"</span>,
+<span class="w">  </span>Platform:<span class="s2">"darwin/amd64"</span>
 <span class="o">}</span>
 
 <span class="c1"># kube-apiserverのバージョン</span>
 Server<span class="w"> </span>Version:<span class="w"> </span>version.Info<span class="o">{</span>
-<span class="w">  </span>Major:<span class="s2">&quot;1&quot;</span>,
-<span class="w">  </span>Minor:<span class="s2">&quot;22&quot;</span>,
-<span class="w">  </span>GitVersion:<span class="s2">&quot;v1.22.3&quot;</span>,<span class="w"> </span><span class="c1"># Amazon EKSであれば、『v1.22.10-eks-84b4fe6』になっている。</span>
-<span class="w">  </span>GitCommit:<span class="s2">&quot;*****&quot;</span>,
-<span class="w">  </span>GitTreeState:<span class="s2">&quot;clean&quot;</span>,
-<span class="w">  </span>BuildDate:<span class="s2">&quot;2021-11-17T15:41:42Z&quot;</span>,
-<span class="w">  </span>GoVersion:<span class="s2">&quot;go1.16.9&quot;</span>,
-<span class="w">  </span>Compiler:<span class="s2">&quot;gc&quot;</span>,
-<span class="w">  </span>Platform:<span class="s2">&quot;linux/amd64&quot;</span>
+<span class="w">  </span>Major:<span class="s2">"1"</span>,
+<span class="w">  </span>Minor:<span class="s2">"22"</span>,
+<span class="w">  </span>GitVersion:<span class="s2">"v1.22.3"</span>,<span class="w"> </span><span class="c1"># Amazon EKSであれば、『v1.22.10-eks-84b4fe6』になっている。</span>
+<span class="w">  </span>GitCommit:<span class="s2">"*****"</span>,
+<span class="w">  </span>GitTreeState:<span class="s2">"clean"</span>,
+<span class="w">  </span>BuildDate:<span class="s2">"2021-11-17T15:41:42Z"</span>,
+<span class="w">  </span>GoVersion:<span class="s2">"go1.16.9"</span>,
+<span class="w">  </span>Compiler:<span class="s2">"gc"</span>,
+<span class="w">  </span>Platform:<span class="s2">"linux/amd64"</span>
 <span class="o">}</span>
 </code></pre></div>
 <blockquote>
@@ -35159,8 +35159,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </
 <p>Minikube の資格情報が誤っている場合、正しく修正する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>update-context
 
-🎉<span class="w">  </span><span class="s2">&quot;minikube&quot;</span><span class="w"> </span>context<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>updated<span class="w"> </span>to<span class="w"> </span>point<span class="w"> </span>to<span class="w"> </span><span class="m">192</span>.168.64.16:8443
-💗<span class="w">  </span>Current<span class="w"> </span>context<span class="w"> </span>is<span class="w"> </span><span class="s2">&quot;minikube&quot;</span>
+🎉<span class="w">  </span><span class="s2">"minikube"</span><span class="w"> </span>context<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>updated<span class="w"> </span>to<span class="w"> </span>point<span class="w"> </span>to<span class="w"> </span><span class="m">192</span>.168.64.16:8443
+💗<span class="w">  </span>Current<span class="w"> </span>context<span class="w"> </span>is<span class="w"> </span><span class="s2">"minikube"</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35273,10 +35273,10 @@ docker@minikube:~$<span class="w"> </span>sudo<span class="w"> </span>apt<span c
 $<span class="w"> </span>minikube<span class="w"> </span>ssh
 <span class="w">                         </span>_<span class="w">             </span>_
 <span class="w">            </span>_<span class="w">         </span>_<span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="o">)</span><span class="w">           </span><span class="o">(</span><span class="w"> </span><span class="o">)</span>
-<span class="w">  </span>___<span class="w"> </span>___<span class="w">  </span><span class="o">(</span>_<span class="o">)</span><span class="w">  </span>___<span class="w">  </span><span class="o">(</span>_<span class="o">)</span><span class="p">|</span><span class="w"> </span><span class="p">|</span>/<span class="s1">&#39;)  _   _ | |_      __</span>
-<span class="s1">/&#39;</span><span class="w"> </span>_<span class="w"> </span><span class="sb">`</span><span class="w"> </span>_<span class="w"> </span><span class="sb">`</span><span class="se">\|</span><span class="w"> </span><span class="p">|</span>/<span class="s1">&#39; _ `\| || , &lt;  ( ) ( )| &#39;</span>_<span class="sb">`</span><span class="se">\ </span><span class="w"> </span>/<span class="s1">&#39;__`\</span>
+<span class="w">  </span>___<span class="w"> </span>___<span class="w">  </span><span class="o">(</span>_<span class="o">)</span><span class="w">  </span>___<span class="w">  </span><span class="o">(</span>_<span class="o">)</span><span class="p">|</span><span class="w"> </span><span class="p">|</span>/<span class="s1">')  _   _ | |_      __</span>
+<span class="s1">/'</span><span class="w"> </span>_<span class="w"> </span><span class="sb">`</span><span class="w"> </span>_<span class="w"> </span><span class="sb">`</span><span class="se">\|</span><span class="w"> </span><span class="p">|</span>/<span class="s1">' _ `\| || , &lt;  ( ) ( )| '</span>_<span class="sb">`</span><span class="se">\ </span><span class="w"> </span>/<span class="s1">'__`\</span>
 <span class="s1">| ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )(  ___/</span>
-<span class="s1">(_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/&#39;</span><span class="o">(</span>_,__/<span class="err">&#39;</span><span class="sb">`</span><span class="se">\_</span>___<span class="o">)</span>
+<span class="s1">(_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/'</span><span class="o">(</span>_,__/<span class="err">'</span><span class="sb">`</span><span class="se">\_</span>___<span class="o">)</span>
 
 
 <span class="c1"># ワーキングディレクトリ</span>
@@ -35287,10 +35287,10 @@ $<span class="w"> </span><span class="nb">pwd</span>
 $<span class="w"> </span>minikube<span class="w"> </span>ssh
 <span class="w">                         </span>_<span class="w">             </span>_
 <span class="w">            </span>_<span class="w">         </span>_<span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="o">)</span><span class="w">           </span><span class="o">(</span><span class="w"> </span><span class="o">)</span>
-<span class="w">  </span>___<span class="w"> </span>___<span class="w">  </span><span class="o">(</span>_<span class="o">)</span><span class="w">  </span>___<span class="w">  </span><span class="o">(</span>_<span class="o">)</span><span class="p">|</span><span class="w"> </span><span class="p">|</span>/<span class="s1">&#39;)  _   _ | |_      __</span>
-<span class="s1">/&#39;</span><span class="w"> </span>_<span class="w"> </span><span class="sb">`</span><span class="w"> </span>_<span class="w"> </span><span class="sb">`</span><span class="se">\|</span><span class="w"> </span><span class="p">|</span>/<span class="s1">&#39; _ `\| || , &lt;  ( ) ( )| &#39;</span>_<span class="sb">`</span><span class="se">\ </span><span class="w"> </span>/<span class="s1">&#39;__`\</span>
+<span class="w">  </span>___<span class="w"> </span>___<span class="w">  </span><span class="o">(</span>_<span class="o">)</span><span class="w">  </span>___<span class="w">  </span><span class="o">(</span>_<span class="o">)</span><span class="p">|</span><span class="w"> </span><span class="p">|</span>/<span class="s1">')  _   _ | |_      __</span>
+<span class="s1">/'</span><span class="w"> </span>_<span class="w"> </span><span class="sb">`</span><span class="w"> </span>_<span class="w"> </span><span class="sb">`</span><span class="se">\|</span><span class="w"> </span><span class="p">|</span>/<span class="s1">' _ `\| || , &lt;  ( ) ( )| '</span>_<span class="sb">`</span><span class="se">\ </span><span class="w"> </span>/<span class="s1">'__`\</span>
 <span class="s1">| ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )(  ___/</span>
-<span class="s1">(_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/&#39;</span><span class="o">(</span>_,__/<span class="err">&#39;</span><span class="sb">`</span><span class="se">\_</span>___<span class="o">)</span>
+<span class="s1">(_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/'</span><span class="o">(</span>_,__/<span class="err">'</span><span class="sb">`</span><span class="se">\_</span>___<span class="o">)</span>
 
 
 <span class="c1"># ワーキングディレクトリ</span>
@@ -35358,7 +35358,7 @@ drwx------<span class="w"> </span><span class="m">2</span><span class="w"> </spa
 🔎<span class="w">  </span>Verifying<span class="w"> </span>Kubernetes<span class="w"> </span>components...
 <span class="w">    </span>▪<span class="w"> </span>Using<span class="w"> </span>image<span class="w"> </span>gcr.io/k8s-minikube/storage-provisioner:v5
 🌟<span class="w">  </span>Enabled<span class="w"> </span>addons:<span class="w"> </span>storage-provisioner,<span class="w"> </span>default-storageclass
-🏄<span class="w">  </span>Done!<span class="w"> </span>kubectl<span class="w"> </span>is<span class="w"> </span>now<span class="w"> </span>configured<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="s2">&quot;minikube&quot;</span><span class="w"> </span>cluster<span class="w"> </span>and<span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="w"> </span>namespace<span class="w"> </span>by<span class="w"> </span>default
+🏄<span class="w">  </span>Done!<span class="w"> </span>kubectl<span class="w"> </span>is<span class="w"> </span>now<span class="w"> </span>configured<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="s2">"minikube"</span><span class="w"> </span>cluster<span class="w"> </span>and<span class="w"> </span><span class="s2">"default"</span><span class="w"> </span>namespace<span class="w"> </span>by<span class="w"> </span>default
 </code></pre></div>
 <p>コントロールプレーン Node が作成されていることを確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>node
@@ -35486,7 +35486,7 @@ $<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> <
 <h4 id="-mount-mount-string">▼ --mount、--mount--string<a class="headerlink" href="#-mount-mount-string" title="Permanent link">&para;</a></h4>
 <p>ホストとゲスト仮想環境間のマウントディレクトリを指定しつつ、<code>start</code> コマンドを実行する。</p>
 <p><strong>＊例＊</strong></p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> </span>--mount<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--mount-string<span class="o">=</span><span class="s2">&quot;/Users/hiroki.hasegawa/projects/foo:/data&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> </span>--mount<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--mount-string<span class="o">=</span><span class="s2">"/Users/hiroki.hasegawa/projects/foo:/data"</span>
 </code></pre></div>
 <h4 id="-nodes">▼ --nodes<a class="headerlink" href="#-nodes" title="Permanent link">&para;</a></h4>
 <p>作成する Node 数を指定し、<code>start</code> コマンドを実行する。</p>
@@ -35546,7 +35546,7 @@ nginx-deployment-*****<span class="w">   </span><span class="m">1</span>/1<span 
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> </span>--profile<span class="w"> </span>foo
 
 $<span class="w"> </span>kubectl<span class="w"> </span>config<span class="w"> </span>use-context<span class="w"> </span>foo
-Switched<span class="w"> </span>to<span class="w"> </span>context<span class="w"> </span><span class="s2">&quot;foo&quot;</span>.
+Switched<span class="w"> </span>to<span class="w"> </span>context<span class="w"> </span><span class="s2">"foo"</span>.
 
 $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>nodes
 

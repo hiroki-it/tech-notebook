@@ -35241,7 +35241,7 @@ $<span class="w"> </span>asdf<span class="w"> </span>install
 <p>補足として、もし CRD をインストールする前にカスタムリソースをインストールしようとすると、カスタムリソースを定義できずエラーになってしまう。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>unable<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>kubernetes<span class="w"> </span>objects<span class="w"> </span>from<span class="w"> </span>release<span class="w"> </span>manifest:<span class="w"> </span><span class="o">[</span>unable<span class="w"> </span>to<span class="w"> </span>recognize<span class="w"> </span><span class="s2">&quot;&quot;</span>:<span class="w"> </span>no<span class="w"> </span>matches<span class="w"> </span><span class="k">for</span><span class="w"> </span>kind<span class="w"> </span><span class="s2">&quot;&lt;カスタムリソース名&gt;&gt;&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>version<span class="w"> </span><span class="s2">&quot;&lt;カスタムリソースのAPIグループ&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>unable<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>kubernetes<span class="w"> </span>objects<span class="w"> </span>from<span class="w"> </span>release<span class="w"> </span>manifest:<span class="w"> </span><span class="o">[</span>unable<span class="w"> </span>to<span class="w"> </span>recognize<span class="w"> </span><span class="s2">""</span>:<span class="w"> </span>no<span class="w"> </span>matches<span class="w"> </span><span class="k">for</span><span class="w"> </span>kind<span class="w"> </span><span class="s2">"&lt;カスタムリソース名&gt;&gt;"</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>version<span class="w"> </span><span class="s2">"&lt;カスタムリソースのAPIグループ&gt;"</span>
 </code></pre></div>
 <dl>
 <dt><code>(4)</code></dt>
@@ -35278,11 +35278,11 @@ $<span class="w"> </span>asdf<span class="w"> </span>install
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">best-values-example</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">One of the best values parsing example charts here, exhibits several more complicated examples</span>
-<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.2.0&quot;</span>
-<span class="nt">home</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://github.com/norwoodj/helm-docs/tree/master/example-charts/best-values-example&quot;</span>
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"0.2.0"</span>
+<span class="nt">home</span><span class="p">:</span><span class="w"> </span><span class="s">"https://github.com/norwoodj/helm-docs/tree/master/example-charts/best-values-example"</span>
 <span class="nt">sources</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">[</span>
-<span class="w">    </span><span class="s">&quot;https://github.com/norwoodj/helm-docs/tree/master/example-charts/best-values-example&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="s">"https://github.com/norwoodj/helm-docs/tree/master/example-charts/best-values-example"</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="p p-Indicator">]</span>
 <span class="nt">engine</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gotpl</span>
 <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application</span>
@@ -35312,14 +35312,14 @@ One of the best values parsing example charts here, exhibits several more compli
 
 | Key                          | Type   | Default                                                 | Description                                                                                                        |
 | ---------------------------- | ------ | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| config.databasesToCreate[0]  | string | <span class="sb">`&quot;postgresql&quot;`</span>                                          | default database for storage of database metadata                                                                  |
-| config.databasesToCreate[1]  | string | <span class="sb">`&quot;hashbash&quot;`</span>                                            | database for the [<span class="nt">hashbash</span>](<span class="na">https://github.com/norwoodj/hashbash</span>) project                                          |
-| config.usersToCreate[0]      | object | <span class="sb">`{&quot;admin&quot;:true,&quot;name&quot;:&quot;root&quot;}`</span>                          | admin user                                                                                                         |
-| config.usersToCreate[1]      | object | <span class="sb">`{&quot;name&quot;:&quot;hashbash&quot;,&quot;readwriteDatabases&quot;:[&quot;hashbash&quot;]}`</span> | user with access to the database with the same name                                                                |
-| statefulset.extraVolumes     | list   | <span class="sb">`[{&quot;emptyDir&quot;:{},&quot;name&quot;:&quot;data&quot;}]`</span>                       | Additional volumes to be mounted into the database container                                                       |
-| statefulset.image.repository | string | <span class="sb">`&quot;jnorwood/postgresq&quot;`</span>                                  | Image to use for deploying, must support an entrypoint which creates users/databases from appropriate config files |
-| statefulset.image.tag        | string | <span class="sb">`&quot;11&quot;`</span>                                                  |                                                                                                                    |
-| statefulset.livenessProbe    | object | <span class="sb">`{&quot;enabled&quot;:false}`</span>                                     | Configure the healthcheck for the database                                                                         |
+| config.databasesToCreate[0]  | string | <span class="sb">`"postgresql"`</span>                                          | default database for storage of database metadata                                                                  |
+| config.databasesToCreate[1]  | string | <span class="sb">`"hashbash"`</span>                                            | database for the [<span class="nt">hashbash</span>](<span class="na">https://github.com/norwoodj/hashbash</span>) project                                          |
+| config.usersToCreate[0]      | object | <span class="sb">`{"admin":true,"name":"root"}`</span>                          | admin user                                                                                                         |
+| config.usersToCreate[1]      | object | <span class="sb">`{"name":"hashbash","readwriteDatabases":["hashbash"]}`</span> | user with access to the database with the same name                                                                |
+| statefulset.extraVolumes     | list   | <span class="sb">`[{"emptyDir":{},"name":"data"}]`</span>                       | Additional volumes to be mounted into the database container                                                       |
+| statefulset.image.repository | string | <span class="sb">`"jnorwood/postgresq"`</span>                                  | Image to use for deploying, must support an entrypoint which creates users/databases from appropriate config files |
+| statefulset.image.tag        | string | <span class="sb">`"11"`</span>                                                  |                                                                                                                    |
+| statefulset.livenessProbe    | object | <span class="sb">`{"enabled":false}`</span>                                     | Configure the healthcheck for the database                                                                         |
 | statefulset.podLabels        | object | <span class="sb">`{}`</span>                                                    | The labels to be applied to instances of the database                                                              |
 
 ---

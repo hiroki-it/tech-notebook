@@ -34191,20 +34191,20 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ISTIO_CPU_LIMIT</span>
 <span class="w">          </span><span class="nt">valueFrom</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">resourceFieldRef</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">divisor</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0&quot;</span>
+<span class="w">              </span><span class="nt">divisor</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
 <span class="w">              </span><span class="nt">resource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">limits.cpu</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PROXY_CONFIG</span>
 <span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">            </span><span class="no">{&quot;discoveryAddress&quot;:&quot;istiod-1-24-2.istio-system.svc:15012&quot;,&quot;holdApplicationUntilProxyStarts&quot;:true}</span>
+<span class="w">            </span><span class="no">{"discoveryAddress":"istiod-1-24-2.istio-system.svc:15012","holdApplicationUntilProxyStarts":true}</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GOMEMLIMIT</span>
 <span class="w">          </span><span class="nt">valueFrom</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">resourceFieldRef</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">divisor</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0&quot;</span>
+<span class="w">              </span><span class="nt">divisor</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
 <span class="w">              </span><span class="nt">resource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">limits.memory</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GOMAXPROCS</span>
 <span class="w">          </span><span class="nt">valueFrom</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">resourceFieldRef</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">divisor</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0&quot;</span>
+<span class="w">              </span><span class="nt">divisor</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span>
 <span class="w">              </span><span class="nt">resource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">limits.cpu</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ISTIO_META_CLUSTER_ID</span>
 <span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kubernetes</span>
@@ -34241,7 +34241,7 @@
 <span class="w">        </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"2"</span>
 <span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Gi</span>
 <span class="w">        </span><span class="nt">requests</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100m</span>

@@ -34399,8 +34399,8 @@
 <span class="w">        </span><span class="c1"># 値が長くなるため、『&gt;-』で改行すると良い。</span>
 <span class="w">        </span><span class="c1"># Prometheus のレコーディングルール (node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate) を PromQL で使用する。</span>
 <span class="w">        </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
-<span class="w">          </span><span class="no">max(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=&quot;foo-namespace&quot;, pod=~&quot;foo-pod.*&quot;, container=&quot;foo-container&quot;}) /</span>
-<span class="w">          </span><span class="no">min(kube_pod_container_resource_limits{namespace=&quot;foo-namespace&quot;, pod=~&quot;foo-pod.*&quot;,resource=&quot;cpu&quot;,container=&quot;foo-container&quot;})</span>
+<span class="w">          </span><span class="no">max(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace="foo-namespace", pod=~"foo-pod.*", container="foo-container"}) /</span>
+<span class="w">          </span><span class="no">min(kube_pod_container_resource_limits{namespace="foo-namespace", pod=~"foo-pod.*",resource="cpu",container="foo-container"})</span>
 <span class="w">          </span><span class="no">&gt; 0.7</span>
 <span class="w">        </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1m</span>
 <span class="w">        </span><span class="nt">labels</span><span class="p">:</span>
@@ -34416,8 +34416,8 @@
 <span class="w">    </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PodMemoryUtilized</span>
 <span class="w">        </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
-<span class="w">          </span><span class="no">max(container_memory_working_set_bytes{namespace=&quot;foo-namespace&quot;, pod=~&quot;foo-pod.*&quot;, container=&quot;foo-container&quot;}) /</span>
-<span class="w">          </span><span class="no">min(kube_pod_container_resource_limits{namespace=&quot;foo-namespace&quot;, pod=~&quot;foo-pod.*&quot;,resource=&quot;memory&quot;, container=&quot;foo-container&quot;}) </span>
+<span class="w">          </span><span class="no">max(container_memory_working_set_bytes{namespace="foo-namespace", pod=~"foo-pod.*", container="foo-container"}) /</span>
+<span class="w">          </span><span class="no">min(kube_pod_container_resource_limits{namespace="foo-namespace", pod=~"foo-pod.*",resource="memory", container="foo-container"}) </span>
 <span class="w">          </span><span class="no">&gt; 0.7</span>
 <span class="w">        </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1m</span>
 <span class="w">        </span><span class="nt">labels</span><span class="p">:</span>
@@ -34444,8 +34444,8 @@
 <span class="w">        </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warning</span>
 <span class="w">        </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Certificate</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.instance</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">about</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">expire&quot;</span>
-<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;The</span><span class="nv"> </span><span class="s">certificate</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.instance</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">about</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">expire</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">less</span><span class="nv"> </span><span class="s">than</span><span class="nv"> </span><span class="s">7</span><span class="nv"> </span><span class="s">days.&quot;</span>
+<span class="w">          </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">"Certificate</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.instance</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">about</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">expire"</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"The</span><span class="nv"> </span><span class="s">certificate</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.instance</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">about</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">expire</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">less</span><span class="nv"> </span><span class="s">than</span><span class="nv"> </span><span class="s">7</span><span class="nv"> </span><span class="s">days."</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34466,7 +34466,7 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
 <span class="w">    </span><span class="nt">static_configs</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">targets</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1:9090&#39;</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1:9090'</span>
 <span class="w">        </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prd</span>
 <span class="w">  </span><span class="c1"># Node Exporter の稼働するサーバーを監視する。</span>
@@ -34574,7 +34574,7 @@
 </code></pre></div>
 <p>もし特定の実行環境 (例：開発環境) でアラートを無効にしておきたい場合、null を設定するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">route</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">receiver</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;null&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">receiver</span><span class="p">:</span><span class="w"> </span><span class="s">"null"</span>
 </code></pre></div>
 <blockquote>
 <ul>

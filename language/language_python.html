@@ -34359,7 +34359,7 @@
 <span class="c"># Global ARG</span>
 <span class="c">#===================</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="m">3</span>.10
-<span class="k">ARG</span><span class="w"> </span><span class="nv">LABEL</span><span class="o">=</span><span class="s2">&quot;Hiroki &lt;example@gmail.com&gt;&quot;</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">LABEL</span><span class="o">=</span><span class="s2">"Hiroki &lt;example@gmail.com&gt;"</span>
 
 <span class="c">#===================</span>
 <span class="c"># Base Stage</span>
@@ -34389,7 +34389,7 @@
 <span class="k">FROM</span><span class="w"> </span><span class="s">base</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">development</span>
 <span class="k">LABEL</span><span class="w"> </span><span class="nv">mantainer</span><span class="o">=</span><span class="si">${</span><span class="nv">LABEL</span><span class="si">}</span>
 
-<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;uwsgi&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--ini&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/etc/wsgi/wsgi.ini&quot;</span><span class="p">]</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"uwsgi"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--ini"</span><span class="p">,</span><span class="w"> </span><span class="s2">"/etc/wsgi/wsgi.ini"</span><span class="p">]</span>
 
 <span class="c">#===================</span>
 <span class="c"># Production Stage</span>
@@ -34399,14 +34399,14 @@
 
 <span class="k">COPY</span><span class="w"> </span>../software<span class="w"> </span>/var/www/foo/
 
-<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;uwsgi&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--ini&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/etc/wsgi/wsgi.ini&quot;</span><span class="p">]</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"uwsgi"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--ini"</span><span class="p">,</span><span class="w"> </span><span class="s2">"/etc/wsgi/wsgi.ini"</span><span class="p">]</span>
 </code></pre></div>
 <h4 id="fastapiuvicorn">▼ FastAPI、uvicorn を使用する場合<a class="headerlink" href="#fastapiuvicorn" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c">#===================</span>
 <span class="c"># Global ARG</span>
 <span class="c">#===================</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="m">3</span>.10
-<span class="k">ARG</span><span class="w"> </span><span class="nv">LABEL</span><span class="o">=</span><span class="s2">&quot;Hiroki &lt;example@gmail.com&gt;&quot;</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">LABEL</span><span class="o">=</span><span class="s2">"Hiroki &lt;example@gmail.com&gt;"</span>
 
 <span class="c">#===================</span>
 <span class="c"># Base Stage</span>
@@ -34429,7 +34429,7 @@
 <span class="k">FROM</span><span class="w"> </span><span class="s">base</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">development</span>
 <span class="k">LABEL</span><span class="w"> </span><span class="nv">mantainer</span><span class="o">=</span><span class="si">${</span><span class="nv">LABEL</span><span class="si">}</span>
 
-<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;uvicorn&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;main:app&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--host&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--reload&quot;</span><span class="p">]</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"uvicorn"</span><span class="p">,</span><span class="w"> </span><span class="s2">"main:app"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--host"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0.0.0"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--reload"</span><span class="p">]</span>
 
 <span class="c">#===================</span>
 <span class="c"># Production Stage</span>
@@ -34439,7 +34439,7 @@
 
 <span class="k">COPY</span><span class="w"> </span>./<span class="w"> </span>/var/www/customer/
 
-<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;uvicorn&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;main:app&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--host&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--reload&quot;</span><span class="p">]</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"uvicorn"</span><span class="p">,</span><span class="w"> </span><span class="s2">"main:app"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--host"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0.0.0"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--reload"</span><span class="p">]</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03">03. ディレクトリ構成規約<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
@@ -34568,7 +34568,7 @@
 <h3 id="print">print<a class="headerlink" href="#print" title="Permanent link">&para;</a></h3>
 <p>Python では、<code>print()</code> 関数の結果を即時に出力するわけではない。</p>
 <p><code>flush</code> を有効化すると、即時に出力できる。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <ul>
