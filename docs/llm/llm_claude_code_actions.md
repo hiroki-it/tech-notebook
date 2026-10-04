@@ -34,7 +34,9 @@ description: Claude Code Actions＠LLMの知見を記録しています。
 ### GitHub
 
 Issue や PR に `@claude この問題を調査してください` とコメントすると、Action がコメント本文を依頼として取り込み、結果を同じスレッドに返信する。
+
 修正を依頼した場合、Issue では変更ブランチと PR 作成リンクを用意し、開いている PR ではそのブランチを更新する。
+
 事前に `/install-github-app` で Claude の GitHub App と `ANTHROPIC_API_KEY` secret を設定し、以下のワークフローを `.github/workflows/claude.yml` としてデフォルトブランチに配置する。
 
 ```yaml
