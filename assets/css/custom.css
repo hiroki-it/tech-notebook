@@ -231,8 +231,8 @@ p {
     text-decoration: underline;
 }
 
-/* 最終更新日 */
-.md-content__inner>:last-child {
+/* 投稿者・最終更新日 */
+.md-content__inner > .md-source-file {
     text-align: center;
     font-size: 0.8rem;
     text-decoration: underline;
