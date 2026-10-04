@@ -34044,13 +34044,13 @@
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h2 id="01-envoy-api">01. Envoy-API<a class="headerlink" href="#01-envoy-api" title="Permanent link">&para;</a></h2>
 <p>Envoy の設定値をレスポンスとして返信する。ただ、欲しい設定をどのエンドポイントから取得すればよいのかが個人的にはわかりにくい。</p>
-<p>そのため、サービスメッシュツール (例：Istio、Linkerd) でサポートされている付属ツール (例：<code>istioctl proxy-config</code> コマンド) を使用したほうがよい。</p>
+<p>そのため、Envoy を使用するサービスメッシュツール (例：Istio) の付属ツール (例：<code>istioctl proxy-config</code> コマンド) を使用したほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># envoyコンテナ内でローカルホストにリクエストを送信する。</span>
 envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15000/help
 </code></pre></div>
@@ -34093,8 +34093,8 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/admin">https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/admin</a></li>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/operations/admin#administration-interface">https://www.envoyproxy.io/docs/envoy/latest/operations/admin#administration-interface</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/admin">Admin — envoy 1.40.0-dev-e07c88 documentation</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/operations/admin#administration-interface">Administration interface — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -34130,7 +34130,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--clusters">https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--clusters</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--clusters">Administration interface — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -34195,7 +34195,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#configdump-proto">https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#configdump-proto</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#configdump-proto">ConfigDump (proto) — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -34234,7 +34234,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds">https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds">Administration interface — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <h4 id="dynamic_endpoint_configs">▼ <code>dynamic_endpoint_configs</code> キー<a class="headerlink" href="#dynamic_endpoint_configs" title="Permanent link">&para;</a></h4>
@@ -34332,7 +34332,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-endpointsconfigdump-dynamicendpointconfig">https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-endpointsconfigdump-dynamicendpointconfig</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-endpointsconfigdump-dynamicendpointconfig">ConfigDump (proto) — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -34344,7 +34344,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?resource=">https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?resource=</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?resource=">Administration interface — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <h4 id="dynamic_active_clusters">▼ dynamic_active_clusters<a class="headerlink" href="#dynamic_active_clusters" title="Permanent link">&para;</a></h4>
@@ -34357,7 +34357,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-5-dump-envoy-s-dynamic-active-clusters-config">https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-5-dump-envoy-s-dynamic-active-clusters-config</a></li>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-clustersconfigdump-dynamiccluster">https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-clustersconfigdump-dynamiccluster</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-clustersconfigdump-dynamiccluster">ConfigDump (proto) — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
@@ -34393,10 +34393,10 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump">https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump</a></li>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump">https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump">Administration interface — envoy 1.40.0-dev-e07c88 documentation</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump">ConfigDump (proto) — envoy 1.40.0-dev-e07c88 documentation</a></li>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-2-check-initial-config-and-web-response">https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-2-check-initial-config-and-web-response</a></li>
-<li><a href="https://cloud.tencent.com/developer/article/1701214">https://cloud.tencent.com/developer/article/1701214</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1701214">Istio中的流量配置-腾讯云开发者社区-腾讯云</a></li>
 </ul>
 </blockquote>
 <h4 id="dynamic_warm_clusters">▼ dynamic_warm_clusters<a class="headerlink" href="#dynamic_warm_clusters" title="Permanent link">&para;</a></h4>
@@ -34408,8 +34408,8 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/cluster_manager#cluster-warming">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/cluster_manager#cluster-warming</a></li>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump">https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/cluster_manager#cluster-warming">Cluster manager — envoy 1.40.0-dev-e07c88 documentation</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump">ConfigDump (proto) — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
@@ -34434,7 +34434,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-listenersconfigdump-dynamiclistener">https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-listenersconfigdump-dynamiclistener</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-listenersconfigdump-dynamiclistener">ConfigDump (proto) — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
@@ -34494,7 +34494,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-routesconfigdump-dynamicrouteconfig">https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-routesconfigdump-dynamicrouteconfig</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-routesconfigdump-dynamicrouteconfig">ConfigDump (proto) — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
@@ -34615,7 +34615,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:52:31 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:04:05 JST">2026-10-04</span>
   </span>
 
     

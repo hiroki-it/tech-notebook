@@ -37078,7 +37078,7 @@
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -37096,16 +37096,17 @@
 <p>マニフェストによって量産された Kubernetes リソースのインスタンスのこと。</p>
 <blockquote>
 <ul>
-<li><a href="https://qiita.com/cvusk/items/773e222e0971a5391a51">https://qiita.com/cvusk/items/773e222e0971a5391a51</a></li>
+<li><a href="https://qiita.com/cvusk/items/773e222e0971a5391a51">KubernetesのCRDまわりを整理する。 #kubernetes - Qiita</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="_2">スコープ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>所属する Namespace 内のみにリクエストを送信できる Namespaced スコープな Kubernetes リソースと、Cluster 全体にリクエストを送信できる Cluster スコープな Kubernetes リソースがある。</p>
+<p>特定の Namespace に所属する Namespaced スコープな Kubernetes リソースと、Namespace に所属しない Cluster スコープな Kubernetes リソースがある。</p>
+<p>スコープは通信先の制限を表すものではなく、異なる Namespace の Pod 間でも Service のホスト名を使用して通信できる。</p>
 <p><img alt="namespaced-scope_vs_cluster-scoped" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/namespaced-scope_vs_cluster-scoped.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html">https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html</a></li>
+<li><a href="https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html">10.1 Organizing objects into Namespaces · Kubernetes实战（第二版）</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -37114,7 +37115,7 @@
 <p>コンテナの実行に関する機能を提供する。</p>
 <blockquote>
 <ul>
-<li><a href="https://thinkit.co.jp/article/13542">https://thinkit.co.jp/article/13542</a></li>
+<li><a href="https://thinkit.co.jp/article/13542">Kubernetesの基礎 | 今こそ始めよう！ Kubernetes入門 | Think IT（シンクイット）</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -37127,8 +37128,8 @@
 <p>こういったプロセスが稼働するコンテナは、Node 内のすべてのコンテナからデータを収集し、可観測性のためのデータセットを整備する。</p>
 <blockquote>
 <ul>
-<li><a href="https://thinkit.co.jp/article/13611">https://thinkit.co.jp/article/13611</a></li>
-<li><a href="https://github.com/kubernetes/kops/issues/6527#issue-413870064">https://github.com/kubernetes/kops/issues/6527#issue-413870064</a></li>
+<li><a href="https://thinkit.co.jp/article/13611">KubernetesのWorkloadsリソース（その2） | 今こそ始めよう！ Kubernetes入門 | Think IT（シンクイット）</a></li>
+<li><a href="https://github.com/kubernetes/kops/issues/6527#issue-413870064">Deploy kube-proxy as DaemonSet · Issue #6527 · kubernetes/kops · GitHub</a></li>
 </ul>
 </blockquote>
 <h4 id="pod">▼ Pod 数の固定<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
@@ -37143,7 +37144,7 @@
 </ul>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#communicating-with-daemon-pods">https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#communicating-with-daemon-pods</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#communicating-with-daemon-pods">DaemonSet | Kubernetes</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -37154,8 +37155,8 @@
 <p>ただし StatefulSet とは異なり、ストレートレス (例：アプリ) なコンテナを含む Pod を冗長化することに適する。</p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">https://kubernetes.io/docs/concepts/workloads/controllers/deployment/</a></li>
-<li><a href="https://sorarinu.dev/2021/08/kubernetes_01/">https://sorarinu.dev/2021/08/kubernetes_01/</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">Deployments | Kubernetes</a></li>
+<li><a href="https://sorarinu.dev/2021/08/kubernetes_01/">Kubernetes の Deployment と StatefulSet の違いを今更学んだ</a></li>
 </ul>
 </blockquote>
 <h4 id="replicaset">▼ ReplicaSet の置き換えが起こる条件<a class="headerlink" href="#replicaset" title="Permanent link">&para;</a></h4>
@@ -37181,7 +37182,7 @@
 <p><img alt="kubernetes_deployment_replace_replicaset" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_replace_replicaset.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a">https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a</a></li>
+<li><a href="https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a">Kubernetes: Deployment の仕組み #kubernetes - Qiita</a></li>
 </ul>
 </blockquote>
 <h4 id="pod_1">▼ Pod のレプリカ数の維持<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h4>
@@ -37189,7 +37190,7 @@
 <p>そのため、例えば Cluster 内に複数の Node が存在していて、いずれかの Node が停止した場合、稼働中の Node 内でレプリカ数を維持するように Pod 数を増やす。</p>
 <blockquote>
 <ul>
-<li><a href="https://dr-asa.hatenablog.com/entry/2018/04/02/174006">https://dr-asa.hatenablog.com/entry/2018/04/02/174006</a></li>
+<li><a href="https://dr-asa.hatenablog.com/entry/2018/04/02/174006">Kubernetesはクラスタで障害があったとき、どういう動きをするのか - あさのひとりごと</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -37203,8 +37204,8 @@
 <p>定期的に実行する場合、CronJob のテンプレートとして定義する。</p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/job/">https://kubernetes.io/docs/concepts/workloads/controllers/job/</a></li>
-<li><a href="https://qiita.com/MahoTakara/items/82853097a1911671a704">https://qiita.com/MahoTakara/items/82853097a1911671a704</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/job/">Jobs | Kubernetes</a></li>
+<li><a href="https://qiita.com/MahoTakara/items/82853097a1911671a704">Kubernetes "ジョブ" についての自習ノート #kubernetes - Qiita</a></li>
 <li><a href="https://dev.appswingby.com/kubernetes/kubernetes-%E3%81%A7-job%E3%82%92%E8%87%AA%E5%8B%95%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8Bttlsecondsafterfinished%E3%81%8Cv1-21%E3%81%A7beta%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F%E4%BB%B6/">https://dev.appswingby.com/kubernetes/kubernetes-%E3%81%A7-job%E3%82%92%E8%87%AA%E5%8B%95%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8Bttlsecondsafterfinished%E3%81%8Cv1-21%E3%81%A7beta%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F%E4%BB%B6/</a></li>
 <li><a href="https://faun.pub/batch-and-cron-jobs-in-kubernetes-cbd29c35fd8">https://faun.pub/batch-and-cron-jobs-in-kubernetes-cbd29c35fd8</a></li>
 </ul>
@@ -37248,8 +37249,8 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://blog.manabusakai.com/2018/04/migration-job-on-kubernetes/">https://blog.manabusakai.com/2018/04/migration-job-on-kubernetes/</a></li>
-<li><a href="https://qiita.com/butterv/items/65d8663dfa3a69f1bc55">https://qiita.com/butterv/items/65d8663dfa3a69f1bc55</a></li>
+<li><a href="https://blog.manabusakai.com/2018/04/migration-job-on-kubernetes/">Kubernetes の Job でマイグレーションを実行する | はったりエンジニアの備忘録</a></li>
+<li><a href="https://qiita.com/butterv/items/65d8663dfa3a69f1bc55">ArgoCDで、DBのマイグレーションが完了してからデプロイする #kubernetes - Qiita</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -37265,8 +37266,8 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://zenn.dev/kennygt51/articles/2497931b8264de">https://zenn.dev/kennygt51/articles/2497931b8264de</a></li>
-<li><a href="https://qiita.com/koudaiii/items/586a8a0e0f763ddf9a05">https://qiita.com/koudaiii/items/586a8a0e0f763ddf9a05</a></li>
+<li><a href="https://zenn.dev/kennygt51/articles/2497931b8264de">CronJobで定義したJobを任意のタイミングで実行する</a></li>
+<li><a href="https://qiita.com/koudaiii/items/586a8a0e0f763ddf9a05">CronJob をその場で Job を作って実行する方法 #kubernetes - Qiita</a></li>
 <li><a href="https://serverfault.com/questions/809632/is-it-possible-to-rerun-kubernetes-job">https://serverfault.com/questions/809632/is-it-possible-to-rerun-kubernetes-job</a></li>
 <li><a href="https://faun.pub/batch-and-cron-jobs-in-kubernetes-cbd29c35fd8">https://faun.pub/batch-and-cron-jobs-in-kubernetes-cbd29c35fd8</a></li>
 </ul>
@@ -37342,7 +37343,7 @@
 <p>Pod を単位として、コンテナ起動/停止や水平スケールアウト/スケールインを実行する。</p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/concepts/workloads/pods/">https://kubernetes.io/docs/concepts/workloads/pods/</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/pods/">Pods | Kubernetes</a></li>
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
@@ -37464,8 +37465,8 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </table>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-phase">https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-phase</a></li>
-<li><a href="https://qiita.com/tkusumi/items/825ccde31fdc3d0b8425#%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA-pod-%E3%81%AE%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E8%A1%A8%E8%A8%98">https://qiita.com/tkusumi/items/825ccde31fdc3d0b8425#%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA-pod-%E3%81%AE%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E8%A1%A8%E8%A8%98</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-phase">Pod Lifecycle | Kubernetes</a></li>
+<li><a href="https://qiita.com/tkusumi/items/825ccde31fdc3d0b8425#%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA-pod-%E3%81%AE%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E8%A1%A8%E8%A8%98">Kubernetes: kubectl 上の Pod のステータス表記について #kubernetes - Qiita</a></li>
 </ul>
 </blockquote>
 <h4 id="pod_5">▼ Pod のコンディション<a class="headerlink" href="#pod_5" title="Permanent link">&para;</a></h4>
@@ -37521,7 +37522,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/59354112">https://stackoverflow.com/a/59354112</a></li>
-<li><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions">https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions">Pod Lifecycle | Kubernetes</a></li>
 </ul>
 </blockquote>
 <h4 id="pod_6">▼ Pod における最後のフェーズの理由<a class="headerlink" href="#pod_6" title="Permanent link">&para;</a></h4>
@@ -37580,7 +37581,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <p>これらのプロセスはそれぞれ独立して実施され、ユーザーは制御できない。</p>
 <p>例えば、Service と kube-proxy が Pod の宛先情報を削除する前に Pod が削除してしまうと、Service から Pod への接続を途中で切断することになってしまう。</p>
 <p>また、コンテナを停止する前に Pod を終了してしまうと、コンテナを強制的に終了することになり、ログにエラーが出力されてしまう。</p>
-<p>そのため、Service と kube-proxy の処理後に Pod を終了できるように、ユーザーが Pod の <code>.spec.containers[*].lifecycle.preStop</code> キーに任意の秒数を設定し、コンテナに待機処理 (例：<code>sleep</code> コマンド) を実行させる必要がある。</p>
+<p>そのため、Service と kube-proxy の処理後に Pod を終了できるように、ユーザーが Pod の <code>.spec.containers[*].lifecycle.preStop.exec.command</code> キーに待機処理 (例：<code>sleep</code> コマンド) を設定し、コンテナに実行させる必要がある。</p>
 <p>また、コンテナの正常な終了後に Pod を終了できるように、<code>.spec.terminationGracePeriodSeconds</code> キーに任意の秒数を設定し、Pod の終了に伴う一連のプロセスの完了を待機する必要がある。</p>
 <p>これらの適切な秒数は、ユーザーがそのシステムに応じて調節するしかない。</p>
 <p><code>.spec.terminationGracePeriodSeconds</code> キーを長めに設定し、<code>.spec.containers[*].lifecycle.preStop</code> キーの秒数も含めて、すべてが完了したうえで Pod を終了可能にする。</p>
@@ -37627,10 +37628,10 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </dl>
 <blockquote>
 <ul>
-<li><a href="https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown">https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown</a></li>
-<li><a href="https://qiita.com/superbrothers/items/3ac78daba3560ea406b2">https://qiita.com/superbrothers/items/3ac78daba3560ea406b2</a></li>
-<li><a href="https://zenn.dev/hhiroshell/articles/kubernetes-graceful-shutdown-experiment">https://zenn.dev/hhiroshell/articles/kubernetes-graceful-shutdown-experiment</a></li>
-<li><a href="https://44smkn.hatenadiary.com/entry/2018/08/01/022312">https://44smkn.hatenadiary.com/entry/2018/08/01/022312</a></li>
+<li><a href="https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown">KubernetesのPodを安全に終了する - Carpe Diem</a></li>
+<li><a href="https://qiita.com/superbrothers/items/3ac78daba3560ea406b2">Kubernetes: 詳解 Pods の終了 #kubernetes - Qiita</a></li>
+<li><a href="https://zenn.dev/hhiroshell/articles/kubernetes-graceful-shutdown-experiment">アルパカでもわかる安全なPodの終了 - 実験編</a></li>
+<li><a href="https://44smkn.hatenadiary.com/entry/2018/08/01/022312">pod(Kubernetes)のlifecycle.prestopの挙動 - １クール続けるブログ</a></li>
 </ul>
 </blockquote>
 <h4 id="_5">▼ ハードウェアリソースの割り当て<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
@@ -37655,7 +37656,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </table>
 <blockquote>
 <ul>
-<li><a href="https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu">https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu</a></li>
+<li><a href="https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu">【第四弾】Kubernetesベストプラクティス：Requests &amp; Limits #kubernetes - Qiita</a></li>
 </ul>
 </blockquote>
 <h4 id="pod_8">▼ クライアントが Pod 内のログを参照できる仕組み<a class="headerlink" href="#pod_8" title="Permanent link">&para;</a></h4>
@@ -37684,10 +37685,10 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <blockquote>
 <ul>
 <li><a href="https://www.creationline.com/lab/29281">https://www.creationline.com/lab/29281</a></li>
-<li><a href="https://kubernetes.io/docs/concepts/cluster-administration/logging/#log-location-node">https://kubernetes.io/docs/concepts/cluster-administration/logging/#log-location-node</a></li>
-<li><a href="https://tech.studyplus.co.jp/entry/2020/03/23/094119">https://tech.studyplus.co.jp/entry/2020/03/23/094119</a></li>
-<li><a href="https://qiita.com/daitak/items/679785bd0724cb1f4971#%E3%83%AD%E3%82%B0%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E9%9A%8E%E5%B1%A4%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D">https://qiita.com/daitak/items/679785bd0724cb1f4971#%E3%83%AD%E3%82%B0%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E9%9A%8E%E5%B1%A4%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D</a></li>
-<li><a href="https://dunkshoot.hatenablog.com/entry/kubernetes_container_log">https://dunkshoot.hatenablog.com/entry/kubernetes_container_log</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/cluster-administration/logging/#log-location-node">Logging Architecture | Kubernetes</a></li>
+<li><a href="https://tech.studyplus.co.jp/entry/2020/03/23/094119">Kubernetes上でのFluentdを使ったログ収集について - Studyplus Engineering Blog</a></li>
+<li><a href="https://qiita.com/daitak/items/679785bd0724cb1f4971#%E3%83%AD%E3%82%B0%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E9%9A%8E%E5%B1%A4%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%90%8D">k8s Podが標準出力に出したログは、どの様にEKSノード上のログファイルとして記録されるのか？ #AWS - Qiita</a></li>
+<li><a href="https://dunkshoot.hatenablog.com/entry/kubernetes_container_log">Kubernetes の標準出力と標準エラー出力 - YasuBlog</a></li>
 </ul>
 </blockquote>
 <p>補足として、DaemonSet として稼働する Fluentd は、Node の <code>/var/log</code> ディレクトリを読み込むことにより、Pod 内のコンテナのログを収集する。</p>
@@ -37763,7 +37764,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <blockquote>
 <ul>
 <li><a href="https://wdenniss.com/gke-autopilot-spare-capacity">https://wdenniss.com/gke-autopilot-spare-capacity</a></li>
-<li><a href="https://qiita.com/Morix1500/items/5ea47755bb04f6b08a2a#%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%81%AE%E5%AE%9F%E7%8F%BE%E6%96%B9%E6%B3%95">https://qiita.com/Morix1500/items/5ea47755bb04f6b08a2a#%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%81%AE%E5%AE%9F%E7%8F%BE%E6%96%B9%E6%B3%95</a></li>
+<li><a href="https://qiita.com/Morix1500/items/5ea47755bb04f6b08a2a#%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%81%AE%E5%AE%9F%E7%8F%BE%E6%96%B9%E6%B3%95">Kubernetesで常に余剰Nodeを確保しPodのスケールアウトの低速化を防ぐ「オーバープロビジョニング」について #kubernetes - Qiita</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -37775,8 +37776,8 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p>ReplicaSet を直接操作するのではなく、Deployment を使用することが推奨である。</p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#replicaset%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D">https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#replicaset%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D</a></li>
-<li><a href="https://thinkit.co.jp/article/13611">https://thinkit.co.jp/article/13611</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#replicaset%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D">ReplicaSet | Kubernetes</a></li>
+<li><a href="https://thinkit.co.jp/article/13611">KubernetesのWorkloadsリソース（その2） | 今こそ始めよう！ Kubernetes入門 | Think IT（シンクイット）</a></li>
 </ul>
 </blockquote>
 <h4 id="podtemplate">▼ PodTemplate<a class="headerlink" href="#podtemplate" title="Permanent link">&para;</a></h4>
@@ -37791,8 +37792,8 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p>Pod が削除されても PersistentVolumeClaims は削除されないため、新しい Pod にも同じ PersistentVolume を継続的にマウントできる。</p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#%E5%AE%89%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8">https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#%E5%AE%89%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8</a></li>
-<li><a href="https://sorarinu.dev/2021/08/kubernetes_01/">https://sorarinu.dev/2021/08/kubernetes_01/</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#%E5%AE%89%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8">StatefulSets | Kubernetes</a></li>
+<li><a href="https://sorarinu.dev/2021/08/kubernetes_01/">Kubernetes の Deployment と StatefulSet の違いを今更学んだ</a></li>
 </ul>
 </blockquote>
 <h4 id="_7">▼ ライフサイクル<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
@@ -37801,7 +37802,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p>そのため Deployment や ReplicaSet と比べて、すべての Pod が揃うのに時間がかかる。</p>
 <blockquote>
 <ul>
-<li><a href="https://thinkit.co.jp/article/13611">https://thinkit.co.jp/article/13611</a></li>
+<li><a href="https://thinkit.co.jp/article/13611">KubernetesのWorkloadsリソース（その2） | 今こそ始めよう！ Kubernetes入門 | Think IT（シンクイット）</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -37847,7 +37848,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p>Gateway Controller が Gateway の設定に基づいて通信を受信し、HTTPRoute などの設定に応じてルーティングする。</p>
 <blockquote>
 <ul>
-<li><a href="https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/">https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/</a></li>
+<li><a href="https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/">Ingressを強化したKubernetes Gateway APIを試してみる | 豆蔵デベロッパーサイト</a></li>
 </ul>
 </blockquote>
 <h4 id="ingress">▼ Ingress との違い<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h4>
@@ -37868,7 +37869,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress">https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress</a></li>
 <li><a href="https://thinkit.co.jp/article/18263">https://thinkit.co.jp/article/18263</a></li>
-<li><a href="https://chidakiyo.hatenablog.com/entry/2018/09/10/Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress%3F_When_should_I_use_what%3F_%28Kubernetes_NodePort_%E3%81%A8_LoadBalancer_%E3%81%A8_Ingress_%E3%81%AE%E3%81%A9%E3%82%8C%E3%82%92%E4%BD%BF%E3%81%86">https://chidakiyo.hatenablog.com/entry/2018/09/10/Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress%3F_When_should_I_use_what%3F_%28Kubernetes_NodePort_%E3%81%A8_LoadBalancer_%E3%81%A8_Ingress_%E3%81%AE%E3%81%A9%E3%82%8C%E3%82%92%E4%BD%BF%E3%81%86</a></li>
+<li><a href="https://chidakiyo.hatenablog.com/entry/2018/09/10/Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress%3F_When_should_I_use_what%3F_%28Kubernetes_NodePort_%E3%81%A8_LoadBalancer_%E3%81%A8_Ingress_%E3%81%AE%E3%81%A9%E3%82%8C%E3%82%92%E4%BD%BF%E3%81%86">Kubernetes NodePort vs LoadBalancer vs Ingress? When should I use what? (Kubernetes NodePort と LoadBalancer と Ingress のどれを使うべきか) を訳した - 寝ても覚めてもこんぴうた</a></li>
 <li><a href="https://www.netone.co.jp/knowledge-center/netone-blog/20210715-01/">https://www.netone.co.jp/knowledge-center/netone-blog/20210715-01/</a></li>
 </ul>
 </blockquote>
@@ -37906,7 +37907,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p>この場合、クラウドプロバイダーのリソースと Kubernetes が疎結合になり、責務の境界を明確化できる。</p>
 <blockquote>
 <ul>
-<li><a href="https://qiita.com/k-sasaki-hisys-biz/items/895cd2e3dd9baff45bd8">https://qiita.com/k-sasaki-hisys-biz/items/895cd2e3dd9baff45bd8</a></li>
+<li><a href="https://qiita.com/k-sasaki-hisys-biz/items/895cd2e3dd9baff45bd8">AWS Load Balancer ControllerのTargetGroupBindingを試す #kubernetes - Qiita</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -37920,9 +37921,9 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/services-networking/service/">https://kubernetes.io/docs/concepts/services-networking/service/</a></li>
-<li><a href="https://www.mtioutput.com/entry/kube-proxy-iptable">https://www.mtioutput.com/entry/kube-proxy-iptable</a></li>
+<li><a href="https://www.mtioutput.com/entry/kube-proxy-iptable">【Kubernetes】kube-proxy停止時はServiceとPodのIPアドレスが新たに紐づかなくなる - (O+P)ut</a></li>
 <li><a href="https://www.amazon.co.jp/dp/B079TG2M5N/">https://www.amazon.co.jp/dp/B079TG2M5N/</a> (チャプター5)</li>
-<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#communicating-with-daemon-pods">https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#communicating-with-daemon-pods</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#communicating-with-daemon-pods">DaemonSet | Kubernetes</a></li>
 </ul>
 </blockquote>
 <h4 id="clusterip-service">▼ ClusterIP Service<a class="headerlink" href="#clusterip-service" title="Permanent link">&para;</a></h4>
@@ -37954,9 +37955,9 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <p>そのため、クラウドプロバイダーのリソースと Kubernetes リソースが密結合になり、責務の境界が曖昧になってしまう。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/">https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/</a></li>
+<li><a href="https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/">実践 Kubernetes ～コンテナ管理のスタンダードツールを使いこなす - アイマガジン｜i Magazine｜IS magazine</a></li>
 <li><a href="https://thinkit.co.jp/article/18263">https://thinkit.co.jp/article/18263</a></li>
-<li><a href="https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF">https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF</a></li>
+<li><a href="https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF">Kubernetes: Service の静的 IP 用レンジを分割する (ServiceIPStaticSubrange) #kubernetes - Qiita</a></li>
 </ul>
 </blockquote>
 <h4 id="nodeport-service">▼ NodePort Service<a class="headerlink" href="#nodeport-service" title="Permanent link">&para;</a></h4>
@@ -38077,10 +38078,10 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <p>なお、注意点として、Ingress Controller は <code>L7</code> ロードバランサーを自動的にプロビジョニングする。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/">https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/</a></li>
+<li><a href="https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/">実践 Kubernetes ～コンテナ管理のスタンダードツールを使いこなす - アイマガジン｜i Magazine｜IS magazine</a></li>
 <li><a href="https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0">https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0</a></li>
 <li><a href="https://thinkit.co.jp/article/18263">https://thinkit.co.jp/article/18263</a></li>
-<li><a href="https://www.ios-net.co.jp/blog/20230621-1179/">https://www.ios-net.co.jp/blog/20230621-1179/</a></li>
+<li><a href="https://www.ios-net.co.jp/blog/20230621-1179/">KubernetesのClusterIP、NodePort、LoadBalancerの違いを理解する | 株式会社アイオス</a></li>
 </ul>
 </blockquote>
 <h4 id="externalname-service">▼ ExternalName Service<a class="headerlink" href="#externalname-service" title="Permanent link">&para;</a></h4>
@@ -38091,8 +38092,8 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <p><img alt="kubernetes_externalname-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_externalname-service.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://thinkit.co.jp/article/13739">https://thinkit.co.jp/article/13739</a></li>
-<li><a href="https://blog.mosuke.tech/entry/2021/08/26/kubernetes-externalname-service/">https://blog.mosuke.tech/entry/2021/08/26/kubernetes-externalname-service/</a></li>
+<li><a href="https://thinkit.co.jp/article/13739">KubernetesのDiscovery＆LBリソース（その2） | 今こそ始めよう！ Kubernetes入門 | Think IT（シンクイット）</a></li>
+<li><a href="https://blog.mosuke.tech/entry/2021/08/26/kubernetes-externalname-service/">Kubernetes、ExternalName Serviceの検証と利用時の注意事項</a></li>
 </ul>
 </blockquote>
 <h4 id="headless-service">▼ Headless Service<a class="headerlink" href="#headless-service" title="Permanent link">&para;</a></h4>
@@ -38112,7 +38113,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.linkedin.com/posts/jack-liu-b73b7b2a8_headless-service-in-kubernetes-a-headless-activity-7211615318547345409-qdgg/">https://www.linkedin.com/posts/jack-liu-b73b7b2a8_headless-service-in-kubernetes-a-headless-activity-7211615318547345409-qdgg/</a></li>
+<li><a href="https://www.linkedin.com/posts/jack-liu-b73b7b2a8_headless-service-in-kubernetes-a-headless-activity-7211615318547345409-qdgg/">Headless service in Kubernetes: A headless service in Kubernetes is a type of service that does not have a cluster IP, meaning it does not act as a load balancer or a stable IP entry point for… | Jack（刘晋勋) Liu</a></li>
 <li><a href="https://stackoverflow.com/a/52713482/12771072">https://stackoverflow.com/a/52713482/12771072</a></li>
 <li><a href="https://stackoverflow.com/a/50892280/12771072">https://stackoverflow.com/a/50892280/12771072</a></li>
 </ul>
@@ -38128,7 +38129,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://thinkit.co.jp/article/13739">https://thinkit.co.jp/article/13739</a></li>
+<li><a href="https://thinkit.co.jp/article/13739">KubernetesのDiscovery＆LBリソース（その2） | 今こそ始めよう！ Kubernetes入門 | Think IT（シンクイット）</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -38212,9 +38213,9 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://zenn.dev/microsoft/articles/how-cluster-ip-service-is-implemented">https://zenn.dev/microsoft/articles/how-cluster-ip-service-is-implemented</a></li>
-<li><a href="https://speakerdeck.com/bells17/kube-proxyru-men?slide=36">https://speakerdeck.com/bells17/kube-proxyru-men?slide=36</a></li>
-<li><a href="https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown">https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown</a></li>
+<li><a href="https://zenn.dev/microsoft/articles/how-cluster-ip-service-is-implemented">Kubernetes の Service (Cluster IP) がどう実装されてるか</a></li>
+<li><a href="https://speakerdeck.com/bells17/kube-proxyru-men?slide=36">kube-proxy入門 - Speaker Deck</a></li>
+<li><a href="https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown">KubernetesのPodを安全に終了する - Carpe Diem</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -38237,7 +38238,7 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 <p>Cluster 全体に渡る機能を提供する。</p>
 <blockquote>
 <ul>
-<li><a href="https://thinkit.co.jp/article/13542">https://thinkit.co.jp/article/13542</a></li>
+<li><a href="https://thinkit.co.jp/article/13542">Kubernetesの基礎 | 今こそ始めよう！ Kubernetes入門 | Think IT（シンクイット）</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -38274,14 +38275,14 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 </table>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#initial-namespaces">https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#initial-namespaces</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#initial-namespaces">Namespaces | Kubernetes</a></li>
 </ul>
 </blockquote>
 <h4 id="namespace-terminating">▼ Namespace が Terminating のままになる<a class="headerlink" href="#namespace-terminating" title="Permanent link">&para;</a></h4>
 <p>以下の方法で対処する。</p>
 <blockquote>
 <ul>
-<li><a href="https://komeiy.hatenablog.com/entry/2019/07/28/232356">https://komeiy.hatenablog.com/entry/2019/07/28/232356</a></li>
+<li><a href="https://komeiy.hatenablog.com/entry/2019/07/28/232356">kubernetes の namespace が terminating になっていて消せない - ぽぽぽぽーんのネットワークとOSS</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -38335,7 +38336,7 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 <p>永続化されている間は <code>base64</code> 方式でエンコードされており、デコードしたうえで、変数やファイルとして対象の Pod に出力する。</p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/concepts/configuration/secret/#uses-for-secrets">https://kubernetes.io/docs/concepts/configuration/secret/#uses-for-secrets</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/configuration/secret/#uses-for-secrets">Secrets | Kubernetes</a></li>
 </ul>
 </blockquote>
 <h4 id="_15">▼ 機密ではない変数の例<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
@@ -38366,14 +38367,14 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 <p>Secret に永続化された値を復号し、<code>kubectl</code> コマンドにパラメーターとして出力できる。</p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets">https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets">Secrets | Kubernetes</a></li>
 </ul>
 </blockquote>
 <h4 id="_17">▼ コンテナの環境変数として<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>永続化された値を復号し、Pod 内のコンテナに環境変数として出力できる。</p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables">https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-environment-variables">Secrets | Kubernetes</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -38423,7 +38424,7 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 <p>Docker の Volume とは独立した機能であることに注意する。</p>
 <blockquote>
 <ul>
-<li><a href="https://thinkit.co.jp/article/14195">https://thinkit.co.jp/article/14195</a></li>
+<li><a href="https://thinkit.co.jp/article/14195">KubernetesのConfig＆Storageリソース（その2） | 今こそ始めよう！ Kubernetes入門 | Think IT（シンクイット）</a></li>
 <li><a href="https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume">https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume</a></li>
 <li><a href="https://stackoverflow.com/questions/53062547/docker-volume-vs-kubernetes-persistent-volume">https://stackoverflow.com/questions/53062547/docker-volume-vs-kubernetes-persistent-volume</a></li>
 <li><a href="https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/">https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/</a></li>
@@ -38443,7 +38444,7 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 <p>また、Grafana の kubernetes-mixins には、起動中の Pod の PersistentVolume の使用率を可視化できるダッシュボードがある。</p>
 <blockquote>
 <ul>
-<li><a href="https://github.com/monitoring-mixins/website/blob/master/assets/kubernetes/dashboards/persistentvolumesusage.json">https://github.com/monitoring-mixins/website/blob/master/assets/kubernetes/dashboards/persistentvolumesusage.json</a></li>
+<li><a href="https://github.com/monitoring-mixins/website/blob/master/assets/kubernetes/dashboards/persistentvolumesusage.json">website/assets/kubernetes/dashboards/persistentvolumesusage.json at master · monitoring-mixins/website · GitHub</a></li>
 </ul>
 </blockquote>
 <h4 id="persistentvolume-crashloopbackoff_1">▼ PersistentVolume の使用率の確認方法 (CrashLoopBackOff の場合)<a class="headerlink" href="#persistentvolume-crashloopbackoff_1" title="Permanent link">&para;</a></h4>
@@ -38493,7 +38494,7 @@ Filesystem<span class="w">      </span>Size<span class="w">  </span>Used<span cl
 <p>マルチ Node はサポートしていないため、本番環境では非推奨である。</p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes">Persistent Volumes | Kubernetes</a></li>
 <li><a href="https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/">https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/</a></li>
 </ul>
 </blockquote>
@@ -38502,8 +38503,8 @@ Filesystem<span class="w">      </span>Size<span class="w">  </span>Used<span cl
 <p>マルチ Node をサポートしている (明言されているわけではく、HostPath との明確な違いがよくわからない) 。</p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/concepts/storage/volumes/#local">https://kubernetes.io/docs/concepts/storage/volumes/#local</a></li>
-<li><a href="https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#local">https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#local</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/storage/volumes/#local">Volumes | Kubernetes</a></li>
+<li><a href="https://qiita.com/sotoiwa/items/09d2f43a35025e7be782#local">hostPathとlocalのPersistentVolumeの違い #kubernetes - Qiita</a></li>
 </ul>
 </blockquote>
 <h4 id="node-volume">▼ Node 外ストレージツールの Volume<a class="headerlink" href="#node-volume" title="Permanent link">&para;</a></h4>
@@ -38555,7 +38556,7 @@ Volumes:
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://thinkit.co.jp/article/14195">https://thinkit.co.jp/article/14195</a></li>
+<li><a href="https://thinkit.co.jp/article/14195">KubernetesのConfig＆Storageリソース（その2） | 今こそ始めよう！ Kubernetes入門 | Think IT（シンクイット）</a></li>
 </ul>
 </blockquote>
 <h4 id="docker-volume">▼ Docker の Volume との違い<a class="headerlink" href="#docker-volume" title="Permanent link">&para;</a></h4>
@@ -38611,7 +38612,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <blockquote>
 <ul>
 <li><a href="https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/">https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/</a></li>
-<li><a href="https://qiita.com/umkyungil/items/218be95f7a1f8d881415">https://qiita.com/umkyungil/items/218be95f7a1f8d881415</a></li>
+<li><a href="https://qiita.com/umkyungil/items/218be95f7a1f8d881415">Kubernetes基礎(6)：Volume-emptyDir, hostPath, PV/PVC #kubernetes - Qiita</a></li>
 </ul>
 </blockquote>
 <h4 id="emptydir">▼ EmptyDir<a class="headerlink" href="#emptydir" title="Permanent link">&para;</a></h4>
@@ -38622,8 +38623,8 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <p>保持期間を設定できるツール (例：Prometheus、VictoriaMetrics、Grafana Mimir など) にて、Pod の Volume を EmptyDir としている場合、Pod を保持期間より先に削除すると、保持期間を待たずに Volume を削除することになってしまう。</p>
 <blockquote>
 <ul>
-<li><a href="https://qiita.com/umkyungil/items/218be95f7a1f8d881415">https://qiita.com/umkyungil/items/218be95f7a1f8d881415</a></li>
-<li><a href="https://cstoku.dev/posts/2018/k8sdojo-05/">https://cstoku.dev/posts/2018/k8sdojo-05/</a></li>
+<li><a href="https://qiita.com/umkyungil/items/218be95f7a1f8d881415">Kubernetes基礎(6)：Volume-emptyDir, hostPath, PV/PVC #kubernetes - Qiita</a></li>
+<li><a href="https://cstoku.dev/posts/2018/k8sdojo-05/">Kubernetes道場 5日目 - Volumeについて - Toku's Blog</a></li>
 <li><a href="https://pradiptabanerjee.medium.com/how-to-size-a-memory-backed-kubernetes-emptydir-volume-cdfe39d1b7e5">https://pradiptabanerjee.medium.com/how-to-size-a-memory-backed-kubernetes-emptydir-volume-cdfe39d1b7e5</a></li>
 </ul>
 </blockquote>
@@ -38633,8 +38634,8 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <p>また、Pod が削除されてもこの Volume は削除されない。</p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/concepts/storage/volumes/">https://kubernetes.io/docs/concepts/storage/volumes/</a></li>
-<li><a href="https://zenn.dev/suiudou/articles/31ab107f3c2de6#%E2%96%A0kubernetes%E3%81%AE%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0">https://zenn.dev/suiudou/articles/31ab107f3c2de6#%E2%96%A0kubernetes%E3%81%AE%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/storage/volumes/">Volumes | Kubernetes</a></li>
+<li><a href="https://zenn.dev/suiudou/articles/31ab107f3c2de6#%E2%96%A0kubernetes%E3%81%AE%E3%81%84%E3%82%8D%E3%82%93%E3%81%AA%E3%83%9C%E3%83%AA%E3%83%A5%E3%83%BC%E3%83%A0">kubernetesのボリュームを調べる</a></li>
 </ul>
 </blockquote>
 <h4 id="volume-persistentvolume">▼ Volume の代わりに PersistentVolume を使用する<a class="headerlink" href="#volume-persistentvolume" title="Permanent link">&para;</a></h4>
@@ -38647,7 +38648,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://garafu.blogspot.com/2019/07/k8s-pv-and-pvc.html">https://garafu.blogspot.com/2019/07/k8s-pv-and-pvc.html</a></li>
+<li><a href="https://garafu.blogspot.com/2019/07/k8s-pv-and-pvc.html">Kubernetes で 永続データ を取り扱う方法 - galife</a></li>
 </ul>
 </blockquote>
 <h4 id="_19">▼ 削除できない<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
@@ -38672,7 +38673,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://qiita.com/dss_hashimoto/items/8cbf834c504e57fbe1ff">https://qiita.com/dss_hashimoto/items/8cbf834c504e57fbe1ff</a></li>
+<li><a href="https://qiita.com/dss_hashimoto/items/8cbf834c504e57fbe1ff">PersistentVolumeClaim (pvc)削除できず、Terminating ステータスのままとの問題 #GoogleCloud - Qiita</a></li>
 </ul>
 </blockquote>
 <h4 id="node-affinity-conflict">▼ node affinity conflict<a class="headerlink" href="#node-affinity-conflict" title="Permanent link">&para;</a></h4>
@@ -38747,7 +38748,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 </dl>
 <blockquote>
 <ul>
-<li><a href="https://github.com/kubernetes/kubernetes/issues/74374#issuecomment-466191847">https://github.com/kubernetes/kubernetes/issues/74374#issuecomment-466191847</a></li>
+<li><a href="https://github.com/kubernetes/kubernetes/issues/74374#issuecomment-466191847">Storage protection feature does not integrate well with StatefulSet PVC recreation · Issue #74374 · kubernetes/kubernetes · GitHub</a></li>
 <li><a href="https://stackoverflow.com/questions/51946393/kubernetes-pod-warning-1-nodes-had-volume-node-affinity-conflict">https://stackoverflow.com/questions/51946393/kubernetes-pod-warning-1-nodes-had-volume-node-affinity-conflict</a></li>
 </ul>
 </blockquote>
@@ -38773,7 +38774,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/#using-dynamic-provisioning">https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/#using-dynamic-provisioning</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/#using-dynamic-provisioning">Dynamic Volume Provisioning | Kubernetes</a></li>
 <li><a href="https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/">https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/</a></li>
 </ul>
 </blockquote>
@@ -38781,7 +38782,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p><code>reclaimPolicy</code> が <code>Delete</code> になっている PersistentVolumeClaim を削除すれば、StorageClass が AWS EBS もよしなに削除してくれる。</p>
 <blockquote>
 <ul>
-<li><a href="https://github.com/kubernetes-sigs/aws-ebs-csi-driver/issues/1071">https://github.com/kubernetes-sigs/aws-ebs-csi-driver/issues/1071</a></li>
+<li><a href="https://github.com/kubernetes-sigs/aws-ebs-csi-driver/issues/1071">EBS drive not removed from AWS when Retain policy used · Issue #1071 · kubernetes-sigs/aws-ebs-csi-driver · GitHub</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -38793,7 +38794,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p>別途、秘密鍵から証明書署名要求を作成し、これをパラメーターとして設定する必要がある。</p>
 <blockquote>
 <ul>
-<li><a href="https://qiita.com/knqyf263/items/aefb0ff139cfb6519e27">https://qiita.com/knqyf263/items/aefb0ff139cfb6519e27</a></li>
+<li><a href="https://qiita.com/knqyf263/items/aefb0ff139cfb6519e27">Kubernetesでユーザを作成する（X509 Client Certs編） #kubernetes - Qiita</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -38807,7 +38808,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/access-authn-authz/authentication/">https://kubernetes.io/docs/reference/access-authn-authz/authentication/</a></li>
-<li><a href="https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/">https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/</a></li>
+<li><a href="https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/">明日 Kubernetes が少し楽しくなる認証の話 | cloud.config Tech Blog</a></li>
 <li><a href="https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html">https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html</a></li>
 </ul>
 </blockquote>
@@ -38817,8 +38818,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p>これは、RoleBinding や ClusterBinding の定義時に使用できる。</p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#referring-to-subjects">https://kubernetes.io/docs/reference/access-authn-authz/rbac/#referring-to-subjects</a></li>
-<li><a href="https://knowledge.sakura.ad.jp/21129/">https://knowledge.sakura.ad.jp/21129/</a></li>
+<li><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#referring-to-subjects">Using RBAC Authorization | Kubernetes</a></li>
+<li><a href="https://knowledge.sakura.ad.jp/21129/">Kubernetesのユーザー管理と認証・権限確認機構を理解しよう | さくらのナレッジ</a></li>
 </ul>
 </blockquote>
 <h4 id="service-account-controller">▼ service-account-controller<a class="headerlink" href="#service-account-controller" title="Permanent link">&para;</a></h4>
@@ -38826,8 +38827,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p>これは、<code>default</code> の Namespace とは無関係である。</p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details">https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details</a></li>
-<li><a href="https://qiita.com/knqyf263/items/ecc799650fe247dce9c5#service-account-admission-controller">https://qiita.com/knqyf263/items/ecc799650fe247dce9c5#service-account-admission-controller</a></li>
+<li><a href="https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details">Managing Service Accounts | Kubernetes</a></li>
+<li><a href="https://qiita.com/knqyf263/items/ecc799650fe247dce9c5#service-account-admission-controller">KubernetesのService Accountについて調べてみた #kubernetes - Qiita</a></li>
 </ul>
 </blockquote>
 <h4 id="token-controller">▼ token-controller<a class="headerlink" href="#token-controller" title="Permanent link">&para;</a></h4>
@@ -38836,8 +38837,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p>また、ServiceAccount の削除をポーリングし、token-controller は Secret のトークン文字列を自動的に削除する。</p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details">https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details</a></li>
-<li><a href="https://qiita.com/knqyf263/items/ecc799650fe247dce9c5#service-account-admission-controller">https://qiita.com/knqyf263/items/ecc799650fe247dce9c5#service-account-admission-controller</a></li>
+<li><a href="https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details">Managing Service Accounts | Kubernetes</a></li>
+<li><a href="https://qiita.com/knqyf263/items/ecc799650fe247dce9c5#service-account-admission-controller">KubernetesのService Accountについて調べてみた #kubernetes - Qiita</a></li>
 </ul>
 </blockquote>
 <h4 id="service-account-admission-controller">▼ service-account-admission-controller<a class="headerlink" href="#service-account-admission-controller" title="Permanent link">&para;</a></h4>
@@ -38845,8 +38846,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p>トークンの文字列は、<code>/var/run/secrets/kubernetes.io/serviceaccount/token</code> ファイルに記載されている。</p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details">https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details</a></li>
-<li><a href="https://qiita.com/knqyf263/items/ecc799650fe247dce9c5#service-account-admission-controller">https://qiita.com/knqyf263/items/ecc799650fe247dce9c5#service-account-admission-controller</a></li>
+<li><a href="https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#control-plane-details">Managing Service Accounts | Kubernetes</a></li>
+<li><a href="https://qiita.com/knqyf263/items/ecc799650fe247dce9c5#service-account-admission-controller">KubernetesのService Accountについて調べてみた #kubernetes - Qiita</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -38859,7 +38860,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/access-authn-authz/authentication/">https://kubernetes.io/docs/reference/access-authn-authz/authentication/</a></li>
-<li><a href="https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/">https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/</a></li>
+<li><a href="https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/">明日 Kubernetes が少し楽しくなる認証の話 | cloud.config Tech Blog</a></li>
 <li><a href="https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html">https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html</a></li>
 </ul>
 </blockquote>
@@ -38868,7 +38869,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p>クラウド上のユーザーやグループを Kubernetes 上で使用する場合、User/Group で指定する。</p>
 <blockquote>
 <ul>
-<li><a href="https://qiita.com/toshi1973814/items/d97f857af4aa2250a450">https://qiita.com/toshi1973814/items/d97f857af4aa2250a450</a></li>
+<li><a href="https://qiita.com/toshi1973814/items/d97f857af4aa2250a450">Kubernetesのsystem:mastersグループって何？ #kubernetes - Qiita</a></li>
 <li><a href="https://stackoverflow.com/a/58708162">https://stackoverflow.com/a/58708162</a></li>
 </ul>
 </blockquote>
@@ -38880,7 +38881,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p><img alt="kubernetes_authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole">https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole</a></li>
+<li><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole">Using RBAC Authorization | Kubernetes</a></li>
 <li><a href="https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html">https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html</a></li>
 </ul>
 </blockquote>
@@ -38889,7 +38890,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p><img alt="kubernetes_authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole">https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole</a></li>
+<li><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole">Using RBAC Authorization | Kubernetes</a></li>
 <li><a href="https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html">https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html</a></li>
 </ul>
 </blockquote>
@@ -38907,7 +38908,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p>注意点として、ClusterRole のみの紐付けに使用できる。</p>
 <blockquote>
 <ul>
-<li><a href="https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control?hl=ja">https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control?hl=ja</a></li>
+<li><a href="https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control?hl=ja">ロールベース アクセス制御を使用してクラスタ内でのアクションを認可する | GKE security | Google Cloud Documentation</a></li>
 <li><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding">https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding</a></li>
 <li><a href="https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html">https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html</a></li>
 </ul>
@@ -38919,7 +38920,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p>もし ClusterRole を紐づけた場合は、その UserAccount / ServiceAccount / Group は、Cluster スコープの Kubernetes リソースやカスタムリソースに関する権限を得る。</p>
 <blockquote>
 <ul>
-<li><a href="https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control?hl=ja">https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control?hl=ja</a></li>
+<li><a href="https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control?hl=ja">ロールベース アクセス制御を使用してクラスタ内でのアクションを認可する | GKE security | Google Cloud Documentation</a></li>
 <li><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding">https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding</a></li>
 <li><a href="https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html">https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html</a></li>
 </ul>
@@ -38933,7 +38934,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <blockquote>
 <ul>
 <li><a href="https://www.amazon.co.jp/dp/B08FZX8PYW">https://www.amazon.co.jp/dp/B08FZX8PYW</a></li>
-<li><a href="https://qiita.com/dingtianhongjie/items/983417de88db2553f0c2">https://qiita.com/dingtianhongjie/items/983417de88db2553f0c2</a></li>
+<li><a href="https://qiita.com/dingtianhongjie/items/983417de88db2553f0c2">[Kubernetes]NetworkPolicyの動作を確認する #kubernetes - Qiita</a></li>
 </ul>
 </blockquote>
 <h4 id="ingress_3">▼ Ingress の場合<a class="headerlink" href="#ingress_3" title="Permanent link">&para;</a></h4>
@@ -38962,7 +38963,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 18:24:15 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:04:05 JST">2026-10-04</span>
   </span>
 
     

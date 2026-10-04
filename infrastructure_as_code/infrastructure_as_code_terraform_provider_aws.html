@@ -36894,7 +36894,7 @@
 <p>API Gateway の各 ARN については、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html">https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html</a></li>
+<li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html">API Gateway Amazon Resource Name (ARN) reference - Amazon API Gateway</a></li>
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
@@ -37166,7 +37166,7 @@
 <p>リスナーの後に Amazon ECS サービスを作成するようにし、『ターゲットグループ ➡️ ALB/NLB ➡️ リスナー ➡️ Amazon ECS サービス』の順で <code>resource</code> ブロックを作成可能にする。</p>
 <blockquote>
 <ul>
-<li><a href="https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022">https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022</a></li>
+<li><a href="https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022">[AWS] Creating of ALB, Target Group and Service in one script causes errors · Issue #12634 · hashicorp/terraform · GitHub</a></li>
 </ul>
 </blockquote>
 <h4 id="4aws-auto-scaling-ecs"><code>(4)</code>AWS Auto Scaling グループによる ECS タスク数の増減を無視<a class="headerlink" href="#4aws-auto-scaling-ecs" title="Permanent link">&para;</a></h4>
@@ -37244,8 +37244,8 @@
 <p>なお、<code>aws_volume_attachment</code> リソースでこのオプションを追加する PR が現座進行形で提出されている。</p>
 <blockquote>
 <ul>
-<li><a href="https://dev.classmethod.jp/articles/terraform-ec2-ebs_block_device-size-up/">https://dev.classmethod.jp/articles/terraform-ec2-ebs_block_device-size-up/</a></li>
-<li><a href="https://github.com/hashicorp/terraform-provider-aws/pull/31869">https://github.com/hashicorp/terraform-provider-aws/pull/31869</a></li>
+<li><a href="https://dev.classmethod.jp/articles/terraform-ec2-ebs_block_device-size-up/">[Terraform] EC2のEBS追加ボリュームをサイズ拡張しようとしたらハマった話 | DevelopersIO</a></li>
+<li><a href="https://github.com/hashicorp/terraform-provider-aws/pull/31869">Feat: Add delete_on_termination option on EBS volume attachment by rclaveau-tech · Pull Request #31869 · hashicorp/terraform-provider-aws · GitHub</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -37634,7 +37634,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <p>このエラーが発生した場合、コンソール画面上でリスナーを削除したうえで、もう一度 <code>terraform apply</code> コマンドを実行する。</p>
 <blockquote>
 <ul>
-<li><a href="https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529">https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529</a></li>
+<li><a href="https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529">Cannot rename ALB Target Group if Listener present · Issue #1315 · hashicorp/terraform-provider-aws · GitHub</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -37758,8 +37758,8 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <blockquote>
 <ul>
 <li><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#availability_zones">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#availability_zones</a></li>
-<li><a href="https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633">https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633</a></li>
-<li><a href="https://github.com/hashicorp/terraform-provider-aws/issues/1111">https://github.com/hashicorp/terraform-provider-aws/issues/1111</a></li>
+<li><a href="https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633">Question: AWS RDS Resource Recreation · Issue #7307 · hashicorp/terraform-provider-aws · GitHub</a></li>
+<li><a href="https://github.com/hashicorp/terraform-provider-aws/issues/1111">Aurora launches instances in at least 3 AZ even if less are specified · Issue #1111 · hashicorp/terraform-provider-aws · GitHub</a></li>
 </ul>
 </blockquote>
 <h4 id="4-az"><code>(4)</code> インスタンスを配置する AZ は選択できない<a class="headerlink" href="#4-az" title="Permanent link">&para;</a></h4>
@@ -37779,7 +37779,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <blockquote>
 <ul>
 <li><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance</a></li>
-<li><a href="https://github.com/hashicorp/terraform/issues/5333">https://github.com/hashicorp/terraform/issues/5333</a></li>
+<li><a href="https://github.com/hashicorp/terraform/issues/5333">how to create aws_rds_cluster instance (aurora) with multi_az flag? · Issue #5333 · hashicorp/terraform · GitHub</a></li>
 </ul>
 </blockquote>
 <h4 id="7"><code>(7)</code> インスタンスタイプは別々に設定する<a class="headerlink" href="#7" title="Permanent link">&para;</a></h4>
@@ -37797,7 +37797,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <p>そのため、サブネットグループに複数のサブネットを紐付けるようにする。</p>
 <blockquote>
 <ul>
-<li><a href="https://github.com/hashicorp/terraform/issues/5333">https://github.com/hashicorp/terraform/issues/5333</a></li>
+<li><a href="https://github.com/hashicorp/terraform/issues/5333">how to create aws_rds_cluster instance (aurora) with multi_az flag? · Issue #5333 · hashicorp/terraform · GitHub</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -38038,7 +38038,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <p>東京リージョンの ELB サービスアカウント ID は『<code>582318560864</code>』である。</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions">https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions</a></li>
+<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions">Access logs for your Application Load Balancer - Elastic Load Balancing</a></li>
 </ul>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
@@ -39045,7 +39045,7 @@ aws<span class="w"> </span>dynamodb<span class="w"> </span>create-table<span cla
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 22:00:45 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:04:05 JST">2026-10-04</span>
   </span>
 
     

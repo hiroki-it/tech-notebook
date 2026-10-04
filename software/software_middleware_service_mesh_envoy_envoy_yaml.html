@@ -35830,7 +35830,7 @@
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -35847,15 +35847,15 @@
 <h4 id="dockerfile">▼ Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h4>
 <p>Dockerfile にて、自前の <code>/etc/envoy/envoy.yaml</code> ファイルを組み込む。</p>
 <p>拡張子は、<code>yml</code> ではなく、<code>yaml</code> とする。</p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">envoyproxy/envoy:v1.20.1</span>
+<span class="k">COPY</span><span class="w"> </span>envoy.yaml<span class="w"> </span>/etc/envoy/envoy.yaml
+<span class="k">RUN</span><span class="w"> </span>chmod<span class="w"> </span>go+r<span class="w"> </span>/etc/envoy/envoy.yaml
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/start/docker">https://www.envoyproxy.io/docs/envoy/latest/start/docker</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">envoyproxy/envoy:v1.20.1</span>
-<span class="k">COPY</span><span class="w"> </span>envoy.yaml<span class="w"> </span>/etc/envoy/envoy.yaml
-<span class="k">RUN</span><span class="w"> </span>chmod<span class="w"> </span>go+r<span class="w"> </span>/etc/envoy/envoy.yaml
-</code></pre></div>
 <p><br></p>
 <h3 id="_4">自動セットアップの場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="istio">▼ Istio<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h4>
@@ -35941,7 +35941,7 @@
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#static-resources">https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#static-resources</a></li>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/bootstrap#config-overview-bootstrap">https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/bootstrap#config-overview-bootstrap</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/bootstrap#config-overview-bootstrap">Bootstrap configuration — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -35965,8 +35965,7 @@
 <span class="w">          </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
 </code></pre></div>
 <h4 id="address_3">▼ address<a class="headerlink" href="#address_3" title="Permanent link">&para;</a></h4>
-<p>受信したパケットのうちで、宛先 IP アドレスでフィルタリング可能にする。</p>
-<p>『<code>0.0.0.0</code>』とすると、任意の宛先 IP アドレスを指定するパケットをフィルタリングできるようになる。</p>
+<p>通信を待ち受ける IP アドレスを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
@@ -35975,7 +35974,7 @@
 <span class="w">          </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0</span>
 </code></pre></div>
 <h4 id="port_value_1">▼ port_value<a class="headerlink" href="#port_value_1" title="Permanent link">&para;</a></h4>
-<p>受信したパケットのうちで、宛先ポート番号でフィルタリング可能にする。</p>
+<p>通信を待ち受けるポート番号を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
@@ -35997,7 +35996,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/filter">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/filter</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/filter">Filters — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <h4 id="typed_configaccess_log">▼ typed_config.access_log<a class="headerlink" href="#typed_configaccess_log" title="Permanent link">&para;</a></h4>
@@ -36044,8 +36043,8 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#stat-prefix">https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#stat-prefix</a></li>
-<li><a href="https://i-beam.org/2019/02/03/envoy-static-load-balancer/">https://i-beam.org/2019/02/03/envoy-static-load-balancer/</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#stat-prefix">Envoy admin interface — envoy 1.40.0-dev-e07c88 documentation</a></li>
+<li><a href="https://i-beam.org/2019/02/03/envoy-static-load-balancer/">Envoy Proxyで作るHTTPロードバランサー | Folioscope</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -36057,7 +36056,7 @@
 <p>RPC では、JSON 内のデータのデータ型を指定するために使用する。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration">https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration">Extension configuration — envoy 1.40.0-dev-e07c88 documentation</a></li>
 <li><a href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#any">https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#any</a></li>
 </ul>
 </blockquote>
@@ -36079,8 +36078,8 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/tcp_proxy_filter">https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/tcp_proxy_filter</a></li>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/tcp_proxy_filter">TCP proxy — envoy 1.40.0-dev-e07c88 documentation</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network">Network filters — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <h4 id="networkhttp_connection_manager">▼ <code>network.http_connection_manager</code><a class="headerlink" href="#networkhttp_connection_manager" title="Permanent link">&para;</a></h4>
@@ -36102,8 +36101,8 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_connection_management">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_connection_management</a></li>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_connection_management">HTTP connection management — envoy 1.40.0-dev-e07c88 documentation</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network">Network filters — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <h4 id="httprouter">▼ <code>http.router</code><a class="headerlink" href="#httprouter" title="Permanent link">&para;</a></h4>
@@ -36132,8 +36131,8 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter</a></li>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration">https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter">Router — envoy 1.40.0-dev-e07c88 documentation</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration">Life of a Request — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <h4 id="httpgrpc_web">▼ <code>http.grpc_web</code><a class="headerlink" href="#httpgrpc_web" title="Permanent link">&para;</a></h4>
@@ -36164,9 +36163,9 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter</a></li>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_http1_bridge_filter#config-http-filters-grpc-bridge">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_http1_bridge_filter#config-http-filters-grpc-bridge</a></li>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration">https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter">gRPC-Web — envoy 1.40.0-dev-e07c88 documentation</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_http1_bridge_filter#config-http-filters-grpc-bridge">gRPC HTTP/1.1 bridge — envoy 1.40.0-dev-e07c88 documentation</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration">Life of a Request — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -36211,9 +36210,9 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration">https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration</a></li>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto</a></li>
-<li><a href="https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/">https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration">Life of a Request — envoy 1.40.0-dev-e07c88 documentation</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto">HTTP route configuration (proto) — envoy 1.40.0-dev-e07c88 documentation</a></li>
+<li><a href="https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/">NomadのゲートウェイをNginxからEnvoyに置き換える - kamijin-fanta</a></li>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-routeaction-maxstreamduration">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-routeaction-maxstreamduration</a></li>
 </ul>
 </blockquote>
@@ -36259,7 +36258,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/envoyproxy/envoy/issues/12578">https://github.com/envoyproxy/envoy/issues/12578</a></li>
+<li><a href="https://github.com/envoyproxy/envoy/issues/12578">gRPC timeout processing does not match gRPC semantics · Issue #12578 · envoyproxy/envoy · GitHub</a></li>
 <li><a href="https://github.com/envoyproxy/envoy/pull/13018">https://github.com/envoyproxy/envoy/pull/13018</a></li>
 </ul>
 </blockquote>
@@ -36346,15 +36345,15 @@
 <p>しかし、移行先の <code>max_stream_duration</code> にも gRPC による HTTP レスポンスの返信とタイムアウト時間超過による通信切断のタイミングに問題がある。</p>
 <blockquote>
 <ul>
-<li><a href="https://github.com/envoyproxy/envoy/issues/16129">https://github.com/envoyproxy/envoy/issues/16129</a></li>
-<li><a href="https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029">https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029</a></li>
+<li><a href="https://github.com/envoyproxy/envoy/issues/16129">Inconsistent timeout handling between max_stream_timeout and router global timeout · Issue #16129 · envoyproxy/envoy · GitHub</a></li>
+<li><a href="https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029">Return gRPC error status when max_stream_duration is reached for gRPC requests · Issue #13925 · envoyproxy/envoy · GitHub</a></li>
 </ul>
 </blockquote>
 <p>そこで、サービスメッシュツール (例：Istio) では、<code>max_grpc_timeout</code> を使用し続けている。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/pull/45234#discussion_r1213965308">https://github.com/istio/istio/pull/45234#discussion_r1213965308</a></li>
-<li><a href="https://github.com/istio/istio/issues/45141">https://github.com/istio/istio/issues/45141</a></li>
+<li><a href="https://github.com/istio/istio/issues/45141">Istio 1.16.4 returning GRPC Unavailable instead of deadline exceeded · Issue #45141 · istio/istio · GitHub</a></li>
 <li><a href="https://github.com/istio/istio/pull/42049">https://github.com/istio/istio/pull/42049</a></li>
 </ul>
 </blockquote>
@@ -36369,7 +36368,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto">Listener configuration (proto) — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -36379,7 +36378,7 @@
 <p>対象が <code>1</code> 個であっても、<code>clusters</code> キーは必須である。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters">https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters">Configuration: Static — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -36404,7 +36403,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_circuit_breakers.html?highlight=circuit_breakers">https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_circuit_breakers.html?highlight=circuit_breakers</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_circuit_breakers.html?highlight=circuit_breakers">Circuit breaking — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -36440,7 +36439,7 @@
 <p>ルーティング先の IP アドレスとポート番号のリストを設定する。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router">https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router">Router (proto) — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
@@ -36494,7 +36493,7 @@
 <p>また、静的な値を設定したとする。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-one-static-resource">https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-one-static-resource</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-one-static-resource">Secret discovery service (SDS) — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
@@ -36556,7 +36555,7 @@
 <p>サービスメッシュツールを使用せずに、<code>envoy</code> コンテナを直接的に稼働させるとする。また、コントロールプレーンの SDS-API から取得した動的な値を設定したとする。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-two-sds-server">https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-two-sds-server</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-two-sds-server">Secret discovery service (SDS) — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -36566,7 +36565,7 @@
 <p>ルーティング先のアドレスを IP アドレスではなくドメイン名で指定する場合、必須である。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types">Service discovery — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
@@ -36607,7 +36606,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#envoy-v3-api-msg-config-core-v3-http2protocoloptions">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#envoy-v3-api-msg-config-core-v3-http2protocoloptions</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#envoy-v3-api-msg-config-core-v3-http2protocoloptions">Protocol options (proto) — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <h4 id="upstream_http_protocol_options">▼ upstream_http_protocol_options<a class="headerlink" href="#upstream_http_protocol_options" title="Permanent link">&para;</a></h4>
@@ -36625,7 +36624,7 @@
 <p>動的に宛先情報を設定する。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-dynamic-filesystem#dynamic-resources">https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-dynamic-filesystem#dynamic-resources</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-dynamic-filesystem#dynamic-resources">Configuration: Dynamic from filesystem — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -36635,7 +36634,7 @@
 <p>Envoy が ADS-API にリクエストを送信するように設定できる。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service">https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service">xDS API endpoints — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <h4 id="grpc_services">▼ grpc_services<a class="headerlink" href="#grpc_services" title="Permanent link">&para;</a></h4>
@@ -36644,7 +36643,7 @@
 <p>ADS-API の宛先情報は、<code>static_resources.clusters</code> キー配下で設定しておく。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/grpc_service.proto#envoy-v3-api-msg-config-core-v3-grpcservice-envoygrpc">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/grpc_service.proto#envoy-v3-api-msg-config-core-v3-grpcservice-envoygrpc</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/grpc_service.proto#envoy-v3-api-msg-config-core-v3-grpcservice-envoygrpc">gRPC services (proto) — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
@@ -36698,10 +36697,10 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L9-L15">https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L9-L15</a></li>
-<li><a href="https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L27-L40">https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L27-L40</a></li>
-<li><a href="https://github.com/salrashid123/envoy_discovery/blob/8f939d1ba7aaf8724651a9e2530099da4ab686d6/envoy_config.yaml#L39-L74">https://github.com/salrashid123/envoy_discovery/blob/8f939d1ba7aaf8724651a9e2530099da4ab686d6/envoy_config.yaml#L39-L74</a></li>
-<li><a href="https://i-beam.org/2019/03/13/envoy-xds-server/">https://i-beam.org/2019/03/13/envoy-xds-server/</a></li>
+<li><a href="https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L9-L15">envoy_control/baseline.yaml at eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a · salrashid123/envoy_control · GitHub</a></li>
+<li><a href="https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L27-L40">envoy_control/baseline.yaml at eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a · salrashid123/envoy_control · GitHub</a></li>
+<li><a href="https://github.com/salrashid123/envoy_discovery/blob/8f939d1ba7aaf8724651a9e2530099da4ab686d6/envoy_config.yaml#L39-L74">envoy_discovery/envoy_config.yaml at 8f939d1ba7aaf8724651a9e2530099da4ab686d6 · salrashid123/envoy_discovery · GitHub</a></li>
+<li><a href="https://i-beam.org/2019/03/13/envoy-xds-server/">Envoy ProxyのためのEDSサーバーを作る | Folioscope</a></li>
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
@@ -36773,7 +36772,7 @@
 <h3 id="overload_manager">overload_manager とは<a class="headerlink" href="#overload_manager" title="Permanent link">&para;</a></h3>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/overload_manager/overload_manager#">https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/overload_manager/overload_manager#</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/overload_manager/overload_manager#">Overload manager — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -36788,7 +36787,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/overload_manager/overload_manager#limiting-active-connections">https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/overload_manager/overload_manager#limiting-active-connections</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/overload_manager/overload_manager#limiting-active-connections">Overload manager — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -36812,7 +36811,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 18:24:15 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:04:05 JST">2026-10-04</span>
   </span>
 
     

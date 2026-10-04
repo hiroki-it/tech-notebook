@@ -6985,7 +6985,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ マイクロサービスごとに作成する
+        ▼ 共有入口と占有入口を選ぶ
       
     </span>
   </a>
@@ -34072,7 +34072,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ マイクロサービスごとに作成する
+        ▼ 共有入口と占有入口を選ぶ
       
     </span>
   </a>
@@ -34577,7 +34577,7 @@
 <p>クラウドプロバイダーで Istio を稼働させる場合、各 AZ や各リージョンにコントロールプレーンを <code>1</code> 個だけセットアップし、できるだけ多くのマイクロサービスのサービスメッシュとなるようにする。</p>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-fewer-clusters">https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-fewer-clusters</a></li>
+<li><a href="https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-fewer-clusters">Istio / Deployment Best Practices</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -34585,7 +34585,7 @@
 <p>コントロールプレーンの可用性を高めるために、コントロールプレーンを異なる AZ に冗長化させる。</p>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-across-multiple-availability-zones">https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-across-multiple-availability-zones</a></li>
+<li><a href="https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-across-multiple-availability-zones">Istio / Deployment Best Practices</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -34628,7 +34628,7 @@
 <blockquote>
 <ul>
 <li><a href="https://www.kabegiwablog.com/entry/2020/08/31/224827">https://www.kabegiwablog.com/entry/2020/08/31/224827</a></li>
-<li><a href="https://github.com/istio/istio/issues/6324#issuecomment-760156652">https://github.com/istio/istio/issues/6324#issuecomment-760156652</a></li>
+<li><a href="https://github.com/istio/istio/issues/6324#issuecomment-760156652">Better support for sidecar containers in batch jobs · Issue #6324 · istio/istio · GitHub</a></li>
 <li><a href="https://youtu.be/2_Nan81j03o?t=1915">https://youtu.be/2_Nan81j03o?t=1915</a></li>
 </ul>
 </blockquote>
@@ -34639,7 +34639,7 @@
 <p>セキュリティ上の理由から、Istio Ingress Gateway と Istiod コントロールプレーンは異なる Namespace におくほうがよい。</p>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway">https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway</a></li>
+<li><a href="https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway">Istio / Installing Gateways</a></li>
 </ul>
 </blockquote>
 <h4 id="nodeport-service">▼ NodePort Service を選ぶ<a class="headerlink" href="#nodeport-service" title="Permanent link">&para;</a></h4>
@@ -34667,8 +34667,8 @@
 <p>NodePort Service を選ぶためには、Istio Ingress Gateway ではなく、IstioOperator や istio チャート上で Service のタイプを設定し、Istio Ingress Gateway を作成する必要がある。</p>
 <blockquote>
 <ul>
-<li><a href="https://github.com/istio/istio/issues/28310#issuecomment-733079966">https://github.com/istio/istio/issues/28310#issuecomment-733079966</a></li>
-<li><a href="https://github.com/istio/istio/blob/1.14.3/manifests/charts/gateway/values.yaml#L39">https://github.com/istio/istio/blob/1.14.3/manifests/charts/gateway/values.yaml#L39</a></li>
+<li><a href="https://github.com/istio/istio/issues/28310#issuecomment-733079966">Istio-ingress nodeport service changes · Issue #28310 · istio/istio · GitHub</a></li>
+<li><a href="https://github.com/istio/istio/blob/1.14.3/manifests/charts/gateway/values.yaml#L39">istio/manifests/charts/gateway/values.yaml at 1.14.3 · istio/istio · GitHub</a></li>
 </ul>
 </blockquote>
 <h4 id="clusterip-service-aws-load-balancer-controller">▼ ClusterIP Service を選ぶ (AWS Load Balancer Controller を使用する場合のみ)<a class="headerlink" href="#clusterip-service-aws-load-balancer-controller" title="Permanent link">&para;</a></h4>
@@ -34692,8 +34692,10 @@
 <li><a href="https://lab.mo-t.com/blog/k8s-update-load-balancer">https://lab.mo-t.com/blog/k8s-update-load-balancer</a></li>
 </ul>
 </blockquote>
-<h4 id="_4">▼ マイクロサービスごとに作成する<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>単一障害点になることを防ぐために、<code>1</code> 個の Istio Ingress Gateway ですべてのマイクロサービスにルーティングするのではなく、マイクロサービスことに用意する。</p>
+<h4 id="_4">▼ 共有入口と占有入口を選ぶ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>Istio Ingress Gateway を複数の Namespace で共有する共有入口パターンと、特定の Namespace が占有する占有入口パターンがある。</p>
+<p>入口の責任範囲を分割する必要がない場合は共有し、流入経路や管理の責任範囲を分けたい場合は Namespace ごとに配置する。</p>
+<p>占有入口パターンでは、問題の原因を切り分けやすくなる一方で、Istio Ingress Gateway の管理が煩雑になる。</p>
 <p><br></p>
 <h3 id="_5">デフォルトルートにサブセットを指定する<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>複数のサブセットを定義する場合でも、デフォルトルートでは特定のサブセットを指定する。</p>
@@ -34715,7 +34717,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/docs/ops/best-practices/traffic-management/#set-default-routes-for-services">https://istio.io/latest/docs/ops/best-practices/traffic-management/#set-default-routes-for-services</a></li>
+<li><a href="https://istio.io/latest/docs/ops/best-practices/traffic-management/#set-default-routes-for-services">Istio / Traffic Management Best Practices</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -34740,7 +34742,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/docs/ops/best-practices/traffic-management/#cross-namespace-configuration">https://istio.io/latest/docs/ops/best-practices/traffic-management/#cross-namespace-configuration</a></li>
+<li><a href="https://istio.io/latest/docs/ops/best-practices/traffic-management/#cross-namespace-configuration">Istio / Traffic Management Best Practices</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -34751,7 +34753,7 @@
 <p>DestinationRule を最初に更新し、正常に完了することを待機した後に、VirtualService を更新する。</p>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/docs/ops/best-practices/traffic-management/#avoid-503-errors-while-reconfiguring-service-routes">https://istio.io/latest/docs/ops/best-practices/traffic-management/#avoid-503-errors-while-reconfiguring-service-routes</a></li>
+<li><a href="https://istio.io/latest/docs/ops/best-practices/traffic-management/#avoid-503-errors-while-reconfiguring-service-routes">Istio / Traffic Management Best Practices</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -34835,7 +34837,7 @@
 <p>実質的に半年ごとにアップグレード工数が発生する。</p>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/docs/releases/supported-releases/#support-status-of-istio-releases">https://istio.io/latest/docs/releases/supported-releases/#support-status-of-istio-releases</a></li>
+<li><a href="https://istio.io/latest/docs/releases/supported-releases/#support-status-of-istio-releases">Istio / Supported Releases</a></li>
 </ul>
 </blockquote>
 <h4 id="_8">▼ マイナーバージョン単位でアップグレード<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
@@ -34843,7 +34845,7 @@
 <p>そのため、マイナーバージョンを <code>2</code> 個以上跨いだアップグレードを推奨していない。</p>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/docs/setup/upgrade/">https://istio.io/latest/docs/setup/upgrade/</a></li>
+<li><a href="https://istio.io/latest/docs/setup/upgrade/">Istio / Upgrade Istio</a></li>
 <li><a href="https://thenewstack.io/upgrading-istio-without-downtime/">https://thenewstack.io/upgrading-istio-without-downtime/</a></li>
 </ul>
 </blockquote>
@@ -34897,7 +34899,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/docs/setup/upgrade/in-place/">https://istio.io/latest/docs/setup/upgrade/in-place/</a></li>
+<li><a href="https://istio.io/latest/docs/setup/upgrade/in-place/">Istio / In-place Upgrades</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -34905,13 +34907,13 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <h4 id="_13">▼ カナリア方式とは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <blockquote>
 <ul>
-<li><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548">https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548</a></li>
+<li><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548">【Istio⛵️】Istioを安全にアップグレードするカナリア方式とその仕組み - 好きな技術を布教したい 😗</a></li>
 </ul>
 </blockquote>
 <h4 id="istioctl">▼ <code>istioctl</code> コマンドの場合<a class="headerlink" href="#istioctl" title="Permanent link">&para;</a></h4>
 <blockquote>
 <ul>
-<li><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548">https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548</a></li>
+<li><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548">【Istio⛵️】Istioを安全にアップグレードするカナリア方式とその仕組み - 好きな技術を布教したい 😗</a></li>
 </ul>
 </blockquote>
 <h4 id="helm">▼ <code>helm</code> コマンドの場合<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h4>
@@ -35159,7 +35161,7 @@ istioctl<span class="w"> </span>version
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 18:24:15 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:04:05 JST">2026-10-04</span>
   </span>
 
     
