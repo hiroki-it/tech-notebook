@@ -7719,10 +7719,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#warmupaggression" class="md-nav__link">
+  <a href="#loadbalancerwarmupaggression" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ warmup.aggression
+        ▼ loadBalancer.warmup.aggression
       
     </span>
   </a>
@@ -7730,10 +7730,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#warmupduration" class="md-nav__link">
+  <a href="#loadbalancerwarmupduration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ warmup.duration
+        ▼ loadBalancer.warmup.duration
       
     </span>
   </a>
@@ -36503,10 +36503,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#warmupaggression" class="md-nav__link">
+  <a href="#loadbalancerwarmupaggression" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ warmup.aggression
+        ▼ loadBalancer.warmup.aggression
       
     </span>
   </a>
@@ -36514,10 +36514,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#warmupduration" class="md-nav__link">
+  <a href="#loadbalancerwarmupduration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ warmup.duration
+        ▼ loadBalancer.warmup.duration
       
     </span>
   </a>
@@ -38511,7 +38511,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="specprovider">.spec.provider<a class="headerlink" href="#specprovider" title="Permanent link">&para;</a></h3>
 <h4 id="provider">▼ provider とは<a class="headerlink" href="#provider" title="Permanent link">&para;</a></h4>
 <p>認可フェーズの委譲先の ID プロバイダーを設定する。</p>
-<p>事前に、ConfigMap の <code>.mesh.extensionProvider</code> キーに ID プロバイダーを登録しておく必要がある。</p>
+<p>事前に、ConfigMap の <code>.mesh.extensionProviders</code> キーに ID プロバイダーを登録しておく必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>ここでは、OAuth2 Proxy を ID プロバイダーとして使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
@@ -38539,9 +38539,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="no">envoyExtAuthzHttp:</span>
 <span class="w">          </span><span class="no">service: oauth2-proxy.auth.svc.cluster.local</span>
 <span class="w">          </span><span class="no">port: 80</span>
-<span class="w">        </span><span class="no">includeHeadersInCheck:</span>
-<span class="w">          </span><span class="no">- cookie</span>
-<span class="w">          </span><span class="no">- authorization</span>
+<span class="w">          </span><span class="no">includeRequestHeadersInCheck:</span>
+<span class="w">            </span><span class="no">- cookie</span>
+<span class="w">            </span><span class="no">- authorization</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -38557,7 +38557,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>その条件に合致した場合、認証済みの送信元を許可するか否かを判定する。</p>
 <h4 id="serviceaccount-pod">▼ 特定の ServiceAccount を持つ Pod を送信元として許可する<a class="headerlink" href="#serviceaccount-pod" title="Permanent link">&para;</a></h4>
 <p>送信元 Pod に紐づく ServiceAccount が送信元の場合、認可を実施する。</p>
-<p>Istio はクライアント証明書に ID (例：SPIFEE ID) を設定しており、この ID が <code>principals</code> 値と一致するかを検証する。</p>
+<p>Istio はクライアント証明書に ID (例：SPIFFE ID) を設定しており、この ID が <code>principals</code> 値と一致するかを検証する。</p>
 <p>Kubernetes では送信元 Pod の名前を知る方法がない (IP アドレスは可能) なので、制御しやすくなる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
@@ -38711,7 +38711,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="03-destinationrule">03. DestinationRule<a class="headerlink" href="#03-destinationrule" title="Permanent link">&para;</a></h2>
 <h3 id="specexportto">.spec.exportTo<a class="headerlink" href="#specexportto" title="Permanent link">&para;</a></h3>
 <h4 id="exportto">▼ exportTo とは<a class="headerlink" href="#exportto" title="Permanent link">&para;</a></h4>
-<p>その DestinationRule にリクエストできる Namespace を設定する。</p>
+<p>DestinationRule の設定を公開する Namespace を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService">https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService</a></li>
@@ -38719,9 +38719,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="_8">▼ <code>*</code> (アスタリスク)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>デフォルト値である。</p>
-<p>他の Namespace の VirtualService に紐づける場合、<code>*</code> とする必要がある。</p>
-<p>もし、同じ Namespace 内の VirtualService と紐づける場合、<code>.</code> とする。</p>
-<p>つまり、Istio Ingress Gateway や Istio Egress Gateway とリクエストを送受信する VirtualService と DestinationRule では <code>*</code> とし、それ以外のこれらの場合は <code>.</code> とする。</p>
+<p>異なる Namespace の通信元で設定を使用する場合、<code>*</code> で全 Namespace に公開する。</p>
+<p>通信元が同じ Namespace にある場合、<code>.</code> で同じ Namespace 内だけに公開できる。</p>
+<p>Gateway を使用するかどうかではなく、設定を使用する通信元の Namespace に合わせて公開範囲を決める。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -38742,9 +38742,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-egressgateway.istio-egress.svc.cluster.local</span>
 </code></pre></div>
 <h4 id="_9">▼ <code>.</code> (ドット)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>同じ Namespace 内の VirtualService と紐づける場合、<code>.</code> とする。</p>
-<p>もし、他の Namespace の VirtualService に紐づける場合、<code>*</code> とする必要がある。</p>
-<p>つまり、Istio Ingress Gateway や Istio Egress Gateway とリクエストを送受信する VirtualService と DestinationRule では <code>*</code> とし、それ以外のこれらの場合は <code>.</code> とする。</p>
+<p>通信元が同じ Namespace にある場合、<code>.</code> で同じ Namespace 内だけに公開できる。</p>
+<p>異なる Namespace の通信元で設定を使用する場合、<code>*</code> で全 Namespace に公開する。</p>
+<p>Gateway を使用するかどうかではなく、設定を使用する通信元の Namespace に合わせて公開範囲を決める。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -38902,7 +38902,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">connectionPool</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">http</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">idleTimeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">        </span><span class="nt">idleTimeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000s</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -38954,7 +38954,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">connectionPool</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">tcp</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">idleTimeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">        </span><span class="nt">idleTimeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000s</span>
 </code></pre></div>
 <h4 id="connectionpooltcptcpkeepalive">▼ connectionPool.tcp.tcpKeepalive<a class="headerlink" href="#connectionpooltcptcpkeepalive" title="Permanent link">&para;</a></h4>
 <p>宛先との間で TCP KeepAlive を実施する。</p>
@@ -38969,8 +38969,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="nt">tcp</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">tcpKeepalive</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">probes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9</span>
-<span class="w">          </span><span class="nt">time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">          </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">75</span>
+<span class="w">          </span><span class="nt">time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2s</span>
+<span class="w">          </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">75s</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -38997,13 +38997,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="outlierdetectionbaseejectiontime">▼ outlierDetection.baseEjectionTime<a class="headerlink" href="#outlierdetectionbaseejectiontime" title="Permanent link">&para;</a></h4>
-<p>オープン状態の期間を設定する。</p>
-<p><code>baseEjectionTime</code> キー後、宛先の正常性を確認し、もしエラー条件が発生していなければサーキットブレイカーを停止する。</p>
-<p>もしエラー条件がまだ解決していなければ、もう一度 <code>baseEjectionTime</code> を実行する。</p>
-<p>どのくらいの期間で 10 回以上を判定するかは、<code>interval</code> キーで設定する。</p>
+<p>異常な宛先をルーティング対象から除外する基本期間を設定する。</p>
+<p>初回は <code>baseEjectionTime</code> の期間だけ除外する。</p>
+<p>復帰後に再び除外条件を満たした場合、除外期間は <code>baseEjectionTime</code> と除外回数の積になる。</p>
+<p>外れ値検出の判定間隔は、<code>interval</code> キーで設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Gateway 系ステータスが 10 秒間に 10 回以上発生したら、サーキットブレイカーを開始する。</p>
-<p>サーキットブレイカー中に、異常な Pod を 30 秒間排除する</p>
+<p>Gateway 系ステータスが 10 回以上連続した宛先を 10 秒間隔で判定し、ルーティング対象から除外する。</p>
+<p>初回は、異常な Pod を 30 秒間排除する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39026,10 +39026,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="outlierdetectionconsecutivegatewayerrors">▼ outlierDetection.consecutiveGatewayErrors<a class="headerlink" href="#outlierdetectionconsecutivegatewayerrors" title="Permanent link">&para;</a></h4>
 <p>サーキットブレイカーを開始する外れ値 (Gateway 系ステータスの <code>502</code>、<code>503</code>、<code>504</code>) の閾値を設定する。</p>
 <p>似た設定として、<code>500</code> 系ステータスの閾値を設定する <code>consecutive5xxErrors</code> キーがあるが、併用できる。</p>
-<p>どのくらいの期間で 10 回以上を判定するかは、<code>interval</code> キーで設定する。</p>
+<p>外れ値検出の判定間隔は、<code>interval</code> キーで設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Gateway 系ステータスが 10 秒間に 10 回以上発生したら、サーキットブレイカーを開始する。</p>
-<p>サーキットブレイカー中に、異常な Pod を 30 秒間排除する</p>
+<p>Gateway 系ステータスが 10 回以上連続した宛先を 10 秒間隔で判定し、ルーティング対象から除外する。</p>
+<p>初回は、異常な Pod を 30 秒間排除する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39050,11 +39050,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="outlierdetectionconsecutive5xxerrors">▼ outlierDetection.consecutive5xxErrors<a class="headerlink" href="#outlierdetectionconsecutive5xxerrors" title="Permanent link">&para;</a></h4>
 <p>サーキットブレイカーを開始する外れ値 (<code>500</code> 系ステータス) の閾値を設定する。</p>
-<p>似た設定として、Gateway 系ステータス率の閾値を設定する <code>consecutiveGatewayErrors</code> キーがあるが、併用できる。</p>
-<p>どのくらいの期間で 10 回以上を判定するかは、<code>interval</code> キーで設定する。</p>
+<p>似た設定として、Gateway 系ステータスの連続回数の閾値を設定する <code>consecutiveGatewayErrors</code> キーがあるが、併用できる。</p>
+<p>外れ値検出の判定間隔は、<code>interval</code> キーで設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p><code>500</code> 系ステータスが 10 秒間に 10 回以上発生したら、サーキットブレイカーを開始する。</p>
-<p>サーキットブレイカー中に、異常な Pod を 30 秒間排除する</p>
+<p><code>500</code> 系ステータスが 10 回以上連続した宛先を 10 秒間隔で判定し、ルーティング対象から除外する。</p>
+<p>初回は、異常な Pod を 30 秒間排除する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39074,10 +39074,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="outlierdetectioninterval">▼ outlierDetection.interval<a class="headerlink" href="#outlierdetectioninterval" title="Permanent link">&para;</a></h4>
 <p>サーキットブレイカーの外れ値の計測間隔を設定する。</p>
-<p>間隔内で閾値以上のエラーが発生した場合、サーキトブレイカーが起こる。</p>
+<p>指定した間隔で、連続エラー数が閾値に達した宛先を判定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p><code>500</code> 系ステータスが 10 秒間に 10 回以上発生したら、サーキットブレイカーを開始する。</p>
-<p>サーキットブレイカー中に、異常な Pod を 30 秒間排除する</p>
+<p><code>500</code> 系ステータスが 10 回以上連続した宛先を 10 秒間隔で判定し、ルーティング対象から除外する。</p>
+<p>初回は、異常な Pod を 30 秒間排除する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39097,7 +39097,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="outlierdetectionmaxejectionpercent">▼ outlierDetection.maxEjectionPercent<a class="headerlink" href="#outlierdetectionmaxejectionpercent" title="Permanent link">&para;</a></h4>
-<p>Pod 全体のうちで排除できる最大 Pod 数を設定する。</p>
+<p>Pod 全体のうちで排除できる Pod の最大割合 (%) を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>すべての Pod を排除する。</p>
 <p>代わりに istio-proxy から返却された <code>503</code> ステータス (response_flag は <code>UH</code>) のレスポンスに応じて、送信元マイクロサービスでフォールバックを実行する。</p>
@@ -39293,7 +39293,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings</a></li>
 </ul>
 </blockquote>
-<h4 id="warmupaggression">▼ warmup.aggression<a class="headerlink" href="#warmupaggression" title="Permanent link">&para;</a></h4>
+<h4 id="loadbalancerwarmupaggression">▼ loadBalancer.warmup.aggression<a class="headerlink" href="#loadbalancerwarmupaggression" title="Permanent link">&para;</a></h4>
 <p>スロースタート方式 (通過させるリクエストの数を少しずつ増加させる) で、増加率を設定する。</p>
 <p><code>1</code> の場合は、直線的に増加する。</p>
 <p>リクエスト数の非常に多い高トラフィックなシステムで、起動直後の性能が悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要な JVM 言語製アプリケーション) にいきなり高負荷をかけないようにできる。</p>
@@ -39303,9 +39303,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">warmup</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
-<span class="w">      </span><span class="nt">aggression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">loadBalancer</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">warmup</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
+<span class="w">        </span><span class="nt">aggression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -39316,7 +39317,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start</a></li>
 </ul>
 </blockquote>
-<h4 id="warmupduration">▼ warmup.duration<a class="headerlink" href="#warmupduration" title="Permanent link">&para;</a></h4>
+<h4 id="loadbalancerwarmupduration">▼ loadBalancer.warmup.duration<a class="headerlink" href="#loadbalancerwarmupduration" title="Permanent link">&para;</a></h4>
 <p>スロースタート方式 (通過させるリクエストの数を少しずつ増加させる) で、スロースタートの期間を設定する。</p>
 <p>リクエスト数の非常に多い高トラフィックなシステムで、起動直後の性能が悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要な JVM 言語製アプリケーション) にいきなり高負荷をかけないようにできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -39325,9 +39326,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">warmup</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
-<span class="w">      </span><span class="nt">aggression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">loadBalancer</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">warmup</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
+<span class="w">        </span><span class="nt">aggression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -39357,7 +39359,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>ネットワークフィルターである <code>network.http_connection_manager</code> の設定値を変更する。</p>
+<p>HTTP フィルターの設定値を変更する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39618,7 +39620,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http_local_rate_limiter</span>
-<span class="w">              </span><span class="c1"># 4 秒中に 4 リクエスト数までを指定する</span>
+<span class="w">              </span><span class="c1"># 60 秒ごとに 4 トークンを補充し、最大 4 トークンを保持する</span>
 <span class="w">              </span><span class="nt">token_bucket</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">max_tokens</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 <span class="w">                </span><span class="nt">tokens_per_fill</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
@@ -39684,7 +39686,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">              </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit</span>
 <span class="w">              </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http_local_rate_limiter</span>
-<span class="w">                </span><span class="c1"># 4 秒中に 4 リクエスト数までを指定する</span>
+<span class="w">                </span><span class="c1"># 60 秒ごとに 4 トークンを補充し、最大 4 トークンを保持する</span>
 <span class="w">                </span><span class="nt">token_bucket</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">max_tokens</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 <span class="w">                  </span><span class="nt">tokens_per_fill</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
@@ -39979,7 +39981,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-ingress</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">istio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingressgateway</span>
+<span class="w">    </span><span class="nt">istio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingressgateway</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
@@ -40246,9 +40248,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>サーバー証明書を保持する Secret を指定する場合は、<code>.spec.servers[*].tls.credentialName</code> キーを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-ingress</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-ingress</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">servers</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tls</span><span class="p">:</span>
@@ -40308,11 +40310,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </tr>
 <tr>
 <td><code>PERMISSIVE</code></td>
-<td>相互 TLS 認証のとき、istio-proxy は受信するプロトコルで HTTPS プロトコルと HTTP プロトコルの両方を許可する。</td>
+<td>istio-proxy は相互 TLS 認証を使用する通信と平文通信の両方を許可する。</td>
 </tr>
 <tr>
 <td><code>STRICT</code></td>
-<td>相互 TLS 認証のとき、istio-proxy は受信するプロトコルで HTTPS プロトコルのみを許可し、HTTP を許可しない。</td>
+<td>istio-proxy は相互 TLS 認証を使用する通信のみを許可し、平文通信やサーバー認証のみの TLS 通信を拒否する。</td>
 </tr>
 </tbody>
 </table>
@@ -40496,9 +40498,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-request-authentication-jwt</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">jwtRules</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">fromCookies</span><span class="p">:</span>
-<span class="w">      </span><span class="c1"># Cookie ヘッダーの中でアクセストークンが設定されたキーを指定する</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;アクセストークンキー&gt;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">fromCookies</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># Cookie ヘッダーの中でアクセストークンが設定されたキーを指定する</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;アクセストークンキー&gt;</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -40514,10 +40516,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-request-authentication-jwt</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">jwtRules</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">fromHeaders</span><span class="p">:</span>
-<span class="w">      </span><span class="c1"># Authorization ヘッダーを指定する</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
-<span class="w">        </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Bearer</span><span class="nv"> </span><span class="s">&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">fromHeaders</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># Authorization ヘッダーを指定する</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
+<span class="w">          </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Bearer</span><span class="nv"> </span><span class="s">&quot;</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -40616,8 +40618,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specexportto_1">.spec.exportTo<a class="headerlink" href="#specexportto_1" title="Permanent link">&para;</a></h3>
 <h4 id="exportto_1">▼ exportTo とは<a class="headerlink" href="#exportto_1" title="Permanent link">&para;</a></h4>
-<p>その ServiceEntry にリクエストできる Namespace を設定する。</p>
-<p>ServiceEntry は Istio Egress Gateway からリクエストを受信するため、基本的には <code>*</code> となるはずである。</p>
+<p>ServiceEntry の設定を公開する Namespace を設定する。</p>
+<p>ServiceEntry と通信元の istio-proxy が異なる Namespace にある場合、通信元の Namespace に設定を公開する。</p>
+<p><code>*</code> ではすべての Namespace に公開し、<code>.</code> では同じ Namespace 内に公開する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40950,7 +40953,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="12-virtualservice">12. VirtualService<a class="headerlink" href="#12-virtualservice" title="Permanent link">&para;</a></h2>
 <h3 id="specexportto_2">.spec.exportTo<a class="headerlink" href="#specexportto_2" title="Permanent link">&para;</a></h3>
 <h4 id="exportto_2">▼ exportTo とは<a class="headerlink" href="#exportto_2" title="Permanent link">&para;</a></h4>
-<p>その VirtualService にリクエストできる Namespace を設定する。</p>
+<p>VirtualService の設定を公開する Namespace を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService">https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService</a></li>
@@ -40958,9 +40961,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="_14">▼ <code>*</code> (アスタリスク)<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>デフォルト値である。</p>
-<p>他の Namespace の Gateway や DestinationRule に紐づける場合、<code>*</code> とする必要がある。</p>
-<p>もし、同じ Namespace 内の Gateway や DestinationRule と紐づける場合、<code>.</code> とする。</p>
-<p>つまり、Istio Ingress Gateway や Istio Egress Gateway とリクエストを送受信する VirtualService と DestinationRule では <code>*</code> とし、それ以外のこれらの場合は <code>.</code> とする。</p>
+<p>異なる Namespace の通信元で設定を使用する場合、<code>*</code> で全 Namespace に公開する。</p>
+<p>通信元が同じ Namespace にある場合、<code>.</code> で同じ Namespace 内だけに公開できる。</p>
+<p>Gateway を使用するかどうかではなく、設定を使用する通信元の Namespace に合わせて公開範囲を決める。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -40977,9 +40980,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 </code></pre></div>
 <h4 id="_15">▼ <code>.</code> (ドット)<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>同じ Namespace 内の Gateway や DestinationRule と紐づける場合、<code>.</code> とする。</p>
-<p>もし、他の Namespace の Gateway や DestinationRule に紐づける場合、<code>*</code> とする必要がある。</p>
-<p>つまり、Istio Ingress Gateway や Istio Egress Gateway とリクエストを送受信する VirtualService と DestinationRule では <code>*</code> とし、それ以外のこれらの場合は <code>.</code> とする。</p>
+<p>通信元が同じ Namespace にある場合、<code>.</code> で同じ Namespace 内だけに公開できる。</p>
+<p>異なる Namespace の通信元で設定を使用する場合、<code>*</code> で全 Namespace に公開する。</p>
+<p>Gateway を使用するかどうかではなく、設定を使用する通信元の Namespace に合わせて公開範囲を決める。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -41231,12 +41234,12 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">http</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">fault</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">abort</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># 発生させるエラー</span>
-<span class="w">            </span><span class="nt">httpStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">503</span>
-<span class="w">            </span><span class="c1"># エラーを発生させる確率</span>
-<span class="w">            </span><span class="nt">percentage</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">        </span><span class="nt">abort</span><span class="p">:</span>
+<span class="w">          </span><span class="c1"># 発生させるエラー</span>
+<span class="w">          </span><span class="nt">httpStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">503</span>
+<span class="w">          </span><span class="c1"># エラーを発生させる確率</span>
+<span class="w">          </span><span class="nt">percentage</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -41252,12 +41255,12 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">http</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">fault</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">delay</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># レスポンスの遅延時間</span>
-<span class="w">            </span><span class="nt">fixedDelay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
-<span class="w">            </span><span class="c1"># 遅延レスポンスを発生させる割合</span>
-<span class="w">            </span><span class="nt">percentage</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">        </span><span class="nt">delay</span><span class="p">:</span>
+<span class="w">          </span><span class="c1"># レスポンスの遅延時間</span>
+<span class="w">          </span><span class="nt">fixedDelay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
+<span class="w">          </span><span class="c1"># 遅延レスポンスを発生させる割合</span>
+<span class="w">          </span><span class="nt">percentage</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -41359,7 +41362,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="uri">▼ uri<a class="headerlink" href="#uri" title="Permanent link">&para;</a></h4>
-<p>ヘッダー名で合致条件を設定する。</p>
+<p>リクエストの URI で合致条件を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>受信した通信のうち、URL の接頭辞が <code>/foo</code> のものだけにルールを適用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -41369,9 +41372,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">http</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">headers</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">uri</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/foo</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uri</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/foo</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -41805,7 +41807,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年9月28日 17:12:45 JST">2026-09-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 18:24:15 JST">2026-10-04</span>
   </span>
 
     

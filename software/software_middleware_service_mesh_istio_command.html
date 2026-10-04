@@ -35559,13 +35559,13 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 <p><br></p>
 <h2 id="analyze">analyze<a class="headerlink" href="#analyze" title="Permanent link">&para;</a></h2>
 <h3 id="analyze_1">analyze とは<a class="headerlink" href="#analyze_1" title="Permanent link">&para;</a></h3>
-<p>Istio の動作可否を検証する。</p>
+<p>適用済みの Istio リソースの設定を静的解析し、API 仕様違反やベストプラクティス違反を検出する。</p>
 <p>成功した場合を以下に示す。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>analyze
 
 ✅<span class="w"> </span>No<span class="w"> </span>validation<span class="w"> </span>issues<span class="w"> </span>found<span class="w"> </span>when<span class="w"> </span>analyzing<span class="w"> </span>namespace:<span class="w"> </span>default.
 </code></pre></div>
-<p>失敗した場合を以下に示す。</p>
+<p>ポート名の命名規則に関する情報メッセージが出力された場合を以下に示す。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>analyze
 
 Info<span class="w"> </span><span class="o">[</span>IST0118<span class="o">]</span><span class="w"> </span><span class="o">(</span>Service<span class="w"> </span>default/foo-service<span class="o">)</span><span class="w"> </span>Port<span class="w"> </span>name<span class="w"> </span><span class="o">(</span>port:<span class="w"> </span><span class="m">80</span>,<span class="w"> </span>targetPort:<span class="w"> </span><span class="m">80</span><span class="o">)</span><span class="w"> </span>doesn<span class="err">&#39;</span>t<span class="w"> </span>follow<span class="w"> </span>the<span class="w"> </span>naming<span class="w"> </span>convention<span class="w"> </span>of<span class="w"> </span>Istio<span class="w"> </span>port.
@@ -35692,7 +35692,7 @@ horizontalpodautoscaler.autoscaling/istiod-1-10-0<span class="w">          </spa
 <h2 id="kube-inject">kube-inject<a class="headerlink" href="#kube-inject" title="Permanent link">&para;</a></h2>
 <h3 id="kube-inject_1">kube-inject とは<a class="headerlink" href="#kube-inject_1" title="Permanent link">&para;</a></h3>
 <p>istio-proxy を手動でインジェクションする。</p>
-<p>代わりに、<code>enabled</code> 値が割り当てられた <code>.metadata.labels,istio-injection</code> キーを Namespace に付与してもよい。</p>
+<p>代わりに、<code>enabled</code> 値が割り当てられた <code>.metadata.labels.istio-injection</code> キーを Namespace に付与してもよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject">https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject</a></li>
@@ -35885,7 +35885,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">      </span><span class="nt">resourceApiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">V3</span>
 <span class="w">    </span><span class="c1"># serviceName をクラスターとして使用する。</span>
 <span class="w">    </span><span class="c1"># エンドポイントはクラスターと紐づいており、ADS-API から取得したエンドポイントをフィルタリングする。</span>
-<span class="w">    </span><span class="c1"># エンドポイントにはいくつかのインスタンスが紐づいており、1 個を選んでルーティングする。</span>
+<span class="w">    </span><span class="c1"># クラスターに紐づくエンドポイントの中から、負荷分散方式に基づいて宛先を選ぶ。</span>
 <span class="w">    </span><span class="nt">serviceName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local</span>
 </code></pre></div>
 <blockquote>
@@ -35895,7 +35895,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 </ul>
 </blockquote>
 <h4 id="-fqdn">▼ --fqdn<a class="headerlink" href="#-fqdn" title="Permanent link">&para;</a></h4>
-<p>クラスターが待ち受ける完全修飾ドメイン名でフィルタリングし、クラスターを取得する。</p>
+<p>宛先 Service の完全修飾ドメイン名でフィルタリングし、クラスターを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>cluster<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-o<span class="w"> </span>yaml<span class="w"> </span><span class="se">\</span>
@@ -35903,8 +35903,8 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>yq<span class="w"> </span><span class="s1">&#39;.[0]&#39;</span>
 </code></pre></div>
 <h4 id="-port">▼ --port<a class="headerlink" href="#-port" title="Permanent link">&para;</a></h4>
-<p>クラスターが待ち受けるポート番号でフィルタリングし、クラスターを取得する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>routes<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
+<p>宛先 Service のポート番号でフィルタリングし、クラスターを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>cluster<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--port<span class="w"> </span><span class="m">50001</span>
 </code></pre></div>
@@ -35939,7 +35939,7 @@ unix://./etc/istio/proxy/XDS<span class="w">                         </span>HEAL
 <p><code>yaml</code> 形式で取得すれば、より詳細な設定値を確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ istioctl proxy-config endpoints foo-pod \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--cluster &quot;outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local&quot; \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--cluster &quot;outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local&quot; \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-o yaml \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">| yq</span>
 <span class="nn">---</span>
@@ -36274,7 +36274,7 @@ default<span class="w">   </span><span class="m">1</span>-10-0<span class="w">  
 $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>mutatingwebhookconfigurations
 
 NAME<span class="w">                               </span>WEBHOOKS<span class="w">   </span>AGE
-istio-sidecar-injector-1.10.0<span class="w">       </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 1.10.0</span>
+istio-sidecar-injector-1-10-0<span class="w">       </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 1.10.0</span>
 istio-revision-tag-default<span class="w">          </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 現在のリビジョン (1.10.0) 定義するdefaultタグを持つ</span>
 </code></pre></div>
 <dl>
@@ -36306,15 +36306,15 @@ istiod-1-11-0<span class="w">    </span>ClusterIP<span class="w">    </span><spa
 $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>mutatingwebhookconfigurations
 
 NAME<span class="w">                                </span>WEBHOOKS<span class="w">   </span>AGE
-istio-sidecar-injector-1.10.0<span class="w">       </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 1.10.0</span>
-istio-sidecar-injector-1.11.0<span class="w">       </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 1.11.0 (今回のアップグレード先)</span>
+istio-sidecar-injector-1-10-0<span class="w">       </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 1.10.0</span>
+istio-sidecar-injector-1-11-0<span class="w">       </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 1.11.0 (今回のアップグレード先)</span>
 istio-revision-tag-default<span class="w">          </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 現在のリビジョン (1.10.0) 定義するdefaultタグを持つ</span>
 </code></pre></div>
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
 <p>エイリアス (<code>istio.io/tag</code> キーの値) を指定して、リビジョンを書き換える。</p>
-<p>これにより、<code>istio-revision-tag-default</code>の<code>default</code>タグの値が変更される。</p>
+<p>これにより、<code>istio-revision-tag-default</code>の<code>default</code>タグが指すリビジョンが変更される。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>tag<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default<span class="w"> </span>--revision<span class="w"> </span><span class="m">1</span>-11-0<span class="w"> </span>--overwrite
@@ -36323,14 +36323,14 @@ istio-revision-tag-default<span class="w">          </span><span class="m">1</sp
 $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>mutatingwebhookconfigurations
 
 NAME<span class="w">                                </span>WEBHOOKS<span class="w">   </span>AGE
-istio-sidecar-injector-1.10.0<span class="w">       </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 1.10.0</span>
-istio-sidecar-injector-1.11.0<span class="w">       </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 1.11.0 (今回のアップグレード先)</span>
+istio-sidecar-injector-1-10-0<span class="w">       </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 1.10.0</span>
+istio-sidecar-injector-1-11-0<span class="w">       </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 1.11.0 (今回のアップグレード先)</span>
 istio-revision-tag-default<span class="w">          </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 現在のリビジョン (1.11.0) 定義するdefaultタグを持つ</span>
 </code></pre></div>
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>また、<code>istioctl tag list</code> コマンドでも、リビジョンが <code>v1.10.0</code> になったことを確認できる。</p>
+<p>また、<code>istioctl tag list</code> コマンドでも、リビジョンが <code>1-11-0</code> になったことを確認できる。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>tag<span class="w"> </span>list
@@ -36370,7 +36370,7 @@ baz-pod.default<span class="w">                           </span>SYNCED<span cla
 <p><br></p>
 <h2 id="upgrade">upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h2>
 <h3 id="upgrade_1">upgrade とは<a class="headerlink" href="#upgrade_1" title="Permanent link">&para;</a></h3>
-<p>Istio のインプレースデプロイメントを実行する。</p>
+<p>指定した設定を使用して Istio をインプレースアップグレードする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>upgrade
 
 This<span class="w"> </span>will<span class="w"> </span>install<span class="w"> </span>the<span class="w"> </span>Istio<span class="w"> </span>&lt;バージョンタグ&gt;<span class="w"> </span>default<span class="w"> </span>profile<span class="w"> </span>with<span class="w"> </span><span class="o">[</span><span class="s2">&quot;Istio core&quot;</span><span class="w"> </span><span class="s2">&quot;Istiod&quot;</span><span class="w"> </span><span class="s2">&quot;Ingress gateways&quot;</span><span class="o">]</span><span class="w"> </span>components<span class="w"> </span>into<span class="w"> </span>the<span class="w"> </span>cluster.<span class="w"> </span>Proceed?<span class="w"> </span><span class="o">(</span>y/N<span class="o">)</span><span class="w"> </span>y
@@ -36440,7 +36440,7 @@ data<span class="w"> </span>plane<span class="w"> </span>version:<span class="w"
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年9月29日 14:36:38 JST">2026-09-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 18:24:15 JST">2026-10-04</span>
   </span>
 
     

@@ -33387,12 +33387,12 @@
 <p>送信元マイクロサービスは、ロードバランサーにリクエストを送信します。</p>
 <p>ロードバランサーは、宛先マイクロサービスの場所をサービスレジストリに問い合わせ、またリクエストをロードバランシングする責務を担っています。</p>
 <p>なお、本記事では、サーバーサイドパターンを採用します。</p>
-<p>(例) Istio、CoreDNS、AWS ALB など</p>
+<p>(例) Istio、AWS ALB など</p>
 <p><img alt="service-discovery-pattern_server-side.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/service-discovery-pattern_server-side.png" /></p>
 <p><a href="https://microservices.io/patterns/server-side-discovery.html">Microservices Pattern: Pattern: Server-side service discovery</a></p>
 <h3 id="_4">クライアントサイドサービス検出パターン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>通信の送信元マイクロサービスは、宛先マイクロサービスの場所をサービスレジストリに問い合わせ、さらにロードバランシングする責務を担います。</p>
-<p>(例) Netflix の Eureka、kube-proxy など</p>
+<p>(例) Netflix の Eureka など</p>
 <p><img alt="service-discovery-pattern_client-side.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/service-discovery-pattern_client-side.png" /></p>
 <p><a href="https://microservices.io/patterns/client-side-discovery.html">Microservices Pattern: Pattern: Client-side service discovery</a></p>
 <h2 id="_5">宛先登録<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
@@ -33491,7 +33491,7 @@
 <tbody>
 <tr>
 <td>Istio Gateway</td>
-<td>NodePort Service からのリクエストを受信する。</td>
+<td>Istio IngressGateway が受信するリクエストのホスト名、プロトコル、ポート番号を設定する。</td>
 </tr>
 <tr>
 <td>Istio VirtualService (1)</td>
@@ -33512,7 +33512,7 @@
 <p><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2024/01/16/013404">【Istio⛵️】Istio によって抽象化される Envoy の HTTPS リクエスト処理の仕組み - 好きな技術を布教したい 😗</a></p>
 <h2 id="_12">サービスメッシュ外<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <p>Istio は、指定した Namespace 以外に属する Pod にはサービスメッシュの機能を提供しません。</p>
-<p>サービスメッシュ外の Namespace では、CoreDNS を使用して、トラフィックを管理します。</p>
+<p>サービスメッシュ外の Namespace では、CoreDNS で宛先を名前解決し、Service と kube-proxy でトラフィックを管理します。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L7トラフィック管理 (サービスメッシュ外).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L7トラフィック管理_(サービスメッシュ外).drawio.png" /></p>
 <table>
 <thead>
@@ -33734,7 +33734,7 @@
 </tr>
 <tr>
 <td>Istio データプレーン (istio-proxy)</td>
-<td>秘密鍵と証明書要求を作成し、ルート認証局の Istio コントロールプレーンに送信する。また、Istio コントロールプレーンが作成したクライアント証明書 / SSL 証明書を取得し、アップストリームとダウンストリームの istio-proxy と相互 TLS 認証を実行する。</td>
+<td>秘密鍵と証明書署名要求 (CSR) を作成し、CSR をルート認証局の Istio コントロールプレーンに送信する。また、Istio コントロールプレーンが作成したクライアント証明書 / SSL 証明書を取得し、アップストリームとダウンストリームの istio-proxy と相互 TLS 認証を実行する。</td>
 </tr>
 <tr>
 <td>Istio PeerAuthentication</td>
@@ -33915,7 +33915,7 @@
 </tr>
 <tr>
 <td>Kubernetes ConfigMap (Istio)</td>
-<td><code>.extensionProviders</code> キーで、Metrics プロバイダーを宣言する。</td>
+<td><code>.defaultProviders.metrics</code> キーで、デフォルトの Metrics プロバイダーを設定する。</td>
 </tr>
 <tr>
 <td>Kubernetes ConfigMap (Grafana)</td>
@@ -34108,7 +34108,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年9月29日 14:36:38 JST">2026-09-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 18:24:15 JST">2026-10-04</span>
   </span>
 
     

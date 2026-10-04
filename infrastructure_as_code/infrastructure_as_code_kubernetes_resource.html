@@ -37843,7 +37843,8 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p><br></p>
 <h3 id="gateway">Gateway<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h3>
 <h4 id="gateway_1">▼ Gateway とは<a class="headerlink" href="#gateway_1" title="Permanent link">&para;</a></h4>
-<p>Gateway は、<code>L4</code>/<code>L7</code> プロトコルの通信の受信ルールを定義し、また <code>L4</code>/<code>L7</code> ロードバランサーとして通信をルーティングする。</p>
+<p>Gateway は、<code>L4</code>/<code>L7</code> プロトコルの通信の受信ルールを定義する。</p>
+<p>Gateway Controller が Gateway の設定に基づいて通信を受信し、HTTPRoute などの設定に応じてルーティングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/">https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/</a></li>
@@ -37851,7 +37852,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 </blockquote>
 <h4 id="ingress">▼ Ingress との違い<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h4>
 <p><code>L7</code> プロトコルの受信ルールしか定義できない Ingress とは異なり、<code>L4</code> プロトコルの受信ルールも定義できる。</p>
-<p>また、Gateway 自体が <code>L4</code>/<code>L7</code> ロードバランサーとしても機能する。</p>
+<p>また、Gateway の設定に基づいて、Gateway Controller が <code>L4</code>/<code>L7</code> ロードバランサーとして機能する。</p>
 <p><br></p>
 <h3 id="gatewayclass">GatewayClass<a class="headerlink" href="#gatewayclass" title="Permanent link">&para;</a></h3>
 <h4 id="gatewayclass_1">▼ GatewayClass とは<a class="headerlink" href="#gatewayclass_1" title="Permanent link">&para;</a></h4>
@@ -38927,7 +38928,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <h2 id="09">09. ポリシー系リソース<a class="headerlink" href="#09" title="Permanent link">&para;</a></h2>
 <h3 id="networkpolicy">NetworkPolicy<a class="headerlink" href="#networkpolicy" title="Permanent link">&para;</a></h3>
 <h4 id="networkpolicy_1">▼ NetworkPolicy とは<a class="headerlink" href="#networkpolicy_1" title="Permanent link">&para;</a></h4>
-<p>Pod 間通信でのインバウンド通信とアウトバウンド通信の送受信ルールを設定する。</p>
+<p>Pod のインバウンド通信とアウトバウンド通信の送受信ルールを設定する。</p>
+<p>Pod 間通信だけでなく、宛先 CIDR や宛先ポート番号に基づいて Cluster 外への通信も制限できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.amazon.co.jp/dp/B08FZX8PYW">https://www.amazon.co.jp/dp/B08FZX8PYW</a></li>
@@ -38938,7 +38940,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p>他の Pod からの受信する通信のルールを設定する。</p>
 <p>Ingress とは関係がないことに注意する。</p>
 <h4 id="egress">▼ Egress の場合<a class="headerlink" href="#egress" title="Permanent link">&para;</a></h4>
-<p>他の Pod に送信する通信のルールを設定する。</p>
+<p>他の Pod や Cluster 外の宛先に送信する通信のルールを設定する。</p>
 <p><br></p>
 
 
@@ -38960,7 +38962,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年9月29日 14:36:38 JST">2026-09-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 18:24:15 JST">2026-10-04</span>
   </span>
 
     

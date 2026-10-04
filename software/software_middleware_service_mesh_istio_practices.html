@@ -34595,9 +34595,11 @@
 <p>そのため、Pod 当たりのハードウェアリソースの消費量が増えてしまう。</p>
 <p>テレメトリーを収集する必要のない Pod (例：監視を責務に持つ Pod) は、サイドカーモードへ登録しないようにする。</p>
 <h4 id="job-pod">▼ Job 配下の Pod<a class="headerlink" href="#job-pod" title="Permanent link">&para;</a></h4>
-<p>Job 配下の Pod に istio-proxy を挿入した場合、Pod 内のコンテナが終了しても istio-proxy が終了せず、Pod 自体が削除されない問題もある。</p>
-<p>Job 配下の Pod は、サイドカーモードへ登録しないようにする。</p>
-<p>どうしてもサービスメッシュに登録したい場合は、Pod 内のコンテナで、istio-proxy の『<code>localhost:15020/quitquitquit</code>』をコールするようなシェルスクリプトを実行する。</p>
+<p>ネイティブサイドカーを使用しない場合、Job 配下の Pod 内でジョブ処理が終了しても istio-proxy が終了せず、Pod のフェーズが <code>Completed</code> にならない問題がある。</p>
+<p>Job 配下の Pod は、基本的にはサービスメッシュへ登録しない。</p>
+<p>ただし、HTTP リクエストを定期的に送信するジョブは、トラフィック管理のために登録する。</p>
+<p>ネイティブサイドカーを使用する場合、ジョブ処理の完了後に istio-proxy が自動で終了する。</p>
+<p>ネイティブサイドカーを使用せずにサービスメッシュへ登録する場合は、Pod 内のコンテナで、ジョブ処理の成否にかかわらず istio-proxy の『<code>localhost:15020/quitquitquit</code>』へ POST リクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34613,16 +34615,15 @@
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/bash</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span>
 <span class="w">          </span><span class="nt">args</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">              </span><span class="no">trap &#39;curl -fs -X POST http://localhost:15020/quitquitquit || echo &quot;Failed to shutdown istio-proxy&quot;&#39; EXIT</span>
 <span class="w">              </span><span class="no">until curl -fsI http://localhost:15021/healthz/ready; do</span>
 <span class="w">                </span><span class="no">echo &quot;Waiting for Sidecar to be healthy&quot;;</span>
 <span class="w">                </span><span class="no">sleep 3;</span>
-<span class="w">              </span><span class="no">done;</span>
-<span class="w">              </span><span class="no">echo &quot;Sidecar available. Running job command...&quot; &amp;&amp;</span>
-<span class="w">              </span><span class="no">&lt;CronJobのコマンド&gt; &amp;&amp;</span>
-<span class="w">              </span><span class="no">x=$(echo $?) &amp;&amp;</span>
-<span class="w">              </span><span class="no">curl -fsI -X POST http://localhost:15020/quitquitquit &amp;&amp; </span>
-<span class="w">              </span><span class="no">exit $x</span>
+<span class="w">              </span><span class="no">done</span>
+<span class="w">              </span><span class="no">echo &quot;Sidecar available. Running job command...&quot;</span>
+<span class="w">              </span><span class="no">&lt;CronJobのコマンド&gt;</span>
+<span class="w">              </span><span class="no">exit $?</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34654,14 +34655,10 @@
 <span class="l l-Scalar l-Scalar-Plain"># L4 ロードバランサー</span>
 <span class="l l-Scalar l-Scalar-Plain">NodePort Service (Istio Ingress Gateway)</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="l l-Scalar l-Scalar-Plain">Istio Ingress Gateway (Gateway と VirtualService の設定を使用)</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain"># L4 ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="l l-Scalar l-Scalar-Plain"># Service を経由せず、Istio Ingress Gateway から宛先 Pod へ直接ルーティング</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod (istio-proxy)</span>
 </code></pre></div>
 <p>一方で、LoadBalancer Service を選ぶ場合、クラウドプロバイダーのロードバランサーが自動的に作成される。</p>
 <p>そのため、このロードバランサーから LoadBalancer Service へルーティングできるようにする。</p>
@@ -34684,17 +34681,11 @@
 <span class="l l-Scalar l-Scalar-Plain"># L7 ロードバランサー (単一の L7 ロードバランサーを作成し、異なるポートを開放する複数の L4 ロードバランサーの振り分ける)</span>
 <span class="l l-Scalar l-Scalar-Plain">AWS Load Balancer ControllerによるAWS ALB</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain"># L4 ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service (Istio Ingress Gateway)</span>
+<span class="l l-Scalar l-Scalar-Plain"># ClusterIP Service を経由せず、ALB から Pod へ直接ルーティング</span>
+<span class="l l-Scalar l-Scalar-Plain">Istio Ingress Gateway の Pod (Gateway と VirtualService の設定を使用)</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">Gateway</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain"># L4 ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="l l-Scalar l-Scalar-Plain"># Service を経由せず、Istio Ingress Gateway から宛先 Pod へ直接ルーティング</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod (istio-proxy)</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34775,14 +34766,10 @@
 <span class="l l-Scalar l-Scalar-Plain"># L4 ロードバランサー</span>
 <span class="l l-Scalar l-Scalar-Plain">LoadBalancer Service (Istio Ingress Gateway) によるAWS NLB</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="l l-Scalar l-Scalar-Plain">Istio Ingress Gateway (Gateway と VirtualService の設定を使用)</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain"># L4 ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="l l-Scalar l-Scalar-Plain"># Service を経由せず、Istio Ingress Gateway から宛先 Pod へ直接ルーティング</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod (istio-proxy)</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="nodeport-service_1">NodePort Service の場合<a class="headerlink" href="#nodeport-service_1" title="Permanent link">&para;</a></h3>
@@ -34794,14 +34781,10 @@
 <span class="l l-Scalar l-Scalar-Plain"># L4 ロードバランサー</span>
 <span class="l l-Scalar l-Scalar-Plain">NodePort Service (Istio Ingress Gateway)</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="l l-Scalar l-Scalar-Plain">Istio Ingress Gateway (Gateway と VirtualService の設定を使用)</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain"># L4 ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="l l-Scalar l-Scalar-Plain"># Service を経由せず、Istio Ingress Gateway から宛先 Pod へ直接ルーティング</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod (istio-proxy)</span>
 </code></pre></div>
 <h4 id="l7_1">▼ <code>L7</code> ロードバランサーがある場合<a class="headerlink" href="#l7_1" title="Permanent link">&para;</a></h4>
 <p>パブリックプロバイダーのロードバランサー (例：AWS ALB) を別に配置する。</p>
@@ -34817,14 +34800,10 @@
 <span class="l l-Scalar l-Scalar-Plain"># L4 ロードバランサー</span>
 <span class="l l-Scalar l-Scalar-Plain">NodePort Service (Istio Ingress Gateway)</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="l l-Scalar l-Scalar-Plain">Istio Ingress Gateway (Gateway と VirtualService の設定を使用)</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain"># L4 ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="l l-Scalar l-Scalar-Plain"># Service を経由せず、Istio Ingress Gateway から宛先 Pod へ直接ルーティング</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod (istio-proxy)</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="clusterip-service">ClusterIP Service の場合<a class="headerlink" href="#clusterip-service" title="Permanent link">&para;</a></h3>
@@ -34837,17 +34816,11 @@
 <span class="l l-Scalar l-Scalar-Plain"># L7 ロードバランサー (単一の L7 ロードバランサーを作成し、異なるポートを開放する複数の L4 ロードバランサーの振り分ける)</span>
 <span class="l l-Scalar l-Scalar-Plain">AWS Load Balancer ControllerによるAWS ALB</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain"># L4 ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service (Istio Ingress Gateway)</span>
+<span class="l l-Scalar l-Scalar-Plain"># ClusterIP Service を経由せず、ALB から Pod へ直接ルーティング</span>
+<span class="l l-Scalar l-Scalar-Plain">Istio Ingress Gateway の Pod (Gateway と VirtualService の設定を使用)</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">Gateway</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain"># L4 ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="l l-Scalar l-Scalar-Plain"># Service を経由せず、Istio Ingress Gateway から宛先 Pod へ直接ルーティング</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod (istio-proxy)</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35186,7 +35159,7 @@ istioctl<span class="w"> </span>version
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年9月28日 17:12:45 JST">2026-09-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 18:24:15 JST">2026-10-04</span>
   </span>
 
     

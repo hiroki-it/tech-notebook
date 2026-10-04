@@ -33637,13 +33637,9 @@
 <p>記入中...</p>
 <p><br></p>
 <h3 id="envoy">Envoy の設定値への変換<a class="headerlink" href="#envoy" title="Permanent link">&para;</a></h3>
-<p>(たぶん) Envoy の設定値は以下のように機能している。</p>
-<p>送信元 ztunnel の <code>L4</code> 処理で</p>
-<ol>
-<li>前半の Listener と Cluster：宛先マイクロサービスを決める</li>
-<li>後半の Listener と Cluster：宛先 waypoint-proxy を決める</li>
-</ol>
-<p>waypoint-proxy の Envoy の <code>L7</code> 処理で</p>
+<p>ztunnel は Envoy プロセスではないため、Envoy の Listener と Cluster による処理は waypoint-proxy が担う。</p>
+<p>送信元 ztunnel はアウトバウンド通信を透過的に捕捉し、HBONE トンネルを介して waypoint-proxy に中継する。</p>
+<p>(たぶん) waypoint-proxy の Envoy の <code>L7</code> 処理では、以下のように設定値が機能している。</p>
 <ol>
 <li>inbound_CONNECT_terminate Listener：HBONE を経由したリクエストを受信する</li>
 <li>Internal Inbound VIP Cluster：Inbound VIP Listener にルーティングする</li>
@@ -33654,10 +33650,7 @@
 <li>inbound_CONNECT_originate Listener</li>
 <li>inbound_CONNECT_originate Cluster：宛先 ztunnel を決める</li>
 </ol>
-<p>宛先 ztunnel の <code>L4</code> 処理で</p>
-<ol>
-<li>Listener と Cluster：宛先マイクロサービスを決める</li>
-</ol>
+<p>宛先 ztunnel は waypoint-proxy から HBONE トンネルを介して通信を受信し、宛先マイクロサービスに中継する。</p>
 <blockquote>
 <ul>
 <li><a href="https://jimmysong.io/en/blog/ambient-mesh-l7-traffic-path/">https://jimmysong.io/en/blog/ambient-mesh-l7-traffic-path/</a></li>
@@ -33686,7 +33679,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年9月28日 15:39:09 JST">2026-09-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 18:24:15 JST">2026-10-04</span>
   </span>
 
     

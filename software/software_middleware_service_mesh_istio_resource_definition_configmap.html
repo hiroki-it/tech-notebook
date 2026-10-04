@@ -8076,10 +8076,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#open-agent-policy" class="md-nav__link">
+  <a href="#open-policy-agent" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Open Agent Policy の場合
+        ▼ Open Policy Agent の場合
       
     </span>
   </a>
@@ -35847,10 +35847,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#open-agent-policy" class="md-nav__link">
+  <a href="#open-policy-agent" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Open Agent Policy の場合
+        ▼ Open Policy Agent の場合
       
     </span>
   </a>
@@ -36794,26 +36794,26 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <tr>
 <td><code>deadline-exceeded</code></td>
 <td style="text-align: center;">⭕️</td>
-<td style="text-align: center;">✅</td>
+<td style="text-align: center;">条件による</td>
 <td>マイクロサービスからアウトバウンド通信時、gRPC ステータスコードが <code>DeadlineExceeded</code> であった場合に、リトライを実行する。</td>
 </tr>
 <tr>
 <td><code>refused-stream</code></td>
 <td style="text-align: center;">⭕️</td>
 <td style="text-align: center;">✅</td>
-<td>同時接続上限数を超過するストリームをマイクロサービスが作成しようとした場合に、リトライを実行する。</td>
+<td>宛先が HTTP/2 エラーコードの <code>REFUSED_STREAM</code> を返信した場合に、リトライを実行する。</td>
 </tr>
 <tr>
 <td><code>resource-exhausted</code></td>
 <td style="text-align: center;">⭕️</td>
-<td style="text-align: center;">✅</td>
+<td style="text-align: center;">条件による</td>
 <td>マイクロサービスからのアウトバウンド通信時、gRPC ステータスコードが <code>ResourceExhausted</code> であった場合に、リトライを実行する。</td>
 </tr>
 <tr>
 <td><code>unavailable</code></td>
 <td style="text-align: center;">⭕️</td>
-<td style="text-align: center;">✅</td>
-<td>マイクロサービスからのアウトバウンド通信時、マイクロサービスにリクエストをフォワーディングできなかった場合に、リトライを実行する。</td>
+<td style="text-align: center;"></td>
+<td>マイクロサービスからのアウトバウンド通信時、宛先が gRPC ステータスコードの <code>Unavailable</code> を返信した場合に、リトライを実行する。冪等性に注意する。</td>
 </tr>
 </tbody>
 </table>
@@ -36829,7 +36829,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <table>
 <thead>
 <tr>
-<th>HTTP/1.1 のステータスコード</th>
+<th>HTTP/2 のステータスコード</th>
 <th style="text-align: center;">マイクロサービスに通信が届いている</th>
 <th style="text-align: center;">冪等性がある</th>
 <th>理由</th>
@@ -36908,7 +36908,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <p><br></p>
 <h3 id="enableprometheusmerge">enablePrometheusMerge<a class="headerlink" href="#enableprometheusmerge" title="Permanent link">&para;</a></h3>
 <h4 id="enableprometheusmerge_1">▼ enablePrometheusMerge とは<a class="headerlink" href="#enableprometheusmerge_1" title="Permanent link">&para;</a></h4>
-<p>マイクロサービスと istio-proxy をマージするかどうかを設定する。</p>
+<p>マイクロサービスと istio-proxy のメトリクスエンドポイントを統合するかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37380,21 +37380,13 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">defaultConfig:</span>
-<span class="w">      </span><span class="no">rootNamespace: istio-system</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProxyConfig</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-proxyconfig</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">rootNamespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="w">    </span><span class="no">rootNamespace: istio-system</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="tracing">tracing (非推奨)<a class="headerlink" href="#tracing" title="Permanent link">&para;</a></h3>
 <p>いずれのトレース仕様 (例：Zipkin、Datadog、LightStep など) でトレース ID とスパン ID を作成するかを設定する。</p>
 <p>Zipkin と Jaeger はトレースコンテキスト仕様が同じであるため、zipkin パッケージを Jaeger のクライアントとしても使用できる。</p>
-<p><code>.mesh.defaultConfig.enableTracing</code> キーも有効化する必要がある。</p>
+<p><code>.mesh.enableTracing</code> キーも有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37402,8 +37394,8 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">enableTracing: true</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
-<span class="w">      </span><span class="no">enableTracing: true</span>
 <span class="w">      </span><span class="no">tracing:</span>
 <span class="w">        </span><span class="no">sampling: 100</span>
 <span class="w">        </span><span class="no">zipkin:</span>
@@ -37431,7 +37423,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <h3 id="tracingservicename">tracingServiceName<a class="headerlink" href="#tracingservicename" title="Permanent link">&para;</a></h3>
 <p>スパンの <code>service.name</code> 属性の値を設定する。</p>
 <p>マイクロサービスがバージョニングされている場合、マイクロサービスの正式名 (canonical-name) でグループ化できる。</p>
-<p>デフォルトでは <code>APP_LABEL_AND_NAMESPACE</code> であり、<code>&lt;Namespace&gt;.&lt;appラベル値&gt;</code> になる。</p>
+<p>デフォルトでは <code>APP_LABEL_AND_NAMESPACE</code> であり、<code>&lt;appラベル値&gt;.&lt;Namespace&gt;</code> になる。</p>
 <p>app ラベルがないマイクロサービスのために、canonical 名に基づく <code>CANONICAL_NAME_AND_NAMESPACE</code> を使用したほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -37459,7 +37451,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <p><br></p>
 <h3 id="trustdomain">trustDomain<a class="headerlink" href="#trustdomain" title="Permanent link">&para;</a></h3>
 <p>相互 TLS 認証を採用している場合、送信元として許可する信頼ドメインを設定する。</p>
-<p>例えば、信頼ドメインは ServiceAccount ごとに異なる。</p>
+<p>信頼ドメインは SPIFFE ID の <code>spiffe://&lt;トラストドメイン&gt;</code> の部分であり、Namespace 名や ServiceAccount 名とは区別される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37467,15 +37459,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">defaultConfig:</span>
-<span class="w">      </span><span class="no">trustDomain: cluster.local</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProxyConfig</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-proxyconfig</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">trustDomain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster.local</span>
+<span class="w">    </span><span class="no">trustDomain: cluster.local</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -37572,7 +37556,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <p>デフォルト値は <code>false</code> である。</p>
 <p>istio-proxy へのリクエストが無くなってから、Envoy のプロセスを終了する。</p>
 <p>具体的には、<code>downstream_cx_active</code> メトリクスの値 (アクティブな接続数) を監視し、<code>0</code> になるまでドレイン処理を実行し続ける。</p>
-<p>ドレイン処理前の待機時間は、<code>MINIMUM_DRAIN_DURATION</code> で設定する。</p>
+<p>ドレイン処理の終了を待機する最小時間は、<code>MINIMUM_DRAIN_DURATION</code> で設定する。</p>
 <p>オプションを有効化すると、istio-proxy の <code>.spec.containers[*].lifecycle.preStop.exec.command</code> キーに、<code>sleep</code> コマンドが自動で挿入される。</p>
 <p><code>.spec.containers[*].lifecycle.postStart.exec.command</code> キーへの自動設定は、<code>.mesh.defaultConfig.holdApplicationUntilProxyStarts</code> キーで対応する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -37785,11 +37769,11 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <p><code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code> 変数が <code>true</code> な場合にのみ設定できる。</p>
 <p><code>false</code> の場合は、代わりに <code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code> を設定する。</p>
 <p>istio-proxy 内の Envoy プロセスは、終了時に接続のドレイン処理を実施する。</p>
-<p>この接続について、ドレイン処理前の待機時間を設定する。</p>
-<p><code>terminationDrainDuration</code> との違いとして、<code>MINIMUM_DRAIN_DURATION</code> の時間だけ待機した後、ドレイン処理を開始し、<code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code> によって <code>downstream_cx_active</code> メトリクスが 0 になるまでドレイン処理をし続ける点である。</p>
-<p>Pod の <code>.metadata.annotations.proxy.istio.io/config.drainDuration</code> キーで起こるレースコンディションを解決するための設定で、同じ値を設定するとよい。</p>
+<p>この接続について、ドレイン処理の終了を待機する最小時間を設定する。</p>
+<p><code>terminationDrainDuration</code> は固定時間でドレイン処理を終了する。一方、<code>MINIMUM_DRAIN_DURATION</code> は必要最低限の待機時間を設定し、<code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code> によって <code>downstream_cx_active</code> メトリクスが 0 になるまでドレイン処理の終了を待機する。</p>
+<p><code>drainDuration</code> はリスナーやフィルターチェーンの変更時のドレイン待機時間を設定する。<code>MINIMUM_DRAIN_DURATION</code> は Envoy プロセスの終了時の最小待機時間を設定するため、用途が異なる。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Envoy プロセスの接続のドレイン処理前に <code>5</code> 秒間待機し、<code>downstream_cx_active</code> メトリクスが 0 になるまでドレイン処理を続ける。</p>
+<p>Envoy プロセスが接続をドレインし終わるまで最低 <code>5</code> 秒間待機し、<code>downstream_cx_active</code> メトリクスが 0 になるまで終了を待機する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37854,10 +37838,10 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">        </span><span class="no">envoyExtAuthzHttp:</span>
 <span class="w">          </span><span class="no">service: oauth2-proxy.foo.svc.cluster.local</span>
 <span class="w">          </span><span class="no">port: 4180</span>
-<span class="w">        </span><span class="no"># HTTP リクエストに含めるヘッダー</span>
-<span class="w">        </span><span class="no">includeHeadersInCheck:</span>
-<span class="w">          </span><span class="no">- cookie</span>
-<span class="w">          </span><span class="no">- authorization</span>
+<span class="w">          </span><span class="no"># HTTP リクエストに含めるヘッダー</span>
+<span class="w">          </span><span class="no">includeRequestHeadersInCheck:</span>
+<span class="w">            </span><span class="no">- cookie</span>
+<span class="w">            </span><span class="no">- authorization</span>
 </code></pre></div>
 <p>AuthorizationPolicy で、認可処理を OAuth2 Proxy へ委譲できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
@@ -37881,8 +37865,8 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <li><a href="https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1">https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1</a></li>
 </ul>
 </blockquote>
-<h4 id="open-agent-policy">▼ Open Agent Policy の場合<a class="headerlink" href="#open-agent-policy" title="Permanent link">&para;</a></h4>
-<p>Open Agent Policy を外部の認可プロバイダーとして設定する。</p>
+<h4 id="open-policy-agent">▼ Open Policy Agent の場合<a class="headerlink" href="#open-policy-agent" title="Permanent link">&para;</a></h4>
+<p>Open Policy Agent を外部の認可プロバイダーとして設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37897,10 +37881,10 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">        </span><span class="no">envoyExtAuthzHttp:</span>
 <span class="w">          </span><span class="no">service: open-policy-agent.foo.svc.cluster.local</span>
 <span class="w">          </span><span class="no">port: 9191</span>
-<span class="w">        </span><span class="no"># HTTP リクエストに含めるヘッダー</span>
-<span class="w">        </span><span class="no">includeHeadersInCheck:</span>
-<span class="w">          </span><span class="no">- cookie</span>
-<span class="w">          </span><span class="no">- authorization</span>
+<span class="w">          </span><span class="no"># HTTP リクエストに含めるヘッダー</span>
+<span class="w">          </span><span class="no">includeRequestHeadersInCheck:</span>
+<span class="w">            </span><span class="no">- cookie</span>
+<span class="w">            </span><span class="no">- authorization</span>
 </code></pre></div>
 <p><strong>実装例</strong></p>
 <blockquote>
@@ -38721,7 +38705,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年9月29日 14:36:38 JST">2026-09-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 18:24:15 JST">2026-10-04</span>
   </span>
 
     

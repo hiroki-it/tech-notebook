@@ -34478,7 +34478,7 @@
 <h3 id="_3">非メッシュ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ 非メッシュとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>マイクロサービスアーキテクチャで、マイクロサービス間でパケットを直接的に送受信する。</p>
-<p>しかし、マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：マイクロサービス間通信の制御、マイクロサービス間通信のセキュリティ、テレメトリー作成など) があり、非推奨である。</p>
+<p>マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：マイクロサービス間通信の制御、マイクロサービス間通信のセキュリティ、テレメトリー作成など) を各マイクロサービスで実装する必要がある。サービスメッシュの導入による恩恵と負担を比較し、導入の要否を判断する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/">https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/</a></li>
@@ -34534,7 +34534,7 @@
 <h3 id="_10">サイドカーパターン<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ サイドカーパターンとは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>マイクロサービスのリバースプロキシをサイドカーパターンで配置し、このコンテナをコントロールプレーンで一括管理する。</p>
-<p>マイクロサービス間の通信を透過的にする (通信の存在を感じさせない) ことを思想としている。</p>
+<p>マイクロサービス間の通信を透過的にする (サイドカープロキシの存在を意識せずに通信できる) ことを思想としている。</p>
 <p><img alt="service-discovery_kubernetes_vs_istio" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery_kubernetes_vs_istio.png" /></p>
 <blockquote>
 <ul>
@@ -34623,7 +34623,7 @@
 <h2 id="03">03. サービスメッシュの実装<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_16">サービスメッシュのコンポーネント<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p>概念としてのサービスメッシュを実装する必要がある。</p>
-<p>リバースプロキシとして動作するコンテナをサイドカーパターンで配置し、このコンテナを中央集中的に管理する。</p>
+<p>サイドカーパターンでは、リバースプロキシとして動作するコンテナを配置し、このコンテナを中央集中的に管理する。</p>
 <p>サイドカープロキシが稼働する領域を『データプレーン』、中央集中的に管理する領域を『コントロールプレーン』という。</p>
 <p><img alt="service-mesh_control-plane" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_control-plane.png" /></p>
 <blockquote>
@@ -34824,7 +34824,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年9月28日 15:39:09 JST">2026-09-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 18:24:15 JST">2026-10-04</span>
   </span>
 
     

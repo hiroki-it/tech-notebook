@@ -44507,7 +44507,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="specfailedjobshistorylimit">.spec.failedJobsHistoryLimit<a class="headerlink" href="#specfailedjobshistorylimit" title="Permanent link">&para;</a></h3>
 <h4 id="failedjobshistorylimit">▼ failedJobsHistoryLimit とは<a class="headerlink" href="#failedjobshistorylimit" title="Permanent link">&para;</a></h4>
 <p>実行に失敗した Job の履歴数に上限を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">io.k8s.api.batch.v1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CronJob</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cronjob</span>
@@ -44518,7 +44518,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="specschedule">.spec.schedule<a class="headerlink" href="#specschedule" title="Permanent link">&para;</a></h3>
 <h4 id="schedule">▼ schedule とは<a class="headerlink" href="#schedule" title="Permanent link">&para;</a></h4>
 <p>Cron のルールを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">io.k8s.api.batch.v1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CronJob</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cronjob</span>
@@ -44528,7 +44528,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </code></pre></div>
 <p>なお、タイムゾーンは Kubernetes Cluster の設定による。</p>
 <p>例えば、Amazon EKS Cluster は UTC で時間を管理しているため、9 時間分ずらす必要がある。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">io.k8s.api.batch.v1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CronJob</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cronjob</span>
@@ -44546,7 +44546,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="startingdeadlineseconds">▼ startingDeadlineSeconds<a class="headerlink" href="#startingdeadlineseconds" title="Permanent link">&para;</a></h4>
 <p>Job が Cron のスケジュール通りに実行されなかった場合、実行の遅れを何秒まで許容するかを設定する。</p>
 <p>指定した秒数を過ぎると、実行を失敗とみなす。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">io.k8s.api.batch.v1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CronJob</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cronjob</span>
@@ -46325,7 +46325,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="specaffinitypodantiaffinity">.spec.affinity.podAntiAffinity<a class="headerlink" href="#specaffinitypodantiaffinity" title="Permanent link">&para;</a></h3>
 <h4 id="affinitypodantiaffinity">▼ affinity.podAntiAffinity とは<a class="headerlink" href="#affinitypodantiaffinity" title="Permanent link">&para;</a></h4>
-<p><code>.metadata.labels</code> キーを持つ Node とは異なる Node 内に、その Pod をスケジューリングさせる。</p>
+<p><code>.metadata.labels</code> キーで指定した Pod とは異なるトポロジー領域に、新しい Pod をスケジューリングさせる。分散単位は <code>topologyKey</code> キーで Node や AZ に設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46343,20 +46343,20 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">        </span><span class="c1"># Pod の分散単位</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">topologyKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">topology.kubernetes.io/zone</span>
 <span class="w">          </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">                </span><span class="c1"># Pod の metadata.labels キー</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.kubernetes.io/name</span>
-<span class="w">                  </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">                  </span><span class="c1"># 指定した値をキーに持つ Pod とは異なる Node に、Pod をスケジューリングさせる。</span>
-<span class="w">                  </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-gin</span>
+<span class="w">            </span><span class="nt">matchExpressions</span><span class="p">:</span>
+<span class="w">              </span><span class="c1"># Pod の metadata.labels キー</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.kubernetes.io/name</span>
+<span class="w">                </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
+<span class="w">                </span><span class="c1"># 指定した値をキーに持つ Pod とは異なる AZ に、Pod をスケジューリングさせる。</span>
+<span class="w">                </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-gin</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html">https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html</a></li>
 </ul>
 </blockquote>
-<p>preferredDuringSchedulingIgnoredDuringExecution の場合、<code>podAffinityTerm</code> キーや <code>preference</code> キーが必要である。</p>
+<p>preferredDuringSchedulingIgnoredDuringExecution の場合、<code>podAffinityTerm</code> キーと <code>weight</code> キーが必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46374,11 +46374,11 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">          </span><span class="nt">podAffinityTerm</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">topologyKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">topology.kubernetes.io/zone</span>
 <span class="w">            </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.kubernetes.io/name</span>
-<span class="w">                    </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">                    </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-gin</span>
+<span class="w">              </span><span class="nt">matchExpressions</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.kubernetes.io/name</span>
+<span class="w">                  </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
+<span class="w">                  </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-gin</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -46386,7 +46386,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </ul>
 </blockquote>
 <p><strong>＊スケジューリング例＊</strong></p>
-<p>もし、コピーする Pod の名前を設定した場合、Pod のレプリカ同士は同じ Node にスケジューリングされることを避ける。</p>
+<p>もし、自身の Pod のラベル値を設定した場合、Pod のレプリカ同士が同じ AZ にスケジューリングされることを避ける。</p>
 <p>また、分散単位に <code>topology.kubernetes.io/zone</code> を設定しているため、各 AZ に Pod をバラバラにスケジューリングさせる。</p>
 <p>結果として、各 AZ の Node に Pod が <code>1</code> 個ずつスケジューリングされるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
@@ -46415,14 +46415,14 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">            </span><span class="c1"># Pod の分散単位</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">topologyKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">topology.kubernetes.io/zone</span>
 <span class="w">              </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">                    </span><span class="c1"># Pod の metadata.labels キー</span>
-<span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.kubernetes.io/name</span>
-<span class="w">                      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">                      </span><span class="c1"># 指定した値をキーに持つ Pod とは異なる Node に、Pod をスケジューリングさせる。</span>
-<span class="w">                      </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">                        </span><span class="c1"># 自身がコピーする Pod の名前</span>
-<span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">                </span><span class="nt">matchExpressions</span><span class="p">:</span>
+<span class="w">                  </span><span class="c1"># Pod の metadata.labels キー</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.kubernetes.io/name</span>
+<span class="w">                    </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
+<span class="w">                    </span><span class="c1"># 指定した値をキーに持つ Pod とは異なる AZ に、Pod をスケジューリングさせる。</span>
+<span class="w">                    </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">                      </span><span class="c1"># 自身の Pod のラベル値</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
 </code></pre></div>
 <h4 id="requiredduringschedulingignoredduringexecution_2">▼ requiredDuringSchedulingIgnoredDuringExecution (ハード)<a class="headerlink" href="#requiredduringschedulingignoredduringexecution_2" title="Permanent link">&para;</a></h4>
 <p><code>.spec.affinity.nodeAffinity</code> キーのアンチ Pod 版である。</p>
@@ -48369,7 +48369,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h3 id="specmaxunavailable">.spec.maxUnavailable<a class="headerlink" href="#specmaxunavailable" title="Permanent link">&para;</a></h3>
 <p>古い Pod を Node から退避させるときに、Node で退避できる Pod の最大数を設定する。</p>
 <p>これを設定しないと、特定の Workload (例：Deployment、DaemonSet、StatefulSet、Job など) 配下の Pod をすべて退避してしまう問題が起こる。</p>
-<p>まずは <code>.spec.minAvailable</code> キーでスケジューリングさせられる新しい Pod の個数を制御し、その後に <code>.spec.minAvailable</code> キーで退避できる古い Pod の個数を制御する。</p>
+<p><code>.spec.minAvailable</code> キーは、退避時にも稼働させる Pod の最小数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">policy/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PodDisruptionBudget</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -48388,13 +48388,13 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h3 id="specminavailable">.spec.minAvailable<a class="headerlink" href="#specminavailable" title="Permanent link">&para;</a></h3>
 <p>古い Pod を Node から退避させるときに、起動し続ける利用可能な Pod の最小数を設定する。</p>
 <p>他の Node で新しい Pod のスケジューリングの完了を待機してから、古い Pod を退避させられる。</p>
-<p>まずは <code>.spec.minAvailable</code> キーでスケジューリングさせられる新しい Pod の個数を制御し、その後に <code>.spec.minAvailable</code> キーで退避できる古い Pod の個数を制御する。</p>
+<p><code>.spec.minAvailable</code> キーは、退避時にも稼働させる Pod の最小数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">policy/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PodDisruptionBudget</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod-disruption-budget</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Pod を Node から退避させる時に、他の Node で新しい Pod3 個のスケジューリングが完了するまで待機できる。</span>
+<span class="w">  </span><span class="c1"># Pod を Node から退避させる時にも、利用可能な Pod を 3 個以上維持する。</span>
 <span class="w">  </span><span class="nt">minAvailable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </code></pre></div>
 <blockquote>
@@ -48800,7 +48800,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h4 id="kubernetesiotls">▼ kubernetes.io/tls<a class="headerlink" href="#kubernetesiotls" title="Permanent link">&para;</a></h4>
 <p>SSL/TLS を使用するための変数を設定する。</p>
 <p>サーバー証明書、サーバー証明書とペアになる秘密鍵の文字列が必要である。</p>
-<p>ユースケースには、変数を Ingress に割り当て、Ingress と Service の間を HTTPS プロトコルでパケットを送受信する例がある。</p>
+<p>ユースケースには、証明書と秘密鍵を Ingress Gateway に割り当て、Ingress Gateway を TLS 終端にする例がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -49580,7 +49580,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年9月29日 14:36:38 JST">2026-09-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 18:24:15 JST">2026-10-04</span>
   </span>
 
     

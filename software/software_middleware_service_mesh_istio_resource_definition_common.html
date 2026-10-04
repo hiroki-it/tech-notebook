@@ -7364,10 +7364,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sidecaristioioexcludeinboundportssidecaristioioexcludeoutboundports" class="md-nav__link">
+  <a href="#trafficsidecaristioioexcludeinboundportstrafficsidecaristioioexcludeoutboundports" class="md-nav__link">
     <span class="md-ellipsis">
       
-        sidecar.istio.io/excludeInboundPorts、sidecar.istio.io/excludeOutboundPorts
+        traffic.sidecar.istio.io/excludeInboundPorts、traffic.sidecar.istio.io/excludeOutboundPorts
       
     </span>
   </a>
@@ -34046,10 +34046,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sidecaristioioexcludeinboundportssidecaristioioexcludeoutboundports" class="md-nav__link">
+  <a href="#trafficsidecaristioioexcludeinboundportstrafficsidecaristioioexcludeoutboundports" class="md-nav__link">
     <span class="md-ellipsis">
       
-        sidecar.istio.io/excludeInboundPorts、sidecar.istio.io/excludeOutboundPorts
+        traffic.sidecar.istio.io/excludeInboundPorts、traffic.sidecar.istio.io/excludeOutboundPorts
       
     </span>
   </a>
@@ -34331,8 +34331,8 @@
 </ul>
 </blockquote>
 <h4 id="_3">▼ アンビエントモードの場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>istio-proxy から waypoint-proxy を作成する。</p>
-<p>また、アンビエントモードのカナリアアップグレードにも使用できる。</p>
+<p>waypoint-proxy に関する Gateway のラベルで、適用対象の Istio リビジョンまたはリビジョンタグを指定する。</p>
+<p>アンビエントモードの Namespace には、istio-proxy のインジェクション用の <code>istio.io/rev</code> ラベルを設定しない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34340,7 +34340,6 @@
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">istio.io/dataplane-mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ambient</span>
 <span class="w">    </span><span class="nt">istio.io/use-waypoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-waypoint</span>
-<span class="w">    </span><span class="nt">istio.io/rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34350,8 +34349,8 @@
 <p><br></p>
 <h3 id="istioiodataplane-mode">istio.io/dataplane-mode<a class="headerlink" href="#istioiodataplane-mode" title="Permanent link">&para;</a></h3>
 <h4 id="istioiodataplane-mode_1">▼ istio.io/dataplane-mode とは<a class="headerlink" href="#istioiodataplane-mode_1" title="Permanent link">&para;</a></h4>
-<p>アンビエントモードの場合、設定した Namespace で ztunnel Pod を有効化する。</p>
-<p>このラベルがついている Namespace のみで、ztunnel Pod へのリダイレクトによって Pod は <code>L4</code> のトラフィックを送受信できる。</p>
+<p>アンビエントモードの場合、設定した Namespace に所属する Pod をアンビエントモードのサービスメッシュに登録する。</p>
+<p>このラベルを設定した Namespace の Pod は、ztunnel へのリダイレクトによってアンビエントモードのサービスメッシュに登録される。ztunnel は <code>L4</code> の非機能ロジックを実装し、<code>L4</code> と <code>L7</code> のトラフィックを中継できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34383,7 +34382,7 @@
 <h4 id="istioiouse-waypoint_1">▼ istio.io/use-waypoint とは<a class="headerlink" href="#istioiouse-waypoint_1" title="Permanent link">&para;</a></h4>
 <p>アンビエントモードの場合、設定した Namespace で waypoint-proxy を有効化する。</p>
 <p>waypoint-proxy と紐づく Gateway 名 (Gateway API) を指定する。</p>
-<p>このラベルがついている Namespace のみで、waypoint-proxy へのリダイレクトによって Pod は <code>L7</code> のトラフィックを送受信できる。</p>
+<p>このラベルを設定した Namespace では、指定した waypoint-proxy に通信を中継させ、<code>L7</code> の非機能ロジックを適用できる。</p>
 <p>もし、<code>istio.io/use-waypoint</code> を設定した Namespace に waypoint-proxy (Gateway API の Namespace によって決まる) が一緒にいない場合は、<code>istio.io/use-waypoint-namespace</code> で waypoint-proxy にいる Namespace を指定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
@@ -34404,7 +34403,7 @@
 <h3 id="istioiouse-waypoint-namespace">istio.io/use-waypoint-namespace<a class="headerlink" href="#istioiouse-waypoint-namespace" title="Permanent link">&para;</a></h3>
 <h4 id="istioiouse-waypoint-namespace_1">▼ istio.io/use-waypoint-namespace とは<a class="headerlink" href="#istioiouse-waypoint-namespace_1" title="Permanent link">&para;</a></h4>
 <p><code>istio.io/use-waypoint</code> を設定した Namespace に waypoint-proxy (Gateway API の Namespace によって決まる) が一緒にいない場合は、<code>istio.io/use-waypoint-namespace</code> で waypoint-proxy にいる Namespace を指定する必要がある。</p>
-<p>例えば、<code>app</code> で Gateway と istio-waypoint を作成している場合、waypoint-proxy を使用するほかの Namespace では、<code>istio.io/use-namespace: app</code> とする。</p>
+<p>例えば、<code>app</code> で Gateway と istio-waypoint を作成している場合、waypoint-proxy を使用するほかの Namespace では、<code>istio.io/use-waypoint-namespace: app</code> とする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34421,7 +34420,7 @@
 <span class="w">    </span><span class="c1"># Gateway の名前</span>
 <span class="w">    </span><span class="nt">istio.io/use-waypoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-waypoint</span>
 <span class="w">    </span><span class="c1"># app に waypoint-proxy がある</span>
-<span class="w">    </span><span class="nt">istio.io/use-namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">    </span><span class="nt">istio.io/use-waypoint-namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 <span class="nn">---</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
@@ -34431,7 +34430,7 @@
 <span class="w">    </span><span class="c1"># Gateway の名前</span>
 <span class="w">    </span><span class="nt">istio.io/use-waypoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-waypoint</span>
 <span class="w">    </span><span class="c1"># app に waypoint-proxy がある</span>
-<span class="w">    </span><span class="nt">istio.io/use-namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">    </span><span class="nt">istio.io/use-waypoint-namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34476,22 +34475,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="istioiorev_1">istio.io/rev<a class="headerlink" href="#istioiorev_1" title="Permanent link">&para;</a></h3>
-<p>IstoOperator の <code>.spec.revision</code> キーと同じ。</p>
-<p>特定の Pod で、Istio とそのカナリアリリースを有効化するか否かを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくは Pod</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-deployment</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">istio.io/rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1-10-0</span>
-</code></pre></div>
+<p>Pod にインジェクションされた Istio のリビジョンを表す。</p>
+<p>このアノテーションは Istio が自動的に設定するため、ユーザーが設定する必要はない。リビジョンを選択する場合は、Namespace または Pod の <code>.metadata.labels.istio.io/rev</code> キーを使用する。</p>
 <p><br></p>
 <h3 id="proxyistioioconfig">proxy.istio.io/config<a class="headerlink" href="#proxyistioioconfig" title="Permanent link">&para;</a></h3>
 <h4 id="proxyistioioconfig_1">▼ proxy.istio.io/config とは<a class="headerlink" href="#proxyistioioconfig_1" title="Permanent link">&para;</a></h4>
@@ -34500,7 +34485,7 @@
 <p>ProxyConfig が最優先であり、これらの設定はマージされる。</p>
 <p><code>.meshConfig.defaultConfig</code> キーにデフォルト値を設定しておき、ProxyConfig で Namespace やマイクロサービス Pod ごとに上書きするのがよい。</p>
 <h4 id="configpath">▼ configPath<a class="headerlink" href="#configpath" title="Permanent link">&para;</a></h4>
-<p>デフォルトでは、<code>./etc/istio/proxy</code> ディレクトリ配下に最終的な設定値ファイルを作成する。</p>
+<p>デフォルトでは、<code>/etc/istio/proxy</code> ディレクトリ配下に最終的な設定値ファイルを作成する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくは Pod</span>
@@ -34514,7 +34499,7 @@
 <span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">proxy.istio.io/config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no">configPath: ./etc/istio/proxy</span>
+<span class="w">          </span><span class="no">configPath: /etc/istio/proxy</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34524,11 +34509,11 @@
 <h4 id="drainduration">▼ drainDuration<a class="headerlink" href="#drainduration" title="Permanent link">&para;</a></h4>
 <p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
 <p>デフォルト値は <code>45</code> である。</p>
-<p>istio-proxy 内の Envoy プロセスは、ホットリスタート時に接続のドレイン処理を実施する。</p>
-<p>この接続のドレイン処理時間で、新しい接続を受け入れ続ける時間を設定する。</p>
+<p>istio-proxy 内の Envoy プロセスは、リスナーやフィルターチェーンの変更時にドレイン処理を実施する。</p>
+<p>既存通信を変更前の構成、新規通信を変更後の構成で処理し、既存通信の完了を待機する時間を設定する。</p>
 <p>Envoy の <code>--drain-time-s</code> オプションに相当する。</p>
 <p>設定した時間が短過ぎると、処理中の接続を終了することなく、強制的に切断してしまう。</p>
-<p>レースコンディションを解決するための <code>.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION</code> キーでも、同じ値を設定するとよい。</p>
+<p><code>MINIMUM_DRAIN_DURATION</code> は Envoy プロセスの終了時の最小待機時間であり、リスナーやフィルターチェーンの変更時の待機時間とは異なる。</p>
 <p>似た設定の <code>terminationDrainDuration</code> は、istio-proxy の終了時のドレイン処理時間である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくは Pod</span>
@@ -34583,7 +34568,7 @@
 <p><code>true</code> の場合は、代わりに Pod の <code>.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION</code> 変数と <code>## EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code> 変数を設定する。</p>
 <p>istio-proxy 内の Envoy プロセスは、終了時に接続のドレイン処理を実施する。</p>
 <p>この接続のドレイン処理時間を設定する。</p>
-<p>似た設定の <code>drainDuration</code> は、istio-proxy 内の Envoy のホットリスタート時のドレイン処理時間である。</p>
+<p>似た設定の <code>drainDuration</code> は、Envoy のリスナーやフィルターチェーンを変更した際に、ドレイン処理が終わるまで待機する時間である。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>Envoy プロセスの接続のドレイン処理 <code>5</code> 秒間に実施する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
@@ -34608,7 +34593,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="sidecaristioioexcludeinboundportssidecaristioioexcludeoutboundports">sidecar.istio.io/excludeInboundPorts、sidecar.istio.io/excludeOutboundPorts<a class="headerlink" href="#sidecaristioioexcludeinboundportssidecaristioioexcludeoutboundports" title="Permanent link">&para;</a></h3>
+<h3 id="trafficsidecaristioioexcludeinboundportstrafficsidecaristioioexcludeoutboundports">traffic.sidecar.istio.io/excludeInboundPorts、traffic.sidecar.istio.io/excludeOutboundPorts<a class="headerlink" href="#trafficsidecaristioioexcludeinboundportstrafficsidecaristioioexcludeoutboundports" title="Permanent link">&para;</a></h3>
 <p>特定のポート番号に対するインバウンド通信／アウトバウンド通信を、istio-iptables が istio-proxy へリダイレクトしないようにする。</p>
 <p>例えば、Pod 間でレプリケーション通信をする場合 (例：Keycloak クラスター、Redis クラスターなど) 、istio-proxy を経由する必要はない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
@@ -34622,8 +34607,8 @@
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">sidecar.istio.io/excludeInboundPorts</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;7800&quot;</span>
-<span class="w">        </span><span class="nt">sidecar.istio.io/excludeOutboundPorts</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;7800&quot;</span>
+<span class="w">        </span><span class="nt">traffic.sidecar.istio.io/excludeInboundPorts</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;7800&quot;</span>
+<span class="w">        </span><span class="nt">traffic.sidecar.istio.io/excludeOutboundPorts</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;7800&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="sidecaristioioinject">sidecar.istio.io/inject<a class="headerlink" href="#sidecaristioioinject" title="Permanent link">&para;</a></h3>
@@ -34734,7 +34719,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:52:31 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 18:24:15 JST">2026-10-04</span>
   </span>
 
     

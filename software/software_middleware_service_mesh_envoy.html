@@ -6337,7 +6337,7 @@
   <a href="#graceful-restart" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Graceful Restart (ホットリロード)
+        ▼ Graceful Restart (ホットリスタート)
       
     </span>
   </a>
@@ -34350,7 +34350,7 @@
   <a href="#graceful-restart" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Graceful Restart (ホットリロード)
+        ▼ Graceful Restart (ホットリスタート)
       
     </span>
   </a>
@@ -35331,7 +35331,7 @@
 <h2 id="01-envoy">01. Envoy の仕組み<a class="headerlink" href="#01-envoy" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p><img alt="envoy_structure" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_structure.png" /></p>
-<p>Envoy は、コントロールプレーンに相当する xDS サーバーと、データプレーンに相当するプロキシコンテナから構成される。</p>
+<p>Envoy は、データプレーンで通信を処理するプロキシツールである。コントロールプレーンの xDS サーバーから設定を取得する。</p>
 <p>Envoy には静的/動的な設定がある。</p>
 <p>静的な設定は、Envoy の起動時に適用される。</p>
 <p>一方で動的な設定は、xDS サーバーによって Envoy の実行時に初めて適用される。</p>
@@ -35345,10 +35345,11 @@
 </blockquote>
 <p><br></p>
 <h3 id="grace-process">Grace Process<a class="headerlink" href="#grace-process" title="Permanent link">&para;</a></h3>
-<h4 id="graceful-restart">▼ Graceful Restart (ホットリロード)<a class="headerlink" href="#graceful-restart" title="Permanent link">&para;</a></h4>
-<p>Envoy は、ホットリロード処理によって通信を切断することなく、コントロールプレーンから取得した動的な設定を自動的に再読み込みできる。</p>
-<p>現在のプロセス (プライマリプロセス) を残したまま、新しいプロセス (セカンダリプロセス) を起動し、通信を段階的に移行する。</p>
-<p>ちなみに、Apache や Nginx はリロード機能を持つが、自動でリロードするホットリロードの機能はない。</p>
+<h4 id="graceful-restart">▼ Graceful Restart (ホットリスタート)<a class="headerlink" href="#graceful-restart" title="Permanent link">&para;</a></h4>
+<p>Envoy は、ブートストラップ構成の変更を読み込むために、ホットリスタートできる。</p>
+<p>現在のプロセスを残したまま、新しいプロセスを起動し、旧プロセスで既存通信を完了させながら、新プロセスで新規通信を処理する。</p>
+<p>コントロールプレーンから取得した動的な設定の更新には、ホットリスタートは必要ない。</p>
+<p>Istio 管理下では、pilot-agent が Envoy のホットリスタートを無効化している。ブートストラップ構成の変更を反映するには、Pod のロールアウトなどによる istio-proxy の再起動が必要である。</p>
 <p><img alt="envoy_hot-reload" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_hot-reload.png" /></p>
 <blockquote>
 <ul>
@@ -35450,7 +35451,7 @@
 </ul>
 </blockquote>
 <h4 id="_5">▼ 実装<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>Envoy を使用するサービス検出ツールのいくつか (例：Istio、Linkerd) では、コントロールプレーンに <code>go-control-plane</code> パッケージが使用されている。</p>
+<p>Envoy を使用するサービス検出ツール (例：Istio) では、コントロールプレーンに <code>go-control-plane</code> パッケージが使用されている。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/envoyproxy/go-control-plane/blob/v0.11.0/pkg/resource/v3/resource.go#L34-L43">https://github.com/envoyproxy/go-control-plane/blob/v0.11.0/pkg/resource/v3/resource.go#L34-L43</a></li>
@@ -35549,7 +35550,7 @@
 </blockquote>
 <h4 id="xds-api_4">▼ XDS-API との通信の仕組み<a class="headerlink" href="#xds-api_4" title="Permanent link">&para;</a></h4>
 <p>Istio の Envoy は、pilot-agent を介して Istiod の ADS-API にリモートプロシージャーコールし、ストリーミング方式で取得した Envoy 設定値を動的に設定する。</p>
-<p>Envoy が組み込まれたサービスメッシュツール (例：Istio、Linkerd) では、Envoy のコントロールプレーンへのリモートプロシージャーコール処理の緩衝材として、エージェント (例：pilot-agent) が提供されている。</p>
+<p>Envoy が組み込まれたサービスメッシュツール (例：Istio) では、Envoy のコントロールプレーンへのリモートプロシージャーコール処理の緩衝材として、エージェント (例：pilot-agent) が提供されている。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#streaming-grpc-subscriptions">https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#streaming-grpc-subscriptions</a></li>
@@ -36352,7 +36353,7 @@
 <li>XDS-API に関する処理</li>
 <li>ランタイム</li>
 <li>統計情報のフラッシュ</li>
-<li>Envoy のプロセスのさまざまな処理 (ホットリロードなど)</li>
+<li>Envoy のプロセスのさまざまな処理 (ホットリスタートなど)</li>
 </ul>
 <blockquote>
 <ul>
@@ -36471,7 +36472,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年9月28日 17:12:45 JST">2026-09-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 18:24:15 JST">2026-10-04</span>
   </span>
 
     
