@@ -268,7 +268,7 @@ flowchart LR
 | サービスメッシュ             | Istio🐬                                                                           |
 | DB                           | Aurora MySQL                                                                      |
 | フロントエンドアプリ         | 任意の言語                                                                        |
-| マイクロサービス             | 任意の言語、Keyacloak (認証マイクロサービス) 、Temporal (Saga オーケストレーター) |
+| マイクロサービス             | 任意の言語、Keycloak (認証マイクロサービス) 、Temporal (Saga オーケストレーター) |
 | その他                       | 周辺の AWS リソース                                                               |
 
 # 05-15. アプリ領域を参照

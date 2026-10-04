@@ -43,11 +43,15 @@ description: プラクティス集＠Istioの知見を記録しています。
 
 #### ▼ Job 配下の Pod
 
-Job 配下の Pod に istio-proxy を挿入した場合、Pod 内のコンテナが終了しても istio-proxy が終了せず、Pod 自体が削除されない問題もある。
+ネイティブサイドカーを使用しない場合、Job 配下の Pod 内でジョブ処理が終了しても istio-proxy が終了せず、Pod のフェーズが `Completed` にならない問題がある。
 
-Job 配下の Pod は、サイドカーモードへ登録しないようにする。
+Job 配下の Pod は、基本的にはサービスメッシュへ登録しない。
 
-どうしてもサービスメッシュに登録したい場合は、Pod 内のコンテナで、istio-proxy の『`localhost:15020/quitquitquit`』をコールするようなシェルスクリプトを実行する。
+ただし、HTTP リクエストを定期的に送信するジョブは、トラフィック管理のために登録する。
+
+ネイティブサイドカーを使用する場合、ジョブ処理の完了後に istio-proxy が自動で終了する。
+
+ネイティブサイドカーを使用せずにサービスメッシュへ登録する場合は、Pod 内のコンテナで、ジョブ処理の成否にかかわらず istio-proxy の『`localhost:15020/quitquitquit`』へ POST リクエストを送信する。
 
 ```yaml
 apiVersion: batch/v1
@@ -65,16 +69,15 @@ spec:
             - /bin/bash
             - -c
           args:
-            - >
+            - |
+              trap 'curl -fs -X POST http://localhost:15020/quitquitquit || echo "Failed to shutdown istio-proxy"' EXIT
               until curl -fsI http://localhost:15021/healthz/ready; do
                 echo "Waiting for Sidecar to be healthy";
                 sleep 3;
-              done;
-              echo "Sidecar available. Running job command..." &&
-              <CronJobのコマンド> &&
-              x=$(echo $?) &&
-              curl -fsI -X POST http://localhost:15020/quitquitquit && 
-              exit $x
+              done
+              echo "Sidecar available. Running job command..."
+              <CronJobのコマンド>
+              exit $?
 ```
 
 > - https://www.kabegiwablog.com/entry/2020/08/31/224827
@@ -110,14 +113,10 @@ AWS ALB
 # L4 ロードバランサー
 NodePort Service (Istio Ingress Gateway)
 ⬇⬆️︎
-Gateway
+Istio Ingress Gateway (Gateway と VirtualService の設定を使用)
 ⬇⬆️︎
-VirtualService
-⬇⬆️︎
-# L4 ロードバランサー
-ClusterIP Service
-⬇⬆️︎
-Pod
+# Service を経由せず、Istio Ingress Gateway から宛先 Pod へ直接ルーティング
+Pod (istio-proxy)
 ```
 
 一方で、LoadBalancer Service を選ぶ場合、クラウドプロバイダーのロードバランサーが自動的に作成される。
@@ -147,17 +146,11 @@ Amazon Route 53
 # L7 ロードバランサー (単一の L7 ロードバランサーを作成し、異なるポートを開放する複数の L4 ロードバランサーの振り分ける)
 AWS Load Balancer ControllerによるAWS ALB
 ⬇⬆️︎
-# L4 ロードバランサー
-ClusterIP Service (Istio Ingress Gateway)
+# ClusterIP Service を経由せず、ALB から Pod へ直接ルーティング
+Istio Ingress Gateway の Pod (Gateway と VirtualService の設定を使用)
 ⬇⬆️︎
-Gateway
-⬇⬆️︎
-VirtualService
-⬇⬆️︎
-# L4 ロードバランサー
-ClusterIP Service
-⬇⬆️︎
-Pod
+# Service を経由せず、Istio Ingress Gateway から宛先 Pod へ直接ルーティング
+Pod (istio-proxy)
 ```
 
 > - https://lab.mo-t.com/blog/k8s-update-load-balancer
@@ -253,14 +246,10 @@ Amazon Route 53
 # L4 ロードバランサー
 LoadBalancer Service (Istio Ingress Gateway) によるAWS NLB
 ⬇⬆️︎
-Gateway
+Istio Ingress Gateway (Gateway と VirtualService の設定を使用)
 ⬇⬆️︎
-VirtualService
-⬇⬆️︎
-# L4 ロードバランサー
-ClusterIP Service
-⬇⬆️︎
-Pod
+# Service を経由せず、Istio Ingress Gateway から宛先 Pod へ直接ルーティング
+Pod (istio-proxy)
 ```
 
 <br>
@@ -279,14 +268,10 @@ Node の NIC の宛先情報は、Node 外から宛先 IP アドレスとして�
 # L4 ロードバランサー
 NodePort Service (Istio Ingress Gateway)
 ⬇⬆️︎
-Gateway
+Istio Ingress Gateway (Gateway と VirtualService の設定を使用)
 ⬇⬆️︎
-VirtualService
-⬇⬆️︎
-# L4 ロードバランサー
-ClusterIP Service
-⬇⬆️︎
-Pod
+# Service を経由せず、Istio Ingress Gateway から宛先 Pod へ直接ルーティング
+Pod (istio-proxy)
 ```
 
 #### ▼ `L7` ロードバランサーがある場合
@@ -308,14 +293,10 @@ AWS ALB
 # L4 ロードバランサー
 NodePort Service (Istio Ingress Gateway)
 ⬇⬆️︎
-Gateway
+Istio Ingress Gateway (Gateway と VirtualService の設定を使用)
 ⬇⬆️︎
-VirtualService
-⬇⬆️︎
-# L4 ロードバランサー
-ClusterIP Service
-⬇⬆️︎
-Pod
+# Service を経由せず、Istio Ingress Gateway から宛先 Pod へ直接ルーティング
+Pod (istio-proxy)
 ```
 
 <br>
@@ -334,17 +315,11 @@ Amazon Route 53
 # L7 ロードバランサー (単一の L7 ロードバランサーを作成し、異なるポートを開放する複数の L4 ロードバランサーの振り分ける)
 AWS Load Balancer ControllerによるAWS ALB
 ⬇⬆️︎
-# L4 ロードバランサー
-ClusterIP Service (Istio Ingress Gateway)
+# ClusterIP Service を経由せず、ALB から Pod へ直接ルーティング
+Istio Ingress Gateway の Pod (Gateway と VirtualService の設定を使用)
 ⬇⬆️︎
-Gateway
-⬇⬆️︎
-VirtualService
-⬇⬆️︎
-# L4 ロードバランサー
-ClusterIP Service
-⬇⬆️︎
-Pod
+# Service を経由せず、Istio Ingress Gateway から宛先 Pod へ直接ルーティング
+Pod (istio-proxy)
 ```
 
 > - https://lab.mo-t.com/blog/k8s-update-load-balancer

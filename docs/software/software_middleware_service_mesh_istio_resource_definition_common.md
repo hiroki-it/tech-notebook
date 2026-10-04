@@ -99,9 +99,9 @@ metadata:
 
 #### ▼ アンビエントモードの場合
 
-istio-proxy から waypoint-proxy を作成する。
+waypoint-proxy に関する Gateway のラベルで、適用対象の Istio リビジョンまたはリビジョンタグを指定する。
 
-また、アンビエントモードのカナリアアップグレードにも使用できる。
+アンビエントモードの Namespace には、istio-proxy のインジェクション用の `istio.io/rev` ラベルを設定しない。
 
 ```yaml
 apiVersion: v1
@@ -111,7 +111,6 @@ metadata:
   labels:
     istio.io/dataplane-mode: ambient
     istio.io/use-waypoint: istio-waypoint
-    istio.io/rev: default
 ```
 
 > - https://istio.io/latest/docs/ambient/upgrade/helm/
@@ -122,9 +121,9 @@ metadata:
 
 #### ▼ istio.io/dataplane-mode とは
 
-アンビエントモードの場合、設定した Namespace で ztunnel Pod を有効化する。
+アンビエントモードの場合、設定した Namespace に所属する Pod をアンビエントモードのサービスメッシュに登録する。
 
-このラベルがついている Namespace のみで、ztunnel Pod へのリダイレクトによって Pod は `L4` のトラフィックを送受信できる。
+このラベルを設定した Namespace の Pod は、ztunnel へのリダイレクトによってアンビエントモードのサービスメッシュに登録される。ztunnel は `L4` の非機能ロジックを実装し、`L4` と `L7` のトラフィックを中継できる。
 
 ```yaml
 apiVersion: v1
@@ -161,7 +160,7 @@ metadata:
 
 waypoint-proxy と紐づく Gateway 名 (Gateway API) を指定する。
 
-このラベルがついている Namespace のみで、waypoint-proxy へのリダイレクトによって Pod は `L7` のトラフィックを送受信できる。
+このラベルを設定した Namespace では、指定した waypoint-proxy に通信を中継させ、`L7` の非機能ロジックを適用できる。
 
 もし、`istio.io/use-waypoint` を設定した Namespace に waypoint-proxy (Gateway API の Namespace によって決まる) が一緒にいない場合は、`istio.io/use-waypoint-namespace` で waypoint-proxy にいる Namespace を指定する必要がある。
 
@@ -187,7 +186,7 @@ metadata:
 
 `istio.io/use-waypoint` を設定した Namespace に waypoint-proxy (Gateway API の Namespace によって決まる) が一緒にいない場合は、`istio.io/use-waypoint-namespace` で waypoint-proxy にいる Namespace を指定する必要がある。
 
-例えば、`app` で Gateway と istio-waypoint を作成している場合、waypoint-proxy を使用するほかの Namespace では、`istio.io/use-namespace: app` とする。
+例えば、`app` で Gateway と istio-waypoint を作成している場合、waypoint-proxy を使用するほかの Namespace では、`istio.io/use-waypoint-namespace: app` とする。
 
 ```yaml
 apiVersion: v1
@@ -206,7 +205,7 @@ metadata:
     # Gateway の名前
     istio.io/use-waypoint: istio-waypoint
     # app に waypoint-proxy がある
-    istio.io/use-namespace: app
+    istio.io/use-waypoint-namespace: app
 ---
 apiVersion: v1
 kind: Namespace
@@ -216,7 +215,7 @@ metadata:
     # Gateway の名前
     istio.io/use-waypoint: istio-waypoint
     # app に waypoint-proxy がある
-    istio.io/use-namespace: app
+    istio.io/use-waypoint-namespace: app
 ```
 
 > - https://www.solo.io/blog/istio-ambient-waypoint-proxy-deployment-model-explained
@@ -267,26 +266,9 @@ Deployment の `.spec.template` キーや、Pod の `.metadata.` キーにて、
 
 ### istio.io/rev
 
-IstoOperator の `.spec.revision` キーと同じ。
+Pod にインジェクションされた Istio のリビジョンを表す。
 
-特定の Pod で、Istio とそのカナリアリリースを有効化するか否かを設定する。
-
-**＊実装例＊**
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment # もしくは Pod
-metadata:
-  name: foo-deployment
-spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: foo-pod
-  template:
-    metadata:
-      annotations:
-        istio.io/rev: 1-10-0
-```
+このアノテーションは Istio が自動的に設定するため、ユーザーが設定する必要はない。リビジョンを選択する場合は、Namespace または Pod の `.metadata.labels.istio.io/rev` キーを使用する。
 
 <br>
 
@@ -304,7 +286,7 @@ ProxyConfig が最優先であり、これらの設定はマージされる。
 
 #### ▼ configPath
 
-デフォルトでは、`./etc/istio/proxy` ディレクトリ配下に最終的な設定値ファイルを作成する。
+デフォルトでは、`/etc/istio/proxy` ディレクトリ配下に最終的な設定値ファイルを作成する。
 
 **＊実装例＊**
 
@@ -321,7 +303,7 @@ spec:
     metadata:
       annotations:
         proxy.istio.io/config: |
-          configPath: ./etc/istio/proxy
+          configPath: /etc/istio/proxy
 ```
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
@@ -332,15 +314,15 @@ spec:
 
 デフォルト値は `45` である。
 
-istio-proxy 内の Envoy プロセスは、ホットリスタート時に接続のドレイン処理を実施する。
+istio-proxy 内の Envoy プロセスは、リスナーやフィルターチェーンの変更時にドレイン処理を実施する。
 
-この接続のドレイン処理時間で、新しい接続を受け入れ続ける時間を設定する。
+既存通信を変更前の構成、新規通信を変更後の構成で処理し、既存通信の完了を待機する時間を設定する。
 
 Envoy の `--drain-time-s` オプションに相当する。
 
 設定した時間が短過ぎると、処理中の接続を終了することなく、強制的に切断してしまう。
 
-レースコンディションを解決するための `.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION` キーでも、同じ値を設定するとよい。
+`MINIMUM_DRAIN_DURATION` は Envoy プロセスの終了時の最小待機時間であり、リスナーやフィルターチェーンの変更時の待機時間とは異なる。
 
 似た設定の `terminationDrainDuration` は、istio-proxy の終了時のドレイン処理時間である。
 
@@ -406,7 +388,7 @@ istio-proxy 内の Envoy プロセスは、終了時に接続のドレイン処�
 
 この接続のドレイン処理時間を設定する。
 
-似た設定の `drainDuration` は、istio-proxy 内の Envoy のホットリスタート時のドレイン処理時間である。
+似た設定の `drainDuration` は、Envoy のリスナーやフィルターチェーンを変更した際に、ドレイン処理が終わるまで待機する時間である。
 
 **＊実装例＊**
 
@@ -434,7 +416,7 @@ spec:
 
 <br>
 
-### sidecar.istio.io/excludeInboundPorts、sidecar.istio.io/excludeOutboundPorts
+### traffic.sidecar.istio.io/excludeInboundPorts、traffic.sidecar.istio.io/excludeOutboundPorts
 
 特定のポート番号に対するインバウンド通信／アウトバウンド通信を、istio-iptables が istio-proxy へリダイレクトしないようにする。
 
@@ -452,8 +434,8 @@ spec:
   template:
     metadata:
       annotations:
-        sidecar.istio.io/excludeInboundPorts: "7800"
-        sidecar.istio.io/excludeOutboundPorts: "7800"
+        traffic.sidecar.istio.io/excludeInboundPorts: "7800"
+        traffic.sidecar.istio.io/excludeOutboundPorts: "7800"
 ```
 
 <br>

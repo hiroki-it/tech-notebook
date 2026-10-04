@@ -121,7 +121,7 @@ Cert Manager と連携する必要がある。
 
 ## 05. サービスメッシュ
 
-Traefik をサービスメッシュとして各マイクロサービスに提供する。
+Traefik Mesh は、内部で Traefik Proxy を使用するサービスメッシュである。
 
 > - https://doc.traefik.io/traefik-mesh/
 

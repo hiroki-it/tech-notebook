@@ -523,7 +523,7 @@ spec:
 実行に失敗した Job の履歴数に上限を設定する。
 
 ```yaml
-apiVersion: io.k8s.api.batch.v1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: foo-cronjob
@@ -540,7 +540,7 @@ spec:
 Cron のルールを設定する。
 
 ```yaml
-apiVersion: io.k8s.api.batch.v1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: foo-cronjob
@@ -554,7 +554,7 @@ spec:
 例えば、Amazon EKS Cluster は UTC で時間を管理しているため、9 時間分ずらす必要がある。
 
 ```yaml
-apiVersion: io.k8s.api.batch.v1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: foo-cronjob
@@ -576,7 +576,7 @@ Job が Cron のスケジュール通りに実行されなかった場合、実�
 指定した秒数を過ぎると、実行を失敗とみなす。
 
 ```yaml
-apiVersion: io.k8s.api.batch.v1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: foo-cronjob
@@ -2629,7 +2629,7 @@ spec:
 
 #### ▼ affinity.podAntiAffinity とは
 
-`.metadata.labels` キーを持つ Node とは異なる Node 内に、その Pod をスケジューリングさせる。
+`.metadata.labels` キーで指定した Pod とは異なるトポロジー領域に、新しい Pod をスケジューリングさせる。分散単位は `topologyKey` キーで Node や AZ に設定する。
 
 ```yaml
 apiVersion: v1
@@ -2649,18 +2649,18 @@ spec:
         # Pod の分散単位
         - topologyKey: topology.kubernetes.io/zone
           labelSelector:
-            - matchExpressions:
-                # Pod の metadata.labels キー
-                - key: app.kubernetes.io/name
-                  operator: In
-                  # 指定した値をキーに持つ Pod とは異なる Node に、Pod をスケジューリングさせる。
-                  values:
-                    - bar-gin
+            matchExpressions:
+              # Pod の metadata.labels キー
+              - key: app.kubernetes.io/name
+                operator: In
+                # 指定した値をキーに持つ Pod とは異なる AZ に、Pod をスケジューリングさせる。
+                values:
+                  - bar-gin
 ```
 
 > - https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html
 
-preferredDuringSchedulingIgnoredDuringExecution の場合、`podAffinityTerm` キーや `preference` キーが必要である。
+preferredDuringSchedulingIgnoredDuringExecution の場合、`podAffinityTerm` キーと `weight` キーが必要である。
 
 ```yaml
 apiVersion: v1
@@ -2680,18 +2680,18 @@ spec:
           podAffinityTerm:
             topologyKey: topology.kubernetes.io/zone
             labelSelector:
-              - matchExpressions:
-                  - key: app.kubernetes.io/name
-                    operator: In
-                    values:
-                      - bar-gin
+              matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values:
+                    - bar-gin
 ```
 
 > - https://qiita.com/kanazawa1226/items/4e5bb6715b52da6649d7#podaffinity--podantiaffinity
 
 **＊スケジューリング例＊**
 
-もし、コピーする Pod の名前を設定した場合、Pod のレプリカ同士は同じ Node にスケジューリングされることを避ける。
+もし、自身の Pod のラベル値を設定した場合、Pod のレプリカ同士が同じ AZ にスケジューリングされることを避ける。
 
 また、分散単位に `topology.kubernetes.io/zone` を設定しているため、各 AZ に Pod をバラバラにスケジューリングさせる。
 
@@ -2724,14 +2724,14 @@ spec:
             # Pod の分散単位
             - topologyKey: topology.kubernetes.io/zone
               labelSelector:
-                - matchExpressions:
-                    # Pod の metadata.labels キー
-                    - key: app.kubernetes.io/name
-                      operator: In
-                      # 指定した値をキーに持つ Pod とは異なる Node に、Pod をスケジューリングさせる。
-                      values:
-                        # 自身がコピーする Pod の名前
-                        - app
+                matchExpressions:
+                  # Pod の metadata.labels キー
+                  - key: app.kubernetes.io/name
+                    operator: In
+                    # 指定した値をキーに持つ Pod とは異なる AZ に、Pod をスケジューリングさせる。
+                    values:
+                      # 自身の Pod のラベル値
+                      - foo-pod
 ```
 
 #### ▼ requiredDuringSchedulingIgnoredDuringExecution (ハード)
@@ -4900,7 +4900,7 @@ data:
 
 これを設定しないと、特定の Workload (例：Deployment、DaemonSet、StatefulSet、Job など) 配下の Pod をすべて退避してしまう問題が起こる。
 
-まずは `.spec.minAvailable` キーでスケジューリングさせられる新しい Pod の個数を制御し、その後に `.spec.minAvailable` キーで退避できる古い Pod の個数を制御する。
+`.spec.minAvailable` キーは、退避時にも稼働させる Pod の最小数を設定する。
 
 ```yaml
 apiVersion: policy/v1
@@ -4923,7 +4923,7 @@ spec:
 
 他の Node で新しい Pod のスケジューリングの完了を待機してから、古い Pod を退避させられる。
 
-まずは `.spec.minAvailable` キーでスケジューリングさせられる新しい Pod の個数を制御し、その後に `.spec.minAvailable` キーで退避できる古い Pod の個数を制御する。
+`.spec.minAvailable` キーは、退避時にも稼働させる Pod の最小数を設定する。
 
 ```yaml
 apiVersion: policy/v1
@@ -4931,7 +4931,7 @@ kind: PodDisruptionBudget
 metadata:
   name: foo-pod-disruption-budget
 spec:
-  # Pod を Node から退避させる時に、他の Node で新しい Pod3 個のスケジューリングが完了するまで待機できる。
+  # Pod を Node から退避させる時にも、利用可能な Pod を 3 個以上維持する。
   minAvailable: 3
 ```
 
@@ -5419,7 +5419,7 @@ SSL/TLS を使用するための変数を設定する。
 
 サーバー証明書、サーバー証明書とペアになる秘密鍵の文字列が必要である。
 
-ユースケースには、変数を Ingress に割り当て、Ingress と Service の間を HTTPS プロトコルでパケットを送受信する例がある。
+ユースケースには、証明書と秘密鍵を Ingress Gateway に割り当て、Ingress Gateway を TLS 終端にする例がある。
 
 ```yaml
 apiVersion: v1

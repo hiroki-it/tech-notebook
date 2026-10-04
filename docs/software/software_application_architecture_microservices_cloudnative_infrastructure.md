@@ -52,7 +52,7 @@ flowchart LR
 
 なお、本記事では、サーバーサイドパターンを採用します。
 
-(例) Istio、CoreDNS、AWS ALB など
+(例) Istio、AWS ALB など
 
 ![service-discovery-pattern_server-side.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/service-discovery-pattern_server-side.png)
 
@@ -62,7 +62,7 @@ flowchart LR
 
 通信の送信元マイクロサービスは、宛先マイクロサービスの場所をサービスレジストリに問い合わせ、さらにロードバランシングする責務を担います。
 
-(例) Netflix の Eureka、kube-proxy など
+(例) Netflix の Eureka など
 
 ![service-discovery-pattern_client-side.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/service-discovery-pattern_client-side.png)
 
@@ -147,7 +147,7 @@ Istio IngressGateway がサービスメッシュ外からの通信をサービ�
 
 | 図中の登場キャラクター      | 説明                                                                                                                                                                                               |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Istio Gateway               | NodePort Service からのリクエストを受信する。                                                                                                                                                      |
+| Istio Gateway               | Istio IngressGateway が受信するリクエストのホスト名、プロトコル、ポート番号を設定する。                                                                                                                                                      |
 | Istio VirtualService (1)    | 宛先とするフロントエンドアプリケーションの Service を決定する。PC ブラウザやスマホブラウザからのリクエストは、User-Agent ヘッダーにブラウザを判定できる値を持つ。VirtualService でこれを判定する。 |
 | Istio VirtualService (2)    | 宛先とするフロントエンドアプリケーションの Service を決定する。外部 API からのリクエストは、Host ヘッダーに API のドメインを持つ。VirtualService でこれを判定する。                                |
 | Kubernetes NodePort Service | kube-proxy の更新した iptable を使用して、ALB からのリクエストを受信し、Istio IngressGateway Pod に L4 ロードバランシングする。                                                                    |
@@ -162,7 +162,7 @@ Istio IngressGateway については、以下のブログで解説している�
 
 Istio は、指定した Namespace 以外に属する Pod にはサービスメッシュの機能を提供しません。
 
-サービスメッシュ外の Namespace では、CoreDNS を使用して、トラフィックを管理します。
+サービスメッシュ外の Namespace では、CoreDNS で宛先を名前解決し、Service と kube-proxy でトラフィックを管理します。
 
 ![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L7トラフィック管理 (サービスメッシュ外).drawio.png](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L7トラフィック管理_(サービスメッシュ外).drawio.png>)
 
@@ -307,7 +307,7 @@ istio-proxy はクライアント証明書 / SSL 証明書を持ち、アップ�
 | Amazon Aurora                      | SSL 証明書を Amazon Aurora に紐づける。マイクロサービスが Amazon Aurora にトランザクション処理を実行するときに、通常の TLS を実行できるようになる。                                                                                                                  |
 | AWS Certificate Manager            | 発行された SSL 証明書を管理する。                                                                                                                                                                                                                                    |
 | Istio コントロールプレーン         | ルート認証局として、istio-proxy に紐づけるためのクライアント証明書 / SSL 証明書を発行する。                                                                                                                                                                          |
-| Istio データプレーン (istio-proxy) | 秘密鍵と証明書要求を作成し、ルート認証局の Istio コントロールプレーンに送信する。また、Istio コントロールプレーンが作成したクライアント証明書 / SSL 証明書を取得し、アップストリームとダウンストリームの istio-proxy と相互 TLS 認証を実行する。                     |
+| Istio データプレーン (istio-proxy) | 秘密鍵と証明書署名要求 (CSR) を作成し、CSR をルート認証局の Istio コントロールプレーンに送信する。また、Istio コントロールプレーンが作成したクライアント証明書 / SSL 証明書を取得し、アップストリームとダウンストリームの istio-proxy と相互 TLS 認証を実行する。                     |
 | Istio PeerAuthentication           | Namepspace を指定し、これに属する Pod で相互 TLS 認証を実行する。                                                                                                                                                                                                    |
 | Kubernetes ConfigMap               | クライアント証明書 / SSL 証明書を検証できる CA 証明書を管理する。                                                                                                                                                                                                    |
 | Kubernetes Namespace               | PeerAuthentication で指定される Namespace である。                                                                                                                                                                                                                   |
@@ -437,7 +437,7 @@ Prometheus Server を使用して、Amazon EKS クラスター内で作成され
 | Istio コントロールプレーン         | Istio データプレーン (istio-proxy) に Metrics プロバイダーの設定を適用する。また、Istio 自体に関するデータポイントを記録し、メトリクスエンドポイントで公開する。                                                                                                              |
 | Istio データプレーン (istio-proxy) | アプリケーション通信に関するデータポイントを記録し、メトリクスエンドポイントで公開する。Prometheus Server はこのエンドポイントからデータポイントを収集する。                                                                                                                  |
 | Istio Telemetry                    | `.spec.metrics[*]providers` キーで、Metrics プロバイダーを使用する。                                                                                                                                                                                                        |
-| Kubernetes ConfigMap (Istio)       | `.extensionProviders` キーで、Metrics プロバイダーを宣言する。                                                                                                                                                                                                              |
+| Kubernetes ConfigMap (Istio)       | `.defaultProviders.metrics` キーで、デフォルトの Metrics プロバイダーを設定する。                                                                                                                                                                                                              |
 | Kubernetes ConfigMap (Grafana)     | 各種オプションを設定する。また、ダッシュボードを JSON で管理する。                                                                                                                                                                                                          |
 | Kubernetes ConfigMap (Kiali)       | 各種オプションを設定する。また、ダッシュボードを JSON で管理する。                                                                                                                                                                                                          |
 | Kiali                              | Prometheus のメトリクスを参照して分析し、メッシュマップとして可視化する。                                                                                                                                                                                                   |

@@ -111,7 +111,7 @@ Envoy は、マイクロサービスへのアクセスログ (インバウンド
 | traceparent          | `%REQ(TRACEPARENT)%`                 | `00-d34ea2aa01d34d0fda79c6d09b097a83-fd0eae41e95a263c-01` |
 | HTTP メソッド        | `%REQ(:METHOD)%`                     | `GET`                                                     |
 | パス                 | `%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%` | `/foo/1`                                                  |
-| ユーザーエージェント | `%REQ(USER-AGENT)%'`                 | `curl/8.7.1`                                              |
+| ユーザーエージェント | `%REQ(USER-AGENT)%`                 | `curl/8.7.1`                                              |
 | X-Forwarded-for      | `%REQ(X-FORWARDED-FOR)%`             | 記入中...                                                 |
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules
@@ -192,7 +192,7 @@ Cluster 外からのリクエスト/Pod 間通信時のレスポンスの補足�
 
 #### ▼ メトリクス名のルール
 
-Envoy のメトリクスには、`envoy_` というプレフィクスがついている。
+Istio が Prometheus 向けに変換した Envoy メトリクスには、`envoy_` というプレフィクスがついている。Envoy 統計そのものの名前とは異なる。
 
 #### ▼ 通信全体に関するメトリクス
 
@@ -224,7 +224,7 @@ Envoy のメトリクスには、`envoy_` というプレフィクスがつい�
 
 #### ▼ クラスター系
 
-`envoy_downstream_*****` (インバウンド系)、`envoy_upstream_*****` (アウトバウンド系) をプレフィクスとするメトリクスがある。
+Envoy 統計は `cluster.<クラスター名>.*****` という名前を持つ。Istio が Prometheus 向けに変換したメトリクスには、`envoy_cluster_*****` (例：`envoy_cluster_upstream_rq_retry`) がある。クラスター名は `cluster_name` ラベルの値になる。
 
 注意点として、ドキュメントではプレフィクスが省略されてしまっている。
 
@@ -302,7 +302,7 @@ Envoy はスパンを記録し、設定した収集エージェントに送信�
 
 #### ▼ トレースコンテキスト仕様
 
-監視バックエンドの種類を指定することで、送信するトレースコンテキストの仕様を切り替えられる。
+トレースプロバイダーの種類と設定に応じて、処理できるトレースコンテキストの仕様が決まる。
 
 - Datadog (Datadog コンテキスト)
 - OpenTelemetry (W3C Trace Context、Baggage)

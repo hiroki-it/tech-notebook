@@ -50,19 +50,16 @@ model_provider="<プロバイダー名>"
 # 思考にかける時間
 model_reasoning_effort = "low"
 
-# ネットワークへの接続を有効化する
-network_access = true
-
 # Macで通知を有効化する
 notify = ["bash", "/Users/hiroki.hasegawa/.codex/notify_macos.sh"]
 
 # インターネット検索を有効化する
-web_search_request = true
+web_search = "live"
 
 # 承認なしで進める
 approval_policy = "never"
 
-# すべての操作を許可する
+# ファイルとネットワークへのアクセスを制限しない
 sandbox_mode = "danger-full-access"
 
 [model_providers.lite_llm]

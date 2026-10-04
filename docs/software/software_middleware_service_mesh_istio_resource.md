@@ -159,7 +159,7 @@ Istio Ingress Gateway は、以下から構成される。
 - `istio-ingressgateway` という Service (NodePort Service または LoadBalancer Service)
 - Deployment 配下の `istio-ingressgateway-*****` という Pod (istio-proxy のみが稼働)
 
-Service は、おおよそ Gateway の設定で決まる。
+Service の宛先ポート番号を、Gateway で設定する Istio Ingress Gateway の待ち受けポート番号に合わせる。
 
 ```yaml
 apiVersion: v1
@@ -199,7 +199,7 @@ spec:
       targetPort: 9090
 ```
 
-Pod は、おおよそ VirtualService の設定で決まる。
+Pod 内の istio-proxy には、Gateway の流入制限、VirtualService のルーティング、DestinationRule の負荷分散の設定が配布される。
 
 ```yaml
 apiVersion: v1
@@ -269,7 +269,7 @@ spec:
 
 以下の場合がある。
 
-- Istio Ingress Gateway に関する Service、VirtualService、JWT トークン le の設定の不備で接続できない
+- Istio Ingress Gateway に関する Service、VirtualService、DestinationRule の設定の不備で接続できない
 - タイムアウト時間が短すぎる
 
 > - https://github.com/istio/istio/issues/27513#issuecomment-1095620598
@@ -286,11 +286,9 @@ Istio Egress Gateway は、サービスメッシュ外宛ての通信をロー�
 
 Cluster ネットワーク内から通信を受信し、フィルタリングした後、Cluster 外 (例：外部マイクロサービス、外部サービスの API、データベース、メッセージキューなど) にルーティングする。
 
-Istio Egress Gateway を使用しない場合、サービスメッシュ外への通信を監視できるようになり、またサイドカーを通過せずにサービスメッシュ外へ通信できてしまう。
+Istio Egress Gateway を使用すると、istio-proxy からの通信を一度中継し、許可したサービスメッシュ外の宛先へルーティングできる。
 
-しかし、Istio Egress Gateway を使わないと、マイクロサービスから istio-proxy コンテナを経由せず、外部システムに直接 HTTPS リクエストを送信できるようになってしまう。このため、システムの安全性が低くなる。
-
-他に、サービスメッシュ外への特定の通信を識別できるようになるメリットもある。
+Istio Egress Gateway を使用しない構成でも、ServiceEntry で外部の宛先を登録すれば、istio-proxy はその宛先へ直接通信できる。
 
 > - https://knowledge.sakura.ad.jp/20489/
 > - https://istio.io/v1.10/blog/2019/egress-performance/#egress-traffic-cases
@@ -364,7 +362,7 @@ Istio Ingress Gateway (厳密に言うと Gateway) は、独自プロトコル (
 
 #### ▼ ロードバランサーで使用する場合
 
-VirtualService は、Istio Ingress Gateway の一部として、受信した `L4`/`L7` 通信を JWT トークン le に紐づく Pod へルーティングする。
+VirtualService は、Istio Ingress Gateway の一部として、受信した `L4`/`L7` 通信を DestinationRule に紐づく Pod へルーティングする。
 
 ![istio_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service.png)
 
@@ -374,9 +372,9 @@ VirtualService は、Istio Ingress Gateway の一部として、受信した `L4
 
 #### ▼ Pod 間通信のみで使用する場合
 
-VirtualService は、宛先 Pod に紐づく VirtualService から情報を取得し、これを宛先とする。
+istio-proxy は、VirtualService に設定した宛先に通信をルーティングする。
 
-このとき、VirtualService と Destination のみを使用する。
+このとき、VirtualService と DestinationRule を使用する。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service
 
@@ -499,7 +497,7 @@ configs:
   ...
 ```
 
-つまり、VirtualService と JWT トークン le の情報を使用し、Istio Ingress Gateway で受信した通信と Pod 間通信の両方を実施する。
+つまり、VirtualService と DestinationRule の情報を使用し、Istio Ingress Gateway で受信した通信と Pod 間通信の両方を実施する。
 
 ```yaml
 クライアント
@@ -559,10 +557,10 @@ http.50004     blackhole:50004     *           /*                     404
 
 以下の理由などで VirtualService の設定が誤っていると、`503` レスポンスを返信する。
 
-- VirtualService で受信した通信の `Host` ヘッダーと JWT トークン le のそれが合致していない
-- JWT トークン le の `.spec.exportTo` キーで `.` を設定したことにより、VirtualService がルーティング先の JWT トークン le が見つけられない。 (Istio Ingress Gateway からリクエストを受信する Pod では要注意)
+- VirtualService で受信した通信の `Host` ヘッダーと DestinationRule のそれが合致していない
+- DestinationRule の `.spec.exportTo` キーで `.` を設定したことにより、VirtualService がルーティング先の DestinationRule が見つけられない。 (Istio Ingress Gateway からリクエストを受信する Pod では要注意)
 
-`istioctl proxy-config cluster` コマンドで、VirtualService に紐づく JWT トークン le がいるかを確認できる。
+`istioctl proxy-config cluster` コマンドで、VirtualService に紐づく DestinationRule がいるかを確認できる。
 
 ```bash
 # helloworldでは、紐づくDestinationが見つからない
@@ -650,13 +648,13 @@ spec:
 
 <br>
 
-## 04. JWT トークン le
+## 04. DestinationRule
 
-### JWT トークン le とは
+### DestinationRule とは
 
 #### ▼ ロードバランサーで使用する場合
 
-JWT トークン le は、Istio Ingress Gateway (VirtualService + JWT トークン le) で受信した `L4`/`L7` 通信を、いずれの Pod にルーティングするかを決める。
+DestinationRule は、Istio Ingress Gateway (VirtualService + DestinationRule) で受信した `L4`/`L7` 通信を、いずれの Pod にルーティングするかを決める。
 
 Istio Ingress Gateway の実体は Pod のため、ロードバランサーというよりは実際は Pod 間通信で使用していると言える。
 
@@ -668,7 +666,7 @@ Pod の宛先情報は、Kubernetes の Service から取得する。
 
 #### ▼ Pod 間通信のみで使用する場合
 
-JWT トークン le は、VirtualService で受信した `L4`/`L7` 通信を、いずれの Pod にルーティングするかを決める。
+DestinationRule は、VirtualService で受信した `L4`/`L7` 通信を、いずれの Pod にルーティングするかを決める。
 
 Pod の宛先情報は、Kubernetes の Service から取得する。
 
@@ -681,11 +679,11 @@ Pod の宛先情報は、Kubernetes の Service から取得する。
 
 #### ▼ クラスターとして
 
-Istiod コントロールプレーンは、JWT トークン le の設定値を Envoy のクラスターに変換する。
+Istiod コントロールプレーンは、DestinationRule の設定値を Envoy のクラスターに変換する。
 
 なお、クラスター配下のエンドポイントは、Kubernetes の Service から動的に取得する。
 
-そのため、Envoy のエンドポイントに相当する Istio リソースはない。
+サービスメッシュ外の宛先では、ServiceEntry の `.spec.endpoints` や WorkloadEntry で宛先 IP アドレスを定義できる。
 
 ```yaml
 $ kubectl exec \
@@ -797,9 +795,9 @@ configs:
     ...
 ```
 
-つまり、VirtualService と JWT トークン le の情報を使用し、Istio Ingress Gateway で受信した通信と Pod 間通信の両方を実施する。
+つまり、VirtualService と DestinationRule の情報を使用し、Istio Ingress Gateway で受信した通信と Pod 間通信の両方を実施する。
 
-Pod 間通信時には、VirtualService と Destination のみを使用する。
+Pod 間通信時には、VirtualService と DestinationRule を使用する。
 
 ```bash
 クライアント
@@ -817,13 +815,13 @@ envoy # 送信元Envoyからのリクエストをマイクロサービスが受�
 > - https://taisho6339.hatenablog.com/entry/2020/05/11/235435
 > - https://sreake.com/blog/istio/
 
-Envoy のクラスターとエンドポイントを確認すれば、JWT トークン le の設定が正しく適用できているかを確認できる。
+Envoy のクラスターとエンドポイントを確認すれば、DestinationRule の設定が正しく適用できているかを確認できる。
 
 ```bash
 $ istioctl proxy-config cluster foo-pod -n foo-namespace
 
 SERVICE FQDN                                  PORT                         SUBSET        DIRECTION   TYPE                DESTINATION RULE
-<Serviceの完全修飾ドメイン名>                     <Serviceが待ち受けるポート番号>  <サブセット名>  <通信の方向>  <ディスカバリータイプ>  <JWTトークンle名>.<Namespace名>
+<Serviceの完全修飾ドメイン名>                     <Serviceが待ち受けるポート番号>  <サブセット名>  <通信の方向>  <ディスカバリータイプ>  <DestinationRule名>.<Namespace名>
 
 foo-service.foo-namespace.svc.cluster.local   50001                        v1            outbound     EDS                 foo-destination-rule.foo-namespace
 bar-service.bar-namespace.svc.cluster.local   50002                        v1            outbound     EDS                 bar-destination-rule.bar-namespace
@@ -884,18 +882,16 @@ Sidecar を使用すると、指定した設定以外の通信を除去し、特
 
 ServiceEntry には、Istio Egress Gateway が必須ではない。
 
-ただし、Istio Egress Gateway を使用しないと、マイクロサービスから istio-proxy コンテナを経由せず、外部システムに直接 HTTPS リクエストを送信できるようになってしまう。
-
-そのため、システムの安全性が低くなる。
+Istio Egress Gateway を使用しない構成では、istio-proxy は ServiceEntry で登録した外部の宛先へ直接通信する。
 
 > - https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic
 > - https://discuss.istio.io/t/ingress-egress-serviceentry-data-flow-issues-for-istio-api-gateway/14202
 
-#### ▼ ServiceEntry の前段の JWT トークン le
+#### ▼ ServiceEntry の前段の DestinationRule
 
-ServiceEntry から外部に HTTP リクエストを送信する場合、JWT トークン le は不要である。
+ServiceEntry から外部に HTTP リクエストを送信する場合、DestinationRule は不要である。
 
-しかし、ServiceEntry から宛先に HTTP リクエストを送信する場合、JWT トークン le は不要である。
+しかし、ServiceEntry から宛先に HTTP リクエストを送信する場合、DestinationRule は不要である。
 
 > - https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic
 > - https://discuss.istio.io/t/ingress-egress-serviceentry-data-flow-issues-for-istio-api-gateway/14202
@@ -923,7 +919,7 @@ metadata:
   namespace: istio-system
 spec:
   configPatches:
-    # ネットワークフィルターである http_connection_manager の設定値を変更する
+    # http_connection_manager 内の HTTP フィルターを追加する
     - applyTo: HTTP_FILTER
       match:
         # istio-proxy コンテナのアウトバウンド通信 (Egress リスナー後フィルター)
@@ -939,7 +935,7 @@ spec:
           # istio-proxy コンテナが 1.17 系の場合のみ
           proxyVersion: ^1\.17.*
       patch:
-        # http_connection_manager の直前に指定したフィルターを挿入する
+        # http_connection_manager 内の router フィルターの直前に指定したフィルターを挿入する
         operation: INSERT_BEFORE
         value:
           name: istio.stats
@@ -947,7 +943,7 @@ spec:
             "@type": type.googleapis.com/udpa.type.v1.TypedStruct
             type_url: type.googleapis.com/stats.PluginConfig
             value: {}
-    # ネットワークフィルターである http_connection_manager の設定値を変更する
+    # http_connection_manager 内の HTTP フィルターを追加する
     - applyTo: HTTP_FILTER
       match:
         # istio-proxy コンテナのインバウンド通信 (Ingress リスナー後フィルター)
@@ -963,7 +959,7 @@ spec:
           # istio-proxy コンテナが 1.17 系の場合のみ
           proxyVersion: ^1\.17.*
       patch:
-        # http_connection_manager の直前に指定したフィルターを挿入する
+        # http_connection_manager 内の router フィルターの直前に指定したフィルターを挿入する
         operation: INSERT_BEFORE
         value:
           name: istio.stats
@@ -972,7 +968,7 @@ spec:
             type_url: type.googleapis.com/stats.PluginConfig
             value:
               disable_host_header_fallback: "true"
-    # ネットワークフィルターである http_connection_manager の設定値を変更する
+    # http_connection_manager 内の HTTP フィルターを追加する
     - applyTo: HTTP_FILTER
       match:
         # istio-ingressgateway 内の istio-proxy コンテナ
@@ -988,7 +984,7 @@ spec:
           # istio-proxy コンテナが 1.17 系の場合のみ
           proxyVersion: ^1\.17.*
       patch:
-        # http_connection_manager の直前に指定したフィルターを挿入する
+        # http_connection_manager 内の router フィルターの直前に指定したフィルターを挿入する
         operation: INSERT_BEFORE
         value:
           name: istio.stats
@@ -1214,7 +1210,7 @@ spec:
         - key: request.auth.claims[iss]
           # JWT トークンがある場合にのみ許可する
           values:
-            ["http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>"]
+            ["http://keycloak.com/realms/<realm名>"]
 ```
 
 > - https://thinkit.co.jp/article/18023

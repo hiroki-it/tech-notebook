@@ -59,7 +59,7 @@ Kubernetes Cluster ごとに Istiod コントロールプレーンを作成す�
 
 #### ▼ 同じプライベートネットワーク内の場合
 
-異なる Cluster が同じプライベートネットワーク内に所属している場合、Cluster のコントロールプレーン Node 間でデータプレーンを管理し合う。
+異なる Cluster が同じプライベートネットワーク内に所属している場合、各 Cluster の Istiod が kube-apiserver からリソース設定を取得し、データプレーンへ Envoy の設定値を配布する。
 
 このとき、IngressGateway を使用せずに、異なる Cluster のコンテナが直接通信できる。
 
@@ -69,7 +69,7 @@ Kubernetes Cluster ごとに Istiod コントロールプレーンを作成す�
 
 #### ▼ 異なるプライベートネットワーク内の場合
 
-異なる Cluster が異なるプライベートネットワーク内に所属している場合、Cluster のコントロールプレーン Node 間でデータプレーンを管理し合う。
+異なる Cluster が異なるプライベートネットワーク内に所属している場合、各 Cluster の Istiod が kube-apiserver からリソース設定を取得し、データプレーンへ Envoy の設定値を配布する。
 
 このとき、IngressGateway を経由して、異なる Cluster のコンテナが間接的に通信できる。
 
@@ -96,7 +96,7 @@ Istio コントロールプレーンとデータプレーンを異なるクラ�
 
 ### マルチ Istiod
 
-プライマリークラスターに親 Istio コントロールプレーンを配置し、リモートクラスターには子 Istio コントロールプレーンとデータプレーンを配置する。
+プライマリークラスターに複数の Istio コントロールプレーンを配置し、リモートクラスターにはデータプレーンを配置する。
 
 > - https://github.com/istio/istio/wiki/External-Istiod-single-cluster-steps
 
@@ -182,9 +182,9 @@ Clusters as-a-Service として提供する。
 
 ### メッシュテナント
 
-Istio のサービスメッシュは、管理下の単一の Kubernetes Cluster をテナントとして分離する。
+単一または複数の Kubernetes Cluster からなる独立したサービスメッシュをテナントとして分離する。
 
-各 Kubernetes Cluster のサービスメッシュは独立しているが、互いに通信できる。
+各サービスメッシュは独立しているが、Istio Ingress Gateway を経由して互いに通信できる。
 
 メッシュテナントを採用すると、複数メッシュパターンになる。
 

@@ -598,7 +598,7 @@ Kubernetes の Deployment の RollingUpdate 戦略を採用する。
 
 #### ▼ BG デプロイメント (推奨)
 
-Kubernetes 自体はブルー/グリーンデプロイメントの能力を持たない。CD ツール (例：Argo Rollouts) の BG デプロイメント機能を採用する。
+Kubernetes では、新旧 Pod と Service を組み合わせることで、擬似的なブルー/グリーンデプロイメントを実現できる。CD ツール (例：Argo Rollouts) の BG デプロイメント機能を採用してもよい。
 
 > - https://argoproj.github.io/argo-rollouts/concepts/#blue-green
 

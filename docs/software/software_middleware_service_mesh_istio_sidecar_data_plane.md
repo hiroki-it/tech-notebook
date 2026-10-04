@@ -21,7 +21,9 @@ description: データプレーン＠Istioサイドカーの知見を記録し�
 
 サイドカープロキシを使用して、サービスメッシュを実装する。
 
-サイドカーは、`L4` (トランスポート層) のプロトコル (例：TCP、UDP など) と `L7` (アプリケーション層) のプロトコル (例：HTTP、HTTPS など) を処理できる。
+サイドカーは、`L4` (トランスポート層) の TCP と `L7` (アプリケーション層) のプロトコル (例：HTTP、HTTPS など) を処理できる。
+
+UDP には対応していない。
 
 > - https://istio.io/latest/docs/ops/deployment/architecture/
 > - https://techblog.zozo.com/entry/zozotown-istio-production-ready
@@ -111,7 +113,7 @@ num  target             prot  opt  source     destination
 1    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15008
 2    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15090 # データポイント収集ツールからのリクエストを待ち受ける。
 3    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15021 # kubeletからのReadinessProbeヘルスチェックを待ち受ける。
-4    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15020 # データプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。
+4    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15020 # マイクロサービスへのヘルスチェックや統合メトリクスへのリクエストを待ち受ける。
 5    ISTIO_IN_REDIRECT  tcp   --   0.0.0.0/0  0.0.0.0/0
 
 
@@ -665,7 +667,9 @@ istio-proxy の `15006` 番ポートでは、マイクロサービスへのイ�
 
 ### `15020` 番
 
-istio-proxy の `15020` 番ポートでは、データプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。
+istio-proxy の `15020` 番ポートでは、マイクロサービスへの LivenessProbe ヘルスチェックや ReadinessProbe ヘルスチェックを待ち受ける。
+
+メトリクスの統合を有効にしている場合、`/stats/prometheus` エンドポイントでマイクロサービスと istio-proxy のメトリクスも公開する。
 
 > - https://jimmysong.io/en/blog/istio-components-and-ports/#15020
 
@@ -696,7 +700,7 @@ istio-proxy の `15090` 番ポートでは、istio-proxy のデータポイン�
 
 istio-proxy 内の Envoy が、`/stats/prometheus` エンドポイントでリクエストを待ち受けており、データポイントを含むレスポンスを返信する。
 
-ただ、`discovery` コンテナにも `/stats/prometheus` エンドポイントがあり、データポイント収集ツールはこれを指定することが多い。
+メトリクスの統合を有効にしている場合、Prometheus は istio-proxy の `:15020/stats/prometheus` エンドポイントからアプリケーション通信に関するデータポイントを収集する。Istiod からは Istio 自体に関するデータポイントを別途収集する。
 
 ```bash
 $ kubectl exec \

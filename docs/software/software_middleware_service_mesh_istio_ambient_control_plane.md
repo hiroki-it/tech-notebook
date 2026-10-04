@@ -23,14 +23,11 @@ description: コントロールプレーン＠Istioアンビエントの知見�
 
 ### Envoy の設定値への変換
 
-(たぶん) Envoy の設定値は以下のように機能している。
+ztunnel は Envoy プロセスではないため、Envoy の Listener と Cluster による処理は waypoint-proxy が担う。
 
-送信元 ztunnel の `L4` 処理で
+送信元 ztunnel はアウトバウンド通信を透過的に捕捉し、HBONE トンネルを介して waypoint-proxy に中継する。
 
-1. 前半の Listener と Cluster：宛先マイクロサービスを決める
-2. 後半の Listener と Cluster：宛先 waypoint-proxy を決める
-
-waypoint-proxy の Envoy の `L7` 処理で
+(たぶん) waypoint-proxy の Envoy の `L7` 処理では、以下のように設定値が機能している。
 
 1. inbound_CONNECT_terminate Listener：HBONE を経由したリクエストを受信する
 2. Internal Inbound VIP Cluster：Inbound VIP Listener にルーティングする
@@ -41,9 +38,7 @@ waypoint-proxy の Envoy の `L7` 処理で
 7. inbound_CONNECT_originate Listener
 8. inbound_CONNECT_originate Cluster：宛先 ztunnel を決める
 
-宛先 ztunnel の `L4` 処理で
-
-1. Listener と Cluster：宛先マイクロサービスを決める
+宛先 ztunnel は waypoint-proxy から HBONE トンネルを介して通信を受信し、宛先マイクロサービスに中継する。
 
 > - https://jimmysong.io/en/blog/ambient-mesh-l7-traffic-path/
 > - https://juejin.cn/post/7161975827473645575

@@ -318,10 +318,10 @@ istio-proxy のアウトバウンド通信時リトライ条件は以下であ�
 | HTTP/2 のステータスコード | マイクロサービスに通信が届いている | リトライが有効 | リトライ条件                                                                                                                                                                                         |
 | ------------------------- | :--------------------------------: | :------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `cancelled`               |                 ⭕️                 |                | **マイクロサービスからのアウトバウンド**通信時、gRPC ステータスコードが `Cancelled` であった場合に、リトライを実行する。送信元がリクエストを切断しているため、リトライするべきではない可能性がある。 |
-| `deadline-exceeded`       |                 ⭕️                 |       ✅       | マイクロサービスからアウトバウンド通信時、gRPC ステータスコードが `DeadlineExceeded` であった場合に、リトライを実行する。                                                                            |
-| `refused-stream`          |                 ⭕️                 |       ✅       | 同時接続上限数を超過するストリームをマイクロサービスが作成しようとした場合に、リトライを実行する。                                                                                                   |
-| `resource-exhausted`      |                 ⭕️                 |       ✅       | マイクロサービスからのアウトバウンド通信時、gRPC ステータスコードが `ResourceExhausted` であった場合に、リトライを実行する。                                                                         |
-| `unavailable`             |                 ⭕️                 |       ✅       | マイクロサービスからのアウトバウンド通信時、マイクロサービスにリクエストをフォワーディングできなかった場合に、リトライを実行する。                                                                   |
+| `deadline-exceeded`       |                 ⭕️                 |       条件による       | マイクロサービスからアウトバウンド通信時、gRPC ステータスコードが `DeadlineExceeded` であった場合に、リトライを実行する。                                                                            |
+| `refused-stream`          |                 ⭕️                 |       ✅       | 宛先が HTTP/2 エラーコードの `REFUSED_STREAM` を返信した場合に、リトライを実行する。                                                                                                   |
+| `resource-exhausted`      |                 ⭕️                 |       条件による       | マイクロサービスからのアウトバウンド通信時、gRPC ステータスコードが `ResourceExhausted` であった場合に、リトライを実行する。                                                                         |
+| `unavailable`             |                 ⭕️                 |              | マイクロサービスからのアウトバウンド通信時、宛先が gRPC ステータスコードの `Unavailable` を返信した場合に、リトライを実行する。冪等性に注意する。                                                                   |
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-grpc-on
@@ -332,7 +332,7 @@ istio-proxy のインバウンド通信時のリトライ条件は以下であ�
 
 執筆時点 (2025/02/26) では、`ENABLE_INBOUND_RETRY_POLICY` 変数を `true` (デフォルト値) にすると使用できる。
 
-| HTTP/1.1 のステータスコード | マイクロサービスに通信が届いている | 冪等性がある | 理由                                                                                                 |
+| HTTP/2 のステータスコード | マイクロサービスに通信が届いている | 冪等性がある | 理由                                                                                                 |
 | --------------------------- | :--------------------------------: | :----------: | ---------------------------------------------------------------------------------------------------- |
 | `reset-before-request`      |                 ×                  |      ✅      | マイクロサービスへのインバウンド通信時、マイクロサービスにリクエストをフォワーディングできなかった。 |
 
@@ -415,7 +415,7 @@ data:
 
 #### ▼ enablePrometheusMerge とは
 
-マイクロサービスと istio-proxy をマージするかどうかを設定する。
+マイクロサービスと istio-proxy のメトリクスエンドポイントを統合するかどうかを設定する。
 
 ```yaml
 apiVersion: v1
@@ -980,17 +980,7 @@ metadata:
   namespace: istio-system
 data:
   mesh: |
-    defaultConfig:
-      rootNamespace: istio-system
-```
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: ProxyConfig
-metadata:
-  name: foo-proxyconfig
-spec:
-  rootNamespace: istio-system
+    rootNamespace: istio-system
 ```
 
 <br>
@@ -1001,7 +991,7 @@ spec:
 
 Zipkin と Jaeger はトレースコンテキスト仕様が同じであるため、zipkin パッケージを Jaeger のクライアントとしても使用できる。
 
-`.mesh.defaultConfig.enableTracing` キーも有効化する必要がある。
+`.mesh.enableTracing` キーも有効化する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -1011,8 +1001,8 @@ metadata:
   namespace: istio-system
 data:
   mesh: |
+    enableTracing: true
     defaultConfig:
-      enableTracing: true
       tracing:
         sampling: 100
         zipkin:
@@ -1045,7 +1035,7 @@ data:
 
 マイクロサービスがバージョニングされている場合、マイクロサービスの正式名 (canonical-name) でグループ化できる。
 
-デフォルトでは `APP_LABEL_AND_NAMESPACE` であり、`<Namespace>.<appラベル値>` になる。
+デフォルトでは `APP_LABEL_AND_NAMESPACE` であり、`<appラベル値>.<Namespace>` になる。
 
 app ラベルがないマイクロサービスのために、canonical 名に基づく `CANONICAL_NAME_AND_NAMESPACE` を使用したほうがよい。
 
@@ -1079,7 +1069,7 @@ spec:
 
 相互 TLS 認証を採用している場合、送信元として許可する信頼ドメインを設定する。
 
-例えば、信頼ドメインは ServiceAccount ごとに異なる。
+信頼ドメインは SPIFFE ID の `spiffe://<トラストドメイン>` の部分であり、Namespace 名や ServiceAccount 名とは区別される。
 
 ```yaml
 apiVersion: v1
@@ -1089,17 +1079,7 @@ metadata:
   namespace: istio-system
 data:
   mesh: |
-    defaultConfig:
-      trustDomain: cluster.local
-```
-
-```yaml
-apiVersion: networking.istio.io/v1beta1
-kind: ProxyConfig
-metadata:
-  name: foo-proxyconfig
-spec:
-  trustDomain: cluster.local
+    trustDomain: cluster.local
 ```
 
 > - https://istio.io/latest/docs/tasks/security/authorization/authz-td-migration/
@@ -1214,7 +1194,7 @@ istio-proxy へのリクエストが無くなってから、Envoy のプロセ�
 
 具体的には、`downstream_cx_active` メトリクスの値 (アクティブな接続数) を監視し、`0` になるまでドレイン処理を実行し続ける。
 
-ドレイン処理前の待機時間は、`MINIMUM_DRAIN_DURATION` で設定する。
+ドレイン処理の終了を待機する最小時間は、`MINIMUM_DRAIN_DURATION` で設定する。
 
 オプションを有効化すると、istio-proxy の `.spec.containers[*].lifecycle.preStop.exec.command` キーに、`sleep` コマンドが自動で挿入される。
 
@@ -1468,15 +1448,15 @@ spec:
 
 istio-proxy 内の Envoy プロセスは、終了時に接続のドレイン処理を実施する。
 
-この接続について、ドレイン処理前の待機時間を設定する。
+この接続について、ドレイン処理の終了を待機する最小時間を設定する。
 
-`terminationDrainDuration` との違いとして、`MINIMUM_DRAIN_DURATION` の時間だけ待機した後、ドレイン処理を開始し、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS` によって `downstream_cx_active` メトリクスが 0 になるまでドレイン処理をし続ける点である。
+`terminationDrainDuration` は固定時間でドレイン処理を終了する。一方、`MINIMUM_DRAIN_DURATION` は必要最低限の待機時間を設定し、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS` によって `downstream_cx_active` メトリクスが 0 になるまでドレイン処理の終了を待機する。
 
-Pod の `.metadata.annotations.proxy.istio.io/config.drainDuration` キーで起こるレースコンディションを解決するための設定で、同じ値を設定するとよい。
+`drainDuration` はリスナーやフィルターチェーンの変更時のドレイン待機時間を設定する。`MINIMUM_DRAIN_DURATION` は Envoy プロセスの終了時の最小待機時間を設定するため、用途が異なる。
 
 **＊実装例＊**
 
-Envoy プロセスの接続のドレイン処理前に `5` 秒間待機し、`downstream_cx_active` メトリクスが 0 になるまでドレイン処理を続ける。
+Envoy プロセスが接続をドレインし終わるまで最低 `5` 秒間待機し、`downstream_cx_active` メトリクスが 0 になるまで終了を待機する。
 
 ```yaml
 apiVersion: v1
@@ -1549,10 +1529,10 @@ data:
         envoyExtAuthzHttp:
           service: oauth2-proxy.foo.svc.cluster.local
           port: 4180
-        # HTTP リクエストに含めるヘッダー
-        includeHeadersInCheck:
-          - cookie
-          - authorization
+          # HTTP リクエストに含めるヘッダー
+          includeRequestHeadersInCheck:
+            - cookie
+            - authorization
 ```
 
 AuthorizationPolicy で、認可処理を OAuth2 Proxy へ委譲できるようになる。
@@ -1577,9 +1557,9 @@ spec:
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1
 
-#### ▼ Open Agent Policy の場合
+#### ▼ Open Policy Agent の場合
 
-Open Agent Policy を外部の認可プロバイダーとして設定する。
+Open Policy Agent を外部の認可プロバイダーとして設定する。
 
 ```yaml
 apiVersion: v1
@@ -1596,10 +1576,10 @@ data:
         envoyExtAuthzHttp:
           service: open-policy-agent.foo.svc.cluster.local
           port: 9191
-        # HTTP リクエストに含めるヘッダー
-        includeHeadersInCheck:
-          - cookie
-          - authorization
+          # HTTP リクエストに含めるヘッダー
+          includeRequestHeadersInCheck:
+            - cookie
+            - authorization
 ```
 
 **実装例**

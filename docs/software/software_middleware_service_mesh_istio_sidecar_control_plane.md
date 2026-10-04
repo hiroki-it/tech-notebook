@@ -158,7 +158,13 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: istiod-<リビジョン>
-  targetCPUUtilizationPercentage: 80
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 80
 ```
 
 <br>
@@ -331,7 +337,7 @@ Istio リソースを Envoy のエンドポイントに変換する。
 
 #### ▼ Config serving レイヤーとは
 
-Envoy の設定値に基づいて、istio-proxy を Pod に提供する。
+ADS-API を介して、Envoy の設定値をデータプレーンの istio-proxy に配布する。
 
 > - https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1
 > - https://zhonghua.io/2019/05/12/istio-analysis-4/
@@ -339,7 +345,7 @@ Envoy の設定値に基づいて、istio-proxy を Pod に提供する。
 
 #### ▼ XDS-API
 
-pilot-agent を介して、Envoy との間で定期的にリモートプロシージャーコールを双方向で実行し、宛先情報を送信する。
+pilot-agent を介して、Envoy との間でストリーミング方式で双方向通信し、リソースの変更に応じて Envoy の設定値をリアルタイムで配布する。
 
 > - https://cloudnative.to/blog/istio-pilot-3/
 > - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
@@ -470,7 +476,7 @@ ControlZ ダッシュボードでは、istiod コントロールプレーンの�
 
 コールの内容に応じて、他のサービス (Pod、Node)の宛先情報を含むレスポンスを返信する。
 
-istio-proxy はこれを受信し、pilot-agent が Envoy の宛先情報設定を動的に変更する (サービス検出) 。
+Envoy は pilot-agent を介してこれを受信し、自身の宛先情報設定を動的に変更する (サービス検出) 。
 
 > - https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/
 
@@ -572,7 +578,7 @@ $ pilot-discovery discovery --clusterRegistriesNamespace istio-system
 
 #### ▼ keepaliveMaxServerConnectionAge
 
-istio-proxy からの gRPC リクエスト受信時の Keepalive (クライアントの状態に応じて、接続をタイムアウトにするかどうか) を設定する。
+Istiod と istio-proxy 間の確立済 TCP 接続の維持時間を設定する。
 
 ```bash
 $ pilot-discovery discovery --keepaliveMaxServerConnectionAge 30m

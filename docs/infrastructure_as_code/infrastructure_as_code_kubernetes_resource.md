@@ -711,7 +711,9 @@ Kubernetes の v1.6 より前は Endpoints が使用されていた。
 
 #### ▼ Gateway とは
 
-Gateway は、`L4`/`L7` プロトコルの通信の受信ルールを定義し、また `L4`/`L7` ロードバランサーとして通信をルーティングする。
+Gateway は、`L4`/`L7` プロトコルの通信の受信ルールを定義する。
+
+Gateway Controller が Gateway の設定に基づいて通信を受信し、HTTPRoute などの設定に応じてルーティングする。
 
 > - https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/
 
@@ -719,7 +721,7 @@ Gateway は、`L4`/`L7` プロトコルの通信の受信ルールを定義し�
 
 `L7` プロトコルの受信ルールしか定義できない Ingress とは異なり、`L4` プロトコルの受信ルールも定義できる。
 
-また、Gateway 自体が `L4`/`L7` ロードバランサーとしても機能する。
+また、Gateway の設定に基づいて、Gateway Controller が `L4`/`L7` ロードバランサーとして機能する。
 
 <br>
 
@@ -1904,7 +1906,9 @@ Role や ClusterRole を、UserAccount / ServiceAccount / Group に紐付ける�
 
 #### ▼ NetworkPolicy とは
 
-Pod 間通信でのインバウンド通信とアウトバウンド通信の送受信ルールを設定する。
+Pod のインバウンド通信とアウトバウンド通信の送受信ルールを設定する。
+
+Pod 間通信だけでなく、宛先 CIDR や宛先ポート番号に基づいて Cluster 外への通信も制限できる。
 
 > - https://www.amazon.co.jp/dp/B08FZX8PYW
 > - https://qiita.com/dingtianhongjie/items/983417de88db2553f0c2
@@ -1917,6 +1921,6 @@ Ingress とは関係がないことに注意する。
 
 #### ▼ Egress の場合
 
-他の Pod に送信する通信のルールを設定する。
+他の Pod や Cluster 外の宛先に送信する通信のルールを設定する。
 
 <br>

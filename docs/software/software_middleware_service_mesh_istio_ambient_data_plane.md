@@ -29,20 +29,22 @@ ztunnel Pod 間、または ztunnel Pod と waypoint-proxy Pod の間では、HB
 
 ハードウェアリソース消費量の少ない `L4` プロトコルと、消費量の多い `L7` プロトコルでは処理の責務が分離されているため、サイドカーモードと比較して、`L4` プロトコルのみを処理する場合、Node のハードウェアリソース消費量を節約できる。
 
-サービスメッシュ内へのリクエストの経路は以下の通りである。
+Istio Ingress Gateway からサービスメッシュ内へのリクエストは、通常、宛先側の ztunnel に中継される。Namespace の `istio.io/ingress-use-waypoint` ラベルと Istiod の `ENABLE_INGRESS_WAYPOINT_ROUTING` を有効にした場合は、waypoint-proxy を経由する。waypoint-proxy を経由する場合の経路は以下の通りである。
 
 ```yaml
 パブリックネットワーク
 ⬇⬆️︎
-リダイレクト
-⬇⬆️︎
-# L4 ロードバランサー
-ztunnel Pod (L4) # DaemonSet 配下の Pod なので、Node ごとにいる
+Istio Ingress Gateway
 ⬇⬆️︎
 ⬇⬆️︎ # HBONE
 ⬇⬆️︎
 # L7 ロードバランサー
 waypoint-proxy Pod (L7) # Deployment 配下の Pod なので、任意の Node にいる
+⬇⬆️︎
+⬇⬆️︎ # HBONE
+⬇⬆️︎
+# L4 ロードバランサー
+ztunnel Pod (L4) # DaemonSet 配下の Pod なので、Node ごとにいる
 ⬇⬆️︎
 マイクロサービスのPod
 ```
@@ -111,11 +113,7 @@ istio-cni は、`/var/run/ztunnel/ztunnel.sock` ファイル経由で ztunnel �
 
 #### ▼ 仕組み
 
-以下を設定し、`L4` インバウンド通信とアウトバウンド通信を ztunnel Pod へリダイレクトできるようにする。
-
-- Node の iptables
-- ztunnel Pod の iptables
-- geneve tunnel
+マイクロサービスの Pod 内の iptables のルーティングルールを書き換え、インバウンド通信とアウトバウンド通信を ztunnel へリダイレクトできるようにする。
 
 また、ztunnel が受信ポートを公開するように、通知する。
 

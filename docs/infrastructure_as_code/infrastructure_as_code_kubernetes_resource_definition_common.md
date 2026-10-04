@@ -222,7 +222,7 @@ metadata:
 
 ### labels とは
 
-Kubernetes が、Kubernetes リソースの一意に識別するための情報を設定する。
+Kubernetes リソースを分類し、検索や選択の対象にするための情報を設定する。同じラベルを複数のリソースに設定できる。
 
 ```yaml
 apiVersion: apps/v1

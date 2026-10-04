@@ -31,7 +31,9 @@ Node ネットワークの作成は、Kubernetes の実行環境のネットワ�
 
 ### Service ネットワークとは
 
-Pod のアウトバウンド通信に割り当てられたホスト名を認識し、そのホスト名を持つ Service までリクエストを送信する。
+Service の IP アドレスを宛先とするリクエストを、Service 配下の Pod にルーティングするネットワーク。
+
+Service のホスト名による名前解決は、CoreDNS などの権威 DNS サーバーが担う。
 
 Service ネットワークの作成は、Kubernetes が担う。
 

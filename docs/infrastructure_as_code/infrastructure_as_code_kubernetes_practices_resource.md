@@ -341,7 +341,7 @@ Node グループにあったストレージを割り当てる。
 
 Ingress Controller (例：Nginx Ingress Controller、AWS Load Balancer Controller、GCE L7 load Balancer Controller など) が提供する機能を使用して、インバウンド通信を制限する。
 
-なお、Ingress のインバウンド通信を制限することはあっても、Egress のアウトバウンド通信を制限するとむしろ不便になるため、Egress のアウトバウンド通信はすべて許可しておく。
+アウトバウンド通信についても、流出制限が必要な場合は NetworkPolicy で許可する宛先 CIDR や宛先ポート番号を指定する。
 
 多くの Ingress Controller では、制限のルールを Ingress の `.metadata.annotations` キーに直接設定するか、Ingress から切り離して設定するか (例：ConfigMap、AWS WAF、CloudArmor) を選べる。
 
@@ -477,7 +477,7 @@ Pod のインバウンド通信をすべて許可することは危険である�
 
 ただし、Pod の通信に関するさまざまな要件が上がるたびに NetworkPolicy を変更するのは大変なため、採用するかどうかはプロダクトの方針による。
 
-なお、Pod のインバウンド通信を制限することはあっても、アウトバウンド通信を制限するとむしろ不便になるため、アウトバウンド通信はすべて許可しておく。
+アウトバウンド通信についても、流出制限が必要な場合は NetworkPolicy で許可する宛先 CIDR や宛先ポート番号を指定する。
 
 <br>
 
@@ -503,7 +503,7 @@ Node のスケールインやアップグレード時に、Node はドレイン�
 
 1 個でも古い Pod を動かすことで、ダウンタイムを避けるべきである。
 
-そこで、PodDisruptionBudget を使用すると、Node のドレイン中に退避させる Pod の最小最大数 (`spec.maxUnavailable` キー、`spec.minUnavailable` キー) や起動し続ける利用可能な Pod の最小最大数 (`spec.minAvailable` キー,`spec.maxAvailable` キー) を設定できる。
+そこで、PodDisruptionBudget の `.spec.minAvailable` キーを使用すると、Node のドレイン中に起動し続ける利用可能な Pod の最小数を設定できる。
 
 <br>
 
@@ -1283,9 +1283,9 @@ spec:
 
 **＊実行例＊**
 
-app コンテナから HTTPS リクエストを送信する場合に、サーバー証明書が必要になる。
+app コンテナから HTTPS リクエストを送信する場合に、宛先のサーバー証明書の署名を検証するための CA 証明書が必要になる。
 
-これはすでに署名されている必要があり、例えば ubuntu では、CA 証明書 (CA 証明書) を含む `ca-certificates` パッケージをインストールする。
+例えば ubuntu では、CA 証明書を含む `ca-certificates` パッケージをインストールする。
 
 すると、`/etc/ssl` ディレクトリ配下に CA 証明書に関する一連のファイルがインストールされる。
 
@@ -1610,11 +1610,11 @@ Helm チャート専用の静的解析ツールが存在するため、必要に
 
 | 概要                                                        | 内容                                                                                                                                                                                                                                                                                                                                                                                                           |
 | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pod が全滅していないことを確認する。                        | PodDisruptionBugdet を設定することで、Workload (例：Deployment、DaemonSet、StatefulSet、Job など) で起動しているアプリケーションの Pod が全滅しないかを確認する。 PodDisruptionBugdet を適切に設定できていないと、例えば Web アプリケーションのコンテナがすべてダウンしてしまいリクエストを受け付けられなくなるといったケースがあるため、PodDisruptionBugdet の設定内容に沿って Pod が保護されるかを確認する。 |
+| Pod が全滅していないことを確認する。                        | PodDisruptionBudget を設定することで、Workload (例：Deployment、DaemonSet、StatefulSet、Job など) で起動しているアプリケーションの Pod が全滅しないかを確認する。 PodDisruptionBudget を適切に設定できていないと、例えば Web アプリケーションのコンテナがすべてダウンしてしまいリクエストを受け付けられなくなるといったケースがあるため、PodDisruptionBudget の設定内容に沿って Pod が保護されるかを確認する。 |
 | Pod が適切に Node に分散されていることを確認する。          | NodeAffinity の設定に基づいて適切に Pod が Node に分散配置されるかや、NodeLabel や Taint の設定に基づいた Node が選定されているかなどを確認する。                                                                                                                                                                                                                                                              |
 | Workload のデプロイ戦略が正しく動作していることを確認する。 | Workload (例：Deployment、DaemonSet、StatefulSet、Job など) のデプロイ戦略 (例：RollingUpdate) が設定に応じた割合で行われ、Pod の入れ替えが行われていることを確認する。                                                                                                                                                                                                                                        |
 | Workload が Pod のレプリカ数を維持できることを確認する。    | Workload (例：Deployment、DaemonSet、StatefulSet、Job など) に属する Pod が削除され、replica 数を下回った際に時間経過で設定したレプリカ数になるように回復されることを確認する。                                                                                                                                                                                                                                |
-| Pod のスケーリングが正しく動作することを確認する。          | HorizontalPodAutorocaler や VerticalPodAutoscaler を使用している場合、HorizontalPodAutorocaler や VerticalPodAutoscaler の設定と使用しているメトリクスに応じてスケーリングすることを確認する。                                                                                                                                                                                                                 |
+| Pod のスケーリングが正しく動作することを確認する。          | HorizontalPodAutoscaler や VerticalPodAutoscaler を使用している場合、HorizontalPodAutoscaler や VerticalPodAutoscaler の設定と使用しているメトリクスに応じてスケーリングすることを確認する。                                                                                                                                                                                                                 |
 | Node のスケーリングが正しく動作することを確認する。         | Cluster Autoscaler や Karpenter を使用している場合、Cluster Autoscaler や Karpenter の設定と Node のリソース状況に応じてスケーリングすることを確認する。                                                                                                                                                                                                                                                       |
 
 <br>
@@ -1647,14 +1647,14 @@ K8s Cluster を使用したプロダクトのチームメンバー構成の例�
 | ----------------------------------------------------------------------------------------------------------------------------------------- | -------------- | --------------------------- | -------------------------- | ---------------- |
 | アプリケーションのフロントエンドとバックエンド                                                                                            | ✅             | ✅                          |                            |                  |
 | アプリケーションの Workload(Deployment、CronJob など)                                                                                     | ✅             | ✅                          |                            |                  |
-| インフラ Workload の周辺 K8s リソース(PodDisruptionBugdet、HorizontalPodAutorocaler、ConfigMap、Secret など)                              |                |                             |                            |                  |
+| インフラ Workload の周辺 K8s リソース(PodDisruptionBudget、HorizontalPodAutoscaler、ConfigMap、Secret など)                              |                |                             |                            |                  |
 | アプリ CI ツール(コンテナイメージビルド、アプリケーションのホワイトボックステスト、コンテナイメージレジストリ格納など)                    | ✅             | ✅                          |                            |                  |
 | サービスメッシュのデータプレーン                                                                                                          | ✅             | ✅                          |                            |                  |
 | マニフェスト CI ツール(ホワイトボックステストなど)                                                                                        |                | ✅                          | ✅                         |                  |
 | 分散トレーシング                                                                                                                          |                | ✅                          | ✅                         |                  |
 | CD ツール                                                                                                                                 |                |                             | ✅                         |                  |
 | サービスメッシュのコントロールプレーン                                                                                                    |                |                             | ✅                         | ✅               |
-| インフラの Workload(Deployment、CronJob など) 、周辺 K8s リソース (PodDisruptionBugdet、HorizontalPodAutorocaler、ConfigMap、Secret など) |                |                             | ✅                         | ✅               |
+| インフラの Workload(Deployment、CronJob など) 、周辺 K8s リソース (PodDisruptionBudget、HorizontalPodAutoscaler、ConfigMap、Secret など) |                |                             | ✅                         | ✅               |
 | コントロールプレーン Node ワーカーNode                                                                                                    |                |                             | ✅                         | ✅               |
 | K8s Cluster が依存する周辺インフラ                                                                                                        |                | ✅                          | ✅                         | ✅               |
 | インフラの低レイヤー                                                                                                                      |                |                             |                            | ✅               |
@@ -1687,10 +1687,10 @@ K8s リソースをグルーピングしたテナントを作成し、影響範�
 
 | よくラベル                          | 説明                                                                       | 値の例                                            |
 | ----------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------- |
-| http://app.kubernetes.io/name       | アプリ側であればマイクロサービス名、インフラ側であればツール名を設定する。 | prometheus                                        |
-| http://app.kubernetes.io/component  | K8s リソースをシステムの要素と捉えたときに、その役割名を設定する。         | app、database                                     |
-| http://app.kubernetes.io/part-of    | K8s リソースをシステムの要素と捉えたときに、その親のシステム名を設定する。 | argocd                                            |
-| http://app.kubernetes.io/managed-by | K8s リソースの管理ツール名を設定する。                                     | helm、foo-operator、EKS (Amazon EKS アドオンなど) |
+| `app.kubernetes.io/name`       | アプリ側であればマイクロサービス名、インフラ側であればツール名を設定する。 | prometheus                                        |
+| `app.kubernetes.io/component`  | K8s リソースをシステムの要素と捉えたときに、その役割名を設定する。         | app、database                                     |
+| `app.kubernetes.io/part-of`    | K8s リソースをシステムの要素と捉えたときに、その親のシステム名を設定する。 | argocd                                            |
+| `app.kubernetes.io/managed-by` | K8s リソースの管理ツール名を設定する。                                     | helm、foo-operator、EKS (Amazon EKS アドオンなど) |
 | …                                   |                                                                            |                                                   |
 
 > - https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/common-labels/

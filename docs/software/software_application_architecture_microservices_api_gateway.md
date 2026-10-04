@@ -134,7 +134,7 @@ API ゲートウェイを (例：特定の開発言語、GraphQL パッケージ
 この場合、Kubernetes クラスターのうちに API ゲートウェイを配置することになる。
 
 ```yaml
-Amazon Route 53 ---> AWS Load Balancer Controller ---> 自前APIゲートウェイ ---> マイクロサービスPod
+Amazon Route 53 ---> AWS ALB ---> 自前APIゲートウェイ ---> マイクロサービスPod
 ```
 
 GraphQL で API ゲートウェイを実装する場合は、特に注意が必要である。
@@ -153,7 +153,7 @@ API ゲートウェイの OSS (Kong、Tyk、Apigee、Kuma、Nginx、Envoy、Apac
 この場合、Kubernetes クラスターのうちに API ゲートウェイを配置することになる。
 
 ```yaml
-Amazon Route 53 ---> AWS Load Balancer Controller ---> APIゲートウェイ (例：TypeScriptアプリ、Nginx) ---> マイクロサービスPod
+Amazon Route 53 ---> AWS ALB ---> APIゲートウェイ (例：TypeScriptアプリ、Nginx) ---> マイクロサービスPod
 ```
 
 > - https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
@@ -166,7 +166,7 @@ Amazon Route 53 ---> AWS Load Balancer Controller ---> APIゲートウェイ (�
 この場合、Kubernetes クラスターの外に API ゲートウェイを配置することになる。
 
 ```yaml
-Amazon Route 53 ---> Amazon API Gateway ---> AWS Load Balancer Controller ---> マイクロサービスPod
+Amazon Route 53 ---> Amazon API Gateway ---> AWS ALB ---> マイクロサービスPod
 ```
 
 その場合、フロントエンドアプリケーションが API ゲートウェイに通信できるように、フロントエンドアプリケーションとバックエンドアプリケーションを異なる Kubernetes で動かす必要がある。

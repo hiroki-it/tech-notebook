@@ -19,7 +19,7 @@ description: Envoy＠サービスメッシュ系ミドルウェアの知見を�
 
 ![envoy_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_structure.png)
 
-Envoy は、コントロールプレーンに相当する xDS サーバーと、データプレーンに相当するプロキシコンテナから構成される。
+Envoy は、データプレーンで通信を処理するプロキシツールである。コントロールプレーンの xDS サーバーから設定を取得する。
 
 Envoy には静的/動的な設定がある。
 
@@ -37,13 +37,15 @@ Istio の Envoy は、pilot-agent を介して Istiod の ADS-API とストリ�
 
 ### Grace Process
 
-#### ▼ Graceful Restart (ホットリロード)
+#### ▼ Graceful Restart (ホットリスタート)
 
-Envoy は、ホットリロード処理によって通信を切断することなく、コントロールプレーンから取得した動的な設定を自動的に再読み込みできる。
+Envoy は、ブートストラップ構成の変更を読み込むために、ホットリスタートできる。
 
-現在のプロセス (プライマリプロセス) を残したまま、新しいプロセス (セカンダリプロセス) を起動し、通信を段階的に移行する。
+現在のプロセスを残したまま、新しいプロセスを起動し、旧プロセスで既存通信を完了させながら、新プロセスで新規通信を処理する。
 
-ちなみに、Apache や Nginx はリロード機能を持つが、自動でリロードするホットリロードの機能はない。
+コントロールプレーンから取得した動的な設定の更新には、ホットリスタートは必要ない。
+
+Istio 管理下では、pilot-agent が Envoy のホットリスタートを無効化している。ブートストラップ構成の変更を反映するには、Pod のロールアウトなどによる istio-proxy の再起動が必要である。
 
 ![envoy_hot-reload](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_hot-reload.png)
 
@@ -154,7 +156,7 @@ Envoy の実行時に、リスナーの暗号化の設定を動的に検出可�
 
 #### ▼ 実装
 
-Envoy を使用するサービス検出ツールのいくつか (例：Istio、Linkerd) では、コントロールプレーンに `go-control-plane` パッケージが使用されている。
+Envoy を使用するサービス検出ツール (例：Istio) では、コントロールプレーンに `go-control-plane` パッケージが使用されている。
 
 > - https://github.com/envoyproxy/go-control-plane/blob/v0.11.0/pkg/resource/v3/resource.go#L34-L43
 > - https://github.com/envoyproxy/go-control-plane/blob/v0.11.0/pkg/server/v3/gateway.go#L38-L98
@@ -262,7 +264,7 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 Istio の Envoy は、pilot-agent を介して Istiod の ADS-API にリモートプロシージャーコールし、ストリーミング方式で取得した Envoy 設定値を動的に設定する。
 
-Envoy が組み込まれたサービスメッシュツール (例：Istio、Linkerd) では、Envoy のコントロールプレーンへのリモートプロシージャーコール処理の緩衝材として、エージェント (例：pilot-agent) が提供されている。
+Envoy が組み込まれたサービスメッシュツール (例：Istio) では、Envoy のコントロールプレーンへのリモートプロシージャーコール処理の緩衝材として、エージェント (例：pilot-agent) が提供されている。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#streaming-grpc-subscriptions
 > - https://i-beam.org/2019/03/13/envoy-xds-server/
@@ -1125,7 +1127,7 @@ Envoy はマルチスレッドでパケットを処理する。
 - XDS-API に関する処理
 - ランタイム
 - 統計情報のフラッシュ
-- Envoy のプロセスのさまざまな処理 (ホットリロードなど)
+- Envoy のプロセスのさまざまな処理 (ホットリスタートなど)
 
 > - https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310
 > - https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy

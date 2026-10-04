@@ -315,7 +315,7 @@ RPC では、JSON 内のデータのデータ型を指定するために使用�
 
 #### ▼ `network.tcp_proxy`
 
-`network.tcp_proxy` はデフォルトで有効になっているネットワークフィルターである。
+`network.tcp_proxy` はネットワークフィルターであり、Envoy を直接使用する場合は自前で設定する。
 
 Envoy が `L4` プロトコルを処理できるようになる。
 
@@ -341,7 +341,7 @@ static_resources:
 
 #### ▼ `network.http_connection_manager`
 
-`network.http_connection_manager` はデフォルトで有効になっているネットワークフィルターである。
+`network.http_connection_manager` はネットワークフィルターであり、Envoy を直接使用する場合は自前で設定する。
 
 Envoy が `L7` プロトコルを処理できるようになる。
 
@@ -368,7 +368,7 @@ static_resources:
 
 #### ▼ `http.router`
 
-`http.router` はデフォルトで有効になっている HTTP フィルターである。
+`http.router` は HTTP フィルターであり、Envoy を直接使用する場合は自前で設定する。
 
 `typed_config.route_config` を使用できるようにする。
 
@@ -400,7 +400,7 @@ static_resources:
 
 #### ▼ `http.grpc_web`
 
-`http.grpc_web` はデフォルトで有効になっている HTTP フィルターである。
+`http.grpc_web` は HTTP フィルターであり、Envoy を直接使用する場合は自前で設定する。
 
 受信した HTTP/1.1 を HTTP/2 (例：gRPC、GraphQL など) や HTTP/3 に変換し、gRPC サーバーに送信する。
 
@@ -684,7 +684,9 @@ static_resources:
 
 ルーティング先の同時接続の上限数を設定する。
 
-制限を超過した場合、宛先へのルーティングが停止し、直近の成功時の処理結果を返信する (サーキットブレイカー) 。
+制限を超過した場合、宛先への通信を遮断し、HTTP リクエストでは `503` レスポンスを返信する (サーキットブレイカー) 。
+
+直近の成功時の処理結果などを返すには、通信元でフォールバックを実装する必要がある。
 
 **＊実装例＊**
 
@@ -711,7 +713,7 @@ static_resources:
 
 #### ▼ connect_timeout とは
 
-ルーティング時のタイムアウト時間を設定する。
+宛先との TCP 接続を確立するまでのタイムアウト時間を設定する。
 
 **＊実装例＊**
 

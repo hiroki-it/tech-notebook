@@ -114,7 +114,7 @@ metadata:
   namespace: istio-system
 type: istio.io/ca-root
 data:
-  root-cert.pem: ""
+  root-cert.pem: *****
 ```
 
 <br>

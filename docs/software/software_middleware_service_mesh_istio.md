@@ -81,7 +81,7 @@ CPU と同じように、以下の情報によって、データプレーンで�
 
 Istio のドキュメントでは、以下のハードウェアリソースを消費することが記載されている。
 
-1000 rps/s の場合である。
+1000 req/sec、データサイズ 1 KB の場合である。
 
 |                           |    CPU    | メモリ |
 | ------------------------- | :-------: | :----: |
@@ -124,7 +124,7 @@ istio-proxy をインジェクションすると、Pod あたりで以下のハ�
 以下により、レイテンシーは大きくなる。
 
 - istio-proxy、waypoint-proxy のコンテナ、ztunnel のコンテナの経由
-- AuthorizationPolicy によるアクセストークンの検証
+- RequestAuthentication による JWT トークンの検証
 - PeerAuthentication による相互 TLS 認証
 
 > - https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#latency-for-istio-124
@@ -132,7 +132,7 @@ istio-proxy をインジェクションすると、Pod あたりで以下のハ�
 
 #### ▼ サービスメッシュ有無による違い
 
-p99、1000 rps/s、240 秒間の負荷の場合である。
+p99、1000 req/sec、240 秒間の負荷の場合である。
 
 | 条件                                   | レイテンシー |
 | -------------------------------------- | :----------: |
@@ -202,7 +202,7 @@ L4/L7 に対応している。
 
 `istio-init` コンテナは、`istio-iptables` コマンドを実行し、iptables のルールを書き換える。
 
-これにより、送信元 Pod から宛先 Pod へ直接通信できるようになる。
+これにより、Pod 内のマイクロサービスの通信を istio-proxy にリダイレクトできるようになる。
 
 > - https://medium.com/@bikramgupta/tracing-network-path-in-istio-538335b5bb4f
 
@@ -346,11 +346,11 @@ Pod 間通信時、正しい送信元 Envoy の通信であることを認証す
 
 > - https://istio.io/latest/docs/concepts/security/#authentication
 
-#### ▼ JWT による Bearer 認証 (ID プロバイダーに認証フェーズを委譲)
+#### ▼ JWT による Bearer 認証 (ID プロバイダーに認証識別フェーズを委譲)
 
-JWT による Bearer 認証を実施し、送信元 Pod の通信を認証する。
+RequestAuthentication で JWT トークンを検証し、アカウントを認証する。
 
-この場合、認証フェーズを ID プロバイダー (例：Auth0、AWS Cognito、GitHub、Google Cloud Auth、Keycloak、Zitadel) へ委譲することになる。
+この場合、認証識別フェーズを ID プロバイダー (例：Auth0、AWS Cognito、GitHub、Google Cloud Auth、Keycloak、Zitadel) へ委譲し、認証検証フェーズを istio-proxy が担う。
 
 JWT トークンの取得方法として、例えば以下の方法がある。
 
@@ -361,7 +361,7 @@ JWT トークンの取得方法として、例えば以下の方法がある。
 
 #### ▼ マイクロサービスの認証について
 
-マイクロサービス側の認証については、Istio の管理外である。
+マイクロサービス自身が実装する認証ロジックは、Istio の管理外である。
 
 <br>
 
@@ -369,7 +369,7 @@ JWT トークンの取得方法として、例えば以下の方法がある。
 
 #### ▼ 仕組み
 
-Pod 間通信時、AuthorizationPolicy を使用して、スコープに含まれる認証済み Envoy の通信のみを認可する。
+Pod 間通信時、AuthorizationPolicy を使用して、JWT トークンのアカウント属性や通信元ワークロードの SPIFFE ID などに基づいて通信を認可する。
 
 ![istio_authorization-policy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_authorization-policy.png)
 
@@ -385,7 +385,7 @@ AuthorizationPolicy で認可プロバイダー (例：Keycloak、Open Policy Ag
 
 #### ▼ マイクロサービスの認可について
 
-マイクロサービス側の認可については、Istio の管理外である。
+マイクロサービス自身が実装する認可ロジックは、Istio の管理外である。
 
 <br>
 
@@ -482,7 +482,7 @@ istio-proxy は、テレメトリーを作成する。
 
 istio-proxy はメトリクスの元になるデータポイントを記録し、Prometheus は istio-proxy の `:15020/stats/prometheus` エンドポイントから収集する。Istiod は Istio 自体に関するデータポイントを記録し、Prometheus はこれも Istiod から収集する。
 
-Prometheus は、`discovery` コンテナの `/stats/prometheus` エンドポイント (`15090` 番ポート) からメトリクスの元になるデータポイントを収集する。
+Prometheus は、`discovery` コンテナの `/metrics` エンドポイント (`15014` 番ポート) からメトリクスの元になるデータポイントを収集する。
 
 なお、istio-proxy にも `/stats/prometheus` エンドポイントはある。
 
@@ -630,11 +630,11 @@ Prometheus 上でメトリクスをクエリすると、istio-proxy の `:15020/
 | メトリクス名                          | 単位     | 説明                                                                                                                                                                                    |
 | ------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `istio_requests_total`                | カウント | istio-proxy が受信した総リクエスト数を表す。メトリクスの名前空間に対してさまざまなディメンションを設定できる。`<br>`・https://blog.christianposta.com/understanding-istio-telemetry-v2/ |
-| `istio_request_duration_milliseconds` | カウント | istio-proxy が受信したリクエストの処理時間を表す。                                                                                                                                      |
+| `istio_request_duration_milliseconds_{bucket,count,sum}` | ミリ秒 | istio-proxy が受信したリクエストの処理時間の分布を表す。                                                                                                                                      |
 | `istio_request_messages_total`        | カウント | istio-proxy が受信した gRPC による総 HTTP リクエスト数を表す。                                                                                                                          |
-| `istio_request_messages_total`        | カウント | istio-proxy が受信した gRPC による総 HTTP リクエスト数を表す。                                                                                                                          |
+| `istio_response_messages_total`       | カウント | gRPC サーバーが返信した gRPC over HTTP/2 によるレスポンスの総数を表す。                                                                                                                          |
 
-| `istio_request_duration_milliseconds_sum	` | カウント | istio-proxy が起動以降のすべてのリクエスト期間の合計 |
+| `istio_request_duration_milliseconds_sum` | ミリ秒 | istio-proxy が起動以降のすべてのリクエスト期間の合計 |
 | `envoy_cluster_upstream_rq_retry` | カウント | istio-proxy のほかの Pod へのリクエストに関するリトライ数を表す。 |
 | `envoy_cluster_upstream_rq_retry_success` | カウント | istio-proxy が他の Pod へのリクエストに関するリトライ成功数を表す。 |
 | `envoy_cluster_upstream_rq_retry_backoff_expotential` | カウント | 記入中... |
@@ -656,16 +656,16 @@ Istio Ingress Gateway を経由せずにサービスメッシュ外からイン�
 
 | ラベル                           | 説明                                                                           | 例                                                                                                | 注意点                                                                                                                                                                                                                                                                        |
 | -------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `connection_security_policy`     | Pod 値の通信方法を表す。                                                       | `mutual_tls` (相互 TLS 認証)                                                                      |                                                                                                                                                                                                                                                                               |
-| `destination_app`                | リクエストの宛先のコンテナ名を表す。                                           | `foo-container`                                                                                   |                                                                                                                                                                                                                                                                               |
+| `connection_security_policy`     | HTTP リクエストのセキュリティポリシーを表す。                                                       | `mutual_tls` (相互 TLS 認証)                                                                      |                                                                                                                                                                                                                                                                               |
+| `destination_app`                | リクエストの宛先コンポーネントの `app` ラベル値を表す。                                           | `foo-container`                                                                                   |                                                                                                                                                                                                                                                                               |
 | `destination_cluster`            | リクエストの宛先の Kubernetes Cluster 名を表す。                               | `Kubernetes`                                                                                      |                                                                                                                                                                                                                                                                               |
-| `destination_service`            | リクエストの宛先の Service 名を表す。                                          | `foo-service`                                                                                     |                                                                                                                                                                                                                                                                               |
+| `destination_service`            | リクエストの宛先ホストを表す。                                          | `foo-service.foo-namespace.svc.cluster.local`                                                       |                                                                                                                                                                                                                                                                               |
 | `destination_workload`           | リクエストの宛先の Deployment 名を表す。                                       | `foo-deployment                                                                                   |                                                                                                                                                                                                                                                                               |
-| `destination_workload_namespace` | 送信元の Namespace 名を表す。                                                  |                                                                                                   |                                                                                                                                                                                                                                                                               |
+| `destination_workload_namespace` | 宛先コンポーネントの Namespace 名を表す。                                                  |                                                                                                   |                                                                                                                                                                                                                                                                               |
 | `reporter`                       | データポイントの作成者を表す。istio-proxy か IngressGateway のいずれかである。 | ・`destination` (宛先の istio-proxy)`<br>`・`source` (送信元の IngressGateway または istio-proxy) |                                                                                                                                                                                                                                                                               |
 | `response_flags`                 | Envoy の `%RESPONSE_FLAGS%` 変数を表す。                                       | `-` (値なし)                                                                                      |                                                                                                                                                                                                                                                                               |
 | `response_code`                  | istio-proxy が返信したレスポンスコードの値を表す。                             | `200`、`404`、`0`                                                                                 | `reporter="source"` の場合、送信元 istio-proxy に対して、宛先 istio-proxy がマイクロサービスから受信したステータスコードを集計する。`reporter="destination"` の場合、送信元 istio-proxy に対して、宛先 istio-proxy がマイクロサービスから受信したステータスコードを集計する。 |
-| `source_app`                     | 送信元のコンテナ名を表す。                                                     | `foo-container`                                                                                   |                                                                                                                                                                                                                                                                               |
+| `source_app`                     | 送信元コンポーネントの `app` ラベル値を表す。                                                     | `foo-container`                                                                                   |                                                                                                                                                                                                                                                                               |
 | `source_cluster`                 | 送信元の Kubernetes Cluster 名を表す。                                         | `Kubernetes`                                                                                      |                                                                                                                                                                                                                                                                               |
 | `source_workload`                | 送信元の Deployment 名を表す。                                                 | `foo-deployment`                                                                                  |                                                                                                                                                                                                                                                                               |
 
@@ -762,7 +762,7 @@ istio-proxy は、スパンを分散トレース収集ツール (例：Jaeger Co
 
 マイクロサービスからスパンを送信する場合であっても、istio-proxy を経由し、分散トレース収集ツールへ送信することになる。
 
-分散トレース収集ツールをサービスメッシュに登録 (VirtualService や ServiceEntry を作成) しないと、マイクロサービスや istio-proxy は分散トレース収集ツールを名前解決できない。
+istio-proxy から送信する場合は、MeshConfig の `extensionProviders` に分散トレース収集ツールの宛先とポートを登録する。
 
 Envoy では宛先としてサポートしていても、istio-proxy では使用できない場合がある。(例：X-Ray デーモン)
 

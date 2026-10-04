@@ -145,7 +145,7 @@ spec:
 
 認可フェーズの委譲先の ID プロバイダーを設定する。
 
-事前に、ConfigMap の `.mesh.extensionProvider` キーに ID プロバイダーを登録しておく必要がある。
+事前に、ConfigMap の `.mesh.extensionProviders` キーに ID プロバイダーを登録しておく必要がある。
 
 **＊実装例＊**
 
@@ -180,9 +180,9 @@ data:
         envoyExtAuthzHttp:
           service: oauth2-proxy.auth.svc.cluster.local
           port: 80
-        includeHeadersInCheck:
-          - cookie
-          - authorization
+          includeRequestHeadersInCheck:
+            - cookie
+            - authorization
 ```
 
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2
@@ -203,7 +203,7 @@ data:
 
 送信元 Pod に紐づく ServiceAccount が送信元の場合、認可を実施する。
 
-Istio はクライアント証明書に ID (例：SPIFEE ID) を設定しており、この ID が `principals` 値と一致するかを検証する。
+Istio はクライアント証明書に ID (例：SPIFFE ID) を設定しており、この ID が `principals` 値と一致するかを検証する。
 
 Kubernetes では送信元 Pod の名前を知る方法がない (IP アドレスは可能) なので、制御しやすくなる。
 
@@ -373,7 +373,7 @@ spec:
 
 #### ▼ exportTo とは
 
-その DestinationRule にリクエストできる Namespace を設定する。
+DestinationRule の設定を公開する Namespace を設定する。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
@@ -381,11 +381,11 @@ spec:
 
 デフォルト値である。
 
-他の Namespace の VirtualService に紐づける場合、`*` とする必要がある。
+異なる Namespace の通信元で設定を使用する場合、`*` で全 Namespace に公開する。
 
-もし、同じ Namespace 内の VirtualService と紐づける場合、`.` とする。
+通信元が同じ Namespace にある場合、`.` で同じ Namespace 内だけに公開できる。
 
-つまり、Istio Ingress Gateway や Istio Egress Gateway とリクエストを送受信する VirtualService と DestinationRule では `*` とし、それ以外のこれらの場合は `.` とする。
+Gateway を使用するかどうかではなく、設定を使用する通信元の Namespace に合わせて公開範囲を決める。
 
 **＊実装例＊**
 
@@ -413,11 +413,11 @@ spec:
 
 #### ▼ `.` (ドット)
 
-同じ Namespace 内の VirtualService と紐づける場合、`.` とする。
+通信元が同じ Namespace にある場合、`.` で同じ Namespace 内だけに公開できる。
 
-もし、他の Namespace の VirtualService に紐づける場合、`*` とする必要がある。
+異なる Namespace の通信元で設定を使用する場合、`*` で全 Namespace に公開する。
 
-つまり、Istio Ingress Gateway や Istio Egress Gateway とリクエストを送受信する VirtualService と DestinationRule では `*` とし、それ以外のこれらの場合は `.` とする。
+Gateway を使用するかどうかではなく、設定を使用する通信元の Namespace に合わせて公開範囲を決める。
 
 **＊実装例＊**
 
@@ -612,7 +612,7 @@ spec:
   trafficPolicy:
     connectionPool:
       http:
-        idleTimeout: 1000
+        idleTimeout: 1000s
 ```
 
 > - https://qiita.com/Takagi_/items/129acd03e76fce5c295b#%E5%AE%9F%E9%9A%9B%E3%81%ABhttp%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E8%A8%AD%E5%AE%9A%E3%82%84%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%81%A8%E3%81%AA%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E5%88%87%E6%96%AD%E3%81%95%E3%81%9B%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B
@@ -676,7 +676,7 @@ spec:
   trafficPolicy:
     connectionPool:
       tcp:
-        idleTimeout: 1000
+        idleTimeout: 1000s
 ```
 
 #### ▼ connectionPool.tcp.tcpKeepalive
@@ -696,8 +696,8 @@ spec:
       tcp:
         tcpKeepalive:
           probes: 9
-          time: 2
-          interval: 75
+          time: 2s
+          interval: 75s
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings-tcp_keepalive
@@ -725,19 +725,19 @@ spec:
 
 #### ▼ outlierDetection.baseEjectionTime
 
-オープン状態の期間を設定する。
+異常な宛先をルーティング対象から除外する基本期間を設定する。
 
-`baseEjectionTime` キー後、宛先の正常性を確認し、もしエラー条件が発生していなければサーキットブレイカーを停止する。
+初回は `baseEjectionTime` の期間だけ除外する。
 
-もしエラー条件がまだ解決していなければ、もう一度 `baseEjectionTime` を実行する。
+復帰後に再び除外条件を満たした場合、除外期間は `baseEjectionTime` と除外回数の積になる。
 
-どのくらいの期間で 10 回以上を判定するかは、`interval` キーで設定する。
+外れ値検出の判定間隔は、`interval` キーで設定する。
 
 **＊実装例＊**
 
-Gateway 系ステータスが 10 秒間に 10 回以上発生したら、サーキットブレイカーを開始する。
+Gateway 系ステータスが 10 回以上連続した宛先を 10 秒間隔で判定し、ルーティング対象から除外する。
 
-サーキットブレイカー中に、異常な Pod を 30 秒間排除する
+初回は、異常な Pod を 30 秒間排除する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -763,13 +763,13 @@ spec:
 
 似た設定として、`500` 系ステータスの閾値を設定する `consecutive5xxErrors` キーがあるが、併用できる。
 
-どのくらいの期間で 10 回以上を判定するかは、`interval` キーで設定する。
+外れ値検出の判定間隔は、`interval` キーで設定する。
 
 **＊実装例＊**
 
-Gateway 系ステータスが 10 秒間に 10 回以上発生したら、サーキットブレイカーを開始する。
+Gateway 系ステータスが 10 回以上連続した宛先を 10 秒間隔で判定し、ルーティング対象から除外する。
 
-サーキットブレイカー中に、異常な Pod を 30 秒間排除する
+初回は、異常な Pod を 30 秒間排除する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -792,15 +792,15 @@ spec:
 
 サーキットブレイカーを開始する外れ値 (`500` 系ステータス) の閾値を設定する。
 
-似た設定として、Gateway 系ステータス率の閾値を設定する `consecutiveGatewayErrors` キーがあるが、併用できる。
+似た設定として、Gateway 系ステータスの連続回数の閾値を設定する `consecutiveGatewayErrors` キーがあるが、併用できる。
 
-どのくらいの期間で 10 回以上を判定するかは、`interval` キーで設定する。
+外れ値検出の判定間隔は、`interval` キーで設定する。
 
 **＊実装例＊**
 
-`500` 系ステータスが 10 秒間に 10 回以上発生したら、サーキットブレイカーを開始する。
+`500` 系ステータスが 10 回以上連続した宛先を 10 秒間隔で判定し、ルーティング対象から除外する。
 
-サーキットブレイカー中に、異常な Pod を 30 秒間排除する
+初回は、異常な Pod を 30 秒間排除する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -822,13 +822,13 @@ spec:
 
 サーキットブレイカーの外れ値の計測間隔を設定する。
 
-間隔内で閾値以上のエラーが発生した場合、サーキトブレイカーが起こる。
+指定した間隔で、連続エラー数が閾値に達した宛先を判定する。
 
 **＊実装例＊**
 
-`500` 系ステータスが 10 秒間に 10 回以上発生したら、サーキットブレイカーを開始する。
+`500` 系ステータスが 10 回以上連続した宛先を 10 秒間隔で判定し、ルーティング対象から除外する。
 
-サーキットブレイカー中に、異常な Pod を 30 秒間排除する
+初回は、異常な Pod を 30 秒間排除する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -849,7 +849,7 @@ spec:
 
 #### ▼ outlierDetection.maxEjectionPercent
 
-Pod 全体のうちで排除できる最大 Pod 数を設定する。
+Pod 全体のうちで排除できる Pod の最大割合 (%) を設定する。
 
 **＊実装例＊**
 
@@ -1075,7 +1075,7 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings
 
-#### ▼ warmup.aggression
+#### ▼ loadBalancer.warmup.aggression
 
 スロースタート方式 (通過させるリクエストの数を少しずつ増加させる) で、増加率を設定する。
 
@@ -1090,9 +1090,10 @@ metadata:
   name: foo-destination-rule
 spec:
   trafficPolicy:
-    warmup:
-      duration: 30
-      aggression: 1
+    loadBalancer:
+      warmup:
+        duration: 30s
+        aggression: 1
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup
@@ -1101,7 +1102,7 @@ spec:
 > - https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start
 
-#### ▼ warmup.duration
+#### ▼ loadBalancer.warmup.duration
 
 スロースタート方式 (通過させるリクエストの数を少しずつ増加させる) で、スロースタートの期間を設定する。
 
@@ -1114,9 +1115,10 @@ metadata:
   name: foo-destination-rule
 spec:
   trafficPolicy:
-    warmup:
-      duration: 30
-      aggression: 1
+    loadBalancer:
+      warmup:
+        duration: 30s
+        aggression: 1
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup
@@ -1150,7 +1152,7 @@ spec:
 
 **＊実装例＊**
 
-ネットワークフィルターである `network.http_connection_manager` の設定値を変更する。
+HTTP フィルターの設定値を変更する。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -1455,7 +1457,7 @@ spec:
             type_url: type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit
             value:
               stat_prefix: http_local_rate_limiter
-              # 4 秒中に 4 リクエスト数までを指定する
+              # 60 秒ごとに 4 トークンを補充し、最大 4 トークンを保持する
               token_bucket:
                 max_tokens: 4
                 tokens_per_fill: 4
@@ -1521,7 +1523,7 @@ spec:
               type_url: type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit
               value:
                 stat_prefix: http_local_rate_limiter
-                # 4 秒中に 4 リクエスト数までを指定する
+                # 60 秒ごとに 4 トークンを補充し、最大 4 トークンを保持する
                 token_bucket:
                   max_tokens: 4
                   tokens_per_fill: 4
@@ -1835,7 +1837,7 @@ metadata:
   name: foo-ingress
 spec:
   selector:
-    istio: istio-ingressgateway
+    istio: ingressgateway
 ```
 
 ```yaml
@@ -2167,9 +2169,9 @@ spec:
 
 ```yaml
 apiVersion: networking.istio.io/v1
-kind: foo-ingress
+kind: Gateway
 metadata:
-  name: gateway
+  name: foo-ingress
 spec:
   servers:
     - tls:
@@ -2224,8 +2226,8 @@ spec:
 | ------------ | ------------------------------------------------------------------------------------------------------------ |
 | `UNSET`      | 記入中...                                                                                                    |
 | `DISABLE`    | 相互 TLS 認証を使用しない。                                                                                  |
-| `PERMISSIVE` | 相互 TLS 認証のとき、istio-proxy は受信するプロトコルで HTTPS プロトコルと HTTP プロトコルの両方を許可する。 |
-| `STRICT`     | 相互 TLS 認証のとき、istio-proxy は受信するプロトコルで HTTPS プロトコルのみを許可し、HTTP を許可しない。    |
+| `PERMISSIVE` | istio-proxy は相互 TLS 認証を使用する通信と平文通信の両方を許可する。 |
+| `STRICT`     | istio-proxy は相互 TLS 認証を使用する通信のみを許可し、平文通信やサーバー認証のみの TLS 通信を拒否する。 |
 
 **＊実装例＊**
 
@@ -2446,9 +2448,9 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    fromCookies:
-      # Cookie ヘッダーの中でアクセストークンが設定されたキーを指定する
-      - <アクセストークンキー>
+    - fromCookies:
+        # Cookie ヘッダーの中でアクセストークンが設定されたキーを指定する
+        - <アクセストークンキー>
 ```
 
 > - https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-from_cookies
@@ -2466,10 +2468,10 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    fromHeaders:
-      # Authorization ヘッダーを指定する
-      - name: Authorization
-        prefix: "Bearer "
+    - fromHeaders:
+        # Authorization ヘッダーを指定する
+        - name: Authorization
+          prefix: "Bearer "
 ```
 
 > - https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-from_headers
@@ -2585,9 +2587,11 @@ spec:
 
 #### ▼ exportTo とは
 
-その ServiceEntry にリクエストできる Namespace を設定する。
+ServiceEntry の設定を公開する Namespace を設定する。
 
-ServiceEntry は Istio Egress Gateway からリクエストを受信するため、基本的には `*` となるはずである。
+ServiceEntry と通信元の istio-proxy が異なる Namespace にある場合、通信元の Namespace に設定を公開する。
+
+`*` ではすべての Namespace に公開し、`.` では同じ Namespace 内に公開する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -2989,7 +2993,7 @@ spec:
 
 #### ▼ exportTo とは
 
-その VirtualService にリクエストできる Namespace を設定する。
+VirtualService の設定を公開する Namespace を設定する。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
 
@@ -2997,11 +3001,11 @@ spec:
 
 デフォルト値である。
 
-他の Namespace の Gateway や DestinationRule に紐づける場合、`*` とする必要がある。
+異なる Namespace の通信元で設定を使用する場合、`*` で全 Namespace に公開する。
 
-もし、同じ Namespace 内の Gateway や DestinationRule と紐づける場合、`.` とする。
+通信元が同じ Namespace にある場合、`.` で同じ Namespace 内だけに公開できる。
 
-つまり、Istio Ingress Gateway や Istio Egress Gateway とリクエストを送受信する VirtualService と DestinationRule では `*` とし、それ以外のこれらの場合は `.` とする。
+Gateway を使用するかどうかではなく、設定を使用する通信元の Namespace に合わせて公開範囲を決める。
 
 **＊実装例＊**
 
@@ -3023,11 +3027,11 @@ spec:
 
 #### ▼ `.` (ドット)
 
-同じ Namespace 内の Gateway や DestinationRule と紐づける場合、`.` とする。
+通信元が同じ Namespace にある場合、`.` で同じ Namespace 内だけに公開できる。
 
-もし、他の Namespace の Gateway や DestinationRule に紐づける場合、`*` とする必要がある。
+異なる Namespace の通信元で設定を使用する場合、`*` で全 Namespace に公開する。
 
-つまり、Istio Ingress Gateway や Istio Egress Gateway とリクエストを送受信する VirtualService と DestinationRule では `*` とし、それ以外のこれらの場合は `.` とする。
+Gateway を使用するかどうかではなく、設定を使用する通信元の Namespace に合わせて公開範囲を決める。
 
 **＊実装例＊**
 
@@ -3326,12 +3330,12 @@ metadata:
 spec:
   http:
     - fault:
-        - abort:
-            # 発生させるエラー
-            httpStatus: 503
-            # エラーを発生させる確率
-            percentage:
-              value: 100
+        abort:
+          # 発生させるエラー
+          httpStatus: 503
+          # エラーを発生させる確率
+          percentage:
+            value: 100
 ```
 
 > - https://speakerdeck.com/nutslove/istioru-men?slide=19
@@ -3348,12 +3352,12 @@ metadata:
 spec:
   http:
     - fault:
-        - delay:
-            # レスポンスの遅延時間
-            fixedDelay: 10s
-            # 遅延レスポンスを発生させる割合
-            percentage:
-              value: 100
+        delay:
+          # レスポンスの遅延時間
+          fixedDelay: 10s
+          # 遅延レスポンスを発生させる割合
+          percentage:
+            value: 100
 ```
 
 > - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=124
@@ -3466,7 +3470,7 @@ spec:
 
 #### ▼ uri
 
-ヘッダー名で合致条件を設定する。
+リクエストの URI で合致条件を設定する。
 
 **＊実装例＊**
 
@@ -3480,9 +3484,8 @@ metadata:
 spec:
   http:
     - match:
-        - headers:
-            uri:
-              prefix: /foo
+        - uri:
+            prefix: /foo
 ```
 
 > - https://istiobyexample.dev/path-based-routing/

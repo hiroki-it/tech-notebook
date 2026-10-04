@@ -83,7 +83,7 @@ Istio の機能のセットを提供する。
 
 ### analyze とは
 
-Istio の動作可否を検証する。
+適用済みの Istio リソースの設定を静的解析し、API 仕様違反やベストプラクティス違反を検出する。
 
 成功した場合を以下に示す。
 
@@ -93,7 +93,7 @@ $ istioctl analyze
 ✅ No validation issues found when analyzing namespace: default.
 ```
 
-失敗した場合を以下に示す。
+ポート名の命名規則に関する情報メッセージが出力された場合を以下に示す。
 
 ```bash
 $ istioctl analyze
@@ -261,7 +261,7 @@ horizontalpodautoscaler.autoscaling/istiod-1-10-0          Deployment/istiod-1-1
 
 istio-proxy を手動でインジェクションする。
 
-代わりに、`enabled` 値が割り当てられた `.metadata.labels,istio-injection` キーを Namespace に付与してもよい。
+代わりに、`enabled` 値が割り当てられた `.metadata.labels.istio-injection` キーを Namespace に付与してもよい。
 
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject
 > - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#manual-sidecar-injection
@@ -502,7 +502,7 @@ $ istioctl proxy-config cluster foo-pod \
       resourceApiVersion: V3
     # serviceName をクラスターとして使用する。
     # エンドポイントはクラスターと紐づいており、ADS-API から取得したエンドポイントをフィルタリングする。
-    # エンドポイントにはいくつかのインスタンスが紐づいており、1 個を選んでルーティングする。
+    # クラスターに紐づくエンドポイントの中から、負荷分散方式に基づいて宛先を選ぶ。
     serviceName: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
 ```
 
@@ -511,7 +511,7 @@ $ istioctl proxy-config cluster foo-pod \
 
 #### ▼ --fqdn
 
-クラスターが待ち受ける完全修飾ドメイン名でフィルタリングし、クラスターを取得する。
+宛先 Service の完全修飾ドメイン名でフィルタリングし、クラスターを取得する。
 
 ```bash
 $ istioctl proxy-config cluster foo-pod \
@@ -523,10 +523,10 @@ $ istioctl proxy-config cluster foo-pod \
 
 #### ▼ --port
 
-クラスターが待ち受けるポート番号でフィルタリングし、クラスターを取得する。
+宛先 Service のポート番号でフィルタリングし、クラスターを取得する。
 
 ```bash
-$ istioctl proxy-config routes foo-pod \
+$ istioctl proxy-config cluster foo-pod \
     -n foo-namespace \
     --port 50001
 ```
@@ -569,7 +569,7 @@ unix://./etc/istio/proxy/XDS                         HEALTHY     OK             
 ```yaml
 $ istioctl proxy-config endpoints foo-pod \
     -n foo-namespace \
-    --cluster "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local" \
+    --cluster "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local" \
     -o yaml \
     | yq
 ---
@@ -950,7 +950,7 @@ default   1-10-0      app
 $ kubectl get mutatingwebhookconfigurations
 
 NAME                               WEBHOOKS   AGE
-istio-sidecar-injector-1.10.0       1          7m56s # 1.10.0
+istio-sidecar-injector-1-10-0       1          7m56s # 1.10.0
 istio-revision-tag-default          1          7m56s # 現在のリビジョン (1.10.0) 定義するdefaultタグを持つ
 ```
 
@@ -987,8 +987,8 @@ istiod-1-11-0    ClusterIP    10.32.6.58    <none>        15010/TCP,15012/TCP,44
 $ kubectl get mutatingwebhookconfigurations
 
 NAME                                WEBHOOKS   AGE
-istio-sidecar-injector-1.10.0       1          7m56s # 1.10.0
-istio-sidecar-injector-1.11.0       1          7m56s # 1.11.0 (今回のアップグレード先)
+istio-sidecar-injector-1-10-0       1          7m56s # 1.10.0
+istio-sidecar-injector-1-11-0       1          7m56s # 1.11.0 (今回のアップグレード先)
 istio-revision-tag-default          1          7m56s # 現在のリビジョン (1.10.0) 定義するdefaultタグを持つ
 ```
 
@@ -996,7 +996,7 @@ istio-revision-tag-default          1          7m56s # 現在のリビジョン 
 
 : エイリアス (`istio.io/tag` キーの値) を指定して、リビジョンを書き換える。
 
-     これにより、`istio-revision-tag-default`の`default`タグの値が変更される。
+     これにより、`istio-revision-tag-default`の`default`タグが指すリビジョンが変更される。
 
 ```bash
 $ istioctl tag set default --revision 1-11-0 --overwrite
@@ -1007,14 +1007,14 @@ $ istioctl tag set default --revision 1-11-0 --overwrite
 $ kubectl get mutatingwebhookconfigurations
 
 NAME                                WEBHOOKS   AGE
-istio-sidecar-injector-1.10.0       1          7m56s # 1.10.0
-istio-sidecar-injector-1.11.0       1          7m56s # 1.11.0 (今回のアップグレード先)
+istio-sidecar-injector-1-10-0       1          7m56s # 1.10.0
+istio-sidecar-injector-1-11-0       1          7m56s # 1.11.0 (今回のアップグレード先)
 istio-revision-tag-default          1          7m56s # 現在のリビジョン (1.11.0) 定義するdefaultタグを持つ
 ```
 
 `(4)`
 
-: また、`istioctl tag list` コマンドでも、リビジョンが `v1.10.0` になったことを確認できる。
+: また、`istioctl tag list` コマンドでも、リビジョンが `1-11-0` になったことを確認できる。
 
 ```bash
 $ istioctl tag list
@@ -1060,7 +1060,7 @@ baz-pod.default                           SYNCED     SYNCED     SYNCED     SYNCE
 
 ### upgrade とは
 
-Istio のインプレースデプロイメントを実行する。
+指定した設定を使用して Istio をインプレースアップグレードする。
 
 ```bash
 $ istioctl upgrade
