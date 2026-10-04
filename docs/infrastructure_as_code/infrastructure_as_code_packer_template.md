@@ -90,8 +90,6 @@ build_ami:
 
 > - [Calling AMI public parameters in Parameter Store - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-public-parameters-ami.html)
 
-<br>
-
 #### ▼ GitHub Actions
 
 `.github/workflows/packer.yml` に配置し、手動実行またはタグの push で AMI を作成する。Repository variables に `AWS_ACCOUNT_ID` を登録し、AWS 側には `sts.amazonaws.com` を audience とする GitHub OIDC プロバイダーと `github-actions-packer` IAM ロールを用意する。ロールの信頼ポリシーで対象リポジトリ・ブランチ・タグを制限し、AMI 作成に必要な権限を付与する。
