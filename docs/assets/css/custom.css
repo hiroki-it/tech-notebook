@@ -233,7 +233,7 @@ p {
 
 /* 投稿者・最終更新日 */
 .md-content__inner > .md-source-file {
-    text-align: center;
+    text-align: left;
     font-size: 0.8rem;
     text-decoration: underline;
 }
