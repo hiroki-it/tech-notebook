@@ -19,7 +19,7 @@ description: helmプラグイン＠コマンドの知見を記録しています
 
 `helm` コマンドで確認できる情報 (例：インストールされている Helm チャート、リビジョン履歴など) をダッシュボードで表示する。
 
-> - https://github.com/komodorio/helm-dashboard
+> - [GitHub - komodorio/helm-dashboard: The missing UI for Helm - visualize your releases · GitHub](https://github.com/komodorio/helm-dashboard)
 
 <br>
 
@@ -31,7 +31,7 @@ description: helmプラグイン＠コマンドの知見を記録しています
 $ helm plugin install https://github.com/komodorio/helm-dashboard.git
 ```
 
-> - https://github.com/komodorio/helm-dashboard#installing
+> - [GitHub - komodorio/helm-dashboard: The missing UI for Helm - visualize your releases · GitHub](https://github.com/komodorio/helm-dashboard#installing)
 
 #### ▼ 起動
 
@@ -39,7 +39,7 @@ $ helm plugin install https://github.com/komodorio/helm-dashboard.git
 $ helm dashboard
 ```
 
-> - https://github.com/komodorio/helm-dashboard#running
+> - [GitHub - komodorio/helm-dashboard: The missing UI for Helm - visualize your releases · GitHub](https://github.com/komodorio/helm-dashboard#running)
 
 <br>
 
@@ -53,7 +53,7 @@ $ helm dashboard
 $ helm diff
 ```
 
-> - https://github.com/databus23/helm-diff/pull/304
+> - [upgrade command add three-way-merge option by luxurine · Pull Request #304 · databus23/helm-diff · GitHub](https://github.com/databus23/helm-diff/pull/304)
 
 <br>
 
@@ -71,7 +71,7 @@ $ helm plugin install https://github.com/databus23/helm-diff --version 1.0.0
 
 Amazon S3 をチャートリポジトリとして使用するために、チャートの圧縮ファイルを Amazon S3 に送信する。
 
-> - https://github.com/hypnoglow/helm-s3
+> - [GitHub - hypnoglow/helm-s3: ⎈ Helm plugin that adds support for AWS S3 as a chart repository. · GitHub](https://github.com/hypnoglow/helm-s3)
 
 <br>
 
@@ -104,8 +104,8 @@ Secret の元となるデータを管理するバックエンドとして、以�
 - SOPS
 - vals
 
-> - https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends
-> - https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends#list-of-implemented-secret-backends
+> - [Secret Backends · jkroepke/helm-secrets Wiki · GitHub](https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends)
+> - [Secret Backends · jkroepke/helm-secrets Wiki · GitHub](https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends#list-of-implemented-secret-backends)
 
 <br>
 
@@ -122,7 +122,7 @@ zendesk 製を使用している場合、SOPS の `secrets` ファイルの名�
 一方で jkeroepke 製では、執筆時点 (2022/11/29) で、`secrets` ファイルの名前が任意である。
 
 > - [GitHub - zendesk/helm-secrets: DEPRECATED A helm plugin that help manage secrets with Git workflow and store them anywhere · GitHub](https://github.com/zendesk/helm-secrets#usage-and-examples)
-> - https://github.com/jkroepke/helm-secrets/wiki/Usage
+> - [Usage · jkroepke/helm-secrets Wiki · GitHub](https://github.com/jkroepke/helm-secrets/wiki/Usage)
 
 <br>
 

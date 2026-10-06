@@ -9,7 +9,7 @@ description: 設定ファイル＠Prometheus
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ Prometheus を設定する。
 
 `/etc/prometheus` ディレクトリ配下におく。
 
-> - https://prometheus.io/docs/prometheus/latest/configuration/configuration/
+> - [Configuration \| Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/configuration/)
 
 <br>
 
@@ -33,7 +33,7 @@ Prometheus を設定する。
 
 すべてのデータポイント収集からアラートまでを共通で設定する。
 
-> - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file
+> - [Configuration \| Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file)
 
 #### ▼ scrape_interval
 
@@ -85,7 +85,7 @@ alerting:
 ```
 
 > - [【Prometheus】Alertmanagerをローカルで使ってみる](https://amateur-engineer-blog.com/alertmanager-docker-compose/)
-> - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alertmanager_config
+> - [Configuration \| Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alertmanager_config)
 
 <br>
 
@@ -171,7 +171,7 @@ groups:
 
 Retrieval のルールを設定する。
 
-> - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config
+> - [Configuration \| Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config)
 
 #### ▼ static_configs
 
@@ -273,7 +273,7 @@ global:
   resolve_timeout: 5m
 ```
 
-> - https://prometheus.io/docs/alerting/latest/configuration/#configuration-file
+> - [Configuration \| Prometheus](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file)
 
 <br>
 
@@ -308,7 +308,7 @@ route:
   - receiver: "null"
 ```
 
-> - https://prometheus.io/docs/alerting/latest/configuration/#route
+> - [Configuration \| Prometheus](https://prometheus.io/docs/alerting/latest/configuration/#route)
 
 #### ▼ match
 
@@ -345,8 +345,8 @@ receivers:
       - ...
 ```
 
-> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
-> - https://prometheus.io/docs/alerting/latest/configuration/#discord_config
+> - [Configuration \| Prometheus](https://prometheus.io/docs/alerting/latest/configuration/#receiver)
+> - [Configuration \| Prometheus](https://prometheus.io/docs/alerting/latest/configuration/#discord_config)
 
 #### ▼ email_configs
 
@@ -357,8 +357,8 @@ receivers:
       - ...
 ```
 
-> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
-> - https://prometheus.io/docs/alerting/latest/configuration/#email_config
+> - [Configuration \| Prometheus](https://prometheus.io/docs/alerting/latest/configuration/#receiver)
+> - [Configuration \| Prometheus](https://prometheus.io/docs/alerting/latest/configuration/#email_config)
 
 #### ▼ pagerduty_configs
 
@@ -372,8 +372,8 @@ receivers:
       - routing_key: *****
 ```
 
-> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
-> - https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config
+> - [Configuration \| Prometheus](https://prometheus.io/docs/alerting/latest/configuration/#receiver)
+> - [Configuration \| Prometheus](https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config)
 
 #### ▼ pushover_configs
 
@@ -384,8 +384,8 @@ receivers:
       - ...
 ```
 
-> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
-> - https://prometheus.io/docs/alerting/latest/configuration/#pushover_config
+> - [Configuration \| Prometheus](https://prometheus.io/docs/alerting/latest/configuration/#receiver)
+> - [Configuration \| Prometheus](https://prometheus.io/docs/alerting/latest/configuration/#pushover_config)
 
 #### ▼ slack_configs
 
@@ -407,8 +407,8 @@ receivers:
         send_resolved: true
 ```
 
-> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
-> - https://prometheus.io/docs/alerting/latest/configuration/#slack_config
+> - [Configuration \| Prometheus](https://prometheus.io/docs/alerting/latest/configuration/#receiver)
+> - [Configuration \| Prometheus](https://prometheus.io/docs/alerting/latest/configuration/#slack_config)
 
 #### ▼ sns_configs
 
@@ -419,8 +419,8 @@ receivers:
       - ...
 ```
 
-> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
-> - https://prometheus.io/docs/alerting/latest/configuration/#sns_config
+> - [Configuration \| Prometheus](https://prometheus.io/docs/alerting/latest/configuration/#receiver)
+> - [Configuration \| Prometheus](https://prometheus.io/docs/alerting/latest/configuration/#sns_config)
 
 #### ▼ webex_configs
 
@@ -431,8 +431,8 @@ receivers:
       - ...
 ```
 
-> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
-> - https://prometheus.io/docs/alerting/latest/configuration/#webex_config
+> - [Configuration \| Prometheus](https://prometheus.io/docs/alerting/latest/configuration/#receiver)
+> - [Configuration \| Prometheus](https://prometheus.io/docs/alerting/latest/configuration/#webex_config)
 
 #### ▼ webhook_configs
 
@@ -456,7 +456,7 @@ receivers:
               credentials: *****
 ```
 
-> - https://prometheus.io/docs/alerting/latest/configuration/#receiver
-> - https://prometheus.io/docs/alerting/latest/configuration/#webhook_config
+> - [Configuration \| Prometheus](https://prometheus.io/docs/alerting/latest/configuration/#receiver)
+> - [Configuration \| Prometheus](https://prometheus.io/docs/alerting/latest/configuration/#webhook_config)
 
 <br>

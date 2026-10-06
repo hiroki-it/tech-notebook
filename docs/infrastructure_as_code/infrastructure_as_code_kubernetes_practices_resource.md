@@ -9,7 +9,7 @@ description: プラクティス集＠Kubernetesリソースの知見を記録し
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -95,7 +95,7 @@ description: プラクティス集＠Kubernetesリソースの知見を記録し
 
 > - [Control Plane - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades)
 > - [マネージド型ノードの更新動作 - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html)
-> - https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#choose-blue-green-upgrades
+> - [ノードのアップグレード戦略 \| Google Kubernetes Engine (GKE) \| Google Cloud Documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#choose-blue-green-upgrades)
 
 #### ▼ クラスターアップグレードのルールを決める
 
@@ -1377,7 +1377,7 @@ istio-init コンテナとかまさにその例
 
 そのため、Node とコンテナの User ID や Group ID のマッピングは同じになっている。
 
-> - https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces
+> - [enhancements/keps/sig-node/127-user-namespaces at master · kubernetes/enhancements · GitHub](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces)
 > - [Isolate containers with a user namespace \| Docker Docs](https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations)
 
 コンテナを root ユーザーで実行すると、コンテナブレイクアウトのサイバー攻撃を受ける可能性が高くなる。

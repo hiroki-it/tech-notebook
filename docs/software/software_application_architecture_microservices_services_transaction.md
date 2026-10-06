@@ -190,7 +190,7 @@ Saga オーケストレーターは、Order サービス (`T1`) 、Inventory サ
 
 > - [Saga orchestration pattern - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/saga-orchestration.html#saga-orchestration-implementation)
 > - [Modeling Saga as a State Machine](https://dzone.com/articles/modelling-saga-as-a-state-machine)
-> - https://www.baeldung.com/cs/saga-pattern-microservices
+> - [Saga Pattern in Microservices \| Baeldung on Computer Science](https://www.baeldung.com/cs/saga-pattern-microservices)
 > - https://medium.com/@vinciabhinav7/saga-design-pattern-569ec942079
 > - https://blog.knoldus.com/distributed-transactions-and-saga-patterns/
 

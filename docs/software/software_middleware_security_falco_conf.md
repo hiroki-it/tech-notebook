@@ -39,7 +39,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/falco -n f
 
 ### 設定ファイルの例
 
-> - https://github.com/falcosecurity/falco/blob/master/falco.yaml
+> - [falco/falco.yaml at master · falcosecurity/falco · GitHub](https://github.com/falcosecurity/falco/blob/master/falco.yaml)
 
 <br>
 

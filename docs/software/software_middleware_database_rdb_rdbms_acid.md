@@ -142,7 +142,7 @@ try{
 
 詳しくは、以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/language/language_php_framework_symfony_component.html
+> - [【IT技術の知見】コンポーネント＠Symfony - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_framework_symfony_component.html)
 
 <br>
 
@@ -492,7 +492,7 @@ ORM が楽観的ロックの能力を持っている場合がある。
 PHP の ORM である Doctrine のロック機能については、以下のリンクを参考にせよ。
 
 > - https://www.doctrine-project.org/projects/doctrine-orm/en/2.9/reference/transactions-and-concurrency.html#locking-support
-> - https://qiita.com/tatsurou313/items/053cffdfe940a89d7f5a#or-%E3%83%9E%E3%83%83%E3%83%91%E3%83%BC%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%A5%BD%E8%A6%B3%E7%9A%84%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E5%AE%9F%E8%A3%85%E6%9C%89%E7%84%A1
+> - [アプリケーション開発において重要なロックを掘り下げ、ORM における楽観的ロックの実現例を紹介する #楽観ロック - Qiita](https://qiita.com/tatsurou313/items/053cffdfe940a89d7f5a#or-%E3%83%9E%E3%83%83%E3%83%91%E3%83%BC%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%A5%BD%E8%A6%B3%E7%9A%84%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E5%AE%9F%E8%A3%85%E6%9C%89%E7%84%A1)
 
 <br>
 

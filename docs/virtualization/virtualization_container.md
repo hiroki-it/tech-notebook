@@ -9,7 +9,7 @@ description: コンテナ＠仮想化の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -70,7 +70,7 @@ OCI ランタイム (例：runC) と単一／複数の CNI プラグイン (例�
 ![container-runtime_run-container](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container-runtime_run-container.png)
 
 > - [How a Container Runtime is using CNI • Konstantinos Karampogias](https://karampok.me/posts/container-networking-with-cni/)
-> - https://github.com/containernetworking/cni/blob/main/SPEC.md#lifecycle--ordering
+> - [cni/SPEC.md at main · containernetworking/cni · GitHub](https://github.com/containernetworking/cni/blob/main/SPEC.md#lifecycle--ordering)
 > - [kind(Kubernetes IN Docker)とCNIに関する備忘録](https://zenn.dev/hodagi/articles/643d7819c9582d0ed948#cni%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E4%BB%95%E6%A7%98%E6%9B%B8)
 
 #### ▼ イメージレイヤーのキャッシュ

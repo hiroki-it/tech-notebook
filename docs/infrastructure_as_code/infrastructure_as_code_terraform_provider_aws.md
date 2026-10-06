@@ -9,7 +9,7 @@ description: AWSプロバイダー＠Terraformの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ Terraform が AWS リソースの API と通信できるようにする。
 
 これにより、Terraform を使用して AWS リソースを作成できるようになる。
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 
 <br>
 
@@ -162,7 +162,7 @@ resource "aws_ami_from_instance" "foo" {
 }
 ```
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ami_from_instance
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ami_from_instance)
 
 <br>
 
@@ -626,7 +626,7 @@ ECS タスクの起動が完了する前にサービスがロードバランサ�
 
 アプリケーションのデプロイによって、実インフラの ECS タスク定義のリビジョンが増加するため、これを追跡可能にする。
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition)
 
 #### `(3)`ALB/NLB リスナーの作成を待機
 
@@ -729,7 +729,7 @@ resource "aws_volume_attachment" "foo" {
 
 Internet Gateway の後に EC2 を作成可能にする。
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference)
 
 #### `(3)`EC2 の削除時に EBS ボリュームは削除されない
 
@@ -819,7 +819,7 @@ resource "aws_eks_node_group" "this" {
 }
 ```
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster#example-usage
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster#example-usage)
 
 #### `(1)`Node 数の増減は無視
 
@@ -1211,7 +1211,7 @@ NLB に紐付くターゲットグループはスロースタート方式の負�
 
 ヘルスチェックプロトコルが HTTP または HTTPS リクエストのときのみ、パスを設定できる。
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check)
 
 #### `(3)`NLB スティッキーネスは明示的に無効化
 
@@ -1219,7 +1219,7 @@ NLB に紐付くターゲットグループはスロースタート方式の負�
 
 リンクの NOTE 文を参考にせよ。
 
-> - https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness)
 
 #### (＊) ターゲットグループの削除時にリスナーを先に削除できない。
 
@@ -1368,7 +1368,7 @@ DB クラスターでは、レプリケーションのために、`3` 個の AZ 
 
 Terraform がこれを認識しないように、`ignore_changes` 引数で AZ を指定しておく必要がある。
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#availability_zones
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#availability_zones)
 > - [Question: AWS RDS Resource Recreation · Issue #7307 · hashicorp/terraform-provider-aws · GitHub](https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633)
 > - [Aurora launches instances in at least 3 AZ even if less are specified · Issue #1111 · hashicorp/terraform-provider-aws · GitHub](https://github.com/hashicorp/terraform-provider-aws/issues/1111)
 
@@ -1400,7 +1400,7 @@ Amazon Aurora では、クラスターにインスタンスを 1 つだけ紐付
 
 AZ のマップデータに対して `for_each` 引数を使用することで、各 AZ に最低 1 つのインスタンスを配置するように設定できる。
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance)
 > - [how to create aws\_rds\_cluster instance (aurora) with multi\_az flag? · Issue #5333 · hashicorp/terraform · GitHub](https://github.com/hashicorp/terraform/issues/5333)
 
 #### `(7)` インスタンスタイプは別々に設定する
@@ -1520,7 +1520,7 @@ resource "aws_rds_cluster" "foo" {
 }
 ```
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-global-cluster-from-existing-db-cluster
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-global-cluster-from-existing-db-cluster)
 
 #### ▼ グローバルクラスターを新規作成する
 
@@ -1565,7 +1565,7 @@ resource "aws_rds_cluster" "foo" {
 }
 ```
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-mysql-global-cluster
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#new-mysql-global-cluster)
 
 #### ▼ アップグレードする
 
@@ -1612,7 +1612,7 @@ resource "aws_rds_cluster" "foo" {
 }
 ```
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#upgrading-engine-versions
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_global_cluster#upgrading-engine-versions)
 
 <br>
 

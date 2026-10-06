@@ -9,7 +9,7 @@ description: ConfigMap系＠Grafanaの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -270,7 +270,7 @@ data:
 
 > - [Configure the Tempo data source \| Grafana documentation](https://grafana.com/docs/grafana/latest/datasources/tempo/configure-tempo-data-source/#example-file)
 > - [Zipkin data source \| Grafana documentation](https://grafana.com/docs/grafana/latest/datasources/zipkin/#provision-the-data-source)
-> - https://grafana.com/docs/grafana/latest/datasources/jaeger/#provision-the-data-source
+> - [Jaeger data source \| Grafana documentation](https://grafana.com/docs/grafana/latest/datasources/jaeger/#provision-the-data-source)
 
 <br>
 
@@ -278,8 +278,8 @@ data:
 
 Grafana の `grafana.ini` ファイルを管理する。
 
-> - https://github.com/grafana/grafana/blob/main/conf/defaults.ini
-> - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#configuration-file-location
+> - [grafana/conf/defaults.ini at main · grafana/grafana · GitHub](https://github.com/grafana/grafana/blob/main/conf/defaults.ini)
+> - [Configure Grafana \| Grafana documentation](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#configuration-file-location)
 > - [CentOS Stream 9 : Grafana : インストール : Server World](https://www.server-world.info/query?os=CentOS_Stream_9&p=grafana)
 
 <br>
@@ -311,7 +311,7 @@ data:
     org_role = Admin
 ```
 
-> - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
+> - [grafana/conf/defaults.ini at v10.1.0 · grafana/grafana · GitHub](https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578)
 > - [Unauthorized · Issue #10727 · grafana/grafana · GitHub](https://github.com/grafana/grafana/issues/10727#issuecomment-832617680)
 
 <br>
@@ -345,7 +345,7 @@ data:
 ```
 
 > - https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/keycloak/#configure-keycloak-oauth2-authentication
-> - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
+> - [grafana/conf/defaults.ini at v10.1.0 · grafana/grafana · GitHub](https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578)
 
 <br>
 
@@ -377,7 +377,7 @@ data:
 ```
 
 > - https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/github/#example-of-github-configuration-in-grafana
-> - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
+> - [grafana/conf/defaults.ini at v10.1.0 · grafana/grafana · GitHub](https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578)
 
 <br>
 
@@ -397,8 +397,8 @@ data:
     ...
 ```
 
-> - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#paths
-> - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
+> - [Configure Grafana \| Grafana documentation](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#paths)
+> - [grafana/conf/defaults.ini at v10.1.0 · grafana/grafana · GitHub](https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578)
 
 <br>
 
@@ -418,8 +418,8 @@ data:
     ...
 ```
 
-> - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#server
-> - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
+> - [Configure Grafana \| Grafana documentation](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#server)
+> - [grafana/conf/defaults.ini at v10.1.0 · grafana/grafana · GitHub](https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578)
 
 <br>
 
@@ -444,8 +444,8 @@ data:
     default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
 ```
 
-> - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#min_refresh_interval
-> - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
+> - [Configure Grafana \| Grafana documentation](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#min_refresh_interval)
+> - [grafana/conf/defaults.ini at v10.1.0 · grafana/grafana · GitHub](https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578)
 
 <br>
 
@@ -465,8 +465,8 @@ data:
     ...
 ```
 
-> - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#database
-> - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
+> - [Configure Grafana \| Grafana documentation](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#database)
+> - [grafana/conf/defaults.ini at v10.1.0 · grafana/grafana · GitHub](https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578)
 
 <br>
 
@@ -486,8 +486,8 @@ data:
     ...
 ```
 
-> - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#remote_cache
-> - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
+> - [Configure Grafana \| Grafana documentation](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#remote_cache)
+> - [grafana/conf/defaults.ini at v10.1.0 · grafana/grafana · GitHub](https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578)
 
 <br>
 
@@ -513,8 +513,8 @@ data:
     default_timezone = Asia/Tokyo
 ```
 
-> - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#date_formats
-> - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
+> - [Configure Grafana \| Grafana documentation](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#date_formats)
+> - [grafana/conf/defaults.ini at v10.1.0 · grafana/grafana · GitHub](https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578)
 
 #### ▼ default_week_start
 
@@ -914,7 +914,7 @@ kube-prometheus-stack チャートの `values` ファイルでは、サイドカ
       labelValue: "1"
 ```
 
-> - https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
+> - [helm-charts/charts/kube-prometheus-stack/values.yaml at main · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml)
 
 そのため、kube-prometheus-stack チャートを用いる場合は `grafana_dashboard` キーの値が `1` の ConfigMap のみがダッシュボードの設定として読み込まれる。
 

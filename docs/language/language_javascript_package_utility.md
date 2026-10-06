@@ -9,7 +9,7 @@ description: ユーティリティパッケージ＠JavaScriptの知見を記録
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -134,7 +134,7 @@ const asyncFunc = async () => {
 ```
 
 > - https://axios-http.com/docs/req_config
-> - https://github.com/axios/axios/issues/3835#issuecomment-860993251
+> - [How to make Post request to API with certificate authentication · Issue #3835 · axios/axios · GitHub](https://github.com/axios/axios/issues/3835#issuecomment-860993251)
 
 #### ▼ withCredential
 
@@ -160,7 +160,7 @@ const asyncFunc = async () => {
 ```
 
 > - https://axios-http.com/docs/req_config
-> - https://apidog.com/jp/blog/axios-send-cookie/#axios%E3%81%A7cookie%E3%82%92%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B%E3%81%AB%E3%81%AF%EF%BC%9F
+> - [Axiosを利用してCookieを送信する方法](https://apidog.com/jp/blog/axios-send-cookie/#axios%E3%81%A7cookie%E3%82%92%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B%E3%81%AB%E3%81%AF%EF%BC%9F)
 
 #### ▼ xsrfCookieName
 
@@ -318,9 +318,9 @@ const response = await httpClient.get("http://example.com");
 console.log(response.data);
 ```
 
-> - https://blog.symdon.info/posts/1638831647/
+> - [axiosとaxios-retryでリトライ処理を行う](https://blog.symdon.info/posts/1638831647/)
 > - https://qiita.com/fyuneru0830/items/3410b37cd6a004223092
-> - https://github.com/softonic/axios-retry?tab=readme-ov-file#options
+> - [GitHub - softonic/axios-retry: Axios plugin that intercepts failed requests and retries them whenever possible · GitHub](https://github.com/softonic/axios-retry?tab=readme-ov-file#options)
 
 <br>
 
@@ -328,8 +328,8 @@ console.log(response.data);
 
 メモリリークにつながるため、アプリケーションの実行中に 1 回だけグローバルに `axios-retry` を設定する必要がある。
 
-> - https://tech.andpad.co.jp/entry/2020/03/19/080036
-> - https://github.com/axios/axios/issues/4763
+> - [NuxtのSSRモードでメモリリーク？原因はaxios? - ANDPAD Tech Blog](https://tech.andpad.co.jp/entry/2020/03/19/080036)
+> - [Memory Leak when using Axios Retry · Issue #4763 · axios/axios · GitHub](https://github.com/axios/axios/issues/4763)
 
 <br>
 
@@ -343,8 +343,8 @@ console.log(response.data);
 
 JavaScript のソースコードに変更があれば、Node.js 上のプロセスを再起動する。
 
-> - https://qiita.com/ckoshien/items/1a8b15fe5cc3bfc15199
-> - https://ashitaka-blog.com/node-js%E3%81%AE%E3%83%9B%E3%83%83%E3%83%88%E3%83%AA%E3%83%AD%E3%83%BC%E3%83%89%E8%A8%AD%E5%AE%9A/
+> - [NodeJSでTypeScriptのホットリロード #Node.js - Qiita](https://qiita.com/ckoshien/items/1a8b15fe5cc3bfc15199)
+> - [Node.jsのホットリロード設定 \| アシタカブログ](https://ashitaka-blog.com/node-js%E3%81%AE%E3%83%9B%E3%83%83%E3%83%88%E3%83%AA%E3%83%AD%E3%83%BC%E3%83%89%E8%A8%AD%E5%AE%9A/)
 
 <br>
 
@@ -354,7 +354,7 @@ JavaScript のソースコードに変更があれば、Node.js 上のプロセ�
 
 Node.js 上で、TypeScript を JavaScript へコンパイルせずそのまま実行する。
 
-> - https://qiita.com/ckoshien/items/1a8b15fe5cc3bfc15199
+> - [NodeJSでTypeScriptのホットリロード #Node.js - Qiita](https://qiita.com/ckoshien/items/1a8b15fe5cc3bfc15199)
 
 <br>
 
@@ -388,6 +388,6 @@ $ tcg app/**/*
 ╰───────────────────────────╯
 ```
 
-> - https://github.com/whyboris/TypeScript-Call-Graph
+> - [GitHub - whyboris/TypeScript-Call-Graph: CLI to generate an interactive graph of functions and calls from your TypeScript files · GitHub](https://github.com/whyboris/TypeScript-Call-Graph)
 
 <br>

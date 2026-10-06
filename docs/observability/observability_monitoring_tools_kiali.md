@@ -9,7 +9,7 @@ description: Kiali＠監視ツールの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -68,7 +68,7 @@ Kiali は、以下のメトリクスを使用してメッシュトポロジー�
 
 Kiali は、cytoscape.js パッケージを使用し、『幅優先探索グラフ』や『有向グラフ』といったモデリング手法に基づいて、Istio から収集したデータポイントをグラフ化する。
 
-> - https://github.com/kiali/kiali/tree/v1.65.0/frontend/src/components/CytoscapeGraph/graphs
+> - [kiali/frontend/src/components/CytoscapeGraph/graphs at v1.65.0 · kiali/kiali · GitHub](https://github.com/kiali/kiali/tree/v1.65.0/frontend/src/components/CytoscapeGraph/graphs)
 > - [Using layouts · Cytoscape.js](https://blog.js.cytoscape.org/2020/05/11/layouts/#choice-of-layout)
 
 <br>

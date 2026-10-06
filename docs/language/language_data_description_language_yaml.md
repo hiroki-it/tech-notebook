@@ -9,7 +9,7 @@ description: YAML：YAML Ain't a Markup Language＠データ記述型言語の�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -31,7 +31,7 @@ description: YAML：YAML Ain't a Markup Language＠データ記述型言語の�
 
 例えば、Kubernetes ではローワーキャメルケースに統一されている。
 
-> - https://kubernetes.io/docs/contribute/style/style-guide/#use-upper-camel-case-for-api-objects
+> - [Documentation Style Guide \| Kubernetes](https://kubernetes.io/docs/contribute/style/style-guide/#use-upper-camel-case-for-api-objects)
 
 ```yaml
 fooBarBaz: ""

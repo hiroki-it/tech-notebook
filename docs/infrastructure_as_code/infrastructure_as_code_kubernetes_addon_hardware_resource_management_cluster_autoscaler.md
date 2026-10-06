@@ -49,7 +49,7 @@ cluster-autoscaler は、ハードウェアリソース不足が原因でスケ�
 ![kubernetes_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-autoscaler.png)
 
 > - [EKSにおけるAutoScalingパターン — じゃあ、したためておきます](https://esakat.github.io/esakat-blog/posts/eks-advent-calender-2020/#pod%E3%81%AE%E8%B2%A0%E8%8D%B7%E9%87%8F%E3%81%AB%E5%90%88%E3%82%8F%E3%81%9B%E3%81%A6%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0hpametricsserverclusterautoscaler)
-> - https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#when-does-cluster-autoscaler-change-the-size-of-a-cluster
+> - [autoscaler/cluster-autoscaler/FAQ.md at master · kubernetes/autoscaler · GitHub](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#when-does-cluster-autoscaler-change-the-size-of-a-cluster)
 
 #### ▼ Kubernetes 以外のメトリクスを条件すると仮定する場合
 

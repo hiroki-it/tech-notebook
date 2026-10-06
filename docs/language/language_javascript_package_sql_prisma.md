@@ -493,7 +493,7 @@ Prisma は、トランザクションが何らかの理由で失敗した場合�
 - message
 - clientVersion
 
-> - https://www.prisma.io/docs/orm/reference/error-reference
+> - [Prisma ORM error reference \| Prisma Documentation](https://www.prisma.io/docs/orm/reference/error-reference)
 
 <br>
 
@@ -505,7 +505,7 @@ Prisma Client が DB に対してトランザクション処理を実行しエ�
 
 それが想定内の何らかのエラーの場合は、PrismaClientKnownRequestError に含まれる。
 
-> - https://www.prisma.io/docs/orm/reference/error-reference#prismaclientknownrequesterror
+> - [Prisma ORM error reference \| Prisma Documentation](https://www.prisma.io/docs/orm/reference/error-reference#prismaclientknownrequesterror)
 
 #### ▼ インフラストラクチャレイヤーで `try-catch` を実行する
 

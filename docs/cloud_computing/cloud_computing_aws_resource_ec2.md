@@ -9,7 +9,7 @@ description: Amazon EC2＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -91,7 +91,7 @@ AWS AMI の OS のバージョンによっては、新しく登場したイン�
 
 例えば、CentOS 6 系の AWS AMI では、`t3.small` を選択できない。
 
-> - https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow
+> - [AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow)
 
 #### ▼ CPU バーストモード
 
@@ -666,7 +666,7 @@ $ df -hT
 /dev/nvme1n1   xfs       100G  4.3G  96G   1% /var/lib
 ```
 
-> - https://qiita.com/motojouya/items/31346b968b41a10c4dd6#3-%E5%88%9D%E6%9C%9F%E5%8C%96%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90
+> - [EC2を開発環境にする #JavaScript - Qiita](https://qiita.com/motojouya/items/31346b968b41a10c4dd6#3-%E5%88%9D%E6%9C%9F%E5%8C%96%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90)
 
 #### ▼ アタッチ
 
@@ -813,7 +813,7 @@ ENI に紐付けられた IP アドレスを、Amazon EC2 に割り当てる。
 
 Fargate 環境のホストが Amazon EC2 とは明言されていない。
 
-- https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
+- [詳細: Fargate データプレーン \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/)
 
 #### ▼ Elastic IP
 

@@ -35,7 +35,7 @@ uWSGI の起動時の値を設定する。
 
 `json` 形式や `xml` 形式でも問題ない。
 
-> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html
+> - [Configuration Options — uWSGI 2.0 ドキュメント](https://uwsgijapanese.readthedocs.io/ja/latest/Options.html)
 > - [uWSGIのiniファイルの文法まとめ #nginx - Qiita](https://qiita.com/11ohina017/items/da2ae5b039257752e558)
 
 #### ▼ 起動ログ
@@ -112,7 +112,7 @@ callable = app
 ```
 
 > - [【Ubuntu】Flask, uWSGI, nginxでHello Worldする方法 \| Laplamon](https://laplace-daemon.com/nginx-uwsgi-flask/)
-> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#callable
+> - [Configuration Options — uWSGI 2.0 ドキュメント](https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#callable)
 
 <br>
 
@@ -125,7 +125,7 @@ callable = app
 chdir=/var/www/foo
 ```
 
-> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chdir
+> - [Configuration Options — uWSGI 2.0 ドキュメント](https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chdir)
 
 <br>
 
@@ -138,7 +138,7 @@ Unix ドメインソケットファイルの権限を設定する。
 chmod-socket = 666
 ```
 
-> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chmod-socket
+> - [Configuration Options — uWSGI 2.0 ドキュメント](https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#chmod-socket)
 
 <br>
 
@@ -149,7 +149,7 @@ chmod-socket = 666
 die-on-term = true
 ```
 
-> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#die-on-term
+> - [Configuration Options — uWSGI 2.0 ドキュメント](https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#die-on-term)
 
 <br>
 

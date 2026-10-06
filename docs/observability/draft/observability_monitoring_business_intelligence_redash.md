@@ -35,7 +35,7 @@ flowchart LR
     Redash --SQL定期実行--> DB
 ```
 
-> - https://redash.io/help/user-guide/querying/scheduling-a-query/
+> - [How to schedule a query](https://redash.io/help/user-guide/querying/scheduling-a-query/)
 
 <br>
 

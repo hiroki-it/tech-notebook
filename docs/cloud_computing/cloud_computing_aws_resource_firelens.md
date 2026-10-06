@@ -49,7 +49,7 @@ description: FireLens＠AWSリソースの知見を記録しています。
 
 : OUTPUT に渡され、FluentBit は指定した外部にログをルーティングする。
 
-> - https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
+> - [詳解 FireLens – Amazon ECS タスクで高度なログルーティングを実現する機能を深く知る \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/)
 > - https://docs.docker.com/config/containers/logging/fluentd/
 
 ### FireLens コンテナ
@@ -62,7 +62,7 @@ FireLens コンテナでは、FluentBit がログルーティングプロセス�
 
 FireLens コンテナを使用せずにユーザー定義のコンテナを作成して稼働できる。ただ、FireLens コンテナを使用すれば、主要なセットアップがされているため、より簡単な設定で FluentBit を使用できる。
 
-> - https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
+> - [詳解 FireLens – Amazon ECS タスクで高度なログルーティングを実現する機能を深く知る \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/)
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/using_firelens.html
 
 <br>
@@ -78,7 +78,7 @@ Fargate からログを送信すると、コンテナ内で稼働する FluentBi
 作成のための実装例については、以下のリンクを参考にせよ。
 
 > - [GitHub - aws-samples/amazon-ecs-firelens-examples: Sample logging architectures for FireLens on Amazon ECS and AWS Fargate. · GitHub](https://github.com/aws-samples/amazon-ecs-firelens-examples)
-> - https://aws.amazon.com/jp/blogs/news/announcing-firelens-a-new-way-to-manage-container-logs/
+> - [Firelens の発表 – コンテナログの新たな管理方法 \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/announcing-firelens-a-new-way-to-manage-container-logs/)
 
 #### ▼ ログのルーティング先
 
@@ -508,6 +508,6 @@ FireLens コンテナで処理中のログのタグ名は『`<コンテナ名>-f
     Streams_File stream_processor.conf
 ```
 
-> - https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
+> - [詳解 FireLens – Amazon ECS タスクで高度なログルーティングを実現する機能を深く知る \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/)
 
 <br>

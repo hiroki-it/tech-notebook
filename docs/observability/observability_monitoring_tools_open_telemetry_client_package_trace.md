@@ -350,7 +350,7 @@ func newSampler() sdktrace.Sampler {
 
 > - [Environment Variable Specification \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration)
 > - [Support OTEL\_SDK\_DISABLED environment variable. · Issue #3559 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/issues/3559)
-> - https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables
+> - [opentelemetry-specification/spec-compliance-matrix.md at main · open-telemetry/opentelemetry-specification · GitHub](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables)
 
 <br>
 
@@ -746,7 +746,7 @@ func foo()  {
 
 スパンの処理中に発生した特定時点のイベントを表す。
 
-> - https://opentelemetry.io/docs/languages/go/instrumentation/#events
+> - [Instrumentation \| OpenTelemetry](https://opentelemetry.io/docs/languages/go/instrumentation/#events)
 > - [今日から分散トレーシングに対応しないといけなくなった人のための opentelemetry-go 入門 - Cybozu Inside Out \| サイボウズエンジニアのブログ](https://blog.cybozu.io/entry/2023/04/12/170000)
 
 <br>
@@ -1015,7 +1015,7 @@ Google Cloud Trace をスパンの宛先とする。
 例えば Go の場合、`github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace` パッケージからコールできる。
 
 > - [Cloud RunでOpenTelemetry Collectorをサイドカーとして動かす](https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3)
-> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/CHANGELOG.md#0290---2022-04-11
+> - [opentelemetry-go/CHANGELOG.md at v1.25.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/CHANGELOG.md#0290---2022-04-11)
 
 <br>
 
@@ -1186,13 +1186,13 @@ Exporter がまとめてスパンを送信できるようになるため、ス�
 
 Go の場合、`BatchSpanProcessor()` 関数を使用する。
 
-> - https://opentelemetry.io/docs/languages/java/instrumentation/#span-processor
+> - [Instrumentation ecosystem \| OpenTelemetry](https://opentelemetry.io/docs/languages/java/instrumentation/#span-processor)
 
 #### ▼ Simple Span Processor
 
 テレメトリーファイルをそのまま Exporter に渡す。
 
-> - https://opentelemetry.io/docs/languages/java/instrumentation/#span-processor
+> - [Instrumentation ecosystem \| OpenTelemetry](https://opentelemetry.io/docs/languages/java/instrumentation/#span-processor)
 
 <br>
 
@@ -1326,7 +1326,7 @@ func (tc TraceContext) extract(carrier TextMapCarrier) trace.SpanContext {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/propagation/trace_context.go
+> - [opentelemetry-go/propagation/trace\_context.go at v1.25.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/propagation/trace_context.go)
 
 <br>
 
@@ -1380,7 +1380,7 @@ func NewTracerProvider() {
 > - [今日から分散トレーシングに対応しないといけなくなった人のための opentelemetry-go 入門 - Cybozu Inside Out \| サイボウズエンジニアのブログ](https://blog.cybozu.io/entry/2023/04/12/170000)
 > - [OpenTelemetryで分散トレーシング - Carpe Diem](https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry)
 > - https://www.lottohub.jp/posts/otelsql-grpc/
-> - https://github.com/openzipkin/b3-propagation#overall-process
+> - [GitHub - openzipkin/b3-propagation: Repository that describes and sometimes implements B3 propagation · GitHub](https://github.com/openzipkin/b3-propagation#overall-process)
 
 <br>
 
@@ -1415,7 +1415,7 @@ func NewTracerProvider() {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/semconv/v1.20.0/resource.go
+> - [opentelemetry-go/semconv/v1.20.0/resource.go at v1.25.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/semconv/v1.20.0/resource.go)
 
 #### ▼ DB 操作の場合
 
@@ -1514,7 +1514,7 @@ OpenTelemetry の仕様では、あるべき環境変数が決まっている。
 
 ただ、言語によって開発状況が異なり、使えない環境変数がある。
 
-> - https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables
+> - [opentelemetry-specification/spec-compliance-matrix.md at main · open-telemetry/opentelemetry-specification · GitHub](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables)
 
 ### 共通
 

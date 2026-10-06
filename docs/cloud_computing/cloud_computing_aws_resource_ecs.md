@@ -9,7 +9,7 @@ description: Amazon ECS＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -29,7 +29,7 @@ Amazon ECS のコントロールプレーンは、開発者や他の AWS リソ�
 
 ![ecs_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_control-plane.png)
 
-> - https://aws.amazon.com/jp/blogs/news/under-the-hood-amazon-elastic-container-service-and-aws-fargate-increase-task-launch-rates/
+> - [詳解: Amazon Elastic Container Service と AWS Fargate のタスク起動レートの向上 \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/under-the-hood-amazon-elastic-container-service-and-aws-fargate-increase-task-launch-rates/)
 
 <br>
 
@@ -109,7 +109,7 @@ Fargate の場合、Amazon ECS コンテナエージェントがプリインス�
 ![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-execution-role.png)
 
 > - [ECS(EC2)で利用するIAMロールを整理する \| DevelopersIO](https://dev.classmethod.jp/articles/ecs_ec2_iamrole/)
-> - https://aws.amazon.com/jp/blogs/news/under-the-hood-task-networking-for-amazon-ecs/
+> - [詳解: Amazon ECSのタスクネットワーク \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/under-the-hood-task-networking-for-amazon-ecs/)
 
 #### ▼ Amazon ECS タスク定義
 
@@ -431,7 +431,7 @@ Fargate の実体は EC2 である (ドキュメントに記載がないが、AW
 
 ![fargate_data-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fargate_data-plane.png)
 
-> - https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
+> - [詳細: Fargate データプレーン \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/)
 
 <br>
 

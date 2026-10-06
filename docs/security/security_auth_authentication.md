@@ -34,7 +34,7 @@ realm ごとに認証を管理する。
 例えば Keycloak であれば、Admin アカウントの認証は master realm で、それ以外はユーザー定義の realm、で管理する。
 
 > - [TECHNICAL MANUAL](https://www.seil.jp/doc/index.html#fn/pppac/cmd/authentication_realm.html)
-> - https://keycloak-documentation.openstandia.jp/21.0/ja_JP/server_admin/index.html#the-master-realm
+> - [Server Administration Guide](https://keycloak-documentation.openstandia.jp/21.0/ja_JP/server_admin/index.html#the-master-realm)
 
 #### ▼ realm の粒度
 

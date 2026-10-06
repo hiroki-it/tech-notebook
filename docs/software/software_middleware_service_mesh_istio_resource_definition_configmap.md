@@ -240,7 +240,7 @@ data:
 ```
 
 > - [Istio / Istio 1.22 Upgrade Notes](https://istio.io/latest/news/releases/1.22.x/announcing-1.22/upgrade-notes/#default-value-of-the-feature-flag-enhanced_resource_scoping-to-true)
-> - https://github.com/istio/api/blob/v1.22.1/mesh/v1alpha1/config.proto#L1252-L1274
+> - [api/mesh/v1alpha1/config.proto at v1.22.1 · istio/api · GitHub](https://github.com/istio/api/blob/v1.22.1/mesh/v1alpha1/config.proto#L1252-L1274)
 
 #### ▼ REGISTRY_ONLY
 
@@ -1809,7 +1809,7 @@ Prometheus をメトリクスプロバイダーとして設定する。
 
 宛先情報を設定する項目はなく、Prometheus が istio-proxy のメトリクスエンドポイントから収集する。
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-PrometheusMetricsProvider
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-PrometheusMetricsProvider)
 > - [Istio / Telemetry](https://istio.io/latest/docs/reference/config/telemetry/)
 
 <br>
@@ -1968,7 +1968,7 @@ data:
               port: 443
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshNetworks
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshNetworks)
 
 <br>
 
@@ -2020,7 +2020,7 @@ data:
 ```
 
 > - [Istio / Installing the Sidecar](https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection)
-> - https://github.com/istio/istio/blob/1.20.3/pkg/kube/inject/inject.go#L303
+> - [istio/pkg/kube/inject/inject.go at 1.20.3 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.20.3/pkg/kube/inject/inject.go#L303)
 
 <br>
 

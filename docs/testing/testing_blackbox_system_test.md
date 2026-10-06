@@ -557,7 +557,7 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 
 ![test_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/test_traffic-mirroring.png)
 
-> - https://aws.amazon.com/blogs/networking-and-content-delivery/mirror-production-traffic-to-test-environment-with-vpc-traffic-mirroring/
+> - [Mirror production traffic to test environment with VPC Traffic Mirroring \| Networking & Content Delivery](https://aws.amazon.com/blogs/networking-and-content-delivery/mirror-production-traffic-to-test-environment-with-vpc-traffic-mirroring/)
 > - [ポートミラーリング（ミラーポート）とは - IT用語辞典 e-Words](https://e-words.jp/w/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%9F%E3%83%A9%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0.html)
 
 <br>

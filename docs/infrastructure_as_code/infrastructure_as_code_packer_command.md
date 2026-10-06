@@ -41,7 +41,7 @@ $ packer fmt -recursive
 $ packer init template.pkr.hcl
 ```
 
-> - https://developer.hashicorp.com/packer/docs/commands/init
+> - [packer init command reference \| Packer \| HashiCorp Developer](https://developer.hashicorp.com/packer/docs/commands/init)
 
 <br>
 

@@ -9,7 +9,7 @@ description: 開発組織の編成＠開発体制の知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -77,7 +77,7 @@ description: 開発組織の編成＠開発体制の知見を記録していま�
 - AI エンジニア
 
 > - [Team Topologies: Platform teamはStream aligned teamである - APC 技術ブログ](https://techblog.ap-com.co.jp/entry/2023/05/22/105800)
-> - https://www.atlassian.com/devops/frameworks/team-topologies
+> - [Team Topologies \| Atlassian](https://www.atlassian.com/devops/frameworks/team-topologies)
 
 <br>
 

@@ -295,7 +295,7 @@ spec:
 ```
 
 > - [amazon-vpc-cni-k8s/config/master/aws-k8s-cni.yaml at v1.15.3 · aws/amazon-vpc-cni-k8s · GitHub](https://github.com/aws/amazon-vpc-cni-k8s/blob/v1.15.3/config/master/aws-k8s-cni.yaml#L351-L567)
-> - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-now-supports-kubernetes-network-policies/
+> - [Amazon VPC CNI による Kubernetes NetworkPolicy のサポート \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-now-supports-kubernetes-network-policies/)
 > - [GitHub - aws/aws-network-policy-agent: Network Policy Agent is a daemonset that is responsible for enforcing configured network policies on the cluster. · GitHub](https://github.com/aws/aws-network-policy-agent)
 
 <br>

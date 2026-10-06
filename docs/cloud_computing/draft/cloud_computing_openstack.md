@@ -101,7 +101,7 @@ Web 環境を提供するためのインターフェース機能である。
 OpenStack の IaC である。
 
 > - https://www.openupitengineer.co.jp/column/it-technology/4579
-> - https://qiita.com/kounan13/items/57adfbf3a5f209afa586#%E4%BB%A3%E8%A1%A8%E4%BE%8B%EF%BC%93aws%E3%82%84openstack%E7%94%A8%E3%81%AE%E3%83%84%E3%83%BC%E3%83%AB
+> - [IaC関連ツールまとめ #kubernetes - Qiita](https://qiita.com/kounan13/items/57adfbf3a5f209afa586#%E4%BB%A3%E8%A1%A8%E4%BE%8B%EF%BC%93aws%E3%82%84openstack%E7%94%A8%E3%81%AE%E3%83%84%E3%83%BC%E3%83%AB)
 
 <br>
 

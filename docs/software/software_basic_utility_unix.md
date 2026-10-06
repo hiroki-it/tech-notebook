@@ -1179,7 +1179,7 @@ uid=999 gid=0(root) groups=0(root),999
 | `groups` | プライマリグループのグループ番号を表す。root 権限の実行ユーザーの場合は、`(root)` がつく。 |
 | `番号`   | プライマリグループ名を表す。                                                               |
 
-> - https://kcfran.com/2022/04/06/linux-command-id/
+> - [Linuxコマンド辞典 idコマンド（ユーザ/グループ管理）](https://kcfran.com/2022/04/06/linux-command-id/)
 
 <br>
 
@@ -1893,7 +1893,7 @@ notBefore=Dec  9 09:31:55 2020 GMT # 開始日
 notAfter=Jan 10 09:31:55 2022 GMT  # 終了日
 ```
 
-> - https://pcvogel.sarakura.net/2019/01/07/31902
+> - [メールサーバやWEBサーバに設定した証明書の有効期限をopensslコマンドで確認する - パソコン鳥のブログ](https://pcvogel.sarakura.net/2019/01/07/31902)
 
 <br>
 
@@ -2064,7 +2064,7 @@ $ find ./* \
     -type f | xargs sed -i '' -e '/foo/! {/bar/! {/baz/! {/qux/! s/before/after/g;} ;} ;}'
 ```
 
-> - https://www.jh4vaj.com/archives/24778
+> - [sedで除外する行を指定した操作 \| jh4vaj](https://www.jh4vaj.com/archives/24778)
 > - https://bi.biopapyrus.jp/os/linux/sed.html
 
 <br>

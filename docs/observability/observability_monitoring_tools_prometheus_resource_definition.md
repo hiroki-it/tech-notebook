@@ -1010,7 +1010,7 @@ spec:
 
 > - https://grafana.com/blog/2022/03/21/how-relabeling-in-prometheus-works/
 > - [node\_exporters are using the IP as instance name (should be hostname?) · Issue #135 · prometheus-operator/prometheus-operator · GitHub](https://github.com/prometheus-operator/prometheus-operator/issues/135#issuecomment-313087336)
-> - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#kubernetes_sd_config
+> - [Configuration \| Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#kubernetes_sd_config)
 
 #### ▼ path
 

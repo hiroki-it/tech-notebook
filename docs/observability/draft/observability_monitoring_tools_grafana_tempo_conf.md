@@ -37,7 +37,7 @@ distributor:
     enabled: true
 ```
 
-> - https://grafana.com/docs/tempo/latest/configuration/#distributor
+> - [Configure Tempo \| Grafana Tempo documentation](https://grafana.com/docs/tempo/latest/configuration/#distributor)
 
 #### ▼ log_discarded_spans
 
@@ -49,7 +49,7 @@ distributor:
     enabled: true
 ```
 
-> - https://grafana.com/docs/tempo/latest/configuration/#distributor
+> - [Configure Tempo \| Grafana Tempo documentation](https://grafana.com/docs/tempo/latest/configuration/#distributor)
 
 #### ▼ receivers
 
@@ -78,7 +78,7 @@ distributor:
           endpoint: 0.0.0.0:4318
 ```
 
-> - https://grafana.com/docs/tempo/latest/configuration/#distributor
+> - [Configure Tempo \| Grafana Tempo documentation](https://grafana.com/docs/tempo/latest/configuration/#distributor)
 
 <br>
 

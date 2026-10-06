@@ -193,8 +193,8 @@ AWS リソースには AWS Certificate Manager のサーバー証明書を紐づ
 | Amazon Route 53 ➡️ Load Balancer Controller (AWS Certificate Manager のサーバー証明書) ➡️ Service / Pod                            | Ingress Controller                           |
 | Amazon Route 53 ➡️ Load Balancer Controller (AWS Certificate Manager のサーバー証明書) ➡️ Service / Pod (AWS 以外のサーバー証明書) | Pod                                          |
 
-> - https://aws.amazon.com/blogs/security/tls-enabled-kubernetes-clusters-with-acm-private-ca-and-amazon-eks-2/
-> - https://aws.amazon.com/blogs/containers/setting-up-end-to-end-tls-encryption-on-amazon-eks-with-the-new-aws-load-balancer-controller/
+> - [TLS-enabled Kubernetes clusters with ACM Private CA and Amazon EKS \| AWS Security Blog](https://aws.amazon.com/blogs/security/tls-enabled-kubernetes-clusters-with-acm-private-ca-and-amazon-eks-2/)
+> - [Setting up end-to-end TLS encryption on Amazon EKS with the new AWS Load Balancer Controller \| Containers](https://aws.amazon.com/blogs/containers/setting-up-end-to-end-tls-encryption-on-amazon-eks-with-the-new-aws-load-balancer-controller/)
 
 #### ▼ Amazon Route 53 ➡️ Amazon CloudFront の場合
 

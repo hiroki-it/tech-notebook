@@ -21,7 +21,7 @@ description: admission-controllers＠コントロールプレーン系の知見�
 
 ![kubernetes_admission-controllers](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers.png)
 
-> - https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
+> - [Admission Control in Kubernetes \| Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/)
 > - [Kubernetesのユーザー管理と認証・権限確認機構を理解しよう \| さくらのナレッジ](https://knowledge.sakura.ad.jp/21129/)
 > - [Kubernetes API Server Authentication and Authorization Mechanism - SoByte](https://www.sobyte.net/post/2022-07/k8s-auth/)
 
@@ -39,7 +39,7 @@ kube-apiserver クライアント (`kubectl` クライアント、Kubernetes リ
 
 ![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_architecture.png)
 
-> - https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
+> - [A Guide to Kubernetes Admission Controllers \| Kubernetes](https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/)
 > - [Kubernetes Admission Control](https://www.digihunch.com/2022/01/kubernetes-admission-control/)
 > - [Kubernetes Admission Webhook覚書き - gashirar's blog](https://gashirar.hatenablog.com/entry/2020/10/31/141357)
 
@@ -78,7 +78,7 @@ TaintNodesByCondition,
 ValidatingAdmissionWebhook,
 ```
 
-> - https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#which-plugins-are-enabled-by-default
+> - [Admission Control in Kubernetes \| Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#which-plugins-are-enabled-by-default)
 
 #### ▼ Webhook 系プラグインのサーバー証明書
 
@@ -164,7 +164,7 @@ webhooks:
 ```
 
 > - [Admission Webhookを作って遊んで、その仕組みを理解しよう（説明編）](https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/)
-> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
+> - [Dynamic Admission Control \| Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration)
 
 <br>
 
@@ -220,7 +220,7 @@ webhooks:
       caBundle: Ci0tLS0tQk...
 ```
 
-> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
+> - [Dynamic Admission Control \| Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration)
 > - [Kubernetesと連携するアプリケーション開発手法 / openshiftjp10-amsy810 - Speaker Deck](https://speakerdeck.com/masayaaoyama/openshiftjp10-amsy810?slide=24)
 > - [Admission Webhookを作って遊んで、その仕組みを理解しよう（説明編）](https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/)
 
@@ -306,7 +306,7 @@ kube-apiserver は、特定のリクエストを受信すると、webhook サー
 }
 ```
 
-> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
+> - [Dynamic Admission Control \| Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response)
 > - [KubernetesのDynamic Admission Controlを試してみる - tokibiブログ](https://tokibi.hatenablog.com/entry/2020/01/07/150359)
 > - [v1 package - k8s.io/api/admission/v1 - Go Packages](https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview)
 
@@ -349,7 +349,7 @@ webhook サーバーは、AdmissionReview 内の AdmissionResponse に patch 処
 ]
 ```
 
-> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
+> - [Dynamic Admission Control \| Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response)
 > - [v1 package - k8s.io/api/admission/v1 - Go Packages](https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview)
 > - [kube-sidecar-injector/cmd/webhook.go at 4e010f4cdee8baf3cd3f3f59ec9b95e5db9b9f01 · morvencao/kube-sidecar-injector · GitHub](https://github.com/morvencao/kube-sidecar-injector/blob/4e010f4cdee8baf3cd3f3f59ec9b95e5db9b9f01/cmd/webhook.go#L218-L225)
 > - [JSON Patch \| jsonpatch.com](https://jsonpatch.com/)
@@ -388,7 +388,7 @@ webhook サーバーは、AdmissionReview 内の AdmissionResponse にバリデ�
 }
 ```
 
-> - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
+> - [Dynamic Admission Control \| Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response)
 > - [v1 package - k8s.io/api/admission/v1 - Go Packages](https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview)
 
 <br>

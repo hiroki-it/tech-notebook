@@ -64,7 +64,7 @@ kube-apiserver のバージョンに応じて、公式リポジトリが用意�
 
 そのため、client-go パッケージを定期的にアップグレードする必要がある。
 
-> - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#-strong-api-groups-strong-
+> - [Kubernetes API Reference Docs](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#-strong-api-groups-strong-)
 
 #### ▼ 調査例
 
@@ -78,6 +78,6 @@ ArgoCD の `2.3.0` では、client-go パッケージのバージョンが `0.23
 
 Kubernetes の `1.23.1` がサポートしている API グループのバージョンから、マニフェストで使用できる `.apiVersion` がわかる。
 
-> - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#-strong-api-groups-strong-
+> - [Kubernetes API Reference Docs](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#-strong-api-groups-strong-)
 
 <br>

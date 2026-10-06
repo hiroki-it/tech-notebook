@@ -807,7 +807,7 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 > - https://aws.amazon.com/blogs/database/achieve-cost-effective-multi-region-resiliency-with-amazon-aurora-global-database-headless-clusters/_
 > - [Getting started with Amazon Aurora Global Database - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-getting-started.html#aurora-global-database-attach.console.headless)
-> - https://aws.amazon.com/blogs/database/achieve-cost-effective-multi-region-resiliency-with-amazon-aurora-global-database-headless-clusters/
+> - [Achieve cost-effective multi-Region resiliency with Amazon Aurora Global Database headless clusters \| AWS Database Blog](https://aws.amazon.com/blogs/database/achieve-cost-effective-multi-region-resiliency-with-amazon-aurora-global-database-headless-clusters/)
 
 <br>
 

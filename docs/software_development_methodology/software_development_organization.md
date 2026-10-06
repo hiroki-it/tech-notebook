@@ -120,7 +120,7 @@ flowchart LR
 ```
 
 > - [一人前のその先へ！！！一歩踏み出すためのエンジニアキャリアwhy型・how型という考え方 #初心者 - Qiita](https://qiita.com/vankobe/items/9a951d814db6b1180074#%E8%AA%B2%E9%A1%8C%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%AF%E5%85%A8%E3%81%A6%E3%82%92%E6%B1%82%E3%82%81%E3%82%89%E3%82%8C%E3%82%8B-or-%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%98%E3%82%83%E3%81%AA%E3%81%91%E3%82%8C%E3%81%B0%E6%B1%82%E3%82%81%E3%82%89%E3%82%8C%E3%81%AA%E3%81%84)
-> - https://www.youtube.com/watch?v=ljFZqeXYLXo
+> - [【フルスタック vs バックエンド】年収や仕事内容の違いを徹底比較！エンジニア特化の現役転職エージェントであるモローがGreenの求人票を見ながら解説します！#エンジニア転職 #転職 #キャリア - YouTube](https://www.youtube.com/watch?v=ljFZqeXYLXo)
 > - [迷わないためのエンジニアリングマネージャーの心構え #キャリア - Qiita](https://qiita.com/darquro/items/d9efb7b5b789c152905f#%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AE%E4%BB%95%E4%BA%8B)
 > - [エンジニアリングマネージャ/プロダクトマネージャのための知識体系と読書ガイド #アーキテクチャ - Qiita](https://qiita.com/hirokidaichi/items/95678bb1cef32629c317#%E3%83%86%E3%82%AF%E3%83%8E%E3%83%AD%E3%82%B8%E3%83%BC%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88)
 > - [エンジニアリングマネジメントスキル - ohbarye](https://scrapbox.io/ohbarye/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88%E3%82%B9%E3%82%AD%E3%83%AB)

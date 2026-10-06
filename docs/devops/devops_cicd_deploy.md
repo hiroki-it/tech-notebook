@@ -23,7 +23,7 @@ description: デプロイ手法＠リリースの知見を記録しています�
 
 DevOps の CI/CD パイプラインを導入することで、これを実装する。
 
-> - https://www.atlassian.com/ja/agile/software-development/release
+> - [ソフトウェア リリース: 成功に必要な 3 つの要素 \| アトラシアン](https://www.atlassian.com/ja/agile/software-development/release)
 
 <br>
 
@@ -35,7 +35,7 @@ DevOps の CI/CD パイプラインを導入することで、これを実装す
 
 アジャイル開発やマイクロサービスアーキテクチャを導入することで、これを実装する。
 
-> - https://www.atlassian.com/ja/agile/software-development/release
+> - [ソフトウェア リリース: 成功に必要な 3 つの要素 \| アトラシアン](https://www.atlassian.com/ja/agile/software-development/release)
 
 <br>
 
@@ -47,7 +47,7 @@ DevOps の CI/CD パイプラインを導入することで、これを実装す
 
 デプロイノートや PRR モデルを導入することで、これを実装する。
 
-> - https://www.atlassian.com/ja/agile/software-development/release
+> - [ソフトウェア リリース: 成功に必要な 3 つの要素 \| アトラシアン](https://www.atlassian.com/ja/agile/software-development/release)
 > - [Production Readyと開発プロセス改善 - OPTiM TECH BLOG](https://tech-blog.optim.co.jp/entry/2020/07/01/080000)
 
 <br>

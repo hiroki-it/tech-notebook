@@ -27,7 +27,7 @@ $ apt-get install -y \
     docker-ce-cli
 ```
 
-> - https://docs.docker.com/engine/install/ubuntu/#install-docker-engine
+> - [Install Docker Engine on Ubuntu \| Docker Docs](https://docs.docker.com/engine/install/ubuntu/#install-docker-engine)
 
 `docker` プロセスをデーモンとして起動する。
 
@@ -103,7 +103,7 @@ RUN mkdir -p /usr/src/things \
   && make -C /usr/src/things all
 ```
 
-> - https://qiita.com/zembutsu/items/a96b68277d699f79418d
+> - [Dockerfileを書くためのベストプラクティス【参考訳】v18.09 #dockerfile - Qiita](https://qiita.com/zembutsu/items/a96b68277d699f79418d)
 > - https://www.slideshare.net/zembutsu/explaining-best-practices-for-writing-dockerfiles#44
 
 <br>
@@ -202,7 +202,7 @@ RUN echo $PYTHON_VERSION
 FROM python:${PYTHON_VERSION}
 ```
 
-> - https://docs.docker.com/reference/dockerfile/#understand-how-arg-and-from-interact
+> - [Dockerfile reference \| Docker Docs](https://docs.docker.com/reference/dockerfile/#understand-how-arg-and-from-interact)
 
 <br>
 

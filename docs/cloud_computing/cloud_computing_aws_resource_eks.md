@@ -230,7 +230,7 @@ kube-apiserver
 etcd # Amazon EKS アップグレードインサイトで検証
 ```
 
-> - https://aws.amazon.com/blogs/containers/accelerate-the-testing-and-verification-of-amazon-eks-upgrades-with-upgrade-insights/
+> - [Accelerate the testing and verification of Amazon EKS upgrades with upgrade insights \| Containers](https://aws.amazon.com/blogs/containers/accelerate-the-testing-and-verification-of-amazon-eks-upgrades-with-upgrade-insights/)
 > - [EKS Upgrade insightsを利用してクラスターアップデート時に影響あるAPI等を確認する #kubernetes - Qiita](https://qiita.com/kyohei_tsuno/items/27eafb4cff4c14c9c9bd)
 
 <br>
@@ -308,7 +308,7 @@ data:
 
      AWS IAMユーザーは、Kubernetesリソースを操作できる。
 
-> - https://aws.amazon.com/blogs/containers/kubernetes-rbac-and-iam-integration-in-amazon-eks-using-a-java-based-kubernetes-operator/
+> - [Kubernetes RBAC and IAM Integration in Amazon EKS using a Java-based Kubernetes Operator \| Containers](https://aws.amazon.com/blogs/containers/kubernetes-rbac-and-iam-integration-in-amazon-eks-using-a-java-based-kubernetes-operator/)
 > - [Amazon EKS Authentication and Authorization Process](https://dzone.com/articles/amazon-eks-authentication-amp-authorization-proces)
 > - [EKSでの認証認可 〜aws-iam-authenticatorとIRSAのしくみ〜 - もうずっといなかぐらし](https://katainaka0503.hatenablog.com/entry/2019/12/07/091737)
 > - [EKSのsystem:mastersアクセス許可とは何か - karakaram-blog](https://www.karakaram.com/eks-system-masters-group/)
@@ -405,7 +405,7 @@ data:
   server: "https://*****.gr7.ap-northeast-1.eks.amazonaws.com"
 ```
 
-> - https://aws.amazon.com/blogs/containers/a-deep-dive-into-simplified-amazon-eks-access-management-controls/
+> - [A deep dive into simplified Amazon EKS access management controls \| Containers](https://aws.amazon.com/blogs/containers/a-deep-dive-into-simplified-amazon-eks-access-management-controls/)
 > - [EKS クラスターへのアクセス制御を EKS API 経由で実施可能になったので試してみた \| DevelopersIO](https://dev.classmethod.jp/articles/eks-access-management-with-iam-access-entry/)
 > - [trouble using --aws-role-arn option when adding EKS cluster with argocd CLI · Issue #2347 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/2347#issuecomment-1963555799)
 
@@ -691,10 +691,10 @@ AWS_WEB_IDENTITY_TOKEN_FILE=/var/run/secrets/eks.amazonaws.com/serviceaccount/to
 ...
 ```
 
-> - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
+> - [詳解: IAM Roles for Service Accounts \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/)
 > - [株式会社ビッグツリーテクノロジー＆コンサルティング \| EKSを理解する（第2回）IRSAを用いたPod単位のIAMロール割り当て](https://www.bigtreetc.com/column/eks-irsa/)
 > - [EKSでの認証認可 〜aws-iam-authenticatorとIRSAのしくみ〜 - もうずっといなかぐらし](https://katainaka0503.hatenablog.com/entry/2019/12/07/091737#ServiceAccount%E3%81%AEIAM-%E3%83%AD%E3%83%BC%E3%83%ABIRSA)
-> - https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/
+> - [Introducing fine-grained IAM roles for service accounts \| AWS Open Source Blog](https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/)
 > - [EKSのaws-authとかIRSAとか](https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#2.-eks%E3%81%8B%E3%82%89aws%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%B8%E3%81%A8%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88)
 
 <br>
@@ -813,7 +813,7 @@ Amazon EKS データプレーンはプライベートサブネットで稼働さ
 
 そのために、パブリックサブネットに AWS NAT Gateway を配置する。
 
-> - https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
+> - [Amazon EKS ワーカーノードの謎を解くクラスターネットワーク \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/)
 
 <br>
 
@@ -894,7 +894,7 @@ Amazon EKS Cluster を作成すると、ENI も作成する。
 | AWS Secrets Manager               | Interface          | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Manager を使用するため。                                                                                  |
 
 > - [EKS入門者向けに「今こそ振り返るEKSの基礎」というタイトルで登壇しました #jawsug\_ct \| DevelopersIO](https://dev.classmethod.jp/articles/eks_basic/)
-> - https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
+> - [Amazon EKS ワーカーノードの謎を解くクラスターネットワーク \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/)
 
 #### ▼ Amazon VPC 内のほかの AWS リソースへのリクエスト
 
@@ -1058,7 +1058,7 @@ Amazon EKS のテスト環境の請求料金を節約するため、昼間に通
 
 どのような Amazon EC2 Node を管理するのかは起動テンプレートと AWS Auto Scaling グループを使用して定義する必要がある。
 
-> - https://aws.amazon.com/jp/blogs/containers/introducing-launch-template-and-custom-ami-support-in-amazon-eks-managed-node-groups/
+> - [Introducing launch template and custom AMI support in Amazon EKS Managed Node Groups \| Containers](https://aws.amazon.com/jp/blogs/containers/introducing-launch-template-and-custom-ami-support-in-amazon-eks-managed-node-groups/)
 > - [\[AWS\] EKSマネージドノードグループでLaunch Templatesがサポートされたことで便利になったこと #kubernetes - Qiita](https://qiita.com/Uro3/items/d966b9bf77dc2b81e7f2)
 
 <br>
@@ -1634,7 +1634,7 @@ Fargate ワーカーNode 内のメトリクスの元になるデータポイン�
 
 収集ツールとして、OpenTelemetry をサポートしている。
 
-> - https://aws.amazon.com/jp/blogs/news/introducing-amazon-cloudwatch-container-insights-for-amazon-eks-fargate-using-aws-distro-for-opentelemetry/
+> - [AWS Distro for OpenTelemetry を使用した CloudWatch Container Insights の EKS Fargate サポートのご紹介 \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/introducing-amazon-cloudwatch-container-insights-for-amazon-eks-fargate-using-aws-distro-for-opentelemetry/)
 
 #### ▼ ログ収集
 
