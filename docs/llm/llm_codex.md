@@ -43,17 +43,19 @@ $ codex --dangerously-bypass-approvals-and-sandbox
 # 思考過程の出力を非表示にする
 hide_agent_reasoning = true
 
+# 使用するモデルを指定する
 model="gpt-5.2"
 
+# 使用するモデルプロバイダーを指定する
 model_provider="<プロバイダー名>"
 
-# 思考にかける時間
+# モデルの推論にかける労力を低く設定する
 model_reasoning_effort = "low"
 
-# Macで通知を有効化する
+# 通知時に実行するコマンドを指定する（この例ではMacの通知スクリプト）
 notify = ["bash", "/Users/hiroki.hasegawa/.codex/notify_macos.sh"]
 
-# インターネット検索を有効化する
+# 最新のインターネット情報を取得する検索を有効化する
 web_search = "live"
 
 # 承認なしで進める
@@ -62,10 +64,44 @@ approval_policy = "never"
 # ファイルとネットワークへのアクセスを制限しない
 sandbox_mode = "danger-full-access"
 
+# 対応するモデルの会話スタイルを実務的にする
+personality = "pragmatic"
+
+# マルチエージェントの設定
+[agents]
+# マルチエージェント用のツールを有効化する
+enabled = true
+# 同時に開けるサブエージェントのスレッド数を20に制限する（主スレッドを除く）
+max_concurrent_threads_per_session = 20
+
+# シェルで実行する子プロセスの環境変数の設定
+[shell_environment_policy]
+# 親プロセスのすべての環境変数を継承する
+inherit = "all"
+# KEY、SECRET、TOKENを名前に含む環境変数の自動除外を無効化する
+ignore_default_excludes = true
+
+# ターミナルUIの設定
+[tui]
+# ステータス行に現在のディレクトリ、Gitブランチ、モデルをこの順に表示する
+status_line = ["current-dir", "git-branch", "model"]
+# 公式資料に説明なし：名前からはスクリーンリーダーの検出完了を記録する項目と読める
+screen_reader_detection_done = true
+
+# 公式資料に説明なし：モデルの利用可能性に関する初回案内の状態と思われる
+[tui.model_availability_nux]
+# このモデルに対応する状態値（4の意味は公式資料では確認できない）
+"gpt-6.1-sol" = 4
+
+# LiteLLMをモデルプロバイダーとして定義する
 [model_providers.lite_llm]
+# モデルプロバイダーのAPIのベースURLを指定する
 base_url="<APIのURL>"
+# APIキーを読み取る環境変数名を指定する
 env_key="OPENAI_API_KEY"
+# モデルプロバイダーの表示名を指定する
 name="<プロバイダー名>"
+# モデルとの通信にResponses API形式を使用する
 wire_api="responses"
 ```
 
