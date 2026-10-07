@@ -33978,7 +33978,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:04:05 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月7日 18:18:18 JST">2026-10-07</span>
   </span>
 
     
@@ -34028,17 +34028,19 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># 思考過程の出力を非表示にする</span>
 <span class="n">hide_agent_reasoning</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 
+<span class="c1"># 使用するモデルを指定する</span>
 <span class="n">model</span><span class="o">=</span><span class="s2">"gpt-5.2"</span>
 
+<span class="c1"># 使用するモデルプロバイダーを指定する</span>
 <span class="n">model_provider</span><span class="o">=</span><span class="s2">"&lt;プロバイダー名&gt;"</span>
 
-<span class="c1"># 思考にかける時間</span>
+<span class="c1"># モデルの推論にかける労力を低く設定する</span>
 <span class="n">model_reasoning_effort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"low"</span>
 
-<span class="c1"># Macで通知を有効化する</span>
+<span class="c1"># 通知時に実行するコマンドを指定する（この例ではMacの通知スクリプト）</span>
 <span class="n">notify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"bash"</span><span class="p">,</span><span class="w"> </span><span class="s2">"/Users/hiroki.hasegawa/.codex/notify_macos.sh"</span><span class="p">]</span>
 
-<span class="c1"># インターネット検索を有効化する</span>
+<span class="c1"># 最新のインターネット情報を取得する検索を有効化する</span>
 <span class="n">web_search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"live"</span>
 
 <span class="c1"># 承認なしで進める</span>
@@ -34047,10 +34049,44 @@
 <span class="c1"># ファイルとネットワークへのアクセスを制限しない</span>
 <span class="n">sandbox_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"danger-full-access"</span>
 
+<span class="c1"># 対応するモデルの会話スタイルを実務的にする</span>
+<span class="n">personality</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"pragmatic"</span>
+
+<span class="c1"># マルチエージェントの設定</span>
+<span class="k">[agents]</span>
+<span class="c1"># マルチエージェント用のツールを有効化する</span>
+<span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="c1"># 同時に開けるサブエージェントのスレッド数を20に制限する（主スレッドを除く）</span>
+<span class="n">max_concurrent_threads_per_session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span>
+
+<span class="c1"># シェルで実行する子プロセスの環境変数の設定</span>
+<span class="k">[shell_environment_policy]</span>
+<span class="c1"># 親プロセスのすべての環境変数を継承する</span>
+<span class="n">inherit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"all"</span>
+<span class="c1"># KEY、SECRET、TOKENを名前に含む環境変数の自動除外を無効化する</span>
+<span class="n">ignore_default_excludes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="c1"># ターミナルUIの設定</span>
+<span class="k">[tui]</span>
+<span class="c1"># ステータス行に現在のディレクトリ、Gitブランチ、モデルをこの順に表示する</span>
+<span class="n">status_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"current-dir"</span><span class="p">,</span><span class="w"> </span><span class="s2">"git-branch"</span><span class="p">,</span><span class="w"> </span><span class="s2">"model"</span><span class="p">]</span>
+<span class="c1"># 公式資料に説明なし：名前からはスクリーンリーダーの検出完了を記録する項目と読める</span>
+<span class="n">screen_reader_detection_done</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="c1"># 公式資料に説明なし：モデルの利用可能性に関する初回案内の状態と思われる</span>
+<span class="k">[tui.model_availability_nux]</span>
+<span class="c1"># このモデルに対応する状態値（4の意味は公式資料では確認できない）</span>
+<span class="s2">"gpt-6.1-sol"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>
+
+<span class="c1"># LiteLLMをモデルプロバイダーとして定義する</span>
 <span class="k">[model_providers.lite_llm]</span>
+<span class="c1"># モデルプロバイダーのAPIのベースURLを指定する</span>
 <span class="n">base_url</span><span class="o">=</span><span class="s2">"&lt;APIのURL&gt;"</span>
+<span class="c1"># APIキーを読み取る環境変数名を指定する</span>
 <span class="n">env_key</span><span class="o">=</span><span class="s2">"OPENAI_API_KEY"</span>
+<span class="c1"># モデルプロバイダーの表示名を指定する</span>
 <span class="n">name</span><span class="o">=</span><span class="s2">"&lt;プロバイダー名&gt;"</span>
+<span class="c1"># モデルとの通信にResponses API形式を使用する</span>
 <span class="n">wire_api</span><span class="o">=</span><span class="s2">"responses"</span>
 </code></pre></div>
 <p>MacOS での通知スクリプトは次のとおり。</p>
