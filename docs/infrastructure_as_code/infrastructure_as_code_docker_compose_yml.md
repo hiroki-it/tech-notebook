@@ -391,7 +391,6 @@ services:
 
 ログのフォワーディング元よりも先に起動する必要がある。
 
-> - [Docker Compose · Fluentd 1.0 Documentation](https://docs.fluentd.org/container-deployment/docker-compose#step-0-create-docker-compose.yml)
 
 **＊実装例＊**
 
@@ -412,6 +411,9 @@ services:
     ports:
       - "24224:24224"
 ```
+
+> - [Docker Compose · Fluentd 1.0 Documentation](https://docs.fluentd.org/container-deployment/docker-compose#step-0-create-docker-compose.yml)
+
 
 <br>
 

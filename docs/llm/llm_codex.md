@@ -93,6 +93,14 @@ screen_reader_detection_done = true
 # このモデルに対応する状態値（4の意味は公式資料では確認できない）
 "gpt-6.1-sol" = 4
 
+[tui.keymap.editor]
+# エンターでチャットを送信する
+insert_newline = ["enter"]
+
+[tui.keymap.composer]
+# タブでチャットを送信する
+submit = ["tab"]
+
 # LiteLLMをモデルプロバイダーとして定義する
 [model_providers.lite_llm]
 # モデルプロバイダーのAPIのベースURLを指定する
