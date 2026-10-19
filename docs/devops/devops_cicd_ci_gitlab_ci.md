@@ -1320,3 +1320,183 @@ go_mod:
 > - https://stackoverflow.com/a/74831820/12771072
 
 <br>
+
+## 07. GitLab Agentを使用したレビュー環境
+
+### GitLab Agentとは
+
+GitLab Agentは、Kubernetesクラスタ内で動作し、GitLabとクラスタを接続して、GitLab CI/CDからアプリケーションをデプロイできるようにするエージェントである。
+
+
+<br>
+
+### CIOps構成
+
+#### ▼ レビュー環境を構築する仕組み
+
+```mermaid
+flowchart LR
+    CI{{"GitLab CI"}}
+    subgraph EKS["EKS"]
+        Agent(["Pod<br/>（gitlab-agent）"])
+        Pod(["Pod<br/>（review-app）"])
+        Cleaner(["Job<br/>（review-app-route53-record-cleaner）"])
+        DNS(["Pod<br/>（external-dns）"])
+        Ingress(["Ingress"])
+    end
+    IAM["IAMロール"]
+    Route53["Amazon Route53"]
+
+    CI -->|"helm upgrade"| Agent
+    Agent -->|"MRごとに作成"| Pod
+    Agent -->|"MRごとに作成"| Cleaner
+    Agent -->|"MRごとに作成"| Ingress
+    DNS -->|"ホストヘッダー監視"| Ingress
+    DNS -->|"DNSレコード挿入"| Route53
+    Cleaner -->|"DNSレコード削除権限"| IAM
+    Cleaner -->|"DNSレコード事後削除"| Route53
+```
+
+#### ▼ レビュー環境に接続する仕組み
+
+```mermaid
+flowchart LR
+    User{{"ブラウザ"}}
+    Route53["Amazon Route53"]
+    subgraph EKS["EKS"]
+        Ingress(["Ingress"])
+        Pod(["Pod<br/>（review-app）"])
+        EMQX(["Pod<br/>（emqx）"])
+    end
+    Certificate["AWS Certificate Manager"]
+    Aurora[("Amazon Aurora")]
+
+    Ingress -->|"証明書指定"| Certificate
+    User -->|"名前解決"| Route53
+    User -->|"review-&lt;MRのIID&gt;.example.com"| Ingress
+    Ingress -->|"転送"| Pod
+    Pod -->|"接続"| Aurora
+    Pod -->|"接続"| EMQX
+```
+
+<br>
+
+### 設定方法
+
+環境変数は、メインの`.gitlab-ci.yml`に次のように定義する。
+
+```yaml
+variables:
+  REVIEW_RELEASE_NAME: reviewapp-${CI_MERGE_REQUEST_IID}
+  REVIEW_DOMAIN: review-${CI_MERGE_REQUEST_IID}.example.com
+  REVIEW_CACHE_IMAGE: ${CI_REGISTRY_IMAGE}/reviewapp
+  REVIEW_NAMESPACE: review-apps
+  REVIEW_KUBECONTEXT: example/infrastructure/gitlab-kubernetes-agents:review # gitlab-agentを指定する
+  REVIEW_HOSTED_ZONE_ID: Z0123456789EXAMPLE
+  REVIEW_APP_DNS_CLEANER_ROLE_ARN: arn:aws:iam::123456789012:role/review-app-route53-record-cleaner
+  REVIEW_CERTIFICATE_ARN: arn:aws:acm:ap-northeast-1:123456789012:certificate/00000000-0000-0000-0000-000000000000
+  REVIEW_ALB_GROUP_NAME: review-apps
+  REVIEW_MESSAGE_BROKER_URL: "wss://broker.example.com:443/message-broker"
+
+.review_trigger_files: &review_trigger_files
+  - "**/*"
+
+.review_rules: &review_rules
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
+    # マイグレーションを含むMRは共有DBを壊すリスクがあるためReview Appを立てない
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - prisma/migrations/**/*
+      when: never
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: on_success
+      changes: *review_trigger_files
+
+build_review_image:
+  extends: docker_prd
+  variables:
+    IMAGE_ENV: reviewapp
+    IMAGE_TAG: $CI_COMMIT_SHORT_SHA
+  script:
+    - buildctl-daemonless.sh build
+      --frontend dockerfile.v0
+      --local context=.
+      --local dockerfile=.
+      --export-cache type=registry,ref=${REVIEW_CACHE_IMAGE}:cache,mode=max
+      --import-cache type=registry,ref=${CI_REGISTRY_IMAGE}:cache
+      --import-cache type=registry,ref=${REVIEW_CACHE_IMAGE}:cache
+      --opt "build-arg:CREATED=$(date --utc +%FT%TZ)"
+      --opt "build-arg:REPOSITORY_URL=${CI_PROJECT_URL}"
+      --opt "build-arg:REVISION=${CI_COMMIT_SHORT_SHA}"
+      --opt "build-arg:VERSION=${IMAGE_TAG}"
+      --output type=image,name=${BUILD_IMAGE_NAME}:${IMAGE_TAG},push=true
+    - echo ${BUILD_IMAGE_NAME}:${IMAGE_TAG}
+    - |
+      cat > review_image.env <<EOF
+      REVIEW_IMAGE_REPOSITORY=${BUILD_IMAGE_NAME}
+      REVIEW_IMAGE_TAG=${IMAGE_TAG}
+      EOF
+  artifacts:
+    reports:
+      dotenv: review_image.env
+  <<: *review_rules
+
+deploy_review:
+  stage: review
+  image: alpine/helm:3
+  needs:
+    - job: build_review_image
+  variables:
+    # gitlab-agentを指定する
+    HELM_KUBECONTEXT: ${REVIEW_KUBECONTEXT} 
+  script:
+    - helm upgrade --install ${REVIEW_RELEASE_NAME} ./review/reviewapp
+      --namespace ${REVIEW_NAMESPACE}
+      --set image.repository=${REVIEW_IMAGE_REPOSITORY}
+      --set image.tag=${REVIEW_IMAGE_TAG}
+      --set ingress.host=${REVIEW_DOMAIN}
+      --set dnsCleaner.hostedZoneId=${REVIEW_HOSTED_ZONE_ID}
+      --set-string dnsCleaner.roleArn="${REVIEW_APP_DNS_CLEANER_ROLE_ARN}"
+      --set ingress.certificateArn=${REVIEW_CERTIFICATE_ARN}
+      --set ingress.albGroupName=${REVIEW_ALB_GROUP_NAME}
+      --set envConfig.BASE_URL=https://${REVIEW_DOMAIN}
+      --set envConfig.MESSAGE_BROKER_URL=${REVIEW_MESSAGE_BROKER_URL}
+      --set envConfig.SKIP_MIGRATION=true
+      --set envSecret.DATABASE_URL=${REVIEW_DATABASE_URL}
+      --set envSecret.SESSION_SECRET=${REVIEW_SESSION_SECRET}
+      --set envSecret.TOKEN_SECRET=${REVIEW_TOKEN_SECRET}
+      --wait
+      --timeout 5m
+    - 'echo "レビュー環境のURL: https://${REVIEW_DOMAIN}"'
+  environment:
+    name: review/${CI_COMMIT_REF_SLUG}
+    url: https://${REVIEW_DOMAIN}
+    on_stop: stop_review
+    auto_stop_in: 1 week
+  <<: *review_rules
+
+stop_review:
+  stage: review
+  image: alpine/helm:3
+  needs: []
+  variables:
+    # gitlab-agentを指定する
+    # 例：example/infrastructure/gitlab-kubernetes-agents:review
+    HELM_KUBECONTEXT: ${REVIEW_KUBECONTEXT}
+    GIT_STRATEGY: none
+  script:
+    - helm uninstall ${REVIEW_RELEASE_NAME} --namespace ${REVIEW_NAMESPACE}
+    - 'echo "${REVIEW_DOMAIN} の削除に成功しました"'
+  environment:
+    name: review/${CI_COMMIT_REF_SLUG}
+    action: stop
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+      when: never
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: manual
+      allow_failure: true
+```
+
