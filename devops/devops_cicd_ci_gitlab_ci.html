@@ -28939,6 +28939,84 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#07-gitlab-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07. GitLab Agentを使用したレビュー環境
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="07. GitLab Agentを使用したレビュー環境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gitlab-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitLab Agentとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ciops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CIOps構成
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CIOps構成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ レビュー環境を構築する仕組み
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ レビュー環境に接続する仕組み
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        設定方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -35509,6 +35587,84 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#07-gitlab-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07. GitLab Agentを使用したレビュー環境
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="07. GitLab Agentを使用したレビュー環境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gitlab-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitLab Agentとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ciops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CIOps構成
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CIOps構成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ レビュー環境を構築する仕組み
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ レビュー環境に接続する仕組み
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        設定方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -35616,7 +35772,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 21:24:34 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月19日 16:23:29 JST">2026-10-19</span>
   </span>
 
     
@@ -36801,6 +36957,166 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="07-gitlab-agent">07. GitLab Agentを使用したレビュー環境<a class="headerlink" href="#07-gitlab-agent" title="Permanent link">&para;</a></h2>
+<h3 id="gitlab-agent">GitLab Agentとは<a class="headerlink" href="#gitlab-agent" title="Permanent link">&para;</a></h3>
+<p>GitLab Agentは、Kubernetesクラスタ内で動作し、GitLabとクラスタを接続して、GitLab CI/CDからアプリケーションをデプロイできるようにするエージェントである。</p>
+<p><br></p>
+<h3 id="ciops">CIOps構成<a class="headerlink" href="#ciops" title="Permanent link">&para;</a></h3>
+<h4 id="_20">▼ レビュー環境を構築する仕組み<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<pre class="mermaid"><code>flowchart LR
+    CI{{"GitLab CI"}}
+    subgraph EKS["EKS"]
+        Agent(["Pod&lt;br/&gt;（gitlab-agent）"])
+        Pod(["Pod&lt;br/&gt;（review-app）"])
+        Cleaner(["Job&lt;br/&gt;（review-app-route53-record-cleaner）"])
+        DNS(["Pod&lt;br/&gt;（external-dns）"])
+        Ingress(["Ingress"])
+    end
+    IAM["IAMロール"]
+    Route53["Amazon Route53"]
+
+    CI --&gt;|"helm upgrade"| Agent
+    Agent --&gt;|"MRごとに作成"| Pod
+    Agent --&gt;|"MRごとに作成"| Cleaner
+    Agent --&gt;|"MRごとに作成"| Ingress
+    DNS --&gt;|"ホストヘッダー監視"| Ingress
+    DNS --&gt;|"DNSレコード挿入"| Route53
+    Cleaner --&gt;|"DNSレコード削除権限"| IAM
+    Cleaner --&gt;|"DNSレコード事後削除"| Route53</code></pre>
+<h4 id="_21">▼ レビュー環境に接続する仕組み<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<pre class="mermaid"><code>flowchart LR
+    User{{"ブラウザ"}}
+    Route53["Amazon Route53"]
+    subgraph EKS["EKS"]
+        Ingress(["Ingress"])
+        Pod(["Pod&lt;br/&gt;（review-app）"])
+        EMQX(["Pod&lt;br/&gt;（emqx）"])
+    end
+    Certificate["AWS Certificate Manager"]
+    Aurora[("Amazon Aurora")]
+
+    Ingress --&gt;|"証明書指定"| Certificate
+    User --&gt;|"名前解決"| Route53
+    User --&gt;|"review-&amp;lt;MRのIID&amp;gt;.example.com"| Ingress
+    Ingress --&gt;|"転送"| Pod
+    Pod --&gt;|"接続"| Aurora
+    Pod --&gt;|"接続"| EMQX</code></pre>
+<p><br></p>
+<h3 id="_22">設定方法<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p>環境変数は、メインの<code>.gitlab-ci.yml</code>に次のように定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">REVIEW_RELEASE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reviewapp-${CI_MERGE_REQUEST_IID}</span>
+<span class="w">  </span><span class="nt">REVIEW_DOMAIN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">review-${CI_MERGE_REQUEST_IID}.example.com</span>
+<span class="w">  </span><span class="nt">REVIEW_CACHE_IMAGE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${CI_REGISTRY_IMAGE}/reviewapp</span>
+<span class="w">  </span><span class="nt">REVIEW_NAMESPACE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">review-apps</span>
+<span class="w">  </span><span class="nt">REVIEW_KUBECONTEXT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example/infrastructure/gitlab-kubernetes-agents:review</span><span class="w"> </span><span class="c1"># gitlab-agentを指定する</span>
+<span class="w">  </span><span class="nt">REVIEW_HOSTED_ZONE_ID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Z0123456789EXAMPLE</span>
+<span class="w">  </span><span class="nt">REVIEW_APP_DNS_CLEANER_ROLE_ARN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:iam::123456789012:role/review-app-route53-record-cleaner</span>
+<span class="w">  </span><span class="nt">REVIEW_CERTIFICATE_ARN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:acm:ap-northeast-1:123456789012:certificate/00000000-0000-0000-0000-000000000000</span>
+<span class="w">  </span><span class="nt">REVIEW_ALB_GROUP_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">review-apps</span>
+<span class="w">  </span><span class="nt">REVIEW_MESSAGE_BROKER_URL</span><span class="p">:</span><span class="w"> </span><span class="s">"wss://broker.example.com:443/message-broker"</span>
+
+<span class="nt">.review_trigger_files</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;review_trigger_files</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"**/*"</span>
+
+<span class="nt">.review_rules</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;review_rules</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == "schedule"</span>
+<span class="w">      </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">never</span>
+<span class="w">    </span><span class="c1"># マイグレーションを含むMRは共有DBを壊すリスクがあるためReview Appを立てない</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == "merge_request_event"</span>
+<span class="w">      </span><span class="nt">changes</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prisma/migrations/**/*</span>
+<span class="w">      </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">never</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == "merge_request_event"</span>
+<span class="w">      </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">on_success</span>
+<span class="w">      </span><span class="nt">changes</span><span class="p">:</span><span class="w"> </span><span class="nv">*review_trigger_files</span>
+
+<span class="nt">build_review_image</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">extends</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker_prd</span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">IMAGE_ENV</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reviewapp</span>
+<span class="w">    </span><span class="nt">IMAGE_TAG</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_SHORT_SHA</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">buildctl-daemonless.sh build</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--frontend dockerfile.v0</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--local context=.</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--local dockerfile=.</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--export-cache type=registry,ref=${REVIEW_CACHE_IMAGE}:cache,mode=max</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--import-cache type=registry,ref=${CI_REGISTRY_IMAGE}:cache</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--import-cache type=registry,ref=${REVIEW_CACHE_IMAGE}:cache</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--opt "build-arg:CREATED=$(date --utc +%FT%TZ)"</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--opt "build-arg:REPOSITORY_URL=${CI_PROJECT_URL}"</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--opt "build-arg:REVISION=${CI_COMMIT_SHORT_SHA}"</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--opt "build-arg:VERSION=${IMAGE_TAG}"</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--output type=image,name=${BUILD_IMAGE_NAME}:${IMAGE_TAG},push=true</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo ${BUILD_IMAGE_NAME}:${IMAGE_TAG}</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">cat &gt; review_image.env &lt;&lt;EOF</span>
+<span class="w">      </span><span class="no">REVIEW_IMAGE_REPOSITORY=${BUILD_IMAGE_NAME}</span>
+<span class="w">      </span><span class="no">REVIEW_IMAGE_TAG=${IMAGE_TAG}</span>
+<span class="w">      </span><span class="no">EOF</span>
+<span class="w">  </span><span class="nt">artifacts</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">reports</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">dotenv</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">review_image.env</span>
+<span class="w">  </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*review_rules</span>
+
+<span class="nt">deploy_review</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">review</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpine/helm:3</span>
+<span class="w">  </span><span class="nt">needs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build_review_image</span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># gitlab-agentを指定する</span>
+<span class="w">    </span><span class="nt">HELM_KUBECONTEXT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${REVIEW_KUBECONTEXT}</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm upgrade --install ${REVIEW_RELEASE_NAME} ./review/reviewapp</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--namespace ${REVIEW_NAMESPACE}</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--set image.repository=${REVIEW_IMAGE_REPOSITORY}</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--set image.tag=${REVIEW_IMAGE_TAG}</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--set ingress.host=${REVIEW_DOMAIN}</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--set dnsCleaner.hostedZoneId=${REVIEW_HOSTED_ZONE_ID}</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--set-string dnsCleaner.roleArn="${REVIEW_APP_DNS_CLEANER_ROLE_ARN}"</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--set ingress.certificateArn=${REVIEW_CERTIFICATE_ARN}</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--set ingress.albGroupName=${REVIEW_ALB_GROUP_NAME}</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--set envConfig.BASE_URL=https://${REVIEW_DOMAIN}</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--set envConfig.MESSAGE_BROKER_URL=${REVIEW_MESSAGE_BROKER_URL}</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--set envConfig.SKIP_MIGRATION=true</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--set envSecret.DATABASE_URL=${REVIEW_DATABASE_URL}</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--set envSecret.SESSION_SECRET=${REVIEW_SESSION_SECRET}</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--set envSecret.TOKEN_SECRET=${REVIEW_TOKEN_SECRET}</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--wait</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">--timeout 5m</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'echo</span><span class="nv"> </span><span class="s">"レビュー環境のURL:</span><span class="nv"> </span><span class="s">https://${REVIEW_DOMAIN}"'</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">review/${CI_COMMIT_REF_SLUG}</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://${REVIEW_DOMAIN}</span>
+<span class="w">    </span><span class="nt">on_stop</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stop_review</span>
+<span class="w">    </span><span class="nt">auto_stop_in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1 week</span>
+<span class="w">  </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="nv">*review_rules</span>
+
+<span class="nt">stop_review</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">review</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpine/helm:3</span>
+<span class="w">  </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># gitlab-agentを指定する</span>
+<span class="w">    </span><span class="c1"># 例：example/infrastructure/gitlab-kubernetes-agents:review</span>
+<span class="w">    </span><span class="nt">HELM_KUBECONTEXT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${REVIEW_KUBECONTEXT}</span>
+<span class="w">    </span><span class="nt">GIT_STRATEGY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm uninstall ${REVIEW_RELEASE_NAME} --namespace ${REVIEW_NAMESPACE}</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'echo</span><span class="nv"> </span><span class="s">"${REVIEW_DOMAIN}</span><span class="nv"> </span><span class="s">の削除に成功しました"'</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">review/${CI_COMMIT_REF_SLUG}</span>
+<span class="w">    </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stop</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == "schedule"</span>
+<span class="w">      </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">never</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == "merge_request_event"</span>
+<span class="w">      </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manual</span>
+<span class="w">      </span><span class="nt">allow_failure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
 
   
 
