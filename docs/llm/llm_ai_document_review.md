@@ -35,17 +35,98 @@ description: レビュー用のドキュメント＠AI用ドキュメントの�
 
 PR はドメイン駆動設計の戦略的設計に基づいて説明して。要望は後述の通り。
 
-- ドメインエキスパートが誰かを仮定して
+- ドメインエキスパートを定義し、人とシステムからなるシーケンス図を作成して
+- 境界づけられたコンテキストを定義し、コンテキストマップを作成して
 - ユースケース図を作成して
 - オブジェクト図を作成して
 
+ユースケース図の例は次の通り。
+
+```mermaid
+graph LR
+    
+   UiClient[UIクライアント]
+   ApiClient[APIクライアント]
+   FooValidator[入力値のFooが妥当かを確認する]
+   BarValidator[送信データのFooが妥当かを確認する]
+
+   subgraph UiUsecases["【UI】〇〇機能"]
+      UiGet([〇〇を閲覧する])
+      UiRegister([〇〇を登録する])
+      UiChange([〇〇を更新する])
+      UiDelete([〇〇を削除する])
+   end
+
+   UiClient --> UiGet
+   UiClient --> UiRegister
+   UiClient --> UiChange
+   UiClient --> UiDelete
+   UiRegister -. << include >> .-> FooValidator
+   UiChange -. << include >> .-> FooValidator
+
+   subgraph ApiUsecases["【API】〇〇機能"]
+      ApiGet([〇〇を閲覧する])
+      ApiRegister([〇〇を登録する])
+      ApiChange([〇〇を更新する])
+      ApiDelete([〇〇を削除する])
+   end
+
+   ApiClient --> ApiGet
+   ApiClient --> ApiRegister
+   ApiClient --> ApiChange
+   ApiClient --> ApiDelete
+   ApiRegister -. << include >> .-> BarValidator
+   ApiChange -. << include >> .-> BarValidator
+```
+
 ### 戦術的設計の観点
 
-PR はドメイン駆動設計の戦術的設計に基づいて説明して。要望は後述の通り。
+PR はドメイン駆動設計の戦術的設計に基づいて、コンポーネント図を作成して。
 
-次の戦術的設計表を参照し、どのパターンを実装しているか。どのパターンに属するロジックを追加・変更したのかを教えて。
+- 次の戦術的設計表を参照し、どのパターンを実装しているか。
+- どのパターンに属するロジックを追加・変更したのかを教えて。 
+- 表には概要にしか記載していないので、インターネットから正しい情報をインプットして。
 
-表には概要にしか記載していないので、インターネットから正しい情報をインプットして。
+コンポーネント図の例は次の通り。
+
+```mermaid
+flowchart LR
+
+   UiClient[UIクライアント]
+   ApiClient[APIクライアント]
+
+  subgraph presentation[プレゼンテーション層]
+    UiFooRoute[foos.$foo.new.tsx]
+    ApiFooRoute[api.v1.foos.$foo.ts]
+  end
+
+  subgraph Usecase[ユースケース層]
+    subgraph UiFooUsecase[UiFooUsecase]
+      UiRegisterFoo["registerFoo()"]
+    end
+    subgraph ApiFooUsecase[ApiFooUsecase]
+      ApiRegisterFoo["registerFoo()"]
+    end
+  end
+
+  subgraph Infrastructure[インフラストラクチャ層]
+    subgraph Model[Models]
+      CreateFoo["createFoo()"]
+    end
+  end  
+
+  Database[(データベース)]
+
+  UiClient --> UiFooRoute
+  UiFooRoute --> UiRegisterFoo
+  UiRegisterFoo --> CreateFoo
+  CreateFoo --> Database
+
+  ApiClient --> ApiFooRoute
+  ApiFooRoute --> ApiRegisterFoo
+  ApiRegisterFoo --> CreateFoo
+  CreateFoo --> Database
+```
 
 | バックエンドレイヤー   | パターン                          | 責務                                                                                                                                                | インターフェース／実装 |
 | ---------------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
