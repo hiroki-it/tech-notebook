@@ -32780,7 +32780,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        機能設計について
+        全体設計について
       
     </span>
   </a>
@@ -32791,7 +32791,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        非機能設計について
+        機能設計について
       
     </span>
   </a>
@@ -32802,7 +32802,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        テスト設計について
+        非機能設計について
       
     </span>
   </a>
@@ -32813,7 +32813,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        修正依頼提示のための修正サンプル
+        テスト設計について
       
     </span>
   </a>
@@ -33647,7 +33647,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        機能設計について
+        全体設計について
       
     </span>
   </a>
@@ -33658,7 +33658,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        非機能設計について
+        機能設計について
       
     </span>
   </a>
@@ -33669,7 +33669,7 @@
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        テスト設計について
+        非機能設計について
       
     </span>
   </a>
@@ -33680,7 +33680,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        修正依頼提示のための修正サンプル
+        テスト設計について
       
     </span>
   </a>
@@ -33810,7 +33810,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月21日 14:34:25 JST">2026-10-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月21日 19:27:44 JST">2026-10-21</span>
   </span>
 
     
@@ -33900,7 +33900,7 @@
 <p>PR はドメイン駆動設計の戦術的設計に基づいて、コンポーネント図を作成して。</p>
 <ul>
 <li>次の戦術的設計表を参照し、どのパターンを実装しているか。</li>
-<li>どのパターンに属するロジックを追加・変更したのかを教えて。 </li>
+<li>どのパターンに属するロジックを追加・変更したのかを教えて。</li>
 <li>表には概要にしか記載していないので、インターネットから正しい情報をインプットして。</li>
 </ul>
 <p>コンポーネント図の例は次の通り。</p>
@@ -33927,7 +33927,7 @@
     subgraph Model[Models]
       CreateFoo["createFoo()"]
     end
-  end  
+  end
 
   Database[(データベース)]
 
@@ -34160,7 +34160,7 @@
 <h2 id="05">05. レビュー<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <p>事前情報の収集を終えた後、事前情報で集めたプロダクトの規約から、変更内容の改善点を指摘する。</p>
 <h3 id="_3">レビュー方針<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>次に対処した実装になっているかを確認する。</p>
+<p>次に対処した実装になっているかを確認し、実装がないものを指摘する</p>
 <ul>
 <li>現在の変更内容のよいところを見つける。<ul>
 <li>現在の実装にしなかった場合、どのような問題が起こるかを示す。</li>
@@ -34169,8 +34169,31 @@
 </li>
 <li>テキストを必ず日本語（ja-JP）で出力すること。</li>
 </ul>
-<h3 id="_4">機能設計について<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>次に対処した実装になっているかを確認する。</p>
+<h3 id="_4">全体設計について<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>次に対処した実装になっているかを確認し、実装がないものを指摘する。</p>
+<ul>
+<li>アーキテクチャ設計に違反していないか</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>重要度（高／中）</th>
+<th>機能項目</th>
+<th>指摘内容</th>
+<th>実装案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">機能設計について<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>次に対処した実装になっているかを確認し、実装がないものを指摘する。</p>
 <ul>
 <li>機能設計が GitHub Issue の課題を満たす実装になっているか</li>
 <li>バックエンドの観点<ul>
@@ -34184,8 +34207,27 @@
 </ul>
 </li>
 </ul>
-<h3 id="_5">非機能設計について<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>次に対処した実装になっているかを確認する。</p>
+<p>そして、次の表で整理する。</p>
+<table>
+<thead>
+<tr>
+<th>重要度（高／中）</th>
+<th>機能項目</th>
+<th>指摘内容</th>
+<th>実装案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">非機能設計について<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>次に対処した実装になっているかを確認し、実装がないものを指摘する。</p>
 <ol>
 <li>安全性の観点<ul>
 <li>ハードコードされた認証情報、API キー、トークン</li>
@@ -34259,7 +34301,27 @@
 </ul>
 </li>
 </ol>
-<h3 id="_6">テスト設計について<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>そして、次の表で整理する</p>
+<table>
+<thead>
+<tr>
+<th>重要度（高／中）</th>
+<th>非機能項目</th>
+<th>指摘内容</th>
+<th>実装案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">テスト設計について<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>次に対処した実装になっているかを確認し、実装がないものを指摘する。</p>
 <ol>
 <li>バックエンド、フロントエンド（Presener、Validators、ViewModel のみ）の観点<ul>
 <li>適切なテストスイート設計になっているか<ul>
@@ -34277,8 +34339,25 @@
 </ul>
 </li>
 </ol>
-<h3 id="_7">修正依頼提示のための修正サンプル<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>Claude Code がファイルの内容を変更したいとき、まずいくつかの変更内容を提案し、承諾を得てから変更してください。</p>
+<p>そして、次の表で整理する</p>
+<table>
+<thead>
+<tr>
+<th>重要度（高／中）</th>
+<th>テスト項目</th>
+<th>指摘内容</th>
+<th>実装案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
 <h2 id="06">06. 依存関係の説明<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <ol>
