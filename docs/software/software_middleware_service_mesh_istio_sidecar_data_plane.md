@@ -286,7 +286,7 @@ spec:
 ```
 
 > - [istio-proxy 停止時の挙動 \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/istio-proxy-stop-behavior/)
-> - [When your istio proxy containers terminate before your application containers gracefully shutdown, try configuring EXIT\_ON\_ZERO\_ACTIVE\_CONNECTIONS \| Software Engineer - Jinsu Park](https://umi0410.github.io/en/blog/devops/istio-exit-on-zero-active-connections/)
+> - [When your istio proxy containers terminate before your application containers gracefully shutdown, try configuring EXIT_ON_ZERO_ACTIVE_CONNECTIONS \| Software Engineer - Jinsu Park](https://umi0410.github.io/en/blog/devops/istio-exit-on-zero-active-connections/)
 
 #### ▼ InitContainer として
 

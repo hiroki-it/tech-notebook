@@ -454,7 +454,7 @@ func main() {
 ```
 
 > - [GitHub - spesnova/datadog-grpc-trace-example: gRPC Tracing example with datadog go tracer · GitHub](https://github.com/spesnova/datadog-grpc-trace-example#datadog-grcp-tracing-example)
-> - [datadog\_sample/grpcserver/main.go at master · muroon/datadog\_sample · GitHub](https://github.com/muroon/datadog_sample/blob/master/grpcserver/main.go#L75-L127)
+> - [datadog_sample/grpcserver/main.go at master · muroon/datadog_sample · GitHub](https://github.com/muroon/datadog_sample/blob/master/grpcserver/main.go#L75-L127)
 > - [grpc-goのInterceptorを使ってみる #Go - Qiita](https://qiita.com/lightstaff/items/28724d9dd8a6b30b236d)
 > - [gRPC の Unary Interceptor の基本的な使い方 - Carpe Diem](https://christina04.hatenablog.com/entry/grpc-unary-interceptor)
 
@@ -498,7 +498,7 @@ func main() {
 ```
 
 > - [GitHub - spesnova/datadog-grpc-trace-example: gRPC Tracing example with datadog go tracer · GitHub](https://github.com/spesnova/datadog-grpc-trace-example#datadog-grcp-tracing-example)
-> - [datadog\_sample/httpserver/usecases/grpc.go at master · muroon/datadog\_sample · GitHub](https://github.com/muroon/datadog_sample/blob/master/httpserver/usecases/grpc.go#L23-L70)
+> - [datadog_sample/httpserver/usecases/grpc.go at master · muroon/datadog_sample · GitHub](https://github.com/muroon/datadog_sample/blob/master/httpserver/usecases/grpc.go#L23-L70)
 > - [grpc-goのInterceptorを使ってみる #Go - Qiita](https://qiita.com/lightstaff/items/28724d9dd8a6b30b236d)
 > - [gRPC の Unary Interceptor の基本的な使い方 - Carpe Diem](https://christina04.hatenablog.com/entry/grpc-unary-interceptor)
 

@@ -965,6 +965,6 @@ unused_ips=['*.*.*.*', '*.*.*.*', ...]
 cidr=*.*.*.*/* cidr_ips=<全てのIPアドレス数> reserved=<予約されたIPアドレス数> used=<使用中のIPアドレス数> unused=<未使用のIPアドレス数>
 ```
 
-> - [GitHub - shu85t/aws\_describe\_unused\_ips: Python Script that describes Unused IPs for the specified Subnet · GitHub](https://github.com/shu85t/aws_describe_unused_ips)
+> - [GitHub - shu85t/aws_describe_unused_ips: Python Script that describes Unused IPs for the specified Subnet · GitHub](https://github.com/shu85t/aws_describe_unused_ips)
 
 <br>

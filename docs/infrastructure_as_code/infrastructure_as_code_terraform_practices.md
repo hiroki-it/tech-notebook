@@ -871,7 +871,7 @@ crash.*.log
 ただし、リソースによっては `ignore_changes` 引数を使えないものがある (例：SSM パラメーターストア) 。
 
 > - https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets
-> - [\[Terraform\] 誤解されがちなignore\_changesの動き・機密情報はstateに保持されるのか？ \| DevelopersIO](https://dev.classmethod.jp/articles/note-about-terraform-ignore-changes/#toc-9)
+> - [\[Terraform\] 誤解されがちなignore_changesの動き・機密情報はstateに保持されるのか？ \| DevelopersIO](https://dev.classmethod.jp/articles/note-about-terraform-ignore-changes/#toc-9)
 
 `(1)`
 

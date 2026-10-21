@@ -1495,7 +1495,7 @@ type metadataSupplier struct {
 }
 ```
 
-> - [opentelemetry-go-contrib/instrumentation/google.golang.org/grpc/otelgrpc/metadata\_supplier.go at instrumentation/google.golang.org/grpc/otelgrpc/v0.50.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.50.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L16-L18)
+> - [opentelemetry-go-contrib/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go at instrumentation/google.golang.org/grpc/otelgrpc/v0.50.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.50.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L16-L18)
 
 <br>
 
@@ -1567,7 +1567,7 @@ func inject(ctx context.Context, propagators propagation.TextMapPropagator) cont
 }
 ```
 
-> - [opentelemetry-go-contrib/instrumentation/google.golang.org/grpc/otelgrpc/metadata\_supplier.go at instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L65-L74)
+> - [opentelemetry-go-contrib/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go at instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L65-L74)
 
 #### ▼ NewClientHandler
 
@@ -1634,7 +1634,7 @@ func extract(ctx context.Context, propagators propagation.TextMapPropagator) con
 }
 ```
 
-> - [opentelemetry-go-contrib/instrumentation/google.golang.org/grpc/otelgrpc/metadata\_supplier.go at instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L89-L98)
+> - [opentelemetry-go-contrib/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go at instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L89-L98)
 
 #### ▼ NewServerHandler
 

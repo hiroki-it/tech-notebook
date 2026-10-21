@@ -937,7 +937,7 @@ func main() {
 ```
 
 > - [インターセプタの導入 - サーバーサイド編｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor)
-> - [grpc\_middleware package - github.com/grpc-ecosystem/go-grpc-middleware - Go Packages](https://pkg.go.dev/github.com/grpc-ecosystem/go-grpc-middleware#section-readme)
+> - [grpc_middleware package - github.com/grpc-ecosystem/go-grpc-middleware - Go Packages](https://pkg.go.dev/github.com/grpc-ecosystem/go-grpc-middleware#section-readme)
 
 <br>
 

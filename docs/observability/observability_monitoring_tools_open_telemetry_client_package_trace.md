@@ -349,7 +349,7 @@ func newSampler() sdktrace.Sampler {
 ただし、言語 (例：Go) によってはサポートしていない場合がある。
 
 > - [Environment Variable Specification \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration)
-> - [Support OTEL\_SDK\_DISABLED environment variable. · Issue #3559 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/issues/3559)
+> - [Support OTEL_SDK_DISABLED environment variable. · Issue #3559 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/issues/3559)
 > - [opentelemetry-specification/spec-compliance-matrix.md at main · open-telemetry/opentelemetry-specification · GitHub](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables)
 
 <br>
@@ -1326,7 +1326,7 @@ func (tc TraceContext) extract(carrier TextMapCarrier) trace.SpanContext {
 }
 ```
 
-> - [opentelemetry-go/propagation/trace\_context.go at v1.25.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/propagation/trace_context.go)
+> - [opentelemetry-go/propagation/trace_context.go at v1.25.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/propagation/trace_context.go)
 
 <br>
 

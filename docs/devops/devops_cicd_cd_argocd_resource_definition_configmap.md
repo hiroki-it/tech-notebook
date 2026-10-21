@@ -176,7 +176,7 @@ data:
 ```
 
 > - [Resource Tracking - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/latest/user-guide/resource_tracking/#choosing-a-tracking-method)
-> - [ArgoCD Tracking IDについて - CyberAgent SRG #ca\_srg](https://ca-srg.dev/b40dd428e47641699959c4f2d70c8428)
+> - [ArgoCD Tracking IDについて - CyberAgent SRG #ca_srg](https://ca-srg.dev/b40dd428e47641699959c4f2d70c8428)
 
 <br>
 

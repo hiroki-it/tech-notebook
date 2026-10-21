@@ -351,7 +351,7 @@ innodb_lock_wait_timeout = 50
 ```
 
 > - https://dev.mysql.com/doc/refman/8.4/en/innodb-parameters.html#sysvar_innodb_lock_wait_timeout
-> - [【MySQL】innodb\_lock\_wait\_timeoutはメタデータロック時にはタイムアウトしない。 #mysql5.6 - Qiita](https://qiita.com/picapica/items/09322fa98254a3b4a099#%E5%85%88%E3%81%AB%E8%A6%81%E7%B4%84)
+> - [【MySQL】innodb_lock_wait_timeoutはメタデータロック時にはタイムアウトしない。 #mysql5.6 - Qiita](https://qiita.com/picapica/items/09322fa98254a3b4a099#%E5%85%88%E3%81%AB%E8%A6%81%E7%B4%84)
 
 <br>
 

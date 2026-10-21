@@ -325,7 +325,7 @@ class Foo
 
 #### ▼ `error_log()` 関数
 
-> - [PHP: error\_log - Manual](https://www.php.net/manual/ja/function.error-log.php)
+> - [PHP: error_log - Manual](https://www.php.net/manual/ja/function.error-log.php)
 
 ```php
 error_log(

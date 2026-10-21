@@ -221,7 +221,7 @@ node-1    582m        7%         9792Mi         61%
 node-2    <unknown>   <unknown>  <unknown>      <unknown>
 ```
 
-> - [metrics-server/KNOWN\_ISSUES.md at master · kubernetes-sigs/metrics-server · GitHub](https://github.com/kubernetes-sigs/metrics-server/blob/master/KNOWN_ISSUES.md#kubelet-doesnt-report-metrics-for-all-or-subset-of-nodes)
+> - [metrics-server/KNOWN_ISSUES.md at master · kubernetes-sigs/metrics-server · GitHub](https://github.com/kubernetes-sigs/metrics-server/blob/master/KNOWN_ISSUES.md#kubelet-doesnt-report-metrics-for-all-or-subset-of-nodes)
 
 <br>
 
@@ -263,7 +263,7 @@ NAME       CPU(cores)  CPU%       MEMORY(bytes)  MEMORY%
 foo-pod    <unknown>   <unknown>  <unknown>      <unknown>
 ```
 
-> - [metrics-server/KNOWN\_ISSUES.md at master · kubernetes-sigs/metrics-server · GitHub](https://github.com/kubernetes-sigs/metrics-server/blob/master/KNOWN_ISSUES.md#kubelet-doesnt-report-pod-metrics)
+> - [metrics-server/KNOWN_ISSUES.md at master · kubernetes-sigs/metrics-server · GitHub](https://github.com/kubernetes-sigs/metrics-server/blob/master/KNOWN_ISSUES.md#kubelet-doesnt-report-pod-metrics)
 
 <br>
 

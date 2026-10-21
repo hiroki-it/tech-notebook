@@ -85,7 +85,7 @@ datadog エージェントをインストールすると、`datadog.yaml.example
 > - https://app.datadoghq.com/account/settings#agent
 > - https://docs.datadoghq.com/getting_started/agent/#configuration
 > - https://docs.datadoghq.com/agent/guide/agent-configuration-files/
-> - [datadog-agent/pkg/config/config\_template.yaml at main · DataDog/datadog-agent · GitHub](https://github.com/DataDog/datadog-agent/blob/main/pkg/config/config_template.yaml)
+> - [datadog-agent/pkg/config/config_template.yaml at main · DataDog/datadog-agent · GitHub](https://github.com/DataDog/datadog-agent/blob/main/pkg/config/config_template.yaml)
 
 <br>
 

@@ -1100,7 +1100,7 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
 }
 ```
 
-> - [kube\_pod\_info cluster label · prometheus-operator/kube-prometheus · Discussion #603 · GitHub](https://github.com/prometheus-operator/kube-prometheus/discussions/603?sort=top)
+> - [kube_pod_info cluster label · prometheus-operator/kube-prometheus · Discussion #603 · GitHub](https://github.com/prometheus-operator/kube-prometheus/discussions/603?sort=top)
 > - https://stackoverflow.com/questions/64889312/is-there-a-way-to-get-the-cluster-name-of-kubernetes-in-grafana-variables-with-p
 > - [Prometheus サンプル設定 #kubernetes - Qiita](https://qiita.com/prodigy413/items/c0c2304e1bc28f644526)
 

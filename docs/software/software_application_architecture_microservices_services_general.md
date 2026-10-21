@@ -130,7 +130,7 @@ func SetupMetrics(ctx context.Context) func() {
 }
 ```
 
-> - [prometheus package - github.com/prometheus/client\_golang/prometheus - Go Packages](https://pkg.go.dev/github.com/prometheus/client_golang/prometheus)
+> - [prometheus package - github.com/prometheus/client_golang/prometheus - Go Packages](https://pkg.go.dev/github.com/prometheus/client_golang/prometheus)
 
 #### ▼ trace.go
 

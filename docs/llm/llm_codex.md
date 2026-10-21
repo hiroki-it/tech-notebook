@@ -194,7 +194,6 @@ startup_timeout_sec = 60.0
 
 ### IntelliJ の場合
 
-
 ```toml
 [mcp_servers.idea]
 url = "http://127.0.0.1:64342/stream"

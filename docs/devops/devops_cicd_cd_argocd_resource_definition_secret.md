@@ -646,7 +646,7 @@ data:
   shard: 3
 ```
 
-> - [HA構成のArgoCDパフォーマンス最適化への道 - CyberAgent SRG #ca\_srg](https://ca-srg.dev/45d51b9059e44f62b2aafdd5b0e6f7f1#block-8dd20c94825c4c3fadd492ef384a579e)
+> - [HA構成のArgoCDパフォーマンス最適化への道 - CyberAgent SRG #ca_srg](https://ca-srg.dev/45d51b9059e44f62b2aafdd5b0e6f7f1#block-8dd20c94825c4c3fadd492ef384a579e)
 
 <br>
 

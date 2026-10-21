@@ -27,7 +27,7 @@ description: プラクティス集＠ソフトウェアの知見を記録して�
 
 マイナーバージョンごとにアップグレードを検証する。
 
-> - [20181201\_MySQLバージョンアップの基礎知識.pdf - Speaker Deck](https://speakerdeck.com/yoshiakiyamasaki/20181201-mysqlbaziyonatupufalseji-chu-zhi-shi?slide=33)
+> - [20181201_MySQLバージョンアップの基礎知識.pdf - Speaker Deck](https://speakerdeck.com/yoshiakiyamasaki/20181201-mysqlbaziyonatupufalseji-chu-zhi-shi?slide=33)
 
 #### ▼ アンケート
 

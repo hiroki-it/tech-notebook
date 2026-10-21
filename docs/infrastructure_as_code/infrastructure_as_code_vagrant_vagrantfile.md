@@ -364,7 +364,7 @@ end
 ```
 
 > - https://www.vagrantup.com/docs/provisioning/ansible_local
-> - [Vagrant + Ansible で開発環境を作るなら ansible\_local プロビジョナがいい！ - Shin x Blog](https://blog.shin1x1.com/entry/ansible_local-provisioner-in-vagrant)
+> - [Vagrant + Ansible で開発環境を作るなら ansible_local プロビジョナがいい！ - Shin x Blog](https://blog.shin1x1.com/entry/ansible_local-provisioner-in-vagrant)
 
 <br>
 

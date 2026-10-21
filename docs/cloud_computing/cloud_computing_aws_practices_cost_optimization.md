@@ -26,7 +26,7 @@ description: 金銭的コスト最適化＠AWSの知見を記録しています�
 - Web アプリケーションのリソース要求の特徴 (恒常的な要求、瞬間的な要求)
 - ビジネスドメインの性質による夜間や土日のトラフィックの増減 (例えば、Chatwork のようなビジネスチャットツールでは、夜間や土日のトラフィックが減る)
 
-> - [目指せCoverage100%! AutoScale環境におけるSavings Plans購入戦略 / JAWS-UG\_SRE\_Coverage - Speaker Deck](https://speakerdeck.com/taishin/jaws-ug-sre-coverage?slide=8)
+> - [目指せCoverage100%! AutoScale環境におけるSavings Plans購入戦略 / JAWS-UG_SRE_Coverage - Speaker Deck](https://speakerdeck.com/taishin/jaws-ug-sre-coverage?slide=8)
 
 <br>
 

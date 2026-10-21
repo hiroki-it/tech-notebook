@@ -294,6 +294,6 @@ Pragma: no-cache
 アクセストークンの失効期限をリフレッシュトークンで管理する方法である。
 
 > - https://cloudentity.com/developers/basics/oauth-grant-types/refresh-token-flow/
-> - [OAuth & OpenID Connect 関連仕様まとめ #openid\_connect - Qiita](https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#1-oauth-20-rfc-6749)
+> - [OAuth & OpenID Connect 関連仕様まとめ #openid_connect - Qiita](https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#1-oauth-20-rfc-6749)
 
 <br>

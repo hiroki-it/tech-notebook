@@ -460,7 +460,7 @@ $ yarn install --check-files
 $ yarn install --production
 ```
 
-> - [NODE\_ENV=productionにしてyarn install(npm install)するとdevDependenciesがインストールされない · HikaTechBlog](https://miyahara.hikaru.dev/posts/20200414/)
+> - [NODE_ENV=productionにしてyarn install(npm install)するとdevDependenciesがインストールされない · HikaTechBlog](https://miyahara.hikaru.dev/posts/20200414/)
 
 #### ▼ --verbose
 

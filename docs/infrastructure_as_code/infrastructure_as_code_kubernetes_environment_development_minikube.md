@@ -111,7 +111,7 @@ Minikube には、HostPath CSI ドライバー (`storage-provisioner` アドオ�
 
 > - [Persistent Volumes \| minikube](https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/#dynamic-provisioning-and-csi)
 > - [CSI Driver and Volume Snapshots \| minikube](https://minikube.sigs.k8s.io/docs/tutorials/volume_snapshots_and_csi/)
-> - [minikube/pkg/storage/storage\_provisioner.go at master · kubernetes/minikube · GitHub](https://github.com/kubernetes/minikube/blob/master/pkg/storage/storage_provisioner.go)
+> - [minikube/pkg/storage/storage_provisioner.go at master · kubernetes/minikube · GitHub](https://github.com/kubernetes/minikube/blob/master/pkg/storage/storage_provisioner.go)
 
 #### ▼ Node の永続ディレクトリ
 

@@ -88,7 +88,7 @@ spec:
 ```
 
 > - https://karpenter.sh/preview/concepts/nodeclasses/
-> - [karpenter-provider-aws/test/suites/storage/suite\_test.go at v1.1.1 · aws/karpenter-provider-aws · GitHub](https://github.com/aws/karpenter-provider-aws/blob/v1.1.1/test/suites/storage/suite_test.go#L372-L389)
+> - [karpenter-provider-aws/test/suites/storage/suite_test.go at v1.1.1 · aws/karpenter-provider-aws · GitHub](https://github.com/aws/karpenter-provider-aws/blob/v1.1.1/test/suites/storage/suite_test.go#L372-L389)
 
 <br>
 

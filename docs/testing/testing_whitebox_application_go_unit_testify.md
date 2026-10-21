@@ -671,7 +671,7 @@ func (suite *FooSuite) TestMethod() {
 }
 ```
 
-> - [go-github/github/github\_test.go at master · google/go-github · GitHub](https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66)
+> - [go-github/github/github_test.go at master · google/go-github · GitHub](https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66)
 > - [suite package - github.com/stretchr/testify/suite - Go Packages](https://pkg.go.dev/github.com/stretchr/testify/suite)
 
 <br>

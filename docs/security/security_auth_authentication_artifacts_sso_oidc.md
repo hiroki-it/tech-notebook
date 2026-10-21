@@ -55,7 +55,7 @@ OAuth をベースとして、認証フェーズを追加し、認証/認可を�
 | `address` | アカウントの住所             |
 | ...       | ...                          |
 
-> - [OAuth & OpenID Connect 関連仕様まとめ #openid\_connect - Qiita](https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim)
+> - [OAuth & OpenID Connect 関連仕様まとめ #openid_connect - Qiita](https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim)
 
 <br>
 
@@ -78,7 +78,7 @@ ID プロバイダーは、取得したクレームグループに対応した�
 | `address`                      | `address`                                                                                                                                                                        |
 | ユーザー定義のクレームグループ | 自由にクレームを設定できる                                                                                                                                                       |
 
-> - [OAuth & OpenID Connect 関連仕様まとめ #openid\_connect - Qiita](https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim)
+> - [OAuth & OpenID Connect 関連仕様まとめ #openid_connect - Qiita](https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim)
 > - [Final: OpenID Connect Core 1.0 incorporating errata set 2](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims)
 
 #### ▼ `claims` パラメーター
@@ -87,7 +87,7 @@ ID プロバイダーは、取得したクレームグループに対応した�
 
 クレームの指定の仕方が複雑らしい...
 
-> - [OAuth & OpenID Connect 関連仕様まとめ #openid\_connect - Qiita](https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim)
+> - [OAuth & OpenID Connect 関連仕様まとめ #openid_connect - Qiita](https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim)
 > - [Final: OpenID Connect Core 1.0 incorporating errata set 2](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter)
 
 <br>
@@ -177,7 +177,7 @@ OAuth の認可コードフローと仕組みが似ており、アクセスト�
 $ curl http://<Keycloakのドメイン>/realms/oidc-sample/protocol/openid-connect/auth?response_type=code&client_id=rp1&redirect_uri=http://<アプリケーションのドメイン>/oidc&scope=openid
 ```
 
-> - [curlとKeycloakではじめるOpenID Connect #openid\_connect - Qiita](https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow)
+> - [curlとKeycloakではじめるOpenID Connect #openid_connect - Qiita](https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow)
 
 #### ▼ 認可レスポンス受信
 
@@ -187,7 +187,7 @@ Keycloak は認可レスポンスを受信し、アプリに対してリダイ�
 $ curl http://<アプリケーションのドメイン>/oidc?session_state= ... &code=<認証コード>
 ```
 
-> - [curlとKeycloakではじめるOpenID Connect #openid\_connect - Qiita](https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow)
+> - [curlとKeycloakではじめるOpenID Connect #openid_connect - Qiita](https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow)
 
 #### ▼ トークンリクエスト送信
 
@@ -211,7 +211,7 @@ $ curl -d "grant_type=authorization_code&code=<認証コード>&redirect_uri=htt
 }
 ```
 
-> - [curlとKeycloakではじめるOpenID Connect #openid\_connect - Qiita](https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow)
+> - [curlとKeycloakではじめるOpenID Connect #openid_connect - Qiita](https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow)
 
 #### ▼ ユーザー情報の取得
 
@@ -227,7 +227,7 @@ $ curl -H "Authorization: Bearer <アクセストークン>" http://<Keycloakの
 }
 ```
 
-> - [curlとKeycloakではじめるOpenID Connect #openid\_connect - Qiita](https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow)
+> - [curlとKeycloakではじめるOpenID Connect #openid_connect - Qiita](https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow)
 
 #### ▼ アクセストークンの再作成
 
@@ -237,7 +237,7 @@ $ curl -H "Authorization: Bearer <アクセストークン>" http://<Keycloakの
 $ curl -X POST -d "client_id=rp1&client_secret=<Client Secret>&grant_type=refresh_token&refresh_token=<リフレッシュトークン>&scope=openid profile" http://<Keycloakのドメイン>/realms/oidc-sample/protocol/openid-connect/token
 ```
 
-> - [curlとKeycloakではじめるOpenID Connect #openid\_connect - Qiita](https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow)
+> - [curlとKeycloakではじめるOpenID Connect #openid_connect - Qiita](https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow)
 
 <br>
 

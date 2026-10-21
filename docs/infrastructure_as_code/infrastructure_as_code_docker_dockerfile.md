@@ -433,7 +433,7 @@ $ crane copy nginx:<バージョン> *****.dkr.ecr.ap-northeast-1.amazonaws.com/
 ```
 
 > - https://medium.com/@spurin/copying-container-images-between-container-registries-e7b734abc701
-> - [go-containerregistry/cmd/crane/doc/crane\_copy.md at main · google/go-containerregistry · GitHub](https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane_copy.md)
+> - [go-containerregistry/cmd/crane/doc/crane_copy.md at main · google/go-containerregistry · GitHub](https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane_copy.md)
 
 #### ▼ krane
 

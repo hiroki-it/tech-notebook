@@ -988,7 +988,7 @@ workflows:
 | job、executor | プロジェクトをチェックアウトするディレクトリを指定する。executor または job で working_directory を宣言できる。両方で宣言していた場合は、executor の値が優先される。 |
 | steps         | 指定したディレクトリーに移動する。                                                                                                                                   |
 
-> - [【CircleCI】working\_directoryの挙動を実験して確かめてみた｜Webエンジニア研究室](https://www.engilaboo.com/circleci-working-directory/)
+> - [【CircleCI】working_directoryの挙動を実験して確かめてみた｜Webエンジニア研究室](https://www.engilaboo.com/circleci-working-directory/)
 > - [CircleCI 1 / 2 \| nju33](https://nju33.com/notes/circleci/articles)
 
 <br>
@@ -1138,7 +1138,7 @@ jobs:
             echo "$VERY_IMPORTANT"
 ```
 
-> - [$BASH\_ENV does not seem to be sourced · Issue #1650 · circleci/circleci-docs · GitHub](https://github.com/circleci/circleci-docs/issues/1650)
+> - [$BASH_ENV does not seem to be sourced · Issue #1650 · circleci/circleci-docs · GitHub](https://github.com/circleci/circleci-docs/issues/1650)
 
 #### ▼ シェルスクリプトによる設定
 

@@ -203,7 +203,7 @@ data:
 
 > - [Loki data source \| Grafana documentation](https://grafana.com/docs/grafana/latest/datasources/loki/#provision-the-data-source)
 > - https://grafana.com/docs/grafana/next/datasources/loki/configure-loki-data-source/#derived-fields
-> - [Derived fields in combination with line\_format · Issue #9209 · grafana/loki · GitHub](https://github.com/grafana/loki/issues/9209#issuecomment-1882710470)
+> - [Derived fields in combination with line_format · Issue #9209 · grafana/loki · GitHub](https://github.com/grafana/loki/issues/9209#issuecomment-1882710470)
 > - https://github.com/grafana/grafana/issues/92699#issuecomment-2374259684
 
 #### ▼ Grafana Tempo

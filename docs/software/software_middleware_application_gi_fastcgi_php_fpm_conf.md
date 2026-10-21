@@ -308,7 +308,7 @@ PHP の `ini` ファイルで設定された boolean 値のオプションを上
 
 すべてのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
-> - [PHP: php\_value vs php\_admin\_value and the use of php\_flag explained · ma.ttias.be](https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_flag)
+> - [PHP: php_value vs php_admin_value and the use of php_flag explained · ma.ttias.be](https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_flag)
 > - [PHP: List of php.ini directives - Manual](https://www.php.net/manual/en/ini.list.php)
 
 #### ▼ php_admin_flag[log_errors]
@@ -330,7 +330,7 @@ PHP の `ini` ファイルで設定された boolean 値以外のオプション
 
 すべてのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
-> - [PHP: php\_value vs php\_admin\_value and the use of php\_flag explained · ma.ttias.be](https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_value)
+> - [PHP: php_value vs php_admin_value and the use of php_flag explained · ma.ttias.be](https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_value)
 > - [PHP: List of php.ini directives - Manual](https://www.php.net/manual/en/ini.list.php)
 
 #### ▼ php_admin_value[error_log]
@@ -352,7 +352,7 @@ PHP の `ini` ファイルで設定された boolean 値のオプションを上
 
 すべてのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
-> - [PHP: php\_value vs php\_admin\_value and the use of php\_flag explained · ma.ttias.be](https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_flag)
+> - [PHP: php_value vs php_admin_value and the use of php_flag explained · ma.ttias.be](https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_flag)
 > - [PHP: List of php.ini directives - Manual](https://www.php.net/manual/en/ini.list.php)
 
 #### ▼ php_value[display_errors]
@@ -374,7 +374,7 @@ PHP の `ini` ファイルで設定された boolean 値以外のオプション
 
 すべてのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
-> - [PHP: php\_value vs php\_admin\_value and the use of php\_flag explained · ma.ttias.be](https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_value)
+> - [PHP: php_value vs php_admin_value and the use of php_flag explained · ma.ttias.be](https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_value)
 > - [PHP: List of php.ini directives - Manual](https://www.php.net/manual/en/ini.list.php)
 
 #### ▼ php_value[session.save_handler]

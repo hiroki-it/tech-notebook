@@ -611,7 +611,7 @@ FILTER セクションで、modify プラグインを定義する。
 ```
 
 > - https://docs.fluentbit.io/manual/pipeline/filters/modify
-> - [Fluent Bitでレコードを変更する（record\_modifier、modify、lua） - CLOVER🍀](https://kazuhira-r.hatenablog.com/entry/2020/08/16/225251)
+> - [Fluent Bitでレコードを変更する（record_modifier、modify、lua） - CLOVER🍀](https://kazuhira-r.hatenablog.com/entry/2020/08/16/225251)
 
 <br>
 
@@ -815,7 +815,7 @@ Fluent Bit v1.8.6
 
 STREAM_TASK セッションは、ユーザー定義の SQL ステートメントで定義される。
 
-> - [fluent-bit/src/stream\_processor at master · fluent/fluent-bit · GitHub](https://github.com/fluent/fluent-bit/tree/master/src/stream_processor)
+> - [fluent-bit/src/stream_processor at master · fluent/fluent-bit · GitHub](https://github.com/fluent/fluent-bit/tree/master/src/stream_processor)
 
 #### ▼ CREATE STREAM
 
@@ -1096,7 +1096,7 @@ Amazon CloudWatch Logs に送信されるデータは JSON 型である。
 }
 ```
 
-> - [FireLens で rewrite\_tag による複数ターゲットへのログの振り分け \| Stuck inside](https://blog.msysh.me/posts/2020/07/split_logs_into_multiple_target_with_firelens_and_rewrite_tag.html)
+> - [FireLens で rewrite_tag による複数ターゲットへのログの振り分け \| Stuck inside](https://blog.msysh.me/posts/2020/07/split_logs_into_multiple_target_with_firelens_and_rewrite_tag.html)
 
 <br>
 

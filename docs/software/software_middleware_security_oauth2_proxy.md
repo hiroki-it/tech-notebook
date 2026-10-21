@@ -144,7 +144,7 @@ spec:
             path: /
 ```
 
-> - [auth.proxy does not work with oauth2\_proxy · Issue #52681 · grafana/grafana · GitHub](https://github.com/grafana/grafana/issues/52681#issuecomment-1767046285)
+> - [auth.proxy does not work with oauth2_proxy · Issue #52681 · grafana/grafana · GitHub](https://github.com/grafana/grafana/issues/52681#issuecomment-1767046285)
 > - https://stackoverflow.com/a/73088436/12771072
 
 #### ▼ Kiali

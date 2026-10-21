@@ -308,7 +308,7 @@ await new Promise((resolve, reject) => {
 ```
 
 > - [Child process \| Node.js v26.10.0 Documentation](https://nodejs.org/api/child_process.html)
-> - [child\_process.spawnを理解する #Node.js - Qiita](https://qiita.com/k96mz/items/43444cedbfc2a11a01ea#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B3%E3%83%BC%E3%83%89)
+> - [child_process.spawnを理解する #Node.js - Qiita](https://qiita.com/k96mz/items/43444cedbfc2a11a01ea#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B3%E3%83%BC%E3%83%89)
 
 <br>
 

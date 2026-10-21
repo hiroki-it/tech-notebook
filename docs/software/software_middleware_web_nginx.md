@@ -95,7 +95,7 @@ ngx_stream_geoip_module.so
 #### ▼ Graceful Drain
 
 > - https://serverfault.com/a/775356
-> - [Module ngx\_http\_upstream\_conf\_module](https://nginx.org/en/docs/http/ngx_http_upstream_conf_module.html#drain)
+> - [Module ngx_http_upstream_conf_module](https://nginx.org/en/docs/http/ngx_http_upstream_conf_module.html#drain)
 
 #### ▼ Graceful Shutdown
 
@@ -224,8 +224,8 @@ http {
 }
 ```
 
-> - [NginxでWebサーバ間をトレースするrequest\_id #nginx - Qiita](https://qiita.com/toritori0318/items/d82f9beccd76ea8ccb85)
-> - [request\_id 引き回し · GitHub](https://gist.github.com/toritori0318/2dc2b64ff696822b02d202bf1fc2f5b2)
+> - [NginxでWebサーバ間をトレースするrequest_id #nginx - Qiita](https://qiita.com/toritori0318/items/d82f9beccd76ea8ccb85)
+> - [request_id 引き回し · GitHub](https://gist.github.com/toritori0318/2dc2b64ff696822b02d202bf1fc2f5b2)
 
 #### ▼ FastCGI プロトコルの場合
 

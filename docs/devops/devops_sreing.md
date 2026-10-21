@@ -141,7 +141,7 @@ SREer は、`L4` ~ `L7` を領域として業務する。
 
 SRE チームの Value から、SREer に必要な技術がわかる。
 
-> - [infrastructure\_README.md · GitHub](https://gist.github.com/south37/85d97e02d7816a31053971d63c164880)
+> - [infrastructure_README.md · GitHub](https://gist.github.com/south37/85d97e02d7816a31053971d63c164880)
 
 #### ▼ 3-shake、Topotal
 

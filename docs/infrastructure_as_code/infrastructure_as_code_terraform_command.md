@@ -839,7 +839,7 @@ $ terraform state rm 'module.ec2.aws_instance.bastion["<キー名2>"]'
 > - [AWSリソースをTerraform管理下から外す方法 #AWS - Qiita](https://qiita.com/hz1_d/items/772272a010baa3d7aaed)
 > - [terraform import したものを取り消したい #Terraform - Qiita](https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6)
 > - [Unable to import instances created using "count" within a module · Issue #18810 · hashicorp/terraform · GitHub](https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471)
-> - [for\_eachで書いた.tfをterraform importする \| DevelopersIO](https://dev.classmethod.jp/articles/terraform_import_for_each/)
+> - [for_eachで書いた.tfをterraform importする \| DevelopersIO](https://dev.classmethod.jp/articles/terraform_import_for_each/)
 
 #### ▼ show list
 
@@ -1198,7 +1198,7 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 ```
 
 > - [Unable to import instances created using "count" within a module · Issue #18810 · hashicorp/terraform · GitHub](https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471)
-> - [for\_eachで書いた.tfをterraform importする \| DevelopersIO](https://dev.classmethod.jp/articles/terraform_import_for_each/)
+> - [for_eachで書いた.tfをterraform importする \| DevelopersIO](https://dev.classmethod.jp/articles/terraform_import_for_each/)
 > - [terraform import したものを取り消したい #Terraform - Qiita](https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6)
 > - [Terraform import のススメ 〜開発効率化編〜 - LayerX エンジニアブログ](https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import)
 

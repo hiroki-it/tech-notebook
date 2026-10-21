@@ -405,7 +405,7 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 
 実装が移行途中のため、xds-proxy にも、Envoy からのリモートプロシージャーコールを処理する同名の関数がある。
 
-> - [istio/pkg/istio-agent/xds\_proxy.go at 1.14.3 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.14.3/pkg/istio-agent/xds_proxy.go#L299-L306)
+> - [istio/pkg/istio-agent/xds_proxy.go at 1.14.3 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.14.3/pkg/istio-agent/xds_proxy.go#L299-L306)
 
 <br>
 

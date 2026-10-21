@@ -575,7 +575,7 @@ runs:
 この機能は以前は非対応であったため、`add-mask` コマンドを使用した方法がネット上で見つかることに注意する。
 
 > - [GitHub Actionsで実装した湯婆婆にマスクをつける #GitHubActions - Qiita](https://qiita.com/nogic1008/items/6934b1b6d6e0cf7912d1)
-> - [add-mask doesn't work with workflow\_dispatch inputs · Issue #643 · actions/runner · GitHub](https://github.com/actions/runner/issues/643#issuecomment-708228940)
+> - [add-mask doesn't work with workflow_dispatch inputs · Issue #643 · actions/runner · GitHub](https://github.com/actions/runner/issues/643#issuecomment-708228940)
 > - [usage of add-mask still echoes the value to the log · Issue #475 · actions/runner · GitHub](https://github.com/actions/runner/issues/475#issuecomment-1092734499)
 
 #### ▼ 注意点

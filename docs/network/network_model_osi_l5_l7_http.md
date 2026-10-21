@@ -932,7 +932,7 @@ php_value[session.save_handler] = redis
 php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
 ```
 
-> - [PHP 7.1 + Pecl-Redis-3.1.1RC2 - ignored session.save\_path in php.ini · Issue #1097 · phpredis/phpredis · GitHub](https://github.com/phpredis/phpredis/issues/1097)
+> - [PHP 7.1 + Pecl-Redis-3.1.1RC2 - ignored session.save_path in php.ini · Issue #1097 · phpredis/phpredis · GitHub](https://github.com/phpredis/phpredis/issues/1097)
 > - [PHPセッションをmemcachedで管理する件 #Memcached - Qiita](https://qiita.com/supertaihei02/items/53e36252afa3ea157d38)
 > - [セッション管理方式のお話 - 革命のブログ](https://blog.frevo-works.co.jp/entry/2019/09/24/112603)
 

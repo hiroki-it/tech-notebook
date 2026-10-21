@@ -468,7 +468,7 @@ rate(prometheus_remote_storage_bytes_total[1h]) *
 {container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", remote_name="victoria-metrics", service="oo-prometheus-service", url="https://*.*.*.*:8248/api/v1/write"} <集約値>
 ```
 
-> - [prometheus.remote\_write \| Grafana Agent documentation](https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics)
+> - [prometheus.remote_write \| Grafana Agent documentation](https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics)
 > - https://grafana.com/blog/2021/04/12/how-to-troubleshoot-remote-write-issues-in-prometheus/
 
 #### ▼ 送信メタデータサイズ
@@ -489,7 +489,7 @@ rate(prometheus_remote_storage_samples_retries_total[1h]) *
 60 * 60 * 24
 ```
 
-> - [prometheus.remote\_write \| Grafana Agent documentation](https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics)
+> - [prometheus.remote_write \| Grafana Agent documentation](https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics)
 
 #### ▼ リモート送信シャード数
 

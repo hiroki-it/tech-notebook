@@ -624,7 +624,7 @@ export GIT_AUTHOR_EMAIL=$MAIL
 
 > - [direnvでディレクトリ毎に設定を切り替える](https://blog.nijohando.jp/post/direnv/)
 > - [.env ( dotenv ) ファイルの定義をシェルの環境変数として export するコマンドの例 ( set -a; source .](https://zenn.dev/yumainaura/articles/qiita-2020-03-03t14_16_50-09_00-#set--a-%E3%81%A8%E3%81%AF)
-> - [Macで環境変数を管理するためのdirenvの設定方法｜shimakaze\_soft](https://note.com/shimakaze_soft/n/n53949cc818d1)
+> - [Macで環境変数を管理するためのdirenvの設定方法｜shimakaze_soft](https://note.com/shimakaze_soft/n/n53949cc818d1)
 
 #### ▼ `.envrc` ファイルの登録
 

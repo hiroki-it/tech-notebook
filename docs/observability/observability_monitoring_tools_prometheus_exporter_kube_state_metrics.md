@@ -106,7 +106,7 @@ spec:
 
 > - https://www.densify.com/docs/WebHelp_Densify_Cloud/Content/Data_Collection_for_Public_Cloud_Systems/Container_Data_Collection_Prerequisites.htm
 > - [kube-state-metrics/docs/developer/cli-arguments.md at main · kubernetes/kube-state-metrics · GitHub](https://github.com/kubernetes/kube-state-metrics/blob/main/docs/developer/cli-arguments.md#available-options)
-> - [pod\_labels does not exists in kube\_pod\_labels metric · Issue #1501 · kubernetes/kube-state-metrics · GitHub](https://github.com/kubernetes/kube-state-metrics/issues/1501#issuecomment-991076751)
+> - [pod_labels does not exists in kube_pod_labels metric · Issue #1501 · kubernetes/kube-state-metrics · GitHub](https://github.com/kubernetes/kube-state-metrics/issues/1501#issuecomment-991076751)
 
 <br>
 

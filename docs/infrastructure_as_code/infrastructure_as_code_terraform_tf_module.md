@@ -365,7 +365,7 @@ resource "aws_s3_bucket" "bar" {
 }
 ```
 
-> - [Terraform: Prevent default\_tags on a specific resource - DEV Community](https://dev.to/drewmullen/terraform-prevent-defaulttags-on-a-specific-resource-n19)
+> - [Terraform: Prevent default_tags on a specific resource - DEV Community](https://dev.to/drewmullen/terraform-prevent-defaulttags-on-a-specific-resource-n19)
 
 #### ▼ モジュールに渡すプロバイダーを切り替える
 

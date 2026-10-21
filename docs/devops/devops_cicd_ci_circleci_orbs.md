@@ -71,7 +71,7 @@ jobs:
           region: $AWS_REGION_ENV_VAR_NAME
 ```
 
-> - [$BASH\_ENV does not seem to be sourced · Issue #1650 · circleci/circleci-docs · GitHub](https://github.com/circleci/circleci-docs/issues/1650)
+> - [$BASH_ENV does not seem to be sourced · Issue #1650 · circleci/circleci-docs · GitHub](https://github.com/circleci/circleci-docs/issues/1650)
 
 <br>
 

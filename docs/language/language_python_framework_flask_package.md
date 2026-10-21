@@ -213,7 +213,7 @@ oidc = OpenIDConnect(app)
 ```
 
 > - [GitHub - fedora-infra/flask-oidc: OpenID Connect support for Flask · GitHub](https://github.com/fedora-infra/flask-oidc/)
-> - [Simple python example using flask, flask\_oidc and keycloak · GitHub](https://gist.github.com/thomasdarimont/145dc9aa857b831ff2eff221b79d179a?permalink_comment_id=4983728#gistcomment-4983728)
+> - [Simple python example using flask, flask_oidc and keycloak · GitHub](https://gist.github.com/thomasdarimont/145dc9aa857b831ff2eff221b79d179a?permalink_comment_id=4983728#gistcomment-4983728)
 
 <br>
 
@@ -237,6 +237,6 @@ oidc = OpenIDConnect(app)
 }
 ```
 
-> - [Simple python example using flask, flask\_oidc and keycloak · GitHub](https://gist.github.com/thomasdarimont/145dc9aa857b831ff2eff221b79d179a#file-client_secrets-json)
+> - [Simple python example using flask, flask_oidc and keycloak · GitHub](https://gist.github.com/thomasdarimont/145dc9aa857b831ff2eff221b79d179a#file-client_secrets-json)
 
 <br>

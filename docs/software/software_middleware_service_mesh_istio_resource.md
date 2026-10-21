@@ -1209,8 +1209,7 @@ spec:
     - when:
         - key: request.auth.claims[iss]
           # JWT トークンがある場合にのみ許可する
-          values:
-            ["http://keycloak.com/realms/<realm名>"]
+          values: ["http://keycloak.com/realms/<realm名>"]
 ```
 
 > - [コンテナ上のマイクロサービスの認証強化 ～IstioとKeycloak～ \| Keycloakで実現するAPIセキュリティ \| Think IT（シンクイット）](https://thinkit.co.jp/article/18023)

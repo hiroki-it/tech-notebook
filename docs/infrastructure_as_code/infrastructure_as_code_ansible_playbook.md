@@ -722,7 +722,7 @@ SELinux を無効化する。
 
 管理対象ノードで `curl` コマンドを実行する。
 
-> - [ansible.builtin.get\_url - 指定した URL からファイルをダウンロードする](https://zenn.dev/y_mrok/books/ansible-no-module-no-tsukaikata/viewer/ansible_builtin_get_url)
+> - [ansible.builtin.get_url - 指定した URL からファイルをダウンロードする](https://zenn.dev/y_mrok/books/ansible-no-module-no-tsukaikata/viewer/ansible_builtin_get_url)
 
 ```yaml
 - name: Download tool
@@ -911,7 +911,7 @@ SELinux を無効化する。
 `gather_facts` オプションを有効化する必要がある。
 
 > - https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell
-> - [\[Ansible\] 環境変数を取得する ansible\_env.hoge と lookup("env", "hoge") の違い - てくなべ](https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env)
+> - [\[Ansible\] 環境変数を取得する ansible_env.hoge と lookup("env", "hoge") の違い - てくなべ](https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env)
 
 **＊実装例＊**
 
@@ -990,7 +990,7 @@ task 内で出力できる環境変数を設定する。
 コントロールノードに設定された環境変数を出力する。
 
 > - https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell
-> - [\[Ansible\] 環境変数を取得する ansible\_env.hoge と lookup("env", "hoge") の違い - てくなべ](https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env)
+> - [\[Ansible\] 環境変数を取得する ansible_env.hoge と lookup("env", "hoge") の違い - てくなべ](https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env)
 
 **＊実装例＊**
 

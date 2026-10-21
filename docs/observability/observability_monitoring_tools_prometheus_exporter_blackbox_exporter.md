@@ -281,8 +281,8 @@ modules:
         insecure_skip_verify: "true"
 ```
 
-> - [blackbox\_exporter/CONFIGURATION.md at master · prometheus/blackbox\_exporter · GitHub](https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe)
-> - [blackbox\_exporter/example.yml at master · prometheus/blackbox\_exporter · GitHub](https://github.com/prometheus/blackbox_exporter/blob/master/example.yml)
+> - [blackbox_exporter/CONFIGURATION.md at master · prometheus/blackbox_exporter · GitHub](https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe)
+> - [blackbox_exporter/example.yml at master · prometheus/blackbox_exporter · GitHub](https://github.com/prometheus/blackbox_exporter/blob/master/example.yml)
 
 #### ▼ POST リクエストの場合
 
@@ -321,9 +321,9 @@ modules:
       recursion_desired: "true"
 ```
 
-> - [blackbox\_exporter/CONFIGURATION.md at master · prometheus/blackbox\_exporter · GitHub](https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe)
+> - [blackbox_exporter/CONFIGURATION.md at master · prometheus/blackbox_exporter · GitHub](https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe)
 > - [Prometheus Blackbox Exporter and POST calls \| @abiydv](https://abiydv.github.io/posts/prometheus-blackbox-monitor-post-api/#step-1---blackbox-exporter)
-> - [blackbox\_exporter/example.yml at master · prometheus/blackbox\_exporter · GitHub](https://github.com/prometheus/blackbox_exporter/blob/master/example.yml)
+> - [blackbox_exporter/example.yml at master · prometheus/blackbox_exporter · GitHub](https://github.com/prometheus/blackbox_exporter/blob/master/example.yml)
 
 <br>
 

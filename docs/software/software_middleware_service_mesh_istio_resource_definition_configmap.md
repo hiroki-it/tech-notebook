@@ -1,7 +1,6 @@
 ---
 title: 【IT 技術の知見】ConfigMap 系＠リソース定義
 description: ConfigMap 系＠リソース定義の知見を記録しています。
-
 ---
 
 # ConfigMap 系＠リソース定義
@@ -318,10 +317,10 @@ istio-proxy のアウトバウンド通信時リトライ条件は以下であ�
 | HTTP/2 のステータスコード | マイクロサービスに通信が届いている | リトライが有効 | リトライ条件                                                                                                                                                                                         |
 | ------------------------- | :--------------------------------: | :------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `cancelled`               |                 ⭕️                 |                | **マイクロサービスからのアウトバウンド**通信時、gRPC ステータスコードが `Cancelled` であった場合に、リトライを実行する。送信元がリクエストを切断しているため、リトライするべきではない可能性がある。 |
-| `deadline-exceeded`       |                 ⭕️                 |       条件による       | マイクロサービスからアウトバウンド通信時、gRPC ステータスコードが `DeadlineExceeded` であった場合に、リトライを実行する。                                                                            |
-| `refused-stream`          |                 ⭕️                 |       ✅       | 宛先が HTTP/2 エラーコードの `REFUSED_STREAM` を返信した場合に、リトライを実行する。                                                                                                   |
-| `resource-exhausted`      |                 ⭕️                 |       条件による       | マイクロサービスからのアウトバウンド通信時、gRPC ステータスコードが `ResourceExhausted` であった場合に、リトライを実行する。                                                                         |
-| `unavailable`             |                 ⭕️                 |              | マイクロサービスからのアウトバウンド通信時、宛先が gRPC ステータスコードの `Unavailable` を返信した場合に、リトライを実行する。冪等性に注意する。                                                                   |
+| `deadline-exceeded`       |                 ⭕️                 |   条件による   | マイクロサービスからアウトバウンド通信時、gRPC ステータスコードが `DeadlineExceeded` であった場合に、リトライを実行する。                                                                            |
+| `refused-stream`          |                 ⭕️                 |       ✅       | 宛先が HTTP/2 エラーコードの `REFUSED_STREAM` を返信した場合に、リトライを実行する。                                                                                                                 |
+| `resource-exhausted`      |                 ⭕️                 |   条件による   | マイクロサービスからのアウトバウンド通信時、gRPC ステータスコードが `ResourceExhausted` であった場合に、リトライを実行する。                                                                         |
+| `unavailable`             |                 ⭕️                 |                | マイクロサービスからのアウトバウンド通信時、宛先が gRPC ステータスコードの `Unavailable` を返信した場合に、リトライを実行する。冪等性に注意する。                                                    |
 
 > - [Router — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on)
 > - [Router — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-grpc-on)
@@ -333,8 +332,8 @@ istio-proxy のインバウンド通信時のリトライ条件は以下であ�
 執筆時点 (2025/02/26) では、`ENABLE_INBOUND_RETRY_POLICY` 変数を `true` (デフォルト値) にすると使用できる。
 
 | HTTP/2 のステータスコード | マイクロサービスに通信が届いている | 冪等性がある | 理由                                                                                                 |
-| --------------------------- | :--------------------------------: | :----------: | ---------------------------------------------------------------------------------------------------- |
-| `reset-before-request`      |                 ×                  |      ✅      | マイクロサービスへのインバウンド通信時、マイクロサービスにリクエストをフォワーディングできなかった。 |
+| ------------------------- | :--------------------------------: | :----------: | ---------------------------------------------------------------------------------------------------- |
+| `reset-before-request`    |                 ×                  |      ✅      | マイクロサービスへのインバウンド通信時、マイクロサービスにリクエストをフォワーディングできなかった。 |
 
 <br>
 
@@ -664,7 +663,7 @@ spec:
 ```
 
 > - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig)
-> - [api/networking/v1beta1/proxy\_config.proto at master · istio/api · GitHub](https://github.com/istio/api/blob/master/networking/v1beta1/proxy_config.proto)
+> - [api/networking/v1beta1/proxy_config.proto at master · istio/api · GitHub](https://github.com/istio/api/blob/master/networking/v1beta1/proxy_config.proto)
 
 <br>
 

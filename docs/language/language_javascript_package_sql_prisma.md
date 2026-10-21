@@ -388,14 +388,11 @@ SQL 文自体を変数にしたい場合に使用する。
 
 ただし 、意図しないSQLを実行される『SQL インジェクション』を受ける危険性がある。
 
-
-
 ```typescript
 const sql = "SELECT * FROM User";
 
 const users = await prisma.$queryRawUnsafe<User[]>(sql);
 ```
-
 
 <br>
 

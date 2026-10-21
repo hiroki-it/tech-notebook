@@ -161,7 +161,7 @@ $ ${GOPATH}/bin/foo-package --version
 
 > - [Deprecation of 'go get' for installing executables - The Go Programming Language](https://go.dev/doc/go-get-install-deprecation)
 > - [cmd/go: go install cmd@version errors out when module with main package has replace directive · Issue #44840 · golang/go · GitHub](https://github.com/golang/go/issues/44840#issuecomment-1828537390)
-> - [go install で落とした binary に PATH を通す - okkun\_sh's blog](https://okkun-sh.hatenablog.com/entry/2023/06/16/013008)
+> - [go install で落とした binary に PATH を通す - okkun_sh's blog](https://okkun-sh.hatenablog.com/entry/2023/06/16/013008)
 
 #### ▼ 最新バージョンの指定
 

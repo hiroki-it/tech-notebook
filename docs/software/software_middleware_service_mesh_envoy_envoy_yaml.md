@@ -36,6 +36,7 @@ FROM envoyproxy/envoy:v1.20.1
 COPY envoy.yaml /etc/envoy/envoy.yaml
 RUN chmod go+r /etc/envoy/envoy.yaml
 ```
+
 > - [Using the Envoy Docker Image — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/start/docker)
 
 <br>
@@ -535,7 +536,7 @@ static_resources:
 ```
 
 > - [gRPC timeout processing does not match gRPC semantics · Issue #12578 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/issues/12578)
-> - [api: Add max\_stream\_duration to RouteAction by dfawley · Pull Request #13018 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/pull/13018)
+> - [api: Add max_stream_duration to RouteAction by dfawley · Pull Request #13018 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/pull/13018)
 
 Envoy は、gRPC のストリーミングのタイムアウト時間を適切に処理できておらず、`max_grpc_timeout` は非推奨となった。
 
@@ -634,8 +635,8 @@ gRPCサーバー # タイムアウト (DeadlineExceeded を投げる)
 
 しかし、移行先の `max_stream_duration` にも gRPC による HTTP レスポンスの返信とタイムアウト時間超過による通信切断のタイミングに問題がある。
 
-> - [Inconsistent timeout handling between max\_stream\_timeout and router global timeout · Issue #16129 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/issues/16129)
-> - [Return gRPC error status when max\_stream\_duration is reached for gRPC requests · Issue #13925 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029)
+> - [Inconsistent timeout handling between max_stream_timeout and router global timeout · Issue #16129 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/issues/16129)
+> - [Return gRPC error status when max_stream_duration is reached for gRPC requests · Issue #13925 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029)
 
 そこで、サービスメッシュツール (例：Istio) では、`max_grpc_timeout` を使用し続けている。
 
@@ -1066,9 +1067,9 @@ static_resources:
                   cluster_name: xds_cluster
 ```
 
-> - [envoy\_control/baseline.yaml at eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a · salrashid123/envoy\_control · GitHub](https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L9-L15)
-> - [envoy\_control/baseline.yaml at eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a · salrashid123/envoy\_control · GitHub](https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L27-L40)
-> - [envoy\_discovery/envoy\_config.yaml at 8f939d1ba7aaf8724651a9e2530099da4ab686d6 · salrashid123/envoy\_discovery · GitHub](https://github.com/salrashid123/envoy_discovery/blob/8f939d1ba7aaf8724651a9e2530099da4ab686d6/envoy_config.yaml#L39-L74)
+> - [envoy_control/baseline.yaml at eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a · salrashid123/envoy_control · GitHub](https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L9-L15)
+> - [envoy_control/baseline.yaml at eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a · salrashid123/envoy_control · GitHub](https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L27-L40)
+> - [envoy_discovery/envoy_config.yaml at 8f939d1ba7aaf8724651a9e2530099da4ab686d6 · salrashid123/envoy_discovery · GitHub](https://github.com/salrashid123/envoy_discovery/blob/8f939d1ba7aaf8724651a9e2530099da4ab686d6/envoy_config.yaml#L39-L74)
 > - [Envoy ProxyのためのEDSサーバーを作る \| Folioscope](https://i-beam.org/2019/03/13/envoy-xds-server/)
 
 **＊実装例＊**

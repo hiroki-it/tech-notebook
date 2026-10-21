@@ -515,6 +515,6 @@ ginCtx.JSON(
 
 標準のルールの一覧は、以下のリンクを参考にせよ。
 
-> - [validator/baked\_in.go at v10.15.1 · go-playground/validator · GitHub](https://github.com/go-playground/validator/blob/v10.15.1/baked_in.go#L70-L235)
+> - [validator/baked_in.go at v10.15.1 · go-playground/validator · GitHub](https://github.com/go-playground/validator/blob/v10.15.1/baked_in.go#L70-L235)
 
 <br>

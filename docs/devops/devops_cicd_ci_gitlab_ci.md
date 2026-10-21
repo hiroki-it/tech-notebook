@@ -1327,7 +1327,6 @@ go_mod:
 
 GitLab Agentは、Kubernetesクラスタ内で動作し、GitLabとクラスタを接続して、GitLab CI/CDからアプリケーションをデプロイできるようにするエージェントである。
 
-
 <br>
 
 ### CIOps構成
@@ -1450,7 +1449,7 @@ deploy_review:
     - job: build_review_image
   variables:
     # gitlab-agentを指定する
-    HELM_KUBECONTEXT: ${REVIEW_KUBECONTEXT} 
+    HELM_KUBECONTEXT: ${REVIEW_KUBECONTEXT}
   script:
     - helm upgrade --install ${REVIEW_RELEASE_NAME} ./review/reviewapp
       --namespace ${REVIEW_NAMESPACE}
@@ -1499,4 +1498,3 @@ stop_review:
       when: manual
       allow_failure: true
 ```
-

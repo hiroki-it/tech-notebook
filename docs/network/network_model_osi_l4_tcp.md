@@ -65,7 +65,7 @@ TCP 接続のたびに、送信元と宛先間で TCP スリーウェイハン�
 
 <!-- prettier-ignore-end -->
 
-> - [ECONNREFUSEDとECONNRESETについて - hana\_shinのLinux技術ブログ](https://hana-shin.hatenablog.com/entry/2022/04/06/205912#31-ECONNREFUSEDTCP%E3%81%AE%E5%A0%B4%E5%90%88)
+> - [ECONNREFUSEDとECONNRESETについて - hana_shinのLinux技術ブログ](https://hana-shin.hatenablog.com/entry/2022/04/06/205912#31-ECONNREFUSEDTCP%E3%81%AE%E5%A0%B4%E5%90%88)
 
 <br>
 
@@ -101,7 +101,7 @@ TCP 接続中に宛先のプロセスが終了し、接続を強制的に切断�
 
 <!-- prettier-ignore-end -->
 
-> - [ECONNREFUSEDとECONNRESETについて - hana\_shinのLinux技術ブログ](https://hana-shin.hatenablog.com/entry/2022/04/06/205912#33-ECONNRESET)
+> - [ECONNREFUSEDとECONNRESETについて - hana_shinのLinux技術ブログ](https://hana-shin.hatenablog.com/entry/2022/04/06/205912#33-ECONNRESET)
 > - [HTTPリクエストにおける「Connection Reset by Peer」が発生する条件とは？](https://zenn.dev/rescuenow/articles/a01f0effdf3391#%E3%80%8Cconnection-reset-by-peer%E3%80%8D%E3%81%A8%E3%81%AF%EF%BC%9F)
 
 <br>

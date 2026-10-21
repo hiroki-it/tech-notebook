@@ -312,7 +312,7 @@ services:
 
 > - https://stackoverflow.com/a/41854997
 > - [Docker の healthcheck を初めて使った話](https://zenn.dev/sun_asterisk/articles/b4b17681d08018)
-> - [docker-compose-healthcheck/README\_JP.md at master · peter-evans/docker-compose-healthcheck · GitHub](https://github.com/peter-evans/docker-compose-healthcheck/blob/master/README_JP.md)
+> - [docker-compose-healthcheck/README_JP.md at master · peter-evans/docker-compose-healthcheck · GitHub](https://github.com/peter-evans/docker-compose-healthcheck/blob/master/README_JP.md)
 
 <br>
 
@@ -391,7 +391,6 @@ services:
 
 ログのフォワーディング元よりも先に起動する必要がある。
 
-
 **＊実装例＊**
 
 ```yaml
@@ -413,7 +412,6 @@ services:
 ```
 
 > - [Docker Compose · Fluentd 1.0 Documentation](https://docs.fluentd.org/container-deployment/docker-compose#step-0-create-docker-compose.yml)
-
 
 <br>
 

@@ -450,7 +450,7 @@ Runitor を使用しない場合、Cron の標準出力/標準エラー出力の
 
 ヘルスチェックのためのリクエストを送信しないという点で、『アクティブヘルスチェック』とは異なる。
 
-> - [nginx upstream パッシブヘルスチェックはかなり使える (max\_fails, fail\_timeout) - Neinvalli](https://neinvalli.hatenablog.com/entry/2017/10/31/002839)
+> - [nginx upstream パッシブヘルスチェックはかなり使える (max_fails, fail_timeout) - Neinvalli](https://neinvalli.hatenablog.com/entry/2017/10/31/002839)
 > - https://docs.konghq.com/gateway/latest/how-kong-works/health-checks/
 > - [Mastering APISIX Health Checks: Active and Passive Monitoring Strategies - API7.ai](https://api7.ai/blog/health-check-ensures-high-availability)
 

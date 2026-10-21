@@ -223,7 +223,7 @@ http {
 }
 ```
 
-> - [Module ngx\_http\_auth\_request\_module](https://nginx.org/en/docs/http/ngx_http_auth_request_module.html)
+> - [Module ngx_http_auth_request_module](https://nginx.org/en/docs/http/ngx_http_auth_request_module.html)
 > - [Nginx と自前の認証システムを組み合わせてセキュアなリソースを制限する - JX通信社エンジニアブログ](https://tech.jxpress.net/entry/2018/08/23/104123)
 > - [nginx で omniauth を利用してアクセス制御を行う - クックパッド開発者ブログ](https://techlife.cookpad.com/entry/2015/10/16/080000)
 > - [Can oauth2-proxy be used to just validate oauth jwt tokens ? · Issue #1150 · oauth2-proxy/oauth2-proxy · GitHub](https://github.com/oauth2-proxy/oauth2-proxy/issues/1150#issuecomment-817192450)

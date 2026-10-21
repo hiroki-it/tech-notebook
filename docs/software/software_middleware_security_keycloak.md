@@ -405,7 +405,7 @@ POST https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-conn
 ```
 
 > - [Securing applications and services with OpenID Connect - Keycloak](https://www.keycloak.org/securing-apps/oidc-layers#_endpoints)
-> - [Simple python example using flask, flask\_oidc and keycloak · GitHub](https://gist.github.com/thomasdarimont/145dc9aa857b831ff2eff221b79d179a?permalink_comment_id=4884254#gistcomment-4884254)
+> - [Simple python example using flask, flask_oidc and keycloak · GitHub](https://gist.github.com/thomasdarimont/145dc9aa857b831ff2eff221b79d179a?permalink_comment_id=4884254#gistcomment-4884254)
 > - [KeycloakのLogout Endpointでログアウトする #Keycloak - Qiita](https://qiita.com/suke_masa/items/e04880c5cf7232b60004)
 > - [KeycloakのLogoutEndpointとTokenRevocationEndpointについて #Keycloak - Qiita](https://qiita.com/i7a7467/items/b7eaa2deb0378fc3b2aa)
 

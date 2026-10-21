@@ -13,7 +13,6 @@ description: AWS Athena＠AWSリソースの知見を記録しています。
 
 <br>
 
-
 ## 02. セットアップ
 
 ### Terraform
@@ -93,8 +92,8 @@ TBLPROPERTIES (
 );
 ```
 
-1. terraform applyをすると、「保存したクエリ」にCREATE文がでる 
-2. CREATE文をコンソール上で実行し、テーブルを作成する 
+1. terraform applyをすると、「保存したクエリ」にCREATE文がでる
+2. CREATE文をコンソール上で実行し、テーブルを作成する
 3. SELECT文を実行し、テーブル列に基づく構造のログをS3から取得する
 
 ```sql
@@ -106,4 +105,3 @@ LIMIT 10;
 ```
 
 <br>
-

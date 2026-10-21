@@ -150,7 +150,7 @@ Temporal を Saga パターンのオーケストレーターとして使用す�
 > - [Springboot microservices managed by Temporal.io + RabbitMQ - #4 by maxim - Community Support - Temporal Community Forum](https://community.temporal.io/t/springboot-microservices-managed-by-temporal-io-rabbitmq/1489/4)
 > - [Springboot microservices managed by Temporal.io + RabbitMQ - #6 by maxim - Community Support - Temporal Community Forum](https://community.temporal.io/t/springboot-microservices-managed-by-temporal-io-rabbitmq/1489/6)
 > - [Temporal Workflow & Microservices Explained \| Spiral Scout](https://spiral.dev/blog/temporal-workflow-and-microservices)
-> - [temporal\_microservices/cmd at main · guntenbein/temporal\_microservices · GitHub](https://github.com/guntenbein/temporal_microservices/tree/main/cmd)
+> - [temporal_microservices/cmd at main · guntenbein/temporal_microservices · GitHub](https://github.com/guntenbein/temporal_microservices/tree/main/cmd)
 
 #### ▼ マネージドサービスよりも適切な理由
 

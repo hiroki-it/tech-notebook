@@ -260,7 +260,7 @@ DB インデックス数が減るため、処理性能が高まったり、レ�
 
 各テーブルのプライマリーキーは採番テーブルを元に割り当てられるため、連番ではなく飛び飛びになる。
 
-> - [LAST\_INSERT\_IDを使って採番テーブルを扱う - (ﾟ∀ﾟ)o彡 sasata299's blog](http://blog.livedoor.jp/sasata299/archives/51280681.html)
+> - [LAST_INSERT_IDを使って採番テーブルを扱う - (ﾟ∀ﾟ)o彡 sasata299's blog](http://blog.livedoor.jp/sasata299/archives/51280681.html)
 
 あらかじめ、最初のレコードのみ手動で挿入しておく。
 

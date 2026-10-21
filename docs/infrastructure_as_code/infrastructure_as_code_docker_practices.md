@@ -375,7 +375,7 @@ RUN dnf upgrade -y \
 | distroless 型          | 接尾辞なし                                            | 最小限のパッケージのみをインストールしている。                                                                                                          | イメージによる | 有 (非常に少ない)    | イメージによる                   |
 
 > - [Docker image(イメージ)の違い:alpine,bullseye, buster, slim, stretch, jessie, slim-buster, windowsservercore, latestどれを選ぶべきか？](https://prograshi.com/platform/docker/docker-image-tags-difference/)
-> - [【docker buildのマニアックすぎる狂宴】Container Build Meetup #1に参加してきた #container\_build \| DevelopersIO](https://dev.classmethod.jp/articles/docker-build-meetup-1/#toc-9)
+> - [【docker buildのマニアックすぎる狂宴】Container Build Meetup #1に参加してきた #container_build \| DevelopersIO](https://dev.classmethod.jp/articles/docker-build-meetup-1/#toc-9)
 > - https://qiita.com/t_katsumura/items/462e2ae6321a9b5e473e
 > - [Node.js Docker baseイメージには alpine \< distroless \< ubuntu+slim 構成がよさそう](<https://zenn.dev/jrsyo/articles/e42de409e62f5d#%E9%81%B8%E6%8A%9E%E8%82%A2-3.-ubuntu-%2B-slim-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8-(%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B9-%E2%97%8E)>)
 
@@ -691,7 +691,7 @@ DockerHub 以外のイメージレジストリを使って、レートリミッ�
 `crane` コマンドを使用すると、イメージレジストリ間のコンテナイメージの移動を簡素化できる。
 
 > - https://medium.com/@spurin/copying-container-images-between-container-registries-e7b734abc701
-> - [go-containerregistry/cmd/crane/doc/crane\_copy.md at main · google/go-containerregistry · GitHub](https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane_copy.md)
+> - [go-containerregistry/cmd/crane/doc/crane_copy.md at main · google/go-containerregistry · GitHub](https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane_copy.md)
 
 <br>
 
@@ -765,7 +765,7 @@ services:
 
 > - https://stackoverflow.com/a/41854997
 > - [Docker の healthcheck を初めて使った話](https://zenn.dev/sun_asterisk/articles/b4b17681d08018)
-> - [docker-compose-healthcheck/README\_JP.md at master · peter-evans/docker-compose-healthcheck · GitHub](https://github.com/peter-evans/docker-compose-healthcheck/blob/master/README_JP.md)
+> - [docker-compose-healthcheck/README_JP.md at master · peter-evans/docker-compose-healthcheck · GitHub](https://github.com/peter-evans/docker-compose-healthcheck/blob/master/README_JP.md)
 
 <br>
 

@@ -272,7 +272,7 @@ JWT 取得のための認可リクエストを認可サーバーに送信する�
 有料版の Nginx でしか使えない。
 
 > - https://medium.com/@sergey.dudik/nginx-and-keycloak-a-perfect-pair-for-gateway-security-41a801e741f9
-> - [Module ngx\_http\_auth\_jwt\_module](https://nginx.org/en/docs/http/ngx_http_auth_jwt_module.html)
+> - [Module ngx_http_auth_jwt_module](https://nginx.org/en/docs/http/ngx_http_auth_jwt_module.html)
 
 <br>
 

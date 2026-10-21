@@ -742,7 +742,7 @@ Internet Gateway の後に EC2 を作成可能にする。
 なお、`aws_volume_attachment` リソースでこのオプションを追加する PR が現座進行形で提出されている。
 
 > - [\[Terraform\] EC2のEBS追加ボリュームをサイズ拡張しようとしたらハマった話 \| DevelopersIO](https://dev.classmethod.jp/articles/terraform-ec2-ebs_block_device-size-up/)
-> - [Feat: Add delete\_on\_termination option on EBS volume attachment by rclaveau-tech · Pull Request #31869 · hashicorp/terraform-provider-aws · GitHub](https://github.com/hashicorp/terraform-provider-aws/pull/31869)
+> - [Feat: Add delete_on_termination option on EBS volume attachment by rclaveau-tech · Pull Request #31869 · hashicorp/terraform-provider-aws · GitHub](https://github.com/hashicorp/terraform-provider-aws/pull/31869)
 
 <br>
 
@@ -1401,7 +1401,7 @@ Amazon Aurora では、クラスターにインスタンスを 1 つだけ紐付
 AZ のマップデータに対して `for_each` 引数を使用することで、各 AZ に最低 1 つのインスタンスを配置するように設定できる。
 
 > - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance)
-> - [how to create aws\_rds\_cluster instance (aurora) with multi\_az flag? · Issue #5333 · hashicorp/terraform · GitHub](https://github.com/hashicorp/terraform/issues/5333)
+> - [how to create aws_rds_cluster instance (aurora) with multi_az flag? · Issue #5333 · hashicorp/terraform · GitHub](https://github.com/hashicorp/terraform/issues/5333)
 
 #### `(7)` インスタンスタイプは別々に設定する
 
@@ -1429,7 +1429,7 @@ Amazon Aurora では、紐付けられたサブネットグループが複数の
 
 そのため、サブネットグループに複数のサブネットを紐付けるようにする。
 
-> - [how to create aws\_rds\_cluster instance (aurora) with multi\_az flag? · Issue #5333 · hashicorp/terraform · GitHub](https://github.com/hashicorp/terraform/issues/5333)
+> - [how to create aws_rds_cluster instance (aurora) with multi_az flag? · Issue #5333 · hashicorp/terraform · GitHub](https://github.com/hashicorp/terraform/issues/5333)
 
 <br>
 

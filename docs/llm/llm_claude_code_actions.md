@@ -81,9 +81,9 @@ jobs:
           # ユーザーが投稿した「@claude ...」のコメント全文を、依頼のプロンプトとして受け取る。
           # ActionがIssue・PRの参考データと依頼を取り込み、Claudeへ渡す。
           # promptは指定せず、メンションへの応答モードを使用する。
-          trigger_phrase: '@claude'
+          trigger_phrase: "@claude"
           # CLI引数で、エージェントの最大ターン数を指定する。
-          claude_args: '--max-turns 50'
+          claude_args: "--max-turns 50"
 ```
 
 > - [Claude Code Action](https://github.com/anthropics/claude-code-action)

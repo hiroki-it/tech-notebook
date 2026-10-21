@@ -111,7 +111,7 @@ Envoy は、マイクロサービスへのアクセスログ (インバウンド
 | traceparent          | `%REQ(TRACEPARENT)%`                 | `00-d34ea2aa01d34d0fda79c6d09b097a83-fd0eae41e95a263c-01` |
 | HTTP メソッド        | `%REQ(:METHOD)%`                     | `GET`                                                     |
 | パス                 | `%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%` | `/foo/1`                                                  |
-| ユーザーエージェント | `%REQ(USER-AGENT)%`                 | `curl/8.7.1`                                              |
+| ユーザーエージェント | `%REQ(USER-AGENT)%`                  | `curl/8.7.1`                                              |
 | X-Forwarded-for      | `%REQ(X-FORWARDED-FOR)%`             | 記入中...                                                 |
 
 > - [Access logging — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules)

@@ -168,7 +168,7 @@ echo $0 # foo.sh
 | `~/.bash_logout` ファイル  | `~/.zlogout` ファイル  | `exit` コマンド時                                                                    |
 
 > - [ログインシェルとインタラクティブシェルの違い](https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html)
-> - [Catalina から zsh になって bash\_profile が利用できなくなった](https://leico.github.io/TechnicalNote/Mac/catalina-zsh)
+> - [Catalina から zsh になって bash_profile が利用できなくなった](https://leico.github.io/TechnicalNote/Mac/catalina-zsh)
 > - https://suwaru.tokyo/zshenv/
 
 #### ▼ 確認方法

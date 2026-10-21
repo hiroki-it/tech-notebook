@@ -100,7 +100,7 @@ name: Build AMI
 on:
   workflow_dispatch:
   push:
-    tags: ['v*']
+    tags: ["v*"]
 
 permissions:
   contents: read
@@ -124,7 +124,7 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
       - uses: hashicorp/setup-packer@v3
         with:
-          version: '1.14.0'
+          version: "1.14.0"
       - name: Resolve source AMI
         run: |
           SOURCE_IMAGE_ID=$(aws ssm get-parameter \

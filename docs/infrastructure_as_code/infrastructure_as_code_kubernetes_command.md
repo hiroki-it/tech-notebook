@@ -1435,7 +1435,7 @@ $ kubectl replace --force -f foo.yaml
 Deployment、DaemonSet、StatefulSet、でコピーされた Pod を操作する。
 
 > - [Kubectl Reference Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#rollout)
-> - [k8sのrollout機能 - aaabbb\_200904の日記](https://aaabbb-200904.hatenablog.jp/entry/2018/05/04/013848)
+> - [k8sのrollout機能 - aaabbb_200904の日記](https://aaabbb-200904.hatenablog.jp/entry/2018/05/04/013848)
 
 #### ▼ restart
 

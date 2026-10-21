@@ -53,7 +53,7 @@ Apache は、Apache コアとモジュールから構成される。
 
 `mod_fcgid` モジュールを読み込むことによって、FastCGI プロトコルでルーティングできるようになる。
 
-> - [mod\_fcgid - FastCGI interface module for Apache 2 - The Apache HTTP Server Project](https://httpd.apache.org/mod_fcgid/)
+> - [mod_fcgid - FastCGI interface module for Apache 2 - The Apache HTTP Server Project](https://httpd.apache.org/mod_fcgid/)
 
 <br>
 

@@ -1421,7 +1421,7 @@ resource "aws_foo" "foo" {
 }
 ```
 
-> - [\[Terraform\] 誤解されがちなignore\_changesの動き・機密情報はstateに保持されるのか？ \| DevelopersIO](https://dev.classmethod.jp/articles/note-about-terraform-ignore-changes/#toc-4)
+> - [\[Terraform\] 誤解されがちなignore_changesの動き・機密情報はstateに保持されるのか？ \| DevelopersIO](https://dev.classmethod.jp/articles/note-about-terraform-ignore-changes/#toc-4)
 
 <br>
 

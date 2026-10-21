@@ -107,7 +107,7 @@ Code 三兄弟のデータポイントを収集し、メトリクスとして分
 
 これらは AWS 側が原因のメトリクスであるため、ユーザーが監視する必要はない。
 
-> - [StatusCheckFailed\_System, StatusCheckFailed\_Instance ,StatusCheckFailedの違い](https://awsjp.com/AWS/hikaku/StatusCheckFailed_System-StatusCheckFailed_Instance-hikaku.html)
+> - [StatusCheckFailed_System, StatusCheckFailed_Instance ,StatusCheckFailedの違い](https://awsjp.com/AWS/hikaku/StatusCheckFailed_System-StatusCheckFailed_Instance-hikaku.html)
 
 #### ▼ Amazon ECS
 

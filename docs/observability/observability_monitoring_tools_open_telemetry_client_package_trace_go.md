@@ -767,7 +767,7 @@ func checkSession() gin.HandlerFunc {
 
 ```
 
-> - [opentelemetry/02/app/TodoBFF/app/controllers/route\_auth.go at main · cloudnativecheetsheet/opentelemetry · GitHub](https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/route_auth.go)
+> - [opentelemetry/02/app/TodoBFF/app/controllers/route_auth.go at main · cloudnativecheetsheet/opentelemetry · GitHub](https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/route_auth.go)
 > - [opentelemetry/02/app/TodoBFF/app/controllers/utils.go at main · cloudnativecheetsheet/opentelemetry · GitHub](https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/utils.go)
 > - [今日から分散トレーシングに対応しないといけなくなった人のための opentelemetry-go 入門 - Cybozu Inside Out \| サイボウズエンジニアのブログ](https://blog.cybozu.io/entry/2023/04/12/170000)
 > - [opentelemetry-go/example/otel-collector/main.go at v1.18.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.18.0/example/otel-collector/main.go#L122-L125)
@@ -1089,7 +1089,7 @@ func parent(ctx *gin.Context) {
 
 > - [AWS Distro for OpenTelemetry を使ってトレースを X-Ray でサクッと可視化する on EKS](https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4)
 > - [aws-otel-community/sample-apps/go-sample-app/collection/client.go at master · aws-observability/aws-otel-community · GitHub](https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go)
-> - [aws-otel-community/sample-apps/go-sample-app/collection/http\_traces.go at master · aws-observability/aws-otel-community · GitHub](https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go)
+> - [aws-otel-community/sample-apps/go-sample-app/collection/http_traces.go at master · aws-observability/aws-otel-community · GitHub](https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go)
 > - [aws-otel-go/sampleapp/main.go at main · aws-observability/aws-otel-go · GitHub](https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L93-L97)
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
@@ -1170,7 +1170,7 @@ func child(ctx *gin.Context) {
 
 > - [AWS Distro for OpenTelemetry を使ってトレースを X-Ray でサクッと可視化する on EKS](https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4)
 > - [aws-otel-community/sample-apps/go-sample-app/collection/client.go at master · aws-observability/aws-otel-community · GitHub](https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go)
-> - [aws-otel-community/sample-apps/go-sample-app/collection/http\_traces.go at master · aws-observability/aws-otel-community · GitHub](https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go)
+> - [aws-otel-community/sample-apps/go-sample-app/collection/http_traces.go at master · aws-observability/aws-otel-community · GitHub](https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go)
 > - [aws-otel-go/sampleapp/main.go at main · aws-observability/aws-otel-go · GitHub](https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L93-L97)
 
 #### ▼ ログへの ID 出力

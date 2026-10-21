@@ -893,7 +893,7 @@ Amazon EKS Cluster を作成すると、ENI も作成する。
 | AWS Systems Manager               | Interface          | `ssm.ap-northeast-1.amazonaws.com`                                                 | AWS Systems Manager のパラメーターストアに GET リクエストを送信するため。                                         |
 | AWS Secrets Manager               | Interface          | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Manager を使用するため。                                                                                  |
 
-> - [EKS入門者向けに「今こそ振り返るEKSの基礎」というタイトルで登壇しました #jawsug\_ct \| DevelopersIO](https://dev.classmethod.jp/articles/eks_basic/)
+> - [EKS入門者向けに「今こそ振り返るEKSの基礎」というタイトルで登壇しました #jawsug_ct \| DevelopersIO](https://dev.classmethod.jp/articles/eks_basic/)
 > - [Amazon EKS ワーカーノードの謎を解くクラスターネットワーク \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/)
 
 #### ▼ Amazon VPC 内のほかの AWS リソースへのリクエスト
@@ -1005,7 +1005,7 @@ Amazon EC2 ワーカーNode 内の Pod が Amazon ECR からコンテナイメ�
 > - [Amazon EKS node IAM role - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html)
 > - [AmazonEKSWorkerNodePolicy - AWS Managed Policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKSWorkerNodePolicy.html)
 > - [AmazonEC2ContainerRegistryReadOnly - AWS Managed Policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEC2ContainerRegistryReadOnly.html)
-> - [AmazonEKS\_CNI\_Policy - AWS Managed Policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKS_CNI_Policy.html)
+> - [AmazonEKS_CNI_Policy - AWS Managed Policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKS_CNI_Policy.html)
 
 <br>
 
@@ -1265,7 +1265,7 @@ Amazon EC2 Node の起動時に任意のコマンドを実行できるように�
 
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-cluster/
 > - [Customize managed nodes with launch templates - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html#launch-template-user-data)
-> - [terraform-aws-eks/docs/user\_data.md at master · terraform-aws-modules/terraform-aws-eks · GitHub](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/docs/user_data.md)
+> - [terraform-aws-eks/docs/user_data.md at master · terraform-aws-modules/terraform-aws-eks · GitHub](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/docs/user_data.md)
 
 #### ▼ `bootstrap.sh` ファイル
 

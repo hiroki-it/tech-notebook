@@ -99,7 +99,7 @@ local.file_match "kubernetes_pods" {
 }
 ```
 
-> - [local.file\_match \| Grafana Agent documentation](https://grafana.com/docs/agent/latest/flow/reference/components/local.file_match/)
+> - [local.file_match \| Grafana Agent documentation](https://grafana.com/docs/agent/latest/flow/reference/components/local.file_match/)
 
 <br>
 

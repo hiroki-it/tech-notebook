@@ -169,7 +169,7 @@ def create_app():
 ```
 
 > - https://flask.palletsprojects.com/en/2.0.x/patterns/appfactories/
-> - [flask\_api\_example/app/\_\_init\_\_.py at master · apryor6/flask\_api\_example · GitHub](https://github.com/apryor6/flask_api_example/blob/master/app/__init__.py)
+> - [flask_api_example/app/\_\_init\_\_.py at master · apryor6/flask_api_example · GitHub](https://github.com/apryor6/flask_api_example/blob/master/app/__init__.py)
 > - [Automatically Load Environment Variables in Flask](https://prettyprinted.com/tutorials/automatically_load_environment_variables_in_flask)
 
 #### ▼ エントリーポイント
@@ -364,7 +364,7 @@ with app.test_request_context():
     print(url_for('index', _external=True))
 ```
 
-> - [Flaskのurl\_forの使い方を解説 - Flask WebAcademy - Flaskの学習サイト](https://flask-web-academy.com/article/flask-urlfor/)
+> - [Flaskのurl_forの使い方を解説 - Flask WebAcademy - Flaskの学習サイト](https://flask-web-academy.com/article/flask-urlfor/)
 
 #### ▼ scheme
 
@@ -380,6 +380,6 @@ ith app.test_request_context():
     print(url_for('index', _external=True, _scheme='https'))
 ```
 
-> - [Flaskのurl\_forの使い方を解説 - Flask WebAcademy - Flaskの学習サイト](https://flask-web-academy.com/article/flask-urlfor/)
+> - [Flaskのurl_forの使い方を解説 - Flask WebAcademy - Flaskの学習サイト](https://flask-web-academy.com/article/flask-urlfor/)
 
 <br>

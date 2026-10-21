@@ -31,7 +31,7 @@ Istio の Envoy は、pilot-agent を介して Istiod の ADS-API とストリ�
 
 > - https://qiita.com/kitauji/items/a2a7b583ed3f5b4cc47e
 > - [Envoy ProxyのためのEDSサーバーを作る \| Folioscope](https://i-beam.org/2019/03/13/envoy-xds-server/)
-> - [GitHub - salrashid123/envoy\_discovery: Envoy Discovery service 'hello world' · GitHub](https://github.com/salrashid123/envoy_discovery#prerequsites)
+> - [GitHub - salrashid123/envoy_discovery: Envoy Discovery service 'hello world' · GitHub](https://github.com/salrashid123/envoy_discovery#prerequsites)
 
 <br>
 
@@ -476,7 +476,7 @@ service ListenerDiscoveryService {
 ```
 
 > - [envoy/api/envoy/service/listener/v3/lds.proto at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/listener/v3/lds.proto#L23-L42)
-> - [envoy/source/common/config/type\_to\_endpoint.cc at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/source/common/config/type_to_endpoint.cc#L43-L87)
+> - [envoy/source/common/config/type_to_endpoint.cc at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/source/common/config/type_to_endpoint.cc#L43-L87)
 
 **＊実装例＊**
 
@@ -728,7 +728,7 @@ service RouteDiscoveryService {
 ```
 
 > - [envoy/api/envoy/service/route/v3/rds.proto at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/route/v3/rds.proto#L22-L42)
-> - [envoy/source/common/config/type\_to\_endpoint.cc at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/source/common/config/type_to_endpoint.cc#L43-L87)
+> - [envoy/source/common/config/type_to_endpoint.cc at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/source/common/config/type_to_endpoint.cc#L43-L87)
 
 **＊実装例＊**
 
@@ -954,7 +954,7 @@ service ClusterDiscoveryService {
 ```
 
 > - [envoy/api/envoy/service/cluster/v3/cds.proto at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/cluster/v3/cds.proto#L22-L38)
-> - [envoy/source/common/config/type\_to\_endpoint.cc at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/source/common/config/type_to_endpoint.cc#L43-L87)
+> - [envoy/source/common/config/type_to_endpoint.cc at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/source/common/config/type_to_endpoint.cc#L43-L87)
 
 **＊実装例＊**
 

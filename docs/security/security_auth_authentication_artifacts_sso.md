@@ -93,6 +93,6 @@ API クライアントは、ID プロバイダーに資格情報 (例：クラ�
 
 ![auth0_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/auth0_sso.png)
 
-> - [Auth0を使った認証基盤導入の取り組みとシングルログアウトの話 / ginzarails\_vol35\_presentation - Speaker Deck](https://speakerdeck.com/lmi/ginzarails-vol35-presentation?slide=25)
+> - [Auth0を使った認証基盤導入の取り組みとシングルログアウトの話 / ginzarails_vol35_presentation - Speaker Deck](https://speakerdeck.com/lmi/ginzarails-vol35-presentation?slide=25)
 
 <br>

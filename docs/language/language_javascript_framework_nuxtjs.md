@@ -44,7 +44,7 @@ $ yarn dev
 
 補足として、`yarn dev` コマンドを実行した場合、環境変数の `NODE_ENV` が `development` になる。
 
-> - [Nuxt.jsでprocess.env.NODE\_ENVを参照する際の挙動についてまとめてみた #JavaScript - Qiita](https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc)
+> - [Nuxt.jsでprocess.env.NODE_ENVを参照する際の挙動についてまとめてみた #JavaScript - Qiita](https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc)
 
 #### ▼ `build`
 
@@ -85,7 +85,7 @@ $ yarn start
 
 補足として、`yarn start` コマンドを実行した場合、環境変数の `NODE_ENV` が `production` になる。
 
-> - [Nuxt.jsでprocess.env.NODE\_ENVを参照する際の挙動についてまとめてみた #JavaScript - Qiita](https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc)
+> - [Nuxt.jsでprocess.env.NODE_ENVを参照する際の挙動についてまとめてみた #JavaScript - Qiita](https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc)
 
 <br>
 
@@ -116,7 +116,7 @@ $ yarn dev
 
 補足として、`yarn dev` コマンドを実行した場合、環境変数の `NODE_ENV` が `development` になる。
 
-> - [Nuxt.jsでprocess.env.NODE\_ENVを参照する際の挙動についてまとめてみた #JavaScript - Qiita](https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc)
+> - [Nuxt.jsでprocess.env.NODE_ENVを参照する際の挙動についてまとめてみた #JavaScript - Qiita](https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc)
 
 #### ▼ `generate`
 
@@ -148,7 +148,7 @@ $ yarn start
 
 補足として、`yarn start` コマンドを実行した場合、環境変数の `NODE_ENV` が `production` になる。
 
-> - [Nuxt.jsでprocess.env.NODE\_ENVを参照する際の挙動についてまとめてみた #JavaScript - Qiita](https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc)
+> - [Nuxt.jsでprocess.env.NODE_ENVを参照する際の挙動についてまとめてみた #JavaScript - Qiita](https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc)
 
 <br>
 

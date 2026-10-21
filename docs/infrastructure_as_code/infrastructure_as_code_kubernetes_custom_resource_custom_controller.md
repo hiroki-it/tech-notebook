@@ -49,7 +49,7 @@ kube-apiserver から Kubernetes リソースのマニフェストの変更を�
 また、変更内容に応じて作成した Kubernetes リソースの実体を Delta FIFO キューに格納する。
 
 > - [client-go/tools/cache/reflector.go at v12.0.0 · kubernetes/client-go · GitHub](https://github.com/kubernetes/client-go/blob/v12.0.0/tools/cache/reflector.go)
-> - [client-go/tools/cache/delta\_fifo.go at v12.0.0 · kubernetes/client-go · GitHub](https://github.com/kubernetes/client-go/blob/v12.0.0/tools/cache/delta_fifo.go)
+> - [client-go/tools/cache/delta_fifo.go at v12.0.0 · kubernetes/client-go · GitHub](https://github.com/kubernetes/client-go/blob/v12.0.0/tools/cache/delta_fifo.go)
 
 #### ▼ インフォーマー
 
@@ -142,7 +142,7 @@ kube-controller-manager は、Node にある Custom Controller を反復的に�
 Custom Controller を自前で実装する。
 
 > - [カスタムコントローラーで任意のイベントを起点にReconcileを実行する](https://zenn.dev/hhiroshell/articles/custom-controller-for-out-of-cluster-events)
-> - [storage-bucket-prober/controllers/storagebucket\_controller.go at main · hhiroshell/storage-bucket-prober · GitHub](https://github.com/hhiroshell/storage-bucket-prober/blob/main/controllers/storagebucket_controller.go)
+> - [storage-bucket-prober/controllers/storagebucket_controller.go at main · hhiroshell/storage-bucket-prober · GitHub](https://github.com/hhiroshell/storage-bucket-prober/blob/main/controllers/storagebucket_controller.go)
 
 #### ▼ OSS を使用する場合
 
