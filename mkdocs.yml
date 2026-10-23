@@ -94,6 +94,13 @@ markdown_extensions:
       use_pygments: true
       # pygmentsのテーマ名は以下で選択できるが、機能しない...
       # https://github.com/pygments/pygments/blob/master/pygments/styles/__init__.py#L16
+      # injectablephpをphpとしてハイライトする
+      # startinlineにより、<?phpがないコードブロックもハイライトする
+      extend_pygments_lang:
+        - name: injectablephp
+          lang: php
+          options:
+            startinline: true
   - pymdownx.superfences:
       custom_fences:
         # Mermaidの有効化
