@@ -114,6 +114,28 @@ Book ルートエンティティと Review ルートエンティティは親子�
 
 これを操作する注文リポジトリと在庫リポジトリをコールしてはいけない。
 
+次の図では、枠が境界づけられたコンテキストを表す。実線は同じコンテキスト内でのリポジトリ呼び出し、破線は異なるコンテキストのリポジトリへの直接呼び出しを避ける箇所を示す。
+
+```mermaid
+flowchart TB
+  subgraph books["書籍・レビューのコンテキスト"]
+    reviewUsecase["Review ユースケース"]
+    bookRepository["Book リポジトリ"]
+    reviewRepository["Review リポジトリ"]
+    reviewUsecase --> bookRepository
+    reviewUsecase --> reviewRepository
+  end
+  subgraph ordering["注文コンテキスト"]
+    orderUsecase["注文ユースケース"]
+    orderRepository["注文リポジトリ"]
+    orderUsecase --> orderRepository
+  end
+  subgraph inventory["在庫コンテキスト"]
+    inventoryRepository["在庫リポジトリ"]
+  end
+  orderUsecase -.->|直接呼び出さない| inventoryRepository
+```
+
 > - [複数集約を跨ぐ処理を1つのDBトランザクションで括る前に読む記事](https://zenn.dev/j5ik2o/articles/59de072b6728ff)
 
 <br>

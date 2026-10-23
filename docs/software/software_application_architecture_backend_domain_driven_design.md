@@ -350,6 +350,38 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
 
 > - [受注業務フローとは？改善方法やメリットも解説！ - ネクストエンジン｜ECの受注・在庫・出荷を自動化](https://next-engine.net/ec-blog/order-flow/)
 
+#### ▼ 例：監視 SaaS
+
+監視 SaaS の境界づけられたコンテキストを、コアドメイン、支援サブドメイン、汎用サブドメインに分類した例を示す。各ノードは境界づけられたコンテキストを表し、矢印は依存する側から依存先へ向ける。
+
+監視は監視設定や SLO、インシデント管理はインシデントの起票から解決、通知はアラート通知連携を扱う。ユーザー管理、認証、認可、使用量管理はそれぞれ別のコンテキストとして定義する。
+
+```mermaid
+flowchart LR
+  subgraph core["コアドメイン"]
+    monitoring["監視"]
+    incident["インシデント管理"]
+  end
+  subgraph supporting["支援サブドメイン"]
+    notification["通知"]
+  end
+  subgraph generic["汎用サブドメイン"]
+    userManagement["ユーザー管理"]
+    authentication["認証"]
+    authorization["認可"]
+    usageManagement["使用量管理"]
+  end
+
+  monitoring --> usageManagement
+  monitoring --> incident
+  monitoring --> notification
+  userManagement --> authentication
+  userManagement --> authorization
+  userManagement --> monitoring
+  userManagement --> usageManagement
+  authorization --> authentication
+```
+
 #### ▼ 例：書籍 EC サイト
 
 書籍 EC サイトの例。

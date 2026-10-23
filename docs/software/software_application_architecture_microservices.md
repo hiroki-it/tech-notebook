@@ -415,6 +415,39 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
   </tbody>
 </table>
 
+次の図は、表にある境界づけられたコンテキストと業務マイクロサービスの対応を示す。各枠の中でその業務のモデルを定義する。
+
+```mermaid
+flowchart TB
+  subgraph advertisements["広告コンテキスト"]
+    advertisementsService["advertisements-service"]
+  end
+  subgraph cart["カートコンテキスト"]
+    cartService["cart-service"]
+  end
+  subgraph catalog["商品カタログコンテキスト"]
+    catalogService["catalog-service"]
+  end
+  subgraph checkout["チェックアウトコンテキスト"]
+    checkoutService["checkout-service"]
+  end
+  subgraph discounts["割引コンテキスト"]
+    discountsService["discounts-service"]
+  end
+  subgraph orders["注文管理コンテキスト"]
+    ordersService["orders-service"]
+  end
+  subgraph payment["決済コンテキスト"]
+    paymentService["payment-service"]
+  end
+  subgraph shipping["配送コンテキスト"]
+    shippingService["shipping-service"]
+  end
+  subgraph users["ユーザー管理コンテキスト"]
+    usersService["users-service"]
+  end
+```
+
 > - [GitHub - DataDog/ecommerce-workshop: ## Auto-archived due to inactivity. ## Example eCommerce App for workshops and observability · GitHub](https://github.com/DataDog/ecommerce-workshop)
 
 #### ▼ E コマース (Amazon)
