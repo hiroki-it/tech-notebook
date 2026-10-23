@@ -356,9 +356,7 @@ export default tseslint.config(
       },
     },
     rules: {
-
-(略)
-
+// (略)
       "import/no-restricted-paths": [
         "error",
         {

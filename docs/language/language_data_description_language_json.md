@@ -193,7 +193,7 @@ const object = {
 };
 ```
 
-```javascript
+```typescript
 class Foo {
   private _fruit;
   private _account;
@@ -218,10 +218,10 @@ class Foo {
 
 class Foo
 {
-    private $fruit;
-    private $account;
+    private ?array $fruit = null;
+    private ?int $account = null;
 
-    public function __construct($fruit, $account)
+    public function __construct(array $fruit, int $account)
     {
         $this->fruit = $fruit;
         $this->account = $account;
@@ -280,7 +280,7 @@ console.log(object);
 
 シリアライズとデシリアライズを行うクラスを以下に示す。
 
-```javascript
+```typescript
 class StaffParser {
   private _id;
   private _name;

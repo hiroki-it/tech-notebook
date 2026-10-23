@@ -33,8 +33,9 @@ describe("<パブリックな関数名>", async () => {
   describe("<テストスイートの種別>", async () => {
 
     test("<テストケース名>", async () => {
-  }
-}
+    });
+  });
+});
 ```
 
 ### テストケースの設計
@@ -51,19 +52,17 @@ describe("<パブリックな関数名>", async () => {
     // 正常系
     test("<テストケース名>", async () => {
 
-    }
-
+    });
     // 異常系
     test("<テストケース名>", async () => {
 
-    }
-
+    });
     // 境界値
     test("<テストケース名>", async () => {
 
-    }
-  }
-}
+    });
+  });
+});
 ```
 
 ```typescript
@@ -73,17 +72,15 @@ describe("<パブリックな関数名>", async () => {
 
     test("正常系：<テストケース名>", async () => {
 
-    }
-
+    });
     test("異常系：<テストケース名>", async () => {
 
-    }
-
+    });
     test("境界値：<テストケース名>", async () => {
 
-    }
-  }
-}
+    });
+  });
+});
 ```
 
 #### ▼ 変数名
@@ -482,32 +479,27 @@ describe("fetchUser", async () => {
 #### ▼ テスト対象の関数
 
 ```typescript
-import { withZod } from "@remix-validated-form/with-zod";
 import { validationError } from "remix-validated-form";
-import { z } from "zod";
 import { getUser} from "~/models/user.server";
-import type { AuthUser } from "~/auth";
 
 export const validateForm = async ({
   formData,
 }: {
   formData: FormData;
-  authUser: Pick<AuthUser, "accountId">;
-}>;
 }) => {
-    const accountId = formData.accountId!;
+    const accountId = formData.get("accountId") as string;
 
-    const sameAcccountIdUser = await getUser({
+    const sameAccountIdUser = await getUser({
       accountId: accountId
     });
 
     // 作成したいアカウントIDがすでに存在する場合、バリデーションエラーとする
-    if (sameAcccountIdUser) {
+    if (sameAccountIdUser) {
       return {
         error: validationError({
-          formId: formData.formId,
+          formId: formData.get("formId") as string,
           fieldErrors: {
-            organizationRegionName: "A account id is already exist",
+            accountId: "An account id already exists",
           },
         }),
       };
@@ -521,7 +513,7 @@ export const validateForm = async ({
 ##### ▼ テストコード
 
 ```typescript
-import {describe, expect} from "vitest";
+import {describe, expect, test, vi} from "vitest";
 import {validateForm} from "~/components/validators/UserValidator";
 import {getUser} from "~/models/user.server";
 
@@ -543,16 +535,16 @@ describe("OrganizationRegionFormValidator", () => {
     // Assert
     expect(result).toHaveProperty("formData");
     expect(result.formData).toBeDefined();
-    expect(result.formData).toMatchObject({
-      accountId: "12345",
-    });
+    expect(result.formData?.get("accountId")).toBe("12345");
   });
 
   // 異常系
   test("作成したいアカウントIDと同じアカウントIDが存在する場合、バリデーションエラーを含む結果を返却するはず", async () => {
     // Arrange
     // 依存先の関数をモックとし、モックが返却するデータを設定する
-    vi.mocked(getUser).mockResolvedValueOnce(null);
+    vi.mocked(getUser).mockResolvedValueOnce({
+      accountId: "12345",
+    } as NonNullable<Awaited<ReturnType<typeof getUser>>>);
 
     const formData = new FormData();
     formData.set("accountId", "12345");
@@ -572,7 +564,7 @@ describe("OrganizationRegionFormValidator", () => {
     const body = await result.error.json();
     expect(body).toMatchObject({
       fieldErrors: {
-        accountId: "A accound id is already exist",
+        accountId: "An account id already exists",
       },
     });
   });

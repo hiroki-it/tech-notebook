@@ -75,50 +75,40 @@ class RoleType extends Enum
 
     /**
      * コールセンター職の区分値を持つか否かを判定します。
-
-
      */
-    public function isCallRole()
+    public function isCallRole(): bool
     {
         return $this->is(self::CALL_ROLE);
     }
 
     /**
      * 開発職の区分値を持つかを判定します。
-
-
      */
-    public function isDevelopmentRole()
+    public function isDevelopmentRole(): bool
     {
         return $this->is(self::DEVELOPMENT_ROLE);
     }
 
     /**
      * 経理職の区分値を持つか否かを判定します。
-
-
      */
-    public function isFinanceRole()
+    public function isFinanceRole(): bool
     {
         return $this->is(self::FINANCE_ROLE);
     }
 
     /**
      * 企画職の区分値を持つか否かを判定します。
-
-
      */
-    public function isPlanRole()
+    public function isPlanRole(): bool
     {
         return $this->is(self::PLAN_ROLE);
     }
 
     /**
      * 営業職の区分値を持つか否かを判定します。
-
-
      */
-    public function isSalesRole()
+    public function isSalesRole(): bool
     {
         return $this->is(self::SALES_ROLE);
     }

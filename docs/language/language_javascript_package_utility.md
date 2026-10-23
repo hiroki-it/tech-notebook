@@ -120,12 +120,12 @@ const asyncFunc = async () => {
       headers: {
         "Content-Type": "application/json",
       },
-      httpAgent: new https.Agent({
+      httpsAgent: new https.Agent({
         cert: "<クライアント証明書のファイル>",
         key: "<クライアント証明書とペアになる秘密鍵のファイル>",
         rejectUnauthorized: false,
         keepAlive: true
-      });
+      }),
     })
     .then((response) => {
       console.log(response.data);

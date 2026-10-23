@@ -47,11 +47,11 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 ```typescript
 export type UserId = string;
 
-export type User <{
+export type User = {
   id: UserId;
   name: string;
   email: string;
-}>;
+};
 ```
 
 ```typescript
@@ -72,11 +72,11 @@ const createUser = (id: UserId, name: string, email: string): User | Error => {
 ```typescript
 export type UserId = string;
 
-export type User <{
+export type User = {
   id: UserId;
   name: string;
   email: string;
-}>;
+};
 ```
 
 ```typescript
@@ -94,11 +94,11 @@ export const equalsUser = (a: User, b: User): boolean => {
 ```typescript
 export type UserId = string;
 
-export type User <{
+export type User = {
   id: UserId;
   name: string;
   email: string;
-}>;
+};
 ```
 
 ```typescript
@@ -117,11 +117,11 @@ export const changeUserName = (user: User, newName: string): User => {
 ```typescript
 export type UserId = string;
 
-export type User <{
+export type User = {
   id: UserId;
   name: string;
   email: string;
-}>;
+};
 ```
 
 ```typescript

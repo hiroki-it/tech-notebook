@@ -94,10 +94,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Foo extends Model
 {
-    /**
-     * @var string
-     */
-    protected $table = "foos"; // Eloquentモデルと関連しているテーブル
+    public function __construct(
+        array $attributes = [],
+        string $table = "foos"
+    )
+    {
+        $this->table = $table;
+
+        parent::__construct($attributes);
+    }
+
+     // Eloquentモデルと関連しているテーブル
 }
 ```
 
@@ -121,14 +128,18 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Department extends Model
 {
-    /**
-     * @var string
-     */
-    protected $primaryKey = "department_id"; // 主キーとするカラム
+    public function __construct(
+        array $attributes = [],
+        string $primaryKey = "department_id"
+    )
+    {
+        $this->primaryKey = $primaryKey;
 
-     /**
-     * @return HasMany
-     */
+        parent::__construct($attributes);
+    }
+
+     // 主キーとするカラム
+
     public function employees(): HasMany
     {
         // 一対多の関係を定義します。
@@ -150,14 +161,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Employee extends Model
 {
-    /**
-     * @var string
-     */
-    protected $primaryKey = "employee_id"; // 主キーとするカラム
+    public function __construct(
+        array $attributes = [],
+        string $primaryKey = "employee_id"
+    )
+    {
+        $this->primaryKey = $primaryKey;
 
-    /**
-     * @return BelongsTo
-     */
+        parent::__construct($attributes);
+    }
+
+     // 主キーとするカラム
+
     public function department(): BelongsTo
     {
         // 多対一の関係を定義します。
@@ -202,20 +217,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class Foo extends Model
 {
-    /**
-     * @var string
-     */
-    protected $primaryKey = "foo_id"; // 主キーとするカラム (デフォルトではidが主キー)
+    public function __construct(
+        array $attributes = [],
+        string $primaryKey = "foo_id",
+        string $keyType = "int",
+        bool $incrementing = true
+    )
+    {
+        $this->primaryKey = $primaryKey;
+        $this->keyType = $keyType;
+        $this->incrementing = $incrementing;
 
-    /**
-     * @var string
-     */
-    protected $keyType = "int"; // 主キーのデータ型
+        parent::__construct($attributes);
+    }
 
-    /**
-     * @var bool
-     */
-    public $incrementing = true; // 主キーの自動増分の有効化します。
+     // 主キーとするカラム (デフォルトではidが主キー)
+
+     // 主キーのデータ型
+
+     // 主キーの自動増分の有効化します。
 }
 ```
 
@@ -236,13 +256,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Foo extends Model
 {
+    public function __construct(
+        array $attributes = [],
+        bool $timestamps = true
+    )
+    {
+        $this->timestamps = $timestamps;
+
+        parent::__construct($attributes);
+    }
+
     const CREATED_AT = "created_date_time";
     const UPDATED_AT = "updated_date_time";
 
-    /**
-     * @var bool
-     */
-    protected $timestamps = true; // Eloquentモデルのタイムスタンプを更新するかの指示します。
+     // Eloquentモデルのタイムスタンプを更新するかの指示します。
 }
 ```
 
@@ -261,16 +288,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
+    public function __construct(
+        array $attributes = [],
+        array $dates = [
+            "created_at",
+            "updated_at",
+            "deleted_at"
+        ]
+    )
+    {
+        $this->dates = $dates;
+
+        parent::__construct($attributes);
+    }
+
     /**
      * CarbonのDateTimeクラスに自動変換したいカラム名
-     *
-     * @var array
      */
-    protected $dates = [
-        "created_at",
-        "updated_at",
-        "deleted_at"
-    ];
+
 }
 ```
 
@@ -289,14 +324,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Foo extends Model
 {
+    public function __construct(
+        array $attributes = [],
+        array $defaultAttributes = [
+            "is_deleted" => false,
+        ]
+    )
+    {
+        $this->attributes = $defaultAttributes;
+
+        parent::__construct($attributes);
+    }
+
     /**
      * カラム名とデフォルト値
-     *
-     * @var array
      */
-    protected $attributes = [
-        "is_deleted" => false,
-    ];
+
 }
 ```
 
@@ -317,14 +360,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Foo extends Model
 {
+    public function __construct(
+        array $attributes = [],
+        array $fillable = [
+            "name",
+        ]
+    )
+    {
+        $this->fillable = $fillable;
+
+        parent::__construct($attributes);
+    }
+
     /**
      * カラム名
-     *
-     * @var array
      */
-    protected $fillable = [
-        "name",
-    ];
+
 }
 ```
 
@@ -341,14 +392,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Foo extends Model
 {
+    public function __construct(
+        array $attributes = [],
+        array $guarded = [
+            "bar",
+        ]
+    )
+    {
+        $this->guarded = $guarded;
+
+        parent::__construct($attributes);
+    }
+
     /**
      * カラム名
-     *
-     * @var array
      */
-    protected $guarded = [
-        "bar",
-    ];
+
 }
 ```
 
@@ -375,17 +434,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Foo extends Model
 {
-    /**
-     * @var FooName
-     */
+
     private FooName $fooName;
 
     /**
      * 名前を取得します。
-
-
-     *
-     * @return string
      */
     public function __construct(FooName $fooName)
     {
@@ -411,19 +464,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Foo extends Model
 {
-    /**
-     * @var FooName
-     */
+
     private FooName $fooName;
 
     /**
      * 名前を取得します。
-
-
-     *
-     * @return string
      */
-    public function getNameAttribute()
+    public function getNameAttribute(): string
     {
         return $this->fooName . "です。";
     }
@@ -483,7 +530,7 @@ JSON を PHP のオブジェクト型に変換 (デシリアライズ) する。
 **＊実装例＊**
 
 ```injectablephp
-実装中...
+// 実装中...
 ```
 
 <br>
@@ -502,7 +549,7 @@ JSON を PHP のオブジェクト型に変換 (デシリアライズ) する。
 $collection = collect([1, 2, 3, 4]);
 
 // trueを返却した要素を全て抽出する
-$filtered = $collection->filter(function ($value, $key) {
+$filtered = $collection->filter(function (mixed $value, mixed $key): bool {
     return $value > 2;
 });
 
@@ -521,7 +568,7 @@ $filtered->all();
 $collection = collect([1, 2, 3, 4, "yes"]);
 
 // 複数の条件で抽出する。
-$filtered = $collection->filter(function ($value, $key) {
+$filtered = $collection->filter(function (mixed $value, mixed $key): bool {
 
     // まずはyesを検証する。
     if($value == "yes") {
@@ -548,7 +595,7 @@ $filtered->all();
 $collection = collect([1, 2, 3, 4]);
 
 // trueを返却した要素のみ抽出する
-$filtered = $collection->first(function ($value, $key) {
+$filtered = $collection->first(function (mixed $value, mixed $key): bool {
     return $value > 2;
 });
 
@@ -641,14 +688,12 @@ use Illuminate\Http\Request;
 
 class FooController extends Controller
 {
-    /**
-     * @param Request $request
-     */
-    public function createFoo(Request $request)
+
+    public function createFoo(Request $request): void
     {
         $foo = new Foo();
 
-        DB::transaction(function () use ($foo, $request) {
+        DB::transaction(function () use ($foo, $request): void {
             // INSERT文を実行する。また同時にIDを取得する。
             $foo->create($request->all());
 
@@ -675,11 +720,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class FooDTO extends Model
 {
+    public function __construct(
+        array $attributes = [],
+        array $fillable = [
+            "name",
+            "age",
+        ]
+    )
+    {
+        $this->fillable = $fillable;
+
+        parent::__construct($attributes);
+    }
+
     // 更新できるカラム
-    protected $fillable = [
-        "name",
-        "age",
-    ];
+
 }
 ```
 
@@ -715,9 +770,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class FooController extends Controller
 {
-    /**
-     * @return Collection
-     */
+
     public function findAll(): Collection
     {
         $foo = new Foo();
@@ -754,11 +807,8 @@ use Illuminate\Database\Eloquent\Collection;
 
 class FooController extends Controller
 {
-    /**
-     * @param int $id
-     * @return Collection
-     */
-    public function findById(int $id): Collection
+
+    public function findById(int $id): ?Foo
     {
         $foo = new Foo();
 
@@ -793,11 +843,8 @@ use Illuminate\Database\Eloquent\Collection;
 
 class FooController extends Controller
 {
-    /**
-     * @param string $emailAddress
-     * @return Foo
-     */
-    public function findByEmail(string $emailAddress): Foo
+
+    public function findByEmail(string $emailAddress): ?Foo
     {
         $foo = new Foo();
 
@@ -828,10 +875,7 @@ use Illuminate\Http\Request;
 
 class FooController extends Controller
 {
-    /**
-     * @param Request $request
-     * @return Collection
-     */
+
     public function findAllByPagination(Request $request): Collection
     {
         $foo = new Foo();
@@ -866,9 +910,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class FooController extends Controller
 {
-    /**
-     * @return Collection
-     */
+
     public function findAllByAsc(): Collection
     {
         $foo = new Foo();
@@ -877,9 +919,6 @@ class FooController extends Controller
         return $foo->orderBy('foo_id', 'asc')->get();
     }
 
-    /**
-     * @return Collection
-     */
     public function findAllByDesc(): Collection
     {
         $foo = new Foo();
@@ -909,9 +948,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class FooController extends Controller
 {
-    /**
-     * @return Collection
-     */
+
     public function findAllByAsc(): Collection
     {
         $foo = new Foo();
@@ -938,9 +975,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class FooController extends Controller
 {
-    /**
-     * @return Collection
-     */
+
     public function findAllByDesc(): Collection
     {
         $foo = new Foo();
@@ -985,7 +1020,7 @@ use App\Models\Department;
 
 class EmployeeController
 {
-    public function getEmployeesByDepartment()
+    public function getEmployeesByDepartment(): void
     {
         $department = new Department();
 
@@ -1016,20 +1051,23 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Department extends Model
 {
+    public function __construct(
+        array $attributes = [],
+        string $primaryKey = "department_id"
+    )
+    {
+        $this->primaryKey = $primaryKey;
+
+        parent::__construct($attributes);
+    }
+
     /**
      * 主キーとするカラム
-     *
-     * @var string
      */
-    protected $primaryKey = "department_id";
 
     /**
      * 一対多の関係を定義します。
-
-
      * (デフォルトではemployee_idに紐付けます)
-     *
-     * @return HasMany
      */
     public function employees(): HasMany
     {
@@ -1050,20 +1088,23 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Employee extends Model
 {
+    public function __construct(
+        array $attributes = [],
+        string $primaryKey = "employee_id"
+    )
+    {
+        $this->primaryKey = $primaryKey;
+
+        parent::__construct($attributes);
+    }
+
     /**
      * 主キーとするカラム
-     *
-     * @var string
      */
-    protected $primaryKey = "employee_id";
 
     /**
      * 多対一の関係を定義します。
-
-
      * (デフォルトではdepartment_idに紐付けます)
-     *
-     * @return BelongsTo
      */
     public function department(): BelongsTo
     {
@@ -1097,14 +1138,12 @@ use Illuminate\Http\Request;
 
 class FooController extends Controller
 {
-    /**
-     * @param Request $request
-     */
-    public function updateFoo(Request $request)
+
+    public function updateFoo(Request $request): void
     {
         $foo = new Foo();
 
-        DB::transaction(function () use ($foo, $request) {
+        DB::transaction(function () use ($foo, $request): void {
 
             // UPDATE文を実行する。
             $foo->fill($request->all())->save();
@@ -1126,11 +1165,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class FooDTO extends Model
 {
+    public function __construct(
+        array $attributes = [],
+        array $fillable = [
+            "name",
+            "age",
+        ]
+    )
+    {
+        $this->fillable = $fillable;
+
+        parent::__construct($attributes);
+    }
+
     // 更新できるカラム
-    protected $fillable = [
-        "name",
-        "age",
-    ];
+
 }
 ```
 
@@ -1173,6 +1222,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class FooDTO extends Model
 {
+    public function __construct(
+        array $attributes = [],
+        array $dates = [
+            "deleted_at"
+        ]
+    )
+    {
+        $this->dates = $dates;
+
+        parent::__construct($attributes);
+    }
+
     /**
     * Traitの読み出し
     */
@@ -1180,12 +1241,8 @@ class FooDTO extends Model
 
     /**
      * 読み出し時にCarbonのDateTimeクラスへ自動変換するカラム
-     *
-     * @var array
      */
-    protected $dates = [
-        "deleted_at"
-    ];
+
 }
 ```
 
@@ -1204,29 +1261,25 @@ class CreateFooTable extends Migration
 {
     /**
      * マイグレート
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create("foo", function (Blueprint $table) {
+        Schema::create("foo", function (Blueprint $table): void {
 
-            ...
+            // ...
 
             // deleted_atカラムを追加する。
             $table->softDeletes();
 
-            ...
+            // ...
 
         });
     }
 
     /**
      * ロールバック
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop("foo");
     }
@@ -1281,47 +1334,35 @@ use Illuminate\Database\Eloquent\Model;
 
 final class FooDTO extends Model
 {
+    public function __construct(
+        array $attributes = [],
+        array $dates = [
+            'created_at',
+            'updated_at',
+            'deleted_at',
+        ],
+        array $fillable = [
+            'name',
+            'age',
+        ]
+    )
+    {
+        $this->dates = $dates;
+        $this->fillable = $fillable;
+
+        parent::__construct($attributes);
+    }
+
     use HasFactory;
 
-    /**
-     * @var array
-     */
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
-
-    /**
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'age',
-    ];
-    /**
-     * @var int
-     */
     private int $id;
 
-    /**
-     * @var string
-     */
     private string $name;
 
-    /**
-     * @var int
-     */
     private int $age;
 
-    /**
-     * @var string
-     */
     private string $email;
 
-    /**
-     * @return Foo
-     */
     public function toFoo(): Foo
     {
         return new Foo(
@@ -1352,9 +1393,7 @@ use App\Infrastructure\Foo\DTO\FooDTO;
 
 class FooRepository extends Repository implements DomainFooRepository
 {
-    /**
-     * @var FooDTO
-     */
+
     private FooDTO $fooDTO;
 
     public function __construct(FooDTO $fooDTO)
@@ -1362,14 +1401,10 @@ class FooRepository extends Repository implements DomainFooRepository
         $this->fooDTO = $fooDTO;
     }
 
-    /**
-     * @param Foo $foo
-     * @return void
-     */
     public function create(Foo $foo): void
     {
 
-      DB::transaction(function () use ($foo) {
+      DB::transaction(function () use ($foo): void {
           $this->fooDTO
               // INSERT文を実行する。
               ->create([
@@ -1399,11 +1434,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class FooDTO extends Model
 {
+    public function __construct(
+        array $attributes = [],
+        array $fillable = [
+            "name",
+            "age",
+        ]
+    )
+    {
+        $this->fillable = $fillable;
+
+        parent::__construct($attributes);
+    }
+
     // 更新できるカラム
-    protected $fillable = [
-        "name",
-        "age",
-    ];
+
 }
 ```
 
@@ -1427,9 +1472,7 @@ use App\Infrastructure\Foo\DTOs\FooDTO;
 
 class FooRepository extends Repository implements DomainFooRepository
 {
-    /**
-     * @var FooDTO
-     */
+
     private FooDTO $fooDTO;
 
     public function __construct(FooDTO $fooDTO)
@@ -1437,10 +1480,6 @@ class FooRepository extends Repository implements DomainFooRepository
         $this->fooDTO = $fooDTO;
     }
 
-    /**
-     * @param FooId $fooId
-     * @return Foo
-     */
     public function findById(FooId $fooId): Foo
     {
         $fooDTO = $this->fooDTO
@@ -1472,9 +1511,7 @@ use App\Infrastructure\Foo\DTOs\FooDTO;
 
 class FooRepository extends Repository implements DomainFooRepository
 {
-    /**
-     * @var FooDTO
-     */
+
     private FooDTO $fooDTO;
 
     public function __construct(FooDTO $fooDTO)
@@ -1482,9 +1519,6 @@ class FooRepository extends Repository implements DomainFooRepository
         $this->fooDTO = $fooDTO;
     }
 
-    /**
-     * @return array
-     */
     public function findAll(): array
     {
         $fooDTOs = $this->fooDTO
@@ -1526,9 +1560,7 @@ use App\Infrastructure\Foo\DTOs\FooDTO;
 
 class FooRepository extends Repository implements DomainFooRepository
 {
-    /**
-     * @var FooDTO
-     */
+
     private FooDTO $fooDTO;
 
     public function __construct(FooDTO $fooDTO)
@@ -1536,13 +1568,9 @@ class FooRepository extends Repository implements DomainFooRepository
         $this->fooDTO = $fooDTO;
     }
 
-    /**
-     * @param Foo $foo
-     * @return void
-     */
     public function save(Foo $foo): void
     {
-        DB::transaction(function () use ($foo) {
+        DB::transaction(function () use ($foo): void {
 
             $this->fooDTO
                 // ドメインモデルのデータをDTOに詰め替える。
@@ -1566,11 +1594,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class FooDTO extends Model
 {
+    public function __construct(
+        array $attributes = [],
+        array $fillable = [
+            "name",
+            "age",
+        ]
+    )
+    {
+        $this->fillable = $fillable;
+
+        parent::__construct($attributes);
+    }
+
     // 更新できるカラム
-    protected $fillable = [
-        "name",
-        "age",
-    ];
+
 }
 ```
 
@@ -1594,9 +1632,7 @@ use App\Infrastructure\Foo\DTOs\FooDTO;
 
 class FooRepository extends Repository implements DomainFooRepository
 {
-    /**
-     * @var FooDTO
-     */
+
     private FooDTO $fooDTO;
 
     public function __construct(FooDTO $fooDTO)
@@ -1604,10 +1640,6 @@ class FooRepository extends Repository implements DomainFooRepository
         $this->fooDTO = $fooDTO;
     }
 
-    /**
-     * @param FooId $fooId
-     * @return void
-     */
     public function delete(FooId $fooId): void
     {
         // destroy関数でレコードを削除する。
@@ -1624,20 +1656,18 @@ class FooRepository extends Repository implements DomainFooRepository
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class FooController extends Controller
 {
+    private FooRepository $fooRepository;
+
     public function __construct(FooRepository $fooRepository)
     {
         $this->fooRepository = $fooRepository;
     }
 
-    /**
-     * @param FooId $fooId
-     * @return mixed
-     */
-    public function delete(FooId $fooId)
+    public function delete(FooId $fooId): Response
     {
         $this->fooRepository
             ->delete($fooId);

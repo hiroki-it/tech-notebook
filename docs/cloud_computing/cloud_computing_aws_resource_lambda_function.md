@@ -217,7 +217,6 @@ package main
 
 import (
 	"context"
-
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-lambda-go/lambdacontext"
@@ -242,7 +241,6 @@ package main
 
 import (
 	"context"
-
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-lambda-go/lambdacontext"
@@ -267,7 +265,6 @@ package main
 
 import (
 	"context"
-
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-lambda-go/lambdacontext"
@@ -443,9 +440,9 @@ AWS Amplify のイベントを Amazon EventBridge でキャッチし、これを
 ```javascript
 "use strict";
 
-import aws from "aws-sdk"
-import https from "https"
-import format from "util"
+const aws = require("aws-sdk");
+const https = require("https");
+const { format } = require("util");
 
 /**
  * @param event
@@ -454,7 +451,7 @@ import format from "util"
 exports.handler = async (event) => {
   console.log(JSON.stringify({event}, null, 2));
 
-  const amplify = new aws.AWS Amplify({apiVersion: "2017-07-25"});
+  const amplify = new aws.Amplify({apiVersion: "2017-07-25"});
 
   const option = {
     appId: event.detail.appId,
@@ -485,8 +482,6 @@ exports.handler = async (event) => {
 
 /**
  * メッセージを作成します。
-
-
  *
  * @param event
  * @param app
@@ -585,8 +580,6 @@ const buildMessage = (event, app) => {
 
 /**
  * メッセージを送信します。
-
-
  *
  * @param message
  * @returns Promise<json>
@@ -609,28 +602,27 @@ const postMessageToSlack = (message) => {
     const request = https.request(options, (response) => {
       console.info({response}, null, 2);
 
-      let tmp;
+      let tmp = "";
 
       // 正常なレスポンスからデータを取り出します。
       response.on("data", (data) => {
-        tmp = data;
+        tmp += data.toString();
       });
 
       // 異常なレスポンスからエラーを取り出します。
       response.on("error", (error) => {
-        tmp = error;
+        reject(error);
       });
 
       //  data、error、endの間でawaitの効力は横断できない。
       // そのため、できるだけendで事後処理を実装し、awaitを使用する。
       response.on("end", async () => {
-        tmp = param.toString(tmp);
-        const body = JSON.parse(tmp);
+         const body = JSON.parse(tmp);
         const result = {
           statusCode: response.statusCode,
           body: body,
         };
-        if (!response.statusCode === 200 || !body.ok) {
+        if (response.statusCode !== 200 || !body.ok) {
           return reject(result);
         }
         return resolve(result);

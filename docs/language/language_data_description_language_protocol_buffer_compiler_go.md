@@ -54,7 +54,7 @@ option go_package = "github.com/hiroki-hasegawa/foo-repository/src/foo-service";
 
 ```go
 // pb.goファイル
-package github.com/hiroki-hasegawa/foo-repository/src/foo-service
+package foo_service
 
 func foo()  {
 

@@ -146,16 +146,19 @@ const getTodoList = async () => {
 // カスタムフック
 const useTodoList = () => {
 
-    const [fooState setFooState] = useState("");
+    const [fooState, setFooState] = useState(null);
 
     useEffect(
         // 実行したい無名な非同期関数
         () => {
-            const todoList = await getTodoList()
-            setFooState(todoList);
+            const fetchTodoList = async () => {
+                const todoList = await getTodoList();
+                setFooState(todoList);
+            };
+            fetchTodoList();
     }, []);
 
-    return state;
+    return fooState;
 };
 
 function App() {
@@ -165,7 +168,7 @@ function App() {
     // データがまだ取得できていないならローディング、取得できているならHTMLをクライアントレンダリングする関数
     return (
         <ul>
-          {state ? state.map(e => <li>{e}</li>) : "Loding"}
+          {state ? state.map(e => <li>{e}</li>) : "Loading"}
         </ul>
     );
 }

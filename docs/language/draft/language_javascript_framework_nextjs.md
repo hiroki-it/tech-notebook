@@ -29,7 +29,7 @@ React パッケージを使用したフレームワークである。
 
 - ファイルの先頭に `"use client"` を指定している。
 
-```typescript
+```tsx
 "use client";
 
 import React, {useEffect, useState} from "react";
@@ -82,7 +82,7 @@ export default CsrPage;
 - `fetch()` 関数の第二引数に、`{ cache: "no-store" }` を指定している
 - `useEffect`、`useState`、`onClick` などのブラウザ依存の機能を使用していない
 
-```jsx
+```tsx
 import React from "react";
 
 type Product = {
@@ -146,7 +146,7 @@ Route (app)                              Size     First Load JS
 - `fetch()` 関数の第二引数に、`{ cache: "force-cache" }` を指定しているか、または何も指定していない
 - `useEffect`、`useState`、`onClick` などのブラウザ依存の機能を使用していない
 
-```jsx
+```tsx
 import React from "react";
 
 type Product = {
@@ -208,7 +208,7 @@ Route (app)                              Size     First Load JS
 - `fetch()` 関数の第二引数に、`{ next: { revalidate: <任意の値> } }` を指定している
 - `useEffect`、`useState`、`onClick` などのブラウザ依存の機能を使用していない
 
-```jsx
+```tsx
 import React from "react";
 
 type Product = {
@@ -331,7 +331,7 @@ Next.js では、`export const runtime = 'edge'` を宣言すると、Edge ラ�
 ```typescript
 export const runtime = 'edge'
 
-...
+// ...
 ```
 
 > - [API Reference: Edge Runtime \| Next.js](https://nextjs.org/docs/app/api-reference/edge)

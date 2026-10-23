@@ -53,6 +53,10 @@ description: バリデーションロジック＠Goの知見を記録してい�
 ```go
 package flags
 
+import (
+	"log"
+)
+
 type FooEnabled struct {
 	foo1Enabled bool
 	foo2Enabled bool
@@ -98,6 +102,10 @@ func (fooEnabled *FooEnabled) GetFoo3Enabled() bool {
 
 ```go
 package main
+
+import (
+	"fmt"
+)
 
 func main() {
 

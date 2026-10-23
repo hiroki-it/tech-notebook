@@ -159,10 +159,10 @@ export default foo;
 
 ```javascript
 // 変数b: 初期化されていない (値が代入されていない)
-const b;
+let b;
 
 // 変数bの出力
-console.log(b); // undefied
+console.log(b); // undefined
 ```
 
 #### ▼ null
@@ -189,9 +189,9 @@ function foo() {
   return; // 空の『return文』。空なので『undefined』を返す。
 }
 
-const foo = foo(); // 変数『foo』には関数『foo』から返ってきた『undefined』が代入される。
+const result = foo(); // 変数『result』には関数『foo』から返ってきた『undefined』が代入される。
 
-console.log(foo); // 『undefined』が出力される。
+console.log(result); // 『undefined』が出力される。
 ```
 
 <br>

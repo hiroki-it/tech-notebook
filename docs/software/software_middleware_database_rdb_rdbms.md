@@ -248,7 +248,7 @@ DROP INDEX idx_user_created_org ON User;
 
 ORM を使用する場合、より簡単にカラムを変更できる。
 
-```typescript
+```prisma
 model User {
     user_id         String   @id @default(cuid()) @db.VarChar(127)
     organization_id String   @db.VarChar(127)

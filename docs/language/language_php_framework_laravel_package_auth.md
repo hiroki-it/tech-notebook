@@ -129,10 +129,8 @@ use Illuminate\Http\RedirectResponse;
 
 final class AuthenticationController
 {
-    /**
-     * @return RedirectResponse
-     */
-    public function authenticate(AuthenticationRequest $authenticationRequest)
+
+    public function authenticate(AuthenticationRequest $authenticationRequest): RedirectResponse
     {
         $validated = $authenticationRequest->validated();
 
@@ -238,10 +236,8 @@ use Illuminate\Support\Facades\Auth;
 
 final class AuthenticationController
 {
-    /**
-     * @return RedirectResponse
-     */
-    public function login(AuthenticationRequest $authenticationRequest)
+
+    public function login(AuthenticationRequest $authenticationRequest): RedirectResponse
     {
         $validated = $authenticationRequest->validated();
 
@@ -296,16 +292,11 @@ use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 class RedirectIfAuthenticated
 {
-    /**
-     * @param Request $request
-     * @param Closure $next
-     * @param mixed   ...$guards
-     * @return mixed
-     */
-    public function handle(Request $request, Closure $next, ...$guards)
+    public function handle(Request $request, Closure $next, ?string ...$guards): Response
     {
         $guards = empty($guards) ? [null] : $guards;
 
@@ -362,43 +353,21 @@ final class FooPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * @param User $user
-     * @return bool
-     */
     public function create(User $user): bool
     {
         $id = $user->id; // 認証中のユーザー
     }
 
-    /**
-     * @param User $user
-     * @param Foo  $foo
-     * @param int  $barId
-     * @return bool
-     */
     public function show(User $user, Foo $foo, int $barId): bool
     {
         $id = $foo->id; // ルーターまたはコントローラーから渡されたインスタンス
     }
 
-    /**
-     * @param User $user
-     * @param Foo  $foo
-     * @param int  $barId
-     * @return bool
-     */
     public function update(User $user, Foo $foo, int $barId): bool
     {
         //
     }
 
-    /**
-     * @param User $user
-     * @param Foo  $foo
-     * @param int  $barId
-     * @return bool
-     */
     public function delete(User $user, Foo $foo, int $barId): bool
     {
         //
@@ -419,17 +388,15 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 
 class AuthServiceProvider extends ServiceProvider
 {
-    /**
-     * @var array
-     */
-    protected $policies = [
+
+    public function policies(): array
+    {
+        return [
         Foo::class => FooPolicy::class,
     ];
+    }
 
-    /**
-     * @return void
-     */
-    public function boot()
+    public function boot(): void
     {
         $this->registerPolicies();
     }
@@ -459,9 +426,9 @@ declare(strict_types=1);
 
 use App\Http\Controllers\FooController;
 
-Route::group(['middleware' => ['auth:web']], function () {
+Route::group(['middleware' => ['auth:web']], function (): void {
 
-    Route::group(['prefix' => 'foos'], function () {
+    Route::group(['prefix' => 'foos'], function (): void {
         Route::get('/{id}', [FooController::class, 'showFoo'])->middleware('can:show,'. Foo::class);
         Route::get('/', [FooController::class, 'indexFoo']);
         Route::post('/', [FooController::class, 'createFoo']);
@@ -500,11 +467,7 @@ use Throwable;
 
 class FooController extends Controller
 {
-    /**
-     * @param Request $request
-     * @param int     $id
-     * @return JsonResponse
-     */
+
     public function updateFoo(Request $request, int $id): JsonResponse
     {
         try {
@@ -558,11 +521,7 @@ use Illuminate\Http\Request;
 
 class FooController extends Controller
 {
-    /**
-     * @param Request $request
-     * @param int     $id
-     * @return JsonResponse
-     */
+
     public function updateFoo(Request $request, int $id): JsonResponse
     {
         $foo = new Foo();
@@ -576,7 +535,7 @@ class FooController extends Controller
         // Eloquentモデルが不要な検証であれば名前空間
         // if (!auth()->user()->can('update', Foo::class) {}
 
-        DB::transaction(function () use ($foo, $request) {
+        DB::transaction(function () use ($foo, $request): void {
             $foo->fill($request->all())->save();
         });
     }
@@ -712,14 +671,14 @@ OAuth では、以下のトークン付与タイプを実装できる。
 
 return [
 
-    ...
+    // ...
 
     "defaults" => [
         "guard" => "api",
         "passwords" => "users",
     ],
 
-    ...
+    // ...
 ];
 ```
 
@@ -734,7 +693,7 @@ return [
 
 return [
 
-    ...
+    // ...
 
     "guards" => [
         "web" => [
@@ -749,7 +708,7 @@ return [
         ],
     ],
 
-    ...
+    // ...
 ];
 ```
 
@@ -768,7 +727,7 @@ return [
 
 return [
 
-    ...
+    // ...
 
     "providers" => [
         "users" => [
@@ -783,7 +742,7 @@ return [
         // ],
     ],
 
-    ...
+    // ...
 ];
 ```
 
@@ -820,7 +779,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
 
-    ...
+    // ...
 }
 ```
 
@@ -841,9 +800,9 @@ use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
-    ...
+    // ...
 
-    public function boot()
+    public function boot(): void
     {
         $this->registerPolicies();
 
@@ -935,12 +894,10 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
 {
-    /**
-     * @return void
-     */
-    public function up()
+
+    public function up(): void
     {
-        Schema::create("users", function (Blueprint $table) {
+        Schema::create("users", function (Blueprint $table): void {
 
             $table->bigIncrements("user_id")->comment("ユーザーID");
             $table->string("name")->comment("ユーザー名");
@@ -954,10 +911,7 @@ class CreateUsersTable extends Migration
         });
     }
 
-    /**
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::drop("users");
     }
@@ -989,18 +943,22 @@ $ php artisan passport:client --personal
 ```injectablephp
 <?php
 
-/**
- * 全認証／認可の登録
- *
- * @return void
- */
-public function boot()
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Laravel\Passport\Passport;
+
+class AuthServiceProvider extends ServiceProvider
 {
-    $this->registerPolicies();
+    /**
+     * 全認証／認可の登録
+     */
+    public function boot(): void
+    {
+        $this->registerPolicies();
 
-    Passport::routes();
+        Passport::routes();
 
-    Passport::personalAccessClientId("<クライアントID>");
+        Passport::personalAccessClientId("<クライアントID>");
+    }
 }
 ```
 

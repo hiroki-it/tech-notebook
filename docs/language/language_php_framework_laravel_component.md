@@ -140,19 +140,21 @@ use Log;
 
 class FooCommand extends Command
 {
-    /**
-     * @var string
-     */
-    protected $signature = 'do-foo {bar}'; // コマンドとパラメータ
+    public function __construct(
+        string $signature = 'do-foo {bar}',
+        string $description = 'コマンドの仕様を記入します'
+    )
+    {
+        $this->signature = $signature;
+        $this->description = $description;
 
-    /**
-     * @var string
-     */
-    protected $description = 'コマンドの仕様を記入します'; // コマンドの説明文
+        parent::__construct();
+    }
 
-    /**
-     * @return void
-     */
+     // コマンドとパラメータ
+
+     // コマンドの説明文
+
     public function handle(): void
     {
         Log::info('START: artisan do-foo');
@@ -252,13 +254,13 @@ return [
 
 return [
 
-    ...
+    // ...
 
     "default" => env("DB_CONNECTION", "mysql"),
 
     "connections" => [
 
-        ...
+        // ...
 
         "mysql" => [
             "driver"         => "mysql",
@@ -281,7 +283,7 @@ return [
         ],
     ],
 
-    ...
+    // ...
 
 ];
 ```
@@ -387,14 +389,9 @@ use App\Models\User;
 
 final class UserCreatedEvent
 {
-    /**
-     * @var User
-     */
+
     protected User $user;
 
-    /**
-     * @return void
-     */
     public function __construct(User $user)
     {
         $this->user = $user;
@@ -433,16 +430,22 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    public function __construct(
+        array $attributes = [],
+        array $dispatchesEvents = [
+            // 処理タイミングを独自イベントに紐付ける
+            'saved' => UserSaved::class,
+            'deleted' => UserDeleted::class,
+        ]
+    )
+    {
+        $this->dispatchesEvents = $dispatchesEvents;
+
+        parent::__construct($attributes);
+    }
+
     use Notifiable;
 
-    /**
-     * @var array
-     */
-    protected $dispatchesEvents = [
-        // 処理タイミングを独自イベントに紐付ける
-        'saved' => UserSaved::class,
-        'deleted' => UserDeleted::class,
-    ];
 }
 ```
 
@@ -461,12 +464,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    /**
-     * @return void
-     */
-    protected static function booted()
+
+    protected static function booted(): void
     {
-        static::created(function ($user) {
+        static::created(function (User $user): void {
             event(new UserCreated($user));
         });
     }
@@ -499,11 +500,8 @@ use Illuminate\Support\Facades\Notification;
 
 final class UserCreatedEventListener
 {
-    /**
-     * @param UserCreatedEvent $userEvent
-     * @return void
-     */
-    public function handle(UserCreatedEvent $userEvent)
+
+    public function handle(UserCreatedEvent $userEvent): void
     {
         // UserクラスがNotifiableトレイトに依存せずに通知を実行できるように、オンデマンド通知を使用します。
         Notification::route('mail', $userEvent->user->userEmailAddress->emailAddress)
@@ -539,19 +537,17 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 
 class EventServiceProvider extends ServiceProvider
 {
-    /**
-     * @var array
-     */
-    protected $listen = [
+
+    public function listens(): array
+    {
+        return [
         UserCreatedEvent::class => [
             UserCreatedEventListener::class,
         ],
     ];
+    }
 
-    /**
-     * @return void
-     */
-    public function boot()
+    public function boot(): void
     {
         parent::boot();
 
@@ -586,19 +582,17 @@ use App\Events\UpdatedModelEvent;
 
 trait UpdatedModelTrait
 {
-    /**
-     * @return void
-     */
+
     protected static function bootUpdatedModelTrait(): void
     {
         // 任意のEloquentモデルのsave関数実行時
-        static::saved(function (Model $updatedModel) {
+        static::saved(function (Model $updatedModel): void {
             // イベントを発生させる。
             event(new UpdatedModelEvent($updatedModel));
         });
 
         // 任意のEloquentモデルのdelete関数実行時
-        static::deleted(function (Model $updatedModel) {
+        static::deleted(function (Model $updatedModel): void {
             // イベントを発生させる。
             event(new UpdatedModelEvent($updatedModel));
         });
@@ -606,15 +600,11 @@ trait UpdatedModelTrait
 
     /**
      * イベントを発火させずにModelを保管します。
-
-
-     *
-     * @return void
      */
-    protected function saveWithoutEvents(): void
+    protected function saveWithoutEvents(array $options = []): bool
     {
         // 無限ループを防ぐために、save実行時にイベントが発火しないようにする。
-        return static::withoutEvents(function () use ($options) {
+        return static::withoutEvents(function () use ($options): bool {
 
             // プロパティの変更を保管。
             return $this->save($options);
@@ -630,16 +620,13 @@ trait UpdatedModelTrait
 
 namespace App\Events;
 
+use Illuminate\Database\Eloquent\Model;
+
 class UpdatedModelEvent
 {
-    /**
-     * @var Model
-     */
-    public $updatedModel;
 
-    /**
-     * @param Model
-     */
+    public Model $updatedModel;
+
     public function __construct(Model $updatedModel)
     {
         $this->updatedModel = $updatedModel;
@@ -663,10 +650,7 @@ use App\Constants\ExecutorConstant;
 
 class UpdatedModelListener
 {
-    /**
-     * @param UpdatedModelEvent
-     * @return void
-     */
+
     public function handle(UpdatedModelEvent $updatedModelEvent): void
     {
         $by = $this->getModelUpdater();
@@ -683,10 +667,6 @@ class UpdatedModelListener
 
     /**
      * 更新処理の実行者を取得します。
-
-
-     *
-     * @return string
      */
     private function getModelUpdater(): string
     {
@@ -836,16 +816,13 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
-    protected $dontReport = [
-        //
-    ];
 
-    public function report(Throwable $exception)
+    public function report(Throwable $exception): void
     {
         parent::report($exception);
     }
 
-    ...
+    // ...
 
 }
 ```
@@ -874,12 +851,12 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
-    public function render($request, Throwable $exception)
+    public function render(mixed $request, Throwable $exception): mixed
     {
         return parent::render($request, $exception);
     }
 
-    ...
+    // ...
 }
 ```
 
@@ -910,7 +887,7 @@ namespace App\Domain\DTO;
 
 class Foo
 {
-    public function method()
+    public function method(): string
     {
         return "foo";
     }
@@ -944,7 +921,7 @@ namespace App\Domain\DTO;
 
 class Foo
 {
-    public function method()
+    public function method(): string
     {
         return "foo";
     }
@@ -956,9 +933,11 @@ class Foo
 ```injectablephp
 <?php
 
-"aliases" => [
-    "Foo" => App\Models\Foo::class,
-]
+return [
+    "aliases" => [
+        "Foo" => App\Models\Foo::class,
+    ],
+];
 ```
 
 インスタンス化と関数コールを実行する。
@@ -1086,9 +1065,7 @@ use Throwable;
 
 class FooRepository extends Repository implements DomainFooRepository
 {
-    /**
-     * @var FooDTO
-     */
+
     private FooDTO $fooDTO;
 
     public function __construct(FooDTO $fooDTO)
@@ -1097,12 +1074,11 @@ class FooRepository extends Repository implements DomainFooRepository
     }
 
     /**
-     * @param Foo $foo
      * @throws Throwable
      */
     public function save(Foo $foo): void
     {
-        DB::transaction(function () use ($foo) {
+        DB::transaction(function () use ($foo): void {
 
             $this->fooDTO->fill([
                     "name"  => $foo->name(),
@@ -1134,9 +1110,7 @@ use App\Infrastructure\Foo\DTO\FooDTO;
 
 class FooRepository extends Repository implements DomainFooRepository
 {
-    /**
-     * @var FooDTO
-     */
+
     private FooDTO $fooDTO;
 
     public function __construct(FooDTO $fooDTO)
@@ -1146,12 +1120,8 @@ class FooRepository extends Repository implements DomainFooRepository
 
     /**
      * Fooを更新します。
-
-
-     *
-     * @param Foo $foo
      */
-    public function save(Foo $foo)
+    public function save(Foo $foo): void
     {
         // トランザクション処理を開始する。
         DB::beginTransaction();
@@ -1214,7 +1184,7 @@ Appサーバー # /healthcheck で、200 ステータスを返却する
 <?php
 
 # ヘルスチェックを受信するパス
-Route::get("/healthcheck", function () {
+Route::get("/healthcheck", function (): \Illuminate\Http\Response {
     return response("success", 200);
 });
 ```
@@ -1235,7 +1205,7 @@ Route::get("/healthcheck", function () {
 use App\Http\Controllers\Foo\FooController;
 
 // authエイリアスを設定する。
-Route::middleware("auth")->group(function () {
+Route::middleware("auth")->group(function (): void {
     Route::get("/foo", [FooController::class, "getFoo"]);
     Route::get("/foo/{fooId}", [FooController::class, "index"]);
     Route::post("/foo", [FooController::class, "createFoo"]);
@@ -1257,16 +1227,24 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
+    public function __construct(
+        \Illuminate\Contracts\Foundation\Application $app,
+        \Illuminate\Routing\Router $router,
+        array $routeMiddleware = [
 
-    ...
+            "auth" => \App\Http\Middleware\Authenticate::class,
 
-    protected $routeMiddleware = [
+        ]
+    )
+    {
+        $this->routeMiddleware = $routeMiddleware;
 
-        "auth" => \App\Http\Middleware\Authenticate::class,
+        parent::__construct($app, $router);
+    }
 
-    ];
+    // ...
 
-    ...
+    // ...
 
 }
 ```
@@ -1277,7 +1255,7 @@ class Kernel extends HttpKernel
 <?php
 
 // authエイリアスのMiddlewareクラスが使用される。
-Route::middleware("auth:api")->group(function () {
+Route::middleware("auth:api")->group(function (): void {
     // 何らのルーティング
 });
 ```
@@ -1295,7 +1273,7 @@ Route::middleware("auth:api")->group(function () {
 
 use App\Http\Controllers\Foo\FooController;
 
-Route::prefix("foos")->group(function () {
+Route::prefix("foos")->group(function (): void {
     Route::get("/", [FooController::class, "getFoo"]);
     Route::get("/{fooId}", [FooController::class, "index"]);
     Route::post("/", [FooController::class, "createFoo"]);
@@ -1319,7 +1297,7 @@ userId の形式を『0〜9 が 1 つ以上』に設定している。
 
 use App\Http\Controllers\Foo\FooController;
 
-Route::prefix("foos")->group(function () {
+Route::prefix("foos")->group(function (): void {
     Route::get("/", [FooController::class, "getFoo"]);
     Route::get("/{fooId}", [FooController::class, "index"])
         // バリデーションルール
@@ -1352,12 +1330,8 @@ class RouteServiceProvider extends ServiceProvider
 {
     /**
      * ルーティングの設定ファイルをコールします。
-
-
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         // バリデーションルールとして『0〜9が1つ以上』を定義する。
         Route::pattern('fooId', '[0-9]+');
@@ -1378,7 +1352,7 @@ class RouteServiceProvider extends ServiceProvider
 ```injectablephp
 <?php
 
-Route::group(["prefix" => "foo" , "middleware" => "auth"], function () {
+Route::group(["prefix" => "foo" , "middleware" => "auth"], function (): void {
     Route::get("/", [FooController::class, "getFoo"]);
     Route::get("/{fooId}", [FooController::class, "index"]);
     Route::post("/", [FooController::class, "createFoo"]);
@@ -1414,7 +1388,7 @@ return [
 
     "default" => env("FILESYSTEM_DRIVER", "local"),
 
-     ...
+     // ...
 
     "disks" => [
 
@@ -1423,7 +1397,8 @@ return [
             "root"   => storage_path("app"),
         ],
 
-     ...
+     // ...
+    ],
 
     // シンボリックリンクの関係を定義
     "links" => [
@@ -1469,11 +1444,11 @@ return [
 
     "default" => env("FILESYSTEM_DRIVER", "local"),
 
-     ...
+     // ...
 
     "disks" => [
 
-        ...
+        // ...
 
         "public" => [
             "driver"     => "local",
@@ -1482,7 +1457,7 @@ return [
             "visibility" => "public",
         ],
 
-        ...
+        // ...
 
     ],
 ];
@@ -1526,7 +1501,7 @@ class FileSystemPublicController extends Controller
     /**
      * ファイルをpublicディスクに保管する
      */
-    public function putContentsInPublicDisk()
+    public function putContentsInPublicDisk(): void
     {
         // 保管先をpublicに設定する。
         $disk = Storage::disk("public");
@@ -1574,11 +1549,11 @@ return [
 
     "default" => env("FILESYSTEM_DRIVER", "local"),
 
-     ...
+     // ...
 
     "disks" => [
 
-        ...
+        // ...
 
         "s3" => [
             "driver"   => "s3",
@@ -1651,10 +1626,8 @@ class FooController extends Controller
 {
     /**
      * 新しいブログポストの保管
-     *
-     * @param Request $request
      */
-    public function update(Request $request)
+    public function update(Request $request): ?\Illuminate\Http\RedirectResponse
     {
         // ルールの定義
         $validator = Validator::make(
@@ -1672,6 +1645,7 @@ class FooController extends Controller
         }
 
         // 続きの処理
+        return null;
     }
 }
 ```
@@ -1694,10 +1668,8 @@ class FooController extends Controller
 {
     /**
      * 新しいブログポストの保管
-     *
-     * @param Request $request
      */
-    public function update(Request $request)
+    public function update(Request $request): ?\Illuminate\Http\RedirectResponse
     {
         // 元のWebページにリダイレクトする場合は、validate関数を使用する。
         $validator = Validator::make(
@@ -1716,6 +1688,7 @@ class FooController extends Controller
         }
 
         // 続きの処理
+        return null;
     }
 }
 ```
@@ -1848,10 +1821,10 @@ use Illuminate\Http\Response;
 
 class FooController extends Controller
 {
-    public function index()
+    public function index(): \Illuminate\Http\JsonResponse
     {
 
-        ...
+        // ...
 
         return response()->json([
             "name"  => "Abigail",
@@ -1881,9 +1854,9 @@ use Illuminate\Http\Response;
 
 class FooController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
-        ...
+        // ...
 
         // データ、ステータスコード、ヘッダーなどを設定する場合
         return response()->view(
@@ -1908,9 +1881,9 @@ use Illuminate\Http\Response;
 
 class FooController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
-        ...
+        // ...
 
         // ステータスコードのみ設定する場合
         return response()->view("foo")
@@ -2043,15 +2016,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class FooFactory extends Factory
 {
-    /**
-     * @var string
-     */
-    protected $model = Foo::class;
 
-    /**
-     * @return array
-     */
-    public function definition()
+    public function modelName(): string
+    {
+        return Foo::class;
+    }
+
+    public function definition(): array
     {
         return [
             'name'          => $this->faker->name,
@@ -2099,10 +2070,7 @@ class FooSeeder extends Seeder
 {
     private const NUM_TEST_DATA = 3;
 
-    /**
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
         factory()->count(self::NUM_TEST_DATA)->create();
     }
@@ -2121,10 +2089,7 @@ class BarSeeder extends Seeder
 {
     private const NUM_TEST_DATA = 3;
 
-    /**
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
         factory()->count(self::NUM_TEST_DATA)->create();
     }
@@ -2140,10 +2105,8 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * @return void
-     */
-    public function run()
+
+    public function run(): void
     {
         // 開発環境用の初期データ
         if (app()->environment("local")) {
@@ -2204,10 +2167,8 @@ use Illuminate\Http\Request;
 
 class FooController extends Controller
 {
-    /**
-     * @param Request $request
-     */
-    public function index(Request $request)
+
+    public function index(Request $request): void
     {
         // クエリパラメーターのバリデーションを実行する。
         // エラーが発生した場合は元のWebページにリダイレクト
@@ -2219,10 +2180,7 @@ class FooController extends Controller
         // 続きの処理
     }
 
-    /**
-     * @param Request $request
-     */
-    public function update(Request $request)
+    public function update(Request $request): void
     {
         // ルールの定義、バリデーションの実行
         // エラーが発生した場合は元のWebページにリダイレクト
@@ -2250,10 +2208,8 @@ use Illuminate\Http\Request;
 
 class FooController extends Controller
 {
-    /**
-     * @param Request $request
-     */
-    public function update(Request $request)
+
+    public function update(Request $request): void
     {
         // ルールの定義、メッセージボディのバリデーションを実行する。
         // エラーが発生した場合は元のWebページにリダイレクト
@@ -2294,10 +2250,8 @@ use Illuminate\Http\Request;
 
 class FooController extends Controller
 {
-    /**
-     * @param Request $request
-     */
-    public function index(Request $request)
+
+    public function index(Request $request): void
     {
         // クエリパラメーターのバリデーションを実行する。
         // エラーが発生した場合は元のWebページにリダイレクト
@@ -2306,10 +2260,7 @@ class FooController extends Controller
         // 続きの処理
     }
 
-    /**
-     * @param Request $request
-     */
-    public function update(Request $request)
+    public function update(Request $request): void
     {
         // メッセージボディのバリデーションを実行する。
         // エラーが発生した場合は元のWebページにリダイレクト
@@ -2337,12 +2288,8 @@ class FooRequest extends FormRequest
 {
     /**
      * ルールを返却します。
-
-
-     *
-     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         // ルールの定義
         return [
@@ -2478,12 +2425,8 @@ class FooRequest extends FormRequest
 {
     /**
      * ルールを返却します。
-
-
-     *
-     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         // ルールの定義
         return [
@@ -2507,12 +2450,8 @@ class FooRequest extends FormRequest
 {
     /**
      * ルールを返却します。
-
-
-     *
-     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         // ルールの定義
         return [
@@ -2538,12 +2477,8 @@ class FooRequest extends FormRequest
 {
     /**
      * ルールを返却します。
-
-
-     *
-     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         // ルールの定義
         return [
@@ -2578,22 +2513,16 @@ class UppercaseRule implements Rule
 {
 	/**
      * バリデーションの成功を判定
-     *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @return bool
      */
-	public function passes($attribute, $value)
+	public function passes(string $attribute, mixed $value): bool
 	{
 		return strtoupper($value) === $value;
 	}
 
 	/**
      * バリデーションエラーメッセージの取得
-     *
-     * @return string
      */
-	public function message()
+	public function message(): string
 	{
 		return 'The :attribute must be uppercase.';
         // return trans('validation.uppercase'); validation.phpファイルから参照する。
@@ -2612,12 +2541,8 @@ class FooRequest extends FormRequest
 {
     /**
      * ルールを返却します。
-
-
-     *
-     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         // ルールの定義
         return [
@@ -2648,11 +2573,8 @@ use Illuminate\Http\Request;
 
 class FooController extends Controller
 {
-    /**
-     * @param  Request  $request
-     * @param  int  $id
-     */
-    public function show(Request $request, int $id)
+
+    public function show(Request $request, int $id): void
     {
         $session = $request->session()
             ->get("key");
@@ -2692,16 +2614,20 @@ $request->session()
 ```injectablephp
 <?php
 
-/**
- * ユーザーがこのリクエストの権限を持っているかを判断する
- *
- * @return bool
- */
-public function authorize()
-{
-    $comment = Comment::find($this->route("comment"));
+use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Comment;
 
-    return $comment&& $this->user()->can("update", $comment);
+class UpdateCommentRequest extends FormRequest
+{
+    /**
+     * ユーザーがこのリクエストの権限を持っているかを判断する
+     */
+    public function authorize(): bool
+    {
+        $comment = Comment::find($this->route("comment"));
+
+        return $comment&& $this->user()->can("update", $comment);
+    }
 }
 ```
 
@@ -2742,14 +2668,13 @@ public function authorize()
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class FooBeforeMiddleware
 {
-    /**
-     * @param  Request  $request
-     * @param  \Closure  $next
-     */
-    public function handle($request, Closure $next)
+
+    public function handle(Request $request, Closure $next): Response
     {
         // 何らかの処理
 
@@ -2775,14 +2700,13 @@ class FooBeforeMiddleware
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class FooAfterMiddleware
 {
-    /**
-     * @param  Request  $request
-     * @param  \Closure  $next
-     */
-    public function handle($request, Closure $next)
+
+    public function handle(Request $request, Closure $next): Response
     {
         $response = $next($request);
 
@@ -2847,71 +2771,75 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
+    public function __construct(
+        \Illuminate\Contracts\Foundation\Application $app,
+        \Illuminate\Routing\Router $router,
+        array $middleware = [
+            \App\Http\Middleware\Auth\TrustProxies::class,
+            \App\Http\Middleware\Auth\CheckForMaintenanceMode::class,
+            \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+            \App\Http\Middleware\Auth\TrimStrings::class,
+            \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        ],
+        array $middlewareGroups = [
+            'web' => [
+            ],
+
+            'api' => [
+                'throttle:60,1',
+                \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            ],
+        ],
+        array $routeMiddleware = [
+            'auth'                 => \App\Http\Middleware\Auth\Authenticate::class,
+            'auth.basic'           => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+            'bindings'             => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            'cache.headers'        => \Illuminate\Http\Middleware\SetCacheHeaders::class,
+            'can'                  => \Illuminate\Auth\Middleware\Authorize::class,
+            'guest'                => \App\Http\Middleware\Auth\RedirectIfAuthenticated::class,
+            'password.confirm'     => \Illuminate\Auth\Middleware\RequirePassword::class,
+            'signed'               => \Illuminate\Routing\Middleware\ValidateSignature::class,
+            'throttle'             => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+            'verified'             => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+            // Fooミドルウェアクラス
+            'foo' => \App\Http\Middleware\Before\FooMiddleware::class
+        ],
+        array $middlewarePriority = [
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            \App\Http\Middleware\Auth\Authenticate::class,
+            \Illuminate\Routing\Middleware\ThrottleRequests::class,
+            \Illuminate\Session\Middleware\AuthenticateSession::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \Illuminate\Auth\Middleware\Authorize::class,
+        ]
+    )
+    {
+        $this->middleware = $middleware;
+        $this->middlewareGroups = $middlewareGroups;
+        $this->routeMiddleware = $routeMiddleware;
+        $this->middlewarePriority = $middlewarePriority;
+
+        parent::__construct($app, $router);
+    }
+
     /**
      * 全てのHTTPリクエストに適用するミドルウェアを定義します。
-     *
-     * @var array
      */
-    protected $middleware = [
-        \App\Http\Middleware\Auth\TrustProxies::class,
-        \App\Http\Middleware\Auth\CheckForMaintenanceMode::class,
-        \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        \App\Http\Middleware\Auth\TrimStrings::class,
-        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-    ];
 
     /**
      * エイリアスとミドルウェアグループを定義します。
-     *
-     * @var array
      */
-    protected $middlewareGroups = [
-        'web' => [
-        ],
-
-        'api' => [
-            'throttle:60,1',
-            \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        ],
-    ];
 
     /**
      * エイリアスと各ミドルウェアを定義します。
-     *
-     * @var array
      */
-    protected $routeMiddleware = [
-        'auth'                 => \App\Http\Middleware\Auth\Authenticate::class,
-        'auth.basic'           => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings'             => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'cache.headers'        => \Illuminate\Http\Middleware\SetCacheHeaders::class,
-        'can'                  => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest'                => \App\Http\Middleware\Auth\RedirectIfAuthenticated::class,
-        'password.confirm'     => \Illuminate\Auth\Middleware\RequirePassword::class,
-        'signed'               => \Illuminate\Routing\Middleware\ValidateSignature::class,
-        'throttle'             => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'verified'             => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-
-        // Fooミドルウェアクラス
-        'foo' => \App\Http\Middleware\Before\FooMiddleware::class
-    ];
 
     /**
      * ミドルウェアをコールする順番を定義します。
-
-
-     *
-     * @var string[]
      */
-    protected $middlewarePriority = [
-        \Illuminate\Session\Middleware\StartSession::class,
-        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        \App\Http\Middleware\Auth\Authenticate::class,
-        \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        \Illuminate\Session\Middleware\AuthenticateSession::class,
-        \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        \Illuminate\Auth\Middleware\Authorize::class,
-    ];
+
 }
 ```
 
@@ -2936,10 +2864,8 @@ use Illuminate\Http\Request;
 
 class FooController extends Controller
 {
-    /**
-     * @param Request $request
-     */
-    public function update(Request $request)
+
+    public function update(Request $request): void
     {
         $params = $request->all(); // 全てのパラメーターを連想配列で取得する。
 
@@ -2975,10 +2901,8 @@ use Illuminate\Http\Request;
 
 class FooController extends Controller
 {
-    /**
-     * @param Request $request
-     */
-    public function index(Request $request)
+
+    public function index(Request $request): void
     {
         $params = $request->query(); // 全てのパラメーターを連想配列で取得する。
 
@@ -3004,10 +2928,8 @@ use Illuminate\Http\Request;
 
 class FooController extends Controller
 {
-    /**
-     * @param Request $request
-     */
-    public function update(Request $request)
+
+    public function update(Request $request): void
     {
         $params = $request->route(); // 全てのパラメーターを連想配列で取得する。
 
@@ -3031,11 +2953,8 @@ use Illuminate\Http\Request;
 
 class FooController extends Controller
 {
-    /**
-     * @param Request $request
-     * @param         $fooId
-     */
-    public function update(Request $request, $fooId)
+
+    public function update(Request $request, mixed $fooId): void
     {
 
     }
@@ -3061,7 +2980,7 @@ use Illuminate\Http\Request;
 
 class FooController extends Controller
 {
-    public function update(Request $request)
+    public function update(Request $request): void
     {
         // リクエストのバリデーション
         $validated = $request->validate([
@@ -3120,7 +3039,7 @@ Laravel と PHP-FPM のプロセスはそれぞれ独立しているため、Lar
 
 return [
 
-    ...
+    // ...
 
     "default"  => env("LOG_CHANNEL", "stack"),
     "channels" => [
@@ -3132,7 +3051,7 @@ return [
             "ignore_exceptions" => false,
         ],
 
-        ...
+        // ...
 
     ]
 ];
@@ -3147,7 +3066,7 @@ return [
 
 return [
 
-    ...
+    // ...
 
     "default"  => env("LOG_CHANNEL", "stack"),
     "channels" => [
@@ -3158,7 +3077,7 @@ return [
             "days"   => 14,
         ],
 
-        ...
+        // ...
 
     ]
 ];
@@ -3173,7 +3092,7 @@ return [
 
 return [
 
-    ...
+    // ...
 
     "default"  => env("LOG_CHANNEL", "stack"),
     "channels" => [
@@ -3186,7 +3105,7 @@ return [
             ],
         ],
 
-        ...
+        // ...
 
     ]
 ];
@@ -3205,7 +3124,7 @@ Docker 上で Laravel を稼働させる場合は、作成されるログファ�
 
 return [
 
-    ...
+    // ...
 
     "default"  => env("LOG_CHANNEL", "stack"),
     "channels" => [
@@ -3218,7 +3137,7 @@ return [
             ],
         ],
 
-        ...
+        // ...
 
     ]
 ];
@@ -3252,7 +3171,7 @@ use Illuminate\Http\Response;
 
 class FooController extends Controller
 {
-    public function index()
+    public function index(): string|\Illuminate\Http\JsonResponse
     {
         $client = new Client();
         $requestUrl = config("api.foo.endpoint_url");
@@ -3335,12 +3254,10 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFooTable extends Migration
 {
-    /**
-     * @return void
-     */
-    public function up()
+
+    public function up(): void
     {
-        Schema::create("foos", function (Blueprint $table) {
+        Schema::create("foos", function (Blueprint $table): void {
 
             $table->bigIncrements("foo_id")->comment("ID");
             $table->string("name")->comment("名前");
@@ -3353,10 +3270,7 @@ class CreateFooTable extends Migration
         });
     }
 
-    /**
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::drop("foos");
     }
@@ -3390,12 +3304,10 @@ use Illuminate\Support\Facades\Schema;
 
 class AddColumn extends Migration
 {
-    /**
-     * @return void
-     */
-    public function up()
+
+    public function up(): void
     {
-        Schema::table('foos', function (Blueprint $table) {
+        Schema::table('foos', function (Blueprint $table): void {
             $table->string('foo_name');
         });
     }
@@ -3435,23 +3347,18 @@ use Illuminate\Support\Facades\Schema;
 
 class RenameColumn extends Migration
 {
-    /**
-     * @return void
-     */
-    public function up()
+
+    public function up(): void
     {
-        Schema::table('foos', function (Blueprint $table) {
+        Schema::table('foos', function (Blueprint $table): void {
             $table->renameColumn('id', 'foo_id');
         });
     }
 
-    /**
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         // データ型の変更後でも、ロールバックできるようにしておく。
-        Schema::table('foos', function (Blueprint $table) {
+        Schema::table('foos', function (Blueprint $table): void {
             $table->renameColumn('foo_id', 'id');
         });
     }
@@ -3491,23 +3398,18 @@ use Illuminate\Support\Facades\Schema;
 
 class ChangeColumnDataType extends Migration
 {
-    /**
-     * @return void
-     */
-    public function up()
+
+    public function up(): void
     {
-        Schema::table('foos', function (Blueprint $table) {
+        Schema::table('foos', function (Blueprint $table): void {
             $table->integer('bar')->change();
         });
     }
 
-    /**
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         // データ型の変更後でも、ロールバックできるようにしておく。
-        Schema::table('foos', function (Blueprint $table) {
+        Schema::table('foos', function (Blueprint $table): void {
             $table->string('bar')->change();
         });
     }
@@ -3547,22 +3449,17 @@ use Illuminate\Support\Facades\Schema;
 
 class DropColumn extends Migration
 {
-    /**
-     * @return void
-     */
-    public function up()
+
+    public function up(): void
     {
-        Schema::table('foos', function (Blueprint $table) {
+        Schema::table('foos', function (Blueprint $table): void {
             $table->dropColumn('foo_name');
         });
     }
 
-    /**
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
-        Schema::table('foos', function (Blueprint $table) {
+        Schema::table('foos', function (Blueprint $table): void {
             $table->string('foo_name');
         });
     }
@@ -3594,13 +3491,13 @@ $ php artisan migrate
 ```injectablephp
 <?php
 
-Schema::create("foos", function (Blueprint $table) {
+Schema::create("foos", function (Blueprint $table): void {
 
-    ...
+    // ...
 
     $table->bigIncrements("foo_id");
 
-    ...
+    // ...
 
 });
 ```
@@ -3616,14 +3513,14 @@ Schema::create("foos", function (Blueprint $table) {
 ```injectablephp
 <?php
 
-Schema::create("foos", function (Blueprint $table) {
+Schema::create("foos", function (Blueprint $table): void {
 
-    ...
+    // ...
 
     $table->bigIncrements("foo_id");
     $table->unsignedBigInteger("bar_id");
 
-    ...
+    // ...
 
 });
 ```
@@ -3639,13 +3536,13 @@ VARCHAR 型カラムを作成する。
 ```injectablephp
 <?php
 
-Schema::create("foos", function (Blueprint $table) {
+Schema::create("foos", function (Blueprint $table): void {
 
-    ...
+    // ...
 
     $table->string("name");
 
-    ...
+    // ...
 
 });
 ```
@@ -3659,13 +3556,13 @@ TIMESTAMP 型カラムを作成する。
 ```injectablephp
 <?php
 
-Schema::create("foos", function (Blueprint $table) {
+Schema::create("foos", function (Blueprint $table): void {
 
-    ...
+    // ...
 
     $table->timestamp("created_at");
 
-    ...
+    // ...
 });
 ```
 
@@ -3708,38 +3605,23 @@ use Illuminate\Notifications\Notification;
 
 class TfaTokenNotification extends Notification
 {
-    /**
-     * @param $notifiable
-     * @return array
-     */
-    public function via($notifiable)
+
+    public function via(mixed $notifiable): void
     {
         // 受信チャンネルを選択します。
     }
 
-    /**
-     * @param $notifiable
-     * @return string
-     */
-    public function toSms($notifiable)
+    public function toSms(mixed $notifiable): void
     {
         // SMSのメッセージ内容を返却します。
     }
 
-    /**
-     * @param $notifiable
-     * @return MailMessage
-     */
-    public function toMail($notifiable)
+    public function toMail(mixed $notifiable): void
     {
         // Emailのメッセージ内容を返却します。
     }
 
-    /**
-     * @param $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
+    public function toArray(mixed $notifiable): void
     {
         // DBへの保管方法を返却します。
     }
@@ -3768,11 +3650,8 @@ use Illuminate\Notifications\Notification;
 
 class TfaTokenNotification extends Notification
 {
-    /**
-     * @param $notifiable
-     * @return array
-     */
-    public function via($notifiable)
+
+    public function via(mixed $notifiable): array
     {
         return [
             $notifiable->prefers_sms ? [AwsSnsChannel::class] : [EmailChannel::class], // SMSでない場合は、Eメール通知とします。
@@ -3780,11 +3659,7 @@ class TfaTokenNotification extends Notification
         ];
     }
 
-    /**
-     * @param $notifiable
-     * @return MailMessage
-     */
-    public function toMail($notifiable)
+    public function toMail(mixed $notifiable): MailMessage
     {
         // Emailのメッセージ内容を返却します。
         return (new MailMessage())->subject("コードを送信いたしました。")
@@ -3817,11 +3692,8 @@ use Illuminate\Notifications\Notification;
 
 class TfaTokenNotification extends Notification
 {
-    /**
-     * @param $notifiable
-     * @return array
-     */
-    public function via($notifiable)
+
+    public function via(mixed $notifiable): array
     {
         return [
             $notifiable->prefers_sms ? [AwsSnsChannel::class] : [EmailChannel::class], // SMSの場合は、AWS-SNSを使用します。
@@ -3829,11 +3701,7 @@ class TfaTokenNotification extends Notification
         ];
     }
 
-    /**
-     * @param $notifiable
-     * @return string
-     */
-    public function toSms($notifiable)
+    public function toSms(mixed $notifiable): string
     {
         // SMSのメッセージ内容を返却します。
         return view("template.sms", [
@@ -3866,11 +3734,8 @@ use Illuminate\Notifications\Notification;
 
 class TfaTokenNotification extends Notification
 {
-    /**
-     * @param $notifiable
-     * @return array
-     */
-    public function via($notifiable)
+
+    public function via(mixed $notifiable): array
     {
         return [
             $notifiable->prefers_sms ? [AwsSnsChannel::class] : [EmailChannel::class],
@@ -3878,11 +3743,7 @@ class TfaTokenNotification extends Notification
         ];
     }
 
-    /**
-     * @param $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
+    public function toArray(mixed $notifiable): array
     {
         // notificationsテーブルのdataカラムに、JSONで保管されます。
         return [
@@ -3925,19 +3786,14 @@ use Illuminate\Notifications\Notification;
 
 class AwsSnsChannel
 {
-    /**
-     * @param SnsClient $awsSnsClient
-     */
+    private SnsClient $awsSnsClient;
+
     public function __construct(SnsClient $awsSnsClient)
     {
         $this->awsSnsClient = $awsSnsClient;
     }
 
-    /**
-     * @param              $notifiable
-     * @param Notification $notification
-     */
-    public function send($notifiable, Notification $notification)
+    public function send(mixed $notifiable, Notification $notification): void
     {
         try {
             $message = $notification->toSms($notifiable);
@@ -3963,10 +3819,6 @@ class AwsSnsChannel
         }
     }
 
-    /**
-     * @param string
-     * @return string
-     */
     private function toE164nizeInJapan(string $phoneNumeber): string
     {
         // E.164形式の日本電話番号を返却します。
@@ -4096,13 +3948,8 @@ class FooJsonResource extends JsonResource
 {
     /**
      * オブジェクトを配列に変換します。
-
-
-     *
-     * @param  Request
-     * @return array
      */
-    public function toArray($request)
+    public function toArray(mixed $request): array
     {
         return [
             "id"       => $this->id,
@@ -4110,7 +3957,6 @@ class FooJsonResource extends JsonResource
         ];
     }
 }
-
 
 ```
 
@@ -4125,13 +3971,8 @@ class FooController extends Controller
 {
     /**
      * クライアントにデータを返却します。
-
-
-     *
-     * @param  Request  $request
-     * @return Response
      */
-    public function index(Request $request)
+    public function index(Request $request): \App\Http\Resources\FooResource
     {
         // ここに、EloquentモデルをDBから読み込む処理
 
@@ -4175,22 +4016,30 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
+    public function __construct(
+        \Illuminate\Contracts\Foundation\Application $app,
+        \Illuminate\Routing\Router $router,
+        array $middlewareGroups = [
+
+            // 〜 中略 〜
+
+            "api" => [
+                "throttle:60,1",
+                \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            ],
+        ]
+    )
+    {
+        $this->middlewareGroups = $middlewareGroups;
+
+        parent::__construct($app, $router);
+    }
+
     // 〜 中略 〜
 
     /**
      * The application"s route middleware groups.
-     *
-     * @var array
      */
-    protected $middlewareGroups = [
-
-        // 〜 中略 〜
-
-        "api" => [
-            "throttle:60,1",
-            \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        ],
-    ];
 
     // 〜 中略 〜
 }
@@ -4220,25 +4069,31 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
+    public function __construct(
+        \Illuminate\Contracts\Foundation\Application $app,
+        \Illuminate\Routing\Router $router,
+        array $middlewareGroups = [
+            "web" => [
+                \App\Http\Middleware\EncryptCookies::class,
+                \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+                \Illuminate\Session\Middleware\StartSession::class,
+                // \Illuminate\Session\Middleware\AuthenticateSession::class,
+                \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+                \App\Http\Middleware\VerifyCsrfToken::class,
+                \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            ],
+
+            // 〜 中略 〜
+
+        ]
+    )
+    {
+        $this->middlewareGroups = $middlewareGroups;
+
+        parent::__construct($app, $router);
+    }
+
     // 〜 中略 〜
-
-    /**
-     * @var array
-     */
-    protected $middlewareGroups = [
-        "web" => [
-            \App\Http\Middleware\EncryptCookies::class,
-            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-            \Illuminate\Session\Middleware\StartSession::class,
-            // \Illuminate\Session\Middleware\AuthenticateSession::class,
-            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \App\Http\Middleware\VerifyCsrfToken::class,
-            \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        ],
-
-        // 〜 中略 〜
-
-    ];
 
     // 〜 中略 〜
 }
@@ -4286,10 +4141,8 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    /**
-     * @param User $user
-     */
-    public function index(User $user)
+
+    public function index(User $user): void
     {
         $id = $user->id; // パスパラメーターのidに紐付くユーザーが自動的に渡されている。
     }
@@ -4377,12 +4230,8 @@ class ProductsSeeder extends Seeder
 {
     /**
      * Seederを実行します。
-
-
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         DB::table("products")->insert([
             [
@@ -4416,7 +4265,7 @@ class ProductsSeeder extends Seeder
                 "deleted_at"   => NULL
             ],
 
-            ...
+            // ...
 
         ]);
     }
@@ -4474,10 +4323,8 @@ class ProductsSeeder extends Seeder
 {
     /**
      * Seederを実行します。
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         // 〜 中略 〜
 
@@ -4529,10 +4376,8 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Seederを実行します。
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         // 開発環境用の初期データ
         if (App::environment("local")) {
@@ -4587,12 +4432,12 @@ class DatabaseSeeder extends Seeder
 ```injectablephp
 <?php
 
-"providers" => [
-
-    // 複数のServiceProviderが実装されている
-
-    App\Providers\ComposerServiceProvider::class,
-],
+return [
+    "providers" => [
+        // 複数のServiceProviderが実装されている
+        App\Providers\ComposerServiceProvider::class,
+    ],
+];
 ```
 
 <br>
@@ -4618,22 +4463,13 @@ interface Container extends ContainerInterface
     /**
      * 通常のバインディングとして、自身にバインドする。
      * 第二引数は、クロージャー、もしくはクラス名前空間
-     *
-     * @param  string  $abstract
-     * @param  \Closure|string|null  $concrete
-     * @param  bool  $shared
-     * @return void
      */
-    public function bind($abstract, $concrete = null, $shared = false);
+    public function bind(string $abstract, \Closure|null|string $concrete = null, bool $shared = false): void;
 
     /**
      * singletonとして、自身にバインドする。
-     *
-     * @param  string  $abstract
-     * @param  \Closure|string|null  $concrete
-     * @return void
      */
-    public function singleton($abstract, $concrete = null);
+    public function singleton(string $abstract, \Closure|null|string $concrete = null): void;
 }
 ```
 
@@ -4649,7 +4485,7 @@ AppSeriveProvider にて、ServiceContainer にクラスをバインドするこ
 
 Laravel では、クラスは ServiceContainer に自動的にバインドされている。そのため、引数でクラスを指定するだけでインスタンスを作成でき、以下の実装は不要である。
 
-ただし、混合型の場合は引数の型を指定できないため、リゾルブは実行できない。
+ただし、ユニオン型の場合は、ServiceContainer が注入するクラスを特定できないため、リゾルブは実行できない。
 
 > - [8.x サービスコンテナ Laravel](https://readouble.com/laravel/8.x/ja/container.html#automatic-injection)
 
@@ -4673,12 +4509,10 @@ class FooServiceProvider extends ServiceProvider
 {
     /**
      * コンテナにバインド
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
-        $this->app->bind(Foo::class, function ($app) {
+        $this->app->bind(Foo::class, function (mixed $app): Foo {
             return new Foo(new Bar, new Baz);
         });
     }
@@ -4692,10 +4526,8 @@ class FooServiceProvider extends ServiceProvider
 
 class Qux
 {
-    /**
-     * @param Foo $foo
-     */
-    public function method(Foo $foo) // リゾルブされる。
+
+    public function method(Foo $foo): void // リゾルブされる。
     {
         $foo->bar;
         $foo->baz;
@@ -4703,7 +4535,7 @@ class Qux
 }
 ```
 
-引数の型を指定しない場合は、手動で渡す必要がある。
+引数に具体的なクラス型を指定しない場合は、手動で渡す必要がある。
 
 ```injectablephp
 <?php
@@ -4712,10 +4544,8 @@ use App\Models\Foo;
 
 class Qux
 {
-    /**
-     * @param Foo $foo
-     */
-    public function __construct($foo) // 引数の型を指定しない場合、リゾルブされない。
+
+    public function __construct(mixed $foo) // 具体的なクラス型を指定しない場合、リゾルブされない。
     {
         $foo->bar;
         $foo->baz;
@@ -4726,7 +4556,7 @@ $foo = new Foo();
 $qux = new Qux($foo); // 手動で渡す
 ```
 
-混合型の場合は、引数の型を指定できないため、リゾルブを実行できない。
+ユニオン型の場合は、ServiceContainer が注入するクラスを特定できないため、リゾルブを実行できない。
 
 ```injectablephp
 <?php
@@ -4737,10 +4567,8 @@ use App\Models\Foo3;
 
 class Qux
 {
-    /**
-     * @param Foo1|Foo2|Foo3 $mixed
-     */
-    public function __construct($mixed) // 混合型では引数の型を指定できない
+
+    public function __construct(Foo1|Foo2|Foo3 $mixed) // ユニオン型では注入するクラスを特定できない
     {
         $mixed->bar;
         $mixed->baz;
@@ -4774,10 +4602,8 @@ class FoosServiceProvider extends ServiceProvider
 {
      /**
      * 各register関数をコール
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerFoo();
         $this->registerBar();
@@ -4787,9 +4613,9 @@ class FoosServiceProvider extends ServiceProvider
     /**
     * 1つ目のクラスをバインド
     */
-    private function registerFoo()
+    private function registerFoo(): void
     {
-        $this->app->bind(Foo::class, function ($app) {
+        $this->app->bind(Foo::class, function (mixed $app): Foo {
             return new Foo();
         });
     }
@@ -4797,9 +4623,9 @@ class FoosServiceProvider extends ServiceProvider
     /**
     * 2つ目のクラスをバインド
     */
-    private function registerBar()
+    private function registerBar(): void
     {
-        $this->app->bind(Bar::class, function ($app) {
+        $this->app->bind(Bar::class, function (mixed $app): Bar {
             return new Bar();
         });
     }
@@ -4807,9 +4633,9 @@ class FoosServiceProvider extends ServiceProvider
     /**
     * 3つ目のクラスをバインド
     */
-    private function registerBaz()
+    private function registerBaz(): void
     {
-        $this->app->bind(Baz::class, function ($app) {
+        $this->app->bind(Baz::class, function (mixed $app): Baz {
             return new Baz();
         });
     }
@@ -4839,10 +4665,8 @@ class FooServiceProvider extends ServiceProvider
 {
     /**
      * コンテナにバインド
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->bind(
             "App\Domain\Foo\Repositories\FooRepositoryInterface", // インターフェース
@@ -4857,14 +4681,9 @@ class FooServiceProvider extends ServiceProvider
 
 class Interactor
 {
-    /**
-     * @var FooRepositoryIF
-     */
+
     private FooRepositoryIF $fooRepository;
 
-    /**
-     * @param FooRepositoryIF $fooRepository
-     */
     public function __construct(FooRepositoryIF $fooRepository) // リゾルブされる。
     {
         $this->fooRepository = $fooRepository;
@@ -4887,7 +4706,7 @@ class Interactor
 
 class Foo
 {
-    public function method()
+    public function method(): string
     {
         return "foo";
     }
@@ -4931,14 +4750,10 @@ class MigrationMacroServiceProvider extends ServiceProvider
 {
     /**
      * サービスコンテナにDBマイグレーション関数をバインドします。
-
-
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
-        Blueprint::macro("systemColumns", function () {
+        Blueprint::macro("systemColumns", function (): void {
             $this->string("created_by")
                 ->comment("レコードの作成者")
                 ->nullable();
@@ -4956,7 +4771,7 @@ class MigrationMacroServiceProvider extends ServiceProvider
                 ->nullable();
         });
 
-        Blueprint::macro("dropSystemColumns", function () {
+        Blueprint::macro("dropSystemColumns", function (): void {
             $this->dropColumn(
                 "created_by",
                 "updated_by",
@@ -4982,12 +4797,10 @@ class CreateFooTable extends Migration
 {
     /**
      * マイグレート
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create("foos", function (Blueprint $table) {
+        Schema::create("foos", function (Blueprint $table): void {
             $table->bigIncrements("foo_id")
                 ->comment("ID");
             $table->string("name")
@@ -5003,10 +4816,8 @@ class CreateFooTable extends Migration
 
     /**
      * ロールバック
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop("foos");
     }
@@ -5020,14 +4831,14 @@ class CreateFooTable extends Migration
 
 return [
 
-    ...
+    // ...
 
     'providers' => [
         // マクロサービスプロバイダー
         App\Providers\MigrationMacroServiceProvider::class,
     ],
 
-    ...
+    // ...
 
 ];
 ```
@@ -5060,12 +4871,8 @@ class RouteServiceProvider extends ServiceProvider
 {
     /**
      * ルーティングの設定ファイルをコールします。
-
-
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         // ヘルスチェック
         Route::prefix('api')
@@ -5106,10 +4913,8 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    /**
-     * @var array
-     */
-    protected $middlewareGroups = [
+
+    protected array $middlewareGroups = [
 
         'web' => [
         ],
@@ -5121,12 +4926,9 @@ class RouteServiceProvider extends ServiceProvider
         ],
     ];
 
-    /**
-     * @return void
-     */
-    public function configureRateLimiting()
+    public function configureRateLimiting(): void
     {
-        RateLimiter::for('limit_per_minute', function (Request $request) {
+        RateLimiter::for('limit_per_minute', function (Request $request): Limit {
             // 一分間当たり1000リクエストまでを許可する。
             return Limit::perMinute(1000);
         });
@@ -5157,23 +4959,19 @@ class EventServiceProvider extends ServiceProvider
 {
     /**
      * イベントとリスナーの対応関係を配列で定義します。
-
-
      * [イベント => リスナー]
-     *
-     * @var array
      */
-    protected $listen = [
+    public function listens(): array
+    {
+        return [
         // Eloquentモデル更新イベント
         UpdatedModelEvent::class => [
             UpdatedModelListener::class,
         ],
     ];
+    }
 
-    /**
-     * @return void
-     */
-    public function boot()
+    public function boot(): void
     {
     }
 }
@@ -5262,12 +5060,8 @@ use Illuminate\Http\Request;
 
 class FooController extends Controller
 {
-    /**
-     * @param  Request  $request
-     * @param  int  $id
-     * @return Response
-     */
-    public function index(Request $request, $id)
+
+    public function index(Request $request, int $id): void
     {
         // get関数
         $data = $request->session()->get("foo");

@@ -88,6 +88,8 @@ func (u *User) UserName(id int) (string, error) {
 package test
 
 import (
+	"testing"
+	"time"
 	"github.com/stretchr/testify/mock"
 )
 
@@ -165,6 +167,8 @@ func (u *User) UserName(id int) (string, error) {
 package test
 
 import (
+	"testing"
+	"time"
 	"github.com/stretchr/testify/mock"
 )
 
@@ -214,7 +218,6 @@ package amplify
 import (
 	"context"
 	"github.com/stretchr/testify/mock"
-
 	aws_amplify "github.com/aws/aws-sdk-go-v2/service/amplify"
 )
 
@@ -264,6 +267,7 @@ func isAdult(u user) bool {
 package test
 
 import (
+	"testing"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/assert"
 )
@@ -326,6 +330,7 @@ func isAdult(u user) bool {
 package test
 
 import (
+	"testing"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/assert"
 )
@@ -409,6 +414,8 @@ func (u *User) UserName(id int) (string, error) {
 package test
 
 import (
+	"testing"
+	"time"
 	"github.com/stretchr/testify/mock"
 )
 
@@ -456,7 +463,6 @@ package amplify
 import (
 	"context"
 	"github.com/stretchr/testify/mock"
-
 	aws_amplify "github.com/aws/aws-sdk-go-v2/service/amplify"
 )
 
@@ -518,6 +524,8 @@ func (u *User) UserName(id int) (string, error) {
 package test
 
 import (
+	"testing"
+	"time"
 	"github.com/stretchr/testify/mock"
 )
 
@@ -565,7 +573,6 @@ package amplify
 import (
 	"context"
 	"github.com/stretchr/testify/mock"
-
 	aws_amplify "github.com/aws/aws-sdk-go-v2/service/amplify"
 )
 
@@ -620,7 +627,6 @@ package foo
 
 import (
 	"testing"
-
 	"github.com/stretchr/testify/suite"
 )
 

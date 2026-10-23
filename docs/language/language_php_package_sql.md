@@ -70,7 +70,6 @@ $sql = "SELECT * FROM doraemon_characters";
 $stmt = $dbh->prepare($sql); // プリペアードステートメントを定義。
 $stmt->execute(); // 実行。
 
-
 // 全てのレコードを読み込む。
 $data = $stmt->fetchAll();
 
@@ -134,11 +133,9 @@ print_r($data);
 $staff_name = $_POST["name"];
 $staff_pass = $_POST["pass"];
 
-
 // HTMLとして変数の内容を出力する際、『<』『>』などの特殊文字をエスケープ (無害化)
 $staff_name = htmlspecialchars($staff_name, ENT_QUOTES, "UTF-8");
 $staff_pass = htmlspecialchars($staff_pass, ENT_QUOTES, "UTF-8");
-
 
 // DBと接続 (イコールの間にスペースを入れるとエラーになってしまう)
 $dsn = "mysql:dbname=kizukeba_pronami_php;
@@ -149,20 +146,16 @@ $password = "";
 $dbh = new PDO($dsn, $user, $password);
 $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-
 // 列名と値を指定してINSERT
 $sql="INSERT INTO mst_staff (name,password) VALUES (?,?)";
 $stmt = $dbh->prepare($sql);
-
 
 // 配列に値を格納 (格納する値の順番と、SQLでの引数の順番は、合わせる必要がある)
 $data[] = $staff_name;
 $data[] = $staff_pass;
 
-
 // Write処理を実行
 $stmt->execute($data);
-
 
 // DBとの接続を切断
 $dbh = null;

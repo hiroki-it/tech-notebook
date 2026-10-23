@@ -189,7 +189,9 @@ Node.js 上で実行するための JavaScript のビルトイン関数 (特に 
 そのため、後続の処理に非同期処理の結果を使用するものが含まれている場合、この処理だけは非同期処理の後に実行されるように定義する必要がある。
 
 ```javascript
-const input;
+import fs from "node:fs";
+
+let input;
 
 fs.readFile("/foo.txt", "utf8", function (err, data) {
   input = data;

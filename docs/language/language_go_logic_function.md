@@ -58,7 +58,9 @@ go のプログラムが起動したときに、各パッケージの `init()` �
 ```go
 package main
 
-import "fmt"
+import (
+	"log"
+)
 
 func main() {
 	log.Printf("%v", "Hello world!")
@@ -93,15 +95,19 @@ runtime.main: undefined: main.main
 ```go
 package main
 
+import (
+	"fmt"
+)
+
 func main() {
 
-	...
+	// ...
 
 	if err != nil {
 		panic(fmt.Sprintf("Failed to do something: %v", err))
 	}
 
-	...
+	// ...
 }
 ```
 
@@ -118,13 +124,13 @@ import "os"
 
 func main() {
 
-	...
+	// ...
 
 	if err != nil {
 		os.Exit(1)
 	}
 
-	...
+	// ...
 }
 ```
 
@@ -143,13 +149,13 @@ import "runtime"
 
 func main() {
 
-	...
+	// ...
 
 	if err != nil {
 		runtime.Goexit()
 	}
 
-	...
+	// ...
 }
 ```
 
@@ -270,7 +276,10 @@ func main() {
 }
 
 // 以下のパッケージ名とする
--- go.mod --
+```
+
+```text
+// go.mod
 module example.com/foo
 ```
 
@@ -356,7 +365,10 @@ integer 型を値レシーバとして渡し、構造体に関数を紐付ける
 ```go
 package main
 
-import "log"
+import (
+	"log"
+	"fmt"
+)
 
 type Age int
 
@@ -367,7 +379,7 @@ func (a Age) PrintAge() string {
 func main() {
     var age Age = 20
 
-    log.Printf("%v", age.printAge())
+    log.Printf("%v", age.PrintAge())
 }
 ```
 
@@ -576,7 +588,10 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
 
 func main() {
 	fmt.Println("Start")
@@ -693,6 +708,11 @@ Functional Options Pattern を使用して、引数のデフォルト値を実�
 ```go
 package main
 
+import (
+	"net"
+	"time"
+)
+
 // Optionという関数型を定義する
 type Option func (*Server)
 
@@ -728,7 +748,7 @@ func NewServer(addr string, options ...Option) (*Server, error) {
 
 func main() {
 
-	...
+	// ...
 
 	srv, err := NewServer(
 		"localhost",
@@ -736,7 +756,7 @@ func main() {
 		Timeout(30),
 	)
 
-	...
+	// ...
 }
 ```
 
@@ -757,9 +777,8 @@ func main() {
 package middleware
 
 import (
-	"fmt"
 	"net/http"
-
+	"fmt"
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 	"go.opentelemetry.io/otel/trace"
 )
@@ -806,7 +825,6 @@ import (
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"
 	"google.golang.org/grpc"
-
 	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/recovery"
 )
 
@@ -854,7 +872,9 @@ func InterceptorFilterHealthCheck() otelgrpc.Option {
 ```go
 package main
 
-import "fmt"
+import (
+	"log"
+)
 
 func division(x int, y int) (int, int) {
 
@@ -885,7 +905,7 @@ func main() {
 package main
 
 import (
-    "fmt"
+	"log"
     "os"
 )
 
@@ -953,12 +973,13 @@ func FooMiddleware() func(http.Handler) http.Handler {
 package main
 
 import (
+	"net/http"
+	"os"
+	"time"
 	"context"
 	"log"
-	"net/http"
 	"os/signal"
 	"syscall"
-
 	"github.com/gorilla/mux"
 )
 
@@ -1031,10 +1052,13 @@ func main() {
 package main
 
 import (
+    "context"
+    "fmt"
+    "time"
 	"shutdown"
 )
 
-func main()
+func main() {
 
     shutdown.Add(func(ctx context.Context) {
         fmt.Println("start hook1")
@@ -1071,8 +1095,8 @@ func main()
 package shutdown
 
 import (
-    "context"
-    "sync"
+	"context"
+	"sync"
 )
 
 var (
@@ -1138,6 +1162,7 @@ func Invoke(ctx context.Context) error {
 package main
 
 import (
+    "time"
 	"shutdown"
 )
 
@@ -1255,7 +1280,9 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import (
+	"log"
+)
 
 func main() {
 	foo := 1
@@ -1285,7 +1312,9 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import (
+	"log"
+)
 
 // グローバル変数
 var text string
@@ -1301,7 +1330,9 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import (
+	"log"
+)
 
 // エラーになってしまう。
 text := "Hello World!"
@@ -1324,7 +1355,9 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import (
+	"log"
+)
 
 func main() {
     // ローカル変数
@@ -1389,6 +1422,7 @@ const (
 	FooEnvKey = "FOO"
 	BarEnvKey = "BAR"
 	BazEnvKey = "Baz"
+    QuxEnvKey = "QUX"
 )
 
 var (
@@ -1429,7 +1463,7 @@ func getStringEnv(key string, fallback string) string {
 // 環境変数をfloat64型で取得する
 func getFloatEnv(key string, fallback float64) float64 {
 
-	value, err := strconv.ParseFloat(getStringEnv(strconv.FormatFloat(fallback, 'f', -1, 64)), 64)
+	value, err := strconv.ParseFloat(getStringEnv(key, strconv.FormatFloat(fallback, 'f', -1, 64)), 64)
 
 	if err != nil {
 		return fallback
@@ -1494,7 +1528,9 @@ const (
 ```go
 package main
 
-import "fmt"
+import (
+	"log"
+)
 
 func main() {
     log.Printf("%v", Foo) // foo
@@ -1519,7 +1555,9 @@ const (
 ```go
 package main
 
-import "fmt"
+import (
+	"log"
+)
 
 func main() {
     log.Printf("%v", Bar) // コールできずにエラーになる
@@ -1582,7 +1620,6 @@ func main() {
 package main
 
 import (
-	"fmt"
 	"log"
 )
 
@@ -1608,7 +1645,7 @@ func main() {
 package main
 
 import (
-	"fmt"
+	"log"
 )
 
 func main() {
@@ -1646,21 +1683,22 @@ import (
 	"fmt"
 )
 
-func getFooX() {
+func getFooX() string {
 	return "FooX"
 }
 
-func getFooY() {
+func getFooY() string {
 	return "FooY"
 }
 
-func getFooZ() {
+func getFooZ() string {
 	return "FooZ"
 }
 
 func main() {
 
 	var foo string
+    isX, isY, isZ := true, false, false
 
 	if isX {
 		foo = getFooX()
@@ -1691,21 +1729,22 @@ import (
 	"fmt"
 )
 
-func getFooX() {
+func getFooX() string {
 	return "FooX"
 }
 
-func getFooY() {
+func getFooY() string {
 	return "FooY"
 }
 
-func getFooZ() {
+func getFooZ() string {
 	return "FooZ"
 }
 
 func main() {
 
 	var foo string
+    isX, isY, isZ := true, false, false
 
 	switch {
 	case isX:
@@ -1815,6 +1854,7 @@ func main() {
 package main
 
 import (
+	"time"
 	"fmt"
 )
 
@@ -1840,7 +1880,6 @@ func main() {
 package main
 
 import (
-	"fmt"
 )
 
 func main() {
@@ -2021,6 +2060,7 @@ func main() {
 package main
 
 import (
+	"time"
 	"context"
 	"fmt"
 	"log"
@@ -2162,8 +2202,9 @@ Goroutine の関数の反復処理や異なる Goroutine の関数の並行実�
 package main
 
 import (
-	"fmt"
 	"sync"
+	"log"
+	"fmt"
 	"time"
 )
 
@@ -2310,7 +2351,6 @@ os パッケージの `Open()` 関数から `error` インターフェースが�
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 )
@@ -2344,7 +2384,6 @@ package main
 
 import (
 	"errors"
-	"fmt"
 	"log"
 	"os"
 )
@@ -2385,6 +2424,7 @@ fmt パッケージの `Errorf()` 関数で自前エラーを作成できる。
 package main
 
 import (
+	"log"
 	"fmt"
 	"os"
 )
@@ -2416,6 +2456,7 @@ func main() {
 package main
 
 import (
+	"log"
 	"fmt"
 	"os"
 )
@@ -2602,7 +2643,10 @@ Go のテンプレートでは、『`{{ `』と『`}}`』の記号がロジッ�
 ```go
 package test
 
-import "os"
+import (
+	"os"
+	"testing"
+)
 
 func setup() func() {
 
@@ -2613,7 +2657,7 @@ func setup() func() {
 	return func() {
 		// 事後処理
 		os.Unsetenv("FOO_TIMEOUT")
-		os.Unsetenv("FOO_ENABLED", "false")
+		os.Unsetenv("FOO_ENABLED")
 	}
 }
 
@@ -2623,7 +2667,7 @@ func TestServer(t *testing.T) {
 	teardown := setup()
 	defer teardown()
 
-	...
+	// ...
 }
 ```
 
@@ -2654,8 +2698,9 @@ func TestIntegration(t *testing.T) {
 	t.Helper()
 	client, teardown := setup()
 	defer teardown()
+    _ = client // 後続のテストで使用する
 
-	...
+	// ...
 }
 ```
 

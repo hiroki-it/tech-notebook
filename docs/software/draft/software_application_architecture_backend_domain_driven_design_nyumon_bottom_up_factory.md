@@ -146,6 +146,7 @@ const userRepository: UserRepository = {
     } finally {
       conn.release();
     }
+  },
 };
 ```
 

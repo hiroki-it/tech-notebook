@@ -345,9 +345,7 @@ package saga
 
 import (
 	"time"
-
 	"go.uber.org/multierr"
-
 	"go.temporal.io/sdk/temporal"
 	"go.temporal.io/sdk/workflow"
 )
@@ -733,14 +731,13 @@ package reservation
 import (
 	"context"
 	"database/sql"
-	"fmt"
 	"go.example/saga/pkg/saga"
 	"go.example/saga/pkg/store/postgres"
 	"go.example/saga/reservation/pkg/model"
 	"log"
 )
 
-...
+// ...
 
 func (c *Controller) PostReservation(ctx context.Context, cmd model.ReservationCmd) (*model.Reservation, error) {
 	r := model.NewReservation(cmd.HotelID, cmd.RoomID, cmd.GuestID, cmd.PaymentDue, cmd.StartDate, cmd.EndDate, cmd.CreditCardNO)
@@ -775,7 +772,7 @@ func (c *Controller) PostReservation(ctx context.Context, cmd model.ReservationC
 	return r, nil
 }
 
-...
+// ...
 ```
 
 > - [saga-orchestration-go/src/pkg/saga/saga.go at main · semotpan/saga-orchestration-go · GitHub](https://github.com/semotpan/saga-orchestration-go/blob/main/src/pkg/saga/saga.go)

@@ -200,7 +200,7 @@ DATADOG_SERVICE=foo
 DATADOG_VERSION=<バージョンタグ>
 ```
 
-```javascript
+```typescript
 // nuxt.configファイル
 import { Configuration } from '@nuxt/types'
 import baseConfig from './nuxt.config'
@@ -227,7 +227,7 @@ const nuxtConfig: Configuration = {
     },
   },
 
-  ...
+  // ...
 
   plugins: [
     ...(baseConfig.plugins || []),
@@ -238,12 +238,12 @@ const nuxtConfig: Configuration = {
     },
   ],
 
-  ...
+  // ...
 
 }
 ```
 
-```javascript
+```typescript
 // プラグインファイル
 import {Plugin, Context} from "@nuxt/types";
 import {datadogLogs} from "@datadog/browser-logs";

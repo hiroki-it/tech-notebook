@@ -29,7 +29,7 @@ description: レンダリングロジック＠JavaScriptを記録しています
 
 `setInterval()` 関数によって定期実行中の関数を停止する関数を返却する。
 
-```javascript
+```typescript
 function setIntervalFunction(
   func: () => void,
   interval: number
@@ -82,7 +82,7 @@ await new Promise((resolve) => {
 
 `clearInterval()` 関数の返り値の関数で処理を停止できる。
 
-```javascript
+```typescript
 function setIntervalFunction(
     func: () => void,
     interval: number

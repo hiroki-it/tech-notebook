@@ -79,7 +79,7 @@ class ColorType
     /**
      * 『self::定数名』で、定義の値へアクセスする
      */
-    private static $set = [
+    private static array $set = [
         self::RED  => ["name" => "レッド"],
         self::BLUE => ["name" => "ブルー"]
     ];
@@ -87,36 +87,31 @@ class ColorType
     /**
      * 値
      */
-    private $value;
+    private int $value;
 
     /**
      * 色名
      */
-    private $name;
+    private string $name;
 
     // インスタンス化の時に、『色の区分値』を受け取る。
-    public function __construct(string $value)
+    public function __construct(int $value)
     {
-        // $kbnValueに応じて、色名をnameデータにセットする。
+        // $valueに応じて、色名をnameデータにセットする。
         $this->value = $value;
         $this->name = static::$set[$value]["name"];
     }
 
     /**
      * 値を返却する
-
-
      */
     public function value(): int
     {
         return $this->value;
     }
 
-
     /**
      * 色名を返却する
-
-
      */
     public function name(): string
     {
@@ -143,7 +138,7 @@ class SexType
     const WOMAN   = 2;
     const UNKNOWN = 3;
 
-    private static $set = [
+    private static array $set = [
         self::MAN     => ["name" => "男性"],
         self::WOMAN   => ["name" => "女性"],
         self::UNKNOWN => ["name" => "不明"],
@@ -152,14 +147,14 @@ class SexType
     /**
      * 値
      */
-    private $value;
+    private int $value;
 
     /**
      * 名前
      */
-    private $name;
+    private string $name;
 
-    public function __construct($value)
+    public function __construct(int $value)
     {
         $this->value = $value;
         $this->name = static::$set[$value]["name"];
@@ -175,7 +170,7 @@ class SexType
     /**
      * 名前を返却する
      */
-    public function name()
+    public function name(): string
     {
         return $this->name;
     }
@@ -203,7 +198,7 @@ class YmdType extends Type
     const REIWA   = 5; // 令和
     const SEIREKI = 9; // 西暦
 
-    private static $set = [
+    private static array $set = [
         self::MEIJI   => ["name" => "明治"],
         self::TAISHO  => ["name" => "大正"],
         self::SHOWA   => ["name" => "昭和"],
@@ -212,7 +207,7 @@ class YmdType extends Type
         self::SEIREKI => ["name" => "西暦"],
     ];
 
-    private static $ymd = [
+    private static array $ymd = [
         self::MEIJI  => [
             "start" => [ "year" => 1868, "month" => 1, "day" => 25, ],
             "end"   => [ "year" => 1912, "month" => 7, "day" => 29, ],
@@ -237,32 +232,23 @@ class YmdType extends Type
 
     /**
      * 値
-     *
-     * @var string
      */
-    private $value;
+    private string $value;
 
     /**
      * 年号名
-     *
-     * @var string
      */
-    private $name;
+    private string $name;
 
     /**
      * 値を返却する
-     *
-     * @return string
      */
     public function value(): string
     {
         return $this->value;
     }
 
-    /**
-     * @param $value
-     */
-    public function __construct($value)
+    public function __construct(string $value)
     {
         $this->value = $value;
         $this->name = static::$set[$value]["name"];
@@ -270,10 +256,8 @@ class YmdType extends Type
 
     /**
      * 年号名を返却する
-     *
-     * @return string
      */
-    public function name()
+    public function name(): string
     {
         return $this->name;
     }
@@ -315,14 +299,9 @@ namespace App\Domain\Foo\Services;
 
 class CheckDuplicateFooService
 {
-    /**
-     * @var FooRepository
-     */
+
     private FooRepository $fooRepository;
 
-    /**
-     * @param FooRepository $fooRepository
-     */
     public function __construct(FooRepository $fooRepository)
     {
         $this->fooRepository = $fooRepository;
@@ -330,11 +309,6 @@ class CheckDuplicateFooService
 
     /**
      * エンティティがすでに存在しているか否かを判定する
-
-
-     *
-     * @param Foo $foo
-     * @return bool
      */
     public function exists(Foo $foo): bool
     {
@@ -373,14 +347,9 @@ namespace App\Domain\Foo\Services;
 
 class AuthorizeFooService
 {
-    /**
-     * @var FooRepository
-     */
+
     private FooRepository $fooRepository;
 
-    /**
-     * @param FooRepository $fooRepository
-     */
     public function __construct(FooRepository $fooRepository)
     {
         $this->fooRepository = $fooRepository;
@@ -388,10 +357,6 @@ class AuthorizeFooService
 
     /**
      * 更新処理を実行できるかを検証する
-     *
-     * @param FooId  $fooId
-     * @param UserId $userId
-     * @return bool
      */
     public function canUpdateById(FooId $fooId, UserId $userId): bool
     {
@@ -466,8 +431,6 @@ class FooSpecification
 {
     /**
      * ドメインルールを判定する
-     * @param Entity $entity
-     * @return bool
      */
     public function isSatisfiedBy(Entity $entity): bool
     {
@@ -500,28 +463,17 @@ namespace App\Domain\Foo\Criterion;
 
 class FooCriteria
 {
-    /**
-     * @var int
-     */
+
     private int $id;
 
-    /**
-     * @var string
-     */
     private string $name;
 
-    /**
-     * @var string
-     */
     private string $email;
 
     /**
      * クエリ検索条件オブジェクトを作成する
-     *
-     * @param array $array
-     * @return $this
      */
-    public function build(array $array)
+    public function build(array $array): static
     {
         // 自身をインスタンス化。
         $criteria = new static();
@@ -575,38 +527,23 @@ use App\Domain\User\ValueObjects\UserName;
 
 final class User
 {
-    /**
-     * @var UserId
-     */
+
     private UserId $userId;
 
-    /**
-     * @var UserName
-     */
     private UserName $userName;
 
-    /**
-     * @param UserId           $userId
-     * @param UserName         $userName
-     */
     public function __construct(UserId $userId, UserName $userName)
     {
         $this->userId = $userId;
         $this->userName = $userName;
     }
 
-    /**
-     * @return UserId
-     */
-    public function id()
+    public function id(): UserId
     {
         return $this->userId;
     }
 
-    /**
-     * @return UserName
-     */
-    public function userName()
+    public function userName(): UserName
     {
         return $this->userName;
     }
@@ -674,46 +611,29 @@ class DogToy extends Entity
 {
     /**
      * 犬用おもちゃタイプ
-     *
-     * @var ToyType
      */
-    private $type;
+    private ToyType $type;
 
     /**
      * 犬用おもちゃ商品名
-     *
-     * @var ToyName
      */
-    private $name;
+    private ToyName $name;
 
     /**
      * 数量
-     *
-     * @var Number
      */
-    private $number;
+    private Number $number;
 
     /**
      * 価格の値オブジェクト
-     *
-     * @var PriceVO
      */
-    private $priceVO;
+    private PriceVO $priceVO;
 
     /**
      * 色の値オブジェクト
-     *
-     * @var ColorVO
      */
-    private $colorVO;
+    private ColorVO $colorVO;
 
-    /**
-     * @param ToyType $type
-     * @param ToyName $name
-     * @param Number  $number
-     * @param PriceVO $priceVO
-     * @param ColorVO $colorVO
-     */
     public function __construct(ToyType $type, ToyName $name, Number $number, PriceVO $priceVO, ColorVO $colorVO)
     {
         $this->type = $type;
@@ -725,10 +645,8 @@ class DogToy extends Entity
 
     /**
      * 犬用おもちゃ名 (色) を返却する
-     *
-     * @return string
      */
-    public function nameWithColor()
+    public function nameWithColor(): string
     {
         return sprintf(
             "%s (%s) ",
@@ -776,18 +694,11 @@ abstract class Entity
 {
     /**
      * IDクラス
-     *
-     * @var Id
      */
     protected Id $id;
 
     /**
      * エンティティの等価性を検証する
-
-
-     *
-     * @param Entity $entity
-     * @return bool
      */
     public function equals(Entity $entity): bool
     {
@@ -797,8 +708,6 @@ abstract class Entity
 
     /**
      * IDクラスを返却する
-
-
      */
     public function id(): Id
     {
@@ -835,14 +744,9 @@ abstract class Id
 {
     /**
      * ID
-     *
-     * @var string
      */
-    private $id;
+    private string $id;
 
-    /**
-     * @param string $id
-     */
     public function __construct(string $id)
     {
         $this->id = $id;
@@ -850,14 +754,8 @@ abstract class Id
 
     /**
      * ハッシュ値を返却する
-
-
      *
      * NOTE: 複合主キーを持つオブジェクトの等価性を正しく検証するために、標準の関数をオーバーライドする
-
-
-     *
-     * @return string
      */
     public function hash(): string
     {
@@ -866,15 +764,8 @@ abstract class Id
 
     /**
      * オブジェクトの等価性を検証する
-
-
      *
      * NOTE: 複合主キーを持つオブジェクトの等価性を正しく検証するために、標準の関数をオーバーライドする
-
-
-     *
-     * @param Id $id
-     * @return bool
      */
     public function equals(Id $id): bool
     {
@@ -949,69 +840,50 @@ class MoneyVO extends ValueObject
 {
     /**
      * 金額
-     *
-     * @var float
      */
-    private $amount;
+    private float $amount;
 
-    /**
-     *
-     * @param int $amount
-     */
-    public function __construct(int $amount = 0)
+    public function __construct(float $amount = 0.0)
     {
-        $this->amount = (float) $amount;
+        $this->amount = $amount;
     }
 
     /**
      * 金額を返却する
-     *
-     * @return float
      */
-    public function amount()
+    public function amount(): float
     {
         return $this->amount;
     }
 
     /**
      * 単位を返却する
-     *
-     * @return string
      */
-    public function unit()
+    public function unit(): string
     {
         return "円";
     }
 
     /**
      * 足し算の結果を返却する
-     *
-     * @param Money $price
-     * @return $this
      */
-    public function add(Money $price)
+    public function add(self $price): static
     {
         return new static($this->amount + $price->amount);
     }
 
     /**
      * 引き算の結果を返却する
-     *
-     * @param Money $price
-     * @return $this
      */
-    public function subtract(Money $price)
+    public function subtract(self $price): static
     {
         return new static($this->amount - $price->amount);
     }
 
     /**
      * 掛け算の結果を返却する
-     *
-     * @param Money $price
-     * @return $this
      */
-    public function multiply(Money $price)
+    public function multiply(self $price): static
     {
         return new static($this->amount * $price->amount);
     }
@@ -1043,14 +915,9 @@ class RequiredTime extends ValueObject
 
     /**
      * 距離
-     *
-     * @var int
      */
-    private $distance;
+    private int $distance;
 
-    /**
-     * @param int $distance
-     */
     public function __construct(int $distance)
     {
         $this->distance = $distance;
@@ -1058,8 +925,6 @@ class RequiredTime extends ValueObject
 
     /**
      * 徒歩または車のどちらを使用するかを判定する
-     *
-     * @return bool
      */
     public function isMinuteByWalking(): bool
     {
@@ -1072,8 +937,6 @@ class RequiredTime extends ValueObject
 
     /**
      * 徒歩での所要時間を計算する
-     *
-     * @return float
      */
     public function minuteByWalking(): float
     {
@@ -1083,8 +946,6 @@ class RequiredTime extends ValueObject
 
     /**
      * 車での所要時間を計算する
-     *
-     * @return float
      */
     public function minuteByCar(): float
     {
@@ -1117,31 +978,19 @@ class Address extends ValueObject
 
     /**
      * 郵便番号
-     *
-     * @var string
      */
-    private $zip;
+    private string $zip;
 
     /**
      * 住所 (番地など)
-     *
-     * @var string
      */
-    private $address;
+    private string $address;
 
     /**
      * 市区町村
-     *
-     * @var string
      */
-    private $city;
+    private string $city;
 
-    /**
-     * @param string $city
-     * @param string $zip
-     * @param string $address
-     * @param string $kana
-     */
     public function __construct(string $city, string $zip, string $address, string $kana)
     {
         $this->city = $city;
@@ -1151,10 +1000,8 @@ class Address extends ValueObject
 
     /**
      * 郵便番号を作成し、返却する
-     *
-     * @return string
      */
-    public function zip()
+    public function zip(): string
     {
         return sprintf(
             "〒%s-%s",
@@ -1165,8 +1012,6 @@ class Address extends ValueObject
 
     /**
      * 住所を作成し、返却する
-     *
-     * @return string
      */
     public function address(): string
     {
@@ -1203,38 +1048,24 @@ class Name extends ValueObject
 
     /**
      * 姓
-     *
-     * @var
      */
-    private $lastName;
+    private string $lastName;
 
     /**
      * 名
-     *
-     * @var string
      */
-    private $firstName;
+    private string $firstName;
 
     /**
      * セイ
-     *
-     * @var string
      */
-    private $lastKanaName;
+    private string $lastKanaName;
 
     /**
      * メイ
-     *
-     * @var string
      */
-    private $firstKanaName;
+    private string $firstKanaName;
 
-    /**
-     * @param string $lastName
-     * @param string $firstName
-     * @param string $lastKanaName
-     * @param string $firstKanaName
-     */
     public function __construct(string $lastName, string $firstName, string $lastKanaName, string $firstKanaName)
     {
         $this->lastName = $lastName;
@@ -1246,8 +1077,6 @@ class Name extends ValueObject
 
     /**
      * 氏名を作成する
-
-
      */
     public function fullName(): string
     {
@@ -1256,8 +1085,6 @@ class Name extends ValueObject
 
     /**
      * カナ氏名を作成する
-
-
      */
     public function fullKanaName(): string
     {
@@ -1288,29 +1115,17 @@ namespace App\Domain\Foo\ValueObjects;
  */
 class FooVO extends ValueObject
 {
-    /**
-     * @var
-     */
-    private $propertyA;
 
-    /**
-     * @var
-     */
-    private $propertyB;
+    private mixed $propertyA = null;
 
-    /**
-     * @var
-     */
-    private $propertyC;
+    private mixed $propertyB = null;
+
+    private mixed $propertyC = null;
 
     /**
      * FooVO constructor.
-     *
-     * @param $propertyA
-     * @param $propertyB
-     * @param $propertyC
      */
-    public function __construct($propertyA, $propertyB, $propertyC)
+    public function __construct(mixed $propertyA, mixed $propertyB, mixed $propertyC)
     {
         $this->propertyA = $propertyA;
         $this->propertyB = $propertyB;
@@ -1380,11 +1195,8 @@ trait ImmutableTrait
 {
     /**
      * ゲッターが定義されていなくとも、プロパティにアクセスできるようにする
-     *
-     * @param string $name
-     * @return mixed
      */
-    public function __get(string $name)
+    public function __get(string $name): mixed
     {
         if (!property_exists($this, $name)) {
             throw new LogicException(sprintf(
@@ -1406,9 +1218,9 @@ class Foo
 {
     use ImmutableTrait;
 
-    private $bar;
+    private string $bar;
 
-    public function __construct($bar)
+    public function __construct(string $bar)
     {
         $this->bar = $bar;
     }
@@ -1460,22 +1272,14 @@ namespace App\Domain\Foo\ValueObjects;
  */
 final class ContactMail extends ValueObject
 {
-    /**
-     * @var string
-     */
+
     private string $value;
 
-    /**
-     * @param string $value
-     */
     public function __construct(string $value)
     {
         $this->value = $value;
     }
 
-    /**
-     * @return string
-     */
     public function value(): string
     {
         return $this->value;
@@ -1483,11 +1287,6 @@ final class ContactMail extends ValueObject
 
     /**
      * 値オブジェクトの等価性を検証する
-
-
-     *
-     * @param ValueObject $VO
-     * @return bool
      */
     public function equals(ValueObject $VO): bool
     {
@@ -1511,30 +1310,19 @@ final class PaymentInfoVO extends ValueObject
 {
     /**
      * 支払い方法
-     *
-     * @var PaymentType
      */
-    private $paymentType;
+    private PaymentType $paymentType;
 
     /**
      * 連絡先メールアドレス
-     *
-     * @var ContactMail
      */
-    private $contactMail;
+    private ContactMail $contactMail;
 
     /**
      * 金額
-     *
-     * @var Money
      */
-    private $price;
+    private Money $price;
 
-    /**
-     * @param PaymentType $paymentType
-     * @param ContactMail $contactMail
-     * @param Money       $price
-     */
     public function __construct(PaymentType $paymentType, ContactMail $contactMail, Money $price)
     {
         $this->paymentType = $paymentType;
@@ -1544,11 +1332,6 @@ final class PaymentInfoVO extends ValueObject
 
     /**
      * 値オブジェクトの等価性を検証する
-
-
-     *
-     * @param ValueObject $VO
-     * @return bool
      */
     public function equals(ValueObject $VO): bool
     {
@@ -1578,11 +1361,6 @@ abstract class ValueObject
 {
     /**
      * 値オブジェクトの等価性を検証する
-
-
-     *
-     * @param ValueObject $VO
-     * @return bool
      */
     public function equals(ValueObject $VO): bool
     {
@@ -1639,29 +1417,19 @@ class DogOrder
 {
     /**
      * 犬用商品コンボID
-     *
-     * @var Id
      */
-    private $id;
+    private Id $id;
 
     /**
      * 犬用おもちゃ
-     *
-     * @var DogToy
      */
-    private $dogToy;
+    private DogToy $dogToy;
 
     /**
      * 犬用えさ
-     *
-     * @var DogFood
      */
-    private $dogFood;
+    private DogFood $dogFood;
 
-    /**
-     * @param DogToy  $dogToy
-     * @param DogFood $dogFood
-     */
     public function __construct(DogToy $dogToy, DogFood $dogFood)
     {
         $this->dogToy = $dogToy;
@@ -1670,8 +1438,6 @@ class DogOrder
 
     /**
      * 犬用おもちゃを返却する
-     *
-     * @return DogToy
      */
     public function getDogToy(): DogToy
     {
@@ -1680,8 +1446,6 @@ class DogOrder
 
     /**
      * 犬用えさを返却する
-     *
-     * @return DogFood
      */
     public function getDogFood(): DogFood
     {

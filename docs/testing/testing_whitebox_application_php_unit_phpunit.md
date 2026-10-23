@@ -172,7 +172,7 @@ $this->assertTrue();
 ```injectablephp
 <?php
 
-self::assertTrue()
+self::assertTrue(true);
 ```
 
 > - https://phpunit.readthedocs.io/ja/latest/assertions.html
@@ -242,23 +242,17 @@ class FooTest extends TestCase
 {
     /**
      * find関数をテストする
-
-
      *
      * @test
      * @dataProvider methodDataProvider
      */
-    public function testFind_Bar_Baz($paramA, $paramB, $paramC)
+    public function testFind_Bar_Baz(mixed $paramA, mixed $paramB, mixed $paramC): void
     {
         // 何らかの処理
     }
 
     /**
      * find関数を引数を用意する
-
-
-     *
-     * @return array
      */
     public function methodDataProvider(): array
     {
@@ -289,10 +283,10 @@ use PHPUnit\Framework\TestCase;
 
 class FooTest extends TestCase
 {
-    protected $container;
+    protected ?array $container = null;
 
     // 全てのテスト関数の前に実行される。
-    protected function setUp()
+    protected function setUp(): void
     {
         // IoCコンテナにデータを格納する。
         $this->container["option"];
@@ -313,9 +307,9 @@ use PHPUnit\Framework\TestCase;
 
 class FooTest extends TestCase
 {
-    protected $foo;
+    protected Bar $bar;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         // 基本的には、一番最初に記述する。
         parent::setUp();
@@ -324,10 +318,10 @@ class FooTest extends TestCase
         $this->bar = Phake::mock(Bar::class);
     }
 
-    public function testFoo_Xxx_Xxx()
+    public function testFoo_Xxx_Xxx(): void
     {
         // 実際の処理では、インスタンス化時、FooクラスはBarクラスに依存している。
-        $foo = new Foo($this->bar)
+        $foo = new Foo($this->bar);
 
         // 何らかのテストコード
     }
@@ -351,15 +345,15 @@ use PHPUnit\Framework\TestCase;
 
 class FooTest extends TestCase
 {
-    protected $container;
+    protected ?array $container = null;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->container["option"];
     }
 
     // 全てのテスト関数の後に実行される。
-    protected function tearDown()
+    protected function tearDown(): void
     {
         // IoCコンテナにnullを格納する。
         $this->container = null;
@@ -389,13 +383,13 @@ class FooTest extends TestCase
    /**
     * @test
     */
-    public function testFoo()
+    public function testFoo(): void
     {
         // モックとして使用する擬似オブジェクトを作成する。
         $mock = $this->createMock(Foo::class);
 
         // null
-        $foo = $mock->find(1)
+        $foo = $mock->find(1);
     }
 }
 ```
@@ -405,13 +399,10 @@ class FooTest extends TestCase
 
 class Foo
 {
-    /**
-    * @param  int
-    * @return array
-    */
-    public function find(int $id)
+    public function find(int $id): ?array
     {
         // 参照する処理
+        return null;
     }
 }
 ```
@@ -434,7 +425,7 @@ class FooTest extends TestCase
    /**
     * @test
     */
-    public function testFoo_Xxx_Xxx()
+    public function testFoo_Xxx_Xxx(): void
     {
         // スタブとして使用する擬似オブジェクトを作成する。
         $stub = $this->createMock(Foo::class);
@@ -445,7 +436,7 @@ class FooTest extends TestCase
             ->willReturn([]);
 
         // [] (空配列)
-        $result = $stub->find(1)
+        $result = $stub->find(1);
     }
 }
 ```
@@ -463,15 +454,14 @@ class FooTest extends TestCase
 ```injectablephp
 <?php
 
-use CouldNotSendMessageException;
 
 class FooNotification
 {
-    private $httpClient;
+    private Client $httpClient;
 
-    private $token;
+    private string $token;
 
-    private $logger;
+    private LoggerInterface $logger;
 
     public function __construct(Client $httpClient, string $token, LoggerInterface $logger)
     {
@@ -480,7 +470,7 @@ class FooNotification
         $this->logger = $logger;
     }
 
-    public function sendMessage(FooMessage $fooMessage)
+    public function sendMessage(FooMessage $fooMessage): bool
     {
         if (empty($this->token)) {
             throw new CouldNotSendMessageException("API requests is required.");
@@ -540,9 +530,9 @@ class FooNotification
 
 class FooMessage
 {
-    private $channel_id;
+    private string $channel_id;
 
-    private $message;
+    private string $message;
 
     public function __construct(string $channel_id, string $message)
     {
@@ -563,17 +553,15 @@ class FooMessage
 ```injectablephp
 <?php
 
-use FooMessage;
-use FooNotifiation;
 use PHPUnit\Framework\TestCase;
 
 class FooNotificationTest extends TestCase
 {
-    private $logger;
+    private LoggerInterface $logger;
 
-    private $client;
+    private Client $client;
 
-    public function setUp()
+    public function setUp(): void
     {
         // 検証対象外のクラスはモックとする。
         $this->client = \Phake::mock(Client::class);
@@ -583,7 +571,7 @@ class FooNotificationTest extends TestCase
    /**
     * @test
     */
-    public function testSendMessage_FooMessage_ReturnTrue()
+    public function testSendMessage_FooMessage_ReturnTrue(): void
     {
         $fooNotification = new FooNotification(
             $this->client,
@@ -616,17 +604,15 @@ class FooNotificationTest extends TestCase
 ```injectablephp
 <?php
 
-use FooMessage;
-use FooNotifiation;
 use PHPUnit\Framework\TestCase;
 
 class FooNotificationTest extends TestCase
 {
-    private $logger;
+    private LoggerInterface $logger;
 
-    private $client;
+    private Client $client;
 
-    public function setUp()
+    public function setUp(): void
     {
         // 検証対象外のクラスはモックとする。
         $this->client = \Phake::mock(Client::class);
@@ -637,7 +623,7 @@ class FooNotificationTest extends TestCase
     * @test
     * @expectedException
     */
-    public function testSendMessage_EmptyMessage_ExceptionThrown()
+    public function testSendMessage_EmptyMessage_ExceptionThrown(): void
     {
         $fooNotification = new FooNotification(
             $this->client,
@@ -676,7 +662,7 @@ class FooControllerTest extends TestCase
     /**
      * @test
      */
-    public function testFoo()
+    public function testFoo(): void
     {
         // アプリケーション自身のコントローラークラスにリクエストを送信する処理。
         $client = new Client();
@@ -732,7 +718,7 @@ class FooControllerTest extends TestCase
    /**
     * @test
     */
-    public function testGetPage_GetRequest_Return200()
+    public function testGetPage_GetRequest_Return200(): void
     {
         // 外部サービスがクライアントの場合はモックを使用する。
         $client = new Client();
@@ -768,7 +754,7 @@ class FooControllerTest extends TestCase
     /**
      * @test
      */
-    public function testPostMessage_GetRequest_Return200NormalMessage()
+    public function testPostMessage_GetRequest_Return200NormalMessage(): void
     {
         $client = new Client();
 
@@ -824,7 +810,7 @@ class FooControllerTest extends TestCase
     /**
      * @test
      */
-    public function testPostMessage_EmptyMessage_Return400ErrorMessage()
+    public function testPostMessage_EmptyMessage_Return400ErrorMessage(): void
     {
         $client = new Client();
 

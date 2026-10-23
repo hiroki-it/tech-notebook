@@ -25,7 +25,7 @@ description: Go＠OpenTelemetryクライアントパッケージの知見を記�
 package trace
 
 import (
-	"go.opentelemetry.io/otel"
+	"fmt"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
 	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
@@ -62,6 +62,9 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 package main
 
 import (
+	"go.opentelemetry.io/contrib/propagators/autoprop"
+	"go.opentelemetry.io/otel"
+	"sort"
 	"context"
 	"log"
 )
@@ -77,7 +80,7 @@ func main() {
 	}
 
 	// TracerProviderのインターフェースを作成する
-	tracerProvider := newTracerProvider(exporter
+	tracerProvider := newTracerProvider(exporter)
 
     // 事後処理
 	defer func() {
@@ -97,7 +100,7 @@ func main() {
 	// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// Composit Propagatorを設定する
-		propagator
+		propagator,
 	)
 
 	propagatorList := propagator.Fields()
@@ -107,7 +110,7 @@ func main() {
 	// ログにpropagator名を出力しておく
 	log.Printf("Propagator %v initialize successfully", propagatorList)
 
-	...
+	// ...
 }
 ```
 
@@ -160,7 +163,7 @@ func parentFunction(ctx context.Context) {
 
 	defer parentSpan.End()
 
-    ...
+    // ...
 }
 ```
 
@@ -181,7 +184,7 @@ func childFunction(ctx context.Context) {
 
 	defer childSpan.End()
 
-    ...
+    // ...
 }
 ```
 
@@ -241,16 +244,15 @@ func childFunction(ctx context.Context) {
 package trace
 
 import (
+	"sort"
 	"context"
 	"log"
 	"os"
 	"time"
-
 	"go.opentelemetry.io/contrib/propagators/autoprop"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
 	"go.opentelemetry.io/otel/sdk/resource"
-
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 )
 
@@ -295,7 +297,7 @@ func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
 	// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// Composit Propagatorを設定する
-		propagator
+		propagator,
 	)
 
 	propagatorList := propagator.Fields()
@@ -336,12 +338,20 @@ func InitTracerProvider(shutdownTimeout time.Duration) (func(), error) {
 ```go
 package main
 
+import (
+	"log"
+)
+
 func main()  {
 
-    cleanUp, nil := InitTracerProvider()
+    cleanUp, err := InitTracerProvider()
+    if err != nil {
+        log.Printf("Failed to initialize tracer provider: %v", err)
+        return
+    }
     defer cleanUp()
 
-    ...
+    // ...
 }
 ```
 
@@ -358,13 +368,13 @@ func main()  {
 package main
 
 import (
+	"fmt"
 	"context"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
-
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
 	"github.com/hiroki-hasegawa/infrastructure/tracer"
@@ -453,13 +463,13 @@ Carrier にトレースコンテキストを注入し、また子スパンを作
 package main
 
 import (
+	"fmt"
 	"context"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
-
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
 	"github.com/hiroki-hasegawa/foo/infrastructure/tracer"
@@ -549,17 +559,15 @@ otel クライアントパッケージを初期化する。
 package trace
 
 import (
+	"log"
+	"sort"
 	"context"
-	"fmt"
-
 	"go.opentelemetry.io/contrib/propagators/autoprop"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
-	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/sdk/resource"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 )
@@ -622,7 +630,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 	// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// Composit Propagatorを設定する
-		propagator
+		propagator,
 	)
 
 	propagatorList := propagator.Fields()
@@ -653,11 +661,11 @@ func NewTracerProvider() (func(context.Context) error, error) {
 package main
 
 import (
+	"go.opentelemetry.io/otel"
 	"log"
 	"time"
 	"todobff/app/SessionInfo"
 	"todobff/config"
-
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
@@ -709,7 +717,7 @@ func LoggerAndCreateSpan(ginCtx *gin.Context, msg string) trace.Span {
 		zap.String("trace_id", TraceId),
 		// 実行時間
 		zap.Duration("elapsed", time.Since(start)),
-		...
+		// ...
 	)
 
 	return span
@@ -726,7 +734,7 @@ func getLogin(ginCtx *gin.Context) {
 
 func StartMainServer() {
 
-    ...
+    // ...
 
     shutdown, err := NewTracerProvider()
 
@@ -742,23 +750,23 @@ func StartMainServer() {
 		}
     }()
 
-    ...
+    // ...
 
     rTodos.Use(checkSession())
 
-    ...
+    // ...
 }
 
 func checkSession() gin.HandlerFunc {
 
     return func(ginCtx *gin.Context) {
 
-        ...
+        // ...
 
         // イベントごとに同階層スパンを作成する
         defer LoggerAndCreateSpan(c, "セッションチェック開始").End()
 
-        ...
+        // ...
 
         // イベントごとに同階層スパンを作成する
 	    defer LoggerAndCreateSpan(c, "セッションチェック終了").End()
@@ -782,11 +790,14 @@ Carrier にトレースコンテキストを注入し、また子スパンを作
 package main
 
 import (
+	"fmt"
+	"net/http"
+	"encoding/json"
+	"go.opentelemetry.io/otel"
 	"log"
 	"time"
 	"todobff/app/SessionInfo"
 	"todobff/config"
-
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
@@ -839,7 +850,7 @@ func LoggerAndCreateSpan(ginCtx *gin.Context, msg string) trace.Span {
 		zap.String("trace_id", TraceId),
 		// 実行時間
 		zap.Duration("elapsed", time.Since(start)),
-		...
+		// ...
 	)
 
 	return span
@@ -905,25 +916,23 @@ func createUser(ginCtx *gin.Context) {
 package trace
 
 import (
+	"go.opentelemetry.io/contrib/propagators/autoprop"
+	"sort"
 	"context"
 	"log"
-
 	"github.com/gin-gonic/gin"
 	"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
 	"go.opentelemetry.io/contrib/propagators/aws/xray"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
-	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/sdk/resource"
-
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 )
 
-...
+// ...
 
 
 func NewTracerProvider() (func(context.Context) error, error) {
@@ -984,7 +993,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 	// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// Composit Propagatorを設定する
-		propagator
+		propagator,
 	)
 
 	propagatorList := propagator.Fields()
@@ -1017,17 +1026,17 @@ func NewTracerProvider() (func(context.Context) error, error) {
 package main
 
 import (
+	"go.opentelemetry.io/otel"
 	"context"
 	"log"
 	"os"
 	"os/signal"
 	"time"
-
 	"github.com/gin-gonic/gin"
 	"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
 )
 
-...
+// ...
 
 func main() {
 
@@ -1102,12 +1111,12 @@ Carrier にトレースコンテキストを注入し、また子スパンを作
 package main
 
 import (
+	"go.opentelemetry.io/otel"
 	"context"
 	"log"
 	"os"
 	"os/signal"
 	"time"
-
 	"github.com/gin-gonic/gin"
 	"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
 )
@@ -1205,15 +1214,17 @@ func getXrayTraceID(span trace.Span) string {
 package trace
 
 import (
+	"github.com/GoogleCloudPlatform/opentelemetry-operations-go/propagator"
+	"github.com/GoogleCloudPlatform/opentelemetry-operations-go/propagator"
+	"github.com/GoogleCloudPlatform/opentelemetry-operations-go/propagator"
+	"go.opentelemetry.io/otel/propagation"
 	"context"
 	"log"
 	"os"
-
 	"go.opentelemetry.io/contrib/detectors/gcp"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/resource"
-
-	texporter "github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace"
+	cloudtrace "github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	semconv "go.opentelemetry.io/otel/semconv/v1.7.0"
 )
@@ -1264,7 +1275,7 @@ func installPropagators() {
         // Composite Propagatorを設定する
 		propagation.NewCompositeTextMapPropagator(
 			// Cloud Trace形式のトレースコンテキストを伝播できるPropagatorを設定する
-			gcppropagator.Cloud TraceOneWayPropagator{},
+			gcppropagator.CloudTraceOneWayPropagator{},
 			// W3C Trace Context仕様のトレースコンテキストを伝播できるPropagatorを設定する
 			propagation.TraceContext{},
 			// W3C Baggage仕様のトレースコンテキストを伝播できるPropagatorを設定する
@@ -1284,9 +1295,10 @@ func installPropagators() {
 package main
 
 import (
+	"fmt"
+	"io"
 	"log"
 	"net/http"
-
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
@@ -1338,9 +1350,10 @@ Carrier にトレースコンテキストを注入し、また子スパンを作
 package main
 
 import (
+	"fmt"
+	"io"
 	"log"
 	"net/http"
-
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
@@ -1399,10 +1412,10 @@ gRPC を使用しない場合と実装方法は同じである。
 package trace
 
 import (
+	"log"
+	"sort"
 	"go.opentelemetry.io/contrib/propagators/autoprop"
 	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/propagation"
-
 	stdout "go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 )
@@ -1436,7 +1449,7 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 	// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// Composit Propagatorを設定する
-		propagator
+		propagator,
 	)
 
 	propagatorList := propagator.Fields()
@@ -1465,16 +1478,16 @@ gRPC クライアント側では、gRPC サーバーとの接続を作成する�
 package main
 
 import (
+	"context"
 	"google.golang.org/grpc"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
-
 	// pb.goファイルを読み込む。
     pb "github.com/hiroki-hasegawa/foo/foo"
 )
 
 func main() {
 
-    ...
+    // ...
 
     // gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
@@ -1496,7 +1509,7 @@ func main() {
         &pb.Message{Body: "Hello From Client!"},
     )
 
-	...
+	// ...
 }
 
 func (s *server) parent(ctx context.Context) {
@@ -1521,7 +1534,7 @@ import (
 
 func main() {
 
-	...
+	// ...
 
 	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
@@ -1531,7 +1544,7 @@ func main() {
 		grpc.WithStatsHandler(otelgrpc.NewClientHandler()),
 	)
 
-	...
+	// ...
 
 }
 ```
@@ -1548,13 +1561,12 @@ func main() {
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"net"
-
 	"google.golang.org/grpc"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
-
 	// pb.goファイルを読み込む。
     pb "github.com/hiroki-hasegawa/foo/foo"
 )
@@ -1624,14 +1636,14 @@ import (
 
 func main() {
 
-	...
+	// ...
 
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer(
 		grpc.StatsHandler(otelgrpc.NewServerHandler()),
 	)
 
-	...
+	// ...
 
 }
 ```
@@ -1654,9 +1666,9 @@ func main() {
 package trace
 
 import (
+	"context"
 	"flag"
 	"fmt"
-
 	// ここではv1を使用しているが、v2が推奨である
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
@@ -1668,7 +1680,7 @@ func NewTracerProvider() {
 	// 空のトレースコンテキストを作成する
 	ctx := context.Background()
 
-	...
+	// ...
 
 	// キュー名を取得する
 	queue := flag.String("q", "", "The name of the queue")
@@ -1717,7 +1729,7 @@ func NewTracerProvider() {
 			QueueUrl:    queueURL,
 	})
 
-	...
+	// ...
 
 }
 ```
@@ -1738,7 +1750,6 @@ import (
 	"flag"
 	"fmt"
 	"log"
-
 	// ここではv1を使用しているが、v2が推奨である
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
@@ -1747,7 +1758,7 @@ import (
 
 func main() {
 
-	...
+	// ...
 
 	// キュー名を取得する
 	queue := flag.String("q", "", "The name of the queue")
@@ -1804,7 +1815,7 @@ func main() {
 
 	fmt.Println("Message Handle: " + *msgResult.Messages[0].ReceiptHandle)
 
-	...
+	// ...
 
 }
 ```
@@ -1825,10 +1836,9 @@ package log
 
 import (
 	"context"
+	"log"
 	"encoding/hex"
 	"fmt"
-	"reflect"
-
 	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/zap"
 )

@@ -337,9 +337,9 @@ PHP の連想配列に相当する。
 
 class A
 {
-    private $name = "Hiroki";
+    private string $name = "Hiroki";
 
-    public function HelloWorld()
+    public function HelloWorld(): string
     {
         return sprintf(
             "%s, %s",

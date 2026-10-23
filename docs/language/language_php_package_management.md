@@ -272,7 +272,7 @@ return array(
     'App\\Events\\Event' => $baseDir . '/app/Events/Event.php',
     'App\\Events\\ExampleEvent' => $baseDir . '/app/Events/ExampleEvent.php',
 
-    ...
+    // ...
 
     'phpDocumentor\\Reflection\\Types\\Void_' => $vendorDir . '/phpdocumentor/type-resolver/src/Types/Void_.php',
     'phpDocumentor\\Reflection\\Utils' => $vendorDir . '/phpdocumentor/reflection-docblock/src/Utils.php',

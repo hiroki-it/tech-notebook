@@ -34,6 +34,11 @@ Go 製の ORM である。
 ```go
 package db
 
+import (
+	"fmt"
+	"os"
+)
+
 func NewDB() (*gorm.DB, error) {
 
     // 接続情報。sprintf関数を使用すると、可読性が高い。
@@ -90,11 +95,24 @@ func Close(db *gorm.DB) error {
 ```go
 package model
 
+import (
+)
+
 type User struct {
 	// gormモデルを埋め込む
 	gorm.Model
 	Name string
 }
+
+```
+
+```go
+package model
+
+import (
+    "time"
+    "gorm.io/gorm"
+)
 
 // 以下と同じ
 type User struct {
@@ -102,7 +120,7 @@ type User struct {
     Name      string
 	CreatedAt time.Time
 	UpdatedAt time.Time
-	DeletedAt gorm.DeleteAt `gorm:"index"`
+	DeletedAt gorm.DeletedAt `gorm:"index"`
 }
 ```
 
@@ -117,6 +135,10 @@ Gorm は、構造体を DB に自動的にマッピングする。
 ```go
 package model
 
+import (
+	"time"
+)
+
 // usersテーブルにマッピング
 type User struct {
 	// usersテーブルの主キーにマッピング
@@ -128,7 +150,7 @@ type User struct {
 	// updated_atカラムにマッピング
 	UpdatedAt time.Time
 	// deleted_atカラムにマッピング
-	DeletedAt gorm.DeleteAt
+	DeletedAt gorm.DeletedAt
 }
 ```
 
@@ -162,7 +184,7 @@ type User struct {
 
 #### ▼ SoftDelete
 
-構造体が、`gorm.DeleteAt` をデータ型とするフィールドを持っていると、その構造体を使用した `DELETE` 処理では論理削除が実行される。
+構造体が、`gorm.DeletedAt` をデータ型とするフィールドを持っていると、その構造体を使用した `DELETE` 処理では論理削除が実行される。
 
 gorm モデルを埋め込むことによりこのフィールドを持たせるか、または自前定義することにより、SoftDelete を有効化できる。
 
@@ -479,12 +501,12 @@ package db
 
 func NewDb() {
 
-	...
+	// ...
 
 	// Createの前
 	db.Callback().Create().Before("gorm:before_create").Register("<フック名>", "<CRUD関数名>")
 
-	...
+	// ...
 }
 ```
 
@@ -495,6 +517,10 @@ func NewDb() {
 ```go
 package db
 
+import (
+	"time"
+)
+
 func (user *User) BeforeSave(tx *gorm.DB) (err error) {
     user.LastUpdated = time.Now()
     return nil
@@ -503,6 +529,10 @@ func (user *User) BeforeSave(tx *gorm.DB) (err error) {
 
 ```go
 package db
+
+import (
+	"log"
+)
 
 func (user *User) AfterSave(tx *gorm.DB) (err error) {
     log.Println("User successfully saved:", user.ID)
@@ -522,6 +552,13 @@ gorm クエリに関する情報を持つ。
 
 ```go
 package db
+
+import (
+	"context"
+	"reflect"
+	"strings"
+	"sync"
+)
 
 type DB struct {
 	*Config

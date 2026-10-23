@@ -184,7 +184,7 @@ $ openapi-generator generate -i docs/openapi.yaml -g go-gin-server -p packageVer
 # --template-dirを使用すると、ユーザー定義のテンプレートからコードを作成できる
 ```
 
-```go
+```text
 // テンプレートファイル (mustache形式)
 {{>partial_header}}
 package main
@@ -229,7 +229,6 @@ package openapi
 
 import (
 	"net/http"
-
 	"github.com/gin-gonic/gin"
 )
 

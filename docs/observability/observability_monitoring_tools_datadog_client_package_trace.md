@@ -215,7 +215,7 @@ export default datadogTracer;
 import './datadogTracer'
 import { Configuration } from '@nuxt/types'
 
-...
+// ...
 ```
 
 > - https://docs.datadoghq.com/tracing/setup_overview/setup/nodejs/?tab=%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A#typescript-%E3%81%A8%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9%E3%83%BC
@@ -289,16 +289,11 @@ package main
 import (
 	"log"
 	"net/http"
-
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
 func InitTracerProvider(w http.ResponseWriter, req *http.Request) {
 
-    // Tracerを作成する
-	// Tracer名はパッケージ名が推奨である
-	// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
-	var tracer = otel.Tracer("計装パッケージ名")
 
 	log.Print("Info: Trace provider is initializing ...")
 
@@ -345,9 +340,8 @@ func InitTracerProvider(w http.ResponseWriter, req *http.Request) {
 package main
 
 import (
-	"log"
 	"net/http"
-
+	"log"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
@@ -364,10 +358,6 @@ func InitTracerProvider(w http.ResponseWriter, r *http.Request) {
 
 	log.Print("Info: Tracer provider initialize successfully")
 
-	// Tracerを作成する
-	// Tracer名はパッケージ名が推奨である
-	// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
-    var tracer = otel.Tracer("計装パッケージ名")
 
 	// 子スパンを作成する。
 	span := tracer.StartSpan(
@@ -403,19 +393,13 @@ import (
 	"fmt"
 	"log"
 	"net"
-
 	"google.golang.org/grpc"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
-
-	grpctracer "gopkg.in/DataDog/dd-trace-go.v1/contrib/google.golang.org/grpc"
+	grpctrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/google.golang.org/grpc"
 )
 
 func main() {
 
-    // Tracerを作成する
-	// Tracer名はパッケージ名が推奨である
-	// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
-    var tracer = otel.Tracer("計装パッケージ名")
 
 	// パッケージをセットアップする。
 	tracer.Start(tracer.WithEnv("prd"))
@@ -426,17 +410,17 @@ func main() {
 	grpcServer := grpc.NewServer(
 		// 単項RPCのインターセプター処理
 		grpc.UnaryInterceptor(
-			grpctrace.UnaryServerInterceptor(datadogAPMServiceName, tracer.DefaultTracer),
+			grpctrace.UnaryServerInterceptor(grpctrace.WithServiceName("foo-service")),
         ),
 		// ストリーミングRPCのインターセプター処理
 		grpc.StreamInterceptor(
-			grpctrace.StreamServerInterceptor(datadogAPMServiceName, tracer.DefaultTracer),
+			grpctrace.StreamServerInterceptor(grpctrace.WithServiceName("foo-service")),
         ),
 	)
 
-	... // pb.goファイルに関する実装は省略している。
+	// ... pb.goファイルに関する実装は省略している。
 
-	listenPort, _ := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
+	listenPort, err := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
 
 	if err != nil {
 		log.Printf("Failed to listen: %v", err)
@@ -466,16 +450,17 @@ gRPC クライアント側では、gRPC サーバーとの接続を作成する�
 package main
 
 import (
+	"context"
 	"log"
-
 	"google.golang.org/grpc"
-
+    "gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 	grpctrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/google.golang.org/grpc"
 )
 
 func main() {
 
-    ...
+    // ...
+    ctx := context.Background()
 
 	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
@@ -483,8 +468,8 @@ func main() {
 		":9000",
 		grpc.WithInsecure(),
 		grpc.WithBlock(),
-		grpc.WithChainUnaryInterceptor(grpctrace.UnaryClientInterceptor(datadogAPMServiceName, tracer.DefaultTracer)),
-		grpc.WithChainStreamInterceptor(grpctrace.UnaryStreamInterceptor(datadogAPMServiceName, tracer.DefaultTracer)),
+		grpc.WithChainUnaryInterceptor(grpctrace.UnaryClientInterceptor(grpctrace.WithServiceName("foo-service"))),
+		grpc.WithChainStreamInterceptor(grpctrace.StreamClientInterceptor(grpctrace.WithServiceName("foo-service"))),
 	)
 
 	if err != nil {
@@ -493,7 +478,7 @@ func main() {
 
 	defer conn.Close()
 
-	... // pb.goファイルに関する実装は省略している。
+	// ... pb.goファイルに関する実装は省略している。
 }
 ```
 

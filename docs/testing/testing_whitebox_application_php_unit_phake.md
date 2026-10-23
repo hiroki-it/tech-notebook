@@ -81,7 +81,7 @@ class FooTest extends TestCase
    /**
     * @test
     */
-    public function testFoo_Bar_Baz()
+    public function testFoo_Bar_Baz(): void
     {
         // モックとして使用する擬似オブジェクトを作成する。
         $mockFooRepository = Phake::mock(FooRepository::class);
@@ -96,7 +96,7 @@ class FooTest extends TestCase
         $foo = new Foo($mockFooRepository);
 
         // 上層クラスの内部にある下層モックのfind()関数をコールする
-        $foo->getUser($fooId)
+        $foo->getUser($fooId);
 
         // 上層のクラスが、下層モックにパラメーターを渡し、関数を実行したことを検証する。
         Phake::verify($mockFooRepository, Phake::times(1))->find($fooId);

@@ -240,7 +240,7 @@ FROM
 $joinedIdList = implode(",", $idList);
 
 // 並び替え条件を設定
-$expression = call_user_func(function () use ($orders, $joinedIdList) {
+$expression = call_user_func(function () use ($orders, $joinedIdList): string {
     if ($orders) {
         foreach ($orders as $key => $order) {
             switch ($key) {

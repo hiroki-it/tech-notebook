@@ -191,9 +191,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-
 	"documentation-samples-go/yourapp"
-
 	"go.temporal.io/sdk/client"
 )
 
@@ -292,12 +290,10 @@ package main
 
 import (
 	"log"
-
 	"go.temporal.io/sdk/activity"
 	"go.temporal.io/sdk/client"
 	"go.temporal.io/sdk/worker"
 	"go.temporal.io/sdk/workflow"
-
 	"documentation-samples-go/yourapp"
 )
 
@@ -354,7 +350,6 @@ package activity
 
 import (
 	"context"
-
 	"go.temporal.io/sdk/activity"
 )
 
@@ -402,7 +397,6 @@ package workflow
 
 import (
 	"time"
-
 	"go.temporal.io/sdk/workflow"
 )
 
@@ -483,9 +477,7 @@ package saga
 
 import (
 	"time"
-
 	"go.uber.org/multierr"
-
 	"go.temporal.io/sdk/temporal"
 	"go.temporal.io/sdk/workflow"
 )
@@ -613,12 +605,7 @@ package main
 
 import (
 	"context"
-	"encoding/json"
-	"log"
-	"net/http"
-
 	"documentation-samples-go/yourapp"
-
 	"go.temporal.io/sdk/client"
 )
 
@@ -637,7 +624,7 @@ func main() {
 	err = workflowRun.Get(context.Background(), &result)
 
 	if err != nil {
-		...
+		// ...
 	}
 }
 ```

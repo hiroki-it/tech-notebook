@@ -58,14 +58,8 @@ use App\Domain\User\ValueObject\UserName;
 
 final class User
 {
-    /**
-     * @var UserName
-     */
     private UserName $name; // 状態として保持
 
-    /**
-     * @param UserName $name
-     */
     public function __construct(UserName $name)
     {
         $this->name = $name;
@@ -97,32 +91,14 @@ use App\Domain\Car\Entity\Tire4;
 
 class Car
 {
-    /**
-     * @var Tire1
-     */
-    private $tire1;
+    private Tire1 $tire1;
 
-    /**
-     * @var Tire2
-     */
-    private $tire2;
+    private Tire2 $tire2;
 
-    /**
-     * @var Tire3
-     */
-    private $tire3;
+    private Tire3 $tire3;
 
-    /**
-     * @var Tire4
-     */
-    private $tire4;
+    private Tire4 $tire4;
 
-    /**
-     * @param Tire1 $t1
-     * @param Tire2 $t2
-     * @param Tire3 $t3
-     * @param Tire4 $t4
-     */
     public function __construct(Tire1 $t1, Tire2 $t2, Tire3 $t3, Tire4 $t4)
     {
         // Tireクラスのインスタンスを状態として保持
@@ -176,14 +152,8 @@ use App\Domain\User\ValueObject\UserName;
 
 final class User
 {
-    /**
-     * @var UserName
-     */
     private UserName $name; // 状態として保持
 
-    /**
-     * @return string
-     */
     public function method(): string
     {
         $name = new UserName(); // 合成の関係
@@ -213,10 +183,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 class Car
 {
-    /**
-     * @var Lock
-     */
-    private $lock;
+    private Lock $lock;
 
     public function __construct()
     {
@@ -264,10 +231,10 @@ $car = new Car();
 class Goods
 {
     // 商品名データ
-    private $name = "";
+    private string $name = "";
 
     // 商品価格データ
-    private $price = 0;
+    private int $price = 0;
 
     // コンストラクタ。商品名と商品価格を設定する
     public function __construct(string $name, int $price)
@@ -305,7 +272,7 @@ class GoodsWithTax extends Goods
 {
     // ★★★★★★注目★★★★★★
     // printPrice関数をOverride
-    public function printPrice()
+    public function printPrice(): void
     {
         // 商品価格の税込み価格を計算し、表示
         $priceWithTax = round($this->getPrice() * 1.08);  // (1)
@@ -373,25 +340,25 @@ class GoodsWithTax extends Goods
 abstract class ShainManagement
 {
     // 定数の定義
-    const TIME_TO_ARRIVE = strtotime("10:00:00");
-    const TIME_TO_LEAVE = strtotime("19:00:00");
+    const TIME_TO_ARRIVE = "10:00:00";
+    const TIME_TO_LEAVE = "19:00:00";
 
     // 抽象関数。
     // 処理内容を子クラスでOverrideしなければならない。
-    abstract function toWork();
+    abstract function toWork(): void;
 
     // 具象関数。出勤時刻を表示。もし遅刻していたら、代わりに差分を表示。
     // 子クラスへそのまま継承される。子クラスでオーバーライドしなくても良い。
-    public function toArrive()
+    public function toArrive(): string
     {
         $nowTime = strtotime( date("H:i:s") );
 
         // 出社時間より遅かった場合、遅刻と表示する。
-        if($nowTime > self::TIME_TO_ARRIVE){
+        if($nowTime > strtotime(self::TIME_TO_ARRIVE)){
 
             return sprintf(
                 "%s の遅刻です。",
-                date("H時i分s秒", $nowTime - self::TIME_TO_ARRIVE)
+                date("H時i分s秒", $nowTime - strtotime(self::TIME_TO_ARRIVE))
             );
         }
 
@@ -404,14 +371,14 @@ abstract class ShainManagement
 
     // 具象関数。退社時間と残業時間を表示。
     // 子クラスへそのまま継承される。子クラスでオーバーライドしなくても良い。
-    public function toLeave()
+    public function toLeave(): string
     {
         $nowTime = strtotime( date("H:i:s") );
 
         return sprintf(
             "%sに退社しました。%s の残業です。",
             date("H時i分s秒", $nowTime),
-            date("H時i分s秒", $nowTime - self::TIME_TO_LEAVE)
+            date("H時i分s秒", $nowTime - strtotime(self::TIME_TO_LEAVE))
         );
     }
 }
@@ -424,7 +391,7 @@ abstract class ShainManagement
 class EnginnerShainManagement extends ShainManagement
 {
     // 鋳型となった抽象クラスの抽象関数はOverrideしなければならない。
-    public function toWork()
+    public function toWork(): void
     {
         // 処理内容
     }
@@ -475,9 +442,9 @@ class EnginnerShainManagement extends ShainManagement
 interface Animal
 {
      // インターフェイスでは、実装を伴う関数や状態の宣言はできない
-     public function eat();
-     public function sleep();
-     public function mating();
+     public function eat(): void;
+     public function sleep(): void;
+     public function mating(): void;
 }
 ```
 
@@ -487,17 +454,17 @@ interface Animal
 class Mammal implements Animal
 {
     // 実装クラスが正常に動作するために最低限必要な関数の実装を強制する。
-     public function eat()
+     public function eat(): void
      {
           // 食べる
      }
 
-     public function sleep()
+     public function sleep(): void
      {
           // 眠る
      }
 
-     public function mating()
+     public function mating(): void
      {
           // 交尾する
      }
@@ -552,9 +519,9 @@ class Mammal implements Animal
 // 継承元クラス
 class Foo
 {
-    private $value1;
+    private mixed $value1 = null;
 
-    public function getValue()
+    public function getValue(): mixed
     {
         return $this->value1;
     }
@@ -567,9 +534,9 @@ class Foo
 // 継承先クラス
 class SubFoo extends Foo
 {
-    public $subValue;
+    public mixed $subValue = null;
 
-    public function getSubValue()
+    public function getSubValue(): mixed
     {
         return $this->subValue;
     }
@@ -597,7 +564,7 @@ echo $subFoo->getValue();
 
 abstract class Foo
 {
-    public function foo()
+    public function foo(): void
     {
         // 処理内容;
     }
@@ -609,7 +576,7 @@ abstract class Foo
 
 class SubFoo extends Foo
 {
-    public function subFoo()
+    public function subFoo(): void
     {
         // 継承元の関数を参照。
         $foo = parent::foo();
@@ -640,7 +607,7 @@ Trait 自体は不完全なクラスであり、インスタンス化できな�
 
 trait FooTrait
 {
-    public function foo()
+    public function foo(): void
     {
         echo "Hello World";
     }
@@ -684,27 +651,20 @@ trait UnsupportedMagicMethodTrait
 {
     /**
      * 性能の観点から、マジックゲッター関数の使用を制限する
-
-
      *
-     * @param $name
      * @throws \Exception
      */
-    public function __get($name)
+    public function __get(string $name): mixed
     {
         throw new \Exception("This method is not supported");
     }
 
     /**
      * 性能の観点から、マジックセッター関数の使用を制限する
-
-
      *
-     * @param $name
-     * @param $value
      * @throws \Exception
      */
-    public function __set($name, $value)
+    public function __set(string $name, mixed $value): void
     {
         throw new \Exception("This method is not supported");
     }
@@ -754,7 +714,7 @@ class Foo
 {
     const VALUE = "これは定数です。";
 
-    public function className()
+    public function className(): string
     {
         return "foo関数です。";
     }
@@ -769,7 +729,7 @@ require_once("Foo.php");
 
 class Bar
 {
-    public function method()
+    public function method(): void
     {
         $e1 = new Foo;
         $e1->className();
@@ -787,7 +747,7 @@ require_once("Foo.php");
 
 class Bar
 {
-    public function method()
+    public function method(): mixed
     {
         // Fooクラスの定数を出力。
         return Foo::VALUE;
@@ -800,7 +760,7 @@ class Bar
 ```injectablephp
 <?php
 
-function printTest() {
+function printTest(): string {
     return  "test";
 }
 ```
@@ -851,7 +811,7 @@ class Foo
     // 定数を定義。
     const VALUE = "これは定数です。";
 
-    public function method1()
+    public function method1(): string
     {
         return "foo関数です。";
     }
@@ -868,7 +828,7 @@ use Domain\Foo;
 
 class Bar
 {
-    public function method2()
+    public function method2(): void
     {
         $e1 = new Foo;
         $e1->method1();
@@ -890,7 +850,7 @@ use Domain\Foo;
 
 class Bar
 {
-    public function method()
+    public function method(): void
     {
         // Fooクラスの定数を出力。
         echo Foo::VALUE;
@@ -938,10 +898,6 @@ use App\Domain\User\ValueObject\UserName;
 
 final class User
 {
-    /**
-     * @param UserName $name
-     * @return string
-     */
     public function method(UserName $name): string // 依存の関係
     {
         return "Hello! " . $name->getName();
@@ -1000,14 +956,8 @@ use App\Domain\User\ValueObject\UserName;
 
 final class User
 {
-    /**
-     * @var UserName
-     */
     private UserName $name;
 
-    /**
-     * @param UserName $name
-     */
     public function __construct(UserName $name)
     {
         $this->name = $name;
@@ -1055,15 +1005,9 @@ use App\Domain\User\ValueObject\UserName;
 
 final class User
 {
-    /**
-     * @var UserName
-     */
     private UserName $name;
 
-    /**
-     * @param UserName $name
-     */
-    public function setUserName(UserName $name)
+    public function setUserName(UserName $name): void
     {
         $this->name = $name;
     }
@@ -1097,10 +1041,7 @@ use App\Domain\User\ValueObject\UserName;
 
 final class User
 {
-    /**
-     * @param UserName $name
-     */
-    public function method(UserName $name)
+    public function method(UserName $name): void
     {
         $name = $name->getName();
 
@@ -1134,21 +1075,23 @@ Pimple パッケージを使用した場合
 ```injectablephp
 <?php
 
-use Pimple\Container;
+use Pimple\Container as PimpleContainer;
 use App\Domain\User\Entity\User;
 use App\Domain\User\ValueObject\UserName;
 
-class Container
+class Container extends PimpleContainer
 {
     public function __construct()
     {
+        parent::__construct();
+
         // UserNameクラスの準備
-        $container["user_name"] = function ($container) {
+        $this["user_name"] = function (PimpleContainer $container): UserName {
             return new UserName("Hiroki");
         };
 
         // UserクラスにUserNameクラスを注入
-        $container["user"] = function ($container) {
+        $this["user"] = function (PimpleContainer $container): User {
             return new User($container["user_name"]);
         };
     }
@@ -1185,7 +1128,10 @@ Service Locater パターンはアンチパターンである。
 
 class Sample
 {
-    public function __construct($container)
+    private mixed $logger;
+    private mixed $notification;
+
+    public function __construct(mixed $container)
     {
         $this->logger            = $container["foo.logger"];
         $this->notification      = $container["bar.notification"];
@@ -1325,7 +1271,7 @@ ModuleA と ModuleB は、データ結合の関係にある。
 
 class ModuleA // コールされる側
 {
-    public function methodA(int $a, int $b, string $c)
+    public function methodA(int $a, int $b, string $c): string
     {
         return "$a + $b".$c;
     }
@@ -1337,7 +1283,7 @@ class ModuleA // コールされる側
 
 class ModuleB // コールする側
 {
-    public function methodB()
+    public function methodB(): void
     {
         $moduleA= new ModuleA();
         $result = $moduleA->methodA(1, 2, "です."); // スカラ型データを渡すだけ
@@ -1361,7 +1307,7 @@ Factory クラスのインスタンスと、これをコールするほかイン
  */
 class TransportationMethodsFactory
 {
-    public static function createInstance($distance)
+    public static function createInstance(mixed $distance): Car|Walking
     {
         $walking = new Walking($distance);
         $car = new Car($distance);
@@ -1388,15 +1334,14 @@ ModuleA と ModuleB は、スタンプ結合の関係にある。
 
 class Shared
 {
-    private $value;
+    private int $value;
 
     public function __construct(int $value)
     {
         $this->value = $value;
     }
 
-
-    public function getValue()
+    public function getValue(): int
     {
         return $this->value;
     }
@@ -1408,7 +1353,7 @@ class Shared
 
 class ModuleA
 {
-    public function methodA()
+    public function methodA(): int
     {
         $shared = new Shared(1);
 
@@ -1424,7 +1369,7 @@ class ModuleA
 
 class ModuleB
 {
-    public function methodB(Shared $shared)
+    public function methodB(Shared $shared): int
     {
         return $shared->getValue(); // 1
     }

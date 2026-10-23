@@ -162,14 +162,14 @@ use Pinq\Traversable;
 class Foo
 {
 
-    public function getData(array $entities)
+    public function getData(array $entities): array
     {
 
         return [
           "data" => Traversable::from($entities)
             // 1つずつ要素を取り出し、関数に渡す。
             ->select(
-              function ($entity) {
+              function (object $entity): array {
                   return $this->convertToArray($entity);
               })
             // indexからなる配列として返却。

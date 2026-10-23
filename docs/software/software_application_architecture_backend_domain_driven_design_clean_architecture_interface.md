@@ -89,7 +89,7 @@ class FormatValidator
     /**
      * 日時データのフォーマットを検証する
      */
-    public function validateFormat($dateTime)
+    public function validateFormat(mixed $dateTime): bool
     {
         if (empty($dateTime)) {
             return false;
@@ -118,7 +118,7 @@ class FormatValidator
 namespace App\Interface\Foo\Validators;
 
 // Validationのパッケージ
-use Respect\Validation\Validator;
+use Respect\Validation\Validatable;
 
 class UrlValidator
 {
@@ -126,7 +126,7 @@ class UrlValidator
     /**
      * URLクエリストリングの値を検証し、不正ならデフォルト値を返す。
      */
-    public function validateFormat(string $key, $value, $validator)
+    public function validateFormat(string $key, mixed $value, Validatable $validator): mixed
     {
         // 例：ページングやソートのURLクエリストリングを想定する。
         // - page: 1始まり

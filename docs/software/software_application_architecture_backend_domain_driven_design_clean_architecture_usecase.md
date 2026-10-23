@@ -135,27 +135,18 @@ use Illuminate\Support\Facades\DB;
  */
 class FooCreateInteractor
 {
-    /**
-     * @var FooRepository
-     */
+
     private FooRepository $fooRepository;
 
-    /**
-     * @param FooRepository $fooRepository
-     */
     public function __construct(FooRepository $fooRepository)
     {
         $this->fooRepository = $fooRepository;
     }
 
-    /**
-     * @param RegisterFooRequest $registerFooRequest
-     * @return RegisterFooResponse
-     */
     public function registerFoo(RegisterFooRequest $registerFooRequest): RegisterFooResponse
     {
         // トランザクション処理を実行
-        $foo = DB::transaction(function () use ($registerFooRequest) {
+        $foo = DB::transaction(function () use ($registerFooRequest): Foo {
 
             // 重複チェック (READ処理) を実行
             $duplicateFoo = $this->fooRepository->findById(
@@ -167,13 +158,17 @@ class FooCreateInteractor
             }
 
             // CREATE処理を実行
-            return $this->fooRepository->create(
+            $foo = new Foo(
+                new FooId($registerFooRequest->id),
                 new Bar($registerFooRequest->bar),
                 new Baz($registerFooRequest->baz)
             );
+            $this->fooRepository->create($foo);
+
+            return $foo;
         });
 
-        // 何らかの処理
+        return new RegisterFooResponse($foo);
     }
 }
 ```
@@ -191,27 +186,18 @@ use Illuminate\Support\Facades\DB;
  */
 class FooInteractor
 {
-    /**
-     * @var FooRepository
-     */
+
     private FooRepository $fooRepository;
 
-    /**
-     * @param FooRepository $fooRepository
-     */
     public function __construct(FooRepository $fooRepository)
     {
         $this->fooRepository = $fooRepository;
     }
 
-    /**
-     * @param RegisterFooRequest $registerFooRequest
-     * @return RegisterFooResponse
-     */
     public function registerFoo(RegisterFooRequest $registerFooRequest): RegisterFooResponse
     {
         // トランザクション処理を実行
-        $foo = DB::transaction(function () use ($registerFooRequest) {
+        $foo = DB::transaction(function () use ($registerFooRequest): Foo {
 
             // 重複チェック (READ処理) を実行
             $duplicateFoo = $this->fooRepository->findById(
@@ -223,19 +209,19 @@ class FooInteractor
             }
 
             // CREATE処理を実行
-            return $this->fooRepository->create(
+            $foo = new Foo(
+                new FooId($registerFooRequest->id),
                 new Bar($registerFooRequest->bar),
                 new Baz($registerFooRequest->baz)
             );
+            $this->fooRepository->create($foo);
+
+            return $foo;
         });
 
-        // 何らかの処理
+        return new RegisterFooResponse($foo);
     }
 
-    /**
-     * @param GetFooRequest $getFooRequest
-     * @return GetFooResponse
-     */
     public function getFoo(GetFooRequest $getFooRequest): GetFooResponse
     {
         // READ処理を実行
@@ -243,17 +229,17 @@ class FooInteractor
             new FooId($getFooRequest->id)
         );
 
-        // 何らかの処理
+        if ($foo === null) {
+            throw new \Exception("Foo is not found.");
+        }
+
+        return new GetFooResponse($foo);
     }
 
-    /**
-     * @param ChangeFooRequest $changeFooRequest
-     * @return ChangeFooResponse
-     */
     public function changeFoo(ChangeFooRequest $changeFooRequest): ChangeFooResponse
     {
         // トランザクション処理を実行
-        $foo = DB::transaction(function () use ($changeFooRequest) {
+        $foo = DB::transaction(function () use ($changeFooRequest): Foo {
 
             // 存在チェック (READ処理) を実行
             $existingFoo = $this->fooRepository->findById(
@@ -265,24 +251,23 @@ class FooInteractor
             }
 
             // UPDATE処理を実行
-            return $this->fooRepository->update(
+            $foo = new Foo(
                 new FooId($changeFooRequest->id),
                 new Bar($changeFooRequest->bar),
                 new Baz($changeFooRequest->baz)
             );
+            $this->fooRepository->update($foo);
+
+            return $foo;
         });
 
-        // 何らかの処理
+        return new ChangeFooResponse($foo);
     }
 
-    /**
-     * @param DeleteFooRequest $deleteFooRequest
-     * @return DeleteFooResponse
-     */
     public function deleteFoo(DeleteFooRequest $deleteFooRequest): DeleteFooResponse
     {
         // トランザクション処理を実行
-        $foo = DB::transaction(function () use ($deleteFooRequest) {
+        DB::transaction(function () use ($deleteFooRequest): void {
 
             // 存在チェック (READ処理) を実行
             $existingFoo = $this->fooRepository->findById(
@@ -294,12 +279,12 @@ class FooInteractor
             }
 
             // DELETE処理を実行
-            return $this->fooRepository->delete(
+            $this->fooRepository->delete(
                 new FooId($deleteFooRequest->id)
             );
         });
 
-        // 何らかの処理
+        return new DeleteFooResponse();
     }
 }
 ```
@@ -328,28 +313,13 @@ namespace App\Usecase\Foo\InputBoundaries;
  */
 interface FooInteractorInterface
 {
-    /**
-     * @param RegisterFooRequest $registerFooRequest
-     * @return RegisterFooResponse
-     */
+
     public function registerFoo(RegisterFooRequest $registerFooRequest): RegisterFooResponse;
 
-    /**
-     * @param GetFooRequest $getFooRequest
-     * @return GetFooResponse
-     */
     public function getFoo(GetFooRequest $getFooRequest): GetFooResponse;
 
-    /**
-     * @param ChangeFooRequest $changeFooRequest
-     * @return ChangeFooResponse
-     */
     public function changeFoo(ChangeFooRequest $changeFooRequest): ChangeFooResponse;
 
-    /**
-     * @param DeleteFooRequest $deleteFooRequest
-     * @return DeleteFooResponse
-     */
     public function deleteFoo(DeleteFooRequest $deleteFooRequest): DeleteFooResponse;
 }
 ```
@@ -385,20 +355,11 @@ namespace App\Interface\Foo\Requests;
 
 class FooCreateRequest
 {
-    /**
-     * @var int
-     */
+
     private int $fooId;
 
-    /**
-     * @var string
-     */
     private string $fooName;
 
-    /**
-     * @param int    $fooId
-     * @param string $fooName
-     */
     public function __construct(int $fooId, string $fooName)
     {
         $this->fooId = $fooId;
@@ -434,22 +395,14 @@ namespace App\Interface\Foo\Responses;
 
 class FooIndexResponse
 {
-    /**
-     * @var array
-     */
+
     private array $foos;
 
-    /**
-     * @param array $foos
-     */
     public function __construct(array $foos)
     {
         $this->foos = $foos;
     }
 
-    /**
-     * @return array
-     */
     public function toArray(): array
     {
         return [
@@ -468,29 +421,17 @@ namespace App\Interface\Foo\Responses;
 
 class FooCreateResponse
 {
-    /**
-     * @var int
-     */
+
     private int $fooId;
 
-    /**
-     * @var string
-     */
     private string $fooName;
 
-    /**
-     * @param int    $fooId
-     * @param string $fooName
-     */
     public function __construct(int $fooId, string $fooName)
     {
         $this->fooId = $fooId;
         $this->fooName = $fooName;
     }
 
-    /**
-     * @return array
-     */
     public function toArray(): array
     {
         return [
@@ -530,20 +471,15 @@ namespace App\Usecase\Foo\Services\Notify;
 
 class NotifyFooService
 {
-    /**
-     * @var Message
-     */
-    private $message;
 
-    /**
-     * @param Message $message
-     */
+    private Message $message;
+
     public function __construct(Message $message)
     {
         $this->message = $message;
     }
 
-    public function notify()
+    public function notify(): void
     {
         // SlackのAPIにメッセージを送信する処理
     }
@@ -561,7 +497,7 @@ use App\Service\SlackNotification;
 
 class FooInteractor
 {
-    public function foo()
+    public function foo(): void
     {
         $message = new Message(/* メッセージに関するデータを渡す */);
         $notifyFooService = new NotifyFooService($message);

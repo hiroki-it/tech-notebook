@@ -795,7 +795,7 @@ HTTP はステートレスなプロトコルであるが、Cookie 情報によ�
 ```injectablephp
 <?php
 
-$_COOKIE = ["Cookie名" => "値"]
+$_COOKIE = ["Cookie名" => "値"];
 ```
 
 #### ▼ 擬似ステートフル化の仕組み
@@ -814,14 +814,14 @@ $_COOKIE = ["Cookie名" => "値"]
 <?php
 
 setcookie(
-    <Cookie名>,
-    <Cookie値>,
-    <有効日時>,
-    <パス>,
-    <ドメイン>,
-    <HTTPSリクエストのみ>,
-    <JavaScript無効>
-    )
+    "Cookie名",
+    "Cookie値",
+    time() + 3600, // 有効日時
+    "/", // パス
+    "example.com", // ドメイン
+    true, // HTTPSリクエストのみ
+    true // JavaScript無効 (HttpOnly)
+);
 ```
 
 `(3)`

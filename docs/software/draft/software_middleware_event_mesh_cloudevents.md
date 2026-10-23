@@ -45,7 +45,11 @@ $ go get github.com/cloudevents/sdk-go/v2@v2.12.0
 ```go
 package main
 
-import cloudevents "github.com/cloudevents/sdk-go/v2"
+import (
+	cloudevents "github.com/cloudevents/sdk-go/v2"
+	"context"
+	"log"
+)
 
 func main() {
 	c, err := cloudevents.NewClientHTTP()
@@ -82,7 +86,12 @@ func main() {
 ```go
 package main
 
-import cloudevents "github.com/cloudevents/sdk-go/v2"
+import (
+	cloudevents "github.com/cloudevents/sdk-go/v2"
+	"context"
+	"fmt"
+	"log"
+)
 
 func receive(event cloudevents.Event) {
 	// do something with event.

@@ -112,10 +112,8 @@ class Foo
 {
      /**
      * オプションを調べて、文字列を返却します。
-
-
      */
-    public function printOption(array $options)
+    public function printOption(array $options): string
     {
         $result = '何も設定されていません。';
 
@@ -150,7 +148,7 @@ class Foo
 // 以下の引数が渡されると想定
 // ($K, $A) = (4, [1, 2, 3, 4, 1, 1, 3])
 
-function iteration($K, $A)
+function iteration(int $K, array $A): void
 {
     $topesNumber = 0;
 
@@ -181,7 +179,7 @@ function iteration($K, $A)
 // 以下の引数が渡されると想定
 // ($M, $A) = (6, [3, 4, 5, 5, 2])
 
-function iteration($M, $A) {
+function iteration(int $M, array $A): int {
 
     $count = 0;
 
@@ -429,7 +427,7 @@ foreach ($array as $key => $value) {
 
 $array = [1, 2, 3, 4, 5];
 
-array_walk($array, function ($value, $key) {
+array_walk($array, function (int $value, int $key): void {
 
     // キーが偶数の組をスキップする。
     if (!($key % 2 == 0)) {

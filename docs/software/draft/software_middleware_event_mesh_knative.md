@@ -64,19 +64,26 @@ Knative のイベントメッシュ (Knative Eventing) は、イベントブロ�
 ```go
 package main
 
+import (
+	"context"
+	"net/http"
+	"io/ioutil"
+)
+
 func Handle(ctx context.Context, w http.ResponseWriter, r *http.Request) {
 
     body, err := ioutil.ReadAll(r.Body)
 
     // レスポンスを操作した後、レスポンスボディを必ず閉じる
-    defer w.Body.Close()
+    defer r.Body.Close()
 
     if err != nil {
   	    http.Error(w, err.Error(), 500)
         return
     }
 
-    ...
+    // ...
+    _, _ = w.Write(body)
 }
 ```
 

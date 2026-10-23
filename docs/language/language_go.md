@@ -334,7 +334,7 @@ type Foo int
 type Bar string
 
 type Baz struct {
-	...
+	// ...
 }
 ```
 

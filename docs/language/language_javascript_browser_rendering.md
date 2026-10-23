@@ -321,11 +321,10 @@ Intersection Observer の仕組みでは、特定の HTML 要素を指定し、�
 
 **＊実装例＊**
 
-```jsx
+```tsx
 import {useRef, useState, useEffect, type ReactNode} from "react";
 
-type
-LazyRenderWithIntersectionObserverProps = {
+type LazyRenderWithIntersectionObserverProps = {
 
   /**
    * レンダリングを遅延させたい要素
@@ -355,11 +354,7 @@ export const LazyRenderWithIntersectionObserver = ({
   children,
   minHeight,
   rootMargin = "200px",
-}: LazyRenderWithIntersectionObserverProps)
-:
-JSX.Element
-=>
-{
+}: LazyRenderWithIntersectionObserverProps): JSX.Element => {
 
   const ref = useRef < HTMLDivElement > (null);
   const [shouldRender, setShouldRender] = useState(false);
@@ -404,7 +399,8 @@ JSX.Element
 <LazyRenderWithIntersectionObserver
   minHeight={120}
   children={
-    // ここにレンダリングを遅延させたいの要素を設定する
+    // ここにレンダリングを遅延させたい要素を設定する
+    <div>遅延させる内容</div>
   }
 />
 ```

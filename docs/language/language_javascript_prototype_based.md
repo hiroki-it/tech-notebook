@@ -183,13 +183,13 @@ const foo = {
 // リテラル表記
 const foo = {
 
- ...
+ // ...
 
   alertValue(value) {
       alert(value);
   },
 
-  ...
+  // ...
 }
 ```
 
@@ -246,7 +246,7 @@ const Foo = new Function();
 // 関数宣言
 function Foo() {
   // 慣習的にアンダースコアでprivateを表す。
-  _property = 0;
+  this._property = 0;
 
   // プロパティ値として宣言した関数を、関数という。
   this.setValue = (value) => {
@@ -259,14 +259,14 @@ function Foo() {
 }
 
 // コール
-const Foo = new Foo();
+const foo = new Foo();
 ```
 
 ```javascript
 // 関数式
-const Foo = (value) => {
+const Foo = function (value) {
   // 慣習的にアンダースコアでprivateを表す。
-  _property = 0;
+  this._property = 0;
 
   this.setValue = (value) => {
     this._property = value;
@@ -277,19 +277,22 @@ const Foo = (value) => {
   };
 };
 
-// アロー関数による関数式の省略記法
-const Foo = (value) => {
+```
+
+```javascript
+// アロー関数では、オブジェクトを返す関数として定義する
+const Foo = (value = 0) => ({
   // 慣習的にアンダースコアでprivateを表す。
-  _property = 0;
+  _property: value,
 
-  this.setValue = (value) => {
+  setValue(value) {
     this._property = value;
-  };
+  },
 
-  this.getValue = () => {
+  getValue() {
     return this._property;
-  };
-};
+  },
+});
 ```
 
 リテラル表記と `Object` コンストラクタ関数による作成とは異なり、コンストラクタ関数によって宣言されたオブジェクトは、暗示的に `prototype` プロパティを持つ。
@@ -332,7 +335,7 @@ ES6 から、糖衣構文の `class` によって、オブジェクトを宣言�
 
 **＊実装例＊**
 
-```javascript
+```typescript
 // named exportによる出力
 export class Foo {
 
@@ -364,7 +367,7 @@ foo.getValue();
 
 #### ▼ クラス式記法
 
-```javascript
+```typescript
 // named exportによる出力
 export const Foo = class {
 
@@ -417,7 +420,7 @@ foo.getValue();
 // コンストラクタ関数の関数式による宣言。
 const Foo = (value) => {
   // 慣習的にアンダースコアでprivateを表す。
-  _property = 0;
+  this._property = 0;
 
   this.setValue = (value) => {
     this._property = value;
@@ -467,7 +470,7 @@ console.log(result);
 // prototypeプロパティの継承先のオブジェクトを宣言。
 const SubFoo = () => {
   // 慣習的にアンダースコアでprivateを表す。
-  _property = 0;
+  this._property = 0;
 
   this.setSubValue = (subValue) => {
     this.subProperty = subValue;

@@ -32,7 +32,7 @@ package main
 
 import (
 	"bytes"
-	"fmt"
+	"log"
 )
 
 func main() {
@@ -136,11 +136,11 @@ const (
 
 func fooHandler(ctx context.Context) {
 
-    ...
+    // ...
 
 	ctx = context.WithValue(ctx, Foo, "<値>")
 
-	...
+	// ...
 }
 ```
 
@@ -201,6 +201,8 @@ func main()  {
 	// タイムアウト時間経過後に処理を中断する
 	defer cancel()
 
+    neverReady := make(chan struct{})
+
 	select {
 	// 先に終了したcaseに条件分岐する
 	case <-neverReady:
@@ -246,11 +248,13 @@ func main()  {
 	// タイムアウト時間経過後に処理を中断する
 	defer cancel()
 
+    neverReady := make(chan struct{})
+
 	select {
 	// 先に終了したcaseに条件分岐する
 	case <-neverReady:
 		fmt.Println("ready")
-	case <-ctx.Done():
+	case <-ctx2.Done():
 		fmt.Println(ctx2.Err()) // prints "context deadline exceeded"
 	}
 
@@ -336,16 +340,16 @@ func main() {
 package main
 
 import (
+	"log"
 	"context"
-	"fmt"
 	"time"
 )
 
 func fn1(ctx context.Context) {
 
-	log("start fn1")
+	logTiming("start fn1")
 
-	defer log("done fn1")
+	defer logTiming("done fn1")
 
 	for i := 1; i <= 4; i++ {
 		select {
@@ -353,7 +357,7 @@ func fn1(ctx context.Context) {
 		case <-ctx.Done():
 			return
 		default:
-			log("loop fn1")
+			logTiming("loop fn1")
 			time.Sleep(1 * time.Second)
 		}
 	}
@@ -361,9 +365,9 @@ func fn1(ctx context.Context) {
 
 func fn2(ctx context.Context) {
 
-	log("start fn2")
+	logTiming("start fn2")
 
-	defer log("done fn2")
+	defer logTiming("done fn2")
 
 	for i := 1; i <= 4; i++ {
 		select {
@@ -371,20 +375,20 @@ func fn2(ctx context.Context) {
 		case <-ctx.Done():
 			return
 		default:
-			log("loop fn2")
+			logTiming("loop fn2")
 		}
 	}
 }
 
-func log(timing string) {
+func logTiming(timing string) {
 	log.Printf("%v second:%v", timing, time.Now().Second())
 }
 
 func main() {
 
-    log("start main")
+    logTiming("start main")
 
-    defer log("done main")
+    defer logTiming("done main")
 
 	// タイムアウト時間を設定し、コンテキストを作成する
 	ctx, cancel := context.WithTimeout(
@@ -431,13 +435,16 @@ func main() {
     parentCtx, parentCancel := context.WithCancel(rootCtx)
 
 	// 親コンテキストをパラメータとして、子コンテキストを作成する
-    childCtx, _ := context.WithCancel(parentCtx)
+    childCtx, childCancel := context.WithCancel(parentCtx)
+    defer childCancel()
 
     go func() {
 		parentCancel()
     }()
 
-	...
+    <-childCtx.Done()
+
+	// ...
 }
 ```
 
@@ -495,7 +502,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 )
 
@@ -530,7 +536,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 )
 
@@ -616,7 +621,7 @@ func main() {
 	log.Printf("%v", person) // main.Person{Name:""} (変数はまだ書き換えられていない)
 
 	// person変数を変換後の値に書き換えている。
-	err := json.Unmarshal(byteJson, &person)
+	err := json.Unmarshal(byte, &person)
 
 	if err != nil {
 		log.Printf("Failed to do something: %v", err)
@@ -643,13 +648,12 @@ package events
 
 import (
 	"encoding/json"
-	"time"
 )
 
 type CloudWatchEvent struct {
 	Version    string          `json:"version"`
 
-    ...
+    // ...
 
 	Resources  []string        `json:"resources"`
 
@@ -663,14 +667,17 @@ type CloudWatchEvent struct {
 ```go
 package handler
 
-import "fmt"
+import (
+    "github.com/aws/aws-lambda-go/events"
+	"log"
+)
 
 /**
  * Lambdaハンドラー関数
  */
-func HandleRequest(event events.CloudWatchEvent) (string) {
-
-	return log.Printf("%v", event.Detail)
+func HandleRequest(event events.CloudWatchEvent) string {
+    log.Printf("%s", event.Detail)
+    return string(event.Detail)
 }
 ```
 
@@ -790,19 +797,28 @@ $ go run main.go foo bar baz
 package main
 
 import (
-	"flag"
 	"fmt"
+	"log"
+	"os"
+	"path/filepath"
+	"flag"
 )
 
 func main() {
 
-	kubeconfig = flag.String(
+    home, err := os.UserHomeDir()
+    if err != nil {
+        log.Printf("Failed to get home directory: %v", err)
+        return
+    }
+	kubeconfig := flag.String(
 		"kubeconfig",
 		filepath.Join(home, ".kube", "config"),
 		"(optional) absolute path to the kubeconfig file",
 	)
 
 	flag.Parse()
+    fmt.Println(*kubeconfig)
 }
 ```
 
@@ -1138,7 +1154,7 @@ func foo() (func(), error) {
 	// 何らかの処理
 
     return func() {
-        err := // 何らかの処理
+        var err error // 何らかの処理で生じたエラーを格納する
 		if err != nil {
 			log.Printf("error shutting down: %v", err)
 		}
@@ -1147,7 +1163,7 @@ func foo() (func(), error) {
 }
 
 func main() {
-	shutdown, err :=  := foo()
+	shutdown, err := foo()
 
 	// 本来であればmain関数の最後に実行できるが、後述のFatal関数を実行した場合は、そこでプロセスが終わってしまう
 	defer shutdown()
@@ -1214,16 +1230,17 @@ HTTP クライアントまたは Web サーバを提供する。
 package server
 
 import (
-	"http"
+	"net/http"
 )
 
 func fooHandler(w http.ResponseWriter, r *http.Request)  {
 
-	...
+	// ...
 
     ctx := r.Context()
+    _ = ctx // 後続処理で使用する
 
-	...
+	// ...
 }
 ```
 
@@ -1235,16 +1252,17 @@ HTTP ヘッダーを操作する。
 package server
 
 import (
-	"http"
+	"net/http"
 )
 
 func main(w http.ResponseWriter, r *http.Request)  {
 
-	...
+	// ...
 
     ctx := r.Header.Get("<ヘッダーのキー名>")
+    _ = ctx // 後続処理で使用する
 
-	...
+	// ...
 }
 ```
 
@@ -1321,6 +1339,7 @@ HTML をレスポンスとして返信するサーバ (`http://127.0.0.1:8080`) 
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 )
@@ -1375,12 +1394,13 @@ HTTP リクエストの処理で起こったパニックを、`Internal Server E
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 )
 
 // RecoverHttpMiddleware HttpHandlerのパニックをリカバーする
-func RecoverHttpMiddleware() func(http.Handler) http.Handler {
+func RecoverHttpMiddleware(next http.Handler) http.Handler {
 	fn := func(w http.ResponseWriter, r *http.Request) {
 
 		// deferを使用しているため事後処理
@@ -1434,14 +1454,15 @@ import (
 func main() {
 	res, err := http.Get("https://example/api.com")
 
+	if err != nil {
+		log.Printf("Failed to do something: %v", err)
+        return
+	}
+
     // レスポンスを操作した後、レスポンスボディを必ず閉じる
 	defer res.Body.Close()
 
-	if err != nil {
-		log.Printf("Failed to do something: %v", err)
-	}
-
-	fmt.Println(response.Body)
+	fmt.Println(res.Body)
 }
 ```
 
@@ -1463,15 +1484,15 @@ import (
 )
 
 type User struct {
-	id   int    `json:"id"`
-	name string `json:"name"`
+	ID   int    `json:"id"`
+	Name string `json:"name"`
 }
 
 // コンストラクタ
 func NewUser(id int, name string) *User {
 	return &User{
-		id:   id,
-		name: name,
+		ID:   id,
+		Name: name,
 	}
 }
 
@@ -1479,6 +1500,10 @@ func main() {
 	user := NewUser(1, "Hiroki")
 
 	byteJson, err := json.Marshal(user)
+    if err != nil {
+        log.Printf("Failed to marshal: %v", err)
+        return
+    }
 
 	res, err := http.Post(
 		"http://foo-api.com",      // URL
@@ -1486,14 +1511,15 @@ func main() {
 		bytes.NewBuffer(byteJson), // メッセージボディ
 	)
 
+	if err != nil {
+		log.Printf("Failed to do something: %v", err)
+        return
+	}
+
     // レスポンスを操作した後、レスポンスボディを必ず閉じる
 	defer res.Body.Close()
 
-	if err != nil {
-		log.Printf("Failed to do something: %v", err)
-	}
-
-	fmt.Println(response.Body)
+	fmt.Println(res.Body)
 }
 ```
 
@@ -1507,24 +1533,24 @@ func main() {
 package main
 
 import (
+	"io/ioutil"
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 )
 
 type User struct {
-	id   int    `json:"id"`
-	name string `json:"name"`
+	ID   int    `json:"id"`
+	Name string `json:"name"`
 }
 
 // コンストラクタ
 func NewUser(id int, name string) *User {
 
 	return &User{
-		id:   id,
-		name: name,
+		ID:   id,
+		Name: name,
 	}
 }
 
@@ -1533,6 +1559,10 @@ func main() {
 	user := NewUser(1, "Hiroki")
 
 	byteJson, err := json.Marshal(user)
+    if err != nil {
+        log.Printf("Failed to marshal: %v", err)
+        return
+    }
 
 	// リクエストを作成する。
 	request, err := http.NewRequest(
@@ -1540,6 +1570,11 @@ func main() {
 		"https://example.api.com", // URL
 		bytes.NewBuffer(byteJson), // メッセージボディ
 	)
+
+    if err != nil {
+        log.Printf("Failed to create request: %v", err)
+        return
+    }
 
 	// ヘッダーを作成する。
 	request.Header.Set("Content-Type", "application/json") // Content-Type
@@ -1550,16 +1585,21 @@ func main() {
 	// リクエストを送信する。
 	res, err := client.Do(request)
 
+	if err != nil {
+		log.Printf("Failed to do something: %v", err)
+        return
+	}
+
     // レスポンスを操作した後、レスポンスボディを必ず閉じる
 	defer res.Body.Close()
-
-	if err != nil || response.StatusCode != 200 {
-		log.Printf("Failed to do something: %v", err)
-	}
+    if res.StatusCode != http.StatusOK {
+        log.Printf("Unexpected status: %d", res.StatusCode)
+        return
+    }
 
 	// レスポンスのボディを取得する。
 	// 代わりに、httputil.DumpResponseを使用しても良い。
-	body, _ := ioutil.ReadAll(response.Body)
+	body, _ := ioutil.ReadAll(res.Body)
 
 	log.Println(string(body))
 }
@@ -1614,6 +1654,7 @@ HTML をレスポンスとして返信するサーバ (`http://127.0.0.1:8080`) 
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 )
@@ -1668,6 +1709,10 @@ func fooHandler(w http.ResponseWriter, r *http.Request) {
 	user := NewUser(1, "Hiroki")
 
 	byteJson, err := json.Marshal(user)
+    if err != nil {
+        log.Printf("Failed to marshal: %v", err)
+        return
+    }
 
 	if err != nil {
 		log.Printf("Failed to do something: %v", err)
@@ -1792,11 +1837,10 @@ int
 package main
 
 import (
+	"syscall"
     "context"
-    "fmt"
     "os"
     "os/signal"
-    "time"
 )
 
 func main() {
@@ -1815,7 +1859,8 @@ func main() {
 	// 処理を終了する
     defer stop()
 
-	...
+    <-ctx.Done()
+	// ...
 }
 ```
 
@@ -1836,8 +1881,8 @@ func main() {
 package main
 
 import (
-	"fmt"
 	"strings"
+	"fmt"
 )
 
 func main() {

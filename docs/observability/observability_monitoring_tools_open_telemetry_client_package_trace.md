@@ -26,7 +26,7 @@ Go なら、`go.opentelemetry.io/otel/sdk` パッケージからコールでき�
 ```go
 func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
 
-	...
+	// ...
 
 	tracerProvider := sdktrace.New(
 		// Exporterを設定する
@@ -41,7 +41,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 
     tracerProvider := sdktrace.New(options...)
 
-    ...
+    // ...
 
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
@@ -90,12 +90,20 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 ```go
 package main
 
+import (
+	"log"
+)
+
 func main()  {
 
-    cleanUp, nil := InitTracerProvider()
+    cleanUp, err := InitTracerProvider()
+    if err != nil {
+        log.Printf("Failed to initialize tracer provider: %v", err)
+        return
+    }
     defer cleanUp()
 
-    ...
+    // ...
 }
 ```
 
@@ -113,7 +121,7 @@ func main()  {
 ```go
 func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
 
-	...
+	// ...
 
 	options := []trace.TracerProviderOption{
 		sdktrace.WithBatcher(exporter),
@@ -124,7 +132,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 
 	tracerProvider := sdktrace.New(options...)
 
-    ...
+    // ...
 
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
@@ -173,12 +181,20 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 ```go
 package main
 
+import (
+	"log"
+)
+
 func main()  {
 
-    cleanUp, nil := InitTracerProvider()
+    cleanUp, err := InitTracerProvider()
+    if err != nil {
+        log.Printf("Failed to initialize tracer provider: %v", err)
+        return
+    }
     defer cleanUp()
 
-    ...
+    // ...
 }
 ```
 
@@ -203,7 +219,7 @@ import (
 
 func main() {
 
-	...
+	// ...
 
 	traceEnabled := os.Getenv("TRACE_ENABLED")
 
@@ -212,7 +228,7 @@ func main() {
         // TracerProviderに関する一連の処理
 	}
 
-	...
+	// ...
 
 }
 ```
@@ -264,7 +280,7 @@ Go (`v1.20`) から `go.opentelemetry.io/otel/trace/noop` に移動したため�
 
 ```go
 type TracerProvider interface {
-	...
+	// ...
 }
 
 type noopTracerProvider struct{
@@ -288,6 +304,7 @@ TracerProvider の初期化処理はそのままで、スパンの作成のみ�
 package trace
 
 import (
+	"os"
 	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	semconv "go.opentelemetry.io/otel/semconv/v1.20.0"
@@ -517,11 +534,11 @@ import (
 
 func main()  {
 
-	...
+	// ...
 
 	foo()
 
-	...
+	// ...
 }
 
 func foo()  {
@@ -556,11 +573,11 @@ import (
 
 func main()  {
 
-	...
+	// ...
 
 	foo()
 
-	...
+	// ...
 }
 
 func foo()  {
@@ -595,11 +612,11 @@ import (
 
 func main()  {
 
-	...
+	// ...
 
 	foo()
 
-	...
+	// ...
 }
 
 func foo()  {
@@ -634,11 +651,11 @@ import (
 
 func main()  {
 
-	...
+	// ...
 
 	foo()
 
-	...
+	// ...
 }
 
 func foo()  {
@@ -673,11 +690,11 @@ import (
 
 func main()  {
 
-	...
+	// ...
 
 	foo()
 
-	...
+	// ...
 }
 
 func foo()  {
@@ -712,11 +729,11 @@ import (
 
 func main()  {
 
-	...
+	// ...
 
 	foo()
 
-	...
+	// ...
 }
 
 func foo()  {
@@ -763,7 +780,6 @@ package main
 import (
 	"error"
 	"fmt"
-
 	"go.opentelemetry.io/otel"
 )
 
@@ -788,11 +804,11 @@ func (IgnoreExporterErrorsHandler) Handle(err error) {
 
 func main() {
 
-	...
+	// ...
 
 	otel.SetErrorHandler(IgnoreExporterErrorsHandler{})
 
-	...
+	// ...
 }
 ```
 
@@ -807,7 +823,7 @@ func main() {
 ```go
 func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
 
-	...
+	// ...
 
 	tracerProvider := sdktrace.New(
 		sdktrace.WithBatcher(exporter),
@@ -816,7 +832,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
         sdktrace.WithSpanProcessor(batchSpanProcessor),
     )
 
-    ...
+    // ...
 
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
@@ -865,12 +881,20 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 ```go
 package main
 
+import (
+	"log"
+)
+
 func main()  {
 
-    cleanUp, nil := InitTracerProvider()
+    cleanUp, err := InitTracerProvider()
+    if err != nil {
+        log.Printf("Failed to initialize tracer provider: %v", err)
+        return
+    }
     defer cleanUp()
 
-    ...
+    // ...
 }
 ```
 
@@ -893,7 +917,7 @@ TracerProvider は、Graceful Shutdown 処理を実行するための関数を�
 ```go
 func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
 
-	...
+	// ...
 
 	tracerProvider := sdktrace.New(
 		sdktrace.WithBatcher(exporter),
@@ -902,7 +926,7 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 		sdktrace.WithSpanProcessor(batchSpanProcessor),
     )
 
-    ...
+    // ...
 
 	// TraceProviderインターフェースを実装する構造体を作成する
 	otel.SetTracerProvider(tracerProvider)
@@ -951,12 +975,20 @@ func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), e
 ```go
 package main
 
+import (
+	"log"
+)
+
 func main()  {
 
-    cleanUp, nil := InitTracerProvider()
+    cleanUp, err := InitTracerProvider()
+    if err != nil {
+        log.Printf("Failed to initialize tracer provider: %v", err)
+        return
+    }
     defer cleanUp()
 
-    ...
+    // ...
 }
 ```
 
@@ -1040,7 +1072,7 @@ Exporter は、Graceful Shutdown 処理を実行するための関数を持っ�
 ```go
 func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
 
-	...
+	// ...
 
     exporter, err := NewGrpcExporter(ctx)
 
@@ -1114,12 +1146,20 @@ func NewGrpcExporter(ctx context.Context) (*otlptrace.Exporter, error) {
 ```go
 package main
 
+import (
+	"log"
+)
+
 func main()  {
 
-    cleanUp, nil := InitTracerProvider()
+    cleanUp, err := InitTracerProvider()
+    if err != nil {
+        log.Printf("Failed to initialize tracer provider: %v", err)
+        return
+    }
     defer cleanUp()
 
-    ...
+    // ...
 }
 ```
 
@@ -1151,13 +1191,13 @@ package main
 
 func main()  {
 
-	...
+	// ...
 
 	tp := sdkTrace.NewTracerProvider(
 		sdktrace.WithIDGenerator(xray.NewIDGenerator()),
 	)
 
-	...
+	// ...
 
 }
 ```
@@ -1359,7 +1399,7 @@ func NewTracerProvider() {
 
     // 監視バックエンドが対応するトレースコンテキスト仕様を設定する必要がある
     otel.SetTextMapPropagator(
-      ...
+      // ...
     )
 }
 ```
@@ -1371,7 +1411,7 @@ func NewTracerProvider() {
 
     // 監視バックエンドが対応するトレースコンテキスト仕様を設定する必要がある
 	otel.SetTextMapPropagator(
-      ...
+      // ...
 	)
 }
 ```

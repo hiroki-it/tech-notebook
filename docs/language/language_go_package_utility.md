@@ -93,7 +93,6 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-
 	"github.com/hiroki-hasegawa/foo-repository/cmd"
 )
 
@@ -129,10 +128,6 @@ foo コマンド自体を実装する。
 package foo
 
 import (
-	"context"
-	"time"
-	"log"
-
 	"github.com/spf13/cobra"
 )
 
@@ -168,7 +163,6 @@ import (
 	"context"
 	"time"
 	"log"
-
 	"github.com/spf13/cobra"
 )
 
@@ -228,7 +222,6 @@ package main
 
 import (
 	"net/http"
-
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 )
@@ -507,22 +500,21 @@ grpc-gateway では、デフォルトでは、HTTP ヘッダーの独自ヘッ�
 package main
 
 import (
-	"http"
+	"net/http"
 	"log"
-	"runtime"
+	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"strings"
 )
 
 func main() {
 
-	...
+	// ...
 
 	mux := runtime.NewServeMux(
 		runtime.WithIncomingHeaderMatcher(matcher),
-		runtime.WithForwardResponseOption(filter),
 	)
 
-	...
+	// ...
 
 	if err := http.ListenAndServe(":8080", mux); err != nil {
 		log.Printf("Failed to do something: %v", err)
@@ -578,6 +570,7 @@ func Dial(target string, opts ...DialOption) (*ClientConn, error) {
 package main
 
 import (
+	"context"
 	"google.golang.org/grpc"
 )
 
@@ -585,7 +578,7 @@ func main() {
 
 	ctx := context.Background()
 
-	...
+	// ...
 
 	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
@@ -593,7 +586,7 @@ func main() {
 		":7777",
 	)
 
-	...
+	// ...
 }
 ```
 
@@ -611,6 +604,7 @@ func main() {
 package main
 
 import (
+	"context"
 	"google.golang.org/grpc"
 )
 
@@ -618,7 +612,7 @@ func main() {
 
 	ctx := context.Background()
 
-	...
+	// ...
 
 	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
@@ -627,7 +621,7 @@ func main() {
 		grpc.WithBlock(),
 	)
 
-	...
+	// ...
 }
 ```
 
@@ -639,6 +633,7 @@ gRPC サーバーへの通信でサーバー認証を実施するかどうかを
 package main
 
 import (
+	"context"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -647,7 +642,7 @@ func main() {
 
 	ctx := context.Background()
 
-	...
+	// ...
 
 	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
@@ -656,7 +651,7 @@ func main() {
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 	)
 
-	...
+	// ...
 }
 ```
 
@@ -677,12 +672,12 @@ import (
 
 func main() {
 
-	...
+	// ...
 
 	// gRPCサーバーを作成する
 	grpcServer := grpc.NewServer()
 
-	...
+	// ...
 }
 ```
 
@@ -714,12 +709,12 @@ func main()  {
 	// ここでOpenTelemetryのミドルウェアを使用すると仮定する
 	// main関数のスパンを自動的に作成する
 
-	...
+	// ...
 
 	// main関数の子スパンとして、foo関数のスパンを手動的に作成する
 	foo()
 
-	...
+	// ...
 }
 
 func foo()  {
@@ -751,13 +746,13 @@ package middleware
 
 import (
 	"net/http"
-
+	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/propagation"
 )
 
 func fooHandler(w http.ResponseWriter, r *http.Request) {
 
-	...
+	// ...
 
 	// Carrierのトレースコンテキストを抽出して、既存コンテキストに設定する
 	ctx := otel.GetTextMapPropagator().Extract(
@@ -767,7 +762,7 @@ func fooHandler(w http.ResponseWriter, r *http.Request) {
 		propagation.HeaderCarrier(w.Header()),
 	)
 
-	...
+	// ...
 
 }
 ```
@@ -785,13 +780,13 @@ package middleware
 
 import (
 	"net/http"
-
+	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/propagation"
 )
 
 func fooHandler(w http.ResponseWriter, r *http.Request) {
 
-	...
+	// ...
 
 	otel.GetTextMapPropagator().Inject(
 		// トレースコンテキストを持つ既存コンテキストを設定する
@@ -800,7 +795,7 @@ func fooHandler(w http.ResponseWriter, r *http.Request) {
 		propagation.HeaderCarrier(w.Header()),
 	)
 
-	...
+	// ...
 
 }
 ```
@@ -836,13 +831,13 @@ package middleware
 
 import (
 	"net/http"
-
+	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/propagation"
 )
 
 func fooHandler(w http.ResponseWriter, r *http.Request) {
 
-	...
+	// ...
 
 	// Carrierのトレースコンテキストを抽出して、既存コンテキストに設定する
 	ctx := otel.GetTextMapPropagator().Extract(
@@ -852,7 +847,7 @@ func fooHandler(w http.ResponseWriter, r *http.Request) {
 		propagation.HeaderCarrier(w.Header()),
 	)
 
-	...
+	// ...
 
 }
 ```
@@ -865,14 +860,14 @@ Gin でも同様にして、HTTP ヘッダーを `HeaderCarrier` に渡す。
 package middleware
 
 import (
+	"go.opentelemetry.io/otel"
 	"github.com/gin-gonic/gin"
-
 	"go.opentelemetry.io/otel/propagation"
 )
 
 func fooHandler(ginCtx *gin.Context) {
 
-	...
+	// ...
 
 	// Carrierのトレースコンテキストを抽出して、既存コンテキストに設定する
 	ctx := otel.GetTextMapPropagator().Extract(
@@ -882,7 +877,7 @@ func fooHandler(ginCtx *gin.Context) {
 		propagation.HeaderCarrier(ginCtx.Request.Header),
 	)
 
-	...
+	// ...
 
 }
 ```
@@ -907,13 +902,15 @@ func fooHandler(ginCtx *gin.Context) {
 package main
 
 import (
+	"log"
+	"go.opentelemetry.io/otel"
+	"sort"
 	"go.opentelemetry.io/contrib/propagators/autoprop"
-	"go.opentelemetry.io/otel/propagation"
 )
 
 func main()  {
 
-	...
+	// ...
 
 	propagator := autoprop.NewTextMapPropagator()
 
@@ -931,7 +928,7 @@ func main()  {
 	// ログにpropagator名を出力しておく
 	log.Printf("Propagator %v initialize successfully", propagatorList)
 
-	...
+	// ...
 }
 ```
 
@@ -966,13 +963,12 @@ package server
 
 import (
 	"context"
-
 	"github.com/gin-gonic/gin"
 )
 
 func fooHandler(ginCtx *gin.Context) {
 
-	...
+	// ...
 
 	ctx := trace.ContextWithSpanContext(
 		// Ginコンテキストのデッドライン値やキャンセル関数を引き継ぎたくないため、新しくコンテキストを作成する
@@ -981,7 +977,7 @@ func fooHandler(ginCtx *gin.Context) {
 		trace.SpanContextFromContext(ginCtx.Request.Context()),
 	)
 
-	...
+	// ...
 
 }
 ```
@@ -1000,16 +996,17 @@ func fooHandler(ginCtx *gin.Context) {
 package main
 
 import (
+	"log"
 	"go.opentelemetry.io/otel"
 )
 
 func main()  {
 
-	...
+	// ...
 
 	foo()
 
-	...
+	// ...
 }
 
 func foo()  {
@@ -1048,15 +1045,15 @@ package server
 
 import (
 	"context"
+	"fmt"
 	"net/http"
-
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/codes"
 )
 
 func fooHandler(ctx context.Context) {
 
-    ...
+    // ...
 
 	tracer := otel.Tracer("<計装パッケージ名>")
 
@@ -1078,7 +1075,7 @@ func fooHandler(ctx context.Context) {
 		return
 	}
 
-	...
+	// ...
 
 }
 ```
@@ -1098,15 +1095,15 @@ package server
 
 import (
 	"context"
+	"fmt"
 	"net/http"
-
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/codes"
 )
 
 func fooHandler(ctx context.Context) {
 
-    ...
+    // ...
 
 	tracer := otel.Tracer("<計装パッケージ名>")
 
@@ -1128,7 +1125,7 @@ func fooHandler(ctx context.Context) {
 		return
 	}
 
-	...
+	// ...
 
 }
 ```
@@ -1167,13 +1164,13 @@ package server
 
 import (
 	"context"
-
+	"log"
 	"github.com/gin-gonic/gin"
 )
 
 func fooHandler(ctx context.Context) {
 
-	...
+	// ...
 
 	spanCtx := trace.SpanContextFromContext(ctx)
 
@@ -1186,7 +1183,7 @@ func fooHandler(ctx context.Context) {
     // tracestate値を確認する
 	log.Printf("tracestate: %v", spanCtx.TraceState())
 
-	...
+	// ...
 
 }
 ```
@@ -1198,13 +1195,12 @@ package server
 
 import (
 	"context"
-
 	"github.com/gin-gonic/gin"
 )
 
 func fooHandler(ginCtx *gin.Context) {
 
-	...
+	// ...
 
 	ctx := trace.ContextWithSpanContext(
 		// Ginコンテキストのデッドライン値やキャンセル関数を引き継ぎたくないため、新しくコンテキストを作成する
@@ -1213,7 +1209,7 @@ func fooHandler(ginCtx *gin.Context) {
 		trace.SpanContextFromContext(ginCtx.Request.Context()),
 	)
 
-	...
+	// ...
 
 }
 ```
@@ -1232,14 +1228,13 @@ func fooHandler(ginCtx *gin.Context) {
 package server
 
 import (
-	"context"
-
+	"go.opentelemetry.io/otel"
 	"github.com/gin-gonic/gin"
 )
 
 func fooHandler(ginCtx *gin.Context) {
 
-	...
+	// ...
 
 	tracer := otel.Tracer("<計装パッケージ名>")
 
@@ -1248,11 +1243,11 @@ func fooHandler(ginCtx *gin.Context) {
 		"foo-service",
 	)
 
-	...
+	// ...
 
 	span := trace.SpanFromContext(ctx)
 
-	...
+	// ...
 
 }
 ```
@@ -1269,14 +1264,13 @@ func fooHandler(ginCtx *gin.Context) {
 package server
 
 import (
-	"context"
-
+	"go.opentelemetry.io/otel"
 	"github.com/gin-gonic/gin"
 )
 
 func fooHandler(ginCtx *gin.Context) {
 
-	...
+	// ...
 
 	tracer := otel.Tracer("<計装パッケージ名>")
 
@@ -1287,7 +1281,7 @@ func fooHandler(ginCtx *gin.Context) {
 
 	span.End()
 
-	...
+	// ...
 }
 ```
 
@@ -1323,7 +1317,7 @@ import (
 
 func main() {
 
-	...
+	// ...
 
 	router := gin.New()
 
@@ -1437,6 +1431,7 @@ func (p *otelPlugin) after() gormHookFunc {
 package db
 
 import (
+	"fmt"
 	"github.com/uptrace/opentelemetry-go-extra/otelgorm"
 	"gorm.io/gorm"
 )
@@ -1454,7 +1449,7 @@ func NewDb()  {
 		panic(fmt.Sprintf("Failed to do something: %v", err))
 	}
 
-	...
+	// ...
 }
 ```
 
@@ -1515,6 +1510,7 @@ gRPC リクエスト送信時のインターセプター処理として `otelgrp
 package main
 
 import (
+	"context"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"
 	"google.golang.org/grpc"
@@ -1524,7 +1520,7 @@ func main() {
 
 	ctx := context.Background()
 
-	...
+	// ...
 
 	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
@@ -1536,7 +1532,7 @@ func main() {
 		),
 	)
 
-	...
+	// ...
 }
 ```
 
@@ -1583,7 +1579,7 @@ import (
 
 func main() {
 
-	...
+	// ...
 
 	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
@@ -1593,7 +1589,7 @@ func main() {
 		grpc.WithStatsHandler(otelgrpc.NewClientHandler()),
 	)
 
-	...
+	// ...
 
 }
 ```
@@ -1651,17 +1647,17 @@ import (
 
 func main()  {
 
-	...
+	// ...
 
     // gRPCサーバーを作成する
 	grpcServer := grpc.NewServer(
 		grpc.StatsHandler(otelgrpc.NewServerHandler(
-			    otelgrpc.WithFilter(filters.Not(filters.HealthCheck()),
+			    otelgrpc.WithFilter(filters.Not(filters.HealthCheck())),
 			),
 		),
 	)
 
-	defer grpcServer.Close()
+	defer grpcServer.Stop()
 }
 ```
 
@@ -1680,7 +1676,7 @@ import (
 
 func main()  {
 
-	...
+	// ...
 
     // gRPCサーバーを作成する
 	grpcServer := grpc.NewServer(
@@ -1693,7 +1689,7 @@ func main()  {
         ),
 	)
 
-	defer grpcServer.Close()
+	defer grpcServer.Stop()
 }
 ```
 
@@ -1714,7 +1710,7 @@ import (
 
 func main()  {
 
-	...
+	// ...
 
     // gRPCサーバーを作成する
 	grpcServer := grpc.NewServer(
@@ -1731,7 +1727,7 @@ func main()  {
         ),
 	)
 
-	defer grpcServer.Close()
+	defer grpcServer.Stop()
 }
 ```
 
@@ -1803,20 +1799,19 @@ package main
 
 import (
 	"net/http"
-
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
 func main() {
 
-	...
+	// ...
 
 	// HTTPサーバーとの接続を作成する
 	client := http.Client{
 	    Transport: otelhttp.NewTransport(http.DefaultTransport)
 	}
 
-	...
+	// ...
 
 }
 ```
@@ -1837,7 +1832,6 @@ package main
 
 import (
 	"net/http"
-
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
@@ -1845,7 +1839,7 @@ func main() {
 
 	// HttpHandlerを作成する
 	fn := func(w http.ResponseWriter, r *http.Request) {
-		...
+		// ...
 	}
 
 	// サーバー側のミドルウェアパターンとしてNewHandlerを挿入する
@@ -1869,7 +1863,6 @@ package main
 
 import (
 	"net/http"
-
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
@@ -1877,7 +1870,7 @@ func main() {
 
 	// HttpHandlerを作成する
 	fn := func(w http.ResponseWriter, r *http.Request) {
-		...
+		// ...
 	}
 
 	// サーバー側のミドルウェアパターンとしてNewHandlerを挿入する
@@ -1904,8 +1897,6 @@ func main() {
 package http
 
 import (
-	"net/http"
-
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
@@ -1929,9 +1920,8 @@ HTTP リクエストの場合、スパン名は URL にするとよい。
 package http
 
 import (
-	"fmt"
 	"net/http"
-
+	"fmt"
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
@@ -1990,8 +1980,7 @@ gorm で発行した SQL にスパンの情報をコメントアウトとして�
 
 ```go
 import (
-    "database/sql"
-
+	"database/sql"
     gosql "github.com/google/sqlcommenter/go/database/sql"
     sqlcommentercore "github.com/google/sqlcommenter/go/core"
     _ "github.com/lib/pq" // or any other database driver
@@ -2002,21 +1991,21 @@ var (
   err error
 )
 
-func NewDB(
+func NewDB() {
 
-	...
+	// ...
 
 	db, err = gosql.Open("<driver>", "<connectionString>",
 		// SQLに付与するコメント
 		sqlcommentercore.CommenterOptions{
-		    Config: sqlcommentercore.CommenterConfig{<flag>:bool}
-		    Tags  : sqlcommentercore.StaticTags{<tag>: string}
-		}
+		    Config: sqlcommentercore.CommenterConfig{}, // 必要なフラグを設定する
+		    Tags: sqlcommentercore.StaticTags{"tag": "value"},
+		},
     )
 
-    ...
+    // ...
 
-)
+}
 ```
 
 > - [sqlcommenter](https://google.github.io/sqlcommenter/go/database_sql/)
@@ -2092,18 +2081,18 @@ Propagator を複数持つ。
 package main
 
 import (
+	"go.opentelemetry.io/contrib/propagators/autoprop"
 	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/propagation"
 )
 
 func main()  {
 
-	...
+	// ...
 
 	// デフォルトでは、W3C Trace ContextとBaggageになる
 	otel.SetTextMapPropagator(autoprop.NewTextMapPropagator())
 
-	...
+	// ...
 }
 ```
 
@@ -2111,14 +2100,15 @@ func main()  {
 package main
 
 import (
+	"go.opentelemetry.io/otel/propagation"
+	"go.opentelemetry.io/contrib/propagators/autoprop"
 	"go.opentelemetry.io/contrib/propagators/aws/xray"
 	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/propagation"
 )
 
 func main()  {
 
-	...
+	// ...
 
 	// Propagatorを追加する場合は、明示的に指定する
 	// 環境変数でも良い
@@ -2128,7 +2118,7 @@ func main()  {
 		xray.Propagator{},
 	))
 
-	...
+	// ...
 }
 ```
 
@@ -2149,7 +2139,6 @@ package validators
 
 import (
 	"fmt"
-
 	"github.com/go-playground/validator"
 )
 
@@ -2160,9 +2149,9 @@ type  foobarbazValidator struct {
 }
 
 // NewValidator コンストラクタ
-func NewValidator() *Validator {
+func NewValidator() *foobarbazValidator {
 
-	return &Validator{}
+	return &foobarbazValidator{}
 }
 
 // Validate バリデーションを実行する
@@ -2176,14 +2165,14 @@ func (v * foobarbazValidator) Validate() map[string]string {
 		for _, err := range err.(validator.ValidationErrors) {
 			switch err.Field() {
 			// フィールドごとにmapでバリデーションメッセージを構成する
-			case "foo":
-				errorMessages["foo"] = v.stringValidation(fmt.Sprintf("Failed to do something: %v", err))
-				errorMessages["foo"] = v.requiredValidation(fmt.Sprintf("Failed to do something: %v", err))
-			case "bar":
-				errorMessages["bar"] = v.stringValidation(fmt.Sprintf("Failed to do something: %v", err))
-			case "baz":
-				errorMessages["baz"] = v.stringValidation(fmt.Sprintf("Failed to do something: %v", err))
-				errorMessages["baz"] = v.requiredValidation(fmt.Sprintf("Failed to do something: %v", err))
+			case "Foo":
+				errorMessages["foo"] = v.stringValidation(err)
+				errorMessages["foo"] = v.requiredValidation(err)
+			case "Bar":
+				errorMessages["bar"] = v.stringValidation(err)
+			case "Baz":
+				errorMessages["baz"] = v.stringValidation(err)
+				errorMessages["baz"] = v.requiredValidation(err)
 			}
 		}
 	}
@@ -2209,13 +2198,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-
 	"github.com/foobarbaz-repository/validators"
 )
 
 func main() {
 
-	v := New foobarbazValidator()
+	v := validators.NewValidator()
 
 	// JSONを構造体にマッピングする
 	err := json.Unmarshal([]byte(`{"foo": "test", "bar": "test", "baz": "test"}`), v)
@@ -2251,6 +2239,7 @@ func main() {
 package main
 
 import (
+	"fmt"
 	"os"
 	"strconv"
 )
@@ -2269,6 +2258,7 @@ func main() {
 	}
 
 	// 中略
+    fmt.Println(port)
 
 }
 ```
@@ -2321,7 +2311,7 @@ func main() {
 	logger, _ := zap.NewProduction()
 	defer logger.Sync()
 
-	...
+	// ...
 
 }
 ```
@@ -2353,7 +2343,7 @@ func main() {
 
 	logger.Info("Do successfully")
 
-	...
+	// ...
 
 }
 ```
@@ -2379,7 +2369,7 @@ func main() {
 
 	logger.Info("Do successfully")
 
-	...
+	// ...
 
 }
 ```
@@ -2402,6 +2392,7 @@ Zap の Logger のラッパーである。
 package main
 
 import (
+	"time"
 	"go.uber.org/zap"
 )
 

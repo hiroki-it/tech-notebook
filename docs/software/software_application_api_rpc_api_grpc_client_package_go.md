@@ -218,13 +218,12 @@ package main
 
 import (
 	"google.golang.org/grpc"
-
 	grpc_prometheus "github.com/grpc-ecosystem/go-grpc-prometheus"
 )
 
 func main() {
 
-	...
+	// ...
 
 	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
@@ -233,7 +232,7 @@ func main() {
 		grpc.WithChainUnaryInterceptor(grpc_prometheus.UnaryClientInterceptor),
 	)
 
-	...
+	// ...
 }
 ```
 
@@ -249,7 +248,7 @@ import (
 
 func main() {
 
-	...
+	// ...
 
     // gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
@@ -258,7 +257,7 @@ func main() {
 		grpc.WithChainUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
     )
 
-	...
+	// ...
 }
 ```
 
@@ -296,16 +295,16 @@ type UnaryClientInterceptor func(
 package main
 
 import (
+	"context"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"google.golang.org/grpc"
-
 	// pb.goファイルを読み込む。
 	pb "github.com/hiroki-hasegawa/foo/foo"
 )
 
 func main() {
 
-	...
+	// ...
 
     // gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
@@ -325,7 +324,7 @@ func main() {
         &pb.Message{Body: "Hello From Client!"},
     )
 
-	...
+	// ...
 }
 ```
 
@@ -339,6 +338,7 @@ func main() {
 package intercetor
 
 import (
+	"context"
 	"google.golang.org/grpc"
 )
 
@@ -368,6 +368,7 @@ func UnaryClientInterceptor(
 package intercetor
 
 import (
+	"context"
 	"google.golang.org/grpc"
 )
 
@@ -429,16 +430,16 @@ type StreamClientInterceptor func(
 package main
 
 import (
+	"context"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"google.golang.org/grpc"
-
 	// pb.goファイルを読み込む。
 	pb "github.com/hiroki-hasegawa/foo/foo"
 )
 
 func main() {
 
-	...
+	// ...
 
     // gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
@@ -458,7 +459,7 @@ func main() {
         &pb.Message{Body: "Hello From Client!"},
     )
 
-	...
+	// ...
 }
 ```
 
@@ -472,6 +473,7 @@ func main() {
 package intercetor
 
 import (
+	"context"
 	"google.golang.org/grpc"
 )
 
@@ -504,6 +506,7 @@ type wrapClientStream struct {
 package intercetor
 
 import (
+	"context"
 	"google.golang.org/grpc"
 )
 
@@ -569,13 +572,9 @@ gRPC の処理で起こったパニックを、`Internal Server Error` として
 package main
 
 import (
-
 	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/interceptors/recovery"
-
 	"google.golang.org/grpc"
-
-	...
-
+	// ...
 )
 
 func main() {
@@ -585,11 +584,11 @@ func main() {
 		// 単項RPCのサーバーインターセプター処理
 		grpc.ChainUnaryInterceptor(
 			// リカバー処理
-	        grpc_recovery.UnaryServerInterceptor(...),
+	        grpc_recovery.UnaryServerInterceptor(/* 引数は省略 */),
 		),
 	)
 
-    ...
+    // ...
 
 }
 ```
@@ -609,15 +608,11 @@ func main() {
 package main
 
 import (
-
 	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/interceptors/recovery"
-
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"
 	"google.golang.org/grpc"
-
-	...
-
+	// ...
 )
 
 func main() {
@@ -631,7 +626,7 @@ func main() {
 		),
 	)
 
-    ...
+    // ...
 
 }
 ```
@@ -666,7 +661,6 @@ package interceptor
 
 import (
 	"context"
-
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"google.golang.org/grpc"
 )
@@ -695,7 +689,6 @@ package interceptor
 
 import (
 	"context"
-
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"google.golang.org/grpc"
 )
@@ -818,10 +811,8 @@ import (
 	"fmt"
 	"log"
 	"net"
-
 	// pb.goファイルを読み込む。
     pb "github.com/hiroki-hasegawa/foo/foo"
-
 	"google.golang.org/grpc"
 )
 
@@ -856,7 +847,7 @@ func main() {
 		log.Printf("Failed to serve: %v", err)
 	}
 
-	...
+	// ...
 }
 ```
 
@@ -882,16 +873,13 @@ import (
 	"fmt"
 	"log"
 	"net"
-
 	// pb.goファイルを読み込む。
     pb "github.com/hiroki-hasegawa/foo/foo"
-
 	grpc_prometheus "github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus"
 	grpc_auth "github.com/grpc-ecosystem/go-grpc-middleware/interceptors/auth"
 	grpc_logging "github.com/grpc-ecosystem/go-grpc-middleware/interceptors/logging"
 	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/interceptors/recovery"
 	grpc_selector "github.com/grpc-ecosystem/go-grpc-middleware/interceptors/selector"
-
 	"github.com/grpc-ecosystem/go-grpc-middleware/interceptors"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"google.golang.org/grpc"
@@ -904,24 +892,24 @@ func main() {
 		// 単項RPCのサーバーインターセプター処理
 		grpc.ChainUnaryInterceptor(
 			// 認証処理
-			grpc_selector.UnaryServerInterceptor(...),
+			grpc_selector.UnaryServerInterceptor(/* 引数は省略 */),
 			// メトリクス処理
-	     	grpc_prometheus.UnaryServerInterceptor(...),
+			grpc_prometheus.UnaryServerInterceptor(/* 引数は省略 */),
 			// ロギング処理
-		    grpc_logging.UnaryServerInterceptor(...),
+		    grpc_logging.UnaryServerInterceptor(/* 引数は省略 */),
 			// 分散トレースのスパン作成処理
-			otelgrpc.UnaryServerInterceptor(...),
+			otelgrpc.UnaryServerInterceptor(/* 引数は省略 */),
 			// リカバー処理
-	        grpc_recovery.UnaryServerInterceptor(...),
+	        grpc_recovery.UnaryServerInterceptor(/* 引数は省略 */),
 		),
 		// ストリーミングRPCのサーバーインターセプター処理
 		grpc.ChainStreamInterceptor(
-			otelgrpc.StreamServerInterceptor(...),
-			recovery.StreamServerInterceptor(...),
+			otelgrpc.StreamServerInterceptor(/* 引数は省略 */),
+			grpc_recovery.StreamServerInterceptor(/* 引数は省略 */),
         ),
 	)
 
-	...
+	// ...
 
 
 	// goサーバーで待ち受けるポート番号を設定する。
@@ -932,7 +920,7 @@ func main() {
 		log.Printf("Failed to serve: %v", err)
 	}
 
-	...
+	// ...
 }
 ```
 
@@ -949,25 +937,24 @@ func main() {
 package main
 
 import (
+	"fmt"
 	"log"
 	"net"
-
 	"google.golang.org/grpc"
-
 	"google.golang.org/grpc/health"
 	"google.golang.org/grpc/health/grpc_health_v1"
 )
 
 func main() {
 
-	...
+	// ...
 
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer(
-		...
+		// ...
 	)
 
-	...
+	// ...
 
 	healthCheckServer := health.NewServer()
 	healthCheckServer.SetServingStatus("", healthpb.HealthCheckResponse_SERVING)
@@ -981,7 +968,7 @@ func main() {
 		log.Printf("Failed to serve: %v", err)
 	}
 
-	...
+	// ...
 }
 ```
 
@@ -1006,10 +993,8 @@ package main
 
 import (
 	"log"
-
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
-
 	// pb.goファイルを読み込む。
     pb "github.com/hiroki-hasegawa/foo/foo"
 )
@@ -1070,7 +1055,7 @@ import (
 
 func main() {
 
-	...
+	// ...
 
 	// gRPCサーバーとの接続を作成する
 	conn, err := grpc.DialContext(
@@ -1085,7 +1070,7 @@ func main() {
 		grpc.WithBlock(),
 	)
 
-	...
+	// ...
 }
 ```
 
@@ -1183,12 +1168,13 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 package main
 
 import (
+	"context"
 	"google.golang.org/grpc/metadata"
 )
 
 func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
 
-	...
+	// ...
 
 	// メタデータを作成する
 	md := metadata.New(map[string]string{
@@ -1199,7 +1185,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 	// メタデータにキーを設定する
 	md.Append("Baz", "baz")
 
-	...
+	// ...
 
 }
 ```
@@ -1216,17 +1202,18 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 package main
 
 import (
+	"context"
 	"google.golang.org/grpc/metadata"
 )
 
 func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
 
-	...
+	// ...
 
 	// メタデータをコンテキストに設定する
 	ctx = metadata.AppendToOutgoingContext(ctx, "Foo", "foo")
 
-	...
+	// ...
 
 }
 ```
@@ -1242,12 +1229,14 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 package main
 
 import (
+	"context"
+	"log"
 	"google.golang.org/grpc/metadata"
 )
 
 func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
 
-	...
+	// ...
 
 	// コンテキストにメタデータがあれば取得する
 	md, ok := metadata.FromIncomingContext(ctx)
@@ -1259,7 +1248,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 	log.Print(md)
 
-	...
+	// ...
 
 }
 ```
@@ -1273,11 +1262,11 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 ```go
 func ValueFromIncomingContext(ctx context.Context, key string) []string {
 
-	...
+	// ...
 
 	md, ok := ctx.Value(mdIncomingKey{}).(MD)
 
-	...
+	// ...
 
 }
 
@@ -1296,12 +1285,13 @@ func NewIncomingContext(ctx context.Context, md MD) context.Context {
 package main
 
 import (
+	"context"
 	"google.golang.org/grpc/metadata"
 )
 
 func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
 
-	...
+	// ...
 
 	// コンテキストにメタデータがあれば取得する
 	md, ok := metadata.FromOutgoingContext(ctx)
@@ -1311,7 +1301,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 		md = metadata.MD{}
 	}
 
-	...
+	// ...
 }
 ```
 
@@ -1324,11 +1314,11 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 ```go
 func ValueFromIncomingContext(ctx context.Context, key string) []string {
 
-	...
+	// ...
 
 	md, ok := ctx.Value(mdIncomingKey{}).(MD)
 
-	...
+	// ...
 
 }
 
@@ -1347,12 +1337,13 @@ func NewOutgoingContext(ctx context.Context, md MD) context.Context {
 package main
 
 import (
+	"context"
 	"google.golang.org/grpc/metadata"
 )
 
 func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
 
-	...
+	// ...
 
 	// メタデータを作成する
 	md := metadata.New(map[string]string{
@@ -1363,7 +1354,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 	// メタデータから値を取得する
 	val = md.Get("foo")
 
-	...
+	// ...
 
 }
 ```
@@ -1380,12 +1371,13 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 package main
 
 import (
+	"context"
 	"google.golang.org/grpc/metadata"
 )
 
 func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
 
-	...
+	// ...
 
 	// メタデータを作成する
 	md := metadata.New(map[string]string{
@@ -1393,7 +1385,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 		"Bar": "bar",
 	})
 
-	...
+	// ...
 
 }
 ```
@@ -1404,17 +1396,18 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 package main
 
 import (
+	"context"
 	"google.golang.org/grpc/metadata"
 )
 
 func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
 
-	...
+	// ...
 
 	// メタデータを作成する
 	md := metadata.MD{}
 
-	...
+	// ...
 
 }
 ```
@@ -1431,12 +1424,13 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 package main
 
 import (
+	"context"
 	"google.golang.org/grpc/metadata"
 )
 
 func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
 
-	...
+	// ...
 
 	// メタデータを作成する
 	md := metadata.New(map[string]string{
@@ -1447,7 +1441,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 	// メタデータをコンテキストに設定する
 	ctx = metadata.NewIncomingContext(ctx, md)
 
-	...
+	// ...
 
 }
 ```
@@ -1465,12 +1459,13 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 package main
 
 import (
+	"context"
 	"google.golang.org/grpc/metadata"
 )
 
 func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
 
-	...
+	// ...
 
 	// メタデータを作成する
 	md := metadata.New(map[string]string{
@@ -1481,7 +1476,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 	// メタデータをコンテキストに設定する
 	ctx = metadata.NewOutgoingContext(ctx, md)
 
-	...
+	// ...
 
 }
 ```
@@ -1497,12 +1492,13 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 package main
 
 import (
+	"context"
 	"google.golang.org/grpc/metadata"
 )
 
 func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooResponse, error) {
 
-	...
+	// ...
 
 	// メタデータを作成する
 	md := metadata.New(map[string]string{
@@ -1513,7 +1509,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 	// メタデータにキーを設定する
 	md.Set("Baz", "baz")
 
-	...
+	// ...
 
 }
 ```
@@ -1532,6 +1528,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 package main
 
 import (
+	"context"
 	"google.golang.org/grpc/metadata"
 )
 
@@ -1546,7 +1543,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 	// メタデータをコンテキストに設定する
 	ctx = metadata.NewOutgoingContext(ctx, md)
 
-	...
+	// ...
 
 }
 ```
@@ -1563,6 +1560,8 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 package main
 
 import (
+	"context"
+	"log"
 	"google.golang.org/grpc/metadata"
 )
 
@@ -1578,7 +1577,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 	log.Print(md)
 
-	...
+	// ...
 
 }
 ```
@@ -1595,6 +1594,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 package main
 
 import (
+	"context"
 	"google.golang.org/grpc/metadata"
 )
 
@@ -1616,7 +1616,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 		return nil, err
 	}
 
-	...
+	// ...
 
 }
 ```
@@ -1629,6 +1629,8 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 package main
 
 import (
+	"context"
+	"log"
 	"google.golang.org/grpc/metadata"
 )
 
@@ -1650,7 +1652,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 	log.Print(md)
 
-	...
+	// ...
 
 }
 ```

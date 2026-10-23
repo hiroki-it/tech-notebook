@@ -106,39 +106,17 @@ use App\Domain\Repository;
 
 interface FooRepository extends Repository
 {
-    /**
-     * @param FooId $fooId
-     * @return Foo
-     */
-    public function findById(FooId $fooId): Foo;
 
-    /**
-     * @return array
-     */
+    public function findById(FooId $fooId): ?Foo;
+
     public function findAll(): array;
 
-    /**
-     * @param FooCriteria $criteria
-     * @return array
-     */
     public function findAllByCriteria(FooCriteria $criteria): array;
 
-    /**
-     * @param Foo $foo
-     * @return void
-     */
     public function create(Foo $foo): void;
 
-    /**
-     * @param Foo $foo
-     * @return void
-     */
     public function update(Foo $foo): void;
 
-    /**
-     * @param FooId $fooId
-     * @return void
-     */
     public function delete(FooId $fooId): void;
 }
 ```
@@ -395,7 +373,7 @@ class DogComboFactory
     /**
      * 新たな集約を作成する
      */
-    public static function createDogCombo($data): DogItem
+    public static function createDogCombo(array $data): DogCombo
     {
         return new DogCombo(
             new DogToy(

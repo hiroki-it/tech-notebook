@@ -501,7 +501,7 @@ go: finding module for package go.module.io/foo-dependency
 
 基本的には、モジュールの URL やディレクトリ構成と同じにする。
 
-```go
+```text
 module github.com/hiroki-hasegawa/foo-repository
 
 go 1.16
@@ -517,7 +517,7 @@ go 1.16
 
 注意点として、モジュール名は、使用したいモジュールの `go.mod` ファイルを参照すること。
 
-```go
+```text
 module github.com/hiroki-hasegawa/foo-repository
 
 go 1.16
@@ -561,7 +561,7 @@ go: added github.com/foo v0.0.0-<コミット日時のタイムスタンプ>-<�
 
 `go get` コマンドは、`go.mod` ファイルにインポート定義を追加する。
 
-```go
+```text
 module github.com/hiroki-hasegawa/foo-repository
 
 go 1.16
@@ -611,7 +611,7 @@ foo-repository/
     └── module.go
 ```
 
-```go
+```text
 // go.modファイル
 module github.com/hiroki-hasegawa/foo-repository/local-pkg
 
@@ -626,7 +626,7 @@ go 1.16
 
 > - [Go Modules でインターネット上のレポジトリにはないローカルパッケージを import する方法 #Go - Qiita](https://qiita.com/hnishi/items/a9217249d7832ed2c035)
 
-```go
+```text
 module github.com/hiroki-hasegawa/foo-repository
 
 go 1.16

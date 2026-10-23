@@ -357,7 +357,7 @@ pilot-agent を介して、Envoy との間でストリーミング方式で双�
 ```go
 package xds
 
-...
+// ...
 
 // ADS-APIからEnvoyに宛先情報をリモートプロシージャーコールする。
 func (s *DiscoveryServer) StreamAggregatedResources(stream DiscoveryStream) error {
@@ -366,7 +366,7 @@ func (s *DiscoveryServer) StreamAggregatedResources(stream DiscoveryStream) erro
 
 func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 
-	...
+	// ...
 
 	for {
 

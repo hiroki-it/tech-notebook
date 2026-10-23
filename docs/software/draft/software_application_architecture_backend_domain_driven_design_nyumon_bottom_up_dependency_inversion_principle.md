@@ -258,7 +258,7 @@ ServiceLocator パターンを実装した ServiceLocator オブジェクトに�
 // ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する
 ServiceLocator.registerClass<IUserRepository>(
   IUserRepository,
-  InMemoryUserRepository>
+  InMemoryUserRepository
 );
 
 ```
@@ -454,7 +454,7 @@ export class UserApplicationService {
     this.circleRepository = circleRepository;
   }
 
-  set(...)
+  // set(...) の実装は省略
 }
 ```
 
@@ -485,7 +485,7 @@ ServiceLocator オブジェクトでは、オブジェクトの呼び出しを�
 const serviceCollection = new ServiceCollection();
 
 // IoCコンテナオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する
-serviceCollection.addTransient<IUserRepository, InMemoryUserRepository>();
+serviceCollection.addTransient<IUserRepository, InMemoryUserRepository();
 // UserApplicationServiceのコンストラクタにIUserRepositoryを渡すように実装しておかないと、ここでエラーになる
 serviceCollection.addTransient<UserApplicationService>();
 
@@ -590,7 +590,7 @@ const userRepository = container.resolve<IUserRepository>(tokens.IUserRepository
 
 // コンストラクタに注入する
 // 引数にリポジトリや他の依存する新しいリポジトリを渡さないとビルド段階でエラーになる
-const userApplicationService = new UserApplicationService(tokens.userRepository, ...);
+const userApplicationService = new UserApplicationService(userRepository /* 他の依存するリポジトリは省略 */);
 
 userApplicationService.findById("1");
 ```

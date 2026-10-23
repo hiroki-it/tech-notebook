@@ -224,11 +224,11 @@ var vm = new Vue({
   <!----------------------------------------
   // View
   // ・親コンポーネント
-  // ・ここに、出力したいHTMLやTWIGを記述する。 
+  // ・ここに、出力したいHTMLやTWIGを記述する。
   ------------------------------------------>
 
-  <!-- 
-  ・子コンポーネントタグを記述 
+  <!--
+  ・子コンポーネントタグを記述
   ・下方のdataオプションの値をpropsに渡すように設定。
   -->
   <v-foo-component-4 :aaa="a" :bbb="b"></v-foo-component-4>
@@ -311,11 +311,7 @@ var vm = new Vue({
 class Foo {
   /*
     ・コンポーネントからパケットを受信。
-
-
     ・プロパティの宣言と、同時に格納。
-
-
     */
   constructor(properties) {
     this.isOk = properties.isOk;

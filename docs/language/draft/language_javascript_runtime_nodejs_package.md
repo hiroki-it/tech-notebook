@@ -249,7 +249,7 @@ export const logger = winston.createLogger({
 子の node.js プロセスを実行する。
 
 ```javascript
-import spawn from "child_process";
+import { spawn } from "child_process";
 
 const script = `
   process.stdin.on('data', (data) => {
@@ -264,14 +264,12 @@ const child = spawn(
     // eオプションでスクリプトを実行する
     ["-e", script],
     {
-      stdio: ["pipe", "pipe", "inherit"],
+      stdio: ["pipe", "pipe", "pipe"],
       detached: true,
     }
 );
 
 await new Promise((resolve, reject) => {
-
-  const child = spawn()
 
   child.unref()
 
@@ -281,30 +279,30 @@ await new Promise((resolve, reject) => {
   // 子プロセスの標準出力からデータを取得する
   child.stdout.on('data', (data) => {
     stdout += data.toString()
-    resolve("SUCCESS");
-    reject("FAILED");
   })
 
   // 子プロセスの標準エラー出力からデータを取得する
   child.stderr.on('data', (data) => {
     stderr += data.toString()
-    resolve("SUCCESS");
-    reject("FAILED");
   })
 
   // 子プロセスが終了した時の処理
   // 後処理は非同期化にする
   child.on('close', async (code, signal) => {
-    resolve("SUCCESS");
-    reject("FAILED");
+    if (code === 0) {
+      resolve(stdout);
+    } else {
+      reject(new Error(stderr || `Process exited with code ${code}, signal ${signal}`));
+    }
   })
 
   // 子プロセスの作成中や実行中にエラーが発生した時の処理
   child.on('error', (err) => {
-    resolve("SUCCESS");
-    reject("FAILED");
+    reject(err);
   })
-}
+
+  child.stdin.end("hello");
+});
 ```
 
 > - [Child process \| Node.js v26.10.0 Documentation](https://nodejs.org/api/child_process.html)

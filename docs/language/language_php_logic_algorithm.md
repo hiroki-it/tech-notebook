@@ -372,7 +372,7 @@ function bestFirstSearchByDijkstra(
     array $matrix,
     int $startPoint,
     int $goalPoint
-)
+): void
 {
     // 地点数を定数で定義
     define("POINT_NUMBER", count($matrix));

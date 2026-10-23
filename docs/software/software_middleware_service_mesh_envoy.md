@@ -164,7 +164,7 @@ Envoy を使用するサービス検出ツール (例：Istio) では、コン�
 ```go
 package resource
 
-...
+// ...
 
 const (
 	FetchEndpoints        = "/v3/discovery:endpoints"
@@ -177,14 +177,19 @@ const (
 	FetchExtensionConfigs = "/v3/discovery:extension_configs"
 )
 
-...
+// ...
 
 ```
 
 ```go
 package server
 
-...
+import (
+	"fmt"
+	"net/http"
+)
+
+// ...
 
 func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 	p := path.Clean(r.URL.Path)
@@ -211,15 +216,15 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 		return nil, http.StatusNotFound, fmt.Errorf("no endpoint")
 	}
 
-	...
+	// ...
 
 	out.TypeUrl = typeURL
 
-	...
+	// ...
 
 	res, err := h.Server.Fetch(req.Context(), out)
 
-	...
+	// ...
 
 }
 ```

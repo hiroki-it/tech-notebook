@@ -225,7 +225,6 @@ package test
 
 import (
 	"testing"
-
 	"github.com/stretchr/testify/assert"
 )
 
@@ -287,6 +286,7 @@ func TestFoo_ShouldReturnSuccess_WhenSomethingSucceeds(t *testing.T) {
 	// テストケースを反復で検証する
 	for _, tt := range testCases {
 		// 実際値が期待値どおりであることを検証する
+        _ = tt // 検証処理は省略
 	}
 }
 ```
@@ -324,7 +324,7 @@ func TestFoo_ShouldReturnSuccess_WhenSomethingSucceeds(t *testing.T) {
 		{
             // 正常系テストケース
 			name:     "TestFoo_ShouldReturnSuccess_WhenSomethingSucceeds",
-			expected: expected_foo_succeed_status,
+			expected: string(expected_foo_succeed_status),
 			input:    input_foo_succeed_status,
 		},
 	}
@@ -332,6 +332,7 @@ func TestFoo_ShouldReturnSuccess_WhenSomethingSucceeds(t *testing.T) {
 	// テストケースを反復で検証する
 	for _, tt := range cases {
 		// 実際値が期待値どおりであることを検証する
+        _ = tt // 検証処理は省略
 	}
 }
 ```

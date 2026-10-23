@@ -195,7 +195,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class createExampleCommand extends \Symfony\Component\Console\Command\Command
 {
     // オプションの設定
-    protected function configure()
+    protected function configure(): void
     {
         // コマンド名
         $this->setName("create:example");
@@ -209,7 +209,7 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
     }
 
     // コマンドの処理内容
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
                 // 日時フォーマットからCarbonインスタンスを作成する。
@@ -220,7 +220,10 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
 
         } catch (\Exception $e) {
             // エラーログの文章を作成
+            return 1;
         }
+
+        return 0;
     }
 }
 ```
@@ -301,7 +304,6 @@ done
 
 use Symfony\Component\HttpFoundation\Request;
 
-
 $kernel = new AppKernel("dev", true);
 
 if (PHP_VERSION_ID < 70000) {
@@ -310,15 +312,15 @@ if (PHP_VERSION_ID < 70000) {
 
 $request = Request::createFromGlobals();  //`(1)`
 
-:
+// ...
 
 $response = $kernel->handle($request); //`(2)`
 
-:
+// ...
 
 $response->send(); //`(3)`
 
-:
+// ...
 
 $kernel->terminate($request, $response);
 ```
@@ -330,24 +332,32 @@ $kernel->terminate($request, $response);
 ```injectablephp
 <?php
 
-public function handle
-(
-    Request $request,
-    $type = HttpKernelInterface::MASTER_REQUEST,
-    $catch = true
-)
+use Symfony\Component\HttpKernel\Kernel as BaseKernel;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+class Kernel extends BaseKernel
 {
-    $this->boot();
+    public function handle
+    (
+        Request $request,
+        int $type = HttpKernelInterface::MAIN_REQUEST,
+        bool $catch = true
+    ): Response
+    {
+        $this->boot();
 
-    ++$this->requestStackSize;
+        ++$this->requestStackSize;
 
-    $this->resetServices = true;
+        $this->resetServices = true;
 
-    try {
-        return $this->getHttpKernel()->handle($request, $type, $catch);
+        try {
+            return $this->getHttpKernel()->handle($request, $type, $catch);
 
-    } finally {
-        --$this->requestStackSize;
+        } finally {
+            --$this->requestStackSize;
+        }
     }
 }
 ```
@@ -374,7 +384,7 @@ use App\Repository\FooRepository;
 
 class ExampleController extends AbstractController
 {
-    public function get(Request $req)
+    public function get(Request $req): JsonResponse
     {
         // Ajaxによるリクエストの場合。
         if ($req->headers->get("content-type") === "application/json") {
@@ -457,7 +467,7 @@ Symfony から提供される IoC コンテナのこと。
 use App\Controller\BlogApiController; // ルーティング先のコントローラーを読み出し
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
-return function (RoutingConfigurator $routes) {
+return function (RoutingConfigurator $routes): void {
     $routes->add("api_post_show", "/api/posts/{id}")
         ->controller([BlogApiController::class, "show"])
         ->methods(["GET", "HEAD"])

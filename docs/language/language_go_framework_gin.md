@@ -56,16 +56,16 @@ Gin の計装で必要なコンテキストも `gin.Context.Request.Context` で
 ```go
 func Middleware(service string, opts ...Option) gin.HandlerFunc {
 
-	...
+	// ...
 
 
 	return func(c *gin.Context) {
 
-		...
+		// ...
 
 		savedCtx := c.Request.Context()
 
-		...
+		// ...
 
 		ctx := cfg.Propagators.Extract(
             savedCtx,
@@ -73,12 +73,12 @@ func Middleware(service string, opts ...Option) gin.HandlerFunc {
 			propagation.HeaderCarrier(c.Request.Header)
         )
 
-		...
+		// ...
 
         tracer := otel.Tracer("<計装パッケージ名>")
         ctx, span := tracer.Start(ctx, spanName, opts...)
 
-		...
+		// ...
 	}
 }
 ```
@@ -167,14 +167,14 @@ import (
 
 func fooHandler(ginCtx *gin.Context) {
 
-	...
+	// ...
 
 	ginCtx.JSON(
 		200,
 		gin.H{id: 1,"name": "hiroki hasegawa"},
 	)
 
-	...
+	// ...
 }
 ```
 
@@ -188,20 +188,20 @@ import (
 )
 
 type Foo struct {
-	id int json:"id"
-	name string json:"name"
+	ID int `json:"id"`
+	Name string `json:"name"`
 }
 
 func fooHandler(ginCtx *gin.Context) {
 
-	...
+	// ...
 
 	ginCtx.JSON(
 		200,
-		&Foo{id: 1, name: "hiroki hasegawa"},
+		&Foo{ID: 1, Name: "hiroki hasegawa"},
     )
 
-	...
+	// ...
 }
 ```
 
@@ -236,7 +236,6 @@ package server
 
 import (
 	"context"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -260,7 +259,6 @@ package server
 
 import (
 	"log"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -284,7 +282,6 @@ package server
 
 import (
 	"log"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -336,8 +333,8 @@ func printRequestHeaderList(ginCtx *gin.Context) {
 package middlewares
 
 import (
+	"fmt"
 	"strconv"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -383,6 +380,10 @@ func (uc *UserController) GetUser(ginCtx *gin.Context) {
 
 		return
 	}
+
+    // 取得したIDを使った処理は省略
+    _ = userId
+}
 ```
 
 <br>
@@ -416,12 +417,12 @@ package main
 
 func main() {
 
-	...
+	// ...
 
 	router := gin.New()
 	router.Use(FooMiddleware)
 
-	...
+	// ...
 }
 
 func FooMiddleware() gin.HandlerFunc {
@@ -440,14 +441,18 @@ func FooMiddleware() gin.HandlerFunc {
 ```go
 package main
 
+import (
+	"net/http"
+)
+
 func main() {
 
-	...
+	// ...
 
 	router.Use(gin.WrapH(BarMiddleware(router)))
 	router.Use(gin.WrapF(BazMiddleware(router)))
 
-	...
+	// ...
 }
 
 func BarMiddleware(next http.Handler) http.Handler {

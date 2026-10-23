@@ -142,7 +142,7 @@ class Book {
 }
 
 // この構造だと外部コードは以下のようなアクセスが可能になる
-const book = new Book(bookId, title, reviews, ...);
+const book = new Book(bookId, title, reviews /* 他の引数は省略 */);
 
 // book.reviewsを直接参照できる
 const firstReview = book.reviews[0];
@@ -278,7 +278,7 @@ function createReview(bookId: string, rating: number, comment?: string): Promise
   }
 
   // レビューを作成
-  ...
+  // ...
 }
 ```
 

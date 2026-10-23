@@ -146,7 +146,7 @@ use Doctrine\DBAL\Connection;
 class DogToyQuery
 {
     // READ処理のSQLを定義する関数。
-    public function read(Value $toyType): Array
+    public function read(Value $toyType): array
     {
         // QueryBuilderインスタンスを作成。
         $queryBuilder = $this->createQueryBuilder();
@@ -192,7 +192,7 @@ use Doctrine\DBAL\Cache\QueryCacheProfile;
 
 class Foo
 {
-    public function find()
+    public function find(): array
     {
 
         // QueryBuilderインスタンスを作成。

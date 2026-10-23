@@ -421,10 +421,10 @@ const instance = axios.create({
   // Originヘッダーはデフォルトで『プロトコル + ドメイン + ポート番号』に設定されるため、特に対処する必要はない。
   baseURL: "https://foo.co.jp",
   // Cookieヘッダーを設定する
-  withCredentials: "true",
+  withCredentials: true,
 });
 
-return new Promise((resolve, reject) => {
+const fetchBar = () => new Promise((resolve, reject) => {
   instance
     .get("/bar")
     .then((data) => {

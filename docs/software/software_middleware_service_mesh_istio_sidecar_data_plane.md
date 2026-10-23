@@ -394,15 +394,14 @@ ADS-API との間で双方向ストリーミング RPC を確立し、Envoy か�
 package adsc
 
 import (
-
-  ...
-
+	"context"
+	"time"
+  // ...
   discovery "github.com/envoyproxy/go-control-plane/envoy/service/discovery/v3"
-
-  ...
+  // ...
 )
 
-...
+// ...
 
 func (a *ADSC) Run() error {
 	var err error
@@ -451,7 +450,7 @@ func (a *ADSC) handleRecv() {
 
     for{
 
-		...
+		// ...
 
         a.VersionInfo[msg.TypeUrl] = msg.VersionInfo
         switch msg.TypeUrl {
@@ -460,7 +459,7 @@ func (a *ADSC) handleRecv() {
         case v3.ListenerType:
 	    	listeners := make([]*listener.Listener, 0, len(msg.Resources))
 	    	for _, rsc := range msg.Resources {
-                ...
+                // ...
             }
             a.handleLDS(listeners)
 
@@ -468,7 +467,7 @@ func (a *ADSC) handleRecv() {
         case v3.ClusterType:
             clusters := make([]*cluster.Cluster, 0, len(msg.Resources))
             for _, rsc := range msg.Resources {
-                ...
+                // ...
             }
             a.handleCDS(clusters)
 
@@ -476,7 +475,7 @@ func (a *ADSC) handleRecv() {
         case v3.EndpointType:
             eds := make([]*endpoint.ClusterLoadAssignment, 0, len(msg.Resources))
             for _, rsc := range msg.Resources {
-                ...
+                // ...
             }
             a.handleEDS(eds)
 
@@ -484,7 +483,7 @@ func (a *ADSC) handleRecv() {
         case v3.RouteType:
             routes := make([]*route.RouteConfiguration, 0, len(msg.Resources))
             for _, rsc := range msg.Resources {
-                ...
+                // ...
             }
             a.handleRDS(routes)
 
@@ -494,7 +493,7 @@ func (a *ADSC) handleRecv() {
             }
 	    }
 
-        ...
+        // ...
 
         select {
         // XDSUpdatesチャネルに値を送信する。
@@ -515,7 +514,7 @@ func (a *ADSC) handleRecv() {
 ```go
 func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount string, opts clioptions.CentralControlPlaneOptions, grpcOpts []grpc.DialOption,) (*discovery.DiscoveryResponse, error) {
 
-	...
+	// ...
 
 	err = adscConn.Run()
 	if err != nil {

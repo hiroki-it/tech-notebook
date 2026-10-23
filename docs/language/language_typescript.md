@@ -53,7 +53,7 @@ greet();
 ```javascript
 // トランスパイルされてJavaScriptになる
 // undefinedは型不一致のため、コンパイルの型検証によってエラーになる
-error TS2554: Expected 1 arguments, but got 0.
+// error TS2554: Expected 1 arguments, but got 0.
 ```
 
 #### ▼ トランスパイルのみ
@@ -67,7 +67,7 @@ function greet(name: string) {
 greet();
 ```
 
-```javascript
+```typescript
 // トランスパイルされてJavaScriptになる
 // undefinedは型不一致であるが、コンパイルの型検証がないため、エラーにならない
 Hello, undefined!
@@ -93,13 +93,6 @@ const で宣言／代入された変数には、再代入できないように�
 
 ```typescript
 const obj = {
-  const obj: {
-    readonly name: "pikachu";
-    readonly no: 25;
-    readonly genre: "mouse pokémon";
-    readonly height: 0.4;
-    readonly weight: 6;
-  }
   name: "pikachu",
   no: 25,
   genre: "mouse pokémon",
@@ -347,15 +340,16 @@ console.log(await asyncFn());
 // (value: T)  引数型で型変数を使用
 // : T         返却値型で型変数を使用
 
-const foo = <T>(value: T): T {
+const foo = <T>(value: T): T => {
   // ...
+  return value;
 }
 ```
 
 ```typescript
 // この時点では、引数型と返却値型は決まっていない
 // 変数名はなんでもよく、単語でもいい
-const foo = <T>(value: T): T {
+const foo = <T>(value: T): T => {
   return value;
 }
 
@@ -979,7 +973,7 @@ import {logger} from "./logger";
 import {
   foo1,
   foo2,
-  foo3
+  foo3,
   type foo4,
   type foo5,
   type foo6,

@@ -148,7 +148,7 @@ export const loader = async () => {
 
 **＊実装例＊**
 
-```jsx
+```tsx
 import {json} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
 
@@ -197,7 +197,7 @@ React を使用して実装された Remix 専用のビルトインコンポー�
 
 remix コンポーネントは、レンダリング処理を実行する。
 
-```jsx
+```tsx
 import {json} from "@remix-run/node";
 // 内部的にはreactコンポーネントである。
 import {useLoaderData} from "@remix-run/react";
@@ -261,7 +261,7 @@ remix コンポーネント内で `console.log()` 関数を実行すると、ブ
 
 親コンポーネントから子コンポーネントにわたす値を特別に props という。
 
-```typescript
+```tsx
 import {json} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
 
@@ -318,7 +318,7 @@ const PostList = ({posts}) => {
 
 component を同じファイルへ実装する以外に、`.server` ディレクトリへ切り分ける方法もある。
 
-```jsx
+```tsx
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { Form } from "@remix-run/react";
@@ -594,7 +594,7 @@ Remix の内部で実行され、JSON データを作成し、Remix のフロン
 
 `useLoaderData()` 関数や `useFetcher().data` 関数で取得できる。
 
-```jsx
+```tsx
 export function handleDataRequest(response: Response, {request, params, context}: LoaderFunctionArgs | ActionFunctionArgs
 ) {
   response.headers.set("X-Custom-Header", "value");
@@ -1023,7 +1023,7 @@ export function PageLink({page, children, resetKeys = []}: PageLinkProps) {
 }
 ```
 
-```jsx
+```tsx
 // RemixのローダーがURLの変更を検知する
 export async function loader({request}: LoaderFunctionArgs) {
 
@@ -1033,7 +1033,8 @@ export async function loader({request}: LoaderFunctionArgs) {
 
   return typedjson({
     // 新しいクエリストリングで再リクエストを送信する
-  }
+    page,
+  });
 }
 ```
 
@@ -1346,12 +1347,12 @@ export function ErrorBoundary() {
             <div className="inline-flex justify-center p-3">
               {/* 403ステータスの場合に使用するアイコン */}
               {error.status === 403 && (
-                {/* 南京錠アイコン */}
+                // 南京錠アイコン
                 <LockClosedIcon className="h-[20%] w-[20%] text-yellow-500" />
               )}
               {/* 404ステータスの場合に使用するアイコン */}
               {error.status === 404 && (
-                {/* 虫眼鏡アイコン */}
+                // 虫眼鏡アイコン
                 <MagnifyingGlassIcon
                   className="h-[20%] w-[20%] text-sky-400"
                   data-cy="notFoundError"

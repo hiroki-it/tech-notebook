@@ -182,7 +182,7 @@ Nuxt がデフォルトで用意している設定をプロパティの設定値
 
 各プロパティは以下のリンクを参考にせよ。
 
-```javascript
+```typescript
 import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
@@ -273,7 +273,7 @@ services:
 
 ビルドの完了が早くなる。
 
-```javascript
+```typescript
 import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
@@ -299,7 +299,7 @@ const nuxtConfig: Configuration = {
 
 環境変数は、`context` オブジェクトの `config` 変数から取得できる。
 
-```javascript
+```typescript
 import {Configuration} from "@nuxt/types";
 
 const {API_KEY} = process.env;
@@ -339,7 +339,7 @@ export function foo() {
 
 環境変数は、`context` オブジェクトの `config` 変数から取得できる。
 
-```javascript
+```typescript
 import {Configuration} from "@nuxt/types";
 
 const {API_URL} = process.env;
@@ -374,7 +374,7 @@ export function foo() {
 
 CI ツールでログが確認できなくなるため、無効化しておいたほうがよい。
 
-```javascript
+```typescript
 import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
@@ -390,7 +390,7 @@ const nuxtConfig: Configuration = {
 
 リクエストを受信できるエンドポイントと、紐付けるハンドラー関数を設定する。
 
-```javascript
+```typescript
 import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
@@ -411,7 +411,7 @@ const nuxtConfig: Configuration = {
 
 SSG/SSR モードの `yarn dev` (開発用コマンド) 、また SSR モードの `yarn build` のときのみ、`node_module` ディレクトリ内に作成するパッケージを設定する。
 
-```javascript
+```typescript
 import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {

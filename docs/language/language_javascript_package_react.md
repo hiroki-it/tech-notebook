@@ -58,7 +58,7 @@ root.render(
 
 ワンラインで実装する場合、以下となる。
 
-```jsx
+```tsx
 import {StrictMode} from 'react'
 import {createRoot} from 'react-dom/client'
 import {App} from './App.tsx'
@@ -122,7 +122,7 @@ export const App = () => {
 };
 ```
 
-```jsx
+```tsx
 import {StrictMode} from "react";
 import {createRoot} from "react-dom/client";
 import "./index.css";
@@ -225,7 +225,7 @@ React では、関数コンポーネントで `async` 宣言は使用できな�
 
 関数コンポーネントに引数がある場合、引数の型として Props 型を定義するとよい。
 
-```jsx
+```tsx
 import React from "react";
 
 type MyComponentProps = {
@@ -262,7 +262,7 @@ export const MyComponent = ({ initialCount = 0, label }: MyComponentProps) => {
 
 `useMemo` のコンポーネント版である。
 
-```jsx
+```tsx
 import React from "react";
 
 type Props = { value: number };
@@ -286,7 +286,7 @@ react コンポーネント内で、状態の変化に応じて非同期処理�
 
 ```jsx
 // useEffect関数内でsetFooState関数を実行し、state変数を動的に変更する
-const [fooState setFooState] = useState("<初期値>");
+const [fooState, setFooState] = useState("<初期値>");
 
 useEffect(
   // 実行したい無名な非同期関数
@@ -301,14 +301,14 @@ useEffect(
   },
   // useEffectを再度実行したい場合に、[state]を設定する
   // 省略すると、1回だけ実行する
-  [state],
+  [fooState],
 );
 ```
 
 `return` のみを使用すると、`useEffect` で早期リターンも実装できる。
 
 ```jsx
-const [fooState setFooState] = useState("<初期値>");
+const [fooState, setFooState] = useState("<初期値>");
 
 useEffect(
     () => {
@@ -321,7 +321,7 @@ useEffect(
         // state変数に値を設定する
         setFooState(null);
     },
-    [state],
+    [fooState],
 );
 ```
 
@@ -334,7 +334,7 @@ import {useEffect, useState} from "react";
 
 export const MyComponent = () => {
     // useEffect関数内でsetFooState関数を実行し、state変数を動的に変更する
-    const [fooState setFooState] = useState("");
+    const [fooState, setFooState] = useState("");
 
     useEffect(
     // 実行したい無名な非同期関数
@@ -352,7 +352,7 @@ export const MyComponent = () => {
 
   // stateを出力する
   // state変数はJS型オブジェクトであり、ドットでアクセスできる
-  return <pre>{state.fooKey}</pre>;
+  return <pre>{fooState.fooKey}</pre>;
 };
 ```
 
@@ -403,7 +403,7 @@ export const App = () => {
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-export App = () => {
+export const App = () => {
   const [count, setCount] = useState(0);
 
   // 実行 (1)
@@ -489,13 +489,13 @@ react コンポーネント内で状態を管理できるようにする。
 import {useEffect, useState} from "react";
 
 // state変数をfooState変数とし、setState関数をsetFooState変数とする
-const [fooState setFooState] = useState("<初期値>");
+const [fooState, setFooState] = useState("<初期値>");
 
 // state変数はJS型オブジェクトであり、ドットでアクセスできる
-console.log(state.fooKey);
+console.log(fooState.fooKey);
 
 // state変数はJS型オブジェクトであり、JSONを確認したい場合はJSON.stringify関数で変換する
-console.log(JSON.stringify(state));
+console.log(JSON.stringify(fooState));
 ```
 
 > - [useState – React](https://ja.react.dev/reference/react/useState)
@@ -506,7 +506,7 @@ console.log(JSON.stringify(state));
 
 ### SyntheticEvent を拡張した ChangeEvent
 
-```typescript
+```tsx
 import React from "react";
 
 export const DateTimePicker = () => {

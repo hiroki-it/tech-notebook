@@ -556,7 +556,6 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 package trace
 
 import (
-	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
 	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
@@ -630,7 +629,6 @@ import (
     "context"
     "fmt"
     "io/ioutil"
-
     "github.com/aws/aws-xray-sdk-go/xray"
     "golang.org/x/net/context/ctxhttp"
 )
@@ -684,7 +682,6 @@ import (
     "context"
     "fmt"
     "io/ioutil"
-
     "github.com/aws/aws-xray-sdk-go/xray"
     "golang.org/x/net/context/ctxhttp"
 )

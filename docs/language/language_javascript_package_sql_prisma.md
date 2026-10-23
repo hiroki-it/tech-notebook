@@ -164,7 +164,7 @@ DB 情報を設定する。
 
 プロトコル名として、`mysql` や `postgresql` を設定できる。
 
-```javascript
+```prisma
 datasource db {
   provider = "<プロトコル名>"
   // 例：mysql://user:password@<Amazon Auroraクラスターのリーダーエンドポイント>:3306/foo
@@ -207,7 +207,7 @@ URL のパラメーターとして、以下などを設定できる。
 
 ### generator
 
-```javascript
+```prisma
 generator client {
   provider   = "prisma-client-js"
   engineType = "library"
@@ -282,7 +282,7 @@ main();
 #### ▼ オプション
 
 ```typescript
-import {PrismaClient} from '@prisma/client'
+import {PrismaClient, Prisma} from '@prisma/client'
 
 // トランザクションのオプションはトランザクション全体で統一する
 let prismaClientOption = {
@@ -300,7 +300,7 @@ let prismaClientOption = {
 // Prismaクライアントに設定する
 const prisma = new PrismaClient(prismaClientOption)
 
-function transfer(...) {
+function transfer(/* 引数は省略 */) {
 
   return prisma.$transaction(
       async (tx) => {
@@ -311,7 +311,7 @@ function transfer(...) {
 async function main() {
 
   try {
-    await transfer(...)
+    await transfer(/* 引数は省略 */)
   } catch (err) {
 
   }
@@ -321,7 +321,7 @@ main()
 ```
 
 ```javascript
-import {PrismaClient} from '@prisma/client'
+import {PrismaClient, Prisma} from '@prisma/client'
 
 const prisma = new PrismaClient()
 
@@ -337,7 +337,7 @@ let prismaClientOption = {
   }
 }
 
-function transfer(...) {
+function transfer(/* 引数は省略 */) {
 
   return prisma.$transaction(
       async (tx) => {
@@ -351,7 +351,7 @@ function transfer(...) {
 async function main() {
 
   try {
-    await transfer(...)
+    await transfer(/* 引数は省略 */)
   } catch (err) {
 
   }
@@ -622,7 +622,7 @@ class UserRepository {
   }
 
   // ユーザーを作成する
-  async function createUser(email: string, name: string) {
+  async createUser(email: string, name: string) {
 
     const user = await this.prisma.user.create({
       data: {

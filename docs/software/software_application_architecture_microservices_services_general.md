@@ -35,13 +35,11 @@ telemetry/
 package telemetry
 
 import (
-	"bytes"
 	"context"
 	"encoding/hex"
 	"fmt"
 	"log/slog"
 	"os"
-
 	"go.opentelemetry.io/otel/trace"
 )
 
@@ -97,7 +95,6 @@ import (
 	"log/slog"
 	"net/http"
 	"time"
-
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
@@ -143,16 +140,12 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
-	"os"
-	"strconv"
-
 	"go.opentelemetry.io/contrib/propagators/aws/xray"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/trace"
-
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 )
 

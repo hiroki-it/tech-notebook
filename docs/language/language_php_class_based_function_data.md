@@ -36,9 +36,9 @@ title: 【IT技術の知見】振る舞い／状態＠PHP
 class Foo
 {
     // オブジェクトはデータを保持する。
-    private $state;
+    private mixed $state = null;
 
-    public function state()
+    public function state(): mixed
     {
         return $this->state;
     }
@@ -64,10 +64,10 @@ class Foo
 
 class Foo
 {
-    private $state;
+    private mixed $state = null;
 
     // 自身が持つ状態を操作する.
-    public function state()
+    public function state(): mixed
     {
         return $this->state;
     }
@@ -93,14 +93,14 @@ class Foo
 
 class Foo
 {
-    public $state;
+    public mixed $state = null;
 
-    public function __construct($state)
+    public function __construct(mixed $state)
     {
         $this->state = $state;
     }
 
-    public function state()
+    public function state(): mixed
     {
         return $this->state;
     }
@@ -116,7 +116,7 @@ class Foo
 ```injectablephp
 <?php
 
-function foo($state){
+function foo(mixed $state): mixed{
     return $state;
 }
 
@@ -145,12 +145,12 @@ foo($state);
 
 class Foo extends ParentFoo
 {
-    public function __construct($state)
+    public function __construct(mixed $state)
     {
         $this->state = $state;
     }
 
-    public function foo()
+    public function foo(): mixed
     {
         // dataは親で定義されている
         return $this->state;
@@ -167,7 +167,7 @@ class Foo extends ParentFoo
 ```injectablephp
 <?php
 
-function foo($state){
+function foo(mixed $state): mixed{
     return $state;
 }
 
@@ -198,20 +198,20 @@ foo($state);
 
 class Foo
 {
-    private $state;
+    private mixed $state = null;
 
-    public function __construct($state)
+    public function __construct(mixed $state)
     {
         $this->state = $state;
     }
 
-    public function foo()
+    public function foo(): string
     {
         return $this->state.$this->Desu();
     }
 
     // クラス内からしかアクセスできない
-    private function Desu()
+    private function Desu(): string
     {
         return "です。";
     }
@@ -227,7 +227,7 @@ class Foo
 ```injectablephp
 <?php
 
-function foo($state){
+function foo(mixed $state): mixed{
     return $state;
 }
 
@@ -317,9 +317,9 @@ Getter では、状態を取得するのみではなく、何かしらの処理�
 
 class ABC {
 
-    private $property;
+    private mixed $property = null;
 
-    public function property()
+    public function property(): mixed
     {
         // 単なるGetterではなく、例外処理も加える。
         if(!isset($this->property)){
@@ -346,10 +346,10 @@ class ABC {
 
 class Test01 {
 
-    private $property01;
+    private mixed $property01 = null;
 
     // Setterで$property01に値を設定
-    public function setProperty($property01)
+    public function setProperty(mixed $property01): void
     {
         $this->property01 = $property01;
     }
@@ -369,10 +369,10 @@ Setter を持たせずに、`__construct()` 関数のみを持たせれば、Val
 
 class Test02 {
 
-    private $property02;
+    private mixed $property02 = null;
 
     // コンストラクタで$property02に値を設定
-    public function __construct($property02)
+    public function __construct(mixed $property02)
     {
         $this->property02 = $property02;
     }
@@ -448,7 +448,7 @@ PHP には最初からマジック関数は組み込まれているが、自身�
 class Foo
 {
 
-    private $foo = [];
+    private array $foo = [];
 
     // 引数と返却値のデータ型を指定
     public function __get(string $name): string
@@ -503,10 +503,10 @@ PHP には最初からマジック関数は組み込まれているが、自身�
 class Foo
 {
 
-    private $foo = [];
+    private array $foo = [];
 
     // 引数と返り値のデータ型を指定
-    public function __set(String $name, String $value): String
+    public function __set(string $name, mixed $value): void
     {
         echo "{$name}データは存在しないため、{$value}を設定できません。";
     }
@@ -545,10 +545,10 @@ Setter を持たせずに、`__construct()` 関数のみで値を設定すれば
 class Test02
 {
 
-    private $property02;
+    private mixed $property02 = null;
 
     // コンストラクタで$property02に値を設定
-    public function __construct($property02)
+    public function __construct(mixed $property02)
     {
         $this->property02 = $property02;
     }
@@ -601,7 +601,7 @@ $test02 = new Test02("新しいデータ02の値");
 
 class Foo
 {
-    public function __invoke(array $array)
+    public function __invoke(array $array): void
     {
         print_r($array);
     }
@@ -640,18 +640,13 @@ $foo([1, 2, 3]);
 
 class A
 {
-    /**
-     * @return A
-     */
-    public static function get_self()
+
+    public static function get_self(): A
     {
         return new self();
     }
 
-    /**
-     * @return static
-     */
-    public static function get_static()
+    public static function get_static(): static
     {
         return new static();
     }
@@ -694,7 +689,7 @@ echo get_class(A::get_static()); // 継承元のクラスA
 
 class Obj_A
 {
-    private $objB;
+    private ObjB $objB;
 
     // 返却値のデータ型を指定
     public function objB(): ObjB
@@ -711,7 +706,7 @@ class Obj_A
 
 class Obj_B
 {
-    private $objC;
+    private ObjC $objC;
 
     // 返却値のデータ型を指定
     public function objC(): ObjC
@@ -728,7 +723,7 @@ class Obj_B
 
 class Obj_C
 {
-    private $objD;
+    private ObjD $objD;
 
     // 返却値のデータ型を指定
     public function objD(): ObjD
@@ -801,10 +796,7 @@ $D = objB()->objC()->objD();
 
 class Foo
 {
-    /**
-     * @param array $array
-     * @return array
-     */
+
     public function quickSort(array $array): array
     {
         // 配列の要素数が1つしかない場合、クイックソートする必要がないため、返却する。
@@ -884,7 +876,7 @@ var_dump($result);
 class Foo
 {
 
-    public function returnMethod()
+    public function returnMethod(): void
     {
         print "returnMethod()です。\n";
         return; // 何も返さない。
@@ -906,7 +898,7 @@ $foo->returnMethod(); // returnMethod()です。
 class Foo
 {
 
-    function exitMethod()
+    function exitMethod(): void
     {
         print "exitMethod()です。\n";
         exit;
@@ -930,7 +922,7 @@ $foo->exitMethod(); // exitMethod()です。
 
 関数がコールされた場所に値を返却した後、そこで終了せず、`yield` の次の処理が続く。
 
-返却値は、array 型である。
+返却値は、`Generator` 型である。
 
 **＊実装例＊**
 
@@ -939,10 +931,8 @@ $foo->exitMethod(); // exitMethod()です。
 
 class Foo
 {
-    /**
-     * @return array|Generator
-     */
-    public function oneToThree(): array
+
+    public function oneToThree(): Generator
     {
         for ($i = 1; $i <= 3; $i++) {
             // yield を返却した後、$i の値が維持される。
@@ -984,7 +974,7 @@ $dispatcher = new Dispatcher;
 $name = "foo";
 
 // 名前に紐付ける関数を定義。
-$listener = function() use ($param){
+$listener = function() use ($param): void{
     // 何らかの処理
 };
 
@@ -1031,18 +1021,11 @@ class FooEventDispatcher
 
 class ResultCacher
 {
-    /**
-     * @var
-     */
-    private $resultCollection;
 
-    /**
-     * @var array[]
-     */
-    private $funcCollection;
+    private array $resultCollection = [];
 
-    /**
-     */
+    private array $funcCollection;
+
     public function __construct()
     {
         $this->funcCollection = $this->addListener();
@@ -1051,16 +1034,12 @@ class ResultCacher
     /**
      * 集計関数
      */
-    public function computeRevenue()
+    public function computeRevenue(): void
     {
         // 時間のかかる集計処理;
     }
 
-    /**
-     * @param string $funcName
-     * @return false|mixed
-     */
-    public function funcNameListener(string $funcName)
+    public function funcNameListener(string $funcName): mixed
     {
         // 返却値が設定されていなかった場合、値を設定.
         if (!isset($this->resultCollection[$funcName])) {
@@ -1075,21 +1054,15 @@ class ResultCacher
 
     /**
      * 返却値をキャッシュしたい関数名を登録しておく
-     *
-     * @return array[]
      */
-    private function addListener()
+    private function addListener(): array
     {
         return [
             "computeRevenue" => [$this, "computeRevenue"]
         ];
     }
 
-    /**
-     * @param string $funcName
-     * @return false|mixed
-     */
-    private function dispatch(string $funcName)
+    private function dispatch(string $funcName): mixed
     {
         // call_user_funcで関数を実行
         return call_user_func(
@@ -1122,8 +1095,8 @@ $item = new Item;
 
 // 最初の括弧を使用しないことにより、普段よくやっている値渡しの関数を定義しているのと同じになる。
 // use()に、親関数 ($optionName) のスコープの$itemを渡す。
-$optionName = function () use ($item) {
-    $item->optionName();
+$optionName = function () use ($item): string {
+    return $item->optionName();
 };
 
 // function()には引数が設定されていないため、コール時に引数は不要。
@@ -1149,8 +1122,8 @@ $item = new Item;
 // 最初の括弧を使用しないことにより、普段よくやっている値渡しの関数を定義しているのと同じになる。
 // 親関数 ($optionName) のスコープの$itemを、use()に渡す。
 // $paramは、コール時に使用する変数。
-$optionName = function ($para) use ($item) {
-    $item->optionName() . $para;
+$optionName = function (string $para) use ($item): string {
+    return $item->optionName() . $para;
 };
 
 // コール時、$paramをfunction()に渡す。
@@ -1174,7 +1147,7 @@ class Item
 
 class Option
 {
-    // 中身は省略
+    public Closure $name;
 }
 
 $item = new Item;
@@ -1185,12 +1158,12 @@ $item = new Item;
 $option = new Option;
 
 // データの値に無名関数を格納する。
-$option->name = function ($para) use ($item) {
-    $item->optionName() . $para;
+$option->name = function (string $para) use ($item): string {
+    return $item->optionName() . $para;
 };
 
 // コール時、$paramをfunction()に渡す。
-echo $option->name("BC");
+echo ($option->name)("BC");
 
 // 出力結果
 // オプションABC
@@ -1220,8 +1193,8 @@ $param = "BC";
 // use()に、親関数のスコープの$itemを渡す。
 // 無名関数を定義し、同時にcall_user_func()で即コールする。
 // $paramは、コール時に使用する変数。
-$optionName = call_user_func(function ($param) use ($item) {
-    $item->optionName() . $param;
+$optionName = call_user_func(function (string $param) use ($item): string {
+    return $item->optionName() . $param;
 }, $param);
 
 // $paramはすでに即コール時に渡されている。
@@ -1250,10 +1223,8 @@ class Foo
 {
     /**
      * 高階関数を定義
-     *
-     * @param $callback
      */
-    public function test($callback)
+    public function test(callable $callback): void
     {
         echo $callback();
     }
@@ -1261,10 +1232,6 @@ class Foo
     /**
      * コールバックを定義
      * 関数の中でコールされるため、『後で呼び出される』という意味合いから、コールバック関数といえる。
-
-
-     *
-     * @return string
      */
     public function callbackMethod(): string
     {
@@ -1274,7 +1241,7 @@ class Foo
 
 $foo = new Foo();
 // 高階関数の引数として、コールバック関数を渡す
-$foo->test("callbackMethod");
+$foo->test([$foo, "callbackMethod"]);
 
 // 出力結果
 // 出力に成功しました。
@@ -1289,23 +1256,16 @@ class Foo
 
     /**
      * 高階関数を定義
-     *
-     * @param $param
-     * @param $callback
-     * @return mixed
      */
-    public function higherOrder($param, $callback)
+    public function higherOrder(string $param, callable $callback): mixed
     {
         return $callback($param);
     }
 
     /**
      * コールバック関数を定義
-     *
-     * @param $param
-     * @return string
      */
-    public function callbackMethod($param)
+    public function callbackMethod(string $param): string
     {
         return $param."の出力に成功しました。";
     }
@@ -1314,7 +1274,7 @@ class Foo
 $foo = new Foo();
 
 // 高階関数の第一引数にコールバック関数の引数、第二引数にコールバック関数を渡す
-$foo->higherOrder("第一引数", "callbackMethod");
+$foo->higherOrder("第一引数", [$foo, "callbackMethod"]);
 
 // 出力結果
 // 第一引数の出力に成功しました。
@@ -1331,14 +1291,8 @@ class Foo
 {
     /**
      * 高階関数のように、関数を引数として渡す。
-
-
-     *
-     * @param $parentVar
-     * @param $callback
-     * @return mixed
      */
-    public function higherOrder($parentVar, $callback)
+    public function higherOrder(string $parentVar, callable $callback): mixed
     {
         $parentVar = "&親関数のスコープの変数";
         return $callback($parentVar);
@@ -1350,7 +1304,7 @@ $foo = new Foo;
 // 第二引数の無名関数。関数の中でコールされるため、『後でコールされる』という意味合いから、コールバック関数といえる。
 // コールバック関数は再利用されないため、名前をつけずに無名関数とすることが多い。
 // 親関数のスコープで定義されている変数を引数として渡す。
-$foo->higherOrder($parentVar, function () use ($parentVar) {
+$foo->higherOrder($parentVar, function () use ($parentVar): string {
     return $parentVar . "の出力に成功しました。";
 });
 
@@ -1370,20 +1324,12 @@ $foo->higherOrder($parentVar, function () use ($parentVar) {
 class Foo
 {
 
-    /**
-     * @var array
-     */
-    protected $properties;
+    protected array $properties;
 
     /**
      * 非無名関数あるいは無名関数を引数で渡す。
-
-
-     *
-     * @param $callback
-     * @return $this
      */
-    public function Shiborikomi($callback)
+    public function Shiborikomi(callable $callback): static
     {
         if (!is_callable($callback)) {
             throw new \LogicException;
@@ -1499,7 +1445,7 @@ require_once realpath(__DIR__ . "/vendor/autoload.php");
 
 class Foo
 {
-    public function foo()
+    public function foo(): void
     {
         echo __FUNCTION__;
     }
@@ -1511,7 +1457,7 @@ class Foo
 
 class Foo
 {
-    public function foo(){}
+    public function foo(): void{}
 }
 
 $foo = new Foo;
@@ -1529,7 +1475,7 @@ $foo->foo(); // foo が返却される。
 
 class Foo
 {
-    public function foo()
+    public function foo(): void
     {
         echo __METHOD__;
     }
@@ -1591,7 +1537,6 @@ echo 'これは{$fruit}です。'; // これは、{$fruit}です。
 
 ```injectablephp
 <?php
-
 
 $fruit = "リンゴ";
 
@@ -1665,7 +1610,6 @@ $result = $value; // 1をコピーして代入
 $a = 2;
 $b = $a;  // 変数aを代入
 $a = 10;  // 変数aの値を変更
-
 
 // 出力結果
 echo $b; // 2

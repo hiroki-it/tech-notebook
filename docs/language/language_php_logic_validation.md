@@ -153,12 +153,9 @@ class Example
      */
     const noOptionItem = 0;
 
-    /**
-     * @var Entity
-     */
-    private $routeEntity;
+    private Entity $routeEntity;
 
-    public function example($result)
+    public function example(array $result): array
     {
 
         // RouteEntityからoptionsオブジェクトに格納されるoptionオブジェクト配列を取り出す。
@@ -208,12 +205,9 @@ class Example
      */
     const noOptionItem = 0;
 
-    /**
-     * @var Entity
-     */
-    private $routeEntity;
+    private Entity $routeEntity;
 
-    public function example($result)
+    public function example(array $result): array
     {
         // RouteEntityからoptionsオブジェクトに格納されるoptionオブジェクト配列を取り出す。
         if (!empty($this->routeEntity->options)) {
@@ -256,12 +250,9 @@ class Example
      */
     const noOptionItem = 0;
 
-    /**
-     * @var Entity
-     */
-    private $routeEntity;
+    private Entity $routeEntity;
 
-    public function example($result)
+    public function example(array $result): array
     {
         // 初期値0を設定
         $result["optionItemA"] = self::noOptionItem;

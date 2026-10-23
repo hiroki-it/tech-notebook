@@ -66,13 +66,13 @@ class FooNotFoundException extends Exception
 
 use Exception\FooNotFoundException;
 
-function foo(string $foo) {
+function foo(string $foo): string {
 
     if (empty($foo)) {
         throw new FooNotFoundException("foo is not found.");
     }
 
-    return "これは ${foo} です。";
+    return "これは {$foo} です。";
 }
 ```
 
@@ -111,14 +111,14 @@ if-throw 文を使用して、エラー検出と例外スローを実行する�
 ```injectablephp
 <?php
 
-function value(int $value) {
+function value(int $value): string {
 
     if (empty($value)) {
         // 例外クラスを返却
         throw new Exception("Value is empty");
     }
 
-    return "これは ${value} です。";
+    return "これは {$value} です。";
 }
 ```
 
@@ -127,13 +127,13 @@ function value(int $value) {
 ```injectablephp
 <?php
 
-function value() {
+function value(bool $externalApiFailed, bool $invalidArgument): string {
 
-    if (...) {
+    if ($externalApiFailed) {
         throw new ExternalApiException();
     }
 
-    if (...) {
+    if ($invalidArgument) {
         throw new FooInvalidArgumentException();
     }
 
@@ -169,7 +169,7 @@ use \Exception\HttpRequestErrorException;
 
 class Foo
 {
-    public function sendMessage(Message $message)
+    public function sendMessage(Message $message): void
     {
         try {
 
@@ -207,7 +207,7 @@ use Exception\HttpRequestErrorException;
 
 class Foo
 {
-    public function sendMessage(Message $message)
+    public function sendMessage(Message $message): string
     {
         try {
 
@@ -330,7 +330,7 @@ error_log(
 
 class Notification
 {
-    public function sendMessage()
+    public function sendMessage(): void
     {
         try {
 
@@ -364,14 +364,14 @@ use Psr\Log\LoggerInterface;
 
 class Notification
 {
-    private $logger;
+    private ?LoggerInterface $logger;
 
-    public function __construct(LoggerInterface $logger = null)
+    public function __construct(?LoggerInterface $logger = null)
     {
         $this->logger = $logger;
     }
 
-    public function sendMessage()
+    public function sendMessage(): void
     {
         try {
 
@@ -416,7 +416,7 @@ use Exception\HttpRequestErrorException;
 
 class Foo
 {
-    public function sendMessage(Message $message)
+    public function sendMessage(Message $message): bool
     {
         try {
 
