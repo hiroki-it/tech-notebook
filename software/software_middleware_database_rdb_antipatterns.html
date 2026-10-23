@@ -34812,15 +34812,15 @@
 <h4 id="_7">▼ 問題がある実装<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>反復処理のなかで子テーブルのレコードにアクセスしてしまう場合、N+1 問題が起こる。</p>
 <p>内部的には、親テーブルへの SQL と、Where 句を持つ SQL が親テーブルのレコード数分だけ発行される。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// 親テーブルにSQLを発行 (1回)
-$departments = Department::all();
+<span class="c1">// 親テーブルにSQLを発行 (1回)</span>
+<span class="nv">$departments</span> <span class="o">=</span> <span class="nx">Department</span><span class="o">::</span><span class="na">all</span><span class="p">();</span>
 
-foreach($departments as $department) {
-    // 親テーブルのレコード数分のWhere句SQLを発行する (N回)
-    $department-&gt;employees;
-}
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$departments</span> <span class="k">as</span> <span class="nv">$department</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 親テーブルのレコード数分のWhere句SQLを発行する (N回)</span>
+    <span class="nv">$department</span><span class="o">-&gt;</span><span class="na">employees</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 1回</span>
 <span class="k">select</span><span class="w"> </span>*<span class="w"> </span>from<span class="w"> </span><span class="sb">`</span>departments<span class="sb">`</span>
@@ -34835,16 +34835,16 @@ foreach($departments as $department) {
 <p>反復処理の前に、子テーブルへアクセスしておく。</p>
 <p>レコード取得時に IN 句や JOIN 句を使用すると、N+1 問題を解消できる。</p>
 <p>Laravel では <code>with()</code> 関数を使用すると、内部的に親テーブルへの SQL と IN 句を使用した SQL が発行され、最終的に 2 回で済む。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// 親テーブルと子テーブルにSQLを発行する (2回)
-// 子テーブルへのSQLでは、内部的にIN句を使用する
-$departments = Department::with('employees')-&gt;get();
+<span class="c1">// 親テーブルと子テーブルにSQLを発行する (2回)</span>
+<span class="c1">// 子テーブルへのSQLでは、内部的にIN句を使用する</span>
+<span class="nv">$departments</span> <span class="o">=</span> <span class="nx">Department</span><span class="o">::</span><span class="na">with</span><span class="p">(</span><span class="s1">'employees'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
 
-foreach($departments as $department) {
-    // キャッシュを使用するのでSQLの発行はされない (0回)
-    $department-&gt;employees;
-}
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$departments</span> <span class="k">as</span> <span class="nv">$department</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// キャッシュを使用するのでSQLの発行はされない (0回)</span>
+    <span class="nv">$department</span><span class="o">-&gt;</span><span class="na">employees</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 2回</span>
 <span class="k">select</span><span class="w"> </span>*<span class="w"> </span>from<span class="w"> </span><span class="sb">`</span>departments<span class="sb">`</span>

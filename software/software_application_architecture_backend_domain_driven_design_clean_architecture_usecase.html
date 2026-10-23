@@ -34284,183 +34284,183 @@
 <p>例えば、<code>READ</code> 処理と <code>UPDATE</code> 処理の両方が必要な更新系ユースケースでは、<code>READ</code> 処理と <code>UPDATE</code> 処理の間のタイミングで、ほかのユーザーがデータを更新してしまう可能性がある。</p>
 <p>そのため、ユースケース層でトランザクション処理を定義し、定義したトランザクション範囲内でリポジトリを呼び出す。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Usecase\Foo\Interactors;
+<span class="k">namespace</span> <span class="nx">App\Usecase\Foo\Interactors</span><span class="p">;</span>
 
-use Illuminate\Support\Facades\DB;
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\DB</span><span class="p">;</span>
 
-/**
- * Foo作成インターラクタークラス
- * ※ユースケースごとにクラスを定義する方法
- */
-class FooCreateInteractor
-{
-    /**
-     * @var FooRepository
-     */
-    private FooRepository $fooRepository;
+<span class="sd">/**</span>
+<span class="sd"> * Foo作成インターラクタークラス</span>
+<span class="sd"> * ※ユースケースごとにクラスを定義する方法</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">FooCreateInteractor</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var FooRepository</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">FooRepository</span> <span class="nv">$fooRepository</span><span class="p">;</span>
 
-    /**
-     * @param FooRepository $fooRepository
-     */
-    public function __construct(FooRepository $fooRepository)
-    {
-        $this-&gt;fooRepository = $fooRepository;
-    }
+    <span class="sd">/**</span>
+<span class="sd">     * @param FooRepository $fooRepository</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooRepository</span> <span class="nv">$fooRepository</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span> <span class="o">=</span> <span class="nv">$fooRepository</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    /**
-     * @param RegisterFooRequest $registerFooRequest
-     * @return RegisterFooResponse
-     */
-    public function registerFoo(RegisterFooRequest $registerFooRequest): RegisterFooResponse
-    {
-        // トランザクション処理を実行
-        $foo = DB::transaction(function () use ($registerFooRequest) {
+    <span class="sd">/**</span>
+<span class="sd">     * @param RegisterFooRequest $registerFooRequest</span>
+<span class="sd">     * @return RegisterFooResponse</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerFoo</span><span class="p">(</span><span class="nx">RegisterFooRequest</span> <span class="nv">$registerFooRequest</span><span class="p">)</span><span class="o">:</span> <span class="nx">RegisterFooResponse</span>
+    <span class="p">{</span>
+        <span class="c1">// トランザクション処理を実行</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="nx">DB</span><span class="o">::</span><span class="na">transaction</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$registerFooRequest</span><span class="p">)</span> <span class="p">{</span>
 
-            // 重複チェック (READ処理) を実行
-            $duplicateFoo = $this-&gt;fooRepository-&gt;findById(
-                new FooId($registerFooRequest-&gt;id)
-            );
+            <span class="c1">// 重複チェック (READ処理) を実行</span>
+            <span class="nv">$duplicateFoo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span><span class="o">-&gt;</span><span class="na">findById</span><span class="p">(</span>
+                <span class="k">new</span> <span class="nx">FooId</span><span class="p">(</span><span class="nv">$registerFooRequest</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">)</span>
+            <span class="p">);</span>
 
-            if ($duplicateFoo !== null) {
-                throw new \Exception("Foo is already exists.");
-            }
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$duplicateFoo</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s2">"Foo is already exists."</span><span class="p">);</span>
+            <span class="p">}</span>
 
-            // CREATE処理を実行
-            return $this-&gt;fooRepository-&gt;create(
-                new Bar($registerFooRequest-&gt;bar),
-                new Baz($registerFooRequest-&gt;baz)
-            );
-        });
+            <span class="c1">// CREATE処理を実行</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span>
+                <span class="k">new</span> <span class="nx">Bar</span><span class="p">(</span><span class="nv">$registerFooRequest</span><span class="o">-&gt;</span><span class="na">bar</span><span class="p">),</span>
+                <span class="k">new</span> <span class="nx">Baz</span><span class="p">(</span><span class="nv">$registerFooRequest</span><span class="o">-&gt;</span><span class="na">baz</span><span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">});</span>
 
-        // 何らかの処理
-    }
-}
+        <span class="c1">// 何らかの処理</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Usecase\Foo\Interactors;
+<span class="k">namespace</span> <span class="nx">App\Usecase\Foo\Interactors</span><span class="p">;</span>
 
-use Illuminate\Support\Facades\DB;
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\DB</span><span class="p">;</span>
 
-/**
- * Fooインターラクタークラス
- * ※CRUD全てのユースケースを、1個のクラスを定義する方法
- */
-class FooInteractor
-{
-    /**
-     * @var FooRepository
-     */
-    private FooRepository $fooRepository;
+<span class="sd">/**</span>
+<span class="sd"> * Fooインターラクタークラス</span>
+<span class="sd"> * ※CRUD全てのユースケースを、1個のクラスを定義する方法</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">FooInteractor</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var FooRepository</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">FooRepository</span> <span class="nv">$fooRepository</span><span class="p">;</span>
 
-    /**
-     * @param FooRepository $fooRepository
-     */
-    public function __construct(FooRepository $fooRepository)
-    {
-        $this-&gt;fooRepository = $fooRepository;
-    }
+    <span class="sd">/**</span>
+<span class="sd">     * @param FooRepository $fooRepository</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooRepository</span> <span class="nv">$fooRepository</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span> <span class="o">=</span> <span class="nv">$fooRepository</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    /**
-     * @param RegisterFooRequest $registerFooRequest
-     * @return RegisterFooResponse
-     */
-    public function registerFoo(RegisterFooRequest $registerFooRequest): RegisterFooResponse
-    {
-        // トランザクション処理を実行
-        $foo = DB::transaction(function () use ($registerFooRequest) {
+    <span class="sd">/**</span>
+<span class="sd">     * @param RegisterFooRequest $registerFooRequest</span>
+<span class="sd">     * @return RegisterFooResponse</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerFoo</span><span class="p">(</span><span class="nx">RegisterFooRequest</span> <span class="nv">$registerFooRequest</span><span class="p">)</span><span class="o">:</span> <span class="nx">RegisterFooResponse</span>
+    <span class="p">{</span>
+        <span class="c1">// トランザクション処理を実行</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="nx">DB</span><span class="o">::</span><span class="na">transaction</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$registerFooRequest</span><span class="p">)</span> <span class="p">{</span>
 
-            // 重複チェック (READ処理) を実行
-            $duplicateFoo = $this-&gt;fooRepository-&gt;findById(
-                new FooId($registerFooRequest-&gt;id)
-            );
+            <span class="c1">// 重複チェック (READ処理) を実行</span>
+            <span class="nv">$duplicateFoo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span><span class="o">-&gt;</span><span class="na">findById</span><span class="p">(</span>
+                <span class="k">new</span> <span class="nx">FooId</span><span class="p">(</span><span class="nv">$registerFooRequest</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">)</span>
+            <span class="p">);</span>
 
-            if ($duplicateFoo !== null) {
-                throw new \Exception("Foo is already exists.");
-            }
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$duplicateFoo</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s2">"Foo is already exists."</span><span class="p">);</span>
+            <span class="p">}</span>
 
-            // CREATE処理を実行
-            return $this-&gt;fooRepository-&gt;create(
-                new Bar($registerFooRequest-&gt;bar),
-                new Baz($registerFooRequest-&gt;baz)
-            );
-        });
+            <span class="c1">// CREATE処理を実行</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span>
+                <span class="k">new</span> <span class="nx">Bar</span><span class="p">(</span><span class="nv">$registerFooRequest</span><span class="o">-&gt;</span><span class="na">bar</span><span class="p">),</span>
+                <span class="k">new</span> <span class="nx">Baz</span><span class="p">(</span><span class="nv">$registerFooRequest</span><span class="o">-&gt;</span><span class="na">baz</span><span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">});</span>
 
-        // 何らかの処理
-    }
+        <span class="c1">// 何らかの処理</span>
+    <span class="p">}</span>
 
-    /**
-     * @param GetFooRequest $getFooRequest
-     * @return GetFooResponse
-     */
-    public function getFoo(GetFooRequest $getFooRequest): GetFooResponse
-    {
-        // READ処理を実行
-        $foo = $this-&gt;fooRepository-&gt;findById(
-            new FooId($getFooRequest-&gt;id)
-        );
+    <span class="sd">/**</span>
+<span class="sd">     * @param GetFooRequest $getFooRequest</span>
+<span class="sd">     * @return GetFooResponse</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getFoo</span><span class="p">(</span><span class="nx">GetFooRequest</span> <span class="nv">$getFooRequest</span><span class="p">)</span><span class="o">:</span> <span class="nx">GetFooResponse</span>
+    <span class="p">{</span>
+        <span class="c1">// READ処理を実行</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span><span class="o">-&gt;</span><span class="na">findById</span><span class="p">(</span>
+            <span class="k">new</span> <span class="nx">FooId</span><span class="p">(</span><span class="nv">$getFooRequest</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">)</span>
+        <span class="p">);</span>
 
-        // 何らかの処理
-    }
+        <span class="c1">// 何らかの処理</span>
+    <span class="p">}</span>
 
-    /**
-     * @param ChangeFooRequest $changeFooRequest
-     * @return ChangeFooResponse
-     */
-    public function changeFoo(ChangeFooRequest $changeFooRequest): ChangeFooResponse
-    {
-        // トランザクション処理を実行
-        $foo = DB::transaction(function () use ($changeFooRequest) {
+    <span class="sd">/**</span>
+<span class="sd">     * @param ChangeFooRequest $changeFooRequest</span>
+<span class="sd">     * @return ChangeFooResponse</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">changeFoo</span><span class="p">(</span><span class="nx">ChangeFooRequest</span> <span class="nv">$changeFooRequest</span><span class="p">)</span><span class="o">:</span> <span class="nx">ChangeFooResponse</span>
+    <span class="p">{</span>
+        <span class="c1">// トランザクション処理を実行</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="nx">DB</span><span class="o">::</span><span class="na">transaction</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$changeFooRequest</span><span class="p">)</span> <span class="p">{</span>
 
-            // 存在チェック (READ処理) を実行
-            $existingFoo = $this-&gt;fooRepository-&gt;findById(
-                new FooId($changeFooRequest-&gt;id)
-            );
+            <span class="c1">// 存在チェック (READ処理) を実行</span>
+            <span class="nv">$existingFoo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span><span class="o">-&gt;</span><span class="na">findById</span><span class="p">(</span>
+                <span class="k">new</span> <span class="nx">FooId</span><span class="p">(</span><span class="nv">$changeFooRequest</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">)</span>
+            <span class="p">);</span>
 
-            if ($existingFoo === null) {
-                throw new \Exception("Foo is not found.");
-            }
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$existingFoo</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s2">"Foo is not found."</span><span class="p">);</span>
+            <span class="p">}</span>
 
-            // UPDATE処理を実行
-            return $this-&gt;fooRepository-&gt;update(
-                new FooId($changeFooRequest-&gt;id),
-                new Bar($changeFooRequest-&gt;bar),
-                new Baz($changeFooRequest-&gt;baz)
-            );
-        });
+            <span class="c1">// UPDATE処理を実行</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span>
+                <span class="k">new</span> <span class="nx">FooId</span><span class="p">(</span><span class="nv">$changeFooRequest</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">),</span>
+                <span class="k">new</span> <span class="nx">Bar</span><span class="p">(</span><span class="nv">$changeFooRequest</span><span class="o">-&gt;</span><span class="na">bar</span><span class="p">),</span>
+                <span class="k">new</span> <span class="nx">Baz</span><span class="p">(</span><span class="nv">$changeFooRequest</span><span class="o">-&gt;</span><span class="na">baz</span><span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">});</span>
 
-        // 何らかの処理
-    }
+        <span class="c1">// 何らかの処理</span>
+    <span class="p">}</span>
 
-    /**
-     * @param DeleteFooRequest $deleteFooRequest
-     * @return DeleteFooResponse
-     */
-    public function deleteFoo(DeleteFooRequest $deleteFooRequest): DeleteFooResponse
-    {
-        // トランザクション処理を実行
-        $foo = DB::transaction(function () use ($deleteFooRequest) {
+    <span class="sd">/**</span>
+<span class="sd">     * @param DeleteFooRequest $deleteFooRequest</span>
+<span class="sd">     * @return DeleteFooResponse</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">deleteFoo</span><span class="p">(</span><span class="nx">DeleteFooRequest</span> <span class="nv">$deleteFooRequest</span><span class="p">)</span><span class="o">:</span> <span class="nx">DeleteFooResponse</span>
+    <span class="p">{</span>
+        <span class="c1">// トランザクション処理を実行</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="nx">DB</span><span class="o">::</span><span class="na">transaction</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$deleteFooRequest</span><span class="p">)</span> <span class="p">{</span>
 
-            // 存在チェック (READ処理) を実行
-            $existingFoo = $this-&gt;fooRepository-&gt;findById(
-                new FooId($deleteFooRequest-&gt;id)
-            );
+            <span class="c1">// 存在チェック (READ処理) を実行</span>
+            <span class="nv">$existingFoo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span><span class="o">-&gt;</span><span class="na">findById</span><span class="p">(</span>
+                <span class="k">new</span> <span class="nx">FooId</span><span class="p">(</span><span class="nv">$deleteFooRequest</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">)</span>
+            <span class="p">);</span>
 
-            if ($existingFoo === null) {
-                throw new \Exception("Foo is not found.");
-            }
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$existingFoo</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s2">"Foo is not found."</span><span class="p">);</span>
+            <span class="p">}</span>
 
-            // DELETE処理を実行
-            return $this-&gt;fooRepository-&gt;delete(
-                new FooId($deleteFooRequest-&gt;id)
-            );
-        });
+            <span class="c1">// DELETE処理を実行</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span>
+                <span class="k">new</span> <span class="nx">FooId</span><span class="p">(</span><span class="nv">$deleteFooRequest</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">});</span>
 
-        // 何らかの処理
-    }
-}
+        <span class="c1">// 何らかの処理</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34473,39 +34473,39 @@ class FooInteractor
 <p>インターラクターのインターフェースのこと。</p>
 <p>上位レイヤーにあるコントローラーは、インターラクターインタフェースに依存する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Usecase\Foo\InputBoundaries;
+<span class="k">namespace</span> <span class="nx">App\Usecase\Foo\InputBoundaries</span><span class="p">;</span>
 
-/**
- * Fooインターラクターインターフェース
- */
-interface FooInteractorInterface
-{
-    /**
-     * @param RegisterFooRequest $registerFooRequest
-     * @return RegisterFooResponse
-     */
-    public function registerFoo(RegisterFooRequest $registerFooRequest): RegisterFooResponse;
+<span class="sd">/**</span>
+<span class="sd"> * Fooインターラクターインターフェース</span>
+<span class="sd"> */</span>
+<span class="k">interface</span> <span class="nx">FooInteractorInterface</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param RegisterFooRequest $registerFooRequest</span>
+<span class="sd">     * @return RegisterFooResponse</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerFoo</span><span class="p">(</span><span class="nx">RegisterFooRequest</span> <span class="nv">$registerFooRequest</span><span class="p">)</span><span class="o">:</span> <span class="nx">RegisterFooResponse</span><span class="p">;</span>
 
-    /**
-     * @param GetFooRequest $getFooRequest
-     * @return GetFooResponse
-     */
-    public function getFoo(GetFooRequest $getFooRequest): GetFooResponse;
+    <span class="sd">/**</span>
+<span class="sd">     * @param GetFooRequest $getFooRequest</span>
+<span class="sd">     * @return GetFooResponse</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getFoo</span><span class="p">(</span><span class="nx">GetFooRequest</span> <span class="nv">$getFooRequest</span><span class="p">)</span><span class="o">:</span> <span class="nx">GetFooResponse</span><span class="p">;</span>
 
-    /**
-     * @param ChangeFooRequest $changeFooRequest
-     * @return ChangeFooResponse
-     */
-    public function changeFoo(ChangeFooRequest $changeFooRequest): ChangeFooResponse;
+    <span class="sd">/**</span>
+<span class="sd">     * @param ChangeFooRequest $changeFooRequest</span>
+<span class="sd">     * @return ChangeFooResponse</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">changeFoo</span><span class="p">(</span><span class="nx">ChangeFooRequest</span> <span class="nv">$changeFooRequest</span><span class="p">)</span><span class="o">:</span> <span class="nx">ChangeFooResponse</span><span class="p">;</span>
 
-    /**
-     * @param DeleteFooRequest $deleteFooRequest
-     * @return DeleteFooResponse
-     */
-    public function deleteFoo(DeleteFooRequest $deleteFooRequest): DeleteFooResponse;
-}
+    <span class="sd">/**</span>
+<span class="sd">     * @param DeleteFooRequest $deleteFooRequest</span>
+<span class="sd">     * @return DeleteFooResponse</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">deleteFoo</span><span class="p">(</span><span class="nx">DeleteFooRequest</span> <span class="nv">$deleteFooRequest</span><span class="p">)</span><span class="o">:</span> <span class="nx">DeleteFooResponse</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="04">04. アウトプットバウンダリ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
@@ -34519,32 +34519,32 @@ interface FooInteractorInterface
 <h3 id="_13">リクエストモデルとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p>インターフェース層のコントローラーから入力されるリクエストパラメーターを、ユースケース層に入力するときの入力構造を定義する。</p>
 <p>インターラクターの関数ごとにリクエストモデルを用意するとよい。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Interface\Foo\Requests;
+<span class="k">namespace</span> <span class="nx">App\Interface\Foo\Requests</span><span class="p">;</span>
 
-class FooCreateRequest
-{
-    /**
-     * @var int
-     */
-    private int $fooId;
+<span class="k">class</span> <span class="nc">FooCreateRequest</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var int</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">int</span> <span class="nv">$fooId</span><span class="p">;</span>
 
-    /**
-     * @var string
-     */
-    private string $fooName;
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$fooName</span><span class="p">;</span>
 
-    /**
-     * @param int    $fooId
-     * @param string $fooName
-     */
-    public function __construct(int $fooId, string $fooName)
-    {
-        $this-&gt;fooId = $fooId;
-        $this-&gt;fooName = $fooName;
-    }
-}
+    <span class="sd">/**</span>
+<span class="sd">     * @param int    $fooId</span>
+<span class="sd">     * @param string $fooName</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$fooId</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$fooName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooId</span> <span class="o">=</span> <span class="nv">$fooId</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooName</span> <span class="o">=</span> <span class="nv">$fooName</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="06">06. レスポンスモデル (アウトプットデータ)<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
@@ -34556,74 +34556,74 @@ class FooCreateRequest
 <p><strong>＊実装例＊</strong></p>
 <p>ユースケース層の index 関数に対応するレスポンスモデル。</p>
 <p>JSON レスポンス関数が配列構造を引数に受け付けるため、これに渡せるよう、自身を配列構造に変換する関数を持たせる。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Interface\Foo\Responses;
+<span class="k">namespace</span> <span class="nx">App\Interface\Foo\Responses</span><span class="p">;</span>
 
-class FooIndexResponse
-{
-    /**
-     * @var array
-     */
-    private array $foos;
+<span class="k">class</span> <span class="nc">FooIndexResponse</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var array</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="k">array</span> <span class="nv">$foos</span><span class="p">;</span>
 
-    /**
-     * @param array $foos
-     */
-    public function __construct(array $foos)
-    {
-        $this-&gt;foos = $foos;
-    }
+    <span class="sd">/**</span>
+<span class="sd">     * @param array $foos</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$foos</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">foos</span> <span class="o">=</span> <span class="nv">$foos</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    /**
-     * @return array
-     */
-    public function toArray(): array
-    {
-        return [
-            "foos" =&gt; $this-&gt;foos
-        ];
-    }
-}
+    <span class="sd">/**</span>
+<span class="sd">     * @return array</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">toArray</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s2">"foos"</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">foos</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>ユースケース層の create 関数に対応するレスポンスモデル。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Interface\Foo\Responses;
+<span class="k">namespace</span> <span class="nx">App\Interface\Foo\Responses</span><span class="p">;</span>
 
-class FooCreateResponse
-{
-    /**
-     * @var int
-     */
-    private int $fooId;
+<span class="k">class</span> <span class="nc">FooCreateResponse</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var int</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">int</span> <span class="nv">$fooId</span><span class="p">;</span>
 
-    /**
-     * @var string
-     */
-    private string $fooName;
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$fooName</span><span class="p">;</span>
 
-    /**
-     * @param int    $fooId
-     * @param string $fooName
-     */
-    public function __construct(int $fooId, string $fooName)
-    {
-        $this-&gt;fooId = $fooId;
-        $this-&gt;fooName = $fooName;
-    }
+    <span class="sd">/**</span>
+<span class="sd">     * @param int    $fooId</span>
+<span class="sd">     * @param string $fooName</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$fooId</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$fooName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooId</span> <span class="o">=</span> <span class="nv">$fooId</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooName</span> <span class="o">=</span> <span class="nv">$fooName</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    /**
-     * @return array
-     */
-    public function toArray(): array
-    {
-        return [
-            "id" =&gt; $this-&gt;fooId,
-            "name" =&gt; $this-&gt;fooName
-        ];
-    }
-}
+    <span class="sd">/**</span>
+<span class="sd">     * @return array</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">toArray</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooId</span><span class="p">,</span>
+            <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooName</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="07">07. アプリケーションサービス<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
@@ -34636,47 +34636,47 @@ class FooCreateResponse
 <h3 id="_16">通知処理<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
 <p>エンティティへの通知処理をアプリケーションサービスとして切り分ける。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Usecase\Foo\Services\Notify;
+<span class="k">namespace</span> <span class="nx">App\Usecase\Foo\Services\Notify</span><span class="p">;</span>
 
-class NotifyFooService
-{
-    /**
-     * @var Message
-     */
-    private $message;
+<span class="k">class</span> <span class="nc">NotifyFooService</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var Message</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$message</span><span class="p">;</span>
 
-    /**
-     * @param Message $message
-     */
-    public function __construct(Message $message)
-    {
-        $this-&gt;message = $message;
-    }
+    <span class="sd">/**</span>
+<span class="sd">     * @param Message $message</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">Message</span> <span class="nv">$message</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="nv">$message</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    public function notify()
-    {
-        // SlackのAPIにメッセージを送信する処理
-    }
-}
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">notify</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// SlackのAPIにメッセージを送信する処理</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>これを、ユースケース層でコールする。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Usecase\Foo\Services;
+<span class="k">namespace</span> <span class="nx">App\Usecase\Foo\Services</span><span class="p">;</span>
 
-use App\Service\SlackNotification;
+<span class="k">use</span> <span class="nx">App\Service\SlackNotification</span><span class="p">;</span>
 
-class FooInteractor
-{
-    public function foo()
-    {
-        $message = new Message(/* メッセージに関するデータを渡す */);
-        $notifyFooService = new NotifyFooService($message);
-        $notifyFooService-&gt;notify();
-    }
-}
+<span class="k">class</span> <span class="nc">FooInteractor</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$message</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Message</span><span class="p">(</span><span class="cm">/* メッセージに関するデータを渡す */</span><span class="p">);</span>
+        <span class="nv">$notifyFooService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NotifyFooService</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
+        <span class="nv">$notifyFooService</span><span class="o">-&gt;</span><span class="na">notify</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 

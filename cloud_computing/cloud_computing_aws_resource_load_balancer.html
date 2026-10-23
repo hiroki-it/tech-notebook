@@ -34954,13 +34954,13 @@
 <p>これには、ALB に対するリクエストのプロトコルの種類が文字列で代入されている。</p>
 <p>ALB へのリクエストが HTTPS プロトコルだった場合は、ALB からアプリケーションへのリクエストも HTTPS プロトコルとみなす。これを実現するために、<code>index.php</code> へ処理を追加する (この処理を追加した場合は、Web サーバー側の対応は不要) 。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// index.php
-if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
-    &amp;&amp; $_SERVER["HTTP_X_FORWARDED_PROTO"] == "https") {
-    $_SERVER["HTTPS"] = "on";
-}
+<span class="c1">// index.php</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTP_X_FORWARDED_PROTO"</span><span class="p">])</span>
+    <span class="o">&amp;&amp;</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTP_X_FORWARDED_PROTO"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"https"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTPS"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"on"</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>

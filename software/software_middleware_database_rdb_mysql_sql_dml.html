@@ -35337,31 +35337,31 @@
 <h3 id="order-by"><code>ORDER BY</code> 関数<a class="headerlink" href="#order-by" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 使い方<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
-$joinedIdList = implode(",", $idList);
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="nv">$joinedIdList</span> <span class="o">=</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span> <span class="nv">$idList</span><span class="p">);</span>
 
-// 並び替え条件を設定
-$expression = call_user_func(function () use ($orders, $joinedIdList) {
-    if ($orders) {
-        foreach ($orders as $key =&gt; $order) {
-            switch ($key) {
-                case "id":
-                    return sprintf("ss.id %s", $order);
-            }
-        }
-    }
+<span class="c1">// 並び替え条件を設定</span>
+<span class="nv">$expression</span> <span class="o">=</span> <span class="nb">call_user_func</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$orders</span><span class="p">,</span> <span class="nv">$joinedIdList</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$orders</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$orders</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$order</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">switch</span> <span class="p">(</span><span class="nv">$key</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">case</span> <span class="s2">"id"</span><span class="o">:</span>
+                    <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s2">"ss.id %s"</span><span class="p">,</span> <span class="nv">$order</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 
-    // IN句順の場合
-    return sprintf("FIELD(ss.id, %s)", $joinedIdList);
-});
+    <span class="c1">// IN句順の場合</span>
+    <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s2">"FIELD(ss.id, %s)"</span><span class="p">,</span> <span class="nv">$joinedIdList</span><span class="p">);</span>
+<span class="p">});</span>
 
-$sql = &lt;&lt;&lt;SQL
-            SELECT
-                name
-            FROM
-                table
-            ORDER BY {$expression}
-        SQL;
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s">&lt;&lt;&lt;</span><span class="dl">SQL</span>
+<span class="s">            SELECT</span>
+<span class="s">                name</span>
+<span class="s">            FROM</span>
+<span class="s">                table</span>
+<span class="s">            ORDER BY {$expression}</span>
+<span class="s">        </span><span class="dl">SQL</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="inany"><code>IN</code>、<code>ANY</code> の違い<a class="headerlink" href="#inany" title="Permanent link">&para;</a></h3>

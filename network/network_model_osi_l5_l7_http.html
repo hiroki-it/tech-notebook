@@ -36123,35 +36123,35 @@
 <p><br></p>
 <h3 id="_2">送信例<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="php">▼ PHP の場合<a class="headerlink" href="#php" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-define("URL", "https://example.com");
+<span class="nb">define</span><span class="p">(</span><span class="s2">"URL"</span><span class="p">,</span> <span class="s2">"https://example.com"</span><span class="p">);</span>
 
-// curlセッションを初期化する
-$curl = curl_init();
+<span class="c1">// curlセッションを初期化する</span>
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
-// オプションの設定
-curl_setopt_array(
-    $curl,
-    [
-        // URL
-        CURLOPT_URL            =&gt; URL,
-        // HTTPメソッド
-        CURLOPT_CUSTOMREQUEST  =&gt; "GET",
-        // サーバー証明書の検証
-        CURLOPT_SSL_VERIFYPEER =&gt; false,
-        // string型で受信
-        CURLOPT_RETURNTRANSFER =&gt; true
-    ]
-);
+<span class="c1">// オプションの設定</span>
+<span class="nb">curl_setopt_array</span><span class="p">(</span>
+    <span class="nv">$curl</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="c1">// URL</span>
+        <span class="nx">CURLOPT_URL</span>            <span class="o">=&gt;</span> <span class="nx">URL</span><span class="p">,</span>
+        <span class="c1">// HTTPメソッド</span>
+        <span class="nx">CURLOPT_CUSTOMREQUEST</span>  <span class="o">=&gt;</span> <span class="s2">"GET"</span><span class="p">,</span>
+        <span class="c1">// サーバー証明書の検証</span>
+        <span class="nx">CURLOPT_SSL_VERIFYPEER</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+        <span class="c1">// string型で受信</span>
+        <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="k">true</span>
+    <span class="p">]</span>
+<span class="p">);</span>
 
-// リクエストの実行
-$messageBody = (curl_exec($curl))
-    ? curl_exec($curl)
-    : [];
+<span class="c1">// リクエストの実行</span>
+<span class="nv">$messageBody</span> <span class="o">=</span> <span class="p">(</span><span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">))</span>
+    <span class="o">?</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">)</span>
+    <span class="o">:</span> <span class="p">[];</span>
 
-// curlセッションを閉じる
-curl_close($curl);
+<span class="c1">// curlセッションを閉じる</span>
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03">03. レスポンス<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
@@ -36517,9 +36517,9 @@ curl_close($curl);
 </tbody>
 </table>
 <p>クライアントから受信したリクエストの <code>Cookie</code> ヘッダーの内容は、グローバル変数に格納されている。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$_COOKIE = ["Cookie名" =&gt; "値"]
+<span class="nv">$_COOKIE</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Cookie名"</span> <span class="o">=&gt;</span> <span class="s2">"値"</span><span class="p">]</span>
 </code></pre></div>
 <h4 id="_13">▼ 擬似ステートフル化の仕組み<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p><img alt="cookie" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cookie.png" /></p>
@@ -36533,17 +36533,17 @@ $_COOKIE = ["Cookie名" =&gt; "値"]
 <p>サーバーは、レスポンスヘッダーの <code>Set-Cookie</code> ヘッダーに Cookie 情報を埋め込んで送信する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-setcookie(
-    &lt;Cookie名&gt;,
-    &lt;Cookie値&gt;,
-    &lt;有効日時&gt;,
-    &lt;パス&gt;,
-    &lt;ドメイン&gt;,
-    &lt;HTTPSリクエストのみ&gt;,
-    &lt;JavaScript無効&gt;
-    )
+<span class="nb">setcookie</span><span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">Cookie名</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="o">&lt;</span><span class="nx">Cookie値</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="o">&lt;</span><span class="nx">有効日時</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="o">&lt;</span><span class="nx">パス</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="o">&lt;</span><span class="nx">ドメイン</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="o">&lt;</span><span class="nx">HTTPSリクエストのみ</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="o">&lt;</span><span class="nx">JavaScript無効</span><span class="o">&gt;</span>
+    <span class="p">)</span>
 </code></pre></div>
 <dl>
 <dt><code>(3)</code></dt>
@@ -36589,13 +36589,13 @@ setcookie(
 <p>セッションデータの名前は、<code>sess_*****</code> ファイルとなっており、セッションデータ名を元にしてセッション ID に紐付くデータを参照する。</p>
 <p>もしクライアントにすでにセッション ID が発行されている場合、セッションデータを参照するようになる。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// セッションの開始。セッションIDを発行する。
-session_start();
+<span class="c1">// セッションの開始。セッションIDを発行する。</span>
+<span class="nb">session_start</span><span class="p">();</span>
 
-// セッションデータを作成
-$_SESSION["セッション名"] = "値";
+<span class="c1">// セッションデータを作成</span>
+<span class="nv">$_SESSION</span><span class="p">[</span><span class="s2">"セッション名"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"値"</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_15">セッションデータの保管場所<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>

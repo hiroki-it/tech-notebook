@@ -34403,19 +34403,19 @@
 <h3 id="_13">バックエンドの場合<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="_14">▼ 定義方法<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo
-{
-    private $fruit;
-    private $account;
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$fruit</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$account</span><span class="p">;</span>
 
-    public function __construct($fruit, $account)
-    {
-        $this-&gt;fruit = $fruit;
-        $this-&gt;account = $account;
-    }
-}
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$fruit</span><span class="p">,</span> <span class="nv">$account</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fruit</span> <span class="o">=</span> <span class="nv">$fruit</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">account</span> <span class="o">=</span> <span class="nv">$account</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="05">05. オブジェクトデータの変換<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
@@ -34498,59 +34498,59 @@ class Foo
 <p><code>json_decode()</code> 関数を使用する。</p>
 <p>第二引数が <code>false</code> の場合、object 形式オブジェクトに変換する。</p>
 <p>リクエストで送信する JSON はエスケープする必要があることに注意する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// リクエストで取得したJSON
-$escapedJson = '{\"fruit\":[\"banana\",\"apple\"],\"account\":200}';
+<span class="c1">// リクエストで取得したJSON</span>
+<span class="nv">$escapedJson</span> <span class="o">=</span> <span class="s1">'{\"fruit\":[\"banana\",\"apple\"],\"account\":200}'</span><span class="p">;</span>
 
-// object形式オブジェクトに変換
-$object = json_decode($escapedJson, false);
+<span class="c1">// object形式オブジェクトに変換</span>
+<span class="nv">$object</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$escapedJson</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
 
-var_dump($object);
-//  object(stdClass)#1 (2) {
-//    ["fruit"]=&gt;
-//    array(2) {
-//      [0]=&gt;
-//      string(9) "banana"
-//      [1]=&gt;
-//      string(9) "apple"
-//    }
-//    ["account"]=&gt;
-//    int(200)
-//  }
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$object</span><span class="p">);</span>
+<span class="c1">//  object(stdClass)#1 (2) {</span>
+<span class="c1">//    ["fruit"]=&gt;</span>
+<span class="c1">//    array(2) {</span>
+<span class="c1">//      [0]=&gt;</span>
+<span class="c1">//      string(9) "banana"</span>
+<span class="c1">//      [1]=&gt;</span>
+<span class="c1">//      string(9) "apple"</span>
+<span class="c1">//    }</span>
+<span class="c1">//    ["account"]=&gt;</span>
+<span class="c1">//    int(200)</span>
+<span class="c1">//  }</span>
 </code></pre></div>
 <p>第二引数が <code>true</code> の場合、連想配列形式に変換する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// リクエストで取得したJSON
-$escapedJson = '{\"fruit\":[\"banana\",\"apple\"],\"account\":200}';
+<span class="c1">// リクエストで取得したJSON</span>
+<span class="nv">$escapedJson</span> <span class="o">=</span> <span class="s1">'{\"fruit\":[\"banana\",\"apple\"],\"account\":200}'</span><span class="p">;</span>
 
-// 連想配列形式オブジェクトに変換
-$array = json_decode($escapedJson, true);
+<span class="c1">// 連想配列形式オブジェクトに変換</span>
+<span class="nv">$array</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$escapedJson</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
 
-var_dump($array);
-//  array(2) {
-//    ["fruit"]=&gt;
-//    array(2) {
-//      [0]=&gt;
-//      string(9) "banana"
-//      [1]=&gt;
-//      string(9) "apple"
-//    }
-//    ["account"]=&gt;
-//    int(200)
-//  }
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
+<span class="c1">//  array(2) {</span>
+<span class="c1">//    ["fruit"]=&gt;</span>
+<span class="c1">//    array(2) {</span>
+<span class="c1">//      [0]=&gt;</span>
+<span class="c1">//      string(9) "banana"</span>
+<span class="c1">//      [1]=&gt;</span>
+<span class="c1">//      string(9) "apple"</span>
+<span class="c1">//    }</span>
+<span class="c1">//    ["account"]=&gt;</span>
+<span class="c1">//    int(200)</span>
+<span class="c1">//  }</span>
 </code></pre></div>
 <h4 id="php-json">▼ シリアライズ：PHP 型から JSON<a class="headerlink" href="#php-json" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$object = '{"fruit":["banana","apple"],"account":200}';
+<span class="nv">$object</span> <span class="o">=</span> <span class="s1">'{"fruit":["banana","apple"],"account":200}'</span><span class="p">;</span>
 
-// JSONに変換
-$json = json_encode($object);
+<span class="c1">// JSONに変換</span>
+<span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$object</span><span class="p">);</span>
 
-var_dump($json);
-// ""{\"fruit\":[\"banana\",\"apple\"],\"account\":200}""
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$json</span><span class="p">);</span>
+<span class="c1">// ""{\"fruit\":[\"banana\",\"apple\"],\"account\":200}""</span>
 </code></pre></div>
 <p><br></p>
 

@@ -34937,22 +34937,22 @@
 <p>PHP の <code>list()</code> 関数は、List 型とは意味合いが異なる。</p>
 <p>配列の個々の要素を変数に格納したい場合、List 型を使用しなければ、冗長ではあるが、以下のように実装する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$array = array("あ", "い", "う");
-$a = $array[0];
-$i = $array[1];
-$u = $array[2];
+<span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"あ"</span><span class="p">,</span> <span class="s2">"い"</span><span class="p">,</span> <span class="s2">"う"</span><span class="p">);</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="nv">$i</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="nv">$u</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
 
-echo $a.$i.$u; // あいう
+<span class="k">echo</span> <span class="nv">$a</span><span class="o">.</span><span class="nv">$i</span><span class="o">.</span><span class="nv">$u</span><span class="p">;</span> <span class="c1">// あいう</span>
 </code></pre></div>
 <p>しかし、以下のように、<code>list()</code> 関数を使用することによって、複数の変数への格納を１行で実装できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-list($a, $i, $u) = array("あ", "い", "う");
+<span class="k">list</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$i</span><span class="p">,</span> <span class="nv">$u</span><span class="p">)</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"あ"</span><span class="p">,</span> <span class="s2">"い"</span><span class="p">,</span> <span class="s2">"う"</span><span class="p">);</span>
 
-echo $a.$i.$u; // あいう
+<span class="k">echo</span> <span class="nv">$a</span><span class="o">.</span><span class="nv">$i</span><span class="o">.</span><span class="nv">$u</span><span class="p">;</span> <span class="c1">// あいう</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_6">キュー型<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
@@ -34963,36 +34963,36 @@ echo $a.$i.$u; // あいう
 <p><img alt="Queue3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Queue3.gif" /></p>
 <p>PHP では、<code>array_push()</code> 関数と <code>array_shift()</code> 関数を組み合わせることにより、実装できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
-$array = array("Blue", "Green");
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">"Blue"</span><span class="p">,</span> <span class="s2">"Green"</span><span class="p">);</span>
 
-// 引数を、配列の最後に、要素として追加する。
-array_push($array, "Red");
-print_r($array);
+<span class="c1">// 引数を、配列の最後に、要素として追加する。</span>
+<span class="nb">array_push</span><span class="p">(</span><span class="nv">$array</span><span class="p">,</span> <span class="s2">"Red"</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
 
-// 出力結果
+<span class="c1">// 出力結果</span>
 
-//  Array
-//  (
-//      [0] =&gt; Blue
-//      [1] =&gt; Green
-//      [2] =&gt; Red
-//  )
+<span class="c1">//  Array</span>
+<span class="c1">//  (</span>
+<span class="c1">//      [0] =&gt; Blue</span>
+<span class="c1">//      [1] =&gt; Green</span>
+<span class="c1">//      [2] =&gt; Red</span>
+<span class="c1">//  )</span>
 
-// 配列の最初の要素を取り出す。
-$theFirst= array_shift($array);
-print_r($array);
+<span class="c1">// 配列の最初の要素を取り出す。</span>
+<span class="nv">$theFirst</span><span class="o">=</span> <span class="nb">array_shift</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
 
-// 出力結果
+<span class="c1">// 出力結果</span>
 
-//  Array
-//  (
-//    [0] =&gt; Green
-//    [1] =&gt; Red
-//  )
+<span class="c1">//  Array</span>
+<span class="c1">//  (</span>
+<span class="c1">//    [0] =&gt; Green</span>
+<span class="c1">//    [1] =&gt; Red</span>
+<span class="c1">//  )</span>
 
-// 取り出された値の確認
-echo $theFirst; // Blue
+<span class="c1">// 取り出された値の確認</span>
+<span class="k">echo</span> <span class="nv">$theFirst</span><span class="p">;</span> <span class="c1">// Blue</span>
 </code></pre></div>
 <h4 id="_7">▼ メッセージキュー<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>送信元の好きなタイミングでファイル (メッセージ) をメッセージキューに追加できる。</p>
@@ -35130,37 +35130,37 @@ echo $theFirst; // Blue
 <h4 id="callable">▼ callable<a class="headerlink" href="#callable" title="Permanent link">&para;</a></h4>
 <h4 id="iterable">▼ iterable<a class="headerlink" href="#iterable" title="Permanent link">&para;</a></h4>
 <h4 id="object">▼ object<a class="headerlink" href="#object" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class A
-{
-    private $name = "Hiroki";
+<span class="k">class</span> <span class="nc">A</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">"Hiroki"</span><span class="p">;</span>
 
-    public function HelloWorld()
-    {
-        return sprintf(
-            "%s, %s",
-            $this-&gt;name,
-            "Hello World!"
-            );
-    }
-}
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">HelloWorld</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
+            <span class="s2">"%s, %s"</span><span class="p">,</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">,</span>
+            <span class="s2">"Hello World!"</span>
+            <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-$a = new A;
+<span class="nv">$a</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A</span><span class="p">;</span>
 
-var_dump($a);
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$a</span><span class="p">);</span>
 
-// object(A)#1 (1) {
-//  ["name":"A":private]=&gt;
-//  string(6) "Hiroki"
-//}
+<span class="c1">// object(A)#1 (1) {</span>
+<span class="c1">//  ["name":"A":private]=&gt;</span>
+<span class="c1">//  string(6) "Hiroki"</span>
+<span class="c1">//}</span>
 
-print_r($a);
+<span class="nb">print_r</span><span class="p">(</span><span class="nv">$a</span><span class="p">);</span>
 
-// A Object
-// (
-//     [name:A:private] =&gt; Hiroki
-// )
+<span class="c1">// A Object</span>
+<span class="c1">// (</span>
+<span class="c1">//     [name:A:private] =&gt; Hiroki</span>
+<span class="c1">// )</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_22">その他のデータ型<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
@@ -35208,54 +35208,54 @@ print_r($a);
 <p><br></p>
 <h3 id="_24">キャスト演算子<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <h4 id="string_1">▼ <code>(string)</code><a class="headerlink" href="#string_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$var = 10; // $varはinteger型。
+<span class="nv">$var</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// $varはinteger型。</span>
 
-// キャスト演算子でデータ型を変換
-$var = (string) $var; // $varはstring型
+<span class="c1">// キャスト演算子でデータ型を変換</span>
+<span class="nv">$var</span> <span class="o">=</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$var</span><span class="p">;</span> <span class="c1">// $varはstring型</span>
 </code></pre></div>
 <h4 id="int_1">▼ <code>(int)</code><a class="headerlink" href="#int_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$var = 1;
+<span class="nv">$var</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 
-// integer型
-$var = (int) $var;
+<span class="c1">// integer型</span>
+<span class="nv">$var</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$var</span><span class="p">;</span>
 
-// 1
+<span class="c1">// 1</span>
 </code></pre></div>
 <h4 id="bool_1">▼ <code>(bool)</code><a class="headerlink" href="#bool_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$var = 1;
+<span class="nv">$var</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 
-// boolean型
-$var = (bool) $var;
+<span class="c1">// boolean型</span>
+<span class="nv">$var</span> <span class="o">=</span> <span class="p">(</span><span class="nx">bool</span><span class="p">)</span> <span class="nv">$var</span><span class="p">;</span>
 
-// true
+<span class="c1">// true</span>
 </code></pre></div>
 <h4 id="float_1">▼ <code>(float)</code><a class="headerlink" href="#float_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$var = "1.0";
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"1.0"</span><span class="p">;</span>
 
-// Float型
-$var = (float) $var;
+<span class="c1">// Float型</span>
+<span class="nv">$var</span> <span class="o">=</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$var</span><span class="p">;</span>
 
-// 1.0
+<span class="c1">// 1.0</span>
 </code></pre></div>
 <h4 id="array_1">▼ <code>(array)</code><a class="headerlink" href="#array_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// 配列型
-$var = (array) $var;
+<span class="c1">// 配列型</span>
+<span class="nv">$var</span> <span class="o">=</span> <span class="p">(</span><span class="k">array</span><span class="p">)</span> <span class="nv">$var</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="object_1">▼ <code>(object)</code><a class="headerlink" href="#object_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// Object型
-$var = (object) $var;
+<span class="c1">// Object型</span>
+<span class="nv">$var</span> <span class="o">=</span> <span class="p">(</span><span class="nx">object</span><span class="p">)</span> <span class="nv">$var</span><span class="p">;</span>
 </code></pre></div>
 
   

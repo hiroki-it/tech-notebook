@@ -33975,26 +33975,26 @@ $<span class="w"> </span>apt<span class="w"> </span>-y<span class="w"> </span>in
 <p>副作用はあってもなくともよい（同じ入力のときに、出力は同じでも異なってもよい）。</p>
 <p>状態・振る舞いが結合している。</p>
 <p>ほかの型と共存できる。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class User {
-    // オブジェクトの状態を設定する
-    public string $name;
-    public int $age;
+<span class="k">class</span> <span class="nc">User</span> <span class="p">{</span>
+    <span class="c1">// オブジェクトの状態を設定する</span>
+    <span class="k">public</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">int</span> <span class="nv">$age</span><span class="p">;</span>
 
-    public function __construct(string $name, int $age) {
-        $this-&gt;name = $name;
-        $this-&gt;age = $age;
-    }
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$age</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">age</span> <span class="o">=</span> <span class="nv">$age</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    // 振る舞い
-    public function isAdult(): bool {
-        return $this-&gt;age &gt;= 18;
-    }
-}
+    <span class="c1">// 振る舞い</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">isAdult</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-$user = new User("Alice", 20);
-echo $user-&gt;isAdult() ? "true" : "false"; // true
+<span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="s2">"Alice"</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">isAdult</span><span class="p">()</span> <span class="o">?</span> <span class="s2">"true"</span> <span class="o">:</span> <span class="s2">"false"</span><span class="p">;</span> <span class="c1">// true</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_4">関数型<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
@@ -34002,20 +34002,20 @@ echo $user-&gt;isAdult() ? "true" : "false"; // true
 <p>副作用をなくす必要がある（同じ入力であれば、出力も同じである）。</p>
 <p>状態・振る舞いが分離している。</p>
 <p>ほかの型と共存できる。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// オブジェクトの状態を設定する
-$user = [
-    "name" =&gt; "Alice",
-    "age" =&gt; 20,
-];
+<span class="c1">// オブジェクトの状態を設定する</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"Alice"</span><span class="p">,</span>
+    <span class="s2">"age"</span> <span class="o">=&gt;</span> <span class="mi">20</span><span class="p">,</span>
+<span class="p">];</span>
 
-// 振る舞い
-function isAdult(array $user): bool {
-    return $user["age"] &gt;= 18;
-}
+<span class="c1">// 振る舞い</span>
+<span class="k">function</span> <span class="nf">isAdult</span><span class="p">(</span><span class="k">array</span> <span class="nv">$user</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$user</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">;</span>
+<span class="p">}</span>
 
-echo isAdult($user) ? "true" : "false"; // true
+<span class="k">echo</span> <span class="nx">isAdult</span><span class="p">(</span><span class="nv">$user</span><span class="p">)</span> <span class="o">?</span> <span class="s2">"true"</span> <span class="o">:</span> <span class="s2">"false"</span><span class="p">;</span> <span class="c1">// true</span>
 </code></pre></div>
 <p><br></p>
 

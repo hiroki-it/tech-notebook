@@ -35636,93 +35636,93 @@
 <h4 id="_2">▼ 例<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p><img alt="aggregation_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aggregation_example.png" /></p>
 <p>User は UserName を状態として保持する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Domain\User\Entity;
+<span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
 
-use App\Domain\User\ValueObject\UserName;
+<span class="k">use</span> <span class="nx">App\Domain\User\ValueObject\UserName</span><span class="p">;</span>
 
-final class User
-{
-    /**
-     * @var UserName
-     */
-    private UserName $name; // 状態として保持
+<span class="k">final</span> <span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var UserName</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">UserName</span> <span class="nv">$name</span><span class="p">;</span> <span class="c1">// 状態として保持</span>
 
-    /**
-     * @param UserName $name
-     */
-    public function __construct(UserName $name)
-    {
-        $this-&gt;name = $name;
-    }
-}
+    <span class="sd">/**</span>
+<span class="sd">     * @param UserName $name</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">UserName</span> <span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>また、UserName クラスのインスタンスは、User クラスによって作成されずに外側から渡される。</p>
 <p>そのため、User クラスと UserName クラスは『Aggregation』の関係にある。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$name = new UserName();
-$user = new User($name); // 集約の関係
+<span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">();</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span> <span class="c1">// 集約の関係</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-use App\Domain\Car\Entity\Tire1;
-use App\Domain\Car\Entity\Tire2;
-use App\Domain\Car\Entity\Tire3;
-use App\Domain\Car\Entity\Tire4;
+<span class="k">use</span> <span class="nx">App\Domain\Car\Entity\Tire1</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\Car\Entity\Tire2</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\Car\Entity\Tire3</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\Car\Entity\Tire4</span><span class="p">;</span>
 
-class Car
-{
-    /**
-     * @var Tire1
-     */
-    private $tire1;
+<span class="k">class</span> <span class="nc">Car</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var Tire1</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$tire1</span><span class="p">;</span>
 
-    /**
-     * @var Tire2
-     */
-    private $tire2;
+    <span class="sd">/**</span>
+<span class="sd">     * @var Tire2</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$tire2</span><span class="p">;</span>
 
-    /**
-     * @var Tire3
-     */
-    private $tire3;
+    <span class="sd">/**</span>
+<span class="sd">     * @var Tire3</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$tire3</span><span class="p">;</span>
 
-    /**
-     * @var Tire4
-     */
-    private $tire4;
+    <span class="sd">/**</span>
+<span class="sd">     * @var Tire4</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$tire4</span><span class="p">;</span>
 
-    /**
-     * @param Tire1 $t1
-     * @param Tire2 $t2
-     * @param Tire3 $t3
-     * @param Tire4 $t4
-     */
-    public function __construct(Tire1 $t1, Tire2 $t2, Tire3 $t3, Tire4 $t4)
-    {
-        // Tireクラスのインスタンスを状態として保持
-        $this-&gt;tire1 = $t1;
-        $this-&gt;tire2 = $t2;
-        $this-&gt;tire3 = $t3;
-        $this-&gt;tire4 = $t4;
-    }
-}
+    <span class="sd">/**</span>
+<span class="sd">     * @param Tire1 $t1</span>
+<span class="sd">     * @param Tire2 $t2</span>
+<span class="sd">     * @param Tire3 $t3</span>
+<span class="sd">     * @param Tire4 $t4</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">Tire1</span> <span class="nv">$t1</span><span class="p">,</span> <span class="nx">Tire2</span> <span class="nv">$t2</span><span class="p">,</span> <span class="nx">Tire3</span> <span class="nv">$t3</span><span class="p">,</span> <span class="nx">Tire4</span> <span class="nv">$t4</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Tireクラスのインスタンスを状態として保持</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tire1</span> <span class="o">=</span> <span class="nv">$t1</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tire2</span> <span class="o">=</span> <span class="nv">$t2</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tire3</span> <span class="o">=</span> <span class="nv">$t3</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tire4</span> <span class="o">=</span> <span class="nv">$t4</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>また、Tire クラスのインスタンスは、Car クラスによって作成されずに外側から渡される。</p>
 <p>そのため、Car クラスと Tire クラスは『Aggregation』の関係にある。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// Tireクラスをインスタンス化
-$tire1 = new Tire1();
-$tire2 = new Tire2();
-$tire3 = new Tire3();
-$tire4 = new Tire4();
+<span class="c1">// Tireクラスをインスタンス化</span>
+<span class="nv">$tire1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tire1</span><span class="p">();</span>
+<span class="nv">$tire2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tire2</span><span class="p">();</span>
+<span class="nv">$tire3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tire3</span><span class="p">();</span>
+<span class="nv">$tire4</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tire4</span><span class="p">();</span>
 
-// Tireクラスのインスタンスの作成、Carによって制限されない。
-$car = new Car($tire1, $tire2, $tire3, $tire4);
+<span class="c1">// Tireクラスのインスタンスの作成、Carによって制限されない。</span>
+<span class="nv">$car</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Car</span><span class="p">(</span><span class="nv">$tire1</span><span class="p">,</span> <span class="nv">$tire2</span><span class="p">,</span> <span class="nv">$tire3</span><span class="p">,</span> <span class="nv">$tire4</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="composition">Composition (合成)<a class="headerlink" href="#composition" title="Permanent link">&para;</a></h3>
@@ -35732,60 +35732,60 @@ $car = new Car($tire1, $tire2, $tire3, $tire4);
 <p><strong>＊実装例＊</strong></p>
 <p><img alt="composition_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/composition_example.png" /></p>
 <p>User クラスは UserName クラスを状態として保持する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Domain\User\Entity;
+<span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
 
-use App\Domain\User\ValueObject\UserName;
+<span class="k">use</span> <span class="nx">App\Domain\User\ValueObject\UserName</span><span class="p">;</span>
 
-final class User
-{
-    /**
-     * @var UserName
-     */
-    private UserName $name; // 状態として保持
+<span class="k">final</span> <span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var UserName</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">UserName</span> <span class="nv">$name</span><span class="p">;</span> <span class="c1">// 状態として保持</span>
 
-    /**
-     * @return string
-     */
-    public function method(): string
-    {
-        $name = new UserName(); // 合成の関係
+    <span class="sd">/**</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">method</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">();</span> <span class="c1">// 合成の関係</span>
 
-        return "Hello! " . $name-&gt;getName();
-    }
-}
+        <span class="k">return</span> <span class="s2">"Hello! "</span> <span class="o">.</span> <span class="nv">$name</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>また、UserName インスタンスは、User クラスによって作成される。</p>
 <p>そのため、User クラスと UserName クラスは『Composition』の関係にある。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$user = new User();
+<span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <p>Car クラスは Lock クラスを状態として保持する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Car
-{
-    /**
-     * @var Lock
-     */
-    private $lock;
+<span class="k">class</span> <span class="nc">Car</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var Lock</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$lock</span><span class="p">;</span>
 
-    public function __construct()
-    {
-        // Lockクラスのインスタンスを状態として保持。
-        $this-&gt;lock = new Lock();
-    }
-}
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Lockクラスのインスタンスを状態として保持。</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Lock</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>また、Lock クラスのインスタンスは、Car クラスによって作成される。</p>
 <p>そのため、Car クラスと Lock クラスは『Composition』の関係にある。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// Carクラスのインスタンスの中で、Lockクラスがインスタンス化される。
-$car = new Car();
+<span class="c1">// Carクラスのインスタンスの中で、Lockクラスがインスタンス化される。</span>
+<span class="nv">$car</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Car</span><span class="p">();</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02-is-a-kind-of">02. is-a-kind-of (グループとメンバーの関係性)<a class="headerlink" href="#02-is-a-kind-of" title="Permanent link">&para;</a></h2>
@@ -35801,58 +35801,58 @@ $car = new Car();
 <h4 id="override">▼ 汎化における Override<a class="headerlink" href="#override" title="Permanent link">&para;</a></h4>
 <p>汎化のとき、子クラスで関数の処理内容を再び実装すると、処理内容は上書きされる。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// 親クラス
-class Goods
-{
-    // 商品名データ
-    private $name = "";
+<span class="c1">// 親クラス</span>
+<span class="k">class</span> <span class="nc">Goods</span>
+<span class="p">{</span>
+    <span class="c1">// 商品名データ</span>
+    <span class="k">private</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
 
-    // 商品価格データ
-    private $price = 0;
+    <span class="c1">// 商品価格データ</span>
+    <span class="k">private</span> <span class="nv">$price</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
-    // コンストラクタ。商品名と商品価格を設定する
-    public function __construct(string $name, int $price)
-    {
-        $this-&gt;name = $name;
-        $this-&gt;price = $price;
-    }
+    <span class="c1">// コンストラクタ。商品名と商品価格を設定する</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$price</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">price</span> <span class="o">=</span> <span class="nv">$price</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    // ★★★★★★注目★★★★★★
-    // 商品名と価格を表示する関数
-    public function printPrice(): void
-    {
-        print($this-&gt;name."の価格: ￥".$this-&gt;price."&lt;br&gt;");
-    }
+    <span class="c1">// ★★★★★★注目★★★★★★</span>
+    <span class="c1">// 商品名と価格を表示する関数</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">printPrice</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="k">print</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="o">.</span><span class="s2">"の価格: ￥"</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">price</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">);</span>
+    <span class="p">}</span>
 
-    // 商品名のゲッター
-    public function getName(): string
-    {
-        return $this-&gt;name;
-    }
+    <span class="c1">// 商品名のゲッター</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    // 商品価格のゲッター
-    public function getPrice(): int
-    {
-        return $this-&gt;price;
-    }
-}
+    <span class="c1">// 商品価格のゲッター</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getPrice</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">price</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// 子クラス
-class GoodsWithTax extends Goods
-{
-    // ★★★★★★注目★★★★★★
-    // printPrice関数をOverride
-    public function printPrice()
-    {
-        // 商品価格の税込み価格を計算し、表示
-        $priceWithTax = round($this-&gt;getPrice() * 1.08);  // (1)
-        print($this-&gt;getName()."の税込み価格: ￥".$priceWithTax."&lt;br&gt;");  // (2)
-    }
-}
+<span class="c1">// 子クラス</span>
+<span class="k">class</span> <span class="nc">GoodsWithTax</span> <span class="k">extends</span> <span class="nx">Goods</span>
+<span class="p">{</span>
+    <span class="c1">// ★★★★★★注目★★★★★★</span>
+    <span class="c1">// printPrice関数をOverride</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">printPrice</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 商品価格の税込み価格を計算し、表示</span>
+        <span class="nv">$priceWithTax</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getPrice</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.08</span><span class="p">);</span>  <span class="c1">// (1)</span>
+        <span class="k">print</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span><span class="o">.</span><span class="s2">"の税込み価格: ￥"</span><span class="o">.</span><span class="nv">$priceWithTax</span><span class="o">.</span><span class="s2">"&lt;br&gt;"</span><span class="p">);</span>  <span class="c1">// (2)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <h4 id="_4">▼ 抽象クラス<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>ビジネスロジックとして使用する。</p>
@@ -35896,66 +35896,66 @@ class GoodsWithTax extends Goods
 <p>抽象オブジェクトと抽象関数を使用すると、<code>2</code> 個のメリットを生かしつつ、デメリットを解決可能。</p>
 <p><img alt="抽象クラスと抽象関数-2" src="https://user-images.githubusercontent.com/42175286/59590387-e8adcd80-9126-11e9-87b3-7659468af2f6.PNG" /></p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// 抽象クラス。型として提供したいものを定義する。
-abstract class ShainManagement
-{
-    // 定数の定義
-    const TIME_TO_ARRIVE = strtotime("10:00:00");
-    const TIME_TO_LEAVE = strtotime("19:00:00");
+<span class="c1">// 抽象クラス。型として提供したいものを定義する。</span>
+<span class="k">abstract</span> <span class="k">class</span> <span class="nc">ShainManagement</span>
+<span class="p">{</span>
+    <span class="c1">// 定数の定義</span>
+    <span class="k">const</span> <span class="no">TIME_TO_ARRIVE</span> <span class="o">=</span> <span class="nb">strtotime</span><span class="p">(</span><span class="s2">"10:00:00"</span><span class="p">);</span>
+    <span class="k">const</span> <span class="no">TIME_TO_LEAVE</span> <span class="o">=</span> <span class="nb">strtotime</span><span class="p">(</span><span class="s2">"19:00:00"</span><span class="p">);</span>
 
-    // 抽象関数。
-    // 処理内容を子クラスでOverrideしなければならない。
-    abstract function toWork();
+    <span class="c1">// 抽象関数。</span>
+    <span class="c1">// 処理内容を子クラスでOverrideしなければならない。</span>
+    <span class="k">abstract</span> <span class="k">function</span> <span class="nf">toWork</span><span class="p">();</span>
 
-    // 具象関数。出勤時刻を表示。もし遅刻していたら、代わりに差分を表示。
-    // 子クラスへそのまま継承される。子クラスでオーバーライドしなくても良い。
-    public function toArrive()
-    {
-        $nowTime = strtotime( date("H:i:s") );
+    <span class="c1">// 具象関数。出勤時刻を表示。もし遅刻していたら、代わりに差分を表示。</span>
+    <span class="c1">// 子クラスへそのまま継承される。子クラスでオーバーライドしなくても良い。</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">toArrive</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$nowTime</span> <span class="o">=</span> <span class="nb">strtotime</span><span class="p">(</span> <span class="nb">date</span><span class="p">(</span><span class="s2">"H:i:s"</span><span class="p">)</span> <span class="p">);</span>
 
-        // 出社時間より遅かった場合、遅刻と表示する。
-        if($nowTime &gt; self::TIME_TO_ARRIVE){
+        <span class="c1">// 出社時間より遅かった場合、遅刻と表示する。</span>
+        <span class="k">if</span><span class="p">(</span><span class="nv">$nowTime</span> <span class="o">&gt;</span> <span class="nx">self</span><span class="o">::</span><span class="na">TIME_TO_ARRIVE</span><span class="p">){</span>
 
-            return sprintf(
-                "%s の遅刻です。",
-                date("H時i分s秒", $nowTime - self::TIME_TO_ARRIVE)
-            );
-        }
+            <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
+                <span class="s2">"%s の遅刻です。"</span><span class="p">,</span>
+                <span class="nb">date</span><span class="p">(</span><span class="s2">"H時i分s秒"</span><span class="p">,</span> <span class="nv">$nowTime</span> <span class="o">-</span> <span class="nx">self</span><span class="o">::</span><span class="na">TIME_TO_ARRIVE</span><span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
 
-        return sprintf(
-            "%s に出勤しました。",
-            date("H時i分s秒", $nowTime)
-        );
+        <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
+            <span class="s2">"%s に出勤しました。"</span><span class="p">,</span>
+            <span class="nb">date</span><span class="p">(</span><span class="s2">"H時i分s秒"</span><span class="p">,</span> <span class="nv">$nowTime</span><span class="p">)</span>
+        <span class="p">);</span>
 
-    }
+    <span class="p">}</span>
 
-    // 具象関数。退社時間と残業時間を表示。
-    // 子クラスへそのまま継承される。子クラスでオーバーライドしなくても良い。
-    public function toLeave()
-    {
-        $nowTime = strtotime( date("H:i:s") );
+    <span class="c1">// 具象関数。退社時間と残業時間を表示。</span>
+    <span class="c1">// 子クラスへそのまま継承される。子クラスでオーバーライドしなくても良い。</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">toLeave</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$nowTime</span> <span class="o">=</span> <span class="nb">strtotime</span><span class="p">(</span> <span class="nb">date</span><span class="p">(</span><span class="s2">"H:i:s"</span><span class="p">)</span> <span class="p">);</span>
 
-        return sprintf(
-            "%sに退社しました。%s の残業です。",
-            date("H時i分s秒", $nowTime),
-            date("H時i分s秒", $nowTime - self::TIME_TO_LEAVE)
-        );
-    }
-}
+        <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
+            <span class="s2">"%sに退社しました。%s の残業です。"</span><span class="p">,</span>
+            <span class="nb">date</span><span class="p">(</span><span class="s2">"H時i分s秒"</span><span class="p">,</span> <span class="nv">$nowTime</span><span class="p">),</span>
+            <span class="nb">date</span><span class="p">(</span><span class="s2">"H時i分s秒"</span><span class="p">,</span> <span class="nv">$nowTime</span> <span class="o">-</span> <span class="nx">self</span><span class="o">::</span><span class="na">TIME_TO_LEAVE</span><span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// 子クラス
-class EnginnerShainManagement extends ShainManagement
-{
-    // 鋳型となった抽象クラスの抽象関数はOverrideしなければならない。
-    public function toWork()
-    {
-        // 処理内容
-    }
-}
+<span class="c1">// 子クラス</span>
+<span class="k">class</span> <span class="nc">EnginnerShainManagement</span> <span class="k">extends</span> <span class="nx">ShainManagement</span>
+<span class="p">{</span>
+    <span class="c1">// 鋳型となった抽象クラスの抽象関数はOverrideしなければならない。</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">toWork</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 処理内容</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p>プリウスと各世代プリウスが、抽象クラスと子クラスの関係にある。</p>
@@ -35976,36 +35976,36 @@ class EnginnerShainManagement extends ShainManagement
 <p>多重継承できる。</p>
 <p><img alt="子インターフェースの多重継承_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/子インターフェースの多重継承_2.png" /></p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-interface Animal
-{
-     // インターフェイスでは、実装を伴う関数や状態の宣言はできない
-     public function eat();
-     public function sleep();
-     public function mating();
-}
+<span class="k">interface</span> <span class="nx">Animal</span>
+<span class="p">{</span>
+     <span class="c1">// インターフェイスでは、実装を伴う関数や状態の宣言はできない</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">eat</span><span class="p">();</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">sleep</span><span class="p">();</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">mating</span><span class="p">();</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Mammal implements Animal
-{
-    // 実装クラスが正常に動作するために最低限必要な関数の実装を強制する。
-     public function eat()
-     {
-          // 食べる
-     }
+<span class="k">class</span> <span class="nc">Mammal</span> <span class="k">implements</span> <span class="nx">Animal</span>
+<span class="p">{</span>
+    <span class="c1">// 実装クラスが正常に動作するために最低限必要な関数の実装を強制する。</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">eat</span><span class="p">()</span>
+     <span class="p">{</span>
+          <span class="c1">// 食べる</span>
+     <span class="p">}</span>
 
-     public function sleep()
-     {
-          // 眠る
-     }
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">sleep</span><span class="p">()</span>
+     <span class="p">{</span>
+          <span class="c1">// 眠る</span>
+     <span class="p">}</span>
 
-     public function mating()
-     {
-          // 交尾する
-     }
-}
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">mating</span><span class="p">()</span>
+     <span class="p">{</span>
+          <span class="c1">// 交尾する</span>
+     <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_5">通常クラス、抽象クラス、インターフェースの違い<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
@@ -36083,63 +36083,63 @@ class Mammal implements Animal
 <p>クラスからデータや関数をコールしたとき、そのクラスにこれらが存在しなければ、継承元まで参照しにいく仕組みを『クラスチェーン』という。</p>
 <p>類似するものとして、JavaScript のプロトタイプチェーンがある。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// 継承元クラス
-class Foo
-{
-    private $value1;
+<span class="c1">// 継承元クラス</span>
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$value1</span><span class="p">;</span>
 
-    public function getValue()
-    {
-        return $this-&gt;value1;
-    }
-}
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getValue</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// 継承先クラス
-class SubFoo extends Foo
-{
-    public $subValue;
+<span class="c1">// 継承先クラス</span>
+<span class="k">class</span> <span class="nc">SubFoo</span> <span class="k">extends</span> <span class="nx">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$subValue</span><span class="p">;</span>
 
-    public function getSubValue()
-    {
-        return $this-&gt;subValue;
-    }
-}
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSubValue</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">subValue</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$subFoo = new SubFoo;
+<span class="nv">$subFoo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SubFoo</span><span class="p">;</span>
 
-// SubFooクラスにはgetValue()は無い。
-// 継承元まで辿り、Fooクラスから関数がコールされる (クラスチェーン) 。
-echo $subFoo-&gt;getValue();
+<span class="c1">// SubFooクラスにはgetValue()は無い。</span>
+<span class="c1">// 継承元まで辿り、Fooクラスから関数がコールされる (クラスチェーン) 。</span>
+<span class="k">echo</span> <span class="nv">$subFoo</span><span class="o">-&gt;</span><span class="na">getValue</span><span class="p">();</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_8">継承元の関数を参照<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-abstract class Foo
-{
-    public function foo()
-    {
-        // 処理内容;
-    }
-}
+<span class="k">abstract</span> <span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 処理内容;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class SubFoo extends Foo
-{
-    public function subFoo()
-    {
-        // 継承元の関数を参照。
-        $foo = parent::foo();
-    }
-}
+<span class="k">class</span> <span class="nc">SubFoo</span> <span class="k">extends</span> <span class="nx">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">subFoo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 継承元の関数を参照。</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">parent</span><span class="o">::</span><span class="na">foo</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="trait">Trait<a class="headerlink" href="#trait" title="Permanent link">&para;</a></h3>
@@ -36150,72 +36150,72 @@ class SubFoo extends Foo
 <p>Trait 自体は不完全なクラスであり、インスタンス化できない。</p>
 <p>また、親クラスでトレイトを読み込むと、子クラスでもトレイトを使用できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-trait FooTrait
-{
-    public function foo()
-    {
-        echo "Hello World";
-    }
-}
+<span class="k">trait</span> <span class="nx">FooTrait</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">"Hello World"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-class Foo
-{
-    use FooTrait;
-}
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">use</span> <span class="nx">FooTrait</span><span class="p">;</span>
+<span class="p">}</span>
 
-$foo = new Foo();
-$foo-&gt;foo(); // Hello World
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">();</span> <span class="c1">// Hello World</span>
 
-class Bar extends Foo {}
+<span class="k">class</span> <span class="nc">Bar</span> <span class="k">extends</span> <span class="nx">Foo</span> <span class="p">{}</span>
 
-$bar = new Bar();
-$bar-&gt;foo(); // Hello World
+<span class="nv">$bar</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Bar</span><span class="p">();</span>
+<span class="nv">$bar</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">();</span> <span class="c1">// Hello World</span>
 </code></pre></div>
 <h4 id="trait_2">▼ マジック関数を禁止する Trait<a class="headerlink" href="#trait_2" title="Permanent link">&para;</a></h4>
 <p>マジック関数を使用すると、処理が多くなるため、性能が悪くなる。</p>
 <p>そこで、各クラスで trait を使用して、マジック関数をコールしたときに、開発者向けにエラーが発生させる。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>マジックゲッター関数とマジックセッター関数がコールされることを禁止する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-declare(strict_types=1);
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
 
-namespace App\Traits;
+<span class="k">namespace</span> <span class="nx">App\Traits</span><span class="p">;</span>
 
-/**
- * 使用制限マジック関数トレイト
- */
-trait UnsupportedMagicMethodTrait
-{
-    /**
-     * 性能の観点から、マジックゲッター関数の使用を制限する
-
-
-     *
-     * @param $name
-     * @throws \Exception
-     */
-    public function __get($name)
-    {
-        throw new \Exception("This method is not supported");
-    }
-
-    /**
-     * 性能の観点から、マジックセッター関数の使用を制限する
+<span class="sd">/**</span>
+<span class="sd"> * 使用制限マジック関数トレイト</span>
+<span class="sd"> */</span>
+<span class="k">trait</span> <span class="nx">UnsupportedMagicMethodTrait</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 性能の観点から、マジックゲッター関数の使用を制限する</span>
 
 
-     *
-     * @param $name
-     * @param $value
-     * @throws \Exception
-     */
-    public function __set($name, $value)
-    {
-        throw new \Exception("This method is not supported");
-    }
-}
+<span class="sd">     *</span>
+<span class="sd">     * @param $name</span>
+<span class="sd">     * @throws \Exception</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s2">"This method is not supported"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 性能の観点から、マジックセッター関数の使用を制限する</span>
+
+
+<span class="sd">     *</span>
+<span class="sd">     * @param $name</span>
+<span class="sd">     * @param $value</span>
+<span class="sd">     * @throws \Exception</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__set</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s2">"This method is not supported"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02-03">02-03. 委譲<a class="headerlink" href="#02-03" title="Permanent link">&para;</a></h2>
@@ -36239,60 +36239,60 @@ trait UnsupportedMagicMethodTrait
 <p>ただし、チームの各エンジニアが好きなものを読み込んでいたら、スパゲッティコードになりかねない。</p>
 <p>そこで、チームでの開発では、記述ルールを設けて、<code>require_once()</code> 関数で読み込んでよいものを決めておくとよい。</p>
 <h4 id="_12">▼ クラスから関数をコール<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo
-{
-    const VALUE = "これは定数です。";
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="no">VALUE</span> <span class="o">=</span> <span class="s2">"これは定数です。"</span><span class="p">;</span>
 
-    public function className()
-    {
-        return "foo関数です。";
-    }
-}
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">className</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">"foo関数です。"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// 外部ファイル名を指定して、クラスを読み込む。
-require_once("Foo.php");
+<span class="c1">// 外部ファイル名を指定して、クラスを読み込む。</span>
+<span class="k">require_once</span><span class="p">(</span><span class="s2">"Foo.php"</span><span class="p">);</span>
 
-class Bar
-{
-    public function method()
-    {
-        $e1 = new Foo;
-        $e1-&gt;className();
-    }
-}
+<span class="k">class</span> <span class="nc">Bar</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">method</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$e1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">;</span>
+        <span class="nv">$e1</span><span class="o">-&gt;</span><span class="na">className</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <h4 id="_13">▼ クラスから定数をコール<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// 外部ファイル名を指定して、クラスを読み込む。
-require_once("Foo.php");
+<span class="c1">// 外部ファイル名を指定して、クラスを読み込む。</span>
+<span class="k">require_once</span><span class="p">(</span><span class="s2">"Foo.php"</span><span class="p">);</span>
 
-class Bar
-{
-    public function method()
-    {
-        // Fooクラスの定数を出力。
-        return Foo::VALUE;
-    }
-}
+<span class="k">class</span> <span class="nc">Bar</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">method</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Fooクラスの定数を出力。</span>
+        <span class="k">return</span> <span class="nx">Foo</span><span class="o">::</span><span class="na">VALUE</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <h4 id="_14">▼ 非クラスから関数をコール<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-function printTest() {
-    return  "test";
-}
+<span class="k">function</span> <span class="nf">printTest</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span>  <span class="s2">"test"</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// 外部ファイル名を指定して読み込む。
-require_once ("printTestFunction.php");
+<span class="c1">// 外部ファイル名を指定して読み込む。</span>
+<span class="k">require_once</span> <span class="p">(</span><span class="s2">"printTestFunction.php"</span><span class="p">);</span>
 
-printTest();
+<span class="nx">printTest</span><span class="p">();</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="use"><code>use</code> によるクラスの読み出し<a class="headerlink" href="#use" title="Permanent link">&para;</a></h3>
@@ -36311,55 +36311,55 @@ printTest();
 <h4 id="_15">▼ 外部ファイルのクラスから関数をコール<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>クラスの <code>namespace</code> を <code>use</code> 文で指定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// 名前空間を定義。
-namespace Domain\Foo;
+<span class="c1">// 名前空間を定義。</span>
+<span class="k">namespace</span> <span class="nx">Domain\Foo</span><span class="p">;</span>
 
-class Foo
-{
-    // 定数を定義。
-    const VALUE = "これは定数です。";
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="c1">// 定数を定義。</span>
+    <span class="k">const</span> <span class="no">VALUE</span> <span class="o">=</span> <span class="s2">"これは定数です。"</span><span class="p">;</span>
 
-    public function method1()
-    {
-        return "foo関数です。";
-    }
-}
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">method1</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">"foo関数です。"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace Domain\Foo;
+<span class="k">namespace</span> <span class="nx">Domain\Foo</span><span class="p">;</span>
 
-// namespaceを指定して、外部ファイルのクラスを読み込む。
-use Domain\Foo;
+<span class="c1">// namespaceを指定して、外部ファイルのクラスを読み込む。</span>
+<span class="k">use</span> <span class="nx">Domain\Foo</span><span class="p">;</span>
 
-class Bar
-{
-    public function method2()
-    {
-        $e1 = new Foo;
-        $e1-&gt;method1();
-    }
-}
+<span class="k">class</span> <span class="nc">Bar</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">method2</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$e1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">;</span>
+        <span class="nv">$e1</span><span class="o">-&gt;</span><span class="na">method1</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <h4 id="_16">▼ 外部ファイルのクラスから定数をコール<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace Domain\Foo;
+<span class="k">namespace</span> <span class="nx">Domain\Foo</span><span class="p">;</span>
 
-// namespaceを指定して、外部ファイルのクラスを読み込む。
-use Domain\Foo;
+<span class="c1">// namespaceを指定して、外部ファイルのクラスを読み込む。</span>
+<span class="k">use</span> <span class="nx">Domain\Foo</span><span class="p">;</span>
 
-class Bar
-{
-    public function method()
-    {
-        // Fooクラスの定数を出力。
-        echo Foo::VALUE;
-    }
-}
+<span class="k">class</span> <span class="nc">Bar</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">method</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Fooクラスの定数を出力。</span>
+        <span class="k">echo</span> <span class="nx">Foo</span><span class="o">::</span><span class="na">VALUE</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03-use">03. use (引数型/返却値型として使用する関係性)<a class="headerlink" href="#03-use" title="Permanent link">&para;</a></h2>
@@ -36385,23 +36385,23 @@ class Bar
 <p><img alt="dependency_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dependency_example.png" /></p>
 <p>User は UserName を引数として使用する。</p>
 <p>User は UserName に依存している。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Domain\User\Entity;
+<span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
 
-use App\Domain\User\ValueObject\UserName;
+<span class="k">use</span> <span class="nx">App\Domain\User\ValueObject\UserName</span><span class="p">;</span>
 
-final class User
-{
-    /**
-     * @param UserName $name
-     * @return string
-     */
-    public function method(UserName $name): string // 依存の関係
-    {
-        return "Hello! " . $name-&gt;getName();
-    }
-}
+<span class="k">final</span> <span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param UserName $name</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">method</span><span class="p">(</span><span class="nx">UserName</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="c1">// 依存の関係</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">"Hello! "</span> <span class="o">.</span> <span class="nv">$name</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="didependency-injection">DI：Dependency Injection (依存オブジェクト注入)<a class="headerlink" href="#didependency-injection" title="Permanent link">&para;</a></h3>
@@ -36422,114 +36422,114 @@ final class User
 <p>そのため、ビジネス上ありえないオブジェクトを作成できなくなり、インジェクションのなかで、ソフトウェアの安全性の観点でもっとも優れている。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>依存先の Supplier クラスを、<code>construct()</code> 関数の引数として、Client クラスに注入する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$supplier = new Supplier();
+<span class="nv">$supplier</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Supplier</span><span class="p">();</span>
 
-// 依存されるSupplierクラスをClientクラス
-$client = new Client($supplier);
+<span class="c1">// 依存されるSupplierクラスをClientクラス</span>
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="nv">$supplier</span><span class="p">);</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <p>依存先の UserName クラスを、<code>construct()</code> 関数の引数として、User クラスに注入する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Domain\User\Entity;
+<span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
 
-use App\Domain\User\ValueObject\UserName;
+<span class="k">use</span> <span class="nx">App\Domain\User\ValueObject\UserName</span><span class="p">;</span>
 
-final class User
-{
-    /**
-     * @var UserName
-     */
-    private UserName $name;
+<span class="k">final</span> <span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var UserName</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">UserName</span> <span class="nv">$name</span><span class="p">;</span>
 
-    /**
-     * @param UserName $name
-     */
-    public function __construct(UserName $name)
-    {
-        $this-&gt;name = $name;
-    }
-}
+    <span class="sd">/**</span>
+<span class="sd">     * @param UserName $name</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">UserName</span> <span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$name = new UserName();
-$user = new User($name); // インジェクション
+<span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">();</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span> <span class="c1">// インジェクション</span>
 </code></pre></div>
 <h4 id="_19">▼ セッターインジェクションとは<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>関数の特に、セッターの引数として、サプライヤー側のインスタンスを注入する。</p>
 <p>サプライヤー側を状態として保持させ、Aggregation の関係性を作られる。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>依存先の Supplier クラスを、セッターの引数として、Client クラスに注入する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$supplier = new Supplier();
-$client = new Client();
+<span class="nv">$supplier</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Supplier</span><span class="p">();</span>
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
 
-// ClientクラスはSuppierクラスに依存している。
-$client-&gt;setSupplier($supplier);
+<span class="c1">// ClientクラスはSuppierクラスに依存している。</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">setSupplier</span><span class="p">(</span><span class="nv">$supplier</span><span class="p">);</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <p>依存先の UserName クラスを、セッターの引数として、User クラスに注入する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Domain\User\Entity;
+<span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
 
-use App\Domain\User\ValueObject\UserName;
+<span class="k">use</span> <span class="nx">App\Domain\User\ValueObject\UserName</span><span class="p">;</span>
 
-final class User
-{
-    /**
-     * @var UserName
-     */
-    private UserName $name;
+<span class="k">final</span> <span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var UserName</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">UserName</span> <span class="nv">$name</span><span class="p">;</span>
 
-    /**
-     * @param UserName $name
-     */
-    public function setUserName(UserName $name)
-    {
-        $this-&gt;name = $name;
-    }
-}
+    <span class="sd">/**</span>
+<span class="sd">     * @param UserName $name</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUserName</span><span class="p">(</span><span class="nx">UserName</span> <span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$user = new User();
-$name = new UserName();
-$user-&gt;setUserName($name); // インジェクション
+<span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
+<span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">();</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="na">setUserName</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span> <span class="c1">// インジェクション</span>
 </code></pre></div>
 <h4 id="_20">▼ 関数インジェクションとは<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>上記 2 つ以外の関数の引数として、サプライヤー側のインスタンスを注入する。</p>
 <p>サプライヤー側を状態として保持せず、読み込んで関数を使用する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>依存先の UserName クラスを、関数の引数として、User クラスに注入する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Domain\User\Entity;
+<span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
 
-use App\Domain\User\ValueObject\UserName;
+<span class="k">use</span> <span class="nx">App\Domain\User\ValueObject\UserName</span><span class="p">;</span>
 
-final class User
-{
-    /**
-     * @param UserName $name
-     */
-    public function method(UserName $name)
-    {
-        $name = $name-&gt;getName();
+<span class="k">final</span> <span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param UserName $name</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">method</span><span class="p">(</span><span class="nx">UserName</span> <span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$name</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">();</span>
 
-        // 何らかの処理
-    }
-}
+        <span class="c1">// 何らかの処理</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$user = new User();
-$name = new UserName();
-$user-&gt;method($name); // インジェクション
+<span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
+<span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">();</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="na">method</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span> <span class="c1">// インジェクション</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="di-container-service-container">DI Container (依存オブジェクト注入コンテナ) 、Service Container<a class="headerlink" href="#di-container-service-container" title="Permanent link">&para;</a></h3>
@@ -36538,60 +36538,60 @@ $user-&gt;method($name); // インジェクション
 <p>あらかじめクラスを登録 (バインド) しておき、必要なときにインスタンスを作成 (リゾルブ) してくれる。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>Pimple パッケージを使用した場合</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-use Pimple\Container;
-use App\Domain\User\Entity\User;
-use App\Domain\User\ValueObject\UserName;
+<span class="k">use</span> <span class="nx">Pimple\Container</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\User\Entity\User</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\User\ValueObject\UserName</span><span class="p">;</span>
 
-class Container
-{
-    public function __construct()
-    {
-        // UserNameクラスの準備
-        $container["user_name"] = function ($container) {
-            return new UserName("Hiroki");
-        };
+<span class="k">class</span> <span class="nc">Container</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// UserNameクラスの準備</span>
+        <span class="nv">$container</span><span class="p">[</span><span class="s2">"user_name"</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$container</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">(</span><span class="s2">"Hiroki"</span><span class="p">);</span>
+        <span class="p">};</span>
 
-        // UserクラスにUserNameクラスを注入
-        $container["user"] = function ($container) {
-            return new User($container["user_name"]);
-        };
-    }
-}
+        <span class="c1">// UserクラスにUserNameクラスを注入</span>
+        <span class="nv">$container</span><span class="p">[</span><span class="s2">"user"</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$container</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="nv">$container</span><span class="p">[</span><span class="s2">"user_name"</span><span class="p">]);</span>
+        <span class="p">};</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// autoload.php で、IoCコンテナ自体のインスタンスを事前に作成。
-$container = new Container();
+<span class="c1">// autoload.php で、IoCコンテナ自体のインスタンスを事前に作成。</span>
+<span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// IoCコンテナの読み出し
-require_once __DIR__ . "/autoload.php";
+<span class="c1">// IoCコンテナの読み出し</span>
+<span class="k">require_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">"/autoload.php"</span><span class="p">;</span>
 
-// クラス名を宣言してインスタンスを作成。
-$sample = $container["sample"];
+<span class="c1">// クラス名を宣言してインスタンスを作成。</span>
+<span class="nv">$sample</span> <span class="o">=</span> <span class="nv">$container</span><span class="p">[</span><span class="s2">"sample"</span><span class="p">];</span>
 </code></pre></div>
 <h4 id="service-locator">▼ Service Locator パターン<a class="headerlink" href="#service-locator" title="Permanent link">&para;</a></h4>
 <p>Service Locater パターンはアンチパターンである。</p>
 <p>インスタンスへのコンテナ渡しのファイルを実装せず、コンテナ自体を注入していまう誤った実装方法。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Sample
-{
-    public function __construct($container)
-    {
-        $this-&gt;logger            = $container["foo.logger"];
-        $this-&gt;notification      = $container["bar.notification"];
-    }
-}
+<span class="k">class</span> <span class="nc">Sample</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$container</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span>            <span class="o">=</span> <span class="nv">$container</span><span class="p">[</span><span class="s2">"foo.logger"</span><span class="p">];</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">notification</span>      <span class="o">=</span> <span class="nv">$container</span><span class="p">[</span><span class="s2">"bar.notification"</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// IoCコンテナ自体をインジェクションしてしまうと、不要なインスタンスにも依存してしまう。
-$sample = new Sample($container);
+<span class="c1">// IoCコンテナ自体をインジェクションしてしまうと、不要なインスタンスにも依存してしまう。</span>
+<span class="nv">$sample</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sample</span><span class="p">(</span><span class="nv">$container</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03-02-dependency-inversion-principle">03-02. Dependency Inversion Principle (依存性逆転の原則)<a class="headerlink" href="#03-02-dependency-inversion-principle" title="Permanent link">&para;</a></h2>
@@ -36667,97 +36667,97 @@ $sample = new Sample($container);
 <p>スカラ型のデータをサプライヤー側として、クライアント側のインスタンスの引数として渡すような関係。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>ModuleA と ModuleB は、データ結合の関係にある。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class ModuleA // コールされる側
-{
-    public function methodA(int $a, int $b, string $c)
-    {
-        return "$a + $b".$c;
-    }
-}
+<span class="k">class</span> <span class="nc">ModuleA</span> <span class="c1">// コールされる側</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">methodA</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$a</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$b</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$c</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">"</span><span class="si">$a</span><span class="s2"> + </span><span class="si">$b</span><span class="s2">"</span><span class="o">.</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class ModuleB // コールする側
-{
-    public function methodB()
-    {
-        $moduleA= new ModuleA();
-        $result = $moduleA-&gt;methodA(1, 2, "です."); // スカラ型データを渡すだけ
-    }
-}
+<span class="k">class</span> <span class="nc">ModuleB</span> <span class="c1">// コールする側</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">methodB</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$moduleA</span><span class="o">=</span> <span class="k">new</span> <span class="nx">ModuleA</span><span class="p">();</span>
+        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$moduleA</span><span class="o">-&gt;</span><span class="na">methodA</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"です."</span><span class="p">);</span> <span class="c1">// スカラ型データを渡すだけ</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <p>デザインパターンの Factory クラスでは、スカラ型データの値に応じて、インスタンスを作り分ける。</p>
 <p>Factory クラスのインスタンスと、これをコールするほかインスタンス は、データ結合の関係にある。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-/**
- * コールされる側
- *
- * 距離に応じて、移動手段のオブジェクトを作り分けるファクトリクラス
- */
-class TransportationMethodsFactory
-{
-    public static function createInstance($distance)
-    {
-        $walking = new Walking($distance);
-        $car = new Car($distance);
+<span class="sd">/**</span>
+<span class="sd"> * コールされる側</span>
+<span class="sd"> *</span>
+<span class="sd"> * 距離に応じて、移動手段のオブジェクトを作り分けるファクトリクラス</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">TransportationMethodsFactory</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">createInstance</span><span class="p">(</span><span class="nv">$distance</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$walking</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Walking</span><span class="p">(</span><span class="nv">$distance</span><span class="p">);</span>
+        <span class="nv">$car</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Car</span><span class="p">(</span><span class="nv">$distance</span><span class="p">);</span>
 
-        if($walking-&gt;needsWalking()) {
-            return $walking;
-        }
+        <span class="k">if</span><span class="p">(</span><span class="nv">$walking</span><span class="o">-&gt;</span><span class="na">needsWalking</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$walking</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        return $car;
-    }
-}
+        <span class="k">return</span> <span class="nv">$car</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <h4 id="_26">▼ スタンプ結合とは<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
 <p>object 型のデータをサプライヤー側として、クライアント側のインスタンスの引数として渡す関係。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>ModuleA と ModuleB は、スタンプ結合の関係にある。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Shared
-{
-    private $value;
+<span class="k">class</span> <span class="nc">Shared</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$value</span><span class="p">;</span>
 
-    public function __construct(int $value)
-    {
-        $this-&gt;value = $value;
-    }
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$value</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
+    <span class="p">}</span>
 
 
-    public function getValue()
-    {
-        return $this-&gt;value;
-    }
-}
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getValue</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class ModuleA
-{
-    public function methodA()
-    {
-        $shared = new Shared(1);
+<span class="k">class</span> <span class="nc">ModuleA</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">methodA</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$shared</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Shared</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 
-        $moduleB = new ModuleB;
+        <span class="nv">$moduleB</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ModuleB</span><span class="p">;</span>
 
-        return $moduleB-&gt;methodB($shared); // 1
-    }
-}
+        <span class="k">return</span> <span class="nv">$moduleB</span><span class="o">-&gt;</span><span class="na">methodB</span><span class="p">(</span><span class="nv">$shared</span><span class="p">);</span> <span class="c1">// 1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class ModuleB
-{
-    public function methodB(Shared $shared)
-    {
-        return $shared-&gt;getValue(); // 1
-    }
-}
+<span class="k">class</span> <span class="nc">ModuleB</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">methodB</span><span class="p">(</span><span class="nx">Shared</span> <span class="nv">$shared</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$shared</span><span class="o">-&gt;</span><span class="na">getValue</span><span class="p">();</span> <span class="c1">// 1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_27">凝集度<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>

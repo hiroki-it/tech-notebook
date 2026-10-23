@@ -34204,28 +34204,28 @@
 <p>ステータスコードはコントローラーのレスポンス処理で割り当てる。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>『Foo 変数が見つからない』というエラーに対応する例外クラスを定義する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class FooNotFoundException extends Exception
-{
-    // 基本的に何も実装しない。
+<span class="k">class</span> <span class="nc">FooNotFoundException</span> <span class="k">extends</span> <span class="nx">Exception</span>
+<span class="p">{</span>
+    <span class="c1">// 基本的に何も実装しない。</span>
 
-    // エラーコードとステータスコードは異なるもののため、以下の様にしないこと。
-    // protected $code = 400
-}
+    <span class="c1">// エラーコードとステータスコードは異なるもののため、以下の様にしないこと。</span>
+    <span class="c1">// protected $code = 400</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-use Exception\FooNotFoundException;
+<span class="k">use</span> <span class="nx">Exception\FooNotFoundException</span><span class="p">;</span>
 
-function foo(string $foo) {
+<span class="k">function</span> <span class="nf">foo</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$foo</span><span class="p">)</span> <span class="p">{</span>
 
-    if (empty($foo)) {
-        throw new FooNotFoundException("foo is not found.");
-    }
+    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$foo</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">FooNotFoundException</span><span class="p">(</span><span class="s2">"foo is not found."</span><span class="p">);</span>
+    <span class="p">}</span>
 
-    return "これは ${foo} です。";
-}
+    <span class="k">return</span> <span class="s2">"これは </span><span class="si">${</span><span class="nv">foo</span><span class="si">}</span><span class="s2"> です。"</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <h4 id="_5">▼ 命名規則<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>何のエラーが発生したかを判断できるように、名前は『<code>&lt;エラー名&gt;Exception</code>』とする。</p>
@@ -34249,33 +34249,33 @@ function foo(string $foo) {
 <p>ランタイムエラーは検出できないことに注意する。特定の処理のなかに、想定できる例外があり、それを例外クラスとしてするために使用する。</p>
 <p>ここでは、すべての例外クラスの親クラスである <code>Exception</code> クラスのインスタンスを投げている。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-function value(int $value) {
+<span class="k">function</span> <span class="nf">value</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
 
-    if (empty($value)) {
-        // 例外クラスを返却
-        throw new Exception("Value is empty");
-    }
+    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$value</span><span class="p">))</span> <span class="p">{</span>
+        <span class="c1">// 例外クラスを返却</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">"Value is empty"</span><span class="p">);</span>
+    <span class="p">}</span>
 
-    return "これは ${value} です。";
-}
+    <span class="k">return</span> <span class="s2">"これは </span><span class="si">${</span><span class="nv">value</span><span class="si">}</span><span class="s2"> です。"</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>ただし、if-throw では、都度例外を検証するがあり、さまざまな可能性を考慮しなければいけなくなる。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-function value() {
+<span class="k">function</span> <span class="nf">value</span><span class="p">()</span> <span class="p">{</span>
 
-    if (...) {
-        throw new ExternalApiException();
-    }
+    <span class="k">if</span> <span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">ExternalApiException</span><span class="p">();</span>
+    <span class="p">}</span>
 
-    if (...) {
-        throw new FooInvalidArgumentException();
-    }
+    <span class="k">if</span> <span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">FooInvalidArgumentException</span><span class="p">();</span>
+    <span class="p">}</span>
 
-    return "成功です。";
-}
+    <span class="k">return</span> <span class="s2">"成功です。"</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03">03. 例外キャッチ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
@@ -34290,82 +34290,82 @@ function value() {
 </ul>
 <p>定義されたエラー文は、デバック画面に表示される。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-use \Exception\ExternalApiErrorException;
-use \Exception\HttpRequestErrorException;
+<span class="k">use</span> <span class="nx">\Exception\ExternalApiErrorException</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">\Exception\HttpRequestErrorException</span><span class="p">;</span>
 
-class Foo
-{
-    public function sendMessage(Message $message)
-    {
-        try {
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">Message</span> <span class="nv">$message</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
 
-            // ExternalApiErrorException、HttpRequestErrorException、Exceptionが起こる
+            <span class="c1">// ExternalApiErrorException、HttpRequestErrorException、Exceptionが起こる</span>
 
-        } catch (ExternalApiErrorException $exception) {
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ExternalApiErrorException</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
-            // ExternalApiErrorExceptionが発生した時の処理
+            <span class="c1">// ExternalApiErrorExceptionが発生した時の処理</span>
 
-        } catch (HttpRequestErrorException $exception) {
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">HttpRequestErrorException</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
-            // HttpRequestErrorExceptionが発生した時の処理
+            <span class="c1">// HttpRequestErrorExceptionが発生した時の処理</span>
 
-        } catch (Exception $exception) {
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
-            // その他 (例：自社ソフトウェアなど) のExceptionが起こっ時の処理
+            <span class="c1">// その他 (例：自社ソフトウェアなど) のExceptionが起こっ時の処理</span>
 
-        } finally {
+        <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
 
-            // 例外を補足したか否かに関わらず実行する。
-            // try句やcatch句の返却処理や終了処理が行われる直前に実行される。
+            <span class="c1">// 例外を補足したか否かに関わらず実行する。</span>
+            <span class="c1">// try句やcatch句の返却処理や終了処理が行われる直前に実行される。</span>
 
-        }
-    }
-}
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>finally 句は、try 句や catch 句が値を返す直前に実行されるため、finally 句では、<code>return</code> や <code>continue</code> を使用しないようにする。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-use Exception\ExternalApiErrorException;
-use Exception\HttpRequestErrorException;
+<span class="k">use</span> <span class="nx">Exception\ExternalApiErrorException</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Exception\HttpRequestErrorException</span><span class="p">;</span>
 
-class Foo
-{
-    public function sendMessage(Message $message)
-    {
-        try {
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">Message</span> <span class="nv">$message</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
 
-            // `(1)`
-            echo "Aの直前です";
-            return "Aです。";
+            <span class="c1">// `(1)`</span>
+            <span class="k">echo</span> <span class="s2">"Aの直前です"</span><span class="p">;</span>
+            <span class="k">return</span> <span class="s2">"Aです。"</span><span class="p">;</span>
 
-        } catch (ExternalApiErrorException $exception) {
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ExternalApiErrorException</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
-            // `(2)`
-            echo "Bの直前です";
-            return "Bです。";
+            <span class="c1">// `(2)`</span>
+            <span class="k">echo</span> <span class="s2">"Bの直前です"</span><span class="p">;</span>
+            <span class="k">return</span> <span class="s2">"Bです。"</span><span class="p">;</span>
 
-        } catch (HttpRequestErrorException $exception) {
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">HttpRequestErrorException</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
-            // `(3)`
-            echo "Cの直前です";
-            return "Cです。";
+            <span class="c1">// `(3)`</span>
+            <span class="k">echo</span> <span class="s2">"Cの直前です"</span><span class="p">;</span>
+            <span class="k">return</span> <span class="s2">"Cです。"</span><span class="p">;</span>
 
-        } catch (Exception $exception) {
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
-            // `(4)`
-            echo "Dの直前です";
-            return "Dです。";
+            <span class="c1">// `(4)`</span>
+            <span class="k">echo</span> <span class="s2">"Dの直前です"</span><span class="p">;</span>
+            <span class="k">return</span> <span class="s2">"Dです。"</span><span class="p">;</span>
 
-        } finally {
+        <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
 
-            // returnやcontinueを使用しない
-            echo "Eです。";
+            <span class="c1">// returnやcontinueを使用しない</span>
+            <span class="k">echo</span> <span class="s2">"Eです。"</span><span class="p">;</span>
 
-        }
-    }
-}
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <dl>
 <dt><code>(1)</code></dt>
@@ -34376,27 +34376,27 @@ class Foo
 <p>のいずれかで返却されるときは、返却の直前に finally 句が実行されるとわかる。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// `(1)` の場合
-// Aの直前です。
-// Eです。
-// Aです。
+<span class="c1">// `(1)` の場合</span>
+<span class="c1">// Aの直前です。</span>
+<span class="c1">// Eです。</span>
+<span class="c1">// Aです。</span>
 
-// `(2)` の場合
-// Bの直前です。
-// Eです。
-// Bです。
+<span class="c1">// `(2)` の場合</span>
+<span class="c1">// Bの直前です。</span>
+<span class="c1">// Eです。</span>
+<span class="c1">// Bです。</span>
 
-// `(3)` の場合
-// Cの直前です。
-// Eです。
-// Cです。
+<span class="c1">// `(3)` の場合</span>
+<span class="c1">// Cの直前です。</span>
+<span class="c1">// Eです。</span>
+<span class="c1">// Cです。</span>
 
-// `(4)` の場合
-// Dの直前です。
-// Eです。
-// Dです。
+<span class="c1">// `(4)` の場合</span>
+<span class="c1">// Dの直前です。</span>
+<span class="c1">// Eです。</span>
+<span class="c1">// Dです。</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_10">新たな例外のスローし直し<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
@@ -34435,40 +34435,40 @@ class Foo
 <li><a href="https://www.php.net/manual/ja/function.error-log.php">PHP: error_log - Manual</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-error_log(
-    "&lt;エラーメッセージ&gt;",
-    "&lt;メッセージの出力先 (3の場合にファイル出力) &gt;",
-    "&lt;ログファイルへのパス&gt;"
-);
+<span class="nb">error_log</span><span class="p">(</span>
+    <span class="s2">"&lt;エラーメッセージ&gt;"</span><span class="p">,</span>
+    <span class="s2">"&lt;メッセージの出力先 (3の場合にファイル出力) &gt;"</span><span class="p">,</span>
+    <span class="s2">"&lt;ログファイルへのパス&gt;"</span>
+<span class="p">);</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Notification
-{
-    public function sendMessage()
-    {
-        try {
+<span class="k">class</span> <span class="nc">Notification</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">sendMessage</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
 
-            // 子クラスによる例外スローを含む処理
+            <span class="c1">// 子クラスによる例外スローを含む処理</span>
 
-        } catch (\exception $exception) {
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\exception</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
-            error_log(
-                sprintf(
-                    "ERROR: %s at %s line %s",
-                    $exception-&gt;getMessage(),
-                    $exception-&gt;getFile(),
-                    $exception-&gt;getLine()
-                ),
-                3,
-                __DIR__ . "/error.log"
-            );
-        }
-    }
-}
+            <span class="nb">error_log</span><span class="p">(</span>
+                <span class="nb">sprintf</span><span class="p">(</span>
+                    <span class="s2">"ERROR: %s at %s line %s"</span><span class="p">,</span>
+                    <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span>
+                    <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(),</span>
+                    <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">()</span>
+                <span class="p">),</span>
+                <span class="mi">3</span><span class="p">,</span>
+                <span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">"/error.log"</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>他に、Logger インターフェースを使用することも多い。</p>
 <blockquote>
@@ -34476,36 +34476,36 @@ class Notification
 <li><a href="https://github.com/php-fig/log">GitHub - php-fig/log · GitHub</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-use Psr\Log\LoggerInterface;
+<span class="k">use</span> <span class="nx">Psr\Log\LoggerInterface</span><span class="p">;</span>
 
-class Notification
-{
-    private $logger;
+<span class="k">class</span> <span class="nc">Notification</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$logger</span><span class="p">;</span>
 
-    public function __construct(LoggerInterface $logger = null)
-    {
-        $this-&gt;logger = $logger;
-    }
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">LoggerInterface</span> <span class="nv">$logger</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="nv">$logger</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    public function sendMessage()
-    {
-        try {
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">sendMessage</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
 
-            // 子クラスによる例外スローを含む処理
+            <span class="c1">// 子クラスによる例外スローを含む処理</span>
 
-        } catch (\exception $exception) {
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\exception</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
-            $this-&gt;logger-&gt;error(sprintf(
-                "ERROR: %s at %s line %s",
-                $exception-&gt;getMessage(),
-                $exception-&gt;getFile(),
-                $exception-&gt;getLine()
-            ));
-        }
-    }
-}
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
+                <span class="s2">"ERROR: %s at %s line %s"</span><span class="p">,</span>
+                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span>
+                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(),</span>
+                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">()</span>
+            <span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_15">ロギングのレイヤー<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
@@ -34516,62 +34516,62 @@ class Notification
 <h4 id="_17">▼ 例外ごとのロギング<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>例えば、メッセージアプリケーションの API に対してメッセージ作成のリクエストを送信するとき、例外の種類に合わせて、外部 API との接続失敗によるエラーログを作成することと、自社ソフトウェアなどその他原因によるエラーログを作成する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-use Exception\ExternalApiErrorException;
-use Exception\HttpRequestErrorException;
+<span class="k">use</span> <span class="nx">Exception\ExternalApiErrorException</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Exception\HttpRequestErrorException</span><span class="p">;</span>
 
-class Foo
-{
-    public function sendMessage(Message $message)
-    {
-        try {
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">Message</span> <span class="nv">$message</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
 
-            // 外部APIのURL、送信方法、トークンなどのパラメーターが存在するかを検証。
-            // 外部APIのためのリクエストを作成。
-            // 外部APIのURL、送信方法、トークンなどのパラメーターを設定。
+            <span class="c1">// 外部APIのURL、送信方法、トークンなどのパラメーターが存在するかを検証。</span>
+            <span class="c1">// 外部APIのためのリクエストを作成。</span>
+            <span class="c1">// 外部APIのURL、送信方法、トークンなどのパラメーターを設定。</span>
 
-        } catch (HttpRequestErrorException $exception) {
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">HttpRequestErrorException</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
-            // 子クラスによる例外スローを含む処理
+            <span class="c1">// 子クラスによる例外スローを含む処理</span>
 
-            // 外部APIとの接続失敗によるエラーをロギング
-            $this-&gt;logger-&gt;error(sprintf(
-                "ERROR: %s at %s line %s",
-                $exception-&gt;getMessage(),
-                $exception-&gt;getFile(),
-                $exception-&gt;getLine()
-            ));
+            <span class="c1">// 外部APIとの接続失敗によるエラーをロギング</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
+                <span class="s2">"ERROR: %s at %s line %s"</span><span class="p">,</span>
+                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span>
+                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(),</span>
+                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">()</span>
+            <span class="p">));</span>
 
-        } catch (ExternalApiErrorException $exception) {
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ExternalApiErrorException</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
-            // 子クラスによる例外スローを含む処理
+            <span class="c1">// 子クラスによる例外スローを含む処理</span>
 
-            // 外部APIのソフトウェアエラーをロギング
-            $this-&gt;logger-&gt;error(sprintf(
-                "ERROR: %s at %s line %s",
-                $exception-&gt;getMessage(),
-                $exception-&gt;getFile(),
-                $exception-&gt;getLine()
-            ));
+            <span class="c1">// 外部APIのソフトウェアエラーをロギング</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
+                <span class="s2">"ERROR: %s at %s line %s"</span><span class="p">,</span>
+                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span>
+                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(),</span>
+                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">()</span>
+            <span class="p">));</span>
 
-        } catch (\Exception $exception) {
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
-            // 子クラスによる例外スローを含む処理
+            <span class="c1">// 子クラスによる例外スローを含む処理</span>
 
-            // その他 (例：自社ソフトウェアなど) によるエラーをロギング
-            $this-&gt;logger-&gt;error(sprintf(
-                "ERROR: %s at %s line %s",
-                $exception-&gt;getMessage(),
-                $exception-&gt;getFile(),
-                $exception-&gt;getLine()
-            ));
-        }
+            <span class="c1">// その他 (例：自社ソフトウェアなど) によるエラーをロギング</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
+                <span class="s2">"ERROR: %s at %s line %s"</span><span class="p">,</span>
+                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span>
+                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(),</span>
+                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">()</span>
+            <span class="p">));</span>
+        <span class="p">}</span>
 
-        // 問題なければTRUEを返却。
-        return true;
-    }
-}
+        <span class="c1">// 問題なければTRUEを返却。</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 

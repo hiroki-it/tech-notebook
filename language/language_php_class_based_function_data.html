@@ -36447,18 +36447,18 @@
 <p>クラスは、状態を使用して振る舞う。</p>
 <p>振る舞いの処理を関数またはメソッドという。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo
-{
-    // オブジェクトはデータを保持する。
-    private $state;
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="c1">// オブジェクトはデータを保持する。</span>
+    <span class="k">private</span> <span class="nv">$state</span><span class="p">;</span>
 
-    public function state()
-    {
-        return $this-&gt;state;
-    }
-}
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">state</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">state</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_5">状態 (プロパティ)<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
@@ -36467,18 +36467,18 @@ class Foo
 <p>この状態はプロパティとも呼ばれる。</p>
 <p>本ノートでは、状態であることを意識するために、プロパティという言葉を使用しないものとする。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo
-{
-    private $state;
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$state</span><span class="p">;</span>
 
-    // 自身が持つ状態を操作する.
-    public function state()
-    {
-        return $this-&gt;state;
-    }
-}
+    <span class="c1">// 自身が持つ状態を操作する.</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">state</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">state</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02">02. 振る舞いと状態のカプセル化<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
@@ -36487,34 +36487,34 @@ class Foo
 <p>どのオブジェクトでも呼び出せる。</p>
 <h4 id="_7">▼ オブジェクト指向の場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo
-{
-    public $state;
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$state</span><span class="p">;</span>
 
-    public function __construct($state)
-    {
-        $this-&gt;state = $state;
-    }
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$state</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">state</span> <span class="o">=</span> <span class="nv">$state</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    public function state()
-    {
-        return $this-&gt;state;
-    }
-}
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">state</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">state</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <h4 id="_8">▼ 関数型の場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>オブジェクトのすべてのデータが <code>public</code> であるなら、オブジェクト指向における隠蔽のメリットは、特にないかもしれない。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-function foo($state){
-    return $state;
-}
+<span class="k">function</span> <span class="nf">foo</span><span class="p">(</span><span class="nv">$state</span><span class="p">){</span>
+    <span class="k">return</span> <span class="nv">$state</span><span class="p">;</span>
+<span class="p">}</span>
 
-$state = "状態";
-foo($state);
+<span class="nv">$state</span> <span class="o">=</span> <span class="s2">"状態"</span><span class="p">;</span>
+<span class="nx">foo</span><span class="p">(</span><span class="nv">$state</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="protected">protected<a class="headerlink" href="#protected" title="Permanent link">&para;</a></h3>
@@ -36528,33 +36528,33 @@ foo($state);
 <h4 id="_9">▼ オブジェクト指向の場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>親クラス次第ではあるが、処理で <code>$state</code> の中身を隠蔽できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo extends ParentFoo
-{
-    public function __construct($state)
-    {
-        $this-&gt;state = $state;
-    }
+<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">ParentFoo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$state</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">state</span> <span class="o">=</span> <span class="nv">$state</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    public function foo()
-    {
-        // dataは親で定義されている
-        return $this-&gt;state;
-    }
-}
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// dataは親で定義されている</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">state</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <h4 id="_10">▼ 関数型の場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>処理で、<code>$state</code> の中身を隠蔽できないため、危険である。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-function foo($state){
-    return $state;
-}
+<span class="k">function</span> <span class="nf">foo</span><span class="p">(</span><span class="nv">$state</span><span class="p">){</span>
+    <span class="k">return</span> <span class="nv">$state</span><span class="p">;</span>
+<span class="p">}</span>
 
-$state = "状態";
-foo($state);
+<span class="nv">$state</span> <span class="o">=</span> <span class="s2">"状態"</span><span class="p">;</span>
+<span class="nx">foo</span><span class="p">(</span><span class="nv">$state</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="private">private<a class="headerlink" href="#private" title="Permanent link">&para;</a></h3>
@@ -36565,40 +36565,40 @@ foo($state);
 <p>処理で、<code>$state</code> の中身を隠蔽できる。</p>
 <p>カプセル化を参照。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo
-{
-    private $state;
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$state</span><span class="p">;</span>
 
-    public function __construct($state)
-    {
-        $this-&gt;state = $state;
-    }
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$state</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">state</span> <span class="o">=</span> <span class="nv">$state</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    public function foo()
-    {
-        return $this-&gt;state.$this-&gt;Desu();
-    }
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">state</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Desu</span><span class="p">();</span>
+    <span class="p">}</span>
 
-    // クラス内からしかアクセスできない
-    private function Desu()
-    {
-        return "です。";
-    }
-}
+    <span class="c1">// クラス内からしかアクセスできない</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">Desu</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">"です。"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <h4 id="_12">▼ 関数型の場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>処理で、<code>$state</code> の中身を隠蔽できないため、危険である。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-function foo($state){
-    return $state;
-}
+<span class="k">function</span> <span class="nf">foo</span><span class="p">(</span><span class="nv">$state</span><span class="p">){</span>
+    <span class="k">return</span> <span class="nv">$state</span><span class="p">;</span>
+<span class="p">}</span>
 
-$state = "状態";
-foo($state);
+<span class="nv">$state</span> <span class="o">=</span> <span class="s2">"状態"</span><span class="p">;</span>
+<span class="nx">foo</span><span class="p">(</span><span class="nv">$state</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="encapsulation">▼ Encapsulation (カプセル化)<a class="headerlink" href="#encapsulation" title="Permanent link">&para;</a></h4>
 <p>カプセル化とは、ソフトウェアの実装方法を外部から隠すこと。</p>
@@ -36611,26 +36611,26 @@ foo($state);
 <p>しかし、static 修飾子をつけることにより、インスタンス化しなくともコールできる。</p>
 <p>状態は使用せず (静的) 、引数の値のみを使用して処理を実行する関数に対して使用する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo
-{
-    // 受け取ったOrderエンティティから値を取り出すのみで、データ値は呼び出していない。
-    public static function computeFooFee(Entity $order): Money
-    {
-        return new Money($order-&gt;fooFee);
-    }
-}
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="c1">// 受け取ったOrderエンティティから値を取り出すのみで、データ値は呼び出していない。</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">computeFooFee</span><span class="p">(</span><span class="nx">Entity</span> <span class="nv">$order</span><span class="p">)</span><span class="o">:</span> <span class="nx">Money</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Money</span><span class="p">(</span><span class="nv">$order</span><span class="o">-&gt;</span><span class="na">fooFee</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <h4 id="self">▼ <code>self::</code><a class="headerlink" href="#self" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// ここに実装例
+<span class="c1">// ここに実装例</span>
 </code></pre></div>
 <h4 id="static_2">▼ <code>static::</code><a class="headerlink" href="#static_2" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// ここに実装例
+<span class="c1">// ここに実装例</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02-02">02-02. 関数<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
@@ -36645,87 +36645,87 @@ class Foo
 <h4 id="getter">▼ Getter<a class="headerlink" href="#getter" title="Permanent link">&para;</a></h4>
 <p>Getter では、状態を取得するのみではなく、何かしらの処理を加えたうえで取得すること。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class ABC {
+<span class="k">class</span> <span class="nc">ABC</span> <span class="p">{</span>
 
-    private $property;
+    <span class="k">private</span> <span class="nv">$property</span><span class="p">;</span>
 
-    public function property()
-    {
-        // 単なるGetterではなく、例外処理も加える。
-        if(!isset($this-&gt;property)){
-            throw new ErrorException("データに値がセットされていません。");
-        }
-        return $this-&gt;property;
-    }
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">property</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 単なるGetterではなく、例外処理も加える。</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">property</span><span class="p">)){</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">ErrorException</span><span class="p">(</span><span class="s2">"データに値がセットされていません。"</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">property</span><span class="p">;</span>
+    <span class="p">}</span>
 
-}
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_17">値を設定するアクセサ関数の実装<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <h4 id="setter">▼ Setter<a class="headerlink" href="#setter" title="Permanent link">&para;</a></h4>
 <p>『ミュータブル』なオブジェクトを実現できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Test01 {
+<span class="k">class</span> <span class="nc">Test01</span> <span class="p">{</span>
 
-    private $property01;
+    <span class="k">private</span> <span class="nv">$property01</span><span class="p">;</span>
 
-    // Setterで$property01に値を設定
-    public function setProperty($property01)
-    {
-        $this-&gt;property01 = $property01;
-    }
-}
+    <span class="c1">// Setterで$property01に値を設定</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setProperty</span><span class="p">(</span><span class="nv">$property01</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">property01</span> <span class="o">=</span> <span class="nv">$property01</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <h4 id="__construct">▼ マジック関数の <code>__construct()</code> 関数<a class="headerlink" href="#__construct" title="Permanent link">&para;</a></h4>
 <p>マジック関数の <code>__construct()</code> 関数を持たせることにより、このデータを持っていなければならないとい制約を明示できる。</p>
 <p>Setter を持たせずに、<code>__construct()</code> 関数のみを持たせれば、ValueObject のような、『イミュータブル』なオブジェクトを実現できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Test02 {
+<span class="k">class</span> <span class="nc">Test02</span> <span class="p">{</span>
 
-    private $property02;
+    <span class="k">private</span> <span class="nv">$property02</span><span class="p">;</span>
 
-    // コンストラクタで$property02に値を設定
-    public function __construct($property02)
-    {
-        $this-&gt;property02 = $property02;
-    }
-}
+    <span class="c1">// コンストラクタで$property02に値を設定</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$property02</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">property02</span> <span class="o">=</span> <span class="nv">$property02</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <h4 id="_18">▼ 『ミュータブル』と『イミュータブル』を実現できる理由<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>Test01 クラスインスタンスの <code>$property01</code> に値を設定するためには、インスタンスから Setter をコールする。</p>
 <p>Setter は何度でも呼び出せ、そのたびにデータの値を上書きできる。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Test01
-{
-    // 中身は省略
-}
+<span class="k">class</span> <span class="nc">Test01</span>
+<span class="p">{</span>
+    <span class="c1">// 中身は省略</span>
+<span class="p">}</span>
 
-$test01 = new Test01;
+<span class="nv">$test01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test01</span><span class="p">;</span>
 
-$test01-&gt;setProperty01("データ01の値");
+<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">"データ01の値"</span><span class="p">);</span>
 
-$test01-&gt;setProperty01("新しいデータ01の値");
+<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">"新しいデータ01の値"</span><span class="p">);</span>
 </code></pre></div>
 <p>一方で、Test02 クラスインスタンスの <code>$property02</code> に値を設定するためには、インスタンスを作り直さなければならない。</p>
 <p>つまり、以前に作ったインスタンスの <code>$property02</code> の値は上書きできない。</p>
 <p>Setter を持たせずに、<code>__construct()</code> 関数のみを持たせれば、『イミュータブル』なクラスとなる。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Test02
-{
-    // 中身は省略
-}
+<span class="k">class</span> <span class="nc">Test02</span>
+<span class="p">{</span>
+    <span class="c1">// 中身は省略</span>
+<span class="p">}</span>
 
-$test02 = new Test02("データ02の値");
+<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">"データ02の値"</span><span class="p">);</span>
 
-$test02 = new Test02("新しいデータ02の値");
+<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">"新しいデータ02の値"</span><span class="p">);</span>
 </code></pre></div>
 <p>Entity は、ミュータブルであるため、Setter と <code>__construct()</code> 関数の両方を持てる。</p>
 <p>ValueObject は、イミュータブルのため、<code>__construct()</code> 関数しか持てる。</p>
@@ -36739,26 +36739,26 @@ $test02 = new Test02("新しいデータ02の値");
 <p>定義されていないデータや、アクセス権のない状態を取得しようとしたとき、代わりに呼び出される。</p>
 <p>関数は定義しているが、データは定義していないような状況で使用する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
-class Foo
-{
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
 
-    private $foo = [];
+    <span class="k">private</span> <span class="nv">$foo</span> <span class="o">=</span> <span class="p">[];</span>
 
-    // 引数と返却値のデータ型を指定
-    public function __get(string $name): string
-    {
-        return "{$name}データは存在しないため、データ値を取得できません。";
-    }
+    <span class="c1">// 引数と返却値のデータ型を指定</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">"</span><span class="si">{</span><span class="nv">$name</span><span class="si">}</span><span class="s2">データは存在しないため、データ値を取得できません。"</span><span class="p">;</span>
+    <span class="p">}</span>
 
-}
+<span class="p">}</span>
 
-// 存在しない状態を取得。
-$foo = new Foo();
-$foo-&gt;foo;
+<span class="c1">// 存在しない状態を取得。</span>
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">;</span>
 
-// 結果
-// fooデータは存在しないため、値を呼び出せません。
+<span class="c1">// 結果</span>
+<span class="c1">// fooデータは存在しないため、値を呼び出せません。</span>
 </code></pre></div>
 <h4 id="__call">▼ <code>__call()</code> 関数<a class="headerlink" href="#__call" title="Permanent link">&para;</a></h4>
 <p>定義されていない関数や、アクセス権のない関数を取得しようとしたとき、代わりにコールされる。</p>
@@ -36780,206 +36780,206 @@ $foo-&gt;foo;
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
-class Foo
-{
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
 
-    private $foo = [];
+    <span class="k">private</span> <span class="nv">$foo</span> <span class="o">=</span> <span class="p">[];</span>
 
-    // 引数と返り値のデータ型を指定
-    public function __set(String $name, String $value): String
-    {
-        echo "{$name}データは存在しないため、{$value}を設定できません。";
-    }
+    <span class="c1">// 引数と返り値のデータ型を指定</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__set</span><span class="p">(</span><span class="nx">String</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">String</span> <span class="nv">$value</span><span class="p">)</span><span class="o">:</span> <span class="nx">String</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">"</span><span class="si">{</span><span class="nv">$name</span><span class="si">}</span><span class="s2">データは存在しないため、</span><span class="si">{</span><span class="nv">$value</span><span class="si">}</span><span class="s2">を設定できません。"</span><span class="p">;</span>
+    <span class="p">}</span>
 
-}
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo {
-// 中身は省略
-}
+<span class="k">class</span> <span class="nc">Foo</span> <span class="p">{</span>
+<span class="c1">// 中身は省略</span>
+<span class="p">}</span>
 
-// 存在しないデータに値をセット。
-$foo = new Foo();
-$foo-&gt;bar = "bar";
+<span class="c1">// 存在しないデータに値をセット。</span>
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">bar</span> <span class="o">=</span> <span class="s2">"bar"</span><span class="p">;</span>
 
-// 結果
-// barデータは存在しないため、barを設定できません。
+<span class="c1">// 結果</span>
+<span class="c1">// barデータは存在しないため、barを設定できません。</span>
 </code></pre></div>
 <h4 id="__construct_1">▼ マジック関数の <code>__construct()</code> 関数<a class="headerlink" href="#__construct_1" title="Permanent link">&para;</a></h4>
 <p>インスタンス化時に自動的に呼び出される関数。</p>
 <p>インスタンス化時に実行したい処理を記述できる。</p>
 <p>Setter を持たせずに、<code>__construct()</code> 関数のみで値を設定すれば、ValueObject のような、『イミュータブル』なオブジェクトを実現できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Test02
-{
+<span class="k">class</span> <span class="nc">Test02</span>
+<span class="p">{</span>
 
-    private $property02;
+    <span class="k">private</span> <span class="nv">$property02</span><span class="p">;</span>
 
-    // コンストラクタで$property02に値を設定
-    public function __construct($property02)
-    {
-        $this-&gt;property02 = $property02;
-    }
+    <span class="c1">// コンストラクタで$property02に値を設定</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$property02</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">property02</span> <span class="o">=</span> <span class="nv">$property02</span><span class="p">;</span>
+    <span class="p">}</span>
 
-}
+<span class="p">}</span>
 </code></pre></div>
 <h4 id="_19">▼ 『ミュータブル』と『イミュータブル』を実現できる理由】<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>Test01 クラスインスタンスの <code>$property01</code> に値を設定するためには、インスタンスから Setter をコールする。</p>
 <p>Setter は何度でもコールでき、そのたびにデータの値を上書きできる。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$test01 = new Test01;
+<span class="nv">$test01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test01</span><span class="p">;</span>
 
-$test01-&gt;setProperty01("データ01の値");
+<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">"データ01の値"</span><span class="p">);</span>
 
-$test01-&gt;setProperty01("新しいデータ01の値");
+<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">"新しいデータ01の値"</span><span class="p">);</span>
 </code></pre></div>
 <p>一方で、Test02 クラスインスタンスの <code>$property02</code> に値を設定するためには、インスタンスを作り直さなければならない。</p>
 <p>つまり、以前に作ったインスタンスの <code>$property02</code> の値は上書きできない。</p>
 <p>Setter を持たせずに、<code>__construct()</code> 関数のみを持たせれば、『イミュータブル』なオブジェクトとなる。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$test02 = new Test02("データ02の値");
+<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">"データ02の値"</span><span class="p">);</span>
 
-$test02 = new Test02("新しいデータ02の値");
+<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">"新しいデータ02の値"</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_20">マジック関数 (その他)<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <h4 id="__invoke">▼ <code>__invoke()</code> 関数<a class="headerlink" href="#__invoke" title="Permanent link">&para;</a></h4>
 <p>定義したクラスを、関数のように扱える。</p>
 <p><code>__invoke()</code> 関数自体は無名関数として扱われる。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo
-{
-    public function __invoke(array $array)
-    {
-        print_r($array);
-    }
-}
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="k">array</span> <span class="nv">$array</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nb">print_r</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-$foo = new Foo();
-$foo([1, 2, 3]);
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+<span class="nv">$foo</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
 
-// 結果
-// Array
-// (
-//    [0] =&gt; 1
-//    [1] =&gt; 2
-//    [2] =&gt; 3
-// )
+<span class="c1">// 結果</span>
+<span class="c1">// Array</span>
+<span class="c1">// (</span>
+<span class="c1">//    [0] =&gt; 1</span>
+<span class="c1">//    [1] =&gt; 2</span>
+<span class="c1">//    [2] =&gt; 3</span>
+<span class="c1">// )</span>
 </code></pre></div>
 <h4 id="__clone">▼ <code>__clone()</code> 関数<a class="headerlink" href="#__clone" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// ここに実装例
+<span class="c1">// ここに実装例</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_21">インスタンスの作成関数<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <h4 id="static-self">▼ <code>static()</code> 関数 と <code>self()</code> 関数の違い<a class="headerlink" href="#static-self" title="Permanent link">&para;</a></h4>
 <p>どちらも、new 演算子と組み合わせて、自身のインスタンスを返却する関数であるが、作成の対象になるクラスが異なる。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class A
-{
-    /**
-     * @return A
-     */
-    public static function get_self()
-    {
-        return new self();
-    }
+<span class="k">class</span> <span class="nc">A</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @return A</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">get_self</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">self</span><span class="p">();</span>
+    <span class="p">}</span>
 
-    /**
-     * @return static
-     */
-    public static function get_static()
-    {
-        return new static();
-    }
-}
+    <span class="sd">/**</span>
+<span class="sd">     * @return static</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">get_static</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="k">static</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
-class B extends A {}
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">class</span> <span class="nc">B</span> <span class="k">extends</span> <span class="nx">A</span> <span class="p">{}</span>
 </code></pre></div>
 <p>以下の通り、<code>self()</code> 関数は定義したクラスをインスタンス化する。</p>
 <p>一方で、<code>static()</code> 関数はコールされたクラスをインスタンス化する。</p>
 <p>自身のインスタンス化処理が継承される場合は、<code>static()</code> 関数を使用したほうがよい。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-echo get_class(B::get_self());   // 継承元のクラスA
+<span class="k">echo</span> <span class="nb">get_class</span><span class="p">(</span><span class="nx">B</span><span class="o">::</span><span class="na">get_self</span><span class="p">());</span>   <span class="c1">// 継承元のクラスA</span>
 
-echo get_class(B::get_static()); // 継承先のクラスB
+<span class="k">echo</span> <span class="nb">get_class</span><span class="p">(</span><span class="nx">B</span><span class="o">::</span><span class="na">get_static</span><span class="p">());</span> <span class="c1">// 継承先のクラスB</span>
 
-echo get_class(A::get_static()); // 継承元のクラスA
+<span class="k">echo</span> <span class="nb">get_class</span><span class="p">(</span><span class="nx">A</span><span class="o">::</span><span class="na">get_static</span><span class="p">());</span> <span class="c1">// 継承元のクラスA</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_22">関数のコール<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <h4 id="_23">▼ 関数チェーン<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
 <p>以下のような、オブジェクト A を最外層とした関係が存在しているとする。</p>
 <p>【オブジェクト A (オブジェクト B を状態に持つ) 】</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Obj_A
-{
-    private $objB;
+<span class="k">class</span> <span class="nc">Obj_A</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$objB</span><span class="p">;</span>
 
-    // 返却値のデータ型を指定
-    public function objB(): ObjB
-    {
-        return $this-&gt;objB;
-    }
-}
+    <span class="c1">// 返却値のデータ型を指定</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">objB</span><span class="p">()</span><span class="o">:</span> <span class="nx">ObjB</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">objB</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>【オブジェクト B (オブジェクト C を状態に持つ) 】</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Obj_B
-{
-    private $objC;
+<span class="k">class</span> <span class="nc">Obj_B</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$objC</span><span class="p">;</span>
 
-    // 返却値のデータ型を指定
-    public function objC(): ObjC
-    {
-        return $this-&gt;objC;
-    }
-}
+    <span class="c1">// 返却値のデータ型を指定</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">objC</span><span class="p">()</span><span class="o">:</span> <span class="nx">ObjC</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">objC</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>【オブジェクト C (オブジェクト D を状態に持つ) 】</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Obj_C
-{
-    private $objD;
+<span class="k">class</span> <span class="nc">Obj_C</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$objD</span><span class="p">;</span>
 
-    // 返却値のデータ型を指定
-    public function objD(): ObjD
-    {
-        return $this-&gt;objD;
-    }
-}
+    <span class="c1">// 返却値のデータ型を指定</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">objD</span><span class="p">()</span><span class="o">:</span> <span class="nx">ObjD</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">objD</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>以下のように、返却値のオブジェクトを使用して、より深い層に連続してアクセスしていく場合…</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$ObjA = new Obj_A;
+<span class="nv">$ObjA</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Obj_A</span><span class="p">;</span>
 
-$ObjB = $ObjA-&gt;objB();
+<span class="nv">$ObjB</span> <span class="o">=</span> <span class="nv">$ObjA</span><span class="o">-&gt;</span><span class="na">objB</span><span class="p">();</span>
 
-$ObjC = $ObjB-&gt;objC();
+<span class="nv">$ObjC</span> <span class="o">=</span> <span class="nv">$ObjB</span><span class="o">-&gt;</span><span class="na">objC</span><span class="p">();</span>
 
-$ObjD = $ObjC-&gt;objD();
+<span class="nv">$ObjD</span> <span class="o">=</span> <span class="nv">$ObjC</span><span class="o">-&gt;</span><span class="na">objD</span><span class="p">();</span>
 </code></pre></div>
 <p>以下のように、関数チェーンという書き方が可能。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$D = objB()-&gt;objC()-&gt;objD();
+<span class="nv">$D</span> <span class="o">=</span> <span class="nx">objB</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">objC</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">objD</span><span class="p">();</span>
 
-// $D には ObjD が格納されている。
+<span class="c1">// $D には ObjD が格納されている。</span>
 </code></pre></div>
 <h4 id="recursive-call">▼ Recursive call：再帰的プログラム<a class="headerlink" href="#recursive-call" title="Permanent link">&para;</a></h4>
 <p>自プログラムから自身をコールし、実行できるプログラムのこと。</p>
@@ -37012,109 +37012,109 @@ $D = objB()-&gt;objC()-&gt;objD();
 </dd>
 </dl>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo
-{
-    /**
-     * @param array $array
-     * @return array
-     */
-    public function quickSort(array $array): array
-    {
-        // 配列の要素数が1つしかない場合、クイックソートする必要がないため、返却する。
-        if (count($array) &lt;= 1) {
-            return $array;
-        }
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param array $array</span>
+<span class="sd">     * @return array</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">quickSort</span><span class="p">(</span><span class="k">array</span> <span class="nv">$array</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="c1">// 配列の要素数が1つしかない場合、クイックソートする必要がないため、返却する。</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$array</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        // 一番最初の値をPivotとする。
-        $pivot = array_shift($array);
+        <span class="c1">// 一番最初の値をPivotとする。</span>
+        <span class="nv">$pivot</span> <span class="o">=</span> <span class="nb">array_shift</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
 
-        // グループを定義
-        $left = $right = [];
+        <span class="c1">// グループを定義</span>
+        <span class="nv">$left</span> <span class="o">=</span> <span class="nv">$right</span> <span class="o">=</span> <span class="p">[];</span>
 
-        foreach ($array as $value) {
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$array</span> <span class="k">as</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
 
-            if ($value &lt; $pivot) {
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$value</span> <span class="o">&lt;</span> <span class="nv">$pivot</span><span class="p">)</span> <span class="p">{</span>
 
-                // Pivotより小さい数は左グループに格納
-                $left[] = $value;
-            } else {
+                <span class="c1">// Pivotより小さい数は左グループに格納</span>
+                <span class="nv">$left</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
 
-                // Pivotより大きい数は右グループに格納
-                $right[] = $value;
-            }
+                <span class="c1">// Pivotより大きい数は右グループに格納</span>
+                <span class="nv">$right</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
+            <span class="p">}</span>
 
-        }
+        <span class="p">}</span>
 
-        // 処理の周回ごとに、結果の配列を結合。
-        return array_merge
-        (
-        // 左のグループを再帰的にクイックソート。
-            $this-&gt;quickSort($left),
+        <span class="c1">// 処理の周回ごとに、結果の配列を結合。</span>
+        <span class="k">return</span> <span class="nb">array_merge</span>
+        <span class="p">(</span>
+        <span class="c1">// 左のグループを再帰的にクイックソート。</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">quickSort</span><span class="p">(</span><span class="nv">$left</span><span class="p">),</span>
 
-            // Pivotを結果に組み込む。
-            [$pivot],
+            <span class="c1">// Pivotを結果に組み込む。</span>
+            <span class="p">[</span><span class="nv">$pivot</span><span class="p">],</span>
 
-            // 右のグループを再帰的にクイックソート。
-            $this-&gt;quickSort($right)
-        );
-    }
-}
+            <span class="c1">// 右のグループを再帰的にクイックソート。</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">quickSort</span><span class="p">(</span><span class="nv">$right</span><span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-// 実際に使用してみる。
-$array = [6, 4, 3, 7, 8, 5, 2, 9, 1];
-$result = (new Foo())-&gt;quickSort($array);
-var_dump($result);
+<span class="c1">// 実際に使用してみる。</span>
+<span class="nv">$array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">];</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">Foo</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">quickSort</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 
-// 昇順に並び替えられている。
-// 1, 2, 3, 4, 5, 6, 7, 8
+<span class="c1">// 昇順に並び替えられている。</span>
+<span class="c1">// 1, 2, 3, 4, 5, 6, 7, 8</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_24">引数<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <h4 id="_25">▼ オプション引数<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
 <p>引数が与えられなければ、指定の値を渡す方法</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// ここに実装例
+<span class="c1">// ここに実装例</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_26">値を返す前の途中終了<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <h4 id="return">▼ <code>return;</code><a class="headerlink" href="#return" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo
-{
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
 
-    public function returnMethod()
-    {
-        print "returnMethod()です。\n";
-        return; // 何も返さない。
-    }
-}
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">returnMethod</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">print</span> <span class="s2">"returnMethod()です。</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span> <span class="c1">// 何も返さない。</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-$foo = new Foo();
-$foo-&gt;returnMethod(); // returnMethod()です。
-// 処理は続く。
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">returnMethod</span><span class="p">();</span> <span class="c1">// returnMethod()です。</span>
+<span class="c1">// 処理は続く。</span>
 </code></pre></div>
 <h4 id="exit">▼ <code>exit;</code><a class="headerlink" href="#exit" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo
-{
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
 
-    function exitMethod()
-    {
-        print "exitMethod()です。\n";
-        exit;
-    }
-}
+    <span class="k">function</span> <span class="nf">exitMethod</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">print</span> <span class="s2">"exitMethod()です。</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+        <span class="k">exit</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-$foo = new Foo();
-$foo-&gt;exitMethod(); // exitMethod()です。
-// ここで、ソフトウェア全体の処理が完了する。
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">exitMethod</span><span class="p">();</span> <span class="c1">// exitMethod()です。</span>
+<span class="c1">// ここで、ソフトウェア全体の処理が完了する。</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_27">値の返却<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
@@ -37124,442 +37124,442 @@ $foo-&gt;exitMethod(); // exitMethod()です。
 <p>関数がコールされた場所に値を返却した後、そこで終了せず、<code>yield</code> の次の処理が続く。</p>
 <p>返却値は、array 型である。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo
-{
-    /**
-     * @return array|Generator
-     */
-    public function oneToThree(): array
-    {
-        for ($i = 1; $i &lt;= 3; $i++) {
-            // yield を返却した後、$i の値が維持される。
-            yield $i;
-        }
-    }
-}
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @return array|Generator</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">oneToThree</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// yield を返却した後、$i の値が維持される。</span>
+            <span class="k">yield</span> <span class="nv">$i</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-$foo = new Foo();
-$oneToThree = $foo-&gt;oneToThree();
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+<span class="nv">$oneToThree</span> <span class="o">=</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">oneToThree</span><span class="p">();</span>
 
-foreach ($oneToThree as $value) {
-    echo "{$value}\n";
-}
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$oneToThree</span> <span class="k">as</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"</span><span class="si">{</span><span class="nv">$value</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span>
 
-// 1
-// 2
-// 3
+<span class="c1">// 1</span>
+<span class="c1">// 2</span>
+<span class="c1">// 3</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="dispatcher">Dispatcher<a class="headerlink" href="#dispatcher" title="Permanent link">&para;</a></h3>
 <h4 id="dispatcher_1">▼ Dispatcher とは<a class="headerlink" href="#dispatcher_1" title="Permanent link">&para;</a></h4>
 <p>特定の名前と関数を紐付け、名前を渡すことにより、関数をコールするオブジェクトを Dispatcher という。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Dispatcher
-{
-    // 中身は省略
-}
+<span class="k">class</span> <span class="nc">Dispatcher</span>
+<span class="p">{</span>
+    <span class="c1">// 中身は省略</span>
+<span class="p">}</span>
 
-$dispatcher = new Dispatcher;
+<span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dispatcher</span><span class="p">;</span>
 
-$name = "foo";
+<span class="nv">$name</span> <span class="o">=</span> <span class="s2">"foo"</span><span class="p">;</span>
 
-// 名前に紐付ける関数を定義。
-$listener = function() use ($param){
-    // 何らかの処理
-};
+<span class="c1">// 名前に紐付ける関数を定義。</span>
+<span class="nv">$listener</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$param</span><span class="p">){</span>
+    <span class="c1">// 何らかの処理</span>
+<span class="p">};</span>
 
-// 名前と関数の登録.
-$dispatcher-&gt;addListener($name, $listener);
+<span class="c1">// 名前と関数の登録.</span>
+<span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">addListener</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$listener</span><span class="p">);</span>
 
-// 文字列から関数をコール。ついでに、引数を渡す。
-$dispatcher-&gt;dispatch("foo", "test");
+<span class="c1">// 文字列から関数をコール。ついでに、引数を渡す。</span>
+<span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">,</span> <span class="s2">"test"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="_28">▼ イベント名と関数の紐付け<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
 <p>名前としてイベント名を定義し、これに関数を紐付ける。</p>
 <p>特定のイベント名が渡されたとき、それに対応づけられた関数をコールする。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>フレームワークの <code>EventDispatcher</code> クラスが簡単である。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-use Symfony\Component\EventDispatcher\EventDispatcher;
+<span class="k">use</span> <span class="nx">Symfony\Component\EventDispatcher\EventDispatcher</span><span class="p">;</span>
 
-class FooEventDispatcher
-{
+<span class="k">class</span> <span class="nc">FooEventDispatcher</span>
+<span class="p">{</span>
 
-}
+<span class="p">}</span>
 </code></pre></div>
 <h4 id="_29">▼ 計算処理の返却値を保持するオブジェクト<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
 <p>大サイズのデータを集計するは、その処理に時間がかかる。</p>
 <p>そこで、そのような関数では、一度コールされて集計した後、データに返却値を保持しておく。</p>
 <p>そして、再びコールされたときには、返却値をデータから取り出す。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class ResultCacher
-{
-    /**
-     * @var
-     */
-    private $resultCollection;
+<span class="k">class</span> <span class="nc">ResultCacher</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$resultCollection</span><span class="p">;</span>
 
-    /**
-     * @var array[]
-     */
-    private $funcCollection;
+    <span class="sd">/**</span>
+<span class="sd">     * @var array[]</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$funcCollection</span><span class="p">;</span>
 
-    /**
-     */
-    public function __construct()
-    {
-        $this-&gt;funcCollection = $this-&gt;addListener();
-    }
+    <span class="sd">/**</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">funcCollection</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addListener</span><span class="p">();</span>
+    <span class="p">}</span>
 
-    /**
-     * 集計関数
-     */
-    public function computeRevenue()
-    {
-        // 時間のかかる集計処理;
-    }
+    <span class="sd">/**</span>
+<span class="sd">     * 集計関数</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">computeRevenue</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 時間のかかる集計処理;</span>
+    <span class="p">}</span>
 
-    /**
-     * @param string $funcName
-     * @return false|mixed
-     */
-    public function funcNameListener(string $funcName)
-    {
-        // 返却値が設定されていなかった場合、値を設定.
-        if (!isset($this-&gt;resultCollection[$funcName])) {
+    <span class="sd">/**</span>
+<span class="sd">     * @param string $funcName</span>
+<span class="sd">     * @return false|mixed</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">funcNameListener</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$funcName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 返却値が設定されていなかった場合、値を設定.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resultCollection</span><span class="p">[</span><span class="nv">$funcName</span><span class="p">]))</span> <span class="p">{</span>
 
-            // 関数の返却値をCollectionに設定。
-            $this-&gt;resultCollection[$funcName] = $this-&gt;dispatch($funcName);
-        }
+            <span class="c1">// 関数の返却値をCollectionに設定。</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resultCollection</span><span class="p">[</span><span class="nv">$funcName</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">(</span><span class="nv">$funcName</span><span class="p">);</span>
+        <span class="p">}</span>
 
-        // 返却値が設定されていた場合,そのまま使用する。
-        return $this-&gt;resultCollection[$funcName];
-    }
+        <span class="c1">// 返却値が設定されていた場合,そのまま使用する。</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resultCollection</span><span class="p">[</span><span class="nv">$funcName</span><span class="p">];</span>
+    <span class="p">}</span>
 
-    /**
-     * 返却値をキャッシュしたい関数名を登録しておく
-     *
-     * @return array[]
-     */
-    private function addListener()
-    {
-        return [
-            "computeRevenue" =&gt; [$this, "computeRevenue"]
-        ];
-    }
+    <span class="sd">/**</span>
+<span class="sd">     * 返却値をキャッシュしたい関数名を登録しておく</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return array[]</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">addListener</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s2">"computeRevenue"</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nv">$this</span><span class="p">,</span> <span class="s2">"computeRevenue"</span><span class="p">]</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
 
-    /**
-     * @param string $funcName
-     * @return false|mixed
-     */
-    private function dispatch(string $funcName)
-    {
-        // call_user_funcで関数を実行
-        return call_user_func(
-        // 登録されている関数名から、関数をDispatch.
-            $this-&gt;funcCollection[$funcName]
-        );
-    }
-}
+    <span class="sd">/**</span>
+<span class="sd">     * @param string $funcName</span>
+<span class="sd">     * @return false|mixed</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">dispatch</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$funcName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// call_user_funcで関数を実行</span>
+        <span class="k">return</span> <span class="nb">call_user_func</span><span class="p">(</span>
+        <span class="c1">// 登録されている関数名から、関数をDispatch.</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">funcCollection</span><span class="p">[</span><span class="nv">$funcName</span><span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02-03">02-03. クロージャー (無名関数)<a class="headerlink" href="#02-03" title="Permanent link">&para;</a></h2>
 <h3 id="_30">クロージャー (無名関数) の定義、変数格納後のコール<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
 <h4 id="use">▼ <code>use()</code> 関数のみに引数を渡す場合<a class="headerlink" href="#use" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Item
-{
-    // 中身は省略
-}
+<span class="k">class</span> <span class="nc">Item</span>
+<span class="p">{</span>
+    <span class="c1">// 中身は省略</span>
+<span class="p">}</span>
 
-$item = new Item;
+<span class="nv">$item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Item</span><span class="p">;</span>
 
-// 最初の括弧を使用しないことにより、普段よくやっている値渡しの関数を定義しているのと同じになる。
-// use()に、親関数 ($optionName) のスコープの$itemを渡す。
-$optionName = function () use ($item) {
-    $item-&gt;optionName();
-};
+<span class="c1">// 最初の括弧を使用しないことにより、普段よくやっている値渡しの関数を定義しているのと同じになる。</span>
+<span class="c1">// use()に、親関数 ($optionName) のスコープの$itemを渡す。</span>
+<span class="nv">$optionName</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">optionName</span><span class="p">();</span>
+<span class="p">};</span>
 
-// function()には引数が設定されていないため、コール時に引数は不要。
-echo $optionName();
+<span class="c1">// function()には引数が設定されていないため、コール時に引数は不要。</span>
+<span class="k">echo</span> <span class="nv">$optionName</span><span class="p">();</span>
 
-// 出力結果
-// オプションA
+<span class="c1">// 出力結果</span>
+<span class="c1">// オプションA</span>
 </code></pre></div>
 <h4 id="function-use">▼ <code>function()</code> 関数と <code>use()</code> 関数に引数を渡す場合<a class="headerlink" href="#function-use" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
-class Item
-{
-    // 中身は省略
-}
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">class</span> <span class="nc">Item</span>
+<span class="p">{</span>
+    <span class="c1">// 中身は省略</span>
+<span class="p">}</span>
 
-$item = new Item;
+<span class="nv">$item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Item</span><span class="p">;</span>
 
-// 最初の括弧を使用しないことにより、普段よくやっている値渡しの関数を定義しているのと同じになる。
-// 親関数 ($optionName) のスコープの$itemを、use()に渡す。
-// $paramは、コール時に使用する変数。
-$optionName = function ($para) use ($item) {
-    $item-&gt;optionName() . $para;
-};
+<span class="c1">// 最初の括弧を使用しないことにより、普段よくやっている値渡しの関数を定義しているのと同じになる。</span>
+<span class="c1">// 親関数 ($optionName) のスコープの$itemを、use()に渡す。</span>
+<span class="c1">// $paramは、コール時に使用する変数。</span>
+<span class="nv">$optionName</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$para</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">optionName</span><span class="p">()</span> <span class="o">.</span> <span class="nv">$para</span><span class="p">;</span>
+<span class="p">};</span>
 
-// コール時、$paramをfunction()に渡す。
-echo $optionName("BC");
+<span class="c1">// コール時、$paramをfunction()に渡す。</span>
+<span class="k">echo</span> <span class="nv">$optionName</span><span class="p">(</span><span class="s2">"BC"</span><span class="p">);</span>
 
-// 出力結果
-// オプションABC
+<span class="c1">// 出力結果</span>
+<span class="c1">// オプションABC</span>
 </code></pre></div>
 <h4 id="_31">▼ データの値として、無名関数を格納しておく裏技<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Item
-{
-    // 中身は省略
-}
+<span class="k">class</span> <span class="nc">Item</span>
+<span class="p">{</span>
+    <span class="c1">// 中身は省略</span>
+<span class="p">}</span>
 
-class Option
-{
-    // 中身は省略
-}
+<span class="k">class</span> <span class="nc">Option</span>
+<span class="p">{</span>
+    <span class="c1">// 中身は省略</span>
+<span class="p">}</span>
 
-$item = new Item;
+<span class="nv">$item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Item</span><span class="p">;</span>
 
-// 最初の括弧を使用しないことにより、普段よくやっている値渡しの関数を定義しているのと同じになる。
-// use()に、親関数のスコープの$itemを渡す。
-// $paramは、コール時に使用する変数。
-$option = new Option;
+<span class="c1">// 最初の括弧を使用しないことにより、普段よくやっている値渡しの関数を定義しているのと同じになる。</span>
+<span class="c1">// use()に、親関数のスコープの$itemを渡す。</span>
+<span class="c1">// $paramは、コール時に使用する変数。</span>
+<span class="nv">$option</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Option</span><span class="p">;</span>
 
-// データの値に無名関数を格納する。
-$option-&gt;name = function ($para) use ($item) {
-    $item-&gt;optionName() . $para;
-};
+<span class="c1">// データの値に無名関数を格納する。</span>
+<span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$para</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">optionName</span><span class="p">()</span> <span class="o">.</span> <span class="nv">$para</span><span class="p">;</span>
+<span class="p">};</span>
 
-// コール時、$paramをfunction()に渡す。
-echo $option-&gt;name("BC");
+<span class="c1">// コール時、$paramをfunction()に渡す。</span>
+<span class="k">echo</span> <span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s2">"BC"</span><span class="p">);</span>
 
-// 出力結果
-// オプションABC
+<span class="c1">// 出力結果</span>
+<span class="c1">// オプションABC</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_32">クロージャー (無名関数) の定義と即コール<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
 <p>定義したその場でコールされる無名関数を『即時関数』と呼ぶ。</p>
 <p>無名関数をコールしたいときは、<code>call_user_func()</code> 関数を使用する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Item
-{
-    // 中身は省略
-}
+<span class="k">class</span> <span class="nc">Item</span>
+<span class="p">{</span>
+    <span class="c1">// 中身は省略</span>
+<span class="p">}</span>
 
-$item = new Item;
-$param = "BC";
+<span class="nv">$item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Item</span><span class="p">;</span>
+<span class="nv">$param</span> <span class="o">=</span> <span class="s2">"BC"</span><span class="p">;</span>
 
-// use()に、親関数のスコープの$itemを渡す。
-// 無名関数を定義し、同時にcall_user_func()で即コールする。
-// $paramは、コール時に使用する変数。
-$optionName = call_user_func(function ($param) use ($item) {
-    $item-&gt;optionName() . $param;
-}, $param);
+<span class="c1">// use()に、親関数のスコープの$itemを渡す。</span>
+<span class="c1">// 無名関数を定義し、同時にcall_user_func()で即コールする。</span>
+<span class="c1">// $paramは、コール時に使用する変数。</span>
+<span class="nv">$optionName</span> <span class="o">=</span> <span class="nb">call_user_func</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$param</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">optionName</span><span class="p">()</span> <span class="o">.</span> <span class="nv">$param</span><span class="p">;</span>
+<span class="p">},</span> <span class="nv">$param</span><span class="p">);</span>
 
-// $paramはすでに即コール時に渡されている。
-// これはコールではなく、即コール時に格納された返却値の出力。
-echo $optionName;
+<span class="c1">// $paramはすでに即コール時に渡されている。</span>
+<span class="c1">// これはコールではなく、即コール時に格納された返却値の出力。</span>
+<span class="k">echo</span> <span class="nv">$optionName</span><span class="p">;</span>
 
-// 出力結果
-// オプションABC
+<span class="c1">// 出力結果</span>
+<span class="c1">// オプションABC</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_33">高階関数とクロージャー (無名関数) の組み合わせ<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
 <p>関数を引数として受け取ったり、関数自体を返したりする関数を『高階関数』と呼ぶ。</p>
 <h4 id="_34">▼ 無名関数を使用しない場合<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// 第一引数のみの場合
-class Foo
-{
-    /**
-     * 高階関数を定義
-     *
-     * @param $callback
-     */
-    public function test($callback)
-    {
-        echo $callback();
-    }
+<span class="c1">// 第一引数のみの場合</span>
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 高階関数を定義</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param $callback</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">test</span><span class="p">(</span><span class="nv">$callback</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$callback</span><span class="p">();</span>
+    <span class="p">}</span>
 
-    /**
-     * コールバックを定義
-     * 関数の中でコールされるため、『後で呼び出される』という意味合いから、コールバック関数といえる。
+    <span class="sd">/**</span>
+<span class="sd">     * コールバックを定義</span>
+<span class="sd">     * 関数の中でコールされるため、『後で呼び出される』という意味合いから、コールバック関数といえる。</span>
 
 
-     *
-     * @return string
-     */
-    public function callbackMethod(): string
-    {
-        return "出力に成功しました。";
-    }
-}
+<span class="sd">     *</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">callbackMethod</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">"出力に成功しました。"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-$foo = new Foo();
-// 高階関数の引数として、コールバック関数を渡す
-$foo-&gt;test("callbackMethod");
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+<span class="c1">// 高階関数の引数として、コールバック関数を渡す</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">test</span><span class="p">(</span><span class="s2">"callbackMethod"</span><span class="p">);</span>
 
-// 出力結果
-// 出力に成功しました。
+<span class="c1">// 出力結果</span>
+<span class="c1">// 出力に成功しました。</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// 第一引数と第二引数の場合
-class Foo
-{
+<span class="c1">// 第一引数と第二引数の場合</span>
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
 
-    /**
-     * 高階関数を定義
-     *
-     * @param $param
-     * @param $callback
-     * @return mixed
-     */
-    public function higherOrder($param, $callback)
-    {
-        return $callback($param);
-    }
+    <span class="sd">/**</span>
+<span class="sd">     * 高階関数を定義</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param $param</span>
+<span class="sd">     * @param $callback</span>
+<span class="sd">     * @return mixed</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">higherOrder</span><span class="p">(</span><span class="nv">$param</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$callback</span><span class="p">(</span><span class="nv">$param</span><span class="p">);</span>
+    <span class="p">}</span>
 
-    /**
-     * コールバック関数を定義
-     *
-     * @param $param
-     * @return string
-     */
-    public function callbackMethod($param)
-    {
-        return $param."の出力に成功しました。";
-    }
-}
+    <span class="sd">/**</span>
+<span class="sd">     * コールバック関数を定義</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param $param</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">callbackMethod</span><span class="p">(</span><span class="nv">$param</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$param</span><span class="o">.</span><span class="s2">"の出力に成功しました。"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-$foo = new Foo();
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
 
-// 高階関数の第一引数にコールバック関数の引数、第二引数にコールバック関数を渡す
-$foo-&gt;higherOrder("第一引数", "callbackMethod");
+<span class="c1">// 高階関数の第一引数にコールバック関数の引数、第二引数にコールバック関数を渡す</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">higherOrder</span><span class="p">(</span><span class="s2">"第一引数"</span><span class="p">,</span> <span class="s2">"callbackMethod"</span><span class="p">);</span>
 
-// 出力結果
-// 第一引数の出力に成功しました。
+<span class="c1">// 出力結果</span>
+<span class="c1">// 第一引数の出力に成功しました。</span>
 </code></pre></div>
 <h4 id="_35">▼ 無名関数を使用する場合<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo
-{
-    /**
-     * 高階関数のように、関数を引数として渡す。
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 高階関数のように、関数を引数として渡す。</span>
 
 
-     *
-     * @param $parentVar
-     * @param $callback
-     * @return mixed
-     */
-    public function higherOrder($parentVar, $callback)
-    {
-        $parentVar = "&amp;親関数のスコープの変数";
-        return $callback($parentVar);
-    }
-}
+<span class="sd">     *</span>
+<span class="sd">     * @param $parentVar</span>
+<span class="sd">     * @param $callback</span>
+<span class="sd">     * @return mixed</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">higherOrder</span><span class="p">(</span><span class="nv">$parentVar</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$parentVar</span> <span class="o">=</span> <span class="s2">"&amp;親関数のスコープの変数"</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nv">$callback</span><span class="p">(</span><span class="nv">$parentVar</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-$foo = new Foo;
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">;</span>
 
-// 第二引数の無名関数。関数の中でコールされるため、『後でコールされる』という意味合いから、コールバック関数といえる。
-// コールバック関数は再利用されないため、名前をつけずに無名関数とすることが多い。
-// 親関数のスコープで定義されている変数を引数として渡す。
-$foo-&gt;higherOrder($parentVar, function () use ($parentVar) {
-    return $parentVar . "の出力に成功しました。";
-});
+<span class="c1">// 第二引数の無名関数。関数の中でコールされるため、『後でコールされる』という意味合いから、コールバック関数といえる。</span>
+<span class="c1">// コールバック関数は再利用されないため、名前をつけずに無名関数とすることが多い。</span>
+<span class="c1">// 親関数のスコープで定義されている変数を引数として渡す。</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">higherOrder</span><span class="p">(</span><span class="nv">$parentVar</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$parentVar</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$parentVar</span> <span class="o">.</span> <span class="s2">"の出力に成功しました。"</span><span class="p">;</span>
+<span class="p">});</span>
 
-// 出力結果
-// 親関数のスコープの変数の出力に成功しました。
+<span class="c1">// 出力結果</span>
+<span class="c1">// 親関数のスコープの変数の出力に成功しました。</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_36">高階関数を使いこなす！<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo
-{
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
 
-    /**
-     * @var array
-     */
-    protected $properties;
+    <span class="sd">/**</span>
+<span class="sd">     * @var array</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$properties</span><span class="p">;</span>
 
-    /**
-     * 非無名関数あるいは無名関数を引数で渡す。
+    <span class="sd">/**</span>
+<span class="sd">     * 非無名関数あるいは無名関数を引数で渡す。</span>
 
 
-     *
-     * @param $callback
-     * @return $this
-     */
-    public function Shiborikomi($callback)
-    {
-        if (!is_callable($callback)) {
-            throw new \LogicException;
-        }
+<span class="sd">     *</span>
+<span class="sd">     * @param $callback</span>
+<span class="sd">     * @return $this</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">Shiborikomi</span><span class="p">(</span><span class="nv">$callback</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_callable</span><span class="p">(</span><span class="nv">$callback</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">\LogicException</span><span class="p">;</span>
+        <span class="p">}</span>
 
-        // 自身が持つ配列型のデータを加工し、再格納する。
-        $properties = [];
-        foreach ($this-&gt;properties as $property) {
+        <span class="c1">// 自身が持つ配列型のデータを加工し、再格納する。</span>
+        <span class="nv">$properties</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">properties</span> <span class="k">as</span> <span class="nv">$property</span><span class="p">)</span> <span class="p">{</span>
 
-            // 引数の無名関数によって、データに対する加工方法が異なる。
-            // 例えば、判定でtrueのもののみを返す関数を渡すと、自データを絞り込むような処理を行える。
-            $returned = call_user_func($callback, $property);
-            if ($returned) {
+            <span class="c1">// 引数の無名関数によって、データに対する加工方法が異なる。</span>
+            <span class="c1">// 例えば、判定でtrueのもののみを返す関数を渡すと、自データを絞り込むような処理を行える。</span>
+            <span class="nv">$returned</span> <span class="o">=</span> <span class="nb">call_user_func</span><span class="p">(</span><span class="nv">$callback</span><span class="p">,</span> <span class="nv">$property</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$returned</span><span class="p">)</span> <span class="p">{</span>
 
-                // 再格納。
-                $properties[] = $returned;
-            }
-        }
+                <span class="c1">// 再格納。</span>
+                <span class="nv">$properties</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$returned</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
 
-        // 他のデータは静的に扱ったうえで、自身を返す。
-        return new static($properties);
-    }
-}
+        <span class="c1">// 他のデータは静的に扱ったうえで、自身を返す。</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="k">static</span><span class="p">(</span><span class="nv">$properties</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03">03. 定数<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_37">定数が役に立つ場面<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
 <h4 id="onoff">▼ フラグ ON/OFF<a class="headerlink" href="#onoff" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-declare(strict_types=1);
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
 
-/**
- * フラグ定数クラス
- */
-final class FlagConstant
-{
-    /**
-     * フラグが立っている状態
-     */
-    public const IS_ON = true;
+<span class="sd">/**</span>
+<span class="sd"> * フラグ定数クラス</span>
+<span class="sd"> */</span>
+<span class="k">final</span> <span class="k">class</span> <span class="nc">FlagConstant</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * フラグが立っている状態</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">IS_ON</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
 
-    /**
-     * フラグが立っていない状態
-     */
-    public const IS_OFF = false;
-}
+    <span class="sd">/**</span>
+<span class="sd">     * フラグが立っていない状態</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">IS_OFF</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <h4 id="_38">▼ 区分値<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
 <p>区分名（<code>A_TYPE</code>、<code>B_TYPE</code>、<code>C_TYPE</code>）を integer 型の定数として扱う。</p>
@@ -37605,51 +37605,51 @@ final class FlagConstant
 <p>この定数がコールされたファイルの配置ディレクトリパスは、ルートディレクトリ基準で格納されている。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>以下の実装を持つファイルを、<code>/var/www/foo</code> ディレクトリ下に配置しておき、<code>/vendor/autoload.php</code> ファイルと結合してパスを通す。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-# /var/www/foo/vendor/autoload.php
-require_once realpath(__DIR__ . "/vendor/autoload.php");
+<span class="c1"># /var/www/foo/vendor/autoload.php</span>
+<span class="k">require_once</span> <span class="nb">realpath</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">"/vendor/autoload.php"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="__function__">▼ <code>__FUNCTION__</code><a class="headerlink" href="#__function__" title="Permanent link">&para;</a></h4>
 <p>この定数には、コールされた関数名が格納されている。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo
-{
-    public function foo()
-    {
-        echo __FUNCTION__;
-    }
-}
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="no">__FUNCTION__</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo
-{
-    public function foo(){}
-}
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">(){}</span>
+<span class="p">}</span>
 
-$foo = new Foo;
-$foo-&gt;foo(); // foo が返却される。
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">;</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">();</span> <span class="c1">// foo が返却される。</span>
 </code></pre></div>
 <h4 id="__method__">▼ <code>__METHOD__</code><a class="headerlink" href="#__method__" title="Permanent link">&para;</a></h4>
 <p>この定数がコールされたクラス名と関数名が、<code>{クラス名}::{関数名}</code> の形式で格納されている。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-class Foo
-{
-    public function foo()
-    {
-        echo __METHOD__;
-    }
-}
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="no">__METHOD__</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$foo = new Foo;
-$foo-&gt;foo(); // Foo::foo が返却される。
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">;</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">();</span> <span class="c1">// Foo::foo が返却される。</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="04">04. 変数<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
@@ -37659,82 +37659,82 @@ $foo-&gt;foo(); // Foo::foo が返却される。
 <h4 id="_43">▼ シングルクオーテーションによる変数展開<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h4>
 <p>シングルクオーテーションの中身はすべて文字列として認識され、変数は展開されない。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$fruit = "リンゴ";
+<span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">"リンゴ"</span><span class="p">;</span>
 
-// 出力結果
-echo 'これは$fruitです。'; // これは、$fruitです。
+<span class="c1">// 出力結果</span>
+<span class="k">echo</span> <span class="s1">'これは$fruitです。'</span><span class="p">;</span> <span class="c1">// これは、$fruitです。</span>
 </code></pre></div>
 <h4 id="_44">▼ シングルクオーテーションと波括弧による変数展開<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h4>
 <p>シングルクオーテーションの中身はすべて文字列として認識され、変数は展開されない。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$fruit = "リンゴ";
+<span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">"リンゴ"</span><span class="p">;</span>
 
-// 出力結果
-echo 'これは{$fruit}です。'; // これは、{$fruit}です。
+<span class="c1">// 出力結果</span>
+<span class="k">echo</span> <span class="s1">'これは{$fruit}です。'</span><span class="p">;</span> <span class="c1">// これは、{$fruit}です。</span>
 </code></pre></div>
 <h4 id="_45">▼ ダブルクオーテーションによる変数展開<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
 <p>変数の前後に半角スペースを置いた場合にのみ、変数は展開される。</p>
 <p>(※半角スペースがないとエラーになってしまう)</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 
-$fruit = "リンゴ";
+<span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">"リンゴ"</span><span class="p">;</span>
 
-// 出力結果
-echo "これは $fruit です。"; // これは リンゴ です。
+<span class="c1">// 出力結果</span>
+<span class="k">echo</span> <span class="s2">"これは </span><span class="si">$fruit</span><span class="s2"> です。"</span><span class="p">;</span> <span class="c1">// これは リンゴ です。</span>
 </code></pre></div>
 <h4 id="_46">▼ ダブルクオーテーションと波括弧による変数展開<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
 <p>波括弧を使用すると、明示的に変数として扱える。</p>
 <p>これによって、変数の前後に半角スペースを配置しなくとも、変数は展開される。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$fruit = "リンゴ";
+<span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">"リンゴ"</span><span class="p">;</span>
 
-// 出力結果
-echo "これは{$fruit}です。"; // これは、リンゴです。
+<span class="c1">// 出力結果</span>
+<span class="k">echo</span> <span class="s2">"これは</span><span class="si">{</span><span class="nv">$fruit</span><span class="si">}</span><span class="s2">です。"</span><span class="p">;</span> <span class="c1">// これは、リンゴです。</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_47">参照渡しと値渡し<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h3>
 <h4 id="_48">▼ 参照渡し<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h4>
 <p>『参照渡し』とは、変数に代入した値の参照先 (メモリアドレス) を渡すこと。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$value = 1;
-$result = &amp;$value; // 値の入れ物を参照先として代入
+<span class="nv">$value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nv">$value</span><span class="p">;</span> <span class="c1">// 値の入れ物を参照先として代入</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <p>変数の <code>$b</code> には、<code>$a</code> の参照によって 10 が格納される。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$a = 2;
-$b = &amp;$a;  // 変数aを&amp;をつけて代入
-$a = 10;    // 変数aの値を変更
+<span class="nv">$a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nv">$a</span><span class="p">;</span>  <span class="c1">// 変数aを&amp;をつけて代入</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>    <span class="c1">// 変数aの値を変更</span>
 
-// 出力結果
-echo $b; // 10
+<span class="c1">// 出力結果</span>
+<span class="k">echo</span> <span class="nv">$b</span><span class="p">;</span> <span class="c1">// 10</span>
 </code></pre></div>
 <h4 id="_49">▼ 値渡し<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h4>
 <p>『値渡し』とは、変数に代入した値のコピーを渡すこと。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$value = 1;
-$result = $value; // 1をコピーして代入
+<span class="nv">$value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span> <span class="c1">// 1をコピーして代入</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <p>変数の <code>$b</code> には、<code>$a</code> の１行目の格納によって 2 が格納される。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$a = 2;
-$b = $a;  // 変数aを代入
-$a = 10;  // 変数aの値を変更
+<span class="nv">$a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$b</span> <span class="o">=</span> <span class="nv">$a</span><span class="p">;</span>  <span class="c1">// 変数aを代入</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">// 変数aの値を変更</span>
 
 
-// 出力結果
-echo $b; // 2
+<span class="c1">// 出力結果</span>
+<span class="k">echo</span> <span class="nv">$b</span><span class="p">;</span> <span class="c1">// 2</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="05">05. ビルトインラッパー関数<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
@@ -37744,28 +37744,28 @@ echo $b; // 2
 <h4 id="phpstdin">▼ php://stdin<a class="headerlink" href="#phpstdin" title="Permanent link">&para;</a></h4>
 <p>stdin：standard in (標準入力) を意味する。</p>
 <p>PHP のプロセスが、標準入力に対して、読み出し処理を送信できるようになる。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// ログを読み出す
-$stdin = fopen("php://stdin", "r");
+<span class="c1">// ログを読み出す</span>
+<span class="nv">$stdin</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">"php://stdin"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="phpstdout">▼ php://stdout<a class="headerlink" href="#phpstdout" title="Permanent link">&para;</a></h4>
 <p>stdout：standard out (標準出力) を意味する。</p>
 <p>PHP のプロセスが、標準出力に対して、書き込み処理を送信できるようになる。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// ログを書き込む
-$stderr = fopen("php://stdout", "w");
-fwrite($stderr, "ログです。");
+<span class="c1">// ログを書き込む</span>
+<span class="nv">$stderr</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">"php://stdout"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">);</span>
+<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$stderr</span><span class="p">,</span> <span class="s2">"ログです。"</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="phpstderr">▼ php://stderr<a class="headerlink" href="#phpstderr" title="Permanent link">&para;</a></h4>
 <p>stderr：standard error (標準出力エラー) を意味する。</p>
 <p>PHP のプロセスが、標準エラー出力に対して、書き込み処理を送信できるようになる。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// エラーログを書き込む
-$stderr = fopen("php://stderr", "w");
-fwrite($stderr, "エラーログです。");
+<span class="c1">// エラーログを書き込む</span>
+<span class="nv">$stderr</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">"php://stderr"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">);</span>
+<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$stderr</span><span class="p">,</span> <span class="s2">"エラーログです。"</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="06">06. その他の関数<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
@@ -37773,18 +37773,18 @@ fwrite($stderr, "エラーログです。");
 <h4 id="file_put_contents">▼ file_put_contents<a class="headerlink" href="#file_put_contents" title="Permanent link">&para;</a></h4>
 <p>ファイルに文字列を出力する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$array = [];
+<span class="nv">$array</span> <span class="o">=</span> <span class="p">[];</span>
 
-// array型をJSON型に変換
-$json = json_encode($array);
+<span class="c1">// array型をJSON型に変換</span>
+<span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
 
-// fopen()、fwrite()、fclose()を実行できる。
-file_put_contents(
-    "data.json",
-    $json
-);
+<span class="c1">// fopen()、fwrite()、fclose()を実行できる。</span>
+<span class="nb">file_put_contents</span><span class="p">(</span>
+    <span class="s2">"data.json"</span><span class="p">,</span>
+    <span class="nv">$json</span>
+<span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="07">07. 正規表現とパターン演算子<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
@@ -37796,26 +37796,26 @@ file_put_contents(
 <h4 id="_55">▼ 数字<a class="headerlink" href="#_55" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <p>『<code>0</code> から <code>9</code> のいずれか』の数字を意味する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$var = "0123456789";
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"0123456789"</span><span class="p">;</span>
 
-// OR条件と範囲指定
-$result = preg_match("/[0-9]/", $var);
+<span class="c1">// OR条件と範囲指定</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/[0-9]/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
 
-var_dump($result); // true
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// true</span>
 </code></pre></div>
 <h4 id="_56">▼ アルファベット<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <p>『<code>a</code> から <code>z</code> のいずれか』または『A から Z のいずれか』のアルファベットを意味する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$var = "aAbBcC";
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"aAbBcC"</span><span class="p">;</span>
 
-// OR条件と範囲指定
-$result = preg_match("/[a-zA-Z]/", $var);
+<span class="c1">// OR条件と範囲指定</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/[a-zA-Z]/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
 
-var_dump($result); // true
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// true</span>
 </code></pre></div>
 <h4 id="_57">▼ メタ文字<a class="headerlink" href="#_57" title="Permanent link">&para;</a></h4>
 <p>エスケープのために、必ずバックスラッシュを付ける必要がある。</p>
@@ -37826,13 +37826,13 @@ var_dump($result); // true
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
 <p>『<code>?</code>』『<code>.</code>』『<code>*</code>』『<code>$</code>』のいずれかのメタ文字を意味する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$var = "?";
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"?"</span><span class="p">;</span>
 
-$result = preg_match("/[\?.*$]/", $var);
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/[\?.*$]/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
 
-var_dump($result); // 1
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
 </code></pre></div>
 <h4 id="_58">▼ ワイルドカード<a class="headerlink" href="#_58" title="Permanent link">&para;</a></h4>
 <p>ワイルドカードは『<code>.*</code>』または『<code>.+</code>』で意味する。</p>
@@ -37843,23 +37843,23 @@ var_dump($result); // 1
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$var = "FooBarBaz";
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"FooBarBaz"</span><span class="p">;</span>
 
-// 前方の一致
-$result = preg_match("/Foo.*/", $var);
+<span class="c1">// 前方の一致</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/Foo.*/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
 
-var_dump($result); // 1
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$var = "FooBarBaz";
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"FooBarBaz"</span><span class="p">;</span>
 
-// 後方の一致
-$result = preg_match("/.*Baz/", $var);
+<span class="c1">// 後方の一致</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/.*Baz/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
 
-var_dump($result); // 1
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
 </code></pre></div>
 <h4 id="_59">▼ クエスチョン<a class="headerlink" href="#_59" title="Permanent link">&para;</a></h4>
 <p>クエスチョンの前に記載された文字列は、有無にかかわらず問題ないことを意味する。</p>
@@ -37868,34 +37868,34 @@ var_dump($result); // 1
 <li><a href="http://www.ipc.juen.ac.jp/contents/manuals/spam/regular.html">http://www.ipc.juen.ac.jp/contents/manuals/spam/regular.html</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$var = "FooBarBaz";
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"FooBarBaz"</span><span class="p">;</span>
 
-# zはあってもなくてもも
-$result = preg_match("/FooBarBaz?/", $var);
+<span class="c1"># zはあってもなくてもも</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/FooBarBaz?/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
 
-var_dump($result); // 1
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
 </code></pre></div>
 <h4 id="_60">▼ オプションとしてのパターン演算子<a class="headerlink" href="#_60" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$var = "jpeg";
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"jpeg"</span><span class="p">;</span>
 
-// jpegの大文字小文字
-$result = preg_match("/jpeg$/i", $var);
+<span class="c1">// jpegの大文字小文字</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/jpeg$/i"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
 
-var_dump($result); // 1
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$var = "JPEG";
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"JPEG"</span><span class="p">;</span>
 
-// jpegの大文字小文字
-$result = preg_match("/jpeg$/i", $var);
+<span class="c1">// jpegの大文字小文字</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/jpeg$/i"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
 
-var_dump($result); // 1
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
 </code></pre></div>
 <h4 id="_61">▼ グループ化<a class="headerlink" href="#_61" title="Permanent link">&para;</a></h4>
 <p>文字列をグループ化する。</p>
@@ -37905,14 +37905,14 @@ var_dump($result); // 1
 <li><a href="http://www.turtle.gr.jp/techno/regular-expression.html">正規表現の基礎</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$var = "abcabcabc";
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">"abcabcabc"</span><span class="p">;</span>
 
-# abcが任意数だけ反復する
-$result = preg_match("/(abc)*/", $var);
+<span class="c1"># abcが任意数だけ反復する</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/(abc)*/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
 
-var_dump($result); // 1
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
 </code></pre></div>
 
   

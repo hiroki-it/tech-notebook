@@ -35227,29 +35227,29 @@
 <h4 id="pdo-rdb">▼ PDO による RDB の書き込み系の操作<a class="headerlink" href="#pdo-rdb" title="Permanent link">&para;</a></h4>
 <p>PDO では書き込み処理に <code>exec()</code> 関数、読み出し処理に <code>query()</code> 関数を使用する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
-try{
-    // DBと接続する。
-    $db = getDb();
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">try</span><span class="p">{</span>
+    <span class="c1">// DBと接続する。</span>
+    <span class="nv">$db</span> <span class="o">=</span> <span class="nx">getDb</span><span class="p">();</span>
 
-    // 例外処理を有効化。
-    $db-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    <span class="c1">// 例外処理を有効化。</span>
+    <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">setAttribute</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_ERRMODE</span><span class="p">,</span> <span class="nx">PDO</span><span class="o">::</span><span class="na">ERRMODE_EXCEPTION</span><span class="p">);</span>
 
-    // トランザクション処理を開始する。
-    $db-&gt;beginTransaction();
-    // いくつかのWrite処理を実行する。※もし失敗した場合、ERRMODE_EXCEPTIONを実行。
-    $db-&gt;exec("INSERT INTO movie(title, price) VALUES('ハリポタ', 2000)");
-    $db-&gt;exec("INSERT INTO movie(title, price) VALUES('シスター', 2000)");
+    <span class="c1">// トランザクション処理を開始する。</span>
+    <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">beginTransaction</span><span class="p">();</span>
+    <span class="c1">// いくつかのWrite処理を実行する。※もし失敗した場合、ERRMODE_EXCEPTIONを実行。</span>
+    <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">exec</span><span class="p">(</span><span class="s2">"INSERT INTO movie(title, price) VALUES('ハリポタ', 2000)"</span><span class="p">);</span>
+    <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">exec</span><span class="p">(</span><span class="s2">"INSERT INTO movie(title, price) VALUES('シスター', 2000)"</span><span class="p">);</span>
 
-    // コミットを実行する
-    // トランザクション内の一連のSQLステートメントが成功したら、ログファイルにコミット。
-    $db-&gt;commit();
+    <span class="c1">// コミットを実行する</span>
+    <span class="c1">// トランザクション内の一連のSQLステートメントが成功したら、ログファイルにコミット。</span>
+    <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">commit</span><span class="p">();</span>
 
-} catch (PDOException $e) {
-    // 例外が発生したらロールバックし、エラーメッセージを出力。
-    $db-&gt;rollBack();
-    print "失敗しました。：{$e-&gt;getMessage()}";
-}
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PDOException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 例外が発生したらロールバックし、エラーメッセージを出力。</span>
+    <span class="nv">$db</span><span class="o">-&gt;</span><span class="na">rollBack</span><span class="p">();</span>
+    <span class="k">print</span> <span class="s2">"失敗しました。：</span><span class="si">{</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <h4 id="_5">▼ トランザクション全体の非同期化<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>時間のかかるトランザクション全体を非同期化することにより、後続の処理を並行的に実行し、処理を効率化できる。</p>

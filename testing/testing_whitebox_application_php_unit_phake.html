@@ -33726,13 +33726,13 @@
 <h3 id="mock"><code>mock()</code> 関数<a class="headerlink" href="#mock" title="Permanent link">&para;</a></h3>
 <p>クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを作成する。</p>
 <p>以降の処理での用途によって、モックまたはスタブの呼び名が異なることに注意する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// モックとして使用する擬似オブジェクトを作成する。
-$mock = Phake::mock(Foo::class);
+<span class="c1">// モックとして使用する擬似オブジェクトを作成する。</span>
+<span class="nv">$mock</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
 
-// スタブとして使用する擬似オブジェクトを作成する。
-$stub = Phake::mock(Foo::class);
+<span class="c1">// スタブとして使用する擬似オブジェクトを作成する。</span>
+<span class="nv">$stub</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="when"><code>when()</code> 関数<a class="headerlink" href="#when" title="Permanent link">&para;</a></h3>
@@ -33740,50 +33740,50 @@ $stub = Phake::mock(Foo::class);
 <p>また、特定の変数が渡されたときに、特定の値を返却させられる。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>スタブの <code>find()</code> 関数は、<code>1</code> が渡されたときに、空配列を返却する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// スタブとして使用する擬似オブジェクトを作成する。
-$stub = Phake::mock(Foo::class);
+<span class="c1">// スタブとして使用する擬似オブジェクトを作成する。</span>
+<span class="nv">$stub</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
 
-// スタブの関数に処理内容を定義する。
-\Phake::when($stub)
-    -&gt;find(1)
-    -&gt;thenReturn([]);
+<span class="c1">// スタブの関数に処理内容を定義する。</span>
+<span class="nx">\Phake</span><span class="o">::</span><span class="na">when</span><span class="p">(</span><span class="nv">$stub</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">thenReturn</span><span class="p">([]);</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="verify"><code>verify()</code> 関数<a class="headerlink" href="#verify" title="Permanent link">&para;</a></h3>
 <p>上層オブジェクトが下層オブジェクトをコールできることを確認するために、モックの関数が <code>n</code> 回実行できたことを検証する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-use PHPUnit\Framework\TestCase;
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
 
-class FooTest extends TestCase
-{
-   /**
-    * @test
-    */
-    public function testFoo_Bar_Baz()
-    {
-        // モックとして使用する擬似オブジェクトを作成する。
-        $mockFooRepository = Phake::mock(FooRepository::class);
-        $fooId = Phake::mock(FooId::class);
+<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+   <span class="sd">/**</span>
+<span class="sd">    * @test</span>
+<span class="sd">    */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo_Bar_Baz</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// モックとして使用する擬似オブジェクトを作成する。</span>
+        <span class="nv">$mockFooRepository</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">FooRepository</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$fooId</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">FooId</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
 
-        // モックの関数に処理内容を定義する。
-        \Phake::when($mockFooRepository)
-            -&gt;find($fooId)
-            -&gt;thenReturn(new User(1));
+        <span class="c1">// モックの関数に処理内容を定義する。</span>
+        <span class="nx">\Phake</span><span class="o">::</span><span class="na">when</span><span class="p">(</span><span class="nv">$mockFooRepository</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$fooId</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">thenReturn</span><span class="p">(</span><span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
 
-        // 上層クラスに対して、下層クラスのモックのインジェクションを実行する
-        $foo = new Foo($mockFooRepository);
+        <span class="c1">// 上層クラスに対して、下層クラスのモックのインジェクションを実行する</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span><span class="nv">$mockFooRepository</span><span class="p">);</span>
 
-        // 上層クラスの内部にある下層モックのfind()関数をコールする
-        $foo-&gt;getUser($fooId)
+        <span class="c1">// 上層クラスの内部にある下層モックのfind()関数をコールする</span>
+        <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">getUser</span><span class="p">(</span><span class="nv">$fooId</span><span class="p">)</span>
 
-        // 上層のクラスが、下層モックにパラメーターを渡し、関数を実行したことを検証する。
-        Phake::verify($mockFooRepository, Phake::times(1))-&gt;find($fooId);
-    }
-}
+        <span class="c1">// 上層のクラスが、下層モックにパラメーターを渡し、関数を実行したことを検証する。</span>
+        <span class="nx">Phake</span><span class="o">::</span><span class="na">verify</span><span class="p">(</span><span class="nv">$mockFooRepository</span><span class="p">,</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">times</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$fooId</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 

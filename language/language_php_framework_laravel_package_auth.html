@@ -35175,26 +35175,26 @@
 </table>
 <p>ドライバーの種類に応じて、AuthManager クラスが Guard インターフェースの実装クラスを返却する。</p>
 <p><code>auth.php</code> ファイルにて、例えば token ドライバーを選択した場合は、TokenGuard クラスが返却される。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-return [
+<span class="k">return</span> <span class="p">[</span>
 
-    // ガード
-    'guards' =&gt; [
-        'web' =&gt; [
-            // セッションドライバー
-            'driver'   =&gt; 'session',
-            'provider' =&gt; 'users',
-        ],
+    <span class="c1">// ガード</span>
+    <span class="s1">'guards'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'web'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="c1">// セッションドライバー</span>
+            <span class="s1">'driver'</span>   <span class="o">=&gt;</span> <span class="s1">'session'</span><span class="p">,</span>
+            <span class="s1">'provider'</span> <span class="o">=&gt;</span> <span class="s1">'users'</span><span class="p">,</span>
+        <span class="p">],</span>
 
-        'api' =&gt; [
-            // トークンドライー
-            'driver'   =&gt; 'token',
-            'provider' =&gt; 'users',
-            'hash'     =&gt; false,
-        ],
-    ],
-];
+        <span class="s1">'api'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="c1">// トークンドライー</span>
+            <span class="s1">'driver'</span>   <span class="o">=&gt;</span> <span class="s1">'token'</span><span class="p">,</span>
+            <span class="s1">'provider'</span> <span class="o">=&gt;</span> <span class="s1">'users'</span><span class="p">,</span>
+            <span class="s1">'hash'</span>     <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">],</span>
+<span class="p">];</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35234,49 +35234,49 @@ return [
 <li><a href="https://readouble.com/laravel/8.x/ja/authentication.html#authenticating-users">8.x 認証 Laravel</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Http\Controllers\Authentication;
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers\Authentication</span><span class="p">;</span>
 
-use App\Http\Requests\Authentication\AuthenticationRequest;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\RedirectResponse;
+<span class="k">use</span> <span class="nx">App\Http\Requests\Authentication\AuthenticationRequest</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Providers\RouteServiceProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Auth</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\RedirectResponse</span><span class="p">;</span>
 
-final class AuthenticationController
-{
-    /**
-     * @return RedirectResponse
-     */
-    public function authenticate(AuthenticationRequest $authenticationRequest)
-    {
-        $validated = $authenticationRequest-&gt;validated();
+<span class="k">final</span> <span class="k">class</span> <span class="nc">AuthenticationController</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @return RedirectResponse</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">authenticate</span><span class="p">(</span><span class="nx">AuthenticationRequest</span> <span class="nv">$authenticationRequest</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$validated</span> <span class="o">=</span> <span class="nv">$authenticationRequest</span><span class="o">-&gt;</span><span class="na">validated</span><span class="p">();</span>
 
-        if (Auth::attempt($validated)) {
-            // セッションID固定化を防ぐために、認証後にセッションを再作成します。
-            $authenticationRequest-&gt;session()-&gt;regenerate();
+        <span class="k">if</span> <span class="p">(</span><span class="nx">Auth</span><span class="o">::</span><span class="na">attempt</span><span class="p">(</span><span class="nv">$validated</span><span class="p">))</span> <span class="p">{</span>
+            <span class="c1">// セッションID固定化を防ぐために、認証後にセッションを再作成します。</span>
+            <span class="nv">$authenticationRequest</span><span class="o">-&gt;</span><span class="na">session</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">regenerate</span><span class="p">();</span>
 
-            // 認証後のWebページにリダイレクトします。
-            return redirect(RouteServiceProvider::HOME);
-        }
+            <span class="c1">// 認証後のWebページにリダイレクトします。</span>
+            <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="nx">RouteServiceProvider</span><span class="o">::</span><span class="na">HOME</span><span class="p">);</span>
+        <span class="p">}</span>
 
-        // 未認証のWebページにリダイレクトします。
-        return redirect(RouteServiceProvider::UNAUTHORIZED);
-    }
-}
+        <span class="c1">// 未認証のWebページにリダイレクトします。</span>
+        <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="nx">RouteServiceProvider</span><span class="o">::</span><span class="na">UNAUTHORIZED</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>認証後のページは RouteServiceProvider クラスで定義しておく。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Providers;
+<span class="k">namespace</span> <span class="nx">App\Providers</span><span class="p">;</span>
 
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Route;
+<span class="k">use</span> <span class="nx">Illuminate\Foundation\Support\Providers\RouteServiceProvider</span> <span class="k">as</span> <span class="nx">ServiceProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Route</span><span class="p">;</span>
 
-class RouteServiceProvider extends ServiceProvider
-{
-    public const HOME = "/home";
-}
+<span class="k">class</span> <span class="nc">RouteServiceProvider</span> <span class="k">extends</span> <span class="nx">ServiceProvider</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">HOME</span> <span class="o">=</span> <span class="s2">"/home"</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
 <h4 id="_12">▼ 一部のユーザーが異なる権限を持つ場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>ユーザーごとに認証方法を区別しつつ、同じ認証後の Web ページにリダイレクトさせられる。</p>
@@ -35287,130 +35287,130 @@ class RouteServiceProvider extends ServiceProvider
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
 <p>権限の異なるユーザーに応じたガード、またガードに紐付ける Eloquent モデルをプロバイダを定義しておく。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-return [
+<span class="k">return</span> <span class="p">[</span>
 
-    // ガード
-    'guards' =&gt; [
-        'web' =&gt; [
-            'driver'   =&gt; 'session',
-            'provider' =&gt; 'users',
-        ],
+    <span class="c1">// ガード</span>
+    <span class="s1">'guards'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'web'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'driver'</span>   <span class="o">=&gt;</span> <span class="s1">'session'</span><span class="p">,</span>
+            <span class="s1">'provider'</span> <span class="o">=&gt;</span> <span class="s1">'users'</span><span class="p">,</span>
+        <span class="p">],</span>
 
-        'api' =&gt; [
-            'driver'   =&gt; 'token',
-            'provider' =&gt; 'users',
-            'hash'     =&gt; false,
-        ],
-        // 一般ユーザー
-        'users'          =&gt; [
-            'driver'   =&gt; 'session',
-            'provider' =&gt; 'users',
-        ],
-        // 管理者
-        'administrators' =&gt; [
-            'driver'   =&gt; 'session',
-            'provider' =&gt; 'administrators',
-        ],
-    ],
+        <span class="s1">'api'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'driver'</span>   <span class="o">=&gt;</span> <span class="s1">'token'</span><span class="p">,</span>
+            <span class="s1">'provider'</span> <span class="o">=&gt;</span> <span class="s1">'users'</span><span class="p">,</span>
+            <span class="s1">'hash'</span>     <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="c1">// 一般ユーザー</span>
+        <span class="s1">'users'</span>          <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'driver'</span>   <span class="o">=&gt;</span> <span class="s1">'session'</span><span class="p">,</span>
+            <span class="s1">'provider'</span> <span class="o">=&gt;</span> <span class="s1">'users'</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="c1">// 管理者</span>
+        <span class="s1">'administrators'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'driver'</span>   <span class="o">=&gt;</span> <span class="s1">'session'</span><span class="p">,</span>
+            <span class="s1">'provider'</span> <span class="o">=&gt;</span> <span class="s1">'administrators'</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">],</span>
 
-    // プロバイダ
-    'providers' =&gt; [
-        // 一般ユーザー
-        'users'          =&gt; [
-            'driver' =&gt; 'eloquent',
-            'model'  =&gt; App\Models\User::class,
-        ],
-        // 管理者
-        'administrators' =&gt; [
-            'driver' =&gt; 'eloquent',
-            'model'  =&gt; App\Models\Administrator::class,
-        ]
-    ],
-];
+    <span class="c1">// プロバイダ</span>
+    <span class="s1">'providers'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="c1">// 一般ユーザー</span>
+        <span class="s1">'users'</span>          <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'driver'</span> <span class="o">=&gt;</span> <span class="s1">'eloquent'</span><span class="p">,</span>
+            <span class="s1">'model'</span>  <span class="o">=&gt;</span> <span class="nx">App\Models\User</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="c1">// 管理者</span>
+        <span class="s1">'administrators'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">'driver'</span> <span class="o">=&gt;</span> <span class="s1">'eloquent'</span><span class="p">,</span>
+            <span class="s1">'model'</span>  <span class="o">=&gt;</span> <span class="nx">App\Models\Administrator</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">],</span>
+<span class="p">];</span>
 </code></pre></div>
 <p>Auth ファサードの <code>guard()</code> 関数を使用して、ガードに応じた認証する。</p>
 <p>これにより、同じ認証後ページへリダイレクトした後、ユーザーの Eloquent モデルに応じた処理を実行できるようになる。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Http\Controllers\Authentication;
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers\Authentication</span><span class="p">;</span>
 
-use App\Http\Requests\Authentication\AuthenticationRequest;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
+<span class="k">use</span> <span class="nx">App\Http\Requests\Authentication\AuthenticationRequest</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Providers\RouteServiceProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\RedirectResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Auth</span><span class="p">;</span>
 
-final class AuthenticationController
-{
-    /**
-     * @return RedirectResponse
-     */
-    public function login(AuthenticationRequest $authenticationRequest)
-    {
-        $validated = $authenticationRequest-&gt;validated();
+<span class="k">final</span> <span class="k">class</span> <span class="nc">AuthenticationController</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @return RedirectResponse</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">login</span><span class="p">(</span><span class="nx">AuthenticationRequest</span> <span class="nv">$authenticationRequest</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$validated</span> <span class="o">=</span> <span class="nv">$authenticationRequest</span><span class="o">-&gt;</span><span class="na">validated</span><span class="p">();</span>
 
-        // guardに応じた認証を行います。
-        if (Auth::guard($authenticationRequest-&gt;guard)-&gt;attempt($validated)) {
+        <span class="c1">// guardに応じた認証を行います。</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">Auth</span><span class="o">::</span><span class="na">guard</span><span class="p">(</span><span class="nv">$authenticationRequest</span><span class="o">-&gt;</span><span class="na">guard</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">attempt</span><span class="p">(</span><span class="nv">$validated</span><span class="p">))</span> <span class="p">{</span>
 
-            // セッションID固定化を防ぐために、認証後にセッションを再作成します。
-            $authenticationRequest-&gt;session()-&gt;regenerate();
+            <span class="c1">// セッションID固定化を防ぐために、認証後にセッションを再作成します。</span>
+            <span class="nv">$authenticationRequest</span><span class="o">-&gt;</span><span class="na">session</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">regenerate</span><span class="p">();</span>
 
-            // ユーザー用認証後のWebページにリダイレクトします。
-            return redirect(RouteServiceProvider::HOME);
-        }
+            <span class="c1">// ユーザー用認証後のWebページにリダイレクトします。</span>
+            <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="nx">RouteServiceProvider</span><span class="o">::</span><span class="na">HOME</span><span class="p">);</span>
+        <span class="p">}</span>
 
-        // 未認証のWebページにリダイレクトします。
-        return redirect(RouteServiceProvider::UNAUTHORIZED);
-    }
-}
+        <span class="c1">// 未認証のWebページにリダイレクトします。</span>
+        <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="nx">RouteServiceProvider</span><span class="o">::</span><span class="na">UNAUTHORIZED</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_13">認証済みか否かの判定<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="user">▼ <code>user()</code> 関数<a class="headerlink" href="#user" title="Permanent link">&para;</a></h4>
 <p>現在のセッションのユーザーが認証済みであれば、ユーザーの Eloquent モデルを取得する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-// Illuminate\Contracts\Auth\Guard
-// ドライバーに応じて、リゾルブされるGuardの実装クラス決まる
-$user = auth()-&gt;user();
+<span class="c1">// Illuminate\Contracts\Auth\Guard</span>
+<span class="c1">// ドライバーに応じて、リゾルブされるGuardの実装クラス決まる</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="nx">auth</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">user</span><span class="p">();</span>
 </code></pre></div>
 <h4 id="check">▼ <code>check()</code> 関数<a class="headerlink" href="#check" title="Permanent link">&para;</a></h4>
 <p>現在のセッションのユーザーが認証済みであれば、<code>true</code> を返却する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>認証済みのユーザーがブラウザを閉じたとしても、セッションが続いている (例：ログアウトしない) 限り、認証処理をあらためて実行する必要はない。</p>
 <p>そのために、BeforeMiddleware を使用して、認証済みのユーザーからのリクエストを認証済みページにリダイレクトさせる。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Http\Middleware\Auth;
+<span class="k">namespace</span> <span class="nx">App\Http\Middleware\Auth</span><span class="p">;</span>
 
-use App\Providers\RouteServiceProvider;
-use Closure;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+<span class="k">use</span> <span class="nx">App\Providers\RouteServiceProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Closure</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Auth</span><span class="p">;</span>
 
-class RedirectIfAuthenticated
-{
-    /**
-     * @param Request $request
-     * @param Closure $next
-     * @param mixed   ...$guards
-     * @return mixed
-     */
-    public function handle(Request $request, Closure $next, ...$guards)
-    {
-        $guards = empty($guards) ? [null] : $guards;
+<span class="k">class</span> <span class="nc">RedirectIfAuthenticated</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param Request $request</span>
+<span class="sd">     * @param Closure $next</span>
+<span class="sd">     * @param mixed   ...$guards</span>
+<span class="sd">     * @return mixed</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">Closure</span> <span class="nv">$next</span><span class="p">,</span> <span class="o">...</span><span class="nv">$guards</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$guards</span> <span class="o">=</span> <span class="k">empty</span><span class="p">(</span><span class="nv">$guards</span><span class="p">)</span> <span class="o">?</span> <span class="p">[</span><span class="k">null</span><span class="p">]</span> <span class="o">:</span> <span class="nv">$guards</span><span class="p">;</span>
 
-        foreach ($guards as $guard) {
-            if (auth()-&gt;guard($guard)-&gt;check()) {
-                // ユーザーが認証済みの場合は、認証後のWebページにリダイレクトします。
-                return redirect(RouteServiceProvider::HOME);
-            }
-        }
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$guards</span> <span class="k">as</span> <span class="nv">$guard</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">auth</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">guard</span><span class="p">(</span><span class="nv">$guard</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">check</span><span class="p">())</span> <span class="p">{</span>
+                <span class="c1">// ユーザーが認証済みの場合は、認証後のWebページにリダイレクトします。</span>
+                <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="nx">RouteServiceProvider</span><span class="o">::</span><span class="na">HOME</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
 
-        return $next($request);
-    }
-}
+        <span class="k">return</span> <span class="nv">$next</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02">02. 認可<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
@@ -35430,88 +35430,88 @@ class RedirectIfAuthenticated
 <li><a href="https://qiita.com/mpyw/items/8c5413b99b8e299f7002#%E7%AC%AC1%E5%BC%95%E6%95%B0%E3%81%AF%E5%BF%85%E3%81%9A-authenticatable-%E3%81%AB%E3%81%AA%E3%82%8B%E4%BD%86%E3%81%97">【Laravel】 認証や認可に関する補足資料 #PHP - Qiita</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Policies;
+<span class="k">namespace</span> <span class="nx">App\Policies</span><span class="p">;</span>
 
-use App\Models\Foo;
-use App\Models\User;
-use Illuminate\Auth\Access\HandlesAuthorization;
+<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Models\User</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Auth\Access\HandlesAuthorization</span><span class="p">;</span>
 
-final class FooPolicy
-{
-    use HandlesAuthorization;
+<span class="k">final</span> <span class="k">class</span> <span class="nc">FooPolicy</span>
+<span class="p">{</span>
+    <span class="k">use</span> <span class="nx">HandlesAuthorization</span><span class="p">;</span>
 
-    /**
-     * @param User $user
-     * @return bool
-     */
-    public function create(User $user): bool
-    {
-        $id = $user-&gt;id; // 認証中のユーザー
-    }
+    <span class="sd">/**</span>
+<span class="sd">     * @param User $user</span>
+<span class="sd">     * @return bool</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$user</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+    <span class="p">{</span>
+        <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span> <span class="c1">// 認証中のユーザー</span>
+    <span class="p">}</span>
 
-    /**
-     * @param User $user
-     * @param Foo  $foo
-     * @param int  $barId
-     * @return bool
-     */
-    public function show(User $user, Foo $foo, int $barId): bool
-    {
-        $id = $foo-&gt;id; // ルーターまたはコントローラーから渡されたインスタンス
-    }
+    <span class="sd">/**</span>
+<span class="sd">     * @param User $user</span>
+<span class="sd">     * @param Foo  $foo</span>
+<span class="sd">     * @param int  $barId</span>
+<span class="sd">     * @return bool</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$user</span><span class="p">,</span> <span class="nx">Foo</span> <span class="nv">$foo</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$barId</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+    <span class="p">{</span>
+        <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span> <span class="c1">// ルーターまたはコントローラーから渡されたインスタンス</span>
+    <span class="p">}</span>
 
-    /**
-     * @param User $user
-     * @param Foo  $foo
-     * @param int  $barId
-     * @return bool
-     */
-    public function update(User $user, Foo $foo, int $barId): bool
-    {
-        //
-    }
+    <span class="sd">/**</span>
+<span class="sd">     * @param User $user</span>
+<span class="sd">     * @param Foo  $foo</span>
+<span class="sd">     * @param int  $barId</span>
+<span class="sd">     * @return bool</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$user</span><span class="p">,</span> <span class="nx">Foo</span> <span class="nv">$foo</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$barId</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+    <span class="p">{</span>
+        <span class="c1">//</span>
+    <span class="p">}</span>
 
-    /**
-     * @param User $user
-     * @param Foo  $foo
-     * @param int  $barId
-     * @return bool
-     */
-    public function delete(User $user, Foo $foo, int $barId): bool
-    {
-        //
-    }
-}
+    <span class="sd">/**</span>
+<span class="sd">     * @param User $user</span>
+<span class="sd">     * @param Foo  $foo</span>
+<span class="sd">     * @param int  $barId</span>
+<span class="sd">     * @return bool</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$user</span><span class="p">,</span> <span class="nx">Foo</span> <span class="nv">$foo</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$barId</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+    <span class="p">{</span>
+        <span class="c1">//</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-declare(strict_types=1);
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
 
-namespace App\Providers;
+<span class="k">namespace</span> <span class="nx">App\Providers</span><span class="p">;</span>
 
-use App\Models\Foo;
-use App\Policies\FooPolicy;
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Policies\FooPolicy</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Foundation\Support\Providers\AuthServiceProvider</span> <span class="k">as</span> <span class="nx">ServiceProvider</span><span class="p">;</span>
 
-class AuthServiceProvider extends ServiceProvider
-{
-    /**
-     * @var array
-     */
-    protected $policies = [
-        Foo::class =&gt; FooPolicy::class,
-    ];
+<span class="k">class</span> <span class="nc">AuthServiceProvider</span> <span class="k">extends</span> <span class="nx">ServiceProvider</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var array</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$policies</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="nx">Foo</span><span class="o">::</span><span class="na">class</span> <span class="o">=&gt;</span> <span class="nx">FooPolicy</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+    <span class="p">];</span>
 
-    /**
-     * @return void
-     */
-    public function boot()
-    {
-        $this-&gt;registerPolicies();
-    }
-}
+    <span class="sd">/**</span>
+<span class="sd">     * @return void</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">registerPolicies</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <h4 id="authorizemiddleware">▼ AuthorizeMiddleware による認可<a class="headerlink" href="#authorizemiddleware" title="Permanent link">&para;</a></h4>
 <p>ルーティング時に DB レコードレベルの認可スコープを定義する。</p>
@@ -35521,22 +35521,22 @@ class AuthServiceProvider extends ServiceProvider
 <p>インスタンスを渡す場合は、暗黙のモデル結合を使用する必要がある。</p>
 <p>認可に失敗した場合、<code>403</code> ステータスを含むレスポンスを返信する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-declare(strict_types=1);
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
 
-use App\Http\Controllers\FooController;
+<span class="k">use</span> <span class="nx">App\Http\Controllers\FooController</span><span class="p">;</span>
 
-Route::group(['middleware' =&gt; ['auth:web']], function () {
+<span class="nx">Route</span><span class="o">::</span><span class="na">group</span><span class="p">([</span><span class="s1">'middleware'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'auth:web'</span><span class="p">]],</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
 
-    Route::group(['prefix' =&gt; 'foos'], function () {
-        Route::get('/{id}', [FooController::class, 'showFoo'])-&gt;middleware('can:show,'. Foo::class);
-        Route::get('/', [FooController::class, 'indexFoo']);
-        Route::post('/', [FooController::class, 'createFoo']);
-        Route::put('/{id}', [FooController::class, 'updateFoo'])-&gt;middleware('can:update,'. Foo::class);
-        Route::delete('/{id}', [FooController::class, 'deleteFoo'])-&gt;middleware('can:delete,'. Foo::class);
-    });
-});
+    <span class="nx">Route</span><span class="o">::</span><span class="na">group</span><span class="p">([</span><span class="s1">'prefix'</span> <span class="o">=&gt;</span> <span class="s1">'foos'</span><span class="p">],</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">'/{id}'</span><span class="p">,</span> <span class="p">[</span><span class="nx">FooController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">'showFoo'</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">middleware</span><span class="p">(</span><span class="s1">'can:show,'</span><span class="o">.</span> <span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="p">[</span><span class="nx">FooController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">'indexFoo'</span><span class="p">]);</span>
+        <span class="nx">Route</span><span class="o">::</span><span class="na">post</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="p">[</span><span class="nx">FooController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">'createFoo'</span><span class="p">]);</span>
+        <span class="nx">Route</span><span class="o">::</span><span class="na">put</span><span class="p">(</span><span class="s1">'/{id}'</span><span class="p">,</span> <span class="p">[</span><span class="nx">FooController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">'updateFoo'</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">middleware</span><span class="p">(</span><span class="s1">'can:update,'</span><span class="o">.</span> <span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nx">Route</span><span class="o">::</span><span class="na">delete</span><span class="p">(</span><span class="s1">'/{id}'</span><span class="p">,</span> <span class="p">[</span><span class="nx">FooController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">'deleteFoo'</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">middleware</span><span class="p">(</span><span class="s1">'can:delete,'</span><span class="o">.</span> <span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35550,43 +35550,43 @@ Route::group(['middleware' =&gt; ['auth:web']], function () {
 <p>認可に失敗した場合は AuthorizationException を投げる。その後は自前で <code>403</code> レスポンスする。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>ユーザーが該当 ID の Foo モデルを更新する権限があるか否かを検証する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Http\Controllers;
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
 
-use App\Http\Controllers\Controller;
-use App\Models\Foo;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Throwable;
+<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\JsonResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Throwable</span><span class="p">;</span>
 
-class FooController extends Controller
-{
-    /**
-     * @param Request $request
-     * @param int     $id
-     * @return JsonResponse
-     */
-    public function updateFoo(Request $request, int $id): JsonResponse
-    {
-        try {
-            $foo = new Foo();
+<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param Request $request</span>
+<span class="sd">     * @param int     $id</span>
+<span class="sd">     * @return JsonResponse</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">updateFoo</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">JsonResponse</span>
+    <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
 
-            // 認可が失敗した場合、AuthorizationExceptionを投げる。
-            $this-&gt;authorize('update', [$foo-&gt;find($id), $request-&gt;barId]);
+            <span class="c1">// 認可が失敗した場合、AuthorizationExceptionを投げる。</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">authorize</span><span class="p">(</span><span class="s1">'update'</span><span class="p">,</span> <span class="p">[</span><span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">),</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">barId</span><span class="p">]);</span>
 
-            // Eloquentモデルが不要な検証であれば名前空間
-            // $this-&gt;authorize('create', Foo::class);
+            <span class="c1">// Eloquentモデルが不要な検証であれば名前空間</span>
+            <span class="c1">// $this-&gt;authorize('create', Foo::class);</span>
 
-            $foo-&gt;fill($request-&gt;all())-&gt;save();
-        } catch (Throwable $e) {
-            // 自前で403ステータスを含むレスポンスを返信する。
-            return response()-&gt;json(['error' =&gt; $e-&gt;getMessage()], 403);
-        }
+            <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">fill</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Throwable</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 自前で403ステータスを含むレスポンスを返信する。</span>
+            <span class="k">return</span> <span class="nx">response</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">json</span><span class="p">([</span><span class="s1">'error'</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()],</span> <span class="mi">403</span><span class="p">);</span>
+        <span class="p">}</span>
 
-        // 続きの処理
-    }
-}
+        <span class="c1">// 続きの処理</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35602,40 +35602,40 @@ class FooController extends Controller
 <p>認可に失敗した場合は <code>false</code> を返却する。その後は自前で <code>403</code> レスポンスする。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>ユーザーが Foo モデルを作成する権限があるか否かを検証する。</p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Http\Controllers;
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
 
-use App\Http\Controllers\Controller;
-use App\Models\Foo;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\JsonResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
 
-class FooController extends Controller
-{
-    /**
-     * @param Request $request
-     * @param int     $id
-     * @return JsonResponse
-     */
-    public function updateFoo(Request $request, int $id): JsonResponse
-    {
-        $foo = new Foo();
+<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param Request $request</span>
+<span class="sd">     * @param int     $id</span>
+<span class="sd">     * @return JsonResponse</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">updateFoo</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">JsonResponse</span>
+    <span class="p">{</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
 
-        // 認可が失敗した場合、falseが返却される。
-        if (!auth()-&gt;user()-&gt;can('update', [$foo-&gt;find($id), $request-&gt;barId])) {
-            // 自前で403ステータスを含むレスポンスを返信する。
-            return response()-&gt;json(['error' =&gt; '認可エラー'], 403);
-        }
+        <span class="c1">// 認可が失敗した場合、falseが返却される。</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">auth</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">can</span><span class="p">(</span><span class="s1">'update'</span><span class="p">,</span> <span class="p">[</span><span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">),</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">barId</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="c1">// 自前で403ステータスを含むレスポンスを返信する。</span>
+            <span class="k">return</span> <span class="nx">response</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">json</span><span class="p">([</span><span class="s1">'error'</span> <span class="o">=&gt;</span> <span class="s1">'認可エラー'</span><span class="p">],</span> <span class="mi">403</span><span class="p">);</span>
+        <span class="p">}</span>
 
-        // Eloquentモデルが不要な検証であれば名前空間
-        // if (!auth()-&gt;user()-&gt;can('update', Foo::class) {}
+        <span class="c1">// Eloquentモデルが不要な検証であれば名前空間</span>
+        <span class="c1">// if (!auth()-&gt;user()-&gt;can('update', Foo::class) {}</span>
 
-        DB::transaction(function () use ($foo, $request) {
-            $foo-&gt;fill($request-&gt;all())-&gt;save();
-        });
-    }
-}
+        <span class="nx">DB</span><span class="o">::</span><span class="na">transaction</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$foo</span><span class="p">,</span> <span class="nv">$request</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">fill</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35804,19 +35804,19 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 <p><code>guards</code> キーにて、認証方式を設定する。ここでは、<code>api</code> を設定する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-return [
+<span class="k">return</span> <span class="p">[</span>
 
-    ...
+    <span class="o">...</span>
 
-    "defaults" =&gt; [
-        "guard" =&gt; "api",
-        "passwords" =&gt; "users",
-    ],
+    <span class="s2">"defaults"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s2">"guard"</span> <span class="o">=&gt;</span> <span class="s2">"api"</span><span class="p">,</span>
+        <span class="s2">"passwords"</span> <span class="o">=&gt;</span> <span class="s2">"users"</span><span class="p">,</span>
+    <span class="p">],</span>
 
-    ...
-];
+    <span class="o">...</span>
+<span class="p">];</span>
 </code></pre></div>
 <dl>
 <dt><code>(2)</code></dt>
@@ -35825,27 +35825,27 @@ return [
 </dd>
 </dl>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-return [
+<span class="k">return</span> <span class="p">[</span>
 
-    ...
+    <span class="o">...</span>
 
-    "guards" =&gt; [
-        "web" =&gt; [
-            "driver"   =&gt; "session",
-            "provider" =&gt; "users",
-        ],
+    <span class="s2">"guards"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s2">"web"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">"driver"</span>   <span class="o">=&gt;</span> <span class="s2">"session"</span><span class="p">,</span>
+            <span class="s2">"provider"</span> <span class="o">=&gt;</span> <span class="s2">"users"</span><span class="p">,</span>
+        <span class="p">],</span>
 
-        "api" =&gt; [
-            "driver"   =&gt; "passport",
-            "provider" =&gt; "users",
-            "hash"     =&gt; false,
-        ],
-    ],
+        <span class="s2">"api"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">"driver"</span>   <span class="o">=&gt;</span> <span class="s2">"passport"</span><span class="p">,</span>
+            <span class="s2">"provider"</span> <span class="o">=&gt;</span> <span class="s2">"users"</span><span class="p">,</span>
+            <span class="s2">"hash"</span>     <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">],</span>
 
-    ...
-];
+    <span class="o">...</span>
+<span class="p">];</span>
 </code></pre></div>
 <dl>
 <dt><code>(3)</code></dt>
@@ -35856,27 +35856,27 @@ return [
 <p>もしDBファサードのクエリビルダーを使用したい場合は、<code>database</code>ドライバを設定する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-return [
+<span class="k">return</span> <span class="p">[</span>
 
-    ...
+    <span class="o">...</span>
 
-    "providers" =&gt; [
-        "users" =&gt; [
-            "driver" =&gt; "eloquent",
-            // Eloquentモデルは自由に指定できる。
-            "model"  =&gt; App\Models\User::class,
-        ],
+    <span class="s2">"providers"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s2">"users"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">"driver"</span> <span class="o">=&gt;</span> <span class="s2">"eloquent"</span><span class="p">,</span>
+            <span class="c1">// Eloquentモデルは自由に指定できる。</span>
+            <span class="s2">"model"</span>  <span class="o">=&gt;</span> <span class="nx">App\Models\User</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+        <span class="p">],</span>
 
-        // "users" =&gt; [
-        //     "driver" =&gt; "database",
-        //     "table" =&gt; "users",
-        // ],
-    ],
+        <span class="c1">// "users" =&gt; [</span>
+        <span class="c1">//     "driver" =&gt; "database",</span>
+        <span class="c1">//     "table" =&gt; "users",</span>
+        <span class="c1">// ],</span>
+    <span class="p">],</span>
 
-    ...
-];
+    <span class="o">...</span>
+<span class="p">];</span>
 </code></pre></div>
 <dl>
 <dt><code>(4)</code></dt>
@@ -35886,9 +35886,9 @@ return [
 </dd>
 </dl>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-Route::get("user", "UserController@index")-&gt;middleware("auth:api");
+<span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s2">"user"</span><span class="p">,</span> <span class="s2">"UserController@index"</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">middleware</span><span class="p">(</span><span class="s2">"auth:api"</span><span class="p">);</span>
 </code></pre></div>
 <dl>
 <dt><code>(5)</code></dt>
@@ -35897,20 +35897,20 @@ Route::get("user", "UserController@index")-&gt;middleware("auth:api");
 </dd>
 </dl>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-namespace App\Domain\DTO;
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Laravel\Passport\HasApiTokens;
+<span class="k">use</span> <span class="nx">Illuminate\Notifications\Notifiable</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Foundation\Auth\User</span> <span class="k">as</span> <span class="nx">Authenticatable</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Laravel\Passport\HasApiTokens</span><span class="p">;</span>
 
-class User extends Authenticatable
-{
-    use HasApiTokens, Notifiable;
+<span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Authenticatable</span>
+<span class="p">{</span>
+    <span class="k">use</span> <span class="nx">HasApiTokens</span><span class="p">,</span> <span class="nx">Notifiable</span><span class="p">;</span>
 
-    ...
-}
+    <span class="o">...</span>
+<span class="p">}</span>
 </code></pre></div>
 <dl>
 <dt><code>(6)</code></dt>
@@ -35921,21 +35921,21 @@ class User extends Authenticatable
 </dd>
 </dl>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-use Laravel\Passport\Passport;
+<span class="k">use</span> <span class="nx">Laravel\Passport\Passport</span><span class="p">;</span>
 
-class AuthServiceProvider extends ServiceProvider
-{
-    ...
+<span class="k">class</span> <span class="nc">AuthServiceProvider</span> <span class="k">extends</span> <span class="nx">ServiceProvider</span>
+<span class="p">{</span>
+    <span class="o">...</span>
 
-    public function boot()
-    {
-        $this-&gt;registerPolicies();
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">registerPolicies</span><span class="p">();</span>
 
-        Passport::routes();
-    }
-}
+        <span class="nx">Passport</span><span class="o">::</span><span class="na">routes</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <dl>
 <dt><code>(7)</code></dt>
@@ -35957,20 +35957,20 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 </dd>
 </dl>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$http = new GuzzleHttp\Client;
+<span class="nv">$http</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
 
-$response = $http-&gt;post("http://your-app.com/oauth/token", [
-    "form_params" =&gt; [
-        "grant_type"    =&gt; "password",
-        "client_id"     =&gt; "client-id",
-        "client_secret" =&gt; "client-secret",
-        "username"      =&gt; "foo@example.com",
-        "password"      =&gt; "my-password",
-        "scope"         =&gt; "",
-    ],
-]);
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$http</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s2">"http://your-app.com/oauth/token"</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s2">"form_params"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s2">"grant_type"</span>    <span class="o">=&gt;</span> <span class="s2">"password"</span><span class="p">,</span>
+        <span class="s2">"client_id"</span>     <span class="o">=&gt;</span> <span class="s2">"client-id"</span><span class="p">,</span>
+        <span class="s2">"client_secret"</span> <span class="o">=&gt;</span> <span class="s2">"client-secret"</span><span class="p">,</span>
+        <span class="s2">"username"</span>      <span class="o">=&gt;</span> <span class="s2">"foo@example.com"</span><span class="p">,</span>
+        <span class="s2">"password"</span>      <span class="o">=&gt;</span> <span class="s2">"my-password"</span><span class="p">,</span>
+        <span class="s2">"scope"</span>         <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">]);</span>
 </code></pre></div>
 <dl>
 <dt><code>(2)</code></dt>
@@ -35989,54 +35989,54 @@ $response = $http-&gt;post("http://your-app.com/oauth/token", [
 </dd>
 </dl>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$response = $client-&gt;request("GET", "/api/user", [
-    "headers" =&gt; [
-        "Accept"        =&gt; "application/json",
-        "Authorization" =&gt; "Bearer &lt;アクセストークン&gt;",
-    ]
-]);
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"/api/user"</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s2">"headers"</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s2">"Accept"</span>        <span class="o">=&gt;</span> <span class="s2">"application/json"</span><span class="p">,</span>
+        <span class="s2">"Authorization"</span> <span class="o">=&gt;</span> <span class="s2">"Bearer &lt;アクセストークン&gt;"</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">]);</span>
 
-return (string)$response-&gt;getBody();
+<span class="k">return</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
 </code></pre></div>
 <h4 id="api">▼ API ガード用のテーブル<a class="headerlink" href="#api" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+<span class="k">use</span> <span class="nx">Illuminate\Database\Migrations\Migration</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Schema\Blueprint</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Schema</span><span class="p">;</span>
 
-class CreateUsersTable extends Migration
-{
-    /**
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create("users", function (Blueprint $table) {
+<span class="k">class</span> <span class="nc">CreateUsersTable</span> <span class="k">extends</span> <span class="nx">Migration</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @return void</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">up</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">Schema</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="s2">"users"</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
 
-            $table-&gt;bigIncrements("user_id")-&gt;comment("ユーザーID");
-            $table-&gt;string("name")-&gt;comment("ユーザー名");
-            $table-&gt;string("api_token")-&gt;unique()-&gt;comment("APIキー");
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">bigIncrements</span><span class="p">(</span><span class="s2">"user_id"</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">comment</span><span class="p">(</span><span class="s2">"ユーザーID"</span><span class="p">);</span>
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">string</span><span class="p">(</span><span class="s2">"name"</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">comment</span><span class="p">(</span><span class="s2">"ユーザー名"</span><span class="p">);</span>
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">string</span><span class="p">(</span><span class="s2">"api_token"</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">unique</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">comment</span><span class="p">(</span><span class="s2">"APIキー"</span><span class="p">);</span>
 
-            // MigrationMacroServiceProviderの関数を使用する。
-            $table-&gt;systemColumns();
+            <span class="c1">// MigrationMacroServiceProviderの関数を使用する。</span>
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">systemColumns</span><span class="p">();</span>
 
-            // deleted_atカラムを追加する。
-            $table-&gt;softDeletes();
-        });
-    }
+            <span class="c1">// deleted_atカラムを追加する。</span>
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">softDeletes</span><span class="p">();</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
 
-    /**
-     * @return void
-     */
-    public function down()
-    {
-        Schema::drop("users");
-    }
-}
+    <span class="sd">/**</span>
+<span class="sd">     * @return void</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">down</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">Schema</span><span class="o">::</span><span class="na">drop</span><span class="p">(</span><span class="s2">"users"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_24">パーソナルアクセストークン<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
@@ -36058,21 +36058,21 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 <p>IDプロバイダーでクライアントIDを事前に発行しておく。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-/**
- * 全認証／認可の登録
- *
- * @return void
- */
-public function boot()
-{
-    $this-&gt;registerPolicies();
+<span class="sd">/**</span>
+<span class="sd"> * 全認証／認可の登録</span>
+<span class="sd"> *</span>
+<span class="sd"> * @return void</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">registerPolicies</span><span class="p">();</span>
 
-    Passport::routes();
+    <span class="nx">Passport</span><span class="o">::</span><span class="na">routes</span><span class="p">();</span>
 
-    Passport::personalAccessClientId("&lt;クライアントID&gt;");
-}
+    <span class="nx">Passport</span><span class="o">::</span><span class="na">personalAccessClientId</span><span class="p">(</span><span class="s2">"&lt;クライアントID&gt;"</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 <dl>
 <dt><code>(3)</code></dt>
@@ -36080,15 +36080,15 @@ public function boot()
 <p>Laravel にクライアント ID を含むリクエストを送信すると、Laravel はアクセストークンをレスポンスする。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>&lt;?php
+<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-$user = User::find(1);
+<span class="nv">$user</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 
-// スコープ無しのアクセストークンを作成する
-$token = $user-&gt;createToken("&lt;任意のアクセストークン文字列&gt;")-&gt;accessToken;
+<span class="c1">// スコープ無しのアクセストークンを作成する</span>
+<span class="nv">$token</span> <span class="o">=</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">createToken</span><span class="p">(</span><span class="s2">"&lt;任意のアクセストークン文字列&gt;"</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">accessToken</span><span class="p">;</span>
 
-// スコープ付きのアクセストークンを作成する
-$token = $user-&gt;createToken("&lt;任意のアクセストークン文字列&gt;", ["place-orders"])-&gt;accessToken;
+<span class="c1">// スコープ付きのアクセストークンを作成する</span>
+<span class="nv">$token</span> <span class="o">=</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">createToken</span><span class="p">(</span><span class="s2">"&lt;任意のアクセストークン文字列&gt;"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"place-orders"</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">accessToken</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
 <ul>
