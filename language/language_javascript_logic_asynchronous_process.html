@@ -34430,7 +34430,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:04:05 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:11:31 JST">2026-10-23</span>
   </span>
 
     
@@ -34624,7 +34624,9 @@
 <span class="w">  </span><span class="c1">// return;</span>
 <span class="p">};</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">asyncFunc</span><span class="p">());</span><span class="w"> </span><span class="c1">// Promise { 'SUCCESS' }</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">//処理が失敗の場合に実行する。</span>
 <span class="w">  </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="s2">"FAILED"</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { "FAILED" }</span>
 
@@ -34632,7 +34634,7 @@
 <span class="w">  </span><span class="c1">// return;</span>
 <span class="p">};</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">asyncFunc</span><span class="p">());</span><span class="w"> </span><span class="c1">// Promise { 'SUCCESS' }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">asyncFunc</span><span class="p">());</span><span class="w"> </span><span class="c1">// Promise { 'FAILED' }</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s2">"SUCCESS"</span><span class="p">);</span>
@@ -34733,7 +34735,7 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 
 <span class="nx">resolveFunc</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// resolveFuncはPromiseを返さないため、エラーが発生して動かない</span>
-<span class="w">  </span><span class="c1">// Uncaught TypeError: resolveError(...).then is not a function</span>
+<span class="w">  </span><span class="c1">// Uncaught TypeError: resolveFunc.then is not a function</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
@@ -34790,8 +34792,8 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
 <span class="w">  </span><span class="p">});</span>
 <span class="p">};</span>
-
-<span class="c1">// awaitを使用した場合</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// awaitを使用した場合</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 非同期処理の結果がthen関数に渡される。</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"https://example.com"</span><span class="p">);</span>
@@ -34811,8 +34813,8 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <span class="w">    </span><span class="p">});</span>
 <span class="w">  </span><span class="p">});</span>
 <span class="p">};</span>
-
-<span class="c1">// awaitを使用した場合</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// awaitを使用した場合</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"https://example1.com"</span><span class="p">);</span>
 
@@ -34856,7 +34858,7 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 初期化</span>
-<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">res</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
 
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"https://example1.com"</span><span class="p">);</span>
@@ -34865,7 +34867,7 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 <span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
 <blockquote>
@@ -34983,7 +34985,7 @@ UnhandledPromiseRejectionWarning:<span class="w"> </span>Unhandled<span class="w
 
 <span class="w">  </span><span class="c1">// 非同期通信の失敗時のコールバック処理</span>
 <span class="w">  </span><span class="p">.</span><span class="nx">fail</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 <span class="w">    </span><span class="nx">toastr</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="s2">"エラーが発生しました。"</span><span class="p">);</span>
 <span class="w">  </span><span class="p">})</span>
 

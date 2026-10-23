@@ -34348,7 +34348,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:04:05 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:11:31 JST">2026-10-23</span>
   </span>
 
     
@@ -34496,9 +34496,13 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <h3 id="_3">アサーション関数とは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>実測値と期待値を比較し、結果に応じて <code>SUCCESS</code> または <code>FAILURES</code> を返却する。</p>
 <p>非 static または static としてコールできる。</p>
-<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;assertTrue();</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">();</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="x">self::assertTrue()</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nx">self</span><span class="o">::</span><span class="na">assertTrue</span><span class="p">()</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34508,19 +34512,25 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <p><br></p>
 <h3 id="asserttrue">assertTrue<a class="headerlink" href="#asserttrue" title="Permanent link">&para;</a></h3>
 <p>実際値が <code>true</code> か否かを検証する。</p>
-<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;assertTrue($response-&gt;isOk());</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">isOk</span><span class="p">());</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="assertequals">assertEquals<a class="headerlink" href="#assertequals" title="Permanent link">&para;</a></h3>
 <p>『<code>==</code>』を使用して、期待値と実際値の整合性を検証する。</p>
 <p>データ型を検証できないため、<code>assertSame()</code> 関数を使用するほうがよい。</p>
-<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;assertSame(200, $response-&gt;getStatusCode());</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="assertsame">assertSame<a class="headerlink" href="#assertsame" title="Permanent link">&para;</a></h3>
 <p>『<code>===</code>』を使用して、期待値と実際値の整合性を検証する。</p>
 <p>値のみでなく、データ型も検証できる。</p>
-<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;assertSame(200, $response-&gt;getStatusCode());</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="05">05. 初期データ<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>

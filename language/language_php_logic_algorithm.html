@@ -33974,7 +33974,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 21:24:34 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:11:31 JST">2026-10-23</span>
   </span>
 
     
@@ -34056,12 +34056,13 @@
             <span class="p">}</span>
         <span class="p">}</span>
 
-        <span class="c1">// 比較基準値の位置が更新されていなかった場合、親のfor文から抜ける。</span>
+        <span class="c1">// 比較基準値の位置が更新されていなかった場合、次の比較基準値に進む。</span>
         <span class="k">if</span><span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="nv">$position</span><span class="p">){</span>
-            <span class="k">break</span><span class="p">;</span>
+            <span class="k">continue</span><span class="p">;</span>
         <span class="p">}</span>
 
         <span class="c1">// 親のfor文の最小値を更新。</span>
+        <span class="nv">$array</span><span class="p">[</span><span class="nv">$position</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
         <span class="nv">$array</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$min</span><span class="p">;</span>
 
         <span class="c1">// 次に2番目を比較基準値とし、同じ処理を繰り返していく。</span>
@@ -34071,8 +34072,8 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="c1">// 実際に使用してみる。</span>
-<span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">13</span><span class="p">)</span>
-<span class="nv">$result</span> <span class="o">=</span> <span class="nx">selectSort</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
+<span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">13</span><span class="p">);</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nx">minSelectSort</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 
 <span class="c1">// 昇順に並び替えられている。</span>
@@ -34265,8 +34266,8 @@
     <span class="c1">// 地点数を定数で定義</span>
     <span class="nb">define</span><span class="p">(</span><span class="s2">"POINT_NUMBER"</span><span class="p">,</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$matrix</span><span class="p">));</span>
 
-    <span class="k">if</span><span class="p">(</span><span class="nv">$startPoint</span> <span class="o">&lt;</span> <span class="nx">self</span><span class="o">::</span><span class="na">POINT_NUMBER</span>
-        <span class="o">||</span> <span class="nx">self</span><span class="o">::</span><span class="na">POINT_NUMBER</span> <span class="o">&lt;</span> <span class="nv">$goalPoint</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="nv">$startPoint</span> <span class="o">&lt;</span> <span class="nx">POINT_NUMBER</span>
+        <span class="o">||</span> <span class="nx">POINT_NUMBER</span> <span class="o">&lt;</span> <span class="nv">$goalPoint</span><span class="p">){</span>
             <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">"存在しない地点番号は設定できません。"</span><span class="p">);</span>
     <span class="p">}</span>
 
@@ -34274,40 +34275,40 @@
     <span class="nb">define</span><span class="p">(</span><span class="s2">"START_POINT"</span><span class="p">,</span> <span class="nv">$startPoint</span><span class="p">);</span>
 
     <span class="c1">// 到着地点を定数で定義</span>
-    <span class="nb">define</span><span class="p">(</span><span class="s2">"GOAL_POINT"</span><span class="p">,</span> <span class="nv">$goalPoint</span><span class="p">));</span>
+    <span class="nb">define</span><span class="p">(</span><span class="s2">"GOAL_POINT"</span><span class="p">,</span> <span class="nv">$goalPoint</span><span class="p">);</span>
 
     <span class="c1">// 無限大の定数のINFを使いたいが、定数は上書きできないため、代わりに-1を使用。</span>
     <span class="c1">// 各頂点に対して、最短ルート地点番号、地点間距離のゼロ値、最短距離確定フラグを設定。</span>
-    <span class="k">for</span><span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nx">self</span><span class="o">::</span><span class="na">POINT_NUMBER</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">++</span><span class="p">){</span>
+    <span class="k">for</span><span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nx">POINT_NUMBER</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">++</span><span class="p">){</span>
         <span class="nv">$route</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
         <span class="nv">$distance</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
         <span class="nv">$fixFlg</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
         <span class="p">}</span>
 
     <span class="c1">// ＊別の書き方＊</span>
-    <span class="c1">// $cost = array_fill(0, self::POINT_NUMBER, -1);</span>
-    <span class="c1">// $distance = array_fill(0, self::POINT_NUMBER, -1);</span>
-    <span class="c1">// $fix = array_fill(0, self::POINT_NUMBER, false);</span>
+    <span class="c1">// $cost = array_fill(0, POINT_NUMBER, -1);</span>
+    <span class="c1">// $distance = array_fill(0, POINT_NUMBER, -1);</span>
+    <span class="c1">// $fix = array_fill(0, POINT_NUMBER, false);</span>
 
     <span class="c1">// 出発地点から出発地点への距離をゼロとする。</span>
-    <span class="nv">$distance</span><span class="p">[</span><span class="nx">self</span><span class="o">::</span><span class="na">START_POINT</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nv">$distance</span><span class="p">[</span><span class="nx">START_POINT</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
     <span class="c1">//</span>
     <span class="k">while</span><span class="p">(</span><span class="k">true</span><span class="p">){</span>
         <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
-        <span class="k">while</span><span class="p">(</span><span class="nv">$i</span> <span class="o">&lt;</span> <span class="nx">self</span><span class="o">::</span><span class="na">POINT_NUMBER</span><span class="p">){</span>
+        <span class="k">while</span><span class="p">(</span><span class="nv">$i</span> <span class="o">&lt;</span> <span class="nx">POINT_NUMBER</span><span class="p">){</span>
             <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$fixFlg</span><span class="p">[</span><span class="nv">$i</span><span class="p">]){</span>
                 <span class="k">break</span> <span class="mi">1</span><span class="p">;</span>
             <span class="p">}</span>
             <span class="nv">$i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="p">}</span>
 
-        <span class="k">if</span><span class="p">(</span><span class="nv">$i</span> <span class="o">===</span> <span class="nx">self</span><span class="o">::</span><span class="na">POINT_NUMBER</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="nv">$i</span> <span class="o">===</span> <span class="nx">POINT_NUMBER</span><span class="p">){</span>
             <span class="k">break</span> <span class="mi">1</span><span class="p">;</span>
         <span class="p">}</span>
 
-        <span class="k">for</span><span class="p">(</span><span class="nv">$j</span> <span class="o">=</span> <span class="nv">$i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">self</span><span class="o">::</span><span class="na">POINT_NUMBER</span><span class="p">;</span> <span class="nv">$j</span> <span class="o">++</span><span class="p">){</span>
+        <span class="k">for</span><span class="p">(</span><span class="nv">$j</span> <span class="o">=</span> <span class="nv">$i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$j</span> <span class="o">&lt;</span> <span class="nx">POINT_NUMBER</span><span class="p">;</span> <span class="nv">$j</span> <span class="o">++</span><span class="p">){</span>
             <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$fixFlg</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nv">$distance</span><span class="p">[</span><span class="nv">$j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nv">$distance</span><span class="p">[</span><span class="nv">$i</span><span class="p">]){</span>
                 <span class="nv">$i</span> <span class="o">=</span> <span class="nv">$j</span><span class="p">;</span>
             <span class="p">}</span>

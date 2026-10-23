@@ -36404,7 +36404,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:04:05 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:11:31 JST">2026-10-23</span>
   </span>
 
     
@@ -36623,10 +36623,14 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="self">▼ <code>self::</code><a class="headerlink" href="#self" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="x">// ここに実装例</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// ここに実装例</span>
 </code></pre></div>
 <h4 id="static_2">▼ <code>static::</code><a class="headerlink" href="#static_2" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="x">// ここに実装例</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// ここに実装例</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02-02">02-02. 関数<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
@@ -36790,16 +36794,18 @@
 
 <span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="x">class Foo {</span>
-<span class="x">// 中身は省略</span>
-<span class="x">}</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="x">// 存在しないデータに値をセット。</span>
-<span class="x">$foo = new Foo();</span>
-<span class="x">$foo-&gt;bar = "bar";</span>
+<span class="k">class</span> <span class="nc">Foo</span> <span class="p">{</span>
+<span class="c1">// 中身は省略</span>
+<span class="p">}</span>
 
-<span class="x">// 結果</span>
-<span class="x">// barデータは存在しないため、barを設定できません。</span>
+<span class="c1">// 存在しないデータに値をセット。</span>
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">bar</span> <span class="o">=</span> <span class="s2">"bar"</span><span class="p">;</span>
+
+<span class="c1">// 結果</span>
+<span class="c1">// barデータは存在しないため、barを設定できません。</span>
 </code></pre></div>
 <h4 id="__construct_1">▼ マジック関数の <code>__construct()</code> 関数<a class="headerlink" href="#__construct_1" title="Permanent link">&para;</a></h4>
 <p>インスタンス化時に自動的に呼び出される関数。</p>
@@ -36868,7 +36874,9 @@
 <span class="c1">// )</span>
 </code></pre></div>
 <h4 id="__clone">▼ <code>__clone()</code> 関数<a class="headerlink" href="#__clone" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="x">// ここに実装例</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// ここに実装例</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_21">インスタンスの作成関数<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
@@ -36962,14 +36970,14 @@
 
 <span class="nv">$ObjB</span> <span class="o">=</span> <span class="nv">$ObjA</span><span class="o">-&gt;</span><span class="na">objB</span><span class="p">();</span>
 
-<span class="nv">$ObjC</span> <span class="o">=</span> <span class="nv">$ObjB</span><span class="o">-&gt;</span><span class="na">objB</span><span class="p">();</span>
+<span class="nv">$ObjC</span> <span class="o">=</span> <span class="nv">$ObjB</span><span class="o">-&gt;</span><span class="na">objC</span><span class="p">();</span>
 
 <span class="nv">$ObjD</span> <span class="o">=</span> <span class="nv">$ObjC</span><span class="o">-&gt;</span><span class="na">objD</span><span class="p">();</span>
 </code></pre></div>
 <p>以下のように、関数チェーンという書き方が可能。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$D</span> <span class="o">=</span> <span class="nx">objB</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">objC</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">objC</span><span class="p">();</span>
+<span class="nv">$D</span> <span class="o">=</span> <span class="nx">objB</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">objC</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">objD</span><span class="p">();</span>
 
 <span class="c1">// $D には ObjD が格納されている。</span>
 </code></pre></div>
@@ -37043,20 +37051,20 @@
         <span class="k">return</span> <span class="nb">array_merge</span>
         <span class="p">(</span>
         <span class="c1">// 左のグループを再帰的にクイックソート。</span>
-            <span class="nx">quickSort</span><span class="p">(</span><span class="nv">$left</span><span class="p">),</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">quickSort</span><span class="p">(</span><span class="nv">$left</span><span class="p">),</span>
 
             <span class="c1">// Pivotを結果に組み込む。</span>
             <span class="p">[</span><span class="nv">$pivot</span><span class="p">],</span>
 
-            <span class="c1">// 左のグループを再帰的にクイックソート。</span>
-            <span class="nx">quickSort</span><span class="p">(</span><span class="nv">$right</span><span class="p">)</span>
+            <span class="c1">// 右のグループを再帰的にクイックソート。</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">quickSort</span><span class="p">(</span><span class="nv">$right</span><span class="p">)</span>
         <span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// 実際に使用してみる。</span>
 <span class="nv">$array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">];</span>
-<span class="nv">$result</span> <span class="o">=</span> <span class="nx">quickSort</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">Foo</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">quickSort</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
 
 <span class="c1">// 昇順に並び替えられている。</span>
@@ -37066,7 +37074,9 @@
 <h3 id="_24">引数<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <h4 id="_25">▼ オプション引数<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
 <p>引数が与えられなければ、指定の値を渡す方法</p>
-<div class="highlight"><pre><span></span><code><span class="x">// ここに実装例</span>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// ここに実装例</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_26">値を返す前の途中終了<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
@@ -37279,7 +37289,7 @@
 <span class="p">};</span>
 
 <span class="c1">// function()には引数が設定されていないため、コール時に引数は不要。</span>
-<span class="k">echo</span> <span class="nv">$optionName</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$optionName</span><span class="p">();</span>
 
 <span class="c1">// 出力結果</span>
 <span class="c1">// オプションA</span>
@@ -37359,7 +37369,7 @@
 <span class="c1">// $paramは、コール時に使用する変数。</span>
 <span class="nv">$optionName</span> <span class="o">=</span> <span class="nb">call_user_func</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$param</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$item</span><span class="p">)</span> <span class="p">{</span>
     <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">optionName</span><span class="p">()</span> <span class="o">.</span> <span class="nv">$param</span><span class="p">;</span>
-<span class="p">});</span>
+<span class="p">},</span> <span class="nv">$param</span><span class="p">);</span>
 
 <span class="c1">// $paramはすでに即コール時に渡されている。</span>
 <span class="c1">// これはコールではなく、即コール時に格納された返却値の出力。</span>
@@ -37514,7 +37524,7 @@
 
             <span class="c1">// 引数の無名関数によって、データに対する加工方法が異なる。</span>
             <span class="c1">// 例えば、判定でtrueのもののみを返す関数を渡すと、自データを絞り込むような処理を行える。</span>
-            <span class="nv">$returned</span> <span class="o">=</span> <span class="nb">call_user_func</span><span class="p">(</span><span class="nv">$property</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">);</span>
+            <span class="nv">$returned</span> <span class="o">=</span> <span class="nb">call_user_func</span><span class="p">(</span><span class="nv">$callback</span><span class="p">,</span> <span class="nv">$property</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nv">$returned</span><span class="p">)</span> <span class="p">{</span>
 
                 <span class="c1">// 再格納。</span>
@@ -37638,8 +37648,8 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nx">foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">;</span>
-<span class="nx">foo</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">();</span> <span class="c1">// Foo::foo が返却される。</span>
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">;</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">();</span> <span class="c1">// Foo::foo が返却される。</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="04">04. 変数<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
@@ -37791,7 +37801,7 @@
 <span class="nv">$var</span> <span class="o">=</span> <span class="s2">"0123456789"</span><span class="p">;</span>
 
 <span class="c1">// OR条件と範囲指定</span>
-<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/[0-9]/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">)</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/[0-9]/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
 
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// true</span>
 </code></pre></div>
@@ -37803,7 +37813,7 @@
 <span class="nv">$var</span> <span class="o">=</span> <span class="s2">"aAbBcC"</span><span class="p">;</span>
 
 <span class="c1">// OR条件と範囲指定</span>
-<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/[a-zA-Z]/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">)</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/[a-zA-Z]/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
 
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// true</span>
 </code></pre></div>
@@ -37820,7 +37830,7 @@
 
 <span class="nv">$var</span> <span class="o">=</span> <span class="s2">"?"</span><span class="p">;</span>
 
-<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/[\?.*$]/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">)</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">"/[\?.*$]/"</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
 
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
 </code></pre></div>
