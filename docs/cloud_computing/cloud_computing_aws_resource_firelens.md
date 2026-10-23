@@ -178,14 +178,40 @@ log_router という名前以外を設定できないことに注意する。
 
 #### ▼ `logConfiguration` キーの詳細
 
-| 項目                                            | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `type`                                          | メインコンテナから FireLens コンテナにログを送信できるように、ログドライバーのタイプとして『`fluentbit`』を設定する。                                                                                                                                                                                                                                                                                                                                              |
-| `config-file-type`                              | FluentBit の設定ファイルを読み込むために、`file` とする。                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `config-file-value`                             | `options` キーにて、ログルーティングを設定できるが、それらは `fluent-bit.conf` ファイルにも設定できるため、ルーティングの設定はできるだけ `fluent-bit.conf` ファイルに実装する。FireLens コンテナ自体のログは、Amazon CloudWatch Logs に送信するように設定し、メインコンテナから受信したログは、監視バックエンド (Datadog など) にルーティングする。                                                                                                               |
-| `enable-ecs-log-metadata` (デフォルトで `true`) | 有効化した場合、Datadog のログコンソールで、例えば以下のようなタグが付けられる。<br>![ecs-meta-data_true](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs-meta-data_true.png)<br>反対に無効にした場合、以下のようなタグが付けられる。<br>![ecs-meta-data_false](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs-meta-data_false.png)<br>- https://tech.spacely.co.jp/entry/2020/11/28/173356 |
-| `environment`、`secrets`                        | コンテナ内の `fluent-bit.conf` ファイルに変数をアウトプットできるように、コンテナの環境変数に値を設定する。                                                                                                                                                                                                                                                                                                                                                        |
-| `options`                                       | FluentBit の設定ファイルで OUTPUT セクションを定義する代わりに、`options` キーからも設定できる。                                                                                                                                                                                                                                                                                                                                                                   |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>type</code></td>
+      <td>メインコンテナから FireLens コンテナにログを送信できるように、ログドライバーのタイプとして『<code>fluentbit</code>』を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>config-file-type</code></td>
+      <td>FluentBit の設定ファイルを読み込むために、<code>file</code> とする。</td>
+    </tr>
+    <tr>
+      <td><code>config-file-value</code></td>
+      <td><code>options</code> キーにて、ログルーティングを設定できるが、それらは <code>fluent-bit.conf</code> ファイルにも設定できるため、ルーティングの設定はできるだけ <code>fluent-bit.conf</code> ファイルに実装する。FireLens コンテナ自体のログは、Amazon CloudWatch Logs に送信するように設定し、メインコンテナから受信したログは、監視バックエンド (Datadog など) にルーティングする。</td>
+    </tr>
+    <tr>
+      <td><code>enable-ecs-log-metadata</code> (デフォルトで <code>true</code>)</td>
+      <td>有効化した場合、Datadog のログコンソールで、例えば以下のようなタグが付けられる。<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs-meta-data_true.png" alt="ecs-meta-data_true"><br>反対に無効にした場合、以下のようなタグが付けられる。<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs-meta-data_false.png" alt="ecs-meta-data_false"><br>- <a href="https://tech.spacely.co.jp/entry/2020/11/28/173356">https://tech.spacely.co.jp/entry/2020/11/28/173356</a></td>
+    </tr>
+    <tr>
+      <td><code>environment</code>、<code>secrets</code></td>
+      <td>コンテナ内の <code>fluent-bit.conf</code> ファイルに変数をアウトプットできるように、コンテナの環境変数に値を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>options</code></td>
+      <td>FluentBit の設定ファイルで OUTPUT セクションを定義する代わりに、<code>options</code> キーからも設定できる。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/firelens-example-taskdefs.html#firelens-example-forward
 

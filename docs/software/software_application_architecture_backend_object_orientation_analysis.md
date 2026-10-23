@@ -55,18 +55,67 @@ DFD、ユースケース図、アクティビティ図などがある。
 
 ![usecase-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram.png)
 
-| 記号名                                                                                                                                                             | 説明                                                                                                                                                                                                                                       | 補足                          |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------- |
-| アクター：<br>![usecase-diagram_actor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_actor.png)                   | ソフトウェアを利用するユーザーや、連携するほかのソフトウェアを表す。                                                                                                                                                                       |                               |
-| ユースケース：<br>![usecase-diagram_usecase-name](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_usecase-name.png) | ソフトウェアの具体的な機能を表す。                                                                                                                                                                                                         |                               |
-| サブジェクト：<br>![usecase-diagram_subject](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_subject.png)           | アクターとソフトウェアの境界線を表す。                                                                                                                                                                                                     |                               |
-| パッケージ：<br>![usecase-diagram_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_package.png)             | アクターによって提供する機能に違いがある場合、その境界線を表す。                                                                                                                                                                           |                               |
-| 関連：<br>![usecase-diagram_association](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_association.png)           | アクターと機能を結ぶことにより、機能がアクターに提供されることを表す。                                                                                                                                                                     |                               |
-| 汎化：<br>![usecase-diagram_genelization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_genelization.png)         | アクター間またはユースケース間に、is-a-kind-of な関係 (グループとメンバーの関係性) があることを表す。                                                                                                                                      |                               |
-| 包含：<br>![usecase-diagram_include](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_include.png)                   | 矢印元の機能を細分化すると、矢印先の機能も含まれることを表す。                                                                                                                                                                             | `<< invoke >>` も同じである。 |
-| 先行：<br>`<< precedes >>`                                                                                                                                         | 矢印元の機能が必ず先に使用されてから、矢印先の機能が使用されることを表す。                                                                                                                                                                 |                               |
-| 拡張：<br>![usecase-diagram_extend](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_extend.png)                     | 矢印元の機能は矢印先の機能の追加機能であり、場合によってはこれが使用されることを表す。                                                                                                                                                     |                               |
-| ノート：<br>![usecase-diagram_note](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_note.png)                       | 機能の前提事項や考慮事項を記載する。認証／認可はすべてのユースケースに関係するため、ノートに記載する。<br>- https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent> |                               |
+<table>
+  <thead>
+    <tr>
+      <th>記号名</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>アクター：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_actor.png" alt="usecase-diagram_actor"></td>
+      <td>ソフトウェアを利用するユーザーや、連携するほかのソフトウェアを表す。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ユースケース：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_usecase-name.png" alt="usecase-diagram_usecase-name"></td>
+      <td>ソフトウェアの具体的な機能を表す。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>サブジェクト：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_subject.png" alt="usecase-diagram_subject"></td>
+      <td>アクターとソフトウェアの境界線を表す。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>パッケージ：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_package.png" alt="usecase-diagram_package"></td>
+      <td>アクターによって提供する機能に違いがある場合、その境界線を表す。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>関連：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_association.png" alt="usecase-diagram_association"></td>
+      <td>アクターと機能を結ぶことにより、機能がアクターに提供されることを表す。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>汎化：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_genelization.png" alt="usecase-diagram_genelization"></td>
+      <td>アクター間またはユースケース間に、is-a-kind-of な関係 (グループとメンバーの関係性) があることを表す。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>包含：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_include.png" alt="usecase-diagram_include"></td>
+      <td>矢印元の機能を細分化すると、矢印先の機能も含まれることを表す。</td>
+      <td><code>&lt;&lt; invoke &gt;&gt;</code> も同じである。</td>
+    </tr>
+    <tr>
+      <td>先行：<br><code>&lt;&lt; precedes &gt;&gt;</code></td>
+      <td>矢印元の機能が必ず先に使用されてから、矢印先の機能が使用されることを表す。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>拡張：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_extend.png" alt="usecase-diagram_extend"></td>
+      <td>矢印元の機能は矢印先の機能の追加機能であり、場合によってはこれが使用されることを表す。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ノート：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_note.png" alt="usecase-diagram_note"></td>
+      <td>機能の前提事項や考慮事項を記載する。認証／認可はすべてのユースケースに関係するため、ノートに記載する。<br>- <a href="https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent">https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent</a>&gt;</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://it-koala.com/usecasediagrams-1832>
 > - https://www.itsenka.com/contents/development/uml/usecase.html
@@ -93,12 +142,32 @@ DFD、ユースケース図、アクティビティ図などがある。
 
 : クラス図を作成する。ユースケースから以下のオブジェクトを抽出する。
 
-| ユースケース         | 抽出されたオブジェクト                                           |
-| -------------------- | ---------------------------------------------------------------- |
-| 映画を選択する       | 映画オブジェクト                                                 |
-| タイトルを選択する   | タイトルオブジェクト                                             |
-| 映画の形式を選択する | 映画形式オブジェクト、上映形態オブジェクト                       |
-| 上映回を選択する     | 上映回オブジェクト、上映日オブジェクト、上映開始時刻オブジェクト |
+<table>
+  <thead>
+    <tr>
+      <th>ユースケース</th>
+      <th>抽出されたオブジェクト</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>映画を選択する</td>
+      <td>映画オブジェクト</td>
+    </tr>
+    <tr>
+      <td>タイトルを選択する</td>
+      <td>タイトルオブジェクト</td>
+    </tr>
+    <tr>
+      <td>映画の形式を選択する</td>
+      <td>映画形式オブジェクト、上映形態オブジェクト</td>
+    </tr>
+    <tr>
+      <td>上映回を選択する</td>
+      <td>上映回オブジェクト、上映日オブジェクト、上映開始時刻オブジェクト</td>
+    </tr>
+  </tbody>
+</table>
 
 ![ticket-modeling_tooppoo_domain-model-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_tooppoo_domain-model-diagram_example.png)
 
@@ -189,11 +258,28 @@ stateDiagram-v2
 
 ![object-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/object-diagram.png)
 
-| 記号名           | 説明                                                                                                                                     |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| インスタンス指定 | 特定の状態にあるオブジェクト (インスタンス) の具体例を表す。『<u>`<具体的なインスタンス名>:<クラス名>`</u>』のように下線付きで表記する。 |
-| スロット         | インスタンスが保持する具体的な状態を表す。『`<属性名>:<データ型> = <値>`』で表記する。                                                   |
-| リンク           | インスタンス間の関係性を表す。何かしらの関係性があれば、すべてリンクとして定義する。                                                     |
+<table>
+  <thead>
+    <tr>
+      <th>記号名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>インスタンス指定</td>
+      <td>特定の状態にあるオブジェクト (インスタンス) の具体例を表す。『<u><code>&lt;具体的なインスタンス名&gt;:&lt;クラス名&gt;</code></u>』のように下線付きで表記する。</td>
+    </tr>
+    <tr>
+      <td>スロット</td>
+      <td>インスタンスが保持する具体的な状態を表す。『<code>&lt;属性名&gt;:&lt;データ型&gt; = &lt;値&gt;</code>』で表記する。</td>
+    </tr>
+    <tr>
+      <td>リンク</td>
+      <td>インスタンス間の関係性を表す。何かしらの関係性があれば、すべてリンクとして定義する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [第3回：クラス図とオブジェクト図を学ぼう！ (3/3) \| Think IT（シンクイット）](https://thinkit.co.jp/article/40/3/3.html)
 > - https://www.itsenka.com/contents/development/uml/object.html

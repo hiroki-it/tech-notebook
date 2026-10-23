@@ -359,9 +359,22 @@ kubernetes-mixins のレコーディングルールが定義済みであるこ�
 
 Alertmanager の Pod からデータポイントを収集する。
 
-| ダッシュボード名          | 監視対象            | 説明                                        |
-| ------------------------- | ------------------- | ------------------------------------------- |
-| `Alertmanager / Overview` | Alertmanager の Pod | Alertmanager 固有のメトリクスを分析できる。 |
+<table>
+  <thead>
+    <tr>
+      <th>ダッシュボード名</th>
+      <th>監視対象</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Alertmanager / Overview</code></td>
+      <td>Alertmanager の Pod</td>
+      <td>Alertmanager 固有のメトリクスを分析できる。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [website/assets/alertmanager/dashboards at master · monitoring-mixins/website · GitHub](https://github.com/monitoring-mixins/website/tree/master/assets/alertmanager/dashboards)
 
@@ -369,9 +382,22 @@ Alertmanager の Pod からデータポイントを収集する。
 
 ArgoCD の Pod からデータポイントを収集する。
 
-| ダッシュボード名 | 監視対象      | 説明                                  |
-| ---------------- | ------------- | ------------------------------------- |
-| `ArgoCD`         | ArgoCD の Pod | ArgoCD 固有のメトリクスを分析できる。 |
+<table>
+  <thead>
+    <tr>
+      <th>ダッシュボード名</th>
+      <th>監視対象</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ArgoCD</code></td>
+      <td>ArgoCD の Pod</td>
+      <td>ArgoCD 固有のメトリクスを分析できる。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [argo-cd/examples/dashboard.json at v2.7.6 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.7.6/examples/dashboard.json)
 
@@ -379,9 +405,22 @@ ArgoCD の Pod からデータポイントを収集する。
 
 CoreDNS の Pod からデータポイントを収集する。
 
-| ダッシュボード名 | 監視対象       | 説明                                                                                                    |
-| ---------------- | -------------- | ------------------------------------------------------------------------------------------------------- |
-| `CoreDNS`        | CoreDNS の Pod | CoreDNS の Pod に対するリクエストに関するメトリクス (例：リクエスト数、レスポンスタイム) を分析できる。 |
+<table>
+  <thead>
+    <tr>
+      <th>ダッシュボード名</th>
+      <th>監視対象</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>CoreDNS</code></td>
+      <td>CoreDNS の Pod</td>
+      <td>CoreDNS の Pod に対するリクエストに関するメトリクス (例：リクエスト数、レスポンスタイム) を分析できる。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [website/assets/coredns/dashboards at master · monitoring-mixins/website · GitHub](https://github.com/monitoring-mixins/website/tree/master/assets/coredns/dashboards)
 
@@ -389,13 +428,48 @@ CoreDNS の Pod からデータポイントを収集する。
 
 Kubernetes コンポーネントからデータポイントを収集する。
 
-| ダッシュボード名                  | 監視対象                | 説明                                                                                                                                | おすすめ |
-| --------------------------------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `Kubernetes / API server`         | kube-apiserver          | kube-apiserver の SLI、エラーバジェット、ハードウェアリソースの消費に関するメトリクス (例：CPU 使用率、メモリ使用率) を分析できる。 |          |
-| `Kubernetes / Kubelet`            | kubelet                 |                                                                                                                                     |          |
-| `Kubernetes / Proxy`              | kube-proxy              |                                                                                                                                     |          |
-| `Kubernetes / Controller Manager` | kube-controller-manager |                                                                                                                                     |          |
-| `Kubernetes / Scheduler`          | kube-scheduler          |                                                                                                                                     |          |
+<table>
+  <thead>
+    <tr>
+      <th>ダッシュボード名</th>
+      <th>監視対象</th>
+      <th>説明</th>
+      <th>おすすめ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Kubernetes / API server</code></td>
+      <td>kube-apiserver</td>
+      <td>kube-apiserver の SLI、エラーバジェット、ハードウェアリソースの消費に関するメトリクス (例：CPU 使用率、メモリ使用率) を分析できる。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Kubernetes / Kubelet</code></td>
+      <td>kubelet</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Kubernetes / Proxy</code></td>
+      <td>kube-proxy</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Kubernetes / Controller Manager</code></td>
+      <td>kube-controller-manager</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Kubernetes / Scheduler</code></td>
+      <td>kube-scheduler</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [website/assets/kubernetes/dashboards at master · monitoring-mixins/website · GitHub](https://github.com/monitoring-mixins/website/tree/master/assets/kubernetes/dashboards)
 
@@ -405,15 +479,68 @@ Pod からデータポイントを収集する。
 
 kubelet からデータポイントを収集できるようにしておく必要がある。
 
-| ダッシュボード名                                    | 監視対象 | メトリクス                           | 説明                                                                                                                                                                                                                                  | おすすめ |
-| --------------------------------------------------- | -------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `Kubernetes / Compute Resources / Cluster`          | Pod      | ハードウェアリソース使用率メトリクス | Pod のハードウェアリソース使用率メトリクス (例：CPU 使用率、メモリ使用率、CPU 空きサイズ率など) の合計を分析できる。Cluster 全体のハードウェアリソースの分析に役立つ。                                                                | ★        |
-| `Kubernetes / Compute Resources / Namespace (Pods)` | Pod      | ハードウェアリソース使用率メトリクス | Pod のハードウェアリソース使用率メトリクス (例：CPU 使用率、メモリ使用率、CPU 空きサイズ率など) を Namespace 単位で分析できる。同じ Namespace 複数の Pod (削除された Pod も含む) のメトリクスの累計を一括して確認したい場合に役立つ。 |          |
-| `Kubernetes / Compute Resources / Node (Pods)`      | Pod      | ハードウェアリソース使用率メトリクス | Pod のハードウェアリソース使用率メトリクス (例：CPU 使用率、メモリ使用率、CPU 空きサイズ率など) を Node 単位で分析できる。同じ Node の複数の Pod (削除された Pod も含む) のメトリクスの累計を一括して確認したい場合に役立つ。         |          |
-| `Kubernetes / Compute Resources / Pod`              | Pod      | ハードウェアリソース使用率メトリクス | Pod のハードウェアリソース使用率メトリクス (例：CPU 使用率、メモリ使用率、CPU 空きサイズ率など) を Pod 単位で分析できる。各 Pod や特定の Pod の状況を確認したい場合に役立つ。                                                         |          |
-| `Kubernetes / Networking / Cluster`                 | Pod      | ネットワークの性能指標               | Pod のネットワークの性能指標メトリクス (例：帯域幅、秒当たりパケット受信数) の合計を分析できる。Cluster 全体のネットワークの分析に役立つ。                                                                                            | ★        |
-| `Kubernetes / Networking / Namespace (Pods)`        | Pod      | ネットワークの性能指標               | Pod のネットワーク性能指標メトリクスを Namespace 単位で分析できる。複数の Pod (削除された Pod も含む) のメトリクスを一括して確認したい場合に役立つ。                                                                                  |          |
-| `Kubernetes / Networking / Pod`                     | Pod      | ネットワークの性能指標               | Pod のネットワーク性能指標メトリクスを Pod 単位で分析できる。Pod を個別に確認したい場合に役立つ。                                                                                                                                     |          |
+<table>
+  <thead>
+    <tr>
+      <th>ダッシュボード名</th>
+      <th>監視対象</th>
+      <th>メトリクス</th>
+      <th>説明</th>
+      <th>おすすめ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Kubernetes / Compute Resources / Cluster</code></td>
+      <td>Pod</td>
+      <td>ハードウェアリソース使用率メトリクス</td>
+      <td>Pod のハードウェアリソース使用率メトリクス (例：CPU 使用率、メモリ使用率、CPU 空きサイズ率など) の合計を分析できる。Cluster 全体のハードウェアリソースの分析に役立つ。</td>
+      <td>★</td>
+    </tr>
+    <tr>
+      <td><code>Kubernetes / Compute Resources / Namespace (Pods)</code></td>
+      <td>Pod</td>
+      <td>ハードウェアリソース使用率メトリクス</td>
+      <td>Pod のハードウェアリソース使用率メトリクス (例：CPU 使用率、メモリ使用率、CPU 空きサイズ率など) を Namespace 単位で分析できる。同じ Namespace 複数の Pod (削除された Pod も含む) のメトリクスの累計を一括して確認したい場合に役立つ。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Kubernetes / Compute Resources / Node (Pods)</code></td>
+      <td>Pod</td>
+      <td>ハードウェアリソース使用率メトリクス</td>
+      <td>Pod のハードウェアリソース使用率メトリクス (例：CPU 使用率、メモリ使用率、CPU 空きサイズ率など) を Node 単位で分析できる。同じ Node の複数の Pod (削除された Pod も含む) のメトリクスの累計を一括して確認したい場合に役立つ。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Kubernetes / Compute Resources / Pod</code></td>
+      <td>Pod</td>
+      <td>ハードウェアリソース使用率メトリクス</td>
+      <td>Pod のハードウェアリソース使用率メトリクス (例：CPU 使用率、メモリ使用率、CPU 空きサイズ率など) を Pod 単位で分析できる。各 Pod や特定の Pod の状況を確認したい場合に役立つ。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Kubernetes / Networking / Cluster</code></td>
+      <td>Pod</td>
+      <td>ネットワークの性能指標</td>
+      <td>Pod のネットワークの性能指標メトリクス (例：帯域幅、秒当たりパケット受信数) の合計を分析できる。Cluster 全体のネットワークの分析に役立つ。</td>
+      <td>★</td>
+    </tr>
+    <tr>
+      <td><code>Kubernetes / Networking / Namespace (Pods)</code></td>
+      <td>Pod</td>
+      <td>ネットワークの性能指標</td>
+      <td>Pod のネットワーク性能指標メトリクスを Namespace 単位で分析できる。複数の Pod (削除された Pod も含む) のメトリクスを一括して確認したい場合に役立つ。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Kubernetes / Networking / Pod</code></td>
+      <td>Pod</td>
+      <td>ネットワークの性能指標</td>
+      <td>Pod のネットワーク性能指標メトリクスを Pod 単位で分析できる。Pod を個別に確認したい場合に役立つ。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [helm-charts/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml at kube-prometheus-stack-48.4.0 · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml#L23)
 > - [helm-charts/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-namespace.yaml at kube-prometheus-stack-48.4.0 · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-namespace.yaml#L23)
@@ -428,20 +555,70 @@ Node からデータポイントを収集する。
 
 kubelet からデータポイントを収集できるようにしておく必要がある。
 
-| ダッシュボード名                                         | 監視対象                | メトリクス                           | 説明                                                                                                                            | おすすめ |
-| -------------------------------------------------------- | ----------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `Kubernetes / Compute Resources / Namespace (Workloads)` | Deployment、StatefulSet | ハードウェアリソース使用率メトリクス | Pod のハードウェアリソース使用率メトリクス (例：CPU 使用率、メモリ使用率、CPU 空きサイズ率など) を Namespace 単位で分析できる。 |          |
-| `Kubernetes / Compute Resources / Workload`              | Deployment、StatefulSet | ハードウェアリソース使用率メトリクス | Pod のハードウェアリソース使用率メトリクス (例：CPU 使用率、メモリ使用率、CPU 空きサイズ率など) を Workload 単位で分析できる。  |          |
-| `Kubernetes / Networking / Namespace (Workload)`         | Deployment、StatefulSet | ネットワーク性能指標メトリクス       | Pod のネットワーク性能指標メトリクスを Namespace 単位で分析できる。                                                             |          |
-| `Kubernetes / Networking / Workload`                     | Deployment、StatefulSet | ネットワーク性能指標メトリクス       | Pod のネットワーク性能指標メトリクスを Workload 単位で分析できる。                                                              |          |
+<table>
+  <thead>
+    <tr>
+      <th>ダッシュボード名</th>
+      <th>監視対象</th>
+      <th>メトリクス</th>
+      <th>説明</th>
+      <th>おすすめ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Kubernetes / Compute Resources / Namespace (Workloads)</code></td>
+      <td>Deployment、StatefulSet</td>
+      <td>ハードウェアリソース使用率メトリクス</td>
+      <td>Pod のハードウェアリソース使用率メトリクス (例：CPU 使用率、メモリ使用率、CPU 空きサイズ率など) を Namespace 単位で分析できる。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Kubernetes / Compute Resources / Workload</code></td>
+      <td>Deployment、StatefulSet</td>
+      <td>ハードウェアリソース使用率メトリクス</td>
+      <td>Pod のハードウェアリソース使用率メトリクス (例：CPU 使用率、メモリ使用率、CPU 空きサイズ率など) を Workload 単位で分析できる。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Kubernetes / Networking / Namespace (Workload)</code></td>
+      <td>Deployment、StatefulSet</td>
+      <td>ネットワーク性能指標メトリクス</td>
+      <td>Pod のネットワーク性能指標メトリクスを Namespace 単位で分析できる。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Kubernetes / Networking / Workload</code></td>
+      <td>Deployment、StatefulSet</td>
+      <td>ネットワーク性能指標メトリクス</td>
+      <td>Pod のネットワーク性能指標メトリクスを Workload 単位で分析できる。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [website/assets/kubernetes/dashboards at master · monitoring-mixins/website · GitHub](https://github.com/monitoring-mixins/website/tree/master/assets/kubernetes/dashboards)
 
 #### ▼ PersistentVolume
 
-| ダッシュボード名                  | 監視対象         | 説明                                                       | おすすめ |
-| --------------------------------- | ---------------- | ---------------------------------------------------------- | -------- |
-| `Kubernetes / Persistent Volumes` | PersistentVolume | Persistent Volume の使用率に関するメトリクスを分析できる。 |          |
+<table>
+  <thead>
+    <tr>
+      <th>ダッシュボード名</th>
+      <th>監視対象</th>
+      <th>説明</th>
+      <th>おすすめ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Kubernetes / Persistent Volumes</code></td>
+      <td>PersistentVolume</td>
+      <td>Persistent Volume の使用率に関するメトリクスを分析できる。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ Node
 
@@ -449,11 +626,40 @@ Node からデータポイントを収集する。
 
 Node Exporter からデータポイントを収集できるようにしておく必要がある。
 
-| ダッシュボード名                       | 監視対象 | メトリクス     | 説明                                                                                         | おすすめ |
-| -------------------------------------- | -------- | -------------- | -------------------------------------------------------------------------------------------- | -------- |
-| `Node Exporter / USE Method / Cluster` | Node     | USE メトリクス | Node の USE メトリクスの合計を分析できる。Cluster 全体のハードウェアリソースの分析に役立つ。 | ★        |
-| `Node Exporter / USE Method / Node`    | Node     | USE メトリクス | Node の USE メトリクスを Node 単位で分析できる。                                             |          |
-| `Node Exporter / Nodes`                | Node     | ハードウェア   | Node のハードウェアリソース使用率メトリクスを Node 単位で分析できる。                        |          |
+<table>
+  <thead>
+    <tr>
+      <th>ダッシュボード名</th>
+      <th>監視対象</th>
+      <th>メトリクス</th>
+      <th>説明</th>
+      <th>おすすめ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Node Exporter / USE Method / Cluster</code></td>
+      <td>Node</td>
+      <td>USE メトリクス</td>
+      <td>Node の USE メトリクスの合計を分析できる。Cluster 全体のハードウェアリソースの分析に役立つ。</td>
+      <td>★</td>
+    </tr>
+    <tr>
+      <td><code>Node Exporter / USE Method / Node</code></td>
+      <td>Node</td>
+      <td>USE メトリクス</td>
+      <td>Node の USE メトリクスを Node 単位で分析できる。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Node Exporter / Nodes</code></td>
+      <td>Node</td>
+      <td>ハードウェア</td>
+      <td>Node のハードウェアリソース使用率メトリクスを Node 単位で分析できる。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [helm-charts/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/node-cluster-rsrc-use.yaml at kube-prometheus-stack-48.4.0 · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/node-cluster-rsrc-use.yaml#L23)
 > - [helm-charts/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/node-rsrc-use.yaml at kube-prometheus-stack-48.4.0 · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/node-rsrc-use.yaml#L23)
@@ -462,10 +668,27 @@ Node Exporter からデータポイントを収集できるようにしておく
 
 Prometheus の Pod からデータポイントを収集する。
 
-| ダッシュボード名            | 監視対象          | 説明 |
-| --------------------------- | ----------------- | ---- |
-| `Prometheus / Remote Write` | Prometheus の Pod |      |
-| `Prometheus / Overview`     | Prometheus の Pod |      |
+<table>
+  <thead>
+    <tr>
+      <th>ダッシュボード名</th>
+      <th>監視対象</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Prometheus / Remote Write</code></td>
+      <td>Prometheus の Pod</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Prometheus / Overview</code></td>
+      <td>Prometheus の Pod</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [website/assets/prometheus/dashboards at master · monitoring-mixins/website · GitHub](https://github.com/monitoring-mixins/website/tree/master/assets/prometheus/dashboards)
 
@@ -475,14 +698,47 @@ Istio の Pod からデータポイントを収集する。
 
 `istioctl dashboard grafana` コマンドでもインストールできる。
 
-| ダッシュボード名                 | 監視対象                           | 説明                                                                                |
-| -------------------------------- | ---------------------------------- | ----------------------------------------------------------------------------------- |
-| `Istio Wasm Extension Dashboard` |                                    |                                                                                     |
-| `Istio Mesh Dashboard`           |                                    | HTTP プロトコルと TCP プロトコルのメトリクスを確認したい場合に役立つ。              |
-| `Istio Control Plane Dashboard`  | Istiod の Pod                      |                                                                                     |
-| `Istio Performance Dashboard`    | Istio Ingress Gateway、istio-proxy |                                                                                     |
-| `Istio Workload Dashboard`       | Istio のカスタムリソース           |                                                                                     |
-| `Istio Service Dashboard`        | Istio VirtualService               | Istio Ingress Gateway の宛先の Service に関するメトリクスを確認したい場合に役立つ。 |
+<table>
+  <thead>
+    <tr>
+      <th>ダッシュボード名</th>
+      <th>監視対象</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Istio Wasm Extension Dashboard</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Istio Mesh Dashboard</code></td>
+      <td></td>
+      <td>HTTP プロトコルと TCP プロトコルのメトリクスを確認したい場合に役立つ。</td>
+    </tr>
+    <tr>
+      <td><code>Istio Control Plane Dashboard</code></td>
+      <td>Istiod の Pod</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Istio Performance Dashboard</code></td>
+      <td>Istio Ingress Gateway、istio-proxy</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Istio Workload Dashboard</code></td>
+      <td>Istio のカスタムリソース</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Istio Service Dashboard</code></td>
+      <td>Istio VirtualService</td>
+      <td>Istio Ingress Gateway の宛先の Service に関するメトリクスを確認したい場合に役立つ。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Istio / istioctl](https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-dashboard-grafana)
 > - https://github.com/istio/istio/blob/1.14.3/manifests/addons/dashboards

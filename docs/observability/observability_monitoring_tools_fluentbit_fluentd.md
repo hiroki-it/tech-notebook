@@ -67,14 +67,47 @@ FluentBit/Fluentd は、インプットフェーズ、バッファーフェー�
 
 ### 機能比較
 
-|                  | FluentBit                                  | Fluentd                                        |
-| ---------------- | ------------------------------------------ | ---------------------------------------------- |
-| スコープ         | 組み込み Linux/仮想環境                    | 仮想環境                                       |
-| 言語             | NS                                         | C & Ruby                                       |
-| メモリ最大サイズ | `650`KB                                    | `40`MB                                         |
-| 依存関係         | 標準プラグインではパッケージに依存しない。 | 標準プラグインで一定数の Ruby gem に依存する。 |
-| 性能             | 高                                         | 高                                             |
-| プラグイン数     | `70` 個                                    | `1000` 個以上                                  |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>FluentBit</th>
+      <th>Fluentd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>スコープ</td>
+      <td>組み込み Linux/仮想環境</td>
+      <td>仮想環境</td>
+    </tr>
+    <tr>
+      <td>言語</td>
+      <td>NS</td>
+      <td>C &amp; Ruby</td>
+    </tr>
+    <tr>
+      <td>メモリ最大サイズ</td>
+      <td><code>650</code>KB</td>
+      <td><code>40</code>MB</td>
+    </tr>
+    <tr>
+      <td>依存関係</td>
+      <td>標準プラグインではパッケージに依存しない。</td>
+      <td>標準プラグインで一定数の Ruby gem に依存する。</td>
+    </tr>
+    <tr>
+      <td>性能</td>
+      <td>高</td>
+      <td>高</td>
+    </tr>
+    <tr>
+      <td>プラグイン数</td>
+      <td><code>70</code> 個</td>
+      <td><code>1000</code> 個以上</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -106,13 +139,42 @@ FluentBit/Fluentd は、インプットフェーズ、バッファーフェー�
 
 #### ▼ DaemonSet パターンと Pod 内サイドカーパターンの比較
 
-| 項目                                      | Pod 内サイドカーパターン | DaemonSet パターン |
-| ----------------------------------------- | :----------------------: | :----------------: |
-| Node のハードウェアリソース消費量が少ない |            ×             |         ⭕️         |
-| Node のストレージ使用量が少ない           |            ⭕️            |         △          |
-| FluentBit/Fluentd の冗長性が高い          |            ⭕️️            |         △          |
-| アプリごとの設定カスタマイズ度が高い      |            ⭕️            |         △          |
-| 単純性が高い                              |            ×             |         ⭕️         |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th style="text-align:center">Pod 内サイドカーパターン</th>
+      <th style="text-align:center">DaemonSet パターン</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Node のハードウェアリソース消費量が少ない</td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">⭕️</td>
+    </tr>
+    <tr>
+      <td>Node のストレージ使用量が少ない</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">△</td>
+    </tr>
+    <tr>
+      <td>FluentBit/Fluentd の冗長性が高い</td>
+      <td style="text-align:center">⭕️️</td>
+      <td style="text-align:center">△</td>
+    </tr>
+    <tr>
+      <td>アプリごとの設定カスタマイズ度が高い</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">△</td>
+    </tr>
+    <tr>
+      <td>単純性が高い</td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">⭕️</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Kubernetes Logging in Production — Coder Society](https://codersociety.com/blog/articles/kubernetes-logging)
 > - [Comprehensive Analysis of Kubernetes Log Collection Principles - Alibaba Cloud Community](https://www.alibabacloud.com/blog/comprehensive-analysis-of-kubernetes-log-collection-principles_599411)

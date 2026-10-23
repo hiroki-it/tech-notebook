@@ -286,13 +286,48 @@ export const getDisplayName = (fullName: FullName): string => {
 
 どのようなドメインモデルがあり、それを値オブジェクトに具体化できそうか考えてみる。
 
-| ドメインモデル   | プリミティブ | 値オブジェクト | 持つデータ                                                                                                                                                              |
-| ---------------- | ------------ | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 時間範囲         | int          | TimeRange      | 期間                                                                                                                                                                    |
-| タグ             | string       | Tag            | タグ値                                                                                                                                                                  |
-| メトリクス型     | string       | MetricsType    | どのメトリクス型であるかを表す識別子（例えば、Prometheus 互換であれば、counter、gauge、histogram、summary といった型名の文字列）を metricsTypeName プロパティとしてもつ |
-| ヘルスステータス | string       | HealthStatus   | error、success、などを healthStatusName プロパティとしてもつ                                                                                                            |
-| プロジェクト名   | string       | ProjectName    |                                                                                                                                                                         |
+<table>
+  <thead>
+    <tr>
+      <th>ドメインモデル</th>
+      <th>プリミティブ</th>
+      <th>値オブジェクト</th>
+      <th>持つデータ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>時間範囲</td>
+      <td>int</td>
+      <td>TimeRange</td>
+      <td>期間</td>
+    </tr>
+    <tr>
+      <td>タグ</td>
+      <td>string</td>
+      <td>Tag</td>
+      <td>タグ値</td>
+    </tr>
+    <tr>
+      <td>メトリクス型</td>
+      <td>string</td>
+      <td>MetricsType</td>
+      <td>どのメトリクス型であるかを表す識別子（例えば、Prometheus 互換であれば、counter、gauge、histogram、summary といった型名の文字列）を metricsTypeName プロパティとしてもつ</td>
+    </tr>
+    <tr>
+      <td>ヘルスステータス</td>
+      <td>string</td>
+      <td>HealthStatus</td>
+      <td>error、success、などを healthStatusName プロパティとしてもつ</td>
+    </tr>
+    <tr>
+      <td>プロジェクト名</td>
+      <td>string</td>
+      <td>ProjectName</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

@@ -1407,11 +1407,32 @@ URL を文字列を定数として扱う。
 
 ### 場面に応じた命名
 
-| 意味づけ       | 名前                             | 型     |
-| -------------- | -------------------------------- | ------ |
-| 個数、回数     | `NUM_*****`                      | int    |
-| 最大数、最小数 | `MAX_NUM_*****`、`MIN_NUM_*****` | int    |
-| URL            | `URL_*****`                      | string |
+<table>
+  <thead>
+    <tr>
+      <th>意味づけ</th>
+      <th>名前</th>
+      <th>型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>個数、回数</td>
+      <td><code>NUM_*****</code></td>
+      <td>int</td>
+    </tr>
+    <tr>
+      <td>最大数、最小数</td>
+      <td><code>MAX_NUM_*****</code>、<code>MIN_NUM_*****</code></td>
+      <td>int</td>
+    </tr>
+    <tr>
+      <td>URL</td>
+      <td><code>URL_*****</code></td>
+      <td>string</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

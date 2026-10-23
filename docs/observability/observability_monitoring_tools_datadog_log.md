@@ -274,14 +274,54 @@ export default browserLogsForSsgPlugin;
 
 #### ▼ 予約済み属性
 
-| 属性名     | 説明                                             | 補足                                                                                                                                                                                                                                                                                                                                        | 例                                                                                    |
-| ---------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `host`     | ログの作成元のホスト名を示す。                   | ログが作成元とは別の場所から受信した場合に役立つ。datadog コンテナの環境変数にて、`DD_HOSTNAME` を使用して `host` 属性を設定する。これにより、ホストマップでホストを俯瞰できるようになるのみでなく、ログエクスプローラでホストタグが属性として付与される。他に AWS インテグレーションでは、送信元のロググループ名やバケット名が付与される。 | ・`foo`<br>・`foo-backend`<br>・`foo-frontend`<br>・`foo-log-group`<br>・`foo-bucket` |
-| `source`   | ログの作成元の名前を示す。                       | ベンダー名を使用するとわかりやすい。                                                                                                                                                                                                                                                                                                        | ・`laravel`<br>・`nginx`<br>・`redis`                                                 |
-| `status`   | ログのレベルを示す。                             |                                                                                                                                                                                                                                                                                                                                             |                                                                                       |
-| `service`  | ログの作成元のアプリケーション名を示す。         | ログと APM 分散トレースを紐付けるため、両方に同じ名前を割り当てる必要がある。                                                                                                                                                                                                                                                               | ・`foo`<br>・`bar-backend`<br>・`baz-frontend`                                        |
-| `trace_id` | ログを分散トレースやスパンと紐付ける ID を示す。 |                                                                                                                                                                                                                                                                                                                                             |                                                                                       |
-| `message`  | ログメッセージを示す。                           | 受信したログが非構造化ログの場合、これは Datadog の基底構造化ログの `message` 属性に割り当てられる。一方で、構造化ログであった場合は `message` 属性は使用されない。                                                                                                                                                                         |                                                                                       |
+<table>
+  <thead>
+    <tr>
+      <th>属性名</th>
+      <th>説明</th>
+      <th>補足</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>host</code></td>
+      <td>ログの作成元のホスト名を示す。</td>
+      <td>ログが作成元とは別の場所から受信した場合に役立つ。datadog コンテナの環境変数にて、<code>DD_HOSTNAME</code> を使用して <code>host</code> 属性を設定する。これにより、ホストマップでホストを俯瞰できるようになるのみでなく、ログエクスプローラでホストタグが属性として付与される。他に AWS インテグレーションでは、送信元のロググループ名やバケット名が付与される。</td>
+      <td>・<code>foo</code><br>・<code>foo-backend</code><br>・<code>foo-frontend</code><br>・<code>foo-log-group</code><br>・<code>foo-bucket</code></td>
+    </tr>
+    <tr>
+      <td><code>source</code></td>
+      <td>ログの作成元の名前を示す。</td>
+      <td>ベンダー名を使用するとわかりやすい。</td>
+      <td>・<code>laravel</code><br>・<code>nginx</code><br>・<code>redis</code></td>
+    </tr>
+    <tr>
+      <td><code>status</code></td>
+      <td>ログのレベルを示す。</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>service</code></td>
+      <td>ログの作成元のアプリケーション名を示す。</td>
+      <td>ログと APM 分散トレースを紐付けるため、両方に同じ名前を割り当てる必要がある。</td>
+      <td>・<code>foo</code><br>・<code>bar-backend</code><br>・<code>baz-frontend</code></td>
+    </tr>
+    <tr>
+      <td><code>trace_id</code></td>
+      <td>ログを分散トレースやスパンと紐付ける ID を示す。</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>message</code></td>
+      <td>ログメッセージを示す。</td>
+      <td>受信したログが非構造化ログの場合、これは Datadog の基底構造化ログの <code>message</code> 属性に割り当てられる。一方で、構造化ログであった場合は <code>message</code> 属性は使用されない。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/
 
@@ -297,13 +337,36 @@ export default browserLogsForSsgPlugin;
 
 > - https://docs.datadoghq.com/logs/log_collection/?tab=host#attributes-for-stack-traces
 
-| 属性名               | 説明                                            |
-| -------------------- | ----------------------------------------------- |
-| `logger.name`        | ログパッケージの名前を示す。                    |
-| `logger.thread_name` | スレッド名を示す。                              |
-| `error.stack`        | スタックトレースログ全体を示す。                |
-| `error.message`      | スタックトレースログのメッセージ部分を示す。    |
-| `error.kind`         | エラーの種類 (Exception、OSError など) を示す。 |
+<table>
+  <thead>
+    <tr>
+      <th>属性名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>logger.name</code></td>
+      <td>ログパッケージの名前を示す。</td>
+    </tr>
+    <tr>
+      <td><code>logger.thread_name</code></td>
+      <td>スレッド名を示す。</td>
+    </tr>
+    <tr>
+      <td><code>error.stack</code></td>
+      <td>スタックトレースログ全体を示す。</td>
+    </tr>
+    <tr>
+      <td><code>error.message</code></td>
+      <td>スタックトレースログのメッセージ部分を示す。</td>
+    </tr>
+    <tr>
+      <td><code>error.kind</code></td>
+      <td>エラーの種類 (Exception、OSError など) を示す。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -582,11 +645,32 @@ CRITICAL @http.status_code:[500 TO 599]
 
 #### ▼ パースルール
 
-| 名前             | 説明                                                                                                           | 補足                                                                                           |
-| ---------------- | -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| マッチャー名     | パース対象の文字列を検出できるマッチャー関数を設定する。それぞれマッチャーは、検出後に何らかの処理を実行する。 | ・https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#matcher-and-filter   |
-| エクストラクト名 | 処理結果の出力先の属性を設定する。                                                                             | 出力先の属性が存在しない場合、これを新しく作成する。存在する場合は、既存の属性値を上書きする。 |
-| フィルター名     | マッチャーの追加処理を実行するフィルター関数を設定する。                                                       | ・https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filters#matcher-and-filter    |
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>マッチャー名</td>
+      <td>パース対象の文字列を検出できるマッチャー関数を設定する。それぞれマッチャーは、検出後に何らかの処理を実行する。</td>
+      <td>・<a href="https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#matcher-and-filter">https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#matcher-and-filter</a></td>
+    </tr>
+    <tr>
+      <td>エクストラクト名</td>
+      <td>処理結果の出力先の属性を設定する。</td>
+      <td>出力先の属性が存在しない場合、これを新しく作成する。存在する場合は、既存の属性値を上書きする。</td>
+    </tr>
+    <tr>
+      <td>フィルター名</td>
+      <td>マッチャーの追加処理を実行するフィルター関数を設定する。</td>
+      <td>・<a href="https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filters#matcher-and-filter">https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filters#matcher-and-filter</a></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ 例１
 
@@ -993,28 +1077,87 @@ https://example.com%{http.url}
 
 #### ▼ パイプライン
 
-| 規則                            | 例               | 用途                                       |
-| ------------------------------- | ---------------- | ------------------------------------------ |
-| `<マイクロサービス名>-pipeline` | `order-pipeline` | `order` マイクロサービスのログを処理する。 |
+<table>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+      <th>用途</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;マイクロサービス名&gt;-pipeline</code></td>
+      <td><code>order-pipeline</code></td>
+      <td><code>order</code> マイクロサービスのログを処理する。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ プロセッサー系
 
-| 規則                                              | 例                            | 用途                                                                            |
-| ------------------------------------------------- | ----------------------------- | ------------------------------------------------------------------------------- |
-| `<プロセッサーに合わせた動詞> <属性へのアクセス>` | `Categorize http.status_code` | `http.status_code` 属性にアクセスし、値に応じてカテゴリプロセッサーを実行する。 |
+<table>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+      <th>用途</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;プロセッサーに合わせた動詞&gt; &lt;属性へのアクセス&gt;</code></td>
+      <td><code>Categorize http.status_code</code></td>
+      <td><code>http.status_code</code> 属性にアクセスし、値に応じてカテゴリプロセッサーを実行する。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ パーサー系
 
-| 規則                          | パーサーの種類    | 例                                                            | 用途                                                       |
-| ----------------------------- | ----------------- | ------------------------------------------------------------- | ---------------------------------------------------------- |
-| `Parse <属性へのアクセス名>`  | Grok パーサー以外 | `Parse http.url`                                              | `http.url` 属性にアクセスし、パーサーを実行する。          |
-| `Parse <タグ名> <ログの種類>` | Grok パーサー     | ・`Parse php-fpm access logs`<br>・`Parse php-fpm error logs` | 指定したタグの付いたログに対して Grok パーサーを実行する。 |
+<table>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>パーサーの種類</th>
+      <th>例</th>
+      <th>用途</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Parse &lt;属性へのアクセス名&gt;</code></td>
+      <td>Grok パーサー以外</td>
+      <td><code>Parse http.url</code></td>
+      <td><code>http.url</code> 属性にアクセスし、パーサーを実行する。</td>
+    </tr>
+    <tr>
+      <td><code>Parse &lt;タグ名&gt; &lt;ログの種類&gt;</code></td>
+      <td>Grok パーサー</td>
+      <td>・<code>Parse php-fpm access logs</code><br>・<code>Parse php-fpm error logs</code></td>
+      <td>指定したタグの付いたログに対して Grok パーサーを実行する。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ リマッパー系
 
-| 規則                         | 例                           | 用途                                                                |
-| ---------------------------- | ---------------------------- | ------------------------------------------------------------------- |
-| `Remap <属性へのアクセス名>` | `Remap http.status_category` | `http.status_category` 属性にアクセスし、属性のリマップを実行する。 |
+<table>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+      <th>用途</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Remap &lt;属性へのアクセス名&gt;</code></td>
+      <td><code>Remap http.status_category</code></td>
+      <td><code>http.status_category</code> 属性にアクセスし、属性のリマップを実行する。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -1187,11 +1330,28 @@ autoFilledRule3 ...
 
 #### ▼ 文法
 
-| ユースケース             | 例             |
-| ------------------------ | -------------- |
-| 一致するものを抽出する。 | `service:foo`  |
-| 一致するものを除外する。 | `-service:foo` |
-|                          |                |
+<table>
+  <thead>
+    <tr>
+      <th>ユースケース</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>一致するものを抽出する。</td>
+      <td><code>service:foo</code></td>
+    </tr>
+    <tr>
+      <td>一致するものを除外する。</td>
+      <td><code>-service:foo</code></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

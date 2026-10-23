@@ -15,14 +15,47 @@ description: Istio＠サービスメッシュ系ミドルウェアの知見を�
 
 ## 01. Istio の仕組み
 
-| 項目                                            |                  サイドカーモード                  |         アンビエントモード         |
-| ----------------------------------------------- | :------------------------------------------------: | :--------------------------------: |
-| Node のハードウェアリソース消費量               |                         ×                          |                 ⭕️                 |
-| Node のストレージ使用量                         |                         ⭕️                         |                 △                  |
-| Envoy の冗長性                                  |                         ⭕️️                         |                 △                  |
-| マイクロサービスごとの Envoy の設定カスタマイズ |                         ⭕️                         |                 △                  |
-| 単純性                                          |                         ×                          |                 ⭕️                 |
-| Istio のアップグレード                          | インプレースアップグレード、カナリアアップグレード | DaemonSet のローリングアップデート |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th style="text-align:center">サイドカーモード</th>
+      <th style="text-align:center">アンビエントモード</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Node のハードウェアリソース消費量</td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">⭕️</td>
+    </tr>
+    <tr>
+      <td>Node のストレージ使用量</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">△</td>
+    </tr>
+    <tr>
+      <td>Envoy の冗長性</td>
+      <td style="text-align:center">⭕️️</td>
+      <td style="text-align:center">△</td>
+    </tr>
+    <tr>
+      <td>マイクロサービスごとの Envoy の設定カスタマイズ</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">△</td>
+    </tr>
+    <tr>
+      <td>単純性</td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">⭕️</td>
+    </tr>
+    <tr>
+      <td>Istio のアップグレード</td>
+      <td style="text-align:center">インプレースアップグレード、カナリアアップグレード</td>
+      <td style="text-align:center">DaemonSet のローリングアップデート</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -83,11 +116,32 @@ Istio のドキュメントでは、以下のハードウェアリソースを�
 
 1000 req/sec、データサイズ 1 KB の場合である。
 
-|                           |    CPU    | メモリ |
-| ------------------------- | :-------: | :----: |
-| istio-proxy               | 0.2 vCPU  | 60 Mi  |
-| waypoint-proxy のコンテナ | 0.25 vCPU | 60 Mi  |
-| ztunnel のコンテナ        | 0.06 vCPU | 12 Mi  |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th style="text-align:center">CPU</th>
+      <th style="text-align:center">メモリ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>istio-proxy</td>
+      <td style="text-align:center">0.2 vCPU</td>
+      <td style="text-align:center">60 Mi</td>
+    </tr>
+    <tr>
+      <td>waypoint-proxy のコンテナ</td>
+      <td style="text-align:center">0.25 vCPU</td>
+      <td style="text-align:center">60 Mi</td>
+    </tr>
+    <tr>
+      <td>ztunnel のコンテナ</td>
+      <td style="text-align:center">0.06 vCPU</td>
+      <td style="text-align:center">12 Mi</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Istio / Performance and Scalability](https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#sidecar-and-ztunnel-resource-usage)
 
@@ -98,20 +152,103 @@ istio-proxy をインジェクションすると、Pod あたりで以下のハ�
 - CPU：0.0002 vCPU 〜0.0003 vCPU
 - メモリ：40 Mi 〜 50 Mi
 
-| Pod        | CPU (導入前) | CPU (導入後) | メモリ (導入前) | メモリ (導入後) |
-| ---------- | :----------: | :----------: | :-------------: | :-------------: |
-| Nginx      |    0 vCPU    | 0.0003 vCPU  |      2 Mi       |      47 Mi      |
-| Database   | 0.0001 vCPU  | 0.0003 vCPU  |      29 Mi      |      76 Mi      |
-| サービス A | 0.0001 vCPU  | 0.0004 vCPU  |     237 Mi      |     220 Mi      |
-| サービス B | 0.0002 vCPU  | 0.0004 vCPU  |     219 Mi      |     288 Mi      |
-| サービス C | 0.0002 vCPU  | 0.0004 vCPU  |     253 Mi      |     270 Mi      |
-| サービス D | 0.0002 vCPU  | 0.0004 vCPU  |      28 Mi      |      73 Mi      |
-| サービス E | 0.0004 vCPU  | 0.0007 vCPU  |      35 Mi      |      78 Mi      |
-| サービス F | 0.0002 vCPU  | 0.0004 vCPU  |     230 Mi      |     270 Mi      |
-| サービス G | 0.0003 vCPU  | 0.0006 vCPU  |      30 Mi      |      75 Mi      |
-| サービス H | 0.0002 vCPU  | 0.0004 vCPU  |     393 Mi      |     311 Mi      |
-| サービス I | 0.0001 vCPU  | 0.0004 vCPU  |     322 Mi      |     411 Mi      |
-| 合計       | 0.0020 vCPU  | 0.0047 vCPU  |     1778 Mi     |     2119 Mi     |
+<table>
+  <thead>
+    <tr>
+      <th>Pod</th>
+      <th style="text-align:center">CPU (導入前)</th>
+      <th style="text-align:center">CPU (導入後)</th>
+      <th style="text-align:center">メモリ (導入前)</th>
+      <th style="text-align:center">メモリ (導入後)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Nginx</td>
+      <td style="text-align:center">0 vCPU</td>
+      <td style="text-align:center">0.0003 vCPU</td>
+      <td style="text-align:center">2 Mi</td>
+      <td style="text-align:center">47 Mi</td>
+    </tr>
+    <tr>
+      <td>Database</td>
+      <td style="text-align:center">0.0001 vCPU</td>
+      <td style="text-align:center">0.0003 vCPU</td>
+      <td style="text-align:center">29 Mi</td>
+      <td style="text-align:center">76 Mi</td>
+    </tr>
+    <tr>
+      <td>サービス A</td>
+      <td style="text-align:center">0.0001 vCPU</td>
+      <td style="text-align:center">0.0004 vCPU</td>
+      <td style="text-align:center">237 Mi</td>
+      <td style="text-align:center">220 Mi</td>
+    </tr>
+    <tr>
+      <td>サービス B</td>
+      <td style="text-align:center">0.0002 vCPU</td>
+      <td style="text-align:center">0.0004 vCPU</td>
+      <td style="text-align:center">219 Mi</td>
+      <td style="text-align:center">288 Mi</td>
+    </tr>
+    <tr>
+      <td>サービス C</td>
+      <td style="text-align:center">0.0002 vCPU</td>
+      <td style="text-align:center">0.0004 vCPU</td>
+      <td style="text-align:center">253 Mi</td>
+      <td style="text-align:center">270 Mi</td>
+    </tr>
+    <tr>
+      <td>サービス D</td>
+      <td style="text-align:center">0.0002 vCPU</td>
+      <td style="text-align:center">0.0004 vCPU</td>
+      <td style="text-align:center">28 Mi</td>
+      <td style="text-align:center">73 Mi</td>
+    </tr>
+    <tr>
+      <td>サービス E</td>
+      <td style="text-align:center">0.0004 vCPU</td>
+      <td style="text-align:center">0.0007 vCPU</td>
+      <td style="text-align:center">35 Mi</td>
+      <td style="text-align:center">78 Mi</td>
+    </tr>
+    <tr>
+      <td>サービス F</td>
+      <td style="text-align:center">0.0002 vCPU</td>
+      <td style="text-align:center">0.0004 vCPU</td>
+      <td style="text-align:center">230 Mi</td>
+      <td style="text-align:center">270 Mi</td>
+    </tr>
+    <tr>
+      <td>サービス G</td>
+      <td style="text-align:center">0.0003 vCPU</td>
+      <td style="text-align:center">0.0006 vCPU</td>
+      <td style="text-align:center">30 Mi</td>
+      <td style="text-align:center">75 Mi</td>
+    </tr>
+    <tr>
+      <td>サービス H</td>
+      <td style="text-align:center">0.0002 vCPU</td>
+      <td style="text-align:center">0.0004 vCPU</td>
+      <td style="text-align:center">393 Mi</td>
+      <td style="text-align:center">311 Mi</td>
+    </tr>
+    <tr>
+      <td>サービス I</td>
+      <td style="text-align:center">0.0001 vCPU</td>
+      <td style="text-align:center">0.0004 vCPU</td>
+      <td style="text-align:center">322 Mi</td>
+      <td style="text-align:center">411 Mi</td>
+    </tr>
+    <tr>
+      <td>合計</td>
+      <td style="text-align:center">0.0020 vCPU</td>
+      <td style="text-align:center">0.0047 vCPU</td>
+      <td style="text-align:center">1778 Mi</td>
+      <td style="text-align:center">2119 Mi</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [サービスメッシュ導入の前に知っておくべきこと - アルファテックブログ](https://www.alpha.co.jp/blog/202205_01/#%E4%BD%BF%E7%94%A8%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E4%B8%8A%E6%98%87)
 
@@ -134,11 +271,28 @@ istio-proxy をインジェクションすると、Pod あたりで以下のハ�
 
 p99、1000 req/sec、240 秒間の負荷の場合である。
 
-| 条件                                   | レイテンシー |
-| -------------------------------------- | :----------: |
-| both (送信元／宛先 istio-proxy の両方) |   約 28 ms   |
-| serveronly (宛先 istio-proxy のみ)     |   約 13 ms   |
-| baseline (istio-proxy なし)            |   約 3 ms    |
+<table>
+  <thead>
+    <tr>
+      <th>条件</th>
+      <th style="text-align:center">レイテンシー</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>both (送信元／宛先 istio-proxy の両方)</td>
+      <td style="text-align:center">約 28 ms</td>
+    </tr>
+    <tr>
+      <td>serveronly (宛先 istio-proxy のみ)</td>
+      <td style="text-align:center">約 13 ms</td>
+    </tr>
+    <tr>
+      <td>baseline (istio-proxy なし)</td>
+      <td style="text-align:center">約 3 ms</td>
+    </tr>
+  </tbody>
+</table>
 
 ![istio_sidecar-mode_latency](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_sidecar-mode_latency.png)
 
@@ -291,10 +445,24 @@ ServiceEntry を使用すれば、名前をつけられる。
 
 #### ▼ テストの種類
 
-| テスト名               | 内容                                                                                                                                                                                                |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Delay インジェクション | 通信元の istio-proxy で、宛先への HTTP リクエストを意図的に遅延させる。`<br>`・https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault                 |
-| Abort インジェクション | 通信元の istio-proxy で、宛先に HTTP リクエストを中継せず、エラーレスポンスを返信する。`<br>`・https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
+<table>
+  <thead>
+    <tr>
+      <th>テスト名</th>
+      <th>内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Delay インジェクション</td>
+      <td>通信元の istio-proxy で、宛先への HTTP リクエストを意図的に遅延させる。<code>&lt;br&gt;</code>・<a href="https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault">https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault</a></td>
+    </tr>
+    <tr>
+      <td>Abort インジェクション</td>
+      <td>通信元の istio-proxy で、宛先に HTTP リクエストを中継せず、エラーレスポンスを返信する。<code>&lt;br&gt;</code>・<a href="https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault">https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault</a></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ サーキットブレイカー
 
@@ -619,26 +787,83 @@ spec:
 
 #### ▼ Istiod 全体に関するメトリクス
 
-| メトリクス名  | 単位     | 説明                                                                                                                                 |
-| ------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `istio_build` | カウント | Istio の各コンポーネントの情報を表す。`istio_build{component="pilot"}` とすることで、Istiod コントロールプレーンの情報を取得できる。 |
+<table>
+  <thead>
+    <tr>
+      <th>メトリクス名</th>
+      <th>単位</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>istio_build</code></td>
+      <td>カウント</td>
+      <td>Istio の各コンポーネントの情報を表す。<code>istio_build{component=&quot;pilot&quot;}</code> とすることで、Istiod コントロールプレーンの情報を取得できる。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ istio-proxy に関するメトリクス
 
 Prometheus 上でメトリクスをクエリすると、istio-proxy の `:15020/stats/prometheus` エンドポイントから収集したデータポイントを取得できる。
 
-| メトリクス名                                             | 単位     | 説明                                                                                                                                                                                    |
-| -------------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `istio_requests_total`                                   | カウント | istio-proxy が受信した総リクエスト数を表す。メトリクスの名前空間に対してさまざまなディメンションを設定できる。`<br>`・https://blog.christianposta.com/understanding-istio-telemetry-v2/ |
-| `istio_request_duration_milliseconds_{bucket,count,sum}` | ミリ秒   | istio-proxy が受信したリクエストの処理時間の分布を表す。                                                                                                                                |
-| `istio_request_messages_total`                           | カウント | gRPC クライアントが送信した gRPC over HTTP/2 によるリクエストの総数を表す。                                                                                                             |
-| `istio_response_messages_total`                          | カウント | gRPC サーバーが返信した gRPC over HTTP/2 によるレスポンスの総数を表す。                                                                                                                 |
-
-| `istio_request_duration_milliseconds_sum` | ミリ秒 | istio-proxy が起動以降のすべてのリクエスト期間の合計 |
-| `envoy_cluster_upstream_rq_retry` | カウント | istio-proxy のほかの Pod へのリクエストに関するリトライ数を表す。 |
-| `envoy_cluster_upstream_rq_retry_success` | カウント | istio-proxy が他の Pod へのリクエストに関するリトライ成功数を表す。 |
-| `envoy_cluster_upstream_rq_retry_backoff_expotential` | カウント | 記入中... |
-| `envoy_cluster_upstream_rq_retry_limit_exceeded` | カウント | 記入中... |
+<table>
+  <thead>
+    <tr>
+      <th>メトリクス名</th>
+      <th>単位</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>istio_requests_total</code></td>
+      <td>カウント</td>
+      <td>istio-proxy が受信した総リクエスト数を表す。メトリクスの名前空間に対してさまざまなディメンションを設定できる。<code>&lt;br&gt;</code>・<a href="https://blog.christianposta.com/understanding-istio-telemetry-v2/">https://blog.christianposta.com/understanding-istio-telemetry-v2/</a></td>
+    </tr>
+    <tr>
+      <td><code>istio_request_duration_milliseconds_{bucket,count,sum}</code></td>
+      <td>ミリ秒</td>
+      <td>istio-proxy が受信したリクエストの処理時間の分布を表す。</td>
+    </tr>
+    <tr>
+      <td><code>istio_request_messages_total</code></td>
+      <td>カウント</td>
+      <td>gRPC クライアントが送信した gRPC over HTTP/2 によるリクエストの総数を表す。</td>
+    </tr>
+    <tr>
+      <td><code>istio_response_messages_total</code></td>
+      <td>カウント</td>
+      <td>gRPC サーバーが返信した gRPC over HTTP/2 によるレスポンスの総数を表す。</td>
+    </tr>
+    <tr>
+      <td><code>istio_request_duration_milliseconds_sum</code></td>
+      <td>ミリ秒</td>
+      <td>istio-proxy が起動以降のすべてのリクエスト期間の合計</td>
+    </tr>
+    <tr>
+      <td><code>envoy_cluster_upstream_rq_retry</code></td>
+      <td>カウント</td>
+      <td>istio-proxy のほかの Pod へのリクエストに関するリトライ数を表す。</td>
+    </tr>
+    <tr>
+      <td><code>envoy_cluster_upstream_rq_retry_success</code></td>
+      <td>カウント</td>
+      <td>istio-proxy が他の Pod へのリクエストに関するリトライ成功数を表す。</td>
+    </tr>
+    <tr>
+      <td><code>envoy_cluster_upstream_rq_retry_backoff_expotential</code></td>
+      <td>カウント</td>
+      <td>記入中...</td>
+    </tr>
+    <tr>
+      <td><code>envoy_cluster_upstream_rq_retry_limit_exceeded</code></td>
+      <td>カウント</td>
+      <td>記入中...</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Istio / Istio Standard Metrics](https://istio.io/latest/docs/reference/config/metrics/#metrics)
 > - [Statistics — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_stats)
@@ -654,20 +879,90 @@ Istio を使わないと送信元 IP アドレスで特定する必要がある�
 
 Istio Ingress Gateway を経由せずにサービスメッシュ外からインバウンド通信 (例えば、Prometheus や kubelet の `/metrics` スクレイピング) がくると、ラベル値が `unknown` になってしまう。
 
-| ラベル                           | 説明                                                                           | 例                                                                                                | 注意点                                                                                                                                                                                                                                                                        |
-| -------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `connection_security_policy`     | HTTP リクエストのセキュリティポリシーを表す。                                  | `mutual_tls` (相互 TLS 認証)                                                                      |                                                                                                                                                                                                                                                                               |
-| `destination_app`                | リクエストの宛先コンポーネントの `app` ラベル値を表す。                        | `foo-container`                                                                                   |                                                                                                                                                                                                                                                                               |
-| `destination_cluster`            | リクエストの宛先の Kubernetes Cluster 名を表す。                               | `Kubernetes`                                                                                      |                                                                                                                                                                                                                                                                               |
-| `destination_service`            | リクエストの宛先ホストを表す。                                                 | `foo-service.foo-namespace.svc.cluster.local`                                                     |                                                                                                                                                                                                                                                                               |
-| `destination_workload`           | リクエストの宛先の Deployment 名を表す。                                       | `foo-deployment                                                                                   |                                                                                                                                                                                                                                                                               |
-| `destination_workload_namespace` | 宛先コンポーネントの Namespace 名を表す。                                      |                                                                                                   |                                                                                                                                                                                                                                                                               |
-| `reporter`                       | データポイントの作成者を表す。istio-proxy か IngressGateway のいずれかである。 | ・`destination` (宛先の istio-proxy)`<br>`・`source` (送信元の IngressGateway または istio-proxy) |                                                                                                                                                                                                                                                                               |
-| `response_flags`                 | Envoy の `%RESPONSE_FLAGS%` 変数を表す。                                       | `-` (値なし)                                                                                      |                                                                                                                                                                                                                                                                               |
-| `response_code`                  | istio-proxy が返信したレスポンスコードの値を表す。                             | `200`、`404`、`0`                                                                                 | `reporter="source"` の場合、送信元 istio-proxy に対して、宛先 istio-proxy がマイクロサービスから受信したステータスコードを集計する。`reporter="destination"` の場合、送信元 istio-proxy に対して、宛先 istio-proxy がマイクロサービスから受信したステータスコードを集計する。 |
-| `source_app`                     | 送信元コンポーネントの `app` ラベル値を表す。                                  | `foo-container`                                                                                   |                                                                                                                                                                                                                                                                               |
-| `source_cluster`                 | 送信元の Kubernetes Cluster 名を表す。                                         | `Kubernetes`                                                                                      |                                                                                                                                                                                                                                                                               |
-| `source_workload`                | 送信元の Deployment 名を表す。                                                 | `foo-deployment`                                                                                  |                                                                                                                                                                                                                                                                               |
+<table>
+  <thead>
+    <tr>
+      <th>ラベル</th>
+      <th>説明</th>
+      <th>例</th>
+      <th>注意点</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>connection_security_policy</code></td>
+      <td>HTTP リクエストのセキュリティポリシーを表す。</td>
+      <td><code>mutual_tls</code> (相互 TLS 認証)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>destination_app</code></td>
+      <td>リクエストの宛先コンポーネントの <code>app</code> ラベル値を表す。</td>
+      <td><code>foo-container</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>destination_cluster</code></td>
+      <td>リクエストの宛先の Kubernetes Cluster 名を表す。</td>
+      <td><code>Kubernetes</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>destination_service</code></td>
+      <td>リクエストの宛先ホストを表す。</td>
+      <td><code>foo-service.foo-namespace.svc.cluster.local</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>destination_workload</code></td>
+      <td>リクエストの宛先の Deployment 名を表す。</td>
+      <td>`foo-deployment</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>destination_workload_namespace</code></td>
+      <td>宛先コンポーネントの Namespace 名を表す。</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>reporter</code></td>
+      <td>データポイントの作成者を表す。istio-proxy か IngressGateway のいずれかである。</td>
+      <td>・<code>destination</code> (宛先の istio-proxy)<code>&lt;br&gt;</code>・<code>source</code> (送信元の IngressGateway または istio-proxy)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>response_flags</code></td>
+      <td>Envoy の <code>%RESPONSE_FLAGS%</code> 変数を表す。</td>
+      <td><code>-</code> (値なし)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>response_code</code></td>
+      <td>istio-proxy が返信したレスポンスコードの値を表す。</td>
+      <td><code>200</code>、<code>404</code>、<code>0</code></td>
+      <td><code>reporter=&quot;source&quot;</code> の場合、送信元 istio-proxy に対して、宛先 istio-proxy がマイクロサービスから受信したステータスコードを集計する。<code>reporter=&quot;destination&quot;</code> の場合、送信元 istio-proxy に対して、宛先 istio-proxy がマイクロサービスから受信したステータスコードを集計する。</td>
+    </tr>
+    <tr>
+      <td><code>source_app</code></td>
+      <td>送信元コンポーネントの <code>app</code> ラベル値を表す。</td>
+      <td><code>foo-container</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>source_cluster</code></td>
+      <td>送信元の Kubernetes Cluster 名を表す。</td>
+      <td><code>Kubernetes</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>source_workload</code></td>
+      <td>送信元の Deployment 名を表す。</td>
+      <td><code>foo-deployment</code></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Istio / Istio Standard Metrics](https://istio.io/latest/docs/reference/config/metrics/#labels)
 > - [Access logging — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#command-operators)
@@ -746,11 +1041,32 @@ istio-proxy は、スパンを作成する。
 
 スパンの作成場所には、いくつか種類がある。
 
-| スパン作成パターン   | istio-proxy | マイクロサービス |
-| -------------------- | :---------: | :--------------: |
-| istio-proxy のみ     |     ✅      |                  |
-| マイクロサービスのみ |             |        ✅        |
-| 両方                 |     ✅      |        ✅        |
+<table>
+  <thead>
+    <tr>
+      <th>スパン作成パターン</th>
+      <th style="text-align:center">istio-proxy</th>
+      <th style="text-align:center">マイクロサービス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>istio-proxy のみ</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>マイクロサービスのみ</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>両方</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+  </tbody>
+</table>
 
 スパンの作成場所が多いほど、各コンテナの処理時間が細分化された分散トレースを収集できる。
 

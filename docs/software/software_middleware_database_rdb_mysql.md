@@ -86,11 +86,36 @@ integer 値がどのくらい増えるかによって、`3` 個を使い分け�
 
 符号なし (Unsigned) を有効化した場合、マイナス値を使用しなくなった分、使用できるプラス値が増える。
 
-| DB カラム型 | 例  | 設定可能範囲                                       | 符号なし (Unsigned) を有効化した場合 |
-| ----------- | --- | -------------------------------------------------- | ------------------------------------ |
-| `TINYINT`   | `0` | `-128`<br>~ `+127`                                 | `0`<br>~ `+255`                      |
-| `INT`       | `0` | `2147483648`<br>~ `+2147483647`                    | `0`<br>~ `+4294967295`               |
-| `BIGINT`    | `0` | `-9223372036854775808`<br>~ `+9223372036854775807` | `0`<br>~ `+18446744073709551615`     |
+<table>
+  <thead>
+    <tr>
+      <th>DB カラム型</th>
+      <th>例</th>
+      <th>設定可能範囲</th>
+      <th>符号なし (Unsigned) を有効化した場合</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>TINYINT</code></td>
+      <td><code>0</code></td>
+      <td><code>-128</code><br>~ <code>+127</code></td>
+      <td><code>0</code><br>~ <code>+255</code></td>
+    </tr>
+    <tr>
+      <td><code>INT</code></td>
+      <td><code>0</code></td>
+      <td><code>2147483648</code><br>~ <code>+2147483647</code></td>
+      <td><code>0</code><br>~ <code>+4294967295</code></td>
+    </tr>
+    <tr>
+      <td><code>BIGINT</code></td>
+      <td><code>0</code></td>
+      <td><code>-9223372036854775808</code><br>~ <code>+9223372036854775807</code></td>
+      <td><code>0</code><br>~ <code>+18446744073709551615</code></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ string 型
 
@@ -102,11 +127,28 @@ integer 値がどのくらい増えるかによって、`3` 個を使い分け�
 
 ただ、文字量が多いのであれば、`VARCHAR` よりも `TEXT` や `MEDIUMTEXT` を使用するほうがいい。
 
-| DB カラム型  | 例                               |
-| ------------ | -------------------------------- |
-| `VARCHAR(n)` | `foo`                            |
-| `TEXT`       | `はじめまして。長谷川広樹です。` |
-| `MEDIUMTEXT` | `<ここに長いログメッセージ>`     |
+<table>
+  <thead>
+    <tr>
+      <th>DB カラム型</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>VARCHAR(n)</code></td>
+      <td><code>foo</code></td>
+    </tr>
+    <tr>
+      <td><code>TEXT</code></td>
+      <td><code>はじめまして。長谷川広樹です。</code></td>
+    </tr>
+    <tr>
+      <td><code>MEDIUMTEXT</code></td>
+      <td><code>&lt;ここに長いログメッセージ&gt;</code></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ datetime 型
 
@@ -114,11 +156,28 @@ integer 値がどのくらい増えるかによって、`3` 個を使い分け�
 
 日時を文字列として永続化でき、文字列として並び替えなどもできる。ただし、日時型として保存したほうがよりよい。
 
-| DB カラム型（`(n)` は保存する小数点を表す） | 例                           |
-| ------------------------------------------- | ---------------------------- |
-| `DATETIME`                                  | `2026-01-23 15:04:05`        |
-| `DATETIME(3)`                               | `2026-01-23 15:04:05.123`    |
-| `DATETIME(6)`                               | `2026-01-23 15:04:05.123456` |
+<table>
+  <thead>
+    <tr>
+      <th>DB カラム型（<code>(n)</code> は保存する小数点を表す）</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>DATETIME</code></td>
+      <td><code>2026-01-23 15:04:05</code></td>
+    </tr>
+    <tr>
+      <td><code>DATETIME(3)</code></td>
+      <td><code>2026-01-23 15:04:05.123</code></td>
+    </tr>
+    <tr>
+      <td><code>DATETIME(6)</code></td>
+      <td><code>2026-01-23 15:04:05.123456</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -138,12 +197,47 @@ string 型のカラムについて、WHERE 句の比較における値の特定�
 
 大文字 A と小文字 a を区別しないことは、CI：Case Insensitive と表現され、照合順序名にも特徴として CI の文字が含まれている。
 
-| 照合順序名             | A/a | :sushi:/:beer: | は/ぱ/ば | や/ゃ |
-| ---------------------- | :-: | :------------: | :------: | :---: |
-| utf8mb4_unicode_ci     | `=` |      `=`       |   `=`    |  `=`  |
-| utf8mb4_unicode_520_ci | `=` |      `≠`       |   `=`    |  `=`  |
-| utf8mb4_general_ci     | `=` |      `=`       |   `≠`    |  `≠`  |
-| utf8mb4_bin            | `≠` |      `≠`       |   `≠`    |  `≠`  |
+<table>
+  <thead>
+    <tr>
+      <th>照合順序名</th>
+      <th style="text-align:center">A/a</th>
+      <th style="text-align:center">:sushi:/:beer:</th>
+      <th style="text-align:center">は/ぱ/ば</th>
+      <th style="text-align:center">や/ゃ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>utf8mb4_unicode_ci</td>
+      <td style="text-align:center"><code>=</code></td>
+      <td style="text-align:center"><code>=</code></td>
+      <td style="text-align:center"><code>=</code></td>
+      <td style="text-align:center"><code>=</code></td>
+    </tr>
+    <tr>
+      <td>utf8mb4_unicode_520_ci</td>
+      <td style="text-align:center"><code>=</code></td>
+      <td style="text-align:center"><code>≠</code></td>
+      <td style="text-align:center"><code>=</code></td>
+      <td style="text-align:center"><code>=</code></td>
+    </tr>
+    <tr>
+      <td>utf8mb4_general_ci</td>
+      <td style="text-align:center"><code>=</code></td>
+      <td style="text-align:center"><code>=</code></td>
+      <td style="text-align:center"><code>≠</code></td>
+      <td style="text-align:center"><code>≠</code></td>
+    </tr>
+    <tr>
+      <td>utf8mb4_bin</td>
+      <td style="text-align:center"><code>≠</code></td>
+      <td style="text-align:center"><code>≠</code></td>
+      <td style="text-align:center"><code>≠</code></td>
+      <td style="text-align:center"><code>≠</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -204,11 +298,28 @@ DB で、アプリケーションの CRUD 処理に対するバリデーショ�
 
 **＊例＊**
 
-| SQL    | 外部キー制約がおこる場合                                                                                                                                                                                                      |
-| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| INSERT | Orders テーブル (子テーブル) の customer_id が、Customers テーブル (親テーブル) の id を参照しているとする。指定した customer_id が Customers テーブルに存在しない場合、外部キー制約違反が発生する。                          |
-| UPDATE | Orders テーブルの customer_id が Customers テーブルの id を参照しているとする。Customers テーブルに存在しない ID に更新しようとした場合、外部キー制約違反が発生する。                                                         |
-| DELETE | Customers テーブル (親テーブル) の id が、Orders テーブル (子テーブル) の customer_id によって参照されているとする。 の customer_id に対応する Customers テーブルのレコードを削除しようとすると、外部キー制約違反が発生する。 |
+<table>
+  <thead>
+    <tr>
+      <th>SQL</th>
+      <th>外部キー制約がおこる場合</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>INSERT</td>
+      <td>Orders テーブル (子テーブル) の customer_id が、Customers テーブル (親テーブル) の id を参照しているとする。指定した customer_id が Customers テーブルに存在しない場合、外部キー制約違反が発生する。</td>
+    </tr>
+    <tr>
+      <td>UPDATE</td>
+      <td>Orders テーブルの customer_id が Customers テーブルの id を参照しているとする。Customers テーブルに存在しない ID に更新しようとした場合、外部キー制約違反が発生する。</td>
+    </tr>
+    <tr>
+      <td>DELETE</td>
+      <td>Customers テーブル (親テーブル) の id が、Orders テーブル (子テーブル) の customer_id によって参照されているとする。 の customer_id に対応する Customers テーブルのレコードを削除しようとすると、外部キー制約違反が発生する。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -224,10 +335,27 @@ DB で、アプリケーションの CRUD 処理に対するバリデーショ�
 
 一意に識別できるものあれば、何をプライマリーキーとして使用しても問題なく、基本的に以下が使用される。
 
-| プライマリーキーになるもの                             | 説明                                                                                                                                                                                                                                                                                                                                                                                                             | 補足                                                                                                                                                                                                      |
-| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| MySQL の Auto Increment 機能によって増加する番号カラム | プライマリーキー制約を課したカラムの Auto Increment 機能を有効化しておく。`CREATE` 処理でドメインモデルを作成するときに、『`0`』または『`null`』をモデルの ID 値として割り当てる。これにより、処理によって新しいレコードが追加されるときに、現在の最新番号に+１した番号が割り当てられるようになる。これはプライマリーキー制約を満たす。<br>・https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html | ・ドメインモデルと DB がより密結合になり、Active Record パターンと相性がよい。<br>MySQL の環境変数として『`NO_AUTO_VALUE_ON_ZERO`』を設定すると、『`0`』の割り当てによる自動連番が拒否されるようになる。  |
-| UUID (例：`3cc807ab-8e31-3071-aee4-f8f03781cb91`)      | `CREATE` 処理でモデルを作成するときに、アプケーションで作成した UUID 値をドメインモデルの ID 値として割り当てる。UUID 値が重複することは基本的に発生し得ないため、プライマリーキー制約を満たす。UUID 値の作成関数は言語の標準パッケージとして用意されている。                                                                                                                                                    | ・ドメインモデルと DB がより疎結合にでき、Repository パターンと相性がよい。<br>UUID 値は文字列として管理されるため、DB アクセス処理の負荷が高まってしまう。<br>プライマリーキーを使用してソートできない。 |
+<table>
+  <thead>
+    <tr>
+      <th>プライマリーキーになるもの</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MySQL の Auto Increment 機能によって増加する番号カラム</td>
+      <td>プライマリーキー制約を課したカラムの Auto Increment 機能を有効化しておく。<code>CREATE</code> 処理でドメインモデルを作成するときに、『<code>0</code>』または『<code>null</code>』をモデルの ID 値として割り当てる。これにより、処理によって新しいレコードが追加されるときに、現在の最新番号に+１した番号が割り当てられるようになる。これはプライマリーキー制約を満たす。<br>・<a href="https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html">https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html</a></td>
+      <td>・ドメインモデルと DB がより密結合になり、Active Record パターンと相性がよい。<br>MySQL の環境変数として『<code>NO_AUTO_VALUE_ON_ZERO</code>』を設定すると、『<code>0</code>』の割り当てによる自動連番が拒否されるようになる。</td>
+    </tr>
+    <tr>
+      <td>UUID (例：<code>3cc807ab-8e31-3071-aee4-f8f03781cb91</code>)</td>
+      <td><code>CREATE</code> 処理でモデルを作成するときに、アプケーションで作成した UUID 値をドメインモデルの ID 値として割り当てる。UUID 値が重複することは基本的に発生し得ないため、プライマリーキー制約を満たす。UUID 値の作成関数は言語の標準パッケージとして用意されている。</td>
+      <td>・ドメインモデルと DB がより疎結合にでき、Repository パターンと相性がよい。<br>UUID 値は文字列として管理されるため、DB アクセス処理の負荷が高まってしまう。<br>プライマリーキーを使用してソートできない。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ 複合プライマリーキー
 
@@ -248,11 +376,36 @@ DB インデックス数が減るため、処理性能が高まったり、レ�
 
 ユーザーID と期間開始日付を複合プライマリーキーとすると、一人のユーザーが複数の期間を持つことを表現できる。
 
-| user_id | period_start_date | period_end_date | fee_yen |
-| ------- | ----------------- | --------------- | ------- |
-| 1       | 2019-04-03        | 2019-05-03      | 200     |
-| 1       | 2019-10-07        | 2019-11-07      | 400     |
-| 2       | 2019-10-11        | 2019-11-11      | 200     |
+<table>
+  <thead>
+    <tr>
+      <th>user_id</th>
+      <th>period_start_date</th>
+      <th>period_end_date</th>
+      <th>fee_yen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2019-04-03</td>
+      <td>2019-05-03</td>
+      <td>200</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2019-10-07</td>
+      <td>2019-11-07</td>
+      <td>400</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2019-10-11</td>
+      <td>2019-11-11</td>
+      <td>200</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ 採番テーブル
 
@@ -288,13 +441,36 @@ SELECT LAST_INSERT_ID();
 
 ## 04. 環境変数
 
-| 環境変数                     | 説明                                                                    |
-| ---------------------------- | ----------------------------------------------------------------------- |
-| `MYSQL_DATABASE`             | DB を作成する。二つ目は、`CREATE` を実行する必要がある。                |
-| `MYSQL_USER`                 | 一般ユーザーのユーザーを作成する。`GRANT ALL` の権限を持つ。            |
-| `MYSQL_ALLOW_EMPTY_PASSWORD` | `root` ユーザーのパスワードを空文字にできる。                           |
-| `MYSQL_ROOT_PASSWORD`        | `root` ユーザーのパスワードを設定する。デフォルトではランダム値になる。 |
-| `MYSQL_PASSWORD`             | 一般ユーザーのパスワードを設定する。                                    |
+<table>
+  <thead>
+    <tr>
+      <th>環境変数</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>MYSQL_DATABASE</code></td>
+      <td>DB を作成する。二つ目は、<code>CREATE</code> を実行する必要がある。</td>
+    </tr>
+    <tr>
+      <td><code>MYSQL_USER</code></td>
+      <td>一般ユーザーのユーザーを作成する。<code>GRANT ALL</code> の権限を持つ。</td>
+    </tr>
+    <tr>
+      <td><code>MYSQL_ALLOW_EMPTY_PASSWORD</code></td>
+      <td><code>root</code> ユーザーのパスワードを空文字にできる。</td>
+    </tr>
+    <tr>
+      <td><code>MYSQL_ROOT_PASSWORD</code></td>
+      <td><code>root</code> ユーザーのパスワードを設定する。デフォルトではランダム値になる。</td>
+    </tr>
+    <tr>
+      <td><code>MYSQL_PASSWORD</code></td>
+      <td>一般ユーザーのパスワードを設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Docker(Compose)を使ったローカル開発用MySQLの準備 #docker-compose - Qiita](https://qiita.com/taqm/items/8b6b896ec4a9a0b84886#environment)
 > - [docker-composeでmysql使うとき初回起動時に複数のDBを作る方法 #Docker - Qiita](https://qiita.com/takyam/items/de87252fca60a9c914c6)
@@ -367,11 +543,32 @@ SELECT * from mysql.innodb_table_stats;
 
 一方、100 万行あるテーブルでは、絶対基準として約 8 万行の変化（つまり 108 万行になると）、統計情報が自動更新される。
 
-| レコード数 | 相対基準更新 (10%) | 絶対基準更新 (8 万) |
-| ---------- | :----------------: | :-----------------: |
-| 10 万      |         ✅         |                     |
-| 100 万     |                    |         ✅          |
-| 1000 万    |                    |         ✅          |
+<table>
+  <thead>
+    <tr>
+      <th>レコード数</th>
+      <th style="text-align:center">相対基準更新 (10%)</th>
+      <th style="text-align:center">絶対基準更新 (8 万)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10 万</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>100 万</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>1000 万</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

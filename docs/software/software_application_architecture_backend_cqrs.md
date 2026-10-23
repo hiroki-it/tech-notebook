@@ -126,14 +126,61 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 テーブル構造は以下のとおりになり、イベントデータが参照/作成されるだけである。
 
-| `id` | `event_name`  | `event_entity_name` | `event_entity_id` | `event_data`                                     |
-| ---- | ------------- | ------------------- | ----------------- | ------------------------------------------------ |
-| 1    | OrderCreated  | Order               | 1                 | OrderCreated オブジェクトを JSON に変換したもの  |
-| 2    | OrderUpdated  | Order               | 1                 | OrderUpdated オブジェクトを JSON に変換したもの  |
-| 3    | OrderCreated  | Order               | 2                 | OrderCreated オブジェクトを JSON に変換したもの  |
-| 4    | OrderCanceled | Order               | 1                 | OrderCanceled オブジェクトを JSON に変換したもの |
-| 5    | OrderCreated  | Order               | 3                 | OrderCreated オブジェクトを JSON に変換したもの  |
-| ...  | ...           | ...                 | ...               | ...                                              |
+<table>
+  <thead>
+    <tr>
+      <th><code>id</code></th>
+      <th><code>event_name</code></th>
+      <th><code>event_entity_name</code></th>
+      <th><code>event_entity_id</code></th>
+      <th><code>event_data</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>OrderCreated</td>
+      <td>Order</td>
+      <td>1</td>
+      <td>OrderCreated オブジェクトを JSON に変換したもの</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>OrderUpdated</td>
+      <td>Order</td>
+      <td>1</td>
+      <td>OrderUpdated オブジェクトを JSON に変換したもの</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>OrderCreated</td>
+      <td>Order</td>
+      <td>2</td>
+      <td>OrderCreated オブジェクトを JSON に変換したもの</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>OrderCanceled</td>
+      <td>Order</td>
+      <td>1</td>
+      <td>OrderCanceled オブジェクトを JSON に変換したもの</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>OrderCreated</td>
+      <td>Order</td>
+      <td>3</td>
+      <td>OrderCreated オブジェクトを JSON に変換したもの</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [CQRS実践入門 \[ドメイン駆動設計\] - little hands' lab](https://little-hands.hatenablog.com/entry/2019/12/02/cqrs)
 > - [CQRSとイベントソーシングの使用法、または「CRUDに何か問題でも？」 \| POSTD](https://postd.cc/using-cqrs-with-event-sourcing/)

@@ -46,13 +46,42 @@ Job に、ArgoCD の `Sync` フェーズを設定する。
 
 設定したフェーズのタイミングで、ArgoCD はこの Job をフックする。
 
-| 設定項目 | 処理の実行タイミング | 適する Job の処理                                                           |
-| -------- | -------------------- | --------------------------------------------------------------------------- |
-| PreSync  | Sync の前            | DB マイグレーション処理（アプリケーションを起動する前に実行する必要がある） |
-| Sync     | Sync と同時          | Deployment のアップデート戦略以外のデプロイ実行処理                         |
-| Skip     | Sync スキップ時      |                                                                             |
-| PostSync | Sync の後            | ヘルスチェック                                                              |
-| SyncFail | Sync の失敗時        | Sync 失敗の残骸となった Kubernetes リソースの削除処理                       |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>処理の実行タイミング</th>
+      <th>適する Job の処理</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PreSync</td>
+      <td>Sync の前</td>
+      <td>DB マイグレーション処理（アプリケーションを起動する前に実行する必要がある）</td>
+    </tr>
+    <tr>
+      <td>Sync</td>
+      <td>Sync と同時</td>
+      <td>Deployment のアップデート戦略以外のデプロイ実行処理</td>
+    </tr>
+    <tr>
+      <td>Skip</td>
+      <td>Sync スキップ時</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>PostSync</td>
+      <td>Sync の後</td>
+      <td>ヘルスチェック</td>
+    </tr>
+    <tr>
+      <td>SyncFail</td>
+      <td>Sync の失敗時</td>
+      <td>Sync 失敗の残骸となった Kubernetes リソースの削除処理</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Resource hooks - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/)
 > - [Sync Phases and Waves - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#sync-phases-and-waves)

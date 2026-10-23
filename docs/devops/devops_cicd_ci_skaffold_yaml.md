@@ -91,10 +91,27 @@ build:
 
 #### ▼ docker
 
-| 項目       | 説明                                                           | 補足                                                                         |
-| ---------- | -------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| dockerfile | マイクロサービスのルートから Dockerfile までのパスを設定する。 | https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-dockerfile |
-| target     | ビルドするコンテナイメージのステージを設定する。               | https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-target     |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>dockerfile</td>
+      <td>マイクロサービスのルートから Dockerfile までのパスを設定する。</td>
+      <td><a href="https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-dockerfile">https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-dockerfile</a></td>
+    </tr>
+    <tr>
+      <td>target</td>
+      <td>ビルドするコンテナイメージのステージを設定する。</td>
+      <td><a href="https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-target">https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-target</a></td>
+    </tr>
+  </tbody>
+</table>
 
 ```yaml
 build:

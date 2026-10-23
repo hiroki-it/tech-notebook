@@ -31,30 +31,138 @@ description: ドキュメンテーション＠DevOpsの知見を記録してい�
 
 システムの構成要素が多くなるほど、分類数が多くなる。
 
-| 大分類                     | 中分類                   | 小分類                         | システムの使用技術                                                         |
-| -------------------------- | ------------------------ | ------------------------------ | -------------------------------------------------------------------------- |
-| 言語                       | アプリ領域               |                                | Go、PHP                                                                    |
-|                            | テスト領域               | ブラックボックスのシナリオ定義 | テストツールによる (例：Grafana k6 なら JavaScript)                        |
-| アプリ                     | アーキテクチャ           |                                | マイクロサービスアーキテクチャ、各マイクロサービスはクリーンアーキテクチャ |
-|                            | API                      |                                | RPC-API、RESTful-API                                                       |
-| CI/CD                      | CI ツール                |                                | GitHub Actions                                                             |
-|                            | CD ツール                |                                | ArgoCD                                                                     |
-| ミドルウェア               | Web 系                   |                                | Nginx                                                                      |
-|                            | アプリ系                 |                                | FastCGI                                                                    |
-|                            | DB 系                    |                                | MySQL                                                                      |
-|                            | ログ系                   |                                | FluentBit                                                                  |
-|                            | セキュリティ系           |                                | Falco                                                                      |
-|                            | サービスメッシュ系       |                                | Envoy                                                                      |
-| 物理サーバー、仮想サーバー | アーキテクチャ           |                                | DR リージョン構成                                                          |
-|                            | 仮想サーバー型 IaaS      |                                | AWS                                                                        |
-| CDN                        |                          |                                | AWS                                                                        |
-| IaC                        |                          |                                | Terraform、Kubernetes、Ansible                                             |
-| 監視                       | アプリ監視、インフラ監視 |                                | AWS                                                                        |
-|                            | ビジネス成果監視         |                                | Metabase                                                                   |
-| セキュリティ               | 機密情報のバージョン管理 |                                | Sops、Vault                                                                |
-|                            | VPN                      |                                | OpenVPN                                                                    |
-| テスト                     | ホワイトボックス         |                                | `go test` コマンド、PHPUnit                                                |
-|                            | ブラックボックス         |                                | ChaosMesh、Postman、Taurus                                                 |
+<table>
+  <thead>
+    <tr>
+      <th>大分類</th>
+      <th>中分類</th>
+      <th>小分類</th>
+      <th>システムの使用技術</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">言語</td>
+      <td>アプリ領域</td>
+      <td></td>
+      <td>Go、PHP</td>
+    </tr>
+    <tr>
+      <td>テスト領域</td>
+      <td>ブラックボックスのシナリオ定義</td>
+      <td>テストツールによる (例：Grafana k6 なら JavaScript)</td>
+    </tr>
+    <tr>
+      <td rowspan="2">アプリ</td>
+      <td>アーキテクチャ</td>
+      <td></td>
+      <td>マイクロサービスアーキテクチャ、各マイクロサービスはクリーンアーキテクチャ</td>
+    </tr>
+    <tr>
+      <td>API</td>
+      <td></td>
+      <td>RPC-API、RESTful-API</td>
+    </tr>
+    <tr>
+      <td rowspan="2">CI/CD</td>
+      <td>CI ツール</td>
+      <td></td>
+      <td>GitHub Actions</td>
+    </tr>
+    <tr>
+      <td>CD ツール</td>
+      <td></td>
+      <td>ArgoCD</td>
+    </tr>
+    <tr>
+      <td rowspan="6">ミドルウェア</td>
+      <td>Web 系</td>
+      <td></td>
+      <td>Nginx</td>
+    </tr>
+    <tr>
+      <td>アプリ系</td>
+      <td></td>
+      <td>FastCGI</td>
+    </tr>
+    <tr>
+      <td>DB 系</td>
+      <td></td>
+      <td>MySQL</td>
+    </tr>
+    <tr>
+      <td>ログ系</td>
+      <td></td>
+      <td>FluentBit</td>
+    </tr>
+    <tr>
+      <td>セキュリティ系</td>
+      <td></td>
+      <td>Falco</td>
+    </tr>
+    <tr>
+      <td>サービスメッシュ系</td>
+      <td></td>
+      <td>Envoy</td>
+    </tr>
+    <tr>
+      <td rowspan="2">物理サーバー、仮想サーバー</td>
+      <td>アーキテクチャ</td>
+      <td></td>
+      <td>DR リージョン構成</td>
+    </tr>
+    <tr>
+      <td>仮想サーバー型 IaaS</td>
+      <td></td>
+      <td>AWS</td>
+    </tr>
+    <tr>
+      <td>CDN</td>
+      <td></td>
+      <td></td>
+      <td>AWS</td>
+    </tr>
+    <tr>
+      <td>IaC</td>
+      <td></td>
+      <td></td>
+      <td>Terraform、Kubernetes、Ansible</td>
+    </tr>
+    <tr>
+      <td rowspan="2">監視</td>
+      <td>アプリ監視、インフラ監視</td>
+      <td></td>
+      <td>AWS</td>
+    </tr>
+    <tr>
+      <td>ビジネス成果監視</td>
+      <td></td>
+      <td>Metabase</td>
+    </tr>
+    <tr>
+      <td rowspan="2">セキュリティ</td>
+      <td>機密情報のバージョン管理</td>
+      <td></td>
+      <td>Sops、Vault</td>
+    </tr>
+    <tr>
+      <td>VPN</td>
+      <td></td>
+      <td>OpenVPN</td>
+    </tr>
+    <tr>
+      <td rowspan="2">テスト</td>
+      <td>ホワイトボックス</td>
+      <td></td>
+      <td><code>go test</code> コマンド、PHPUnit</td>
+    </tr>
+    <tr>
+      <td>ブラックボックス</td>
+      <td></td>
+      <td>ChaosMesh、Postman、Taurus</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ 設計規約書
 
@@ -118,22 +226,75 @@ description: ドキュメンテーション＠DevOpsの知見を記録してい�
 
 追加/変更した機能に関するドキュメントを自動作成し、ドキュメントの内容についてもレビューできる仕組みを作る。
 
-| 領域     | ドキュメントの対象の技術 | 説明                                                                                                                                                      | 補足                                                     |
-| -------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| アプリ   | RESTful-API              | RESTful-API を採用している場合、ドキュメント作成ツール (例：openapi-generator など) を使用して、API のドキュメントのおおよその部分を自動的に作成する。    |                                                          |
-|          | RPC-API                  | RPC-API を採用している場合、ドキュメント作成ツール (例：protoc-gen-doc など) を使用して、API のドキュメントのおおよその部分を自動的に作成する。           |                                                          |
-| インフラ | Helm                     | ユーザー定義のチャートを採用している場合、外部のドキュメント作成ツール (例：helm-docs) を使用して、チャートのドキュメントを自動的に作成する。             | ・https://github.com/norwoodj/helm-docs                  |
-|          | Terraform                | 外部のドキュメント自動作成ツール (例：terraform-docs) を使用して、`variable` ブロック、`output` ブロック、`module` ブロックなどのドキュメントを作成する。 | ・https://qiita.com/yutachaos/items/1a7f5a93ceaf972c76c6 |
+<table>
+  <thead>
+    <tr>
+      <th>領域</th>
+      <th>ドキュメントの対象の技術</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">アプリ</td>
+      <td>RESTful-API</td>
+      <td>RESTful-API を採用している場合、ドキュメント作成ツール (例：openapi-generator など) を使用して、API のドキュメントのおおよその部分を自動的に作成する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>RPC-API</td>
+      <td>RPC-API を採用している場合、ドキュメント作成ツール (例：protoc-gen-doc など) を使用して、API のドキュメントのおおよその部分を自動的に作成する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td rowspan="2">インフラ</td>
+      <td>Helm</td>
+      <td>ユーザー定義のチャートを採用している場合、外部のドキュメント作成ツール (例：helm-docs) を使用して、チャートのドキュメントを自動的に作成する。</td>
+      <td>・<a href="https://github.com/norwoodj/helm-docs">https://github.com/norwoodj/helm-docs</a></td>
+    </tr>
+    <tr>
+      <td>Terraform</td>
+      <td>外部のドキュメント自動作成ツール (例：terraform-docs) を使用して、<code>variable</code> ブロック、<code>output</code> ブロック、<code>module</code> ブロックなどのドキュメントを作成する。</td>
+      <td>・<a href="https://qiita.com/yutachaos/items/1a7f5a93ceaf972c76c6">https://qiita.com/yutachaos/items/1a7f5a93ceaf972c76c6</a></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ 構造検証ツール
 
 ドキュメントの構造を検証するツールを使用して、これを構造を継続的に修正する。
 
-| 能力               | ツール                        | 説明                                                                 | 補足 |
-| ------------------ | ----------------------------- | -------------------------------------------------------------------- | ---- |
-| 構造整形           | prettier                      | テキストファイル中の不要な改行やインデントなどを整形する。           |      |
-| 文章校正           | textlint                      | 設定した校正ルールに応じて、テキストファイルの誤った文法を検出する。 |      |
-| リンク切れチェック | markdown-link-check、htmltest | テキストファイル中の URL のリンク切れを検出する。                    |      |
+<table>
+  <thead>
+    <tr>
+      <th>能力</th>
+      <th>ツール</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>構造整形</td>
+      <td>prettier</td>
+      <td>テキストファイル中の不要な改行やインデントなどを整形する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>文章校正</td>
+      <td>textlint</td>
+      <td>設定した校正ルールに応じて、テキストファイルの誤った文法を検出する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>リンク切れチェック</td>
+      <td>markdown-link-check、htmltest</td>
+      <td>テキストファイル中の URL のリンク切れを検出する。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [良いドキュメントを書きたくなる本を読んだらドキュメンタリアンになりたくなった - じゃあ、おうちで学べる](https://syu-m-5151.hatenablog.com/entry/2023/03/14/130502)
 

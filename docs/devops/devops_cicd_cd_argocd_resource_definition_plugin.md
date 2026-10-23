@@ -1403,14 +1403,47 @@ spec:
 
 ArgoCD と連携したツールでは、コマンドで以下の環境変数を使用できる。
 
-| 環境変数                               |   例   | 説明                                            |
-| -------------------------------------- | :----: | ----------------------------------------------- |
-| `ARGOCD_RECONCILIATION_TIMEOUT`        | `180s` |                                                 |
-| `ARGOCD_REPO_SERVER_LOGFORMAT`         |        |                                                 |
-| `ARGOCD_REPO_SERVER_LOGLEVEL`          |        |                                                 |
-| `ARGOCD_REPO_SERVER_OTLP_ADDRESS`      |        |                                                 |
-| `ARGOCD_REPO_SERVER_PARALLELISM_LIMIT` |        |                                                 |
-| `ARGOCD_USER_ID`                       | `999`  | ArgoCD のプロセスの実行ユーザー番号を設定する。 |
+<table>
+  <thead>
+    <tr>
+      <th>環境変数</th>
+      <th style="text-align:center">例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ARGOCD_RECONCILIATION_TIMEOUT</code></td>
+      <td style="text-align:center"><code>180s</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>ARGOCD_REPO_SERVER_LOGFORMAT</code></td>
+      <td style="text-align:center"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>ARGOCD_REPO_SERVER_LOGLEVEL</code></td>
+      <td style="text-align:center"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>ARGOCD_REPO_SERVER_OTLP_ADDRESS</code></td>
+      <td style="text-align:center"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>ARGOCD_REPO_SERVER_PARALLELISM_LIMIT</code></td>
+      <td style="text-align:center"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>ARGOCD_USER_ID</code></td>
+      <td style="text-align:center"><code>999</code></td>
+      <td>ArgoCD のプロセスの実行ユーザー番号を設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Build Environment - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/build-environment/)
 

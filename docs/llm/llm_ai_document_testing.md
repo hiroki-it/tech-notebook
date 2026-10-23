@@ -33,9 +33,29 @@ description: ユニットテスト設計用のドキュメント＠AI用ドキ�
 
 4. 追加／改善したテストケースについて、次のような表を作成する。
 
-| テストスイート | 種別   | テストケース名                            | テスト内容の概要                                 |
-| -------------- | ------ | ----------------------------------------- | ------------------------------------------------ |
-| foo            | 正常系 | should return user when userId is valid   | 正しい UserId だった場合に User を返却すること   |
-| bar            | 異常系 | should throw error when userId is invalid | 不正な UserId だった場合に User をスローすること |
+<table>
+  <thead>
+    <tr>
+      <th>テストスイート</th>
+      <th>種別</th>
+      <th>テストケース名</th>
+      <th>テスト内容の概要</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>foo</td>
+      <td>正常系</td>
+      <td>should return user when userId is valid</td>
+      <td>正しい UserId だった場合に User を返却すること</td>
+    </tr>
+    <tr>
+      <td>bar</td>
+      <td>異常系</td>
+      <td>should throw error when userId is invalid</td>
+      <td>不正な UserId だった場合に User をスローすること</td>
+    </tr>
+  </tbody>
+</table>
 
 5. ローカルマシンでテストコードを実行する必要はない。

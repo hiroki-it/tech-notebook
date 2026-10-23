@@ -73,17 +73,48 @@
 
 以下の表で、マイクロサービスアーキテクチャに関する歴史を解説しました。
 
-| 年代                                                                                                           | アーキテクチャスタイル         | 説明                                                                                                                                                                                                                                                                                                                                                                                                         | 参考                                                                                                                                                                                                            |
-| -------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1999 年                                                                                                        | モノリシックアーキテクチャ     | バックエンドのアーキテクチャとしてモノリシックアーキテクチャが台頭していた。                                                                                                                                                                                                                                                                                                                                 | [https://en.wikipedia.org/wiki/Monolithic_application](https://en.wikipedia.org/wiki/Monolithic_application)                                                                                                    |
-| 1900 年後半〜2000 年前半                                                                                       | サービス指向アーキテクチャ     | Michael Bell や Thomas Erl らが、アプリを機能の粒度で分割するアーキテクチャを提唱した。ただ『機能』という粒度に分割の指針がなかった。様々な課題があったため、概念としては提唱されていても、実装方法の確立にまでは至らなかった。                                                                                                                                                                              | ・[https://en.wikipedia.org/wiki/Service-oriented_architecture](https://en.wikipedia.org/wiki/Service-oriented_architecture) ・[https://www.amazon.co.jp/dp/B09B5L4NVT](https://www.amazon.co.jp/dp/B09B5L4NVT) |
-| 2003 年                                                                                                        | DDD                            | Eric Evans は DDD を提唱した。DDD は、オブジェクト指向分析設計から派生した分析設計の方法の一種である。特に機能要件を解決するアプリケーションに有効である。オブジェクト指向分析設計のベタープラクティスを集め、より強化することにつながった。                                                                                                                                                                 | ・[https://www.amazon.co.jp/dp/481440073X](https://www.amazon.co.jp/dp/481440073X)                                                                                                                              |
-| ・[https://en.wikipedia.org/wiki/Domain-driven_design](https://en.wikipedia.org/wiki/Domain-driven_design)     |                                |                                                                                                                                                                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                 |
-| 2014 年                                                                                                        | マイクロサービスアーキテクチャ | Simon Brown は、モノリシックアーキテクチャは、時間経過とともに、無秩序でつぎはぎだらけになり得ることを指摘した。Martin Fowler と James Lewis は、サービス指向アーキテクチャと DDD を統合し、アプリを独立したマイクロサービスの集まりに分割するアーキテクチャを提唱した。サービス指向アーキテクチャに DDD の高凝集/低結合の考え方を取り入れることで、サービス指向アーキテクチャを実装可能な理論に昇華させた。 | ・[https://dzone.com/articles/distributed-big-balls-mud](https://dzone.com/articles/distributed-big-balls-mud)                                                                                                  |
-| ・[https://martinfowler.com/articles/microservices.html](https://martinfowler.com/articles/microservices.html) |                                |                                                                                                                                                                                                                                                                                                                                                                                                              |                                                                                                                                                                                                                 |
-
-|
-| 2015 年 | モジュラーモノリス | Martin Flowler はモジュラーモノリスを提唱した。モジュラモノリスでは、マイクロサービスアーキテクチャとモノリスアーキテクチャの間をとった粒度で、アプリを細かいモジュールに分割する。最初にモジュラーモノリスとして設計し、マイクロサービスアーキテクチャに移行していくという選択肢もある。 | ・[https://martinfowler.com/bliki/MonolithFirst.html](https://martinfowler.com/bliki/MonolithFirst.html) |
+<table>
+  <thead>
+    <tr>
+      <th>年代</th>
+      <th>アーキテクチャスタイル</th>
+      <th>説明</th>
+      <th>参考</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1999 年</td>
+      <td>モノリシックアーキテクチャ</td>
+      <td>バックエンドのアーキテクチャとしてモノリシックアーキテクチャが台頭していた。</td>
+      <td><a href="https://en.wikipedia.org/wiki/Monolithic_application">https://en.wikipedia.org/wiki/Monolithic_application</a></td>
+    </tr>
+    <tr>
+      <td>1900 年後半〜2000 年前半</td>
+      <td>サービス指向アーキテクチャ</td>
+      <td>Michael Bell や Thomas Erl らが、アプリを機能の粒度で分割するアーキテクチャを提唱した。ただ『機能』という粒度に分割の指針がなかった。様々な課題があったため、概念としては提唱されていても、実装方法の確立にまでは至らなかった。</td>
+      <td>・<a href="https://en.wikipedia.org/wiki/Service-oriented_architecture">https://en.wikipedia.org/wiki/Service-oriented_architecture</a> ・<a href="https://www.amazon.co.jp/dp/B09B5L4NVT">https://www.amazon.co.jp/dp/B09B5L4NVT</a></td>
+    </tr>
+    <tr>
+      <td>2003 年</td>
+      <td>DDD</td>
+      <td>Eric Evans は DDD を提唱した。DDD は、オブジェクト指向分析設計から派生した分析設計の方法の一種である。特に機能要件を解決するアプリケーションに有効である。オブジェクト指向分析設計のベタープラクティスを集め、より強化することにつながった。</td>
+      <td>・<a href="https://www.amazon.co.jp/dp/481440073X">https://www.amazon.co.jp/dp/481440073X</a><br>・<a href="https://en.wikipedia.org/wiki/Domain-driven_design">https://en.wikipedia.org/wiki/Domain-driven_design</a></td>
+    </tr>
+    <tr>
+      <td>2014 年</td>
+      <td>マイクロサービスアーキテクチャ</td>
+      <td>Simon Brown は、モノリシックアーキテクチャは、時間経過とともに、無秩序でつぎはぎだらけになり得ることを指摘した。Martin Fowler と James Lewis は、サービス指向アーキテクチャと DDD を統合し、アプリを独立したマイクロサービスの集まりに分割するアーキテクチャを提唱した。サービス指向アーキテクチャに DDD の高凝集/低結合の考え方を取り入れることで、サービス指向アーキテクチャを実装可能な理論に昇華させた。</td>
+      <td>・<a href="https://dzone.com/articles/distributed-big-balls-mud">https://dzone.com/articles/distributed-big-balls-mud</a><br>・<a href="https://martinfowler.com/articles/microservices.html">https://martinfowler.com/articles/microservices.html</a></td>
+    </tr>
+    <tr>
+      <td>2015 年</td>
+      <td>モジュラーモノリス</td>
+      <td>Martin Flowler はモジュラーモノリスを提唱した。モジュラモノリスでは、マイクロサービスアーキテクチャとモノリスアーキテクチャの間をとった粒度で、アプリを細かいモジュールに分割する。最初にモジュラーモノリスとして設計し、マイクロサービスアーキテクチャに移行していくという選択肢もある。</td>
+      <td>・<a href="https://martinfowler.com/bliki/MonolithFirst.html">https://martinfowler.com/bliki/MonolithFirst.html</a></td>
+    </tr>
+  </tbody>
+</table>
 
 ## マイクロサービスアーキテクチャのデザインパターン
 
@@ -113,14 +144,54 @@ CNCF は、クラウドネイティブを以下のように定義づけしてい
 
 ## クラウドネイティブに関する歴史
 
-| 年代      | 技術                      | 説明                                                                                         | 参考                                                                                                                           |
-| --------- | ------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| 2004      | AWS                       | AWS は、同社初のクラウドサービスとして SQS を公開した。                                      | [https://en.wikipedia.org/wiki/Amazon_Web_Services](https://en.wikipedia.org/wiki/Amazon_Web_Services)                         |
-| 2008      | Google Cloud              | Google Cloud は、同社初のクラウドサービスとして App Engine を公開した。                      | [https://en.wikipedia.org/wiki/Google_Cloud_Platform](https://en.wikipedia.org/wiki/Google_Cloud_Platform)                     |
-| 2010      | Azure                     | Azure は、同社初のクラウドサービスとして Windows Azure を公開した。                          | [https://en.wikipedia.org/wiki/Microsoft_Azure](https://en.wikipedia.org/wiki/Microsoft_Azure)                                 |
-| 2013      | Docker                    | dotCloud が、仮想化技術としてコンテナを公開した。                                            | [https://en.wikipedia.org/wiki/Docker\_(software)](<https://en.wikipedia.org/wiki/Docker_(software)>)                          |
-| 2014      | Kubernetes                | Google が Kubernetes を発表した。                                                            | [https://kubernetes.io/blog/2024/06/06/10-years-of-kubernetes/](https://kubernetes.io/blog/2024/06/06/10-years-of-kubernetes/) |
-| 2014-2024 | CNCF プロジェクト 21 分野 | Kubernetes の登場後、CNCF では 21 分野に渡るクラウドネイティブ技術のプロジェクトが登場した。 | [https://landscape.cncf.io/](https://landscape.cncf.io/)                                                                       |
+<table>
+  <thead>
+    <tr>
+      <th>年代</th>
+      <th>技術</th>
+      <th>説明</th>
+      <th>参考</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2004</td>
+      <td>AWS</td>
+      <td>AWS は、同社初のクラウドサービスとして SQS を公開した。</td>
+      <td><a href="https://en.wikipedia.org/wiki/Amazon_Web_Services">https://en.wikipedia.org/wiki/Amazon_Web_Services</a></td>
+    </tr>
+    <tr>
+      <td>2008</td>
+      <td>Google Cloud</td>
+      <td>Google Cloud は、同社初のクラウドサービスとして App Engine を公開した。</td>
+      <td><a href="https://en.wikipedia.org/wiki/Google_Cloud_Platform">https://en.wikipedia.org/wiki/Google_Cloud_Platform</a></td>
+    </tr>
+    <tr>
+      <td>2010</td>
+      <td>Azure</td>
+      <td>Azure は、同社初のクラウドサービスとして Windows Azure を公開した。</td>
+      <td><a href="https://en.wikipedia.org/wiki/Microsoft_Azure">https://en.wikipedia.org/wiki/Microsoft_Azure</a></td>
+    </tr>
+    <tr>
+      <td>2013</td>
+      <td>Docker</td>
+      <td>dotCloud が、仮想化技術としてコンテナを公開した。</td>
+      <td><a href="https://en.wikipedia.org/wiki/Docker_(software)">https://en.wikipedia.org/wiki/Docker_(software)</a></td>
+    </tr>
+    <tr>
+      <td>2014</td>
+      <td>Kubernetes</td>
+      <td>Google が Kubernetes を発表した。</td>
+      <td><a href="https://kubernetes.io/blog/2024/06/06/10-years-of-kubernetes/">https://kubernetes.io/blog/2024/06/06/10-years-of-kubernetes/</a></td>
+    </tr>
+    <tr>
+      <td>2014-2024</td>
+      <td>CNCF プロジェクト 21 分野</td>
+      <td>Kubernetes の登場後、CNCF では 21 分野に渡るクラウドネイティブ技術のプロジェクトが登場した。</td>
+      <td><a href="https://landscape.cncf.io/">https://landscape.cncf.io/</a></td>
+    </tr>
+  </tbody>
+</table>
 
 ## CNCF によるツール分類
 
@@ -128,28 +199,96 @@ CNCF では、ツールを以下で分類しています。
 
 本記事で登場するツールの一部を例として紹介しました。
 
-| 分類                                   | 例                                                                                |
-| -------------------------------------- | --------------------------------------------------------------------------------- |
-| アプリケーション定義とイメージビルド   | Docker Compose、Helm、OpenAPI                                                     |
-| 継続的インテグレーションとデリバリー   | ArgoCD (CD)、GitHub Actions (CI)                                                  |
-| DB                                     | Amazon Aurora                                                                     |
-| ストリーミングとメッセージング         | 今回は言及しません                                                                |
-| スケジューリングとオーケストレーション | Amazon EKS                                                                        |
-| サービスメッシュ                       | Istio🐬                                                                           |
-| リモートプロシージャーコール           | gRPC                                                                              |
-| サービスプロキシ                       | Envoy                                                                             |
-| API Gateway                            | 今回はサービスプロキシの Nginx で代替                                             |
-| 調整とサービスディスカバリー           | CoreDNS                                                                           |
-| クラウドネイティブネットワーク         | Amazon VPC CNI                                                                    |
-| コンテナランタイム                     | Containerd                                                                        |
-| セキュリティとコンプライアンス         | Keycloak、OAuth2 Proxy                                                            |
-| コンテナレジストリ                     | Amazon ECR                                                                        |
-| 自動化と設定                           | Terraform                                                                         |
-| キー管理                               | AWS KMS                                                                           |
-| 可観測性                               | Amazon CloudWatch、Fluentd / FluentBit、Grafana、Kiali、OpenTelemetry、Prometheus |
-| カオスエンジニアリング                 | 今回は言及しません                                                                |
-| 継続的最適化                           | 今回は言及しません                                                                |
-| 機能フラグ                             | 今回は言及しません                                                                |
+<table>
+  <thead>
+    <tr>
+      <th>分類</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>アプリケーション定義とイメージビルド</td>
+      <td>Docker Compose、Helm、OpenAPI</td>
+    </tr>
+    <tr>
+      <td>継続的インテグレーションとデリバリー</td>
+      <td>ArgoCD (CD)、GitHub Actions (CI)</td>
+    </tr>
+    <tr>
+      <td>DB</td>
+      <td>Amazon Aurora</td>
+    </tr>
+    <tr>
+      <td>ストリーミングとメッセージング</td>
+      <td>今回は言及しません</td>
+    </tr>
+    <tr>
+      <td>スケジューリングとオーケストレーション</td>
+      <td>Amazon EKS</td>
+    </tr>
+    <tr>
+      <td>サービスメッシュ</td>
+      <td>Istio🐬</td>
+    </tr>
+    <tr>
+      <td>リモートプロシージャーコール</td>
+      <td>gRPC</td>
+    </tr>
+    <tr>
+      <td>サービスプロキシ</td>
+      <td>Envoy</td>
+    </tr>
+    <tr>
+      <td>API Gateway</td>
+      <td>今回はサービスプロキシの Nginx で代替</td>
+    </tr>
+    <tr>
+      <td>調整とサービスディスカバリー</td>
+      <td>CoreDNS</td>
+    </tr>
+    <tr>
+      <td>クラウドネイティブネットワーク</td>
+      <td>Amazon VPC CNI</td>
+    </tr>
+    <tr>
+      <td>コンテナランタイム</td>
+      <td>Containerd</td>
+    </tr>
+    <tr>
+      <td>セキュリティとコンプライアンス</td>
+      <td>Keycloak、OAuth2 Proxy</td>
+    </tr>
+    <tr>
+      <td>コンテナレジストリ</td>
+      <td>Amazon ECR</td>
+    </tr>
+    <tr>
+      <td>自動化と設定</td>
+      <td>Terraform</td>
+    </tr>
+    <tr>
+      <td>キー管理</td>
+      <td>AWS KMS</td>
+    </tr>
+    <tr>
+      <td>可観測性</td>
+      <td>Amazon CloudWatch、Fluentd / FluentBit、Grafana、Kiali、OpenTelemetry、Prometheus</td>
+    </tr>
+    <tr>
+      <td>カオスエンジニアリング</td>
+      <td>今回は言及しません</td>
+    </tr>
+    <tr>
+      <td>継続的最適化</td>
+      <td>今回は言及しません</td>
+    </tr>
+    <tr>
+      <td>機能フラグ</td>
+      <td>今回は言及しません</td>
+    </tr>
+  </tbody>
+</table>
 
 [CNCF Landscape](https://landscape.cncf.io/)
 
@@ -233,21 +372,68 @@ flowchart LR
 
 主に以下のツールからなります。
 
-| ユースケース (五十音順)      | ツール (アルファベット順)                                           |
-| ---------------------------- | ------------------------------------------------------------------- |
-| IaC                          | Helm、Kubernetes、Terraform                                         |
-| L7 ロードバランサー          | AWS ALB                                                             |
-| L7/L4 ロードバランサー       | Istio EgressGateway、Istio IngressGateway、Nginx Ingress Controller |
-| コンテナオーケストレーション | Amazon EKS                                                          |
-| コンテナランタイム           | Containerd                                                          |
-| サービスメッシュ             | Istio🐬                                                             |
-| CI/CD                        | ArgoCD、GitHub Actions                                              |
-| テレメトリー                 | Fluentd / FluentBit、Grafana、Kiali、OpenTelemetry、Prometheus      |
-| 認証関連                     | OAuth2 Proxy、Keycloak                                              |
-| Node 管理                    | Karpenter                                                           |
-| Pod 管理                     | descheduler                                                         |
-| インシデント管理             | Slack、Incident.io                                                  |
-| その他                       | 周辺の AWS リソース                                                 |
+<table>
+  <thead>
+    <tr>
+      <th>ユースケース (五十音順)</th>
+      <th>ツール (アルファベット順)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>IaC</td>
+      <td>Helm、Kubernetes、Terraform</td>
+    </tr>
+    <tr>
+      <td>L7 ロードバランサー</td>
+      <td>AWS ALB</td>
+    </tr>
+    <tr>
+      <td>L7/L4 ロードバランサー</td>
+      <td>Istio EgressGateway、Istio IngressGateway、Nginx Ingress Controller</td>
+    </tr>
+    <tr>
+      <td>コンテナオーケストレーション</td>
+      <td>Amazon EKS</td>
+    </tr>
+    <tr>
+      <td>コンテナランタイム</td>
+      <td>Containerd</td>
+    </tr>
+    <tr>
+      <td>サービスメッシュ</td>
+      <td>Istio🐬</td>
+    </tr>
+    <tr>
+      <td>CI/CD</td>
+      <td>ArgoCD、GitHub Actions</td>
+    </tr>
+    <tr>
+      <td>テレメトリー</td>
+      <td>Fluentd / FluentBit、Grafana、Kiali、OpenTelemetry、Prometheus</td>
+    </tr>
+    <tr>
+      <td>認証関連</td>
+      <td>OAuth2 Proxy、Keycloak</td>
+    </tr>
+    <tr>
+      <td>Node 管理</td>
+      <td>Karpenter</td>
+    </tr>
+    <tr>
+      <td>Pod 管理</td>
+      <td>descheduler</td>
+    </tr>
+    <tr>
+      <td>インシデント管理</td>
+      <td>Slack、<a href="http://Incident.io">Incident.io</a></td>
+    </tr>
+    <tr>
+      <td>その他</td>
+      <td>周辺の AWS リソース</td>
+    </tr>
+  </tbody>
+</table>
 
 ## マイクロサービスアーキテクチャから概説
 
@@ -257,19 +443,60 @@ flowchart LR
 
 主に以下のツールからなります。(五十音順)
 
-| ユースケース (五十音順)      | ツール (アルファベット順)                                                        |
-| ---------------------------- | -------------------------------------------------------------------------------- |
-| API Gateway                  | Nginx                                                                            |
-| L7 ロードバランサー          | AWS ALB                                                                          |
-| L7/L4 ロードバランサー       | Istio EgressGateway、Istio IngressGateway                                        |
-| ID プロバイダー              | Google、Keycloak                                                                 |
-| コンテナオーケストレーション | Amazon EKS                                                                       |
-| コンテナランタイム           | Containerd                                                                       |
-| サービスメッシュ             | Istio🐬                                                                          |
-| DB                           | Aurora MySQL                                                                     |
-| フロントエンドアプリ         | 任意の言語                                                                       |
-| マイクロサービス             | 任意の言語、Keycloak (認証マイクロサービス) 、Temporal (Saga オーケストレーター) |
-| その他                       | 周辺の AWS リソース                                                              |
+<table>
+  <thead>
+    <tr>
+      <th>ユースケース (五十音順)</th>
+      <th>ツール (アルファベット順)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>API Gateway</td>
+      <td>Nginx</td>
+    </tr>
+    <tr>
+      <td>L7 ロードバランサー</td>
+      <td>AWS ALB</td>
+    </tr>
+    <tr>
+      <td>L7/L4 ロードバランサー</td>
+      <td>Istio EgressGateway、Istio IngressGateway</td>
+    </tr>
+    <tr>
+      <td>ID プロバイダー</td>
+      <td>Google、Keycloak</td>
+    </tr>
+    <tr>
+      <td>コンテナオーケストレーション</td>
+      <td>Amazon EKS</td>
+    </tr>
+    <tr>
+      <td>コンテナランタイム</td>
+      <td>Containerd</td>
+    </tr>
+    <tr>
+      <td>サービスメッシュ</td>
+      <td>Istio🐬</td>
+    </tr>
+    <tr>
+      <td>DB</td>
+      <td>Aurora MySQL</td>
+    </tr>
+    <tr>
+      <td>フロントエンドアプリ</td>
+      <td>任意の言語</td>
+    </tr>
+    <tr>
+      <td>マイクロサービス</td>
+      <td>任意の言語、Keycloak (認証マイクロサービス) 、Temporal (Saga オーケストレーター)</td>
+    </tr>
+    <tr>
+      <td>その他</td>
+      <td>周辺の AWS リソース</td>
+    </tr>
+  </tbody>
+</table>
 
 # 05-15. アプリ領域を参照
 

@@ -37,16 +37,57 @@ DB からの値を直接的に表示する場合と異なり、新しく作ら�
 
 空欄：`FALSE` になる。
 
-| バリデーションパターン |    `isset($var)`、`!is_null($var)`    |             `if($var)`、`!empty($var)`             |
-| :--------------------: | :-----------------------------------: | :------------------------------------------------: |
-|       **`null`**       |                                       |                                                    |
-|        **`0`**         |                  ✅                   |                                                    |
-|        **`1`**         |                  ✅                   |                         ✅                         |
-|   **`""`** (空文字)    |                  ✅                   |                                                    |
-|       **`"あ"`**       |                  ✅                   |                         ✅                         |
-|     **`array(0)`**     |                  ✅                   |                                                    |
-|     **`array(1)`**     |                  ✅                   |                         ✅                         |
-|     **使いどころ**     | `null` のみをバリデーションしたい場合 | `null`、`0`、`""`、`[]` をバリデーションしたい場合 |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center">バリデーションパターン</th>
+      <th style="text-align:center"><code>isset($var)</code>、<code>!is_null($var)</code></th>
+      <th style="text-align:center"><code>if($var)</code>、<code>!empty($var)</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><strong><code>null</code></strong></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><strong><code>0</code></strong></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><strong><code>1</code></strong></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><strong><code>&quot;&quot;</code></strong> (空文字)</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><strong><code>&quot;あ&quot;</code></strong></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><strong><code>array(0)</code></strong></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><strong><code>array(1)</code></strong></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><strong>使いどころ</strong></td>
+      <td style="text-align:center"><code>null</code> のみをバリデーションしたい場合</td>
+      <td style="text-align:center"><code>null</code>、<code>0</code>、<code>&quot;&quot;</code>、<code>[]</code> をバリデーションしたい場合</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [PHP isset, empty, is_null の違い早見表 #PHP - Qiita](https://qiita.com/shinichi-takii/items/00aed26f96cf6bb3fe62)
 

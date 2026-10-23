@@ -37,11 +37,36 @@ description: API定義書＠AI用ドキュメントの知見を記録してい�
 
 ### パラメータ定義
 
-| パラメータ名 | 必須/任意 | Type   | 説明       |
-| ------------ | --------- | ------ | ---------- |
-| `user`       | 必須      | Object | ユーザ情報 |
-| └ `userId`   | 必須      | String | ユーザーID |
-| └ `name`     | 必須      | String | ユーザー名 |
+<table>
+  <thead>
+    <tr>
+      <th>パラメータ名</th>
+      <th>必須/任意</th>
+      <th>Type</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>user</code></td>
+      <td>必須</td>
+      <td>Object</td>
+      <td>ユーザ情報</td>
+    </tr>
+    <tr>
+      <td>└ <code>userId</code></td>
+      <td>必須</td>
+      <td>String</td>
+      <td>ユーザーID</td>
+    </tr>
+    <tr>
+      <td>└ <code>name</code></td>
+      <td>必須</td>
+      <td>String</td>
+      <td>ユーザー名</td>
+    </tr>
+  </tbody>
+</table>
 
 ## レスポンス仕様
 
@@ -61,19 +86,72 @@ description: API定義書＠AI用ドキュメントの知見を記録してい�
 
 ### パラメータ定義
 
-| パラメータ名 | 必須/任意 | Type   | 説明       |
-| ------------ | --------- | ------ | ---------- |
-| `code`       | 必須      | String | 処理コード |
-| `user`       | 必須      | Object | ユーザ情報 |
-| └ `userId`   | 必須      | String | ユーザーID |
-| └ `name`     | 必須      | String | ユーザー名 |
+<table>
+  <thead>
+    <tr>
+      <th>パラメータ名</th>
+      <th>必須/任意</th>
+      <th>Type</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>code</code></td>
+      <td>必須</td>
+      <td>String</td>
+      <td>処理コード</td>
+    </tr>
+    <tr>
+      <td><code>user</code></td>
+      <td>必須</td>
+      <td>Object</td>
+      <td>ユーザ情報</td>
+    </tr>
+    <tr>
+      <td>└ <code>userId</code></td>
+      <td>必須</td>
+      <td>String</td>
+      <td>ユーザーID</td>
+    </tr>
+    <tr>
+      <td>└ <code>name</code></td>
+      <td>必須</td>
+      <td>String</td>
+      <td>ユーザー名</td>
+    </tr>
+  </tbody>
+</table>
 
 ## 処理コード一覧
 
-| コード | 説明       |
-| ------ | ---------- |
-| `00`   | 正常       |
-| `01`   | 処理中     |
-| `02`   | 処理失敗   |
-| `03`   | 処理なし   |
-| `99`   | 処理エラー |
+<table>
+  <thead>
+    <tr>
+      <th>コード</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>00</code></td>
+      <td>正常</td>
+    </tr>
+    <tr>
+      <td><code>01</code></td>
+      <td>処理中</td>
+    </tr>
+    <tr>
+      <td><code>02</code></td>
+      <td>処理失敗</td>
+    </tr>
+    <tr>
+      <td><code>03</code></td>
+      <td>処理なし</td>
+    </tr>
+    <tr>
+      <td><code>99</code></td>
+      <td>処理エラー</td>
+    </tr>
+  </tbody>
+</table>

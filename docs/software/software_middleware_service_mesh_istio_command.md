@@ -66,12 +66,72 @@ Istio の機能のセットを提供する。
 
 #### ▼ プロファイルの種類
 
-| ユースケース         | default  |   demo   |                  empty                   | external |       minimal        | openshift | preview | remote | ambient   |
-| :------------------- | :------: | :------: | :--------------------------------------: | :------: | :------------------: | :-------: | :-----: | :----: | --------- |
-| 概要                 | 本番環境 | 開発環境 | Istio リソースをすべてカスタマイズしたい |   なし   | 最小限の機能が欲しい |    ？     |  なし   |   ？   | 記入中... |
-| istio-egressgateway  |   なし   |    ✅    |                   なし                   |   なし   |         なし         |    ？     |  なし   |   ？   | 記入中... |
-| istio-ingressgateway |    ✅    |    ✅    |                   なし                   |   なし   |         なし         |    ？     |   ✅    |   ？   | 記入中... |
-| istiod               |    ✅    |    ✅    |                   なし                   |   なし   |          ✅          |    ？     |   ✅    |   ？   | 記入中... |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">ユースケース</th>
+      <th style="text-align:center">default</th>
+      <th style="text-align:center">demo</th>
+      <th style="text-align:center">empty</th>
+      <th style="text-align:center">external</th>
+      <th style="text-align:center">minimal</th>
+      <th style="text-align:center">openshift</th>
+      <th style="text-align:center">preview</th>
+      <th style="text-align:center">remote</th>
+      <th>ambient</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">概要</td>
+      <td style="text-align:center">本番環境</td>
+      <td style="text-align:center">開発環境</td>
+      <td style="text-align:center">Istio リソースをすべてカスタマイズしたい</td>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">最小限の機能が欲しい</td>
+      <td style="text-align:center">？</td>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">？</td>
+      <td>記入中...</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">istio-egressgateway</td>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">？</td>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">？</td>
+      <td>記入中...</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">istio-ingressgateway</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">？</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">？</td>
+      <td>記入中...</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">istiod</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">？</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">？</td>
+      <td>記入中...</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [istio/manifests/profiles at 1.24.2 · istio/istio · GitHub](https://github.com/istio/istio/tree/1.24.2/manifests/profiles)
 > - [Istioのインストール、サイドカープロキシ（Envoy）の挿入、マイクロサービスの可視化：Cloud Nativeチートシート（10） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html)

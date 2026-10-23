@@ -101,17 +101,72 @@ $ docker network create foo-network --subnet=172.18.0.0/16 --gateway=172.18.0.1
 
 これにより、『`http://<サーバーのプライベートIPアドレス (localhost) >:8080`』へリクエストを送信すると、WWW コンテナのポート番号へフォワーディングされる。
 
-| 処理場所           | リクエストの流れ                    | プライベート IP アドレス例                                    | ポート番号例 |
-| :----------------- | :---------------------------------- | :------------------------------------------------------------ | ------------ |
-| コンテナ内プロセス | インバウンド通信を待ち受けるポート  |                                                               | `:80`        |
-|                    | ⬆︎                                   |                                                               |              |
-| コンテナ           | コンテナポート                      | ・`http://127.0.0.1`<br>・`http://<Dockerのhostnameの設定値>` | `:80`        |
-|                    | ⬆︎                                   |                                                               |              |
-| ホスト             | 仮想ネットワーク                    | `http://172.*.*.*`                                            |              |
-|                    | ⬆︎                                   |                                                               |              |
-| ホスト             | 仮想ブリッジ                        |                                                               |              |
-|                    | ⬆︎                                   |                                                               |              |
-| ホストハードウェア | サーバーの NIC (イーサネットカード) | `http://127.0.0.1`                                            | `:8080`      |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">処理場所</th>
+      <th style="text-align:left">リクエストの流れ</th>
+      <th style="text-align:left">プライベート IP アドレス例</th>
+      <th>ポート番号例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">コンテナ内プロセス</td>
+      <td style="text-align:left">インバウンド通信を待ち受けるポート</td>
+      <td style="text-align:left"></td>
+      <td><code>:80</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">⬆︎</td>
+      <td style="text-align:left"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">コンテナ</td>
+      <td style="text-align:left">コンテナポート</td>
+      <td style="text-align:left">・<code>http://127.0.0.1</code><br>・<code>http://&lt;Dockerのhostnameの設定値&gt;</code></td>
+      <td><code>:80</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">⬆︎</td>
+      <td style="text-align:left"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">ホスト</td>
+      <td style="text-align:left">仮想ネットワーク</td>
+      <td style="text-align:left"><code>http://172.*.*.*</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">⬆︎</td>
+      <td style="text-align:left"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">ホスト</td>
+      <td style="text-align:left">仮想ブリッジ</td>
+      <td style="text-align:left"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">⬆︎</td>
+      <td style="text-align:left"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">ホストハードウェア</td>
+      <td style="text-align:left">サーバーの NIC (イーサネットカード)</td>
+      <td style="text-align:left"><code>http://127.0.0.1</code></td>
+      <td><code>:8080</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

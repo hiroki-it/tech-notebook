@@ -79,11 +79,40 @@ const asyncFunc = () => {
 
 ネイティブのほうが、Promise オブジェクトの仕様により則った機能を持つ。
 
-| リリース日 | 提供                                    | 種類                 | 説明                                                                                                               | 補足                                                                                       |
-| ---------- | --------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| 2012       | JQuery パッケージの Deferred モジュール | Promise オブジェクト | バージョン 1.5 で Promise オブジェクトが導入された。<br>・https://api.jquery.com/category/version/1.5/             | ・https://api.jquery.com/category/deferred-object/                                         |
-| 2015       | ビルトインオブジェクト                  | Promise オブジェクト | JQuery の Promise オブジェクトを参考にして、ES2015 から新しく使用できるようになった。                              | ・https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise    |
-| 2017       | ビルトインオブジェクト                  | async/await 宣言     | ES2017 から新しく使用できるようになった。ビルトインオブジェクトの Promise オブジェクトをより使用しやすくしたもの。 | ・https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function |
+<table>
+  <thead>
+    <tr>
+      <th>リリース日</th>
+      <th>提供</th>
+      <th>種類</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2012</td>
+      <td>JQuery パッケージの Deferred モジュール</td>
+      <td>Promise オブジェクト</td>
+      <td>バージョン 1.5 で Promise オブジェクトが導入された。<br>・<a href="https://api.jquery.com/category/version/1.5/">https://api.jquery.com/category/version/1.5/</a></td>
+      <td>・<a href="https://api.jquery.com/category/deferred-object/">https://api.jquery.com/category/deferred-object/</a></td>
+    </tr>
+    <tr>
+      <td>2015</td>
+      <td>ビルトインオブジェクト</td>
+      <td>Promise オブジェクト</td>
+      <td>JQuery の Promise オブジェクトを参考にして、ES2015 から新しく使用できるようになった。</td>
+      <td>・<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise">https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise</a></td>
+    </tr>
+    <tr>
+      <td>2017</td>
+      <td>ビルトインオブジェクト</td>
+      <td>async/await 宣言</td>
+      <td>ES2017 から新しく使用できるようになった。ビルトインオブジェクトの Promise オブジェクトをより使用しやすくしたもの。</td>
+      <td>・<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function">https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function</a></td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://stackoverflow.com/questions/32831143/javascript-promise-vs-jquery-deferred
 

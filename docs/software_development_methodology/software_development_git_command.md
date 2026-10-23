@@ -154,11 +154,36 @@ $ git clone --depth 1 https://github.com/hiroki-hasegawa/foo-repository.git
 
 ### 設定の影響範囲の種類
 
-| 影響範囲 | 意味                             | 上書き順 | 設定ファイルの場所                 |
-| :------- | :------------------------------- | -------- | :--------------------------------- |
-| system   | 全 PC ユーザーの全リポジトリ     | 1        | `/etc/gitconfig`                   |
-| global   | 現在の PC ユーザーの全リポジトリ | 2        | `~/.gitconfig`                     |
-| local    | 現在のリポジトリ                 | 3        | `<GitHubリポジトリ名>/.git/config` |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">影響範囲</th>
+      <th style="text-align:left">意味</th>
+      <th>上書き順</th>
+      <th style="text-align:left">設定ファイルの場所</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">system</td>
+      <td style="text-align:left">全 PC ユーザーの全リポジトリ</td>
+      <td>1</td>
+      <td style="text-align:left"><code>/etc/gitconfig</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">global</td>
+      <td style="text-align:left">現在の PC ユーザーの全リポジトリ</td>
+      <td>2</td>
+      <td style="text-align:left"><code>~/.gitconfig</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">local</td>
+      <td style="text-align:left">現在のリポジトリ</td>
+      <td>3</td>
+      <td style="text-align:left"><code>&lt;GitHubリポジトリ名&gt;/.git/config</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -224,11 +249,32 @@ Date:   Sat Sep 12 00:00:00 2020 +0900
 $ git config --global core.autocrlf <値>
 ```
 
-| 設定値 | チェックアウト時 | コミット時 |
-| ------ | ---------------- | ---------- |
-| input  | 変換しない       | CRLF ➡️ LF |
-| true   | LF ➡️ CRLF       | CRLF ➡️ LF |
-| false  | 変換しない       | 変換しない |
+<table>
+  <thead>
+    <tr>
+      <th>設定値</th>
+      <th>チェックアウト時</th>
+      <th>コミット時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>input</td>
+      <td>変換しない</td>
+      <td>CRLF ➡️ LF</td>
+    </tr>
+    <tr>
+      <td>true</td>
+      <td>LF ➡️ CRLF</td>
+      <td>CRLF ➡️ LF</td>
+    </tr>
+    <tr>
+      <td>false</td>
+      <td>変換しない</td>
+      <td>変換しない</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

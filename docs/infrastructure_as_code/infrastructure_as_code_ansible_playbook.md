@@ -821,12 +821,32 @@ SELinux を無効化する。
 
 ユニットの最終的な状態を設定する。
 
-| 設定値      | 説明                                                                    |
-| ----------- | ----------------------------------------------------------------------- |
-| `reloaded`  | 最終的な状態として deamon_reload するように、ユニットを再読み込みする。 |
-| `restarted` | 最終的な状態として再起動するように、ユニットを再起動する。              |
-| `started`   | 最終的な状態として停止しているように、ユニットを起動する。              |
-| `stopped`   | 最終的な状態として停止しているさうに、ユニットを停止する。              |
+<table>
+  <thead>
+    <tr>
+      <th>設定値</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>reloaded</code></td>
+      <td>最終的な状態として deamon_reload するように、ユニットを再読み込みする。</td>
+    </tr>
+    <tr>
+      <td><code>restarted</code></td>
+      <td>最終的な状態として再起動するように、ユニットを再起動する。</td>
+    </tr>
+    <tr>
+      <td><code>started</code></td>
+      <td>最終的な状態として停止しているように、ユニットを起動する。</td>
+    </tr>
+    <tr>
+      <td><code>stopped</code></td>
+      <td>最終的な状態として停止しているさうに、ユニットを停止する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [systemd モジュール-φ(.. ) のメモ](https://dekitakotono.blogspot.com/2019/05/systemd.html)
 

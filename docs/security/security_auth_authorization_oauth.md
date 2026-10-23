@@ -29,12 +29,42 @@ OAuth は認可フェーズのみで構成されているため、間違って�
 
 認証フェーズと認可フェーズでは、`3` 個の役割が定義されていることを説明したが、OAuth では、より具体的に `4` 個の役割が定義されている。
 
-| 要素               | フェーズ | 説明                                                                 | 補足                                                                                                                                                                                                                                                                                                                        |
-| ------------------ | -------- | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| クライアントアプリ | 認証     | 連携元アカウントを提供するアプリケーションのこと。                   | OAuth の文脈では、ブラウザがクライアントと呼ばれないことに注意する。また、クライアントアプリとリソース間のデータ通信は、ブラウザを経由したリダイレクトによって実装することに注意する。                                                                                                                                      |
-| リソースオーナー   | 認証     | クライアントアプリケーションを使用しているユーザーである。           |                                                                                                                                                                                                                                                                                                                             |
-| 認可サーバー       | 認可     | リフレッシュトークンを含むアクセストークンを発行するサーバーのこと。 | 認可サーバーがリダイレクト先のクライアントアプリケーションの URL をレスポンスに割り当てられるように、クライアントアプリケーションの開発者が URL を事前登録しておく必要がある。認可サーバーを利用する開発者用に、コンソール画面が用意されていることが多い。<br>https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844 |
-| リソースサーバー   | 認可     | 連携先アカウントを提供するサーバーのこと。                           |                                                                                                                                                                                                                                                                                                                             |
+<table>
+  <thead>
+    <tr>
+      <th>要素</th>
+      <th>フェーズ</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>クライアントアプリ</td>
+      <td>認証</td>
+      <td>連携元アカウントを提供するアプリケーションのこと。</td>
+      <td>OAuth の文脈では、ブラウザがクライアントと呼ばれないことに注意する。また、クライアントアプリとリソース間のデータ通信は、ブラウザを経由したリダイレクトによって実装することに注意する。</td>
+    </tr>
+    <tr>
+      <td>リソースオーナー</td>
+      <td>認証</td>
+      <td>クライアントアプリケーションを使用しているユーザーである。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>認可サーバー</td>
+      <td>認可</td>
+      <td>リフレッシュトークンを含むアクセストークンを発行するサーバーのこと。</td>
+      <td>認可サーバーがリダイレクト先のクライアントアプリケーションの URL をレスポンスに割り当てられるように、クライアントアプリケーションの開発者が URL を事前登録しておく必要がある。認可サーバーを利用する開発者用に、コンソール画面が用意されていることが多い。<br><a href="https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844">https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844</a></td>
+    </tr>
+    <tr>
+      <td>リソースサーバー</td>
+      <td>認可</td>
+      <td>連携先アカウントを提供するサーバーのこと。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [OAuth認可とは何か？Webサービス間の認可連携の仕組みを解説 \| Promapedia（プロマペディア）｜プロジェクトマネジメント用語辞典](https://ssaits.jp/promapedia/technology/oauth.html)
 
@@ -100,13 +130,42 @@ OAuth では、認証スキーマとして Bearer 認証の採用例が多い。
 
 認可サーバーによる OAuth のアクセストークンの付与方法には種類がある。
 
-| 付与タイプ名             | 説明                                                                                                                                                                                                                                    | 使用例                                                                                                                                                    |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Authorization Code Grant | アプリケーションが他の API に接続する場合に使用する。推奨である。<br>https://oauth.net/2/grant-types/authorization-code/                                                                                                                | 他の SNS アプリとのアカウント連携                                                                                                                         |
-| Client Credentials Grant | 推奨である。<br>https://oauth.net/2/grant-types/client-credentials/                                                                                                                                                                     |                                                                                                                                                           |
-| Device Code              | 推奨である。<br>https://oauth.net/2/grant-types/device-code/                                                                                                                                                                            |                                                                                                                                                           |
-| Implicit Grant           | 非推奨である。<br>https://oauth.net/2/grant-types/implicit/                                                                                                                                                                             |                                                                                                                                                           |
-| Password Grant           | ユーザー名とパスワードを照合し、アクセストークンを付与する。非推奨である。<br>・https://oauth.net/2/grant-types/password/<br>・https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant | Laravel の Password Grant Token 機能は、Password Grant タイプを使用している。<br>https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens |
+<table>
+  <thead>
+    <tr>
+      <th>付与タイプ名</th>
+      <th>説明</th>
+      <th>使用例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Authorization Code Grant</td>
+      <td>アプリケーションが他の API に接続する場合に使用する。推奨である。<br><a href="https://oauth.net/2/grant-types/authorization-code/">https://oauth.net/2/grant-types/authorization-code/</a></td>
+      <td>他の SNS アプリとのアカウント連携</td>
+    </tr>
+    <tr>
+      <td>Client Credentials Grant</td>
+      <td>推奨である。<br><a href="https://oauth.net/2/grant-types/client-credentials/">https://oauth.net/2/grant-types/client-credentials/</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Device Code</td>
+      <td>推奨である。<br><a href="https://oauth.net/2/grant-types/device-code/">https://oauth.net/2/grant-types/device-code/</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Implicit Grant</td>
+      <td>非推奨である。<br><a href="https://oauth.net/2/grant-types/implicit/">https://oauth.net/2/grant-types/implicit/</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Password Grant</td>
+      <td>ユーザー名とパスワードを照合し、アクセストークンを付与する。非推奨である。<br>・<a href="https://oauth.net/2/grant-types/password/">https://oauth.net/2/grant-types/password/</a><br>・<a href="https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant">https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant</a></td>
+      <td>Laravel の Password Grant Token 機能は、Password Grant タイプを使用している。<br><a href="https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens">https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens</a></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [OAuth Grant Types](https://oauth.net/2/grant-types/)
 
@@ -159,15 +218,60 @@ GET https://www.facebook.com/auth?<下表で説明>
 HOST: authorization-server.com # 認可サーバーのホスト
 ```
 
-| クエリストリングの種類 | 値                   | 例                              | 認可リクエスト時に必須/任意 |
-| ---------------------- | -------------------- | ------------------------------- | --------------------------- |
-| `response_type`        | 認可レスポンスの種類 | `code` (認可コードフローの場合) | 必須                        |
-| `client_id`            | クライアント ID      | `foo-client`                    | 必須                        |
-| `redirect_uri`         | リダイレクト URL     | `https://example.com/callback`  | 条件により必須              |
-| `state`                | 任意の文字列         |                                 | 推奨                        |
-| `scope`                | クレームグループ     | `openid profile email`          | 任意                        |
-| `code_challenge`       | チャレンジ           |                                 | 任意                        |
-| `code_challege_method` | メソッド             |                                 | 任意                        |
+<table>
+  <thead>
+    <tr>
+      <th>クエリストリングの種類</th>
+      <th>値</th>
+      <th>例</th>
+      <th>認可リクエスト時に必須/任意</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>response_type</code></td>
+      <td>認可レスポンスの種類</td>
+      <td><code>code</code> (認可コードフローの場合)</td>
+      <td>必須</td>
+    </tr>
+    <tr>
+      <td><code>client_id</code></td>
+      <td>クライアント ID</td>
+      <td><code>foo-client</code></td>
+      <td>必須</td>
+    </tr>
+    <tr>
+      <td><code>redirect_uri</code></td>
+      <td>リダイレクト URL</td>
+      <td><code>https://example.com/callback</code></td>
+      <td>条件により必須</td>
+    </tr>
+    <tr>
+      <td><code>state</code></td>
+      <td>任意の文字列</td>
+      <td></td>
+      <td>推奨</td>
+    </tr>
+    <tr>
+      <td><code>scope</code></td>
+      <td>クレームグループ</td>
+      <td><code>openid profile email</code></td>
+      <td>任意</td>
+    </tr>
+    <tr>
+      <td><code>code_challenge</code></td>
+      <td>チャレンジ</td>
+      <td></td>
+      <td>任意</td>
+    </tr>
+    <tr>
+      <td><code>code_challege_method</code></td>
+      <td>メソッド</td>
+      <td></td>
+      <td>任意</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [OAuth 2.0 全フローの図解と動画 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#11-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88)
 
@@ -197,10 +301,30 @@ HOST: authorization-server.com # 認可サーバーのホスト
 Location: https://www.免許証作成サイト.com/callback?code=<認可コード>&state=<任意の文字列>
 ```
 
-| クエリストリングのキーの種類 | 値           | 例  | 必須/任意                                                              |
-| ---------------------------- | ------------ | --- | ---------------------------------------------------------------------- |
-| `code`                       | 認可コード   |     | 必須                                                                   |
-| `state`                      | 任意の文字列 |     | 認可リクエストのクエリストリングで、`state` キーが使用されていれば必須 |
+<table>
+  <thead>
+    <tr>
+      <th>クエリストリングのキーの種類</th>
+      <th>値</th>
+      <th>例</th>
+      <th>必須/任意</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>code</code></td>
+      <td>認可コード</td>
+      <td></td>
+      <td>必須</td>
+    </tr>
+    <tr>
+      <td><code>state</code></td>
+      <td>任意の文字列</td>
+      <td></td>
+      <td>認可リクエストのクエリストリングで、<code>state</code> キーが使用されていれば必須</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [OAuth 2.0 全フローの図解と動画 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#12-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9)
 
@@ -225,14 +349,54 @@ Content-Type: application/x-www-form-urlencoded
 # 下表で説明
 ```
 
-| ボディのキーの種類 | 値                       | 例                             | トークンリクエスト時に必須/任意                                                          |
-| ------------------ | ------------------------ | ------------------------------ | ---------------------------------------------------------------------------------------- |
-| `grant_type`       | 認証方法の種類           | `authorization_code`           | 必須                                                                                     |
-| `code`             | 認可コード               | `*****`                        | 必須                                                                                     |
-| `redirect_uri`     | リダイレクト URL         | `https://example.com/callback` | 認可リクエストのクエリストリングで、`redirect_uri` キーが使用されていれば、必須である。  |
-| `code_verifier`    | ベリファイア             |                                | 認可リクエストのクエリストリングで、`code_verifier` キーが使用されていれば、必須である。 |
-| `client_id`        | クライアント ID          | `foo-client`                   | 条件により必須                                                                           |
-| `client_secret`    | クライアントシークレット | `*****`                        | 条件により必須                                                                           |
+<table>
+  <thead>
+    <tr>
+      <th>ボディのキーの種類</th>
+      <th>値</th>
+      <th>例</th>
+      <th>トークンリクエスト時に必須/任意</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>grant_type</code></td>
+      <td>認証方法の種類</td>
+      <td><code>authorization_code</code></td>
+      <td>必須</td>
+    </tr>
+    <tr>
+      <td><code>code</code></td>
+      <td>認可コード</td>
+      <td><code>*****</code></td>
+      <td>必須</td>
+    </tr>
+    <tr>
+      <td><code>redirect_uri</code></td>
+      <td>リダイレクト URL</td>
+      <td><code>https://example.com/callback</code></td>
+      <td>認可リクエストのクエリストリングで、<code>redirect_uri</code> キーが使用されていれば、必須である。</td>
+    </tr>
+    <tr>
+      <td><code>code_verifier</code></td>
+      <td>ベリファイア</td>
+      <td></td>
+      <td>認可リクエストのクエリストリングで、<code>code_verifier</code> キーが使用されていれば、必須である。</td>
+    </tr>
+    <tr>
+      <td><code>client_id</code></td>
+      <td>クライアント ID</td>
+      <td><code>foo-client</code></td>
+      <td>条件により必須</td>
+    </tr>
+    <tr>
+      <td><code>client_secret</code></td>
+      <td>クライアントシークレット</td>
+      <td><code>*****</code></td>
+      <td>条件により必須</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [OAuth 2.0 全フローの図解と動画 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#13-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88)
 

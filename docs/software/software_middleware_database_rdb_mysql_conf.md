@@ -90,11 +90,28 @@ mysql> SELECT user, host FROM mysql.user;
 
 #### ▼ パラメーターの種類
 
-| パラメーター名       | 説明                                                      |
-| -------------------- | --------------------------------------------------------- |
-| `max_connections`    | DB クライアントからのクエリの同時接続数を設定する。       |
-| `max_execution_time` | DB クライアントからのクエリのタイムアウト時間を設定する。 |
-| `time_zone`          | クエリのタイムゾーンを設定する。                          |
+<table>
+  <thead>
+    <tr>
+      <th>パラメーター名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>max_connections</code></td>
+      <td>DB クライアントからのクエリの同時接続数を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>max_execution_time</code></td>
+      <td>DB クライアントからのクエリのタイムアウト時間を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>time_zone</code></td>
+      <td>クエリのタイムゾーンを設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://dev.mysql.com/doc/refman/8.0/ja/server-system-variables.html
 

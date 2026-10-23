@@ -31,9 +31,24 @@ description: ソフトウェアの知見を記録しています。
 
 ### アプリケーションソフトウェアの一覧
 
-|                    | ネイティブアプリ | Web アプリとクラウドアプリ | ハイブリッドアプリ |
-| :----------------: | :--------------: | :------------------------: | :----------------: |
-| 利用できる通信状況 |      On/Off      |             On             |       On/Off       |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center"></th>
+      <th style="text-align:center">ネイティブアプリ</th>
+      <th style="text-align:center">Web アプリとクラウドアプリ</th>
+      <th style="text-align:center">ハイブリッドアプリ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center">利用できる通信状況</td>
+      <td style="text-align:center">On/Off</td>
+      <td style="text-align:center">On</td>
+      <td style="text-align:center">On/Off</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

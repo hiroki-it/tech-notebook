@@ -260,15 +260,57 @@ vmstorage の `/var/lib/victoriametrics` ディレクトリ配下の増加量 (�
 (増加率) = ((当該時刻のサイズ) - (前時刻のサイズ)) ÷ (前時刻のサイズ) × 100
 ```
 
-| 時刻       | storageDataPath のサイズ (MB) | 前時刻比 増加率 (%) | 前時刻比 増加量 (MB) |
-| ---------- | ----------------------------- | ------------------- | -------------------- |
-| `00:00:00` | `10535`                       | -                   | -                    |
-| `01:00:00` | `10708`                       | `0.0164`            | `173`                |
-| `02:00:00` | `10838`                       | `0.0121`            | `130`                |
-| 〜 中略 〜 |                               |                     |                      |
-| `22:00:00` | `12997`                       | `0.0226`            | `159`                |
-| `23:00:00` | `13023`                       | `0.0020`            | `26`                 |
-| `24:00:00` | `12900`                       | `-0.0094`           | `123`                |
+<table>
+  <thead>
+    <tr>
+      <th>時刻</th>
+      <th>storageDataPath のサイズ (MB)</th>
+      <th>前時刻比 増加率 (%)</th>
+      <th>前時刻比 増加量 (MB)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>00:00:00</code></td>
+      <td><code>10535</code></td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code>01:00:00</code></td>
+      <td><code>10708</code></td>
+      <td><code>0.0164</code></td>
+      <td><code>173</code></td>
+    </tr>
+    <tr>
+      <td><code>02:00:00</code></td>
+      <td><code>10838</code></td>
+      <td><code>0.0121</code></td>
+      <td><code>130</code></td>
+    </tr>
+    <tr>
+      <td colspan="4">〜 中略 〜</td>
+    </tr>
+    <tr>
+      <td><code>22:00:00</code></td>
+      <td><code>12997</code></td>
+      <td><code>0.0226</code></td>
+      <td><code>159</code></td>
+    </tr>
+    <tr>
+      <td><code>23:00:00</code></td>
+      <td><code>13023</code></td>
+      <td><code>0.0020</code></td>
+      <td><code>26</code></td>
+    </tr>
+    <tr>
+      <td><code>24:00:00</code></td>
+      <td><code>12900</code></td>
+      <td><code>-0.0094</code></td>
+      <td><code>123</code></td>
+    </tr>
+  </tbody>
+</table>
 
 増加率の推移をグラフ化すると、データが一定の割合で増加していることがわかるはずである。
 

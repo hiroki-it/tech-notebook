@@ -34,11 +34,40 @@ EKS の場合、Amazon VPC (`L3`) 上に Amazon VPC CNI を配置することに
 
 #### ▼ IP アドレスの種類
 
-| IP アドレスの種類        | 手動/自動 | グローバル/プライベート | 特徴             | 説明                                                             |
-| ------------------------ | --------- | ----------------------- | ---------------- | ---------------------------------------------------------------- |
-| パブリック IP アドレス   | 自動      | グローバル              | 動的 IP アドレス | 動的な IP アドレスのため、インスタンスを再作成すると変化する。   |
-| プライベート IP アドレス | 手動/自動 | プライベート            | 動的 IP アドレス | 動的な IP アドレスのため、インスタンスを再作成すると変化する。   |
-| Elastic IP               | 手動      | グローバル              | 静的 IP アドレス | 静的な IP アドレスのため、インスタンスを再作成しても保持される。 |
+<table>
+  <thead>
+    <tr>
+      <th>IP アドレスの種類</th>
+      <th>手動/自動</th>
+      <th>グローバル/プライベート</th>
+      <th>特徴</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>パブリック IP アドレス</td>
+      <td>自動</td>
+      <td>グローバル</td>
+      <td>動的 IP アドレス</td>
+      <td>動的な IP アドレスのため、インスタンスを再作成すると変化する。</td>
+    </tr>
+    <tr>
+      <td>プライベート IP アドレス</td>
+      <td>手動/自動</td>
+      <td>プライベート</td>
+      <td>動的 IP アドレス</td>
+      <td>動的な IP アドレスのため、インスタンスを再作成すると変化する。</td>
+    </tr>
+    <tr>
+      <td>Elastic IP</td>
+      <td>手動</td>
+      <td>グローバル</td>
+      <td>静的 IP アドレス</td>
+      <td>静的な IP アドレスのため、インスタンスを再作成しても保持される。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [EC2 における Public IP と Elastic IPの違いに関して](https://awsjp.com/AWS/hikaku/Elastic-IP_Public-IP-hikaku.html)
 > - https://qiita.com/masato930/items/ba242f0171a76ce0994f
@@ -54,10 +83,24 @@ Amazon VPC 内で作成されたインスタンスにはパブリック IP ア�
 
 #### ▼ 紐付け
 
-| 紐付け名       | 補足                                                                                                      |
-| -------------- | --------------------------------------------------------------------------------------------------------- |
-| EC2 との紐付け | 非推奨の方法である。<br>- https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
-| ENI との紐付け | 推奨の方法である。<br>- https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview   |
+<table>
+  <thead>
+    <tr>
+      <th>紐付け名</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>EC2 との紐付け</td>
+      <td>非推奨の方法である。<br>- <a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview">https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview</a></td>
+    </tr>
+    <tr>
+      <td>ENI との紐付け</td>
+      <td>推奨の方法である。<br>- <a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview">https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -109,15 +152,67 @@ LAN 内の内部ネットワークに相当する。
 
 ルール `100` が最初に適用され、サブネットへの全送信元 IP アドレス (`0.0.0.0/0`) を許可していることになる。
 
-| インバウンドルール番号 | タイプ               | プロトコル | ポート範囲 | 送信元      | 許可／拒否 |
-| ---------------------- | -------------------- | ---------- | ---------- | ----------- | ---------- |
-| `100`                  | すべてのトラフィック | すべて     | すべて     | `0.0.0.0/0` | ALLOW      |
-| `*`                    | すべてのトラフィック | すべて     | すべて     | `0.0.0.0/0` | DENY       |
+<table>
+  <thead>
+    <tr>
+      <th>インバウンドルール番号</th>
+      <th>タイプ</th>
+      <th>プロトコル</th>
+      <th>ポート範囲</th>
+      <th>送信元</th>
+      <th>許可／拒否</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>100</code></td>
+      <td>すべてのトラフィック</td>
+      <td>すべて</td>
+      <td>すべて</td>
+      <td><code>0.0.0.0/0</code></td>
+      <td>ALLOW</td>
+    </tr>
+    <tr>
+      <td><code>*</code></td>
+      <td>すべてのトラフィック</td>
+      <td>すべて</td>
+      <td>すべて</td>
+      <td><code>0.0.0.0/0</code></td>
+      <td>DENY</td>
+    </tr>
+  </tbody>
+</table>
 
-| アウトバウンドルール番号 | タイプ               | プロトコル | ポート範囲 | 宛先        | 許可／拒否 |
-| ------------------------ | -------------------- | ---------- | ---------- | ----------- | ---------- |
-| `100`                    | すべてのトラフィック | すべて     | すべて     | `0.0.0.0/0` | ALLOW      |
-| `*`                      | すべてのトラフィック | すべて     | すべて     | `0.0.0.0/0` | DENY       |
+<table>
+  <thead>
+    <tr>
+      <th>アウトバウンドルール番号</th>
+      <th>タイプ</th>
+      <th>プロトコル</th>
+      <th>ポート範囲</th>
+      <th>宛先</th>
+      <th>許可／拒否</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>100</code></td>
+      <td>すべてのトラフィック</td>
+      <td>すべて</td>
+      <td>すべて</td>
+      <td><code>0.0.0.0/0</code></td>
+      <td>ALLOW</td>
+    </tr>
+    <tr>
+      <td><code>*</code></td>
+      <td>すべてのトラフィック</td>
+      <td>すべて</td>
+      <td>すべて</td>
+      <td><code>0.0.0.0/0</code></td>
+      <td>DENY</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -133,9 +228,20 @@ LAN 内の内部ネットワークに相当する。
 
 > - https://docs.aws.amazon.com/vpc/latest/userguide/Amazon VPC_Route_Tables.html#RouteTables
 
-| Destination (宛先の IP の範囲) |                Target                |
-| :----------------------------: | :----------------------------------: |
-|          `*.*.*.*/*`           | Destination の範囲内だった場合の宛先 |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center">Destination (宛先の IP の範囲)</th>
+      <th style="text-align:center">Target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><code>*.*.*.*/*</code></td>
+      <td style="text-align:center">Destination の範囲内だった場合の宛先</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -312,10 +418,28 @@ AWS NAT Gateway の SNAT 処理では、プライベートサブネットから�
 
 Amazon VPC に複数の IPv4 CIDR ブロック ブロックがあり、1 つでも 同じ CIDR ブロック ブロックがある場合は、Amazon VPC ピアリング接続はできない。
 
-| アカウント  | Amazon VPC のあるリージョン | Amazon VPC 内の CIDR ブロック | 接続の可否 |
-| ----------- | --------------------------- | ----------------------------- | ---------- |
-| 同じ/異なる | 同じ/異なる                 | すべて異なる                  | ⭕️         |
-|             |                             | 同じものが 1 つでもある       | ✕          |
+<table>
+  <thead>
+    <tr>
+      <th>アカウント</th>
+      <th>Amazon VPC のあるリージョン</th>
+      <th>Amazon VPC 内の CIDR ブロック</th>
+      <th>接続の可否</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">同じ/異なる</td>
+      <td rowspan="2">同じ/異なる</td>
+      <td>すべて異なる</td>
+      <td>⭕️</td>
+    </tr>
+    <tr>
+      <td>同じものが 1 つでもある</td>
+      <td>✕</td>
+    </tr>
+  </tbody>
+</table>
 
 ![Amazon VPC ピアリング接続不可の場合-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon VPC ピアリング接続不可の場合-1.png)
 
@@ -378,16 +502,75 @@ Amazon EC2、Amazon ECS、Amazon EKS、AWS Lambda 間を接続する。
 
 ### 各サービスの比較
 
-| 能力                                                    | Amazon VPC ピアリング接続 |        Amazon VPC エンドポイントサービス        |      Transit gateway       |                                              Amazon VPC Lattice                                               |
-| ------------------------------------------------------- | :-----------------------: | :---------------------------------------------: | :------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-| 通信できる Amazon VPC 数                                |          一対一           |                一対一<br>一対多                 | 一対一<br>一対多<br>多対多 |                                          一対一<br>一対多<br>多対多                                           |
-| 通信できる IP アドレスの種類                            |        IPv4、IPv6         |                      IPv4                       |         IPv4、IPv6         |                                                  IPv4、IPv6                                                   |
-| 通信できるリソース                                      |         制限なし          | NLB で `L4` ルーティングできる AWS リソースのみ |          制限なし          | ALB で `L7` ルーティングできる AWS リソースのみ<br>(例：EC2、IP アドレス、AWS Lambda、Kubernetes の Pod など) |
-| CIDR ブロックが Amazon VPC 間で被ることによる通信の可否 |             ×︎             |                       ⭕                        |             ×︎              |                                                      ⭕                                                       |
-| クロスアカウント                                        |            ⭕             |                       ⭕                        |             ⭕             |                                                      ⭕                                                       |
-| クロスリージョン                                        |            ⭕             |                        ×︎                        |             ⭕             |                                                      ⭕                                                       |
-| Amazon VPC 間                                           |            ⭕             |                       ⭕                        |             ⭕             |                                                      ⭕                                                       |
-| Amazon VPC-オンプレミス間                               |             ×︎             |                        ×︎                        |             ⭕             |                                                       ×︎                                                       |
+<table>
+  <thead>
+    <tr>
+      <th>能力</th>
+      <th style="text-align:center">Amazon VPC ピアリング接続</th>
+      <th style="text-align:center">Amazon VPC エンドポイントサービス</th>
+      <th style="text-align:center">Transit gateway</th>
+      <th style="text-align:center">Amazon VPC Lattice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>通信できる Amazon VPC 数</td>
+      <td style="text-align:center">一対一</td>
+      <td style="text-align:center">一対一<br>一対多</td>
+      <td style="text-align:center">一対一<br>一対多<br>多対多</td>
+      <td style="text-align:center">一対一<br>一対多<br>多対多</td>
+    </tr>
+    <tr>
+      <td>通信できる IP アドレスの種類</td>
+      <td style="text-align:center">IPv4、IPv6</td>
+      <td style="text-align:center">IPv4</td>
+      <td style="text-align:center">IPv4、IPv6</td>
+      <td style="text-align:center">IPv4、IPv6</td>
+    </tr>
+    <tr>
+      <td>通信できるリソース</td>
+      <td style="text-align:center">制限なし</td>
+      <td style="text-align:center">NLB で <code>L4</code> ルーティングできる AWS リソースのみ</td>
+      <td style="text-align:center">制限なし</td>
+      <td style="text-align:center">ALB で <code>L7</code> ルーティングできる AWS リソースのみ<br>(例：EC2、IP アドレス、AWS Lambda、Kubernetes の Pod など)</td>
+    </tr>
+    <tr>
+      <td>CIDR ブロックが Amazon VPC 間で被ることによる通信の可否</td>
+      <td style="text-align:center">×︎</td>
+      <td style="text-align:center">⭕</td>
+      <td style="text-align:center">×︎</td>
+      <td style="text-align:center">⭕</td>
+    </tr>
+    <tr>
+      <td>クロスアカウント</td>
+      <td style="text-align:center">⭕</td>
+      <td style="text-align:center">⭕</td>
+      <td style="text-align:center">⭕</td>
+      <td style="text-align:center">⭕</td>
+    </tr>
+    <tr>
+      <td>クロスリージョン</td>
+      <td style="text-align:center">⭕</td>
+      <td style="text-align:center">×︎</td>
+      <td style="text-align:center">⭕</td>
+      <td style="text-align:center">⭕</td>
+    </tr>
+    <tr>
+      <td>Amazon VPC 間</td>
+      <td style="text-align:center">⭕</td>
+      <td style="text-align:center">⭕</td>
+      <td style="text-align:center">⭕</td>
+      <td style="text-align:center">⭕</td>
+    </tr>
+    <tr>
+      <td>Amazon VPC-オンプレミス間</td>
+      <td style="text-align:center">×︎</td>
+      <td style="text-align:center">×︎</td>
+      <td style="text-align:center">⭕</td>
+      <td style="text-align:center">×︎</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

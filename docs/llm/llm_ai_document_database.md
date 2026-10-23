@@ -23,13 +23,72 @@ description: DB設計用のドキュメント＠AI用ドキュメントの知見
 
 - 次のようにテーブル構造を整理して
 
-| 物理名       | 論理名   | 型            | プライマリー／ユニークキー | NOT NULL 制約 | デフォルト値         | 説明                 | 値の例                    |
-| ------------ | -------- | ------------- | -------------------------- | :-----------: | -------------------- | -------------------- | ------------------------- |
-| `foo_id`     | foo ID   | `VARCHAR(15)` | プライマリキー             |     禁止      | N/A                  | foo に関する ID      | `123456789`               |
-| `foo_name`   | foo 名   | `VARCHAR(15)` | N/A                        |     禁止      | N/A                  | foo に関する名前     | `hiroki.hasegawa`         |
-| ...          | ...      | ...           | ...                        |      ...      | ...                  | ...                  | ...                       |
-| `created_at` | 作成日時 | `DATETIME(3)` | N/A                        |     禁止      | CURRENT_TIMESTAMP(3) | UTC のタイムスタンプ | `2025-01-01 12:34:00.000` |
-| `updated_at` | 更新日時 | `DATETIME(3)` | N/A                        |     禁止      | CURRENT_TIMESTAMP(3) | UTC のタイムスタンプ | `2025-01-01 12:34:05.250` |
+<table>
+  <thead>
+    <tr>
+      <th>物理名</th>
+      <th>論理名</th>
+      <th>型</th>
+      <th>プライマリー／ユニークキー</th>
+      <th style="text-align:center">NOT NULL 制約</th>
+      <th>デフォルト値</th>
+      <th>説明</th>
+      <th>値の例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>foo_id</code></td>
+      <td>foo ID</td>
+      <td><code>VARCHAR(15)</code></td>
+      <td>プライマリキー</td>
+      <td style="text-align:center">禁止</td>
+      <td>N/A</td>
+      <td>foo に関する ID</td>
+      <td><code>123456789</code></td>
+    </tr>
+    <tr>
+      <td><code>foo_name</code></td>
+      <td>foo 名</td>
+      <td><code>VARCHAR(15)</code></td>
+      <td>N/A</td>
+      <td style="text-align:center">禁止</td>
+      <td>N/A</td>
+      <td>foo に関する名前</td>
+      <td><code>hiroki.hasegawa</code></td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td style="text-align:center">...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td><code>created_at</code></td>
+      <td>作成日時</td>
+      <td><code>DATETIME(3)</code></td>
+      <td>N/A</td>
+      <td style="text-align:center">禁止</td>
+      <td>CURRENT_TIMESTAMP(3)</td>
+      <td>UTC のタイムスタンプ</td>
+      <td><code>2025-01-01 12:34:00.000</code></td>
+    </tr>
+    <tr>
+      <td><code>updated_at</code></td>
+      <td>更新日時</td>
+      <td><code>DATETIME(3)</code></td>
+      <td>N/A</td>
+      <td style="text-align:center">禁止</td>
+      <td>CURRENT_TIMESTAMP(3)</td>
+      <td>UTC のタイムスタンプ</td>
+      <td><code>2025-01-01 12:34:05.250</code></td>
+    </tr>
+  </tbody>
+</table>
 
 - カラム
   - ドメイン上意味付けする必要があるものをカラムにできているか

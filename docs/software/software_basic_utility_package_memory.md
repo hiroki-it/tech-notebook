@@ -351,11 +351,32 @@ $ supervisorctl update
 
 ユニットは拡張子の違いで判別する。
 
-| ユニットタイプ   | ユニットの拡張子 | 説明                                         |
-| ---------------- | ---------------- | -------------------------------------------- |
-| service ユニット | `.service`       | プロセス起動停止に関するデーモン。           |
-| mount ユニット   | `.mount`         | ファイルのマウントに関するデーモン。         |
-| socket ユニット  | `.socket`        | ソケットとプロセスの紐付けに関するデーモン。 |
+<table>
+  <thead>
+    <tr>
+      <th>ユニットタイプ</th>
+      <th>ユニットの拡張子</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>service ユニット</td>
+      <td><code>.service</code></td>
+      <td>プロセス起動停止に関するデーモン。</td>
+    </tr>
+    <tr>
+      <td>mount ユニット</td>
+      <td><code>.mount</code></td>
+      <td>ファイルのマウントに関するデーモン。</td>
+    </tr>
+    <tr>
+      <td>socket ユニット</td>
+      <td><code>.socket</code></td>
+      <td>ソケットとプロセスの紐付けに関するデーモン。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.kabegiwablog.com/entry/2018/06/11/100000
 

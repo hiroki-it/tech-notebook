@@ -65,12 +65,32 @@ Ajax の仕組みで作成したアプリは SPA である。
 
 クライアント側でサーバーレンダリングを実行するため、SSR と比較して CSR：Client Server side Rendering ともいう。
 
-| サーバーレンダリングのステップ | 実行者   |
-| ------------------------------ | -------- |
-| Loading                        | ブラウザ |
-| Scripting                      | ブラウザ |
-| Rendering                      | ブラウザ |
-| Paiting                        | ブラウザ |
+<table>
+  <thead>
+    <tr>
+      <th>サーバーレンダリングのステップ</th>
+      <th>実行者</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Loading</td>
+      <td>ブラウザ</td>
+    </tr>
+    <tr>
+      <td>Scripting</td>
+      <td>ブラウザ</td>
+    </tr>
+    <tr>
+      <td>Rendering</td>
+      <td>ブラウザ</td>
+    </tr>
+    <tr>
+      <td>Paiting</td>
+      <td>ブラウザ</td>
+    </tr>
+  </tbody>
+</table>
 
 非同期通信は、Ajax の手法を使用して実現される。
 
@@ -216,12 +236,32 @@ SSR では、フロントエンドアプリケーションへのリクエスト�
 
 フレームワークのテンプレートエンジンや CGI を使用して、サーバー側で静的ファイルを作成すること、も含まれる。
 
-| サーバーレンダリングのステップ | 実行者   |
-| ------------------------------ | -------- |
-| Loading                        | サーバー |
-| Scripting                      | サーバー |
-| Rendering                      | サーバー |
-| Paiting                        | ブラウザ |
+<table>
+  <thead>
+    <tr>
+      <th>サーバーレンダリングのステップ</th>
+      <th>実行者</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Loading</td>
+      <td>サーバー</td>
+    </tr>
+    <tr>
+      <td>Scripting</td>
+      <td>サーバー</td>
+    </tr>
+    <tr>
+      <td>Rendering</td>
+      <td>サーバー</td>
+    </tr>
+    <tr>
+      <td>Paiting</td>
+      <td>ブラウザ</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Webサイト表示の流れをざっくりとまとめた。HTML,CSSからSPA,SSR,SSGまで。 \| ただ屋ぁのブログ](https://tadtadya.com/summary-of-the-web-site-display-process-flow/#index-list-8)
 > - https://ja.nuxtjs.org/docs/2.x/concepts/server-side-rendering

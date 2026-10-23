@@ -25,19 +25,120 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 プッシュ型の場合、メトリクスを送信できるエージェントが必要である。
 
-|                                                                    |        Amazon CloudWatch ベース        |     Datadog ベース     |      Istio ベース<br>連携しない状態      | Istio ベース<br>ビルトイン Prometheus と連携した状態 |  OpenTelemetry ベース   |   Prometheus ベース    |
-| :----------------------------------------------------------------: | :------------------------------------: | :--------------------: | :--------------------------------------: | :--------------------------------------------------: | :---------------------: | :--------------------: |
-|              メトリクスの元になるデータポイントの作成              |        cloudwatch エージェント         |  datadog エージェント  | Envoy によるリクエスト系メトリクスの作成 |       Envoy によるリクエスト系メトリクスの作成       | クライアントパッケージ  |        Exporter        |
-|                                 ⬇️                                 |                   ⬇️                   |           ⬇️           |                    ⬇️                    |                          ⬇️                          |           ⬇️            |           ⬇️           |
-| メトリクスの元になるデータポイントを収集<br>プル型またはプッシュ型 |        cloudwatch エージェント         |  datadog エージェント  |                    -                     |                 prometheus サーバー                  | OpenTelemetry Collector |        Exporter        |
-|                                 ⬇️                                 |                   ⬇️                   |           ⬇️           |                    ⬇️                    |                          ⬇️                          |           ⬇️            |           ⬇️           |
-|     監視バックエンドによるビルトインローカルストレージへの保管     |       Amazon CloudWatch Metrics        | Datadog ダッシュボード |                    -                     |                 prometheus サーバー                  |            -            |  prometheus サーバー   |
-|                                 ⬇️                                 |                   ⬇️                   |           ⬇️           |                    ⬇️                    |                          ⬇️                          |           ⬇️            |           ⬇️           |
-|                   監視フロントエンドによる可視化                   |       Amazon CloudWatch Metrics        | Datadog ダッシュボード |                    -                     |                Grafana ダッシュボード                |            -            | Grafana ダッシュボード |
-|                                 ⬇️                                 |                   ⬇️                   |           ⬇️           |                    ⬇️                    |                          ⬇️                          |           ⬇️            |           ⬇️           |
-|                        分析とレポートの作成                        | Amazon CloudWatch Contributor Insights | Datadog ダッシュボード |                    -                     |                          -                           |            -            |           -            |
-|                                 ⬇️                                 |                   ⬇️                   |           ⬇️           |                    ⬇️                    |                          ⬇️                          |           ⬇️            |           ⬇️           |
-|                           アラートの作成                           |       Amazon CloudWatch アラーム       | Datadog ダッシュボード |                    -                     |                 prometheus サーバー                  |            -            |  prometheus サーバー   |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center"></th>
+      <th style="text-align:center">Amazon CloudWatch ベース</th>
+      <th style="text-align:center">Datadog ベース</th>
+      <th style="text-align:center">Istio ベース<br>連携しない状態</th>
+      <th style="text-align:center">Istio ベース<br>ビルトイン Prometheus と連携した状態</th>
+      <th style="text-align:center">OpenTelemetry ベース</th>
+      <th style="text-align:center">Prometheus ベース</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center">メトリクスの元になるデータポイントの作成</td>
+      <td style="text-align:center">cloudwatch エージェント</td>
+      <td style="text-align:center">datadog エージェント</td>
+      <td style="text-align:center">Envoy によるリクエスト系メトリクスの作成</td>
+      <td style="text-align:center">Envoy によるリクエスト系メトリクスの作成</td>
+      <td style="text-align:center">クライアントパッケージ</td>
+      <td style="text-align:center">Exporter</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">メトリクスの元になるデータポイントを収集<br>プル型またはプッシュ型</td>
+      <td style="text-align:center">cloudwatch エージェント</td>
+      <td style="text-align:center">datadog エージェント</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">prometheus サーバー</td>
+      <td style="text-align:center">OpenTelemetry Collector</td>
+      <td style="text-align:center">Exporter</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">監視バックエンドによるビルトインローカルストレージへの保管</td>
+      <td style="text-align:center">Amazon CloudWatch Metrics</td>
+      <td style="text-align:center">Datadog ダッシュボード</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">prometheus サーバー</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">prometheus サーバー</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">監視フロントエンドによる可視化</td>
+      <td style="text-align:center">Amazon CloudWatch Metrics</td>
+      <td style="text-align:center">Datadog ダッシュボード</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">Grafana ダッシュボード</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">Grafana ダッシュボード</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">分析とレポートの作成</td>
+      <td style="text-align:center">Amazon CloudWatch Contributor Insights</td>
+      <td style="text-align:center">Datadog ダッシュボード</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">アラートの作成</td>
+      <td style="text-align:center">Amazon CloudWatch アラーム</td>
+      <td style="text-align:center">Datadog ダッシュボード</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">prometheus サーバー</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">prometheus サーバー</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [CNCF Landscape](https://landscape.cncf.io/card-mode?category=monitoring&grouping=category&sort=stars)
 > - [モニタリング入門 / Monitoring Feat. VictoriaMetrics - Speaker Deck](https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=6)
@@ -45,19 +146,96 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 #### ▼ 組み合わせの例
 
-|                                                                      |    Amazon CloudWatch ベース    |     Datadog ベース     |                        Istio ベース                        |   Prometheus ベース    |
-| -------------------------------------------------------------------- | :----------------------------: | :--------------------: | :--------------------------------------------------------: | :--------------------: |
-| メトリクスの元になるデータポイントの作成                             | Amazon CloudWatch エージェント |  datadog エージェント  | Exporter<br>+ <br>Envoy によるリクエスト系メトリクスの作成 |        Exporter        |
-| ⬇️                                                                   |               ⬇️               |           ⬇️           |                             ⬇️                             |           ⬇️           |
-| メトリクスの元になるデータポイントを収集<br>(プル型またはプッシュ型) | Amazon CloudWatch エージェント |  datadog エージェント  |                    prometheus サーバー                     |        Exporter        |
-| ⬇️                                                                   |               ⬇️               |           ⬇️           |                             ⬇️                             |           ⬇️           |
-| 監視バックエンドによるビルトインローカルストレージへの保管           |   Amazon CloudWatch Metrics    | Datadog ダッシュボード |                    prometheus サーバー                     |  prometheus サーバー   |
-| ⬇️                                                                   |               ⬇️               |           ⬇️           |                             ⬇️                             |           ⬇️           |
-| 監視フロントエンドによる可視化                                       |   Amazon CloudWatch Metrics    | Datadog ダッシュボード |                   Grafana ダッシュボード                   | Grafana ダッシュボード |
-| ⬇️                                                                   |               ⬇️               |           ⬇️           |                             ⬇️                             |           ⬇️           |
-| 分析とレポートの作成                                                 |   Amazon CloudWatch Metrics    | Datadog ダッシュボード |                             -                              |           -            |
-| ⬇️                                                                   |               ⬇️               |           ⬇️           |                             ⬇️                             |           ⬇️           |
-| アラートの作成                                                       |   Amazon CloudWatch アラーム   | Datadog ダッシュボード |                    prometheus サーバー                     |  prometheus サーバー   |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th style="text-align:center">Amazon CloudWatch ベース</th>
+      <th style="text-align:center">Datadog ベース</th>
+      <th style="text-align:center">Istio ベース</th>
+      <th style="text-align:center">Prometheus ベース</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>メトリクスの元になるデータポイントの作成</td>
+      <td style="text-align:center">Amazon CloudWatch エージェント</td>
+      <td style="text-align:center">datadog エージェント</td>
+      <td style="text-align:center">Exporter<br>+ <br>Envoy によるリクエスト系メトリクスの作成</td>
+      <td style="text-align:center">Exporter</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>メトリクスの元になるデータポイントを収集<br>(プル型またはプッシュ型)</td>
+      <td style="text-align:center">Amazon CloudWatch エージェント</td>
+      <td style="text-align:center">datadog エージェント</td>
+      <td style="text-align:center">prometheus サーバー</td>
+      <td style="text-align:center">Exporter</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>監視バックエンドによるビルトインローカルストレージへの保管</td>
+      <td style="text-align:center">Amazon CloudWatch Metrics</td>
+      <td style="text-align:center">Datadog ダッシュボード</td>
+      <td style="text-align:center">prometheus サーバー</td>
+      <td style="text-align:center">prometheus サーバー</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>監視フロントエンドによる可視化</td>
+      <td style="text-align:center">Amazon CloudWatch Metrics</td>
+      <td style="text-align:center">Datadog ダッシュボード</td>
+      <td style="text-align:center">Grafana ダッシュボード</td>
+      <td style="text-align:center">Grafana ダッシュボード</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>分析とレポートの作成</td>
+      <td style="text-align:center">Amazon CloudWatch Metrics</td>
+      <td style="text-align:center">Datadog ダッシュボード</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>アラートの作成</td>
+      <td style="text-align:center">Amazon CloudWatch アラーム</td>
+      <td style="text-align:center">Datadog ダッシュボード</td>
+      <td style="text-align:center">prometheus サーバー</td>
+      <td style="text-align:center">prometheus サーバー</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -69,20 +247,142 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 いずれもプッシュ型でログを収集し、ログを監視バックエンドに送信できるエージェントが必要である。
 
-|                                                            |         Amazon CloudWatch ベース         |     Elasticsearch ベース     | Fluentd／Fluentbit<br>ベース | Grafana Loki ベース | Istio ベース<br>(連携しない状態) | Istio ベース<br>(ビルトイン OpenTelemetry と連携した状態) |   OpenTelemetry ベース    |
-| ---------------------------------------------------------- | :--------------------------------------: | :--------------------------: | :--------------------------: | :-----------------: | :------------------------------: | :-------------------------------------------------------: | :-----------------------: |
-| 実行ログの作成                                             |                    -                     |              -               |              -               |          -          |                -                 |                             -                             |             -             |
-| アクセスログの作成                                         |                    -                     |              -               |              -               |          -          |  (Envoy によるアクセスログ作成)  |              (Envoy によるアクセスログ作成)               |             -             |
-| ⬇️                                                         |                    ⬇️                    |              ⬇️              |              ⬇️              |         ⬇️          |                ⬇️                |                            ⬇️                             |            ⬇️             |
-| ログの収集<br>(いずれもプッシュ型による送信方式)           |        (cloudwatch エージェント)         |          (Logstach)          |      Fluentd／Fluentbit      |   (Grafana Alloy)   |                -                 |       (Envoy から OpenTelemetry Collector への送信)       | (OpenTelemetry Collector) |
-| ⬇️                                                         |                    ⬇️                    |              ⬇️              |              ⬇️              |         ⬇️          |                ⬇️                |                            ⬇️                             |            ⬇️             |
-| 監視バックエンドによるビルトインローカルストレージへの保管 |         (Amazon CloudWatch Logs)         |              -               |              -               |      (BoltDB)       |                -                 |                             -                             |             -             |
-| ⬇️                                                         |                    ⬇️                    |              ⬇️              |              ⬇️              |         ⬇️          |                ⬇️                |                             -                             |            ⬇️             |
-| 監視フロントエンドによる可視化                             | (Amazon CloudWatch Logs ダッシュボード)  | Elasticsearch ダッシュボード |              -               |          -          |                -                 |                             -                             |             -             |
-| ⬇️                                                         |                    ⬇️                    |              ⬇️              |              ⬇️              |
-| 分析とレポートの作成                                       | (Amazon CloudWatch Contributor Insights) |              -               |              -               |          -          |                -                 |                             -                             |             -             |
-| ⬇️                                                         |                    ⬇️                    |              ⬇️              |              ⬇️              |         ⬇️          |                ⬇️                |                            ⬇️                             |            ⬇️             |
-| アラートの作成                                             |       (Amazon CloudWatch アラーム)       |              -               |              -               |          -          |                -                 |                             -                             |             -             |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th style="text-align:center">Amazon CloudWatch ベース</th>
+      <th style="text-align:center">Elasticsearch ベース</th>
+      <th style="text-align:center">Fluentd／Fluentbit<br>ベース</th>
+      <th style="text-align:center">Grafana Loki ベース</th>
+      <th style="text-align:center">Istio ベース<br>(連携しない状態)</th>
+      <th style="text-align:center">Istio ベース<br>(ビルトイン OpenTelemetry と連携した状態)</th>
+      <th style="text-align:center">OpenTelemetry ベース</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>実行ログの作成</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+    </tr>
+    <tr>
+      <td>アクセスログの作成</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">(Envoy によるアクセスログ作成)</td>
+      <td style="text-align:center">(Envoy によるアクセスログ作成)</td>
+      <td style="text-align:center">-</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>ログの収集<br>(いずれもプッシュ型による送信方式)</td>
+      <td style="text-align:center">(cloudwatch エージェント)</td>
+      <td style="text-align:center">(Logstach)</td>
+      <td style="text-align:center">Fluentd／Fluentbit</td>
+      <td style="text-align:center">(Grafana Alloy)</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">(Envoy から OpenTelemetry Collector への送信)</td>
+      <td style="text-align:center">(OpenTelemetry Collector)</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>監視バックエンドによるビルトインローカルストレージへの保管</td>
+      <td style="text-align:center">(Amazon CloudWatch Logs)</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">(BoltDB)</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>監視フロントエンドによる可視化</td>
+      <td style="text-align:center">(Amazon CloudWatch Logs ダッシュボード)</td>
+      <td style="text-align:center">Elasticsearch ダッシュボード</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>分析とレポートの作成</td>
+      <td style="text-align:center">(Amazon CloudWatch Contributor Insights)</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>アラートの作成</td>
+      <td style="text-align:center">(Amazon CloudWatch アラーム)</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [CNCF Landscape](https://landscape.cncf.io/card-mode?category=logging&grouping=category&sort=stars)
 > - [ログ収集ツールの比較 #Fluentd - Qiita](https://qiita.com/kazookie/items/eef3071a0667cb4d5136)
@@ -91,20 +391,103 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 #### ▼ 組み合わせの例
 
-|                                                            |       Amazon CloudWatch ベース        |     Datadog ベース     |                       Istio ベース                       |   Prometheus ベース    |
-| ---------------------------------------------------------- | :-----------------------------------: | :--------------------: | :------------------------------------------------------: | :--------------------: |
-| 実行ログの作成                                             |                   -                   |           -            |                            -                             |           -            |
-| アクセスログの作成                                         |                   -                   |           -            |               Envoy によるアクセスログ作成               |           -            |
-| ⬇️                                                         |                  ⬇️                   |           ⬇️           |                            ⬇️                            |           ⬇️           |
-| ログの収集<br>(いずれもプッシュ型による送信方式)           |         Fluentd<br>Fluentbit          |  Fluentd<br>Fluentbit  | Fluentd<br>Fluentbit<br>(OpenTelemetry Collector でも可) |     Grafana Alloy      |
-| ⬇️                                                         |                  ⬇️                   |           ⬇️           |                            ⬇️                            |           ⬇️           |
-| 監視バックエンドによるビルトインローカルストレージへの保管 |        Amazon CloudWatch Logs         | Datadog ダッシュボード |                       Grafana Loki                       |      Grafana Loki      |
-| ⬇️                                                         |                  ⬇️                   |           ⬇️           |                            ⬇️                            |           ⬇️           |
-| 監視フロントエンドによる可視化                             | Amazon CloudWatch Logs ダッシュボード | Datadog ダッシュボード |                  Grafana ダッシュボード                  | Grafana ダッシュボード |
-| ⬇️                                                         |                  ⬇️                   |           ⬇️           |                            ⬇️                            |
-| 分析とレポートの作成                                       |   Amazon CloudWatch Logs インサイト   | Datadog ダッシュボード |                  Grafana ダッシュボード                  | Grafana ダッシュボード |
-| ⬇️                                                         |                  ⬇️                   |           ⬇️           |                            ⬇️                            |           ⬇️           |
-| アラートの作成                                             |      Amazon CloudWatch アラーム       | Datadog ダッシュボード |                   prometheus サーバー                    |  prometheus サーバー   |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th style="text-align:center">Amazon CloudWatch ベース</th>
+      <th style="text-align:center">Datadog ベース</th>
+      <th style="text-align:center">Istio ベース</th>
+      <th style="text-align:center">Prometheus ベース</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>実行ログの作成</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+    </tr>
+    <tr>
+      <td>アクセスログの作成</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">Envoy によるアクセスログ作成</td>
+      <td style="text-align:center">-</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>ログの収集<br>(いずれもプッシュ型による送信方式)</td>
+      <td style="text-align:center">Fluentd<br>Fluentbit</td>
+      <td style="text-align:center">Fluentd<br>Fluentbit</td>
+      <td style="text-align:center">Fluentd<br>Fluentbit<br>(OpenTelemetry Collector でも可)</td>
+      <td style="text-align:center">Grafana Alloy</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>監視バックエンドによるビルトインローカルストレージへの保管</td>
+      <td style="text-align:center">Amazon CloudWatch Logs</td>
+      <td style="text-align:center">Datadog ダッシュボード</td>
+      <td style="text-align:center">Grafana Loki</td>
+      <td style="text-align:center">Grafana Loki</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>監視フロントエンドによる可視化</td>
+      <td style="text-align:center">Amazon CloudWatch Logs ダッシュボード</td>
+      <td style="text-align:center">Datadog ダッシュボード</td>
+      <td style="text-align:center">Grafana ダッシュボード</td>
+      <td style="text-align:center">Grafana ダッシュボード</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>分析とレポートの作成</td>
+      <td style="text-align:center">Amazon CloudWatch Logs インサイト</td>
+      <td style="text-align:center">Datadog ダッシュボード</td>
+      <td style="text-align:center">Grafana ダッシュボード</td>
+      <td style="text-align:center">Grafana ダッシュボード</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>アラートの作成</td>
+      <td style="text-align:center">Amazon CloudWatch アラーム</td>
+      <td style="text-align:center">Datadog ダッシュボード</td>
+      <td style="text-align:center">prometheus サーバー</td>
+      <td style="text-align:center">prometheus サーバー</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -116,20 +499,142 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 いずれもプッシュ型で分散トレースを収集し、分散トレースを監視バックエンドに送信できるエージェントが必要である。
 
-|                                                            |          AWS X-Ray           |            Datadog             |  Istio<br>連携しない状態   |       Istio<br>ビルトイン Jaeger と連携した状態       |             Jaeger              |        OpenTelemetry        |      Zipkin      |
-| ---------------------------------------------------------- | :--------------------------: | :----------------------------: | :------------------------: | :---------------------------------------------------: | :-----------------------------: | :-------------------------: | :--------------: |
-| トレース ID とスパン ID の作成                             | x-ray クライアントパッケージ | datadog クライアントパッケージ | Envoy による各種 ID の作成 |              Envoy による各種 ID の作成               |       jaeger エージェント       | otel クライアントパッケージ |        -         |
-| 各種 ID のアプリ間の伝播                                   |              -               |               -                |             -              |                           -                           |                -                |              -              |        -         |
-| ⬇️                                                         |              ⬇️              |               ⬇️               |             ⬇️             |                          ⬇️                           |               ⬇️                |             ⬇️              |        ⬇️        |
-| 分散トレースの収集<br>いずれもプッシュ型による送信方式     |      x-ray エージェント      |      datadog エージェント      |             -              |         Envoy から Jaeger Collector への送信          |        Jaeger Collector         |   OpenTelemetry Collector   | zipkin collector |
-| ⬇️                                                         |              ⬇️              |               ⬇️               |             ⬇️             |                          ⬇️                           |               ⬇️                |             ⬇️              |        ⬇️        |
-| 監視バックエンドによるビルトインローカルストレージへの保管 |   AWS X-Ray ダッシュボード   |     Datadog ダッシュボード     |             -              | Jaeger のビルトインの Apache Cassandra、Elasticsearch | Apache Cassandra、Elasticsearch |              -              |        -         |
-| ⬇️                                                         |              ⬇️              |               ⬇️               |             ⬇️             |                          ⬇️                           |               ⬇️                |             ⬇️              |        ⬇️        |
-| 監視フロントエンドによる可視化                             |   AWS X-Ray ダッシュボード   |     Datadog ダッシュボード     |   Grafana ダッシュボード   |                          ✅                           |               ✅                |              -              |        ✅        |
-| ⬇️                                                         |              ⬇️              |               ⬇️               |
-| 分析とレポートの作成                                       |              -               |               -                |             -              |                           -                           |                -                |              -              |        -         |
-| ⬇️                                                         |              ⬇️              |               ⬇️               |             ⬇️             |                          ⬇️                           |               ⬇️                |             ⬇️              |        ⬇️        |
-| アラートの作成                                             |              -               |               -                |             -              |                           -                           |                -                |              -              |        -         |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th style="text-align:center">AWS X-Ray</th>
+      <th style="text-align:center">Datadog</th>
+      <th style="text-align:center">Istio<br>連携しない状態</th>
+      <th style="text-align:center">Istio<br>ビルトイン Jaeger と連携した状態</th>
+      <th style="text-align:center">Jaeger</th>
+      <th style="text-align:center">OpenTelemetry</th>
+      <th style="text-align:center">Zipkin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>トレース ID とスパン ID の作成</td>
+      <td style="text-align:center">x-ray クライアントパッケージ</td>
+      <td style="text-align:center">datadog クライアントパッケージ</td>
+      <td style="text-align:center">Envoy による各種 ID の作成</td>
+      <td style="text-align:center">Envoy による各種 ID の作成</td>
+      <td style="text-align:center">jaeger エージェント</td>
+      <td style="text-align:center">otel クライアントパッケージ</td>
+      <td style="text-align:center">-</td>
+    </tr>
+    <tr>
+      <td>各種 ID のアプリ間の伝播</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>分散トレースの収集<br>いずれもプッシュ型による送信方式</td>
+      <td style="text-align:center">x-ray エージェント</td>
+      <td style="text-align:center">datadog エージェント</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">Envoy から Jaeger Collector への送信</td>
+      <td style="text-align:center">Jaeger Collector</td>
+      <td style="text-align:center">OpenTelemetry Collector</td>
+      <td style="text-align:center">zipkin collector</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>監視バックエンドによるビルトインローカルストレージへの保管</td>
+      <td style="text-align:center">AWS X-Ray ダッシュボード</td>
+      <td style="text-align:center">Datadog ダッシュボード</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">Jaeger のビルトインの Apache Cassandra、Elasticsearch</td>
+      <td style="text-align:center">Apache Cassandra、Elasticsearch</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>監視フロントエンドによる可視化</td>
+      <td style="text-align:center">AWS X-Ray ダッシュボード</td>
+      <td style="text-align:center">Datadog ダッシュボード</td>
+      <td style="text-align:center">Grafana ダッシュボード</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>分析とレポートの作成</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>アラートの作成</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [CNCF Landscape](https://landscape.cncf.io/card-mode?category=tracing&grouping=category&sort=stars)
 > - https://docs.openshift.com/container-platform/4.7/distr_tracing/distr_tracing_install/distr-tracing-deploying-otel.html#distr-tracing-config-otel-collector_deploying-distr-tracing-data-collection
@@ -138,20 +643,90 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 #### ▼ 組み合わせの例
 
-|                                                            |     Datadog ベース     |                     Istio ベース                      |       OpenTelemetry ベース       |
-| ---------------------------------------------------------- | :--------------------: | :---------------------------------------------------: | :------------------------------: |
-| トレース ID とスパン ID の作成                             | クライアントパッケージ |              Envoy による各種 ID の作成               |      クライアントパッケージ      |
-| 各種 ID のアプリ間の伝播                                   |           -            |                           -                           |                -                 |
-| ⬇️                                                         |           ⬇️           |                          ⬇️                           |                ⬇️                |
-| 分散トレースの収集<br>(いずれもプッシュ型による送信方式)   |  datadog エージェント  |         Envoy から Jaeger Collector への送信          | OpenTelemetry Collector への送信 |
-| ⬇️                                                         |           ⬇️           |                          ⬇️                           |                ⬇️                |
-| 監視バックエンドによるビルトインローカルストレージへの保管 | Datadog ダッシュボード | Jaeger のビルトインの Apache Cassandra、Elasticsearch |                -                 |
-| ⬇️                                                         |           ⬇️           |                          ⬇️                           |                ⬇️                |
-| 監視フロントエンドによる可視化                             | Datadog ダッシュボード |                        Jaeger                         |          Grafana Tempo           |
-| ⬇️                                                         |           ⬇️           |                          ⬇️                           |                ⬇️                |
-| 分析とレポートの作成                                       | Datadog ダッシュボード |                        Jaeger                         |          Grafana Tempo           |
-| ⬇️                                                         |           ⬇️           |                          ⬇️                           |                ⬇️                |
-| アラートの作成                                             |           -            |                           -                           |                -                 |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th style="text-align:center">Datadog ベース</th>
+      <th style="text-align:center">Istio ベース</th>
+      <th style="text-align:center">OpenTelemetry ベース</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>トレース ID とスパン ID の作成</td>
+      <td style="text-align:center">クライアントパッケージ</td>
+      <td style="text-align:center">Envoy による各種 ID の作成</td>
+      <td style="text-align:center">クライアントパッケージ</td>
+    </tr>
+    <tr>
+      <td>各種 ID のアプリ間の伝播</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>分散トレースの収集<br>(いずれもプッシュ型による送信方式)</td>
+      <td style="text-align:center">datadog エージェント</td>
+      <td style="text-align:center">Envoy から Jaeger Collector への送信</td>
+      <td style="text-align:center">OpenTelemetry Collector への送信</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>監視バックエンドによるビルトインローカルストレージへの保管</td>
+      <td style="text-align:center">Datadog ダッシュボード</td>
+      <td style="text-align:center">Jaeger のビルトインの Apache Cassandra、Elasticsearch</td>
+      <td style="text-align:center">-</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>監視フロントエンドによる可視化</td>
+      <td style="text-align:center">Datadog ダッシュボード</td>
+      <td style="text-align:center">Jaeger</td>
+      <td style="text-align:center">Grafana Tempo</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>分析とレポートの作成</td>
+      <td style="text-align:center">Datadog ダッシュボード</td>
+      <td style="text-align:center">Jaeger</td>
+      <td style="text-align:center">Grafana Tempo</td>
+    </tr>
+    <tr>
+      <td>⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+      <td style="text-align:center">⬇️</td>
+    </tr>
+    <tr>
+      <td>アラートの作成</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">-</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -163,10 +738,30 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 各種ツールで、テレメトリーを保管しておく場所 (データソース) に制限がある。
 
-| アクション                         |                  Amazon CloudWatch                  |          Datadog          |              Grafana               |
-| ---------------------------------- | :-------------------------------------------------: | :-----------------------: | :--------------------------------: |
-| ログと分散トレース間の紐付け       |      (ログは Amazon CloudWatch Logs に要保管)       | (ログは Datadog に要保管) | (ログの保管ツールの種類に制限あり) |
-| メトリクスと分散トレース間の紐付け | (一部の言語の x-ray クライアントパッケージのみ対応) | (ログは Datadog に要保管) | (ログの保管ツールの種類に制限あり) |
+<table>
+  <thead>
+    <tr>
+      <th>アクション</th>
+      <th style="text-align:center">Amazon CloudWatch</th>
+      <th style="text-align:center">Datadog</th>
+      <th style="text-align:center">Grafana</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ログと分散トレース間の紐付け</td>
+      <td style="text-align:center">(ログは Amazon CloudWatch Logs に要保管)</td>
+      <td style="text-align:center">(ログは Datadog に要保管)</td>
+      <td style="text-align:center">(ログの保管ツールの種類に制限あり)</td>
+    </tr>
+    <tr>
+      <td>メトリクスと分散トレース間の紐付け</td>
+      <td style="text-align:center">(一部の言語の x-ray クライアントパッケージのみ対応)</td>
+      <td style="text-align:center">(ログは Datadog に要保管)</td>
+      <td style="text-align:center">(ログの保管ツールの種類に制限あり)</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [マイクロサービスの障害で胃を痛めないための「シン・オブザーバビリティ基盤」をOpenTelemetryで作る：Cloud Nativeチートシート（25） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#03)
 > - [マイクロサービスの障害で胃を痛めないための「シン・オブザーバビリティ基盤」をOpenTelemetryで作る：Cloud Nativeチートシート（25） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#04)

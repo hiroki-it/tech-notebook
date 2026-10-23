@@ -56,11 +56,28 @@ description: インシデント管理＠監視の知見を記録しています�
 
 #### ▼ 解決フェーズの種類
 
-| 解決フェーズ | 説明                                                         |
-| ------------ | ------------------------------------------------------------ |
-| 発火         | アラートがインシデントとして見なされ、タスクが作成された。   |
-| 認知         | インシデントのタスクに対応中であるが、まだ解決できていない。 |
-| 解決済み     | インシデントのタスクを解決した。                             |
+<table>
+  <thead>
+    <tr>
+      <th>解決フェーズ</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>発火</td>
+      <td>アラートがインシデントとして見なされ、タスクが作成された。</td>
+    </tr>
+    <tr>
+      <td>認知</td>
+      <td>インシデントのタスクに対応中であるが、まだ解決できていない。</td>
+    </tr>
+    <tr>
+      <td>解決済み</td>
+      <td>インシデントのタスクを解決した。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -72,12 +89,32 @@ description: インシデント管理＠監視の知見を記録しています�
 
 そのため、インシデントの優先度付けが必要である。
 
-| エラーイベントの重要度レベル | 優先度                              |
-| ---------------------------- | ----------------------------------- |
-| high                         | 即時に解決する必要がある。          |
-| medium                       | `24` 時間以内に解決する必要がある。 |
-| low                          | いつかは解決する必要がある。        |
-| notification                 | 解決する必要はない。                |
+<table>
+  <thead>
+    <tr>
+      <th>エラーイベントの重要度レベル</th>
+      <th>優先度</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>high</td>
+      <td>即時に解決する必要がある。</td>
+    </tr>
+    <tr>
+      <td>medium</td>
+      <td><code>24</code> 時間以内に解決する必要がある。</td>
+    </tr>
+    <tr>
+      <td>low</td>
+      <td>いつかは解決する必要がある。</td>
+    </tr>
+    <tr>
+      <td>notification</td>
+      <td>解決する必要はない。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Alerting Principles - PagerDuty Incident Response Documentation](https://response.pagerduty.com/oncall/alerting_principles/)
 
@@ -285,12 +322,37 @@ fields @timestamp, @message, @logStream
 
 ![mtxx](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mtxx.png)
 
-| メトリクス名                    |                                                                                                                                                                               | 補足                                                                  |
-| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| MTTF：Mean Time To Failure      | 稼働開始地点から障害開始地点までの平均稼働時間のこと。どのくらいの間、正常稼働していたのかがわかる。                                                                          | ・https://e-words.jp/w/MTTF.html                                      |
-| MTBF：Mean Time Between Failure | 特定の障害と次の障害の障害開始地点までの平均稼働時間のこと。正常稼働と異常稼働を合わせた全体の稼働時間がわかる。                                                              | ・https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
-| MTTD：Mean Time To Diagnose     | 障害の障害開始地点から修復開始地点までの平均障害時間のこと。異常を検出するまでにどのくらいの時間がかかったのかがわかる。                                                      |                                                                       |
-| MTTR：Mean Time To Repair       | 障害の回復開始地点終了から終了地点間までの平均障害時間のこと。どのくらいの間、回復せずに異常稼働していたのかがわかる。可用性テスト時の目標値の RTO とは異なることに注意する。 | ・https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
+<table>
+  <thead>
+    <tr>
+      <th>メトリクス名</th>
+      <th></th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MTTF：Mean Time To Failure</td>
+      <td>稼働開始地点から障害開始地点までの平均稼働時間のこと。どのくらいの間、正常稼働していたのかがわかる。</td>
+      <td>・<a href="https://e-words.jp/w/MTTF.html">https://e-words.jp/w/MTTF.html</a></td>
+    </tr>
+    <tr>
+      <td>MTBF：Mean Time Between Failure</td>
+      <td>特定の障害と次の障害の障害開始地点までの平均稼働時間のこと。正常稼働と異常稼働を合わせた全体の稼働時間がわかる。</td>
+      <td>・<a href="https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/">https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/</a></td>
+    </tr>
+    <tr>
+      <td>MTTD：Mean Time To Diagnose</td>
+      <td>障害の障害開始地点から修復開始地点までの平均障害時間のこと。異常を検出するまでにどのくらいの時間がかかったのかがわかる。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>MTTR：Mean Time To Repair</td>
+      <td>障害の回復開始地点終了から終了地点間までの平均障害時間のこと。どのくらいの間、回復せずに異常稼働していたのかがわかる。可用性テスト時の目標値の RTO とは異なることに注意する。</td>
+      <td>・<a href="https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/">https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/</a></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [MTTR、MTBF、MTTD、MTTFの違いは何ですか？ - LogicMonitor](https://www.logicmonitor.jp/blog/whats-the-difference-between-mttr-mttd-mttf-and-mtbf)
 > - https://www.researchgate.net/figure/A-schematic-diagram-of-MTTF-MTTR-and-MTBF_fig5_334205633
@@ -340,11 +402,32 @@ fields @timestamp, @message, @logStream
 
 ![mttx-metrics](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mttx-metrics.png)
 
-| メトリクス名 | 説明                                                                                                                |     |
-| ------------ | ------------------------------------------------------------------------------------------------------------------- | --- |
-| MTTD         | インシデントが起こってから、これがオンコール担当にアラートされるまで。                                              |     |
-| MTTE         | インシデントがオンコール担当にアラートされ、オンコール担当本人/アサインされたエンジニアがタスクとして着手するまで。 |     |
-| MTTF         | オンコール担当がタスクに着手してから、これを完了するまで。                                                          |     |
+<table>
+  <thead>
+    <tr>
+      <th>メトリクス名</th>
+      <th>説明</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MTTD</td>
+      <td>インシデントが起こってから、これがオンコール担当にアラートされるまで。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>MTTE</td>
+      <td>インシデントがオンコール担当にアラートされ、オンコール担当本人/アサインされたエンジニアがタスクとして着手するまで。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>MTTF</td>
+      <td>オンコール担当がタスクに着手してから、これを完了するまで。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.amazon.co.jp/dp/4873119618
 > - https://medium.com/@yoannutc/setting-objectives-for-incident-response-634fff2d8262
@@ -452,11 +535,28 @@ PagerDuty 社が公開しているテンプレートがある。
 
 #### ▼ その他の会社事例
 
-| サービス | リンク                                                                                                  |
-| -------- | ------------------------------------------------------------------------------------------------------- |
-| AWS      | https://aws.amazon.com/jp/message/5467D2/                                                               |
-| Heroku   | https://status.heroku.com/incidents/151                                                                 |
-| Twilio   | https://www.twilio.com/blog/2013/07/billing-incident-post-mortem-breakdown-analysis-and-root-cause.html |
+<table>
+  <thead>
+    <tr>
+      <th>サービス</th>
+      <th>リンク</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AWS</td>
+      <td><a href="https://aws.amazon.com/jp/message/5467D2/">https://aws.amazon.com/jp/message/5467D2/</a></td>
+    </tr>
+    <tr>
+      <td>Heroku</td>
+      <td><a href="https://status.heroku.com/incidents/151">https://status.heroku.com/incidents/151</a></td>
+    </tr>
+    <tr>
+      <td>Twilio</td>
+      <td><a href="https://www.twilio.com/blog/2013/07/billing-incident-post-mortem-breakdown-analysis-and-root-cause.html">https://www.twilio.com/blog/2013/07/billing-incident-post-mortem-breakdown-analysis-and-root-cause.html</a></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Effective Postmortems - PagerDuty Incident Response Documentation](https://response.pagerduty.com/after/effective_post_mortems/#examples)
 

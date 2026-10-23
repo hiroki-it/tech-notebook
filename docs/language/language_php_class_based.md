@@ -475,15 +475,60 @@ class Mammal implements Animal
 
 ### 通常クラス、抽象クラス、インターフェースの違い
 
-|                               | 通常クラス       | 抽象クラス                   | インターフェース                                                                                           |
-| ----------------------------- | :--------------- | :--------------------------- | :--------------------------------------------------------------------------------------------------------- |
-| **役割**                      | 専用処理の部品化 | 通常クラスの共通処理の部品化 | ・通常クラスのクラス型を定義する。<br>・実装クラスが正常に動作するために最低限必要な関数の実装を強制する。 |
-| **子クラスでの継承先数**      | 単一継承         | 単一継承                     | 単一継承｜多重継承                                                                                         |
-| **メンバ変数のコール**        | 自身と継承先     | 継承先のみ                   | 実装先のみ                                                                                                 |
-| **定数の定義**                | ⭕️               | ⭕️                           | ⭕️                                                                                                         |
-| **抽象関数の定義**            | ✕                | ⭕️                           | ⭕️ (abstract は省略)                                                                                       |
-| **具象関数の定義**            | ⭕️               | ⭕️                           | ✕                                                                                                          |
-| **`construct()` 関数 の定義** | ⭕️               | ⭕️                           | ✕                                                                                                          |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th style="text-align:left">通常クラス</th>
+      <th style="text-align:left">抽象クラス</th>
+      <th style="text-align:left">インターフェース</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>役割</strong></td>
+      <td style="text-align:left">専用処理の部品化</td>
+      <td style="text-align:left">通常クラスの共通処理の部品化</td>
+      <td style="text-align:left">・通常クラスのクラス型を定義する。<br>・実装クラスが正常に動作するために最低限必要な関数の実装を強制する。</td>
+    </tr>
+    <tr>
+      <td><strong>子クラスでの継承先数</strong></td>
+      <td style="text-align:left">単一継承</td>
+      <td style="text-align:left">単一継承</td>
+      <td style="text-align:left">単一継承｜多重継承</td>
+    </tr>
+    <tr>
+      <td><strong>メンバ変数のコール</strong></td>
+      <td style="text-align:left">自身と継承先</td>
+      <td style="text-align:left">継承先のみ</td>
+      <td style="text-align:left">実装先のみ</td>
+    </tr>
+    <tr>
+      <td><strong>定数の定義</strong></td>
+      <td style="text-align:left">⭕️</td>
+      <td style="text-align:left">⭕️</td>
+      <td style="text-align:left">⭕️</td>
+    </tr>
+    <tr>
+      <td><strong>抽象関数の定義</strong></td>
+      <td style="text-align:left">✕</td>
+      <td style="text-align:left">⭕️</td>
+      <td style="text-align:left">⭕️ (abstract は省略)</td>
+    </tr>
+    <tr>
+      <td><strong>具象関数の定義</strong></td>
+      <td style="text-align:left">⭕️</td>
+      <td style="text-align:left">⭕️</td>
+      <td style="text-align:left">✕</td>
+    </tr>
+    <tr>
+      <td><strong><code>construct()</code> 関数 の定義</strong></td>
+      <td style="text-align:left">⭕️</td>
+      <td style="text-align:left">⭕️</td>
+      <td style="text-align:left">✕</td>
+    </tr>
+  </tbody>
+</table>
 
 **＊例＊**
 

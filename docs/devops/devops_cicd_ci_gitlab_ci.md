@@ -168,11 +168,28 @@ foo_job:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 ```
 
-| 値                    | 説明                             |
-| --------------------- | -------------------------------- |
-| `merge_request_event` | マージリクエストの作成時を表す。 |
-| `push`                | プッシュ時を表す。               |
-| `web`                 | 画面からの手動実行時を表す。     |
+<table>
+  <thead>
+    <tr>
+      <th>値</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>merge_request_event</code></td>
+      <td>マージリクエストの作成時を表す。</td>
+    </tr>
+    <tr>
+      <td><code>push</code></td>
+      <td>プッシュ時を表す。</td>
+    </tr>
+    <tr>
+      <td><code>web</code></td>
+      <td>画面からの手動実行時を表す。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://gitlab-docs.creationline.com/ee/ci/yaml/#rulesif
 > - https://docs.gitlab.com/ci/variables/predefined_variables.html

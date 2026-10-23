@@ -31,13 +31,42 @@ description: 関数型の知見を記録しています。
 
 ### 一覧
 
-| 観点                             | プリミティブ型を渡すべき場合 | オブジェクトを渡すべき場合 |
-| -------------------------------- | :--------------------------: | :------------------------: |
-| 純粋性を保ちたい                 |              ✅              |                            |
-| 汎用性・再利用性を高めたい       |              ✅              |                            |
-| 関数の責務を絞りたい             |              ✅              |                            |
-| ドメインロジックが値単体に基づく |              ✅              |                            |
-| 複数プロパティ間の相互作用がある |                              |             ✅             |
+<table>
+  <thead>
+    <tr>
+      <th>観点</th>
+      <th style="text-align:center">プリミティブ型を渡すべき場合</th>
+      <th style="text-align:center">オブジェクトを渡すべき場合</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>純粋性を保ちたい</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>汎用性・再利用性を高めたい</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>関数の責務を絞りたい</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>ドメインロジックが値単体に基づく</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>複数プロパティ間の相互作用がある</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

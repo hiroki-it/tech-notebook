@@ -19,33 +19,142 @@ description: アクション＠チャートの知見を記録しています。
 
 デプロイツール内 (例：ArgoCD、Flux) で Helm を使用する場合、そのツールの実行環境によってバージョン値が変わる。
 
-| 変数名                          | デフォルト値             | 値                                                                                                                                                                                                                                                                                                                                     |
-| ------------------------------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `.Release.Name`                 |                          | リリース名                                                                                                                                                                                                                                                                                                                             |
-| `.Release.Time`                 |                          | リリースした時間                                                                                                                                                                                                                                                                                                                       |
-| `.Release.Namespace`            |                          | リリースされる名前空間                                                                                                                                                                                                                                                                                                                 |
-| `.Release.Service`              | `v3` の場合 `Helm`、`v2` | リリースに使用したツール名                                                                                                                                                                                                                                                                                                             |
-| `.Release.Revision`             |                          | リリースのリビジョン                                                                                                                                                                                                                                                                                                                   |
-| `.Release.IsUpgrade`            |                          | upgrade か rollback 操作の場合、true がセットされる                                                                                                                                                                                                                                                                                    |
-| `.Release.IsInstall`            |                          | install 操作の場合、true がセットされる                                                                                                                                                                                                                                                                                                |
-| `.Values`                       |                          | values ファイルもしくはユーザーから-f で指定されたファイルからテンプレートに渡される値。変数名は任意で定義。「Values.変数キー名」で変数の値を取得可能                                                                                                                                                                                  |
-| `.Chart.ApiVersion`             |                          | Chart.yaml に記載されるチャート API のバージョン                                                                                                                                                                                                                                                                                       |
-| `.Chart.Name`                   |                          | Chart.yaml に記載されるチャートの名前                                                                                                                                                                                                                                                                                                  |
-| `.Chart.Version`                |                          | Chart.yaml に記載されるチャート自体のバージョン                                                                                                                                                                                                                                                                                        |
-| `.Chart.KubeVersion`            |                          | Chart.yaml に記載される互換性のある Kubernetes バージョン                                                                                                                                                                                                                                                                              |
-| `.Chart.Description`            |                          | Chart.yaml に記載されるチャートの概要一文                                                                                                                                                                                                                                                                                              |
-| `.Chart.Home`                   |                          | Chart.yaml に記載されるサイトの URL                                                                                                                                                                                                                                                                                                    |
-| `.Chart.Sources`                |                          | Chart.yaml に記載されるソースコードの URL                                                                                                                                                                                                                                                                                              |
-| `.Chart.Maintainers`            |                          | Chart.yaml に記載されるチャートのメンテナーの名前と Email (配列)                                                                                                                                                                                                                                                                       |
-| `.Chart.engine`                 |                          | Chart.yaml に記載されるテンプレートエンジン                                                                                                                                                                                                                                                                                            |
-| `.Chart.Icon`                   |                          | Chart.yaml に記載されるアイコンの URL                                                                                                                                                                                                                                                                                                  |
-| `.Chart.AppVersion`             |                          | Chart.yaml に記載されるコンテナアプリケーションのバージョン                                                                                                                                                                                                                                                                            |
-| `.Chart.Deprecated`             |                          | Chart.yaml に記載されるチャートの推奨／非推奨 (boolean 値)                                                                                                                                                                                                                                                                             |
-| `.Capabilities.APIVersions`     |                          | Kubernetes リソースのバージョン                                                                                                                                                                                                                                                                                                        |
-| `.Capabilities.APIVersions.Has` |                          | その kube-apiserver のバージョンで、その API バージョンを使用可能かどうか。例えば、EndpointSlice は特定のバージョン以降でしか使用できない。<br>- https://github.com/prometheus-community/helm-charts/blob/0e2aa2e9c47e3eb5fadbb0186808bc5996001afe/charts/kube-prometheus-stack/templates/prometheus-operator/clusterrole.yaml#L82-L91 |
-| `.Capabilities.KubeVersion`     |                          | コンテキストの Kubernetes バージョン                                                                                                                                                                                                                                                                                                   |
-| `.Template.Name`                |                          | カレントパスの相対ファイルパス                                                                                                                                                                                                                                                                                                         |
-| `.Template.BasePath`            |                          | チャートの templates ディレクトリの相対パス                                                                                                                                                                                                                                                                                            |
+<table>
+  <thead>
+    <tr>
+      <th>変数名</th>
+      <th>デフォルト値</th>
+      <th>値</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>.Release.Name</code></td>
+      <td></td>
+      <td>リリース名</td>
+    </tr>
+    <tr>
+      <td><code>.Release.Time</code></td>
+      <td></td>
+      <td>リリースした時間</td>
+    </tr>
+    <tr>
+      <td><code>.Release.Namespace</code></td>
+      <td></td>
+      <td>リリースされる名前空間</td>
+    </tr>
+    <tr>
+      <td><code>.Release.Service</code></td>
+      <td><code>v3</code> の場合 <code>Helm</code>、<code>v2</code></td>
+      <td>リリースに使用したツール名</td>
+    </tr>
+    <tr>
+      <td><code>.Release.Revision</code></td>
+      <td></td>
+      <td>リリースのリビジョン</td>
+    </tr>
+    <tr>
+      <td><code>.Release.IsUpgrade</code></td>
+      <td></td>
+      <td>upgrade か rollback 操作の場合、true がセットされる</td>
+    </tr>
+    <tr>
+      <td><code>.Release.IsInstall</code></td>
+      <td></td>
+      <td>install 操作の場合、true がセットされる</td>
+    </tr>
+    <tr>
+      <td><code>.Values</code></td>
+      <td></td>
+      <td>values ファイルもしくはユーザーから-f で指定されたファイルからテンプレートに渡される値。変数名は任意で定義。「Values.変数キー名」で変数の値を取得可能</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.ApiVersion</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるチャート API のバージョン</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.Name</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるチャートの名前</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.Version</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるチャート自体のバージョン</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.KubeVersion</code></td>
+      <td></td>
+      <td>Chart.yaml に記載される互換性のある Kubernetes バージョン</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.Description</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるチャートの概要一文</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.Home</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるサイトの URL</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.Sources</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるソースコードの URL</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.Maintainers</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるチャートのメンテナーの名前と Email (配列)</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.engine</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるテンプレートエンジン</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.Icon</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるアイコンの URL</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.AppVersion</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるコンテナアプリケーションのバージョン</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.Deprecated</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるチャートの推奨／非推奨 (boolean 値)</td>
+    </tr>
+    <tr>
+      <td><code>.Capabilities.APIVersions</code></td>
+      <td></td>
+      <td>Kubernetes リソースのバージョン</td>
+    </tr>
+    <tr>
+      <td><code>.Capabilities.APIVersions.Has</code></td>
+      <td></td>
+      <td>その kube-apiserver のバージョンで、その API バージョンを使用可能かどうか。例えば、EndpointSlice は特定のバージョン以降でしか使用できない。<br>- <a href="https://github.com/prometheus-community/helm-charts/blob/0e2aa2e9c47e3eb5fadbb0186808bc5996001afe/charts/kube-prometheus-stack/templates/prometheus-operator/clusterrole.yaml#L82-L91">https://github.com/prometheus-community/helm-charts/blob/0e2aa2e9c47e3eb5fadbb0186808bc5996001afe/charts/kube-prometheus-stack/templates/prometheus-operator/clusterrole.yaml#L82-L91</a></td>
+    </tr>
+    <tr>
+      <td><code>.Capabilities.KubeVersion</code></td>
+      <td></td>
+      <td>コンテキストの Kubernetes バージョン</td>
+    </tr>
+    <tr>
+      <td><code>.Template.Name</code></td>
+      <td></td>
+      <td>カレントパスの相対ファイルパス</td>
+    </tr>
+    <tr>
+      <td><code>.Template.BasePath</code></td>
+      <td></td>
+      <td>チャートの templates ディレクトリの相対パス</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Built-in Objects \| Helm](https://helm.sh/docs/chart_template_guide/builtin_objects/)
 > - [忘れたとき読んだらキュンです！――Helmチャートの作成方法とリポジトリ公開方法：Cloud Nativeチートシート（4） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042)

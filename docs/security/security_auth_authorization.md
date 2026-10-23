@@ -44,12 +44,37 @@ description: 認可＠認証／認可の知見を記録しています。
 
 管理者ロールとそれ以外の認可ロジックを一緒にすると複雑になるため、管理者エンドポイントを別に定義しつつ、管理者用の認可ロジックは切り分けることが適切である。
 
-|        | テナント横断的な管理者ロール                                                            | 各テナントのロール              |
-| ------ | --------------------------------------------------------------------------------------- | ------------------------------- |
-| GET    | ・`/admin/organizations/{orgId}/orders`<br>・`/admin/organizations/{orgId}/orders/{id}` | ・`/orders`<br>・`/orders/{id}` |
-| POST   | `/admin/organizations/{orgId}/orders`                                                   | `/orders`                       |
-| PUT    | `/admin/organizations/{orgId}/orders/{id}`                                              | `/orders/{id}`                  |
-| DELETE | `/admin/organizations/{orgId}/orders/{id}`                                              | `/orders/{id}`                  |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>テナント横断的な管理者ロール</th>
+      <th>各テナントのロール</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GET</td>
+      <td>・<code>/admin/organizations/{orgId}/orders</code><br>・<code>/admin/organizations/{orgId}/orders/{id}</code></td>
+      <td>・<code>/orders</code><br>・<code>/orders/{id}</code></td>
+    </tr>
+    <tr>
+      <td>POST</td>
+      <td><code>/admin/organizations/{orgId}/orders</code></td>
+      <td><code>/orders</code></td>
+    </tr>
+    <tr>
+      <td>PUT</td>
+      <td><code>/admin/organizations/{orgId}/orders/{id}</code></td>
+      <td><code>/orders/{id}</code></td>
+    </tr>
+    <tr>
+      <td>DELETE</td>
+      <td><code>/admin/organizations/{orgId}/orders/{id}</code></td>
+      <td><code>/orders/{id}</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

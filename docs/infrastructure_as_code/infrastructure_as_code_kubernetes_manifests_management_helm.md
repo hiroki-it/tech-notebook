@@ -95,12 +95,32 @@ Kubernetes をアップグレードした場合に、Helm もアップグレー�
 
 チャートレジストリ内にリポジトリを配置する。
 
-| レジストリ              | 補足                                               |
-| ----------------------- | -------------------------------------------------- |
-| ArtifactHub (Helm 公式) | ・https://helm.sh/docs/topics/chart_repository/    |
-| GitHub、GitHub Pages    | ・https://zenn.dev/mikutas/articles/2ab146fa1ea35b |
-| AWS リソース (ECR、S3)  |                                                    |
-| Google Cloud リソース   |                                                    |
+<table>
+  <thead>
+    <tr>
+      <th>レジストリ</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ArtifactHub (Helm 公式)</td>
+      <td>・<a href="https://helm.sh/docs/topics/chart_repository/">https://helm.sh/docs/topics/chart_repository/</a></td>
+    </tr>
+    <tr>
+      <td>GitHub、GitHub Pages</td>
+      <td>・<a href="https://zenn.dev/mikutas/articles/2ab146fa1ea35b">https://zenn.dev/mikutas/articles/2ab146fa1ea35b</a></td>
+    </tr>
+    <tr>
+      <td>AWS リソース (ECR、S3)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Google Cloud リソース</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -114,10 +134,24 @@ Kubernetes をアップグレードした場合に、Helm もアップグレー�
 
 リポジトリにリモートからインストールできないチャートが配置されている場合、そのリポジトリはチャートリポジトリではなく、マニフェストリポジトリである。
 
-|      | URL                                                               |
-| ---- | ----------------------------------------------------------------- |
-| 形式 | `https://<チャートレジストリのドメイン名>/<チャートリポジトリ名>` |
-| 例   | `https://example.com/foo-chart`                                   |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>形式</td>
+      <td><code>https://&lt;チャートレジストリのドメイン名&gt;/&lt;チャートリポジトリ名&gt;</code></td>
+    </tr>
+    <tr>
+      <td>例</td>
+      <td><code>https://example.com/foo-chart</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [The Chart Repository Guide \| Helm](https://helm.sh/docs/topics/chart_repository/#create-a-chart-repository)
 
@@ -129,10 +163,24 @@ Kubernetes をアップグレードした場合に、Helm もアップグレー�
 
 チャートのプッシュやプル時に、OCI レジストリ内のリポジトリを指定する場合は、OCI プロトコルを使用する。
 
-|      | URL                                                   |
-| ---- | ----------------------------------------------------- |
-| 形式 | `oci://<チャートレジストリ名>/<チャートリポジトリ名>` |
-| 例   | `oci://foo-registry/foo-repository`                   |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>形式</td>
+      <td><code>oci://&lt;チャートレジストリ名&gt;/&lt;チャートリポジトリ名&gt;</code></td>
+    </tr>
+    <tr>
+      <td>例</td>
+      <td><code>oci://foo-registry/foo-repository</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

@@ -123,10 +123,33 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 物理 Web サーバーであっても、Web サーバーであっても、SSH 公開鍵認証によるリモート通信/操作の仕組みは同じである。
 
-| 要素           | Apache MINA/SSHD の場合 | OpenSSH の場合 | Putty の場合 | TeraTerm の場合 |
-| -------------- | ----------------------- | -------------- | ------------ | --------------- |
-| 送信元マシン内 | -                       | OpenSSH        | Putty        | TeraTerm        |
-| 宛先マシン内   | Apache MINA/SSHD        | OpenSSH        | -            | -               |
+<table>
+  <thead>
+    <tr>
+      <th>要素</th>
+      <th>Apache MINA/SSHD の場合</th>
+      <th>OpenSSH の場合</th>
+      <th>Putty の場合</th>
+      <th>TeraTerm の場合</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>送信元マシン内</td>
+      <td>-</td>
+      <td>OpenSSH</td>
+      <td>Putty</td>
+      <td>TeraTerm</td>
+    </tr>
+    <tr>
+      <td>宛先マシン内</td>
+      <td>Apache MINA/SSHD</td>
+      <td>OpenSSH</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ SSH ポートフォワーディング (SSH ポートフォワーディング)
 
@@ -179,10 +202,27 @@ SSH を経由して、ファイルフォワーディングを実行する。
 
 SSH と FTP を組み合わせたプロトコルではなく、SSH の能力をより拡張したものである。
 
-| 要素           | Filezilla の場合 | WinSCP の場合 |
-| -------------- | ---------------- | ------------- |
-| 送信元マシン内 | Filezilla        | WinSCP        |
-| 宛先マシン内   | -                | -             |
+<table>
+  <thead>
+    <tr>
+      <th>要素</th>
+      <th>Filezilla の場合</th>
+      <th>WinSCP の場合</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>送信元マシン内</td>
+      <td>Filezilla</td>
+      <td>WinSCP</td>
+    </tr>
+    <tr>
+      <td>宛先マシン内</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -198,11 +238,40 @@ SSH と FTP を組み合わせたプロトコルではなく、SSH の能力を�
 
 その場合、ローカルマシンのコピーを一度リモート先にあるメモ帳などにペーストし、これをあらためてコピーアンドペーストするとよい。
 
-| 役割               | 概説                                                                                    | Chrome リモートデスクトップ |            Guacamole            | AWS Workspaces Applications |
-| ------------------ | --------------------------------------------------------------------------------------- | :-------------------------: | :-----------------------------: | :-------------------------: |
-| 送信元マシン       | ゲートウェイマシンのクライアントである。                                                |             ✅              |                                 |                             |
-| ゲートウェイマシン | 宛先マシンで稼働する Web アプリケーションのクライアントであり、ブラウザが稼働している。 |                             | ✅ (Guacamole サーバー + guard) |             ✅              |
-| 宛先マシン         | 異なるネットワーク内で Web アプリが稼働している。                                       |                             |                                 |                             |
+<table>
+  <thead>
+    <tr>
+      <th>役割</th>
+      <th>概説</th>
+      <th style="text-align:center">Chrome リモートデスクトップ</th>
+      <th style="text-align:center">Guacamole</th>
+      <th style="text-align:center">AWS Workspaces Applications</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>送信元マシン</td>
+      <td>ゲートウェイマシンのクライアントである。</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>ゲートウェイマシン</td>
+      <td>宛先マシンで稼働する Web アプリケーションのクライアントであり、ブラウザが稼働している。</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅ (Guacamole サーバー + guard)</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>宛先マシン</td>
+      <td>異なるネットワーク内で Web アプリが稼働している。</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [【リモートデスクトップ】の仕組みとセキュリティ強化～インターネット接続と暗号化～ \| SEの道標](https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc1)
 > - https://ja.helpleft.com/internet/what-is-remote-desktop-protocol.html
@@ -357,11 +426,36 @@ VPN 接続されると、自宅 PC からの TCP スリーウェイハンドシ�
 
 異なるネットワーク内の特定のアプリケーションにのみと通信できるリモートデスクトッププロトコルよりも、広範囲に通信できる。
 
-| 要素              | Forti の場合 | OpenVPN の場合 | Zscaler の場合                                    |
-| ----------------- | ------------ | -------------- | ------------------------------------------------- |
-| 送信元マシン内    | FortiClient  | OpenVpnClient  | Zapp (クラウド Zscaler のクライアントツール)      |
-| 中継 VPN マシン内 | FortiGate    | OpenVpn        | SDP ゲートウェイ (クラウド Zscaler の VPN マシン) |
-| 宛先マシン内      | -            | -              | -                                                 |
+<table>
+  <thead>
+    <tr>
+      <th>要素</th>
+      <th>Forti の場合</th>
+      <th>OpenVPN の場合</th>
+      <th>Zscaler の場合</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>送信元マシン内</td>
+      <td>FortiClient</td>
+      <td>OpenVpnClient</td>
+      <td>Zapp (クラウド Zscaler のクライアントツール)</td>
+    </tr>
+    <tr>
+      <td>中継 VPN マシン内</td>
+      <td>FortiGate</td>
+      <td>OpenVpn</td>
+      <td>SDP ゲートウェイ (クラウド Zscaler の VPN マシン)</td>
+    </tr>
+    <tr>
+      <td>宛先マシン内</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
 
 > - www.amazon.co.jp/dp/B0756SS7N3
 > - https://www.securelink.com/blog/whats-difference-vpn-desktop-sharing-remote-access/

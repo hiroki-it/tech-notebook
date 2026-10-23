@@ -32,21 +32,82 @@ description: Amazon API Gateway＠AWSリソースの知見を記録していま�
 
 Amazon API Gateway は、メソッドリクエスト、統合リクエスト、統合レスポンス、メソッドレスポンスから構成される。
 
-| 設定項目                      | 説明                                                                                                                                  | 補足                                                                                                                                                                     |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| リソース                      | エンドポイント、HTTP メソッド、ルーティング先などを設定する。                                                                         | 作成した AWS リソースのパスが、Amazon API Gateway のエンドポイントになる。                                                                                               |
-| ステージ                      | Amazon API Gateway をデプロイする環境を定義する。                                                                                     |                                                                                                                                                                          |
-| オーソライザー                | AWS Lambda または Cognito によるオーソライザーを使用して、認可プロセスを定義する。                                                    |                                                                                                                                                                          |
-| ゲートウェイのレスポンス      |                                                                                                                                       |                                                                                                                                                                          |
-| モデル                        | リクエスト／レスポンスのスキーマを設定する。これらのバリデーションのために使用できる。                                                | OpenAPI 仕様におけるスキーマについては、以下のリンクを参考にせよ。<br>https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful.html |
-| リソースポリシー              | ポリシーを使用して、Amazon API Gateway にセキュリティを定義づける。                                                                   |                                                                                                                                                                          |
-| ドキュメント                  |                                                                                                                                       |                                                                                                                                                                          |
-| ダッシュボード                |                                                                                                                                       |                                                                                                                                                                          |
-| API の設定                    |                                                                                                                                       |                                                                                                                                                                          |
-| 使用サイズプラン              | 有料サービスとして API を公開し、料金体系に応じてリクエストサイズを制限するために使用する。API キーにリクエスト量のレートを設定する。 | 有料サービスとして使用しない API の場合は、レートを設定する必要はない。                                                                                                  |
-| API キー                      | API キー認証を設定する。                                                                                                              | ・その他の認証の方法として、以下がある。<br>https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html                           |
-| クライアント証明書            | サーバー証明書を Amazon API Gateway に割り当てる。                                                                                    | API が、Amazon API Gateway からルーティングされたリクエストであることを識別できるようになる。                                                                            |
-| Amazon CloudWatch Logs の設定 | Amazon API Gateway が Amazon CloudWatch Logs にリクエストを送信できるよう、ロールを設定する。                                         | `1` 個の AWS アカウントにつき、`1` 個のロールを設定すればよい。                                                                                                          |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>リソース</td>
+      <td>エンドポイント、HTTP メソッド、ルーティング先などを設定する。</td>
+      <td>作成した AWS リソースのパスが、Amazon API Gateway のエンドポイントになる。</td>
+    </tr>
+    <tr>
+      <td>ステージ</td>
+      <td>Amazon API Gateway をデプロイする環境を定義する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>オーソライザー</td>
+      <td>AWS Lambda または Cognito によるオーソライザーを使用して、認可プロセスを定義する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ゲートウェイのレスポンス</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>モデル</td>
+      <td>リクエスト／レスポンスのスキーマを設定する。これらのバリデーションのために使用できる。</td>
+      <td>OpenAPI 仕様におけるスキーマについては、以下のリンクを参考にせよ。<br><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful.html">https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful.html</a></td>
+    </tr>
+    <tr>
+      <td>リソースポリシー</td>
+      <td>ポリシーを使用して、Amazon API Gateway にセキュリティを定義づける。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ドキュメント</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ダッシュボード</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>API の設定</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>使用サイズプラン</td>
+      <td>有料サービスとして API を公開し、料金体系に応じてリクエストサイズを制限するために使用する。API キーにリクエスト量のレートを設定する。</td>
+      <td>有料サービスとして使用しない API の場合は、レートを設定する必要はない。</td>
+    </tr>
+    <tr>
+      <td>API キー</td>
+      <td>API キー認証を設定する。</td>
+      <td>・その他の認証の方法として、以下がある。<br><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html">https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html</a></td>
+    </tr>
+    <tr>
+      <td>クライアント証明書</td>
+      <td>サーバー証明書を Amazon API Gateway に割り当てる。</td>
+      <td>API が、Amazon API Gateway からルーティングされたリクエストであることを識別できるようになる。</td>
+    </tr>
+    <tr>
+      <td>Amazon CloudWatch Logs の設定</td>
+      <td>Amazon API Gateway が Amazon CloudWatch Logs にリクエストを送信できるよう、ロールを設定する。</td>
+      <td><code>1</code> 個の AWS アカウントにつき、<code>1</code> 個のロールを設定すればよい。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -54,42 +115,159 @@ Amazon API Gateway は、メソッドリクエスト、統合リクエスト、�
 
 #### ▼ リソース
 
-| 順番 | 処理               | 説明                                                                                           | 補足                                                                           |
-| ---- | ------------------ | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| 1    | メソッドリクエスト | クライアントから受信したデータのうち、実際にルーティングするデータをフィルタリングする。       |                                                                                |
-| 2    | 統合リクエスト     | メソッドリクエストからルーティングされた各データを、マッピングテンプレートの JSON に紐付ける。 |                                                                                |
-| 3    | 統合レスポンス     |                                                                                                | 統合リクエストでプロキシ統合を使用する場合、統合レスポンスを使用できなくなる。 |
-| 4    | メソッドレスポンス | レスポンスが成功した場合、クライアントに送信するステータスコードを設定する。                   |                                                                                |
+<table>
+  <thead>
+    <tr>
+      <th>順番</th>
+      <th>処理</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>メソッドリクエスト</td>
+      <td>クライアントから受信したデータのうち、実際にルーティングするデータをフィルタリングする。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>統合リクエスト</td>
+      <td>メソッドリクエストからルーティングされた各データを、マッピングテンプレートの JSON に紐付ける。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>統合レスポンス</td>
+      <td></td>
+      <td>統合リクエストでプロキシ統合を使用する場合、統合レスポンスを使用できなくなる。</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>メソッドレスポンス</td>
+      <td>レスポンスが成功した場合、クライアントに送信するステータスコードを設定する。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ メソッドリクエスト
 
-| 設定項目                     | 説明                                                                                                                                                            | 補足                                                                                                                                                             |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 認可                         | 定義した AWS Lambda または Cognito によるオーソライザーを有効化するか否かを設定する。                                                                           |                                                                                                                                                                  |
-| リクエストの検証             | 『URL クエリ文字列パラメーター』『HTTP リクエストヘッダー』『リクエスト本文』のバリデーションを有効化するか否かを設定する。                                     |                                                                                                                                                                  |
-| API キーの必要性             | リクエストヘッダーにおける API キーのバリデーションを実行する。リクエストのヘッダーに『`x-api-key`』を含み、これに API キーが割り当てられていることを強制する。 | ヘッダー名は大文字でも小文字でも問題ないが、小文字が推奨。<br>https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful.html |
-| URL クエリ文字列パラメーター | リクエストされた URL のクエリパラメーターのバリデーションを実行する。                                                                                           |                                                                                                                                                                  |
-| HTTP リクエストヘッダー      | リクエストヘッダーのバリデーションを実行する。                                                                                                                  |                                                                                                                                                                  |
-| リクエスト本文               | リクエストボディのバリデーションを実行する。                                                                                                                    |                                                                                                                                                                  |
-| SDK 設定                     |                                                                                                                                                                 |                                                                                                                                                                  |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>認可</td>
+      <td>定義した AWS Lambda または Cognito によるオーソライザーを有効化するか否かを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>リクエストの検証</td>
+      <td>『URL クエリ文字列パラメーター』『HTTP リクエストヘッダー』『リクエスト本文』のバリデーションを有効化するか否かを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>API キーの必要性</td>
+      <td>リクエストヘッダーにおける API キーのバリデーションを実行する。リクエストのヘッダーに『<code>x-api-key</code>』を含み、これに API キーが割り当てられていることを強制する。</td>
+      <td>ヘッダー名は大文字でも小文字でも問題ないが、小文字が推奨。<br><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful.html">https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful.html</a></td>
+    </tr>
+    <tr>
+      <td>URL クエリ文字列パラメーター</td>
+      <td>リクエストされた URL のクエリパラメーターのバリデーションを実行する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>HTTP リクエストヘッダー</td>
+      <td>リクエストヘッダーのバリデーションを実行する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>リクエスト本文</td>
+      <td>リクエストボディのバリデーションを実行する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>SDK 設定</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ 統合リクエスト
 
-| 設定項目                     | 説明                                                                                                                                                                                          | 補足                                   |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| 統合タイプ                   | リクエストのルーティング先を設定する。                                                                                                                                                        |                                        |
-| URL パスパラメーター         | メソッドリクエストからルーティングされたデータを、Amazon API Gateway からルーティングするリクエストのパスパラメーターに紐付ける。代わりに、紐付けずに新しいデータをルーティングしてもよい。   |                                        |
-| URL クエリ文字列パラメーター | メソッドリクエストからルーティングされたデータを、Amazon API Gateway からルーティングするリクエストのクエリパラメーターに紐付ける。代わりに、紐付けずに新しいデータをルーティングしてもよい。 |                                        |
-| HTTP ヘッダー                | メソッドリクエストからルーティングされたデータを、Amazon API Gateway からルーティングするリクエストのヘッダーに紐付ける。代わりに、紐付けずに新しいデータをルーティングしてもよい。           | 値はシングルクオートで囲う必要がある。 |
-| マッピングテンプレート       | メソッドリクエストからルーティングされたデータを、Amazon API Gateway からルーティングするリクエストのメッセージボディに紐付ける。代わりに、紐付けずに新しいデータをルーティングしてもよい。   |                                        |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>統合タイプ</td>
+      <td>リクエストのルーティング先を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>URL パスパラメーター</td>
+      <td>メソッドリクエストからルーティングされたデータを、Amazon API Gateway からルーティングするリクエストのパスパラメーターに紐付ける。代わりに、紐付けずに新しいデータをルーティングしてもよい。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>URL クエリ文字列パラメーター</td>
+      <td>メソッドリクエストからルーティングされたデータを、Amazon API Gateway からルーティングするリクエストのクエリパラメーターに紐付ける。代わりに、紐付けずに新しいデータをルーティングしてもよい。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>HTTP ヘッダー</td>
+      <td>メソッドリクエストからルーティングされたデータを、Amazon API Gateway からルーティングするリクエストのヘッダーに紐付ける。代わりに、紐付けずに新しいデータをルーティングしてもよい。</td>
+      <td>値はシングルクオートで囲う必要がある。</td>
+    </tr>
+    <tr>
+      <td>マッピングテンプレート</td>
+      <td>メソッドリクエストからルーティングされたデータを、Amazon API Gateway からルーティングするリクエストのメッセージボディに紐付ける。代わりに、紐付けずに新しいデータをルーティングしてもよい。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ ホワイトボックステスト
 
-| 設定項目       | 設定例            | 補足                                         |
-| -------------- | ----------------- | -------------------------------------------- |
-| クエリ文字     |                   |                                              |
-| ヘッダー       | X-API-Token: test | 波括弧、スペース、クオーテーションは不要。   |
-| リクエスト本文 | `{test:"test"}`   | 改行タグやスペースが入り込まないようにする。 |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>設定例</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>クエリ文字</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ヘッダー</td>
+      <td>X-API-Token: test</td>
+      <td>波括弧、スペース、クオーテーションは不要。</td>
+    </tr>
+    <tr>
+      <td>リクエスト本文</td>
+      <td><code>{test:&quot;test&quot;}</code></td>
+      <td>改行タグやスペースが入り込まないようにする。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ OpenAPI 仕様のインポート
 
@@ -113,14 +291,40 @@ Amazon API Gateway と Amazon VPC リンクの間で、リクエスト／レス�
 
 また、Amazon VPC リンクを設定することで、Amazon VPC エンドポイントサービスを作成する。
 
-| 設定項目                           | 説明                                                                   |
-| ---------------------------------- | ---------------------------------------------------------------------- |
-| 統合タイプ                         | Amazon VPC リンクを選択する。                                          |
-| プロキシ統合の使用                 | Amazon VPC リンクとのプロキシ統合を有効化するか否かを設定する。        |
-| メソッド                           | HTTP メソッドを設定する。                                              |
-| Amazon VPC リンク                  | Amazon VPC リンク名を設定する。                                        |
-| エンドポイント URL                 | NLB の DNS 名をドメイン名として、フォワーディング先の URL を設定する。 |
-| デフォルトのタイムアウト時間の使用 |                                                                        |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>統合タイプ</td>
+      <td>Amazon VPC リンクを選択する。</td>
+    </tr>
+    <tr>
+      <td>プロキシ統合の使用</td>
+      <td>Amazon VPC リンクとのプロキシ統合を有効化するか否かを設定する。</td>
+    </tr>
+    <tr>
+      <td>メソッド</td>
+      <td>HTTP メソッドを設定する。</td>
+    </tr>
+    <tr>
+      <td>Amazon VPC リンク</td>
+      <td>Amazon VPC リンク名を設定する。</td>
+    </tr>
+    <tr>
+      <td>エンドポイント URL</td>
+      <td>NLB の DNS 名をドメイン名として、フォワーディング先の URL を設定する。</td>
+    </tr>
+    <tr>
+      <td>デフォルトのタイムアウト時間の使用</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Set up a private integration - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-private-integration.html)
 
@@ -138,15 +342,44 @@ Amazon API Gateway と AWS Lambda の間で、リクエスト／レスポンス�
 
 プロキシ統合を使用しない場合、AWS Lambda と Amazon API Gateway の間のマッピングを手動で実行する必要がある。
 
-| 設定項目                           | 説明                                                                                                                                                             |
-| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 統合タイプ                         | AWS Lambda 関数を選択する。                                                                                                                                      |
-| AWS Lambda プロキシ統合の使用      | AWS Lambda とのプロキシ統合を有効化するか否かを設定する。                                                                                                        |
-| AWS Lambda リージョン              | 実行した AWS Lambda 関数のリージョンを設定する。                                                                                                                 |
-| AWS Lambda 関数                    | 実行した AWS Lambda 関数の名前を設定する。                                                                                                                       |
-| 実行ロール                         | 実行したい AWS Lambda 関数への認可スコープが紐付けられたロールの ARN を設定する。ただし、AWS Lambda 側に Amazon API Gateway への認可スコープを紐付けしてもよい。 |
-| 資格情報のキャッシュ               |                                                                                                                                                                  |
-| デフォルトのタイムアウト時間の使用 |                                                                                                                                                                  |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>統合タイプ</td>
+      <td>AWS Lambda 関数を選択する。</td>
+    </tr>
+    <tr>
+      <td>AWS Lambda プロキシ統合の使用</td>
+      <td>AWS Lambda とのプロキシ統合を有効化するか否かを設定する。</td>
+    </tr>
+    <tr>
+      <td>AWS Lambda リージョン</td>
+      <td>実行した AWS Lambda 関数のリージョンを設定する。</td>
+    </tr>
+    <tr>
+      <td>AWS Lambda 関数</td>
+      <td>実行した AWS Lambda 関数の名前を設定する。</td>
+    </tr>
+    <tr>
+      <td>実行ロール</td>
+      <td>実行したい AWS Lambda 関数への認可スコープが紐付けられたロールの ARN を設定する。ただし、AWS Lambda 側に Amazon API Gateway への認可スコープを紐付けしてもよい。</td>
+    </tr>
+    <tr>
+      <td>資格情報のキャッシュ</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>デフォルトのタイムアウト時間の使用</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Lambda integrations for REST APIs in API Gateway - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-integrations.html)
 
@@ -238,12 +471,32 @@ Amazon API Gateway は上記の JSON 型データを受信した後、`body` の
 
 #### ▼ 設定
 
-| 設定項目                           | 説明                                                                                                                                      |
-| ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| キャッシュ設定                     | ・https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html                                                   |
-| デフォルトのメソッドスロットリング | リクエスト数 (個/秒) 制限を設定する。<br>https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html |
-| AWS WAF                            | ・https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-aws-waf.html                                     |
-| クライアント証明書                 | 紐付ける AWS WAF を設定する。                                                                                                             |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>キャッシュ設定</td>
+      <td>・<a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html">https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-caching.html</a></td>
+    </tr>
+    <tr>
+      <td>デフォルトのメソッドスロットリング</td>
+      <td>リクエスト数 (個/秒) 制限を設定する。<br><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html">https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html</a></td>
+    </tr>
+    <tr>
+      <td>AWS WAF</td>
+      <td>・<a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-aws-waf.html">https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-aws-waf.html</a></td>
+    </tr>
+    <tr>
+      <td>クライアント証明書</td>
+      <td>紐付ける AWS WAF を設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ ステージ変数
 
@@ -273,12 +526,32 @@ Amazon API Gateway では、通常のデプロイメントの仕組みが隠蔽�
 
 カナリアリリースを使用して、新しいステージをデプロイする。
 
-| 設定項目                                   | 説明 |
-| ------------------------------------------ | ---- |
-| ステージのリクエストディストリビューション |      |
-| Canary のデプロイ                          |      |
-| Canary ステージ変数                        |      |
-| キャッシュ                                 |      |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ステージのリクエストディストリビューション</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Canary のデプロイ</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Canary ステージ変数</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>キャッシュ</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Set up an API Gateway canary release deployment - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/canary-release.html)
 
@@ -322,11 +595,28 @@ X-Ray を使用して、Amazon API Gateway を開始点とした分散トレー�
 
 #### ▼ エンドポイントタイプ
 
-| タイプ名     | 説明                                                                                                      |
-| ------------ | --------------------------------------------------------------------------------------------------------- |
-| リージョン   | Amazon API Gateway のエンドポイントに対するリクエストを、リージョン内の物理サーバーで受け付ける。         |
-| プライベート | Amazon API Gateway のエンドポイントに対するリクエストを、Amazon VPC 内からのみ受け付ける。                |
-| エッジ最適化 | Amazon API Gateway のエンドポイントに対するリクエストを、Amazon CloudFront のエッジサーバーで受け付ける。 |
+<table>
+  <thead>
+    <tr>
+      <th>タイプ名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>リージョン</td>
+      <td>Amazon API Gateway のエンドポイントに対するリクエストを、リージョン内の物理サーバーで受け付ける。</td>
+    </tr>
+    <tr>
+      <td>プライベート</td>
+      <td>Amazon API Gateway のエンドポイントに対するリクエストを、Amazon VPC 内からのみ受け付ける。</td>
+    </tr>
+    <tr>
+      <td>エッジ最適化</td>
+      <td>Amazon API Gateway のエンドポイントに対するリクエストを、Amazon CloudFront のエッジサーバーで受け付ける。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [API endpoint types for REST APIs in API Gateway - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-endpoint-types.html)
 
@@ -344,10 +634,27 @@ ID プロバイダーが別途必要である。
 
 ![aws_api-gateway_lambda_authorizer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_api-gateway_lambda_authorizer.png)
 
-|      | AWS Cognito オーソライザー | AWS Lambda オーソライザー |
-| ---- | :------------------------: | :-----------------------: |
-| 認証 |             ✅             |                           |
-| 認可 |             ✅             |            ✅             |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th style="text-align:center">AWS Cognito オーソライザー</th>
+      <th style="text-align:center">AWS Lambda オーソライザー</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>認証</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>認可</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [\[前編\] AWS CDKで API Gateway + Lambda 構成のREST APIを構築して Auth0 + Lambda Authorizerの認可機能を導入してみた \| DevelopersIO](https://dev.classmethod.jp/articles/aws-cdk-api-gateway-lambda-rest-auth0-lambda-authorizer/)
 

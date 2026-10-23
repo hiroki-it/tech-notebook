@@ -39,10 +39,27 @@ description: AWS Cognito＠AWSリソースの知見を記録しています。
 
 AWS Lambda オーソライザーは認可だけでなく認証も実施するため、これを使用する場合は AWS Cognito を使用できない。
 
-|      | AWS Cognito オーソライザー | AWS Lambda オーソライザー |
-| ---- | :------------------------: | :-----------------------: |
-| 認証 |             ✅             |                           |
-| 認可 |             ✅             |            ✅             |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th style="text-align:center">AWS Cognito オーソライザー</th>
+      <th style="text-align:center">AWS Lambda オーソライザー</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>認証</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>認可</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+  </tbody>
+</table>
 
 ![aws_cognito_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_cognito_lambda.png)
 

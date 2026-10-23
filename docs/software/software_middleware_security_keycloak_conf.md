@@ -35,10 +35,27 @@ db=postgres
 
 ### Bootstrap Admin
 
-| 変数                          | 値の例  | 説明                                              |
-| ----------------------------- | ------- | ------------------------------------------------- |
-| `KC_BOOTSTRAP_ADMIN_USERNAME` | `admin` | Keycloak のルートユーザー名を設定する。           |
-| `KC_BOOTSTRAP_ADMIN_PASSWORD` | `admin` | Keycloak のルートユーザーのパスワードを設定する。 |
+<table>
+  <thead>
+    <tr>
+      <th>変数</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>KC_BOOTSTRAP_ADMIN_USERNAME</code></td>
+      <td><code>admin</code></td>
+      <td>Keycloak のルートユーザー名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>KC_BOOTSTRAP_ADMIN_PASSWORD</code></td>
+      <td><code>admin</code></td>
+      <td>Keycloak のルートユーザーのパスワードを設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [All configuration - Keycloak](https://www.keycloak.org/server/all-config#category-bootstrap_admin)
 
@@ -46,10 +63,27 @@ db=postgres
 
 ### Cache
 
-| 変数             | 値の例       | 説明                                                                                                                                                     |
-| ---------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `KC_CACHE`       | `ispn`       | セッションデータ管理の仕組みを設定する。例えば `ispn` の場合、Keycloak クラスターで Infinispan を使用する。                                              |
-| `KC_CACHE_STACK` | `kubernetes` | Keycloak クラスター内のクラスターインスタンス間の通信方法を設定する。例えば `kubernetes` の場合、Keycloak クラスターで Kubernetes による通信を使用する。 |
+<table>
+  <thead>
+    <tr>
+      <th>変数</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>KC_CACHE</code></td>
+      <td><code>ispn</code></td>
+      <td>セッションデータ管理の仕組みを設定する。例えば <code>ispn</code> の場合、Keycloak クラスターで Infinispan を使用する。</td>
+    </tr>
+    <tr>
+      <td><code>KC_CACHE_STACK</code></td>
+      <td><code>kubernetes</code></td>
+      <td>Keycloak クラスター内のクラスターインスタンス間の通信方法を設定する。例えば <code>kubernetes</code> の場合、Keycloak クラスターで Kubernetes による通信を使用する。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -65,13 +99,42 @@ Keycloak と各 DB のバージョンの相性を確認しておく必要があ�
 
 #### ▼
 
-| 変数                 | 値の例                                | 説明                                                                                                        |
-| -------------------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `KC_DB`              | `mysql`                               | Keycloak で使用する DB ベンダーを設定する。 開発環境では、`dev-file` とするとファイルシステムを使用できる。 |
-| `KC_DB_URL`          | `jdbc:mysql://<ホスト名>:3306/<DB名>` |                                                                                                             |
-| `KC_DB_URL_DATABASE` | `keycloak`                            |                                                                                                             |
-| `KC_DB_USERNAME`     | `keycloak`                            |                                                                                                             |
-| `KC_DB_PASSWORD`     | `password`                            |                                                                                                             |
+<table>
+  <thead>
+    <tr>
+      <th>変数</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>KC_DB</code></td>
+      <td><code>mysql</code></td>
+      <td>Keycloak で使用する DB ベンダーを設定する。 開発環境では、<code>dev-file</code> とするとファイルシステムを使用できる。</td>
+    </tr>
+    <tr>
+      <td><code>KC_DB_URL</code></td>
+      <td><code>jdbc:mysql://&lt;ホスト名&gt;:3306/&lt;DB名&gt;</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>KC_DB_URL_DATABASE</code></td>
+      <td><code>keycloak</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>KC_DB_USERNAME</code></td>
+      <td><code>keycloak</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>KC_DB_PASSWORD</code></td>
+      <td><code>password</code></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [All configuration - Keycloak](https://www.keycloak.org/server/all-config#category-database)
 
@@ -79,9 +142,22 @@ Keycloak と各 DB のバージョンの相性を確認しておく必要があ�
 
 ### HTTP
 
-| 変数                    | 値の例 | 説明                                                    |
-| ----------------------- | ------ | ------------------------------------------------------- |
-| `KC_HTTP_RELATIVE_PATH` | `/`    | Keycloak の認証エンドポイントのプレフィクスを設定する。 |
+<table>
+  <thead>
+    <tr>
+      <th>変数</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>KC_HTTP_RELATIVE_PATH</code></td>
+      <td><code>/</code></td>
+      <td>Keycloak の認証エンドポイントのプレフィクスを設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [All configuration - Keycloak](https://www.keycloak.org/server/all-config#category-http)
 
@@ -89,9 +165,22 @@ Keycloak と各 DB のバージョンの相性を確認しておく必要があ�
 
 ### Hostname
 
-| 変数          | 値の例                      | 説明                                                                                                                                                   |
-| ------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `KC_HOSTNAME` | `localhost` (Docker の場合) | Keycloak のエンドポイントのホスト名を設定する。各種認証エンドポイント全体のホスト名に影響する。Kubernetes 内に Keycloak を置く場合、これは設定しない。 |
+<table>
+  <thead>
+    <tr>
+      <th>変数</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>KC_HOSTNAME</code></td>
+      <td><code>localhost</code> (Docker の場合)</td>
+      <td>Keycloak のエンドポイントのホスト名を設定する。各種認証エンドポイント全体のホスト名に影響する。Kubernetes 内に Keycloak を置く場合、これは設定しない。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [All configuration - Keycloak](https://www.keycloak.org/server/all-config#category-hostname_v2)
 
@@ -99,9 +188,22 @@ Keycloak と各 DB のバージョンの相性を確認しておく必要があ�
 
 ### Logging
 
-| 変数           | 値の例  | 説明                              |
-| -------------- | ------- | --------------------------------- |
-| `KC_LOG_LEVEL` | `debug` | Keycloak のログレベルを設定する。 |
+<table>
+  <thead>
+    <tr>
+      <th>変数</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>KC_LOG_LEVEL</code></td>
+      <td><code>debug</code></td>
+      <td>Keycloak のログレベルを設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [All configuration - Keycloak](https://www.keycloak.org/server/all-config#category-logging)
 
@@ -109,18 +211,48 @@ Keycloak と各 DB のバージョンの相性を確認しておく必要があ�
 
 ### Proxy
 
-| 変数       | 値の例 | 説明                                                                                                        |
-| ---------- | ------ | ----------------------------------------------------------------------------------------------------------- |
-| `KC_PROXY` | `edge` | Keycloaly がリバースプロキシを後ろにあること有効化する。Kubernetes ではこれを `edge` を設定する必要がある。 |
+<table>
+  <thead>
+    <tr>
+      <th>変数</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>KC_PROXY</code></td>
+      <td><code>edge</code></td>
+      <td>Keycloaly がリバースプロキシを後ろにあること有効化する。Kubernetes ではこれを <code>edge</code> を設定する必要がある。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
 ### JAVA_OPTS_APPEND
 
-| 変数                         | 値の例                                                            | 説明                                                                               |
-| ---------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `-Djgroups.dns.query`        | `<KeycloakクラスターのService名>.<Namespace名>.svc.cluster.local` | Keycloak クラスター内の Keycloak クラスターインスタンスを返却する DNS を設定する。 |
-| `-Djava.net.preferIPv4Stack` | `true`                                                            |                                                                                    |
+<table>
+  <thead>
+    <tr>
+      <th>変数</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>-Djgroups.dns.query</code></td>
+      <td><code>&lt;KeycloakクラスターのService名&gt;.&lt;Namespace名&gt;.svc.cluster.local</code></td>
+      <td>Keycloak クラスター内の Keycloak クラスターインスタンスを返却する DNS を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>-Djava.net.preferIPv4Stack</code></td>
+      <td><code>true</code></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Configuring Keycloak for production - Keycloak](https://www.keycloak.org/server/configuration-production)
 > - https://docs.redhat.com/en/documentation/red_hat_data_grid/8.0/html/configuring_data_grid/cluster_transport#jgroups_system_props-configuring

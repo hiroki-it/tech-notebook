@@ -727,15 +727,60 @@ prometheus-oprator では、アラートルールとレコーディングルー�
 
 ### アラート内で使用できる予約変数
 
-| 変数名            | データ型  | デフォルトラベル例                                                                | 説明                                                                                                                                                                                                         |
-| ----------------- | --------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Receiver          | string 型 | `.Receiver`                                                                       | アラートの受信者が割り当てられている。                                                                                                                                                                       |
-| Status            | string 型 | `.Status`                                                                         | アラートが Firing 状態/Resolved 状態が割り当てられている。                                                                                                                                                   |
-| Alerts            | map 型    | `.Alerts.Labels.SortedPairs`                                                      | アラートの情報が割り当てられている。<br>・https://prometheus.io/docs/alerting/latest/notifications/#alert                                                                                                    |
-| GroupLabels       | map 型    | ・`.GroupLabels.alertname` <br>・`.GroupLabels.instance` <br>・`.GroupLabels.job` | 特定のアラートグループに関するラベルが割り当てられている。`.spec.groups[*].rules[*].labels` キー配下で設定したユーザー定義のラベルも含む。<br>・https://prometheus.io/docs/alerting/latest/notifications/#kv |
-| CommonLabels      | map 型    | `.CommonLabels.alertname`                                                         | すべてのアラートに共通するラベルが割り当てられている。                                                                                                                                                       |
-| CommonAnnotations | map 型    | `.CommonAnnotations.summary`                                                      | すべてのアラートに共通するアノテーションが割り当てられている。`.spec.groups[*].rules[*].labels` キー配下で設定したユーザー定義のアノテーションも含む。                                                       |
-| ExternalURL       | string 型 | `.ExternalURL`                                                                    | Alertmanger の URL が割り当てられている。                                                                                                                                                                    |
+<table>
+  <thead>
+    <tr>
+      <th>変数名</th>
+      <th>データ型</th>
+      <th>デフォルトラベル例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Receiver</td>
+      <td>string 型</td>
+      <td><code>.Receiver</code></td>
+      <td>アラートの受信者が割り当てられている。</td>
+    </tr>
+    <tr>
+      <td>Status</td>
+      <td>string 型</td>
+      <td><code>.Status</code></td>
+      <td>アラートが Firing 状態/Resolved 状態が割り当てられている。</td>
+    </tr>
+    <tr>
+      <td>Alerts</td>
+      <td>map 型</td>
+      <td><code>.Alerts.Labels.SortedPairs</code></td>
+      <td>アラートの情報が割り当てられている。<br>・<a href="https://prometheus.io/docs/alerting/latest/notifications/#alert">https://prometheus.io/docs/alerting/latest/notifications/#alert</a></td>
+    </tr>
+    <tr>
+      <td>GroupLabels</td>
+      <td>map 型</td>
+      <td>・<code>.GroupLabels.alertname</code> <br>・<code>.GroupLabels.instance</code> <br>・<code>.GroupLabels.job</code></td>
+      <td>特定のアラートグループに関するラベルが割り当てられている。<code>.spec.groups[*].rules[*].labels</code> キー配下で設定したユーザー定義のラベルも含む。<br>・<a href="https://prometheus.io/docs/alerting/latest/notifications/#kv">https://prometheus.io/docs/alerting/latest/notifications/#kv</a></td>
+    </tr>
+    <tr>
+      <td>CommonLabels</td>
+      <td>map 型</td>
+      <td><code>.CommonLabels.alertname</code></td>
+      <td>すべてのアラートに共通するラベルが割り当てられている。</td>
+    </tr>
+    <tr>
+      <td>CommonAnnotations</td>
+      <td>map 型</td>
+      <td><code>.CommonAnnotations.summary</code></td>
+      <td>すべてのアラートに共通するアノテーションが割り当てられている。<code>.spec.groups[*].rules[*].labels</code> キー配下で設定したユーザー定義のアノテーションも含む。</td>
+    </tr>
+    <tr>
+      <td>ExternalURL</td>
+      <td>string 型</td>
+      <td><code>.ExternalURL</code></td>
+      <td>Alertmanger の URL が割り当てられている。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.amazon.co.jp/dp/4910313001
 > - [Notification template reference \| Prometheus](https://prometheus.io/docs/alerting/latest/notifications/)
@@ -781,13 +826,36 @@ spec:
 
 アラートルールは、『アッパーキャメルケース』で命名する。
 
-| 項目          | 説明                                                                                                                        |
-| ------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `alert`       | アラートルール名を設定する                                                                                                  |
-| `annotations` | アラートルールによるアラートの通知内容を設定する。`.metadata.labels` キーや発火値 (`$value`) を通知内容に変数で出力できる。 |
-| `expr`        | アラートルールで監視するメトリクスに関する PromQL を設定する。ロジックを変更すればアラートの発火をテストできる。            |
-| `for`         | アラートの通知のクールダウン期間を設定する。クールダウン期間中に発火したアラートは通知されない。                            |
-| `labels`      | アラートの通知内容に付与するラベルを設定する                                                                                |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>alert</code></td>
+      <td>アラートルール名を設定する</td>
+    </tr>
+    <tr>
+      <td><code>annotations</code></td>
+      <td>アラートルールによるアラートの通知内容を設定する。<code>.metadata.labels</code> キーや発火値 (<code>$value</code>) を通知内容に変数で出力できる。</td>
+    </tr>
+    <tr>
+      <td><code>expr</code></td>
+      <td>アラートルールで監視するメトリクスに関する PromQL を設定する。ロジックを変更すればアラートの発火をテストできる。</td>
+    </tr>
+    <tr>
+      <td><code>for</code></td>
+      <td>アラートの通知のクールダウン期間を設定する。クールダウン期間中に発火したアラートは通知されない。</td>
+    </tr>
+    <tr>
+      <td><code>labels</code></td>
+      <td>アラートの通知内容に付与するラベルを設定する</td>
+    </tr>
+  </tbody>
+</table>
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -826,10 +894,24 @@ spec:
 
 アラートルールは、『スネークケース』『コロン区切り』で命名する。
 
-| 項目     | 説明                                                                                                                   |
-| -------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `record` | レコーディングルール名を設定する                                                                                       |
-| `expr`   | レコーディングルールで監視するメトリクスに関する PromQL を設定する。ロジックを変更すればアラートの発火をテストできる。 |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>record</code></td>
+      <td>レコーディングルール名を設定する</td>
+    </tr>
+    <tr>
+      <td><code>expr</code></td>
+      <td>レコーディングルールで監視するメトリクスに関する PromQL を設定する。ロジックを変更すればアラートの発火をテストできる。</td>
+    </tr>
+  </tbody>
+</table>
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1

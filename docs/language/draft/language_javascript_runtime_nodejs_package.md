@@ -223,10 +223,24 @@ export const logger = winston.createLogger({
 
 #### ▼ 環境変数
 
-|             |                                                                       |
-| ----------- | --------------------------------------------------------------------- |
-| `LOG_LEVEL` | ログレベルを設定する。                                                |
-| `LOG_QUIET` | ログ出力の有無を設定する。場合によっては、CI 環境でログを無効化する。 |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>LOG_LEVEL</code></td>
+      <td>ログレベルを設定する。</td>
+    </tr>
+    <tr>
+      <td><code>LOG_QUIET</code></td>
+      <td>ログ出力の有無を設定する。場合によっては、CI 環境でログを無効化する。</td>
+    </tr>
+  </tbody>
+</table>
 
 ```yaml
 # info レベル

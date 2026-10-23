@@ -33,9 +33,24 @@ TypeScript は静的型付け言語のため、コンパイル時に型検証 (�
 
 ほかの静的型付け言語にはない『トランスパイル』というプロセスがあるが、ここでは型を検証しない。
 
-|        | 実行前のコンパイル | 実行前のトランスパイル | 実行時 |
-| ------ | :----------------: | :--------------------: | :----: |
-| 型検証 |         ✅         |           ❌           |   ❌   |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th style="text-align:center">実行前のコンパイル</th>
+      <th style="text-align:center">実行前のトランスパイル</th>
+      <th style="text-align:center">実行時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>型検証</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">❌</td>
+      <td style="text-align:center">❌</td>
+    </tr>
+  </tbody>
+</table>
 
 ### トランスパイル
 
@@ -788,12 +803,37 @@ type エイリアス宣言のほうが型としての強制力が高い。
 
 また、interface 宣言はオブジェクト指向の文脈でメソッドの仕様を持たせることが多く、型の文脈では適さない（と個人的に思っている）
 
-| 項目            | type エイリアス宣言               | interface 宣言 |
-| --------------- | --------------------------------- | -------------- |
-| 継承            | 基本はできない (交差型のみできる) | できる         |
-| 継承時の上書き  | 基本はできない (交差型のみできる) | できる         |
-| 同名の型        | できない                          | できる         |
-| Mapped Types 型 | できる                            | できない       |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>type エイリアス宣言</th>
+      <th>interface 宣言</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>継承</td>
+      <td>基本はできない (交差型のみできる)</td>
+      <td>できる</td>
+    </tr>
+    <tr>
+      <td>継承時の上書き</td>
+      <td>基本はできない (交差型のみできる)</td>
+      <td>できる</td>
+    </tr>
+    <tr>
+      <td>同名の型</td>
+      <td>できない</td>
+      <td>できる</td>
+    </tr>
+    <tr>
+      <td>Mapped Types 型</td>
+      <td>できる</td>
+      <td>できない</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [interfaceとtypeの違い \| TypeScript入門『サバイバルTypeScript』](https://typescriptbook.jp/reference/object-oriented/interface/interface-vs-type-alias#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%81%A8%E5%9E%8B%E3%82%A8%E3%82%A4%E3%83%AA%E3%82%A2%E3%82%B9%E3%81%AE%E9%81%95%E3%81%84)
 > - [interfaceとtypeの違い \| TypeScript入門『サバイバルTypeScript』](https://typescriptbook.jp/reference/object-oriented/interface/interface-vs-type-alias#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%81%A8%E5%9E%8B%E3%82%A8%E3%82%A4%E3%83%AA%E3%82%A2%E3%82%B9%E3%81%AE%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91)

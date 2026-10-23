@@ -33,9 +33,23 @@ AWS Certificate Manager でクライアント証明書を作成する場合、AW
 
 #### ▼ 認証局
 
-| サーバー提供者 | 名前                             |
-| -------------- | -------------------------------- |
-| 中間認証局     | GTS：Google Cloud Trust Services |
-| ルート認証局   | 記入中...                        |
+<table>
+  <thead>
+    <tr>
+      <th>サーバー提供者</th>
+      <th>名前</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>中間認証局</td>
+      <td>GTS：Google Cloud Trust Services</td>
+    </tr>
+    <tr>
+      <td>ルート認証局</td>
+      <td>記入中...</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>

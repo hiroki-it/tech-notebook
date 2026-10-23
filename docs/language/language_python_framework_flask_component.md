@@ -84,13 +84,36 @@ app.run()
 
 #### ▼ 引数
 
-| 引数           | 説明                                                                                                  |
-| -------------- | ----------------------------------------------------------------------------------------------------- |
-| `debug`        | エラーログをブラウザ上に表示するか否かを設定する。                                                    |
-| `host`         | 受信する通信の IP アドレスを設定する。すべての IP アドレスの場合は、`0.0.0.0` とする。                |
-| `load_dotenv`  | `dotenv` パッケージを読み込むか否かを設定する。これを有効化すれば、他の引数は環境変数から設定できる。 |
-| `port`         | インバウンド通信を待ち受けるポート番号を設定する。                                                    |
-| `use_reloader` | ホットリロードを有効化するか否かを設定する。                                                          |
+<table>
+  <thead>
+    <tr>
+      <th>引数</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>debug</code></td>
+      <td>エラーログをブラウザ上に表示するか否かを設定する。</td>
+    </tr>
+    <tr>
+      <td><code>host</code></td>
+      <td>受信する通信の IP アドレスを設定する。すべての IP アドレスの場合は、<code>0.0.0.0</code> とする。</td>
+    </tr>
+    <tr>
+      <td><code>load_dotenv</code></td>
+      <td><code>dotenv</code> パッケージを読み込むか否かを設定する。これを有効化すれば、他の引数は環境変数から設定できる。</td>
+    </tr>
+    <tr>
+      <td><code>port</code></td>
+      <td>インバウンド通信を待ち受けるポート番号を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>use_reloader</code></td>
+      <td>ホットリロードを有効化するか否かを設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.twilio.com/blog/how-to-run-a-flask-application-jp
 > - https://takuma-taco.hateblo.jp/entry/2018/10/01/181513
@@ -105,12 +128,32 @@ app.run()
 
 アプリケーションのエントリーポイントを設定する。
 
-| `FLASK_APP` の値    | 説明                                                   |
-| ------------------- | ------------------------------------------------------ |
-| `module:name`       | モジュール名 (ファイル名) とインスタンス名を設定する。 |
-| `module:function()` | モジュール名 (ファイル名) と関数名を設定する。         |
-| `module`            | モジュール名 (ファイル名) を設定する。                 |
-| `file.py`           | ファイル名を設定する。                                 |
+<table>
+  <thead>
+    <tr>
+      <th><code>FLASK_APP</code> の値</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>module:name</code></td>
+      <td>モジュール名 (ファイル名) とインスタンス名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>module:function()</code></td>
+      <td>モジュール名 (ファイル名) と関数名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>module</code></td>
+      <td>モジュール名 (ファイル名) を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>file.py</code></td>
+      <td>ファイル名を設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.twilio.com/blog/how-to-run-a-flask-application-jp
 

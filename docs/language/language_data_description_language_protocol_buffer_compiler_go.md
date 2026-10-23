@@ -31,10 +31,24 @@ $ go install google.golang.org/protobuf/cmd/protoc-gen-go@HEAD
 
 `pb.go` ファイルをコンパイルした場合、以下の対応関係になる。
 
-| Protocol Buffer            | Go (`pb.go` ファイル) |
-| -------------------------- | --------------------- |
-| `service`                  | `interface`           |
-| `rpc()` 関数の引数と返却値 | `struct`              |
+<table>
+  <thead>
+    <tr>
+      <th>Protocol Buffer</th>
+      <th>Go (<code>pb.go</code> ファイル)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>service</code></td>
+      <td><code>interface</code></td>
+    </tr>
+    <tr>
+      <td><code>rpc()</code> 関数の引数と返却値</td>
+      <td><code>struct</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [protoファイルからコードを自動生成する｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#%E3%82%B3%E3%83%BC%E3%83%89%E8%87%AA%E5%8B%95%E7%94%9F%E6%88%90%E3%81%AE%E4%BB%95%E6%A7%98)
 > - [Generated-code reference \| Go \| gRPC](https://grpc.io/docs/languages/go/generated-code/)

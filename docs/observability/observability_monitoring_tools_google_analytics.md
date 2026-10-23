@@ -76,28 +76,83 @@ POST https://www.google-analytics.com/g/collect
 
 ### 計測値
 
-| 指標名             | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| セッション数       | ユーザーが Web サイトに訪問してから離脱するまでを 1 セッションとしたときに、この数のこと。<br>https://support.google.com/analytics/answer/9191807?hl=ja&ref_topic=11151952                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| 直帰数             | ユーザーが Web サイトに訪問した後に、Web ページのどの部分もクリックせずに離脱した場合、このセッション数のこと。<br>https://support.google.com/analytics/answer/1009409?hl=ja                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| 新規ユーザー数     | 新しく訪問したユーザー数のこと。リクエストの IP アドレスやユーザエージェントの組み合わせを基に、新規ユーザーか否かを判定する。セッションの違いに影響されない。<br>https://www.mitsue.co.jp/case/glossary/l_009.html                                                                                                                                                                                                                                                                                                                                                                                                      |
-| ページビュー数     | Web ページの閲覧数のこと。リロードしても `+1` される。<br>・https://support.google.com/analytics/answer/6086080?hl=ja <br>・http://www.designcross.net/google-analytics/pageviews.html                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| 離脱数             | セッションの最後で発生したイベント数のこと。<br>https://support.google.com/analytics/answer/11080047?hl=ja#                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| ランディングページ | ユーザーが最初に訪問した Web ページのこと。<br>https://support.google.com/google-ads/answer/14086?hl=ja                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| コンバージョン     | セッションの間で、ユーザーが目標達成条件を満たす行動を行ったこと。目標達成に至ったセッション数はコンバージョン数という。これを計測するためには、Google アナリティクスの画面で達成条件の設定が必要である。<br>・https://support.google.com/analytics/topic/1007030?hl=ja&ref_topic=1631741<br>・https://www.sakurasaku-labo.jp/blogs/analytics-glossary#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3 <br>補足として、『単なる消費者から顧客に転換する』ことから、コンバージョンという単語が使われている。<br>https://e-words.jp/w/%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3.html |
-| 参照 URL           | ユーザーが最初のページに訪問する前に滞在していた URL のこと。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| 内部リンク         | 同じ Web サイト内のほかのページにジャンプするための URL のこと。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+<table>
+  <thead>
+    <tr>
+      <th>指標名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>セッション数</td>
+      <td>ユーザーが Web サイトに訪問してから離脱するまでを 1 セッションとしたときに、この数のこと。<br><a href="https://support.google.com/analytics/answer/9191807?hl=ja&amp;ref_topic=11151952">https://support.google.com/analytics/answer/9191807?hl=ja&amp;ref_topic=11151952</a></td>
+    </tr>
+    <tr>
+      <td>直帰数</td>
+      <td>ユーザーが Web サイトに訪問した後に、Web ページのどの部分もクリックせずに離脱した場合、このセッション数のこと。<br><a href="https://support.google.com/analytics/answer/1009409?hl=ja">https://support.google.com/analytics/answer/1009409?hl=ja</a></td>
+    </tr>
+    <tr>
+      <td>新規ユーザー数</td>
+      <td>新しく訪問したユーザー数のこと。リクエストの IP アドレスやユーザエージェントの組み合わせを基に、新規ユーザーか否かを判定する。セッションの違いに影響されない。<br><a href="https://www.mitsue.co.jp/case/glossary/l_009.html">https://www.mitsue.co.jp/case/glossary/l_009.html</a></td>
+    </tr>
+    <tr>
+      <td>ページビュー数</td>
+      <td>Web ページの閲覧数のこと。リロードしても <code>+1</code> される。<br>・<a href="https://support.google.com/analytics/answer/6086080?hl=ja">https://support.google.com/analytics/answer/6086080?hl=ja</a> <br>・<a href="http://www.designcross.net/google-analytics/pageviews.html">http://www.designcross.net/google-analytics/pageviews.html</a></td>
+    </tr>
+    <tr>
+      <td>離脱数</td>
+      <td>セッションの最後で発生したイベント数のこと。<br><a href="https://support.google.com/analytics/answer/11080047?hl=ja#">https://support.google.com/analytics/answer/11080047?hl=ja#</a></td>
+    </tr>
+    <tr>
+      <td>ランディングページ</td>
+      <td>ユーザーが最初に訪問した Web ページのこと。<br><a href="https://support.google.com/google-ads/answer/14086?hl=ja">https://support.google.com/google-ads/answer/14086?hl=ja</a></td>
+    </tr>
+    <tr>
+      <td>コンバージョン</td>
+      <td>セッションの間で、ユーザーが目標達成条件を満たす行動を行ったこと。目標達成に至ったセッション数はコンバージョン数という。これを計測するためには、Google アナリティクスの画面で達成条件の設定が必要である。<br>・<a href="https://support.google.com/analytics/topic/1007030?hl=ja&amp;ref_topic=1631741">https://support.google.com/analytics/topic/1007030?hl=ja&amp;ref_topic=1631741</a><br>・<a href="https://www.sakurasaku-labo.jp/blogs/analytics-glossary#%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3">https://www.sakurasaku-labo.jp/blogs/analytics-glossary#コンバージョン</a> <br>補足として、『単なる消費者から顧客に転換する』ことから、コンバージョンという単語が使われている。<br><a href="https://e-words.jp/w/%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3.html">https://e-words.jp/w/コンバージョン.html</a></td>
+    </tr>
+    <tr>
+      <td>参照 URL</td>
+      <td>ユーザーが最初のページに訪問する前に滞在していた URL のこと。</td>
+    </tr>
+    <tr>
+      <td>内部リンク</td>
+      <td>同じ Web サイト内のほかのページにジャンプするための URL のこと。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
 ### 計測率
 
-| 指標名                     | 説明                                                                                                                                                       |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 直帰率                     | 全セッションのうちで、直帰に至ったセッション数が占める割合のこと (`直帰数/セッション数`』) 。<br>https://support.google.com/analytics/answer/1009409?hl=ja |
-| コンバージョン率           | すべてのセッション数のうちで、コンバージョンに至ったセッション数の割合のこと (`コンバージョン数/全てのセッション数`) 。                                    |
-| 離脱率                     | 1 ページビュー当たりの離脱数のこと (`離脱数/ページビュー数`) 。<br>https://support.google.com/analytics/answer/11080047?hl=ja                              |
-| ページ/セッション (回遊率) | 1 セッション当たりのページビュー数のこと。<br>https://pro-atmedia.jp/media/page-views-per-visit/#toc2                                                      |
+<table>
+  <thead>
+    <tr>
+      <th>指標名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>直帰率</td>
+      <td>全セッションのうちで、直帰に至ったセッション数が占める割合のこと (<code>直帰数/セッション数</code>』) 。<br><a href="https://support.google.com/analytics/answer/1009409?hl=ja">https://support.google.com/analytics/answer/1009409?hl=ja</a></td>
+    </tr>
+    <tr>
+      <td>コンバージョン率</td>
+      <td>すべてのセッション数のうちで、コンバージョンに至ったセッション数の割合のこと (<code>コンバージョン数/全てのセッション数</code>) 。</td>
+    </tr>
+    <tr>
+      <td>離脱率</td>
+      <td>1 ページビュー当たりの離脱数のこと (<code>離脱数/ページビュー数</code>) 。<br><a href="https://support.google.com/analytics/answer/11080047?hl=ja">https://support.google.com/analytics/answer/11080047?hl=ja</a></td>
+    </tr>
+    <tr>
+      <td>ページ/セッション (回遊率)</td>
+      <td>1 セッション当たりのページビュー数のこと。<br><a href="https://pro-atmedia.jp/media/page-views-per-visit/#toc2">https://pro-atmedia.jp/media/page-views-per-visit/#toc2</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

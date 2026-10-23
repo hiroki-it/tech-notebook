@@ -198,11 +198,32 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
 
 **＊例＊**
 
-| 方法の種類   | 中間認証局名                | ルート認証局名 |
-| ------------ | --------------------------- | -------------- |
-| 自前         | Vault                       | 記入中...      |
-| AWS          | AWS Trust Services          | Starfield 社   |
-| Google Cloud | Google Cloud Trust Services | 記入中...      |
+<table>
+  <thead>
+    <tr>
+      <th>方法の種類</th>
+      <th>中間認証局名</th>
+      <th>ルート認証局名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>自前</td>
+      <td>Vault</td>
+      <td>記入中...</td>
+    </tr>
+    <tr>
+      <td>AWS</td>
+      <td>AWS Trust Services</td>
+      <td>Starfield 社</td>
+    </tr>
+    <tr>
+      <td>Google Cloud</td>
+      <td>Google Cloud Trust Services</td>
+      <td>記入中...</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [改めて学ぶ、Vaultの基本 - Speaker Deck](https://speakerdeck.com/jacopen/gai-metexue-bu-vaultfalseji-ben?slide=54)
 
@@ -356,14 +377,47 @@ notAfter=<終了期限>
 
 各証明書は、X.509 規格で定められた公開鍵や検証アルゴリズムに基づいている。
 
-| 規格名              | 定義元                   | 概要・対象                                                     |
-| ------------------- | ------------------------ | -------------------------------------------------------------- |
-| X.509               | ITU-T (国際電気通信連合) | デジタル証明書の基本構造と検証モデルを定義する国際規格である。 |
-| RFC 5280            | IETF                     | SAN の使用、証明書検証手順、拡張項目の扱いを定義する。         |
-| RFC 6125            | IETF                     | TLS におけるサーバー名の検証方法を定義する。                   |
-| RFC 2818            | IETF                     | HTTP over TLS (HTTPS) の仕様を定義する。                       |
-| RFC 5280 Appendix A | IETF                     | SAN の構文 (ASN.1 形式) や使用例を含む技術的詳細を定義する。   |
-| RFC 2459            | IETF                     | RFC 5280 の前身である。                                        |
+<table>
+  <thead>
+    <tr>
+      <th>規格名</th>
+      <th>定義元</th>
+      <th>概要・対象</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>X.509</td>
+      <td>ITU-T (国際電気通信連合)</td>
+      <td>デジタル証明書の基本構造と検証モデルを定義する国際規格である。</td>
+    </tr>
+    <tr>
+      <td>RFC 5280</td>
+      <td>IETF</td>
+      <td>SAN の使用、証明書検証手順、拡張項目の扱いを定義する。</td>
+    </tr>
+    <tr>
+      <td>RFC 6125</td>
+      <td>IETF</td>
+      <td>TLS におけるサーバー名の検証方法を定義する。</td>
+    </tr>
+    <tr>
+      <td>RFC 2818</td>
+      <td>IETF</td>
+      <td>HTTP over TLS (HTTPS) の仕様を定義する。</td>
+    </tr>
+    <tr>
+      <td>RFC 5280 Appendix A</td>
+      <td>IETF</td>
+      <td>SAN の構文 (ASN.1 形式) や使用例を含む技術的詳細を定義する。</td>
+    </tr>
+    <tr>
+      <td>RFC 2459</td>
+      <td>IETF</td>
+      <td>RFC 5280 の前身である。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [X.509 - Wikipedia](https://ja.wikipedia.org/wiki/X.509)
 
@@ -432,11 +486,32 @@ OS ごとに、デフォルトのディレクトリが異なる。
 
 #### ▼ サーバー証明書の作成に必要なもの
 
-| ファイル       | 説明                                                                     | 拡張子                                |
-| -------------- | ------------------------------------------------------------------------ | ------------------------------------- |
-| 秘密鍵         | サーバー証明書とペアになる秘密鍵として動作する。                         | `pem`、`.key`、`.txt`                 |
-| 証明書署名要求 | 秘密鍵から作成され、公開鍵であるサーバー証明書を作成するために使用する。 | `.csr`、`.txt`                        |
-| サーバー証明書 | 秘密鍵とペアになる公開鍵として動作する。                                 | `pem`、`.crt`、`.cert`、`.ca`、`.txt` |
+<table>
+  <thead>
+    <tr>
+      <th>ファイル</th>
+      <th>説明</th>
+      <th>拡張子</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>秘密鍵</td>
+      <td>サーバー証明書とペアになる秘密鍵として動作する。</td>
+      <td><code>pem</code>、<code>.key</code>、<code>.txt</code></td>
+    </tr>
+    <tr>
+      <td>証明書署名要求</td>
+      <td>秘密鍵から作成され、公開鍵であるサーバー証明書を作成するために使用する。</td>
+      <td><code>.csr</code>、<code>.txt</code></td>
+    </tr>
+    <tr>
+      <td>サーバー証明書</td>
+      <td>秘密鍵とペアになる公開鍵として動作する。</td>
+      <td><code>pem</code>、<code>.crt</code>、<code>.cert</code>、<code>.ca</code>、<code>.txt</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [【用語明解】証明書の申請で登場する各種ファイルの見分け方 \| 大手正規SSL証明書が定価よりMAX66％OFFから 【 SSLコンシェル 】](https://www.ssl-concier.com/news/topics/164)
 > - [SSL証明書のKEYファイル・CSRファイル・CRTファイルのチェック方法 - install memo](https://install-memo.hatenadiary.org/entry/20110906/1315291837)
@@ -647,11 +722,32 @@ $ keytool -import -alias <エイリアス> -file <秘密鍵>.pem -keystore <公�
 
 #### ▼ クライアント証明書の作成に必要なもの
 
-| ファイル           | 説明                                                                         | 拡張子                                |
-| ------------------ | ---------------------------------------------------------------------------- | ------------------------------------- |
-| 秘密鍵             | クライアント証明書とペアになる秘密鍵として動作する。                         | `pem`、`.key`、`.txt`                 |
-| 証明書署名要求     | 秘密鍵から作成され、公開鍵であるクライアント証明書を作成するために使用する。 | `.csr`、`.txt`                        |
-| クライアント証明書 | 秘密鍵とペアになる公開鍵として動作する。                                     | `pem`、`.crt`、`.cert`、`.ca`、`.txt` |
+<table>
+  <thead>
+    <tr>
+      <th>ファイル</th>
+      <th>説明</th>
+      <th>拡張子</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>秘密鍵</td>
+      <td>クライアント証明書とペアになる秘密鍵として動作する。</td>
+      <td><code>pem</code>、<code>.key</code>、<code>.txt</code></td>
+    </tr>
+    <tr>
+      <td>証明書署名要求</td>
+      <td>秘密鍵から作成され、公開鍵であるクライアント証明書を作成するために使用する。</td>
+      <td><code>.csr</code>、<code>.txt</code></td>
+    </tr>
+    <tr>
+      <td>クライアント証明書</td>
+      <td>秘密鍵とペアになる公開鍵として動作する。</td>
+      <td><code>pem</code>、<code>.crt</code>、<code>.cert</code>、<code>.ca</code>、<code>.txt</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [自己署名でクライアント証明書の作成方法（オレオレ証明書） \| VPS Life](https://vpslife.server-memo.net/create_client_cert/)
 

@@ -264,12 +264,32 @@ Docker in Docker は、特権モードが必要になり、安全性に問題が
 
 イメージのタグには種類があり、追跡できるバージョンアップが異なる。
 
-| バージョン例 | 追跡できるバージョンアップ                                   |
-| ------------ | ------------------------------------------------------------ |
-| `2.0.9`      | バージョンを直指定し、追跡しない。                           |
-| `2.0`        | 『`2.0.X`』のマイナーアップデートのみを追跡する。            |
-| `2`          | 『`2.X`』と『`2.0.X`』のマイナーアップデートのみを追跡する。 |
-| `latest`     | メジャーアップデートとマイナーアップデートを追跡する。       |
+<table>
+  <thead>
+    <tr>
+      <th>バージョン例</th>
+      <th>追跡できるバージョンアップ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>2.0.9</code></td>
+      <td>バージョンを直指定し、追跡しない。</td>
+    </tr>
+    <tr>
+      <td><code>2.0</code></td>
+      <td>『<code>2.0.X</code>』のマイナーアップデートのみを追跡する。</td>
+    </tr>
+    <tr>
+      <td><code>2</code></td>
+      <td>『<code>2.X</code>』と『<code>2.0.X</code>』のマイナーアップデートのみを追跡する。</td>
+    </tr>
+    <tr>
+      <td><code>latest</code></td>
+      <td>メジャーアップデートとマイナーアップデートを追跡する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [composer - Official Image \| Docker Hub](https://hub.docker.com/_/composer/?tab=description&page=1&ordering=last_updated)
 
@@ -279,11 +299,32 @@ Docker in Docker は、特権モードが必要になり、安全性に問題が
 
 コンテナはすべてのマシンで稼働できるわけではなく、コンテナイメージごとに対応できるホストの CPU アーキテクチャ (例：Intel、AMD、ARM) がある。
 
-| 項目  | 表記                        | 補足                                                                                                             |
-| ----- | --------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Intel | `amd64` (`x86_64`)          | Intel と AMD は互換性があるので、CPU アーキテクチャが Intel であっても、AMD 対応のコンテナイメージを使用できる。 |
-| Arm   | `arm64`、`arm/v5`、`arm/v7` |                                                                                                                  |
-| Amd   | `amd64`                     |                                                                                                                  |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>表記</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Intel</td>
+      <td><code>amd64</code> (<code>x86_64</code>)</td>
+      <td>Intel と AMD は互換性があるので、CPU アーキテクチャが Intel であっても、AMD 対応のコンテナイメージを使用できる。</td>
+    </tr>
+    <tr>
+      <td>Arm</td>
+      <td><code>arm64</code>、<code>arm/v5</code>、<code>arm/v7</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Amd</td>
+      <td><code>amd64</code></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [IT業界小話：インテルCPUなのに「AMD64」なのはなぜ？](https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu)
 
@@ -365,14 +406,64 @@ RUN dnf upgrade -y \
 
 #### ▼ ベースイメージの種類
 
-| ベースイメージの種類名 | 接尾辞                                                | 説明                                                                                                                                                    | OS の有無      | ユーティリティの有無 | パッケージマネージャー系統の有無 |
-| ---------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------------- | -------------------------------- |
-| distribution 型        | `scratch`                                             | パッケージを何もインストールしていない。                                                                                                                | 無             | 無                   | 無                               |
-|                        | `alpine`                                              | 最小限のパッケージのみをインストールしている。                                                                                                          | Alpine Linux   | 有                   | apk                              |
-|                        | `slim`                                                | もっともオススメの接尾辞。使用頻度の高いパッケージのみをインストールしている。                                                                          | イメージによる | 有                   | イメージによる                   |
-|                        | `bookworm`、`bullseye`、`stretch`、`buster`、`jessie` | Debian のバージョン (Debian-12、Debian-11、Debian-10、Debian-9、Debian-8) を表している。執筆時点 (2024/11/14) で `bookworm` が Debian-12 で最新である。 | Debian         | 有                   | Debian 系 (dpkg、apt-get、apt)   |
-|                        | 接尾辞なし                                            | 使用頻度の高いパッケージのみでなく、小さいパッケージもインストールしている。                                                                            | イメージによる | 有                   | イメージによる                   |
-| distroless 型          | 接尾辞なし                                            | 最小限のパッケージのみをインストールしている。                                                                                                          | イメージによる | 有 (非常に少ない)    | イメージによる                   |
+<table>
+  <thead>
+    <tr>
+      <th>ベースイメージの種類名</th>
+      <th>接尾辞</th>
+      <th>説明</th>
+      <th>OS の有無</th>
+      <th>ユーティリティの有無</th>
+      <th>パッケージマネージャー系統の有無</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="5">distribution 型</td>
+      <td><code>scratch</code></td>
+      <td>パッケージを何もインストールしていない。</td>
+      <td>無</td>
+      <td>無</td>
+      <td>無</td>
+    </tr>
+    <tr>
+      <td><code>alpine</code></td>
+      <td>最小限のパッケージのみをインストールしている。</td>
+      <td>Alpine Linux</td>
+      <td>有</td>
+      <td>apk</td>
+    </tr>
+    <tr>
+      <td><code>slim</code></td>
+      <td>もっともオススメの接尾辞。使用頻度の高いパッケージのみをインストールしている。</td>
+      <td>イメージによる</td>
+      <td>有</td>
+      <td>イメージによる</td>
+    </tr>
+    <tr>
+      <td><code>bookworm</code>、<code>bullseye</code>、<code>stretch</code>、<code>buster</code>、<code>jessie</code></td>
+      <td>Debian のバージョン (Debian-12、Debian-11、Debian-10、Debian-9、Debian-8) を表している。執筆時点 (2024/11/14) で <code>bookworm</code> が Debian-12 で最新である。</td>
+      <td>Debian</td>
+      <td>有</td>
+      <td>Debian 系 (dpkg、apt-get、apt)</td>
+    </tr>
+    <tr>
+      <td>接尾辞なし</td>
+      <td>使用頻度の高いパッケージのみでなく、小さいパッケージもインストールしている。</td>
+      <td>イメージによる</td>
+      <td>有</td>
+      <td>イメージによる</td>
+    </tr>
+    <tr>
+      <td>distroless 型</td>
+      <td>接尾辞なし</td>
+      <td>最小限のパッケージのみをインストールしている。</td>
+      <td>イメージによる</td>
+      <td>有 (非常に少ない)</td>
+      <td>イメージによる</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Docker image(イメージ)の違い:alpine,bullseye, buster, slim, stretch, jessie, slim-buster, windowsservercore, latestどれを選ぶべきか？](https://prograshi.com/platform/docker/docker-image-tags-difference/)
 > - [【docker buildのマニアックすぎる狂宴】Container Build Meetup #1に参加してきた #container_build \| DevelopersIO](https://dev.classmethod.jp/articles/docker-build-meetup-1/#toc-9)
@@ -649,10 +740,24 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 ## 06. イメージレジストリを設定する
 
-| 要件           | 説明                                                                                                                                    |
-| -------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| ストレージ容量 | イメージレジストリのストレージのサイズを決める。                                                                                        |
-| 世代数         | イメージストリを残しておく世代数 (例：5) をポリシーとして決めておくとよい。世代数を超えた場合、古いイメージレジストリから削除していく。 |
+<table>
+  <thead>
+    <tr>
+      <th>要件</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ストレージ容量</td>
+      <td>イメージレジストリのストレージのサイズを決める。</td>
+    </tr>
+    <tr>
+      <td>世代数</td>
+      <td>イメージストリを残しておく世代数 (例：5) をポリシーとして決めておくとよい。世代数を超えた場合、古いイメージレジストリから削除していく。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -660,10 +765,27 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 状況に応じて、ネットワークタイプを選ぶ。
 
-|        | bridge ネットワーク                                          | host ネットワーク                                                              |
-| ------ | ------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| 安全性 | ホストコンテナ間をネットワークを分離できるため、安全性が高い | -                                                                              |
-| 性能   | -                                                            | ホストコンテナ間のネットワークを分離しないため、スループットを向上させられる。 |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>bridge ネットワーク</th>
+      <th>host ネットワーク</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>安全性</td>
+      <td>ホストコンテナ間をネットワークを分離できるため、安全性が高い</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>性能</td>
+      <td>-</td>
+      <td>ホストコンテナ間のネットワークを分離しないため、スループットを向上させられる。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Docker Networking: Bridging, Host, and Overlay](https://www.appsdeveloperblog.com/docker-networking-bridging-host-and-overlay/)
 > - https://jtway.co/docker-network-performance-b95bce32b4b9

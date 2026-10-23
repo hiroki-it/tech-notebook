@@ -97,14 +97,40 @@ Dependency (依存) が使用される。
 
 #### ▼ 記法
 
-| 保持する/保持されるクラスの個数    |  記法  |
-| :--------------------------------- | :----: |
-| 1                                  |  `1`   |
-| 0 以上 1 以下 (つまり、0 または 1) | `0..1` |
-| 0 以上 n 以下                      | `0..n` |
-| m 以上 n 以下                      | `m..n` |
-| 0 以上無限大以下 (つまり、0 以上)  |  `*`   |
-| 0 以上無限大以下 (つまり、0 以上)  | `0..*` |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">保持する/保持されるクラスの個数</th>
+      <th style="text-align:center">記法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">1</td>
+      <td style="text-align:center"><code>1</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">0 以上 1 以下 (つまり、0 または 1)</td>
+      <td style="text-align:center"><code>0..1</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">0 以上 n 以下</td>
+      <td style="text-align:center"><code>0..n</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">m 以上 n 以下</td>
+      <td style="text-align:center"><code>m..n</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">0 以上無限大以下 (つまり、0 以上)</td>
+      <td style="text-align:center"><code>*</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">0 以上無限大以下 (つまり、0 以上)</td>
+      <td style="text-align:center"><code>0..*</code></td>
+    </tr>
+  </tbody>
+</table>
 
 **＊例＊**
 
@@ -180,19 +206,72 @@ Dependency (依存) が使用される。
 
 オブジェクト間のとき系列的な関係性を基に、ソフトウェアの『動的な振舞』を表すダイアグラムのこと。
 
-| 記号名                              | 説明                                                                                                                               | 補足                                                                                                                                                                                                                                    |
-| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ライフライン                        | オブジェクト (クラス、インスタンス) を表す。                                                                                       | 粒度を大きくして、システムのコンポーネントをライフラインとすることもある。                                                                                                                                                              |
-| 実行仕様                            | ライフライン上で実行されている処理を表す。                                                                                         |                                                                                                                                                                                                                                         |
-| 停止                                | ライフラインが削除されることを表す。                                                                                               |                                                                                                                                                                                                                                         |
-| 同期メッセージ                      | 既存のライフラインを同期的にコールすることを表す。                                                                                 |                                                                                                                                                                                                                                         |
-| 非同期メッセージ                    | 既存のライフラインを非同期的にコールすることを表す。                                                                               |                                                                                                                                                                                                                                         |
-| 生成メッセージ                      | ライフラインを新しく作成することを表す。                                                                                           |                                                                                                                                                                                                                                         |
-| 自己メッセージ                      | ライフラインが、自分自身の内部処理をコールして処理を繰り返すことを表す。                                                           | ・https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc>                                                                                                                                   |
-| 再帰的メッセージ                    | ライフラインが、自分自身全体をコールして処理を繰り返すことを表す。                                                                 | ・https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc>                                                                                                                                   |
-| 入れ子実行仕様                      | 再帰的メッセージによってコールされた別の実行仕様を表す。                                                                           |                                                                                                                                                                                                                                         |
-| 返却メッセージ                      | コールの結果を他のライフラインに返却することを表す。                                                                               |                                                                                                                                                                                                                                         |
-| 複合フラグメント (結合フラグメント) | 条件分岐、繰り返しなどによって実行されたコールであること表す。実行仕様とメッセージを四角で囲い、左上隅にオペレーター名を記載する。 | 条件分岐の場合はオペレーター名を `alt` (`alternative`) 、繰り返しの場合は `loop` とする。<br>・https://qiita.com/devopsCoordinator/items/4535c3cce207b114ad6c#%E8%A4%87%E5%90%88%E3%83%95%E3%83%A9%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88> |
+<table>
+  <thead>
+    <tr>
+      <th>記号名</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ライフライン</td>
+      <td>オブジェクト (クラス、インスタンス) を表す。</td>
+      <td>粒度を大きくして、システムのコンポーネントをライフラインとすることもある。</td>
+    </tr>
+    <tr>
+      <td>実行仕様</td>
+      <td>ライフライン上で実行されている処理を表す。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>停止</td>
+      <td>ライフラインが削除されることを表す。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>同期メッセージ</td>
+      <td>既存のライフラインを同期的にコールすることを表す。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>非同期メッセージ</td>
+      <td>既存のライフラインを非同期的にコールすることを表す。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>生成メッセージ</td>
+      <td>ライフラインを新しく作成することを表す。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>自己メッセージ</td>
+      <td>ライフラインが、自分自身の内部処理をコールして処理を繰り返すことを表す。</td>
+      <td>・<a href="https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc">https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc</a>&gt;</td>
+    </tr>
+    <tr>
+      <td>再帰的メッセージ</td>
+      <td>ライフラインが、自分自身全体をコールして処理を繰り返すことを表す。</td>
+      <td>・<a href="https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc">https://www.lesswrong.com/posts/gQ5eQjRTY87LpjhQv/when-to-use-meta-vs-self-reference-recursive-etc</a>&gt;</td>
+    </tr>
+    <tr>
+      <td>入れ子実行仕様</td>
+      <td>再帰的メッセージによってコールされた別の実行仕様を表す。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>返却メッセージ</td>
+      <td>コールの結果を他のライフラインに返却することを表す。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>複合フラグメント (結合フラグメント)</td>
+      <td>条件分岐、繰り返しなどによって実行されたコールであること表す。実行仕様とメッセージを四角で囲い、左上隅にオペレーター名を記載する。</td>
+      <td>条件分岐の場合はオペレーター名を <code>alt</code> (<code>alternative</code>) 、繰り返しの場合は <code>loop</code> とする。<br>・<a href="https://qiita.com/devopsCoordinator/items/4535c3cce207b114ad6c#%E8%A4%87%E5%90%88%E3%83%95%E3%83%A9%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88">https://qiita.com/devopsCoordinator/items/4535c3cce207b114ad6c#複合フラグメント</a>&gt;</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [シーケンス図の書き方やサンプルのご紹介（内部設計） – Rainbow Engine](https://rainbow-engine.com/sequence-diagram-sample/)
 > - https://lecture.ecc.u-tokyo.ac.jp/~hideo-t/references/uml/sequence-diagram/sequence-diagram.html
@@ -227,11 +306,28 @@ Dependency (依存) が使用される。
 
 複数のクラスから構成される処理を `1` 個の図で表現した図のこと。
 
-| 記号名                 | 説明                       |
-| ---------------------- | -------------------------- |
-| コンポーネント名       | 処理コンポーネントを表す。 |
-| 提供側インターフェース |                            |
-| 要求側インターフェース |                            |
+<table>
+  <thead>
+    <tr>
+      <th>記号名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>コンポーネント名</td>
+      <td>処理コンポーネントを表す。</td>
+    </tr>
+    <tr>
+      <td>提供側インターフェース</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>要求側インターフェース</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.itsenka.com/contents/development/uml/component.html
 > - https://www.bcm.co.jp/site/2002/uml/uml10.htm

@@ -33,12 +33,37 @@ version: 2.1
 
 #### ▼ parameters とは
 
-| パラメーター名      | 参照範囲                                                                | 値を設定する場所 |
-| ------------------- | ----------------------------------------------------------------------- | ---------------- |
-| command parameters  | `command` キー内で定義する。定義した `command` キー内のみで定義できる。 | `workflows`      |
-| job parameters      | `jobs` キー内で定義する。定義した `jobs` キー内のみで参照できる。       | `workflows`      |
-| executors parameter | `executors` 内で定義する。定義した `executos` 内のみで参照できる。      | `job`            |
-| pipeline parameters | トップレベルで定義する。リポジトリ内のみで参照できる。                  | `workflows`      |
+<table>
+  <thead>
+    <tr>
+      <th>パラメーター名</th>
+      <th>参照範囲</th>
+      <th>値を設定する場所</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>command parameters</td>
+      <td><code>command</code> キー内で定義する。定義した <code>command</code> キー内のみで定義できる。</td>
+      <td><code>workflows</code></td>
+    </tr>
+    <tr>
+      <td>job parameters</td>
+      <td><code>jobs</code> キー内で定義する。定義した <code>jobs</code> キー内のみで参照できる。</td>
+      <td><code>workflows</code></td>
+    </tr>
+    <tr>
+      <td>executors parameter</td>
+      <td><code>executors</code> 内で定義する。定義した <code>executos</code> 内のみで参照できる。</td>
+      <td><code>job</code></td>
+    </tr>
+    <tr>
+      <td>pipeline parameters</td>
+      <td>トップレベルで定義する。リポジトリ内のみで参照できる。</td>
+      <td><code>workflows</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -387,11 +412,32 @@ workflows を使用しない場合は、少なくとも `1` 個の `job` には 
 
 ![CICDパイプライン](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CICDパイプライン.png)
 
-| 粒度   | 説明                                                           | 備考                                                            |
-| ------ | -------------------------------------------------------------- | --------------------------------------------------------------- |
-| build  | プログラムの実行環境を作成する。                               | build と test を分割しにくい場合は、同じ job で定義してもよい。 |
-| test   | 種々のテスト (Unit テスト、Functional テストなど) を実行する。 |                                                                 |
-| deploy | ステージング環境または本番環境にデプロイする。                 |                                                                 |
+<table>
+  <thead>
+    <tr>
+      <th>粒度</th>
+      <th>説明</th>
+      <th>備考</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>build</td>
+      <td>プログラムの実行環境を作成する。</td>
+      <td>build と test を分割しにくい場合は、同じ job で定義してもよい。</td>
+    </tr>
+    <tr>
+      <td>test</td>
+      <td>種々のテスト (Unit テスト、Functional テストなど) を実行する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>deploy</td>
+      <td>ステージング環境または本番環境にデプロイする。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -927,10 +973,24 @@ workflows:
 
 #### ▼ only、ignore
 
-| よくあるパターン | 説明                                     |
-| ---------------- | ---------------------------------------- |
-| `/.*/`           | すべてのブランチを明示的に指定           |
-| `/feature\/.*/`  | 『feature/』と名前のついたブランチを指定 |
+<table>
+  <thead>
+    <tr>
+      <th>よくあるパターン</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>/.*/</code></td>
+      <td>すべてのブランチを明示的に指定</td>
+    </tr>
+    <tr>
+      <td><code>/feature\/.*/</code></td>
+      <td>『feature/』と名前のついたブランチを指定</td>
+    </tr>
+  </tbody>
+</table>
 
 **＊実装例＊**
 
@@ -983,10 +1043,24 @@ workflows:
 
 処理を実行するディレクトリーを指定する。
 
-| レベル        | 説明                                                                                                                                                                 |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| job、executor | プロジェクトをチェックアウトするディレクトリを指定する。executor または job で working_directory を宣言できる。両方で宣言していた場合は、executor の値が優先される。 |
-| steps         | 指定したディレクトリーに移動する。                                                                                                                                   |
+<table>
+  <thead>
+    <tr>
+      <th>レベル</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>job、executor</td>
+      <td>プロジェクトをチェックアウトするディレクトリを指定する。executor または job で working_directory を宣言できる。両方で宣言していた場合は、executor の値が優先される。</td>
+    </tr>
+    <tr>
+      <td>steps</td>
+      <td>指定したディレクトリーに移動する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [【CircleCI】working_directoryの挙動を実験して確かめてみた｜Webエンジニア研究室](https://www.engilaboo.com/circleci-working-directory/)
 > - [CircleCI 1 / 2 \| nju33](https://nju33.com/notes/circleci/articles)
@@ -1014,13 +1088,42 @@ working_directory: /go/src/github.com/$ORGNAME/$REPONAME
 
 レベルに応じて、出力できるシェルの範囲が異なる。
 
-| 参照レベル | 方法                                 | 説明                                                                                                                                |
-| ---------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
-| Bash       | `export`、`source` キー、`$BASH_ENV` | `run` キーにおける `command` キー内のシェルのみで参照できる。ただし、`$BASH_ENV` を使用すれば、異なる `commands` 間で値を共有可能。 |
-| Container  | `environment` キー                   | `jobs` キー内の特定のコンテナのシェルのみで参照できる。                                                                             |
-| Job        | `environment` キー                   | `jobs` キー内のシェルのみで参照できる。                                                                                             |
-| Project    | Environment Variables 能力           | リポジトリ内のシェルのみ参照できる。                                                                                                |
-| Global     | Contexts 能力                        | 異なるリポジトリ間のシェルで参照できる。                                                                                            |
+<table>
+  <thead>
+    <tr>
+      <th>参照レベル</th>
+      <th>方法</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bash</td>
+      <td><code>export</code>、<code>source</code> キー、<code>$BASH_ENV</code></td>
+      <td><code>run</code> キーにおける <code>command</code> キー内のシェルのみで参照できる。ただし、<code>$BASH_ENV</code> を使用すれば、異なる <code>commands</code> 間で値を共有可能。</td>
+    </tr>
+    <tr>
+      <td>Container</td>
+      <td><code>environment</code> キー</td>
+      <td><code>jobs</code> キー内の特定のコンテナのシェルのみで参照できる。</td>
+    </tr>
+    <tr>
+      <td>Job</td>
+      <td><code>environment</code> キー</td>
+      <td><code>jobs</code> キー内のシェルのみで参照できる。</td>
+    </tr>
+    <tr>
+      <td>Project</td>
+      <td>Environment Variables 能力</td>
+      <td>リポジトリ内のシェルのみ参照できる。</td>
+    </tr>
+    <tr>
+      <td>Global</td>
+      <td>Contexts 能力</td>
+      <td>異なるリポジトリ間のシェルで参照できる。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ 環境変数の出力方法
 

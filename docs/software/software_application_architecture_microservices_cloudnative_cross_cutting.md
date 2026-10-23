@@ -51,11 +51,36 @@ flowchart LR
 
 ![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-設定管理.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-設定管理.drawio.png)
 
-| 管理場所             | データの種類                                                  | 暗号化キー                     | 説明                                                                                                                                                                  |
-| -------------------- | ------------------------------------------------------------- | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AWS Systems Manager  | AWS リソースの非公開設定 (例：DB の認証情報)                  | AWS KMS                        | Terraform の使用時に、AWS リソースを構築する機密な設定を管理しておく。                                                                                                |
-| Kubernetes ConfigMap | コンテナが使用する公開設定 (例：タイムアウト値、タイムゾーン) | なし                           | ファイルや環境変数として、設定をコンテナに渡せる。設定を平文で管理する。                                                                                              |
-| Kubernetes Secret    | コンテナが使用する非公開設定 (例：DB 認証情報)                | Kubernetes リポジトリ内の SOPS | ファイルや環境変数として、コンテナに設定を渡せる。設定を base64 方式エンコードし、管理する。機密な設定を平文で管理することは危険であり、Secret で管理するほうがよい。 |
+<table>
+  <thead>
+    <tr>
+      <th>管理場所</th>
+      <th>データの種類</th>
+      <th>暗号化キー</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AWS Systems Manager</td>
+      <td>AWS リソースの非公開設定 (例：DB の認証情報)</td>
+      <td>AWS KMS</td>
+      <td>Terraform の使用時に、AWS リソースを構築する機密な設定を管理しておく。</td>
+    </tr>
+    <tr>
+      <td>Kubernetes ConfigMap</td>
+      <td>コンテナが使用する公開設定 (例：タイムアウト値、タイムゾーン)</td>
+      <td>なし</td>
+      <td>ファイルや環境変数として、設定をコンテナに渡せる。設定を平文で管理する。</td>
+    </tr>
+    <tr>
+      <td>Kubernetes Secret</td>
+      <td>コンテナが使用する非公開設定 (例：DB 認証情報)</td>
+      <td>Kubernetes リポジトリ内の SOPS</td>
+      <td>ファイルや環境変数として、コンテナに設定を渡せる。設定を base64 方式エンコードし、管理する。機密な設定を平文で管理することは危険であり、Secret で管理するほうがよい。</td>
+    </tr>
+  </tbody>
+</table>
 
 [Microservices Pattern: Pattern: Externalized configuration](https://microservices.io/patterns/externalized-configuration.html)
 
@@ -579,10 +604,24 @@ GitOps パターンの CI/CD パイプラインのうちで、デプロイに着
 
 ![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-GitOps.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-GitOps.drawio.png)
 
-| 図中の登場キャラクター | 説明 |
-| ---------------------- | ---- |
-| 力尽きた…              |      |
-|                        |      |
+<table>
+  <thead>
+    <tr>
+      <th>図中の登場キャラクター</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>力尽きた…</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 ArgoCD の仕組みは、以下のブログで解説しているため、5000 兆回ブックマークしてくれると嬉しいです！
 
@@ -652,10 +691,24 @@ PaaS や FaaS (例：AWS であれば、AWS Beanstalk や AWS Lambda) を使用�
 
 ![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス (Pod) のデプロイ.drawio.png](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス_(Pod)_%25E3%2581%25AE%25E3%2583%2586%25E3%2582%2599%25E3%2583%2595%25E3%2582%259A%25E3%2583%25AD%25E3%2582%25A4.drawio.png>)
 
-| プラクティス項目      | 説明                                                                                                                                                                                                                                                                                             |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Kubernetes Deployment | Workload (例：Deployment、DaemonSet、StatefulSet、Job など) で Pod を冗長化する。Rolling Update 戦略では、既存の Pod を稼働させながら、新しい Pod をデプロイする。そのため、新旧 Pod が並列的に稼働するため、クライアントからのリクエストを処理しながら、ダウンタイムなく Pod をデプロイできる。 |
-| Kubernetes Pod        | Workload 配下の Pod を異なる AZ にデプロイします。                                                                                                                                                                                                                                               |
+<table>
+  <thead>
+    <tr>
+      <th>プラクティス項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Kubernetes Deployment</td>
+      <td>Workload (例：Deployment、DaemonSet、StatefulSet、Job など) で Pod を冗長化する。Rolling Update 戦略では、既存の Pod を稼働させながら、新しい Pod をデプロイする。そのため、新旧 Pod が並列的に稼働するため、クライアントからのリクエストを処理しながら、ダウンタイムなく Pod をデプロイできる。</td>
+    </tr>
+    <tr>
+      <td>Kubernetes Pod</td>
+      <td>Workload 配下の Pod を異なる AZ にデプロイします。</td>
+    </tr>
+  </tbody>
+</table>
 
 ## フロントエンド
 
@@ -693,19 +746,63 @@ kubelet が Pod の開始プロセスを始めると、以下の一連のプロ�
 
 ![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-アプリコンテナ (開始).drawio.png](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-アプリコンテナ_(開始).drawio.png>)
 
-| プラクティス項目                     | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Kubernetes Pod Probe オプション      | StartupProbe、LivenessProbe、ReadinessProbe、を使い分け、正常性を素早く検知する。                                                                                                                                                                                                                                                                                                                                                    |
-| Kubernetes Pod PullPolicy オプション | コンテナ作成のたびにイメージをプルすると、イメージレジストリに負荷がかかる。そこで、`.spec.containers[*].imagePullPolicy` キーに IfNotPresent を使用し、Node 上にイメージのキャッシュがない場合だけプルできるようにする。Kubernetes では、一度プルしたコンテナイメージを基本的に削除しないため、キャッシュとして再利用できる。デフォルトでは、コンテナイメージのキャッシュがあれば、イメージをプルせずにキャッシュを使用してくれる。 |
+<table>
+  <thead>
+    <tr>
+      <th>プラクティス項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Kubernetes Pod Probe オプション</td>
+      <td>StartupProbe、LivenessProbe、ReadinessProbe、を使い分け、正常性を素早く検知する。</td>
+    </tr>
+    <tr>
+      <td>Kubernetes Pod PullPolicy オプション</td>
+      <td>コンテナ作成のたびにイメージをプルすると、イメージレジストリに負荷がかかる。そこで、<code>.spec.containers[*].imagePullPolicy</code> キーに IfNotPresent を使用し、Node 上にイメージのキャッシュがない場合だけプルできるようにする。Kubernetes では、一度プルしたコンテナイメージを基本的に削除しないため、キャッシュとして再利用できる。デフォルトでは、コンテナイメージのキャッシュがあれば、イメージをプルせずにキャッシュを使用してくれる。</td>
+    </tr>
+  </tbody>
+</table>
 
 kubelet は、コンテナをヘルスチェック (例：StartupProbe、LivenessProbe、ReadinessProbe) し、障害を防ぎます。
 
-| 項目           | StartupProbe                                                                                                                                                                                                           | LivenessProbe                                                                                                                                               | ReadinessProbe                                                                                                                                                                                                                                                                                                                                                                                                     |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 説明           | ヘルスチェックを実行することで、アプリケーションの起動が完了したかを確認する。ReadinessProbe よりも前に実行される。ReadinessProbe と違って起動時にしか実行されない。ウォームアップが必要なプロセスのチェックに役立つ。 | ヘルスチェックを実行することで、コンテナが正常に動作しているか確認する。 注意点として、LivenessProbe の間隔が短すぎると、kubelet に必要以上に負荷がかかる。 | ヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。 コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例: Nginx の最初の設定ファイル読み込み完了まで、MySQL の最初のコネクション受信準備完了まで) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。注意点として、ReadinessProbe の間隔が短すぎると、kubelet に必要以上に負荷がかかる。 |
-| エンドポイント | ヘルスチェックエンドポイント LivenessProbe と同じエンドポイント(例：Nginx なら 200 を返却するだけの/healthcheck を定義する)                                                                                            | ヘルスチェックエンドポイント(例：Nginx なら 200 を返却するだけの/healthcheck を定義する)                                                                    | ready エンドポイント(例：Nginx なら用意してくれてる:8081/nginx-ready を使用する)                                                                                                                                                                                                                                                                                                                                   |
-| 正常とき       | LivenessProbe または ReadinessProbe を実行する。                                                                                                                                                                       | HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが 200 から 399 ステータスを返却すれば正常とみなす。                                           | HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが 200 から 399 ステータスを返却すれば正常とみなす。                                                                                                                                                                                                                                                                                                  |
-| 異常とき       | LivenessProbe または ReadinessProbe を実行しない。                                                                                                                                                                     | コンテナで障害 (例：デッドロック) が起こって応答しなくなると、コンテナを強制的に再起動してくれる。                                                          | コンテナのプロセスの準備が完了しない間、そのコンテナが処理できるようになるまで通信を流さないようにしてくれる。                                                                                                                                                                                                                                                                                                     |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>StartupProbe</th>
+      <th>LivenessProbe</th>
+      <th>ReadinessProbe</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>説明</td>
+      <td>ヘルスチェックを実行することで、アプリケーションの起動が完了したかを確認する。ReadinessProbe よりも前に実行される。ReadinessProbe と違って起動時にしか実行されない。ウォームアップが必要なプロセスのチェックに役立つ。</td>
+      <td>ヘルスチェックを実行することで、コンテナが正常に動作しているか確認する。 注意点として、LivenessProbe の間隔が短すぎると、kubelet に必要以上に負荷がかかる。</td>
+      <td>ヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。 コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例: Nginx の最初の設定ファイル読み込み完了まで、MySQL の最初のコネクション受信準備完了まで) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。注意点として、ReadinessProbe の間隔が短すぎると、kubelet に必要以上に負荷がかかる。</td>
+    </tr>
+    <tr>
+      <td>エンドポイント</td>
+      <td>ヘルスチェックエンドポイント LivenessProbe と同じエンドポイント(例：Nginx なら 200 を返却するだけの/healthcheck を定義する)</td>
+      <td>ヘルスチェックエンドポイント(例：Nginx なら 200 を返却するだけの/healthcheck を定義する)</td>
+      <td>ready エンドポイント(例：Nginx なら用意してくれてる:8081/nginx-ready を使用する)</td>
+    </tr>
+    <tr>
+      <td>正常とき</td>
+      <td>LivenessProbe または ReadinessProbe を実行する。</td>
+      <td>HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが 200 から 399 ステータスを返却すれば正常とみなす。</td>
+      <td>HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが 200 から 399 ステータスを返却すれば正常とみなす。</td>
+    </tr>
+    <tr>
+      <td>異常とき</td>
+      <td>LivenessProbe または ReadinessProbe を実行しない。</td>
+      <td>コンテナで障害 (例：デッドロック) が起こって応答しなくなると、コンテナを強制的に再起動してくれる。</td>
+      <td>コンテナのプロセスの準備が完了しない間、そのコンテナが処理できるようになるまで通信を流さないようにしてくれる。</td>
+    </tr>
+  </tbody>
+</table>
 
 [Microservices Pattern: Pattern: Health Check API](https://microservices.io/patterns/observability/health-check-api.html)
 
@@ -725,10 +822,24 @@ Service と kube-proxy が Pod の宛先情報を削除する前に Pod が終�
 
 ![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-アプリコンテナ (終了).drawio.png](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-アプリコンテナ_(終了).drawio.png>)
 
-| プラクティス項目                                           | 説明                                                                                                                                                                                                                                                                                                                                                                                                     |
-| ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Kubernetes Pod PreStop オプション                          | コンテナの終了前に待機処理を実行できるように、ユーザーが Pod の `.spec.containers[*].lifecycle.preStop` キーにコマンドを設定する。例えば、istio-proxy に `sleep` コマンドや他のコンテナの終了を待機する処理を設定し、終了順序を調整する。                                                                                                                                                                |
-| Kubernetes Pod TerminationGracefulPeriodSeconds オプション | Service と kube-proxy の処理後に Pod を終了できるように、ユーザーが Pod の `.spec.terminationGracePeriodSeconds` キーに任意の秒数を設定する。Pod の削除に伴う Service と kube-proxy の処理の完了を待機できるようになる。なお、`.spec.terminationGracePeriodSeconds` の秒数が長すぎると、Pod の終了に時間がかかりすぎるようになり、Pod の更新や Amazon EKS クラスターのアップグレードに時間に影響が出る。 |
+<table>
+  <thead>
+    <tr>
+      <th>プラクティス項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Kubernetes Pod PreStop オプション</td>
+      <td>コンテナの終了前に待機処理を実行できるように、ユーザーが Pod の <code>.spec.containers[*].lifecycle.preStop</code> キーにコマンドを設定する。例えば、istio-proxy に <code>sleep</code> コマンドや他のコンテナの終了を待機する処理を設定し、終了順序を調整する。</td>
+    </tr>
+    <tr>
+      <td>Kubernetes Pod TerminationGracefulPeriodSeconds オプション</td>
+      <td>Service と kube-proxy の処理後に Pod を終了できるように、ユーザーが Pod の <code>.spec.terminationGracePeriodSeconds</code> キーに任意の秒数を設定する。Pod の削除に伴う Service と kube-proxy の処理の完了を待機できるようになる。なお、<code>.spec.terminationGracePeriodSeconds</code> の秒数が長すぎると、Pod の終了に時間がかかりすぎるようになり、Pod の更新や Amazon EKS クラスターのアップグレードに時間に影響が出る。</td>
+    </tr>
+  </tbody>
+</table>
 
 ## サービスメッシュ外
 
@@ -838,13 +949,36 @@ Node の作成には、マシンイメージとして AMI を採用します。
 
 ![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-Karpenter.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-Karpenter.drawio.png)
 
-| 図中の登場キャラクター   | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AWS AMI                  | Node のマシンイメージである。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| Kubernetes ConfigMap     | Karpenter Controller の各種設定を管理する。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| Karpenter EC2 Node Class | Node の仕様を設定する。NodePool とは異なり、AWS 固有の仕様 (例：セキュリティグループ、サブネット、AMI など) を設定できる。マシンイメージとして AMI をプルし、Node を作成する。                                                                                                                                                                                                                                                                                                                                                                            |
-| Karpenter Controller     | Pod のフェーズを監視し、Pending フェーズのままの Pod が現れると、起動テンプレートと Node を作成する。起動テンプレートは、Node の作成後に削除する。作成した Node に Pod をバインドし、kube-scheduler によるスケジューリングを待つ。料金最適化やハードウェア消費量最適化のために、様々なパラメーターから作成 / 削除 / 置換の対象とする Node を計算し、Node の統合と垂直水平スケーリングを実行する。統合には、鳥の群れの動きをモデリングした Boids と似たアルゴリズムを使用している。EC2 Node のヘルスステータスで異常を検知すると、その Node を終了します。 |
-| Karpenter NodePool       | Node の仕様を設定する。Node Class とは異なり、AWS に依らない仕様 (例：Node ラベルなど) を設定できる。                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+<table>
+  <thead>
+    <tr>
+      <th>図中の登場キャラクター</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AWS AMI</td>
+      <td>Node のマシンイメージである。</td>
+    </tr>
+    <tr>
+      <td>Kubernetes ConfigMap</td>
+      <td>Karpenter Controller の各種設定を管理する。</td>
+    </tr>
+    <tr>
+      <td>Karpenter EC2 Node Class</td>
+      <td>Node の仕様を設定する。NodePool とは異なり、AWS 固有の仕様 (例：セキュリティグループ、サブネット、AMI など) を設定できる。マシンイメージとして AMI をプルし、Node を作成する。</td>
+    </tr>
+    <tr>
+      <td>Karpenter Controller</td>
+      <td>Pod のフェーズを監視し、Pending フェーズのままの Pod が現れると、起動テンプレートと Node を作成する。起動テンプレートは、Node の作成後に削除する。作成した Node に Pod をバインドし、kube-scheduler によるスケジューリングを待つ。料金最適化やハードウェア消費量最適化のために、様々なパラメーターから作成 / 削除 / 置換の対象とする Node を計算し、Node の統合と垂直水平スケーリングを実行する。統合には、鳥の群れの動きをモデリングした Boids と似たアルゴリズムを使用している。EC2 Node のヘルスステータスで異常を検知すると、その Node を終了します。</td>
+    </tr>
+    <tr>
+      <td>Karpenter NodePool</td>
+      <td>Node の仕様を設定する。Node Class とは異なり、AWS に依らない仕様 (例：Node ラベルなど) を設定できる。</td>
+    </tr>
+  </tbody>
+</table>
 
 [Karpenter vs Cluster Autoscaler ☸️](https://kubesandclouds.com/2022-01-04-karpenter/)
 
@@ -868,25 +1002,76 @@ Karpenter と AWS マネージド Node グループ Node グループの間で�
 
 ![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-Nodeのスケーリング.drawio (1).png](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-Nodeのスケーリング.drawio_(1).png>)
 
-| 機能例                   | Karpenter                                                             | AWS マネージド Node グループ Node グループ                                                                                                                                              |
-| ------------------------ | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Node 作成                | ラベル付きの Node を作成する。                                        | ラベル付きの Node を作成する。                                                                                                                                                          |
-| Graceful Shutdown        | 自身の作成した Node を削除するときに、GracefulShutdown を実行する。   | デフォルトでは Graceful Shutdown を実行できない。EC2 UserData で、`kubelet-config.json` に ShutdownGracePeriod と ShutdownGracePeriodCriticalPods の設定が必要である。                  |
-| 料金最適化               | Node の統合と垂直水平スケーリングを実行し、料金を最適化する。         | Cluster Autoscaler を併用してもしなくても、料金を最適化できない。                                                                                                                       |
-| ハードウェア消費量最適化 | Node の垂直水平スケーリングを実行し、ハードウェア消費量を最適化する。 | Cluster Autoscaler を併用しなければスケーリングを実行できず、ハードウェア消費量を最適化できない。AWS マネージド Node グループ Node グループは、設定された Node 数を維持するだけである。 |
+<table>
+  <thead>
+    <tr>
+      <th>機能例</th>
+      <th>Karpenter</th>
+      <th>AWS マネージド Node グループ Node グループ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Node 作成</td>
+      <td>ラベル付きの Node を作成する。</td>
+      <td>ラベル付きの Node を作成する。</td>
+    </tr>
+    <tr>
+      <td>Graceful Shutdown</td>
+      <td>自身の作成した Node を削除するときに、GracefulShutdown を実行する。</td>
+      <td>デフォルトでは Graceful Shutdown を実行できない。EC2 UserData で、<code>kubelet-config.json</code> に ShutdownGracePeriod と ShutdownGracePeriodCriticalPods の設定が必要である。</td>
+    </tr>
+    <tr>
+      <td>料金最適化</td>
+      <td>Node の統合と垂直水平スケーリングを実行し、料金を最適化する。</td>
+      <td>Cluster Autoscaler を併用してもしなくても、料金を最適化できない。</td>
+    </tr>
+    <tr>
+      <td>ハードウェア消費量最適化</td>
+      <td>Node の垂直水平スケーリングを実行し、ハードウェア消費量を最適化する。</td>
+      <td>Cluster Autoscaler を併用しなければスケーリングを実行できず、ハードウェア消費量を最適化できない。AWS マネージド Node グループ Node グループは、設定された Node 数を維持するだけである。</td>
+    </tr>
+  </tbody>
+</table>
 
 # 25-03. Pod の垂直水平スケーリングと回復性管理
 
 ![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス (Pod) の運用.drawio.png](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス_(Pod)_%25E3%2581%25AE%25E9%2581%258B%25E7%2594%25A8.drawio.png>)
 
-| プラクティス項目        | 説明                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Descheduler             | Descheduler は、ポリシーに応じて不適切な Node から Pod を退避させる。Node のハードウェアリソースの消費量が動的に高まった場合に、kube-scheduler は不適切な Node から Pod を退避し、別の Node にこれを再スケジューリングさせられない。他に Node が障害が起こり、他の Node に Pod が退避した場合に、その後 Node が復旧したとしても、Pod が元の Node に戻ることはない。Descheduler を使用すれば、再スケジューリングを自動化できる。 |
-| Deployment              | Pod 希望数を維持する。                                                                                                                                                                                                                                                                                                                                                                                                          |
-| HorizontalPodAutoscaler | HorizontalPodAutoscaler で Pod を水平スケーリングする。水平スケーリングは、Pod の負荷が高くなると Pod 数を増やし、システム全体が高負荷で機能しなくなる状況を避けられる。ただし、突発的な高負荷には弱く、Pod 数の増減が間に合わないことがある。突発的な負荷のタイミングが事前にわかっているなら、事前に最小数を高めに設定しておく。                                                                                              |
-| metrics-server          | HorizontalPodAutoscaler は、metrics-server の提供するメトリクス (例：CPU 使用率、メモリ使用率など) 、カスタムメトリクス、Kubernetes 外のメトリクス (ロードバランサーの rps/qps 値、メッセージキューの待機リクエスト数など) 、に基づいて Pod 数を決める。metrics-server はデフォルトで Amazon EKS クラスターに存在していないため、別途インストールしておかなければならない。                                                     |
-| Pod                     | Pod は、Node からハードウェアリソースを要求する。Pod の性質に応じて、適切な QoS を設定する。上限 (`limits`) と下限 (`requests`) の設定の両方または一方を省略すると、自動的に Guaranteed になる。コンテナが一定量のハードウェアリソースを要求し続けたとしても、無制限 (Node の空きリソース分) にハードウェアリソースを提供し、要求に耐えられるようにする。基本的には、ほとんどのコンテナを Guaranteed QoS にすればよい。         |
-| PodDisruptionBudget     | Node のスケールインやアップグレード時に、Node はドレイン処理を実行し、Pod を退避させる。このとき、対象の Pod が同時に停止することを避けるため、PodDisruptionBudget を使用する。`.spec.minAvailable` で、対象の Pod のうち稼働させておく最小レプリカ数を設定できる。                                                                                                                                                             |
+<table>
+  <thead>
+    <tr>
+      <th>プラクティス項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Descheduler</td>
+      <td>Descheduler は、ポリシーに応じて不適切な Node から Pod を退避させる。Node のハードウェアリソースの消費量が動的に高まった場合に、kube-scheduler は不適切な Node から Pod を退避し、別の Node にこれを再スケジューリングさせられない。他に Node が障害が起こり、他の Node に Pod が退避した場合に、その後 Node が復旧したとしても、Pod が元の Node に戻ることはない。Descheduler を使用すれば、再スケジューリングを自動化できる。</td>
+    </tr>
+    <tr>
+      <td>Deployment</td>
+      <td>Pod 希望数を維持する。</td>
+    </tr>
+    <tr>
+      <td>HorizontalPodAutoscaler</td>
+      <td>HorizontalPodAutoscaler で Pod を水平スケーリングする。水平スケーリングは、Pod の負荷が高くなると Pod 数を増やし、システム全体が高負荷で機能しなくなる状況を避けられる。ただし、突発的な高負荷には弱く、Pod 数の増減が間に合わないことがある。突発的な負荷のタイミングが事前にわかっているなら、事前に最小数を高めに設定しておく。</td>
+    </tr>
+    <tr>
+      <td>metrics-server</td>
+      <td>HorizontalPodAutoscaler は、metrics-server の提供するメトリクス (例：CPU 使用率、メモリ使用率など) 、カスタムメトリクス、Kubernetes 外のメトリクス (ロードバランサーの rps/qps 値、メッセージキューの待機リクエスト数など) 、に基づいて Pod 数を決める。metrics-server はデフォルトで Amazon EKS クラスターに存在していないため、別途インストールしておかなければならない。</td>
+    </tr>
+    <tr>
+      <td>Pod</td>
+      <td>Pod は、Node からハードウェアリソースを要求する。Pod の性質に応じて、適切な QoS を設定する。上限 (<code>limits</code>) と下限 (<code>requests</code>) の設定の両方または一方を省略すると、自動的に Guaranteed になる。コンテナが一定量のハードウェアリソースを要求し続けたとしても、無制限 (Node の空きリソース分) にハードウェアリソースを提供し、要求に耐えられるようにする。基本的には、ほとんどのコンテナを Guaranteed QoS にすればよい。</td>
+    </tr>
+    <tr>
+      <td>PodDisruptionBudget</td>
+      <td>Node のスケールインやアップグレード時に、Node はドレイン処理を実行し、Pod を退避させる。このとき、対象の Pod が同時に停止することを避けるため、PodDisruptionBudget を使用する。<code>.spec.minAvailable</code> で、対象の Pod のうち稼働させておく最小レプリカ数を設定できる。</td>
+    </tr>
+  </tbody>
+</table>
 
 # 25-04. コンテナの回復性管理
 

@@ -64,16 +64,57 @@ CNCF の定義のとおり、クラウドネイティブ技術はパブリック
 
 表 1. クラウドネイティブ技術に関連する歴史
 
-| 年代       | 技術                               | 説明                                                                                                                                                                     |
-| ---------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 2004-2006  | AWS                                | Amazon はクラウドサービスとして SQS を公開した。その後、AWS は S3 や EC2 の提供も始めた \*2 。                                                                           |
-| 2008       | Google Cloud                       | Google はクラウドサービスとして App Engine を公開した \*3 。                                                                                                             |
-| 2009       | Heroku                             | Heroku は PaaS として Heroku を公開した \*4 。                                                                                                                           |
-| 2010       | Azure、OpenStack                   | Microsoft はクラウドサービスとして Windows Azure を公開した *5 。また、Rackspace Hosting と NASA はユーザー独自の IaaS を構築できる OpenStack を公開した *6 。           |
-| 2011       | Cloud Foundry                      | VMware はユーザー独自の PaaS を構築できる Cloud Foundry を公開した \*7 。                                                                                                |
-| 2013       | Docker                             | dotCloud は仮想化技術としてコンテナを公開した \*8 。                                                                                                                     |
-| 2014〜2015 | Kubernetes                         | Google はコンテナオーケストレーションツールとして Kubernetes を発表した。また Kubernetes v1.0 のリリースに合わせて、Google と Linux Foundation が CNCF を設立した \*9 。 |
-| 2014〜     | 約 20 分野のクラウドネイティブ技術 | CNCF では約 20 分野に渡るクラウドネイティブ技術が登場した \*10 。                                                                                                        |
+<table>
+  <thead>
+    <tr>
+      <th>年代</th>
+      <th>技術</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2004-2006</td>
+      <td>AWS</td>
+      <td>Amazon はクラウドサービスとして SQS を公開した。その後、AWS は S3 や EC2 の提供も始めた *2 。</td>
+    </tr>
+    <tr>
+      <td>2008</td>
+      <td>Google Cloud</td>
+      <td>Google はクラウドサービスとして App Engine を公開した *3 。</td>
+    </tr>
+    <tr>
+      <td>2009</td>
+      <td>Heroku</td>
+      <td>Heroku は PaaS として Heroku を公開した *4 。</td>
+    </tr>
+    <tr>
+      <td>2010</td>
+      <td>Azure、OpenStack</td>
+      <td>Microsoft はクラウドサービスとして Windows Azure を公開した *5 。また、Rackspace Hosting と NASA はユーザー独自の IaaS を構築できる OpenStack を公開した *6 。</td>
+    </tr>
+    <tr>
+      <td>2011</td>
+      <td>Cloud Foundry</td>
+      <td>VMware はユーザー独自の PaaS を構築できる Cloud Foundry を公開した *7 。</td>
+    </tr>
+    <tr>
+      <td>2013</td>
+      <td>Docker</td>
+      <td>dotCloud は仮想化技術としてコンテナを公開した *8 。</td>
+    </tr>
+    <tr>
+      <td>2014〜2015</td>
+      <td>Kubernetes</td>
+      <td>Google はコンテナオーケストレーションツールとして Kubernetes を発表した。また Kubernetes v1.0 のリリースに合わせて、Google と Linux Foundation が CNCF を設立した *9 。</td>
+    </tr>
+    <tr>
+      <td>2014〜</td>
+      <td>約 20 分野のクラウドネイティブ技術</td>
+      <td>CNCF では約 20 分野に渡るクラウドネイティブ技術が登場した *10 。</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -131,13 +172,48 @@ CNCF の定義のとおり、クラウドネイティブ技術はパブリック
 
 表 2. マイクロサービスアーキテクチャに関連する歴史
 
-| 登場年                           | アーキテクチャスタイル           | 提唱者（アルファベット順）    | 概要                                                                                           |
-| -------------------------------- | -------------------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------- |
-| 1999                             | モノリスアーキテクチャ           | 自然発生的                    | アプリケーションのすべてのロジックを単一のプロセスで稼働させ、また全体をリリースする。         |
-| 1990 年代後半〜<br>2000 年代前半 | サービス指向アーキテクチャ       | Michael Bell、Thomas Erl など | アプリケーションを『機能』の粒度で分割する。                                                   |
-| 2003                             | ドメイン駆動設計                 | Eric Evans                    | オブジェクト指向分析設計のベタープラクティスを集め、機能ロジックのモデリングを強化する。       |
-| 2003                             | プレゼンテーション・ドメイン分離 | Martin Fowler                 | フロントエンド領域をバックエンド領域の機能ロジックから切り離す。                               |
-| 2014                             | マイクロサービスアーキテクチャ   | James Lewis、Martin Fowler    | アプリケーションをドメイン駆動設計の『集約』や『境界づけられたコンテキスト』の粒度で分割する。 |
+<table>
+  <thead>
+    <tr>
+      <th>登場年</th>
+      <th>アーキテクチャスタイル</th>
+      <th>提唱者（アルファベット順）</th>
+      <th>概要</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1999</td>
+      <td>モノリスアーキテクチャ</td>
+      <td>自然発生的</td>
+      <td>アプリケーションのすべてのロジックを単一のプロセスで稼働させ、また全体をリリースする。</td>
+    </tr>
+    <tr>
+      <td>1990 年代後半〜<br>2000 年代前半</td>
+      <td>サービス指向アーキテクチャ</td>
+      <td>Michael Bell、Thomas Erl など</td>
+      <td>アプリケーションを『機能』の粒度で分割する。</td>
+    </tr>
+    <tr>
+      <td>2003</td>
+      <td>ドメイン駆動設計</td>
+      <td>Eric Evans</td>
+      <td>オブジェクト指向分析設計のベタープラクティスを集め、機能ロジックのモデリングを強化する。</td>
+    </tr>
+    <tr>
+      <td>2003</td>
+      <td>プレゼンテーション・ドメイン分離</td>
+      <td>Martin Fowler</td>
+      <td>フロントエンド領域をバックエンド領域の機能ロジックから切り離す。</td>
+    </tr>
+    <tr>
+      <td>2014</td>
+      <td>マイクロサービスアーキテクチャ</td>
+      <td>James Lewis、Martin Fowler</td>
+      <td>アプリケーションをドメイン駆動設計の『集約』や『境界づけられたコンテキスト』の粒度で分割する。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ◼︎ 1999 年：モノリスアーキテクチャ
 
@@ -233,30 +309,150 @@ CNCF では、オープンソースやクラウドプロバイダーのクラウ
 
 表 3. マイクロサービスアーキテクチャに関連のあるクラウドネイティブ技術例の一覧
 
-| 分野                                                                      | マイクロサービスとの関連性                                                                                                                       | 代表的なオープンソース                                                                                                                                      | 代表的なマネージドサービス                            |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| API Gateway (API ゲートウェイ)                                            | マイクロサービスの API のコールに必要な汎用的機能を集中管理する。                                                                                | ・Kong Gateway                                                                                                                                              | ・AWS (API Gateway)                                   |
-| Application Definition & Image Build (アプリケーション定義とイメージ構築) | コンテナイメージからマイクロサービスを構築し、またデプロイする。                                                                                 | ・Docker Compose <br> ・Helm<br>・OpenAPI<br>・Packer                                                                                                       |                                                       |
-| Automation & Configuration (自動化と設定)                                 | マイクロサービスのインフラストラクチャーのプロビジョニングを自動化する。                                                                         | ・Ansible<br>・Temporal<br>・Terraform                                                                                                                      | ・AWS (CloudFormation)                                |
-| Chaos Engineering (カオスエンジニアリング)                                | システムの全体や一部に障害を注入し、システムの回復力をテストする。                                                                               | ・ChaosMesh<br>・Istio                                                                                                                                      | ・AWS (Fault Injection Simulator)                     |
-| Cloud Native Network (クラウドネイティブネットワーク)                     | マイクロサービスがほかと通信するためのネットワークを作成する。                                                                                   | ・Cilium CNI                                                                                                                                                | ・AWS (VPC CNI)                                       |
-| Cloud Native Storage (クラウドネイティブストレージ)                       | ファイルストレージ、オブジェクトストレージ、ブロックストレージなどとして各種データを保管する。                                                   | ・Ceph<br>・Longhorn                                                                                                                                        | ・AWS (EBS、S3)                                       |
-| Coordination & Service Discovery (調整とサービス検出)                     | 各マイクロサービスがお互いに場所を特定できるようにする。                                                                                         | ・CoreDNS<br>・Etcd                                                                                                                                         | ・AWS (ECS Service Connect)                           |
-| Container Registry (コンテナレジストリー)                                 | コンテナイメージの保管や提供などを集中管理する。                                                                                                 | ・Harbor                                                                                                                                                    | ・AWS (ECR) <br>・Docker Hub                          |
-| Container Runtime (コンテナランタイム)                                    | コンテナ内のアプリケーションを実行し、またハードウェアリソース (例えば CPU、ストレージ、メモリなど) を提供する。                                 | ・Containerd                                                                                                                                                |                                                       |
-| Continuous Integration & Delivery (継続的インテグレーションとデリバリー)  | マイクロサービスの構築からデプロイまでに必要なタスクを自動化する。                                                                               | ・ArgoCD<br>・Dagger<br>・Flux<br>・Tekton                                                                                                                  | ・GitHub Actions                                      |
-| Continuous Optimization (継続的最適化)                                    | CNCF に定義の記載なし。                                                                                                                          | ・Karpenter<br>・OpenCost                                                                                                                                   | ・AWS (Cost Explorer)                                 |
-| Database (データベース)                                                   | RDB や No SQL DB としてマイクロサービスがデータを保管し、また取得できるようにする。                                                              | ・MySQL<bt>・Redis                                                                                                                                          | ・AWS (Aurora MySQL、ElastiCache)                     |
-| Feature Flagging (機能フラグ)                                             | CNCF Landscape に定義の記載なし。                                                                                                                | ・OpenFeature                                                                                                                                               | ・AWS (AppConfig)                                     |
-| Key Management (キー管理)                                                 | 暗号化キーの作成、保管、そしてローテションを集中管理する。                                                                                       | ・Spire                                                                                                                                                     | ・AWS (KMS)                                           |
-| Observability (オブザーバビリティー)                                      | さまざまなテレメトリーデータの作成、収集、保管、分析、可視化を実施する。                                                                         | ・Fluentd／FluentBit<br>・Grafana (Grafana、Loki、Mimir、Tempo) <br>・Kiali<br>・OpenTelemetry (クライアント SDK、OpenTelemetry Collector) <br>・Prometheus | ・AWS (CloudWatch Logs、CloudWatch Metrics、X-Ray)    |
-| Platform (プラットフォーム)                                               | クラウドネイティブの各分野のツールを一括で提供する。                                                                                             | ・KinD<bt>・Minikube<br>・Rancher                                                                                                                           | ・AWS (EKS、Lambda)                                   |
-| Remote Procedure Call (リモートプロシージャコール)                        | マイクロサービスがほかのマイクロサービスにリクエストを送信できるようにする。                                                                     | ・gRPC                                                                                                                                                      |                                                       |
-| Scheduling & Orchestration (スケジューリングとオーケストレーション)       | クラスター全体でコンテナを実行し、また管理する。                                                                                                 | ・Knative<br>・Kubernetes                                                                                                                                   | ・AWS (ECS)                                           |
-| Security & Compliance (セキュリティとコンプライアンス)                    | 脆弱性を監視して脆弱性を検出する。また、マイクロサービスの認証認可を強化する。                                                                   | ・Cert Manager<br>・Falco<br>・Keycloak<br>・OAuth2 Proxy<br>・SOPS                                                                                         | ・AWS (Certificate Manager、Cognito、Secrets Manager) |
-| Service Mesh (サービスメッシュ)                                           | 各マイクロサービスのロジックを変更することなく、マイクロサービス間の通信に信頼性、オブザーバビリティー、セキュリティ機能などを一律的に追加する。 | ・Istio<br>・Linkerd                                                                                                                                        | ・AWS (VPC Lattice、ECS Service Connect)              |
-| Service Proxy (サービスプロキシ) \*29                                     | マイクロサービスからの送信されたリクエストを中継し、ほかのマイクロサービスにフォワーディングする。                                               | ・Envoy<br>・Nginx                                                                                                                                          | ・AWS (ALB)                                           |
-| Streaming & Messaging (ストリーミングとメッセージング)                    | パブリッシャーから送信されたメッセージを中継し、他のサブスクライバーにフォワーディングする。                                                     | ・Apache Kafka<br>・CloudEvents<br>・RabbitMQ                                                                                                               | ・AWS (Kinesis、SQS)                                  |
+<table>
+  <thead>
+    <tr>
+      <th>分野</th>
+      <th>マイクロサービスとの関連性</th>
+      <th>代表的なオープンソース</th>
+      <th>代表的なマネージドサービス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>API Gateway (API ゲートウェイ)</td>
+      <td>マイクロサービスの API のコールに必要な汎用的機能を集中管理する。</td>
+      <td>・Kong Gateway</td>
+      <td>・AWS (API Gateway)</td>
+    </tr>
+    <tr>
+      <td>Application Definition &amp; Image Build (アプリケーション定義とイメージ構築)</td>
+      <td>コンテナイメージからマイクロサービスを構築し、またデプロイする。</td>
+      <td>・Docker Compose <br> ・Helm<br>・OpenAPI<br>・Packer</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Automation &amp; Configuration (自動化と設定)</td>
+      <td>マイクロサービスのインフラストラクチャーのプロビジョニングを自動化する。</td>
+      <td>・Ansible<br>・Temporal<br>・Terraform</td>
+      <td>・AWS (CloudFormation)</td>
+    </tr>
+    <tr>
+      <td>Chaos Engineering (カオスエンジニアリング)</td>
+      <td>システムの全体や一部に障害を注入し、システムの回復力をテストする。</td>
+      <td>・ChaosMesh<br>・Istio</td>
+      <td>・AWS (Fault Injection Simulator)</td>
+    </tr>
+    <tr>
+      <td>Cloud Native Network (クラウドネイティブネットワーク)</td>
+      <td>マイクロサービスがほかと通信するためのネットワークを作成する。</td>
+      <td>・Cilium CNI</td>
+      <td>・AWS (VPC CNI)</td>
+    </tr>
+    <tr>
+      <td>Cloud Native Storage (クラウドネイティブストレージ)</td>
+      <td>ファイルストレージ、オブジェクトストレージ、ブロックストレージなどとして各種データを保管する。</td>
+      <td>・Ceph<br>・Longhorn</td>
+      <td>・AWS (EBS、S3)</td>
+    </tr>
+    <tr>
+      <td>Coordination &amp; Service Discovery (調整とサービス検出)</td>
+      <td>各マイクロサービスがお互いに場所を特定できるようにする。</td>
+      <td>・CoreDNS<br>・Etcd</td>
+      <td>・AWS (ECS Service Connect)</td>
+    </tr>
+    <tr>
+      <td>Container Registry (コンテナレジストリー)</td>
+      <td>コンテナイメージの保管や提供などを集中管理する。</td>
+      <td>・Harbor</td>
+      <td>・AWS (ECR) <br>・Docker Hub</td>
+    </tr>
+    <tr>
+      <td>Container Runtime (コンテナランタイム)</td>
+      <td>コンテナ内のアプリケーションを実行し、またハードウェアリソース (例えば CPU、ストレージ、メモリなど) を提供する。</td>
+      <td>・Containerd</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Continuous Integration &amp; Delivery (継続的インテグレーションとデリバリー)</td>
+      <td>マイクロサービスの構築からデプロイまでに必要なタスクを自動化する。</td>
+      <td>・ArgoCD<br>・Dagger<br>・Flux<br>・Tekton</td>
+      <td>・GitHub Actions</td>
+    </tr>
+    <tr>
+      <td>Continuous Optimization (継続的最適化)</td>
+      <td>CNCF に定義の記載なし。</td>
+      <td>・Karpenter<br>・OpenCost</td>
+      <td>・AWS (Cost Explorer)</td>
+    </tr>
+    <tr>
+      <td>Database (データベース)</td>
+      <td>RDB や No SQL DB としてマイクロサービスがデータを保管し、また取得できるようにする。</td>
+      <td>・MySQL<bt>・Redis</td>
+      <td>・AWS (Aurora MySQL、ElastiCache)</td>
+    </tr>
+    <tr>
+      <td>Feature Flagging (機能フラグ)</td>
+      <td>CNCF Landscape に定義の記載なし。</td>
+      <td>・OpenFeature</td>
+      <td>・AWS (AppConfig)</td>
+    </tr>
+    <tr>
+      <td>Key Management (キー管理)</td>
+      <td>暗号化キーの作成、保管、そしてローテションを集中管理する。</td>
+      <td>・Spire</td>
+      <td>・AWS (KMS)</td>
+    </tr>
+    <tr>
+      <td>Observability (オブザーバビリティー)</td>
+      <td>さまざまなテレメトリーデータの作成、収集、保管、分析、可視化を実施する。</td>
+      <td>・Fluentd／FluentBit<br>・Grafana (Grafana、Loki、Mimir、Tempo) <br>・Kiali<br>・OpenTelemetry (クライアント SDK、OpenTelemetry Collector) <br>・Prometheus</td>
+      <td>・AWS (CloudWatch Logs、CloudWatch Metrics、X-Ray)</td>
+    </tr>
+    <tr>
+      <td>Platform (プラットフォーム)</td>
+      <td>クラウドネイティブの各分野のツールを一括で提供する。</td>
+      <td>・KinD<bt>・Minikube<br>・Rancher</td>
+      <td>・AWS (EKS、Lambda)</td>
+    </tr>
+    <tr>
+      <td>Remote Procedure Call (リモートプロシージャコール)</td>
+      <td>マイクロサービスがほかのマイクロサービスにリクエストを送信できるようにする。</td>
+      <td>・gRPC</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Scheduling &amp; Orchestration (スケジューリングとオーケストレーション)</td>
+      <td>クラスター全体でコンテナを実行し、また管理する。</td>
+      <td>・Knative<br>・Kubernetes</td>
+      <td>・AWS (ECS)</td>
+    </tr>
+    <tr>
+      <td>Security &amp; Compliance (セキュリティとコンプライアンス)</td>
+      <td>脆弱性を監視して脆弱性を検出する。また、マイクロサービスの認証認可を強化する。</td>
+      <td>・Cert Manager<br>・Falco<br>・Keycloak<br>・OAuth2 Proxy<br>・SOPS</td>
+      <td>・AWS (Certificate Manager、Cognito、Secrets Manager)</td>
+    </tr>
+    <tr>
+      <td>Service Mesh (サービスメッシュ)</td>
+      <td>各マイクロサービスのロジックを変更することなく、マイクロサービス間の通信に信頼性、オブザーバビリティー、セキュリティ機能などを一律的に追加する。</td>
+      <td>・Istio<br>・Linkerd</td>
+      <td>・AWS (VPC Lattice、ECS Service Connect)</td>
+    </tr>
+    <tr>
+      <td>Service Proxy (サービスプロキシ) *29</td>
+      <td>マイクロサービスからの送信されたリクエストを中継し、ほかのマイクロサービスにフォワーディングする。</td>
+      <td>・Envoy<br>・Nginx</td>
+      <td>・AWS (ALB)</td>
+    </tr>
+    <tr>
+      <td>Streaming &amp; Messaging (ストリーミングとメッセージング)</td>
+      <td>パブリッシャーから送信されたメッセージを中継し、他のサブスクライバーにフォワーディングする。</td>
+      <td>・Apache Kafka<br>・CloudEvents<br>・RabbitMQ</td>
+      <td>・AWS (Kinesis、SQS)</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -298,11 +494,36 @@ CNCF では、オープンソースやクラウドプロバイダーのクラウ
 
 表 4. マイクロサービスアーキテクチャに至るまでのアーキテクチャ間の比較
 
-|                                | モノリスアーキテクチャ                     | プレゼンテーション・ドメイン分離                                                       | マイクロサービスアーキテクチャ                                                                           |
-| ------------------------------ | ------------------------------------------ | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| **プロセスの単位**             | ・アプリケーション全体<br>・各種ストレージ | ・フロントエンドアプリケーション<br>・バックエンドアプリケーション<br>・各種ストレージ | ・フロントエンドアプリケーション<br>・API ゲートウェイ（任意）<br>・マイクロサービス<br>・各種ストレージ |
-| **機能ロジックリリースの単位** | アプリケーション全体                       | バックエンドアプリケーション                                                           | 各マイクロサービス                                                                                       |
-| **各種ストレージの単位**       | アプリケーション全体に１つずつ             | アプリケーション全体に１つずつ                                                         | 各マイクロサービスに１つずつ、またはアプリケーション全体に１つずつ                                       |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>モノリスアーキテクチャ</th>
+      <th>プレゼンテーション・ドメイン分離</th>
+      <th>マイクロサービスアーキテクチャ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>プロセスの単位</strong></td>
+      <td>・アプリケーション全体<br>・各種ストレージ</td>
+      <td>・フロントエンドアプリケーション<br>・バックエンドアプリケーション<br>・各種ストレージ</td>
+      <td>・フロントエンドアプリケーション<br>・API ゲートウェイ（任意）<br>・マイクロサービス<br>・各種ストレージ</td>
+    </tr>
+    <tr>
+      <td><strong>機能ロジックリリースの単位</strong></td>
+      <td>アプリケーション全体</td>
+      <td>バックエンドアプリケーション</td>
+      <td>各マイクロサービス</td>
+    </tr>
+    <tr>
+      <td><strong>各種ストレージの単位</strong></td>
+      <td>アプリケーション全体に１つずつ</td>
+      <td>アプリケーション全体に１つずつ</td>
+      <td>各マイクロサービスに１つずつ、またはアプリケーション全体に１つずつ</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -455,36 +676,139 @@ flowchart LR
 
 表 5. すべてのデザインパターンの一覧
 
-| 問題領域         | 目的                           | デザインパターン名<br>・：共存関係<br>／：競合関係                                                                                                                                                                                                                                                                                                          |
-| ---------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| フロントエンド   | フロントエンドの分割           | モノリスフロントエンド／マイクロフロントエンド                                                                                                                                                                                                                                                                                                              |
-|                  | UI レンダリングパターン        | CSR／SSR／SSG／ISR                                                                                                                                                                                                                                                                                                                                          |
-| API ゲートウェイ | API ゲートウェイの分割         | 中央集約ゲートウェイ／BFF                                                                                                                                                                                                                                                                                                                                   |
-| マイクロサービス | マイクロサービス間の通信       | ・リクエスト／レスポンス方式<br>・パブリッシュ／サブスクライブ方式<br>・ストリーミング方式<br>・データ共有方式                                                                                                                                                                                                                                              |
-|                  | マイクロサービスの分割         | ・ドメイン駆動設計に基づく境界<br>・認証マイクロサービス<br>・認可マイクロサービス<br>・オーケストレーションマイクロサービス<br>・外部 API 接続サービス<br>・非同期処理に特化した機能サービス (例：メール／プッシュ通知の機能) <br>・リアルタイム処理に特化した機能サービス<br>・永続データの機密度 (例：換金性の高い情報) <br>・永続データの所有組織の差異 |
-|                  | マイクロサービスの設計         | ・エンティティや値オブジェクトなどのドメイン駆動設計デザインパターン<br>・レイヤードアーキテクチャやクリーンアーキテクチャなどのアプリケーションアーキテクチャ                                                                                                                                                                                              |
-|                  | ドメインモデリング             | ステートソーシング／イベントソーシング                                                                                                                                                                                                                                                                                                                      |
-|                  | トランザクションの管理         | オーケストレーションサーガ／コレオグラフィサーガ／２フェーズコミット                                                                                                                                                                                                                                                                                        |
-|                  | 認証                           | セッション／SSO／JWT と API ゲートウェイの組み合わせ                                                                                                                                                                                                                                                                                                        |
-|                  | 認可                           | 中央集中管理／分散管理                                                                                                                                                                                                                                                                                                                                      |
-| ストレージ       | 永続データの分割管理           | ・DB per service／Shared DB<br>・Polyglot Persistence／Multi-model DB                                                                                                                                                                                                                                                                                       |
-|                  | 揮発性データの分割管理         | 中央集中管理／分散管理                                                                                                                                                                                                                                                                                                                                      |
-|                  | 静的ファイルの分割管理         | 中央集中管理／分散管理                                                                                                                                                                                                                                                                                                                                      |
-|                  | 分析用加工済データの分割管理   | 中央集中管理／分散管理                                                                                                                                                                                                                                                                                                                                      |
-| ネットワーク     | L4/L7 トラフィックの管理       | ・サービス検出<br>・ロードバランシング                                                                                                                                                                                                                                                                                                                      |
-|                  | 証明書の認証方式               | ・非 TLS (平文) <br>・サーバー認証<br>・クライアント認証<br>・相互 TLS 認証                                                                                                                                                                                                                                                                                 |
-| テスト           | ホワイトボックステスト         | ・ユニットテスト<br>・サービステスト<br>・コントラクトテスト<br>・E2E テスト                                                                                                                                                                                                                                                                                |
-|                  | ブラックボックステスト         | ・ロードテスト (負荷テスト) <br>・回帰テスト<br>・フォールトインジェクションを含むカオスエンジニアリング                                                                                                                                                                                                                                                    |
-| 信頼性管理       | 各種インスタンスの回復         | ・ヘルスチェック<br>・リトライ<br>・タイムアウト<br>・バルクヘッド<br>・サーキットブレイカー<br>・レートリミット                                                                                                                                                                                                                                            |
-|                  | 各種インスタンスのスケーリング | ・垂直スケーリング<br>・水平スケーリング<br>・インスタンスの希望数維持                                                                                                                                                                                                                                                                                      |
-| デプロイメント   | マイクロサービス実行環境       | Serverless platforms／Multiple services instance per host／Service instance per VM／Service instance per container                                                                                                                                                                                                                                          |
-|                  | リリース                       | ・インプレースデプロイメント<br>・ローリングデプロイメント<br>・カナリアリリース<br>・ブルー/グリーンデプロイメント                                                                                                                                                                                                                                         |
-|                  | CI/CD                          | CIOps／GitOps                                                                                                                                                                                                                                                                                                                                               |
-|                  | 汎用的なロジックの配布         | ・Externalized configuration<br>・Microservice chassis<br>・サービステンプレート<br>・サービスメッシュ                                                                                                                                                                                                                                                      |
-| 監視             | テレメトリーの監視             | 中央集中管理／分散管理                                                                                                                                                                                                                                                                                                                                      |
-|                  | インシデントの対処             | 中央集中管理／分散管理                                                                                                                                                                                                                                                                                                                                      |
-| 開発体制         | 開発組織の編成                 | Collective ownership／Strong ownership                                                                                                                                                                                                                                                                                                                      |
-|                  | リポジトリの編成               | モノレポ／ポリレポ                                                                                                                                                                                                                                                                                                                                          |
+<table>
+  <thead>
+    <tr>
+      <th>問題領域</th>
+      <th>目的</th>
+      <th>デザインパターン名<br>・：共存関係<br>／：競合関係</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">フロントエンド</td>
+      <td>フロントエンドの分割</td>
+      <td>モノリスフロントエンド／マイクロフロントエンド</td>
+    </tr>
+    <tr>
+      <td>UI レンダリングパターン</td>
+      <td>CSR／SSR／SSG／ISR</td>
+    </tr>
+    <tr>
+      <td>API ゲートウェイ</td>
+      <td>API ゲートウェイの分割</td>
+      <td>中央集約ゲートウェイ／BFF</td>
+    </tr>
+    <tr>
+      <td rowspan="7">マイクロサービス</td>
+      <td>マイクロサービス間の通信</td>
+      <td>・リクエスト／レスポンス方式<br>・パブリッシュ／サブスクライブ方式<br>・ストリーミング方式<br>・データ共有方式</td>
+    </tr>
+    <tr>
+      <td>マイクロサービスの分割</td>
+      <td>・ドメイン駆動設計に基づく境界<br>・認証マイクロサービス<br>・認可マイクロサービス<br>・オーケストレーションマイクロサービス<br>・外部 API 接続サービス<br>・非同期処理に特化した機能サービス (例：メール／プッシュ通知の機能) <br>・リアルタイム処理に特化した機能サービス<br>・永続データの機密度 (例：換金性の高い情報) <br>・永続データの所有組織の差異</td>
+    </tr>
+    <tr>
+      <td>マイクロサービスの設計</td>
+      <td>・エンティティや値オブジェクトなどのドメイン駆動設計デザインパターン<br>・レイヤードアーキテクチャやクリーンアーキテクチャなどのアプリケーションアーキテクチャ</td>
+    </tr>
+    <tr>
+      <td>ドメインモデリング</td>
+      <td>ステートソーシング／イベントソーシング</td>
+    </tr>
+    <tr>
+      <td>トランザクションの管理</td>
+      <td>オーケストレーションサーガ／コレオグラフィサーガ／２フェーズコミット</td>
+    </tr>
+    <tr>
+      <td>認証</td>
+      <td>セッション／SSO／JWT と API ゲートウェイの組み合わせ</td>
+    </tr>
+    <tr>
+      <td>認可</td>
+      <td>中央集中管理／分散管理</td>
+    </tr>
+    <tr>
+      <td rowspan="4">ストレージ</td>
+      <td>永続データの分割管理</td>
+      <td>・DB per service／Shared DB<br>・Polyglot Persistence／Multi-model DB</td>
+    </tr>
+    <tr>
+      <td>揮発性データの分割管理</td>
+      <td>中央集中管理／分散管理</td>
+    </tr>
+    <tr>
+      <td>静的ファイルの分割管理</td>
+      <td>中央集中管理／分散管理</td>
+    </tr>
+    <tr>
+      <td>分析用加工済データの分割管理</td>
+      <td>中央集中管理／分散管理</td>
+    </tr>
+    <tr>
+      <td rowspan="2">ネットワーク</td>
+      <td>L4/L7 トラフィックの管理</td>
+      <td>・サービス検出<br>・ロードバランシング</td>
+    </tr>
+    <tr>
+      <td>証明書の認証方式</td>
+      <td>・非 TLS (平文) <br>・サーバー認証<br>・クライアント認証<br>・相互 TLS 認証</td>
+    </tr>
+    <tr>
+      <td rowspan="2">テスト</td>
+      <td>ホワイトボックステスト</td>
+      <td>・ユニットテスト<br>・サービステスト<br>・コントラクトテスト<br>・E2E テスト</td>
+    </tr>
+    <tr>
+      <td>ブラックボックステスト</td>
+      <td>・ロードテスト (負荷テスト) <br>・回帰テスト<br>・フォールトインジェクションを含むカオスエンジニアリング</td>
+    </tr>
+    <tr>
+      <td rowspan="2">信頼性管理</td>
+      <td>各種インスタンスの回復</td>
+      <td>・ヘルスチェック<br>・リトライ<br>・タイムアウト<br>・バルクヘッド<br>・サーキットブレイカー<br>・レートリミット</td>
+    </tr>
+    <tr>
+      <td>各種インスタンスのスケーリング</td>
+      <td>・垂直スケーリング<br>・水平スケーリング<br>・インスタンスの希望数維持</td>
+    </tr>
+    <tr>
+      <td rowspan="4">デプロイメント</td>
+      <td>マイクロサービス実行環境</td>
+      <td>Serverless platforms／Multiple services instance per host／Service instance per VM／Service instance per container</td>
+    </tr>
+    <tr>
+      <td>リリース</td>
+      <td>・インプレースデプロイメント<br>・ローリングデプロイメント<br>・カナリアリリース<br>・ブルー/グリーンデプロイメント</td>
+    </tr>
+    <tr>
+      <td>CI/CD</td>
+      <td>CIOps／GitOps</td>
+    </tr>
+    <tr>
+      <td>汎用的なロジックの配布</td>
+      <td>・Externalized configuration<br>・Microservice chassis<br>・サービステンプレート<br>・サービスメッシュ</td>
+    </tr>
+    <tr>
+      <td rowspan="2">監視</td>
+      <td>テレメトリーの監視</td>
+      <td>中央集中管理／分散管理</td>
+    </tr>
+    <tr>
+      <td>インシデントの対処</td>
+      <td>中央集中管理／分散管理</td>
+    </tr>
+    <tr>
+      <td rowspan="2">開発体制</td>
+      <td>開発組織の編成</td>
+      <td>Collective ownership／Strong ownership</td>
+    </tr>
+    <tr>
+      <td>リポジトリの編成</td>
+      <td>モノレポ／ポリレポ</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -600,11 +924,32 @@ API ゲートウェイをクラウドネイティブ技術で代替できます�
 
 表 6. API ゲートウェイ分割方法とクラウドネイティブ技術の関連性
 
-| パターン名                       | 中央集約ゲートウェイ                                                                                                                                  | BFF                                                                                                                                           |
-| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| 説明                             | 各クライアントで共有する API ゲートウェイを配置する。API ゲートウェイには、各クライアントからのすべてのリクエストを想定したエンドポイントを実装する。 | クライアント別の API ゲートウェイを配置する。API ゲートウェイには、特定のクライアントからのリクエストを想定したエンドポイントだけを実装する。 |
-| クラウドネイティブ技術との関連性 | 中央集約ゲートウェイとして Service Proxy、Service Mesh、API Gateway 分野のツールを使用できる。                                                        | BFF として Service Proxy、Service Mesh、API Gateway 分野のツールを使用できる。                                                                |
-| 技術例                           | ・Service Proxy (Nginx) <br>・Service Mesh (Istio)                                                                                                    | ・Service Proxy (Nginx) <br>・Service Mesh (Istio)                                                                                            |
+<table>
+  <thead>
+    <tr>
+      <th>パターン名</th>
+      <th>中央集約ゲートウェイ</th>
+      <th>BFF</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>説明</td>
+      <td>各クライアントで共有する API ゲートウェイを配置する。API ゲートウェイには、各クライアントからのすべてのリクエストを想定したエンドポイントを実装する。</td>
+      <td>クライアント別の API ゲートウェイを配置する。API ゲートウェイには、特定のクライアントからのリクエストを想定したエンドポイントだけを実装する。</td>
+    </tr>
+    <tr>
+      <td>クラウドネイティブ技術との関連性</td>
+      <td>中央集約ゲートウェイとして Service Proxy、Service Mesh、API Gateway 分野のツールを使用できる。</td>
+      <td>BFF として Service Proxy、Service Mesh、API Gateway 分野のツールを使用できる。</td>
+    </tr>
+    <tr>
+      <td>技術例</td>
+      <td>・Service Proxy (Nginx) <br>・Service Mesh (Istio)</td>
+      <td>・Service Proxy (Nginx) <br>・Service Mesh (Istio)</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 図7でBFFの配置例を示します。
@@ -745,11 +1090,40 @@ flowchart LR
 
 表 7. マイクロサービス間通信方法とクラウドネイティブ技術の関連性
 
-| パターン名                       | リクエスト／レスポンス方式                                                                                                                                | パブリッシュ／サブスクライブ方式                                                                                                                                                                                                                                                  | ストリーミング方式 | データ共有方式                                                                                                                                                                                                                                                                   |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 説明                             | 送信元マイクロサービスは宛先と同期的に通信する。通信は双方向に流れる。                                                                                    | 送信元マイクロサービスはメッセージ中継システム \*44 を介して、宛先マイクロサービスと非同期的に通信する。通信は単方向に流れる。                                                                                                                                                    |                    | 送信元マイクロサービスは作成したデータをストレージに保管する。宛先マイクロサービスはストレージをポーリングして新しいデータが追加され次第、ストレージからこれを読み込む。通信は単方向に流れる。このパターンの例として、データレイクやデータウェアハウスを使用したシステムがある。 |
-| クラウドネイティブ技術との関連性 | REST の実装方法として、HTTP/1.1 でテキストを送受信するパッケージを使用できる。一方で、RPC の実装方法には Remote Procedure Call 分野のツールを使用できる。 | メッセージ中継システムとして、Streaming & Messaging 分野のツールを使用できる。また、パブリッシュとサブスクライブの実装方法として、Streaming & Messaging 分野のツールのクライアント SDK を使用できる。サブスクライブにはプル型とプッシュ型があり、ツールによってはこれらを選べる。 |                    | ストレージとして、Cloud Native Storage や Database 分野のツールを使用できる。耐障害性の観点から、これらはオープンソースよりマネージドサービスの技術を使用することをお奨めする。                                                                                                  |
-| 技術例                           | ・REST (パッケージ) <br>・Remote Procedure Call (gRPC)                                                                                                    | ・Streaming & Messaging (CloudEvents、RabbitMQ)                                                                                                                                                                                                                                   |                    | ・Cloud Native Storage (Amazon S3) <br>・Database (Amazon Aurora MySQL)                                                                                                                                                                                                          |
+<table>
+  <thead>
+    <tr>
+      <th>パターン名</th>
+      <th>リクエスト／レスポンス方式</th>
+      <th>パブリッシュ／サブスクライブ方式</th>
+      <th>ストリーミング方式</th>
+      <th>データ共有方式</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>説明</td>
+      <td>送信元マイクロサービスは宛先と同期的に通信する。通信は双方向に流れる。</td>
+      <td>送信元マイクロサービスはメッセージ中継システム *44 を介して、宛先マイクロサービスと非同期的に通信する。通信は単方向に流れる。</td>
+      <td></td>
+      <td>送信元マイクロサービスは作成したデータをストレージに保管する。宛先マイクロサービスはストレージをポーリングして新しいデータが追加され次第、ストレージからこれを読み込む。通信は単方向に流れる。このパターンの例として、データレイクやデータウェアハウスを使用したシステムがある。</td>
+    </tr>
+    <tr>
+      <td>クラウドネイティブ技術との関連性</td>
+      <td>REST の実装方法として、HTTP/1.1 でテキストを送受信するパッケージを使用できる。一方で、RPC の実装方法には Remote Procedure Call 分野のツールを使用できる。</td>
+      <td>メッセージ中継システムとして、Streaming &amp; Messaging 分野のツールを使用できる。また、パブリッシュとサブスクライブの実装方法として、Streaming &amp; Messaging 分野のツールのクライアント SDK を使用できる。サブスクライブにはプル型とプッシュ型があり、ツールによってはこれらを選べる。</td>
+      <td></td>
+      <td>ストレージとして、Cloud Native Storage や Database 分野のツールを使用できる。耐障害性の観点から、これらはオープンソースよりマネージドサービスの技術を使用することをお奨めする。</td>
+    </tr>
+    <tr>
+      <td>技術例</td>
+      <td>・REST (パッケージ) <br>・Remote Procedure Call (gRPC)</td>
+      <td>・Streaming &amp; Messaging (CloudEvents、RabbitMQ)</td>
+      <td></td>
+      <td>・Cloud Native Storage (Amazon S3) <br>・Database (Amazon Aurora MySQL)</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 図11で、マイクロサービス間のリクエスト／レスポンス方式による通信の様子を示します。
@@ -1068,11 +1442,28 @@ Messaging 分野のツールを使用できます。
 
 表 8. アプリケーションアーキテクチャとクラウドネイティブ技術の関連性
 
-| パターン名                       | レイヤード、ヘキサゴナル、オニオン、クリーン                                                                                                                                                                 |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 説明                             | デザインパターンを適切な層に実装するため、またドメインロジックを持つパターンを隔離するためにアーキテクチャを使用する。ドメイン駆動設計ではいずれのアプリケーションアーキテクチャを使用するかは重要ではない。 |
-| クラウドネイティブ技術との関連性 | 非機能的なロジックの実装方法として、Service Mesh や Streaming & Messaging 分野のツールを使用できる。                                                                                                         |
-| 技術例                           | ・Service Mesh (Istio) <br>・Streaming & Messaging (CloudEvents、RabbitMQ)                                                                                                                                   |
+<table>
+  <thead>
+    <tr>
+      <th>パターン名</th>
+      <th>レイヤード、ヘキサゴナル、オニオン、クリーン</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>説明</td>
+      <td>デザインパターンを適切な層に実装するため、またドメインロジックを持つパターンを隔離するためにアーキテクチャを使用する。ドメイン駆動設計ではいずれのアプリケーションアーキテクチャを使用するかは重要ではない。</td>
+    </tr>
+    <tr>
+      <td>クラウドネイティブ技術との関連性</td>
+      <td>非機能的なロジックの実装方法として、Service Mesh や Streaming &amp; Messaging 分野のツールを使用できる。</td>
+    </tr>
+    <tr>
+      <td>技術例</td>
+      <td>・Service Mesh (Istio) <br>・Streaming &amp; Messaging (CloudEvents、RabbitMQ)</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -1135,11 +1526,32 @@ flowchart LR
 
 表 9. トランザクション管理方法とクラウドネイティブ技術の関連性
 
-| パターン名                       | オーケストレーションベース Saga                                                                                                                                                                                                                                                                       | コレオグラフィベース Saga                                                                                                                                                                                                                                                                              |
-| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 説明                             | Saga のデザインの 1 つである。中央集権的な Saga オーケストレーターはメッセージ中継システムを介して、各マイクロサービスを順番にコールする。各マイクロサービスはローカルトランザクション処理を実行する。また、Saga オーケストレーターはローカルトランザクションの進捗度を占有データベースに永続化する。 | Saga のデザインの 1 つである。特定のマイクロサービスが他のマイクロサービスを操作する。送信元マイクロサービスは、自身のローカルトランザクション処理を完了させた後に、メッセージ中継システムを介して宛先マイクロサービスをコールする。宛先のマイクロサービスは、ローカルトランザクション処理を実行する。 |
-| クラウドネイティブ技術との関連性 | Saga オーケストレーターとして、Automation & Configuration 分野のツールを使用できる。このツールによっては、メッセージ中継システムがツール内部に組み込まれている。                                                                                                                                      | メッセージ中継システムやそのクライアント SDK として、Streaming & Messaging 分野のツールを使用できる。また、マイクロサービス間通信方法のパブリッシュ／サブスクライブ方式の実装方法として、Streaming & Messaging 分野のツールのクライアント SDK を使用できる。                                           |
-| 技術例                           | ・Automation & Configuration (Temporal)                                                                                                                                                                                                                                                               | ・Streaming & Messaging (CloudEvents、RabbitMQ)                                                                                                                                                                                                                                                        |
+<table>
+  <thead>
+    <tr>
+      <th>パターン名</th>
+      <th>オーケストレーションベース Saga</th>
+      <th>コレオグラフィベース Saga</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>説明</td>
+      <td>Saga のデザインの 1 つである。中央集権的な Saga オーケストレーターはメッセージ中継システムを介して、各マイクロサービスを順番にコールする。各マイクロサービスはローカルトランザクション処理を実行する。また、Saga オーケストレーターはローカルトランザクションの進捗度を占有データベースに永続化する。</td>
+      <td>Saga のデザインの 1 つである。特定のマイクロサービスが他のマイクロサービスを操作する。送信元マイクロサービスは、自身のローカルトランザクション処理を完了させた後に、メッセージ中継システムを介して宛先マイクロサービスをコールする。宛先のマイクロサービスは、ローカルトランザクション処理を実行する。</td>
+    </tr>
+    <tr>
+      <td>クラウドネイティブ技術との関連性</td>
+      <td>Saga オーケストレーターとして、Automation &amp; Configuration 分野のツールを使用できる。このツールによっては、メッセージ中継システムがツール内部に組み込まれている。</td>
+      <td>メッセージ中継システムやそのクライアント SDK として、Streaming &amp; Messaging 分野のツールを使用できる。また、マイクロサービス間通信方法のパブリッシュ／サブスクライブ方式の実装方法として、Streaming &amp; Messaging 分野のツールのクライアント SDK を使用できる。</td>
+    </tr>
+    <tr>
+      <td>技術例</td>
+      <td>・Automation &amp; Configuration (Temporal)</td>
+      <td>・Streaming &amp; Messaging (CloudEvents、RabbitMQ)</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 図21で、Amazon EKS上でのオーケストレーションベースSagaの設計例を示します。
@@ -1246,11 +1658,28 @@ SSO では、ID プロバイダーやアクセストークンの署名検証は�
 
 表 10. 認証とクラウドネイティブ技術の関連性
 
-| パターン名                       | SSO                                                                                                                                                                                                                                                          |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 説明                             | SSO で認証する。認証マイクロサービスを ID プロバイダーとして使用し、アカウントデータの永続化やアクセストークンの発行などを担当する。この認証マイクロサービスは資格情報を永続化するためのデータベースを持ち、有効期限が切れればアクセストークンを無効化する。 |
-| クラウドネイティブ技術との関連性 | ID プロバイダーとして Security & Compliance 分野のツールを使用できる。また、アクセストークンの署名検証方法として、Service Mesh 分野のツールを使用できる。                                                                                                    |
-| 技術例                           | ・Security & Compliance (Keycloak) <br>・Service Mesh (Istio)                                                                                                                                                                                                |
+<table>
+  <thead>
+    <tr>
+      <th>パターン名</th>
+      <th>SSO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>説明</td>
+      <td>SSO で認証する。認証マイクロサービスを ID プロバイダーとして使用し、アカウントデータの永続化やアクセストークンの発行などを担当する。この認証マイクロサービスは資格情報を永続化するためのデータベースを持ち、有効期限が切れればアクセストークンを無効化する。</td>
+    </tr>
+    <tr>
+      <td>クラウドネイティブ技術との関連性</td>
+      <td>ID プロバイダーとして Security &amp; Compliance 分野のツールを使用できる。また、アクセストークンの署名検証方法として、Service Mesh 分野のツールを使用できる。</td>
+    </tr>
+    <tr>
+      <td>技術例</td>
+      <td>・Security &amp; Compliance (Keycloak) <br>・Service Mesh (Istio)</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 図23で、Amazon EKS上でのOIDC認可コードフローの設計例を示します。
@@ -1335,11 +1764,32 @@ Istio の場合、Istio リソースを定義することにより無効なア�
 
 表 11. 認可とクラウドネイティブ技術の関連性
 
-| パターン名                       | 中央集中                                                                           | 分散                                     |
-| -------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------- |
-| 説明                             | 認可マイクロサービスを配置し、これがすべてのマイクロサービスの認可ロジックを担う。 | 各マイクロサービスが認可ロジックを担う。 |
-| クラウドネイティブ技術との関連性 | 認可マイクロサービスとして Security & Compliance 分野のツールを使用できる。        | 該当なし                                 |
-| 技術例                           | ・Security & Compliance (Open Policy Agent)                                        | 該当なし                                 |
+<table>
+  <thead>
+    <tr>
+      <th>パターン名</th>
+      <th>中央集中</th>
+      <th>分散</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>説明</td>
+      <td>認可マイクロサービスを配置し、これがすべてのマイクロサービスの認可ロジックを担う。</td>
+      <td>各マイクロサービスが認可ロジックを担う。</td>
+    </tr>
+    <tr>
+      <td>クラウドネイティブ技術との関連性</td>
+      <td>認可マイクロサービスとして Security &amp; Compliance 分野のツールを使用できる。</td>
+      <td>該当なし</td>
+    </tr>
+    <tr>
+      <td>技術例</td>
+      <td>・Security &amp; Compliance (Open Policy Agent)</td>
+      <td>該当なし</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -1436,11 +1886,30 @@ Shared DB は一般的に非推奨なパターンとされているため、こ�
 
 表 12. 永続データ管理方法とクラウドネイティブ技術の関連性
 
-| パターン名                       | DB per service                                                                                                                                | Shared DB                  |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| 説明                             | マイクロサービスで占有するデータベースを配置する。各マイクロサービスが独立したトランザクション処理を実行できる。                              | 非推奨なパターンなため省略 |
-| クラウドネイティブ技術との関連性 | Database 分野のツールを使用できる。耐障害性の観点から、データベースはオープンソースよりもマネージドサービスの技術を使用することをお奨めする。 | 同上                       |
-| 技術例                           | ・Database (Amazon Aurora MySQL)                                                                                                              | 同上                       |
+<table>
+  <thead>
+    <tr>
+      <th>パターン名</th>
+      <th>DB per service</th>
+      <th>Shared DB</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>説明</td>
+      <td>マイクロサービスで占有するデータベースを配置する。各マイクロサービスが独立したトランザクション処理を実行できる。</td>
+      <td rowspan="3">非推奨なパターンなため省略</td>
+    </tr>
+    <tr>
+      <td>クラウドネイティブ技術との関連性</td>
+      <td>Database 分野のツールを使用できる。耐障害性の観点から、データベースはオープンソースよりもマネージドサービスの技術を使用することをお奨めする。</td>
+    </tr>
+    <tr>
+      <td>技術例</td>
+      <td>・Database (Amazon Aurora MySQL)</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 図28で、Amazon EKS上でAmazon EKS上でのDB per serviceの設計例を示します。
@@ -1561,11 +2030,32 @@ flowchart LR
 
 表 13. Externalized configuration とクラウドネイティブ技術の関連性
 
-| パターン名                       | プル型                                                                                           | プッシュ型                                                                                                                 |
-| -------------------------------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| 説明                             | マイクロサービスが設定管理先から設定を取得し、自身でこれを組み込む。                             | マイクロサービスのインフラストラクチャーがマイクロサービスに設定を組み込む。                                               |
-| クラウドネイティブ技術との関連性 | 設定管理先や暗号化キーとして、Security & Compliance と Key Management 分野のツールを使用できる。 | 設定管理先や暗号化キーとして Kubernetes の標準機能、Security & Compliance、Key Management 分野のツールを使用できる。       |
-| 技術例                           | ・Security & Compliance (SOPS) <br>・Key Management (AWS KMS)                                    | ・Kubernetes 標準機能 (ConfigMap、Secret) <br>・Security & Compliance (AWS Secrets Manager) <br>・Key Management (AWS KMS) |
+<table>
+  <thead>
+    <tr>
+      <th>パターン名</th>
+      <th>プル型</th>
+      <th>プッシュ型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>説明</td>
+      <td>マイクロサービスが設定管理先から設定を取得し、自身でこれを組み込む。</td>
+      <td>マイクロサービスのインフラストラクチャーがマイクロサービスに設定を組み込む。</td>
+    </tr>
+    <tr>
+      <td>クラウドネイティブ技術との関連性</td>
+      <td>設定管理先や暗号化キーとして、Security &amp; Compliance と Key Management 分野のツールを使用できる。</td>
+      <td>設定管理先や暗号化キーとして Kubernetes の標準機能、Security &amp; Compliance、Key Management 分野のツールを使用できる。</td>
+    </tr>
+    <tr>
+      <td>技術例</td>
+      <td>・Security &amp; Compliance (SOPS) <br>・Key Management (AWS KMS)</td>
+      <td>・Kubernetes 標準機能 (ConfigMap、Secret) <br>・Security &amp; Compliance (AWS Secrets Manager) <br>・Key Management (AWS KMS)</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -1646,11 +2136,32 @@ flowchart LR
 
 表 14. サービスメッシュの概説
 
-| パターン名                       | サイドカーサービスメッシュ                                                                                                                                                     | サイドカーレスサービスメッシュ                                                                                                                     |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 説明                             | 各マイクロサービスの重複ロジックをサイドカーコンテナに切り分け、各マイクロサービスに横断的に提供する。また、サービスメッシュを公開するサービスメッシュゲートウェイを配置する。 | 各マイクロサービスの重複ロジックをホストマシン上のエージェント (コンテナあるいはカーネル機能) などに切り分け、マイクロサービスに横断的に提供する。 |
-| クラウドネイティブ技術との関連性 | サービスメッシュゲートウェイとサイドカーコンテナの提供方法として Service Mesh 分野のツールを使用できる。                                                                       | エージェントの提供方法として Service Mesh や Cloud Native Network 分野のツールを使用できる。                                                       |
-| 技術例                           | ・Service Mesh (Istio)                                                                                                                                                         | ・Service Mesh (Istio) <br>・Cloud Native Network (Cilium)                                                                                         |
+<table>
+  <thead>
+    <tr>
+      <th>パターン名</th>
+      <th>サイドカーサービスメッシュ</th>
+      <th>サイドカーレスサービスメッシュ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>説明</td>
+      <td>各マイクロサービスの重複ロジックをサイドカーコンテナに切り分け、各マイクロサービスに横断的に提供する。また、サービスメッシュを公開するサービスメッシュゲートウェイを配置する。</td>
+      <td>各マイクロサービスの重複ロジックをホストマシン上のエージェント (コンテナあるいはカーネル機能) などに切り分け、マイクロサービスに横断的に提供する。</td>
+    </tr>
+    <tr>
+      <td>クラウドネイティブ技術との関連性</td>
+      <td>サービスメッシュゲートウェイとサイドカーコンテナの提供方法として Service Mesh 分野のツールを使用できる。</td>
+      <td>エージェントの提供方法として Service Mesh や Cloud Native Network 分野のツールを使用できる。</td>
+    </tr>
+    <tr>
+      <td>技術例</td>
+      <td>・Service Mesh (Istio)</td>
+      <td>・Service Mesh (Istio) <br>・Cloud Native Network (Cilium)</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 図33で、Amazon EKS上でのサイドカーサービスメッシュの設計例を示します。
@@ -1838,11 +2349,32 @@ flowchart LR
 
 表 15. 宛先検出とクラウドネイティブ技術の関連性
 
-| パターン名                       | サーバーサイド                                                                                                                                                                                                                                                                           | クライアントサイド                                                                                                                 |
-| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| 説明                             | 送信元マイクロサービスから問い合わせとロードバランシングの責務が切り離されている。送信元マイクロサービスはロードバランサーにリクエストを送信する。ロードバランサーは宛先マイクロサービスの場所をサービスレジストリに問い合わせ、またリクエストをロードバランシングする責務を担っている。 | 通信の送信元マイクロサービスは宛先マイクロサービスの場所をサービスレジストリに問い合わせ、さらにロードバランシングする責務を担う。 |
-| クラウドネイティブ技術との関連性 | ロードバランサーとして Service Mesh、Coordination & Service Discovery 分野のツールを使用できる。                                                                                                                                                                                         | 送信元マイクロサービスのロードバランシング処理の実装方法として、Kubernetes 標準機能を使用できる。                                  |
-| 技術例                           | ・Service Mesh (Istio)                                                                                                                                                                                                                                                                   | ・Kubernetes 標準機能 (Kubernetes Service、kube-proxy) <br>・Coordination & Service Discovery (CoreDNS)                            |
+<table>
+  <thead>
+    <tr>
+      <th>パターン名</th>
+      <th>サーバーサイド</th>
+      <th>クライアントサイド</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>説明</td>
+      <td>送信元マイクロサービスから問い合わせとロードバランシングの責務が切り離されている。送信元マイクロサービスはロードバランサーにリクエストを送信する。ロードバランサーは宛先マイクロサービスの場所をサービスレジストリに問い合わせ、またリクエストをロードバランシングする責務を担っている。</td>
+      <td>通信の送信元マイクロサービスは宛先マイクロサービスの場所をサービスレジストリに問い合わせ、さらにロードバランシングする責務を担う。</td>
+    </tr>
+    <tr>
+      <td>クラウドネイティブ技術との関連性</td>
+      <td>ロードバランサーとして Service Mesh、Coordination &amp; Service Discovery 分野のツールを使用できる。</td>
+      <td>送信元マイクロサービスのロードバランシング処理の実装方法として、Kubernetes 標準機能を使用できる。</td>
+    </tr>
+    <tr>
+      <td>技術例</td>
+      <td>・Service Mesh (Istio)</td>
+      <td>・Kubernetes 標準機能 (Kubernetes Service、kube-proxy) <br>・Coordination &amp; Service Discovery (CoreDNS)</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 図38で、Amazon EKS上でのサービスメッシュ内のL4/L7トラフィック管理の設計例を示します。
@@ -1913,11 +2445,32 @@ Amazon EKS を使用する場合、Etcd はマネージドなコントロール�
 
 表 16. 宛先登録とクラウドネイティブ技術の関連性
 
-| パターン名                       | セルフ登録                                                                                             | サードパーティー登録                                                                                                                                                                     |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 説明                             | サービス検出時に起動した送信元マイクロサービスはサービスレジストリに自身の宛先情報を送信し、登録する。 | サービス検出時にサービスレジストラーは起動した送信元マイクロサービスを収集し、サービスレジストリに宛先情報を登録する。多くのサービス検出ツールでサードパーティーパターンを使用している。 |
-| クラウドネイティブ技術との関連性 | サービスレジストリとして Coordination & Service Discovery 分野のツールを使用できる。                   | サービスレジストリとして Coordination & Service Discovery 分野のツールを使用できる。                                                                                                     |
-| 技術例                           | ・Coordination & Service Discovery (Etcd)                                                              | ・Coordination & Service Discovery (Etcd)                                                                                                                                                |
+<table>
+  <thead>
+    <tr>
+      <th>パターン名</th>
+      <th>セルフ登録</th>
+      <th>サードパーティー登録</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>説明</td>
+      <td>サービス検出時に起動した送信元マイクロサービスはサービスレジストリに自身の宛先情報を送信し、登録する。</td>
+      <td>サービス検出時にサービスレジストラーは起動した送信元マイクロサービスを収集し、サービスレジストリに宛先情報を登録する。多くのサービス検出ツールでサードパーティーパターンを使用している。</td>
+    </tr>
+    <tr>
+      <td>クラウドネイティブ技術との関連性</td>
+      <td>サービスレジストリとして Coordination &amp; Service Discovery 分野のツールを使用できる。</td>
+      <td>サービスレジストリとして Coordination &amp; Service Discovery 分野のツールを使用できる。</td>
+    </tr>
+    <tr>
+      <td>技術例</td>
+      <td>・Coordination &amp; Service Discovery (Etcd)</td>
+      <td>・Coordination &amp; Service Discovery (Etcd)</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 次に、ロードバランシングのデザインパターンです。
@@ -1966,11 +2519,32 @@ flowchart LR
 
 表 17. ロードバランシングとクラウドネイティブ技術の関連性
 
-| パターン名                       | 静的ロードバランシング                                                                         | 動的ロードバランシング                                                                                       |
-| -------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| 説明                             | 宛先の負荷を考慮せずにロードバランシングする。                                                 | 宛先の負荷をリアルタイムに考慮してロードバランシングする。                                                   |
-| クラウドネイティブ技術との関連性 | 静的方式のロードバランサーとして Kubernetes 標準機能と Service Mesh 分野のツールを使用できる。 | 動的方式のロードバランサーとして Service Mesh と Coordination & Service Discovery 分野のツールを使用できる。 |
-| 技術例                           | ・Kubernetes 標準機能 (Kubernetes Service、kube-proxy) <br>・Service Mesh (Istio)              | ・Service Mesh (Istio)                                                                                       |
+<table>
+  <thead>
+    <tr>
+      <th>パターン名</th>
+      <th>静的ロードバランシング</th>
+      <th>動的ロードバランシング</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>説明</td>
+      <td>宛先の負荷を考慮せずにロードバランシングする。</td>
+      <td>宛先の負荷をリアルタイムに考慮してロードバランシングする。</td>
+    </tr>
+    <tr>
+      <td>クラウドネイティブ技術との関連性</td>
+      <td>静的方式のロードバランサーとして Kubernetes 標準機能と Service Mesh 分野のツールを使用できる。</td>
+      <td>動的方式のロードバランサーとして Service Mesh と Coordination &amp; Service Discovery 分野のツールを使用できる。</td>
+    </tr>
+    <tr>
+      <td>技術例</td>
+      <td>・Kubernetes 標準機能 (Kubernetes Service、kube-proxy) <br>・Service Mesh (Istio)</td>
+      <td>・Service Mesh (Istio)</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -2037,11 +2611,36 @@ flowchart LR
 
 表 18. 証明書管理とクラウドネイティブ技術の関連性
 
-| パターン名                       | マイクロサービスの証明書管理 (サービスメッシュを使用する場合)                                                                                                                                                                              | マイクロサービスの証明書管理 (サービスメッシュを使用しない場合)                                                                                                                      | クラウドリソースの証明書管理                                                                       |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
-| 説明                             | サービスメッシュを使用する場合、マイクロサービスのサイドカーコンテナに証明書を組み込み、管理する。送信元と宛先のサイドカーコンテナ間の通信でサーバー認証を実施できる。この場合、アプリケーションコンテナで証明書を管理する必要がなくなる。 | サービスメッシュを使用しない場合、マイクロサービスのアプリケーションコンテナに証明書を組み込み、管理する。送信元と宛先のアプリケーションコンテナ間の通信でサーバー認証を実施できる。 | クラウドリソースに証明書を組み込み、管理する。クラウドリソースへの通信でサーバー認証を実施できる。 |
-| クラウドネイティブ技術との関連性 | 組み込む証明書として Service Mesh 分野のツールを使用できる。                                                                                                                                                                               | 組み込む証明書として Security & Compliance 分野のツールを使用できる。                                                                                                                | 組み込む証明書として Security & Compliance 分野のツールを使用できる。                              |
-| 技術例                           | ・Service Mesh (Istio)                                                                                                                                                                                                                     | ・Security & Compliance (Cert Manager)                                                                                                                                               | ・Security & Compliance (AWS Certificate Manager)                                                  |
+<table>
+  <thead>
+    <tr>
+      <th>パターン名</th>
+      <th>マイクロサービスの証明書管理 (サービスメッシュを使用する場合)</th>
+      <th>マイクロサービスの証明書管理 (サービスメッシュを使用しない場合)</th>
+      <th>クラウドリソースの証明書管理</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>説明</td>
+      <td>サービスメッシュを使用する場合、マイクロサービスのサイドカーコンテナに証明書を組み込み、管理する。送信元と宛先のサイドカーコンテナ間の通信でサーバー認証を実施できる。この場合、アプリケーションコンテナで証明書を管理する必要がなくなる。</td>
+      <td>サービスメッシュを使用しない場合、マイクロサービスのアプリケーションコンテナに証明書を組み込み、管理する。送信元と宛先のアプリケーションコンテナ間の通信でサーバー認証を実施できる。</td>
+      <td>クラウドリソースに証明書を組み込み、管理する。クラウドリソースへの通信でサーバー認証を実施できる。</td>
+    </tr>
+    <tr>
+      <td>クラウドネイティブ技術との関連性</td>
+      <td>組み込む証明書として Service Mesh 分野のツールを使用できる。</td>
+      <td>組み込む証明書として Security &amp; Compliance 分野のツールを使用できる。</td>
+      <td>組み込む証明書として Security &amp; Compliance 分野のツールを使用できる。</td>
+    </tr>
+    <tr>
+      <td>技術例</td>
+      <td>・Service Mesh (Istio)</td>
+      <td>・Security &amp; Compliance (Cert Manager)</td>
+      <td>・Security &amp; Compliance (AWS Certificate Manager)</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 図43で、Amazon EKS上での証明書管理の設計例を示します。

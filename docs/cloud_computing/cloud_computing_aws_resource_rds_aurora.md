@@ -31,31 +31,113 @@ Amazon RDS をよりマネージドにした AWS リソースである。
 
 ### DB エンジン
 
-| 設定項目           | 説明                                                                                       | 補足                                                                                             |
-| ------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| エンジンタイプ     | ミドルウェアの DBMS の種類を設定する。                                                     |                                                                                                  |
-| エディション       | エンジンバージョンで Amazon Aurora を選択した場合の互換性を設定する。                      |                                                                                                  |
-| エンジンバージョン | DB エンジンのバージョンを設定する。DB クラスター内のすべての DB インスタンスに適用される。 | ・Amazon Aurora であれば、`SELECT AURORA_VERSION()` を使用して、エンジンバージョンを確認できる。 |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>エンジンタイプ</td>
+      <td>ミドルウェアの DBMS の種類を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>エディション</td>
+      <td>エンジンバージョンで Amazon Aurora を選択した場合の互換性を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>エンジンバージョン</td>
+      <td>DB エンジンのバージョンを設定する。DB クラスター内のすべての DB インスタンスに適用される。</td>
+      <td>・Amazon Aurora であれば、<code>SELECT AURORA_VERSION()</code> を使用して、エンジンバージョンを確認できる。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ Amazon Aurora の DB クラスター
 
 ベストプラクティスについては、以下のリンクを参考にせよ。
 
-| 設定項目                             | 説明                                                                                                                                                          | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| レプリケーション                     | 単一のプライマリーインスタンス (シングルマスター) または複数のプライマリーインスタンス (マルチマスター) とするかを設定する。                                  | フェイルオーバーを利用したダウンタイムの最小化時に、マルチマスターであれば変更の順番を気にしなくてよくなる。ただし、Amazon Aurora の DB クラスターをクローンできないなどのデメリットもある。<br>https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| Amazon Aurora の DB クラスター識別子 | Amazon Aurora の DB クラスター名を設定する。                                                                                                                  | インスタンス名は、最初に設定できず、Amazon RDS の作成後に設定できる。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| VPC とサブネットグループ             | Amazon Aurora の DB クラスターを配置する VPC とサブネットを設定する。                                                                                         | DB を配置するサブネットはプライベートサブネットとし、data store サブネットと名付ける。アプリケーション以外は、踏み台サーバー (Amazon EC2) 経由でしか DB にリクエストできないようにする。<br>![subnet_component-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| パラメーターグループ                 | グローバルオプションを設定する。                                                                                                                              | デフォルトを使用せずに自前定義する場合、事前に作成しておく必要がある。クラスターパラメーターグループとインスタンスパラメーターグループがあるが、すべてのインスタンスに同じパラメーターループを設定する必要があるため、クラスターパラメーターを使用すればよい。各パラメーターに適用タイプ (dynamic/static) があり、dynamic タイプは設定の適用に再起動が必要である。新しく作成したクラスタパラメーターグループにて以下の値を設定するとよい。<br>・`time_zone=Asia/Tokyo`<br>・`character_set_client=utf8mb4`<br>・`character_set_connection=utf8mb4`<br>・`character_set_database=utf8mb4`<br>・`character_set_results=utf8mb4`<br>・`character_set_server=utf8mb4`<br>・`server_audit_logging=1` (監査ログを Amazon CloudWatch に送信するか否か) <br>・`server_audit_logs_upload=1`<br>・`general_log=1` (通常クエリログを Amazon CloudWatch に送信するか否か) <br>・`slow_query_log=1` (スロークエリログを Amazon CloudWatch に送信するか否か) <br>・`long_query_time=3` (スロークエリと見なす最短秒数) |
-| DB 認証                              | DB に接続するための認証方法を設定する。                                                                                                                       | Amazon Aurora の各 DB インスタンスに異なる DB 認証を設定できるが、すべての Amazon Aurora の DB インスタンスに同じ認証方法を設定すべきであるため、Amazon Aurora の DB クラスターでこれを設定すればよい。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| マスタユーザー名                     | DB の root 権限の実行ユーザーを設定                                                                                                                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| マスターパスワード                   | DB の root 権限の実行ユーザーのパスワードを設定                                                                                                               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| 暗号化キー                           | AWS KMS を使用して、データを暗号化して保管する。                                                                                                              |
-| バックアップ保管期間                 | Amazon Aurora の DB クラスター がバックアップを保管する期間を設定する。                                                                                       | `7` 日間にしておく。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| ログのエクスポート                   | Amazon CloudWatch Logs に送信するデータエンジン (例：MySQL) のログを設定する。DB エンジンの一般ログ、エラーログ、スロークエリログ、監査ログなどを選択できる。 | すべてのログを選択するとよい。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| セキュリティグループ                 | Amazon Aurora の DB クラスターのセキュリティグループを設定する。                                                                                              | コンピューティングからのリクエストのみを許可するように、これらのプライベート IP アドレス (`*.*.*.*/32`) を設定する。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| 認証機関                             | Amazon Aurora の DB クラスターに紐づけるサーバー証明書を署名するルート認証局を設定する。                                                                      | アプリケーションが Amazon Aurora の DB クラスターに HTTPS で通信する場合に必要である。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| 削除保護                             | Amazon Aurora の DB クラスターの削除を防ぐ。                                                                                                                  | Amazon Aurora の DB クラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。補足として、Amazon Aurora の DB クラスターの削除保護になっていても Amazon Aurora の DB インスタンスは削除できる。Amazon Aurora の DB インスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにリクエストを送信できる。<br>https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>レプリケーション</td>
+      <td>単一のプライマリーインスタンス (シングルマスター) または複数のプライマリーインスタンス (マルチマスター) とするかを設定する。</td>
+      <td>フェイルオーバーを利用したダウンタイムの最小化時に、マルチマスターであれば変更の順番を気にしなくてよくなる。ただし、Amazon Aurora の DB クラスターをクローンできないなどのデメリットもある。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms</a></td>
+    </tr>
+    <tr>
+      <td>Amazon Aurora の DB クラスター識別子</td>
+      <td>Amazon Aurora の DB クラスター名を設定する。</td>
+      <td>インスタンス名は、最初に設定できず、Amazon RDS の作成後に設定できる。</td>
+    </tr>
+    <tr>
+      <td>VPC とサブネットグループ</td>
+      <td>Amazon Aurora の DB クラスターを配置する VPC とサブネットを設定する。</td>
+      <td>DB を配置するサブネットはプライベートサブネットとし、data store サブネットと名付ける。アプリケーション以外は、踏み台サーバー (Amazon EC2) 経由でしか DB にリクエストできないようにする。<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png" alt="subnet_component-type"></td>
+    </tr>
+    <tr>
+      <td>パラメーターグループ</td>
+      <td>グローバルオプションを設定する。</td>
+      <td>デフォルトを使用せずに自前定義する場合、事前に作成しておく必要がある。クラスターパラメーターグループとインスタンスパラメーターグループがあるが、すべてのインスタンスに同じパラメーターループを設定する必要があるため、クラスターパラメーターを使用すればよい。各パラメーターに適用タイプ (dynamic/static) があり、dynamic タイプは設定の適用に再起動が必要である。新しく作成したクラスタパラメーターグループにて以下の値を設定するとよい。<br>・<code>time_zone=Asia/Tokyo</code><br>・<code>character_set_client=utf8mb4</code><br>・<code>character_set_connection=utf8mb4</code><br>・<code>character_set_database=utf8mb4</code><br>・<code>character_set_results=utf8mb4</code><br>・<code>character_set_server=utf8mb4</code><br>・<code>server_audit_logging=1</code> (監査ログを Amazon CloudWatch に送信するか否か) <br>・<code>server_audit_logs_upload=1</code><br>・<code>general_log=1</code> (通常クエリログを Amazon CloudWatch に送信するか否か) <br>・<code>slow_query_log=1</code> (スロークエリログを Amazon CloudWatch に送信するか否か) <br>・<code>long_query_time=3</code> (スロークエリと見なす最短秒数)</td>
+    </tr>
+    <tr>
+      <td>DB 認証</td>
+      <td>DB に接続するための認証方法を設定する。</td>
+      <td>Amazon Aurora の各 DB インスタンスに異なる DB 認証を設定できるが、すべての Amazon Aurora の DB インスタンスに同じ認証方法を設定すべきであるため、Amazon Aurora の DB クラスターでこれを設定すればよい。</td>
+    </tr>
+    <tr>
+      <td>マスタユーザー名</td>
+      <td>DB の root 権限の実行ユーザーを設定</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>マスターパスワード</td>
+      <td>DB の root 権限の実行ユーザーのパスワードを設定</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>暗号化キー</td>
+      <td>AWS KMS を使用して、データを暗号化して保管する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>バックアップ保管期間</td>
+      <td>Amazon Aurora の DB クラスター がバックアップを保管する期間を設定する。</td>
+      <td><code>7</code> 日間にしておく。</td>
+    </tr>
+    <tr>
+      <td>ログのエクスポート</td>
+      <td>Amazon CloudWatch Logs に送信するデータエンジン (例：MySQL) のログを設定する。DB エンジンの一般ログ、エラーログ、スロークエリログ、監査ログなどを選択できる。</td>
+      <td>すべてのログを選択するとよい。</td>
+    </tr>
+    <tr>
+      <td>セキュリティグループ</td>
+      <td>Amazon Aurora の DB クラスターのセキュリティグループを設定する。</td>
+      <td>コンピューティングからのリクエストのみを許可するように、これらのプライベート IP アドレス (<code>*.*.*.*/32</code>) を設定する。</td>
+    </tr>
+    <tr>
+      <td>認証機関</td>
+      <td>Amazon Aurora の DB クラスターに紐づけるサーバー証明書を署名するルート認証局を設定する。</td>
+      <td>アプリケーションが Amazon Aurora の DB クラスターに HTTPS で通信する場合に必要である。</td>
+    </tr>
+    <tr>
+      <td>削除保護</td>
+      <td>Amazon Aurora の DB クラスターの削除を防ぐ。</td>
+      <td>Amazon Aurora の DB クラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。補足として、Amazon Aurora の DB クラスターの削除保護になっていても Amazon Aurora の DB インスタンスは削除できる。Amazon Aurora の DB インスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにリクエストを送信できる。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection</a></td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Amazon RDS/
 > - [Using SSL/TLS to encrypt a connection to a DB instance or cluster - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html)
@@ -64,14 +146,47 @@ Amazon RDS をよりマネージドにした AWS リソースである。
 
 ベストプラクティスについては、以下のリンクを参考にせよ。
 
-| 設定項目                               | 説明                                                                                                             | 補足                                                                                                                                                       |
-| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| インスタンスクラス                     | Amazon Aurora の DB インスタンスのスペックを設定する。サーバーレス、メモリ最適化、バースト可能などを選択できる。 | バースト可能クラスを選択するとよい。補足として、Amazon Aurora の DB サイズは自動的にスケーリングするため、設定する必要がない。                             |
-| パブリックアクセス                     | Amazon Aurora の DB インスタンスに IP アドレスを割り当てるか否かを設定する。                                     |                                                                                                                                                            |
-| キャパシティタイプ                     |                                                                                                                  |                                                                                                                                                            |
-| マルチ AZ 配置                         | プライマリーインスタンスとは別に、リードレプリカをマルチ AZ 配置で追加するか否かを設定する。                     | 後からでもリードレプリカを追加できる。また、フェイルオーバー時にリードレプリカが存在していなければ、昇格後のプライマリーインスタンスが自動的に作成される。 |
-| 最初の DB 名                           | Amazon Aurora の DB インスタンスに自動的に作成される DB 名を設定                                                 |                                                                                                                                                            |
-| マイナーバージョンの自動アップグレード | Amazon Aurora の DB インスタンスの DB エンジンのバージョンを自動的に更新するかを設定する。                       | 開発環境では有効化、本番環境とステージング環境では無効化しておく。開発環境で新バージョンに問題が起こらなければ、ステージング環境と本番環境にも適用する。   |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>インスタンスクラス</td>
+      <td>Amazon Aurora の DB インスタンスのスペックを設定する。サーバーレス、メモリ最適化、バースト可能などを選択できる。</td>
+      <td>バースト可能クラスを選択するとよい。補足として、Amazon Aurora の DB サイズは自動的にスケーリングするため、設定する必要がない。</td>
+    </tr>
+    <tr>
+      <td>パブリックアクセス</td>
+      <td>Amazon Aurora の DB インスタンスに IP アドレスを割り当てるか否かを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>キャパシティタイプ</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>マルチ AZ 配置</td>
+      <td>プライマリーインスタンスとは別に、リードレプリカをマルチ AZ 配置で追加するか否かを設定する。</td>
+      <td>後からでもリードレプリカを追加できる。また、フェイルオーバー時にリードレプリカが存在していなければ、昇格後のプライマリーインスタンスが自動的に作成される。</td>
+    </tr>
+    <tr>
+      <td>最初の DB 名</td>
+      <td>Amazon Aurora の DB インスタンスに自動的に作成される DB 名を設定</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>マイナーバージョンの自動アップグレード</td>
+      <td>Amazon Aurora の DB インスタンスの DB エンジンのバージョンを自動的に更新するかを設定する。</td>
+      <td>開発環境では有効化、本番環境とステージング環境では無効化しておく。開発環境で新バージョンに問題が起こらなければ、ステージング環境と本番環境にも適用する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Amazon RDS/
 
@@ -378,12 +493,37 @@ Amazon Aurora の DB インスタンスとクラスターボリュームから�
 
 ### Amazon Aurora の DB インスタンスの種類
 
-|                | プライマリーインスタンス                                                                             | リードレプリカ                                                                                                        |
-| -------------- | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| ロール         | 読み出し/書き込みインスタンス                                                                        | 読み出しオンリーインスタンス                                                                                          |
-| CRUD 制限      | 制限なし。アカウントの認可スコープに依存する。                                                       | アカウントの認可スコープに関係なく、READ しか実行できない。                                                           |
-| エンドポイント | Amazon Aurora の各 DB インスタンスに、リージョンのイニシャルに合わせたエンドポイントが割り振られる。 | Amazon Aurora の各 Amazon Aurora の DB インスタンスに、リージョンのイニシャルに合わせたエンドポイントが割り振られる。 |
-| データ同期     | Amazon Aurora の DB クラスターに対するデータ変更を受けつける。                                       | 読み出し/書き込みインスタンスのデータの変更が同期される。                                                             |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>プライマリーインスタンス</th>
+      <th>リードレプリカ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ロール</td>
+      <td>読み出し/書き込みインスタンス</td>
+      <td>読み出しオンリーインスタンス</td>
+    </tr>
+    <tr>
+      <td>CRUD 制限</td>
+      <td>制限なし。アカウントの認可スコープに依存する。</td>
+      <td>アカウントの認可スコープに関係なく、READ しか実行できない。</td>
+    </tr>
+    <tr>
+      <td>エンドポイント</td>
+      <td>Amazon Aurora の各 DB インスタンスに、リージョンのイニシャルに合わせたエンドポイントが割り振られる。</td>
+      <td>Amazon Aurora の各 Amazon Aurora の DB インスタンスに、リージョンのイニシャルに合わせたエンドポイントが割り振られる。</td>
+    </tr>
+    <tr>
+      <td>データ同期</td>
+      <td>Amazon Aurora の DB クラスターに対するデータ変更を受けつける。</td>
+      <td>読み出し/書き込みインスタンスのデータの変更が同期される。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -391,12 +531,47 @@ Amazon Aurora の DB インスタンスとクラスターボリュームから�
 
 ![rds_endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_endpoint.png)
 
-| エンドポイント名           | 役割                                                                | 送信先                                  | エンドポイント：ポート番号                                                                      | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| -------------------------- | ------------------------------------------------------------------- | --------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| クラスターエンドポイント   | 書き込み/読み出し                                                   | プライマリインスタンスのみ              | `<Amazon AuroraのDBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com:<ポート番号>`    | プライマリーインスタンスに通信できる。プライマリーインスタンスがダウンし、フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わった場合、エンドポイントのフォワーディング先は新しいプライマリーインスタンスに変更される。<br>https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Amazon Aurora.Overview.Endpoints.html#Amazon Aurora.Endpoints.Cluster                                                                                                                                                                                    |
-| リーダーエンドポイント     | 読み出し                                                            | 複数のリードレプリカに分散              | `<Amazon AuroraのDBクラスター名>.cluster-ro-<id>.ap-northeast-1.rds.amazonaws.com:<ポート番号>` | リードレプリカに通信できる。Amazon Aurora の DB インスタンスが複数ある場合、クエリが自動的に割り振られる。フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わった場合、エンドポイントのフォワーディング先は新しいプライマリーインスタンスに変更される。もしリードレプリカがすべてダウンし、プライマリーインスタンスしか稼働していない状況の場合、プライマリーインスタンスにフォワーディングするようになる。<br>https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Amazon Aurora.Overview.Endpoints.html#Amazon Aurora.Endpoints.Reader |
-| インスタンスエンドポイント | 書き込み/読み出し (指定した Amazon Aurora の DB インスタンスによる) | 特定の Amazon Aurora の DB インスタンス | `<Amazon AuroraのDBインスタンス名>.cwgrq25vlygf.ap-northeast-1.rds.amazonaws.com:<ポート番号>`  | 選択した Amazon Aurora の DB インスタンスに通信できる。フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わっても、エンドポイントは変わらないため、アプリケーションが影響を受ける。非推奨である。                                                                                                                                                                                                                                                                                                                                                 |
-| カスタムエンドポイント     |                                                                     |                                         |                                                                                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+<table>
+  <thead>
+    <tr>
+      <th>エンドポイント名</th>
+      <th>役割</th>
+      <th>送信先</th>
+      <th>エンドポイント：ポート番号</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>クラスターエンドポイント</td>
+      <td>書き込み/読み出し</td>
+      <td>プライマリインスタンスのみ</td>
+      <td><code>&lt;Amazon AuroraのDBクラスター名&gt;.cluster-&lt;id&gt;.ap-northeast-1.rds.amazonaws.com:&lt;ポート番号&gt;</code></td>
+      <td>プライマリーインスタンスに通信できる。プライマリーインスタンスがダウンし、フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わった場合、エンドポイントのフォワーディング先は新しいプライマリーインスタンスに変更される。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Amazon">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Amazon</a> Aurora.Overview.Endpoints.html#Amazon Aurora.Endpoints.Cluster</td>
+    </tr>
+    <tr>
+      <td>リーダーエンドポイント</td>
+      <td>読み出し</td>
+      <td>複数のリードレプリカに分散</td>
+      <td><code>&lt;Amazon AuroraのDBクラスター名&gt;.cluster-ro-&lt;id&gt;.ap-northeast-1.rds.amazonaws.com:&lt;ポート番号&gt;</code></td>
+      <td>リードレプリカに通信できる。Amazon Aurora の DB インスタンスが複数ある場合、クエリが自動的に割り振られる。フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わった場合、エンドポイントのフォワーディング先は新しいプライマリーインスタンスに変更される。もしリードレプリカがすべてダウンし、プライマリーインスタンスしか稼働していない状況の場合、プライマリーインスタンスにフォワーディングするようになる。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Amazon">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Amazon</a> Aurora.Overview.Endpoints.html#Amazon Aurora.Endpoints.Reader</td>
+    </tr>
+    <tr>
+      <td>インスタンスエンドポイント</td>
+      <td>書き込み/読み出し (指定した Amazon Aurora の DB インスタンスによる)</td>
+      <td>特定の Amazon Aurora の DB インスタンス</td>
+      <td><code>&lt;Amazon AuroraのDBインスタンス名&gt;.cwgrq25vlygf.ap-northeast-1.rds.amazonaws.com:&lt;ポート番号&gt;</code></td>
+      <td>選択した Amazon Aurora の DB インスタンスに通信できる。フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わっても、エンドポイントは変わらないため、アプリケーションが影響を受ける。非推奨である。</td>
+    </tr>
+    <tr>
+      <td>カスタムエンドポイント</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [［Auroraの落とし穴］読み込みエンドポイントで分散されない \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/atcl/column/16/041400085/042600030/)
 > - [【Aurora】各エンドポイントの違い #AWS - Qiita](https://qiita.com/pensuke628/items/5ca7f2d2a53a71528ad1)
@@ -483,9 +658,22 @@ Amazon RDS にはダウンタイムに関する情報が多いが、Amazon Auror
 
 ただし、経験上同じ項目でダウンタイムが発生しているため、他の項目についても Amazon RDS のダウンタイムも参考になる。
 
-| 変更する項目       | ダウンタイムの有無 | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| ------------------ | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| エンジンバージョン | あり               | パッチバージョンのアップグレードでは、ZDP でダウンタイムが起こらない可能性がある。ダウンタイムが発生する場合は `20`～`30` 秒程度である。この時間は、ワークロード、クラスターサイズ、バイナリログデータのサイズ、ゼロダウンタイムパッチ適用の発動可否によって変動する。<br>・https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html <br>・https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU <br>一方、メジャーバージョンのアップグレードでは、`10` 分のダウンタイムが発生する。<br>https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.Major.Overview |
+<table>
+  <thead>
+    <tr>
+      <th>変更する項目</th>
+      <th>ダウンタイムの有無</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>エンジンバージョン</td>
+      <td>あり</td>
+      <td>パッチバージョンのアップグレードでは、ZDP でダウンタイムが起こらない可能性がある。ダウンタイムが発生する場合は <code>20</code>～<code>30</code> 秒程度である。この時間は、ワークロード、クラスターサイズ、バイナリログデータのサイズ、ゼロダウンタイムパッチ適用の発動可否によって変動する。<br>・<a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html</a> <br>・<a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU</a> <br>一方、メジャーバージョンのアップグレードでは、<code>10</code> 分のダウンタイムが発生する。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.Major.Overview">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.Major.Overview</a></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Modifying an Amazon RDS DB instance - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings)
 

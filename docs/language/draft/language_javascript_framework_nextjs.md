@@ -349,12 +349,42 @@ export const runtime = 'edge'
 
 ### プレフィクス
 
-| モード                                    | 出力タイミング             | `NEXT_PUBLIC_****` |      `****` (`NEXT_PUBLIC` なし)      |
-| ----------------------------------------- | -------------------------- | :----------------: | :-----------------------------------: |
-| SSR モード                                | サーバーへのリクエストごと |         ✅         |                  ✅                   |
-| SSG モード                                | サーバーのビルド時         |         ✅         |                  ✅                   |
-| CSR モード                                | ブラウザ上                 |         ✅         |                  ❌                   |
-| API ルートモード (厳密にはモードではない) | サーバーへのリクエストごと |         ✅         | ✅ (`api` ディレクトリ配下で読み込む) |
+<table>
+  <thead>
+    <tr>
+      <th>モード</th>
+      <th>出力タイミング</th>
+      <th style="text-align:center"><code>NEXT_PUBLIC_****</code></th>
+      <th style="text-align:center"><code>****</code> (<code>NEXT_PUBLIC</code> なし)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SSR モード</td>
+      <td>サーバーへのリクエストごと</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>SSG モード</td>
+      <td>サーバーのビルド時</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>CSR モード</td>
+      <td>ブラウザ上</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">❌</td>
+    </tr>
+    <tr>
+      <td>API ルートモード (厳密にはモードではない)</td>
+      <td>サーバーへのリクエストごと</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅ (<code>api</code> ディレクトリ配下で読み込む)</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

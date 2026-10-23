@@ -573,9 +573,22 @@ httpbin-app-service.services.svc.cluster.local                                  
 
 #### ▼ VirtualService 数
 
-|                     | API ゲートウェイを Istio で管理する場合                                                                        | API ゲートウェイを Istio で管理しない場合                                                                                                            |
-| ------------------- | -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| VirtualService の数 | 外部からのインバウンド通信を API ゲートウェイにルーティングする VirtualService を 1 つだけ作成しておけばよい。 | API ゲートウェイからすべてのマイクロサービスにルーティングできるように、各マイクロサービスにルーティングできる VirtualService を定義する必要がある。 |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>API ゲートウェイを Istio で管理する場合</th>
+      <th>API ゲートウェイを Istio で管理しない場合</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>VirtualService の数</td>
+      <td>外部からのインバウンド通信を API ゲートウェイにルーティングする VirtualService を 1 つだけ作成しておけばよい。</td>
+      <td>API ゲートウェイからすべてのマイクロサービスにルーティングできるように、各マイクロサービスにルーティングできる VirtualService を定義する必要がある。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [How to choose the right API Gateway for your platform: Comparison of Kong, Tyk, KrakenD, Apigee, and alternatives \| Moesif Blog](https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/)
 
@@ -1296,16 +1309,48 @@ data:
 
 これらの環境変数は、いずれ istio-sidecar-injector (ConfigMap) や istio-mesh-cm (ConfigMap) などに移行される可能性がある。
 
-| 環境変数                                         | 対応する設定 (実験段階)                                                                    |
-| ------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `ENHANCED_RESOURCE_SCOPING`                      | istio-mesh-cm (ConfigMap) で、`discoverySelectors` を有効化してもよい。                    |
-| `ENABLE_NATIVE_SIDECARS`                         | istio-sidecar-injector (ConfigMap) で、istio-proxy の代わりに Kubernetes の Init Container |
-| `ENABLE_RESOLUTION_NONE_TARGET_PORT`             |                                                                                            |
-| `ENABLE_DELIMITED_STATS_TAG_REGEX`               |                                                                                            |
-| `PREFER_JWTトークンLE_TLS_FOR_EXTERNAL_SERVICES` |                                                                                            |
-| `ENABLE_ENHANCED_JWTトークンLE_MERGE`            |                                                                                            |
-| `PILOT_UNIFIED_SIDECAR_SCOPE`                    |                                                                                            |
-| `VERIFY_CERT_AT_CLIENT`                          | どこにこの変数あるんやろか...                                                              |
+<table>
+  <thead>
+    <tr>
+      <th>環境変数</th>
+      <th>対応する設定 (実験段階)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ENHANCED_RESOURCE_SCOPING</code></td>
+      <td>istio-mesh-cm (ConfigMap) で、<code>discoverySelectors</code> を有効化してもよい。</td>
+    </tr>
+    <tr>
+      <td><code>ENABLE_NATIVE_SIDECARS</code></td>
+      <td>istio-sidecar-injector (ConfigMap) で、istio-proxy の代わりに Kubernetes の Init Container</td>
+    </tr>
+    <tr>
+      <td><code>ENABLE_RESOLUTION_NONE_TARGET_PORT</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>ENABLE_DELIMITED_STATS_TAG_REGEX</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>PREFER_JWTトークンLE_TLS_FOR_EXTERNAL_SERVICES</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>ENABLE_ENHANCED_JWTトークンLE_MERGE</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>PILOT_UNIFIED_SIDECAR_SCOPE</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>VERIFY_CERT_AT_CLIENT</code></td>
+      <td>どこにこの変数あるんやろか...</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [istio/pilot/pkg/features/experimental.go at release-1.23 · istio/istio · GitHub](https://github.com/istio/istio/blob/release-1.23/pilot/pkg/features/experimental.go)
 

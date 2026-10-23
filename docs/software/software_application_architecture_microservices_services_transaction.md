@@ -244,12 +244,72 @@ Saga オーケストレーターごとに DB を分割するとよい。
 
 AWS StepFunctions のステートも設計例として、参考になる。
 
-| `id` | `order_saga_execution_id`              | `order_saga_current_step` | `order_id` | `order_saga_payload`                                                                                           | `order_saga_status` | `order_saga_state`                                             | `order_saga_version`                                    | `start_data` | `end_data` |
-| ---- | -------------------------------------- | ------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------- | ------------------- | -------------------------------------------------------------- | ------------------------------------------------------- | ------------ | ---------- |
-| 1    | `9db5b6da-daba-4633-b3cf-9c79f2bcf6f5` | CreditApproval            | 1          | `"\"order-id\": 1, \"customer-id\": 456, \"payment-due\": 4999, \"credit-card-no\": \"xxxx-yyyy-dddd-9999\"}"` | SUCCEEDED           | `"{\"creditApproval\":\"SUCCEEDED\"}"`                         | 楽観的ロックに使用するバージョン値 (例：最終更新日など) | 開始時刻     | 終了時刻   |
-| 2    | `b1f14b72-393d-432b-8ec2-782974a6ed60` | Payment                   | 1          | `"{ \"order-id\": 1, \"customer-id\": 456, ... }"`                                                             | STARTED             | `"{\"creditApproval\":\"SUCCEEDED\",\"payment\":\"STARTED\"}"` | 〃                                                      | 〃           | 〃         |
-| 3    | `b38229c6-30df-4166-a725-8b2c578e5ed5` | CreditApproval            | 2          | `"{ \"order-id\": 2, \"customer-id\": 456, ... }"`                                                             | STARTED             | `"{\"creditApproval\":\"STARTED\"}"`                           | 〃                                                      | 〃           | 〃         |
-| ...  | ...                                    | ...                       | ...        | ...                                                                                                            | ...                 | ...                                                            | ...                                                     | ...          | ...        |
+<table>
+  <thead>
+    <tr>
+      <th><code>id</code></th>
+      <th><code>order_saga_execution_id</code></th>
+      <th><code>order_saga_current_step</code></th>
+      <th><code>order_id</code></th>
+      <th><code>order_saga_payload</code></th>
+      <th><code>order_saga_status</code></th>
+      <th><code>order_saga_state</code></th>
+      <th><code>order_saga_version</code></th>
+      <th><code>start_data</code></th>
+      <th><code>end_data</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><code>9db5b6da-daba-4633-b3cf-9c79f2bcf6f5</code></td>
+      <td>CreditApproval</td>
+      <td>1</td>
+      <td><code>&quot;\&quot;order-id\&quot;: 1, \&quot;customer-id\&quot;: 456, \&quot;payment-due\&quot;: 4999, \&quot;credit-card-no\&quot;: \&quot;xxxx-yyyy-dddd-9999\&quot;}&quot;</code></td>
+      <td>SUCCEEDED</td>
+      <td><code>&quot;{\&quot;creditApproval\&quot;:\&quot;SUCCEEDED\&quot;}&quot;</code></td>
+      <td>楽観的ロックに使用するバージョン値 (例：最終更新日など)</td>
+      <td>開始時刻</td>
+      <td>終了時刻</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code>b1f14b72-393d-432b-8ec2-782974a6ed60</code></td>
+      <td>Payment</td>
+      <td>1</td>
+      <td><code>&quot;{ \&quot;order-id\&quot;: 1, \&quot;customer-id\&quot;: 456, ... }&quot;</code></td>
+      <td>STARTED</td>
+      <td><code>&quot;{\&quot;creditApproval\&quot;:\&quot;SUCCEEDED\&quot;,\&quot;payment\&quot;:\&quot;STARTED\&quot;}&quot;</code></td>
+      <td>〃</td>
+      <td>〃</td>
+      <td>〃</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><code>b38229c6-30df-4166-a725-8b2c578e5ed5</code></td>
+      <td>CreditApproval</td>
+      <td>2</td>
+      <td><code>&quot;{ \&quot;order-id\&quot;: 2, \&quot;customer-id\&quot;: 456, ... }&quot;</code></td>
+      <td>STARTED</td>
+      <td><code>&quot;{\&quot;creditApproval\&quot;:\&quot;STARTED\&quot;}&quot;</code></td>
+      <td>〃</td>
+      <td>〃</td>
+      <td>〃</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Saga Orchestration for Microservices Using the Outbox Pattern - InfoQ](https://www.infoq.com/articles/saga-orchestration-outbox/)
 > - https://docs.aws.amazon.com/step-functions/latest/dg/concepts-states.html
@@ -917,11 +977,40 @@ Outbox パターンでは、Saga ログテーブルに加えて、Outbox テー�
 
 メッセージリレージョブは Outbox テーブルのイベントを定期的にクエリし、メッセージブローカーにパブリッシュする。
 
-| Id   | AggregateType | AggregateId | Type                | Payload            |
-| ---- | ------------- | ----------- | ------------------- | ------------------ |
-| ec6e | Order         | 123         | OrderCreated        | `{"id": 123, ...}` |
-| 8af8 | Order         | 456         | OrderDetailCanceled | `{"id": 456, ...}` |
-| 890b | Customer      | 789         | InvoiceCreated      | `{"id": 789, ...}` |
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>AggregateType</th>
+      <th>AggregateId</th>
+      <th>Type</th>
+      <th>Payload</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ec6e</td>
+      <td>Order</td>
+      <td>123</td>
+      <td>OrderCreated</td>
+      <td><code>{&quot;id&quot;: 123, ...}</code></td>
+    </tr>
+    <tr>
+      <td>8af8</td>
+      <td>Order</td>
+      <td>456</td>
+      <td>OrderDetailCanceled</td>
+      <td><code>{&quot;id&quot;: 456, ...}</code></td>
+    </tr>
+    <tr>
+      <td>890b</td>
+      <td>Customer</td>
+      <td>789</td>
+      <td>InvoiceCreated</td>
+      <td><code>{&quot;id&quot;: 789, ...}</code></td>
+    </tr>
+  </tbody>
+</table>
 
 ![saga-pattern_orchestrator_outbox-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern.png)
 

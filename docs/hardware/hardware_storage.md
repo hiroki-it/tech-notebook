@@ -62,11 +62,28 @@ Google Drive のストリーミング機能では、仮想ドライブをロー�
 
 複数の HDD を仮想的に統合し、1 つの HDD であるかのように見せかける。
 
-| 種類  | 説明                                                             |
-| ----- | :--------------------------------------------------------------- |
-| RAID0 | データを複数の HDD に振り分けて書き込む。                        |
-| RAID1 | データを複数の HDD にコピーして書き込む。                        |
-| RAID5 | データとパリティ (誤り訂正符号) を `3` 個以上の HDD に書き込む。 |
+<table>
+  <thead>
+    <tr>
+      <th>種類</th>
+      <th style="text-align:left">説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RAID0</td>
+      <td style="text-align:left">データを複数の HDD に振り分けて書き込む。</td>
+    </tr>
+    <tr>
+      <td>RAID1</td>
+      <td style="text-align:left">データを複数の HDD にコピーして書き込む。</td>
+    </tr>
+    <tr>
+      <td>RAID5</td>
+      <td style="text-align:left">データとパリティ (誤り訂正符号) を <code>3</code> 個以上の HDD に書き込む。</td>
+    </tr>
+  </tbody>
+</table>
 
 ![RAIDの種類](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/RAIDの種類.png)
 

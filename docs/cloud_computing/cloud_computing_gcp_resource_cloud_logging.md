@@ -27,11 +27,28 @@ description: Cloud Logging＠Google Cloudリソースの知見を記録してい
 
 Cloud Logging でログを処理するための API (`logging.googleapis.com`) を公開している。
 
-| 項目                   | 説明                                                                                                                                       |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| ログベースのメトリクス | 合致した文字列を持つログをトリガーとして、データポイントを発生させる。このデータポイントを集約し、ログベースのメトリクスとして使用できる。 |
-| ログルーター、シンク   | 合致した文字列を持つログをトリガーとして、指定した Pub/Sub トピックに振り分ける。                                                          |
-| ログストレージ         | ログを保管する。                                                                                                                           |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ログベースのメトリクス</td>
+      <td>合致した文字列を持つログをトリガーとして、データポイントを発生させる。このデータポイントを集約し、ログベースのメトリクスとして使用できる。</td>
+    </tr>
+    <tr>
+      <td>ログルーター、シンク</td>
+      <td>合致した文字列を持つログをトリガーとして、指定した Pub/Sub トピックに振り分ける。</td>
+    </tr>
+    <tr>
+      <td>ログストレージ</td>
+      <td>ログを保管する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Cloud Logging documentation \| Google Cloud Documentation](https://cloud.google.com/logging/docs)
 > - [Cloud Loggingで収集したログをCloud Pub/SubとCloud Functionsを使ってSlackに通知する - Querierブログ](https://blog.querier.io/posts/detail/1cgugqqa1ujf/)
@@ -78,11 +95,32 @@ resource.type = "k8s_container" AND resource.labels.namespace_name = "foo-namesp
 
 #### ▼ 種類
 
-| フィールド                   | 説明                                                                                                                                                                                                                                                                                                  | 例  |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
-| `severity`                   | ログの重要度レベルを持つ。                                                                                                                                                                                                                                                                            |     |
-| `jsonPayload`、`textPayload` | `message` キー配下に構造化ログまたは非構造化ログを持つ (コンソール画面上は `message` キーは省略される場合がある)。Cloud Logging は、ログの構造を自動的に認識する。ログが `jsonPayload` キーの場合、 `message` キー配下のログは構造化ログである。一方で `textPayload` キーの場合、非構造化ログである。 |
-| `logName`                    | ログの送信元であるログファイル名 (`foo.log`) 、標準出力 (`projects/<プロジェクト名>/stdout`)、標準エラー出力 (`projects/<プロジェクト名>/stderr`) を設定できる。また、gcloud の SDK を使用すると、任意の名前 (`foo`) を設定できる。                                                                   |
+<table>
+  <thead>
+    <tr>
+      <th>フィールド</th>
+      <th>説明</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>severity</code></td>
+      <td>ログの重要度レベルを持つ。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>jsonPayload</code>、<code>textPayload</code></td>
+      <td><code>message</code> キー配下に構造化ログまたは非構造化ログを持つ (コンソール画面上は <code>message</code> キーは省略される場合がある)。Cloud Logging は、ログの構造を自動的に認識する。ログが <code>jsonPayload</code> キーの場合、 <code>message</code> キー配下のログは構造化ログである。一方で <code>textPayload</code> キーの場合、非構造化ログである。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>logName</code></td>
+      <td>ログの送信元であるログファイル名 (<code>foo.log</code>) 、標準出力 (<code>projects/&lt;プロジェクト名&gt;/stdout</code>)、標準エラー出力 (<code>projects/&lt;プロジェクト名&gt;/stderr</code>) を設定できる。また、gcloud の SDK を使用すると、任意の名前 (<code>foo</code>) を設定できる。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 **＊例＊**
 

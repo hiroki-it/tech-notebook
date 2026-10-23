@@ -191,10 +191,36 @@ Prometheus では、TSDB (`data` ディレクトリ配下) を採用している
 
 そのため、データソース型モデルと仮定してテーブル例を示す。
 
-| timestamp    | cluster       | namespace       | ... | cpu  | memory |
-| ------------ | ------------- | --------------- | --- | ---- | ------ |
-| `2022-01-01` | `foo-cluster` | `foo-namespace` | ... | `10` | `10`   |
-| `2022-01-02` | `foo-cluster` | `foo-namespace` | ... | `20` | `30`   |
+<table>
+  <thead>
+    <tr>
+      <th>timestamp</th>
+      <th>cluster</th>
+      <th>namespace</th>
+      <th>...</th>
+      <th>cpu</th>
+      <th>memory</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>2022-01-01</code></td>
+      <td><code>foo-cluster</code></td>
+      <td><code>foo-namespace</code></td>
+      <td>...</td>
+      <td><code>10</code></td>
+      <td><code>10</code></td>
+    </tr>
+    <tr>
+      <td><code>2022-01-02</code></td>
+      <td><code>foo-cluster</code></td>
+      <td><code>foo-namespace</code></td>
+      <td>...</td>
+      <td><code>20</code></td>
+      <td><code>30</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://db-engines.com/en/system/InfluxDB%3BLevelDB%3BPrometheus
 > - [Key Concepts and Features of Time Series Databases - Alibaba Cloud Community](https://www.alibabacloud.com/blog/key-concepts-and-features-of-time-series-databases_594734)

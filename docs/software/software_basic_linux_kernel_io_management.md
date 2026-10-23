@@ -19,12 +19,32 @@ description: I/O (入出力) 管理＠Linuxカーネルの知見を記録して�
 
 I/O は、文脈によって意味合いが異なる。
 
-| 文脈                   | 意味合い                             |
-| ---------------------- | ------------------------------------ |
-| シェルの場合           | 標準入力、標準出力、標準エラー出力   |
-| ファイルシステムの場合 | ファイルへの読み書き                 |
-| ストレージの場合       | ストレージへの読み書き               |
-| ネットワークの場合     | インバウンド通信、アウトバウンド通信 |
+<table>
+  <thead>
+    <tr>
+      <th>文脈</th>
+      <th>意味合い</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>シェルの場合</td>
+      <td>標準入力、標準出力、標準エラー出力</td>
+    </tr>
+    <tr>
+      <td>ファイルシステムの場合</td>
+      <td>ファイルへの読み書き</td>
+    </tr>
+    <tr>
+      <td>ストレージの場合</td>
+      <td>ストレージへの読み書き</td>
+    </tr>
+    <tr>
+      <td>ネットワークの場合</td>
+      <td>インバウンド通信、アウトバウンド通信</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.idcf.jp/words/io.html
 > - [Linux におけるファイル I/O の基礎](https://itkq.jp/blog/2017/05/10/linux-file-and-io/)
@@ -330,13 +350,36 @@ $ sudo pgrep \
 
 ファイルの行数が多い場合に役立つ。
 
-| キー       | 説明                                 |
-| ---------- | ------------------------------------ |
-| `Enter`    | １行送り                             |
-| `Space`    | 一ページ送り                         |
-| `Ctrl + f` | 一ページ送り                         |
-| `Ctrl + b` | 一ページ戻り                         |
-| `/文字列`  | 以降の文字を検索し、ハイライトする。 |
+<table>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Enter</code></td>
+      <td>１行送り</td>
+    </tr>
+    <tr>
+      <td><code>Space</code></td>
+      <td>一ページ送り</td>
+    </tr>
+    <tr>
+      <td><code>Ctrl + f</code></td>
+      <td>一ページ送り</td>
+    </tr>
+    <tr>
+      <td><code>Ctrl + b</code></td>
+      <td>一ページ戻り</td>
+    </tr>
+    <tr>
+      <td><code>/文字列</code></td>
+      <td>以降の文字を検索し、ハイライトする。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [ページング処理 ～moreコマンド・lessコマンド～ \| TECH PROjin](https://tech.pjin.jp/blog/infra_engneer/more-less/)
 

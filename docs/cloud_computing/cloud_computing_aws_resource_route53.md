@@ -29,10 +29,24 @@ description: Amazon Route 53＠AWSリソース
 
 ### コンソール画面の場合
 
-| 設定項目           | 説明                                                                                                                 |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------- |
-| ホストゾーン       | DNS ゾーン情報として、ドメイン名を設定する。                                                                         |
-| DNS レコードセット | 名前解決時のルーティング方法を設定する。DNS ゾーンとしてのホストゾーン配下に、サブドメイン名を設定することもできる。 |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ホストゾーン</td>
+      <td>DNS ゾーン情報として、ドメイン名を設定する。</td>
+    </tr>
+    <tr>
+      <td>DNS レコードセット</td>
+      <td>名前解決時のルーティング方法を設定する。DNS ゾーンとしてのホストゾーン配下に、サブドメイン名を設定することもできる。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -46,27 +60,97 @@ description: Amazon Route 53＠AWSリソース
 
 #### ▼ DNS レコードタイプの種類
 
-| DNS レコードタイプ | 説明                                                                                      | 名前解決の仕組み                             | 補足                                              |
-| ------------------ | ----------------------------------------------------------------------------------------- | -------------------------------------------- | ------------------------------------------------- |
-| A                  | リクエストをフォワーディングしたい AWS リソースの、IPv4 アドレスまたは DNS 名を設定する。 | IPv4 アドレスが返却される。                  |                                                   |
-| AAAA               | リクエストをフォワーディングしたい AWS リソースの、IPv6 アドレスまたは DNS 名を設定する。 | IPv6 アドレスが返却される。                  |                                                   |
-| CNAME              | リクエストをフォワーディングしたい任意のサーバーのドメイン名を設定する。                  | ドメイン名にリダイレクトする。               | 設定するドメイン名は AWS リソースでなくともよい。 |
-| NS                 | IP アドレスの問い合わせに応えられる DNS サーバーの名前が定義されている。                  | DNS サーバーの名前が返却される。             |                                                   |
-| MX                 | リクエストをフォワーディングしたいメールサーバーのドメイン名を設定する。                  | メールサーバーのドメイン名が返却される。     |                                                   |
-| TXT                | リクエストをフォワーディングしたいサーバーのドメイン名に紐付けられた文字列を設定する。    | ドメイン名に紐付けられた文字列が返却される。 |                                                   |
+<table>
+  <thead>
+    <tr>
+      <th>DNS レコードタイプ</th>
+      <th>説明</th>
+      <th>名前解決の仕組み</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td>リクエストをフォワーディングしたい AWS リソースの、IPv4 アドレスまたは DNS 名を設定する。</td>
+      <td>IPv4 アドレスが返却される。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>AAAA</td>
+      <td>リクエストをフォワーディングしたい AWS リソースの、IPv6 アドレスまたは DNS 名を設定する。</td>
+      <td>IPv6 アドレスが返却される。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>CNAME</td>
+      <td>リクエストをフォワーディングしたい任意のサーバーのドメイン名を設定する。</td>
+      <td>ドメイン名にリダイレクトする。</td>
+      <td>設定するドメイン名は AWS リソースでなくともよい。</td>
+    </tr>
+    <tr>
+      <td>NS</td>
+      <td>IP アドレスの問い合わせに応えられる DNS サーバーの名前が定義されている。</td>
+      <td>DNS サーバーの名前が返却される。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>MX</td>
+      <td>リクエストをフォワーディングしたいメールサーバーのドメイン名を設定する。</td>
+      <td>メールサーバーのドメイン名が返却される。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>TXT</td>
+      <td>リクエストをフォワーディングしたいサーバーのドメイン名に紐付けられた文字列を設定する。</td>
+      <td>ドメイン名に紐付けられた文字列が返却される。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ AWS リソースの DNS 名、ドメイン名、エンドポイント名
 
 ![URLと電子メールの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/URLと電子メールの構造.png)
 
-| 種別             | AWS リソース      | 例                                                                                  |
-| ---------------- | ----------------- | ----------------------------------------------------------------------------------- |
-| DNS 名           | AWS ALB           | `<ALB名>-<ランダムな文字列>.ap-northeast-1.elb.amazonaws.com`                       |
-|                  | Amazon EC2        | `ec2-<パブリックIPをハイフン区切りにしたもの>.ap-northeast-1.compute.amazonaws.com` |
-| ドメイン名       | Amazon CloudFront | `<発行されたランダム文字列>.cloudfront.net`                                         |
-| エンドポイント名 | Amazon Aurora     | `<DBクラスター名><ランダムな文字列>.ap-northeast-1.rds.amazonaws.com.`              |
-|                  | Amazon RDS        | `<DBインスタンス名><ランダムな文字列>.ap-northeast-1.rds.amazonaws.com.`            |
-|                  | Amazon S3         | `<バケット名>.ap-northeast-1.amazonaws.com`                                         |
+<table>
+  <thead>
+    <tr>
+      <th>種別</th>
+      <th>AWS リソース</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">DNS 名</td>
+      <td>AWS ALB</td>
+      <td><code>&lt;ALB名&gt;-&lt;ランダムな文字列&gt;.ap-northeast-1.elb.amazonaws.com</code></td>
+    </tr>
+    <tr>
+      <td>Amazon EC2</td>
+      <td><code>ec2-&lt;パブリックIPをハイフン区切りにしたもの&gt;.ap-northeast-1.compute.amazonaws.com</code></td>
+    </tr>
+    <tr>
+      <td>ドメイン名</td>
+      <td>Amazon CloudFront</td>
+      <td><code>&lt;発行されたランダム文字列&gt;.cloudfront.net</code></td>
+    </tr>
+    <tr>
+      <td rowspan="3">エンドポイント名</td>
+      <td>Amazon Aurora</td>
+      <td><code>&lt;DBクラスター名&gt;&lt;ランダムな文字列&gt;.ap-northeast-1.rds.amazonaws.com.</code></td>
+    </tr>
+    <tr>
+      <td>Amazon RDS</td>
+      <td><code>&lt;DBインスタンス名&gt;&lt;ランダムな文字列&gt;.ap-northeast-1.rds.amazonaws.com.</code></td>
+    </tr>
+    <tr>
+      <td>Amazon S3</td>
+      <td><code>&lt;バケット名&gt;.ap-northeast-1.amazonaws.com</code></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ AWS 以外でドメインを購入した場合
 
@@ -133,10 +217,33 @@ DNS サーバーが Amazon Route 53 に問い合わせると、Amazon Route 53 �
 
 現環境から新環境にできるだけ素早く切り替えられるように、DNS キャッシュである TTL (秒) はあらかじめ短く設定しておく。
 
-| レコード名    | ルーティングポリシー | TTL (秒) | 重み付け | ルーティング先              |
-| ------------- | -------------------- | -------- | -------- | --------------------------- |
-| `example.com` | 加重                 | `60`     | `30`     | ブルー環境の ALB (現環境)   |
-| `example.com` | 加重                 | `60`     | `70`     | グリーン環境の ALB (新環境) |
+<table>
+  <thead>
+    <tr>
+      <th>レコード名</th>
+      <th>ルーティングポリシー</th>
+      <th>TTL (秒)</th>
+      <th>重み付け</th>
+      <th>ルーティング先</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>example.com</code></td>
+      <td>加重</td>
+      <td><code>60</code></td>
+      <td><code>30</code></td>
+      <td>ブルー環境の ALB (現環境)</td>
+    </tr>
+    <tr>
+      <td><code>example.com</code></td>
+      <td>加重</td>
+      <td><code>60</code></td>
+      <td><code>70</code></td>
+      <td>グリーン環境の ALB (新環境)</td>
+    </tr>
+  </tbody>
+</table>
 
 ![aws_route53_routing-policy_weighted-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_route53_routing-policy_weighted-routing.png)
 
@@ -160,9 +267,22 @@ DNS サーバーが Amazon Route 53 に問い合わせると、Amazon Route 53 �
 
 : Amazon Route 53 は、IP アドレスのキャッシュを検索する。キャッシュが無ければ、Amazon Route 53 は IP アドレスを検索する。また、キャッシュ DNS サーバーにこれを返却する。
 
-|        ドメイン名        | Amazon Route 53 による変換 |    IP アドレス    |
-| :----------------------: | :------------------------: | :---------------: |
-| `http://www.example.com` |             ⇄              | `203.142.205.139` |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center">ドメイン名</th>
+      <th style="text-align:center">Amazon Route 53 による変換</th>
+      <th style="text-align:center">IP アドレス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><code>http://www.example.com</code></td>
+      <td style="text-align:center">⇄</td>
+      <td style="text-align:center"><code>203.142.205.139</code></td>
+    </tr>
+  </tbody>
+</table>
 
 `(4)`
 

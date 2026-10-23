@@ -72,14 +72,40 @@ node affinity や node selector を実施できるように、`.metadata.labels`
 
 キー名は、`node.kubernetes.io/nodetype` とする。
 
-| Node グループ名の例と `.metadata.labels` キー値 | 説明                                                                                                                                                                                                                                                                                                                                   |
-| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `app`、`service`                                | アプリを稼働させる。                                                                                                                                                                                                                                                                                                                   |
-| `batch`、`job`                                  | 単発的なバッチ処理やジョブ (定期的なバッチ処理) のコンテナを配置する。                                                                                                                                                                                                                                                                 |
-| `deploy`                                        | 他の Kubernetes リソースをデプロイするための Kubernetes リソース (例：ArgoCD の Pod) のコンテナを配置する。Node グループ内に含めずに、異なる Cluster に切り分けて管理してもよい。                                                                                                                                                      |
-| `ingress`、`gateway、`egress`                   | ワーカーNode へのインバウンド通信の入口になるリソース (例：Ingress、IngressGateway) のコンテナや、API ゲートウェイのアプリを配置する。これは単一障害点になりうるため、ワーカーNode の CPU やメモリを潤沢にしようできるように、他のリソースのコンテナとは別の Node グループにしたほうがよい。また、アップグレード時間の短縮にも繋がる。 |
-| `master`                                        | セルフマネージドな Kubernetes コントロールプレーン Node のコンテナを稼働させる。マネージドなコントロールプレーン Node (例：Amazon EKS、Google Cloud GKE、Azure AKS など) の場合、この Node グループは不要になる。                                                                                                                      |
-| `system`                                        | ログやメトリクスの元になるデータポイントを収集するリソース (例：Prometheus、Alertmanager の Pod) のコンテナを配置する。また、セルフマネージドなサービスメッシュコントロールプレーン Node のコンテナを稼働させる。マネージドなコントロールプレーン Node (例：Amazon VPC Lattice など) の場合、この Node グループは不要になる。          |
+<table>
+  <thead>
+    <tr>
+      <th>Node グループ名の例と <code>.metadata.labels</code> キー値</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>app</code>、<code>service</code></td>
+      <td>アプリを稼働させる。</td>
+    </tr>
+    <tr>
+      <td><code>batch</code>、<code>job</code></td>
+      <td>単発的なバッチ処理やジョブ (定期的なバッチ処理) のコンテナを配置する。</td>
+    </tr>
+    <tr>
+      <td><code>deploy</code></td>
+      <td>他の Kubernetes リソースをデプロイするための Kubernetes リソース (例：ArgoCD の Pod) のコンテナを配置する。Node グループ内に含めずに、異なる Cluster に切り分けて管理してもよい。</td>
+    </tr>
+    <tr>
+      <td><code>ingress</code>、<code>gateway、</code>egress`</td>
+      <td>ワーカーNode へのインバウンド通信の入口になるリソース (例：Ingress、IngressGateway) のコンテナや、API ゲートウェイのアプリを配置する。これは単一障害点になりうるため、ワーカーNode の CPU やメモリを潤沢にしようできるように、他のリソースのコンテナとは別の Node グループにしたほうがよい。また、アップグレード時間の短縮にも繋がる。</td>
+    </tr>
+    <tr>
+      <td><code>master</code></td>
+      <td>セルフマネージドな Kubernetes コントロールプレーン Node のコンテナを稼働させる。マネージドなコントロールプレーン Node (例：Amazon EKS、Google Cloud GKE、Azure AKS など) の場合、この Node グループは不要になる。</td>
+    </tr>
+    <tr>
+      <td><code>system</code></td>
+      <td>ログやメトリクスの元になるデータポイントを収集するリソース (例：Prometheus、Alertmanager の Pod) のコンテナを配置する。また、セルフマネージドなサービスメッシュコントロールプレーン Node のコンテナを稼働させる。マネージドなコントロールプレーン Node (例：Amazon VPC Lattice など) の場合、この Node グループは不要になる。</td>
+    </tr>
+  </tbody>
+</table>
 
 ```yaml
 apiVersion: v1
@@ -163,10 +189,24 @@ $ kube-proxy \
 
 デフォルトのプロキシモードである。
 
-| 項目                  | 仕組み                                                                                                                                                       |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| サービス検出          | Service とその Service 配下の EndpointSlice の追加と削除を監視し、これらの増減に合わせて、ワーカーNode 上で稼働する iptables に IP アドレスを追加/削除する。 |
-| `L4` ロードバランサー | ランダム方式のみ。                                                                                                                                           |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>仕組み</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>サービス検出</td>
+      <td>Service とその Service 配下の EndpointSlice の追加と削除を監視し、これらの増減に合わせて、ワーカーNode 上で稼働する iptables に IP アドレスを追加/削除する。</td>
+    </tr>
+    <tr>
+      <td><code>L4</code> ロードバランサー</td>
+      <td>ランダム方式のみ。</td>
+    </tr>
+  </tbody>
+</table>
 
 ![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_iptables.png)
 
@@ -215,10 +255,24 @@ iptable 方式の場合、kube-proxy によって検出された Pod の IP ア�
 
 #### ▼ userspace プロキシモード
 
-| 項目                  | 仕組み                                                                                                                                                       |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| サービス検出          | Service とその Service 配下の EndpointSlice の追加と削除を監視し、これらの増減に合わせて、ワーカーNode 上で稼働する iptables に IP アドレスを追加/削除する。 |
-| `L4` ロードバランサー | ラウンドロビン方式のみ。                                                                                                                                     |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>仕組み</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>サービス検出</td>
+      <td>Service とその Service 配下の EndpointSlice の追加と削除を監視し、これらの増減に合わせて、ワーカーNode 上で稼働する iptables に IP アドレスを追加/削除する。</td>
+    </tr>
+    <tr>
+      <td><code>L4</code> ロードバランサー</td>
+      <td>ラウンドロビン方式のみ。</td>
+    </tr>
+  </tbody>
+</table>
 
 ![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_userspace.png)
 
@@ -233,10 +287,24 @@ iptable 方式の場合、kube-proxy によって検出された Pod の IP ア�
 
 kube-proxy の起動時に、`--feature-gates` オプションに `SupportIPVSProxyMode=true`、`--proxy-mode` オプションに `ipvs` を設定する。
 
-| 項目                  | 仕組み                                                                                                                                                 |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| サービス検出          | Service とその Service 配下の EndpointSlice の追加と削除を監視し、これらの増減に合わせて、ワーカーNode 上で稼働する ipvs にハッシュ値を追加/削除する。 |
-| `L4` ロードバランサー | ラウンドロビン方式、接続の最低数、宛先ハッシュ値、送信元ハッシュ値など。                                                                               |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>仕組み</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>サービス検出</td>
+      <td>Service とその Service 配下の EndpointSlice の追加と削除を監視し、これらの増減に合わせて、ワーカーNode 上で稼働する ipvs にハッシュ値を追加/削除する。</td>
+    </tr>
+    <tr>
+      <td><code>L4</code> ロードバランサー</td>
+      <td>ラウンドロビン方式、接続の最低数、宛先ハッシュ値、送信元ハッシュ値など。</td>
+    </tr>
+  </tbody>
+</table>
 
 ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_ipvs.png)
 
@@ -579,11 +647,28 @@ $ journalctl -u containerd.service
 
 コンテナのライフサイクルにはフェーズがある。
 
-| フェーズ名 | 説明                                                             |
-| ---------- | ---------------------------------------------------------------- |
-| Waiting    | `Running` フェーズと `Terminated` フェーズ以外のフェーズにある。 |
-| Running    | コンテナの起動が完了し、実行中である。                           |
-| Terminated | コンテナが正常/異常に停止した。                                  |
+<table>
+  <thead>
+    <tr>
+      <th>フェーズ名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Waiting</td>
+      <td><code>Running</code> フェーズと <code>Terminated</code> フェーズ以外のフェーズにある。</td>
+    </tr>
+    <tr>
+      <td>Running</td>
+      <td>コンテナの起動が完了し、実行中である。</td>
+    </tr>
+    <tr>
+      <td>Terminated</td>
+      <td>コンテナが正常/異常に停止した。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Pod Lifecycle \| Kubernetes](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-states)
 

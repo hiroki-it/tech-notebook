@@ -223,10 +223,24 @@ Keycloak クライアントは、『ヘッダー』『ペイロード』『署�
 
 #### ▼ OIDC の場合
 
-| 項目                           | 説明                                                               |
-| ------------------------------ | ------------------------------------------------------------------ |
-| SSO のセッションアイドル       | ブラウザを操作しなかった場合に、再認証が必要になる有効期限を表す、 |
-| アクセストークンのライフスパン | OIDC のアクセストークンの有効期限を表す。                          |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SSO のセッションアイドル</td>
+      <td>ブラウザを操作しなかった場合に、再認証が必要になる有効期限を表す、</td>
+    </tr>
+    <tr>
+      <td>アクセストークンのライフスパン</td>
+      <td>OIDC のアクセストークンの有効期限を表す。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/24.0/html/server_administration_guide/managing_user_sessions#timeouts
 
@@ -431,11 +445,28 @@ Content-Length: 759
 client_id=python-client&client_secret=a07f9...8213d1&refresh_token=eyJhbGci...twOA
 ```
 
-| パラメーター    | 説明                     |
-| --------------- | ------------------------ |
-| `client_id`     | クライアント ID          |
-| `client_secret` | クライアントシークレット |
-| `refresh_token` | リフレッシュトークン     |
+<table>
+  <thead>
+    <tr>
+      <th>パラメーター</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>client_id</code></td>
+      <td>クライアント ID</td>
+    </tr>
+    <tr>
+      <td><code>client_secret</code></td>
+      <td>クライアントシークレット</td>
+    </tr>
+    <tr>
+      <td><code>refresh_token</code></td>
+      <td>リフレッシュトークン</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Keycloak ログアウト方法 メモ #備忘録 - Qiita](https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88)
 > - [Keycloakのシングル・ログアウト(SLO)についてのまとめ #OIDC - Qiita](https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
@@ -506,11 +537,28 @@ HTTP/1.1 204 No Content
 GET http://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/logout?id_token_hint=eyJhbGciOiJS...RE2AZmGgKJAj-HlHw&post_logout_redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fauth%2Flogout%2Fcomplete&state=e18689b0503aab42574427fb575645aca0065bb758aa8463acf4506fe8a61e81
 ```
 
-| パラメーター               | 説明                           |
-| -------------------------- | ------------------------------ |
-| `id_token_hint`            | ID トークン                    |
-| `post_logout_redirect_uri` | ログアウト後のリダイレクト URL |
-| `state`                    | CSRF 対策の文字列              |
+<table>
+  <thead>
+    <tr>
+      <th>パラメーター</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>id_token_hint</code></td>
+      <td>ID トークン</td>
+    </tr>
+    <tr>
+      <td><code>post_logout_redirect_uri</code></td>
+      <td>ログアウト後のリダイレクト URL</td>
+    </tr>
+    <tr>
+      <td><code>state</code></td>
+      <td>CSRF 対策の文字列</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Keycloak ログアウト方法 メモ #備忘録 - Qiita](https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88)
 > - [Keycloakのシングル・ログアウト(SLO)についてのまとめ #OIDC - Qiita](https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
@@ -525,9 +573,20 @@ HTTP/1.1 307 Temporary Redirect
 http://localhost:8000/logout/complete?state=e18689b0503aab42574427fb575645aca0065bb758aa8463acf4506fe8a61e81
 ```
 
-| パラメーター | 説明                                    |
-| ------------ | --------------------------------------- |
-| `state`      | リクエスト時の `state` パラメーターの値 |
+<table>
+  <thead>
+    <tr>
+      <th>パラメーター</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>state</code></td>
+      <td>リクエスト時の <code>state</code> パラメーターの値</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Keycloak ログアウト方法 メモ #備忘録 - Qiita](https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88)
 > - [Keycloakのシングル・ログアウト(SLO)についてのまとめ #OIDC - Qiita](https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)

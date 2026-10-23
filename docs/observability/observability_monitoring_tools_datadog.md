@@ -154,11 +154,28 @@ log.attributes.region }} {{ /is_alert }}
 
 Datadog で、ブラウザのエラーは以下に分類される。
 
-| エラーのソース       | エラーの例                                                                                                                                |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| コード上             | ・ハンドリングされずにコード上に表示された例外<br>・ハンドリングされずにコード上に表示された Promise オブジェクトの `reject()` 関数の結果 |
-| ブラウザコンソール上 | `console.error()` 関数によって、コンソール上に出力されたテキスト                                                                          |
-| カスタム             | `@datadog/browser-rum` パッケージの `addError()` 関数によって、datadog-API に送信されたテキスト                                           |
+<table>
+  <thead>
+    <tr>
+      <th>エラーのソース</th>
+      <th>エラーの例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>コード上</td>
+      <td>・ハンドリングされずにコード上に表示された例外<br>・ハンドリングされずにコード上に表示された Promise オブジェクトの <code>reject()</code> 関数の結果</td>
+    </tr>
+    <tr>
+      <td>ブラウザコンソール上</td>
+      <td><code>console.error()</code> 関数によって、コンソール上に出力されたテキスト</td>
+    </tr>
+    <tr>
+      <td>カスタム</td>
+      <td><code>@datadog/browser-rum</code> パッケージの <code>addError()</code> 関数によって、datadog-API に送信されたテキスト</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://docs.datadoghq.com/real_user_monitoring/browser/collecting_browser_errors/?tab=npm
 
@@ -180,14 +197,40 @@ Datadog 社の物理サーバーがリクエストを送信する。
 
 #### ▼ ヘッダー
 
-| ヘッダー                      | 値                                                                                                                                         |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `user-agent`                  | ブラウザテストで設定したブラウザが割り当てられる。                                                                                         |
-| `sec-datadog`                 | ブラウザテストの ID が割り当てられる。                                                                                                     |
-| `x-datadog-trace-id`          | バックエンドがマイクロサービスアーキテクチャの場合、収集できる分散トレースを紐付ける ID が割り当てられる。                                 |
-| `x-datadog-parent-id`         | バックエンドがマイクロサービスアーキテクチャの場合、分散トレースのルートスパンとして、`0` が割り当てられる。                               |
-| `x-datadog-origin`            | バックエンドがマイクロサービスアーキテクチャの場合、分散トレースが APM クオータに影響しないように、`synthetics-browser` が割り当てられる。 |
-| `x-datadog-sampling-priority` | バックエンドがマイクロサービスアーキテクチャの場合、分散トレースが収集される優先度として、`1` が割り当てられる。                           |
+<table>
+  <thead>
+    <tr>
+      <th>ヘッダー</th>
+      <th>値</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>user-agent</code></td>
+      <td>ブラウザテストで設定したブラウザが割り当てられる。</td>
+    </tr>
+    <tr>
+      <td><code>sec-datadog</code></td>
+      <td>ブラウザテストの ID が割り当てられる。</td>
+    </tr>
+    <tr>
+      <td><code>x-datadog-trace-id</code></td>
+      <td>バックエンドがマイクロサービスアーキテクチャの場合、収集できる分散トレースを紐付ける ID が割り当てられる。</td>
+    </tr>
+    <tr>
+      <td><code>x-datadog-parent-id</code></td>
+      <td>バックエンドがマイクロサービスアーキテクチャの場合、分散トレースのルートスパンとして、<code>0</code> が割り当てられる。</td>
+    </tr>
+    <tr>
+      <td><code>x-datadog-origin</code></td>
+      <td>バックエンドがマイクロサービスアーキテクチャの場合、分散トレースが APM クオータに影響しないように、<code>synthetics-browser</code> が割り当てられる。</td>
+    </tr>
+    <tr>
+      <td><code>x-datadog-sampling-priority</code></td>
+      <td>バックエンドがマイクロサービスアーキテクチャの場合、分散トレースが収集される優先度として、<code>1</code> が割り当てられる。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests#default-headers
 > - https://docs.datadoghq.com/synthetics/apm/#how-are-traces-linked-to-tests

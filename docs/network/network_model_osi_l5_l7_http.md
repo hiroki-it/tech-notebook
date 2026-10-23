@@ -726,19 +726,64 @@ GET リクエストには不要である。
 
 > - https://stackoverflow.com/questions/5661596/do-i-need-a-content-type-header-for-http-get-requests
 
-| トップレベルタイプ | サブレベルタイプ      | 意味                                 |
-| ------------------ | --------------------- | ------------------------------------ |
-| application        | octet-stream          | 任意の MIME type (指定なし) を示す。 |
-|                    | javascript            | js ファイル                          |
-|                    | json                  | json ファイル                        |
-|                    | x-www-form-urlencoded | POST リクエストの送信データ          |
-|                    | zip                   | `.zip` ファイル                      |
-| text               | html                  | `html` ファイル                      |
-|                    | css                   | `.css` ファイル                      |
-|                    | plain                 | プレーンテキスト                     |
-| image              | png                   | png ファイル                         |
-|                    | jpeg                  | jpeg ファイル                        |
-|                    | gif                   | gif ファイル                         |
+<table>
+  <thead>
+    <tr>
+      <th>トップレベルタイプ</th>
+      <th>サブレベルタイプ</th>
+      <th>意味</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="5">application</td>
+      <td>octet-stream</td>
+      <td>任意の MIME type (指定なし) を示す。</td>
+    </tr>
+    <tr>
+      <td>javascript</td>
+      <td>js ファイル</td>
+    </tr>
+    <tr>
+      <td>json</td>
+      <td>json ファイル</td>
+    </tr>
+    <tr>
+      <td>x-www-form-urlencoded</td>
+      <td>POST リクエストの送信データ</td>
+    </tr>
+    <tr>
+      <td>zip</td>
+      <td><code>.zip</code> ファイル</td>
+    </tr>
+    <tr>
+      <td rowspan="3">text</td>
+      <td>html</td>
+      <td><code>html</code> ファイル</td>
+    </tr>
+    <tr>
+      <td>css</td>
+      <td><code>.css</code> ファイル</td>
+    </tr>
+    <tr>
+      <td>plain</td>
+      <td>プレーンテキスト</td>
+    </tr>
+    <tr>
+      <td rowspan="3">image</td>
+      <td>png</td>
+      <td>png ファイル</td>
+    </tr>
+    <tr>
+      <td>jpeg</td>
+      <td>jpeg ファイル</td>
+    </tr>
+    <tr>
+      <td>gif</td>
+      <td>gif ファイル</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://stackoverflow.com/questions/5661596/do-i-need-a-content-type-header-for-http-get-requests
 
@@ -779,16 +824,54 @@ HTTP はステートレスなプロトコルであるが、Cookie 情報によ�
 
 反対に、クライアントからのリクエスト時は、`Cookie` ヘッダーに Cookie 情報を割り当てて送信される。
 
-| HTTP メッセージの種類 | ヘッダー名 | 属性     | 内容                                                                                                      |
-| --------------------- | ---------- | -------- | --------------------------------------------------------------------------------------------------------- |
-| レスポンス            | Set-Cookie | Name     | Cookie 名と値                                                                                             |
-|                       |            | Expires  | Cookie の有効期限 (日数)                                                                                  |
-|                       |            | Max-Age  | Cookie の有効期限 (秒数)                                                                                  |
-|                       |            | Domain   | クライアントがリクエストするときの Cookie 宛先ドメイン名。                                                |
-|                       |            | Path     | クライアントがリクエストするときの Cookie 宛先ディレクトリ                                                |
-|                       |            | Secure   | クライアントからのリクエストで SSL プロトコルが使用されているときのみ、リクエストを送信できるようにする。 |
-|                       |            | HttpOnly | クライアント側で、JavaScript が Cookie を使用できないようにする。XSS 攻撃の対策になる。                   |
-| リクエスト            | Cookie     |          | セッション ID などの Cookie 情報                                                                          |
+<table>
+  <thead>
+    <tr>
+      <th>HTTP メッセージの種類</th>
+      <th>ヘッダー名</th>
+      <th>属性</th>
+      <th>内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="7">レスポンス</td>
+      <td rowspan="7">Set-Cookie</td>
+      <td>Name</td>
+      <td>Cookie 名と値</td>
+    </tr>
+    <tr>
+      <td>Expires</td>
+      <td>Cookie の有効期限 (日数)</td>
+    </tr>
+    <tr>
+      <td>Max-Age</td>
+      <td>Cookie の有効期限 (秒数)</td>
+    </tr>
+    <tr>
+      <td>Domain</td>
+      <td>クライアントがリクエストするときの Cookie 宛先ドメイン名。</td>
+    </tr>
+    <tr>
+      <td>Path</td>
+      <td>クライアントがリクエストするときの Cookie 宛先ディレクトリ</td>
+    </tr>
+    <tr>
+      <td>Secure</td>
+      <td>クライアントからのリクエストで SSL プロトコルが使用されているときのみ、リクエストを送信できるようにする。</td>
+    </tr>
+    <tr>
+      <td>HttpOnly</td>
+      <td>クライアント側で、JavaScript が Cookie を使用できないようにする。XSS 攻撃の対策になる。</td>
+    </tr>
+    <tr>
+      <td>リクエスト</td>
+      <td>Cookie</td>
+      <td></td>
+      <td>セッション ID などの Cookie 情報</td>
+    </tr>
+  </tbody>
+</table>
 
 クライアントから受信したリクエストの `Cookie` ヘッダーの内容は、グローバル変数に格納されている。
 

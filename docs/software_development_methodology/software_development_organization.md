@@ -163,20 +163,116 @@ LegalOn Technologies では、エンジニアに IC・TL・Manager の３つの�
 
 (肩書きは役割の後についてくる)
 
-| 仕事                                | メンバーエンジニア | メンターエンジニア | サブリードエンジニア | リードエンジニア (現場リーダー) | プロジェクトマネージャー |
-| ----------------------------------- | :----------------: | :----------------: | :------------------: | :-----------------------------: | :----------------------: |
-| 社内外合意形成                      |                    |                    |                      |                                 |            ✅            |
-| タスク管理                          |                    |                    |                      |               ✅                |            ✅            |
-| プロジェクト計画                    |                    |                    |                      |                                 |            ✅            |
-| 工数/費用の見積もり                 |                    |                    |                      |               ✅                |            ✅            |
-| 契約                                |                    |                    |                      |                                 |            ✅            |
-| 要件定義 (スクラムの場合は要件整理) |                    |                    |          ✅          |               ✅                |            ✅            |
-| UI デザイン                         |         ✅         |         ✅         |          ✅          |               ✅                |            ✅            |
-| システム設計                        |         ✅         |         ✅         |          ✅          |               ✅                |            ✅            |
-| 実装                                |         ✅         |         ✅         |          ✅          |               ✅                |                          |
-| テスト                              |         ✅         |         ✅         |          ✅          |               ✅                |                          |
-| リリース                            |         ✅         |         ✅         |          ✅          |               ✅                |                          |
-| 運用保守                            |         ✅         |         ✅         |          ✅          |               ✅                |                          |
+<table>
+  <thead>
+    <tr>
+      <th>仕事</th>
+      <th style="text-align:center">メンバーエンジニア</th>
+      <th style="text-align:center">メンターエンジニア</th>
+      <th style="text-align:center">サブリードエンジニア</th>
+      <th style="text-align:center">リードエンジニア (現場リーダー)</th>
+      <th style="text-align:center">プロジェクトマネージャー</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>社内外合意形成</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>タスク管理</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>プロジェクト計画</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>工数/費用の見積もり</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>契約</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>要件定義 (スクラムの場合は要件整理)</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>UI デザイン</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>システム設計</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>実装</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>テスト</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>リリース</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>運用保守</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [テックリードになって気をつけていること #テックリード - Qiita](https://qiita.com/ma91n/items/207f32db1b51754d6933#2-11-%E5%8F%A3%E3%81%A0%E3%81%91%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E6%AD%A3%E8%A7%A3%E3%82%92%E6%8F%90%E7%A4%BA%E3%81%99%E3%82%8B%E3%81%AE%E3%82%82%E5%A4%A7%E4%BA%8B)
 > - [【読んでみた】エンジニアのためのマネジメントキャリアパス ―テックリードからCTOまでマネジメントスキル向上ガイド - どこにでもいるSEの備忘録](https://www.nogawanogawa.work/entry/management_career)

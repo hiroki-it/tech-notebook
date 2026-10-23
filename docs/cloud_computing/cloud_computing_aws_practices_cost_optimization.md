@@ -142,12 +142,37 @@ AWS EBS ボリュームは、ボリュームの使用率に関わらず、最大
 
 レスポンスの返信時に料金が発生する。
 
-| 使い方名                 | 説明                                                                                                                                                                                                 | 補足                                                                               |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| オンデマンドインスタンス | Amazon EC2 の使用期間に応じて使用料金を支払う。                                                                                                                                                      | ・https://aws.amazon.com/jp/ec2/pricing/on-demand/                                 |
-| Savings Plans            |                                                                                                                                                                                                      |                                                                                    |
-| リザーブドインスタンス   | Amazon EC2 の一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。                                                                                                                  |                                                                                    |
-| スポットインスタンス     | 休止している Amazon EC2 を使用する。格安で使用できる。ただし、スポットインスタンスの絶対数が減少したり、スポットインスタンスの希望ユーザーが増えた場合に、利用を強制的に中断されてしまうことがある。 | ・https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-spot-instances-work.html |
+<table>
+  <thead>
+    <tr>
+      <th>使い方名</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>オンデマンドインスタンス</td>
+      <td>Amazon EC2 の使用期間に応じて使用料金を支払う。</td>
+      <td>・<a href="https://aws.amazon.com/jp/ec2/pricing/on-demand/">https://aws.amazon.com/jp/ec2/pricing/on-demand/</a></td>
+    </tr>
+    <tr>
+      <td>Savings Plans</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>リザーブドインスタンス</td>
+      <td>Amazon EC2 の一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>スポットインスタンス</td>
+      <td>休止している Amazon EC2 を使用する。格安で使用できる。ただし、スポットインスタンスの絶対数が減少したり、スポットインスタンスの希望ユーザーが増えた場合に、利用を強制的に中断されてしまうことがある。</td>
+      <td>・<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-spot-instances-work.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-spot-instances-work.html</a></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [What is Amazon EC2? - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing)
 > - [AWS OrganizationsとSavings Plansを活用したコスト削減のベストプラクティス - NRIネットコムBlog](https://tech.nri-net.com/entry/2021/04/21/094600)
@@ -160,14 +185,47 @@ Amazon EC2 を実行している時間分だけ料金がかかる。
 
 インスタンスを使用せずに配置しているのみであれば、料金はかからない。
 
-| フェーズ名    | 料金発生の有無 | 補足                                                       |
-| ------------- | -------------- | ---------------------------------------------------------- |
-| pending       | なし           |                                                            |
-| running       | あり           |                                                            |
-| stopping      | 条件付きでなし | 停止準備中の間は料金が発生し、休止準備中の間は発生しない。 |
-| stopped       | なし           |                                                            |
-| shutting-down | なし           |                                                            |
-| terminated    | なし           |                                                            |
+<table>
+  <thead>
+    <tr>
+      <th>フェーズ名</th>
+      <th>料金発生の有無</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>pending</td>
+      <td>なし</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>running</td>
+      <td>あり</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>stopping</td>
+      <td>条件付きでなし</td>
+      <td>停止準備中の間は料金が発生し、休止準備中の間は発生しない。</td>
+    </tr>
+    <tr>
+      <td>stopped</td>
+      <td>なし</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>shutting-down</td>
+      <td>なし</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>terminated</td>
+      <td>なし</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Amazon EC2 instance state changes - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html)
 
@@ -227,10 +285,24 @@ Fargate のコンピューティングの月額料金 = 3.04 USD + 1.33 USD = 4.
 
 #### ▼ 料金体系の種類
 
-| 使い方名                 | 説明                                                                                                                                                                                          |
-| :----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| オンデマンドインスタンス | ・https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html                                                                                                        |
-| リザーブドインスタンス   | RDS インスタンスの一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。<br>・https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">使い方名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">オンデマンドインスタンス</td>
+      <td>・<a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html</a></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">リザーブドインスタンス</td>
+      <td>RDS インスタンスの一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。<br>・<a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html</a></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [DB instance billing for Amazon RDS - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/User_DBInstanceBilling.html)
 

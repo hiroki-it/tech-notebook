@@ -49,11 +49,32 @@ LAN 内で使用される。
 
 プライベート IP アドレスは、RFC1918 で推奨された範囲を使用することが多い。
 
-| RFC1918 推奨の CIDR ブロック | IP アドレス                      | 個数       |
-| ---------------------------- | -------------------------------- | ---------- |
-| `10.0.0.0/8`                 | `10.0.0.0`～`10.255.255.255`     | `16777216` |
-| `172.16.0.0/12`              | `172.16.0.0`～`172.31.255.255`   | `1048576`  |
-| `192.168.0.0/16`             | `192.168.0.0`～`192.168.255.255` | `65536`    |
+<table>
+  <thead>
+    <tr>
+      <th>RFC1918 推奨の CIDR ブロック</th>
+      <th>IP アドレス</th>
+      <th>個数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>10.0.0.0/8</code></td>
+      <td><code>10.0.0.0</code>～<code>10.255.255.255</code></td>
+      <td><code>16777216</code></td>
+    </tr>
+    <tr>
+      <td><code>172.16.0.0/12</code></td>
+      <td><code>172.16.0.0</code>～<code>172.31.255.255</code></td>
+      <td><code>1048576</code></td>
+    </tr>
+    <tr>
+      <td><code>192.168.0.0/16</code></td>
+      <td><code>192.168.0.0</code>～<code>192.168.255.255</code></td>
+      <td><code>65536</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [プライベートIPアドレス − ＠IT ネットワーク用語事典](https://atmarkit.itmedia.co.jp/aig/06network/privateip.html)
 
@@ -89,13 +110,66 @@ IP アドレスをクラスとして分類し、各クラスで IP アドレス�
 
 ホスト部とネットワーク部の定義方法が 4 種類しかないため、IP アドレスのパターン数 (最大パソコン数) が多すぎたり、少なすぎたりしてしまう。
 
-|   使用できる IP アドレスの範囲   | クラス | ネットワーク部のオクテット | ホスト部のオクテット | 二進数で見たとき (N：ネ、H：ホ) | IP アドレスのパターン数 (最大パソコン数) |     備考     |
-| :------------------------------: | :----: | -------------------------- | -------------------- | :-----------------------------: | ---------------------------------------- | :----------: |
-|  `0.0.0.0` 〜 `127.255.255.255`  |   A    | 第一のみ                   | 第二から第四         |           `0*.*.*.*`            | `2^24` (`16777216`) 個                   |      -       |
-| `128.0.0.0` 〜 `191.255.255.255` |   B    | 第一から第二               | 第三から第四         |           `10*.*.*.*`           | `2^16` (`65536`) 個                      | よく使用する |
-| `192.0.0.0` 〜 `223.255.255.255` |   C    | 第一から第三               | 第四のみ             |          `110*.*.*.*`           | `2^8` (`256`) 個                         |      -       |
-| `224.0.0.0` 〜 `239.255.255.255` |   D    | -                          | -                    |          `1110*.*.*.*`          | -                                        |      -       |
-| `240.0.0.0` 〜 `255.255.255.255` |   E    | -                          | -                    |          `1111*.*.*.*`          | -                                        |      -       |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center">使用できる IP アドレスの範囲</th>
+      <th style="text-align:center">クラス</th>
+      <th>ネットワーク部のオクテット</th>
+      <th>ホスト部のオクテット</th>
+      <th style="text-align:center">二進数で見たとき (N：ネ、H：ホ)</th>
+      <th>IP アドレスのパターン数 (最大パソコン数)</th>
+      <th style="text-align:center">備考</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><code>0.0.0.0</code> 〜 <code>127.255.255.255</code></td>
+      <td style="text-align:center">A</td>
+      <td>第一のみ</td>
+      <td>第二から第四</td>
+      <td style="text-align:center"><code>0*.*.*.*</code></td>
+      <td><code>2^24</code> (<code>16777216</code>) 個</td>
+      <td style="text-align:center">-</td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><code>128.0.0.0</code> 〜 <code>191.255.255.255</code></td>
+      <td style="text-align:center">B</td>
+      <td>第一から第二</td>
+      <td>第三から第四</td>
+      <td style="text-align:center"><code>10*.*.*.*</code></td>
+      <td><code>2^16</code> (<code>65536</code>) 個</td>
+      <td style="text-align:center">よく使用する</td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><code>192.0.0.0</code> 〜 <code>223.255.255.255</code></td>
+      <td style="text-align:center">C</td>
+      <td>第一から第三</td>
+      <td>第四のみ</td>
+      <td style="text-align:center"><code>110*.*.*.*</code></td>
+      <td><code>2^8</code> (<code>256</code>) 個</td>
+      <td style="text-align:center">-</td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><code>224.0.0.0</code> 〜 <code>239.255.255.255</code></td>
+      <td style="text-align:center">D</td>
+      <td>-</td>
+      <td>-</td>
+      <td style="text-align:center"><code>1110*.*.*.*</code></td>
+      <td>-</td>
+      <td style="text-align:center">-</td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><code>240.0.0.0</code> 〜 <code>255.255.255.255</code></td>
+      <td style="text-align:center">E</td>
+      <td>-</td>
+      <td>-</td>
+      <td style="text-align:center"><code>1111*.*.*.*</code></td>
+      <td>-</td>
+      <td style="text-align:center">-</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ サブネットマスクよるネットワーク部とホスト部の定義
 
@@ -107,32 +181,161 @@ IP アドレスをクラスとして分類し、各クラスで IP アドレス�
 
 サブネットマスクの表記方法には、二進数形式、IP アドレス形式、`1` の個数で表す CIDR 形式による表現方法がある。
 
-|               二進数形式               |  IP アドレス形式   | CIDR 形式 | IP アドレスのパターン数 (最大 PC 数) | 備考             |
-| :------------------------------------: | :----------------: | :-------: | :----------------------------------: | ---------------- |
-| `/10000000.00000000.00000000.00000000` |    `/128.0.0.0`    |   `/1`    |                                      |                  |
-| `/11000000.00000000.00000000.00000000` |    `/192.0.0.0`    |   `/2`    |                                      |                  |
-|                  ...                   |        ...         |    ...    |                                      |                  |
-| `/11111111.00000000.00000000.00000000` |    `/255.0.0.0`    |   `/8`    |      `2^24`<br>(`16777216`) 個       |                  |
-|                  ...                   |        ...         |    ...    |                                      |                  |
-| `/11111111.11111110.00000000.00000000` |   `/255.254.0.0`   |   `/15`   |                                      |                  |
-| `/11111111.11111111.00000000.00000000` |   `/255.255.0.0`   |   `/16`   |        `2^16`<br>(`65536`) 個        | よく使用する範囲 |
-|                                        |        ...         |    ...    |                                      |                  |
-| `/11111111.11111111.11111110.00000000` |  `/255.255.254.0`  |   `/23`   |                                      |                  |
-| `/11111111.11111111.11111111.00000000` |  `/255.255.255.0`  |   `/24`   |         `2^8`<br>(`256`) 個          |                  |
-|                  ...                   |        ...         |    ...    |                                      |                  |
-| `/11111111.11111111.11111111.11111110` | `/255.255.255.254` |   `/31`   |                                      |                  |
-| `/11111111.11111111.11111111.11111111` | `/255.255.255.255` |   `/32`   |                `1` 個                | よく使用する範囲 |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center">二進数形式</th>
+      <th style="text-align:center">IP アドレス形式</th>
+      <th style="text-align:center">CIDR 形式</th>
+      <th style="text-align:center">IP アドレスのパターン数 (最大 PC 数)</th>
+      <th>備考</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><code>/10000000.00000000.00000000.00000000</code></td>
+      <td style="text-align:center"><code>/128.0.0.0</code></td>
+      <td style="text-align:center"><code>/1</code></td>
+      <td style="text-align:center"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><code>/11000000.00000000.00000000.00000000</code></td>
+      <td style="text-align:center"><code>/192.0.0.0</code></td>
+      <td style="text-align:center"><code>/2</code></td>
+      <td style="text-align:center"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:center">...</td>
+      <td style="text-align:center">...</td>
+      <td style="text-align:center">...</td>
+      <td style="text-align:center"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><code>/11111111.00000000.00000000.00000000</code></td>
+      <td style="text-align:center"><code>/255.0.0.0</code></td>
+      <td style="text-align:center"><code>/8</code></td>
+      <td style="text-align:center"><code>2^24</code><br>(<code>16777216</code>) 個</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:center">...</td>
+      <td style="text-align:center">...</td>
+      <td style="text-align:center">...</td>
+      <td style="text-align:center"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><code>/11111111.11111110.00000000.00000000</code></td>
+      <td style="text-align:center"><code>/255.254.0.0</code></td>
+      <td style="text-align:center"><code>/15</code></td>
+      <td style="text-align:center"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><code>/11111111.11111111.00000000.00000000</code></td>
+      <td style="text-align:center"><code>/255.255.0.0</code></td>
+      <td style="text-align:center"><code>/16</code></td>
+      <td style="text-align:center"><code>2^16</code><br>(<code>65536</code>) 個</td>
+      <td>よく使用する範囲</td>
+    </tr>
+    <tr>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">...</td>
+      <td style="text-align:center">...</td>
+      <td style="text-align:center"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><code>/11111111.11111111.11111110.00000000</code></td>
+      <td style="text-align:center"><code>/255.255.254.0</code></td>
+      <td style="text-align:center"><code>/23</code></td>
+      <td style="text-align:center"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><code>/11111111.11111111.11111111.00000000</code></td>
+      <td style="text-align:center"><code>/255.255.255.0</code></td>
+      <td style="text-align:center"><code>/24</code></td>
+      <td style="text-align:center"><code>2^8</code><br>(<code>256</code>) 個</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:center">...</td>
+      <td style="text-align:center">...</td>
+      <td style="text-align:center">...</td>
+      <td style="text-align:center"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><code>/11111111.11111111.11111111.11111110</code></td>
+      <td style="text-align:center"><code>/255.255.255.254</code></td>
+      <td style="text-align:center"><code>/31</code></td>
+      <td style="text-align:center"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><code>/11111111.11111111.11111111.11111111</code></td>
+      <td style="text-align:center"><code>/255.255.255.255</code></td>
+      <td style="text-align:center"><code>/32</code></td>
+      <td style="text-align:center"><code>1</code> 個</td>
+      <td>よく使用する範囲</td>
+    </tr>
+  </tbody>
+</table>
 
 **＊例＊**
 
 プライベート IP アドレスが `192.168.0.0` (`11000000.10101000.00000000.00000000`) で、使いたい IP アドレスのパターン数が 65536 個、または 16777216 個の場合、サブネットマスクの表記、使用できる IP アドレスの範囲は以下のようになる。
 
-| 使いたい IP アドレスのパターン数 |               二進数形式による表記                |        IP アドレス形式        |    CIDR 形式     |     |    使用できる IP アドレスの範囲    |
-| -------------------------------- | :-----------------------------------------------: | :---------------------------: | :--------------: | --- | :--------------------------------: |
-| `16777216` 個                    | `192.168.0.0/11111111.00000000.00000000.00000000` |    `192.168.0.0/255.0.0.0`    | `192.168.0.0/8`  | ⇒   |  `192.0.0.1` 〜 `192.255.255.254`  |
-| `65536` 個                       | `192.168.0.0/11111111.11111111.00000000.00000000` |   `192.168.0.0/255.255.0.0`   | `192.168.0.0/16` | ⇒   | `192.168.0.1` 〜 `192.168.255.254` |
-| `256` 個                         | `192.168.0.0/11111111.11111111.11111111.00000000` |  `192.168.0.0/255.255.255.0`  | `192.168.0.0/24` | ⇒   |  `192.168.0.1` 〜 `192.168.0.254`  |
-| `1` 個                           | `192.168.0.0/11111111.11111111.11111111.11111111` | `192.168.0.0/255.255.255.255` | `192.168.0.0/32` | ⇒   |           `192.168.0.0`            |
+<table>
+  <thead>
+    <tr>
+      <th>使いたい IP アドレスのパターン数</th>
+      <th style="text-align:center">二進数形式による表記</th>
+      <th style="text-align:center">IP アドレス形式</th>
+      <th style="text-align:center">CIDR 形式</th>
+      <th></th>
+      <th style="text-align:center">使用できる IP アドレスの範囲</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>16777216</code> 個</td>
+      <td style="text-align:center"><code>192.168.0.0/11111111.00000000.00000000.00000000</code></td>
+      <td style="text-align:center"><code>192.168.0.0/255.0.0.0</code></td>
+      <td style="text-align:center"><code>192.168.0.0/8</code></td>
+      <td>⇒</td>
+      <td style="text-align:center"><code>192.0.0.1</code> 〜 <code>192.255.255.254</code></td>
+    </tr>
+    <tr>
+      <td><code>65536</code> 個</td>
+      <td style="text-align:center"><code>192.168.0.0/11111111.11111111.00000000.00000000</code></td>
+      <td style="text-align:center"><code>192.168.0.0/255.255.0.0</code></td>
+      <td style="text-align:center"><code>192.168.0.0/16</code></td>
+      <td>⇒</td>
+      <td style="text-align:center"><code>192.168.0.1</code> 〜 <code>192.168.255.254</code></td>
+    </tr>
+    <tr>
+      <td><code>256</code> 個</td>
+      <td style="text-align:center"><code>192.168.0.0/11111111.11111111.11111111.00000000</code></td>
+      <td style="text-align:center"><code>192.168.0.0/255.255.255.0</code></td>
+      <td style="text-align:center"><code>192.168.0.0/24</code></td>
+      <td>⇒</td>
+      <td style="text-align:center"><code>192.168.0.1</code> 〜 <code>192.168.0.254</code></td>
+    </tr>
+    <tr>
+      <td><code>1</code> 個</td>
+      <td style="text-align:center"><code>192.168.0.0/11111111.11111111.11111111.11111111</code></td>
+      <td style="text-align:center"><code>192.168.0.0/255.255.255.255</code></td>
+      <td style="text-align:center"><code>192.168.0.0/32</code></td>
+      <td>⇒</td>
+      <td style="text-align:center"><code>192.168.0.0</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -396,9 +599,22 @@ $ nslookup example # 実際には、example.fooとなる
 
      最終的に、IPアドレスを持つDNSサーバーは、キャッシュDNSサーバーにIPアドレスを返却する。
 
-|    完全修飾ドメイン名    | DNS サーバーによる変換 |    IP アドレス    |
-| :----------------------: | :--------------------: | :---------------: |
-| `http://www.example.com` |           ⇄            | `203.142.205.139` |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center">完全修飾ドメイン名</th>
+      <th style="text-align:center">DNS サーバーによる変換</th>
+      <th style="text-align:center">IP アドレス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><code>http://www.example.com</code></td>
+      <td style="text-align:center">⇄</td>
+      <td style="text-align:center"><code>203.142.205.139</code></td>
+    </tr>
+  </tbody>
+</table>
 
 `(10)`
 

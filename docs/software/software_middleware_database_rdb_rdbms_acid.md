@@ -70,19 +70,84 @@ description: ACID＠RDBMSの知見を記録しています。
 
 ![コミット制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コミット制御.jpg)
 
-| RDB の書き込み系の操作                                     | よくある関数名 (例：PDO)                                    | ラッピング           | 障害からの回復                     |
-| :--------------------------------------------------------- | :---------------------------------------------------------- | -------------------- | ---------------------------------- |
-| 更新前ログをジャーナルファイルに書き込む                   | ⬇️                                                          | ⬇️                   |                                    |
-| ⬇️                                                         | ⬇️                                                          | ⬇️                   |                                    |
-| トランザクション開始                                       | `beginTransaction()` 関数                                   | `execute()` 関数開始 |                                    |
-| ⬇️                                                         | ⬇️                                                          | ⬇️                   | ⬆️                                 |
-| ・C/U/D の実行<br>・トランザクション終了                   | ・`insert()` 関数<br>・`update()` 関数<br>・`delete()` 関数 | `flush()` 関数       | ⬆️ ロールバック：`rollBack()` 関数 |
-| ⬇️                                                         | ⬇️                                                          | ⬇️                   | ⬆️                                 |
-| コミットの実行。更新後ログをジャーナルファイルに書き込む。 | `commit()` 関数開始                                         | ⬇️                   |                                    |
-| ⬇️                                                         | ⬇️                                                          | ⬇️                   | ⬇️                                 |
-| ⬇️                                                         | ⬇️                                                          | ⬇️                   | ⬇️ _Roll forward_                  |
-| ⬇️                                                         | ⬇️                                                          | ⬇️                   | ⬇️                                 |
-| チェックポイントによる更新後ログの DB 反映                 | `commit()` 関数終了                                         | `execute()` 関数終了 |                                    |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">RDB の書き込み系の操作</th>
+      <th style="text-align:left">よくある関数名 (例：PDO)</th>
+      <th>ラッピング</th>
+      <th>障害からの回復</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">更新前ログをジャーナルファイルに書き込む</td>
+      <td style="text-align:left">⬇️</td>
+      <td>⬇️</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">⬇️</td>
+      <td style="text-align:left">⬇️</td>
+      <td>⬇️</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">トランザクション開始</td>
+      <td style="text-align:left"><code>beginTransaction()</code> 関数</td>
+      <td><code>execute()</code> 関数開始</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">⬇️</td>
+      <td style="text-align:left">⬇️</td>
+      <td>⬇️</td>
+      <td>⬆️</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">・C/U/D の実行<br>・トランザクション終了</td>
+      <td style="text-align:left">・<code>insert()</code> 関数<br>・<code>update()</code> 関数<br>・<code>delete()</code> 関数</td>
+      <td><code>flush()</code> 関数</td>
+      <td>⬆️ ロールバック：<code>rollBack()</code> 関数</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">⬇️</td>
+      <td style="text-align:left">⬇️</td>
+      <td>⬇️</td>
+      <td>⬆️</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">コミットの実行。更新後ログをジャーナルファイルに書き込む。</td>
+      <td style="text-align:left"><code>commit()</code> 関数開始</td>
+      <td>⬇️</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">⬇️</td>
+      <td style="text-align:left">⬇️</td>
+      <td>⬇️</td>
+      <td>⬇️</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">⬇️</td>
+      <td style="text-align:left">⬇️</td>
+      <td>⬇️</td>
+      <td>⬇️ <em>Roll forward</em></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">⬇️</td>
+      <td style="text-align:left">⬇️</td>
+      <td>⬇️</td>
+      <td>⬇️</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">チェックポイントによる更新後ログの DB 反映</td>
+      <td style="text-align:left"><code>commit()</code> 関数終了</td>
+      <td><code>execute()</code> 関数終了</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.amazon.co.jp/dp/4297124513
 
@@ -316,10 +381,27 @@ RDBMS またはアプリケーションによる `UPDATE` 処理競合問題を�
 
 ### 排他制御が発動しやすい状況
 
-| 状況                                                             | 説明                                                       | 補足                                                 |
-| ---------------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------- |
-| マルチスレッドでプログラムを実行する言語                         | 単一のインスタンスが複数のトランザクション処理を送信する   |                                                      |
-| アプリケーションが複数のインスタンスとしてデプロイされている環境 | 複数のインスタンスがそれぞれトランザクション処理を送信する | 排他制御に合わせて、分散ロック（リーダー選出）も必要 |
+<table>
+  <thead>
+    <tr>
+      <th>状況</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>マルチスレッドでプログラムを実行する言語</td>
+      <td>単一のインスタンスが複数のトランザクション処理を送信する</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>アプリケーションが複数のインスタンスとしてデプロイされている環境</td>
+      <td>複数のインスタンスがそれぞれトランザクション処理を送信する</td>
+      <td>排他制御に合わせて、分散ロック（リーダー選出）も必要</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://docs.redhat.com/ja/documentation/red_hat_fuse/7.10/html/apache_karaf_transaction_guide/transactions-and-threading
 
@@ -443,10 +525,27 @@ MySQL では、『`SELECT ... FOR UPDATE`』を使用する。
 
 #### ▼ デッドロック現象とは
 
-|                              | 共有ロックの実行 | 占有ロックの実行 |
-| :--------------------------: | :--------------: | :--------------: |
-| **共有ロックされたレコード** |        ⭕️        |        ✕         |
-| **占有ロックされたレコード** |        ✕         |        ✕         |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center"></th>
+      <th style="text-align:center">共有ロックの実行</th>
+      <th style="text-align:center">占有ロックの実行</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><strong>共有ロックされたレコード</strong></td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">✕</td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><strong>占有ロックされたレコード</strong></td>
+      <td style="text-align:center">✕</td>
+      <td style="text-align:center">✕</td>
+    </tr>
+  </tbody>
+</table>
 
 複数のトランザクションが、互いに他者が使いたいレコードをロックしてしまい、お互いのロック解除を待ち続ける状態のこと。
 
@@ -539,11 +638,32 @@ PHP の ORM である Doctrine のロック機能については、以下のリ�
 
 SQL の種類に合わせてツールが用意されている。
 
-| SQL の種類 | ポイントインタイムリカバリーのツール例 | 補足                                                           |
-| ---------- | -------------------------------------- | -------------------------------------------------------------- |
-| MySQL      | XtraBackup                             | ・https://developers.cyberagent.co.jp/blog/archives/28454/     |
-| PostgreSQL | Barman                                 | ・https://www.sraoss.co.jp/tech-blog/pgsql/barman/             |
-| MariaDB    | Xpand                                  | ・https://mariadb.com/docs/data-operations/backups/xpand/pitr/ |
+<table>
+  <thead>
+    <tr>
+      <th>SQL の種類</th>
+      <th>ポイントインタイムリカバリーのツール例</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MySQL</td>
+      <td>XtraBackup</td>
+      <td>・<a href="https://developers.cyberagent.co.jp/blog/archives/28454/">https://developers.cyberagent.co.jp/blog/archives/28454/</a></td>
+    </tr>
+    <tr>
+      <td>PostgreSQL</td>
+      <td>Barman</td>
+      <td>・<a href="https://www.sraoss.co.jp/tech-blog/pgsql/barman/">https://www.sraoss.co.jp/tech-blog/pgsql/barman/</a></td>
+    </tr>
+    <tr>
+      <td>MariaDB</td>
+      <td>Xpand</td>
+      <td>・<a href="https://mariadb.com/docs/data-operations/backups/xpand/pitr/">https://mariadb.com/docs/data-operations/backups/xpand/pitr/</a></td>
+    </tr>
+  </tbody>
+</table>
 
 ```bash
 # 例えば、一週間分の保管期間を設定した場合

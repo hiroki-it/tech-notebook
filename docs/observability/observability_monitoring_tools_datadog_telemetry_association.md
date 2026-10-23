@@ -17,14 +17,40 @@ description: テレメトリー間の紐付け＠Datadog
 
 ### タグの種類
 
-| タグ名    | 説明                                                                                                               |
-| --------- | ------------------------------------------------------------------------------------------------------------------ |
-| `host`    | メトリクス、ログ、分散トレースの送信元のホスト名を示す。テレメトリーが作成元とは別の場所から受信した場合に役立つ。 |
-| `device`  |                                                                                                                    |
-| `source`  | ログの作成元のベンダー名を示す。                                                                                   |
-| `service` | メトリクス、ログ、分散トレースの作成元のアプリケーション名を示す。                                                 |
-| `env`     | メトリクス、ログ、分散トレースの作成元の実行環境名 (dev、stg、prd) を示す。                                        |
-| `version` | メトリクス、ログ、分散トレースの作成元のリリースバージョンを示す。                                                 |
+<table>
+  <thead>
+    <tr>
+      <th>タグ名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>host</code></td>
+      <td>メトリクス、ログ、分散トレースの送信元のホスト名を示す。テレメトリーが作成元とは別の場所から受信した場合に役立つ。</td>
+    </tr>
+    <tr>
+      <td><code>device</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>source</code></td>
+      <td>ログの作成元のベンダー名を示す。</td>
+    </tr>
+    <tr>
+      <td><code>service</code></td>
+      <td>メトリクス、ログ、分散トレースの作成元のアプリケーション名を示す。</td>
+    </tr>
+    <tr>
+      <td><code>env</code></td>
+      <td>メトリクス、ログ、分散トレースの作成元の実行環境名 (dev、stg、prd) を示す。</td>
+    </tr>
+    <tr>
+      <td><code>version</code></td>
+      <td>メトリクス、ログ、分散トレースの作成元のリリースバージョンを示す。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://docs.datadoghq.com/getting_started/tagging/
 > - [Datadog でシステムにタグを付けるためのベストプラクティス \| Datadog](https://www.datadoghq.com/ja/blog/tagging-best-practices/)
@@ -72,9 +98,20 @@ description: テレメトリー間の紐付け＠Datadog
 
 スパンの作成元のアプリケーション名を表す。
 
-| 規則                                                   | 例                                                                              |
-| ------------------------------------------------------ | ------------------------------------------------------------------------------- |
-| `<マイクロサービス名>-<フレームワーク名/パッケージ名>` | ・`order-pdo`<br>・`order-phpredis`<br>・`order-eloquent`<br>・`order-doctrine` |
+<table>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;マイクロサービス名&gt;-&lt;フレームワーク名/パッケージ名&gt;</code></td>
+      <td>・<code>order-pdo</code><br>・<code>order-phpredis</code><br>・<code>order-eloquent</code><br>・<code>order-doctrine</code></td>
+    </tr>
+  </tbody>
+</table>
 
 ただし、フレームワークのインテグレーション名は接尾辞を付けずに、単に『`<マイクロサービス名>`』とする。
 
@@ -99,9 +136,20 @@ service 名はインテグレーション名が自動的に割り当てられる
 
 env タグは、datadog コンテナの環境変数を使用してタグ付けする。
 
-| 規則           | 例                                       |
-| -------------- | ---------------------------------------- |
-| `<実行環境名>	` | ・`prd`<br>・`stg`<br>・`tes`<br>・`dev` |
+<table>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;実行環境名&gt;	</code></td>
+      <td>・<code>prd</code><br>・<code>stg</code><br>・<code>tes</code><br>・<code>dev</code></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ version
 
@@ -109,9 +157,20 @@ env タグは、datadog コンテナの環境変数を使用してタグ付け�
 
 ただし、リリースのたびに変更することが面倒なため、`1.0.0` で固定する。
 
-| 規則                         | 例      |
-| ---------------------------- | ------- |
-| `<リリースタグのバージョン>` | `1.0.0` |
+<table>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;リリースタグのバージョン&gt;</code></td>
+      <td><code>1.0.0</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -125,17 +184,39 @@ Docker ラベルからタグ付けする。
 
 AWS の実行環境名を表す。
 
-| 規則           | 例                                       |
-| -------------- | ---------------------------------------- |
-| `<実行環境名>	` | ・`prd`<br>・`stg`<br>・`tes`<br>・`dev` |
+<table>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;実行環境名&gt;	</code></td>
+      <td>・<code>prd</code><br>・<code>stg</code><br>・<code>tes</code><br>・<code>dev</code></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ service
 
 コンテナのアプリケーション名を表す。
 
-| 規則                   | 例                                       |
-| ---------------------- | ---------------------------------------- |
-| `<マイクロサービス名>` | ・`order-service`<br>・`account-service` |
+<table>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;マイクロサービス名&gt;</code></td>
+      <td>・<code>order-service</code><br>・<code>account-service</code></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ version
 
@@ -143,9 +224,20 @@ AWS の実行環境名を表す。
 
 ただし、リリースのたびに変更することが面倒なため、`1.0.0` で固定する。
 
-| 規則                         | 例      |
-| ---------------------------- | ------- |
-| `<リリースタグのバージョン>` | `1.0.0` |
+<table>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;リリースタグのバージョン&gt;</code></td>
+      <td><code>1.0.0</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -159,25 +251,58 @@ FluentBit の設定ファイルからタグ付けする。
 
 ログの作成元の実行環境名 (dev、stg、prd) を表す。
 
-| 規則           | 例                                       |
-| -------------- | ---------------------------------------- |
-| `<実行環境名>	` | ・`prd`<br>・`stg`<br>・`tes`<br>・`dev` |
+<table>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;実行環境名&gt;	</code></td>
+      <td>・<code>prd</code><br>・<code>stg</code><br>・<code>tes</code><br>・<code>dev</code></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ service
 
 ログの作成元のアプリケーション名を表す。
 
-| 規則                   | 例                                                                   |
-| ---------------------- | -------------------------------------------------------------------- |
-| `<マイクロサービス名>` | ・`order`<br>・`order-service`<br>・`account`<br>・`account-service` |
+<table>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;マイクロサービス名&gt;</code></td>
+      <td>・<code>order</code><br>・<code>order-service</code><br>・<code>account</code><br>・<code>account-service</code></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ source
 
 ログの作成元のベンダー名を表す。
 
-| 規則         | 例                                         |
-| ------------ | ------------------------------------------ |
-| `<ソース名>` | ・`laravel`<br>・`nginx`<br>・`apigateway` |
+<table>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;ソース名&gt;</code></td>
+      <td>・<code>laravel</code><br>・<code>nginx</code><br>・<code>apigateway</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

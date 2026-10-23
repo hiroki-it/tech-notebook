@@ -50,14 +50,40 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 IPA が公開している非機能要件の種類を参考にするとよい。
 
-| 大分類                 | 中分類                                                                                                                                                                                             |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 可用性                 | 継続性、耐障害性、回復性                                                                                                                                                                           |
-| 性能拡張性             | 業務処理量、性能目標値、リソース拡張性、性能品質保証                                                                                                                                               |
-| 運用保守               | 通常運用、障害時運用、運用環境、サポート体制、その他                                                                                                                                               |
-| 移行性                 | 移行時期、移行方式、移行対策、移行対象、移行計画                                                                                                                                                   |
-| セキュリティ (安全性)  | 社内ルール、セキュリティリスク分析、セキュリティ診断、セキュリティリスク管理、アクセス利用制限、データ秘匿、不正追跡監視、ネットワーク対策、マルウェア対策、Web 対策、セキュリティインシデント対応 |
-| システム環境エコロジー | システム特性、規格、機材設置環境条件、環境マネジメント                                                                                                                                             |
+<table>
+  <thead>
+    <tr>
+      <th>大分類</th>
+      <th>中分類</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>可用性</td>
+      <td>継続性、耐障害性、回復性</td>
+    </tr>
+    <tr>
+      <td>性能拡張性</td>
+      <td>業務処理量、性能目標値、リソース拡張性、性能品質保証</td>
+    </tr>
+    <tr>
+      <td>運用保守</td>
+      <td>通常運用、障害時運用、運用環境、サポート体制、その他</td>
+    </tr>
+    <tr>
+      <td>移行性</td>
+      <td>移行時期、移行方式、移行対策、移行対象、移行計画</td>
+    </tr>
+    <tr>
+      <td>セキュリティ (安全性)</td>
+      <td>社内ルール、セキュリティリスク分析、セキュリティ診断、セキュリティリスク管理、アクセス利用制限、データ秘匿、不正追跡監視、ネットワーク対策、マルウェア対策、Web 対策、セキュリティインシデント対応</td>
+    </tr>
+    <tr>
+      <td>システム環境エコロジー</td>
+      <td>システム特性、規格、機材設置環境条件、環境マネジメント</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [システム構築の上流工程強化（非機能要求グレード）紹介ページ \| アーカイブ \| IPA 独立行政法人 情報処理推進機構](https://www.ipa.go.jp/archive/digital/iot-en-ci/jyouryuu/hikinou/ent03-b.html)
 
@@ -255,10 +281,27 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 性能を高める方法と可用性を高める方法は重複している。
 
-|                  | 冗長化数を増やす | 冗長化数を減らす |
-| ---------------- | ---------------- | ---------------- |
-| 並列処理数の向上 | 性能⬆️／可用性⬆️ | 性能⬆️／可用性⬇️ |
-| 並列処理数の低下 | 性能⬇️／可用性⬆️ | 性能⬇️／可用性⬇️ |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>冗長化数を増やす</th>
+      <th>冗長化数を減らす</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>並列処理数の向上</td>
+      <td>性能⬆️／可用性⬆️</td>
+      <td>性能⬆️／可用性⬇️</td>
+    </tr>
+    <tr>
+      <td>並列処理数の低下</td>
+      <td>性能⬇️／可用性⬆️</td>
+      <td>性能⬇️／可用性⬇️</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ 冗長化
 
@@ -384,17 +427,72 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 ### ヒアリングの項目
 
-| 項目       | ヒアリング内容                                                                   | 達成するべき要件 | 検証方法例                                                                                         |
-| ---------- | -------------------------------------------------------------------------------- | ---------------- | -------------------------------------------------------------------------------------------------- |
-| 可用性     | 許容できる障害時間、バックアップ規約、稼働率、災害対策規約など                   | ...              | 可用性テストを実施する。                                                                           |
-| 性能       | 将来的に予想される同時アクセス数など                                             | ...              | 性能テストを実施する。                                                                             |
-| 拡張性     | 将来的に予想される DB レコード数増加率など                                       | ...              | 将来的に予想される初期データを DB に用意したうえで、処理速度に問題が起こらないかどうかを検証する。 |
-| 安全性     | DoS 攻撃など                                                                     | ...              | 脆弱性診断を実施する。                                                                             |
-| 保守性     | 機能修正、障害対応、アップグレード規約など                                       | ...              | 初期データを、追加/変更/削除できるかどうかを検証する。                                             |
-| 運用性     | 監視、定期的な再起動、日時的な作業、ログとメトリクスの保管規約、リリース規約など | ...              | 意図的にエラーを発生させ、アラートを正しく送信するかどうかを検証する。                             |
-| 可搬性     | 新旧移行規約など                                                                 | ...              | 移行テストを実施する。                                                                             |
-| 信頼性     | ストレージの障害対策など                                                         | ...              | ...                                                                                                |
-| 使いやすさ | ペルソナ、エラー処理など                                                         | ...              | Testing in production (例：カナリアリリース中のテスト、カオスエンジニアリング) を実施する。        |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>ヒアリング内容</th>
+      <th>達成するべき要件</th>
+      <th>検証方法例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>可用性</td>
+      <td>許容できる障害時間、バックアップ規約、稼働率、災害対策規約など</td>
+      <td>...</td>
+      <td>可用性テストを実施する。</td>
+    </tr>
+    <tr>
+      <td>性能</td>
+      <td>将来的に予想される同時アクセス数など</td>
+      <td>...</td>
+      <td>性能テストを実施する。</td>
+    </tr>
+    <tr>
+      <td>拡張性</td>
+      <td>将来的に予想される DB レコード数増加率など</td>
+      <td>...</td>
+      <td>将来的に予想される初期データを DB に用意したうえで、処理速度に問題が起こらないかどうかを検証する。</td>
+    </tr>
+    <tr>
+      <td>安全性</td>
+      <td>DoS 攻撃など</td>
+      <td>...</td>
+      <td>脆弱性診断を実施する。</td>
+    </tr>
+    <tr>
+      <td>保守性</td>
+      <td>機能修正、障害対応、アップグレード規約など</td>
+      <td>...</td>
+      <td>初期データを、追加/変更/削除できるかどうかを検証する。</td>
+    </tr>
+    <tr>
+      <td>運用性</td>
+      <td>監視、定期的な再起動、日時的な作業、ログとメトリクスの保管規約、リリース規約など</td>
+      <td>...</td>
+      <td>意図的にエラーを発生させ、アラートを正しく送信するかどうかを検証する。</td>
+    </tr>
+    <tr>
+      <td>可搬性</td>
+      <td>新旧移行規約など</td>
+      <td>...</td>
+      <td>移行テストを実施する。</td>
+    </tr>
+    <tr>
+      <td>信頼性</td>
+      <td>ストレージの障害対策など</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>使いやすさ</td>
+      <td>ペルソナ、エラー処理など</td>
+      <td>...</td>
+      <td>Testing in production (例：カナリアリリース中のテスト、カオスエンジニアリング) を実施する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [非機能要件の定義 \| 令和時代のシステム開発では、どのような設計書を書くべきか \| Think IT（シンクイット）](https://thinkit.co.jp/article/17647)
 > - https://github.com/YoshiiRyo1/document-templates-for-aws/blob/master/survey/doc_source/non-functional-requirement.md
@@ -458,18 +556,167 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 - 高
 - 極高
 
-| ドメイン     |    留意点    | 可用性 | 性能 | 拡張性 | 安全性 (セキュリティ) | 保守性 | 運用性 | 可搬性 | 信頼性 | 使いやすさ |
-| ------------ | :----------: | :----: | :--: | :----: | :-------------------: | :----: | :----: | :----: | :----: | :--------: |
-| フィンテック |    法規制    |   高   |  中  |   中   |         極高          |   中   |  厳格  |   中   |  極高  |     中     |
-| 医療         |    法規制    |  極高  |  中  |   中   |         極高          |   中   |  厳格  |   中   |  極高  |     中     |
-| 公共         |    法規制    |  極高  |  中  |   中   |         極高          |   中   |   高   |   中   |  極高  |     中     |
-| ゲーム       | ユーザー体験 |   高   | 極高 |   高   |          中           |   中   |   高   |   中   |   中   |     高     |
-| 動画配信     | ユーザー体験 |   高   | 極高 |   高   |          中           |   中   |   高   |   中   |   高   |     高     |
-| EC           |     なし     |  極高  | 極高 |   高   |          高           |   中   |   高   |   中   |   中   |     高     |
-| HR           |     なし     |   中   |  中  |   中   |          高           |   中   |   中   |   中   |   高   |     中     |
-| 物流         |     なし     |   高   |  中  |   高   |          高           |   中   |   高   |   中   |   高   |     中     |
-| 製造         |     なし     |  極高  |  高  |   高   |          高           |   中   |   中   |   中   |  極高  |     中     |
-| 教育         |     なし     |   中   |  中  |   中   |          中           |   中   |   中   |   中   |   中   |     高     |
-| 広告         |     なし     |   高   | 極高 |  極高  |          高           |   中   |   高   |   中   |   中   |     高     |
+<table>
+  <thead>
+    <tr>
+      <th>ドメイン</th>
+      <th style="text-align:center">留意点</th>
+      <th style="text-align:center">可用性</th>
+      <th style="text-align:center">性能</th>
+      <th style="text-align:center">拡張性</th>
+      <th style="text-align:center">安全性 (セキュリティ)</th>
+      <th style="text-align:center">保守性</th>
+      <th style="text-align:center">運用性</th>
+      <th style="text-align:center">可搬性</th>
+      <th style="text-align:center">信頼性</th>
+      <th style="text-align:center">使いやすさ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>フィンテック</td>
+      <td style="text-align:center">法規制</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">極高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">厳格</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">極高</td>
+      <td style="text-align:center">中</td>
+    </tr>
+    <tr>
+      <td>医療</td>
+      <td style="text-align:center">法規制</td>
+      <td style="text-align:center">極高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">極高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">厳格</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">極高</td>
+      <td style="text-align:center">中</td>
+    </tr>
+    <tr>
+      <td>公共</td>
+      <td style="text-align:center">法規制</td>
+      <td style="text-align:center">極高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">極高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">極高</td>
+      <td style="text-align:center">中</td>
+    </tr>
+    <tr>
+      <td>ゲーム</td>
+      <td style="text-align:center">ユーザー体験</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">極高</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">高</td>
+    </tr>
+    <tr>
+      <td>動画配信</td>
+      <td style="text-align:center">ユーザー体験</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">極高</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">高</td>
+    </tr>
+    <tr>
+      <td>EC</td>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">極高</td>
+      <td style="text-align:center">極高</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">高</td>
+    </tr>
+    <tr>
+      <td>HR</td>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">中</td>
+    </tr>
+    <tr>
+      <td>物流</td>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">中</td>
+    </tr>
+    <tr>
+      <td>製造</td>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">極高</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">極高</td>
+      <td style="text-align:center">中</td>
+    </tr>
+    <tr>
+      <td>教育</td>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">高</td>
+    </tr>
+    <tr>
+      <td>広告</td>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">極高</td>
+      <td style="text-align:center">極高</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">高</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">中</td>
+      <td style="text-align:center">高</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>

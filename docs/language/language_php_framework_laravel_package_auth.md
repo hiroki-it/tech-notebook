@@ -21,10 +21,24 @@ description: 認証／認可系パッケージ＠Laravelの知見を記録して
 
 ドライバーとプロバイダーを定義する。
 
-| ガードの種類 | 説明                                                    |
-| ------------ | ------------------------------------------------------- |
-| Web ガード   | フォーム認証のために使用する。                          |
-| API ガード   | Bearer 認証、API キー認証、OAuth などのために使用する。 |
+<table>
+  <thead>
+    <tr>
+      <th>ガードの種類</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Web ガード</td>
+      <td>フォーム認証のために使用する。</td>
+    </tr>
+    <tr>
+      <td>API ガード</td>
+      <td>Bearer 認証、API キー認証、OAuth などのために使用する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [8.x 認証 Laravel](https://readouble.com/laravel/8.x/ja/authentication.html#introduction)
 
@@ -44,10 +58,30 @@ API ガードの認証で使用するトークンを JWT に変更したいと�
 
 #### ▼ ドライバーとは
 
-| ドライバーの種類   | 認証の種類                       | 実装クラス          | 備考                                                          |
-| ------------------ | -------------------------------- | ------------------- | ------------------------------------------------------------- |
-| session ドライバー | フォーム認証                     | SessionGuard クラス | https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html |
-| token ドライバー   | Bearer 認証、API キー認証、OAuth | TokenGuard クラス   | https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html   |
+<table>
+  <thead>
+    <tr>
+      <th>ドライバーの種類</th>
+      <th>認証の種類</th>
+      <th>実装クラス</th>
+      <th>備考</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>session ドライバー</td>
+      <td>フォーム認証</td>
+      <td>SessionGuard クラス</td>
+      <td><a href="https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html">https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html</a></td>
+    </tr>
+    <tr>
+      <td>token ドライバー</td>
+      <td>Bearer 認証、API キー認証、OAuth</td>
+      <td>TokenGuard クラス</td>
+      <td><a href="https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html">https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html</a></td>
+    </tr>
+  </tbody>
+</table>
 
 ドライバーの種類に応じて、AuthManager クラスが Guard インターフェースの実装クラスを返却する。
 
@@ -592,13 +626,36 @@ Migrated:  2016_06_01_000005_create_oauth_personal_access_clients_table
 
 DB マイグレーション後、以下のテーブルを作成する。
 
-| テーブル名                    | 説明                                                                                                                                                                                               |
-| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| oauth_access_tokens           | すべてのアクセストークンを管理する。                                                                                                                                                               |
-| oauth_auth_codes              | Authorization Code Grant タイプの情報を管理する。                                                                                                                                                  |
-| oauth_clients                 | Passport で使用している付与タイプを管理する。                                                                                                                                                      |
-| oauth_personal_access_clients | パーソナルアクセストークンタイプの情報を管理する。                                                                                                                                                 |
-| oauth_refresh_tokens          | リフレッシュトークンを管理する。アクセストークンの有効期限が切れたときに、再作成をリクエストするために使用する。<br>- https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
+<table>
+  <thead>
+    <tr>
+      <th>テーブル名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>oauth_access_tokens</td>
+      <td>すべてのアクセストークンを管理する。</td>
+    </tr>
+    <tr>
+      <td>oauth_auth_codes</td>
+      <td>Authorization Code Grant タイプの情報を管理する。</td>
+    </tr>
+    <tr>
+      <td>oauth_clients</td>
+      <td>Passport で使用している付与タイプを管理する。</td>
+    </tr>
+    <tr>
+      <td>oauth_personal_access_clients</td>
+      <td>パーソナルアクセストークンタイプの情報を管理する。</td>
+    </tr>
+    <tr>
+      <td>oauth_refresh_tokens</td>
+      <td>リフレッシュトークンを管理する。アクセストークンの有効期限が切れたときに、再作成をリクエストするために使用する。<br>- <a href="https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/">https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/</a></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ トークンを作成
 
@@ -617,10 +674,33 @@ Client secret: *****
 
 これにより、例えば oauth_clients テーブルでは以下を作成する。
 
-| id  | user_id | name                             | secret  | ... |
-| --- | ------- | -------------------------------- | ------- | --- |
-| `1` | `NULL`  | `Laravel Personal Access Client` | `*****` | ... |
-| `2` | `NULL`  | `Laravel Password Grant Client`  | `*****` | ... |
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>user_id</th>
+      <th>name</th>
+      <th>secret</th>
+      <th>...</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>1</code></td>
+      <td><code>NULL</code></td>
+      <td><code>Laravel Personal Access Client</code></td>
+      <td><code>*****</code></td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td><code>2</code></td>
+      <td><code>NULL</code></td>
+      <td><code>Laravel Password Grant Client</code></td>
+      <td><code>*****</code></td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
 
 代わりに、`/storage/oauth` キー、Personal Access Client、Password Grant Client を個別に作成してもよい。
 
@@ -643,18 +723,42 @@ $ php artisan passport:client --password
 
 OAuth では、以下のトークン付与タイプを実装できる。
 
-| 付与タイプ               |
-| ------------------------ |
-| Authorization Code Grant |
-| Client Credentials Grant |
-| Implicit Grant           |
-| Password Grant           |
+<table>
+  <thead>
+    <tr>
+      <th>付与タイプ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Authorization Code Grant</td>
+    </tr>
+    <tr>
+      <td>Client Credentials Grant</td>
+    </tr>
+    <tr>
+      <td>Implicit Grant</td>
+    </tr>
+    <tr>
+      <td>Password Grant</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ その他
 
-| 認証方法                   |
-| -------------------------- |
-| パーソナルアクセストークン |
+<table>
+  <thead>
+    <tr>
+      <th>認証方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>パーソナルアクセストークン</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

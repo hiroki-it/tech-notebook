@@ -128,43 +128,197 @@ flowchart LR
   CreateFoo --> Database
 ```
 
-| バックエンドレイヤー   | パターン                          | 責務                                                                                                                                                | インターフェース／実装 |
-| ---------------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| インフラストラクチャ層 | DB                                | データベースとの接続、コネクションの作成                                                                                                            | 実装                   |
-|                        | EntityMappers (DTO に相当)        | DB カラム型からアプリデータ型への型変換（例：`BIGINT` や `DECIMAL` を情報量が減らないデータ型に変換）、ドメインとインフラ間のオブジェクトの詰め替え | 実装                   |
-|                        | Logger                            | ロギング                                                                                                                                            | 実装                   |
-|                        | Middleware                        | ミドルウェアパターン                                                                                                                                | 実装                   |
-|                        | Repositories                      | 実装リポジトリ                                                                                                                                      | 実装                   |
-|                        | Listeners                         | リスナー                                                                                                                                            | 関数                   |
-|                        | Routers                           | ルーティング                                                                                                                                        | 関数                   |
-|                        | Seeder                            | 開発環境、CI 環境のユニットテストや E2E テスト、ステージング環境の動作確認に使用する初期データ挿入                                                  | 実装                   |
-|                        | Drivers                           | SDK、ORM、CLI など                                                                                                                                  | 実装                   |
-| プレゼンテーション層   | Controller                        | データの受信と返信                                                                                                                                  | 実装                   |
-|                        | RequestValidators                 | 受信データのバリデーション                                                                                                                          | 実装                   |
-|                        | ResponseValidators                | 返信データのバリデーション (受信データと比べてデータ構造は保証されているため、なくてもいい)                                                         | 実装                   |
-|                        | Authenticators                    | 認証                                                                                                                                                | 実装                   |
-|                        | Input (Command とも呼ぶ)          | 型変換、入力データ翻訳、フロントエンドインターフェース (あるいは受信 JSON データ) からバックエンドインターフェースへのオブジェクトからへの詰め替え  | 実装                   |
-|                        | Output (DTO とも呼ぶ)             | 型変換、出力データ翻訳、バックエンドインターフェースからフロントエンドインターフェースへのオブジェクトからへの詰め替え                              | 実装                   |
-| ユースケース層         | Interactor                        | ドメイン層で定義されたドメインルールを組み合わせ、ユースケースを具現化する。                                                                        | 実装                   |
-|                        | InputBoundaries                   | Interactor のインターフェース                                                                                                                       | インターフェース       |
-|                        | Input (Command とも呼ぶ)          | 型変換、バックエンドインターフェースからユースケースのオブジェクトからへの詰め替え                                                                  | 実装                   |
-|                        | OutputBoundaries                  | Presenter のインターフェース                                                                                                                        | インターフェース       |
-|                        | Output (DTO とも呼ぶ)             | 型変換、ユースケースからフロントエンドインターフェースへのオブジェクトからへの詰め替え                                                              | 実装                   |
-|                        | Repositories（Gateways とも呼ぶ） | Repositories のインターフェース                                                                                                                     | インターフェース       |
-| ドメイン層             | Entity                            | ドメインモデル、ドメインルールの定義                                                                                                                | 実装                   |
-|                        | Id                                | ドメインモデルの識別子                                                                                                                              | 実装                   |
-|                        | ValueObject                       | 値オブジェクト                                                                                                                                      | 実装                   |
-|                        | Specification                     | ビジネスロジックのバリデーション                                                                                                                    | 実装                   |
-|                        | Criterion                         | 検索条件オブジェクト                                                                                                                                | 実装                   |
-|                        | Events                            | ドメインイベント                                                                                                                                    | 実装                   |
-|                        | Service                           | ドメインサービス                                                                                                                                    | 実装                   |
+<table>
+  <thead>
+    <tr>
+      <th>バックエンドレイヤー</th>
+      <th>パターン</th>
+      <th>責務</th>
+      <th>インターフェース／実装</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="9">インフラストラクチャ層</td>
+      <td>DB</td>
+      <td>データベースとの接続、コネクションの作成</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>EntityMappers (DTO に相当)</td>
+      <td>DB カラム型からアプリデータ型への型変換（例：<code>BIGINT</code> や <code>DECIMAL</code> を情報量が減らないデータ型に変換）、ドメインとインフラ間のオブジェクトの詰め替え</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>Logger</td>
+      <td>ロギング</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>Middleware</td>
+      <td>ミドルウェアパターン</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>Repositories</td>
+      <td>実装リポジトリ</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>Listeners</td>
+      <td>リスナー</td>
+      <td>関数</td>
+    </tr>
+    <tr>
+      <td>Routers</td>
+      <td>ルーティング</td>
+      <td>関数</td>
+    </tr>
+    <tr>
+      <td>Seeder</td>
+      <td>開発環境、CI 環境のユニットテストや E2E テスト、ステージング環境の動作確認に使用する初期データ挿入</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>Drivers</td>
+      <td>SDK、ORM、CLI など</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td rowspan="6">プレゼンテーション層</td>
+      <td>Controller</td>
+      <td>データの受信と返信</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>RequestValidators</td>
+      <td>受信データのバリデーション</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>ResponseValidators</td>
+      <td>返信データのバリデーション (受信データと比べてデータ構造は保証されているため、なくてもいい)</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>Authenticators</td>
+      <td>認証</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>Input (Command とも呼ぶ)</td>
+      <td>型変換、入力データ翻訳、フロントエンドインターフェース (あるいは受信 JSON データ) からバックエンドインターフェースへのオブジェクトからへの詰め替え</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>Output (DTO とも呼ぶ)</td>
+      <td>型変換、出力データ翻訳、バックエンドインターフェースからフロントエンドインターフェースへのオブジェクトからへの詰め替え</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td rowspan="6">ユースケース層</td>
+      <td>Interactor</td>
+      <td>ドメイン層で定義されたドメインルールを組み合わせ、ユースケースを具現化する。</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>InputBoundaries</td>
+      <td>Interactor のインターフェース</td>
+      <td>インターフェース</td>
+    </tr>
+    <tr>
+      <td>Input (Command とも呼ぶ)</td>
+      <td>型変換、バックエンドインターフェースからユースケースのオブジェクトからへの詰め替え</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>OutputBoundaries</td>
+      <td>Presenter のインターフェース</td>
+      <td>インターフェース</td>
+    </tr>
+    <tr>
+      <td>Output (DTO とも呼ぶ)</td>
+      <td>型変換、ユースケースからフロントエンドインターフェースへのオブジェクトからへの詰め替え</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>Repositories（Gateways とも呼ぶ）</td>
+      <td>Repositories のインターフェース</td>
+      <td>インターフェース</td>
+    </tr>
+    <tr>
+      <td rowspan="7">ドメイン層</td>
+      <td>Entity</td>
+      <td>ドメインモデル、ドメインルールの定義</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>Id</td>
+      <td>ドメインモデルの識別子</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>ValueObject</td>
+      <td>値オブジェクト</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>Specification</td>
+      <td>ビジネスロジックのバリデーション</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>Criterion</td>
+      <td>検索条件オブジェクト</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>Events</td>
+      <td>ドメインイベント</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>Service</td>
+      <td>ドメインサービス</td>
+      <td>実装</td>
+    </tr>
+  </tbody>
+</table>
 
-| フロントエンドレイヤー | パターン   | 責務                                                                            | インターフェース／実装 |
-| ---------------------- | ---------- | ------------------------------------------------------------------------------- | ---------------------- |
-| プレゼンテーション層   | Presenter  | ドメインオブジェクトから JSON データへの詰め替え                                | 実装                   |
-|                        | Validators | フロントエンドのバリデーション                                                  | 実装                   |
-|                        | ViewModel  | 状態管理、JSON データをフロントエンドインターフェースのオブジェクトへの詰め替え | 実装                   |
-| UI 層                  | View       | UI レンダリング、CSS スタイリング                                               | 実装                   |
+<table>
+  <thead>
+    <tr>
+      <th>フロントエンドレイヤー</th>
+      <th>パターン</th>
+      <th>責務</th>
+      <th>インターフェース／実装</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="3">プレゼンテーション層</td>
+      <td>Presenter</td>
+      <td>ドメインオブジェクトから JSON データへの詰め替え</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>Validators</td>
+      <td>フロントエンドのバリデーション</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>ViewModel</td>
+      <td>状態管理、JSON データをフロントエンドインターフェースのオブジェクトへの詰め替え</td>
+      <td>実装</td>
+    </tr>
+    <tr>
+      <td>UI 層</td>
+      <td>View</td>
+      <td>UI レンダリング、CSS スタイリング</td>
+      <td>実装</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -187,9 +341,24 @@ flowchart LR
 
 - アーキテクチャ設計に違反していないか
 
-| 重要度（高／中） | 機能項目 | 指摘内容 | 実装案 |
-| ---------------- | -------- | -------- | ------ |
-|                  |          |          |        |
+<table>
+  <thead>
+    <tr>
+      <th>重要度（高／中）</th>
+      <th>機能項目</th>
+      <th>指摘内容</th>
+      <th>実装案</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 ### 機能設計について
 
@@ -205,9 +374,24 @@ flowchart LR
 
 そして、次の表で整理する。
 
-| 重要度（高／中） | 機能項目 | 指摘内容 | 実装案 |
-| ---------------- | -------- | -------- | ------ |
-|                  |          |          |        |
+<table>
+  <thead>
+    <tr>
+      <th>重要度（高／中）</th>
+      <th>機能項目</th>
+      <th>指摘内容</th>
+      <th>実装案</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 ### 非機能設計について
 
@@ -265,9 +449,24 @@ flowchart LR
 
 そして、次の表で整理する
 
-| 重要度（高／中） | 非機能項目 | 指摘内容 | 実装案 |
-| ---------------- | ---------- | -------- | ------ |
-|                  |            |          |        |
+<table>
+  <thead>
+    <tr>
+      <th>重要度（高／中）</th>
+      <th>非機能項目</th>
+      <th>指摘内容</th>
+      <th>実装案</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 ### テスト設計について
 
@@ -285,9 +484,24 @@ flowchart LR
 
 そして、次の表で整理する
 
-| 重要度（高／中） | テスト項目 | 指摘内容 | 実装案 |
-| ---------------- | ---------- | -------- | ------ |
-|                  |            |          |        |
+<table>
+  <thead>
+    <tr>
+      <th>重要度（高／中）</th>
+      <th>テスト項目</th>
+      <th>指摘内容</th>
+      <th>実装案</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

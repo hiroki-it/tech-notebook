@@ -68,11 +68,28 @@ Amazon CloudWatch アラームに通知されたエラーイベントのうち�
 
 PagerDuty では、以下の解決フェーズを設定できる。
 
-| 解決フェーズ | 説明                                                                                                                                                                |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Triggered    | アラートがインシデントとして見なされ、タスクが作成された。再現性の低い瞬間的なインシデントであれば、Acknowledged フェーズを経ずに、そのまま Resolved にしてもよい。 |
-| Acknowledged | インシデントのタスクに対応中であるが、まだ解決できていない。一定期間、Resolved フェーズに移行しない場合は、再び Triggered フェーズに戻る。                          |
-| Resolved     | インシデントのタスクを解決した。                                                                                                                                    |
+<table>
+  <thead>
+    <tr>
+      <th>解決フェーズ</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Triggered</td>
+      <td>アラートがインシデントとして見なされ、タスクが作成された。再現性の低い瞬間的なインシデントであれば、Acknowledged フェーズを経ずに、そのまま Resolved にしてもよい。</td>
+    </tr>
+    <tr>
+      <td>Acknowledged</td>
+      <td>インシデントのタスクに対応中であるが、まだ解決できていない。一定期間、Resolved フェーズに移行しない場合は、再び Triggered フェーズに戻る。</td>
+    </tr>
+    <tr>
+      <td>Resolved</td>
+      <td>インシデントのタスクを解決した。</td>
+    </tr>
+  </tbody>
+</table>
 
 ![pagerduty_incident_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pagerduty_incident_phase.png)
 

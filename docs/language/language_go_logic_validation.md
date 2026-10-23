@@ -23,16 +23,75 @@ description: バリデーションロジック＠Goの知見を記録してい�
 
 空欄：`FALSE` になる。
 
-| バリデーションパターン | `if (var)` | `if len(var) == 0` | `if var != nil` | `in var == 0`、`if reflect.ValueOf(var).IsZero()` |
-| :--------------------: | :--------: | :----------------: | :-------------: | :-----------------------------------------------: |
-|       **`nil`**        |            |                    |                 |                                                   |
-|        **`0`**         |            |                    |                 |                        ✅                         |
-|        **`1`**         |            |                    |                 |                                                   |
-|   **`""`** (空文字)    |            |         ✅         |                 |                                                   |
-|       **`"あ"`**       |            |                    |                 |                                                   |
-|      **`false`**       |            |                    |                 |                                                   |
-|       **`true`**       |     ✅     |                    |                 |                                                   |
-|  **`[]`** (空 slice)   |            |                    |                 |                                                   |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center">バリデーションパターン</th>
+      <th style="text-align:center"><code>if (var)</code></th>
+      <th style="text-align:center"><code>if len(var) == 0</code></th>
+      <th style="text-align:center"><code>if var != nil</code></th>
+      <th style="text-align:center"><code>in var == 0</code>、<code>if reflect.ValueOf(var).IsZero()</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><strong><code>nil</code></strong></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><strong><code>0</code></strong></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><strong><code>1</code></strong></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><strong><code>&quot;&quot;</code></strong> (空文字)</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><strong><code>&quot;あ&quot;</code></strong></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><strong><code>false</code></strong></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><strong><code>true</code></strong></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><strong><code>[]</code></strong> (空 slice)</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://stackoverflow.com/a/18595217
 > - https://www.geeksforgeeks.org/zero-value-in-golang/

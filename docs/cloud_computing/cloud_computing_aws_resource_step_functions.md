@@ -64,11 +64,32 @@ AWS サービスを組み合わせて、ワークフローエンジンを作成�
 
 #### ▼ 注意が必要な項目
 
-|               | 設定値           | 補足                         |
-| ------------- | ---------------- | ---------------------------- |
-| HTTP メソッド | POST             | GET メソッドでは動作しない。 |
-| アクション    | StartExecution   |                              |
-| 実行ロール    | IAM ロールの ARN | StartExecution を許可する。  |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>設定値</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HTTP メソッド</td>
+      <td>POST</td>
+      <td>GET メソッドでは動作しない。</td>
+    </tr>
+    <tr>
+      <td>アクション</td>
+      <td>StartExecution</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>実行ロール</td>
+      <td>IAM ロールの ARN</td>
+      <td>StartExecution を許可する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Creating a Step Functions API using API Gateway - AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-api-gateway.html)
 

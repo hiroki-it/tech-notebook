@@ -39,15 +39,60 @@ Kubernetes の周辺ツール (例：Prometheus、AlertManager、Grafana、ArgoC
 
 Ingress Controller には種類があり、 Controller ごとに作成するリバースプロキシやロードバランサーが異なる。
 
-| 外部 Ingress Controller の種類                                 | リバースプロキシ、ロードバランサー   | 開発環境 | 本番環境 |
-| -------------------------------------------------------------- | ------------------------------------ | :------: | :------: |
-| Nginx Ingress Controller                                       | Nginx                                |    ✅    |    ✅    |
-| minikube の ingress アドオン (実体は Nginx Ingress Controller) | Nginx                                |    ✅    |          |
-| AWS Load Balancer Controller                                   | AWS ALB                              |          |    ✅    |
-| Google Cloud CLB Controller                                    | Google Cloud CLB                     |          |    ✅    |
-| Istio Ingress Controller                                       | Istio Ingress Gateway (実体は Envoy) |    ✅    |    ✅    |
-| Contour Controller                                             | Envoy                                |    ✅    |    ✅    |
-| ...                                                            | ...                                  |   ...    |   ...    |
+<table>
+  <thead>
+    <tr>
+      <th>外部 Ingress Controller の種類</th>
+      <th>リバースプロキシ、ロードバランサー</th>
+      <th style="text-align:center">開発環境</th>
+      <th style="text-align:center">本番環境</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Nginx Ingress Controller</td>
+      <td>Nginx</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>minikube の ingress アドオン (実体は Nginx Ingress Controller)</td>
+      <td>Nginx</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>AWS Load Balancer Controller</td>
+      <td>AWS ALB</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>Google Cloud CLB Controller</td>
+      <td>Google Cloud CLB</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>Istio Ingress Controller</td>
+      <td>Istio Ingress Gateway (実体は Envoy)</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>Contour Controller</td>
+      <td>Envoy</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td style="text-align:center">...</td>
+      <td style="text-align:center">...</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Ingress Controllers \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)
 > - https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/

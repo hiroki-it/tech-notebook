@@ -106,10 +106,24 @@ Pod の負荷に合わせて Pod の自動水平スケーリングを実行し�
 
 Deployment では、以下の設定値の変更で、ReplicaSet の置き換えが起こる。
 
-| 条件                                  | 説明                                                                                                                               |
-| ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `.spec.replicas` キーの変更           | レプリカ数 (`.spec.replicas` キー) の変更の場合は、Deployment は既存の ReplicaSet をそのままにし、Pod のレプリカ数のみを変更する。 |
-| `.spec.template` キー配下の任意の変更 | PodTemplate (`.spec.template` キー) を変更した場合、Deployment は新しい ReplicaSet を作成し、これを古い ReplicaSet と置き換える。  |
+<table>
+  <thead>
+    <tr>
+      <th>条件</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>.spec.replicas</code> キーの変更</td>
+      <td>レプリカ数 (<code>.spec.replicas</code> キー) の変更の場合は、Deployment は既存の ReplicaSet をそのままにし、Pod のレプリカ数のみを変更する。</td>
+    </tr>
+    <tr>
+      <td><code>.spec.template</code> キー配下の任意の変更</td>
+      <td>PodTemplate (<code>.spec.template</code> キー) を変更した場合、Deployment は新しい ReplicaSet を作成し、これを古い ReplicaSet と置き換える。</td>
+    </tr>
+  </tbody>
+</table>
 
 ![kubernetes_deployment_replace_replicaset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_replace_replicaset.png)
 
@@ -238,21 +252,61 @@ Kubernetes リソースを配置するサーバーのこと。
 
 kubelet は、Node のライフサイクルフェーズを設定する。
 
-| フェーズ名 | 説明                                                         |
-| ---------- | ------------------------------------------------------------ |
-| Ready      | Node が Pod をスケジューリング可能な状態であることを表す。   |
-| NotReady   | Node が Pod をスケジューリング不可能な状態であることを表す。 |
+<table>
+  <thead>
+    <tr>
+      <th>フェーズ名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ready</td>
+      <td>Node が Pod をスケジューリング可能な状態であることを表す。</td>
+    </tr>
+    <tr>
+      <td>NotReady</td>
+      <td>Node が Pod をスケジューリング不可能な状態であることを表す。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ イベント
 
-| イベント名              | 説明                                                                                                                                                                                      |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| NodeHasSufficientMemory |                                                                                                                                                                                           |
-| NodeHasSufficientPID    |                                                                                                                                                                                           |
-| NodeNotReady            |                                                                                                                                                                                           |
-| NodeReady               |                                                                                                                                                                                           |
-| Starting                |                                                                                                                                                                                           |
-| SystemOOM               | Pod の要求するメモリ量が多すぎて、Node のメモリ不足が起こったことを表す。Pod のメモリで上限 (`limits`) = 下限 (`requests`) のように設定する (Guaranteed QoS) と、SystemOOM を避けられる。 |
+<table>
+  <thead>
+    <tr>
+      <th>イベント名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NodeHasSufficientMemory</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>NodeHasSufficientPID</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>NodeNotReady</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>NodeReady</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Starting</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>SystemOOM</td>
+      <td>Pod の要求するメモリ量が多すぎて、Node のメモリ不足が起こったことを表す。Pod のメモリで上限 (<code>limits</code>) = 下限 (<code>requests</code>) のように設定する (Guaranteed QoS) と、SystemOOM を避けられる。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.reddit.com/r/kubernetes/comments/xc5i9w/keep_running_into_system_oom_encountered_how_to/
 
@@ -313,23 +367,92 @@ status:
   phase: Running
 ```
 
-| フェーズ名           | 説明                                                                                                  | 補足                                                                                                                                                                                                                                                     |
-| -------------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Completed            | Pod 内のすべてのコンテナが正常に終了した。                                                            | Job 配下の Pod でよく見られるフェーズである。                                                                                                                                                                                                            |
-| ContainerCreating    | Pod 内に InitContainer がない場合の理由である。コンテナイメージをプルし、コンテナを作成している。     |                                                                                                                                                                                                                                                          |
-| CrashLoopBackOff     | Pod が、一連のフェーズ (`Running` フェーズ、`Waiting` フェーズ、`Failed` フェーズ) を繰り返している。 |                                                                                                                                                                                                                                                          |
-| CreateContainerError | Pod 内のコンテナの作成に失敗した。                                                                    |                                                                                                                                                                                                                                                          |
-| ErrImagePull         | Pod 内のコンテナイメージのプルに失敗した。                                                            |                                                                                                                                                                                                                                                          |
-| Error                | Pod 内のいずれかのコンテナが異常に終了した。                                                          | Job 配下の Pod の場合は Error になっても、次の Pod が作成される。Job の `.spec.ttlSecondsAfterFinished` キーを設定していなければ、Error の Pod がしばらく残り続けるが、もし新しい Pod が Completed になれば問題ない。                                    |
-| Failed               | Pod 内のすべてのコンテナの起動が完了し、その後に異常に停止した。                                      |                                                                                                                                                                                                                                                          |
-| ImagePullBackOff     | Pod 内のコンテナイメージのプルに失敗した。                                                            |                                                                                                                                                                                                                                                          |
-| OOMKilled            | Pod のメモリの空きサイズが足らず、コンテナが強制的に終了された。                                      |                                                                                                                                                                                                                                                          |
-| Pending              | Pod が Node にスケジューリングされたが、Pod 内のすべてのコンテナの起動がまだ完了していない。          |                                                                                                                                                                                                                                                          |
-| PodInitializing      | Pod 内に InitContainer がある場合の理由である。コンテナイメージをプルし、コンテナを作成している。     |                                                                                                                                                                                                                                                          |
-| PostStartHookError   | Pod の PostStart フックに失敗した。                                                                   |                                                                                                                                                                                                                                                          |
-| Running              | Pod 内のすべてのコンテナの起動が完了し、実行中である。                                                | コンテナの起動が完了すれば `Running` フェーズになるが、コンテナ内でビルトインサーバーを起動するようなアプリケーション (例：フレームワークのビルトインサーバー機能) の場合は、`Running` フェーズであっても `Ready` コンディションではないことに注意する。 |
-| Succeed              | Pod 内のすべてのコンテナの起動が完了し、その後に正常に停止した。                                      |                                                                                                                                                                                                                                                          |
-| Unknown              | Node と Pod の間の通信に異常があり、Node が Pod から情報を取得できなかった。                          |                                                                                                                                                                                                                                                          |
+<table>
+  <thead>
+    <tr>
+      <th>フェーズ名</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Completed</td>
+      <td>Pod 内のすべてのコンテナが正常に終了した。</td>
+      <td>Job 配下の Pod でよく見られるフェーズである。</td>
+    </tr>
+    <tr>
+      <td>ContainerCreating</td>
+      <td>Pod 内に InitContainer がない場合の理由である。コンテナイメージをプルし、コンテナを作成している。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>CrashLoopBackOff</td>
+      <td>Pod が、一連のフェーズ (<code>Running</code> フェーズ、<code>Waiting</code> フェーズ、<code>Failed</code> フェーズ) を繰り返している。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>CreateContainerError</td>
+      <td>Pod 内のコンテナの作成に失敗した。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ErrImagePull</td>
+      <td>Pod 内のコンテナイメージのプルに失敗した。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Error</td>
+      <td>Pod 内のいずれかのコンテナが異常に終了した。</td>
+      <td>Job 配下の Pod の場合は Error になっても、次の Pod が作成される。Job の <code>.spec.ttlSecondsAfterFinished</code> キーを設定していなければ、Error の Pod がしばらく残り続けるが、もし新しい Pod が Completed になれば問題ない。</td>
+    </tr>
+    <tr>
+      <td>Failed</td>
+      <td>Pod 内のすべてのコンテナの起動が完了し、その後に異常に停止した。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ImagePullBackOff</td>
+      <td>Pod 内のコンテナイメージのプルに失敗した。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>OOMKilled</td>
+      <td>Pod のメモリの空きサイズが足らず、コンテナが強制的に終了された。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Pending</td>
+      <td>Pod が Node にスケジューリングされたが、Pod 内のすべてのコンテナの起動がまだ完了していない。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>PodInitializing</td>
+      <td>Pod 内に InitContainer がある場合の理由である。コンテナイメージをプルし、コンテナを作成している。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>PostStartHookError</td>
+      <td>Pod の PostStart フックに失敗した。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Running</td>
+      <td>Pod 内のすべてのコンテナの起動が完了し、実行中である。</td>
+      <td>コンテナの起動が完了すれば <code>Running</code> フェーズになるが、コンテナ内でビルトインサーバーを起動するようなアプリケーション (例：フレームワークのビルトインサーバー機能) の場合は、<code>Running</code> フェーズであっても <code>Ready</code> コンディションではないことに注意する。</td>
+    </tr>
+    <tr>
+      <td>Succeed</td>
+      <td>Pod 内のすべてのコンテナの起動が完了し、その後に正常に停止した。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Unknown</td>
+      <td>Node と Pod の間の通信に異常があり、Node が Pod から情報を取得できなかった。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Pod Lifecycle \| Kubernetes](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-phase)
 > - [Kubernetes: kubectl 上の Pod のステータス表記について #kubernetes - Qiita](https://qiita.com/tkusumi/items/825ccde31fdc3d0b8425#%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA-pod-%E3%81%AE%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E8%A1%A8%E8%A8%98)
@@ -364,12 +487,32 @@ status:
 
 そのため、Pod が正常であると見なすためには、『`Running` フェーズ』かつ『`Ready` コンディション』である必要がある。
 
-| 各フェーズのコンディション名 | 説明                                                                                                   |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------ |
-| PodScheduled                 | Node への Pod のスケジューリングが完了した。                                                           |
-| ContainersReady              | すべてのコンテナの起動が完了し、加えてコンテナ内のアプリケーションやミドルウェアの準備が完了している。 |
-| Initialized                  | すべての `init` コンテナの起動が完了した。                                                             |
-| Ready                        | Pod 全体の準備が完了した。                                                                             |
+<table>
+  <thead>
+    <tr>
+      <th>各フェーズのコンディション名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PodScheduled</td>
+      <td>Node への Pod のスケジューリングが完了した。</td>
+    </tr>
+    <tr>
+      <td>ContainersReady</td>
+      <td>すべてのコンテナの起動が完了し、加えてコンテナ内のアプリケーションやミドルウェアの準備が完了している。</td>
+    </tr>
+    <tr>
+      <td>Initialized</td>
+      <td>すべての <code>init</code> コンテナの起動が完了した。</td>
+    </tr>
+    <tr>
+      <td>Ready</td>
+      <td>Pod 全体の準備が完了した。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://stackoverflow.com/a/59354112
 > - [Pod Lifecycle \| Kubernetes](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions)
@@ -384,11 +527,28 @@ status:
   reason: Evicted
 ```
 
-| 理由      | 説明                                                                                                                   |
-| --------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Completed | コンテナが正常に終了した。InitContainer の実行後に見られる。                                                           |
-| Evicted   | Node のハードウェアリソース不足のため、Pod が退避対象となった。`Evicted` が理由の場合、`Failed` フェーズが最後となる。 |
-| Unknown   | 原因が不明である。                                                                                                     |
+<table>
+  <thead>
+    <tr>
+      <th>理由</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Completed</td>
+      <td>コンテナが正常に終了した。InitContainer の実行後に見られる。</td>
+    </tr>
+    <tr>
+      <td>Evicted</td>
+      <td>Node のハードウェアリソース不足のため、Pod が退避対象となった。<code>Evicted</code> が理由の場合、<code>Failed</code> フェーズが最後となる。</td>
+    </tr>
+    <tr>
+      <td>Unknown</td>
+      <td>原因が不明である。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://access.redhat.com/documentation/ja-jp/openshift_container_platform/3.11/html/developer_guide/diagnosing-evicted-pod
 
@@ -476,10 +636,24 @@ Pod の終了プロセスが始まると、以下の一連のプロセスも開�
 
 その Pod に割り当てられたハードウェアリソース (CPU、メモリ) を、Pod 内のコンテナが分け合って使用する。
 
-| 単位            | 例                                   |
-| --------------- | ------------------------------------ |
-| `m`：millicores | `1` コア = `1000` ユニット = `1000`m |
-| `Mi`：mebibyte  | `1`Mi = `1.04858`MB                  |
+<table>
+  <thead>
+    <tr>
+      <th>単位</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>m</code>：millicores</td>
+      <td><code>1</code> コア = <code>1000</code> ユニット = <code>1000</code>m</td>
+    </tr>
+    <tr>
+      <td><code>Mi</code>：mebibyte</td>
+      <td><code>1</code>Mi = <code>1.04858</code>MB</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [【第四弾】Kubernetesベストプラクティス：Requests & Limits #kubernetes - Qiita](https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu)
 
@@ -1214,12 +1388,32 @@ Namespace が異なれば、`.metadata.labels` キーに同じ値 (例：同じ�
 
 #### ▼ 初期 Namespace
 
-| 名前              | 説明                                                                                                                                |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `default`         | 任意の Kubernetes リソースを配置する。                                                                                              |
-| `kube-node-lease` | Kubernetes リソースのうちで、特に Lease を配置する。                                                                                |
-| `kube-public`     | すべての kube-apiserver クライアント (`kubectl` クライアント、Kubernetes リソース) に公開してもよい Kubernetes リソースを配置する。 |
-| `kube-system`     | Kubernetes が自動的に作成した Kubernetes リソースを配置する。ユーザーが設定する必要はない。                                         |
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>default</code></td>
+      <td>任意の Kubernetes リソースを配置する。</td>
+    </tr>
+    <tr>
+      <td><code>kube-node-lease</code></td>
+      <td>Kubernetes リソースのうちで、特に Lease を配置する。</td>
+    </tr>
+    <tr>
+      <td><code>kube-public</code></td>
+      <td>すべての kube-apiserver クライアント (<code>kubectl</code> クライアント、Kubernetes リソース) に公開してもよい Kubernetes リソースを配置する。</td>
+    </tr>
+    <tr>
+      <td><code>kube-system</code></td>
+      <td>Kubernetes が自動的に作成した Kubernetes リソースを配置する。ユーザーが設定する必要はない。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Namespaces \| Kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#initial-namespaces)
 
@@ -1249,14 +1443,40 @@ Namespace が異なれば、`.metadata.labels` キーに同じ値 (例：同じ�
 
 #### ▼ 機密ではない変数の例
 
-| 変数              | 何のために使用するのか                                           |
-| ----------------- | ---------------------------------------------------------------- |
-| DB ホスト名       | コンテナが DB に接続するときに、DB のホスト名として使用する。    |
-| DB ポート番号     | コンテナが DB に接続するときに、DB のポート番号として使用する。  |
-| DB タイムアウト   | コンテナが DB に接続するときに、タイムアウト時間として使用する。 |
-| DB 接続リトライ数 | コンテナが DB に接続するときに、リトライの回数として使用する。   |
-| タイムゾーン      | コンテナ内のタイムゾーンとして使用する。                         |
-| ...               | ...                                                              |
+<table>
+  <thead>
+    <tr>
+      <th>変数</th>
+      <th>何のために使用するのか</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DB ホスト名</td>
+      <td>コンテナが DB に接続するときに、DB のホスト名として使用する。</td>
+    </tr>
+    <tr>
+      <td>DB ポート番号</td>
+      <td>コンテナが DB に接続するときに、DB のポート番号として使用する。</td>
+    </tr>
+    <tr>
+      <td>DB タイムアウト</td>
+      <td>コンテナが DB に接続するときに、タイムアウト時間として使用する。</td>
+    </tr>
+    <tr>
+      <td>DB 接続リトライ数</td>
+      <td>コンテナが DB に接続するときに、リトライの回数として使用する。</td>
+    </tr>
+    <tr>
+      <td>タイムゾーン</td>
+      <td>コンテナ内のタイムゾーンとして使用する。</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -1272,11 +1492,28 @@ Namespace が異なれば、`.metadata.labels` キーに同じ値 (例：同じ�
 
 #### ▼ 機密ではない変数の例
 
-| 変数          | 何のために使用するのか                                                  |
-| ------------- | ----------------------------------------------------------------------- |
-| DB ユーザー名 | コンテナが DB に接続するときに、DB ユーザーのユーザー名として使用する。 |
-| DB パスワード | コンテナが DB に接続するときに、DB ユーザーのパスワードとして使用する。 |
-| ...           | ...                                                                     |
+<table>
+  <thead>
+    <tr>
+      <th>変数</th>
+      <th>何のために使用するのか</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DB ユーザー名</td>
+      <td>コンテナが DB に接続するときに、DB ユーザーのユーザー名として使用する。</td>
+    </tr>
+    <tr>
+      <td>DB パスワード</td>
+      <td>コンテナが DB に接続するときに、DB ユーザーのパスワードとして使用する。</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ コンテナイメージプルのパラメーターとして
 
@@ -1302,11 +1539,32 @@ Kubernetes で作成できるストレージは、作成場所で種類を分け
 
 ![kubernetes_storage_resource_types](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_storage_resource_types.png)
 
-| ストレージの種類  | Volume            | PersistentVolume  |
-| ----------------- | ----------------- | ----------------- |
-| Pod 内ストレージ  | EmptyDir          | なし              |
-| Node 内ストレージ | HostPath          | HostPath、Local   |
-| Node 外ストレージ | Node 外ストレージ | Node 外ストレージ |
+<table>
+  <thead>
+    <tr>
+      <th>ストレージの種類</th>
+      <th>Volume</th>
+      <th>PersistentVolume</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Pod 内ストレージ</td>
+      <td>EmptyDir</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td>Node 内ストレージ</td>
+      <td>HostPath</td>
+      <td>HostPath、Local</td>
+    </tr>
+    <tr>
+      <td>Node 外ストレージ</td>
+      <td>Node 外ストレージ</td>
+      <td>Node 外ストレージ</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
 

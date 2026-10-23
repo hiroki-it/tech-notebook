@@ -73,9 +73,20 @@ Web アプリ全体に 1 つ存在し、全体的な Router 機能を管理し�
 
 スタック型で履歴を保持し、履歴を行き来することにより、ページ遷移する。
 
-| 関数   | 説明                                                                                                                                                              |
-| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `push` | `query` オブジェクトを引数とする。履歴スタック内に新しい履歴を追加し、現在をその履歴とする。また、ブラウザの戻る操作で、履歴スタック内の 1 つ前の履歴に移動する。 |
+<table>
+  <thead>
+    <tr>
+      <th>関数</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>push</code></td>
+      <td><code>query</code> オブジェクトを引数とする。履歴スタック内に新しい履歴を追加し、現在をその履歴とする。また、ブラウザの戻る操作で、履歴スタック内の 1 つ前の履歴に移動する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Programmatic Navigation \| Vue Router](https://router.vuejs.org/guide/essentials/navigation.html)
 
@@ -97,11 +108,36 @@ this.$router.push({
 
 現在のアクティブなルートを持つオブジェクト
 
-| プロパティ | データ型 | 説明                                                                                                                                | 注意                                     |
-| :--------- | -------- | :---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
-| `path`     | `string` | 現在のルートの文字列。                                                                                                              |                                          |
-| `query`    | `Object` | クエリパラメーターのキー名と値を保持するオブジェクト。`/foo?user=1` というクエリパラメーターの場合、`$route.query.user==1` となる。 | もしクエリーがない場合は、空オブジェクト |
-| `fullPath` | `string` | URL 全体の文字列。                                                                                                                  |                                          |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">プロパティ</th>
+      <th>データ型</th>
+      <th style="text-align:left">説明</th>
+      <th>注意</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><code>path</code></td>
+      <td><code>string</code></td>
+      <td style="text-align:left">現在のルートの文字列。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>query</code></td>
+      <td><code>Object</code></td>
+      <td style="text-align:left">クエリパラメーターのキー名と値を保持するオブジェクト。<code>/foo?user=1</code> というクエリパラメーターの場合、<code>$route.query.user==1</code> となる。</td>
+      <td>もしクエリーがない場合は、空オブジェクト</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>fullPath</code></td>
+      <td><code>string</code></td>
+      <td style="text-align:left">URL 全体の文字列。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

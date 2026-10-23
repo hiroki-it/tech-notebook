@@ -419,10 +419,24 @@ resource "aws_acm_certificate" "example" {
 
 #### ▼ バージョン表記について
 
-| 表記 | 説明                             |
-| ---- | -------------------------------- |
-| `~>` | 指定したバージョンを上限とする。 |
-| `=`  | 指定したバージョンで固定する。   |
+<table>
+  <thead>
+    <tr>
+      <th>表記</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>~&gt;</code></td>
+      <td>指定したバージョンを上限とする。</td>
+    </tr>
+    <tr>
+      <td><code>=</code></td>
+      <td>指定したバージョンで固定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Terraformのバージョン制約の仕様と挙動を調べてみた \| DevelopersIO](https://dev.classmethod.jp/articles/about-terraform-version-required-constraints/)
 

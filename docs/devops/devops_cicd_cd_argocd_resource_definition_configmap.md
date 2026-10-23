@@ -574,10 +574,27 @@ Casbin の記法を使用して、ロールと認可スコープを定義しつ�
 
 `readonly` と `admin` というロールは、デフォルトで定義済みである。
 
-| 記号                 | 項目                                                                                                                | 説明                                                                                               |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `p` (パーミッション) | `p, <ロール名> <Kubernetesリソースの種類> <アクション名> <AppProject名>/<ApplicationのNamespace名>/<Application名>` | ロールと ArgoCD 系リソースの認可スコープを定義する。代わりに、Role や ClusterRole でも定義できる。 |
-| `g` (グループ)       | `g, <グループ名> <ロール名>`                                                                                        | グループにロールを紐付ける。                                                                       |
+<table>
+  <thead>
+    <tr>
+      <th>記号</th>
+      <th>項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>p</code> (パーミッション)</td>
+      <td><code>p, &lt;ロール名&gt; &lt;Kubernetesリソースの種類&gt; &lt;アクション名&gt; &lt;AppProject名&gt;/&lt;ApplicationのNamespace名&gt;/&lt;Application名&gt;</code></td>
+      <td>ロールと ArgoCD 系リソースの認可スコープを定義する。代わりに、Role や ClusterRole でも定義できる。</td>
+    </tr>
+    <tr>
+      <td><code>g</code> (グループ)</td>
+      <td><code>g, &lt;グループ名&gt; &lt;ロール名&gt;</code></td>
+      <td>グループにロールを紐付ける。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://stackoverflow.com/a/73784100
 > - [RBAC Configuration - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#rbac-permission-structure)

@@ -45,15 +45,44 @@ OAuth をベースとして、認証フェーズを追加し、認証/認可を�
 
 委譲元のクライアントは、ID プロバイダーから取得したクレームを資格情報として扱い、認可処理を実行する。
 
-| クレーム  | 説明                         |
-| --------- | ---------------------------- |
-| `sub`     | アカウントの識別子           |
-| `profile` | アカウントのプロフィール URL |
-| `name`    | アカウントの氏名             |
-| `email`   | アカウントのメールアドレス   |
-| `phone`   | アカウントの電話番号         |
-| `address` | アカウントの住所             |
-| ...       | ...                          |
+<table>
+  <thead>
+    <tr>
+      <th>クレーム</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>sub</code></td>
+      <td>アカウントの識別子</td>
+    </tr>
+    <tr>
+      <td><code>profile</code></td>
+      <td>アカウントのプロフィール URL</td>
+    </tr>
+    <tr>
+      <td><code>name</code></td>
+      <td>アカウントの氏名</td>
+    </tr>
+    <tr>
+      <td><code>email</code></td>
+      <td>アカウントのメールアドレス</td>
+    </tr>
+    <tr>
+      <td><code>phone</code></td>
+      <td>アカウントの電話番号</td>
+    </tr>
+    <tr>
+      <td><code>address</code></td>
+      <td>アカウントの住所</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [OAuth & OpenID Connect 関連仕様まとめ #openid_connect - Qiita](https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim)
 
@@ -69,14 +98,40 @@ ID プロバイダーは、取得したクレームグループに対応した�
 
 委譲元のクライアントは、取得したクレームを資格情報として扱い、認可処理を実行する。
 
-| クレームグループ               | 取得できるクレーム (資格情報の要素)                                                                                                                                              |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `openid`                       | これは、OIDC の場合に必須である。トークンエンドポイントから、アクセストークンに加えて ID トークンを発行できるようになる。                                                        |
-| `profile`                      | `name`、`family_name`、`given_name`、`middle_name`、`nickname`、`preferred_username`、`profile`、`picture`、`website`、`gender`、`birthdate`、`zoneinfo`、`locale`、`updated_at` |
-| `email`                        | `email`、`email_verified`                                                                                                                                                        |
-| `phone`                        | `phone_number`、`phone_number_verified`                                                                                                                                          |
-| `address`                      | `address`                                                                                                                                                                        |
-| ユーザー定義のクレームグループ | 自由にクレームを設定できる                                                                                                                                                       |
+<table>
+  <thead>
+    <tr>
+      <th>クレームグループ</th>
+      <th>取得できるクレーム (資格情報の要素)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>openid</code></td>
+      <td>これは、OIDC の場合に必須である。トークンエンドポイントから、アクセストークンに加えて ID トークンを発行できるようになる。</td>
+    </tr>
+    <tr>
+      <td><code>profile</code></td>
+      <td><code>name</code>、<code>family_name</code>、<code>given_name</code>、<code>middle_name</code>、<code>nickname</code>、<code>preferred_username</code>、<code>profile</code>、<code>picture</code>、<code>website</code>、<code>gender</code>、<code>birthdate</code>、<code>zoneinfo</code>、<code>locale</code>、<code>updated_at</code></td>
+    </tr>
+    <tr>
+      <td><code>email</code></td>
+      <td><code>email</code>、<code>email_verified</code></td>
+    </tr>
+    <tr>
+      <td><code>phone</code></td>
+      <td><code>phone_number</code>、<code>phone_number_verified</code></td>
+    </tr>
+    <tr>
+      <td><code>address</code></td>
+      <td><code>address</code></td>
+    </tr>
+    <tr>
+      <td>ユーザー定義のクレームグループ</td>
+      <td>自由にクレームを設定できる</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [OAuth & OpenID Connect 関連仕様まとめ #openid_connect - Qiita](https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim)
 > - [Final: OpenID Connect Core 1.0 incorporating errata set 2](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims)

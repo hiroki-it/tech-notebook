@@ -15,13 +15,42 @@ description: Claude Code＠LLMの知見を記録しています。
 
 ## 01. レイヤー
 
-| レイヤー         | 読み込まれるタイミング                                                | 用途                                                                                                                     |
-| ---------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `CLAUDE.md`      | 常時                                                                  | Claude Code の各コンテキストの目次として使用する                                                                         |
-| `.claude/agents` | `claude --agent` によるセッションの起動時                             | Claude Code のセッションに人格 (設計者、レビュアー、何らかの専門家) を与えたい場合に、人格、コンテキスト、命令を定義する |
-| `.claude/hooks`  | 指定したイベント時 (例：セッション開始時、コンテキスト入力時、完了時) | ガードレール (例：静的解析、コンテキストのルールどおりかを検証、処理完了の通知) を定義する                               |
-| `.claude/rules`  | 常時                                                                  | Claude Code にインプットするコンテキストを定義する                                                                       |
-| `.claude/skills` | `/<スキル名>` の実行時                                                | 特定の場面のみで Claude Code にインプットさせたいコンテキストと、その命令を定義する。                                    |
+<table>
+  <thead>
+    <tr>
+      <th>レイヤー</th>
+      <th>読み込まれるタイミング</th>
+      <th>用途</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>CLAUDE.md</code></td>
+      <td>常時</td>
+      <td>Claude Code の各コンテキストの目次として使用する</td>
+    </tr>
+    <tr>
+      <td><code>.claude/agents</code></td>
+      <td><code>claude --agent</code> によるセッションの起動時</td>
+      <td>Claude Code のセッションに人格 (設計者、レビュアー、何らかの専門家) を与えたい場合に、人格、コンテキスト、命令を定義する</td>
+    </tr>
+    <tr>
+      <td><code>.claude/hooks</code></td>
+      <td>指定したイベント時 (例：セッション開始時、コンテキスト入力時、完了時)</td>
+      <td>ガードレール (例：静的解析、コンテキストのルールどおりかを検証、処理完了の通知) を定義する</td>
+    </tr>
+    <tr>
+      <td><code>.claude/rules</code></td>
+      <td>常時</td>
+      <td>Claude Code にインプットするコンテキストを定義する</td>
+    </tr>
+    <tr>
+      <td><code>.claude/skills</code></td>
+      <td><code>/&lt;スキル名&gt;</code> の実行時</td>
+      <td>特定の場面のみで Claude Code にインプットさせたいコンテキストと、その命令を定義する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Claude Codeの CLAUDE.md、Rules、Skills、Subagents、MCPs使い分け - izanami](https://izanami.dev/post/47deb6b9-0965-41e7-b128-12f5937e8748)
 

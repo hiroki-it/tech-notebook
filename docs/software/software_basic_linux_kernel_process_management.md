@@ -50,13 +50,42 @@ OS が稼働している間、メモリ上のアドレス空間の区画に恒�
 
 #### ▼ シグナルの種類
 
-| 代表的なシグナル | 説明                                     | 実行方法                         |
-| ---------------- | ---------------------------------------- | -------------------------------- |
-| `SIGINT`         | プロセスに割り込む。                     | キーボードで `Ctrl + C` を打つ。 |
-| `SIGKILL`        | プロセスを強制終了する。                 | `kill` コマンドを実行する。      |
-| `SIGTERM`        | プロセスを通常終了する。                 | 記入中...                        |
-| `SIGTSTP`        | プロセスを一時中断する。                 | キーボードで `Ctrl + Z` を打つ。 |
-| `SIGQUIT`        | プロセスを終了させつつ、コアダンプする。 | キーボードで `Ctrl + Q` を打つ。 |
+<table>
+  <thead>
+    <tr>
+      <th>代表的なシグナル</th>
+      <th>説明</th>
+      <th>実行方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>SIGINT</code></td>
+      <td>プロセスに割り込む。</td>
+      <td>キーボードで <code>Ctrl + C</code> を打つ。</td>
+    </tr>
+    <tr>
+      <td><code>SIGKILL</code></td>
+      <td>プロセスを強制終了する。</td>
+      <td><code>kill</code> コマンドを実行する。</td>
+    </tr>
+    <tr>
+      <td><code>SIGTERM</code></td>
+      <td>プロセスを通常終了する。</td>
+      <td>記入中...</td>
+    </tr>
+    <tr>
+      <td><code>SIGTSTP</code></td>
+      <td>プロセスを一時中断する。</td>
+      <td>キーボードで <code>Ctrl + Z</code> を打つ。</td>
+    </tr>
+    <tr>
+      <td><code>SIGQUIT</code></td>
+      <td>プロセスを終了させつつ、コアダンプする。</td>
+      <td>キーボードで <code>Ctrl + Q</code> を打つ。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Linuxの「シグナル」って何だろう？：“応用力”をつけるためのLinux再入門（16） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1708/04/news015.html)
 > - [シグナル (Unix) - Wikipedia](<https://ja.wikipedia.org/wiki/%E3%82%B7%E3%82%B0%E3%83%8A%E3%83%AB_(Unix)>)
@@ -180,21 +209,82 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 言語によって、シングルスレッドまたはマルチスレッドのどちらでプログラムを実行するのかが異なる。
 
-| 言語                                     | シングルスレッド |       マルチスレッド        |
-| ---------------------------------------- | :--------------: | :-------------------------: |
-| C                                        |                  |             ✅              |
-| C#                                       |                  |             ✅              |
-| C++                                      |                  |             ✅              |
-| Go                                       |                  |             ✅              |
-| Java                                     |                  |             ✅              |
-| JavaScript、TypeScript（ブラウザ上）     |        ✅        |                             |
-| JavaScript、TypeScript（Node.js 上など） |   ✅（通常時）   | ✅（Worker Threads 使用時） |
-| Kotlin                                   |                  |             ✅              |
-| PHP                                      |        ✅        |                             |
-| Python                                   |        ✅        |                             |
-| Ruby                                     |        ✅        |                             |
-| Rust                                     |                  |             ✅              |
-| Swift                                    |                  |             ✅              |
+<table>
+  <thead>
+    <tr>
+      <th>言語</th>
+      <th style="text-align:center">シングルスレッド</th>
+      <th style="text-align:center">マルチスレッド</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>C#</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>C++</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>Go</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>Java</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>JavaScript、TypeScript（ブラウザ上）</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>JavaScript、TypeScript（Node.js 上など）</td>
+      <td style="text-align:center">✅（通常時）</td>
+      <td style="text-align:center">✅（Worker Threads 使用時）</td>
+    </tr>
+    <tr>
+      <td>Kotlin</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>PHP</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Python</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Ruby</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Rust</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>Swift</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ Node.js
 

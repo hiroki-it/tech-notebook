@@ -17,12 +17,32 @@ description: 状態管理＠フロントエンドアーキテクチャの知見�
 
 UI レンダリングに必要なデータを保持し、ユーザー操作や通信処理結果に応じて非同期に変更すること。
 
-| フレームワーク／パッケージ | 状態管理関数                                                             |
-| -------------------------- | ------------------------------------------------------------------------ |
-| React                      | `useState`、`useReducer`、`useRef`、`useContext`                         |
-| Vue.js                     | `ref`、`reactive`、`computed`、`watch`                                   |
-| Next.js (React と同じ)     | `useState`、`useReducer`、`useRef`、`useSyncExternalStore`、`useContext` |
-| Nuxt.js (Vue.js と同じ)    | `ref`、`reactive`、`computed`、`watch`                                   |
+<table>
+  <thead>
+    <tr>
+      <th>フレームワーク／パッケージ</th>
+      <th>状態管理関数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>React</td>
+      <td><code>useState</code>、<code>useReducer</code>、<code>useRef</code>、<code>useContext</code></td>
+    </tr>
+    <tr>
+      <td>Vue.js</td>
+      <td><code>ref</code>、<code>reactive</code>、<code>computed</code>、<code>watch</code></td>
+    </tr>
+    <tr>
+      <td>Next.js (React と同じ)</td>
+      <td><code>useState</code>、<code>useReducer</code>、<code>useRef</code>、<code>useSyncExternalStore</code>、<code>useContext</code></td>
+    </tr>
+    <tr>
+      <td>Nuxt.js (Vue.js と同じ)</td>
+      <td><code>ref</code>、<code>reactive</code>、<code>computed</code>、<code>watch</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

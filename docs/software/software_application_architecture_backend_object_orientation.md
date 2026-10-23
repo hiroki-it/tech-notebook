@@ -23,11 +23,40 @@ description: オブジェクト指向＠アーキテクチャの知見を記録�
 
 ### ベースの種類と実装スタイル
 
-| ベース                               | 言語例 (アルファベット順)                         | 命令型 | オブジェクト指向型 |                関数型                 |
-| ------------------------------------ | ------------------------------------------------- | :----: | :----------------: | :-----------------------------------: |
-| クラスベースのオブジェクト指向       | C#、Java、Kotlin、PHP、Swift、TypeScript          |   ✅   |         ✅         | △ (TypeScript のような一部の言語のみ) |
-| プロトタイプベースのオブジェクト指向 | JavaScript、Lua (擬似プロトタイプ) 、Self         |   ✅   |         ✅         |                  ✅                   |
-| 非オブジェクト指向                   | C、Clojure、Elixir、Go、Lisp、Rust、WASM 低レイヤ |   ✅   |         ❌         |                  ✅                   |
+<table>
+  <thead>
+    <tr>
+      <th>ベース</th>
+      <th>言語例 (アルファベット順)</th>
+      <th style="text-align:center">命令型</th>
+      <th style="text-align:center">オブジェクト指向型</th>
+      <th style="text-align:center">関数型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>クラスベースのオブジェクト指向</td>
+      <td>C#、Java、Kotlin、PHP、Swift、TypeScript</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">△ (TypeScript のような一部の言語のみ)</td>
+    </tr>
+    <tr>
+      <td>プロトタイプベースのオブジェクト指向</td>
+      <td>JavaScript、Lua (擬似プロトタイプ) 、Self</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>非オブジェクト指向</td>
+      <td>C、Clojure、Elixir、Go、Lisp、Rust、WASM 低レイヤ</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">❌</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

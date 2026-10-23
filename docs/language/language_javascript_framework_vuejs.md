@@ -442,10 +442,24 @@ View の `input` タグでは、一文字でも値が入力された時点で発
 
 条件分岐するタグであり、`v-show` または `v-if` を使用して、プロパティ名を指定する。親テンプレートから渡す `props` 内のプロパティ名の値が `TRUE` の場合は表示し、`FALSE` のときは非表示にする。もし頻繁に表示と非表示の切り替えを実行するようなら、`v-if` のほうが、描画コストが重たくなるリスクは高くなるため、`v-show` 推奨である。
 
-| タグ   | 使い分け                        |
-| ------ | :------------------------------ |
-| v-if   | 単発の切り替えがメインの場合    |
-| v-show | 表示/非表示の切替回数が多い場合 |
+<table>
+  <thead>
+    <tr>
+      <th>タグ</th>
+      <th style="text-align:left">使い分け</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>v-if</td>
+      <td style="text-align:left">単発の切り替えがメインの場合</td>
+    </tr>
+    <tr>
+      <td>v-show</td>
+      <td style="text-align:left">表示/非表示の切替回数が多い場合</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -556,16 +570,57 @@ Vue インスタンスの作成から破棄までの間に実行される関数�
 
 すべての関数を使用する必要はない。
 
-| 順番 | フック名      | タイミング                                             |
-| :--- | :------------ | :----------------------------------------------------- |
-| 1    | beforeCreate  | Vue インスタンスの作成前                               |
-| 2    | created       | Vue インスタンスの作成後                               |
-| 3    | beforeMount   | Vue インスタンスがマウントされる前                     |
-| 4    | mounted       | Vue インスタンスがマウントされた後                     |
-| 5    | beforeUpdate  | データ更新時の再レンダリング前                         |
-| 6    | updated       | データ更新時の再レンダリング後                         |
-| 7    | beforeDestroy | Vue インスタンスが削除される前 (`$destroy` 関数実行前) |
-| 8    | destroyed     | Vue インスタンスが削除された後 (`$destroy` 関数実行後) |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">順番</th>
+      <th style="text-align:left">フック名</th>
+      <th style="text-align:left">タイミング</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">1</td>
+      <td style="text-align:left">beforeCreate</td>
+      <td style="text-align:left">Vue インスタンスの作成前</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">2</td>
+      <td style="text-align:left">created</td>
+      <td style="text-align:left">Vue インスタンスの作成後</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">3</td>
+      <td style="text-align:left">beforeMount</td>
+      <td style="text-align:left">Vue インスタンスがマウントされる前</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">4</td>
+      <td style="text-align:left">mounted</td>
+      <td style="text-align:left">Vue インスタンスがマウントされた後</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">5</td>
+      <td style="text-align:left">beforeUpdate</td>
+      <td style="text-align:left">データ更新時の再レンダリング前</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">6</td>
+      <td style="text-align:left">updated</td>
+      <td style="text-align:left">データ更新時の再レンダリング後</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">7</td>
+      <td style="text-align:left">beforeDestroy</td>
+      <td style="text-align:left">Vue インスタンスが削除される前 (<code>$destroy</code> 関数実行前)</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">8</td>
+      <td style="text-align:left">destroyed</td>
+      <td style="text-align:left">Vue インスタンスが削除された後 (<code>$destroy</code> 関数実行後)</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://jp.vuejs.org/v2/api/index.html#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3-%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%83%95%E3%83%83%E3%82%AF
 

@@ -25,11 +25,32 @@ Helm が設定してくれるため、開発者が設定する必要はない。
 
 ### 種類
 
-| キー                     | 値の例                           | 説明                                                   |
-| ------------------------ | -------------------------------- | ------------------------------------------------------ |
-| `chart`、`helm.sh/chart` | `foo-chart`                      | 使用しているチャート名を設定する。                     |
-| `release`                | `foo-release`、`foo-application` | Helm リリース名、ArogoCD の Application 名を設定する。 |
-| `heritage`               | `Helm`、`Tiller`                 | `v3` の場合は `Helm`、`v2` の場合は `Tiller` になる。  |
+<table>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>chart</code>、<code>helm.sh/chart</code></td>
+      <td><code>foo-chart</code></td>
+      <td>使用しているチャート名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>release</code></td>
+      <td><code>foo-release</code>、<code>foo-application</code></td>
+      <td>Helm リリース名、ArogoCD の Application 名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>heritage</code></td>
+      <td><code>Helm</code>、<code>Tiller</code></td>
+      <td><code>v3</code> の場合は <code>Helm</code>、<code>v2</code> の場合は <code>Tiller</code> になる。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -62,11 +83,32 @@ $ kubectl annotate --overwrite crd <CRD名> meta.helm.sh/release-name-
 
 #### ▼ 種類
 
-| キー                             | 値の例          | 説明                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| -------------------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `meta.helm.sh/release-name`      | `foo-release`   | Helm のリリース名を設定する。これを削除すると、helm-diff で削除判定になっても、実際には削除されない。                                                                                                                                                                                                                                                                                                                            |
-| `meta.helm.sh/release-namespace` | `foo-namespace` | `helm install` コマンド時の Namespace を設定する。これを削除すると、helm-diff で削除判定になっても、実際には削除されない。                                                                                                                                                                                                                                                                                                       |
-| `meta.helm.sh/resource-policy`   | `keep`          | Kubernetes リソース定義や CRD に付与することにより、 `helm install` コマンド時や `helm uninstall` コマンド時に、その再作成処理や削除処理をスキップする。これは、特に CRD に付与したほうがよい。公式チャートのアップグレード時に、特定のチャート内の Kubernetes リソースを別チャートに移行したい場合に役立つ。他に、Helm リリースのアンインストール時に特定の Kubernetes リソース (例：PersistentVolume) を残したい場合に役立つ。 |
+<table>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>meta.helm.sh/release-name</code></td>
+      <td><code>foo-release</code></td>
+      <td>Helm のリリース名を設定する。これを削除すると、helm-diff で削除判定になっても、実際には削除されない。</td>
+    </tr>
+    <tr>
+      <td><code>meta.helm.sh/release-namespace</code></td>
+      <td><code>foo-namespace</code></td>
+      <td><code>helm install</code> コマンド時の Namespace を設定する。これを削除すると、helm-diff で削除判定になっても、実際には削除されない。</td>
+    </tr>
+    <tr>
+      <td><code>meta.helm.sh/resource-policy</code></td>
+      <td><code>keep</code></td>
+      <td>Kubernetes リソース定義や CRD に付与することにより、 <code>helm install</code> コマンド時や <code>helm uninstall</code> コマンド時に、その再作成処理や削除処理をスキップする。これは、特に CRD に付与したほうがよい。公式チャートのアップグレード時に、特定のチャート内の Kubernetes リソースを別チャートに移行したい場合に役立つ。他に、Helm リリースのアンインストール時に特定の Kubernetes リソース (例：PersistentVolume) を残したい場合に役立つ。</td>
+    </tr>
+  </tbody>
+</table>
 
 CRD に `meta.helm.sh/resource-policy` キーを付与しておくと、`helm destroy` コマンド時に削除をスキップできる。
 

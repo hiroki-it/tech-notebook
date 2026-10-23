@@ -47,12 +47,32 @@ Vagrantfile 自体をプロビジョナーとして使用もできる。
 
 #### ▼ プロバイダーの種類
 
-| プロバイダー名 | 補足                                                  |
-| -------------- | ----------------------------------------------------- |
-| VirtualBox     | ・https://www.vagrantup.com/docs/providers/virtualbox |
-| VMWare         | ・https://www.vagrantup.com/docs/providers/vmware     |
-| Docker         | ・https://www.vagrantup.com/docs/providers/docker     |
-| Hyper-V        | ・https://www.vagrantup.com/docs/providers/hyperv     |
+<table>
+  <thead>
+    <tr>
+      <th>プロバイダー名</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>VirtualBox</td>
+      <td>・<a href="https://www.vagrantup.com/docs/providers/virtualbox">https://www.vagrantup.com/docs/providers/virtualbox</a></td>
+    </tr>
+    <tr>
+      <td>VMWare</td>
+      <td>・<a href="https://www.vagrantup.com/docs/providers/vmware">https://www.vagrantup.com/docs/providers/vmware</a></td>
+    </tr>
+    <tr>
+      <td>Docker</td>
+      <td>・<a href="https://www.vagrantup.com/docs/providers/docker">https://www.vagrantup.com/docs/providers/docker</a></td>
+    </tr>
+    <tr>
+      <td>Hyper-V</td>
+      <td>・<a href="https://www.vagrantup.com/docs/providers/hyperv">https://www.vagrantup.com/docs/providers/hyperv</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -68,14 +88,47 @@ Vagrantfile 自体をプロビジョナーとして使用もできる。
 
 #### ▼ プロビジョナーの種類
 
-| プロビジョナー名 | ユースケース                                                                           | 補足                                                       |
-| ---------------- | -------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| シェル           | Vagrantfile 自体をプロビジョニングツールとして使用する。                               | ・https://www.vagrantup.com/docs/provisioning/shell        |
-| Ansible          | Vagrantfile でプロビジョニングを実行する代わりに、Ansible を使用する。                 | ・https://www.vagrantup.com/docs/provisioning/ansible      |
-| CFEngine         | Vagrantfile でプロビジョニングを実行する代わりに、CFEngine を使用する。                | ・https://www.vagrantup.com/docs/provisioning/cfengine     |
-| Chef             | Vagrantfile でプロビジョニングを実行する代わりに、Chef を使用する。                    | ・https://www.vagrantup.com/docs/provisioning/chef_common  |
-| Docker           | Vagrantfile でプロビジョニングを実行する代わりに、Dockerfile (に似た記述) を使用する。 | ・https://www.vagrantup.com/docs/provisioning/docker       |
-| Puppet           | Vagrantfile でプロビジョニングを実行する代わりに、Puppet を使用する。                  | ・https://www.vagrantup.com/docs/provisioning/puppet_apply |
+<table>
+  <thead>
+    <tr>
+      <th>プロビジョナー名</th>
+      <th>ユースケース</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>シェル</td>
+      <td>Vagrantfile 自体をプロビジョニングツールとして使用する。</td>
+      <td>・<a href="https://www.vagrantup.com/docs/provisioning/shell">https://www.vagrantup.com/docs/provisioning/shell</a></td>
+    </tr>
+    <tr>
+      <td>Ansible</td>
+      <td>Vagrantfile でプロビジョニングを実行する代わりに、Ansible を使用する。</td>
+      <td>・<a href="https://www.vagrantup.com/docs/provisioning/ansible">https://www.vagrantup.com/docs/provisioning/ansible</a></td>
+    </tr>
+    <tr>
+      <td>CFEngine</td>
+      <td>Vagrantfile でプロビジョニングを実行する代わりに、CFEngine を使用する。</td>
+      <td>・<a href="https://www.vagrantup.com/docs/provisioning/cfengine">https://www.vagrantup.com/docs/provisioning/cfengine</a></td>
+    </tr>
+    <tr>
+      <td>Chef</td>
+      <td>Vagrantfile でプロビジョニングを実行する代わりに、Chef を使用する。</td>
+      <td>・<a href="https://www.vagrantup.com/docs/provisioning/chef_common">https://www.vagrantup.com/docs/provisioning/chef_common</a></td>
+    </tr>
+    <tr>
+      <td>Docker</td>
+      <td>Vagrantfile でプロビジョニングを実行する代わりに、Dockerfile (に似た記述) を使用する。</td>
+      <td>・<a href="https://www.vagrantup.com/docs/provisioning/docker">https://www.vagrantup.com/docs/provisioning/docker</a></td>
+    </tr>
+    <tr>
+      <td>Puppet</td>
+      <td>Vagrantfile でプロビジョニングを実行する代わりに、Puppet を使用する。</td>
+      <td>・<a href="https://www.vagrantup.com/docs/provisioning/puppet_apply">https://www.vagrantup.com/docs/provisioning/puppet_apply</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

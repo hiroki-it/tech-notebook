@@ -216,10 +216,24 @@ provider "registry.terraform.io/hashicorp/aws" {
 }
 ```
 
-| タグ名 | 説明                                                                                                                                                                                                                                                             |
-| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `h1`   | 開発者が使用している OS を表すハッシュ値を設定する。`zh` タグの `zip` パッケージの OS 名に存在しない OS 値が、`h1` タグに設定されている場合、通信中に改竄されたと見なされ、エラーになってしまう。                                                                |
-| `zh`   | プロバイダーの `zip` パッケージ (`terraform-provider-aws_<バージョン>_<OS名>`) のチェックサムハッシュ値を設定する。`h1` タグの OS 値に存在しない OS 名の `zip` パッケージが、`zh` タグに設定されている場合、通信中に改竄されたと見なされ、エラーになってしまう。 |
+<table>
+  <thead>
+    <tr>
+      <th>タグ名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>h1</code></td>
+      <td>開発者が使用している OS を表すハッシュ値を設定する。<code>zh</code> タグの <code>zip</code> パッケージの OS 名に存在しない OS 値が、<code>h1</code> タグに設定されている場合、通信中に改竄されたと見なされ、エラーになってしまう。</td>
+    </tr>
+    <tr>
+      <td><code>zh</code></td>
+      <td>プロバイダーの <code>zip</code> パッケージ (<code>terraform-provider-aws_&lt;バージョン&gt;_&lt;OS名&gt;</code>) のチェックサムハッシュ値を設定する。<code>h1</code> タグの OS 値に存在しない OS 名の <code>zip</code> パッケージが、<code>zh</code> タグに設定されている場合、通信中に改竄されたと見なされ、エラーになってしまう。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [.terraform.lock.hcl 完全に理解した / How to update .terraform.lock.hcl efficiently - Speaker Deck](https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12)
 

@@ -155,11 +155,28 @@ repository/
 
 ### Namespace の粒度
 
-|               |                                                            |
-| ------------- | ---------------------------------------------------------- |
-| `application` | フロントエンドアプリケーション、各種マイクロサービスを置く |
-| `batch`       | バッチサービスを置く                                       |
-| `system`      | 監視サービスなどを置く                                     |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>application</code></td>
+      <td>フロントエンドアプリケーション、各種マイクロサービスを置く</td>
+    </tr>
+    <tr>
+      <td><code>batch</code></td>
+      <td>バッチサービスを置く</td>
+    </tr>
+    <tr>
+      <td><code>system</code></td>
+      <td>監視サービスなどを置く</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -173,12 +190,32 @@ repository/
 
 ケバブケースとする。
 
-| Kubernetes リソース | 例    |
-| ------------------- | ----- |
-| Service             | `foo` |
-| Deployment          | `foo` |
-| PersistentVolume    | `foo` |
-| ...                 | ...   |
+<table>
+  <thead>
+    <tr>
+      <th>Kubernetes リソース</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Service</td>
+      <td><code>foo</code></td>
+    </tr>
+    <tr>
+      <td>Deployment</td>
+      <td><code>foo</code></td>
+    </tr>
+    <tr>
+      <td>PersistentVolume</td>
+      <td><code>foo</code></td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ 冗長な名前が嫌いでない場合
 
@@ -186,12 +223,32 @@ repository/
 
 ケバブケースとする。
 
-| Kubernetes リソース | 例                      |
-| ------------------- | ----------------------- |
-| Service             | `foo-service`           |
-| Deployment          | `foo-pod`               |
-| PersistentVolume    | `foo-persistent-volume` |
-| ...                 | ...                     |
+<table>
+  <thead>
+    <tr>
+      <th>Kubernetes リソース</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Service</td>
+      <td><code>foo-service</code></td>
+    </tr>
+    <tr>
+      <td>Deployment</td>
+      <td><code>foo-pod</code></td>
+    </tr>
+    <tr>
+      <td>PersistentVolume</td>
+      <td><code>foo-persistent-volume</code></td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -275,15 +332,68 @@ repository/
 
 開発環境で Kubernetes リソースの機能追加を検証するツールの例を記載する。
 
-|                         | Minikube                                                                                                                                                            | Docker for Desktop                                                             | Kind                                                                                        | クラウドプロバイダー (Amazon EKS、Google Cloud GKE など)                                                    |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| 概要                    | カスタマイズ性が高いため、カスタマイズ次第で本番環境と開発環境の差異を小さくできる。2022 年 3 月の現在では、Kubernetes の開発環境として、ベタープラクティスである。 | セットアップが非常に簡単 (有効化するだけ) なため、開発に取り掛かるまでが早い。 | セットアップが簡単なため、開発に取り掛かるまでが早い                                        | 実行環境を開発環境としても使用する。開発者ごとに異なる Namespace を作成する。これを採用している企業が多い。 |
-| セットアップの難易度    | 簡単                                                                                                                                                                | 非常に簡単                                                                     | 簡単                                                                                        | 難しい                                                                                                      |
-| コンテナランタイム      | docker、containerd、cri-o                                                                                                                                           | docker                                                                         | containerd (ホスト OS の docker コンテナを作成し、このなかに containerd コンテナを作成する) | docker、containerd                                                                                          |
-| Kubernetes のバージョン | 任意のバージョンを指定できる。                                                                                                                                      | Docker for Desktop のバージョンごとに、Kubernetes のバージョンが固定される。   | 任意のバージョンを指定できる。                                                              | 任意のバージョンを指定できる。                                                                              |
-| マルチ Node             | 可能                                                                                                                                                                | 可能                                                                           | 可能                                                                                        | 可能                                                                                                        |
-| Node のカスタマイズ性   | 高い                                                                                                                                                                | 低い                                                                           | 高い                                                                                        | 高い                                                                                                        |
-| 料金                    | 無料                                                                                                                                                                | 無料                                                                           | 無料                                                                                        | 非常に高い                                                                                                  |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Minikube</th>
+      <th>Docker for Desktop</th>
+      <th>Kind</th>
+      <th>クラウドプロバイダー (Amazon EKS、Google Cloud GKE など)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>概要</td>
+      <td>カスタマイズ性が高いため、カスタマイズ次第で本番環境と開発環境の差異を小さくできる。2022 年 3 月の現在では、Kubernetes の開発環境として、ベタープラクティスである。</td>
+      <td>セットアップが非常に簡単 (有効化するだけ) なため、開発に取り掛かるまでが早い。</td>
+      <td>セットアップが簡単なため、開発に取り掛かるまでが早い</td>
+      <td>実行環境を開発環境としても使用する。開発者ごとに異なる Namespace を作成する。これを採用している企業が多い。</td>
+    </tr>
+    <tr>
+      <td>セットアップの難易度</td>
+      <td>簡単</td>
+      <td>非常に簡単</td>
+      <td>簡単</td>
+      <td>難しい</td>
+    </tr>
+    <tr>
+      <td>コンテナランタイム</td>
+      <td>docker、containerd、cri-o</td>
+      <td>docker</td>
+      <td>containerd (ホスト OS の docker コンテナを作成し、このなかに containerd コンテナを作成する)</td>
+      <td>docker、containerd</td>
+    </tr>
+    <tr>
+      <td>Kubernetes のバージョン</td>
+      <td>任意のバージョンを指定できる。</td>
+      <td>Docker for Desktop のバージョンごとに、Kubernetes のバージョンが固定される。</td>
+      <td>任意のバージョンを指定できる。</td>
+      <td>任意のバージョンを指定できる。</td>
+    </tr>
+    <tr>
+      <td>マルチ Node</td>
+      <td>可能</td>
+      <td>可能</td>
+      <td>可能</td>
+      <td>可能</td>
+    </tr>
+    <tr>
+      <td>Node のカスタマイズ性</td>
+      <td>高い</td>
+      <td>低い</td>
+      <td>高い</td>
+      <td>高い</td>
+    </tr>
+    <tr>
+      <td>料金</td>
+      <td>無料</td>
+      <td>無料</td>
+      <td>無料</td>
+      <td>非常に高い</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Using Multi-Node Clusters \| minikube](https://minikube.sigs.k8s.io/docs/tutorials/multi_node/)
 > - https://codefresh.io/kubernetes-tutorial/local-kubernetes-mac-minikube-vs-docker-desktop/
@@ -292,9 +402,22 @@ repository/
 
 #### ▼ Kubernetes リソースの apply
 
-|      | Skaffold                                                                                                                               | Telepresence                                                                                                                              |
-| ---- | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| 概要 | CIOps によって、Kubernetes の開発環境に Kubernetes リソースを作成する。本番環境への CIOps は非推奨であるが、開発環境であれば問題ない。 | ローカルマシンに対するリクエストを、リモートにある Kubernetes の実行環境にフォワーディングする。<br>・https://thinkit.co.jp/article/17853 |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Skaffold</th>
+      <th>Telepresence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>概要</td>
+      <td>CIOps によって、Kubernetes の開発環境に Kubernetes リソースを作成する。本番環境への CIOps は非推奨であるが、開発環境であれば問題ない。</td>
+      <td>ローカルマシンに対するリクエストを、リモートにある Kubernetes の実行環境にフォワーディングする。<br>・<a href="https://thinkit.co.jp/article/17853">https://thinkit.co.jp/article/17853</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -304,21 +427,64 @@ repository/
 
 開発環境で検証後、Kubernetes リソースの機能追加を検証するツールの例を記載する。
 
-|                                       | すべて自前                                                                                                                                                                                                                 | オンプレ                                                                                                                                                                                                                                                                                                                                                                                  | クラウド                                                                                                                                                                                                                                                                                                 |
-| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Kuberbetes オーケストレーションツール | すべて自前なため、自由にカスタマイズできる。                                                                                                                                                                               | Kubeadm、Rancher、Kops、Kubespray、ベアメタル (例；EKS Anywhere、Anthos on Baremetal)など                                                                                                                                                                                                                                                                                                 | Amazon EKS、Google Cloud GKE など                                                                                                                                                                                                                                                                        |
-| 説明                                  | オンプレミス上にコントロールプレーン Node やワーカーNode となる仮想サーバーを事前に作成しておく。ユーザー自身が、Cluster を作成し、仮想サーバーにコントロールプレーン Node あるいはワーカーNode としての役割を割り当てる。 | オンプレミス上にコントロールプレーン Node やワーカーNode となる仮想サーバーを事前に作成しておく。ツールを使用して、仮想サーバーを Cluster に参加させ、仮想サーバーにコントロールプレーン Node あるいはワーカーNode としての役割を割り当てる。マニフェストの DB として KVS を使用する必要があるが、KVS 用クエリを RDB 用クエリに変換するツール (例：Kine) を使用すれば、RDB も使用できる。 | セルフマネージドワーカーNode の場合は、ワーカーNode となる仮想サーバーを事前に作成しておく。コントロールプレーン Node は必ずマネージドになる。クラウドプロバイダーを使用して、仮想サーバーを Cluster に参加させ、仮想サーバーにコントロールプレーン Node あるいはワーカーNode としての役割を割り当てる。 |
-| メリット                              | すべて自前なため、自由にカスタマイズできる。                                                                                                                                                                               | カスタマイズ性が高い。                                                                                                                                                                                                                                                                                                                                                                    | マネージドであるため、ユーザーが Kubernetes のワーカーNode を管理するコストが低い。執筆時点 (2022 年 3 月) では、Kubernetes の本番環境として、ベタープラクティスである。                                                                                                                                 |
-| デメリット                            | ユーザーが Kubernetes のワーカーNode を管理するコストが高い。                                                                                                                                                              | ユーザーが Kubernetes のワーカーNode を管理するコストが高い。                                                                                                                                                                                                                                                                                                                             | カスタマイズ性が低い                                                                                                                                                                                                                                                                                     |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>すべて自前</th>
+      <th>オンプレ</th>
+      <th>クラウド</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Kuberbetes オーケストレーションツール</td>
+      <td>すべて自前なため、自由にカスタマイズできる。</td>
+      <td>Kubeadm、Rancher、Kops、Kubespray、ベアメタル (例；EKS Anywhere、Anthos on Baremetal)など</td>
+      <td>Amazon EKS、Google Cloud GKE など</td>
+    </tr>
+    <tr>
+      <td>説明</td>
+      <td>オンプレミス上にコントロールプレーン Node やワーカーNode となる仮想サーバーを事前に作成しておく。ユーザー自身が、Cluster を作成し、仮想サーバーにコントロールプレーン Node あるいはワーカーNode としての役割を割り当てる。</td>
+      <td>オンプレミス上にコントロールプレーン Node やワーカーNode となる仮想サーバーを事前に作成しておく。ツールを使用して、仮想サーバーを Cluster に参加させ、仮想サーバーにコントロールプレーン Node あるいはワーカーNode としての役割を割り当てる。マニフェストの DB として KVS を使用する必要があるが、KVS 用クエリを RDB 用クエリに変換するツール (例：Kine) を使用すれば、RDB も使用できる。</td>
+      <td>セルフマネージドワーカーNode の場合は、ワーカーNode となる仮想サーバーを事前に作成しておく。コントロールプレーン Node は必ずマネージドになる。クラウドプロバイダーを使用して、仮想サーバーを Cluster に参加させ、仮想サーバーにコントロールプレーン Node あるいはワーカーNode としての役割を割り当てる。</td>
+    </tr>
+    <tr>
+      <td>メリット</td>
+      <td>すべて自前なため、自由にカスタマイズできる。</td>
+      <td>カスタマイズ性が高い。</td>
+      <td>マネージドであるため、ユーザーが Kubernetes のワーカーNode を管理するコストが低い。執筆時点 (2022 年 3 月) では、Kubernetes の本番環境として、ベタープラクティスである。</td>
+    </tr>
+    <tr>
+      <td>デメリット</td>
+      <td>ユーザーが Kubernetes のワーカーNode を管理するコストが高い。</td>
+      <td>ユーザーが Kubernetes のワーカーNode を管理するコストが高い。</td>
+      <td>カスタマイズ性が低い</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Kubernetes + Ansible = Kubespray ~KubesprayからAnsibleに入門する~ - TECHSTEP](https://techstep.hatenablog.com/entry/2019/12/23/000715)
 > - https://medium.com/@PlanB./on-premises-kubernetes-is-kubeadm-or-rancher-the-right-choice-c569e51773dc
 
 #### ▼ Kubernetes リソースの apply
 
-|      | CIOps                                                                                 | GitOps                                                                   |
-| ---- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| 概要 | CIOps によって、Kubernetes の本番環境に Kubernetes リソースを作成する。非推奨である。 | GitOps によって、Kubernetes の本番環境に Kubernetes リソースを作成する。 |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>CIOps</th>
+      <th>GitOps</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>概要</td>
+      <td>CIOps によって、Kubernetes の本番環境に Kubernetes リソースを作成する。非推奨である。</td>
+      <td>GitOps によって、Kubernetes の本番環境に Kubernetes リソースを作成する。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ 実行環境の分割
 
@@ -364,14 +530,47 @@ Kubernetes では、稼働する可能性のある Pod 数から、ワーカーN
 
 削除される Pod と作成される Pod の IP アドレスを変える (IP アドレスの再利用を防ぐ) ため、Pod の最大数の `2` 倍の IP アドレスを持つ CIDR ブロックを設定するとよい。
 
-| Node 当たりの最大 Pod 数 | ワーカーNode 当たりの CIDR ブロック | IP アドレス数 |
-| ------------------------ | ----------------------------------- | ------------- |
-| `1`                      | `/32`                               | `2`           |
-| `8`                      | `/28`                               | `16`          |
-| `9`～`16`                | `/27`                               | `32`          |
-| `17`～`32`               | `/26`                               | `64`          |
-| `33`～`64`               | `/25`                               | `128`         |
-| `65`～`110`              | `/24`                               | `256`         |
+<table>
+  <thead>
+    <tr>
+      <th>Node 当たりの最大 Pod 数</th>
+      <th>ワーカーNode 当たりの CIDR ブロック</th>
+      <th>IP アドレス数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>1</code></td>
+      <td><code>/32</code></td>
+      <td><code>2</code></td>
+    </tr>
+    <tr>
+      <td><code>8</code></td>
+      <td><code>/28</code></td>
+      <td><code>16</code></td>
+    </tr>
+    <tr>
+      <td><code>9</code>～<code>16</code></td>
+      <td><code>/27</code></td>
+      <td><code>32</code></td>
+    </tr>
+    <tr>
+      <td><code>17</code>～<code>32</code></td>
+      <td><code>/26</code></td>
+      <td><code>64</code></td>
+    </tr>
+    <tr>
+      <td><code>33</code>～<code>64</code></td>
+      <td><code>/25</code></td>
+      <td><code>128</code></td>
+    </tr>
+    <tr>
+      <td><code>65</code>～<code>110</code></td>
+      <td><code>/24</code></td>
+      <td><code>256</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Configure maximum Pods per node \| GKE networking \| Google Cloud Documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 
@@ -410,24 +609,84 @@ Kubernetes の以下のコンポーネントが、メトリクスエンドポイ
 
 #### ▼ Cluster
 
-| メトリクス | 単位 | 説明                                                                 | アラート条件例 (合致したら発火)                                  |
-| ---------- | ---- | -------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| CPU        | %    | 同じ Cluster 内のワーカーNode の CPU 使用率をデータポイントとする。  | ・統計 : 期間内平均使用率<br>・期間 : `5` 分<br>・閾値 : `>= 80` |
-| Memory     | %    | 同じ Cluster 内のワーカーNode のメモリ使用率をデータポイントとする。 | ・統計 : 期間内平均使用率<br>・期間 : `5` 分<br>・閾値 : `>= 80` |
+<table>
+  <thead>
+    <tr>
+      <th>メトリクス</th>
+      <th>単位</th>
+      <th>説明</th>
+      <th>アラート条件例 (合致したら発火)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CPU</td>
+      <td>%</td>
+      <td>同じ Cluster 内のワーカーNode の CPU 使用率をデータポイントとする。</td>
+      <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
+    </tr>
+    <tr>
+      <td>Memory</td>
+      <td>%</td>
+      <td>同じ Cluster 内のワーカーNode のメモリ使用率をデータポイントとする。</td>
+      <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ Pod
 
-| メトリクス | 単位 | 説明                                           | アラート条件例 (合致したら発火)                                  |
-| ---------- | ---- | ---------------------------------------------- | ---------------------------------------------------------------- |
-| CPU        | %    | Pod 全体の CPU 使用率をデータポイントとする。  | ・統計 : 期間内平均使用率<br>・期間 : `5` 分<br>・閾値 : `>= 80` |
-| Memory     | %    | Pod 全体のメモリ使用率をデータポイントとする。 | ・統計 : 期間内平均使用率<br>・期間 : `5` 分<br>・閾値 : `>= 80` |
+<table>
+  <thead>
+    <tr>
+      <th>メトリクス</th>
+      <th>単位</th>
+      <th>説明</th>
+      <th>アラート条件例 (合致したら発火)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CPU</td>
+      <td>%</td>
+      <td>Pod 全体の CPU 使用率をデータポイントとする。</td>
+      <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
+    </tr>
+    <tr>
+      <td>Memory</td>
+      <td>%</td>
+      <td>Pod 全体のメモリ使用率をデータポイントとする。</td>
+      <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ コンテナ
 
-| メトリクス | 単位 | 説明                                           | アラート条件例 (合致したら発火)                                  |
-| ---------- | ---- | ---------------------------------------------- | ---------------------------------------------------------------- |
-| CPU        | %    | コンテナの CPU 使用率をデータポイントとする。  | ・統計 : 期間内平均使用率<br>・期間 : `5` 分<br>・閾値 : `>= 80` |
-| Memory     | %    | コンテナのメモリ使用率をデータポイントとする。 | ・統計 : 期間内平均使用率<br>・期間 : `5` 分<br>・閾値 : `>= 80` |
+<table>
+  <thead>
+    <tr>
+      <th>メトリクス</th>
+      <th>単位</th>
+      <th>説明</th>
+      <th>アラート条件例 (合致したら発火)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CPU</td>
+      <td>%</td>
+      <td>コンテナの CPU 使用率をデータポイントとする。</td>
+      <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
+    </tr>
+    <tr>
+      <td>Memory</td>
+      <td>%</td>
+      <td>コンテナのメモリ使用率をデータポイントとする。</td>
+      <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -439,10 +698,30 @@ Kubernetes の以下のコンポーネントが、メトリクスエンドポイ
 
 収集ツールとして、kuebelet に内蔵された cAdvisor がある。
 
-| メトリクス                               | 単位     | 説明                                                            | アラート条件例 (合致したら発火) |
-| ---------------------------------------- | -------- | --------------------------------------------------------------- | ------------------------------- |
-| `container_network_receive_bytes_total`  | カウント | 同じ Cluster 内の受信したバイトの累積数をデータポイントとする。 | 記入中...                       |
-| `container_network_transmit_bytes_total` | カウント | 同じ Cluster 内の送信したバイトの累積数をデータポイントとする。 | 記入中...                       |
+<table>
+  <thead>
+    <tr>
+      <th>メトリクス</th>
+      <th>単位</th>
+      <th>説明</th>
+      <th>アラート条件例 (合致したら発火)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>container_network_receive_bytes_total</code></td>
+      <td>カウント</td>
+      <td>同じ Cluster 内の受信したバイトの累積数をデータポイントとする。</td>
+      <td>記入中...</td>
+    </tr>
+    <tr>
+      <td><code>container_network_transmit_bytes_total</code></td>
+      <td>カウント</td>
+      <td>同じ Cluster 内の送信したバイトの累積数をデータポイントとする。</td>
+      <td>記入中...</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Prometheus と Grafana を使用して AWS Fargate で Amazon EKS をモニタリングする \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/monitoring-amazon-eks-on-aws-fargate-using-prometheus-and-grafana/)
 
@@ -460,10 +739,30 @@ Kubernetes の以下のコンポーネントが、メトリクスエンドポイ
 
 Cluster をディメンションとしたメトリクスの監視ポリシーは以下の通りである。
 
-| メトリクス        | 単位     | 説明                                                                    | アラート条件例 (合致したら発火)                             |
-| ----------------- | -------- | ----------------------------------------------------------------------- | ----------------------------------------------------------- |
-| Node の必要最低数 | カウント | 同じ Cluster 内のワーカーNode 数の必要最低数をデータポイントとする。    | ・統計 : 期間内合計数<br>・期間 : `5` 分<br>・閾値 : `<= 2` |
-| Pod の必要最低数  | カウント | 同じ Cluster 内のワーカーNode の Pod 必要最低数をデータポイントとする。 | ・統計 : 期間内合計数<br>・期間 : `5` 分<br>・閾値 : `<= 1` |
+<table>
+  <thead>
+    <tr>
+      <th>メトリクス</th>
+      <th>単位</th>
+      <th>説明</th>
+      <th>アラート条件例 (合致したら発火)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Node の必要最低数</td>
+      <td>カウント</td>
+      <td>同じ Cluster 内のワーカーNode 数の必要最低数をデータポイントとする。</td>
+      <td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&lt;= 2</code></td>
+    </tr>
+    <tr>
+      <td>Pod の必要最低数</td>
+      <td>カウント</td>
+      <td>同じ Cluster 内のワーカーNode の Pod 必要最低数をデータポイントとする。</td>
+      <td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&lt;= 1</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Kubernetes Monitoring: 6 Tools & 6 Best Practices You Must Know](https://www.tigera.io/learn/guides/kubernetes-monitoring/)
 
@@ -473,9 +772,24 @@ Cluster をディメンションとしたメトリクスの監視ポリシーは
 
 Pod 全体をディメンションとしたメトリクスの監視ポリシーは以下の通りである。
 
-| メトリクス       | 単位     | 説明                                                          | アラート条件例 (合致したら発火)                             |
-| ---------------- | -------- | ------------------------------------------------------------- | ----------------------------------------------------------- |
-| Pod の最低必要数 | カウント | 同じ Deployment 内の Pod の必要最低数をデータポイントとする。 | ・統計 : 期間内合計数<br>・期間 : `5` 分<br>・閾値 : `<= 2` |
+<table>
+  <thead>
+    <tr>
+      <th>メトリクス</th>
+      <th>単位</th>
+      <th>説明</th>
+      <th>アラート条件例 (合致したら発火)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Pod の最低必要数</td>
+      <td>カウント</td>
+      <td>同じ Deployment 内の Pod の必要最低数をデータポイントとする。</td>
+      <td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&lt;= 2</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Kubernetes Monitoring: 6 Tools & 6 Best Practices You Must Know](https://www.tigera.io/learn/guides/kubernetes-monitoring/)
 
@@ -483,9 +797,26 @@ Pod 全体をディメンションとしたメトリクスの監視ポリシー�
 
 コンテナをディメンションとしたメトリクスの監視ポリシーは以下の通りである。
 
-| メトリクス                    | 単位     | 説明                                                                     | アラート条件例 (合致したら発火)                             | 補足                                                                                 |
-| ----------------------------- | -------- | ------------------------------------------------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| ReadinessProbe ヘルスチェック | カウント | コンテナの ReadinessProbe ヘルスチェックの失敗数をデータポイントとする。 | ・統計 : 期間内合計数<br>・期間 : `1` 分<br>・閾値 : `>= 2` | ネットワーク由来の問題で発生することがあるため、連続的に発生したうえでアラートする。 |
+<table>
+  <thead>
+    <tr>
+      <th>メトリクス</th>
+      <th>単位</th>
+      <th>説明</th>
+      <th>アラート条件例 (合致したら発火)</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ReadinessProbe ヘルスチェック</td>
+      <td>カウント</td>
+      <td>コンテナの ReadinessProbe ヘルスチェックの失敗数をデータポイントとする。</td>
+      <td>・統計 : 期間内合計数<br>・期間 : <code>1</code> 分<br>・閾値 : <code>&gt;= 2</code></td>
+      <td>ネットワーク由来の問題で発生することがあるため、連続的に発生したうえでアラートする。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Kubernetes Monitoring: 6 Tools & 6 Best Practices You Must Know](https://www.tigera.io/learn/guides/kubernetes-monitoring/)
 
@@ -540,13 +871,42 @@ $ kubectl debug node/<Node名> \
 
 #### ▼ 静的解析
 
-| 観点                                       | 説明                                                                                                                                                                                                                                                                        | 補足                                                                                                                                                                                                                                                                                                                              |
-| ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| マニフェストの API 仕様違反テスト          | 外部の API 仕様違反テストツール ( (例：kubeconform) を使用する。Kubernetes リソースのスキーマに基づいて、マニフェストの API 仕様違反を検証する。                                                                                                                            | ・https://mixi-developers.mixi.co.jp/kubeconform-2bb477371e06                                                                                                                                                                                                                                                                     |
-| マニフェストのコード規約違反               | 外部の Policy as Code ツール (例：conftest、Gatekeeper CLI の gator など) を使用する。ポリシー (rego など) の定義に基づいて、そのプロダクトのコード規約違反を検証する。                                                                                                     | ・https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B                                                                                                                                                                                              |
-| マニフェストのベストプラクティス違反テスト | 外部のベストプラクティス違反テストツール (例：polaris、kubeconform など) を使用する。報告された CVE に基づいて、チャートの実装方法に起因する脆弱性を検証する。                                                                                                              | ・https://gavin-zhou.medium.com/%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9%E3%81%A8%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AEkubernetes-yaml%E3%81%AE%E3%83%90%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-%E7%AC%AC%E5%9B%9B%E7%AB%A0-bc00f1610a3 |
-| マニフェストのバージョンテスト             | 外部のバージョンテストツール (例：pluto、kubepug) を使用する。指定した Kubernetes のバージョンに基づいて、マニフェストのバージョン (apiVersion) を検証する。                                                                                                                | ・https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically                                                                                                                                                                                                                                                |
-| マニフェストの脆弱性診断                   | 外部の脆弱性診断ツール (例：kics) を使用する。報告された CVE に基づいて、マニフェストの実装方法に起因する脆弱性を検証する。補足として、Kubernetes リソースのセキュリティスキャン (例：trivy) は、すでに作成された Kubernetes リソースに対する検証のため、ここには含めない。 | ・https://blog.nflabs.jp/entry/2021/12/24/091803<br>・https://weblog.grimoh.net/entry/2022/01/02/100000 <br>・https://zenn.dev/tayusa/articles/ad9fafa197888b                                                                                                                                                                     |
+<table>
+  <thead>
+    <tr>
+      <th>観点</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>マニフェストの API 仕様違反テスト</td>
+      <td>外部の API 仕様違反テストツール ( (例：kubeconform) を使用する。Kubernetes リソースのスキーマに基づいて、マニフェストの API 仕様違反を検証する。</td>
+      <td>・<a href="https://mixi-developers.mixi.co.jp/kubeconform-2bb477371e06">https://mixi-developers.mixi.co.jp/kubeconform-2bb477371e06</a></td>
+    </tr>
+    <tr>
+      <td>マニフェストのコード規約違反</td>
+      <td>外部の Policy as Code ツール (例：conftest、Gatekeeper CLI の gator など) を使用する。ポリシー (rego など) の定義に基づいて、そのプロダクトのコード規約違反を検証する。</td>
+      <td>・<a href="https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B">https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftestでpolicyを書いてみる</a></td>
+    </tr>
+    <tr>
+      <td>マニフェストのベストプラクティス違反テスト</td>
+      <td>外部のベストプラクティス違反テストツール (例：polaris、kubeconform など) を使用する。報告された CVE に基づいて、チャートの実装方法に起因する脆弱性を検証する。</td>
+      <td>・<a href="https://gavin-zhou.medium.com/%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9%E3%81%A8%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AEkubernetes-yaml%E3%81%AE%E3%83%90%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-%E7%AC%AC%E5%9B%9B%E7%AB%A0-bc00f1610a3">https://gavin-zhou.medium.com/ベストプラクティスとポリシーのためのkubernetes-yamlのバリデーション-第四章-bc00f1610a3</a></td>
+    </tr>
+    <tr>
+      <td>マニフェストのバージョンテスト</td>
+      <td>外部のバージョンテストツール (例：pluto、kubepug) を使用する。指定した Kubernetes のバージョンに基づいて、マニフェストのバージョン (apiVersion) を検証する。</td>
+      <td>・<a href="https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically">https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically</a></td>
+    </tr>
+    <tr>
+      <td>マニフェストの脆弱性診断</td>
+      <td>外部の脆弱性診断ツール (例：kics) を使用する。報告された CVE に基づいて、マニフェストの実装方法に起因する脆弱性を検証する。補足として、Kubernetes リソースのセキュリティスキャン (例：trivy) は、すでに作成された Kubernetes リソースに対する検証のため、ここには含めない。</td>
+      <td>・<a href="https://blog.nflabs.jp/entry/2021/12/24/091803">https://blog.nflabs.jp/entry/2021/12/24/091803</a><br>・<a href="https://weblog.grimoh.net/entry/2022/01/02/100000">https://weblog.grimoh.net/entry/2022/01/02/100000</a> <br>・<a href="https://zenn.dev/tayusa/articles/ad9fafa197888b">https://zenn.dev/tayusa/articles/ad9fafa197888b</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -574,9 +934,22 @@ GitOps の場合、CI パイプライン上だけでなく、CD パイプライ�
 
 ただし、kube-apiserver の validating-admission ステップ時にこれを実施する必要がある。
 
-| 観点                         | 説明                                                                                                                                                 | 補足                                                                                                                                 |
-| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| マニフェストのコード規約違反 | 外部の Policy as Code ツール (例：Gatekeeper、Kyverno) を使用する。ポリシー (rego など) の定義に基づいて、そのプロダクトのコード規約違反を検証する。 | ・https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B |
+<table>
+  <thead>
+    <tr>
+      <th>観点</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>マニフェストのコード規約違反</td>
+      <td>外部の Policy as Code ツール (例：Gatekeeper、Kyverno) を使用する。ポリシー (rego など) の定義に基づいて、そのプロダクトのコード規約違反を検証する。</td>
+      <td>・<a href="https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B">https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftestでpolicyを書いてみる</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -620,12 +993,37 @@ Kubernetes 自体は Progressive Delivery の能力を持たない。CD ツー�
 
 ### ロールバック
 
-| デプロイ方法の採用状況                              | 方法                                                                                                                                                          | 推奨/非推奨 |
-| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------: |
-| Deployment の RollingUpdate 戦略を採用している場合  | 過去のリリースタグ (リビジョン) を再デプロイする。あるいは GitHub によるコミットのリバートを使用し、現在のコミットを打ち消すコミットを作成し、PR を作成する。 |   非推奨    |
-| CD ツールの BG デプロイメントを採用している場合     | 削除せずに残してある現環境に再ルーティングする。手順は、CD ツールによる。                                                                                     |    推奨     |
-| CD ツールのカナリアリリースを採用している場合       | 現環境へのルーティングの重みづけを 100%にする。手順は、CD ツールによる。                                                                                      |    推奨     |
-| CD ツールの Progressive Delivery を採用している場合 | 削除せずに残してある現環境に再ルーティングする。手順は CD ツールによる。                                                                                      |    推奨     |
+<table>
+  <thead>
+    <tr>
+      <th>デプロイ方法の採用状況</th>
+      <th>方法</th>
+      <th style="text-align:center">推奨/非推奨</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Deployment の RollingUpdate 戦略を採用している場合</td>
+      <td>過去のリリースタグ (リビジョン) を再デプロイする。あるいは GitHub によるコミットのリバートを使用し、現在のコミットを打ち消すコミットを作成し、PR を作成する。</td>
+      <td style="text-align:center">非推奨</td>
+    </tr>
+    <tr>
+      <td>CD ツールの BG デプロイメントを採用している場合</td>
+      <td>削除せずに残してある現環境に再ルーティングする。手順は、CD ツールによる。</td>
+      <td style="text-align:center">推奨</td>
+    </tr>
+    <tr>
+      <td>CD ツールのカナリアリリースを採用している場合</td>
+      <td>現環境へのルーティングの重みづけを 100%にする。手順は、CD ツールによる。</td>
+      <td style="text-align:center">推奨</td>
+    </tr>
+    <tr>
+      <td>CD ツールの Progressive Delivery を採用している場合</td>
+      <td>削除せずに残してある現環境に再ルーティングする。手順は CD ツールによる。</td>
+      <td style="text-align:center">推奨</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

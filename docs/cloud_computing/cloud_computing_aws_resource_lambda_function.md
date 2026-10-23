@@ -136,11 +136,32 @@ exports.handler = (event, context, callback) => {
 
 #### ▼ 予約された引数の説明
 
-| 引数                 | 説明                                                                                                                          | 補足                                                                                                                                                                        |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| event オブジェクト   | HTTP リクエストに関するデータが代入されている。                                                                               | AWS Lambda にリクエストを送信する AWS リソースごとに、オブジェクトの構造が異なる。構造は以下の通り。<br>・https://docs.aws.amazon.com/lambda/latest/dg/lambda-services.html |
-| context オブジェクト | AWS Lambda に関するデータ (名前、バージョンなど) を取得できる関数とプロパティが代入されている。                               | オブジェクトの構造は以下の通り<br>・https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html                                                                        |
-| callback 関数        | 代入されている関数の実体は不明である。すべての処理が終了するまで実行が待機され、AWS Lambda のコール元にレスポンスを返信する。 | ・https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html                                                                                                          |
+<table>
+  <thead>
+    <tr>
+      <th>引数</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>event オブジェクト</td>
+      <td>HTTP リクエストに関するデータが代入されている。</td>
+      <td>AWS Lambda にリクエストを送信する AWS リソースごとに、オブジェクトの構造が異なる。構造は以下の通り。<br>・<a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-services.html">https://docs.aws.amazon.com/lambda/latest/dg/lambda-services.html</a></td>
+    </tr>
+    <tr>
+      <td>context オブジェクト</td>
+      <td>AWS Lambda に関するデータ (名前、バージョンなど) を取得できる関数とプロパティが代入されている。</td>
+      <td>オブジェクトの構造は以下の通り<br>・<a href="https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html">https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html</a></td>
+    </tr>
+    <tr>
+      <td>callback 関数</td>
+      <td>代入されている関数の実体は不明である。すべての処理が終了するまで実行が待機され、AWS Lambda のコール元にレスポンスを返信する。</td>
+      <td>・<a href="https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html">https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html</a></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ テストとデバッグ
 
@@ -344,13 +365,36 @@ func main() {
 
 #### ▼ レポートログ
 
-| 機能名          |                                               |
-| --------------- | --------------------------------------------- |
-| RequestId       | リクエスト ID                                 |
-| Duration        | イベントの処理時間                            |
-| Billed Duration | AWS Lambda の課金対象の時間                   |
-| Memory Size     | AWS Lambda のメモリサイズ                     |
-| Max Memory Used | AWS Lambda が実際に使用するメモリの最大サイズ |
+<table>
+  <thead>
+    <tr>
+      <th>機能名</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RequestId</td>
+      <td>リクエスト ID</td>
+    </tr>
+    <tr>
+      <td>Duration</td>
+      <td>イベントの処理時間</td>
+    </tr>
+    <tr>
+      <td>Billed Duration</td>
+      <td>AWS Lambda の課金対象の時間</td>
+    </tr>
+    <tr>
+      <td>Memory Size</td>
+      <td>AWS Lambda のメモリサイズ</td>
+    </tr>
+    <tr>
+      <td>Max Memory Used</td>
+      <td>AWS Lambda が実際に使用するメモリの最大サイズ</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ ログの出力方法
 
@@ -380,10 +424,27 @@ Amazon CloudWatch Logs にてこれを確認する。
 
 もし後続の処理で非同期処理の結果を使用したい場合、非同期処理の状態を Promise オブジェクトで管理する必要がある。
 
-| パッケージ名                | 説明                                                                            | 補足                                                                |
-| --------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| JavaScript の標準パッケージ | JavaScript にビルトイン関数を使用できる                                         | ・https://nodejs.org/api/index.html                                 |
-| `aws-sdk.js`                | JavaScript を使用して、AWS-API へリクエストを送信し、AWS リソースを操作できる。 | ・https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
+<table>
+  <thead>
+    <tr>
+      <th>パッケージ名</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>JavaScript の標準パッケージ</td>
+      <td>JavaScript にビルトイン関数を使用できる</td>
+      <td>・<a href="https://nodejs.org/api/index.html">https://nodejs.org/api/index.html</a></td>
+    </tr>
+    <tr>
+      <td><code>aws-sdk.js</code></td>
+      <td>JavaScript を使用して、AWS-API へリクエストを送信し、AWS リソースを操作できる。</td>
+      <td>・<a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html">https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html</a></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Building Lambda functions with Node.js - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html)
 

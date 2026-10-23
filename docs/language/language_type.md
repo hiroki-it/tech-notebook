@@ -31,25 +31,192 @@ description: 言語の種類＠言語を記録しています。
 
 複数の様式でプログラミングできる言語もあり、これは『マルチパラダイム言語』という。
 
-|            | 手続き型 | 構造化 | オブジェクト指向型 | 命令型 | 宣言型 | 関数型 | 論理型 |
-| ---------- | :------: | :----: | :----------------: | :----: | :----: | :----: | :----: |
-| C          |    ✅    |        |                    |        |        |        |        |
-| COBOL      |    ✅    |        |                    |        |        |        |        |
-| Go         |    ✅    |        |                    |        |        |        |        |
-| Java       |          |        |         ✅         |   ✅   |        |        |        |
-| JavaScript |          |        |         ✅         |   ✅   |        |   ✅   |        |
-| LISP       |          |        |                    |        |   ✅   |        |        |
-| Pascal     |          |   ✅   |                    |        |        |        |        |
-| Perl       |    ✅    |        |                    |        |        |        |        |
-| Prolog     |          |        |                    |        |        |        |   ✅   |
-| PHP        |          |        |         ✅         |   ✅   |        |        |        |
-| PL/I       |          |   ✅   |                    |        |        |        |        |
-| Python     |          |        |         ✅         |   ✅   |        |   ✅   |        |
-| R          |          |        |                    |        |        |   ✅   |        |
-| Ruby       |          |        |         ✅         |   ✅   |        |        |        |
-| Rust       |    ✅    |   ✅   |         ✅         |   ✅   |        |   ✅   |        |
-| Scala      |          |        |         ✅         |        |   ✅   |   ✅   |        |
-| SQL        |          |        |                    |        |   ✅   |        |        |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th style="text-align:center">手続き型</th>
+      <th style="text-align:center">構造化</th>
+      <th style="text-align:center">オブジェクト指向型</th>
+      <th style="text-align:center">命令型</th>
+      <th style="text-align:center">宣言型</th>
+      <th style="text-align:center">関数型</th>
+      <th style="text-align:center">論理型</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>COBOL</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Go</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Java</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>JavaScript</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>LISP</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Pascal</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Perl</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Prolog</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>PHP</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>PL/I</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Python</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>R</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Ruby</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Rust</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Scala</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>SQL</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [プログラミングパラダイムとは？種類やそれぞれの特徴を詳しく解説 - SHIFT TERAS CAMPUS](https://web-camp.io/magazine/archives/61816)
 > - [プログラミングパラダイム一覧！種類やそれぞれの概要を簡単に解説！ ｜ 案件評判](https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/)

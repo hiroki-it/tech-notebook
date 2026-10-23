@@ -160,13 +160,42 @@ REVISION         UPDATED                    STATUS     CHART               APP V
 $ helm install <Helmリリース名> <チャートへのパス>
 ```
 
-| パラメーター                                                            | 例                                                          | 補足                                                                                                                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| チャートへのパス                                                        | `./foo-chart`                                               |                                                                                                                                                                  |
-| `<チャートレジストリ名>/<チャートリポジトリ名>`                         | `foo-registry/foo-repository`                               | ・https://zenn.dev/mikutas/articles/2ab146fa1ea35b                                                                                                               |
-| チャートリポジトリ URL                                                  | `https://example.com/foo-chart`                             |                                                                                                                                                                  |
-| `<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>` | `https://example.com/foo-chart foo-registry/foo-repository` |                                                                                                                                                                  |
-| チャートアーカイブへのパス                                              | `./foo-chart-<バージョンタグ>.tgz`                          | `values` ファイルを使用する場合、`values` ファイルはチャートアーカイブ (`.tgz` 形式ファイル) の外にある必要がある。<br>・https://helm.sh/docs/helm/helm_install/ |
+<table>
+  <thead>
+    <tr>
+      <th>パラメーター</th>
+      <th>例</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>チャートへのパス</td>
+      <td><code>./foo-chart</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>&lt;チャートレジストリ名&gt;/&lt;チャートリポジトリ名&gt;</code></td>
+      <td><code>foo-registry/foo-repository</code></td>
+      <td>・<a href="https://zenn.dev/mikutas/articles/2ab146fa1ea35b">https://zenn.dev/mikutas/articles/2ab146fa1ea35b</a></td>
+    </tr>
+    <tr>
+      <td>チャートリポジトリ URL</td>
+      <td><code>https://example.com/foo-chart</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>&lt;チャートリポジトリURL&gt; &lt;チャートレジストリ名&gt;/&lt;チャートリポジトリ名&gt;</code></td>
+      <td><code>https://example.com/foo-chart foo-registry/foo-repository</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>チャートアーカイブへのパス</td>
+      <td><code>./foo-chart-&lt;バージョンタグ&gt;.tgz</code></td>
+      <td><code>values</code> ファイルを使用する場合、<code>values</code> ファイルはチャートアーカイブ (<code>.tgz</code> 形式ファイル) の外にある必要がある。<br>・<a href="https://helm.sh/docs/helm/helm_install/">https://helm.sh/docs/helm/helm_install/</a></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [helm install \| Helm](https://helm.sh/docs/helm/helm_install/)
 

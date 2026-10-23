@@ -259,10 +259,27 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
 
 #### ▼ 抽出例
 
-| 単語 | 意味合い | 対応するドメインモデル |
-| ---- | -------- | ---------------------- |
-| ...  | ...      | ...                    |
-| ...  | ...      | ...                    |
+<table>
+  <thead>
+    <tr>
+      <th>単語</th>
+      <th>意味合い</th>
+      <th>対応するドメインモデル</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [ユビキタス言語策定したらビジネス理解がめっちゃ捗った話](https://zenn.dev/leaner_dev/articles/20210922-ubiquitous-language?redirected=1)
 
@@ -306,10 +323,30 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
 
 **＊表＊**
 
-| 境界づけられたコンテキスト名 | マイクロサービス名 | 集約名 | 集約内のエンティティ |
-| ---------------------------- | ------------------ | ------ | -------------------- |
-|                              |                    |        |                      |
-|                              |                    |        |                      |
+<table>
+  <thead>
+    <tr>
+      <th>境界づけられたコンテキスト名</th>
+      <th>マイクロサービス名</th>
+      <th>集約名</th>
+      <th>集約内のエンティティ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [受注業務フローとは？改善方法やメリットも解説！ - ネクストエンジン｜ECの受注・在庫・出荷を自動化](https://next-engine.net/ec-blog/order-flow/)
 
@@ -331,10 +368,30 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
 
 **＊表＊**
 
-| 境界づけられたコンテキスト名 | マイクロサービス名 | 集約名 | 集約内のエンティティ |
-| ---------------------------- | ------------------ | ------ | -------------------- |
-|                              |                    |        |                      |
-|                              |                    |        |                      |
+<table>
+  <thead>
+    <tr>
+      <th>境界づけられたコンテキスト名</th>
+      <th>マイクロサービス名</th>
+      <th>集約名</th>
+      <th>集約内のエンティティ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 ![book_ec_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/book_ec_ubiquitous_language.png)
 
@@ -388,13 +445,48 @@ class Book {
 
 **＊表＊**
 
-| 境界づけられたコンテキスト名 | マイクロサービス名 | 集約名 | 集約内のエンティティ |
-| ---------------------------- | ------------------ | ------ | -------------------- |
-| 認証                         |                    |        |                      |
-| 予約                         |                    |        |                      |
-| 顧客管理                     |                    |        |                      |
-| 銀行支払い                   |                    |        |                      |
-| クレジットカード支払い       |                    |        |                      |
+<table>
+  <thead>
+    <tr>
+      <th>境界づけられたコンテキスト名</th>
+      <th>マイクロサービス名</th>
+      <th>集約名</th>
+      <th>集約内のエンティティ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>認証</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>予約</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>顧客管理</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>銀行支払い</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>クレジットカード支払い</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 ![hacogym_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_bounded-context.png)
 
@@ -413,11 +505,36 @@ class Book {
 
 **＊表＊**
 
-| 境界づけられたコンテキスト名 | マイクロサービス名 | 集約名 | 集約内のエンティティ |
-| ---------------------------- | ------------------ | ------ | -------------------- |
-| 契約管理                     |                    |        |                      |
-| 商品管理                     |                    |        |                      |
-| 請求管理                     |                    |        |                      |
+<table>
+  <thead>
+    <tr>
+      <th>境界づけられたコンテキスト名</th>
+      <th>マイクロサービス名</th>
+      <th>集約名</th>
+      <th>集約内のエンティティ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>契約管理</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>商品管理</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>請求管理</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 ![contract_billing_management_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/contract_billing_management_ubiquitous_language.png)
 
@@ -430,11 +547,36 @@ class Book {
 
 財務会計コンテキスト、会計ワークフローコンテキスト、従業員管理コンテキストがある。
 
-| 境界づけられたコンテキスト名 | マイクロサービス名 | 集約名 | 集約内のエンティティ |
-| ---------------------------- | ------------------ | ------ | -------------------- |
-| 財務会計                     |                    |        |                      |
-| 会計ワークフロー             |                    |        |                      |
-| 従業員管理                   |                    |        |                      |
+<table>
+  <thead>
+    <tr>
+      <th>境界づけられたコンテキスト名</th>
+      <th>マイクロサービス名</th>
+      <th>集約名</th>
+      <th>集約内のエンティティ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>財務会計</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>会計ワークフロー</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>従業員管理</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 ![freee_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/freee_bounded-context.png)
 
@@ -464,16 +606,66 @@ class Book {
 
 **＊表＊**
 
-| 境界づけられたコンテキスト名 | マイクロサービス名 | 集約名         | 集約内のエンティティ                                                                      |
-| ---------------------------- | ------------------ | -------------- | ----------------------------------------------------------------------------------------- |
-| 送金取引                     | remittance         | 送金           | Remittance（送金）、RemittanceHistories（送金履歴）、RemittanceStatuses（送金ステータス） |
-| 請求                         | payment            | 請求           | Payment（請求）、TransactionHistory（取引履歴）                                           |
-| 銀行口座                     | BankAccount        | 銀行口座       | BankAccount（銀行口座）                                                                   |
-| ユーザー                     | user               | ユーザー       | User（ユーザー）                                                                          |
-| 精算                         | settlement         | 精算           | Settlement（精算）                                                                        |
-| 送金照合                     | reconciliation     | 照合           | Reconciliation（照合）、ReconciliationResult（照合結果）、Difference（差分）              |
-| レポーティング               | reporting          | レポーティング | RemittanceHistory（送金履歴）、RemittanceDetailFile（送金明細ファイル）                   |
-| 送金取引管理ポータル         | web-portal         | 送金取引管理   | web ポータルのフロントエンドアプリケーション                                              |
+<table>
+  <thead>
+    <tr>
+      <th>境界づけられたコンテキスト名</th>
+      <th>マイクロサービス名</th>
+      <th>集約名</th>
+      <th>集約内のエンティティ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>送金取引</td>
+      <td>remittance</td>
+      <td>送金</td>
+      <td>Remittance（送金）、RemittanceHistories（送金履歴）、RemittanceStatuses（送金ステータス）</td>
+    </tr>
+    <tr>
+      <td>請求</td>
+      <td>payment</td>
+      <td>請求</td>
+      <td>Payment（請求）、TransactionHistory（取引履歴）</td>
+    </tr>
+    <tr>
+      <td>銀行口座</td>
+      <td>BankAccount</td>
+      <td>銀行口座</td>
+      <td>BankAccount（銀行口座）</td>
+    </tr>
+    <tr>
+      <td>ユーザー</td>
+      <td>user</td>
+      <td>ユーザー</td>
+      <td>User（ユーザー）</td>
+    </tr>
+    <tr>
+      <td>精算</td>
+      <td>settlement</td>
+      <td>精算</td>
+      <td>Settlement（精算）</td>
+    </tr>
+    <tr>
+      <td>送金照合</td>
+      <td>reconciliation</td>
+      <td>照合</td>
+      <td>Reconciliation（照合）、ReconciliationResult（照合結果）、Difference（差分）</td>
+    </tr>
+    <tr>
+      <td>レポーティング</td>
+      <td>reporting</td>
+      <td>レポーティング</td>
+      <td>RemittanceHistory（送金履歴）、RemittanceDetailFile（送金明細ファイル）</td>
+    </tr>
+    <tr>
+      <td>送金取引管理ポータル</td>
+      <td>web-portal</td>
+      <td>送金取引管理</td>
+      <td>web ポータルのフロントエンドアプリケーション</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ QR 決済ドメイン
 
@@ -495,14 +687,54 @@ QR決済取引管理ポータル：管理者がQR決済取引を照会し、例�
 
 **＊表＊**
 
-| 境界づけられたコンテキスト名 | マイクロサービス名 | 集約名          | 集約内のエンティティ                                                         |
-| ---------------------------- | ------------------ | --------------- | ---------------------------------------------------------------------------- |
-| QR 決済取引                  | transaction        | 取引            | Transaction（取引）                                                          |
-| 加盟店契約                   | merchant           | 契約            | MerchantContract（加盟店契約）、Merchant（加盟店）                           |
-| 精算                         | payment            | 精算            | Payment（清算）                                                              |
-| ユーザー                     | user               | ユーザー        | User（ユーザー）                                                             |
-| QR 決済照合                  | reconciliation     | 照合            | Reconciliation（照合）、ReconciliationResult（照合結果）、Difference（差分） |
-| QR 決済取引管理ポータル      | web-portal         | QR 決済取引管理 | web ポータルのフロントエンドアプリケーション                                 |
+<table>
+  <thead>
+    <tr>
+      <th>境界づけられたコンテキスト名</th>
+      <th>マイクロサービス名</th>
+      <th>集約名</th>
+      <th>集約内のエンティティ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>QR 決済取引</td>
+      <td>transaction</td>
+      <td>取引</td>
+      <td>Transaction（取引）</td>
+    </tr>
+    <tr>
+      <td>加盟店契約</td>
+      <td>merchant</td>
+      <td>契約</td>
+      <td>MerchantContract（加盟店契約）、Merchant（加盟店）</td>
+    </tr>
+    <tr>
+      <td>精算</td>
+      <td>payment</td>
+      <td>精算</td>
+      <td>Payment（清算）</td>
+    </tr>
+    <tr>
+      <td>ユーザー</td>
+      <td>user</td>
+      <td>ユーザー</td>
+      <td>User（ユーザー）</td>
+    </tr>
+    <tr>
+      <td>QR 決済照合</td>
+      <td>reconciliation</td>
+      <td>照合</td>
+      <td>Reconciliation（照合）、ReconciliationResult（照合結果）、Difference（差分）</td>
+    </tr>
+    <tr>
+      <td>QR 決済取引管理ポータル</td>
+      <td>web-portal</td>
+      <td>QR 決済取引管理</td>
+      <td>web ポータルのフロントエンドアプリケーション</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -666,9 +898,24 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 : 暫定的なドメインモデル図を作成する。`little_hands_s` さんは、ID のみを使用する関係であれば『実線矢印』とし、加えてオブジェクト全体を使用する関係であれば『黒塗りの菱形』としている。ユースケースから以下のオブジェクトを抽出する。このとき、実装パターンをおおまかに予想しておく。また、矢印と菱形の関係性から、集約の境界を設定する。
 
-| ユースケース                   | 抽出されたオブジェクト例                                   | 実装パターン                 | 抽出された集約     |
-| ------------------------------ | :--------------------------------------------------------- | ---------------------------- | ------------------ |
-| 映画、上映日時、枚数を選択する | 上映時間帯オブジェクト、上映オブジェクト、映画オブジェクト | エンティティ、値オブジェクト | 上映集約、映画集約 |
+<table>
+  <thead>
+    <tr>
+      <th>ユースケース</th>
+      <th style="text-align:left">抽出されたオブジェクト例</th>
+      <th>実装パターン</th>
+      <th>抽出された集約</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>映画、上映日時、枚数を選択する</td>
+      <td style="text-align:left">上映時間帯オブジェクト、上映オブジェクト、映画オブジェクト</td>
+      <td>エンティティ、値オブジェクト</td>
+      <td>上映集約、映画集約</td>
+    </tr>
+  </tbody>
+</table>
 
 ![ticket-modeling_little-hands_domain-model-diagram_example-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_domain-model-diagram_example-1.jpg)
 
@@ -676,12 +923,41 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 : ドメインモデル図を更新する。
 
-| ユースケース                   | 抽出されたオブジェクト例                                   | 実装パターン                 | 抽出された集約     |
-| ------------------------------ | ---------------------------------------------------------- | ---------------------------- | ------------------ |
-| 映画、上映日時、枚数を選択する | 上映時間帯オブジェクト、上映オブジェクト、映画オブジェクト | エンティティ、値オブジェクト | 上映集約、映画集約 |
-| 同上                           | 予約オブジェクト                                           | エンティティ                 | 予約集約           |
-| 割引を選択する                 | 適用割引オブジェクト                                       | 値オブジェクト               | 予約集約           |
-| 支払い金額を確認する           | 支払料金オブジェクト                                       | 値オブジェクト               | 支払い料金集約     |
+<table>
+  <thead>
+    <tr>
+      <th>ユースケース</th>
+      <th>抽出されたオブジェクト例</th>
+      <th>実装パターン</th>
+      <th>抽出された集約</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">映画、上映日時、枚数を選択する</td>
+      <td>上映時間帯オブジェクト、上映オブジェクト、映画オブジェクト</td>
+      <td>エンティティ、値オブジェクト</td>
+      <td>上映集約、映画集約</td>
+    </tr>
+    <tr>
+      <td>予約オブジェクト</td>
+      <td>エンティティ</td>
+      <td>予約集約</td>
+    </tr>
+    <tr>
+      <td>割引を選択する</td>
+      <td>適用割引オブジェクト</td>
+      <td>値オブジェクト</td>
+      <td>予約集約</td>
+    </tr>
+    <tr>
+      <td>支払い金額を確認する</td>
+      <td>支払料金オブジェクト</td>
+      <td>値オブジェクト</td>
+      <td>支払い料金集約</td>
+    </tr>
+  </tbody>
+</table>
 
 ![ticket-modeling_little-hands_domain-model-diagram_example-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_domain-model-diagram_example-2.jpg)
 
@@ -689,13 +965,46 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 : ドメインモデル図を更新する。
 
-| ユースケース                   | 抽出されたオブジェクト例                                   | 実装パターン                 | 抽出された集約     |
-| ------------------------------ | ---------------------------------------------------------- | ---------------------------- | ------------------ |
-| 映画、上映日時、枚数を選択する | 上映時間帯オブジェクト、上映オブジェクト、映画オブジェクト | エンティティ、値オブジェクト | 上映集約、映画集約 |
-| 同上                           | 予約オブジェクト                                           | エンティティ                 | 予約集約           |
-| 割引を選択する                 | 適用割引オブジェクト                                       | 値オブジェクト               | 予約集約           |
-| 支払い金額を確認する           | 支払料金オブジェクト                                       | 値オブジェクト               | 支払い料金集約     |
-| 同上                           | 料金区分オブジェクト                                       | 区分オブジェクト (Enum)      | 料金設定集約       |
+<table>
+  <thead>
+    <tr>
+      <th>ユースケース</th>
+      <th>抽出されたオブジェクト例</th>
+      <th>実装パターン</th>
+      <th>抽出された集約</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">映画、上映日時、枚数を選択する</td>
+      <td>上映時間帯オブジェクト、上映オブジェクト、映画オブジェクト</td>
+      <td>エンティティ、値オブジェクト</td>
+      <td>上映集約、映画集約</td>
+    </tr>
+    <tr>
+      <td>予約オブジェクト</td>
+      <td>エンティティ</td>
+      <td>予約集約</td>
+    </tr>
+    <tr>
+      <td>割引を選択する</td>
+      <td>適用割引オブジェクト</td>
+      <td>値オブジェクト</td>
+      <td>予約集約</td>
+    </tr>
+    <tr>
+      <td rowspan="2">支払い金額を確認する</td>
+      <td>支払料金オブジェクト</td>
+      <td>値オブジェクト</td>
+      <td>支払い料金集約</td>
+    </tr>
+    <tr>
+      <td>料金区分オブジェクト</td>
+      <td>区分オブジェクト (Enum)</td>
+      <td>料金設定集約</td>
+    </tr>
+  </tbody>
+</table>
 
 ![ticket-modeling_little-hands_domain-model-diagram_example-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_domain-model-diagram_example-3.jpg)
 
@@ -707,14 +1016,51 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 : ドメインモデル図を更新する。
 
-| ユースケース                   | 抽出されたオブジェクト例                                   | 実装パターン                 | 抽出された集約     |
-| ------------------------------ | ---------------------------------------------------------- | ---------------------------- | ------------------ |
-| 映画、上映日時、枚数を選択する | 上映時間帯オブジェクト、上映オブジェクト、映画オブジェクト | エンティティ、値オブジェクト | 上映集約、映画集約 |
-| 同上                           | 予約オブジェクト                                           | エンティティ                 | 予約集約           |
-| 割引を選択する                 | 適用割引オブジェクト                                       | 値オブジェクト               | 予約集約           |
-| 支払い金額を確認する           | 支払料金オブジェクト                                       | 値オブジェクト               | 支払い料金集約     |
-| 同上                           | 料金区分オブジェクト                                       | 区分オブジェクト (Enum)      | 料金設定集約       |
-| 同上                           | 料金区分計算オブジェクト                                   | 値オブジェクト               | 料金区分計算集約   |
+<table>
+  <thead>
+    <tr>
+      <th>ユースケース</th>
+      <th>抽出されたオブジェクト例</th>
+      <th>実装パターン</th>
+      <th>抽出された集約</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">映画、上映日時、枚数を選択する</td>
+      <td>上映時間帯オブジェクト、上映オブジェクト、映画オブジェクト</td>
+      <td>エンティティ、値オブジェクト</td>
+      <td>上映集約、映画集約</td>
+    </tr>
+    <tr>
+      <td>予約オブジェクト</td>
+      <td>エンティティ</td>
+      <td>予約集約</td>
+    </tr>
+    <tr>
+      <td>割引を選択する</td>
+      <td>適用割引オブジェクト</td>
+      <td>値オブジェクト</td>
+      <td>予約集約</td>
+    </tr>
+    <tr>
+      <td rowspan="3">支払い金額を確認する</td>
+      <td>支払料金オブジェクト</td>
+      <td>値オブジェクト</td>
+      <td>支払い料金集約</td>
+    </tr>
+    <tr>
+      <td>料金区分オブジェクト</td>
+      <td>区分オブジェクト (Enum)</td>
+      <td>料金設定集約</td>
+    </tr>
+    <tr>
+      <td>料金区分計算オブジェクト</td>
+      <td>値オブジェクト</td>
+      <td>料金区分計算集約</td>
+    </tr>
+  </tbody>
+</table>
 
 ![ticket-modeling_little-hands_domain-model-diagram_example-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_domain-model-diagram_example-4.jpg)
 
@@ -751,13 +1097,36 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 #### ▼ テーブル構造
 
-| `id` | `order_name` |
-| ---- | ------------ |
-| 1    | foo          |
-| 2    | bar          |
-| 3    | baz          |
-| 4    | qux          |
-| 5    | quux         |
+<table>
+  <thead>
+    <tr>
+      <th><code>id</code></th>
+      <th><code>order_name</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>foo</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>bar</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>baz</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>qux</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>quux</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ イベント仲介システム
 
@@ -802,14 +1171,61 @@ Git のようにして過去の状態を参照できる。
 
 テーブル構造は以下のとおりになり、イベントデータが参照/作成されるだけである。
 
-| `id` | `event_name`  | `event_entity_name` | `event_entity_id` | `event_data`                                     |
-| ---- | ------------- | ------------------- | ----------------- | ------------------------------------------------ |
-| 1    | OrderCreated  | Order               | 1                 | OrderCreated オブジェクトを JSON に変換したもの  |
-| 2    | OrderUpdated  | Order               | 1                 | OrderUpdated オブジェクトを JSON に変換したもの  |
-| 3    | OrderCreated  | Order               | 2                 | OrderCreated オブジェクトを JSON に変換したもの  |
-| 4    | OrderCanceled | Order               | 1                 | OrderCanceled オブジェクトを JSON に変換したもの |
-| 5    | OrderCreated  | Order               | 3                 | OrderCreated オブジェクトを JSON に変換したもの  |
-| ...  | ...           | ...                 | ...               | ...                                              |
+<table>
+  <thead>
+    <tr>
+      <th><code>id</code></th>
+      <th><code>event_name</code></th>
+      <th><code>event_entity_name</code></th>
+      <th><code>event_entity_id</code></th>
+      <th><code>event_data</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>OrderCreated</td>
+      <td>Order</td>
+      <td>1</td>
+      <td>OrderCreated オブジェクトを JSON に変換したもの</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>OrderUpdated</td>
+      <td>Order</td>
+      <td>1</td>
+      <td>OrderUpdated オブジェクトを JSON に変換したもの</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>OrderCreated</td>
+      <td>Order</td>
+      <td>2</td>
+      <td>OrderCreated オブジェクトを JSON に変換したもの</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>OrderCanceled</td>
+      <td>Order</td>
+      <td>1</td>
+      <td>OrderCanceled オブジェクトを JSON に変換したもの</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>OrderCreated</td>
+      <td>Order</td>
+      <td>3</td>
+      <td>OrderCreated オブジェクトを JSON に変換したもの</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://youtu.be/Jtcp9ry8ZcE?t=1066
 > - [SQLでもイベントソーシングはできるという話 #設計 - Qiita](https://qiita.com/uzawa-sorich/items/261021c1d265b20117ab#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%BD%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0es%E3%81%A3%E3%81%A6%E4%BD%95)
@@ -843,12 +1259,32 @@ Git のようにして過去の状態を参照できる。
 
 MVC との関係は次のとおりである。
 
-| MVC アーキテクチャ | レイヤードアーキテクチャ           |
-| ------------------ | ---------------------------------- |
-| Model              | ドメイン層、インフラストラクチャ層 |
-| Controller         | インターフェース層                 |
-| View               | インターフェース層                 |
-| -                  | ユースケース層 (新しく実装する)    |
+<table>
+  <thead>
+    <tr>
+      <th>MVC アーキテクチャ</th>
+      <th>レイヤードアーキテクチャ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Model</td>
+      <td>ドメイン層、インフラストラクチャ層</td>
+    </tr>
+    <tr>
+      <td>Controller</td>
+      <td>インターフェース層</td>
+    </tr>
+    <tr>
+      <td>View</td>
+      <td>インターフェース層</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>ユースケース層 (新しく実装する)</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.amazon.co.jp/dp/4798121967
 > - [ドメイン駆動設計で保守性をあげたリニューアル事例 〜 ショッピングクーポンの設計紹介 - Yahoo! JAPAN Tech Blog](https://techblog.yahoo.co.jp/entry/2021011230061115/)

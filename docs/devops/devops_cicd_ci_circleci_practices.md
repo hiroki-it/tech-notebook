@@ -29,24 +29,78 @@ CircleCI の操作アカウントを認証し、認可する。
 
 利便的かつ安全な認証／認可方法を選ぶ。
 
-| 認証／認可方法 | 二要素認証 | 推奨/非推奨 |
-| -------------- | :--------: | :---------: |
-| ベーシック認証 |     -      |   非推奨    |
-| OAuth          |    あり    |    推奨     |
-|                |    なし    |   非推奨    |
-| OIDC           |    あり    |    推奨     |
-|                |    なし    |   非推奨    |
-| SAML           |    あり    |    推奨     |
-|                |    なし    |   非推奨    |
+<table>
+  <thead>
+    <tr>
+      <th>認証／認可方法</th>
+      <th style="text-align:center">二要素認証</th>
+      <th style="text-align:center">推奨/非推奨</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ベーシック認証</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">非推奨</td>
+    </tr>
+    <tr>
+      <td rowspan="2">OAuth</td>
+      <td style="text-align:center">あり</td>
+      <td style="text-align:center">推奨</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">非推奨</td>
+    </tr>
+    <tr>
+      <td rowspan="2">OIDC</td>
+      <td style="text-align:center">あり</td>
+      <td style="text-align:center">推奨</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">非推奨</td>
+    </tr>
+    <tr>
+      <td rowspan="2">SAML</td>
+      <td style="text-align:center">あり</td>
+      <td style="text-align:center">推奨</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">非推奨</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ CircleCI 自体の場合
 
 CircleCI を認証し、認可する。
 
-| 期限   | 説明                                                    | 方法                                                                                                                                                                                                                                                                                                | 推奨/非推奨 |
-| ------ | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------: |
-| 恒久的 | CircleCI を恒久的に認証し、また同様に恒久的に認可する。 | ・AWS の場合、ツールに IAM ユーザを紐付けておき、この IAM ユーザーに常に IAM ロールを紐付けておく。<br>・GCP の場合、ツールに IAM ユーザを紐付けておき、この IAM ユーザーに常にロールを紐付けておく。                                                                                               |   非推奨    |
-| 一時的 | CircleCI を一時的に認証し、また同様に一時的に認可する。 | ・AWS の場合、ツールに IAM ユーザー/SAML ユーザー/OIDC ユーザーを紐付けておき、AWS STS で一時的に認証する。また、AssumeRole によるスイッチロールでは、認可スコープを一時的に付与する。<br>・GCP の場合、ツールに IAM ユーザーを紐付けておき、条件付きロールバインディングで認可スコープを付与する。 |    推奨     |
+<table>
+  <thead>
+    <tr>
+      <th>期限</th>
+      <th>説明</th>
+      <th>方法</th>
+      <th style="text-align:center">推奨/非推奨</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>恒久的</td>
+      <td>CircleCI を恒久的に認証し、また同様に恒久的に認可する。</td>
+      <td>・AWS の場合、ツールに IAM ユーザを紐付けておき、この IAM ユーザーに常に IAM ロールを紐付けておく。<br>・GCP の場合、ツールに IAM ユーザを紐付けておき、この IAM ユーザーに常にロールを紐付けておく。</td>
+      <td style="text-align:center">非推奨</td>
+    </tr>
+    <tr>
+      <td>一時的</td>
+      <td>CircleCI を一時的に認証し、また同様に一時的に認可する。</td>
+      <td>・AWS の場合、ツールに IAM ユーザー/SAML ユーザー/OIDC ユーザーを紐付けておき、AWS STS で一時的に認証する。また、AssumeRole によるスイッチロールでは、認可スコープを一時的に付与する。<br>・GCP の場合、ツールに IAM ユーザーを紐付けておき、条件付きロールバインディングで認可スコープを付与する。</td>
+      <td style="text-align:center">推奨</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

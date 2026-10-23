@@ -134,11 +134,28 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 
 トレースコンテキストには、以下の ID が含まれている。
 
-| ID          | 説明                                                                     |
-| ----------- | ------------------------------------------------------------------------ |
-| トレース ID | 一つのトレースを構成するスパン群で共通する ID である。                   |
-| スパン ID   | 各スパンを識別する ID である。                                           |
-| 親スパン ID | 親スパンを識別する ID である。ルートスパンには親スパン ID が存在しない。 |
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>トレース ID</td>
+      <td>一つのトレースを構成するスパン群で共通する ID である。</td>
+    </tr>
+    <tr>
+      <td>スパン ID</td>
+      <td>各スパンを識別する ID である。</td>
+    </tr>
+    <tr>
+      <td>親スパン ID</td>
+      <td>親スパンを識別する ID である。ルートスパンには親スパン ID が存在しない。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Understand distributed tracing](https://docs.lightstep.com/docs/understand-distributed-tracing#context)
 > - [分散トレーシングとOpenTelemetryのススメ / Getting started distributed tracing and OpenTelemetry - Speaker Deck](https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=5)
@@ -182,11 +199,28 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 
 W3C Trace Context 仕様の ID は以下の通りである。
 
-| 項目        | 値                  |
-| ----------- | ------------------- |
-| trace-id    | 16 進数 (`32` 文字) |
-| parent-id   | 16 進数 (`16` 文字) |
-| trace-flags | 16 進数 (`2` 文字)  |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>値</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>trace-id</td>
+      <td>16 進数 (<code>32</code> 文字)</td>
+    </tr>
+    <tr>
+      <td>parent-id</td>
+      <td>16 進数 (<code>16</code> 文字)</td>
+    </tr>
+    <tr>
+      <td>trace-flags</td>
+      <td>16 進数 (<code>2</code> 文字)</td>
+    </tr>
+  </tbody>
+</table>
 
 これらの値によってトレースコンテキストが決まる。
 
@@ -206,12 +240,32 @@ tracestate: abc=00f067aa0ba902b7,xyz=99f067aa0ba902b7
 
 B3 仕様の ID は以下の通りである。
 
-| 項目           | 値                                     |
-| -------------- | -------------------------------------- |
-| trace-id       | 16 進数 (`16` 文字または `32` 文字)    |
-| span-id        | 16 進数 (`16` 文字)                    |
-| parent-span-id | 16 進数 (`16` 文字)                    |
-| sampling-state | サンプリング無効なら `0`、有効なら `1` |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>値</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>trace-id</td>
+      <td>16 進数 (<code>16</code> 文字または <code>32</code> 文字)</td>
+    </tr>
+    <tr>
+      <td>span-id</td>
+      <td>16 進数 (<code>16</code> 文字)</td>
+    </tr>
+    <tr>
+      <td>parent-span-id</td>
+      <td>16 進数 (<code>16</code> 文字)</td>
+    </tr>
+    <tr>
+      <td>sampling-state</td>
+      <td>サンプリング無効なら <code>0</code>、有効なら <code>1</code></td>
+    </tr>
+  </tbody>
+</table>
 
 これらの値によってトレースコンテキストが決まる。
 
@@ -229,10 +283,24 @@ b3: 80f198ee56343ba864fe8b2a57d3eff7-e457b5a2e4d86bd1-1-05e3ac9a4f6e3b90
 
 X-Ray 仕様の ID は以下の通りである。
 
-| 項目     | 値                                                                   |
-| -------- | -------------------------------------------------------------------- |
-| trace-id | version (`1`) + タイムスタンプ (`16` 進数) + ユニーク ID (`16` 進数) |
-| span-id  |                                                                      |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>値</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>trace-id</td>
+      <td>version (<code>1</code>) + タイムスタンプ (<code>16</code> 進数) + ユニーク ID (<code>16</code> 進数)</td>
+    </tr>
+    <tr>
+      <td>span-id</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 ```yaml
 GET /foo-service HTTP/1.1
@@ -257,21 +325,60 @@ trace_id: 1-58406520-a006649127e371903a2de979
 
 #### ▼ 標準ヘッダー
 
-| ヘッダー名       | 説明                                                         |
-| ---------------- | ------------------------------------------------------------ |
-| `X-REQUEST-ID`   | トレース ID が割り当てられている。                           |
-| `GRPC-TRACE-BIN` | RPC によるリクエストにて、トレース ID が割り当てられている。 |
+<table>
+  <thead>
+    <tr>
+      <th>ヘッダー名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>X-REQUEST-ID</code></td>
+      <td>トレース ID が割り当てられている。</td>
+    </tr>
+    <tr>
+      <td><code>GRPC-TRACE-BIN</code></td>
+      <td>RPC によるリクエストにて、トレース ID が割り当てられている。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ zipkin 系ヘッダー
 
 Zipkin が使用するヘッダーを追加する。
 
-| ヘッダー名          | 説明                                                                                 | 値の例                             |
-| ------------------- | ------------------------------------------------------------------------------------ | ---------------------------------- |
-| `X-B3-SAMPLED`      |                                                                                      | `1`                                |
-| `X-B3-SPANID`       | スパン ID が割り当てられている。                                                     | `a2fb4a1d1a96d312`                 |
-| `X-B3-TRACEID`      | トレース ID が割り当てられている。                                                   | `463ac35c9f6413ad48485a3953bb6124` |
-| `X-B3-PARENTSPANId` | 親のスパン ID が割り当てられている。ルートスパンの場合、このヘッダーは追加されない。 | `0020000000000001`                 |
+<table>
+  <thead>
+    <tr>
+      <th>ヘッダー名</th>
+      <th>説明</th>
+      <th>値の例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>X-B3-SAMPLED</code></td>
+      <td></td>
+      <td><code>1</code></td>
+    </tr>
+    <tr>
+      <td><code>X-B3-SPANID</code></td>
+      <td>スパン ID が割り当てられている。</td>
+      <td><code>a2fb4a1d1a96d312</code></td>
+    </tr>
+    <tr>
+      <td><code>X-B3-TRACEID</code></td>
+      <td>トレース ID が割り当てられている。</td>
+      <td><code>463ac35c9f6413ad48485a3953bb6124</code></td>
+    </tr>
+    <tr>
+      <td><code>X-B3-PARENTSPANId</code></td>
+      <td>親のスパン ID が割り当てられている。ルートスパンの場合、このヘッダーは追加されない。</td>
+      <td><code>0020000000000001</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [GitHub - openzipkin/b3-propagation: Repository that describes and sometimes implements B3 propagation · GitHub](https://github.com/openzipkin/b3-propagation#multiple-headers)
 
@@ -279,19 +386,49 @@ Zipkin が使用するヘッダーを追加する。
 
 AWS X-Ray が使用するヘッダーを追加する。
 
-| ヘッダー名        | 説明                                                                  | 値の例                                |
-| ----------------- | --------------------------------------------------------------------- | ------------------------------------- |
-| `X-AMZN-TRACE-ID` | トレース ID が割り当てられている。トレース ID は AWS ALB で作られる。 | `1-5759e988-bd862e3fe1be46a994272793` |
+<table>
+  <thead>
+    <tr>
+      <th>ヘッダー名</th>
+      <th>説明</th>
+      <th>値の例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>X-AMZN-TRACE-ID</code></td>
+      <td>トレース ID が割り当てられている。トレース ID は AWS ALB で作られる。</td>
+      <td><code>1-5759e988-bd862e3fe1be46a994272793</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [AWS X-Ray concepts - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html)
 > - [Request tracing for your Application Load Balancer - Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html)
 
 #### ▼ OpenTelemetry 系ヘッダー
 
-| ヘッダー名    | 説明                                                     | 値の例                                                    |
-| ------------- | -------------------------------------------------------- | --------------------------------------------------------- |
-| `traceparent` | トレース ID やスパン ID などが割り当てられている。       | `00-d34ea2aa01d34d0fda79c6d09b097a83-fd0eae41e95a263c-01` |
-| `tracestate`  | 監視バックエンドのベンダー固有の値が割り当てられている。 | 記入中...                                                 |
+<table>
+  <thead>
+    <tr>
+      <th>ヘッダー名</th>
+      <th>説明</th>
+      <th>値の例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>traceparent</code></td>
+      <td>トレース ID やスパン ID などが割り当てられている。</td>
+      <td><code>00-d34ea2aa01d34d0fda79c6d09b097a83-fd0eae41e95a263c-01</code></td>
+    </tr>
+    <tr>
+      <td><code>tracestate</code></td>
+      <td>監視バックエンドのベンダー固有の値が割り当てられている。</td>
+      <td>記入中...</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -325,12 +462,42 @@ SaaS ツールによって JSON 型の構造が異なる。
 
 サーバー側では、例えば以下のスパン名をとする。
 
-| サーバー側のスパン名      | 構成                                                               | 良し悪し | 補足                                                                   |
-| ------------------------- | ------------------------------------------------------------------ | :------: | ---------------------------------------------------------------------- |
-| `get`                     | `<HTTPメソッド名>`                                                 |    ×     | 具体的すぎると、データを集計しにくくなる。                             |
-| `get_account/42`          | `<アプリケーションの関数名>/<ID>`                                  |    ×     | 具体的すぎると、データを集計しにくくなる。                             |
-| `get_account`             | `<アプリケーションの関数名>`                                       |    ⭕️    | スパン名に ID を命名しない代わりに、スパンの属性に設定するとよい。     |
-| `get_account/{accountId}` | `<アプリケーションの関数名>/<パラメーター名 (具体的なIDではなく)>` |    ⭕️    | スパン名に ID を命名しない代わりに、スパンの属性に設定するとよい。い。 |
+<table>
+  <thead>
+    <tr>
+      <th>サーバー側のスパン名</th>
+      <th>構成</th>
+      <th style="text-align:center">良し悪し</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>get</code></td>
+      <td><code>&lt;HTTPメソッド名&gt;</code></td>
+      <td style="text-align:center">×</td>
+      <td>具体的すぎると、データを集計しにくくなる。</td>
+    </tr>
+    <tr>
+      <td><code>get_account/42</code></td>
+      <td><code>&lt;アプリケーションの関数名&gt;/&lt;ID&gt;</code></td>
+      <td style="text-align:center">×</td>
+      <td>具体的すぎると、データを集計しにくくなる。</td>
+    </tr>
+    <tr>
+      <td><code>get_account</code></td>
+      <td><code>&lt;アプリケーションの関数名&gt;</code></td>
+      <td style="text-align:center">⭕️</td>
+      <td>スパン名に ID を命名しない代わりに、スパンの属性に設定するとよい。</td>
+    </tr>
+    <tr>
+      <td><code>get_account/{accountId}</code></td>
+      <td><code>&lt;アプリケーションの関数名&gt;/&lt;パラメーター名 (具体的なIDではなく)&gt;</code></td>
+      <td style="text-align:center">⭕️</td>
+      <td>スパン名に ID を命名しない代わりに、スパンの属性に設定するとよい。い。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [opentelemetry-specification/specification/trace/api.md at main · open-telemetry/opentelemetry-specification · GitHub](https://github.com/open-telemetry/opentelemetry-specification//blob/main/specification/trace/api.md#span)
 > - [Semantic conventions for HTTP spans \| OpenTelemetry](https://opentelemetry.io/docs/specs/semconv/http/http-spans/#name)
@@ -341,11 +508,32 @@ SaaS ツールによって JSON 型の構造が異なる。
 
 クライアント側では、例えば以下のスパン名をとする。
 
-| スパン名                                 | 構成                                                                                             | 良し悪し |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------ | :------: |
-| `foo-server get_account/{accountId}`     | `<サーバー名> <アプリケーションの関数名>/<パラメーター名 (具体的なIDではなく)>`                  |    ⭕️    |
-| `foo-server GET get_account/{accountId}` | `<サーバー名> <HTTPメソッド名> <アプリケーションの関数名>/<パラメーター名 (具体的なIDではなく)>` |    ⭕️    |
-| `foo-db foo-table`                       | `<DB名> <テーブル名>`                                                                            |    ⭕️    |
+<table>
+  <thead>
+    <tr>
+      <th>スパン名</th>
+      <th>構成</th>
+      <th style="text-align:center">良し悪し</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>foo-server get_account/{accountId}</code></td>
+      <td><code>&lt;サーバー名&gt; &lt;アプリケーションの関数名&gt;/&lt;パラメーター名 (具体的なIDではなく)&gt;</code></td>
+      <td style="text-align:center">⭕️</td>
+    </tr>
+    <tr>
+      <td><code>foo-server GET get_account/{accountId}</code></td>
+      <td><code>&lt;サーバー名&gt; &lt;HTTPメソッド名&gt; &lt;アプリケーションの関数名&gt;/&lt;パラメーター名 (具体的なIDではなく)&gt;</code></td>
+      <td style="text-align:center">⭕️</td>
+    </tr>
+    <tr>
+      <td><code>foo-db foo-table</code></td>
+      <td><code>&lt;DB名&gt; &lt;テーブル名&gt;</code></td>
+      <td style="text-align:center">⭕️</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Medium](https://medium.com/@emmanuel.courreges/jaeger-tracing-and-opentelemetry-usage-guidelines-cdc1fcf48415)
 > - https://www.oreilly.com/library/view/distributed-tracing-in/9781492056621/ch04.html
@@ -354,10 +542,26 @@ SaaS ツールによって JSON 型の構造が異なる。
 
 ### スパンの属性
 
-| 領域         | 内容           | 値                                                                                                                                          |
-| ------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| バックエンド | イベントの内容 | トレース ID、スパン ID、親スパン ID、処理の開始時間、処理の所要時間、エラーの有無、マイクロサービスの役割名、コールされたエンドポイントなど |
-|              | ラベル         | マイクロサービス名など                                                                                                                      |
+<table>
+  <thead>
+    <tr>
+      <th>領域</th>
+      <th>内容</th>
+      <th>値</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">バックエンド</td>
+      <td>イベントの内容</td>
+      <td>トレース ID、スパン ID、親スパン ID、処理の開始時間、処理の所要時間、エラーの有無、マイクロサービスの役割名、コールされたエンドポイントなど</td>
+    </tr>
+    <tr>
+      <td>ラベル</td>
+      <td>マイクロサービス名など</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [🔍 可観測性に入門しよう - Speaker Deck](https://speakerdeck.com/hiroki_hasegawa/ke-guan-ce-xing-niru-men-siyou?slide=17)
 
@@ -367,10 +571,24 @@ SaaS ツールによって JSON 型の構造が異なる。
 
 スパンの適切な粒度は、マイクロサービスの粒度による。
 
-| マイクロサービスの粒度     | スパンの粒度                     |
-| -------------------------- | -------------------------------- |
-| 境界づけられたコンテキスト | マイクロサービスごと、関数ごとに |
-| ルートエンティティ         | マイクロサービスごと             |
+<table>
+  <thead>
+    <tr>
+      <th>マイクロサービスの粒度</th>
+      <th>スパンの粒度</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>境界づけられたコンテキスト</td>
+      <td>マイクロサービスごと、関数ごとに</td>
+    </tr>
+    <tr>
+      <td>ルートエンティティ</td>
+      <td>マイクロサービスごと</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

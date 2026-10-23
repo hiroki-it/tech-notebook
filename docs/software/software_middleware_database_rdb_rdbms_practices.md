@@ -67,9 +67,24 @@ master テーブルと transaction テーブルがわかるようにする命名
 
 この場合、DB との連携で毎回カラム名を明示する必要があったり、デフォルトではないカラム名を使用することによる不具合が発生したり、不便なことが多かったりするため、おすすめしない。
 
-| foo_id | bar_id | foo_name | foo_type |
-| ------ | ------ | -------- | -------- |
-| `1`    | `1`    | `foo`    | `2`      |
+<table>
+  <thead>
+    <tr>
+      <th>foo_id</th>
+      <th>bar_id</th>
+      <th>foo_name</th>
+      <th>foo_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>1</code></td>
+      <td><code>1</code></td>
+      <td><code>foo</code></td>
+      <td><code>2</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

@@ -61,11 +61,36 @@ EC サイトがあり、その商品販売ドメインを販売サブドメイ�
 
 サブドメインまたは境界づけられたコンテキストを単位として、マイクロサービスを分割とする。
 
-| 現状のモノリスの分割段階                                                 | 境界づけられたコンテキスト | サブドメイン | 機能単位  |
-| ------------------------------------------------------------------------ | :------------------------: | :----------: | :-------: |
-| すでにサブドメインに分割されている                                       |            不可            |     不可     | 記入中... |
-| すでに複数のサブドメインを含む境界づけられたコンテキストに分割されている |            不可            |      可      | 記入中... |
-| すでに単一のサブドメインを含む境界づけられたコンテキストに分割されている |             可             |      可      | 記入中... |
+<table>
+  <thead>
+    <tr>
+      <th>現状のモノリスの分割段階</th>
+      <th style="text-align:center">境界づけられたコンテキスト</th>
+      <th style="text-align:center">サブドメイン</th>
+      <th style="text-align:center">機能単位</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>すでにサブドメインに分割されている</td>
+      <td style="text-align:center">不可</td>
+      <td style="text-align:center">不可</td>
+      <td style="text-align:center">記入中...</td>
+    </tr>
+    <tr>
+      <td>すでに複数のサブドメインを含む境界づけられたコンテキストに分割されている</td>
+      <td style="text-align:center">不可</td>
+      <td style="text-align:center">可</td>
+      <td style="text-align:center">記入中...</td>
+    </tr>
+    <tr>
+      <td>すでに単一のサブドメインを含む境界づけられたコンテキストに分割されている</td>
+      <td style="text-align:center">可</td>
+      <td style="text-align:center">可</td>
+      <td style="text-align:center">記入中...</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [DDDの構成要素とマイクロサービスの単位をどう合わせるべきか #ドメイン駆動設計 - Qiita](https://qiita.com/crossroad0201/items/32673d3e52e006205c48#ddd%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E8%80%83%E5%AF%9F)
 

@@ -33,11 +33,28 @@ description: 監視＠可観測性の知見を記録しています。
 
 データソースが、テレメトリーを作成する。
 
-| テレメトリー | データ                                                                                              |
-| ------------ | --------------------------------------------------------------------------------------------------- |
-| ログ         | ログファイルである。                                                                                |
-| メトリクス   | データポイントである。メトリクス名と数値のセット (例：Prometheus であれば `foo{x=1, y=2}`) で表す。 |
-| トレース     | タイムスタンプとスパンである。                                                                      |
+<table>
+  <thead>
+    <tr>
+      <th>テレメトリー</th>
+      <th>データ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ログ</td>
+      <td>ログファイルである。</td>
+    </tr>
+    <tr>
+      <td>メトリクス</td>
+      <td>データポイントである。メトリクス名と数値のセット (例：Prometheus であれば <code>foo{x=1, y=2}</code>) で表す。</td>
+    </tr>
+    <tr>
+      <td>トレース</td>
+      <td>タイムスタンプとスパンである。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ テレメトリーの収集
 
@@ -57,13 +74,36 @@ description: 監視＠可観測性の知見を記録しています。
 
 保管期間は、`90` 日が個人的には推奨である。
 
-| 要件                                  | 説明                                                                                                                                                                                                                                                                              |
-| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ストレージ容量                        | ログファイルのメトリクスのストレージのサイズを決める。メトリクスの場合、データポイント数を抑えて (例：収集間隔の拡大、ダウンサンプリング、重複排除) 、データサイズを小さくするとよい。                                                                                            |
-| バックアップしないログ                | すべてのログを保管するとストレージ容量を圧迫してしまうため、一部のログ (例：ヘルスチェックのアクセスログ) は捨てるように決めておくとよい。                                                                                                                                        |
-| バックアップの保管期間 (リテンション) | ログファイルのメトリクスのバックアップを実施し、また保管期間ポリシー (例：`3` ヶ月) を決めておくとよい。                                                                                                                                                                          |
-| ローテーション                        | ログローテーションによって、ファイルを小さく分割して保管しておく。ログファイルやメトリクスのローテーション期間 (例：`7` 日) をポリシーとして決めておくとよい。ローテションされた過去のログやメトリクスのファイルでは、ファイル名の末尾に最終日付 (例：`-20220101`) をつけておく。 |
-| 世代数                                | ローテションの結果作成されるファイルの世代数 (例：`5`) をポリシーとして決めておくとよい。ただ、これは設定できないツールがある。                                                                                                                                                   |
+<table>
+  <thead>
+    <tr>
+      <th>要件</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ストレージ容量</td>
+      <td>ログファイルのメトリクスのストレージのサイズを決める。メトリクスの場合、データポイント数を抑えて (例：収集間隔の拡大、ダウンサンプリング、重複排除) 、データサイズを小さくするとよい。</td>
+    </tr>
+    <tr>
+      <td>バックアップしないログ</td>
+      <td>すべてのログを保管するとストレージ容量を圧迫してしまうため、一部のログ (例：ヘルスチェックのアクセスログ) は捨てるように決めておくとよい。</td>
+    </tr>
+    <tr>
+      <td>バックアップの保管期間 (リテンション)</td>
+      <td>ログファイルのメトリクスのバックアップを実施し、また保管期間ポリシー (例：<code>3</code> ヶ月) を決めておくとよい。</td>
+    </tr>
+    <tr>
+      <td>ローテーション</td>
+      <td>ログローテーションによって、ファイルを小さく分割して保管しておく。ログファイルやメトリクスのローテーション期間 (例：<code>7</code> 日) をポリシーとして決めておくとよい。ローテションされた過去のログやメトリクスのファイルでは、ファイル名の末尾に最終日付 (例：<code>-20220101</code>) をつけておく。</td>
+    </tr>
+    <tr>
+      <td>世代数</td>
+      <td>ローテションの結果作成されるファイルの世代数 (例：<code>5</code>) をポリシーとして決めておくとよい。ただ、これは設定できないツールがある。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.timescale.com/blog/a-different-and-often-better-way-to-downsample-your-prometheus-metrics/
 > - [「結局アクセスログってどれくらい保存しておけばいいの？」に答える関係法令 #ログ - Qiita](https://qiita.com/yamotuki/items/628f9bf399cc9b59f3cb)
@@ -112,14 +152,89 @@ description: 監視＠可観測性の知見を記録しています。
 
 ### 監視フロントエンド
 
-| OSS ツール            | ログ | メトリクス | トレース | イベント | ネットワーク | ユーザー体験 | ビジネス指標 | セキュリティ |
-| --------------------- | :--: | :--------: | :------: | :------: | :----------: | :----------: | :----------: | :----------: |
-| Grafana               |  ✅  |     ✅     |    ✅    |    ✅    |      ✅      |      ✅      |      ✅      |              |
-| Kibana                |  ✅  |     ✅     |    ✅    |    ✅    |              |              |      ✅      |      ✅      |
-| OpenSearch Dashboards |  ✅  |     ✅     |    ✅    |    ✅    |              |              |      ✅      |      ✅      |
-| Redash                |      |     ✅     |          |          |              |              |      ✅      |              |
-| Apache Superset       |      |     ✅     |          |          |              |              |      ✅      |              |
-| Netdata               |      |     ✅     |          |    ✅    |      ✅      |      ✅      |              |              |
+<table>
+  <thead>
+    <tr>
+      <th>OSS ツール</th>
+      <th style="text-align:center">ログ</th>
+      <th style="text-align:center">メトリクス</th>
+      <th style="text-align:center">トレース</th>
+      <th style="text-align:center">イベント</th>
+      <th style="text-align:center">ネットワーク</th>
+      <th style="text-align:center">ユーザー体験</th>
+      <th style="text-align:center">ビジネス指標</th>
+      <th style="text-align:center">セキュリティ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Grafana</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Kibana</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>OpenSearch Dashboards</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>Redash</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Apache Superset</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Netdata</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -135,10 +250,24 @@ description: 監視＠可観測性の知見を記録しています。
 
 #### ▼ メトリクスの種類
 
-| メトリクスの種類 | 説明                                                             |
-| ---------------- | ---------------------------------------------------------------- |
-| Histogram 系     | 時間を単位とするアプリケーションのフロントエンド領域のメトリクス |
-| Count 系         | 数を単位とするアプリケーションのフロントエンド領域のメトリクス   |
+<table>
+  <thead>
+    <tr>
+      <th>メトリクスの種類</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Histogram 系</td>
+      <td>時間を単位とするアプリケーションのフロントエンド領域のメトリクス</td>
+    </tr>
+    <tr>
+      <td>Count 系</td>
+      <td>数を単位とするアプリケーションのフロントエンド領域のメトリクス</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ リアルユーザー監視 (RUM)
 
@@ -208,9 +337,20 @@ Amazon の自社調査では、ローディング時間が 100ms 短くなるご
 
 ブラウザのコンソールログを収集し、監視する。
 
-| ログの種類                                              | 説明                                 |
-| ------------------------------------------------------- | ------------------------------------ |
-| コンソールログ (Chrome の場合は `console.log` ファイル) | ブラウザのコンソールログを出力する。 |
+<table>
+  <thead>
+    <tr>
+      <th>ログの種類</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>コンソールログ (Chrome の場合は <code>console.log</code> ファイル)</td>
+      <td>ブラウザのコンソールログを出力する。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -228,10 +368,27 @@ Amazon の自社調査では、ローディング時間が 100ms 短くなるご
 
 アプリケーションのメトリクスの元になるデータポイントを収集し、監視する。
 
-| メトリクスの種類 | データポイントの内容                     | 説明                                                                                                                                                    |
-| ---------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Count 系         | データポイントのタイムスタンプ、数       | 数を単位とするアプリケーションのバックエンド領域のメトリクス (例：リクエストの受信数、ログイン数)                                                       |
-| Histogram 系     | データポイントのタイムスタンプ、処理時間 | 時間を単位とするアプリケーションのバックエンド領域のメトリクス (例：SQL にかかる時間、ビルドまたはデプロイの開始/完了時間、外部 API コールにかかる時間) |
+<table>
+  <thead>
+    <tr>
+      <th>メトリクスの種類</th>
+      <th>データポイントの内容</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Count 系</td>
+      <td>データポイントのタイムスタンプ、数</td>
+      <td>数を単位とするアプリケーションのバックエンド領域のメトリクス (例：リクエストの受信数、ログイン数)</td>
+    </tr>
+    <tr>
+      <td>Histogram 系</td>
+      <td>データポイントのタイムスタンプ、処理時間</td>
+      <td>時間を単位とするアプリケーションのバックエンド領域のメトリクス (例：SQL にかかる時間、ビルドまたはデプロイの開始/完了時間、外部 API コールにかかる時間)</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Metric types \| Prometheus](https://prometheus.io/docs/concepts/metric_types/)
 
@@ -262,11 +419,28 @@ Amazon CloudWatch では、StatsD からのメトリクスの送信をサポー�
 
 アプリケーションのログを収集し、監視する。
 
-| ログの種類                                                      | 説明                                                                                                                                                    |
-| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| システムログ (`/var/log/message` ファイル)                      | 基本的には OS やミドルウェアの処理のログの出力先ではあるが、場合よってはアプリケーション処理のログも出力する。<br>・https://thinkit.co.jp/article/724/1 |
-| アプリケーションログ (ログファイルはフレームワークによる)       | アプリケーションの任意の重要な処理 (アクセスログ、ログイン、ログアウトなど) のログを出力する。                                                          |
-| クエリログ (`/var/log/<ベンダー名>/general-query.log` ファイル) | アプリケーションから DB へのクエリ処理の内容をログとして出力する。                                                                                      |
+<table>
+  <thead>
+    <tr>
+      <th>ログの種類</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>システムログ (<code>/var/log/message</code> ファイル)</td>
+      <td>基本的には OS やミドルウェアの処理のログの出力先ではあるが、場合よってはアプリケーション処理のログも出力する。<br>・<a href="https://thinkit.co.jp/article/724/1">https://thinkit.co.jp/article/724/1</a></td>
+    </tr>
+    <tr>
+      <td>アプリケーションログ (ログファイルはフレームワークによる)</td>
+      <td>アプリケーションの任意の重要な処理 (アクセスログ、ログイン、ログアウトなど) のログを出力する。</td>
+    </tr>
+    <tr>
+      <td>クエリログ (<code>/var/log/&lt;ベンダー名&gt;/general-query.log</code> ファイル)</td>
+      <td>アプリケーションから DB へのクエリ処理の内容をログとして出力する。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -292,11 +466,28 @@ Amazon CloudWatch では、StatsD からのメトリクスの送信をサポー�
 
 ### メトリクスの場合
 
-| メトリクスの種類 | 説明                                                                                         |
-| ---------------- | -------------------------------------------------------------------------------------------- |
-| RATE 系          | 割合を単位とするサーバー/コンテナのメトリクス (例：CPU 使用率、メモリ使用率、ディスク使用率) |
-| Histogram 系     | 時間を単位とするサーバー/コンテナのメトリクス                                                |
-| Count 系         | 数を単位とするサーバー/コンテナのメトリクス                                                  |
+<table>
+  <thead>
+    <tr>
+      <th>メトリクスの種類</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RATE 系</td>
+      <td>割合を単位とするサーバー/コンテナのメトリクス (例：CPU 使用率、メモリ使用率、ディスク使用率)</td>
+    </tr>
+    <tr>
+      <td>Histogram 系</td>
+      <td>時間を単位とするサーバー/コンテナのメトリクス</td>
+    </tr>
+    <tr>
+      <td>Count 系</td>
+      <td>数を単位とするサーバー/コンテナのメトリクス</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -304,14 +495,40 @@ Amazon CloudWatch では、StatsD からのメトリクスの送信をサポー�
 
 #### ▼ ログの種類
 
-| ログの種類                                    | 説明                                                                             |
-| --------------------------------------------- | -------------------------------------------------------------------------------- |
-| システムログ (`/var/log/message` ファイル)    | OS やミドルウェアの処理ログを出力する。<br>・https://thinkit.co.jp/article/724/1 |
-| セキュリティログ (`/var/log/secure` ファイル) | OS のセキュリティ処理のログを出力する。                                          |
-| cron ログ (`/var/log/cron` ファイル)          | OS のジョブ処理 (例：Unix であれば cron) のログを出力する。                      |
-| メールログ (`/var/log/maillog` ファイル)      | OS のメール処理のログを出力する。                                                |
-| 印刷ログ (`/var/log/spooler` ファイル)        | OS の印刷処理のログを出力する。                                                  |
-| OS ブートログ (`/var/log/boot.log` ファイル)  | OS の起動処理のログを出力する。                                                  |
+<table>
+  <thead>
+    <tr>
+      <th>ログの種類</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>システムログ (<code>/var/log/message</code> ファイル)</td>
+      <td>OS やミドルウェアの処理ログを出力する。<br>・<a href="https://thinkit.co.jp/article/724/1">https://thinkit.co.jp/article/724/1</a></td>
+    </tr>
+    <tr>
+      <td>セキュリティログ (<code>/var/log/secure</code> ファイル)</td>
+      <td>OS のセキュリティ処理のログを出力する。</td>
+    </tr>
+    <tr>
+      <td>cron ログ (<code>/var/log/cron</code> ファイル)</td>
+      <td>OS のジョブ処理 (例：Unix であれば cron) のログを出力する。</td>
+    </tr>
+    <tr>
+      <td>メールログ (<code>/var/log/maillog</code> ファイル)</td>
+      <td>OS のメール処理のログを出力する。</td>
+    </tr>
+    <tr>
+      <td>印刷ログ (<code>/var/log/spooler</code> ファイル)</td>
+      <td>OS の印刷処理のログを出力する。</td>
+    </tr>
+    <tr>
+      <td>OS ブートログ (<code>/var/log/boot.log</code> ファイル)</td>
+      <td>OS の起動処理のログを出力する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.infraeye.com/study/linuxz46.html
 
@@ -363,11 +580,32 @@ Amazon CloudWatch では、StatsD からのメトリクスの送信をサポー�
 
 OSI 参照モデルのいずれのレイヤーまでの動作を確認するかによって、ヘルスチェックに種類がある。
 
-| ヘルスチェックの種類 | ヘルスチェックの範囲                     | 方法                                                                                                                                                                                                                                                                             |
-| -------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `L3` チェック        | `L1` から `L3` (ネットワーク層) まで     | サーバー/コンテナの IP アドレスに Ping リクエスト (ICMP エコーリクエスト) を送信し、レスポンスを検証する。Ping のレスポンスが正常に返信されれば、サーバー/コンテナまでのネットワークが正常に動作していると判断できる。<br>・https://milestone-of-se.nesuke.com/nw-basic/ip/icmp/ |
-| `L4` チェック        | `L1` から `L4` (トランスポート層) まで   | サーバー/コンテナのポートに TCP スリーウェイハンドシェイクを実行し、TCP 接続を確立できるかを検証する。TCP 接続の確立が成功すれば、サーバー/コンテナの開放ポートまでのネットワークが正しく動作していると判断できる。                                                              |
-| `L7` チェック        | `L1` から `L7` (アプリケーション層) まで | サーバー/コンテナ上のアプリケーションのエンドポイントに HTTP リクエストを送信し、HTTP レスポンスを検証する。正しい HTTP レスポンスが返信されれば、アプリケーション自体とその開放ポートが正しく動作していると判断できる。                                                         |
+<table>
+  <thead>
+    <tr>
+      <th>ヘルスチェックの種類</th>
+      <th>ヘルスチェックの範囲</th>
+      <th>方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>L3</code> チェック</td>
+      <td><code>L1</code> から <code>L3</code> (ネットワーク層) まで</td>
+      <td>サーバー/コンテナの IP アドレスに Ping リクエスト (ICMP エコーリクエスト) を送信し、レスポンスを検証する。Ping のレスポンスが正常に返信されれば、サーバー/コンテナまでのネットワークが正常に動作していると判断できる。<br>・<a href="https://milestone-of-se.nesuke.com/nw-basic/ip/icmp/">https://milestone-of-se.nesuke.com/nw-basic/ip/icmp/</a></td>
+    </tr>
+    <tr>
+      <td><code>L4</code> チェック</td>
+      <td><code>L1</code> から <code>L4</code> (トランスポート層) まで</td>
+      <td>サーバー/コンテナのポートに TCP スリーウェイハンドシェイクを実行し、TCP 接続を確立できるかを検証する。TCP 接続の確立が成功すれば、サーバー/コンテナの開放ポートまでのネットワークが正しく動作していると判断できる。</td>
+    </tr>
+    <tr>
+      <td><code>L7</code> チェック</td>
+      <td><code>L1</code> から <code>L7</code> (アプリケーション層) まで</td>
+      <td>サーバー/コンテナ上のアプリケーションのエンドポイントに HTTP リクエストを送信し、HTTP レスポンスを検証する。正しい HTTP レスポンスが返信されれば、アプリケーション自体とその開放ポートが正しく動作していると判断できる。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.f5.com/ja_jp/services/resources/glossary/health-check
 > - [Film Production Pipelines and Artist Techniques](https://a-film-production-technique-seminar.com/fppat/materials/fpts_frp_sugeno_intro_lb01/index.html)

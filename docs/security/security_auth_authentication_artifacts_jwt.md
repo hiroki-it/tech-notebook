@@ -83,14 +83,61 @@ const header = {
 
 必ず設定しなければならない『予約済みクレーム』と、ユーザー側が自由に定義できる『プライベートクレーム』がある。
 
-| クレーム名 | 説明            | ユーザーが設定する | 役割                                         | 例         |
-| ---------- | --------------- | ------------------ | -------------------------------------------- | ---------- |
-| `aud`      | Audience        | ✅                 |                                              |            |
-| `exp`      | Expiration Time |                    | JWT トークンの有効期限を表す。               |            |
-| `iat`      | Issuer At       |                    | 発行時刻を表す                               |            |
-| `iss`      | Issuer          | ✅                 | JWT トークンの発行元 ID プロバイダーを表す。 |            |
-| `jti`      | JWT ID          | ✅                 |                                              |            |
-| `sub`      | Subject         | ✅                 | 一意な識別子を表す。                         | ユーザーID |
+<table>
+  <thead>
+    <tr>
+      <th>クレーム名</th>
+      <th>説明</th>
+      <th>ユーザーが設定する</th>
+      <th>役割</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>aud</code></td>
+      <td>Audience</td>
+      <td>✅</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>exp</code></td>
+      <td>Expiration Time</td>
+      <td></td>
+      <td>JWT トークンの有効期限を表す。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>iat</code></td>
+      <td>Issuer At</td>
+      <td></td>
+      <td>発行時刻を表す</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>iss</code></td>
+      <td>Issuer</td>
+      <td>✅</td>
+      <td>JWT トークンの発行元 ID プロバイダーを表す。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>jti</code></td>
+      <td>JWT ID</td>
+      <td>✅</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>sub</code></td>
+      <td>Subject</td>
+      <td>✅</td>
+      <td>一意な識別子を表す。</td>
+      <td>ユーザーID</td>
+    </tr>
+  </tbody>
+</table>
 
 ```javascript
 const payload = {
@@ -128,10 +175,24 @@ const signature = HMACSHA256(
 
 JWT トークンには以下の種類がある。
 
-| トークンの種類   | トークンの情報タイプ                                                                     |
-| ---------------- | ---------------------------------------------------------------------------------------- |
-| アクセストークン | ID プロバイダーのツールによっては JWT 仕様 (例：Keycloak) なため Self-contained トークン |
-| ID トークン      | 必ず JWT 仕様であり、Self-contained トークン                                             |
+<table>
+  <thead>
+    <tr>
+      <th>トークンの種類</th>
+      <th>トークンの情報タイプ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>アクセストークン</td>
+      <td>ID プロバイダーのツールによっては JWT 仕様 (例：Keycloak) なため Self-contained トークン</td>
+    </tr>
+    <tr>
+      <td>ID トークン</td>
+      <td>必ず JWT 仕様であり、Self-contained トークン</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [図解 JWS/JWE/JWT/IDトークン/アクセストークンの包含関係 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/1c1bcf24b46ebd2030f5#%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3jwtid%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E5%8C%85%E5%90%AB%E9%96%A2%E4%BF%82)
 > - [OIDC と JWT の関わり - Oauth2.0 との違いなど](https://zenn.dev/mikakane/articles/tutorial_for_openid#oidc-%E5%88%A9%E7%94%A8%E3%81%95%E3%82%8C%E3%82%8B-id-token-%E3%81%AE%E8%A6%8F%E7%B4%84)
@@ -286,12 +347,42 @@ cookie: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエン�
 
 ## 04. JWT トークンの保持方法と安全度の比較
 
-| クライアント保持方法                                            | 組み合わせ             | おすすめ度 | コメント                                                                 |
-| --------------------------------------------------------------- | ---------------------- | :--------: | ------------------------------------------------------------------------ |
-| `Cookie` ヘッダー (ローカルマシンのディレクトリ) 、LocalStorage | JWT トークンのみ       |   △ 〜 ×   | いずれの方法でも、XSS によって JWT が盗まれる可能性がある。              |
-| `Cookie` ヘッダー                                               | プリフライトリクエスト |     △      | Access-Control-Max-Age の期間内だと CSRF で JWT が盗まれる可能性がある。 |
-| `Cookie` ヘッダー                                               | CSRF トークン          |     ⭕     |                                                                          |
-| SameSiteCookie                                                  |                        |     ⭕     | SPA と API が同一オリジンの必要がある。                                  |
+<table>
+  <thead>
+    <tr>
+      <th>クライアント保持方法</th>
+      <th>組み合わせ</th>
+      <th style="text-align:center">おすすめ度</th>
+      <th>コメント</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Cookie</code> ヘッダー (ローカルマシンのディレクトリ) 、LocalStorage</td>
+      <td>JWT トークンのみ</td>
+      <td style="text-align:center">△ 〜 ×</td>
+      <td>いずれの方法でも、XSS によって JWT が盗まれる可能性がある。</td>
+    </tr>
+    <tr>
+      <td><code>Cookie</code> ヘッダー</td>
+      <td>プリフライトリクエスト</td>
+      <td style="text-align:center">△</td>
+      <td>Access-Control-Max-Age の期間内だと CSRF で JWT が盗まれる可能性がある。</td>
+    </tr>
+    <tr>
+      <td><code>Cookie</code> ヘッダー</td>
+      <td>CSRF トークン</td>
+      <td style="text-align:center">⭕</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>SameSiteCookie</td>
+      <td></td>
+      <td style="text-align:center">⭕</td>
+      <td>SPA と API が同一オリジンの必要がある。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [SPAのログイン認証のベストプラクティスがわからなかったのでわりと網羅的に研究してみた〜JWT or Session どっち？〜 #JavaScript - Qiita](https://qiita.com/Hiro-mi/items/18e00060a0f8654f49d6#%E6%97%A9%E8%A6%8B%E8%A1%A8)
 > - [【PoC編】XSSへの耐性においてブラウザのメモリ空間方式はLocal Storage方式より安全か？ - GMO Flatt Security Blog](https://blog.flatt.tech/entry/auth0_access_token_poc)

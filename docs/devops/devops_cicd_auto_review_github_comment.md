@@ -189,14 +189,40 @@ GitHub に送信するレビューコメントのテンプレートを設定す�
 
 ### 変数
 
-| 変数                    | 説明                                   |
-| ----------------------- | -------------------------------------- |
-| `{{ .Stdout }}`         | 標準出力への出力内容                   |
-| `{{ .Stderr }}`         | 標準エラー出力への出力内容             |
-| `{{ .CombinedOutput }}` | 標準出力と標準エラー出力を結合した内容 |
-| `{{ .Command }}`        | 絶対パスの実行コマンド名               |
-| `{{ .JoinCommand }}`    | バイナリ名のみの実行コマンド名         |
-| `{{ .ExitCode }}`       | 終了ステータスコード                   |
+<table>
+  <thead>
+    <tr>
+      <th>変数</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>{{ .Stdout }}</code></td>
+      <td>標準出力への出力内容</td>
+    </tr>
+    <tr>
+      <td><code>{{ .Stderr }}</code></td>
+      <td>標準エラー出力への出力内容</td>
+    </tr>
+    <tr>
+      <td><code>{{ .CombinedOutput }}</code></td>
+      <td>標準出力と標準エラー出力を結合した内容</td>
+    </tr>
+    <tr>
+      <td><code>{{ .Command }}</code></td>
+      <td>絶対パスの実行コマンド名</td>
+    </tr>
+    <tr>
+      <td><code>{{ .JoinCommand }}</code></td>
+      <td>バイナリ名のみの実行コマンド名</td>
+    </tr>
+    <tr>
+      <td><code>{{ .ExitCode }}</code></td>
+      <td>終了ステータスコード</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Configuration \| github-comment](https://suzuki-shunsuke.github.io/github-comment/config/#exec)
 
@@ -354,10 +380,27 @@ hide:
 
 レビューコメントの内容を定義する。
 
-| 記法                        | 説明                                                 | 中身                                                            |
-| --------------------------- | ---------------------------------------------------- | --------------------------------------------------------------- |
-| `{{ template "status" . }}` | 終了ステータスコードが `0` なら ✅ 、それ以外なら ❌ | `:{{ if eq .ExitCode 0 }}white_check_mark{{ else }}x{{ end }}:` |
-| `{{ template "link" . }}`   | Job へのリンク                                       | CI ツールによって異なる。                                       |
+<table>
+  <thead>
+    <tr>
+      <th>記法</th>
+      <th>説明</th>
+      <th>中身</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>{{ template &quot;status&quot; . }}</code></td>
+      <td>終了ステータスコードが <code>0</code> なら ✅ 、それ以外なら ❌</td>
+      <td><code>:{{ if eq .ExitCode 0 }}white_check_mark{{ else }}x{{ end }}:</code></td>
+    </tr>
+    <tr>
+      <td><code>{{ template &quot;link&quot; . }}</code></td>
+      <td>Job へのリンク</td>
+      <td>CI ツールによって異なる。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Builtin Templates \| github-comment](https://suzuki-shunsuke.github.io/github-comment/builtin-template)
 

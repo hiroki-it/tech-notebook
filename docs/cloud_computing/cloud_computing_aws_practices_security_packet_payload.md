@@ -21,15 +21,50 @@ OSI 層と AWS リソースの対応関係を以下に示す。
 
 AWS リソースごとにセキュリティを考慮する。
 
-| OSI 層               | OSI 層の番号 | 対応する AWS リソース                                       |
-| -------------------- | ------------ | ----------------------------------------------------------- |
-| アプリケーション層   | `L7`         | AWS ALB、Amazon EC2、Amazon RDS、Amazon Route 53、Amazon S3 |
-| プレゼンテーション層 | `L6`         | 同上                                                        |
-| セッション層         | `L5`         | 同上                                                        |
-| トランスポート層     | `L4`         | セキュリティグループ、AWS NLB                               |
-| ネットワーク層       | `L3`         | AWS Internet Gateway、AWS NAT Gateway、AWS Transit Gateway  |
-| データリンク層       | `L2`         | Amazon VPC、サブネット                                      |
-| 物理層               | `L1`         | 仮想化のため、意識しなくてもよい。                          |
+<table>
+  <thead>
+    <tr>
+      <th>OSI 層</th>
+      <th>OSI 層の番号</th>
+      <th>対応する AWS リソース</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>アプリケーション層</td>
+      <td><code>L7</code></td>
+      <td rowspan="3">AWS ALB、Amazon EC2、Amazon RDS、Amazon Route 53、Amazon S3</td>
+    </tr>
+    <tr>
+      <td>プレゼンテーション層</td>
+      <td><code>L6</code></td>
+    </tr>
+    <tr>
+      <td>セッション層</td>
+      <td><code>L5</code></td>
+    </tr>
+    <tr>
+      <td>トランスポート層</td>
+      <td><code>L4</code></td>
+      <td>セキュリティグループ、AWS NLB</td>
+    </tr>
+    <tr>
+      <td>ネットワーク層</td>
+      <td><code>L3</code></td>
+      <td>AWS Internet Gateway、AWS NAT Gateway、AWS Transit Gateway</td>
+    </tr>
+    <tr>
+      <td>データリンク層</td>
+      <td><code>L2</code></td>
+      <td>Amazon VPC、サブネット</td>
+    </tr>
+    <tr>
+      <td>物理層</td>
+      <td><code>L1</code></td>
+      <td>仮想化のため、意識しなくてもよい。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [コラム - AWSではじめよう、ネットワークの世界 \| 第2回 『OSI階層モデル』をマスターして、『通信』を理解しよう！｜CTC教育サービス 研修/トレーニング](https://www.school.ctc-g.co.jp/columns/tsumura/tsumura02.html)
 > - [ネットワークトラフィックディストリビューション - Elastic Load Balancing - アマゾン ウェブ サービス](https://aws.amazon.com/jp/elasticloadbalancing/features/)
@@ -62,11 +97,32 @@ AWS リソースごとにセキュリティを考慮する。
 
 RFC1918 では、以下の CIDR ブロックが推奨である。
 
-| RFC1918 推奨の CIDR ブロック | IP アドレス                      | 個数       |
-| ---------------------------- | -------------------------------- | ---------- |
-| `10.0.0.0/8`                 | `10.0.0.0`～`10.255.255.255`     | `16777216` |
-| `172.16.0.0/12`              | `172.16.0.0`～`172.31.255.255`   | `1048576`  |
-| `192.168.0.0/16`             | `192.168.0.0`～`192.168.255.255` | `65536`    |
+<table>
+  <thead>
+    <tr>
+      <th>RFC1918 推奨の CIDR ブロック</th>
+      <th>IP アドレス</th>
+      <th>個数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>10.0.0.0/8</code></td>
+      <td><code>10.0.0.0</code>～<code>10.255.255.255</code></td>
+      <td><code>16777216</code></td>
+    </tr>
+    <tr>
+      <td><code>172.16.0.0/12</code></td>
+      <td><code>172.16.0.0</code>～<code>172.31.255.255</code></td>
+      <td><code>1048576</code></td>
+    </tr>
+    <tr>
+      <td><code>192.168.0.0/16</code></td>
+      <td><code>192.168.0.0</code>～<code>192.168.255.255</code></td>
+      <td><code>65536</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [【AWS】Amazon VPCに割り当てるCIDRブロックはどれぐらいが良いのか｜櫻田貴士](https://note.com/takashi_sakurada/n/n502fb0299938)
 > - [プライベートIPアドレス − ＠IT ネットワーク用語事典](https://atmarkit.itmedia.co.jp/aig/06network/privateip.html)
@@ -117,13 +173,36 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
 
 また、各サブネットの CIDR ブロックを同じにする必要はない。例えば、アプリケーションが稼働するサブネットの IP アドレス数がやや多くなるようにし、代わりに、DB の稼働するサブネットの IP アドレス数を少なくする設計でもよい。
 
-| AWS リソース              | 最低限の IP アドレス数                               |
-| ------------------------- | ---------------------------------------------------- |
-| AWS ALB                   | AWS ALB 当たり `8` 個                                |
-| AWS AutoScaling           | 自動水平スケーリング時の Amazon EC2 最大数と同じ個数 |
-| Amazon VPC エンドポイント | Amazon VPC エンドポイント当たり、IP アドレス `1` 個  |
-| Amazon ECS、Amazon EKS    | Elastic Network Interface 数と同じ個数               |
-| AWS Lambda                | Elastic Network Interface 数と同じ個数               |
+<table>
+  <thead>
+    <tr>
+      <th>AWS リソース</th>
+      <th>最低限の IP アドレス数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AWS ALB</td>
+      <td>AWS ALB 当たり <code>8</code> 個</td>
+    </tr>
+    <tr>
+      <td>AWS AutoScaling</td>
+      <td>自動水平スケーリング時の Amazon EC2 最大数と同じ個数</td>
+    </tr>
+    <tr>
+      <td>Amazon VPC エンドポイント</td>
+      <td>Amazon VPC エンドポイント当たり、IP アドレス <code>1</code> 個</td>
+    </tr>
+    <tr>
+      <td>Amazon ECS、Amazon EKS</td>
+      <td>Elastic Network Interface 数と同じ個数</td>
+    </tr>
+    <tr>
+      <td>AWS Lambda</td>
+      <td>Elastic Network Interface 数と同じ個数</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://d0.awsstatic.com/events/jp/2017/summit/slide/D2T3-5.pdf
 > - [Amazon VPC設計時に気をつけたい基本の5のこと \| DevelopersIO](https://dev.classmethod.jp/articles/amazon-vpc-5-tips/)
@@ -132,11 +211,36 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
 
 パブリックネットワークとの通信の遮断具合から名前をつける。
 
-| 名前                 | 種類         | 役割                                                                                                                                                                                                   | 配置例                   |
-| -------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------ |
-| public サブネット    | パブリック   | 非武装地帯として動作する。Internet Gateway を介して、パブリックネットワークからのリクエストを待ち受ける。                                                                                              | AWS ALB、AWS NAT Gateway |
-| protected サブネット | プライベート | 内部ネットワークとして動作する。パブリックネットワークからアクセスできず、同じ Amazon VPC 内からのリクエストのみを待ち受ける。また、public サブネットの AWS NAT Gateway を介してリクエストを送信する。 | Amazon EC2、Fargate      |
-| private サブネット   | プライベート | 内部ネットワークとして動作する。パブリックネットワークからアクセスできず、前述の protected サブネット内からのリクエストのみを待ち受ける。また、リクエストを送信しない。                                | Amazon RDS、Redis        |
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>種類</th>
+      <th>役割</th>
+      <th>配置例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>public サブネット</td>
+      <td>パブリック</td>
+      <td>非武装地帯として動作する。Internet Gateway を介して、パブリックネットワークからのリクエストを待ち受ける。</td>
+      <td>AWS ALB、AWS NAT Gateway</td>
+    </tr>
+    <tr>
+      <td>protected サブネット</td>
+      <td>プライベート</td>
+      <td>内部ネットワークとして動作する。パブリックネットワークからアクセスできず、同じ Amazon VPC 内からのリクエストのみを待ち受ける。また、public サブネットの AWS NAT Gateway を介してリクエストを送信する。</td>
+      <td>Amazon EC2、Fargate</td>
+    </tr>
+    <tr>
+      <td>private サブネット</td>
+      <td>プライベート</td>
+      <td>内部ネットワークとして動作する。パブリックネットワークからアクセスできず、前述の protected サブネット内からのリクエストのみを待ち受ける。また、リクエストを送信しない。</td>
+      <td>Amazon RDS、Redis</td>
+    </tr>
+  </tbody>
+</table>
 
 ![subnet_accsess-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_accsess-type.png)
 
@@ -148,11 +252,32 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
 
 配置するコンポーネントの種類に関する名前をつける。
 
-| 名前                   | 種類         | 役割                                                                                                                                                                                                                           |
-| ---------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| frontend サブネット    | パブリック   | 非武装地帯として動作する。`L7` ロードバランサー (AWS ALB) 、ルーター (AWS NAT Gateway) 、`ssh` コマンドで接続する踏み台サーバー (Amazon EC2) を配置する。                                                                      |
-| application サブネット | プライベート | 内部ネットワークとして動作する。App サーバー (Amazon EC2、Amazon ECS、Amazon EKS) 、リバースプロキシサーバー (Amazon EC2、Amazon ECS、Amazon EKS) 、AWS SSM Session Manager で接続する踏み台サーバー (Amazon EC2) を配置する。 |
-| datastore サブネット   | プライベート | 内部ネットワークとして動作する。DB サーバー (Amazon Aurora、AWS Redis) を配置する。                                                                                                                                            |
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>種類</th>
+      <th>役割</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>frontend サブネット</td>
+      <td>パブリック</td>
+      <td>非武装地帯として動作する。<code>L7</code> ロードバランサー (AWS ALB) 、ルーター (AWS NAT Gateway) 、<code>ssh</code> コマンドで接続する踏み台サーバー (Amazon EC2) を配置する。</td>
+    </tr>
+    <tr>
+      <td>application サブネット</td>
+      <td>プライベート</td>
+      <td>内部ネットワークとして動作する。App サーバー (Amazon EC2、Amazon ECS、Amazon EKS) 、リバースプロキシサーバー (Amazon EC2、Amazon ECS、Amazon EKS) 、AWS SSM Session Manager で接続する踏み台サーバー (Amazon EC2) を配置する。</td>
+    </tr>
+    <tr>
+      <td>datastore サブネット</td>
+      <td>プライベート</td>
+      <td>内部ネットワークとして動作する。DB サーバー (Amazon Aurora、AWS Redis) を配置する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [必要な時だけNAT Gatewayを作成する方法 \| DevelopersIO](https://dev.classmethod.jp/articles/create_nat_gateway/)
 
@@ -170,10 +295,24 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
 
 一方で、`0.0.0.0/0` (local 以外の全 IP アドレス) の範囲内にあれば、リクエストと見なし、Internet Gateway を宛先に選択する。
 
-|  Destination (プライベート CIDR ブロック)   |      Target      |
-| :-----------------------------------------: | :--------------: |
-| `10.0.0.0/16` (Amazon VPC の CIDR ブロック) |      local       |
-|                 `0.0.0.0/0`                 | Internet Gateway |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center">Destination (プライベート CIDR ブロック)</th>
+      <th style="text-align:center">Target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><code>10.0.0.0/16</code> (Amazon VPC の CIDR ブロック)</td>
+      <td style="text-align:center">local</td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><code>0.0.0.0/0</code></td>
+      <td style="text-align:center">Internet Gateway</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ プライベートサブネットのリクエストを Amazon VPC 内に閉じる場合
 
@@ -183,17 +322,39 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
 
 一方で、範囲外にあれば通信を破棄する。
 
-|  Destination (プライベート CIDR ブロック)   | Target |
-| :-----------------------------------------: | :----: |
-| `10.0.0.0/16` (Amazon VPC の CIDR ブロック) | local  |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center">Destination (プライベート CIDR ブロック)</th>
+      <th style="text-align:center">Target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><code>10.0.0.0/16</code> (Amazon VPC の CIDR ブロック)</td>
+      <td style="text-align:center">local</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ プライベートサブネットのリクエストを同一サブネット内に閉じる場合
 
 プライベートサブネットでネットワークを完全に閉じる場合、ルートテーブルにサブネットの CIDR ブロックを設定する。
 
-|    Destination (プライベート CIDR ブロック)     | Target |
-| :---------------------------------------------: | :----: |
-| `10.0.0.0/24` (サブネット `1` の CIDR ブロック) | local  |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center">Destination (プライベート CIDR ブロック)</th>
+      <th style="text-align:center">Target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><code>10.0.0.0/24</code> (サブネット <code>1</code> の CIDR ブロック)</td>
+      <td style="text-align:center">local</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [ネットワークエンジニアが教える！AWSのVPCルーターの全て \| one more step](https://koejima.com/archives/1950/)
 
@@ -231,10 +392,33 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
 
 AWS ALB に割り振られる可能性のある IP アドレスを許可するために、AWS ALB のセキュリティグループ ID、またはサブネットの CIDR ブロックを設定する。
 
-| タイプ | プロトコル | ポート | ソース                                                | 説明                               |
-| ------ | ---------- | ------ | ----------------------------------------------------- | ---------------------------------- |
-| HTTP   | TCP        | `80`   | AWS ALB のセキュリティグループ ID                     | HTTP access from AWS ALB           |
-| HTTPS  | TCP        | `443`  | 踏み台サーバー (Amazon EC2) のセキュリティグループ ID | SSH access from bastion Amazon EC2 |
+<table>
+  <thead>
+    <tr>
+      <th>タイプ</th>
+      <th>プロトコル</th>
+      <th>ポート</th>
+      <th>ソース</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HTTP</td>
+      <td>TCP</td>
+      <td><code>80</code></td>
+      <td>AWS ALB のセキュリティグループ ID</td>
+      <td>HTTP access from AWS ALB</td>
+    </tr>
+    <tr>
+      <td>HTTPS</td>
+      <td>TCP</td>
+      <td><code>443</code></td>
+      <td>踏み台サーバー (Amazon EC2) のセキュリティグループ ID</td>
+      <td>SSH access from bastion Amazon EC2</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ `ssh` コマンドで接続する踏み台サーバー (Amazon EC2) の場合
 
@@ -246,9 +430,26 @@ AWS ALB に割り振られる可能性のある IP アドレスを許可する�
 $ ssh -o serveraliveinterval=60 -f -N -L 3306:<Amazon Auroraのリーダーエンドポイント>:3306 -i "~/.ssh/foo.pem" <踏み台サーバーの実行ユーザー>@<踏み台サーバーのホスト> -p 22
 ```
 
-| タイプ | プロトコル | ポート | ソース                       | 説明                              |
-| ------ | ---------- | ------ | ---------------------------- | --------------------------------- |
-| SSH    | TCP        | `22`   | 社内のグローバル IP アドレス | SSH access from global ip address |
+<table>
+  <thead>
+    <tr>
+      <th>タイプ</th>
+      <th>プロトコル</th>
+      <th>ポート</th>
+      <th>ソース</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SSH</td>
+      <td>TCP</td>
+      <td><code>22</code></td>
+      <td>社内のグローバル IP アドレス</td>
+      <td>SSH access from global ip address</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ AWS SSM Session Manager で接続する踏み台サーバー (Amazon EC2) の場合
 
@@ -262,9 +463,26 @@ $ aws ssm start-session --target <踏み台サーバー (Amazon EC2) インス�
     --parameters '{"host":["<Amazon Auroraのクラスターエンドポイント>"],"portNumber":["<踏み台サーバー (Amazon EC2) のポート番号>"], "localPortNumber":["<ローカルPCのポート番号>"]}'
 ```
 
-| タイプ   | プロトコル | ポート   | ソース   | 説明     |
-| -------- | ---------- | -------- | -------- | -------- |
-| 設定なし | 設定なし   | 設定なし | 設定なし | 設定なし |
+<table>
+  <thead>
+    <tr>
+      <th>タイプ</th>
+      <th>プロトコル</th>
+      <th>ポート</th>
+      <th>ソース</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>設定なし</td>
+      <td>設定なし</td>
+      <td>設定なし</td>
+      <td>設定なし</td>
+      <td>設定なし</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [SSM セッションマネージャーによるBastion設計 #AWS - Qiita](https://qiita.com/s_yanada/items/0f64f746095d85ba3e4c)
 > - https://blog.dcs.co.jp/aws/20221124-serverless-bastion.html
@@ -273,25 +491,76 @@ $ aws ssm start-session --target <踏み台サーバー (Amazon EC2) インス�
 
 Amazon EC2 に割り振られる可能性のある IP アドレスを許可するために、Amazon EC2 のセキュリティグループ ID、またはサブネットの CIDR ブロックを設定する。
 
-| タイプ | プロトコル | ポート | ソース                               | 説明                           |
-| ------ | ---------- | ------ | ------------------------------------ | ------------------------------ |
-| NFS    | TCP        | `2049` | Amazon EC2 のセキュリティグループ ID | NFS access from app Amazon EC2 |
+<table>
+  <thead>
+    <tr>
+      <th>タイプ</th>
+      <th>プロトコル</th>
+      <th>ポート</th>
+      <th>ソース</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NFS</td>
+      <td>TCP</td>
+      <td><code>2049</code></td>
+      <td>Amazon EC2 のセキュリティグループ ID</td>
+      <td>NFS access from app Amazon EC2</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ Amazon RDS の場合
 
 Amazon EC2 に割り振られる可能性のある IP アドレスを許可するために、Amazon EC2 のセキュリティグループ ID、またはサブネットの CIDR ブロックを設定する。
 
-| タイプ              | プロトコル | ポート | ソース                               | 説明                             |
-| ------------------- | ---------- | ------ | ------------------------------------ | -------------------------------- |
-| MYSQL/Amazon Aurora | TCP        | `3306` | Amazon EC2 のセキュリティグループ ID | MYSQL access from app Amazon EC2 |
+<table>
+  <thead>
+    <tr>
+      <th>タイプ</th>
+      <th>プロトコル</th>
+      <th>ポート</th>
+      <th>ソース</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MYSQL/Amazon Aurora</td>
+      <td>TCP</td>
+      <td><code>3306</code></td>
+      <td>Amazon EC2 のセキュリティグループ ID</td>
+      <td>MYSQL access from app Amazon EC2</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ Redis の場合
 
 Amazon EC2 に割り振られる可能性のある IP アドレスを許可するために、Amazon EC2 のセキュリティグループ ID、またはサブネットの CIDR ブロックを設定する。
 
-| タイプ       | プロトコル | ポート | ソース                               | 説明                           |
-| ------------ | ---------- | ------ | ------------------------------------ | ------------------------------ |
-| カスタム TCP | TCP        | `6379` | Amazon EC2 のセキュリティグループ ID | TCP access from app Amazon EC2 |
+<table>
+  <thead>
+    <tr>
+      <th>タイプ</th>
+      <th>プロトコル</th>
+      <th>ポート</th>
+      <th>ソース</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>カスタム TCP</td>
+      <td>TCP</td>
+      <td><code>6379</code></td>
+      <td>Amazon EC2 のセキュリティグループ ID</td>
+      <td>TCP access from app Amazon EC2</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ AWS ALB の場合
 
@@ -301,10 +570,33 @@ Amazon CloudFront と連携する場合、Amazon CloudFront に割り振られ�
 
 Amazon CloudFront とは連携しない場合、AWS ALB のセキュリティグループで IP アドレスを制限する。
 
-| タイプ | プロトコル | ポート | ソース      | 説明                                |     |
-| ------ | ---------- | ------ | ----------- | ----------------------------------- | --- |
-| HTTP   | TCP        | `80`   | `0.0.0.0/0` | HTTP access from Amazon CloudFront  |     |
-| HTTPS  | TCP        | `443`  | `0.0.0.0/0` | HTTPS access from Amazon CloudFront |     |
+<table>
+  <thead>
+    <tr>
+      <th>タイプ</th>
+      <th>プロトコル</th>
+      <th>ポート</th>
+      <th>ソース</th>
+      <th colspan="2">説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HTTP</td>
+      <td>TCP</td>
+      <td><code>80</code></td>
+      <td><code>0.0.0.0/0</code></td>
+      <td colspan="2">HTTP access from Amazon CloudFront</td>
+    </tr>
+    <tr>
+      <td>HTTPS</td>
+      <td>TCP</td>
+      <td><code>443</code></td>
+      <td><code>0.0.0.0/0</code></td>
+      <td colspan="2">HTTPS access from Amazon CloudFront</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ NLB の場合
 
@@ -328,9 +620,26 @@ Amazon VPC エンドポイントのセキュリティグループでは、Amazon
 
 AWS ALB から Amazon EC2 にリクエストをルーティングする場合、特定の Amazon EC2 のみへのルーティングを許可するために、アウトバウンド通信のルールで Amazon EC2 のセキュリティグループ ID を設定する。
 
-| タイプ | プロトコル | ポート | 宛先                                        | 説明        |
-| ------ | ---------- | ------ | ------------------------------------------- | ----------- |
-| HTTPS  | TCP        | `443`  | 宛先の Amazon EC2 のセキュリティグループ ID | Full access |
+<table>
+  <thead>
+    <tr>
+      <th>タイプ</th>
+      <th>プロトコル</th>
+      <th>ポート</th>
+      <th>宛先</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HTTPS</td>
+      <td>TCP</td>
+      <td><code>443</code></td>
+      <td>宛先の Amazon EC2 のセキュリティグループ ID</td>
+      <td>Full access</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Security groups for your Application Load Balancer - Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-update-security-groups.html#security-group-recommended-rules)
 
@@ -376,13 +685,45 @@ AWS データセンター間の通信で使用する Transit Gateway であれ�
 
 ルール：`block-user-agents`
 
-| Statement の順番 | If a request | Inspect    | Match type                               | Regex pattern set | Then  | 挙動                                                                         |
-| ---------------- | ------------ | ---------- | ---------------------------------------- | ----------------- | ----- | ---------------------------------------------------------------------------- |
-| `0`              | `matches`    | `URI path` | `Matches pattern from regex pattern set` | 文字列セット      | Block | 指定した文字列を含むユーザーエージェントの場合、アクセスすることを拒否する。 |
+<table>
+  <thead>
+    <tr>
+      <th>Statement の順番</th>
+      <th>If a request</th>
+      <th>Inspect</th>
+      <th>Match type</th>
+      <th>Regex pattern set</th>
+      <th>Then</th>
+      <th>挙動</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>0</code></td>
+      <td><code>matches</code></td>
+      <td><code>URI path</code></td>
+      <td><code>Matches pattern from regex pattern set</code></td>
+      <td>文字列セット</td>
+      <td>Block</td>
+      <td>指定した文字列を含むユーザーエージェントの場合、アクセスすることを拒否する。</td>
+    </tr>
+  </tbody>
+</table>
 
-| Default Action | 説明                                                                                       |
-| -------------- | ------------------------------------------------------------------------------------------ |
-| Allow          | 指定したユーザーエージェントでない場合、すべてのパスにリクエストを送信することを許可する。 |
+<table>
+  <thead>
+    <tr>
+      <th>Default Action</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Allow</td>
+      <td>指定したユーザーエージェントでない場合、すべてのパスにリクエストを送信することを許可する。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ CI ツールのアクセスを許可
 
@@ -392,13 +733,47 @@ AWS データセンター間の通信で使用する Transit Gateway であれ�
 
 ルール：`allow-request-including-access-token`
 
-| Statement の順番 | If a request | Inspect  | Header field name | Match type                | String to match                                         | Then  | 挙動                                                                                         |
-| ---------------- | ------------ | -------- | ----------------- | ------------------------- | ------------------------------------------------------- | ----- | -------------------------------------------------------------------------------------------- |
-| `0`              | `matches`    | `Header` | `Authorization`   | `Exactly matched  string` | 『`Bearer <アクセストークン文字列>`』で文字列を設定する | Allow | `Authorization` ヘッダーに指定した文字列を含むリクエストの場合、アクセスすることを拒否する。 |
+<table>
+  <thead>
+    <tr>
+      <th>Statement の順番</th>
+      <th>If a request</th>
+      <th>Inspect</th>
+      <th>Header field name</th>
+      <th>Match type</th>
+      <th>String to match</th>
+      <th>Then</th>
+      <th>挙動</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>0</code></td>
+      <td><code>matches</code></td>
+      <td><code>Header</code></td>
+      <td><code>Authorization</code></td>
+      <td><code>Exactly matched  string</code></td>
+      <td>『<code>Bearer &lt;アクセストークン文字列&gt;</code>』で文字列を設定する</td>
+      <td>Allow</td>
+      <td><code>Authorization</code> ヘッダーに指定した文字列を含むリクエストの場合、アクセスすることを拒否する。</td>
+    </tr>
+  </tbody>
+</table>
 
-| Default Action | 説明                                                                                       |
-| -------------- | ------------------------------------------------------------------------------------------ |
-| Block          | 正しいトークンを持たないアクセスの場合、すべてのパスにリクエストを送信することを拒否する。 |
+<table>
+  <thead>
+    <tr>
+      <th>Default Action</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Block</td>
+      <td>正しいトークンを持たないアクセスの場合、すべてのパスにリクエストを送信することを拒否する。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ 特定のパスを社内アクセスに限定
 
@@ -410,20 +785,84 @@ AWS データセンター間の通信で使用する Transit Gateway であれ�
 
 ルール：`allow-access--to-url-path`
 
-| Statement の順番 | If a request    | Inspect                            | IP set         | Match type                               | Regex pattern set | Then  | 挙動                                                                                  |
-| ---------------- | --------------- | ---------------------------------- | -------------- | ---------------------------------------- | ----------------- | ----- | ------------------------------------------------------------------------------------- |
-| `0`              | `matches (AND)` | `Originates from an IP address in` | 社内 IP セット | -                                        | -                 | -     | 社内の送信元 IP アドレスの場合、指定したパスにリクエストを送信することを許可する。    |
-| `1`              | `matches`       | `URI path`                         | -              | `Matches pattern from regex pattern set` | 文字列セット      | Allow | 0 番目かつ、指定した文字列を含む URL パスアクセスの場合、アクセスすることを許可する。 |
+<table>
+  <thead>
+    <tr>
+      <th>Statement の順番</th>
+      <th>If a request</th>
+      <th>Inspect</th>
+      <th>IP set</th>
+      <th>Match type</th>
+      <th>Regex pattern set</th>
+      <th>Then</th>
+      <th>挙動</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>0</code></td>
+      <td><code>matches (AND)</code></td>
+      <td><code>Originates from an IP address in</code></td>
+      <td>社内 IP セット</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>社内の送信元 IP アドレスの場合、指定したパスにリクエストを送信することを許可する。</td>
+    </tr>
+    <tr>
+      <td><code>1</code></td>
+      <td><code>matches</code></td>
+      <td><code>URI path</code></td>
+      <td>-</td>
+      <td><code>Matches pattern from regex pattern set</code></td>
+      <td>文字列セット</td>
+      <td>Allow</td>
+      <td>0 番目かつ、指定した文字列を含む URL パスアクセスの場合、アクセスすることを許可する。</td>
+    </tr>
+  </tbody>
+</table>
 
 ルール：`block-access-to-url-path`
 
-| Statement の順番 | If a request | Inspect    | Match type                               | Regex pattern set | Then  | 挙動                                                                      |
-| ---------------- | ------------ | ---------- | ---------------------------------------- | ----------------- | ----- | ------------------------------------------------------------------------- |
-| `0`              | `matches`    | `URI path` | `Matches pattern from regex pattern set` | 文字列セット      | Block | 指定した文字列を含む URL パスアクセスの場合、アクセスすることを拒否する。 |
+<table>
+  <thead>
+    <tr>
+      <th>Statement の順番</th>
+      <th>If a request</th>
+      <th>Inspect</th>
+      <th>Match type</th>
+      <th>Regex pattern set</th>
+      <th>Then</th>
+      <th>挙動</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>0</code></td>
+      <td><code>matches</code></td>
+      <td><code>URI path</code></td>
+      <td><code>Matches pattern from regex pattern set</code></td>
+      <td>文字列セット</td>
+      <td>Block</td>
+      <td>指定した文字列を含む URL パスアクセスの場合、アクセスすることを拒否する。</td>
+    </tr>
+  </tbody>
+</table>
 
-| Default Action | 説明                                                                                  |
-| -------------- | ------------------------------------------------------------------------------------- |
-| Allow          | 指定した URL パス以外のアクセスの場合、そのパスにリクエストを送信することを許可する。 |
+<table>
+  <thead>
+    <tr>
+      <th>Default Action</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Allow</td>
+      <td>指定した URL パス以外のアクセスの場合、そのパスにリクエストを送信することを許可する。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ 社内アクセスに限定
 
@@ -433,14 +872,54 @@ AWS データセンター間の通信で使用する Transit Gateway であれ�
 
 ルール：`allow-global-ip-addresses`
 
-| Statement の順番 | If a request   | Inspect                            | IP set             | Originating address | Then  | 挙動                                                                                                   |
-| ---------------- | -------------- | ---------------------------------- | ------------------ | ------------------- | ----- | ------------------------------------------------------------------------------------------------------ |
-| `0`              | `matches (OR)` | `Originates from an IP address in` | 社内 IP セット     | Source IP address   | -     | 社内の送信元 IP アドレスの場合、すべてのパスにリクエストを送信することを許可する。                     |
-| `1`              | `matches`      | `Originates from an IP address in` | 協力会社 IP セット | Source IP address   | Allow | 0 番目あるいは、協力会社の送信元 IP アドレスの場合、すべてのパスにリクエストを送信することを許可する。 |
+<table>
+  <thead>
+    <tr>
+      <th>Statement の順番</th>
+      <th>If a request</th>
+      <th>Inspect</th>
+      <th>IP set</th>
+      <th>Originating address</th>
+      <th>Then</th>
+      <th>挙動</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>0</code></td>
+      <td><code>matches (OR)</code></td>
+      <td><code>Originates from an IP address in</code></td>
+      <td>社内 IP セット</td>
+      <td>Source IP address</td>
+      <td>-</td>
+      <td>社内の送信元 IP アドレスの場合、すべてのパスにリクエストを送信することを許可する。</td>
+    </tr>
+    <tr>
+      <td><code>1</code></td>
+      <td><code>matches</code></td>
+      <td><code>Originates from an IP address in</code></td>
+      <td>協力会社 IP セット</td>
+      <td>Source IP address</td>
+      <td>Allow</td>
+      <td>0 番目あるいは、協力会社の送信元 IP アドレスの場合、すべてのパスにリクエストを送信することを許可する。</td>
+    </tr>
+  </tbody>
+</table>
 
-| Default Action | 説明                                                                                     |
-| -------------- | ---------------------------------------------------------------------------------------- |
-| Block          | 指定した送信元 IP アドレス以外の場合、すべてのパスにリクエストを送信することを拒否する。 |
+<table>
+  <thead>
+    <tr>
+      <th>Default Action</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Block</td>
+      <td>指定した送信元 IP アドレス以外の場合、すべてのパスにリクエストを送信することを拒否する。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ AWS ALB を直接的に指定することを防ぐ
 
@@ -456,13 +935,45 @@ AWS ALB の IP アドレスは定期的に変化するため、任意の IP ア�
 
 ルール：`block-direct-access-to-lb`
 
-| Statement の順番 | If a request | Inspect  | Match type                               | Regex pattern set | Then  | 挙動                                                                         |
-| ---------------- | ------------ | -------- | ---------------------------------------- | ----------------- | ----- | ---------------------------------------------------------------------------- |
-| `0`              | `matches`    | `Header` | `Matches pattern from regex pattern set` | 文字列セット      | Block | 指定した `Host` ヘッダーに対するアクセスの場合、アクセスすることを拒否する。 |
+<table>
+  <thead>
+    <tr>
+      <th>Statement の順番</th>
+      <th>If a request</th>
+      <th>Inspect</th>
+      <th>Match type</th>
+      <th>Regex pattern set</th>
+      <th>Then</th>
+      <th>挙動</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>0</code></td>
+      <td><code>matches</code></td>
+      <td><code>Header</code></td>
+      <td><code>Matches pattern from regex pattern set</code></td>
+      <td>文字列セット</td>
+      <td>Block</td>
+      <td>指定した <code>Host</code> ヘッダーに対するアクセスの場合、アクセスすることを拒否する。</td>
+    </tr>
+  </tbody>
+</table>
 
-| Default Action | 説明                                                                             |
-| -------------- | -------------------------------------------------------------------------------- |
-| Allow          | 指定した `Host` ヘッダー以外に対するアクセスの場合、アクセスすることを許可する。 |
+<table>
+  <thead>
+    <tr>
+      <th>Default Action</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Allow</td>
+      <td>指定した <code>Host</code> ヘッダー以外に対するアクセスの場合、アクセスすることを許可する。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

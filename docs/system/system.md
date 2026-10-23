@@ -57,15 +57,60 @@ description: システムの知見を記録しています。
 
 Nginx または Envoy を使用する場合で考えるとする。
 
-| 経路             | Java の一例       | PHP の一例        | Python の一例     |
-| ---------------- | :---------------- | ----------------- | ----------------- |
-| リバースプロキシ | Envoy、Nginx      | Envoy、Nginx      | Envoy、Nginx      |
-| ⬇️⬆️             | ⬇️⬆️              | ⬇️⬆️              | ⬇️⬆️              |
-| Web サーバー     | Nginx             | Nginx             | Nginx             |
-| ⬇️⬆️             | ⬇️⬆️              | ⬇️⬆️              | ⬇️⬆️              |
-| App サーバー     | Apache Tomcat     | なし              | Uvicorn           |
-| ⬇️⬆️             | ⬇️⬆️              | ⬇️⬆️              | ⬇️⬆️              |
-| DB サーバー      | MySQL、PostgreSQL | MySQL、PostgreSQL | MySQL、PostgreSQL |
+<table>
+  <thead>
+    <tr>
+      <th>経路</th>
+      <th style="text-align:left">Java の一例</th>
+      <th>PHP の一例</th>
+      <th>Python の一例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>リバースプロキシ</td>
+      <td style="text-align:left">Envoy、Nginx</td>
+      <td>Envoy、Nginx</td>
+      <td>Envoy、Nginx</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+      <td>⬇️⬆️</td>
+      <td>⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>Web サーバー</td>
+      <td style="text-align:left">Nginx</td>
+      <td>Nginx</td>
+      <td>Nginx</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+      <td>⬇️⬆️</td>
+      <td>⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>App サーバー</td>
+      <td style="text-align:left">Apache Tomcat</td>
+      <td>なし</td>
+      <td>Uvicorn</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+      <td>⬇️⬆️</td>
+      <td>⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>DB サーバー</td>
+      <td style="text-align:left">MySQL、PostgreSQL</td>
+      <td>MySQL、PostgreSQL</td>
+      <td>MySQL、PostgreSQL</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [図解で解説！！ Apache、Tomcatってなんなの？ #Java - Qiita](https://qiita.com/tanayasu1228/items/11e22a18dbfa796745b5#%E3%81%93%E3%81%93%E3%81%A7%E7%96%91%E5%95%8F%E3%81%AB%E6%80%9D%E3%81%86%E3%81%93%E3%81%A8%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%82%88%E3%81%AD)
 > - [Dockerでnginxとspring bootを連携 - インフラ（AWSとAzure）とアプリ開発](https://rikues2012.hatenablog.com/entry/2021/09/10/193349)
@@ -74,15 +119,44 @@ Nginx または Envoy を使用する場合で考えるとする。
 
 Go、JavaScript、では Web サーバーと App サーバーがいらない。
 
-| 経路             | Go、JavaScript の場合                        |
-| ---------------- | :------------------------------------------- |
-| リバースプロキシ | Envoy、Nginx                                 |
-| ⬇️⬆️             | ⬇️⬆️                                         |
-| Web サーバー     | なし                                         |
-| ⬇️⬆️             | ⬇️⬆️                                         |
-| App サーバー     | なし (Go、JavaScript のアプリケーションのみ) |
-| ⬇️⬆️             | ⬇️⬆️                                         |
-| DB サーバー      | MySQL、PostgreSQL                            |
+<table>
+  <thead>
+    <tr>
+      <th>経路</th>
+      <th style="text-align:left">Go、JavaScript の場合</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>リバースプロキシ</td>
+      <td style="text-align:left">Envoy、Nginx</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>Web サーバー</td>
+      <td style="text-align:left">なし</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>App サーバー</td>
+      <td style="text-align:left">なし (Go、JavaScript のアプリケーションのみ)</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>DB サーバー</td>
+      <td style="text-align:left">MySQL、PostgreSQL</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Node.jsやGo言語でアプリケーションサーバー必要でないのはなぜでしょうか？ \| teratail](https://teratail.com/questions/103909)
 
@@ -110,10 +184,24 @@ Web サーバーとは異なり、静的ファイル (例：`html` ファイル�
 
 ![フォワードプロキシサーバーとリバースプロキシサーバー](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/フォワードプロキシサーバーとリバースプロキシサーバー.png)
 
-| サーバー名                 | 処理                                                                                                                                        |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| フォワードプロキシサーバー | 特定のクライアントのアウトバウンド通信を、不特定多数の宛先にロードバランシングする。                                                        |
-| リバースプロキシサーバー   | 不特定のクライアントからのインバウンド通信を、特定の Web サーバーにロードバランシングする。また、ロードバランサーのように負荷分散もできる。 |
+<table>
+  <thead>
+    <tr>
+      <th>サーバー名</th>
+      <th>処理</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>フォワードプロキシサーバー</td>
+      <td>特定のクライアントのアウトバウンド通信を、不特定多数の宛先にロードバランシングする。</td>
+    </tr>
+    <tr>
+      <td>リバースプロキシサーバー</td>
+      <td>不特定のクライアントからのインバウンド通信を、特定の Web サーバーにロードバランシングする。また、ロードバランサーのように負荷分散もできる。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [リバースプロキシとは。プロキシとの違いは？仕組みやメリットを解説！ \| Winserverのススメ](https://www.winserver.ne.jp/column/about_reverse-proxy/#i-5)
 > - [リバースプロキシの用途7つ｜リバースプロキシの仕組みやメリットも解説](https://www.fenet.jp/infla/column/server/%E3%83%AA%E3%83%90%E3%83%BC%E3%82%B9%E3%83%97%E3%83%AD%E3%82%AD%E3%82%B7%E3%81%A8%E3%81%AF%EF%BC%9F%E4%BB%95%E7%B5%84%E3%81%BF%E3%82%84%E7%94%A8%E9%80%94%E3%82%92%E8%A7%A3%E8%AA%AC%EF%BC%81/)
@@ -125,10 +213,24 @@ Web サーバーとは異なり、静的ファイル (例：`html` ファイル�
 
 ![プロキシサーバーのキャッシュ能力](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プロキシサーバーのキャッシュ能力.png)
 
-| サーバー名                 | 処理                                                                       |
-| -------------------------- | -------------------------------------------------------------------------- |
-| フォワードプロキシサーバー | クライアント側にて、ロードバランシングのレスポンスのキャッシュを作成する。 |
-| リバースプロキシサーバー   | サーバー側にて、ロードバランシングのレスポンスのキャッシュを作成する。     |
+<table>
+  <thead>
+    <tr>
+      <th>サーバー名</th>
+      <th>処理</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>フォワードプロキシサーバー</td>
+      <td>クライアント側にて、ロードバランシングのレスポンスのキャッシュを作成する。</td>
+    </tr>
+    <tr>
+      <td>リバースプロキシサーバー</td>
+      <td>サーバー側にて、ロードバランシングのレスポンスのキャッシュを作成する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [リバースプロキシとは。プロキシとの違いは？仕組みやメリットを解説！ \| Winserverのススメ](https://www.winserver.ne.jp/column/about_reverse-proxy/#i-5)
 > - [リバースプロキシの用途7つ｜リバースプロキシの仕組みやメリットも解説](https://www.fenet.jp/infla/column/server/%E3%83%AA%E3%83%90%E3%83%BC%E3%82%B9%E3%83%97%E3%83%AD%E3%82%AD%E3%82%B7%E3%81%A8%E3%81%AF%EF%BC%9F%E4%BB%95%E7%B5%84%E3%81%BF%E3%82%84%E7%94%A8%E9%80%94%E3%82%92%E8%A7%A3%E8%AA%AC%EF%BC%81/)
@@ -186,15 +288,44 @@ Web サーバーとは異なり、静的ファイル (例：`html` ファイル�
 
 App サーバーにはリクエストを送信しない。
 
-| 経路             | 処理の内容                                     |
-| ---------------- | :--------------------------------------------- |
-| リバースプロキシ | ロードバランシング、静的コンテンツのキャッシュ |
-| ⬇️⬆️             | ⬇️⬆️                                           |
-| Web サーバー     | 静的コンテンツの返却                           |
-| ⬇️⬆️             |                                                |
-| App サーバー     |                                                |
-| ⬇️⬆️             |                                                |
-| DB サーバー      |                                                |
+<table>
+  <thead>
+    <tr>
+      <th>経路</th>
+      <th style="text-align:left">処理の内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>リバースプロキシ</td>
+      <td style="text-align:left">ロードバランシング、静的コンテンツのキャッシュ</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>Web サーバー</td>
+      <td style="text-align:left">静的コンテンツの返却</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td>App サーバー</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td>DB サーバー</td>
+      <td style="text-align:left"></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ 静的 + 動的コンテンツのレスポンス
 
@@ -202,15 +333,44 @@ App サーバーにはリクエストを送信しない。
 
 App サーバーからレスポンスを受け取り、ブラウザにレスポンスを実行する。
 
-| 経路             | 処理の内容                                     |
-| ---------------- | :--------------------------------------------- |
-| リバースプロキシ | ロードバランシング、静的コンテンツのキャッシュ |
-| ⬇️⬆️             | ⬇️⬆️                                           |
-| Web サーバー     | 静的コンテンツの返却                           |
-| ⬇️⬆️             | ⬇️⬆️                                           |
-| App サーバー     | 動的コンテンツの返却                           |
-| ⬇️⬆️             |                                                |
-| DB サーバー      |                                                |
+<table>
+  <thead>
+    <tr>
+      <th>経路</th>
+      <th style="text-align:left">処理の内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>リバースプロキシ</td>
+      <td style="text-align:left">ロードバランシング、静的コンテンツのキャッシュ</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>Web サーバー</td>
+      <td style="text-align:left">静的コンテンツの返却</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>App サーバー</td>
+      <td style="text-align:left">動的コンテンツの返却</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td>DB サーバー</td>
+      <td style="text-align:left"></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ SSL/TLS 終端
 
@@ -236,15 +396,44 @@ Web サーバーから動的コンテンツのリクエストがあった場合�
 
 DB サーバーからのレスポンスを受け取り、Web サーバーに動的なコンテンツのレスポンスを実行する。
 
-| 経路             | 処理の内容                                     |
-| ---------------- | :--------------------------------------------- |
-| リバースプロキシ | ロードバランシング、静的コンテンツのキャッシュ |
-| ⬇️⬆️             | ⬇️⬆️                                           |
-| Web サーバー     | 動的コンテンツの返却                           |
-| ⬇️⬆️             | ⬇️⬆️                                           |
-| App サーバー     | 動的コンテンツの返却                           |
-| ⬇️⬆️             | ⬇️⬆️                                           |
-| DB サーバー      | DB レコードの返却                              |
+<table>
+  <thead>
+    <tr>
+      <th>経路</th>
+      <th style="text-align:left">処理の内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>リバースプロキシ</td>
+      <td style="text-align:left">ロードバランシング、静的コンテンツのキャッシュ</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>Web サーバー</td>
+      <td style="text-align:left">動的コンテンツの返却</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>App サーバー</td>
+      <td style="text-align:left">動的コンテンツの返却</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>DB サーバー</td>
+      <td style="text-align:left">DB レコードの返却</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

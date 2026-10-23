@@ -49,10 +49,30 @@ JGroups のレプリケーション間通信で使用するクラスターイン
 $ kc.sh start --cache-stack kubernetes
 ```
 
-| 値           | 検出方法  | プロトコル | ポート番号      |
-| ------------ | --------- | ---------- | --------------- |
-| `jdbc-ping`  | JDBC_PING | TCP        | `7800`、`57800` |
-| `kubernetes` | DNS_PING  | TCP        |
+<table>
+  <thead>
+    <tr>
+      <th>値</th>
+      <th>検出方法</th>
+      <th>プロトコル</th>
+      <th>ポート番号</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>jdbc-ping</code></td>
+      <td>JDBC_PING</td>
+      <td>TCP</td>
+      <td><code>7800</code>、<code>57800</code></td>
+    </tr>
+    <tr>
+      <td><code>kubernetes</code></td>
+      <td>DNS_PING</td>
+      <td>TCP</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Configuring distributed caches - Keycloak](https://www.keycloak.org/server/caching#_transport_stacks)
 > - [Configuring distributed caches - Keycloak](https://www.keycloak.org/server/caching#_network_ports)

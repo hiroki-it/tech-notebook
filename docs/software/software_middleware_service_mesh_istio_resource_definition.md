@@ -2222,12 +2222,32 @@ spec:
 
 相互 TLS 認証のタイプを設定する。
 
-| 項目         | 説明                                                                                                     |
-| ------------ | -------------------------------------------------------------------------------------------------------- |
-| `UNSET`      | 記入中...                                                                                                |
-| `DISABLE`    | 相互 TLS 認証を使用しない。                                                                              |
-| `PERMISSIVE` | istio-proxy は相互 TLS 認証を使用する通信と平文通信の両方を許可する。                                    |
-| `STRICT`     | istio-proxy は相互 TLS 認証を使用する通信のみを許可し、平文通信やサーバー認証のみの TLS 通信を拒否する。 |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>UNSET</code></td>
+      <td>記入中...</td>
+    </tr>
+    <tr>
+      <td><code>DISABLE</code></td>
+      <td>相互 TLS 認証を使用しない。</td>
+    </tr>
+    <tr>
+      <td><code>PERMISSIVE</code></td>
+      <td>istio-proxy は相互 TLS 認証を使用する通信と平文通信の両方を許可する。</td>
+    </tr>
+    <tr>
+      <td><code>STRICT</code></td>
+      <td>istio-proxy は相互 TLS 認証を使用する通信のみを許可し、平文通信やサーバー認証のみの TLS 通信を拒否する。</td>
+    </tr>
+  </tbody>
+</table>
 
 **＊実装例＊**
 

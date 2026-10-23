@@ -202,12 +202,42 @@ console.log(result); // 『undefined』が出力される。
 
 #### ▼ 一覧表
 
-| 項目                    | var          | let              | const            |
-| :---------------------- | :----------- | :--------------- | ---------------- |
-| 再宣言                  | 可能         | 不可能           | 不可能           |
-| 再代入                  | 可能         | 可能             | 不可能           |
-| 初期化 (`undefined` 化) | 可能         | 可能             | 不可能           |
-| スコープ                | 関数スコープ | ブロックスコープ | ブロックスコープ |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">項目</th>
+      <th style="text-align:left">var</th>
+      <th style="text-align:left">let</th>
+      <th>const</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">再宣言</td>
+      <td style="text-align:left">可能</td>
+      <td style="text-align:left">不可能</td>
+      <td>不可能</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">再代入</td>
+      <td style="text-align:left">可能</td>
+      <td style="text-align:left">可能</td>
+      <td>不可能</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">初期化 (<code>undefined</code> 化)</td>
+      <td style="text-align:left">可能</td>
+      <td style="text-align:left">可能</td>
+      <td>不可能</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">スコープ</td>
+      <td style="text-align:left">関数スコープ</td>
+      <td style="text-align:left">ブロックスコープ</td>
+      <td>ブロックスコープ</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ `const`
 

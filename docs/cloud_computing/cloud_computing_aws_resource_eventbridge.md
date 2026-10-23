@@ -23,10 +23,30 @@ AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能
 
 また、イベントの書き換えロジックが AWS Lambda で実装するほど複雑でない場合に、AWS Lambda の代わりにも使用できる。
 
-|          | Amazon EventBridge                           | SNS                              | SQS                       |
-| -------- | -------------------------------------------- | -------------------------------- | ------------------------- |
-| 処理     | ルーティング                                 | ルーティング                     | キューイング              |
-| 通信方式 | プッシュ型のパブリッシュ／サブスクライブ方式 | パブリッシュ／サブスクライブ方式 | プロデュース/コンシューム |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Amazon EventBridge</th>
+      <th>SNS</th>
+      <th>SQS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>処理</td>
+      <td>ルーティング</td>
+      <td>ルーティング</td>
+      <td>キューイング</td>
+    </tr>
+    <tr>
+      <td>通信方式</td>
+      <td>プッシュ型のパブリッシュ／サブスクライブ方式</td>
+      <td>パブリッシュ／サブスクライブ方式</td>
+      <td>プロデュース/コンシューム</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://fourtheorem.com/what-can-you-do-with-eventbridge/
 > - https://docs.aws.amazon.com/decision-guides/latest/sns-or-sqs-or-eventbridge/sns-or-sqs-or-eventbridge.html

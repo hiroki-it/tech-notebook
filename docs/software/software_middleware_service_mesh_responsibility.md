@@ -47,12 +47,67 @@ description: サービスメッシュの担う責務＠サービスメッシュ�
 
 ## 02. 概要
 
-| クラウドネイティブ技術 (アルファベット順) | Cilium Service Mesh | Consul     | Istio                      | Kong Mesh                  | Kuma       | Linkerd       | NGINX Service Mesh | Traefik Mesh |
-| :---------------------------------------- | :------------------ | :--------- | :------------------------- | :------------------------- | :--------- | :------------ | :----------------- | ------------ |
-| アーキテクチャモード                      | サイドカーレス      | サイドカー | サイドカー／サイドカーレス | サイドカー／サイドカーレス | サイドカー | サイドカー    | サイドカー         | サイドカー   |
-| データプレーン                            | eBPF、Envoy         | Envoy      | Envoy、ztunnel             | Envoy                      | Envoy      | Linkerd Proxy | NGINX Plus         | Traefik      |
-| CNCF ステータス                           | Graduated           | なし       | Graduated                  | なし                       | Sandbox    | Graduated     | なし               | なし         |
-| 開発元                                    | Isovalent           | HashiCorp  | Google など                | Kong                       | Kong       | Buoyant       | Nginx              | Traefik Labs |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">クラウドネイティブ技術 (アルファベット順)</th>
+      <th style="text-align:left">Cilium Service Mesh</th>
+      <th style="text-align:left">Consul</th>
+      <th style="text-align:left">Istio</th>
+      <th style="text-align:left">Kong Mesh</th>
+      <th style="text-align:left">Kuma</th>
+      <th style="text-align:left">Linkerd</th>
+      <th style="text-align:left">NGINX Service Mesh</th>
+      <th>Traefik Mesh</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">アーキテクチャモード</td>
+      <td style="text-align:left">サイドカーレス</td>
+      <td style="text-align:left">サイドカー</td>
+      <td style="text-align:left">サイドカー／サイドカーレス</td>
+      <td style="text-align:left">サイドカー／サイドカーレス</td>
+      <td style="text-align:left">サイドカー</td>
+      <td style="text-align:left">サイドカー</td>
+      <td style="text-align:left">サイドカー</td>
+      <td>サイドカー</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">データプレーン</td>
+      <td style="text-align:left">eBPF、Envoy</td>
+      <td style="text-align:left">Envoy</td>
+      <td style="text-align:left">Envoy、ztunnel</td>
+      <td style="text-align:left">Envoy</td>
+      <td style="text-align:left">Envoy</td>
+      <td style="text-align:left">Linkerd Proxy</td>
+      <td style="text-align:left">NGINX Plus</td>
+      <td>Traefik</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">CNCF ステータス</td>
+      <td style="text-align:left">Graduated</td>
+      <td style="text-align:left">なし</td>
+      <td style="text-align:left">Graduated</td>
+      <td style="text-align:left">なし</td>
+      <td style="text-align:left">Sandbox</td>
+      <td style="text-align:left">Graduated</td>
+      <td style="text-align:left">なし</td>
+      <td>なし</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">開発元</td>
+      <td style="text-align:left">Isovalent</td>
+      <td style="text-align:left">HashiCorp</td>
+      <td style="text-align:left">Google など</td>
+      <td style="text-align:left">Kong</td>
+      <td style="text-align:left">Kong</td>
+      <td style="text-align:left">Buoyant</td>
+      <td style="text-align:left">Nginx</td>
+      <td>Traefik Labs</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -62,12 +117,52 @@ description: サービスメッシュの担う責務＠サービスメッシュ�
 
 サービスメッシュが扱えるプロトコルは、ツールによって異なる。例えば Istio は HTTP と TCP を処理できるが、UDP には対応していない。また、AMQP などの非対応プロトコルは TCP として処理する。
 
-| 責務                            | Kubernetes<br>(サービスメッシュ採用せず) | Istio | Linkerd | Consul | Amazon VPC Lattice |
-| ------------------------------- | ---------------------------------------- | :---: | :-----: | :----: | :----------------: |
-| TCP                             | Service + kube-proxy                     | `⭕️`  |  `⭕️`   |  `⭕️`  |        `⭕️`        |
-| HTTP/1.1                        | Ingress                                  | `⭕️`  |  `⭕️`   |  `⭕️`  |        `⭕️`        |
-| HTTP/2 (例：gRPC、GraphQL など) | Ingress                                  | `⭕️`  |  `⭕️`   |  `⭕️`  |        `⭕️`        |
-| gRPC                            | Ingress、Service + kube-proxy            | `⭕️`  |  `⭕️`   |  `⭕️`  |        `⭕️`        |
+<table>
+  <thead>
+    <tr>
+      <th>責務</th>
+      <th>Kubernetes<br>(サービスメッシュ採用せず)</th>
+      <th style="text-align:center">Istio</th>
+      <th style="text-align:center">Linkerd</th>
+      <th style="text-align:center">Consul</th>
+      <th style="text-align:center">Amazon VPC Lattice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>TCP</td>
+      <td>Service + kube-proxy</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+    <tr>
+      <td>HTTP/1.1</td>
+      <td>Ingress</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+    <tr>
+      <td>HTTP/2 (例：gRPC、GraphQL など)</td>
+      <td>Ingress</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+    <tr>
+      <td>gRPC</td>
+      <td>Ingress、Service + kube-proxy</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -77,13 +172,60 @@ Kubernetes の Service は、配下に新旧バージョンの Pod が混在し�
 
 一方で、サービスメッシュツールは異なるバージョンの Pod に、さまざまな手法 (例：カナリア方式、トラフィックミラーリング方式など) で通信できる。
 
-| 責務                                                   | Kubernetes<br>(サービスメッシュ採用せず) | Istio | Linkerd | Consul | Amazon VPC Lattice |
-| ------------------------------------------------------ | ---------------------------------------- | :---: | :-----: | :----: | :----------------: |
-| `L4` ロードバランシング                                | Service + kube-proxy                     | `⭕️`  |  `⭕️`   |  `⭕️`  |        `⭕️`        |
-| `L7` ロードバランシング                                | Ingress                                  | `⭕️`  |  `⭕️`   |  `⭕️`  |        `⭕️`        |
-| ルーティング<br>(ホストベース、パスベース、割合ベース) | Service + kube-proxy、Ingress            | `⭕️`  |    ×    |   ×    |         ×          |
-| サービス検出                                           | Service + kube-proxy                     | `⭕️`  |  `⭕️`   |  `⭕️`  |        `⭕️`        |
-| CNI                                                    | 記入中...                                | `⭕️`  |  `⭕️`   |  `⭕️`  |        `⭕️`        |
+<table>
+  <thead>
+    <tr>
+      <th>責務</th>
+      <th>Kubernetes<br>(サービスメッシュ採用せず)</th>
+      <th style="text-align:center">Istio</th>
+      <th style="text-align:center">Linkerd</th>
+      <th style="text-align:center">Consul</th>
+      <th style="text-align:center">Amazon VPC Lattice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>L4</code> ロードバランシング</td>
+      <td>Service + kube-proxy</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+    <tr>
+      <td><code>L7</code> ロードバランシング</td>
+      <td>Ingress</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+    <tr>
+      <td>ルーティング<br>(ホストベース、パスベース、割合ベース)</td>
+      <td>Service + kube-proxy、Ingress</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">×</td>
+    </tr>
+    <tr>
+      <td>サービス検出</td>
+      <td>Service + kube-proxy</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+    <tr>
+      <td>CNI</td>
+      <td>記入中...</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -91,13 +233,60 @@ Kubernetes の Service は、配下に新旧バージョンの Pod が混在し�
 
 サービスメッシュは、マイクロサービスの回復性を管理する。
 
-| 責務                                 | Kubernetes<br>(サービスメッシュ採用せず) | Istio | Linkerd | Consul | Amazon VPC Lattice |
-| ------------------------------------ | ---------------------------------------- | :---: | :-----: | :----: | :----------------: |
-| サーキットブレイカー                 | 記入中...                                | `⭕️`  |    ×    |  `⭕️`  |        `⭕️`        |
-| フォールトインジェクション           | 記入中...                                | `⭕️`  |  `⭕️`   |   ×    |         ×          |
-| リトライ処理                         | 記入中...                                | `⭕️`  |  `⭕️`   |  `⭕️`  |        `⭕️`        |
-| タイムアウト                         | 記入中...                                | `⭕️`  |  `⭕️`   |  `⭕️`  |        `⭕️`        |
-| リクエスト数制限<br>(レートリミット) | 記入中...                                | `⭕️`  |  `⭕️`   |  `⭕️`  |        `⭕️`        |
+<table>
+  <thead>
+    <tr>
+      <th>責務</th>
+      <th>Kubernetes<br>(サービスメッシュ採用せず)</th>
+      <th style="text-align:center">Istio</th>
+      <th style="text-align:center">Linkerd</th>
+      <th style="text-align:center">Consul</th>
+      <th style="text-align:center">Amazon VPC Lattice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>サーキットブレイカー</td>
+      <td>記入中...</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+    <tr>
+      <td>フォールトインジェクション</td>
+      <td>記入中...</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">×</td>
+    </tr>
+    <tr>
+      <td>リトライ処理</td>
+      <td>記入中...</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+    <tr>
+      <td>タイムアウト</td>
+      <td>記入中...</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+    <tr>
+      <td>リクエスト数制限<br>(レートリミット)</td>
+      <td>記入中...</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -107,10 +296,36 @@ Kubernetes の Service は、配下に新旧バージョンの Pod が混在し�
 
 Istio は、JWT の検証によるアカウント認証や、アカウント属性・ワークロード ID に基づく通信の認可を実装できる。ただし、ログインや認証情報の発行などの認証識別処理は、ID プロバイダーやアプリケーション側に実装する必要がある。
 
-| 責務                   | Kubernetes<br>(サービスメッシュ採用せず)                                         |               Istio               | Linkerd | Consul | Amazon VPC Lattice |
-| ---------------------- | -------------------------------------------------------------------------------- | :-------------------------------: | :-----: | :----: | :----------------: |
-| 相互 TLS 認証          | 相互 TLS 認証ツール<br>(例：Spiffe)                                              | `⭕️`<br>(Spiffe へ置き換えできる) |  `⭕️`   |  `⭕️`  |        `⭕️`        |
-| JWT による Bearer 認証 | アプリで実装、認証プロキシ (例：OAuth2 Proxy など) や SSO プロキシ(例：Dex など) |               `⭕️`                |    ×    |  `⭕️`  |         ×          |
+<table>
+  <thead>
+    <tr>
+      <th>責務</th>
+      <th>Kubernetes<br>(サービスメッシュ採用せず)</th>
+      <th style="text-align:center">Istio</th>
+      <th style="text-align:center">Linkerd</th>
+      <th style="text-align:center">Consul</th>
+      <th style="text-align:center">Amazon VPC Lattice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>相互 TLS 認証</td>
+      <td>相互 TLS 認証ツール<br>(例：Spiffe)</td>
+      <td style="text-align:center"><code>⭕️</code><br>(Spiffe へ置き換えできる)</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+    <tr>
+      <td>JWT による Bearer 認証</td>
+      <td>アプリで実装、認証プロキシ (例：OAuth2 Proxy など) や SSO プロキシ(例：Dex など)</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center">×</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Istioを活用したセキュアなマイクロサービスの実現/Secure Microservices with Istio - Speaker Deck](https://speakerdeck.com/ido_kara_deru/secure-microservices-with-istio?slide=18)
 
@@ -122,10 +337,36 @@ Istio は、JWT の検証によるアカウント認証や、アカウント属�
 
 Kubernetes では、Pod の作成に応じて証明書の Kubernetes リソース (Certificate、CertificateSigningRequest など) を作成する必要がある。
 
-| 責務                     | Kubernetes<br>(サービスメッシュ採用せず)                                         |               Istio               | Linkerd | Consul | Amazon VPC Lattice |
-| ------------------------ | -------------------------------------------------------------------------------- | :-------------------------------: | :-----: | :----: | :----------------: |
-| 相互 TLS 認証            | 相互 TLS 認証ツール<br>(例：Spiffe)                                              | `⭕️`<br>(Spiffe へ置き換えできる) |  `⭕️`   |  `⭕️`  |        `⭕️`        |
-| サーバー証明書の自動更新 | ・手動でサーバー証明書を更新<br>・サーバー証明書管理ツール<br>(例：Cert Manager) |               `⭕️`                |    ×    |  `⭕️`  |        `⭕️`        |
+<table>
+  <thead>
+    <tr>
+      <th>責務</th>
+      <th>Kubernetes<br>(サービスメッシュ採用せず)</th>
+      <th style="text-align:center">Istio</th>
+      <th style="text-align:center">Linkerd</th>
+      <th style="text-align:center">Consul</th>
+      <th style="text-align:center">Amazon VPC Lattice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>相互 TLS 認証</td>
+      <td>相互 TLS 認証ツール<br>(例：Spiffe)</td>
+      <td style="text-align:center"><code>⭕️</code><br>(Spiffe へ置き換えできる)</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+    <tr>
+      <td>サーバー証明書の自動更新</td>
+      <td>・手動でサーバー証明書を更新<br>・サーバー証明書管理ツール<br>(例：Cert Manager)</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Istioを活用したセキュアなマイクロサービスの実現/Secure Microservices with Istio - Speaker Deck](https://speakerdeck.com/ido_kara_deru/secure-microservices-with-istio?slide=18)
 
@@ -139,12 +380,52 @@ Kubernetes では、Pod の作成に応じて証明書の Kubernetes リソー�
 
 ただし、マイクロサービスでもアクセスログを作成してもよい。
 
-| 責務                                                                                | Kubernetes<br>(サービスメッシュ採用せず) | Istio | Linkerd | Consul | Amazon VPC Lattice |
-| ----------------------------------------------------------------------------------- | ---------------------------------------- | :---: | :-----: | :----: | :----------------: |
-| マイクロサービスの実行ログを作成する                                                | -                                        |   ×   |    ×    |   ×    |         ×          |
-| マイクロサービスの実行ログをログルーター<br>(例：Fluentd、FluentBit) へ送信する     | -                                        |   ×   |    ×    |   ×    |         ×          |
-| マイクロサービスのアクセスログを作成する                                            | 各言語のロギングパッケージ               | `⭕️`  |  `⭕️`   |  `⭕️`  |        `⭕️`        |
-| マイクロサービスのアクセスログをログルーター<br>(例：Fluentd、FluentBit) へ送信する | 各言語のロギングパッケージ               |   ×   |  `⭕️`   |  `⭕️`  |        `⭕️`        |
+<table>
+  <thead>
+    <tr>
+      <th>責務</th>
+      <th>Kubernetes<br>(サービスメッシュ採用せず)</th>
+      <th style="text-align:center">Istio</th>
+      <th style="text-align:center">Linkerd</th>
+      <th style="text-align:center">Consul</th>
+      <th style="text-align:center">Amazon VPC Lattice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>マイクロサービスの実行ログを作成する</td>
+      <td>-</td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">×</td>
+    </tr>
+    <tr>
+      <td>マイクロサービスの実行ログをログルーター<br>(例：Fluentd、FluentBit) へ送信する</td>
+      <td>-</td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">×</td>
+    </tr>
+    <tr>
+      <td>マイクロサービスのアクセスログを作成する</td>
+      <td>各言語のロギングパッケージ</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+    <tr>
+      <td>マイクロサービスのアクセスログをログルーター<br>(例：Fluentd、FluentBit) へ送信する</td>
+      <td>各言語のロギングパッケージ</td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -152,11 +433,44 @@ Kubernetes では、Pod の作成に応じて証明書の Kubernetes リソー�
 
 サービスメッシュツールを使用する場合、マイクロサービスの代わりにサイドカープロキシがメトリクスの元になるデータポイントを作成して公開する。Prometheus などの収集／監視バックエンドがデータポイントを収集する。
 
-| 責務                                                                                  |            Kubernetes<br>(サービスメッシュ採用せず)             |            Istio             | Linkerd | Consul | Amazon VPC Lattice |
-| ------------------------------------------------------------------------------------- | :-------------------------------------------------------------: | :--------------------------: | :-----: | :----: | :----------------: |
-| マイクロサービスのゴールデンシグナルを作成する                                        | クライアントパッケージ<br>(例：otel クライアントパッケージなど) |             `⭕️`             |  `⭕️`   |  `⭕️`  |        `⭕️`        |
-| マイクロサービスのゴールデンシグナルを監視バックエンド<br>(例：Prometheus) へ送信する | クライアントパッケージ<br>(例：otel クライアントパッケージなど) | ×<br>(Prometheus が取得する) |  `⭕️`   |  `⭕️`  |        `⭕️`        |
-| マイクロサービスのエンドポイント別にメトリクスをフィルタリングする                    |                            記入中...                            |             `⭕️`             |  `⭕️`   |  `⭕️`  |         ×          |
+<table>
+  <thead>
+    <tr>
+      <th>責務</th>
+      <th style="text-align:center">Kubernetes<br>(サービスメッシュ採用せず)</th>
+      <th style="text-align:center">Istio</th>
+      <th style="text-align:center">Linkerd</th>
+      <th style="text-align:center">Consul</th>
+      <th style="text-align:center">Amazon VPC Lattice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>マイクロサービスのゴールデンシグナルを作成する</td>
+      <td style="text-align:center">クライアントパッケージ<br>(例：otel クライアントパッケージなど)</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+    <tr>
+      <td>マイクロサービスのゴールデンシグナルを監視バックエンド<br>(例：Prometheus) へ送信する</td>
+      <td style="text-align:center">クライアントパッケージ<br>(例：otel クライアントパッケージなど)</td>
+      <td style="text-align:center">×<br>(Prometheus が取得する)</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+    <tr>
+      <td>マイクロサービスのエンドポイント別にメトリクスをフィルタリングする</td>
+      <td style="text-align:center">記入中...</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center">×</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -166,20 +480,71 @@ Kubernetes では、Pod の作成に応じて証明書の Kubernetes リソー�
 
 ただし、マイクロサービス間でのトレースコンテキスト伝播は、マイクロサービスに実装する必要がある。
 
-| 責務                                                                                                  |            Kubernetes<br>(サービスメッシュ採用せず)             | Istio | Linkerd | Consul | Amazon VPC Lattice |
-| ----------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------: | :---: | :-----: | :----: | :----------------: |
-| 分散トレースのスパンを作成する                                                                        | クライアントパッケージ<br>(例：otel クライアントパッケージなど) | `⭕️`  |  `⭕️`   |  `⭕️`  |        `⭕️`        |
-| 分散トレースをトレースの Collector<br>(例：OpenTelemetry Collector、Jaeger Collector など) に送信する | クライアントパッケージ<br>(例：otel クライアントパッケージなど) | `⭕️`  |  `⭕️`   |  `⭕️`  |        `⭕️`        |
+<table>
+  <thead>
+    <tr>
+      <th>責務</th>
+      <th style="text-align:center">Kubernetes<br>(サービスメッシュ採用せず)</th>
+      <th style="text-align:center">Istio</th>
+      <th style="text-align:center">Linkerd</th>
+      <th style="text-align:center">Consul</th>
+      <th style="text-align:center">Amazon VPC Lattice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>分散トレースのスパンを作成する</td>
+      <td style="text-align:center">クライアントパッケージ<br>(例：otel クライアントパッケージなど)</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+    <tr>
+      <td>分散トレースをトレースの Collector<br>(例：OpenTelemetry Collector、Jaeger Collector など) に送信する</td>
+      <td style="text-align:center">クライアントパッケージ<br>(例：otel クライアントパッケージなど)</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
 ### サービスメッシュトポロジーの場合
 
-| 責務                                       | Kubernetes<br>(サービスメッシュ採用せず) | Kiali | X-Ray |
-| ------------------------------------------ | ---------------------------------------- | :---: | :---: |
-| 必要なメトリクスを取得する                 | 記入中...                                | `⭕`️  | `⭕️`  |
-| サービスメッシュトポロジーをモデリングする | 記入中...                                | `⭕️`  | `⭕️`  |
-| サービスメッシュトポロジーをモデリングする | 記入中...                                | `⭕️`  | `⭕️`  |
+<table>
+  <thead>
+    <tr>
+      <th>責務</th>
+      <th>Kubernetes<br>(サービスメッシュ採用せず)</th>
+      <th style="text-align:center">Kiali</th>
+      <th style="text-align:center">X-Ray</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>必要なメトリクスを取得する</td>
+      <td>記入中...</td>
+      <td style="text-align:center"><code>⭕</code>️</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+    <tr>
+      <td>サービスメッシュトポロジーをモデリングする</td>
+      <td>記入中...</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+    <tr>
+      <td>サービスメッシュトポロジーをモデリングする</td>
+      <td>記入中...</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -187,10 +552,36 @@ Kubernetes では、Pod の作成に応じて証明書の Kubernetes リソー�
 
 ### サービスメッシュのパターン
 
-| 責務                   |            Istio             | Linkerd | Consul | Amazon VPC Lattice | Cilium                         |
-| ---------------------- | :--------------------------: | :-----: | :----: | :----------------: | ------------------------------ |
-| サイドカーパターン     |             `⭕️`             |  `⭕️`   |  `⭕️`  |        `⭕️`        | ×                              |
-| サイドカーレスパターン | `⭕️`<br>(アンビエントモード) |    ×    |   ×    |         ×          | `⭕️`<br>(サイドカーレスモデル) |
+<table>
+  <thead>
+    <tr>
+      <th>責務</th>
+      <th style="text-align:center">Istio</th>
+      <th style="text-align:center">Linkerd</th>
+      <th style="text-align:center">Consul</th>
+      <th style="text-align:center">Amazon VPC Lattice</th>
+      <th>Cilium</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>サイドカーパターン</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td>×</td>
+    </tr>
+    <tr>
+      <td>サイドカーレスパターン</td>
+      <td style="text-align:center"><code>⭕️</code><br>(アンビエントモード)</td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">×</td>
+      <td><code>⭕️</code><br>(サイドカーレスモデル)</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -198,19 +589,71 @@ Kubernetes では、Pod の作成に応じて証明書の Kubernetes リソー�
 
 サービスメッシュは、Cluster 外にあるデータプレーンも管理する。
 
-| 責務                                                                            | Istio | Linkerd | Consul | Amazon VPC Lattice |
-| ------------------------------------------------------------------------------- | :---: | :-----: | :----: | :----------------: |
-| 異なる Cluster にあるデータプレーンの管理<br>(複数 Kubernetes Cluster メッシュ) | `⭕️`  |  `⭕️`   |  `⭕️`  |         ×          |
-| Cluster 外の仮想サーバーにあるデータプレーンの管理                              | `⭕️`  |    ×    |  `⭕️`  |        `⭕️`        |
+<table>
+  <thead>
+    <tr>
+      <th>責務</th>
+      <th style="text-align:center">Istio</th>
+      <th style="text-align:center">Linkerd</th>
+      <th style="text-align:center">Consul</th>
+      <th style="text-align:center">Amazon VPC Lattice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>異なる Cluster にあるデータプレーンの管理<br>(複数 Kubernetes Cluster メッシュ)</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center">×</td>
+    </tr>
+    <tr>
+      <td>Cluster 外の仮想サーバーにあるデータプレーンの管理</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
 ### Kubernetes との親和性
 
-| 責務               | Istio | Linkerd | Consul | Amazon VPC Lattice |
-| ------------------ | :---: | :-----: | :----: | :----------------: |
-| Ingress Controller | `⭕️`  |  `⭕️`   |  `⭕️`  |         ×          |
-| Egress Controller  | `⭕️`  |    ×    |   ×    |         ×          |
-| カスタムリソース   | `⭕️`  |  `⭕️`   |   ×    |         ×          |
+<table>
+  <thead>
+    <tr>
+      <th>責務</th>
+      <th style="text-align:center">Istio</th>
+      <th style="text-align:center">Linkerd</th>
+      <th style="text-align:center">Consul</th>
+      <th style="text-align:center">Amazon VPC Lattice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ingress Controller</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center">×</td>
+    </tr>
+    <tr>
+      <td>Egress Controller</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">×</td>
+    </tr>
+    <tr>
+      <td>カスタムリソース</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">×</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>

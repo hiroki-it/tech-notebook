@@ -78,11 +78,48 @@ $ chmod -R 600 <ディレクトリ名>/
 
 所有者以外に全権限が与えられない。
 
-| 数字モード | シンボルモード | 所有者 + グループ + その他 | 所有者 | グループ | その他 | 特徴                                                     |
-| :--------: | -------------- | -------------------------- | :----- | :------- | :----- | -------------------------------------------------------- |
-|   `500`    | 記入中...      | `r-x`                      | `r-x`  | `---`    | `---`  | 所有者以外に全権限なし。所有者は、Read と Execute のみ。 |
-|   `600`    | 記入中...      | ``                         | `rw-`  | `---`    | `---`  | 所有者以外に全権限なし。所有者は、Read と Write のみ。   |
-|   `700`    | 記入中...      | ``                         | `rwx`  | `---`    | `---`  | 所有者以外に全権限なし。所有者は、全権限あり。           |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center">数字モード</th>
+      <th>シンボルモード</th>
+      <th>所有者 + グループ + その他</th>
+      <th style="text-align:left">所有者</th>
+      <th style="text-align:left">グループ</th>
+      <th style="text-align:left">その他</th>
+      <th>特徴</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><code>500</code></td>
+      <td>記入中...</td>
+      <td><code>r-x</code></td>
+      <td style="text-align:left"><code>r-x</code></td>
+      <td style="text-align:left"><code>---</code></td>
+      <td style="text-align:left"><code>---</code></td>
+      <td>所有者以外に全権限なし。所有者は、Read と Execute のみ。</td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><code>600</code></td>
+      <td>記入中...</td>
+      <td>``</td>
+      <td style="text-align:left"><code>rw-</code></td>
+      <td style="text-align:left"><code>---</code></td>
+      <td style="text-align:left"><code>---</code></td>
+      <td>所有者以外に全権限なし。所有者は、Read と Write のみ。</td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><code>700</code></td>
+      <td>記入中...</td>
+      <td>``</td>
+      <td style="text-align:left"><code>rwx</code></td>
+      <td style="text-align:left"><code>---</code></td>
+      <td style="text-align:left"><code>---</code></td>
+      <td>所有者以外に全権限なし。所有者は、全権限あり。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -90,20 +127,86 @@ $ chmod -R 600 <ディレクトリ名>/
 
 すべてのパターンで同じ権限になる。
 
-| 数字モード | シンボルモード | 所有者 + グループ + その他 | 所有者 | グループ | その他 | 特徴                                            |
-| :--------: | -------------- | -------------------------- | :----- | :------- | :----- | ----------------------------------------------- |
-|   `555`    | `a=+rx`        | `r-xr-xr-x`                | `r-x`  | `r-x`    | `r-x`  | すべてに Write 権限なし。Read と Execute のみ。 |
-|   `666`    | `a=+rw`        | `rw-rw-rw-`                | `rw-`  | `rw-`    | `rw-`  | すべてに Execute 権限なし。Read と Write のみ。 |
-|   `777`    | `a=rwx`        | `rwxrwxrwx`                | `rwx`  | `rwx`    | `rwx`  | すべてに全権限あり。                            |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center">数字モード</th>
+      <th>シンボルモード</th>
+      <th>所有者 + グループ + その他</th>
+      <th style="text-align:left">所有者</th>
+      <th style="text-align:left">グループ</th>
+      <th style="text-align:left">その他</th>
+      <th>特徴</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><code>555</code></td>
+      <td><code>a=+rx</code></td>
+      <td><code>r-xr-xr-x</code></td>
+      <td style="text-align:left"><code>r-x</code></td>
+      <td style="text-align:left"><code>r-x</code></td>
+      <td style="text-align:left"><code>r-x</code></td>
+      <td>すべてに Write 権限なし。Read と Execute のみ。</td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><code>666</code></td>
+      <td><code>a=+rw</code></td>
+      <td><code>rw-rw-rw-</code></td>
+      <td style="text-align:left"><code>rw-</code></td>
+      <td style="text-align:left"><code>rw-</code></td>
+      <td style="text-align:left"><code>rw-</code></td>
+      <td>すべてに Execute 権限なし。Read と Write のみ。</td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><code>777</code></td>
+      <td><code>a=rwx</code></td>
+      <td><code>rwxrwxrwx</code></td>
+      <td style="text-align:left"><code>rwx</code></td>
+      <td style="text-align:left"><code>rwx</code></td>
+      <td style="text-align:left"><code>rwx</code></td>
+      <td>すべてに全権限あり。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
 ### その他でよく使用する番号
 
-| 数字モード | シンボルモード | 所有者 + グループ + その他 | 所有者 | グループ | その他 | 特徴                                                  |
-| :--------: | -------------- | -------------------------- | :----- | :------- | :----- | ----------------------------------------------------- |
-|   `644`    | 記入中...      | `rw-r--r--`                | `rw-`  | `r--`    | `r--`  | 所有者以外に Write と Execute 権限なしで、Read のみ。 |
-|   `755`    | 記入中...      | `rwxr-xr-x`                | `rwx`  | `r-x`    | `r-x`  | 所有者以外に Write 権限なしで、Read と Execute のみ。 |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center">数字モード</th>
+      <th>シンボルモード</th>
+      <th>所有者 + グループ + その他</th>
+      <th style="text-align:left">所有者</th>
+      <th style="text-align:left">グループ</th>
+      <th style="text-align:left">その他</th>
+      <th>特徴</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><code>644</code></td>
+      <td>記入中...</td>
+      <td><code>rw-r--r--</code></td>
+      <td style="text-align:left"><code>rw-</code></td>
+      <td style="text-align:left"><code>r--</code></td>
+      <td style="text-align:left"><code>r--</code></td>
+      <td>所有者以外に Write と Execute 権限なしで、Read のみ。</td>
+    </tr>
+    <tr>
+      <td style="text-align:center"><code>755</code></td>
+      <td>記入中...</td>
+      <td><code>rwxr-xr-x</code></td>
+      <td style="text-align:left"><code>rwx</code></td>
+      <td style="text-align:left"><code>r-x</code></td>
+      <td style="text-align:left"><code>r-x</code></td>
+      <td>所有者以外に Write 権限なしで、Read と Execute のみ。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -111,12 +214,32 @@ $ chmod -R 600 <ディレクトリ名>/
 
 シンボルモードと組み合わせて、特定のユーザーやグループに権限を付与する。
 
-| シンボル | 説明                                         |
-| -------- | -------------------------------------------- |
-| `a`      | すべてのシンボルを一括で選ぶことを表す。     |
-| `u`      | ディレクトリやファイルの所有ユーザーを表す。 |
-| `g`      | ディレクトリやファイルの所有グループを表す。 |
-| `o`      | その他のアカウントを表す。                   |
+<table>
+  <thead>
+    <tr>
+      <th>シンボル</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>a</code></td>
+      <td>すべてのシンボルを一括で選ぶことを表す。</td>
+    </tr>
+    <tr>
+      <td><code>u</code></td>
+      <td>ディレクトリやファイルの所有ユーザーを表す。</td>
+    </tr>
+    <tr>
+      <td><code>g</code></td>
+      <td>ディレクトリやファイルの所有グループを表す。</td>
+    </tr>
+    <tr>
+      <td><code>o</code></td>
+      <td>その他のアカウントを表す。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [アクセス権（パーミッション）の変更 - chmod](https://kazmax.zpp.jp/linux_beginner/chmod.html)
 
@@ -237,13 +360,42 @@ Unix にて、Linux の能力の `1` 個であるジョブ管理を実装する�
 # <- 最後は改行する。
 ```
 
-| ディレクトリ名      | 利用者 | 主な用途                                           |
-| ------------------- | ------ | -------------------------------------------------- |
-| `/etc/crontab`      | root   | 任意の cron ファイルを配置するディレクトリ         |
-| `/etc/cron.hourly`  | root   | 毎時実行される cron ファイルを配置するディレクトリ |
-| `/etc/cron.daily`   | root   | 毎日実行される cron ファイルを配置するディレクトリ |
-| `/etc/cron.monthly` | root   | 毎月実行される cron ファイルを配置するディレクトリ |
-| `/etc/cron.weekly`  | root   | 毎週実行される cron ファイルを配置するディレクトリ |
+<table>
+  <thead>
+    <tr>
+      <th>ディレクトリ名</th>
+      <th>利用者</th>
+      <th>主な用途</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>/etc/crontab</code></td>
+      <td>root</td>
+      <td>任意の cron ファイルを配置するディレクトリ</td>
+    </tr>
+    <tr>
+      <td><code>/etc/cron.hourly</code></td>
+      <td>root</td>
+      <td>毎時実行される cron ファイルを配置するディレクトリ</td>
+    </tr>
+    <tr>
+      <td><code>/etc/cron.daily</code></td>
+      <td>root</td>
+      <td>毎日実行される cron ファイルを配置するディレクトリ</td>
+    </tr>
+    <tr>
+      <td><code>/etc/cron.monthly</code></td>
+      <td>root</td>
+      <td>毎月実行される cron ファイルを配置するディレクトリ</td>
+    </tr>
+    <tr>
+      <td><code>/etc/cron.weekly</code></td>
+      <td>root</td>
+      <td>毎週実行される cron ファイルを配置するディレクトリ</td>
+    </tr>
+  </tbody>
+</table>
 
 **＊実装例＊**
 
@@ -289,9 +441,22 @@ CONTENT_TYPE=text/plain; charset=UTF-8
 
 複数の `cron` ファイルですべての 1 つのディレクトリで管理する場合に使用する。
 
-| ディレクトリ名 | 利用者 | 主な用途                                               |
-| -------------- | ------ | ------------------------------------------------------ |
-| `/etc/cron.d`  | root   | 上記以外の自動タスク設定ファイルを配置するディレクトリ |
+<table>
+  <thead>
+    <tr>
+      <th>ディレクトリ名</th>
+      <th>利用者</th>
+      <th>主な用途</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>/etc/cron.d</code></td>
+      <td>root</td>
+      <td>上記以外の自動タスク設定ファイルを配置するディレクトリ</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -1172,12 +1337,32 @@ $ id
 uid=999 gid=0(root) groups=0(root),999
 ```
 
-| 項目     | 説明                                                                                       |
-| -------- | ------------------------------------------------------------------------------------------ |
-| `uid`    | ユーザー番号を表す。                                                                       |
-| `gid`    | ユーザー名を表す。root 権限の実行ユーザーの場合は、`(root)` がつく。                       |
-| `groups` | プライマリグループのグループ番号を表す。root 権限の実行ユーザーの場合は、`(root)` がつく。 |
-| `番号`   | プライマリグループ名を表す。                                                               |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>uid</code></td>
+      <td>ユーザー番号を表す。</td>
+    </tr>
+    <tr>
+      <td><code>gid</code></td>
+      <td>ユーザー名を表す。root 権限の実行ユーザーの場合は、<code>(root)</code> がつく。</td>
+    </tr>
+    <tr>
+      <td><code>groups</code></td>
+      <td>プライマリグループのグループ番号を表す。root 権限の実行ユーザーの場合は、<code>(root)</code> がつく。</td>
+    </tr>
+    <tr>
+      <td><code>番号</code></td>
+      <td>プライマリグループ名を表す。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Linuxコマンド辞典 idコマンド（ユーザ/グループ管理）](https://kcfran.com/2022/04/06/linux-command-id/)
 
@@ -1199,13 +1384,42 @@ Linux/Ubuntu での iptables は、標準的な NAPT ルーターかつパケッ
 
 各パケット処理の実行タイミングを制御する。
 
-| テーブル名 | 説明                                                               | チェイン                                                  |
-| ---------- | ------------------------------------------------------------------ | --------------------------------------------------------- |
-| `filter`   | パケットフィルタリング型ファイアウォールとしてパケットを制限する。 | `INPUT`、`OUTPUT`、`FORWARD`                              |
-| `nat`      | NAPT ルーターとして、DNAT 処理する。                               | `POSTROUTING`、`PREROUTING`、`OUTPUT`                     |
-| `mangle`   | 特定のパケットのヘッダー情報を変更する。                           | `POSTROUTING`、`PREROUTING`、`INPUT`、`OUTPUT`、`FORWARD` |
-| `raw`      | 特定のパケットを処理せずにそのまま通過させる。                     | `PREROUTING`、`OUTPUT`                                    |
-| `security` | SELinux を適用する。                                               | `INPUT`、`OUTPUT`、`FORWARD`                              |
+<table>
+  <thead>
+    <tr>
+      <th>テーブル名</th>
+      <th>説明</th>
+      <th>チェイン</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>filter</code></td>
+      <td>パケットフィルタリング型ファイアウォールとしてパケットを制限する。</td>
+      <td><code>INPUT</code>、<code>OUTPUT</code>、<code>FORWARD</code></td>
+    </tr>
+    <tr>
+      <td><code>nat</code></td>
+      <td>NAPT ルーターとして、DNAT 処理する。</td>
+      <td><code>POSTROUTING</code>、<code>PREROUTING</code>、<code>OUTPUT</code></td>
+    </tr>
+    <tr>
+      <td><code>mangle</code></td>
+      <td>特定のパケットのヘッダー情報を変更する。</td>
+      <td><code>POSTROUTING</code>、<code>PREROUTING</code>、<code>INPUT</code>、<code>OUTPUT</code>、<code>FORWARD</code></td>
+    </tr>
+    <tr>
+      <td><code>raw</code></td>
+      <td>特定のパケットを処理せずにそのまま通過させる。</td>
+      <td><code>PREROUTING</code>、<code>OUTPUT</code></td>
+    </tr>
+    <tr>
+      <td><code>security</code></td>
+      <td>SELinux を適用する。</td>
+      <td><code>INPUT</code>、<code>OUTPUT</code>、<code>FORWARD</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [iptables まとめ #Linux - Qiita](https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
 
@@ -1215,13 +1429,36 @@ Linux/Ubuntu での iptables は、標準的な NAPT ルーターかつパケッ
 
 テーブルごとに使用できるチェインが異なる。
 
-| チェイン名    | 説明                                                                                     |
-| ------------- | ---------------------------------------------------------------------------------------- |
-| `INPUT`       | 受信を許可/拒否する対象のパケットを定義する。                                            |
-| `OUTPUT`      | 送信を許可/拒否する対象のパケットを定義する。                                            |
-| `FORWARD`     | フォワーディングを許可/拒否する対象のパケットを定義する。                                |
-| `PREROUTING`  | 宛先 IP アドレスとポートを変換する対象のパケットを定義する。ルーティング前に実行する。   |
-| `POSTROUTING` | 送信元 IP アドレスとポートを変換する対象のパケットを定義する。ルーティング後に実行する。 |
+<table>
+  <thead>
+    <tr>
+      <th>チェイン名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>INPUT</code></td>
+      <td>受信を許可/拒否する対象のパケットを定義する。</td>
+    </tr>
+    <tr>
+      <td><code>OUTPUT</code></td>
+      <td>送信を許可/拒否する対象のパケットを定義する。</td>
+    </tr>
+    <tr>
+      <td><code>FORWARD</code></td>
+      <td>フォワーディングを許可/拒否する対象のパケットを定義する。</td>
+    </tr>
+    <tr>
+      <td><code>PREROUTING</code></td>
+      <td>宛先 IP アドレスとポートを変換する対象のパケットを定義する。ルーティング前に実行する。</td>
+    </tr>
+    <tr>
+      <td><code>POSTROUTING</code></td>
+      <td>送信元 IP アドレスとポートを変換する対象のパケットを定義する。ルーティング後に実行する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [iptablesの仕組みを図解 - Carpe Diem](https://christina04.hatenablog.com/entry/iptables-outline)
 
@@ -2293,11 +2530,28 @@ $ strace -p <プロセスID>
 
 `/proc/sys` ディレクトリ配下のカーネルに関するパラメータを設定する。
 
-| パラメーター | 説明                           |
-| ------------ | ------------------------------ |
-| `net` 系     | ネットワークのパラメーター     |
-| `fs` 系      | ファイルシステムのパラメーター |
-| `kernel` 系  | カーネルのパラメーター         |
+<table>
+  <thead>
+    <tr>
+      <th>パラメーター</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>net</code> 系</td>
+      <td>ネットワークのパラメーター</td>
+    </tr>
+    <tr>
+      <td><code>fs</code> 系</td>
+      <td>ファイルシステムのパラメーター</td>
+    </tr>
+    <tr>
+      <td><code>kernel</code> 系</td>
+      <td>カーネルのパラメーター</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [/etc/sysctl.conf - Linux技術者認定 LinuC \| LPI-Japan](https://linuc.org/study/knowledge/527/)
 > - [systemctlとsysctlの違い #初心者 - Qiita](https://qiita.com/For_Whom_The_Alarm_Tolls/items/e1b7bc6b630f74f78f63#sysctl)

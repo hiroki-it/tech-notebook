@@ -25,12 +25,32 @@ description: Backup＠AWSの知見を記録しています。
 
 > - [What is AWS Backup? - AWS Backup](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#supported-resources)
 
-| AWS リソースの種類 | バックアップ内容                                                                     |
-| ------------------ | ------------------------------------------------------------------------------------ |
-| Amazon EC2         | Amazon EC2 の AWS AMI を作成する。                                                   |
-| Amazon S3          | Amazon S3 バケットの中身のバックアップを作成する。                                   |
-| AWS EBS ボリューム | AWS EBS ボリュームのバックアップを作成する。スナップショットではないことに注意する。 |
-| Amazon Aurora      | Amazon Aurora の DB Cluster 全体のバックアップを作成する。                           |
+<table>
+  <thead>
+    <tr>
+      <th>AWS リソースの種類</th>
+      <th>バックアップ内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon EC2</td>
+      <td>Amazon EC2 の AWS AMI を作成する。</td>
+    </tr>
+    <tr>
+      <td>Amazon S3</td>
+      <td>Amazon S3 バケットの中身のバックアップを作成する。</td>
+    </tr>
+    <tr>
+      <td>AWS EBS ボリューム</td>
+      <td>AWS EBS ボリュームのバックアップを作成する。スナップショットではないことに注意する。</td>
+    </tr>
+    <tr>
+      <td>Amazon Aurora</td>
+      <td>Amazon Aurora の DB Cluster 全体のバックアップを作成する。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

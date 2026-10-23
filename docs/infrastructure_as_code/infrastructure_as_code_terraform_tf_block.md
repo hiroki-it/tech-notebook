@@ -1527,12 +1527,37 @@ resource "aws_s3_bucket_policy" "alb" {
 
 #### ▼ path 式
 
-| 変数                  | 値                                                             | 例                     |
-| --------------------- | -------------------------------------------------------------- | ---------------------- |
-| `path.module`         | `path` 式が実行された `.tf` ファイルがあるディレクトリのパス。 | `/project/module/foo/` |
-| `path.root`           | `terraform` コマンドの作業ディレクトリのパス                   | `/var/www/`            |
-| `path.root`           | `module` ディレクトリのルートパス                              | `/project/module/`     |
-| `terraform.workplace` | 現在使用しているワークスペース名                               | `prd`                  |
+<table>
+  <thead>
+    <tr>
+      <th>変数</th>
+      <th>値</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>path.module</code></td>
+      <td><code>path</code> 式が実行された <code>.tf</code> ファイルがあるディレクトリのパス。</td>
+      <td><code>/project/module/foo/</code></td>
+    </tr>
+    <tr>
+      <td><code>path.root</code></td>
+      <td><code>terraform</code> コマンドの作業ディレクトリのパス</td>
+      <td><code>/var/www/</code></td>
+    </tr>
+    <tr>
+      <td><code>path.root</code></td>
+      <td><code>module</code> ディレクトリのルートパス</td>
+      <td><code>/project/module/</code></td>
+    </tr>
+    <tr>
+      <td><code>terraform.workplace</code></td>
+      <td>現在使用しているワークスペース名</td>
+      <td><code>prd</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.terraform.io/language/expressions/references#filesystem-and-workspace-info
 

@@ -43,20 +43,64 @@ Amazon ECS のコントロールプレーンは、開発者や他の AWS リソ�
 
 ### Amazon EKS との機能比較
 
-| Amazon ECS の機能                              | EKS で相当する機能                             |
-| ---------------------------------------------- | ---------------------------------------------- |
-| Amazon ECS サービス + Amazon ECS タスク        | Deployment                                     |
-| Daemon 型の Amazon ECS サービス                | DaemonSet                                      |
-| Replica 型の Amazon ECS サービス               | ReplicaSet                                     |
-| なし                                           | StatefulSet                                    |
-| Amazon ECS タスク                              | Pod                                            |
-| ELB                                            | Ingress + Service                              |
-| Amazon ECS タスクの環境変数                    | ConfigMap                                      |
-| AWS Secrets Manager                            | Secret                                         |
-| Task スケーリング                              | HorizontalPodAutoscaler、VerticalPodAutoscaler |
-| キャパシティプロバイダー + AWS AutoScaling     | CusterAutoscaler、Karpenter                    |
-| Minimum/Maximum Healthy Percent                | PodDisruptionBudget                            |
-| Amazon VPC Lattice、Amazon ECS Service Connect | Istio                                          |
+<table>
+  <thead>
+    <tr>
+      <th>Amazon ECS の機能</th>
+      <th>EKS で相当する機能</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon ECS サービス + Amazon ECS タスク</td>
+      <td>Deployment</td>
+    </tr>
+    <tr>
+      <td>Daemon 型の Amazon ECS サービス</td>
+      <td>DaemonSet</td>
+    </tr>
+    <tr>
+      <td>Replica 型の Amazon ECS サービス</td>
+      <td>ReplicaSet</td>
+    </tr>
+    <tr>
+      <td>なし</td>
+      <td>StatefulSet</td>
+    </tr>
+    <tr>
+      <td>Amazon ECS タスク</td>
+      <td>Pod</td>
+    </tr>
+    <tr>
+      <td>ELB</td>
+      <td>Ingress + Service</td>
+    </tr>
+    <tr>
+      <td>Amazon ECS タスクの環境変数</td>
+      <td>ConfigMap</td>
+    </tr>
+    <tr>
+      <td>AWS Secrets Manager</td>
+      <td>Secret</td>
+    </tr>
+    <tr>
+      <td>Task スケーリング</td>
+      <td>HorizontalPodAutoscaler、VerticalPodAutoscaler</td>
+    </tr>
+    <tr>
+      <td>キャパシティプロバイダー + AWS AutoScaling</td>
+      <td>CusterAutoscaler、Karpenter</td>
+    </tr>
+    <tr>
+      <td>Minimum/Maximum Healthy Percent</td>
+      <td>PodDisruptionBudget</td>
+    </tr>
+    <tr>
+      <td>Amazon VPC Lattice、Amazon ECS Service Connect</td>
+      <td>Istio</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -127,16 +171,57 @@ Amazon ECS タスクのライフサイクルにはフェーズがある。
 
 Amazon ECS タスクは、必須コンテナの異常停止時、デプロイ時、オートスケーリング時、手動操作時にフェーズを持つ。
 
-| フェーズ名      | 説明                                                                                                           | 補足                                                                                                                                                                                                                                  |
-| --------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Provisioning    | Amazon ECS タスクの起動前に必要な準備 (例：ENI の紐付け) があり、これが完了していない。                        |                                                                                                                                                                                                                                       |
-| Pending         | Amazon ECS タスク内のコンテナの起動がまだ完了していない。                                                      |                                                                                                                                                                                                                                       |
-| Activating      | Amazon ECS タスク内のすべてのコンテナの起動が完了したが、Amazon ECS タスク全体のセットアップは完了していない。 |                                                                                                                                                                                                                                       |
-| Running         | Amazon ECS タスク内のすべてのコンテナの起動と Amazon ECS タスク全体の準備が完了し、実行中である。              | コンテナの起動が完了すれば `Running` フェーズになるが、コンテナ内でビルトインサーバーを起動するようなアプリケーション (例：フレームワークのビルトインサーバー機能) の場合は、`Running` フェーズであっても使用できないことに注意する。 |
-| De-activating   | Amazon ECS タスク内のコンテナを停止する前に必要な処理があり、これが完了していない。                            |                                                                                                                                                                                                                                       |
-| Stopping        | Amazon ECS タスク内のコンテナが正常/異常に停止しようとしている途中である。                                     |                                                                                                                                                                                                                                       |
-| De-provisioning | Amazon ECS タスク全体を停止する前に必要な準備 (例：ENI の解除) があり、これが完了していない。                  |                                                                                                                                                                                                                                       |
-| Stopped         | Amazon ECS タスク全体が停止した。                                                                              | 正常停止と異常停止に関わらず、停止理由を確認できる。<br>https://docs.aws.amazon.com/AmazonECS/latest/developerguide/stopped-task-errors.html                                                                                          |
+<table>
+  <thead>
+    <tr>
+      <th>フェーズ名</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Provisioning</td>
+      <td>Amazon ECS タスクの起動前に必要な準備 (例：ENI の紐付け) があり、これが完了していない。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Pending</td>
+      <td>Amazon ECS タスク内のコンテナの起動がまだ完了していない。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Activating</td>
+      <td>Amazon ECS タスク内のすべてのコンテナの起動が完了したが、Amazon ECS タスク全体のセットアップは完了していない。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Running</td>
+      <td>Amazon ECS タスク内のすべてのコンテナの起動と Amazon ECS タスク全体の準備が完了し、実行中である。</td>
+      <td>コンテナの起動が完了すれば <code>Running</code> フェーズになるが、コンテナ内でビルトインサーバーを起動するようなアプリケーション (例：フレームワークのビルトインサーバー機能) の場合は、<code>Running</code> フェーズであっても使用できないことに注意する。</td>
+    </tr>
+    <tr>
+      <td>De-activating</td>
+      <td>Amazon ECS タスク内のコンテナを停止する前に必要な処理があり、これが完了していない。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Stopping</td>
+      <td>Amazon ECS タスク内のコンテナが正常/異常に停止しようとしている途中である。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>De-provisioning</td>
+      <td>Amazon ECS タスク全体を停止する前に必要な準備 (例：ENI の解除) があり、これが完了していない。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Stopped</td>
+      <td>Amazon ECS タスク全体が停止した。</td>
+      <td>正常停止と異常停止に関わらず、停止理由を確認できる。<br><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/stopped-task-errors.html">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/stopped-task-errors.html</a></td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html#lifecycle-states
 
@@ -370,12 +455,37 @@ datadog エージェントが Amazon ECS クラスターやコンテナにリク
 
 標準出力/標準エラー出力に出力されたログを CloudWatch-API に送信する。
 
-| 設定項目                  | 説明                                                                                   | 補足                                                                                                                                                                                                                             |
-| ------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `awslogs-group`           | ログ宛先の Amazon CloudWatch Logs のロググループを設定する。                           |                                                                                                                                                                                                                                  |
-| `awslogs-datetime-format` | 日時フォーマットを定義し、加えてこれをログの区切り単位としてログストリームに出力する。 | 正規表現で設定する必要があり、加えて JSON では『`\`』を『`\\`』にエスケープしなければならない。例えば『`\\[%Y-%m-%d %H:%M:%S\\]`』となる。<br>https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format |
-| `awslogs-region`          | ログ宛先の Amazon CloudWatch Logs のリージョンを設定する。                             |                                                                                                                                                                                                                                  |
-| `awslogs-stream-prefix`   | ログ宛先の Amazon CloudWatch Logs のログストリームのプレフィックス名を設定する。       | ログストリームには、『`<プレフィックス名>/<コンテナ名>/<タスクID>`』の形式で送信される。                                                                                                                                         |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>awslogs-group</code></td>
+      <td>ログ宛先の Amazon CloudWatch Logs のロググループを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>awslogs-datetime-format</code></td>
+      <td>日時フォーマットを定義し、加えてこれをログの区切り単位としてログストリームに出力する。</td>
+      <td>正規表現で設定する必要があり、加えて JSON では『<code>\</code>』を『<code>\\</code>』にエスケープしなければならない。例えば『<code>\\[%Y-%m-%d %H:%M:%S\\]</code>』となる。<br><a href="https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format">https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format</a></td>
+    </tr>
+    <tr>
+      <td><code>awslogs-region</code></td>
+      <td>ログ宛先の Amazon CloudWatch Logs のリージョンを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>awslogs-stream-prefix</code></td>
+      <td>ログ宛先の Amazon CloudWatch Logs のログストリームのプレフィックス名を設定する。</td>
+      <td>ログストリームには、『<code>&lt;プレフィックス名&gt;/&lt;コンテナ名&gt;/&lt;タスクID&gt;</code>』の形式で送信される。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://docs.docker.com/config/containers/logging/awslogs/
 > - [Send Amazon ECS logs to CloudWatch - Amazon Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options)
@@ -396,14 +506,47 @@ EC2 をホストとして、コンテナを作成する。
 
 この AMI には、EC2 が Amazon ECS と連携するために必要なソフトウェアがプリインストールされており、EC2 をセットアップする手間が省ける。
 
-| AMI 名                                 | 説明                                                                                                                                 | 特に相性のよいアプリ                                                    |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
-| Amazon ECS 最適化 Amazon Linux 2       | Amazon ECS のための標準的な EC2 を作成できる。推奨方式。                                                                             |                                                                         |
-| Amazon ECS 最適化 Amazon Linux 2022    | Amazon Linux 2 よりも先進的な機能を持つ EC2 を作成できる。<br>https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html |                                                                         |
-| Amazon ECS 最適化 Amazon Linux         | Amazon ECS のための標準的な EC2 を作成できる。非推奨であり、Amazon Linux 2 を使用したほうがよい。                                    |                                                                         |
-| Amazon ECS 最適化 Amazon Linux 2 arm64 | arm64 ベースの Graviton プロセッサーが搭載された EC2 を作成できる。                                                                  |                                                                         |
-| Amazon ECS 最適化 Amazon Linux 2 GPU   | GPU が搭載された EC2 を作成できる。                                                                                                  | GPU が必要なアプリケーション (計算処理系、機械学習系のアプリケーション) |
-| Amazon ECS 最適化 Amazon Linux 2 推定  | Amazon EC2 Inf1 インスタンスを作成できる。                                                                                           |                                                                         |
+<table>
+  <thead>
+    <tr>
+      <th>AMI 名</th>
+      <th>説明</th>
+      <th>特に相性のよいアプリ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon ECS 最適化 Amazon Linux 2</td>
+      <td>Amazon ECS のための標準的な EC2 を作成できる。推奨方式。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Amazon ECS 最適化 Amazon Linux 2022</td>
+      <td>Amazon Linux 2 よりも先進的な機能を持つ EC2 を作成できる。<br><a href="https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html">https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Amazon ECS 最適化 Amazon Linux</td>
+      <td>Amazon ECS のための標準的な EC2 を作成できる。非推奨であり、Amazon Linux 2 を使用したほうがよい。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Amazon ECS 最適化 Amazon Linux 2 arm64</td>
+      <td>arm64 ベースの Graviton プロセッサーが搭載された EC2 を作成できる。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Amazon ECS 最適化 Amazon Linux 2 GPU</td>
+      <td>GPU が搭載された EC2 を作成できる。</td>
+      <td>GPU が必要なアプリケーション (計算処理系、機械学習系のアプリケーション)</td>
+    </tr>
+    <tr>
+      <td>Amazon ECS 最適化 Amazon Linux 2 推定</td>
+      <td>Amazon EC2 Inf1 インスタンスを作成できる。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Amazon ECS-optimized Linux AMIs - Amazon Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
 
@@ -413,11 +556,28 @@ EC2 をホストとして、コンテナを作成する。
 
 Amazon ECS タスクを Amazon ECS クラスターに配置するときのアルゴリズムを選択できる。
 
-| 戦略    | 説明                                                       |
-| ------- | ---------------------------------------------------------- |
-| Spread  | Amazon ECS タスクを各場所にバランスよく配置する            |
-| Binpack | Amazon ECS タスクを `1` 個の場所にできるだけ多く配置する。 |
-| Random  | Amazon ECS タスクをランダムに配置する。                    |
+<table>
+  <thead>
+    <tr>
+      <th>戦略</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Spread</td>
+      <td>Amazon ECS タスクを各場所にバランスよく配置する</td>
+    </tr>
+    <tr>
+      <td>Binpack</td>
+      <td>Amazon ECS タスクを <code>1</code> 個の場所にできるだけ多く配置する。</td>
+    </tr>
+    <tr>
+      <td>Random</td>
+      <td>Amazon ECS タスクをランダムに配置する。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -441,63 +601,279 @@ Fargate の実体は EC2 である (ドキュメントに記載がないが、AW
 
 #### ▼ Amazon ECS サービス
 
-| 設定項目                     | 説明                                                                                                                                                                                        | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Amazon ECS タスク定義        | Amazon ECS サービスで維持管理するタスクの定義ファミリー名とリビジョンを設定する。                                                                                                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| 起動タイプ                   | Amazon ECS タスク内のコンテナの起動タイプを設定する。                                                                                                                                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| プラットフォームのバージョン | Fargate のカーネルとコンテナランタイムのバージョンを設定する。                                                                                                                              | バージョンによって、連携できる AWS リソースが異なる。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| サービスタイプ               |                                                                                                                                                                                             |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| Amazon ECS タスクの必要数    | 非スケーリング時またはデプロイ時のタスク数を設定する。                                                                                                                                      | 最小ヘルス率と最大率の設定値に影響する。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| 最小ヘルス率                 | Amazon ECS タスクの必要数の設定を `100`%とし、新しいタスクのデプロイ時に、稼働中タスクの最低合計数を割合で設定する。                                                                        | 例として、タスク必要数が 4 個だと仮定する。タスクヘルス最小率を 50%とすれば、稼働中タスクの最低合計数は 2 個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中の既存タスク/新タスクの数が最低合計数未満にならないように制御される。<br>https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments                                                                                                                                                                                                                                                                          |
-| 最大率                       | Amazon ECS タスクの必要数の設定を `100`%とし、新しいタスクのデプロイ時に、稼働中/停止中タスクの最高合計数を割合で設定する。                                                                 | 例として、タスク必要数が 4 個だと仮定する。タスク最大率を 200%とすれば、稼働中/停止中タスクの最高合計数は８個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中/停止中の既存タスク/新タスクの数が最高合計数を超過しないように制御される。<br>https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments                                                                                                                                                                                                                                                                    |
-| ヘルスチェックの待機期間     | デプロイ時の ALB/NLB のヘルスチェックを開始するまでの待機時間を設定する。猶予期間を過ぎても、ALB/NLB のヘルスチェックが失敗していれば、サービスはタスクを停止し、新しいタスクを再起動する。 | ALB/NLB ではターゲットを登録し、ヘルスチェックを実行するプロセスがある。特に NLB では、これに時間がかかる。またアプリケーションによっては、コンテナの作成に時間がかかる。そのため、NLB のヘルスチェックが完了する前に、Amazon ECS サービスが NLB のヘルスチェックの結果を確認してしまうことがある。例えば、NLB と Laravel を使用する場合は、ターゲット登録と Laravel コンテナの築の時間を加味して、`330` 秒以上を目安とする。例えば、ALB と Nuxt.js (SSR モード) を使用する場合は、`600` 秒以上を目安とする。注意点として、アプリコンテナ作成にかかる時間は、開発環境での所要時間を参考にする。 |
-| タスクの最小数               | スケーリング時のタスク数の最小数を設定する。                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| タスクの最大数               | スケーリング時のタスク数の最大数を設定する。                                                                                                                                                |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| ロードバランシング           | ALB でルーティングするコンテナを設定する。                                                                                                                                                  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| タスク数                     | Amazon ECS タスクの作成数をいくつに維持するかを設定する。                                                                                                                                   | タスクが何らかの原因で停止した場合、タスクを自動的に作成する。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| デプロイメント               | ローリングアップデート、ブルー/グリーンデプロイがある。                                                                                                                                     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| サービスロール               |                                                                                                                                                                                             |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon ECS タスク定義</td>
+      <td>Amazon ECS サービスで維持管理するタスクの定義ファミリー名とリビジョンを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>起動タイプ</td>
+      <td>Amazon ECS タスク内のコンテナの起動タイプを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>プラットフォームのバージョン</td>
+      <td>Fargate のカーネルとコンテナランタイムのバージョンを設定する。</td>
+      <td>バージョンによって、連携できる AWS リソースが異なる。</td>
+    </tr>
+    <tr>
+      <td>サービスタイプ</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Amazon ECS タスクの必要数</td>
+      <td>非スケーリング時またはデプロイ時のタスク数を設定する。</td>
+      <td>最小ヘルス率と最大率の設定値に影響する。</td>
+    </tr>
+    <tr>
+      <td>最小ヘルス率</td>
+      <td>Amazon ECS タスクの必要数の設定を <code>100</code>%とし、新しいタスクのデプロイ時に、稼働中タスクの最低合計数を割合で設定する。</td>
+      <td>例として、タスク必要数が 4 個だと仮定する。タスクヘルス最小率を 50%とすれば、稼働中タスクの最低合計数は 2 個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中の既存タスク/新タスクの数が最低合計数未満にならないように制御される。<br><a href="https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments">https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments</a></td>
+    </tr>
+    <tr>
+      <td>最大率</td>
+      <td>Amazon ECS タスクの必要数の設定を <code>100</code>%とし、新しいタスクのデプロイ時に、稼働中/停止中タスクの最高合計数を割合で設定する。</td>
+      <td>例として、タスク必要数が 4 個だと仮定する。タスク最大率を 200%とすれば、稼働中/停止中タスクの最高合計数は８個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中/停止中の既存タスク/新タスクの数が最高合計数を超過しないように制御される。<br><a href="https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments">https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments</a></td>
+    </tr>
+    <tr>
+      <td>ヘルスチェックの待機期間</td>
+      <td>デプロイ時の ALB/NLB のヘルスチェックを開始するまでの待機時間を設定する。猶予期間を過ぎても、ALB/NLB のヘルスチェックが失敗していれば、サービスはタスクを停止し、新しいタスクを再起動する。</td>
+      <td>ALB/NLB ではターゲットを登録し、ヘルスチェックを実行するプロセスがある。特に NLB では、これに時間がかかる。またアプリケーションによっては、コンテナの作成に時間がかかる。そのため、NLB のヘルスチェックが完了する前に、Amazon ECS サービスが NLB のヘルスチェックの結果を確認してしまうことがある。例えば、NLB と Laravel を使用する場合は、ターゲット登録と Laravel コンテナの築の時間を加味して、<code>330</code> 秒以上を目安とする。例えば、ALB と Nuxt.js (SSR モード) を使用する場合は、<code>600</code> 秒以上を目安とする。注意点として、アプリコンテナ作成にかかる時間は、開発環境での所要時間を参考にする。</td>
+    </tr>
+    <tr>
+      <td>タスクの最小数</td>
+      <td>スケーリング時のタスク数の最小数を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>タスクの最大数</td>
+      <td>スケーリング時のタスク数の最大数を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ロードバランシング</td>
+      <td>ALB でルーティングするコンテナを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>タスク数</td>
+      <td>Amazon ECS タスクの作成数をいくつに維持するかを設定する。</td>
+      <td>タスクが何らかの原因で停止した場合、タスクを自動的に作成する。</td>
+    </tr>
+    <tr>
+      <td>デプロイメント</td>
+      <td>ローリングアップデート、ブルー/グリーンデプロイがある。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>サービスロール</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ Amazon ECS タスク定義
 
-| 設定項目                           | 説明                                                                                                                           | 補足                                                                                                                                                                                         |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Amazon ECS タスク定義名            | Amazon ECS タスク定義の名前を設定する。                                                                                        |                                                                                                                                                                                              |
-| ネットワークモード                 | ホストとコンテナ間を接続するネットワーク様式を設定する。                                                                       |                                                                                                                                                                                              |
-| 互換性                             |                                                                                                                                |                                                                                                                                                                                              |
-| オペレーティングシステムファミリー |                                                                                                                                |                                                                                                                                                                                              |
-| タスクロール                       | Amazon ECS タスク内のコンテナのアプリケーションが、他の AWS リソースにリクエストを送信するために必要なロールを設定する。       |                                                                                                                                                                                              |
-| タスク実行ロール                   | Amazon ECS タスク内の Amazon ECS コンテナエージェントが、他の AWS リソースにリクエストを送信するために必要なロールを設定する。 |                                                                                                                                                                                              |
-| タスクメモリ                       | Amazon ECS タスク当たりのコンテナの合計メモリサイズを設定する。                                                                | Amazon ECS タスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定したほうがよい。                                                                                                  |
-| タスク CPU                         | Amazon ECS タスク当たりのコンテナの合計 CPU サイズを設定する。                                                                 | ・Amazon ECS タスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定したほうがよい。<br>・CPU ごとに使用できるメモリサイズに違いがあり、大きな CPU ほど小さなメモリを使用できない。 |
-| コンテナ定義                       | Amazon ECS タスク内のコンテナを設定する。                                                                                      | JSON をインポートしても設定できる。                                                                                                                                                          |
-| サービス統合                       |                                                                                                                                |                                                                                                                                                                                              |
-| プロキシ                           |                                                                                                                                |                                                                                                                                                                                              |
-| FireLens 統合                      | FireLens コンテナを使用する場合に有効化する。                                                                                  |                                                                                                                                                                                              |
-| ボリューム                         |                                                                                                                                |                                                                                                                                                                                              |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon ECS タスク定義名</td>
+      <td>Amazon ECS タスク定義の名前を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ネットワークモード</td>
+      <td>ホストとコンテナ間を接続するネットワーク様式を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>互換性</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>オペレーティングシステムファミリー</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>タスクロール</td>
+      <td>Amazon ECS タスク内のコンテナのアプリケーションが、他の AWS リソースにリクエストを送信するために必要なロールを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>タスク実行ロール</td>
+      <td>Amazon ECS タスク内の Amazon ECS コンテナエージェントが、他の AWS リソースにリクエストを送信するために必要なロールを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>タスクメモリ</td>
+      <td>Amazon ECS タスク当たりのコンテナの合計メモリサイズを設定する。</td>
+      <td>Amazon ECS タスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定したほうがよい。</td>
+    </tr>
+    <tr>
+      <td>タスク CPU</td>
+      <td>Amazon ECS タスク当たりのコンテナの合計 CPU サイズを設定する。</td>
+      <td>・Amazon ECS タスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定したほうがよい。<br>・CPU ごとに使用できるメモリサイズに違いがあり、大きな CPU ほど小さなメモリを使用できない。</td>
+    </tr>
+    <tr>
+      <td>コンテナ定義</td>
+      <td>Amazon ECS タスク内のコンテナを設定する。</td>
+      <td>JSON をインポートしても設定できる。</td>
+    </tr>
+    <tr>
+      <td>サービス統合</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>プロキシ</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>FireLens 統合</td>
+      <td>FireLens コンテナを使用する場合に有効化する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ボリューム</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ コンテナ定義
 
 Amazon ECS タスク内のコンテナ 1 つに環境を設定する。
 
-| 設定項目                        | 対応する `docker` コマンドオプション  | 説明                                                                                                                                                                                                                                                                               | 補足                                                                                                                                                                                                       |
-| ------------------------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cpu                             | `--cpus`                              | タスク全体に割り当てられたメモリ (タスクメモリ) のうち、該当のコンテナに最低限割り当てる CPU ユニット数を設定する。cpuReservation という名前になっていないことに注意する。 CPU ユニット数の比率に基づいて、タスク全体の CPU が各コンテナに割り当てられる。『ソフト制限』ともいう。 | ・https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_environment <br>・https://qiita.com/_akiyama_/items/e9760dd61d94b8031247                |
-| dnsServers                      | `--dns`                               | コンテナが名前解決に使用する DNS サーバーの IP アドレスを設定する。                                                                                                                                                                                                                |                                                                                                                                                                                                            |
-| essential                       |                                       | コンテナが必須か否かを設定する。                                                                                                                                                                                                                                                   | ・`true` の場合、コンテナが停止すると、タスクに含まれる全コンテナが停止する。<br>`false` の場合、コンテナが停止しても、その他のコンテナは停止しない。                                                      |
-| healthCheck<br>(command)        | `--health-cmd`                        | ホストから Fargate に対して、`curl` コマンドによるリクエストを送信し、レスポンス内容を確認。                                                                                                                                                                                       |                                                                                                                                                                                                            |
-| healthCheck<br>(interval)       | `--health-interval`                   | ヘルスチェックの間隔を設定する。                                                                                                                                                                                                                                                   |                                                                                                                                                                                                            |
-| healthCheck<br>(retries)        | `--health-retries`                    | ヘルスチェックを成功と見なす回数を設定する。                                                                                                                                                                                                                                       |                                                                                                                                                                                                            |
-| hostName                        | `--hostname`                          | コンテナにホスト名を設定する。                                                                                                                                                                                                                                                     |                                                                                                                                                                                                            |
-| image                           |                                       | Amazon ECR の URL を設定する。                                                                                                                                                                                                                                                     | 指定できる URL の記法は、Dockerfile の `FROM` 処理と同じである。<br>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html                         |
-| logConfiguration<br>(logDriver) | `--log-driver`                        | ログドライバーを指定することで、ログの出力先を設定する。                                                                                                                                                                                                                           | Docker のログドライバーにおおよそ対応しており、Fargate であれば『awslogs、awsfirelens、splunk』に設定できる。EC2 であれば『awslogs、json-file、syslog、journald、fluentd、gelf、logentries』を設定できる。 |
-| logConfiguration<br>(options)   | `--log-opt`                           | 各ログドライバーのオプションを設定する。                                                                                                                                                                                                                                           |                                                                                                                                                                                                            |
-| portMapping                     | `--publish`<br>`--expose`             | ホストと Fargate のアプリケーションのポート番号をマッピングし、ポートフォワーディングを実行する。                                                                                                                                                                                  | `containerPort` のみを設定し、`hostPort` は設定しなければ、EXPOSE として定義できる。<br>https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html                                     |
-| secrets<br>(volumesFrom)        |                                       | パラメーターストアから出力する変数を設定する。                                                                                                                                                                                                                                     |                                                                                                                                                                                                            |
-| memory                          | `--memory`                            | コンテナのメモリサイズの閾値を設定し、これを超えた場合にコンテナを停止する『ハード制限』ともいう。                                                                                                                                                                                 | ・https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory                                                                                  |
-| memoryReservation               | `--memory-reservation`                | タスク全体に割り当てられたメモリ (タスクメモリ) のうち、該当のコンテナに最低限割り当てるメモリ分を設定する。『ソフト制限』ともいう。                                                                                                                                               | ・https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory                                                                                  |
-| mountPoints                     |                                       | 隠蔽されたホストとコンテナの間でボリュームマウントを実行する。Fargate は、脆弱性と性能の観点で、バインドマウントに対応していない。                                                                                                                                                 | ・https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker.html                                                                                                            |
-| ulimit                          | Linux コマンドの<br>`--ulimit` に相当 |                                                                                                                                                                                                                                                                                    |                                                                                                                                                                                                            |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>対応する <code>docker</code> コマンドオプション</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>cpu</td>
+      <td><code>--cpus</code></td>
+      <td>タスク全体に割り当てられたメモリ (タスクメモリ) のうち、該当のコンテナに最低限割り当てる CPU ユニット数を設定する。cpuReservation という名前になっていないことに注意する。 CPU ユニット数の比率に基づいて、タスク全体の CPU が各コンテナに割り当てられる。『ソフト制限』ともいう。</td>
+      <td>・<a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_environment">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_environment</a> <br>・<a href="https://qiita.com/_akiyama_/items/e9760dd61d94b8031247">https://qiita.com/_akiyama_/items/e9760dd61d94b8031247</a></td>
+    </tr>
+    <tr>
+      <td>dnsServers</td>
+      <td><code>--dns</code></td>
+      <td>コンテナが名前解決に使用する DNS サーバーの IP アドレスを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>essential</td>
+      <td></td>
+      <td>コンテナが必須か否かを設定する。</td>
+      <td>・<code>true</code> の場合、コンテナが停止すると、タスクに含まれる全コンテナが停止する。<br><code>false</code> の場合、コンテナが停止しても、その他のコンテナは停止しない。</td>
+    </tr>
+    <tr>
+      <td>healthCheck<br>(command)</td>
+      <td><code>--health-cmd</code></td>
+      <td>ホストから Fargate に対して、<code>curl</code> コマンドによるリクエストを送信し、レスポンス内容を確認。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>healthCheck<br>(interval)</td>
+      <td><code>--health-interval</code></td>
+      <td>ヘルスチェックの間隔を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>healthCheck<br>(retries)</td>
+      <td><code>--health-retries</code></td>
+      <td>ヘルスチェックを成功と見なす回数を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>hostName</td>
+      <td><code>--hostname</code></td>
+      <td>コンテナにホスト名を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>image</td>
+      <td></td>
+      <td>Amazon ECR の URL を設定する。</td>
+      <td>指定できる URL の記法は、Dockerfile の <code>FROM</code> 処理と同じである。<br><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html">https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html</a></td>
+    </tr>
+    <tr>
+      <td>logConfiguration<br>(logDriver)</td>
+      <td><code>--log-driver</code></td>
+      <td>ログドライバーを指定することで、ログの出力先を設定する。</td>
+      <td>Docker のログドライバーにおおよそ対応しており、Fargate であれば『awslogs、awsfirelens、splunk』に設定できる。EC2 であれば『awslogs、json-file、syslog、journald、fluentd、gelf、logentries』を設定できる。</td>
+    </tr>
+    <tr>
+      <td>logConfiguration<br>(options)</td>
+      <td><code>--log-opt</code></td>
+      <td>各ログドライバーのオプションを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>portMapping</td>
+      <td><code>--publish</code><br><code>--expose</code></td>
+      <td>ホストと Fargate のアプリケーションのポート番号をマッピングし、ポートフォワーディングを実行する。</td>
+      <td><code>containerPort</code> のみを設定し、<code>hostPort</code> は設定しなければ、EXPOSE として定義できる。<br><a href="https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html">https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html</a></td>
+    </tr>
+    <tr>
+      <td>secrets<br>(volumesFrom)</td>
+      <td></td>
+      <td>パラメーターストアから出力する変数を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>memory</td>
+      <td><code>--memory</code></td>
+      <td>コンテナのメモリサイズの閾値を設定し、これを超えた場合にコンテナを停止する『ハード制限』ともいう。</td>
+      <td>・<a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory</a></td>
+    </tr>
+    <tr>
+      <td>memoryReservation</td>
+      <td><code>--memory-reservation</code></td>
+      <td>タスク全体に割り当てられたメモリ (タスクメモリ) のうち、該当のコンテナに最低限割り当てるメモリ分を設定する。『ソフト制限』ともいう。</td>
+      <td>・<a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory</a></td>
+    </tr>
+    <tr>
+      <td>mountPoints</td>
+      <td></td>
+      <td>隠蔽されたホストとコンテナの間でボリュームマウントを実行する。Fargate は、脆弱性と性能の観点で、バインドマウントに対応していない。</td>
+      <td>・<a href="https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker.html">https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker.html</a></td>
+    </tr>
+    <tr>
+      <td>ulimit</td>
+      <td>Linux コマンドの<br><code>--ulimit</code> に相当</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/task_definition_parameters.html
 
@@ -673,13 +1049,48 @@ CodeDeploy を使用してデプロイする。
 
 ![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_vpc-endpoint.png)
 
-| VPC エンドポイントの接続先 | タイプ    | プライベート DNS 名                                                                | 説明                                                                      |
-| -------------------------- | --------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| Amazon CloudWatch Logs     | Interface | `logs.ap-northeast-1.amazonaws.com`                                                | Amazon ECS コンテナのログを POST リクエストを送信するため。               |
-| Amazon ECR                 | Interface | `api.ecr.ap-northeast-1.amazonaws.com`<br>`*.dkr.ecr.ap-northeast-1.amazonaws.com` | イメージの GET リクエストを送信するため。                                 |
-| Amazon S3                  | Gateway   | なし                                                                               | イメージのレイヤーを POST リクエストを送信するため                        |
-| AWS Systems Manager        | Interface | `ssm.ap-northeast-1.amazonaws.com`                                                 | AWS Systems Manager のパラメーターストアに GET リクエストを送信するため。 |
-| AWS Secrets Manager        | Interface | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | AWS Secrets Manager を使用するため。                                      |
+<table>
+  <thead>
+    <tr>
+      <th>VPC エンドポイントの接続先</th>
+      <th>タイプ</th>
+      <th>プライベート DNS 名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon CloudWatch Logs</td>
+      <td>Interface</td>
+      <td><code>logs.ap-northeast-1.amazonaws.com</code></td>
+      <td>Amazon ECS コンテナのログを POST リクエストを送信するため。</td>
+    </tr>
+    <tr>
+      <td>Amazon ECR</td>
+      <td>Interface</td>
+      <td><code>api.ecr.ap-northeast-1.amazonaws.com</code><br><code>*.dkr.ecr.ap-northeast-1.amazonaws.com</code></td>
+      <td>イメージの GET リクエストを送信するため。</td>
+    </tr>
+    <tr>
+      <td>Amazon S3</td>
+      <td>Gateway</td>
+      <td>なし</td>
+      <td>イメージのレイヤーを POST リクエストを送信するため</td>
+    </tr>
+    <tr>
+      <td>AWS Systems Manager</td>
+      <td>Interface</td>
+      <td><code>ssm.ap-northeast-1.amazonaws.com</code></td>
+      <td>AWS Systems Manager のパラメーターストアに GET リクエストを送信するため。</td>
+    </tr>
+    <tr>
+      <td>AWS Secrets Manager</td>
+      <td>Interface</td>
+      <td><code>ssmmessage.ap-northeast-1.amazonaws.com</code></td>
+      <td>AWS Secrets Manager を使用するため。</td>
+    </tr>
+  </tbody>
+</table>
 
 プライベートサブネット内の Fargate から VPC 外の AWS リソース (例：コントロールプレーン、Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、DynamoDB など) にリクエストを送信する場合、専用の VPC エンドポイントを設ける必要がある。
 

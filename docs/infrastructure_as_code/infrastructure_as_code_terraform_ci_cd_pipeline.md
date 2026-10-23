@@ -19,28 +19,82 @@ description: CI/CDパイプライン＠Terraformの知見を記録していま�
 
 #### ▼ 環境
 
-| env | 説明                                                                   |
-| --- | ---------------------------------------------------------------------- |
-| tes | プルリクエストのレビュー時に、コードの変更を検証するためのインフラ環境 |
-| stg | ステージング環境                                                       |
-| prd | 本番環境                                                               |
+<table>
+  <thead>
+    <tr>
+      <th>env</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>tes</td>
+      <td>プルリクエストのレビュー時に、コードの変更を検証するためのインフラ環境</td>
+    </tr>
+    <tr>
+      <td>stg</td>
+      <td>ステージング環境</td>
+    </tr>
+    <tr>
+      <td>prd</td>
+      <td>本番環境</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ Job
 
-| jobs        | 説明                                                                                                    |
-| ----------- | ------------------------------------------------------------------------------------------------------- |
-| plan        | aws-cli のインストールから `terraform plan -out` コマンドまでの一連の処理を実行する。                   |
-| 承認 Job    |                                                                                                         |
-| apply       | ステージング環境または本番環境に対して、`terraform apply` コマンドを実行する。                          |
-| plan (任意) | `terraform apply` によって差分が無くなったかを、`terraform plan` コマンドをあらためて実行し、確認する。 |
+<table>
+  <thead>
+    <tr>
+      <th>jobs</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>plan</td>
+      <td>aws-cli のインストールから <code>terraform plan -out</code> コマンドまでの一連の処理を実行する。</td>
+    </tr>
+    <tr>
+      <td>承認 Job</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>apply</td>
+      <td>ステージング環境または本番環境に対して、<code>terraform apply</code> コマンドを実行する。</td>
+    </tr>
+    <tr>
+      <td>plan (任意)</td>
+      <td><code>terraform apply</code> によって差分が無くなったかを、<code>terraform plan</code> コマンドをあらためて実行し、確認する。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ Workflow
 
-| workflows | 説明                                             |
-| --------- | ------------------------------------------------ |
-| feature   | `feature` ブランチからテスト環境にデプロイ       |
-| develop   | `develop` ブランチからステージング環境にデプロイ |
-| main      | `main` ブランチから本番環境にデプロイ            |
+<table>
+  <thead>
+    <tr>
+      <th>workflows</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>feature</td>
+      <td><code>feature</code> ブランチからテスト環境にデプロイ</td>
+    </tr>
+    <tr>
+      <td>develop</td>
+      <td><code>develop</code> ブランチからステージング環境にデプロイ</td>
+    </tr>
+    <tr>
+      <td>main</td>
+      <td><code>main</code> ブランチから本番環境にデプロイ</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

@@ -45,10 +45,24 @@ RESTful 設計が使用された WebAPI を RESTful-API という。
 
 擬似的にステートフルな通信をするときは、キャッシュ、Cookie、セッション ID を使用して、クライアントの情報を保持する。
 
-| プロトコル         | ステートレス/ステートフル |
-| ------------------ | ------------------------- |
-| HTTP、HTTPS        | ステートレス              |
-| SSH、TLS/SSL、SFTP | ステートフル              |
+<table>
+  <thead>
+    <tr>
+      <th>プロトコル</th>
+      <th>ステートレス/ステートフル</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HTTP、HTTPS</td>
+      <td>ステートレス</td>
+    </tr>
+    <tr>
+      <td>SSH、TLS/SSL、SFTP</td>
+      <td>ステートフル</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ Connectability であること
 
@@ -91,13 +105,47 @@ RESTfulAPI では、すべての HTTP メソッドのうち、主に以下の `4
 
 ユースケースごとのメソッド名については、Laravel を参考にする。
 
-| HTTP メソッド | ユースケース                                                                 | エンドポイント                   | メソッド名の例 |
-| ------------- | ---------------------------------------------------------------------------- | -------------------------------- | -------------- |
-| GET           | 複数の閲覧系 (全データのインデックス取得、条件に基づくデータの取得)          | `https://example.com/users`      | list           |
-|               | 単一の閲覧系 (ID に基づくデータの取得)                                       | `https://example.com/users/{id}` | get            |
-| POST          | 登録系 (データの作成、PDF の作成、ファイルデータの送信、ログイン/ログアウト) | `https://example.com/users`      | register       |
-| PUT           | 更新系 (データの更新)                                                        | `https://example.com/users/{id}` | change         |
-| DELETE        | 削除系 (データの削除)                                                        | `https://example.com/users/{id}` | delete         |
+<table>
+  <thead>
+    <tr>
+      <th>HTTP メソッド</th>
+      <th>ユースケース</th>
+      <th>エンドポイント</th>
+      <th>メソッド名の例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">GET</td>
+      <td>複数の閲覧系 (全データのインデックス取得、条件に基づくデータの取得)</td>
+      <td><code>https://example.com/users</code></td>
+      <td>list</td>
+    </tr>
+    <tr>
+      <td>単一の閲覧系 (ID に基づくデータの取得)</td>
+      <td><code>https://example.com/users/{id}</code></td>
+      <td>get</td>
+    </tr>
+    <tr>
+      <td>POST</td>
+      <td>登録系 (データの作成、PDF の作成、ファイルデータの送信、ログイン/ログアウト)</td>
+      <td><code>https://example.com/users</code></td>
+      <td>register</td>
+    </tr>
+    <tr>
+      <td>PUT</td>
+      <td>更新系 (データの更新)</td>
+      <td><code>https://example.com/users/{id}</code></td>
+      <td>change</td>
+    </tr>
+    <tr>
+      <td>DELETE</td>
+      <td>削除系 (データの削除)</td>
+      <td><code>https://example.com/users/{id}</code></td>
+      <td>delete</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://noumenon-th.net/programming/2020/01/30/laravel-crud/
 > - [REST API の基本と実装 \| Google Cloud](https://cloud.google.com/discover/what-is-rest-api?hl=ja)
@@ -108,10 +156,27 @@ POST リクエストと PUT リクエストの重要な違いについてまと�
 
 ただしもっと正確には、ユースケースが『作成』or『更新』ではなく、『非冪等』or『冪等』で判断したほうがよい。
 
-|                              | POST リクエスト                                        | PUT リクエスト                                                                                           |
-| ---------------------------- | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
-| データ作成の冪等性           | リクエスト 1 つにつき、`1` 個のデータを作成 (非冪等的) | リクエスト数に限らず、`1` 個のデータを作成する (冪等的) 。古いデータを新しいデータに置換する行為に近い。 |
-| リクエストパラメーターの場所 | メッセージボディに JSON 型データなどを割り当てる。     | パスパラメーターに id など、またメッセージボディに JSON 型データなどを割り当てる。                       |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>POST リクエスト</th>
+      <th>PUT リクエスト</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>データ作成の冪等性</td>
+      <td>リクエスト 1 つにつき、<code>1</code> 個のデータを作成 (非冪等的)</td>
+      <td>リクエスト数に限らず、<code>1</code> 個のデータを作成する (冪等的) 。古いデータを新しいデータに置換する行為に近い。</td>
+    </tr>
+    <tr>
+      <td>リクエストパラメーターの場所</td>
+      <td>メッセージボディに JSON 型データなどを割り当てる。</td>
+      <td>パスパラメーターに id など、またメッセージボディに JSON 型データなどを割り当てる。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://stackoverflow.com/a/2691891/12771072
 > - [Difference between PUT and POST in REST API](https://restfulapi.net/rest-put-vs-post/)
@@ -370,18 +435,62 @@ URI の構造のうち、パスまたはクエリストリングにパラメー�
 GET https://example.com:80/users/777?text1=a&text2=b
 ```
 
-| 完全修飾ドメイン名    | 宛先のポート番号 (`80` の場合は省略可) | ルート  | パスパラメーター | ？  | クエリパラメーター (GET リクエスト時のみ) |
-| --------------------- | -------------------------------------- | ------- | ---------------- | --- | ----------------------------------------- |
-| `https://example.com` | `80`                                   | `users` | `{id}`           | `?` | `text1=a&text2=b`                         |
+<table>
+  <thead>
+    <tr>
+      <th>完全修飾ドメイン名</th>
+      <th>宛先のポート番号 (<code>80</code> の場合は省略可)</th>
+      <th>ルート</th>
+      <th>パスパラメーター</th>
+      <th>？</th>
+      <th>クエリパラメーター (GET リクエスト時のみ)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>https://example.com</code></td>
+      <td><code>80</code></td>
+      <td><code>users</code></td>
+      <td><code>{id}</code></td>
+      <td><code>?</code></td>
+      <td><code>text1=a&amp;text2=b</code></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ 使い分け (再掲)
 
-| データの宛先             | パスパラメーター | クエリパラメーター |
-| ------------------------ | :--------------: | :----------------: |
-| 単一条件で決まる検索処理 |        ⭕        |         △          |
-| 複数条件で決まる検索処理 |        ✕         |         ⭕         |
-| フィルタリング処理       |        ✕         |         ⭕         |
-| ソーティング処理         |        ✕         |         ⭕         |
+<table>
+  <thead>
+    <tr>
+      <th>データの宛先</th>
+      <th style="text-align:center">パスパラメーター</th>
+      <th style="text-align:center">クエリパラメーター</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>単一条件で決まる検索処理</td>
+      <td style="text-align:center">⭕</td>
+      <td style="text-align:center">△</td>
+    </tr>
+    <tr>
+      <td>複数条件で決まる検索処理</td>
+      <td style="text-align:center">✕</td>
+      <td style="text-align:center">⭕</td>
+    </tr>
+    <tr>
+      <td>フィルタリング処理</td>
+      <td style="text-align:center">✕</td>
+      <td style="text-align:center">⭕</td>
+    </tr>
+    <tr>
+      <td>ソーティング処理</td>
+      <td style="text-align:center">✕</td>
+      <td style="text-align:center">⭕</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ メッセージボディへの割り当て
 
@@ -510,12 +619,42 @@ CSV ファイルダウンロード機能では、データを CSV ファイル�
 
 ### 異常系レスポンスの場合
 
-| 項目名                    | 必要性 | データ型   | 説明                                                                                    |
-| ------------------------- | ------ | ---------- | --------------------------------------------------------------------------------------- |
-| エラーメッセージ          | 必須   | string 型  | 複数のエラーメッセージを返信できるように、配列として定義する。                          |
-| ステータスコード          | 任意   | integer 型 | エラーの種類がわかるステータスコードを割り当てる。                                      |
-| エラーコード (例外コード) | 任意   | string 型  | API ドキュメントのエラーの識別子として、エラコード (例外コード) を割り当てる。          |
-| API ドキュメントの URL    | 任意   | string 型  | 外部に公開する API の場合、エラーの解決策がわかる API ドキュメントの URL を割り当てる。 |
+<table>
+  <thead>
+    <tr>
+      <th>項目名</th>
+      <th>必要性</th>
+      <th>データ型</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>エラーメッセージ</td>
+      <td>必須</td>
+      <td>string 型</td>
+      <td>複数のエラーメッセージを返信できるように、配列として定義する。</td>
+    </tr>
+    <tr>
+      <td>ステータスコード</td>
+      <td>任意</td>
+      <td>integer 型</td>
+      <td>エラーの種類がわかるステータスコードを割り当てる。</td>
+    </tr>
+    <tr>
+      <td>エラーコード (例外コード)</td>
+      <td>任意</td>
+      <td>string 型</td>
+      <td>API ドキュメントのエラーの識別子として、エラコード (例外コード) を割り当てる。</td>
+    </tr>
+    <tr>
+      <td>API ドキュメントの URL</td>
+      <td>任意</td>
+      <td>string 型</td>
+      <td>外部に公開する API の場合、エラーの解決策がわかる API ドキュメントの URL を割り当てる。</td>
+    </tr>
+  </tbody>
+</table>
 
 ```yaml
 {

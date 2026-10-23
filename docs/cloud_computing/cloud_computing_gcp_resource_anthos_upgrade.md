@@ -52,11 +52,28 @@ spec:
 
 また、Anthos GKE Cluster のバージョンと Kubernetes のバージョンの対応関係を確認する。
 
-| Anthos GKE Cluster のバージョン | Kubernetes のバージョン |
-| ------------------------------- | ----------------------- |
-| ` 1.11` 系                      | `v1.22.8-gke`           |
-| `1.12` 系                       | `v1.23.5-gke`           |
-| ...                             | ...                     |
+<table>
+  <thead>
+    <tr>
+      <th>Anthos GKE Cluster のバージョン</th>
+      <th>Kubernetes のバージョン</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code> 1.11</code> 系</td>
+      <td><code>v1.22.8-gke</code></td>
+    </tr>
+    <tr>
+      <td><code>1.12</code> 系</td>
+      <td><code>v1.23.5-gke</code></td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support
 

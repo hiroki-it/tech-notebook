@@ -153,11 +153,28 @@ $ gcloud info
 
 プリンシパルに紐づける。
 
-|                                    |                                            |
-| ---------------------------------- | ------------------------------------------ |
-| ビルトインロール                   | `roles/<GoogleCloudリソース名>.<識別名>`   |
-| プロジェクトレベルのカスタムロース | `projects/<プロジェクトID>/roles/<識別名>` |
-| 組織レベルのカスタムロール         | `organizations/<組織ID>/roles/<識別名>`    |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ビルトインロール</td>
+      <td><code>roles/&lt;GoogleCloudリソース名&gt;.&lt;識別名&gt;</code></td>
+    </tr>
+    <tr>
+      <td>プロジェクトレベルのカスタムロース</td>
+      <td><code>projects/&lt;プロジェクトID&gt;/roles/&lt;識別名&gt;</code></td>
+    </tr>
+    <tr>
+      <td>組織レベルのカスタムロール</td>
+      <td><code>organizations/&lt;組織ID&gt;/roles/&lt;識別名&gt;</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [GCP の使い方 (1) IAM を使ってみよう｜研修コースに参加してみた \| SEプラス 研修 Topics](https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html)
 > - [ロールと権限 \| Identity and Access Management (IAM) \| Google Cloud Documentation](https://cloud.google.com/iam/docs/roles-overview?hl=ja#components)

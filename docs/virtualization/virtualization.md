@@ -40,11 +40,44 @@ description: 仮想化の知見を記録しています。
 
 #### ▼ Provider 例
 
-| OS      | VirtualBox | Lima | QEMU | VMware Workstation | VMware Fusion |
-| ------- | :--------: | :--: | :--: | :----------------: | :-----------: |
-| Linux   |     ⭕️     |  ⭕️  |  ⭕️  |         ⭕️         |               |
-| Windows |     ⭕️     |  ⭕️  |  ⭕  |         ⭕️         |               |
-| MacOS   |     ⭕️     |  ⭕️  |  ⭕️  |                    |      ⭕️       |
+<table>
+  <thead>
+    <tr>
+      <th>OS</th>
+      <th style="text-align:center">VirtualBox</th>
+      <th style="text-align:center">Lima</th>
+      <th style="text-align:center">QEMU</th>
+      <th style="text-align:center">VMware Workstation</th>
+      <th style="text-align:center">VMware Fusion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Linux</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Windows</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">⭕</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>MacOS</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">⭕️</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

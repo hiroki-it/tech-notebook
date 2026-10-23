@@ -52,27 +52,72 @@ Amazon EKS で DamonSet として稼働させる。
 
 ### サンプリング
 
-| 項目                | 説明                                                                                     |
-| ------------------- | ---------------------------------------------------------------------------------------- |
-| Limits              | スパンの収集に関する上限値を設定する。                                                   |
-| Matching criteria   | スパンのキーに基づくフィルタリングの一致条件を設定する。                                 |
-| Matching attributes | AWS 以外の文脈で付与されたラベル (例：OpenTelemetry の Attribute) の一致条件を設定する。 |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Limits</td>
+      <td>スパンの収集に関する上限値を設定する。</td>
+    </tr>
+    <tr>
+      <td>Matching criteria</td>
+      <td>スパンのキーに基づくフィルタリングの一致条件を設定する。</td>
+    </tr>
+    <tr>
+      <td>Matching attributes</td>
+      <td>AWS 以外の文脈で付与されたラベル (例：OpenTelemetry の Attribute) の一致条件を設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Configuring sampling rules - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html)
 
 ### 暗号化
 
-| 項目         | 説明                                                                               |
-| ------------ | ---------------------------------------------------------------------------------- |
-| 暗号化タイプ | 分散トレースの暗号化キー (例：AWS マネージドキー、セルフマネージドキー) を選べる。 |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>暗号化タイプ</td>
+      <td>分散トレースの暗号化キー (例：AWS マネージドキー、セルフマネージドキー) を選べる。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ グループ
 
-| 項目         | 説明                                               |
-| ------------ | -------------------------------------------------- |
-| フィルター式 | スパンのグルーピング条件を設定する。               |
-| インサイト   | インサイトメトリクスを連携するかどうかを設定する。 |
-| タグ         | AWS リソースタグを設定する。                       |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>フィルター式</td>
+      <td>スパンのグルーピング条件を設定する。</td>
+    </tr>
+    <tr>
+      <td>インサイト</td>
+      <td>インサイトメトリクスを連携するかどうかを設定する。</td>
+    </tr>
+    <tr>
+      <td>タグ</td>
+      <td>AWS リソースタグを設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -461,22 +506,87 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 #### ▼ 一覧
 
-| OpenTelemetry                                                                         | X-Ray                          | 値の例 |
-| ------------------------------------------------------------------------------------- | ------------------------------ | ------ |
-| Attributes                                                                            | `annotations/metadata`         |        |
-| SpanId                                                                                | `id`                           |        |
-| TraceId                                                                               | `trace_id`                     |        |
-| StartTime                                                                             | `start_time`                   |        |
-| EndTime                                                                               | `end_time`                     |        |
-| ParentSpanId                                                                          | `parent_id`                    |        |
-| Status.StatusCode                                                                     | `fault`、`error`、`throttle`   |        |
-| Event                                                                                 | `exception`                    |        |
-| Link                                                                                  | 執筆時点 (2024/04/14) で非対応 |        |
-| `enduser.id`                                                                          | `user`                         |        |
-| `cloud.provider`、`cloud.platform`                                                    | `origin`                       |        |
-| `rpc.system`、`aws.service`                                                           | `namespace`                    |        |
-| `peer.service`、`aws.service`、`db.service`、`service.name`、`span.kind`、`span name` | `name`                         |        |
-| `pdata.SpanKindServer`                                                                | `type`                         |        |
+<table>
+  <thead>
+    <tr>
+      <th>OpenTelemetry</th>
+      <th>X-Ray</th>
+      <th>値の例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Attributes</td>
+      <td><code>annotations/metadata</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>SpanId</td>
+      <td><code>id</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>TraceId</td>
+      <td><code>trace_id</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>StartTime</td>
+      <td><code>start_time</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>EndTime</td>
+      <td><code>end_time</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ParentSpanId</td>
+      <td><code>parent_id</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Status.StatusCode</td>
+      <td><code>fault</code>、<code>error</code>、<code>throttle</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Event</td>
+      <td><code>exception</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Link</td>
+      <td>執筆時点 (2024/04/14) で非対応</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>enduser.id</code></td>
+      <td><code>user</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>cloud.provider</code>、<code>cloud.platform</code></td>
+      <td><code>origin</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>rpc.system</code>、<code>aws.service</code></td>
+      <td><code>namespace</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>peer.service</code>、<code>aws.service</code>、<code>db.service</code>、<code>service.name</code>、<code>span.kind</code>、<code>span name</code></td>
+      <td><code>name</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>pdata.SpanKindServer</code></td>
+      <td><code>type</code></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -484,15 +594,52 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 #### ▼ 一覧
 
-| OpenTelemetry                                                                                                                                                             | X-Ray                          | 値の例 |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------ |
-| `http.method`                                                                                                                                                             | `http.request.method`          |        |
-| `http.client_ip`                                                                                                                                                          | `http.request.client_ip`       |        |
-| `http.client_ip`                                                                                                                                                          | `http.request.x_forwarded_for` |        |
-| `http.user_agent`                                                                                                                                                         | `http.request.user_agent`      |        |
-| `http.status_code`                                                                                                                                                        | `http.response.status`         | `200`  |
-| `http.url`、`http.scheme`、`http.host`、`http.target`、`http.server_name`、`net.host.port`、`host.name`、`net.host.name`、`net.peer.name`、`net.peer.port`、`net.peer.ip` | `http.request.url`             |        |
-| `message.type`                                                                                                                                                            | `http.response.content_length` |        |
+<table>
+  <thead>
+    <tr>
+      <th>OpenTelemetry</th>
+      <th>X-Ray</th>
+      <th>値の例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>http.method</code></td>
+      <td><code>http.request.method</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>http.client_ip</code></td>
+      <td><code>http.request.client_ip</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>http.client_ip</code></td>
+      <td><code>http.request.x_forwarded_for</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>http.user_agent</code></td>
+      <td><code>http.request.user_agent</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>http.status_code</code></td>
+      <td><code>http.response.status</code></td>
+      <td><code>200</code></td>
+    </tr>
+    <tr>
+      <td><code>http.url</code>、<code>http.scheme</code>、<code>http.host</code>、<code>http.target</code>、<code>http.server_name</code>、<code>net.host.port</code>、<code>host.name</code>、<code>net.host.name</code>、<code>net.peer.name</code>、<code>net.peer.port</code>、<code>net.peer.ip</code></td>
+      <td><code>http.request.url</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>message.type</code></td>
+      <td><code>http.response.content_length</code></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -500,12 +647,37 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 #### ▼ 一覧
 
-| OpenTelemetry                     | X-Ray                 | 値の例                           |
-| --------------------------------- | --------------------- | -------------------------------- |
-| `db.connection_string`、`db.name` | `sql.url`             |                                  |
-| `db.system`                       | `sql.database_type`   | `mysql`                          |
-| `db.user`                         | `sql.user`            |                                  |
-| `db.statement`                    | `sql.sanatized_query` | `SELECT foo_name FROM foo_table` |
+<table>
+  <thead>
+    <tr>
+      <th>OpenTelemetry</th>
+      <th>X-Ray</th>
+      <th>値の例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>db.connection_string</code>、<code>db.name</code></td>
+      <td><code>sql.url</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>db.system</code></td>
+      <td><code>sql.database_type</code></td>
+      <td><code>mysql</code></td>
+    </tr>
+    <tr>
+      <td><code>db.user</code></td>
+      <td><code>sql.user</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>db.statement</code></td>
+      <td><code>sql.sanatized_query</code></td>
+      <td><code>SELECT foo_name FROM foo_table</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -513,14 +685,47 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 #### ▼ 一覧
 
-| OpenTelemetry                 | X-Ray            | 値の例           |
-| ----------------------------- | ---------------- | ---------------- |
-| `cloud.account.id`            | `aws.account_id` | `123456789`      |
-| `aws.operation`、`rpc.method` | `aws.operation`  |                  |
-| `aws.region`                  | `aws.region`     | `ap-northeast-1` |
-| `aws.requestId`               | `aws.request_id` |                  |
-| `aws.queue.url`               | `aws.queue_url`  |                  |
-| `aws.table.name`              | `aws.table_name` |                  |
+<table>
+  <thead>
+    <tr>
+      <th>OpenTelemetry</th>
+      <th>X-Ray</th>
+      <th>値の例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>cloud.account.id</code></td>
+      <td><code>aws.account_id</code></td>
+      <td><code>123456789</code></td>
+    </tr>
+    <tr>
+      <td><code>aws.operation</code>、<code>rpc.method</code></td>
+      <td><code>aws.operation</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>aws.region</code></td>
+      <td><code>aws.region</code></td>
+      <td><code>ap-northeast-1</code></td>
+    </tr>
+    <tr>
+      <td><code>aws.requestId</code></td>
+      <td><code>aws.request_id</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>aws.queue.url</code></td>
+      <td><code>aws.queue_url</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>aws.table.name</code></td>
+      <td><code>aws.table_name</code></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -528,11 +733,32 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 #### ▼ 一覧
 
-| OpenTelemetry            | X-Ray                       | 値の例 |
-| ------------------------ | --------------------------- | ------ |
-| `telemetry.sdk.name`     | `xray.sdk`                  |        |
-| `telemetry.sdk.version`  | `xray.sdk_version`          |        |
-| `telemetry.auto.version` | `xray.auto_instrumentation` |        |
+<table>
+  <thead>
+    <tr>
+      <th>OpenTelemetry</th>
+      <th>X-Ray</th>
+      <th>値の例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>telemetry.sdk.name</code></td>
+      <td><code>xray.sdk</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>telemetry.sdk.version</code></td>
+      <td><code>xray.sdk_version</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>telemetry.auto.version</code></td>
+      <td><code>xray.auto_instrumentation</code></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -540,13 +766,42 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 #### ▼ 一覧
 
-| OpenTelemetry         | X-Ray                       | 値の例          |
-| --------------------- | --------------------------- | --------------- |
-| `k8s.cluster.name`    | `Amazon EKS.cluster_name`   | `foo-cluster`   |
-| `k8s.pod.name`        | `Amazon EKS.pod`            | `foo-pod`       |
-| `k8s.pod.uid`         | `Amazon EKS.container_id`   | `foo-container` |
-| `aws.log.group.arns`  | `cloudwatch_logs.arn`       |                 |
-| `aws.log.group.names` | `cloudwatch_logs.log_group` |                 |
+<table>
+  <thead>
+    <tr>
+      <th>OpenTelemetry</th>
+      <th>X-Ray</th>
+      <th>値の例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>k8s.cluster.name</code></td>
+      <td><code>Amazon EKS.cluster_name</code></td>
+      <td><code>foo-cluster</code></td>
+    </tr>
+    <tr>
+      <td><code>k8s.pod.name</code></td>
+      <td><code>Amazon EKS.pod</code></td>
+      <td><code>foo-pod</code></td>
+    </tr>
+    <tr>
+      <td><code>k8s.pod.uid</code></td>
+      <td><code>Amazon EKS.container_id</code></td>
+      <td><code>foo-container</code></td>
+    </tr>
+    <tr>
+      <td><code>aws.log.group.arns</code></td>
+      <td><code>cloudwatch_logs.arn</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>aws.log.group.names</code></td>
+      <td><code>cloudwatch_logs.log_group</code></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ 設定例
 

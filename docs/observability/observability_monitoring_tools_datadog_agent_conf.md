@@ -312,12 +312,42 @@ datadog コンテナがコンテナからメトリクスの元になるデータ
 
 datadog コンテナの環境変数として設定する。
 
-| 変数名        | 説明                                                                               | 補足                                                                                                                                                                     | Datadog コンソール URL                       |
-| ------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------- |
-| `DD_API_KEY`  | datadog コンテナがあらゆるデータを Datadog に送信するために必要である。            |                                                                                                                                                                          |                                              |
-| `DD_ENV`      | APM を使用する場合、マイクロサービスや分散トレースにて、`env` タグに値を設定する。 |                                                                                                                                                                          | https://app.datadoghq.com/apm/services       |
-| `DD_HOSTNAME` | コンテナのホスト名を設定する。                                                     | Amazon ECS Fargate の場合は、これを使用しないようにする。<br>・https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#other-environment-variables | https://app.datadoghq.com/infrastructure/map |
-| `ECS_FARGATE` | Amazon ECS Fargate を使用する場合、これを宣言する。                                |                                                                                                                                                                          |                                              |
+<table>
+  <thead>
+    <tr>
+      <th>変数名</th>
+      <th>説明</th>
+      <th>補足</th>
+      <th>Datadog コンソール URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>DD_API_KEY</code></td>
+      <td>datadog コンテナがあらゆるデータを Datadog に送信するために必要である。</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>DD_ENV</code></td>
+      <td>APM を使用する場合、マイクロサービスや分散トレースにて、<code>env</code> タグに値を設定する。</td>
+      <td></td>
+      <td><a href="https://app.datadoghq.com/apm/services">https://app.datadoghq.com/apm/services</a></td>
+    </tr>
+    <tr>
+      <td><code>DD_HOSTNAME</code></td>
+      <td>コンテナのホスト名を設定する。</td>
+      <td>Amazon ECS Fargate の場合は、これを使用しないようにする。<br>・<a href="https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#other-environment-variables">https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#other-environment-variables</a></td>
+      <td><a href="https://app.datadoghq.com/infrastructure/map">https://app.datadoghq.com/infrastructure/map</a></td>
+    </tr>
+    <tr>
+      <td><code>ECS_FARGATE</code></td>
+      <td>Amazon ECS Fargate を使用する場合、これを宣言する。</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://docs.datadoghq.com/agent/docker/?tab=standard#global-options
 
@@ -331,10 +361,30 @@ datadog コンテナの環境変数として設定する。
 
 一部のメトリクスは、デフォルトでは収集しないようになっており、収集するためにエージェントを有効化する必要がある。
 
-| 変数名                     | 説明                                                                                                                            | 補足                                                                                                                                                                                                                                    | Datadog コンソール URL               |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| `DD_APM_ENABLED`           | APM エージェントを有効化するか否かを設定する。                                                                                  | Amazon ECS Fargate を採用している場合、APM エージェントを有効化するのみでなく、分散トレースを送信できるように、マイクロサービスにパッケージのインストールが必要である。<br>・https://docs.datadoghq.com/tracing/#send-traces-to-datadog | https://app.datadoghq.com/apm/home   |
-| `DD_PROCESS_AGENT_ENABLED` | ライブプロセスを有効化し、実行中のプロセスを収集する。<br>・https://docs.datadoghq.com/infrastructure/process/?tab=linuxwindows |                                                                                                                                                                                                                                         | https://app.datadoghq.com/containers |
+<table>
+  <thead>
+    <tr>
+      <th>変数名</th>
+      <th>説明</th>
+      <th>補足</th>
+      <th>Datadog コンソール URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>DD_APM_ENABLED</code></td>
+      <td>APM エージェントを有効化するか否かを設定する。</td>
+      <td>Amazon ECS Fargate を採用している場合、APM エージェントを有効化するのみでなく、分散トレースを送信できるように、マイクロサービスにパッケージのインストールが必要である。<br>・<a href="https://docs.datadoghq.com/tracing/#send-traces-to-datadog">https://docs.datadoghq.com/tracing/#send-traces-to-datadog</a></td>
+      <td><a href="https://app.datadoghq.com/apm/home">https://app.datadoghq.com/apm/home</a></td>
+    </tr>
+    <tr>
+      <td><code>DD_PROCESS_AGENT_ENABLED</code></td>
+      <td>ライブプロセスを有効化し、実行中のプロセスを収集する。<br>・<a href="https://docs.datadoghq.com/infrastructure/process/?tab=linuxwindows">https://docs.datadoghq.com/infrastructure/process/?tab=linuxwindows</a></td>
+      <td></td>
+      <td><a href="https://app.datadoghq.com/containers">https://app.datadoghq.com/containers</a></td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://docs.datadoghq.com/agent/docker/?tab=standard#optional-collection-agents
 
@@ -342,9 +392,20 @@ datadog コンテナの環境変数として設定する。
 
 カスタムメトリクスに関する環境変数として使用できる。
 
-| 変数名                           | 説明                                                                     |
-| -------------------------------- | ------------------------------------------------------------------------ |
-| `DD_DOGSTATSD_NON_LOCAL_TRAFFIC` | datadog コンテナのカスタムメトリクスの受信を有効化するか否かを設定する。 |
+<table>
+  <thead>
+    <tr>
+      <th>変数名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>DD_DOGSTATSD_NON_LOCAL_TRAFFIC</code></td>
+      <td>datadog コンテナのカスタムメトリクスの受信を有効化するか否かを設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://docs.datadoghq.com/agent/docker/?tab=standard#dogstatsd-custom-metrics
 
@@ -356,10 +417,27 @@ datadog コンテナの環境変数として設定する。
 
 ログに関する環境変数として使用できる。
 
-| 変数名            | 説明                                     | 補足                                                                                            |
-| ----------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `DD_LOGS_ENABLED` | ログの収集を有効化するか否かを設定する。 | ・https://docs.datadoghq.com/agent/docker/?tab=standard#optional-collection-agents              |
-| `DD_LOG_LEVEL`    | APM に送信するログレベルを設定する。     | ・https://docs.datadoghq.com/agent/docker/apm/?tab=linux#docker-apm-agent-environment-variables |
+<table>
+  <thead>
+    <tr>
+      <th>変数名</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>DD_LOGS_ENABLED</code></td>
+      <td>ログの収集を有効化するか否かを設定する。</td>
+      <td>・<a href="https://docs.datadoghq.com/agent/docker/?tab=standard#optional-collection-agents">https://docs.datadoghq.com/agent/docker/?tab=standard#optional-collection-agents</a></td>
+    </tr>
+    <tr>
+      <td><code>DD_LOG_LEVEL</code></td>
+      <td>APM に送信するログレベルを設定する。</td>
+      <td>・<a href="https://docs.datadoghq.com/agent/docker/apm/?tab=linux#docker-apm-agent-environment-variables">https://docs.datadoghq.com/agent/docker/apm/?tab=linux#docker-apm-agent-environment-variables</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -373,12 +451,37 @@ datadog コンテナの環境変数として設定する。
 
 #### ▼ PHP 用のクライアントパッケージの場合
 
-| 変数名                                    | 説明                                                                                                                                                                     | 画面                                   |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------- |
-| `DD_SERVICE_MAPPING`                      | 分散トレースにマイクロサービス名を設定する。マイクロサービス名はデフォルトのインテグレーション名になるが、これを上書きできる。<br>(例) `laravel:foo-laravel,pdo:foo-pdo` | https://app.datadoghq.com/apm/services |
-| `DD_SERVICE_NAME`                         | 分散トレースにマイクロサービス名を設定する。`DD_SERVICE_MAPPING` が null の場合、この環境変数の値が代わりにマイクロサービス名になる (仕組みがよくわからん) 。            |                                        |
-| `DD_TRACE_<インテグレーション名>_ENABLED` | 有効化するインテグレーション名を設定する。デフォルトですべてのインテグレーションが有効化されているため、設定は不要である。Datadog のインテグレーションを無効化する場合は |                                        |
-| `DD_<インテグレーション名>_DISABLED`      | 無効化するインテグレーション名を設定する。                                                                                                                               |                                        |
+<table>
+  <thead>
+    <tr>
+      <th>変数名</th>
+      <th>説明</th>
+      <th>画面</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>DD_SERVICE_MAPPING</code></td>
+      <td>分散トレースにマイクロサービス名を設定する。マイクロサービス名はデフォルトのインテグレーション名になるが、これを上書きできる。<br>(例) <code>laravel:foo-laravel,pdo:foo-pdo</code></td>
+      <td><a href="https://app.datadoghq.com/apm/services">https://app.datadoghq.com/apm/services</a></td>
+    </tr>
+    <tr>
+      <td><code>DD_SERVICE_NAME</code></td>
+      <td>分散トレースにマイクロサービス名を設定する。<code>DD_SERVICE_MAPPING</code> が null の場合、この環境変数の値が代わりにマイクロサービス名になる (仕組みがよくわからん) 。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>DD_TRACE_&lt;インテグレーション名&gt;_ENABLED</code></td>
+      <td>有効化するインテグレーション名を設定する。デフォルトですべてのインテグレーションが有効化されているため、設定は不要である。Datadog のインテグレーションを無効化する場合は</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>DD_&lt;インテグレーション名&gt;_DISABLED</code></td>
+      <td>無効化するインテグレーション名を設定する。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://docs.datadoghq.com/tracing/setup_overview/setup/php/?tab=containers#environment-variable-configuration
 

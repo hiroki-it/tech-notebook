@@ -123,9 +123,22 @@ ServerSideApply と ClientSideApply の間で、マニフェストの最終的�
 
 ClientSideApply では、クライアント側（例：kubectl、ArgoCD の application-controller など）が kube-apiserver からマニフェストの実体を取得し、クライアントを変更してから kube-apiserver に送信する。
 
-|      | ServerSideApply | ClientSideApply                                |
-| ---- | --------------- | ---------------------------------------------- |
-| 主体 | kube-apiserver  | kubectl、ArgoCD の application-controller など |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>ServerSideApply</th>
+      <th>ClientSideApply</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>主体</td>
+      <td>kube-apiserver</td>
+      <td>kubectl、ArgoCD の application-controller など</td>
+    </tr>
+  </tbody>
+</table>
 
 特に、ServerSideApply では kube-apiserver がよしなにマニフェストの最終状態を決めることもある。そのため、マニフェストファイルと実体が異なる場合もある。
 
@@ -1626,11 +1639,28 @@ Node に Taint を付与する。
 
 エフェクトごとに、Toleration が付与された Pod のスケジューリング方法が異なる。
 
-| エフェクト       | 説明                                                                                                                                                                                                                                                                                                    |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| NoExecute        | Toleration が付与された Pod しか、その Node にスケジューリングさせられない。付与した Pod がすでに稼働している場合、その Pod も再スケジューリングさせる。                                                                                                                                                |
-| NoSchedule       | Toleration が付与された Pod しか、その Node にスケジューリングさせられない。付与した Pod がすでに稼働している場合、その Pod は再スケジューリングさせない。                                                                                                                                              |
-| PreferNoSchedule | Toleration が付与された Pod をその Node にスケジューリングさせる。ただし、いずれの Pod にも Toleration が付与されていなければ、付与されていない Pod もその Node にスケジューリングさせる。Toleration が付与された Pod がすでにスケジューリングをさせている場合、その Pod は再スケジューリングさせない。 |
+<table>
+  <thead>
+    <tr>
+      <th>エフェクト</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NoExecute</td>
+      <td>Toleration が付与された Pod しか、その Node にスケジューリングさせられない。付与した Pod がすでに稼働している場合、その Pod も再スケジューリングさせる。</td>
+    </tr>
+    <tr>
+      <td>NoSchedule</td>
+      <td>Toleration が付与された Pod しか、その Node にスケジューリングさせられない。付与した Pod がすでに稼働している場合、その Pod は再スケジューリングさせない。</td>
+    </tr>
+    <tr>
+      <td>PreferNoSchedule</td>
+      <td>Toleration が付与された Pod をその Node にスケジューリングさせる。ただし、いずれの Pod にも Toleration が付与されていなければ、付与されていない Pod もその Node にスケジューリングさせる。Toleration が付与された Pod がすでにスケジューリングをさせている場合、その Pod は再スケジューリングさせない。</td>
+    </tr>
+  </tbody>
+</table>
 
 **＊例＊**
 

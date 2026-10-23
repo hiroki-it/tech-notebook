@@ -782,10 +782,24 @@ v1.LabelSelector{MatchLabels:map[string]string{"app.kubernetes.io/name":"foo-pod
 
 以下のタイミングで Deployment は Pod を再デプロイする。
 
-| 箇所                                  | 説明                                                                 |
-| ------------------------------------- | -------------------------------------------------------------------- |
-| `.spec.replicas` キー                 | Pod のレプリカ数を変更すると、Deployment は Pod を再デプロイする。   |
-| `.spec.template` キー配下の任意のキー | Pod テンプレートを変更した場合、Deployment は Pod を再デプロイする。 |
+<table>
+  <thead>
+    <tr>
+      <th>箇所</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>.spec.replicas</code> キー</td>
+      <td>Pod のレプリカ数を変更すると、Deployment は Pod を再デプロイする。</td>
+    </tr>
+    <tr>
+      <td><code>.spec.template</code> キー配下の任意のキー</td>
+      <td>Pod テンプレートを変更した場合、Deployment は Pod を再デプロイする。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Deployments \| Kubernetes](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment)
 
@@ -1200,12 +1214,37 @@ spec:
 
 なお、カスタムメトリクスの元になるデータポイントを収集するためには、別途ツール (例：prometheus-adapter) が必要である。
 
-| タイプ名   | 説明                                               | メトリクス例                                    |
-| ---------- | -------------------------------------------------- | ----------------------------------------------- |
-| `Resource` | リソースメトリクス                                 | CPU 使用率、メモリ使用率など                    |
-| `Pods`     | Pod のカスタムメトリクス                           | Queries Per Second、message broker’s queue など |
-| `Object`   | Pod 以外の Kubernetes リソースのカスタムメトリクス | Ingress に関するメトリクスなど                  |
-| `External` | Kubernetes 以外の任意のメトリクス                  | AWS、Google Cloud、Azure に固有のメトリクス     |
+<table>
+  <thead>
+    <tr>
+      <th>タイプ名</th>
+      <th>説明</th>
+      <th>メトリクス例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Resource</code></td>
+      <td>リソースメトリクス</td>
+      <td>CPU 使用率、メモリ使用率など</td>
+    </tr>
+    <tr>
+      <td><code>Pods</code></td>
+      <td>Pod のカスタムメトリクス</td>
+      <td>Queries Per Second、message broker’s queue など</td>
+    </tr>
+    <tr>
+      <td><code>Object</code></td>
+      <td>Pod 以外の Kubernetes リソースのカスタムメトリクス</td>
+      <td>Ingress に関するメトリクスなど</td>
+    </tr>
+    <tr>
+      <td><code>External</code></td>
+      <td>Kubernetes 以外の任意のメトリクス</td>
+      <td>AWS、Google Cloud、Azure に固有のメトリクス</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [prometheus-adapterの設定を完全理解したい #kubernetes - Qiita](https://qiita.com/masahata/items/062a2ee5762b108e8850)
 
@@ -1399,11 +1438,32 @@ spec:
 
 パスベースルーティング判定時のルールの厳しさを設定する。
 
-| 厳しさ                    | タイプ                 |                                                                                                                                                                                                                                                                                                               |
-| ------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| パス名の前方一致          | Prefix                 | 前方一致である。最初のパスさえ合致すれば、トレイリングスラッシュの有無や最初のパス以降のパスも許容して合致させる。そのため、ワイルドカード (`*`) は不要である。                                                                                                                                               |
-| パス名の完全一致          | Exact                  | 完全一致である。指定したパスのみを合致させ、トレイリングスラッシュも有無も許容しない。                                                                                                                                                                                                                        |
-| IngressClass の機能による | ImplementationSpecific | IngressClass (例：Nginx、ALB など) の設定に応じて、独自タイプ、Prefix、Exact を自動的に切り替える。そのため、Ingress のルーティングルールが IngressClass に依存している。IngressClass の仕様変更や別の IngressClass への移行があった場合に、Ingress Controller が想定外のルーティングを実行する可能性がある。 |
+<table>
+  <thead>
+    <tr>
+      <th>厳しさ</th>
+      <th>タイプ</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>パス名の前方一致</td>
+      <td>Prefix</td>
+      <td>前方一致である。最初のパスさえ合致すれば、トレイリングスラッシュの有無や最初のパス以降のパスも許容して合致させる。そのため、ワイルドカード (<code>*</code>) は不要である。</td>
+    </tr>
+    <tr>
+      <td>パス名の完全一致</td>
+      <td>Exact</td>
+      <td>完全一致である。指定したパスのみを合致させ、トレイリングスラッシュも有無も許容しない。</td>
+    </tr>
+    <tr>
+      <td>IngressClass の機能による</td>
+      <td>ImplementationSpecific</td>
+      <td>IngressClass (例：Nginx、ALB など) の設定に応じて、独自タイプ、Prefix、Exact を自動的に切り替える。そのため、Ingress のルーティングルールが IngressClass に依存している。IngressClass の仕様変更や別の IngressClass への移行があった場合に、Ingress Controller が想定外のルーティングを実行する可能性がある。</td>
+    </tr>
+  </tbody>
+</table>
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -2245,12 +2305,32 @@ PersistentVolume の作成先とする Node を設定する。
 
 作成先の Node の `.metadata.labels` キーを指定するための条件 (`In`、`NotIn`、`Exists`) を設定する。
 
-| 設定値        | 条件の説明                                                    |
-| ------------- | ------------------------------------------------------------- |
-| In            | 指定した `metadata.labels` キー配下に、指定した値を持つ。     |
-| NotIn         | 指定した `metadata.labels` キー配下に、指定した値を持たない。 |
-| Exists        | 指定した `metadata.labels` キーを持つ。                       |
-| DoesNotExists | 指定した `metadata.labels` キーを持たない。                   |
+<table>
+  <thead>
+    <tr>
+      <th>設定値</th>
+      <th>条件の説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>In</td>
+      <td>指定した <code>metadata.labels</code> キー配下に、指定した値を持つ。</td>
+    </tr>
+    <tr>
+      <td>NotIn</td>
+      <td>指定した <code>metadata.labels</code> キー配下に、指定した値を持たない。</td>
+    </tr>
+    <tr>
+      <td>Exists</td>
+      <td>指定した <code>metadata.labels</code> キーを持つ。</td>
+    </tr>
+    <tr>
+      <td>DoesNotExists</td>
+      <td>指定した <code>metadata.labels</code> キーを持たない。</td>
+    </tr>
+  </tbody>
+</table>
 
 **＊実装例＊**
 
@@ -2364,13 +2444,36 @@ PersistentVolume にストレージクラス名を設定しない場合、これ
 
 注意点として、もし異なる StorageClassName に変更したい場合は、PersistentVolume を作成し直す必要がある。
 
-| クラス名              | 説明                                                                                                                          |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `""` (明示的な空文字) | PersistentVolume に対応する StorageClass がない場合 (PersistentVolume を使用するが、StorageClass は使用しない場合) につける。 |
-| `local`               | PersistentVolume に対応する StorageClass が中速中容量ストレージの場合につける。                                               |
-| `standard`            | PersistentVolume に対応する StorageClass が中速中容量ストレージの場合につける。                                               |
-| `fast`                | PersistentVolume に対応する StorageClass が高速小容量ストレージの場合につける。                                               |
-| `slow`                | PersistentVolume に対応する StorageClass が低速大容量ストレージの場合につける。                                               |
+<table>
+  <thead>
+    <tr>
+      <th>クラス名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&quot;&quot;</code> (明示的な空文字)</td>
+      <td>PersistentVolume に対応する StorageClass がない場合 (PersistentVolume を使用するが、StorageClass は使用しない場合) につける。</td>
+    </tr>
+    <tr>
+      <td><code>local</code></td>
+      <td>PersistentVolume に対応する StorageClass が中速中容量ストレージの場合につける。</td>
+    </tr>
+    <tr>
+      <td><code>standard</code></td>
+      <td>PersistentVolume に対応する StorageClass が中速中容量ストレージの場合につける。</td>
+    </tr>
+    <tr>
+      <td><code>fast</code></td>
+      <td>PersistentVolume に対応する StorageClass が高速小容量ストレージの場合につける。</td>
+    </tr>
+    <tr>
+      <td><code>slow</code></td>
+      <td>PersistentVolume に対応する StorageClass が低速大容量ストレージの場合につける。</td>
+    </tr>
+  </tbody>
+</table>
 
 **＊実装例＊**
 
@@ -2888,11 +2991,28 @@ spec:
 
 イメージのプルのルールを設定する。
 
-| オプション   | 説明                                                                                                  |
-| ------------ | ----------------------------------------------------------------------------------------------------- |
-| IfNotPresent | Node 上にコンテナイメージのキャッシュがあればこれを使用する。なければイメージリポジトリからぷるする。 |
-| Always       | Node 上のキャッシュを使用せず、常にイメージリポジトリからコンテナイメージをプルする。                 |
-| Never        | Node 上にコンテナイメージのキャッシュを常にを使用する。                                               |
+<table>
+  <thead>
+    <tr>
+      <th>オプション</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>IfNotPresent</td>
+      <td>Node 上にコンテナイメージのキャッシュがあればこれを使用する。なければイメージリポジトリからぷるする。</td>
+    </tr>
+    <tr>
+      <td>Always</td>
+      <td>Node 上のキャッシュを使用せず、常にイメージリポジトリからコンテナイメージをプルする。</td>
+    </tr>
+    <tr>
+      <td>Never</td>
+      <td>Node 上にコンテナイメージのキャッシュを常にを使用する。</td>
+    </tr>
+  </tbody>
+</table>
 
 **＊実装例＊**
 
@@ -2922,10 +3042,27 @@ Node 全体のハードウェアリソースを分母として、Pod 内のコ�
 
 同じ Pod 内に `resources` キーを設定したコンテナが複数ある場合、下限/上限の必要サイズを満たしているか否かは、同じ Pod 内にあるコンテナの要求サイズ合計値に基づいて判定する。
 
-| キー名     | 説明                                             | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| ---------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requests` | ハードウェアリソースの下限必要サイズを設定する。 | ・高くしすぎると、その Pod 内のコンテナがハードウェアリソースを常に要求するため、他の Pod がスケーリングしにくくなる。<br>・もし、設定値が Node のハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>・https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetes が重要な Pod にリソースを必要最低限しか割かず、性能が低くなる可能性がある。                                                                                                                                                                                                                                                                                                                                                                      |
-| `limits`   | ハードウェアリソースの上限必要サイズを設定する。 | ・低くしすぎると、コンテナにハードウェアリソースを割り当てられないため、性能が常時悪くなる。<br>・もし、コンテナが上限値以上のハードウェアリソースを要求すると、CPU の場合は Pod は削除されずに、コンテナのスロットリング (起動と停止を繰り返す) が起こる。一方でメモリの場合は、OOM キラーによって Pod のプロセスが削除され、Pod は再作成される。<br>・https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/ <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの上限がなくなる。そのため、Kubernetes が重要でない Pod にリソースを割いてしまう可能性がある。<br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit |
+<table>
+  <thead>
+    <tr>
+      <th>キー名</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>requests</code></td>
+      <td>ハードウェアリソースの下限必要サイズを設定する。</td>
+      <td>・高くしすぎると、その Pod 内のコンテナがハードウェアリソースを常に要求するため、他の Pod がスケーリングしにくくなる。<br>・もし、設定値が Node のハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>・<a href="https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu">https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu</a> <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetes が重要な Pod にリソースを必要最低限しか割かず、性能が低くなる可能性がある。</td>
+    </tr>
+    <tr>
+      <td><code>limits</code></td>
+      <td>ハードウェアリソースの上限必要サイズを設定する。</td>
+      <td>・低くしすぎると、コンテナにハードウェアリソースを割り当てられないため、性能が常時悪くなる。<br>・もし、コンテナが上限値以上のハードウェアリソースを要求すると、CPU の場合は Pod は削除されずに、コンテナのスロットリング (起動と停止を繰り返す) が起こる。一方でメモリの場合は、OOM キラーによって Pod のプロセスが削除され、Pod は再作成される。<br>・<a href="https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/">https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/</a> <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの上限がなくなる。そのため、Kubernetes が重要でない Pod にリソースを割いてしまう可能性がある。<br>・<a href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit">https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit</a> <br>・<a href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit">https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit</a></td>
+    </tr>
+  </tbody>
+</table>
 
 補足として、Node 全体のハードウェアリソースは、`kubectl describe` コマンドから確認できる。
 
@@ -2960,11 +3097,32 @@ Allocatable:
 
 #### ▼ resources.requests/limits.<ハードウェアリソース>
 
-| ハードウェアリソース名 |                                                     | 単位                                               |
-| ---------------------- | --------------------------------------------------- | -------------------------------------------------- |
-| `cpu`                  | コンテナの CPU                                      | m：millicores (`1`m = `1` ユニット = `0.001` コア) |
-| `memory`               | コンテナのメモリ                                    | Mi：mebibyte (`1`Mi = `1.04858`MB)                 |
-| `ephemeral-storage`    | EmptyDir Volume、ログ、ローカルディスクへの書き込み | Mi：mebibyte                                       |
+<table>
+  <thead>
+    <tr>
+      <th>ハードウェアリソース名</th>
+      <th></th>
+      <th>単位</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>cpu</code></td>
+      <td>コンテナの CPU</td>
+      <td>m：millicores (<code>1</code>m = <code>1</code> ユニット = <code>0.001</code> コア)</td>
+    </tr>
+    <tr>
+      <td><code>memory</code></td>
+      <td>コンテナのメモリ</td>
+      <td>Mi：mebibyte (<code>1</code>Mi = <code>1.04858</code>MB)</td>
+    </tr>
+    <tr>
+      <td><code>ephemeral-storage</code></td>
+      <td>EmptyDir Volume、ログ、ローカルディスクへの書き込み</td>
+      <td>Mi：mebibyte</td>
+    </tr>
+  </tbody>
+</table>
 
 **＊実装例＊**
 
@@ -3220,13 +3378,36 @@ spec:
 
 自身のアプリケーションではエンドポイントを実装する必要があるが、OSS ではすでに用意されていることが多い。
 
-| ツール       | エンドポイント   |
-| ------------ | ---------------- |
-| Alertmaanger | `/-/healthy`     |
-| Grafana      | `/healthz`       |
-| Kiali        | `/kiali/healthz` |
-| Prometheus   | `/-/healthy`     |
-| ...          | ...              |
+<table>
+  <thead>
+    <tr>
+      <th>ツール</th>
+      <th>エンドポイント</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Alertmaanger</td>
+      <td><code>/-/healthy</code></td>
+    </tr>
+    <tr>
+      <td>Grafana</td>
+      <td><code>/healthz</code></td>
+    </tr>
+    <tr>
+      <td>Kiali</td>
+      <td><code>/kiali/healthz</code></td>
+    </tr>
+    <tr>
+      <td>Prometheus</td>
+      <td><code>/-/healthy</code></td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ failureThreshold
 
@@ -4034,12 +4215,32 @@ Pod のスケジューリングの優先度を設定する。
 
 何らかの理由 (例：ハードウェアリソース不足など) でより優先度の高い Pod をスケジューリングさせられない場合、より優先度の低い Pod を Node から退去させ、優先度の高い Pod をスケジューリングさせる。
 
-| 設定値                                            | 優先度 |
-| ------------------------------------------------- | :----: |
-| `system-node-critical`、`system-cluster-critical` | 最優先 |
-| `high`                                            |        |
-| `low-non-preemptible`                             |        |
-| `low`                                             | 後回し |
+<table>
+  <thead>
+    <tr>
+      <th>設定値</th>
+      <th style="text-align:center">優先度</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>system-node-critical</code>、<code>system-cluster-critical</code></td>
+      <td style="text-align:center">最優先</td>
+    </tr>
+    <tr>
+      <td><code>high</code></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td><code>low-non-preemptible</code></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td><code>low</code></td>
+      <td style="text-align:center">後回し</td>
+    </tr>
+  </tbody>
+</table>
 
 ```yaml
 apiVersion: v1

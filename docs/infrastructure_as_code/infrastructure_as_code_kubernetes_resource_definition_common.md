@@ -97,9 +97,22 @@ Kubernetes リソースに関する情報を設定する。
 
 `.metadata.annotations` キー配下にも同じキーがあることに注意する。
 
-| キー                      | 値の例                        | 説明                                            |
-| ------------------------- | ----------------------------- | ----------------------------------------------- |
-| `kubernetes.io/createdby` | `aws-ebs-dynamic-provisioner` | Kubernetes リソースを作成したツールを設定する。 |
+<table>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>kubernetes.io/createdby</code></td>
+      <td><code>aws-ebs-dynamic-provisioner</code></td>
+      <td>Kubernetes リソースを作成したツールを設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -152,10 +165,27 @@ kube-controller が設定してくれるため、開発者が設定する必要�
 
 #### ▼ 種類
 
-| キー                                   | 値の例                                                                       | 説明                                                                                       |
-| -------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `pv.kubernetes.io/bound-by-controller` | `yes`                                                                        | PersistentVolume の CSI ドライバーの Controller がプロビジョニングしたかどうかを設定する。 |
-| `pv.kubernetes.io/provisioned-by`      | `ebs.csi.aws.com` (AWS EBS CSI ドライバー)、`kubernetes.io/aws-ebs` (非推奨) | その PersistVolume を作成したツールを設定する。                                            |
+<table>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>pv.kubernetes.io/bound-by-controller</code></td>
+      <td><code>yes</code></td>
+      <td>PersistentVolume の CSI ドライバーの Controller がプロビジョニングしたかどうかを設定する。</td>
+    </tr>
+    <tr>
+      <td><code>pv.kubernetes.io/provisioned-by</code></td>
+      <td><code>ebs.csi.aws.com</code> (AWS EBS CSI ドライバー)、<code>kubernetes.io/aws-ebs</code> (非推奨)</td>
+      <td>その PersistVolume を作成したツールを設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -167,10 +197,27 @@ PersistentVolumeClaim に関する情報を設定する。
 
 kube-controller が設定してくれるため、開発者が設定する必要はない。
 
-| キー                                       | 値の例                                                                                                              | 説明                                                                                                                                                                                                                                              |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `volume.kubernetes.io/storage-provisioner` | `ebs.csi.aws.com` (AWS EBS CSI ドライバー)、`kubernetes.io/aws-ebs` (非推奨)、`k8s.io/minikube-hostpath` (Minikube) | PersistentVolumeClaim に紐づく PersistentVolume を作成したツールを設定する。                                                                                                                                                                      |
-| `volume.kubernetes.io/selected-node`       | `ip-*-*-*-*.ap-northeast-1.compute.internal`                                                                        | PersistentVolumeClaim に紐づく PersistentVolume が配置されている Node 名を設定する。正しい Node 名を指定しないと、`N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector` というエラーになってしまう。 |
+<table>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>volume.kubernetes.io/storage-provisioner</code></td>
+      <td><code>ebs.csi.aws.com</code> (AWS EBS CSI ドライバー)、<code>kubernetes.io/aws-ebs</code> (非推奨)、<code>k8s.io/minikube-hostpath</code> (Minikube)</td>
+      <td>PersistentVolumeClaim に紐づく PersistentVolume を作成したツールを設定する。</td>
+    </tr>
+    <tr>
+      <td><code>volume.kubernetes.io/selected-node</code></td>
+      <td><code>ip-*-*-*-*.ap-northeast-1.compute.internal</code></td>
+      <td>PersistentVolumeClaim に紐づく PersistentVolume が配置されている Node 名を設定する。正しい Node 名を指定しないと、<code>N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector</code> というエラーになってしまう。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -258,18 +305,67 @@ int 型を割り当てようとするとエラーになり、これは Helm の 
 
 Kubernetes 上で稼働するコンテナの情報を設定する。
 
-| キー                           | 値の例                      | 説明                                                                       |
-| ------------------------------ | --------------------------- | -------------------------------------------------------------------------- |
-| `app.kubernetes.io/app`        | `foo`、`foo-service`        | マイクロサービス名を設定する。                                             |
-| `app.kubernetes.io/component`  | `app`、`database`           | K8s リソースをシステムの要素と捉えたときに、その役割名を設定する。         |
-| `app.kubernetes.io/created-by` | `kube-controller-manager`   | この Kubernetes リソースを作成したリソースやユーザーを設定する。           |
-| `app.kubernetes.io/env`        | `prd`、`stg`、`tes`、`dev`  | アプリケーションの実行環境名を設定する。                                   |
-| `app.kubernetes.io/instance`   | `mysql-12345`               | アプリケーションのインスタンス名を設定する。                               |
-| `app.kubernetes.io/managed-by` | `helm`、`foo-operator`      | K8s リソースの管理ツール名を設定する。                                     |
-| `app.kubernetes.io/name`       | `foo-service`、`prometheus` | アプリ側であればマイクロサービス名、インフラ側であればツール名を設定する。 |
-| `app.kubernetes.io/part-of`    | `bar`                       | K8s リソースをシステムの要素と捉えたときに、その親のシステム名を設定する。 |
-| `app.kubernetes.io/type`       | `host` (PV のマウント対象)  | リソースの設定方法の種類名を設定する。                                     |
-| `app.kubernetes.io/version`    | `5.7.21`                    | K8s リソースのリリースバージョン名を設定する。                             |
+<table>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>app.kubernetes.io/app</code></td>
+      <td><code>foo</code>、<code>foo-service</code></td>
+      <td>マイクロサービス名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>app.kubernetes.io/component</code></td>
+      <td><code>app</code>、<code>database</code></td>
+      <td>K8s リソースをシステムの要素と捉えたときに、その役割名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>app.kubernetes.io/created-by</code></td>
+      <td><code>kube-controller-manager</code></td>
+      <td>この Kubernetes リソースを作成したリソースやユーザーを設定する。</td>
+    </tr>
+    <tr>
+      <td><code>app.kubernetes.io/env</code></td>
+      <td><code>prd</code>、<code>stg</code>、<code>tes</code>、<code>dev</code></td>
+      <td>アプリケーションの実行環境名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>app.kubernetes.io/instance</code></td>
+      <td><code>mysql-12345</code></td>
+      <td>アプリケーションのインスタンス名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>app.kubernetes.io/managed-by</code></td>
+      <td><code>helm</code>、<code>foo-operator</code></td>
+      <td>K8s リソースの管理ツール名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>app.kubernetes.io/name</code></td>
+      <td><code>foo-service</code>、<code>prometheus</code></td>
+      <td>アプリ側であればマイクロサービス名、インフラ側であればツール名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>app.kubernetes.io/part-of</code></td>
+      <td><code>bar</code></td>
+      <td>K8s リソースをシステムの要素と捉えたときに、その親のシステム名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>app.kubernetes.io/type</code></td>
+      <td><code>host</code> (PV のマウント対象)</td>
+      <td>リソースの設定方法の種類名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>app.kubernetes.io/version</code></td>
+      <td><code>5.7.21</code></td>
+      <td>K8s リソースのリリースバージョン名を設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Recommended Labels \| Kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/)
 
@@ -283,11 +379,32 @@ Kubernetes リソースに関する情報を設定する。
 
 kube-controller が設定してくれるため、開発者が設定する必要はない。
 
-| キー                     | 値の例                                                    | 説明                                   |
-| ------------------------ | --------------------------------------------------------- | -------------------------------------- |
-| `kubernetes.io/arch`     | `amd64`                                                   | Node の CPU アーキテクチャを設定する。 |
-| `kubernetes.io/hostname` | `ip-*-*-*-*.ap-northeast-1.compute.internal` (AWS の場合) | Node のホスト名を設定する。            |
-| `kubernetes.io/os`       | `linux`                                                   | Node の OS を設定する。                |
+<table>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>kubernetes.io/arch</code></td>
+      <td><code>amd64</code></td>
+      <td>Node の CPU アーキテクチャを設定する。</td>
+    </tr>
+    <tr>
+      <td><code>kubernetes.io/hostname</code></td>
+      <td><code>ip-*-*-*-*.ap-northeast-1.compute.internal</code> (AWS の場合)</td>
+      <td>Node のホスト名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>kubernetes.io/os</code></td>
+      <td><code>linux</code></td>
+      <td>Node の OS を設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -307,17 +424,43 @@ kubelet の `--node-labels` オプションを使用すると、Node にラベ�
 
 Node の情報を設定する。
 
-| キー                          | 値の例                       | 説明                                                                    |
-| ----------------------------- | ---------------------------- | ----------------------------------------------------------------------- |
-| `node.kubernetes.io/nodetype` | `batch`、`ingress`、`master` | コンテナを持つ Pod のスケジューリング先とする Node グループを設定する。 |
+<table>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>node.kubernetes.io/nodetype</code></td>
+      <td><code>batch</code>、<code>ingress</code>、<code>master</code></td>
+      <td>コンテナを持つ Pod のスケジューリング先とする Node グループを設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ `node-role.kubernetes.io` キー
 
 Node の taints を設定する。
 
-| キー                             | 値の例                           | 説明                                       |
-| -------------------------------- | -------------------------------- | ------------------------------------------ |
-| `node-role.kubernetes.io/master` | `NoSchedule`、`PreferNoSchedule` | Pod のスケジューリングのルールを設定する。 |
+<table>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>node-role.kubernetes.io/master</code></td>
+      <td><code>NoSchedule</code>、<code>PreferNoSchedule</code></td>
+      <td>Pod のスケジューリングのルールを設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ `topology.kubernetes.io` キー
 
@@ -325,10 +468,27 @@ Node に関する情報を設定する。
 
 kube-controller が設定してくれるため、開発者が設定する必要はない。
 
-| キー                            | 値の例                         | 説明                                      |
-| ------------------------------- | ------------------------------ | ----------------------------------------- |
-| `topology.kubernetes.io/region` | `ap-northeast-1` (AWS の場合)  | Node が稼働しているリージョンを設定する。 |
-| `topology.kubernetes.io/zone`   | `ap-northeast-1a` (AWS の場合) | Node が稼働している AZ を設定する。       |
+<table>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>topology.kubernetes.io/region</code></td>
+      <td><code>ap-northeast-1</code> (AWS の場合)</td>
+      <td>Node が稼働しているリージョンを設定する。</td>
+    </tr>
+    <tr>
+      <td><code>topology.kubernetes.io/zone</code></td>
+      <td><code>ap-northeast-1a</code> (AWS の場合)</td>
+      <td>Node が稼働している AZ を設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -340,11 +500,32 @@ kube-controller が設定してくれるため、開発者が設定する必要�
 
 特定の Kubernetes リソースの認可スコープを狭くしたい場合、`.rules` キー配下でそれを定義する。
 
-| キー                                           | 値の例 | 説明                                                                                     |
-| ---------------------------------------------- | ------ | ---------------------------------------------------------------------------------------- |
-| `rbac.authorization.k8s.io/aggregate-to-admin` | `true` | Cluster 内のすべての Kubernetes リソースにすべての操作が可能な認可スコープを設定する。   |
-| `rbac.authorization.k8s.io/aggregate-to-edit`  | `true` | Namespace 内のすべての Kubernetes リソースに変更操作が可能な認可スコープを設定する。     |
-| `rbac.authorization.k8s.io/aggregate-to-view`  | `true` | Cluster 内のすべての Kubernetes リソースに対して閲覧操作が可能な認可スコープを設定する。 |
+<table>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>rbac.authorization.k8s.io/aggregate-to-admin</code></td>
+      <td><code>true</code></td>
+      <td>Cluster 内のすべての Kubernetes リソースにすべての操作が可能な認可スコープを設定する。</td>
+    </tr>
+    <tr>
+      <td><code>rbac.authorization.k8s.io/aggregate-to-edit</code></td>
+      <td><code>true</code></td>
+      <td>Namespace 内のすべての Kubernetes リソースに変更操作が可能な認可スコープを設定する。</td>
+    </tr>
+    <tr>
+      <td><code>rbac.authorization.k8s.io/aggregate-to-view</code></td>
+      <td><code>true</code></td>
+      <td>Cluster 内のすべての Kubernetes リソースに対して閲覧操作が可能な認可スコープを設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1

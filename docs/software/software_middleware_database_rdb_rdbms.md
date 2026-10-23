@@ -17,11 +17,28 @@ description: RDBMS＠DB系ミドルウェアの知見を記録しています。
 
 ### RDBMS の種類
 
-| RDBMS      | RDB              |
-| ---------- | ---------------- |
-| MariaDB    | MariaDB の DB    |
-| MySQL      | MySQL の DB      |
-| PostgreSQL | PostgreSQL の DB |
+<table>
+  <thead>
+    <tr>
+      <th>RDBMS</th>
+      <th>RDB</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MariaDB</td>
+      <td>MariaDB の DB</td>
+    </tr>
+    <tr>
+      <td>MySQL</td>
+      <td>MySQL の DB</td>
+    </tr>
+    <tr>
+      <td>PostgreSQL</td>
+      <td>PostgreSQL の DB</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -198,23 +215,93 @@ CREATE INDEX foo_index
     ON foo_table (name, address)
 ```
 
-| id  | name      | address | old |
-| --- | --------- | ------- | --- |
-| 1   | Suzuki    | Tokyo   | 24  |
-| 2   | Yamada    | Osaka   | 18  |
-| 3   | Takahashi | Nagoya  | 18  |
-| 4   | Honda     | Tokyo   | 16  |
-| 5   | Endou     | Tokyo   | 24  |
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>address</th>
+      <th>old</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Suzuki</td>
+      <td>Tokyo</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Yamada</td>
+      <td>Osaka</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Takahashi</td>
+      <td>Nagoya</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Honda</td>
+      <td>Tokyo</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Endou</td>
+      <td>Tokyo</td>
+      <td>24</td>
+    </tr>
+  </tbody>
+</table>
 
 各カラムで値の異なるレコード数が計測され、`name` カラムは `address` カラムよりも一意のレコードが多いため、`name` カラムの昇順 (アルファベット順) に並び替えられ、DB インデックスとして保管される。
 
-| id  | name      | address | old |
-| --- | --------- | ------- | --- |
-| 5   | Endou     | Tokyo   | 24  |
-| 4   | Honda     | Tokyo   | 18  |
-| 1   | Suzuki    | Tokyo   | 24  |
-| 3   | Takahashi | Nagoya  | 18  |
-| 2   | Yamada    | Osaka   | 18  |
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>address</th>
+      <th>old</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>5</td>
+      <td>Endou</td>
+      <td>Tokyo</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Honda</td>
+      <td>Tokyo</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Suzuki</td>
+      <td>Tokyo</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Takahashi</td>
+      <td>Nagoya</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Yamada</td>
+      <td>Osaka</td>
+      <td>18</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ DB インデックスのカラム変更
 
@@ -282,11 +369,28 @@ RDBMS の種類に応じたクエリが必要になる。
 
 クエリの実装の抽象度に応じて、パッケージがある。
 
-| クエリパッケージ | 説明                                                                                                                |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------- |
-| 生のクエリ       | RDB 固有のクエリのこと。                                                                                            |
-| クエリビルダー   | RDB 固有のクエリを実装しやすくしたパッケージのこと。                                                                |
-| ORM              | アプリケーション側にテーブルに対応したモデルを定義し、これを使用して RDB に固有のクエリを送信するパッケージのこと。 |
+<table>
+  <thead>
+    <tr>
+      <th>クエリパッケージ</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>生のクエリ</td>
+      <td>RDB 固有のクエリのこと。</td>
+    </tr>
+    <tr>
+      <td>クエリビルダー</td>
+      <td>RDB 固有のクエリを実装しやすくしたパッケージのこと。</td>
+    </tr>
+    <tr>
+      <td>ORM</td>
+      <td>アプリケーション側にテーブルに対応したモデルを定義し、これを使用して RDB に固有のクエリを送信するパッケージのこと。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://levelup.gitconnected.com/raw-sql-vs-query-builder-vs-orm-eee72dbdd275
 

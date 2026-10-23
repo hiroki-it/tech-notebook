@@ -345,9 +345,24 @@ probe_success
 
 #### ▼ よく使用するメトリクス
 
-| メトリクス      | メトリクスの種類 | 説明                                                                 | PromQL 例                                                                                             |
-| --------------- | ---------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `probe_success` | Gauge            | 監視対象の状態を表す。`1` であれば稼働中、`0` であれば停止中である。 | `sum((probe_success{namespace="foo-namespace"})) / count((probe_success{namespace="foo-namespace"}))` |
+<table>
+  <thead>
+    <tr>
+      <th>メトリクス</th>
+      <th>メトリクスの種類</th>
+      <th>説明</th>
+      <th>PromQL 例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>probe_success</code></td>
+      <td>Gauge</td>
+      <td>監視対象の状態を表す。<code>1</code> であれば稼働中、<code>0</code> であれば停止中である。</td>
+      <td><code>sum((probe_success{namespace=&quot;foo-namespace&quot;})) / count((probe_success{namespace=&quot;foo-namespace&quot;}))</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [PrometheusとBlackbox Exporterでサーバ死活監視 #prometheus - Qiita](https://qiita.com/mmorita44/items/8eca5e6fae9fd40807ce#%E9%81%8B%E7%94%A8%E6%96%B9%E6%B3%95)
 

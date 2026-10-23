@@ -332,11 +332,32 @@ class CheckDuplicateFooService
 
 あるいはドメインサービスではなく、アプリケーションサービスとして定義してもよい。
 
-| テーブル                        | 説明                                       | テーブル例                                                           |
-| ------------------------------- | ------------------------------------------ | -------------------------------------------------------------------- |
-| ロール                          | ユーザーの権限を表す。                     | ロール名 (`Administorator`、`Operator`、`Reporter など) を定義する。 |
-| パーミッション (ロールポリシー) | ロールをポリシーに紐づける。               | テーブル上でロール名とポリシー名を紐づける。                         |
-| ポリシー                        | 各パーミッションの認可スコープを定義する。 | `StandardAccess`、`FullAccess`、`ReadOnly` を定義する。              |
+<table>
+  <thead>
+    <tr>
+      <th>テーブル</th>
+      <th>説明</th>
+      <th>テーブル例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ロール</td>
+      <td>ユーザーの権限を表す。</td>
+      <td>ロール名 (<code>Administorator</code>、<code>Operator</code>、`Reporter など) を定義する。</td>
+    </tr>
+    <tr>
+      <td>パーミッション (ロールポリシー)</td>
+      <td>ロールをポリシーに紐づける。</td>
+      <td>テーブル上でロール名とポリシー名を紐づける。</td>
+    </tr>
+    <tr>
+      <td>ポリシー</td>
+      <td>各パーミッションの認可スコープを定義する。</td>
+      <td><code>StandardAccess</code>、<code>FullAccess</code>、<code>ReadOnly</code> を定義する。</td>
+    </tr>
+  </tbody>
+</table>
 
 **＊実装例＊**
 

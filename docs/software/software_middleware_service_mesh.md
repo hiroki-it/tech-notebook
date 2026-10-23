@@ -132,13 +132,48 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 
 ### サービスメッシュの型の比較
 
-|                                        | 共有ライブラリパターン | サイドカーパターン | サイドカーレスパターン |
-| -------------------------------------- | ---------------------- | :----------------: | :--------------------: |
-| Node のハードウェアリソース消費量      |                        |         ×          |          `⭕️`          |
-| Node のストレージ使用量                |                        |         △          |           △            |
-| データプレーンの冗長性                 |                        |        `⭕️`        |           △            |
-| マイクロサービスごとの設定カスタマイズ |                        |        `⭕️`        |           △            |
-| 単純性                                 |                        |         ×          |          `⭕️`          |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>共有ライブラリパターン</th>
+      <th style="text-align:center">サイドカーパターン</th>
+      <th style="text-align:center">サイドカーレスパターン</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Node のハードウェアリソース消費量</td>
+      <td></td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+    <tr>
+      <td>Node のストレージ使用量</td>
+      <td></td>
+      <td style="text-align:center">△</td>
+      <td style="text-align:center">△</td>
+    </tr>
+    <tr>
+      <td>データプレーンの冗長性</td>
+      <td></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center">△</td>
+    </tr>
+    <tr>
+      <td>マイクロサービスごとの設定カスタマイズ</td>
+      <td></td>
+      <td style="text-align:center"><code>⭕️</code></td>
+      <td style="text-align:center">△</td>
+    </tr>
+    <tr>
+      <td>単純性</td>
+      <td></td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center"><code>⭕️</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Kubernetes Logging in Production — Coder Society](https://codersociety.com/blog/articles/kubernetes-logging)
 > - [Comprehensive Analysis of Kubernetes Log Collection Principles - Alibaba Cloud Community](https://www.alibabacloud.com/blog/comprehensive-analysis-of-kubernetes-log-collection-principles_599411)
@@ -170,13 +205,48 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 
 ここでは代表的な OSS と、そのデータプレーン/コントロールプレーンの実装例、および Envoy の xDS API との関係性を整理する。
 
-| OSS 名  | データプレーンの実装                | コントロールプレーンの実装 | xDS API との関係                               |
-| ------- | ----------------------------------- | -------------------------- | ---------------------------------------------- |
-| Istio   | Envoy                               | Istiod                     | Envoy の xDS API をフルに活用                  |
-| Linkerd | ビルトインプロキシ (linkerd2-proxy) | Destination、Identity など | 独自プロキシであり、Envoy の xDS とは非互換    |
-| Consul  | ビルトインプロキシ、Envoy           | Consul control plane       | Envoy 連携時に一部の xDS API を利用            |
-| SPIRE   | Envoy                               | SPIRE                      | Envoy の SDS (Secret Discovery Service) を利用 |
-| ...     | ...                                 | ...                        | ...                                            |
+<table>
+  <thead>
+    <tr>
+      <th>OSS 名</th>
+      <th>データプレーンの実装</th>
+      <th>コントロールプレーンの実装</th>
+      <th>xDS API との関係</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Istio</td>
+      <td>Envoy</td>
+      <td>Istiod</td>
+      <td>Envoy の xDS API をフルに活用</td>
+    </tr>
+    <tr>
+      <td>Linkerd</td>
+      <td>ビルトインプロキシ (linkerd2-proxy)</td>
+      <td>Destination、Identity など</td>
+      <td>独自プロキシであり、Envoy の xDS とは非互換</td>
+    </tr>
+    <tr>
+      <td>Consul</td>
+      <td>ビルトインプロキシ、Envoy</td>
+      <td>Consul control plane</td>
+      <td>Envoy 連携時に一部の xDS API を利用</td>
+    </tr>
+    <tr>
+      <td>SPIRE</td>
+      <td>Envoy</td>
+      <td>SPIRE</td>
+      <td>Envoy の SDS (Secret Discovery Service) を利用</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.amazon.co.jp/dp/1492043788
 > - [Securing the Service Mesh with SPIRE - Speaker Deck](https://speakerdeck.com/ryysud/securing-the-service-mesh-with-spire?slide=20)

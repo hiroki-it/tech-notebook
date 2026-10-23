@@ -350,10 +350,24 @@ Pod の垂直スケーリングを実行する。
 
 これを解決するために、いくつかの方法が提案されている。
 
-| 方法                             | 説明                                                                                                                             |
-| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| マニフェストの新しい設定値の追加 | マニフェストに、垂直スケーリング時のルールに関する設定値 (例：`.spec.containers[*].resources[*].resizePolicy` キー) を追加する。 |
-| eBPF によるインプレース変更      | ハードウェアリソースの不足が検知されたときに、eBPF を使用して、Pod のマニフェストを変更する JSONPatch 処理をフックする。         |
+<table>
+  <thead>
+    <tr>
+      <th>方法</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>マニフェストの新しい設定値の追加</td>
+      <td>マニフェストに、垂直スケーリング時のルールに関する設定値 (例：<code>.spec.containers[*].resources[*].resizePolicy</code> キー) を追加する。</td>
+    </tr>
+    <tr>
+      <td>eBPF によるインプレース変更</td>
+      <td>ハードウェアリソースの不足が検知されたときに、eBPF を使用して、Pod のマニフェストを変更する JSONPatch 処理をフックする。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://speakerdeck.com/masayaaoyama/techfeed-expert-night-7-amsy810?slide=12>
 > - https://qiita.com/shmurata/items/a780a402bb4c9b308cc7#kubelet>

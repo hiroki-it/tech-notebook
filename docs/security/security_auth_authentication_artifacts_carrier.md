@@ -21,12 +21,52 @@ description: 認証アーティファクトの運搬＠認証アーティファ�
 
 HTTP/2 では、ヘッダー名は小文字にする必要があります。
 
-| HTTP/1.1                     | HTTP/2                       | **セッション ID** | **JWT トークン** | Opaque トークン | API キー |
-| ---------------------------- | ---------------------------- | :---------------: | :--------------: | :-------------: | :------: |
-| **`Cookie` ヘッダー**        | **`cookie` ヘッダー**        |         ✔︎         |        ✔︎         |        ✔︎        |          |
-| **`Authorization` ヘッダー** | **`authorization` ヘッダー** |        無         |        ✔︎         |        ✔︎        |    ✔︎     |
-| **カスタムヘッダー**         | **カスタムヘッダー**         |                   |                  |                 |    ✔︎     |
-| **クエリパラメーター**       | `:path` ヘッダー             |                   |                  |                 |          |
+<table>
+  <thead>
+    <tr>
+      <th>HTTP/1.1</th>
+      <th>HTTP/2</th>
+      <th style="text-align:center"><strong>セッション ID</strong></th>
+      <th style="text-align:center"><strong>JWT トークン</strong></th>
+      <th style="text-align:center">Opaque トークン</th>
+      <th style="text-align:center">API キー</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong><code>Cookie</code> ヘッダー</strong></td>
+      <td><strong><code>cookie</code> ヘッダー</strong></td>
+      <td style="text-align:center">✔︎</td>
+      <td style="text-align:center">✔︎</td>
+      <td style="text-align:center">✔︎</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td><strong><code>Authorization</code> ヘッダー</strong></td>
+      <td><strong><code>authorization</code> ヘッダー</strong></td>
+      <td style="text-align:center">無</td>
+      <td style="text-align:center">✔︎</td>
+      <td style="text-align:center">✔︎</td>
+      <td style="text-align:center">✔︎</td>
+    </tr>
+    <tr>
+      <td><strong>カスタムヘッダー</strong></td>
+      <td><strong>カスタムヘッダー</strong></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✔︎</td>
+    </tr>
+    <tr>
+      <td><strong>クエリパラメーター</strong></td>
+      <td><code>:path</code> ヘッダー</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

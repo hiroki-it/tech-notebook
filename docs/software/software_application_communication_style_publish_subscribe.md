@@ -48,10 +48,27 @@ Apache Kafka のプル型では、サブスクライブによる購読予約を 
 - RabbitMQ (プル型だけでなく、プッシュ型も選べる)
 - Apache Kafka
 
-| メッセージブローカー | プル型の Subscribe | サブスクライブのポーリング受信 |
-| -------------------- | ------------------ | ------------------------------ |
-| Apache Kafka         | 必要               | 必要                           |
-| RabbitMQ             | 不要               | 必要                           |
+<table>
+  <thead>
+    <tr>
+      <th>メッセージブローカー</th>
+      <th>プル型の Subscribe</th>
+      <th>サブスクライブのポーリング受信</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Apache Kafka</td>
+      <td>必要</td>
+      <td>必要</td>
+    </tr>
+    <tr>
+      <td>RabbitMQ</td>
+      <td>不要</td>
+      <td>必要</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [非同期に使われるPub/SubモデルのPush方式とPull方式ってどう違うの？ #sqs - Qiita](https://qiita.com/riita10069/items/40b1bcc36c25b197077c)
 
@@ -75,11 +92,32 @@ Apache Kafka のプル型では、サブスクライブによる購読予約を 
 - Amazon SNS
 - Amazon EventBridge
 
-| メッセージブローカー | プッシュ型の Subscribe | サブスクライブへの送信 |
-| -------------------- | ---------------------- | ---------------------- |
-| Apache Kafka         | 非対応                 | 非対応                 |
-| RabbitMQ             | 必要                   | 自動                   |
-| Amazon EventBridge   | 必要                   | 自動                   |
+<table>
+  <thead>
+    <tr>
+      <th>メッセージブローカー</th>
+      <th>プッシュ型の Subscribe</th>
+      <th>サブスクライブへの送信</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Apache Kafka</td>
+      <td>非対応</td>
+      <td>非対応</td>
+    </tr>
+    <tr>
+      <td>RabbitMQ</td>
+      <td>必要</td>
+      <td>自動</td>
+    </tr>
+    <tr>
+      <td>Amazon EventBridge</td>
+      <td>必要</td>
+      <td>自動</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -136,14 +174,59 @@ Apache Kafka のプル型では、サブスクライブによる購読予約を 
 
 ## 04. メッセージに使用するプロトコル
 
-| プロトコル                            | 通信方式                      | 対応するメッセージ中継システム例             | 一般的 |
-| ------------------------------------- | ----------------------------- | -------------------------------------------- | ------ |
-| AMQP                                  | バイナリ                      | RabbitMQ、Apache Qpid                        | ✅     |
-| MQTT                                  | バイナリ                      | EMQX                                         | ✅     |
-| Kafka Protocol (Kafka 独自プロトコル) | バイナリ                      | Apache Kafka                                 | ✅     |
-| STOMP                                 | テキスト                      | RabbitMQ                                     |        |
-| HTTP/1.1、Webhook                     | テキスト (例：JSON、XML など) | Amazon SQS、Amazon SNS、Google Cloud Pub/Sub |        |
-| HTTP/2 (例：gRPC、GraphQL など)       | バイナリ (例：Protocolbuf)    | 調査中...                                    |        |
-| WebSocket                             | テキスト、バイナリ            | 調査中...                                    |        |
+<table>
+  <thead>
+    <tr>
+      <th>プロトコル</th>
+      <th>通信方式</th>
+      <th>対応するメッセージ中継システム例</th>
+      <th>一般的</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AMQP</td>
+      <td>バイナリ</td>
+      <td>RabbitMQ、Apache Qpid</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>MQTT</td>
+      <td>バイナリ</td>
+      <td>EMQX</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Kafka Protocol (Kafka 独自プロトコル)</td>
+      <td>バイナリ</td>
+      <td>Apache Kafka</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>STOMP</td>
+      <td>テキスト</td>
+      <td>RabbitMQ</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>HTTP/1.1、Webhook</td>
+      <td>テキスト (例：JSON、XML など)</td>
+      <td>Amazon SQS、Amazon SNS、Google Cloud Pub/Sub</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>HTTP/2 (例：gRPC、GraphQL など)</td>
+      <td>バイナリ (例：Protocolbuf)</td>
+      <td>調査中...</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>WebSocket</td>
+      <td>テキスト、バイナリ</td>
+      <td>調査中...</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>

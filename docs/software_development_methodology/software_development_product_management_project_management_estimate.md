@@ -15,12 +15,32 @@ description: 見積もり＠プロジェクトマネジメントの知見を記�
 
 ## 01. 見積もり指標
 
-| 指標名   | 説明                                                                                                       |
-| -------- | ---------------------------------------------------------------------------------------------------------- |
-| 開発規模 | 開発の作業サイズの程度を表す。                                                                             |
-| 要員数   | 開発を完了するために必要な『人数』を表す。                                                                 |
-| 工期     | 開発を完了するために必要な『期間』を表す。                                                                 |
-| 工数     | 1 人が 1 ヶ月働いたときの作業サイズを `1` と定義した場合、開発を完了するために必要な『作業サイズ』を表す。 |
+<table>
+  <thead>
+    <tr>
+      <th>指標名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>開発規模</td>
+      <td>開発の作業サイズの程度を表す。</td>
+    </tr>
+    <tr>
+      <td>要員数</td>
+      <td>開発を完了するために必要な『人数』を表す。</td>
+    </tr>
+    <tr>
+      <td>工期</td>
+      <td>開発を完了するために必要な『期間』を表す。</td>
+    </tr>
+    <tr>
+      <td>工数</td>
+      <td>1 人が 1 ヶ月働いたときの作業サイズを <code>1</code> と定義した場合、開発を完了するために必要な『作業サイズ』を表す。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.ipa.go.jp/files/000003910.pdf#page12
 
@@ -69,12 +89,52 @@ description: 見積もり＠プロジェクトマネジメントの知見を記�
 = (プログラム一本当たりの人数・時) = (人数・時/本)
 ```
 
-|  一期開発  | 外部設計  | 内部設計 | 開発 | 結合テスト | システムテスト |
-| :--------: | --------- | -------- | ---- | ---------- | -------------- |
-|    工数    | 42 (時間) | 70       | 140  | 52.5       | 42.0           |
-|  配分月数  | 3 (ヶ月)  | 3        | 5    | 2          | 3              |
-| A 社動員数 | 12 (人)   | 20       | 0    | 12         | 12             |
-| B 社動員数 | 2 (人)    | 4        | 28   | 15         | 2              |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center">一期開発</th>
+      <th>外部設計</th>
+      <th>内部設計</th>
+      <th>開発</th>
+      <th>結合テスト</th>
+      <th>システムテスト</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center">工数</td>
+      <td>42 (時間)</td>
+      <td>70</td>
+      <td>140</td>
+      <td>52.5</td>
+      <td>42.0</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">配分月数</td>
+      <td>3 (ヶ月)</td>
+      <td>3</td>
+      <td>5</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">A 社動員数</td>
+      <td>12 (人)</td>
+      <td>20</td>
+      <td>0</td>
+      <td>12</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">B 社動員数</td>
+      <td>2 (人)</td>
+      <td>4</td>
+      <td>28</td>
+      <td>15</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
 
 ![project_management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/project_management.png)
 

@@ -25,11 +25,28 @@ CircleCI から提供される汎用的なパッケージの使用を読み込�
 
 #### ▼ オプション
 
-| オプション名 | 説明                               |
-| ------------ | ---------------------------------- |
-| jobs         | `job` キーに割り当てられる。       |
-| commands     | `step` キーに割り当てられる。      |
-| executors    | `executors` キーに割り当てられる。 |
+<table>
+  <thead>
+    <tr>
+      <th>オプション名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>jobs</td>
+      <td><code>job</code> キーに割り当てられる。</td>
+    </tr>
+    <tr>
+      <td>commands</td>
+      <td><code>step</code> キーに割り当てられる。</td>
+    </tr>
+    <tr>
+      <td>executors</td>
+      <td><code>executors</code> キーに割り当てられる。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ Orbs のデメリット
 
@@ -234,12 +251,37 @@ jobs:
 
 ECR イメージを使用して、新しいリビジョンの Amazon ECS タスク定義を作成し、加えてこれを使用してコンテナをデプロイする。
 
-| 設定値                         | 説明                                                                                                       |                                                                                                                                                                                                                                                             |
-| ------------------------------ | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `container-image-name-updates` | コンテナ定義のコンテナ名とバージョンタグを上書きする。                                                     | イメージは CircleCI のハッシュ値でタグ付けしているので必須。                                                                                                                                                                                                |
-| `verify-revision-is-deployed`  | ローリングアップデートの Amazon ECS タスクが Amazon ECS タスク定義の必要数に合致したかを継続的に監視する。 | 例えば、Amazon ECS タスクが『`Running` フェーズ』にならずに『Stopped フェーズ』になってしまう場合や、既存の Amazon ECS タスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態は Amazon ECS タスクの必要数に合致しないため、検知できる。 |
-| `max-poll-attempts`            | ポーリングの最大試行回数を設定する。`poll-interval` と掛け合わせて、そう実行時間を定義できる。             | 総実行時間を延長するとき、間隔秒数はできるだけ短いほうが無駄な実行時間が発生しないため、最大回数を増やす。                                                                                                                                                  |
-| `poll-interval`                | 試行の間隔秒数を設定する。`max-poll-attempts` と掛け合わせて、そう実行時間を定義できる。                   |                                                                                                                                                                                                                                                             |
+<table>
+  <thead>
+    <tr>
+      <th>設定値</th>
+      <th>説明</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>container-image-name-updates</code></td>
+      <td>コンテナ定義のコンテナ名とバージョンタグを上書きする。</td>
+      <td>イメージは CircleCI のハッシュ値でタグ付けしているので必須。</td>
+    </tr>
+    <tr>
+      <td><code>verify-revision-is-deployed</code></td>
+      <td>ローリングアップデートの Amazon ECS タスクが Amazon ECS タスク定義の必要数に合致したかを継続的に監視する。</td>
+      <td>例えば、Amazon ECS タスクが『<code>Running</code> フェーズ』にならずに『Stopped フェーズ』になってしまう場合や、既存の Amazon ECS タスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態は Amazon ECS タスクの必要数に合致しないため、検知できる。</td>
+    </tr>
+    <tr>
+      <td><code>max-poll-attempts</code></td>
+      <td>ポーリングの最大試行回数を設定する。<code>poll-interval</code> と掛け合わせて、そう実行時間を定義できる。</td>
+      <td>総実行時間を延長するとき、間隔秒数はできるだけ短いほうが無駄な実行時間が発生しないため、最大回数を増やす。</td>
+    </tr>
+    <tr>
+      <td><code>poll-interval</code></td>
+      <td>試行の間隔秒数を設定する。<code>max-poll-attempts</code> と掛け合わせて、そう実行時間を定義できる。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 オプションを使用して、`max-poll-attempts` (ポーリングの最大試行回数) と `poll-interval` (試行の間隔秒数) で、ポーリングの総実行時間を定義できる。
 

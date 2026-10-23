@@ -23,10 +23,30 @@ AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能
 
 パブリッシュ／サブスクライブ方式のシステム (例：Amazon SNS、Amazon EventBridge) とは異なりメッセージをキューイングできるが、メッセージをルーティングできない。
 
-|          | Amazon SQS                        | SNS                              | EventBridge                      |
-| -------- | --------------------------------- | -------------------------------- | -------------------------------- |
-| 処理     | キューイング                      | ルーティング                     | ルーティング                     |
-| 通信方式 | プル型のプロデュース/コンシューム | パブリッシュ／サブスクライブ方式 | パブリッシュ／サブスクライブ方式 |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Amazon SQS</th>
+      <th>SNS</th>
+      <th>EventBridge</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>処理</td>
+      <td>キューイング</td>
+      <td>ルーティング</td>
+      <td>ルーティング</td>
+    </tr>
+    <tr>
+      <td>通信方式</td>
+      <td>プル型のプロデュース/コンシューム</td>
+      <td>パブリッシュ／サブスクライブ方式</td>
+      <td>パブリッシュ／サブスクライブ方式</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-difference-from-amazon-mq-sns.html
 > - [Amazon Kinesis Data Streams + Protocol Buffersで実現するイベント駆動アーキテクチャー - asoview! Tech Blog](https://tech.asoview.co.jp/entry/2022/04/06/102637)
@@ -143,9 +163,23 @@ module "kms_sqs_foo" {
 
 ### Amazon SQS の種類
 
-| 設定項目         | 説明                                                                                     |
-| ---------------- | ---------------------------------------------------------------------------------------- |
-| スタンダード方式 | サブスクライバーの取得レスポンスを待たずに、次のキューを非同期的にフォワーディングする。 |
-| FIFO 方式        | サブスクライバーの取得レスポンスを待ち、キューを同期的にフォワーディングする。           |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>スタンダード方式</td>
+      <td>サブスクライバーの取得レスポンスを待たずに、次のキューを非同期的にフォワーディングする。</td>
+    </tr>
+    <tr>
+      <td>FIFO 方式</td>
+      <td>サブスクライバーの取得レスポンスを待ち、キューを同期的にフォワーディングする。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>

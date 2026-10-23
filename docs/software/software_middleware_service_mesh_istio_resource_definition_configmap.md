@@ -302,25 +302,90 @@ istio-proxy のアウトバウンド通信時リトライ条件は以下であ�
 
 ![istio_inbound-retry_reset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_inbound-retry_reset.png)
 
-| HTTP/1.1、HTTP/2 のステータスコード                                       | マイクロサービスに通信が届いている | リトライが有効 | リトライ条件                                                                                                                                                             |
-| ------------------------------------------------------------------------- | :--------------------------------: | :------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `connect-failure`                                                         |                 ⭕️                 |       ✅       | マイクロサービスからのアウトバウンド通信時、接続タイムアウト (Connection timeout) が起こった場合に、リトライを実行する。                                                 |
-| `gateway-error`                                                           |                 ⭕️                 |                | マイクロサービスからのアウトバウンド通信時、Gateway 系ステータスコード (`502`、`503`、`504`) が返信された場合に、リトライを実行する。冪性がない可能性がある。            |
-| `retriable-status-codes` (`5xx` のように任意のステータスコードを設定する) |                 ⭕️                 |                | マイクロサービスからのアウトバウンド通信時、指定した HTTP ステータスであった場合に、リトライを実行する。冪等性がない可能性がある。                                       |
-| `reset`                                                                   |                 ⭕️                 |                | マイクロサービスからのアウトバウンド通信時、接続切断／接続リセット／読み取りタイムアウト (Read timeout) が起こった場合に、リトライを実行する。冪等性がない可能性がある。 |
+<table>
+  <thead>
+    <tr>
+      <th>HTTP/1.1、HTTP/2 のステータスコード</th>
+      <th style="text-align:center">マイクロサービスに通信が届いている</th>
+      <th style="text-align:center">リトライが有効</th>
+      <th>リトライ条件</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>connect-failure</code></td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">✅</td>
+      <td>マイクロサービスからのアウトバウンド通信時、接続タイムアウト (Connection timeout) が起こった場合に、リトライを実行する。</td>
+    </tr>
+    <tr>
+      <td><code>gateway-error</code></td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center"></td>
+      <td>マイクロサービスからのアウトバウンド通信時、Gateway 系ステータスコード (<code>502</code>、<code>503</code>、<code>504</code>) が返信された場合に、リトライを実行する。冪性がない可能性がある。</td>
+    </tr>
+    <tr>
+      <td><code>retriable-status-codes</code> (<code>5xx</code> のように任意のステータスコードを設定する)</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center"></td>
+      <td>マイクロサービスからのアウトバウンド通信時、指定した HTTP ステータスであった場合に、リトライを実行する。冪等性がない可能性がある。</td>
+    </tr>
+    <tr>
+      <td><code>reset</code></td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center"></td>
+      <td>マイクロサービスからのアウトバウンド通信時、接続切断／接続リセット／読み取りタイムアウト (Read timeout) が起こった場合に、リトライを実行する。冪等性がない可能性がある。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [再試行の方法 \| Cloud Storage \| Google Cloud Documentation](https://cloud.google.com/storage/docs/retry-strategy?hl=ja#retryable)
 > - [Implement retry on connection reset to upstream · Issue #51704 · istio/istio · GitHub](https://github.com/istio/istio/issues/51704#issuecomment-2188555136)
 > - [Can we set \`reset\` as default retry policy? · Issue #35774 · istio/istio · GitHub](https://github.com/istio/istio/issues/35774#issuecomment-953877524)
 > - [再試行の方法 \| Cloud Storage \| Google Cloud Documentation](https://cloud.google.com/storage/docs/retry-strategy?hl=ja)
 
-| HTTP/2 のステータスコード | マイクロサービスに通信が届いている | リトライが有効 | リトライ条件                                                                                                                                                                                         |
-| ------------------------- | :--------------------------------: | :------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cancelled`               |                 ⭕️                 |                | **マイクロサービスからのアウトバウンド**通信時、gRPC ステータスコードが `Cancelled` であった場合に、リトライを実行する。送信元がリクエストを切断しているため、リトライするべきではない可能性がある。 |
-| `deadline-exceeded`       |                 ⭕️                 |   条件による   | マイクロサービスからアウトバウンド通信時、gRPC ステータスコードが `DeadlineExceeded` であった場合に、リトライを実行する。                                                                            |
-| `refused-stream`          |                 ⭕️                 |       ✅       | 宛先が HTTP/2 エラーコードの `REFUSED_STREAM` を返信した場合に、リトライを実行する。                                                                                                                 |
-| `resource-exhausted`      |                 ⭕️                 |   条件による   | マイクロサービスからのアウトバウンド通信時、gRPC ステータスコードが `ResourceExhausted` であった場合に、リトライを実行する。                                                                         |
-| `unavailable`             |                 ⭕️                 |                | マイクロサービスからのアウトバウンド通信時、宛先が gRPC ステータスコードの `Unavailable` を返信した場合に、リトライを実行する。冪等性に注意する。                                                    |
+<table>
+  <thead>
+    <tr>
+      <th>HTTP/2 のステータスコード</th>
+      <th style="text-align:center">マイクロサービスに通信が届いている</th>
+      <th style="text-align:center">リトライが有効</th>
+      <th>リトライ条件</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>cancelled</code></td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center"></td>
+      <td><strong>マイクロサービスからのアウトバウンド</strong>通信時、gRPC ステータスコードが <code>Cancelled</code> であった場合に、リトライを実行する。送信元がリクエストを切断しているため、リトライするべきではない可能性がある。</td>
+    </tr>
+    <tr>
+      <td><code>deadline-exceeded</code></td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">条件による</td>
+      <td>マイクロサービスからアウトバウンド通信時、gRPC ステータスコードが <code>DeadlineExceeded</code> であった場合に、リトライを実行する。</td>
+    </tr>
+    <tr>
+      <td><code>refused-stream</code></td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">✅</td>
+      <td>宛先が HTTP/2 エラーコードの <code>REFUSED_STREAM</code> を返信した場合に、リトライを実行する。</td>
+    </tr>
+    <tr>
+      <td><code>resource-exhausted</code></td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">条件による</td>
+      <td>マイクロサービスからのアウトバウンド通信時、gRPC ステータスコードが <code>ResourceExhausted</code> であった場合に、リトライを実行する。</td>
+    </tr>
+    <tr>
+      <td><code>unavailable</code></td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center"></td>
+      <td>マイクロサービスからのアウトバウンド通信時、宛先が gRPC ステータスコードの <code>Unavailable</code> を返信した場合に、リトライを実行する。冪等性に注意する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Router — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on)
 > - [Router — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-grpc-on)
@@ -331,9 +396,24 @@ istio-proxy のインバウンド通信時のリトライ条件は以下であ�
 
 執筆時点 (2025/02/26) では、`ENABLE_INBOUND_RETRY_POLICY` 変数を `true` (デフォルト値) にすると使用できる。
 
-| HTTP/2 のステータスコード | マイクロサービスに通信が届いている | 冪等性がある | 理由                                                                                                 |
-| ------------------------- | :--------------------------------: | :----------: | ---------------------------------------------------------------------------------------------------- |
-| `reset-before-request`    |                 ×                  |      ✅      | マイクロサービスへのインバウンド通信時、マイクロサービスにリクエストをフォワーディングできなかった。 |
+<table>
+  <thead>
+    <tr>
+      <th>HTTP/2 のステータスコード</th>
+      <th style="text-align:center">マイクロサービスに通信が届いている</th>
+      <th style="text-align:center">冪等性がある</th>
+      <th>理由</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>reset-before-request</code></td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">✅</td>
+      <td>マイクロサービスへのインバウンド通信時、マイクロサービスにリクエストをフォワーディングできなかった。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -2373,11 +2453,28 @@ spec:
               value: istiod
 ```
 
-| 設定値       | 説明                                                      |
-| ------------ | --------------------------------------------------------- |
-| `istiod`     | Istiod が提供するサーバー証明書を使用する。               |
-| `kubernetes` | Kubernetes の Secret で管理するサーバー証明書を使用する。 |
-| `none`       | サーバー証明書を使用しない。                              |
+<table>
+  <thead>
+    <tr>
+      <th>設定値</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>istiod</code></td>
+      <td>Istiod が提供するサーバー証明書を使用する。</td>
+    </tr>
+    <tr>
+      <td><code>kubernetes</code></td>
+      <td>Kubernetes の Secret で管理するサーバー証明書を使用する。</td>
+    </tr>
+    <tr>
+      <td><code>none</code></td>
+      <td>サーバー証明書を使用しない。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Istio / pilot-discovery](https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars)
 

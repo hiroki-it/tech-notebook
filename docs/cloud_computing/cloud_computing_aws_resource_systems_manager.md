@@ -79,11 +79,32 @@ AWS リソースを変更するためには『ランブック (ドキュメン�
 
 ランブックには、AWS があらかじめ用意してくれるものとユーザー定義のものがある。
 
-| タイプ            | 説明                                                                                                                                                                                                       | 補足                                                                                                                                                                                                                                                |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Automation タイプ | サーバー/コンテナ外でコマンドを実行する。内部的には、Python 製の AWS Lambda が使用されている (たぶん) 。<br>- https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html | EC2 を起動し、状態が OK になるまで監視する手順を自動化した例： https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html                                                                                   |
-| Command タイプ    | サーバー/コンテナ内でコマンドを実行する。内部的には、Run Command が使用されている。<br>- https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types         | ・EC2 内で実行する linux コマンドを自動化した例： https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/ <br>・EC2 内で実行する awscli コマンドを自動化した例： https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/ |
-| Session タイプ    |                                                                                                                                                                                                            |                                                                                                                                                                                                                                                     |
+<table>
+  <thead>
+    <tr>
+      <th>タイプ</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Automation タイプ</td>
+      <td>サーバー/コンテナ外でコマンドを実行する。内部的には、Python 製の AWS Lambda が使用されている (たぶん) 。<br>- <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html">https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html</a></td>
+      <td>EC2 を起動し、状態が OK になるまで監視する手順を自動化した例： <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html">https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html</a></td>
+    </tr>
+    <tr>
+      <td>Command タイプ</td>
+      <td>サーバー/コンテナ内でコマンドを実行する。内部的には、Run Command が使用されている。<br>- <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types">https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types</a></td>
+      <td>・EC2 内で実行する linux コマンドを自動化した例： <a href="https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/">https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/</a> <br>・EC2 内で実行する awscli コマンドを自動化した例： <a href="https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/">https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/</a></td>
+    </tr>
+    <tr>
+      <td>Session タイプ</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

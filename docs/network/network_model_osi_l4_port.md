@@ -61,18 +61,56 @@ IANA：Internet Assigned Numbers Authority (インターネット割当番号公
 
 各プロトコルで慣例として使われている代替ポートは、以下の検索サイトを参考にせよ。
 
-| `L7` (アプリケーション層) のプロトコル    | よく使用するポート番号 |
-| ----------------------------------------- | ---------------------- |
-| DNS                                       | `53`                   |
-| FTP                                       | `21`                   |
-| HTTP/1.1、HTTP/2 (例：gRPC、GraphQL など) | `80`、`591`            |
-| HTTPS                                     | `443`                  |
-| POP2                                      | `109`                  |
-| POP3                                      | `110`                  |
-| SSH                                       | `22`                   |
-| SMTP                                      | `25`                   |
-| SMTPs                                     | `465`                  |
-| ...                                       | ...                    |
+<table>
+  <thead>
+    <tr>
+      <th><code>L7</code> (アプリケーション層) のプロトコル</th>
+      <th>よく使用するポート番号</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DNS</td>
+      <td><code>53</code></td>
+    </tr>
+    <tr>
+      <td>FTP</td>
+      <td><code>21</code></td>
+    </tr>
+    <tr>
+      <td>HTTP/1.1、HTTP/2 (例：gRPC、GraphQL など)</td>
+      <td><code>80</code>、<code>591</code></td>
+    </tr>
+    <tr>
+      <td>HTTPS</td>
+      <td><code>443</code></td>
+    </tr>
+    <tr>
+      <td>POP2</td>
+      <td><code>109</code></td>
+    </tr>
+    <tr>
+      <td>POP3</td>
+      <td><code>110</code></td>
+    </tr>
+    <tr>
+      <td>SSH</td>
+      <td><code>22</code></td>
+    </tr>
+    <tr>
+      <td>SMTP</td>
+      <td><code>25</code></td>
+    </tr>
+    <tr>
+      <td>SMTPs</td>
+      <td><code>465</code></td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=alt
 > - [ポート番号 一覧 危険な ポート番号 閉じておいた方が良い ポート番号 - Windows ＆ IT](https://abhp.net/it/IT_Port_No_100000.html)
@@ -83,10 +121,27 @@ IANA が登録申請を受けて公開しているポート番号。
 
 企業が作成した独自のアプリなどに対して割り当てられる。
 
-| 企業例             | `L7` (アプリケーション層) のプロトコル    | よく使用するポート番号 |
-| ------------------ | ----------------------------------------- | ---------------------- |
-| 企業が共有している | HTTP/1.1、HTTP/2 (例：gRPC、GraphQL など) | `8080`                 |
-| ...                | ...                                       | ...                    |
+<table>
+  <thead>
+    <tr>
+      <th>企業例</th>
+      <th><code>L7</code> (アプリケーション層) のプロトコル</th>
+      <th>よく使用するポート番号</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>企業が共有している</td>
+      <td>HTTP/1.1、HTTP/2 (例：gRPC、GraphQL など)</td>
+      <td><code>8080</code></td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [ポート番号 一覧 危険な ポート番号 閉じておいた方が良い ポート番号 - Windows ＆ IT](https://abhp.net/it/IT_Port_No_100000.html)
 

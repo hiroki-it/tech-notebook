@@ -689,24 +689,78 @@ ArgoCD のデフォルトの認証方法は、Bearer 認証である。
 
 さらに、SSO と二要素認証を組み合わせ、上記の認証フェーズ時に PC やスマホのワンタイムパスワードを要求する。
 
-| 認証／認可方法           | 二要素認証 | 推奨/非推奨 |
-| ------------------------ | :--------: | :---------: |
-| Bearer 認証 (デフォルト) |     -      |   非推奨    |
-| OAuth                    |    あり    |    推奨     |
-|                          |    なし    |   非推奨    |
-| OIDC                     |    あり    |    推奨     |
-|                          |    なし    |   非推奨    |
-| SAML                     |    あり    |    推奨     |
-|                          |    なし    |   非推奨    |
+<table>
+  <thead>
+    <tr>
+      <th>認証／認可方法</th>
+      <th style="text-align:center">二要素認証</th>
+      <th style="text-align:center">推奨/非推奨</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bearer 認証 (デフォルト)</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">非推奨</td>
+    </tr>
+    <tr>
+      <td rowspan="2">OAuth</td>
+      <td style="text-align:center">あり</td>
+      <td style="text-align:center">推奨</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">非推奨</td>
+    </tr>
+    <tr>
+      <td rowspan="2">OIDC</td>
+      <td style="text-align:center">あり</td>
+      <td style="text-align:center">推奨</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">非推奨</td>
+    </tr>
+    <tr>
+      <td rowspan="2">SAML</td>
+      <td style="text-align:center">あり</td>
+      <td style="text-align:center">推奨</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">非推奨</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ ArgoCD 自体の場合
 
 ArgoCD を ServiceAccount で認証し、また ClusterRole で認可する。
 
-| 期限   | 説明                                                                  | 方法                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | 推奨/非推奨 |
-| ------ | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------: |
-| 恒久的 | CD ツールを恒久的に認証し、また同様に認可スコープを恒久的に付与する。 | Kubernetes `v1.21` 以前では、ServiceAccount の認証用のトークンに期限がない。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |   非推奨    |
-| 一時的 | CD ツールを一時的に認証し、また同様に認可スコープを一時的に付与する。 | Kubernetes `v1.22` 以降では、BoundServiceAccountTokenVolume により、ServiceAccount のトークンに `1` 時間の有効期限がある。kube-apiserver のクライアント側が特定のバージョンの client パッケージを使用していれば、認証用のトークンが定期的に再作成されるようになっており、一時的な認証を実現できている。一方で、CD ツールに ClusterRole の認可スコープ一時的に付与する方法は、調査した限り見つからなかったが、preSync などを使用すればできるかも。<br>参考：<br>・https://github.com/argoproj/argo-cd/issues/9417#issuecomment-1162548782 <br>・https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#bound-service-account-token-volume |    推奨     |
+<table>
+  <thead>
+    <tr>
+      <th>期限</th>
+      <th>説明</th>
+      <th>方法</th>
+      <th style="text-align:center">推奨/非推奨</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>恒久的</td>
+      <td>CD ツールを恒久的に認証し、また同様に認可スコープを恒久的に付与する。</td>
+      <td>Kubernetes <code>v1.21</code> 以前では、ServiceAccount の認証用のトークンに期限がない。</td>
+      <td style="text-align:center">非推奨</td>
+    </tr>
+    <tr>
+      <td>一時的</td>
+      <td>CD ツールを一時的に認証し、また同様に認可スコープを一時的に付与する。</td>
+      <td>Kubernetes <code>v1.22</code> 以降では、BoundServiceAccountTokenVolume により、ServiceAccount のトークンに <code>1</code> 時間の有効期限がある。kube-apiserver のクライアント側が特定のバージョンの client パッケージを使用していれば、認証用のトークンが定期的に再作成されるようになっており、一時的な認証を実現できている。一方で、CD ツールに ClusterRole の認可スコープ一時的に付与する方法は、調査した限り見つからなかったが、preSync などを使用すればできるかも。<br>参考：<br>・<a href="https://github.com/argoproj/argo-cd/issues/9417#issuecomment-1162548782">https://github.com/argoproj/argo-cd/issues/9417#issuecomment-1162548782</a> <br>・<a href="https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#bound-service-account-token-volume">https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#bound-service-account-token-volume</a></td>
+      <td style="text-align:center">推奨</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -926,26 +980,107 @@ ArgoCD と同時に Kubernetes もアップグレードする場合、問題を�
 
 ArgoCD はデータポイントを作成し、これを Prometheus で収集できる。
 
-| Prometheus のメトリクス               | メトリクスの種類 | 説明                                                                                                                                                                                                                                       |
-| ------------------------------------- | :--------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `argocd_app_info`                     |      Gauge       | Application の状態を表す。                                                                                                                                                                                                                 |
-| `argocd_app_k8s_request_total`        |     Counter      | 差分の検出時に、Application からポーリング対象 Cluster に送信されたリクエスト数を表す。                                                                                                                                                    |
-| `argocd_app_labels`                   |      Gauge       | 記入中...                                                                                                                                                                                                                                  |
-| `argocd_app_reconcile`                |    Histogram     | Application の性能を表す。                                                                                                                                                                                                                 |
-| `argocd_app_sync_total`               |     Counter      | Application の Sync 数を表す。                                                                                                                                                                                                             |
-| `argocd_cluster_api_resource_objects` |      Gauge       | ポーリング対象 Cluster でキャッシュしている Kubernetes リソースのマニフェスト数を表す。                                                                                                                                                    |
-| `argocd_cluster_api_resources`        |      Gauge       | ポーリング対象 Cluster で検知している Kubernetes リソースのマニフェスト数を表す。                                                                                                                                                          |
-| `argocd_cluster_cache_age_seconds`    |      Gauge       | ポーリング対象 Cluster のキャッシュの有効期間を表す。                                                                                                                                                                                      |
-| `argocd_cluster_connection_status`    |      Gauge       | ポーリング対象 Cluster の現在の接続状態を表す。                                                                                                                                                                                            |
-| `argocd_cluster_events_total`         |     Counter      | ポーリング対象 Cluster のイベントの合計数を表す。                                                                                                                                                                                          |
-| `argocd_cluster_info`                 |      Gauge       | ポーリング対象 Cluster の状態を表す。                                                                                                                                                                                                      |
-| `argocd_kubectl_exec_pending`         |      Gauge       | ArgoCD の exec の Pending 数を表す。                                                                                                                                                                                                       |
-| `argocd_kubectl_exec_total`           |     Counter      | ArgoCD の exec の合計数を表す。                                                                                                                                                                                                            |
-| `argocd_redis_request_duration`       |    Histogram     | Redis へのリクエストのレイテンシーを表す。                                                                                                                                                                                                 |
-| `argocd_redis_request_total`          |     Counter      | Redis へのリクエスト数を表す。                                                                                                                                                                                                             |
-| `app_reconciliation_queue`            |     Counter      | application-controller はカスタムリソースの Reconciliation 処理をキューに格納する。その処理数を表す。                                                                                                                                      |
-| `app_operation_processing_queue`      |     Counter      | application-controller は Sync 処理をキューに格納する。その処理数を表す。                                                                                                                                                                  |
-| `argocd_git_request_total`            |     Counter      | repo-server の `git ls-remote` コマンドや `git fetch` コマンドの実行数を表す。これらは、`request_type` ラベルで `ls-remote` と `fetch` という値で取得できる。キャッシュが更新される頻度が高いと `git fetch` コマンドの実行頻度も高くなる。 |
+<table>
+  <thead>
+    <tr>
+      <th>Prometheus のメトリクス</th>
+      <th style="text-align:center">メトリクスの種類</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>argocd_app_info</code></td>
+      <td style="text-align:center">Gauge</td>
+      <td>Application の状態を表す。</td>
+    </tr>
+    <tr>
+      <td><code>argocd_app_k8s_request_total</code></td>
+      <td style="text-align:center">Counter</td>
+      <td>差分の検出時に、Application からポーリング対象 Cluster に送信されたリクエスト数を表す。</td>
+    </tr>
+    <tr>
+      <td><code>argocd_app_labels</code></td>
+      <td style="text-align:center">Gauge</td>
+      <td>記入中...</td>
+    </tr>
+    <tr>
+      <td><code>argocd_app_reconcile</code></td>
+      <td style="text-align:center">Histogram</td>
+      <td>Application の性能を表す。</td>
+    </tr>
+    <tr>
+      <td><code>argocd_app_sync_total</code></td>
+      <td style="text-align:center">Counter</td>
+      <td>Application の Sync 数を表す。</td>
+    </tr>
+    <tr>
+      <td><code>argocd_cluster_api_resource_objects</code></td>
+      <td style="text-align:center">Gauge</td>
+      <td>ポーリング対象 Cluster でキャッシュしている Kubernetes リソースのマニフェスト数を表す。</td>
+    </tr>
+    <tr>
+      <td><code>argocd_cluster_api_resources</code></td>
+      <td style="text-align:center">Gauge</td>
+      <td>ポーリング対象 Cluster で検知している Kubernetes リソースのマニフェスト数を表す。</td>
+    </tr>
+    <tr>
+      <td><code>argocd_cluster_cache_age_seconds</code></td>
+      <td style="text-align:center">Gauge</td>
+      <td>ポーリング対象 Cluster のキャッシュの有効期間を表す。</td>
+    </tr>
+    <tr>
+      <td><code>argocd_cluster_connection_status</code></td>
+      <td style="text-align:center">Gauge</td>
+      <td>ポーリング対象 Cluster の現在の接続状態を表す。</td>
+    </tr>
+    <tr>
+      <td><code>argocd_cluster_events_total</code></td>
+      <td style="text-align:center">Counter</td>
+      <td>ポーリング対象 Cluster のイベントの合計数を表す。</td>
+    </tr>
+    <tr>
+      <td><code>argocd_cluster_info</code></td>
+      <td style="text-align:center">Gauge</td>
+      <td>ポーリング対象 Cluster の状態を表す。</td>
+    </tr>
+    <tr>
+      <td><code>argocd_kubectl_exec_pending</code></td>
+      <td style="text-align:center">Gauge</td>
+      <td>ArgoCD の exec の Pending 数を表す。</td>
+    </tr>
+    <tr>
+      <td><code>argocd_kubectl_exec_total</code></td>
+      <td style="text-align:center">Counter</td>
+      <td>ArgoCD の exec の合計数を表す。</td>
+    </tr>
+    <tr>
+      <td><code>argocd_redis_request_duration</code></td>
+      <td style="text-align:center">Histogram</td>
+      <td>Redis へのリクエストのレイテンシーを表す。</td>
+    </tr>
+    <tr>
+      <td><code>argocd_redis_request_total</code></td>
+      <td style="text-align:center">Counter</td>
+      <td>Redis へのリクエスト数を表す。</td>
+    </tr>
+    <tr>
+      <td><code>app_reconciliation_queue</code></td>
+      <td style="text-align:center">Counter</td>
+      <td>application-controller はカスタムリソースの Reconciliation 処理をキューに格納する。その処理数を表す。</td>
+    </tr>
+    <tr>
+      <td><code>app_operation_processing_queue</code></td>
+      <td style="text-align:center">Counter</td>
+      <td>application-controller は Sync 処理をキューに格納する。その処理数を表す。</td>
+    </tr>
+    <tr>
+      <td><code>argocd_git_request_total</code></td>
+      <td style="text-align:center">Counter</td>
+      <td>repo-server の <code>git ls-remote</code> コマンドや <code>git fetch</code> コマンドの実行数を表す。これらは、<code>request_type</code> ラベルで <code>ls-remote</code> と <code>fetch</code> という値で取得できる。キャッシュが更新される頻度が高いと <code>git fetch</code> コマンドの実行頻度も高くなる。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Monitoring-and-Alerting
 > - [Metrics - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/metrics/)

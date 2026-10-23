@@ -44,12 +44,37 @@ description: ブラックボックステストの知見を記録しています�
 
 ![environments](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/environments.png)
 
-| 実行環境名                                | 略称           | 説明                                                                                                                                                                       |
-| ----------------------------------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 開発環境 (ローカル環境)                   | `dev`          | 『ローカル環境』ともいう。ローカルマシンの環境であり、開発者が動作を確認するため使用する。                                                                                 |
-| テスト環境 (サンドボックス環境、検証環境) | `tes` (`sbox`) | 企業によっては、『サンドボックス環境』『検証環境』ともいう。共有の環境であり、開発環境で作成した機能をデプロイし、開発者が動作を確認するために使用する。                   |
-| ステージング環境 (ユーザー受け入れ環境)   | `stg` (`ua`)   | システムの依頼者が社外にいる場合に『ユーザー受け入れ (UA) 環境』ともいう。共有の環境であり、システムの依頼者が社内にいる場合に、その依頼者が動作を確認するために使用する。 |
-| 本番環境                                  | `prd`          | インターネットに公開された環境であり、Testing in production を採用する場合は、一般のユーザーに動作を確認してもらう。                                                       |
+<table>
+  <thead>
+    <tr>
+      <th>実行環境名</th>
+      <th>略称</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>開発環境 (ローカル環境)</td>
+      <td><code>dev</code></td>
+      <td>『ローカル環境』ともいう。ローカルマシンの環境であり、開発者が動作を確認するため使用する。</td>
+    </tr>
+    <tr>
+      <td>テスト環境 (サンドボックス環境、検証環境)</td>
+      <td><code>tes</code> (<code>sbox</code>)</td>
+      <td>企業によっては、『サンドボックス環境』『検証環境』ともいう。共有の環境であり、開発環境で作成した機能をデプロイし、開発者が動作を確認するために使用する。</td>
+    </tr>
+    <tr>
+      <td>ステージング環境 (ユーザー受け入れ環境)</td>
+      <td><code>stg</code> (<code>ua</code>)</td>
+      <td>システムの依頼者が社外にいる場合に『ユーザー受け入れ (UA) 環境』ともいう。共有の環境であり、システムの依頼者が社内にいる場合に、その依頼者が動作を確認するために使用する。</td>
+    </tr>
+    <tr>
+      <td>本番環境</td>
+      <td><code>prd</code></td>
+      <td>インターネットに公開された環境であり、Testing in production を採用する場合は、一般のユーザーに動作を確認してもらう。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [開発環境、テスト環境、ステージング環境、本番環境について｜gun](https://note.com/gunj/n/nf139710d0e4a)
 > - [ステージング環境とは？開発環境、検証環境との違いと役割 \| WWWクリエイターズ](https://www-creators.com/archives/780)
@@ -77,18 +102,40 @@ description: ブラックボックステストの知見を記録しています�
 
 #### ▼ 機能テスト
 
-| テストの種類 | 検証内容                                                 |
-| ------------ | -------------------------------------------------------- |
-| 正常系       | 特定のシステムコンポーネントの処理を正しく操作できるか。 |
+<table>
+  <thead>
+    <tr>
+      <th>テストの種類</th>
+      <th>検証内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>正常系</td>
+      <td>特定のシステムコンポーネントの処理を正しく操作できるか。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [非機能テストについて - ソフトウェアテスト・第三者検証ならデロイト トーマツ ウェブレッジ](https://webrage.jp/techblog/non_functional_testing)
 > - [誤解されることが多い「テスト自動化」の範囲について #Selenium - Qiita](https://qiita.com/gevanni/items/ff9a27936a1a6df28b9a#-%E6%A9%9F%E8%83%BD%E8%A6%81%E4%BB%B6)
 
 #### ▼ 非機能テスト
 
-| テストの種類 | 検証内容                                                           |
-| ------------ | ------------------------------------------------------------------ |
-| 正常系       | 特定のシステムコンポーネントのヘルスチェックが正常になっているか。 |
+<table>
+  <thead>
+    <tr>
+      <th>テストの種類</th>
+      <th>検証内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>正常系</td>
+      <td>特定のシステムコンポーネントのヘルスチェックが正常になっているか。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [非機能テストについて - ソフトウェアテスト・第三者検証ならデロイト トーマツ ウェブレッジ](https://webrage.jp/techblog/non_functional_testing)
 > - [誤解されることが多い「テスト自動化」の範囲について #Selenium - Qiita](https://qiita.com/gevanni/items/ff9a27936a1a6df28b9a#-%E9%9D%9E%E6%A9%9F%E8%83%BD%E8%A6%81%E4%BB%B6)
@@ -115,18 +162,40 @@ description: ブラックボックステストの知見を記録しています�
 
 #### ▼ 機能テスト
 
-| テストの種類 | 検証内容                                           |
-| ------------ | -------------------------------------------------- |
-| 正常系       | システムコンポーネント間の処理を正しく操作できるか |
+<table>
+  <thead>
+    <tr>
+      <th>テストの種類</th>
+      <th>検証内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>正常系</td>
+      <td>システムコンポーネント間の処理を正しく操作できるか</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [非機能テストについて - ソフトウェアテスト・第三者検証ならデロイト トーマツ ウェブレッジ](https://webrage.jp/techblog/non_functional_testing)
 > - [誤解されることが多い「テスト自動化」の範囲について #Selenium - Qiita](https://qiita.com/gevanni/items/ff9a27936a1a6df28b9a#-%E6%A9%9F%E8%83%BD%E8%A6%81%E4%BB%B6)
 
 #### ▼ 非機能テスト
 
-| テストの種類 | 検証内容                                           |
-| ------------ | -------------------------------------------------- |
-| 正常系       | システムコンポーネント間でまさしく連携できているか |
+<table>
+  <thead>
+    <tr>
+      <th>テストの種類</th>
+      <th>検証内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>正常系</td>
+      <td>システムコンポーネント間でまさしく連携できているか</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [非機能テストについて - ソフトウェアテスト・第三者検証ならデロイト トーマツ ウェブレッジ](https://webrage.jp/techblog/non_functional_testing)
 > - [誤解されることが多い「テスト自動化」の範囲について #Selenium - Qiita](https://qiita.com/gevanni/items/ff9a27936a1a6df28b9a#-%E9%9D%9E%E6%A9%9F%E8%83%BD%E8%A6%81%E4%BB%B6)
@@ -187,109 +256,357 @@ Kubernetes の Node 上で、Kubernetes リソースとアプリケーション�
 
 Istio のテストケースを示す。
 
-| テスト種別<br>(UT：ユニットテスト、IT：結合テスト) | 組み合わせ (IT の場合のみ) | 確認方法                                                                                                                                                                                                                                                   |
-| -------------------------------------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| UT                                                 | -                          | コントロールプレーンの Pod (`istio-deployment` という Deployment 配下の Pod) が正常である。『Pod が `Running` フェーズかつ `Ready` コンディションであること』を Pod の正常とみなす。例えば、`kubectl get` コマンドを実行することで、正常か否かを確認する。 |
-| IT                                                 | Istio + <br>Kubernetes     | istio.io/rev キーのある Namespace の Pod に、istio-proxy が挿入されている。例えば、`kubectl get` コマンドで `-o jsonpath` オプションを有効化し、確認する。                                                                                                 |
+<table>
+  <thead>
+    <tr>
+      <th>テスト種別<br>(UT：ユニットテスト、IT：結合テスト)</th>
+      <th>組み合わせ (IT の場合のみ)</th>
+      <th>確認方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>UT</td>
+      <td>-</td>
+      <td>コントロールプレーンの Pod (<code>istio-deployment</code> という Deployment 配下の Pod) が正常である。『Pod が <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』を Pod の正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することで、正常か否かを確認する。</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>Istio + <br>Kubernetes</td>
+      <td><a href="http://istio.io/rev">istio.io/rev</a> キーのある Namespace の Pod に、istio-proxy が挿入されている。例えば、<code>kubectl get</code> コマンドで <code>-o jsonpath</code> オプションを有効化し、確認する。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ Prometheus の場合
 
 Prometheus のテストケースを示す。
 
-| テスト種別<br>(UT：ユニットテスト、IT：結合テスト) | 組み合わせ (IT の場合のみ)                        | 確認方法                                                                                                                                                                                   |
-| -------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| UT                                                 | -                                                 | Pod が正常である。『Pod が `Running` フェーズかつ `Ready` コンディションであること』を Pod の正常とみなす。例えば、`kubectl get` コマンドを実行することで、正常か否かを確認する。          |
-| UT                                                 | -                                                 | ・Pod で収集したデータポイントがローカルストレージに永続化されている。<br>・Pod のローカルストレージが Node にマウントされており、Pod が削除されてもローカルストレージを再マウントできる。 |
-| IT                                                 | Prometheus + <br>VictoriaMetrics + <br>Kubernetes | Prometheus からメトリクスが送信されてきており、ダッシュボードでメトリクスを確認できる。例えば、メトリクスの `cluster` ラベルから、実行環境名 (dev、stg、prd) を確認する。                  |
+<table>
+  <thead>
+    <tr>
+      <th>テスト種別<br>(UT：ユニットテスト、IT：結合テスト)</th>
+      <th>組み合わせ (IT の場合のみ)</th>
+      <th>確認方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>UT</td>
+      <td>-</td>
+      <td>Pod が正常である。『Pod が <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』を Pod の正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することで、正常か否かを確認する。</td>
+    </tr>
+    <tr>
+      <td>UT</td>
+      <td>-</td>
+      <td>・Pod で収集したデータポイントがローカルストレージに永続化されている。<br>・Pod のローカルストレージが Node にマウントされており、Pod が削除されてもローカルストレージを再マウントできる。</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>Prometheus + <br>VictoriaMetrics + <br>Kubernetes</td>
+      <td>Prometheus からメトリクスが送信されてきており、ダッシュボードでメトリクスを確認できる。例えば、メトリクスの <code>cluster</code> ラベルから、実行環境名 (dev、stg、prd) を確認する。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ Alertmanager の場合
 
 Alertmanager のテストケースを示す。
 
-| テスト種別<br>(UT：ユニットテスト、IT：結合テスト) | 組み合わせ (IT の場合のみ)                     | 確認方法                                                                                                                                                                                                                                     |
-| -------------------------------------------------- | ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| UT                                                 | -                                              | Pod が正常である。『Pod が `Running` フェーズかつ `Ready` コンディションであること』を Pod の正常とみなす。例えば、`kubectl get` コマンドを実行することで、正常か否かを確認する。                                                            |
-| UT                                                 | -                                              | ダッシュボード上から新しく作成した Silence が、正常に動作している。                                                                                                                                                                          |
-| IT                                                 | Alertmanager + <br>Prometheus + <br>Kubernetes | ビルトインの PrometheusRule (`.metadata.annotations` キーに kubernetes-mixin への URL を持つ) のアラートルールが発火した場合に、アラートを通知できる。必ずアラートが発火するような閾値 (例：ゼロ) に変更し、アラートが発火するかを検証する。 |
-| IT                                                 | Alertmanager + <br>Prometheus + <br>Kubernetes | ユーザ定義の PrometheusRule のアラートルールが発火した場合に、アラートを通知できる。必ずアラートが発火するような閾値 (例：ゼロ) に変更し、アラートが発火するかを検証する。                                                                   |
-| IT                                                 | Alertmanager + <br>Prometheus + <br>Kubernetes | ダッシュボード上でアラートを捕捉しており、Prometheus から送信されたアラートを受信していることを確認できる。                                                                                                                                  |
+<table>
+  <thead>
+    <tr>
+      <th>テスト種別<br>(UT：ユニットテスト、IT：結合テスト)</th>
+      <th>組み合わせ (IT の場合のみ)</th>
+      <th>確認方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>UT</td>
+      <td>-</td>
+      <td>Pod が正常である。『Pod が <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』を Pod の正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することで、正常か否かを確認する。</td>
+    </tr>
+    <tr>
+      <td>UT</td>
+      <td>-</td>
+      <td>ダッシュボード上から新しく作成した Silence が、正常に動作している。</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>Alertmanager + <br>Prometheus + <br>Kubernetes</td>
+      <td>ビルトインの PrometheusRule (<code>.metadata.annotations</code> キーに kubernetes-mixin への URL を持つ) のアラートルールが発火した場合に、アラートを通知できる。必ずアラートが発火するような閾値 (例：ゼロ) に変更し、アラートが発火するかを検証する。</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>Alertmanager + <br>Prometheus + <br>Kubernetes</td>
+      <td>ユーザ定義の PrometheusRule のアラートルールが発火した場合に、アラートを通知できる。必ずアラートが発火するような閾値 (例：ゼロ) に変更し、アラートが発火するかを検証する。</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>Alertmanager + <br>Prometheus + <br>Kubernetes</td>
+      <td>ダッシュボード上でアラートを捕捉しており、Prometheus から送信されたアラートを受信していることを確認できる。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ Grafana の場合
 
 Grafana のテストケースを示す。
 
-| テスト種別<br>(UT：ユニットテスト、IT：結合テスト) | 組み合わせ (IT の場合のみ)                | 確認方法                                                                                                                                                                          |
-| -------------------------------------------------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| UT                                                 | -                                         | Pod が正常である。『Pod が `Running` フェーズかつ `Ready` コンディションであること』を Pod の正常とみなす。例えば、`kubectl get` コマンドを実行することで、正常か否かを確認する。 |
-| UT                                                 | -                                         | ビルトインのダッシュボード (`mixin` タグを持つ) を正しく読み込めるか。                                                                                                            |
-| UT                                                 | -                                         | ユーザ定義のダッシュボードを正しく読み込めるか。                                                                                                                                  |
-| IT                                                 | Grafana + <br>Prometheus + <br>Kubernetes | ビルトインのダッシュボード (`mixin` タグを持つ) で PromQL を入力し、Prometheus のメトリクスを確認できる。                                                                         |
-| IT                                                 | Grafana + <br>Prometheus + <br>Kubernetes | ユーザ定義のダッシュボードで PromQL を入力し、Prometheus のメトリクスを確認できる。                                                                                               |
-| IT                                                 | Grafana + <br>Prometheus + <br>Kubernetes | ビルトインのダッシュボード (`mixin` タグを持つ) で Prometheus のメトリクスのリアルタイムデータを確認できる。                                                                      |
-| IT                                                 | Grafana + <br>Prometheus + <br>Kubernetes | ユーザ定義のダッシュボードで Prometheus のメトリクスのリアルタイムデータを確認できる。                                                                                            |
-| IT                                                 | Grafana + <br>Prometheus + <br>Kubernetes | ビルトインのダッシュボード (`mixin` タグを持つ) で、datasource、namespace、type、resolusion の条件を変更し、リアルタイムデータを確認できる。                                      |
-| IT                                                 | Grafana + <br>Prometheus + <br>Kubernetes | ユーザ定義のダッシュボードで、datasource、namespace、type、resolusion の条件を変更し、リアルタイムデータを確認できる。                                                            |
+<table>
+  <thead>
+    <tr>
+      <th>テスト種別<br>(UT：ユニットテスト、IT：結合テスト)</th>
+      <th>組み合わせ (IT の場合のみ)</th>
+      <th>確認方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>UT</td>
+      <td>-</td>
+      <td>Pod が正常である。『Pod が <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』を Pod の正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することで、正常か否かを確認する。</td>
+    </tr>
+    <tr>
+      <td>UT</td>
+      <td>-</td>
+      <td>ビルトインのダッシュボード (<code>mixin</code> タグを持つ) を正しく読み込めるか。</td>
+    </tr>
+    <tr>
+      <td>UT</td>
+      <td>-</td>
+      <td>ユーザ定義のダッシュボードを正しく読み込めるか。</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>Grafana + <br>Prometheus + <br>Kubernetes</td>
+      <td>ビルトインのダッシュボード (<code>mixin</code> タグを持つ) で PromQL を入力し、Prometheus のメトリクスを確認できる。</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>Grafana + <br>Prometheus + <br>Kubernetes</td>
+      <td>ユーザ定義のダッシュボードで PromQL を入力し、Prometheus のメトリクスを確認できる。</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>Grafana + <br>Prometheus + <br>Kubernetes</td>
+      <td>ビルトインのダッシュボード (<code>mixin</code> タグを持つ) で Prometheus のメトリクスのリアルタイムデータを確認できる。</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>Grafana + <br>Prometheus + <br>Kubernetes</td>
+      <td>ユーザ定義のダッシュボードで Prometheus のメトリクスのリアルタイムデータを確認できる。</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>Grafana + <br>Prometheus + <br>Kubernetes</td>
+      <td>ビルトインのダッシュボード (<code>mixin</code> タグを持つ) で、datasource、namespace、type、resolusion の条件を変更し、リアルタイムデータを確認できる。</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>Grafana + <br>Prometheus + <br>Kubernetes</td>
+      <td>ユーザ定義のダッシュボードで、datasource、namespace、type、resolusion の条件を変更し、リアルタイムデータを確認できる。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ PrometheusOperator の場合
 
 PrometheusOperator のテストケースを示す。
 
-| テスト種別<br>(UT：ユニットテスト、IT：結合テスト) | 組み合わせ (IT の場合のみ) | 確認方法                                                                                                                                                                                                                                           |
-| -------------------------------------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| UT                                                 | -                          | PodMonitor の既存の設定が正常に動作しており、異常を検知するとアラートを発火できる。『Pod が `Running` フェーズかつ `Ready` コンディションであること』を Pod の正常とみなす。例えば、`kubectl get` コマンドを実行することで、正常か否かを確認する。 |
-| UT                                                 | -                          | Probe の既存の設定が正常に動作しており、異常を検知するとアラートを発火できる。                                                                                                                                                                     |
-| UT                                                 | -                          | PrometheusRule の既存の設定が正常に動作しており、異常を検知すると発火できる。                                                                                                                                                                      |
-| UT                                                 | -                          | ServiceMonitor の既存の設定が正常に動作しており、異常を検知するとアラートを発火できる。                                                                                                                                                            |
-| UT                                                 | -                          | PrometheusOperator のアラートが発火されていない。                                                                                                                                                                                                  |
+<table>
+  <thead>
+    <tr>
+      <th>テスト種別<br>(UT：ユニットテスト、IT：結合テスト)</th>
+      <th>組み合わせ (IT の場合のみ)</th>
+      <th>確認方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>UT</td>
+      <td>-</td>
+      <td>PodMonitor の既存の設定が正常に動作しており、異常を検知するとアラートを発火できる。『Pod が <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』を Pod の正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することで、正常か否かを確認する。</td>
+    </tr>
+    <tr>
+      <td>UT</td>
+      <td>-</td>
+      <td>Probe の既存の設定が正常に動作しており、異常を検知するとアラートを発火できる。</td>
+    </tr>
+    <tr>
+      <td>UT</td>
+      <td>-</td>
+      <td>PrometheusRule の既存の設定が正常に動作しており、異常を検知すると発火できる。</td>
+    </tr>
+    <tr>
+      <td>UT</td>
+      <td>-</td>
+      <td>ServiceMonitor の既存の設定が正常に動作しており、異常を検知するとアラートを発火できる。</td>
+    </tr>
+    <tr>
+      <td>UT</td>
+      <td>-</td>
+      <td>PrometheusOperator のアラートが発火されていない。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ 各種 Exporter の場合
 
 各種 Exporter のテストケースを示す。
 
-| Exporter 名        | テスト種別<br>(UT：ユニットテスト、IT：結合テスト) | 組み合わせ (IT の場合のみ)                           | 確認方法                                                                                                                                                                          |
-| ------------------ | -------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| kube-state-metrics | UT                                                 | -                                                    | Pod が正常である。『Pod が `Running` フェーズかつ `Ready` コンディションであること』を Pod の正常とみなす。例えば、`kubectl get` コマンドを実行することで、正常か否かを確認する。 |
-|                    | IT                                                 | kube-state-metrics + <br>Prometheus + <br>Kubernetes | ダッシュボードで PromQL を入力し、Process Exporter 経由で収集しているメトリクスを確認できる。例えば、`kube_pod_info` メトリクスや `kube_node_info` メトリクスを確認する。         |
-| Node Exporter      | UT                                                 | -                                                    | Pod が正常である。『Pod が `Running` フェーズかつ `Ready` コンディションであること』を Pod の正常とみなす。例えば、`kubectl get` コマンドを実行することで、正常か否かを確認する。 |
-|                    | IT                                                 | Node Exporter + <br>Prometheus + <br>Kubernetes      | ダッシュボードで PromQL を入力し、Node Exporter 経由で収集しているメトリクスを確認できる。例えば、`node_cpu_seconds_total` メトリクスを確認する。                                 |
-| Process Exporter   | UT                                                 | -                                                    | Pod が正常である。『Pod が `Running` フェーズかつ `Ready` コンディションであること』を Pod の正常とみなす。                                                                       |
-|                    | IT                                                 | Process Exporter + <br>Prometheus + <br>Kubernetes   | ダッシュボードで PromQL を入力し、Process Exporter 経由で収集しているメトリクスを確認できる。例えば、`namedprocess_namegroup_cpu_seconds_total ` メトリクスを確認する。           |
+<table>
+  <thead>
+    <tr>
+      <th>Exporter 名</th>
+      <th>テスト種別<br>(UT：ユニットテスト、IT：結合テスト)</th>
+      <th>組み合わせ (IT の場合のみ)</th>
+      <th>確認方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">kube-state-metrics</td>
+      <td>UT</td>
+      <td>-</td>
+      <td>Pod が正常である。『Pod が <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』を Pod の正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することで、正常か否かを確認する。</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>kube-state-metrics + <br>Prometheus + <br>Kubernetes</td>
+      <td>ダッシュボードで PromQL を入力し、Process Exporter 経由で収集しているメトリクスを確認できる。例えば、<code>kube_pod_info</code> メトリクスや <code>kube_node_info</code> メトリクスを確認する。</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Node Exporter</td>
+      <td>UT</td>
+      <td>-</td>
+      <td>Pod が正常である。『Pod が <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』を Pod の正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することで、正常か否かを確認する。</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>Node Exporter + <br>Prometheus + <br>Kubernetes</td>
+      <td>ダッシュボードで PromQL を入力し、Node Exporter 経由で収集しているメトリクスを確認できる。例えば、<code>node_cpu_seconds_total</code> メトリクスを確認する。</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Process Exporter</td>
+      <td>UT</td>
+      <td>-</td>
+      <td>Pod が正常である。『Pod が <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』を Pod の正常とみなす。</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>Process Exporter + <br>Prometheus + <br>Kubernetes</td>
+      <td>ダッシュボードで PromQL を入力し、Process Exporter 経由で収集しているメトリクスを確認できる。例えば、<code>namedprocess_namegroup_cpu_seconds_total </code> メトリクスを確認する。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ Fluentd の場合
 
 Fluentd のテストケースを示す。
 
-| テスト種別<br>(UT：ユニットテスト、IT：結合テスト) | 組み合わせ (IT の場合のみ)                                               | 確認方法                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| -------------------------------------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| UT                                                 | -                                                                        | Pod が正常である。『Pod が `Running` フェーズかつ `Ready` コンディションであること』を Pod の正常とみなす。例えば、`kubectl get` コマンドを実行することで、正常か否かを確認する。                                                                                                                                                                                                                                                      |
-| IT                                                 | Fluentd + <br>監視バックエンド + <br>監視フロントエンド + <br>Kubernetes | Node 内の任意の Pod のログを正しい形式で監視バックエンドに送信し、監視フロントエンドで可視化できている。例えば、Containerd には、ログメッセージ部分がテキスト形式 (例：metrics-server など)　の場合と `json` 形式 (例：alertmanager、istio-proxy など) の場合がある。<br>監視バックエンド (例：Grafana Loki) これらの両方の形式のログを正しく解析し、監視フロントエンド (例：Grafana、Kibana) がそれを可視化できていることを確認する。 |
+<table>
+  <thead>
+    <tr>
+      <th>テスト種別<br>(UT：ユニットテスト、IT：結合テスト)</th>
+      <th>組み合わせ (IT の場合のみ)</th>
+      <th>確認方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>UT</td>
+      <td>-</td>
+      <td>Pod が正常である。『Pod が <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』を Pod の正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することで、正常か否かを確認する。</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>Fluentd + <br>監視バックエンド + <br>監視フロントエンド + <br>Kubernetes</td>
+      <td>Node 内の任意の Pod のログを正しい形式で監視バックエンドに送信し、監視フロントエンドで可視化できている。例えば、Containerd には、ログメッセージ部分がテキスト形式 (例：metrics-server など)　の場合と <code>json</code> 形式 (例：alertmanager、istio-proxy など) の場合がある。<br>監視バックエンド (例：Grafana Loki) これらの両方の形式のログを正しく解析し、監視フロントエンド (例：Grafana、Kibana) がそれを可視化できていることを確認する。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ Kiali の場合
 
 Kiali のテストケースを示す。
 
-| テスト種別<br>(UT：ユニットテスト、IT：結合テスト) | 組み合わせ (IT の場合のみ)         | 確認方法                                                                                                                                                                                                                                                                                                                 |
-| -------------------------------------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| UT                                                 | -                                  | Pod が正常である。『Pod が `Running` フェーズかつ `Ready` コンディションであること』を Pod の正常とみなす。例えば、`kubectl get` コマンドを実行することで、正常か否かを確認する。                                                                                                                                        |
-| IT                                                 | Kiali + <br>Prometheus + <br>Istio | Prometheus が Istio Ingress/Egress Gateway や istio-proxy のデータポイントを収集し、Kiali が Prometheus から Istio メトリクスや Envoy メトリクスを取得できているかを確認する。例えば、サービストポロジーが表示されることを確認する。<br>Kiali が Prometheus からメトリクスを取得できない場合、トポロジーを表示できない。 |
+<table>
+  <thead>
+    <tr>
+      <th>テスト種別<br>(UT：ユニットテスト、IT：結合テスト)</th>
+      <th>組み合わせ (IT の場合のみ)</th>
+      <th>確認方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>UT</td>
+      <td>-</td>
+      <td>Pod が正常である。『Pod が <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』を Pod の正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することで、正常か否かを確認する。</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>Kiali + <br>Prometheus + <br>Istio</td>
+      <td>Prometheus が Istio Ingress/Egress Gateway や istio-proxy のデータポイントを収集し、Kiali が Prometheus から Istio メトリクスや Envoy メトリクスを取得できているかを確認する。例えば、サービストポロジーが表示されることを確認する。<br>Kiali が Prometheus からメトリクスを取得できない場合、トポロジーを表示できない。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ metrics-server の場合
 
 metrics-server のテストケースを示す。
 
-| テスト種別<br>(UT：ユニットテスト、IT：結合テスト) | 組み合わせ (IT の場合のみ)                   | 確認方法                                                                                                                                                                                                                                           |
-| -------------------------------------------------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| UT                                                 | -                                            | Pod が正常である。『Pod が `Running` フェーズかつ `Ready` コンディションであること』を Pod の正常とみなす。例えば、`kubectl get` コマンドを実行することで、正常か否かを確認する。                                                                  |
-| IT                                                 | metrics-server + <br>Pod、Node               | Pod、Node、からメトリクスを取得できるかを確認する。例えば、`kubectl top pod -A` コマンドや `kubectl top node` コマンドで、Pod や Node の CPU 使用率とメモリ使用率を取得できるかを確認する。また、                                                  |
-| IT                                                 | metrics-server + <br>HorizontalPodAutoscaler | HorizontalPodAutoscaler からメトリクスを取得できるかを確認する。例えば、事前に `.spec.containers[*].resources` キーが設定された Deployment を確認しておく。`kubectl get hpa -A` コマンドで、Target 列が `<unknown>` になっていないことを確認する。 |
+<table>
+  <thead>
+    <tr>
+      <th>テスト種別<br>(UT：ユニットテスト、IT：結合テスト)</th>
+      <th>組み合わせ (IT の場合のみ)</th>
+      <th>確認方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>UT</td>
+      <td>-</td>
+      <td>Pod が正常である。『Pod が <code>Running</code> フェーズかつ <code>Ready</code> コンディションであること』を Pod の正常とみなす。例えば、<code>kubectl get</code> コマンドを実行することで、正常か否かを確認する。</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>metrics-server + <br>Pod、Node</td>
+      <td>Pod、Node、からメトリクスを取得できるかを確認する。例えば、<code>kubectl top pod -A</code> コマンドや <code>kubectl top node</code> コマンドで、Pod や Node の CPU 使用率とメモリ使用率を取得できるかを確認する。また、</td>
+    </tr>
+    <tr>
+      <td>IT</td>
+      <td>metrics-server + <br>HorizontalPodAutoscaler</td>
+      <td>HorizontalPodAutoscaler からメトリクスを取得できるかを確認する。例えば、事前に <code>.spec.containers[*].resources</code> キーが設定された Deployment を確認しておく。<code>kubectl get hpa -A</code> コマンドで、Target 列が <code>&lt;unknown&gt;</code> になっていないことを確認する。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ その他
 
 その他のテストケースを示す。
 
-| コンポーネント | テスト種別<br>(UT：ユニットテスト、IT：結合テスト) | 組み合わせ (IT の場合のみ) | 確認方法                                   |
-| -------------- | -------------------------------------------------- | -------------------------- | ------------------------------------------ |
-| その他         | -                                                  | -                          | Name にて、不要な Pod が稼働していないか。 |
+<table>
+  <thead>
+    <tr>
+      <th>コンポーネント</th>
+      <th>テスト種別<br>(UT：ユニットテスト、IT：結合テスト)</th>
+      <th>組み合わせ (IT の場合のみ)</th>
+      <th>確認方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>その他</td>
+      <td>-</td>
+      <td>-</td>
+      <td>Name にて、不要な Pod が稼働していないか。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

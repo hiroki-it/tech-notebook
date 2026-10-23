@@ -189,10 +189,28 @@ NodeGroups:
 
 ### AWS 側
 
-| アドオン名         | タグ                                               | 値      | 説明                                                                                                                                                                          |
-| ------------------ | -------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cluster-autoscaler | `k8s.io/cluster-autoscaler/<Amazon EKS Cluster名>` | `owned` | cluster-autoscaler を使用する場合、cluster-autoscaler が EC2 ワーカーNode を検出するために必要である。<br>- https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html |
-| 同上               | `k8s.io/cluster-autoscaler/enabled`                | `true`  | 同上                                                                                                                                                                          |
+<table>
+  <thead>
+    <tr>
+      <th>アドオン名</th>
+      <th>タグ</th>
+      <th>値</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">cluster-autoscaler</td>
+      <td><code>k8s.io/cluster-autoscaler/&lt;Amazon EKS Cluster名&gt;</code></td>
+      <td><code>owned</code></td>
+      <td rowspan="2">cluster-autoscaler を使用する場合、cluster-autoscaler が EC2 ワーカーNode を検出するために必要である。<br>- <a href="https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html">https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html</a></td>
+    </tr>
+    <tr>
+      <td><code>k8s.io/cluster-autoscaler/enabled</code></td>
+      <td><code>true</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Scale cluster compute with Karpenter and Cluster Autoscaler - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html)
 
@@ -254,8 +272,21 @@ NodeGroups:
 
 ### metadata.annotations
 
-| キー                                                   | 値の例 | 説明                                                              |
-| ------------------------------------------------------ | ------ | ----------------------------------------------------------------- |
-| `cluster-autoscaler.kubernetes.io/scale-down-disabled` | `true` | cluster-autoscaler のスケールインで削除させない Node に設定する。 |
+<table>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>cluster-autoscaler.kubernetes.io/scale-down-disabled</code></td>
+      <td><code>true</code></td>
+      <td>cluster-autoscaler のスケールインで削除させない Node に設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>

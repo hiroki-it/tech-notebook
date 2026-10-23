@@ -448,17 +448,62 @@ LogFormat "%h %l %u %t "%r" %>s %b "%{Referer}i" "%{User-Agent}i"" combined
 
 #### ▼ ログの変数一覧
 
-| 変数           | 値                                      | 例                                                                                                  |
-| -------------- | --------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| %h             | リモートホスト                          | 118.86.194.71                                                                                       |
-| %l             | リモートログ名 (基本”-“になる)          | -                                                                                                   |
-| %u             | リモートユーザ (ベーシック認証のユーザ) | -                                                                                                   |
-| %t             | リクエスト受付時刻                      | [17/Aug/2011:23:04:03 +0900]                                                                        |
-| %r             | リクエストの最初の行                    | GET /home/name/category/web HTTP/1.1                                                                |
-| %s             | ステータス                              | 200                                                                                                 |
-| %b             | レスポンスのバイト数                    | 11815                                                                                               |
-| %{Referer}i    | リファラ                                | http://naoberry.com/home/name/                                                                      |
-| %{User-Agent}i | ユーザエージェント                      | Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.112 Safari/535.1 |
+<table>
+  <thead>
+    <tr>
+      <th>変数</th>
+      <th>値</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>%h</td>
+      <td>リモートホスト</td>
+      <td>118.86.194.71</td>
+    </tr>
+    <tr>
+      <td>%l</td>
+      <td>リモートログ名 (基本”-“になる)</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>%u</td>
+      <td>リモートユーザ (ベーシック認証のユーザ)</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>%t</td>
+      <td>リクエスト受付時刻</td>
+      <td>[17/Aug/2011:23:04:03 +0900]</td>
+    </tr>
+    <tr>
+      <td>%r</td>
+      <td>リクエストの最初の行</td>
+      <td>GET /home/name/category/web HTTP/1.1</td>
+    </tr>
+    <tr>
+      <td>%s</td>
+      <td>ステータス</td>
+      <td>200</td>
+    </tr>
+    <tr>
+      <td>%b</td>
+      <td>レスポンスのバイト数</td>
+      <td>11815</td>
+    </tr>
+    <tr>
+      <td>%{Referer}i</td>
+      <td>リファラ</td>
+      <td><a href="http://naoberry.com/home/name/">http://naoberry.com/home/name/</a></td>
+    </tr>
+    <tr>
+      <td>%{User-Agent}i</td>
+      <td>ユーザエージェント</td>
+      <td>Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.112 Safari/535.1</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

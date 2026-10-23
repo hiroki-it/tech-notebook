@@ -31,12 +31,37 @@ description: Amazon RDS＠AWSリソース
 
 #### ▼ DBMS に対応する RDB
 
-| DBMS                | RDB        | 互換性           |
-| ------------------- | ---------- | ---------------- |
-| Amazon Aurora MySQL | Amazon RDS | MySQL/PostgreSQL |
-| MariaDB             | Amazon RDS | MariaDB          |
-| MySQL               | Amazon RDS | MySQL            |
-| PostgreSQL          | Amazon RDS | PostgreSQL       |
+<table>
+  <thead>
+    <tr>
+      <th>DBMS</th>
+      <th>RDB</th>
+      <th>互換性</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon Aurora MySQL</td>
+      <td>Amazon RDS</td>
+      <td>MySQL/PostgreSQL</td>
+    </tr>
+    <tr>
+      <td>MariaDB</td>
+      <td>Amazon RDS</td>
+      <td>MariaDB</td>
+    </tr>
+    <tr>
+      <td>MySQL</td>
+      <td>Amazon RDS</td>
+      <td>MySQL</td>
+    </tr>
+    <tr>
+      <td>PostgreSQL</td>
+      <td>Amazon RDS</td>
+      <td>PostgreSQL</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ 機能の違い
 
@@ -122,12 +147,32 @@ Amazon CloudWatch Metrics の `DatabaseConnections` メトリクスから、DB �
 
 ### 保留中のメンテナンスの状態
 
-| 状態           | 説明                                                                                                                                             |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 必須           | アクションは実行可能かつ必須である。実行タイミングは未定であるが、適用期限日には必ず実行され、これは延期できない。                               |
-| 利用可能       | アクションは実行できるが、推奨である。実行タイミングは未定である。                                                                               |
-| 次のウィンドウ | アクションの実行タイミングは、次回のメンテナンスウィンドウである。あとでアップグレードを選択することにより、『利用可能』の状態に戻すことも可能。 |
-| 進行中         | 現在時刻がメンテナンスウィンドウに含まれており、アクションを実行中である。                                                                       |
+<table>
+  <thead>
+    <tr>
+      <th>状態</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>必須</td>
+      <td>アクションは実行可能かつ必須である。実行タイミングは未定であるが、適用期限日には必ず実行され、これは延期できない。</td>
+    </tr>
+    <tr>
+      <td>利用可能</td>
+      <td>アクションは実行できるが、推奨である。実行タイミングは未定である。</td>
+    </tr>
+    <tr>
+      <td>次のウィンドウ</td>
+      <td>アクションの実行タイミングは、次回のメンテナンスウィンドウである。あとでアップグレードを選択することにより、『利用可能』の状態に戻すことも可能。</td>
+    </tr>
+    <tr>
+      <td>進行中</td>
+      <td>現在時刻がメンテナンスウィンドウに含まれており、アクションを実行中である。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -202,17 +247,62 @@ $ aws rds modify-db-instance \
 
 ### ダウンタイムの発生条件
 
-| 変更する項目                         | ダウンタイムの有無 | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| ------------------------------------ | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| インスタンスクラス                   | あり               | ・`2` 個のインスタンスで同時にインスタンスクラスを変更すると、次のようなイベントを確認できる。インスタンスが複数回再起動することからわかるとおり、長いダウンタイム (約 `6`～`8` 分) が発生する。そのため、フェイルオーバーを利用してダウンタイムを最小化する。<br>・https://dev.classmethod.jp/articles/rds-scaleup-instancetype/ <br>・プライマリーインスタンスのイベント<br>![rds_change-instance-class_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_change-instance-class_primary-instance.png)<br>・リードレプリカのイベント<br>![rds_change-instance-class_read-replica](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_change-instance-class_read-replica.png) |
-| サブネットグループ                   | あり               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| メンテナンスウィンドウ               | 条件付きでなし     | ダウンタイムが発生する操作が保留中になっている状態で、メンテナンス時間を現在が含まれるように変更すると、保留中の操作がすぐに適用される。そのため、ダウンタイムが発生する。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| パフォーマンスインサイト             | 条件付きでなし     | パフォーマンスインサイトの有効化ではダウンタイムが発生しない。ただし、有効化のためにパラメーターグループの `performance_schema` を有効化する必要がある。パラメーターグループの変更を DB インスタンスに反映させるうえで再起動が必要なため、ここでダウンタイムが発生する。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| バックアップウインドウ               | 条件付きでなし     | `0` から `0` 以外の値、`0` 以外の値から `0` に変更した場合、ダウンタイムが発生する。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| パラメーターグループ                 | なし               | パラメーターグループ自体の変更ではダウンタイムは発生しない。また、静的パラメーターはパラメーターグループの変更に合わせて適用される。ただし、動的パラメーターを変更した場合は、これを DB インスタンスに反映させるために再起動が必要であり、ここでダウンタイムが発生する。<br>https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html                                                                                                                                                                                                                                                                                                                                                                                              |
-| セキュリティグループ                 | なし               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| マイナーバージョン自動アップグレード | なし               | エンジンバージョンの変更にはダウンタイムが発生するが、自動アップグレードの設定にはダウンタイムが発生しない。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| ストレージの AutoScaling             | なし               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+<table>
+  <thead>
+    <tr>
+      <th>変更する項目</th>
+      <th>ダウンタイムの有無</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>インスタンスクラス</td>
+      <td>あり</td>
+      <td>・<code>2</code> 個のインスタンスで同時にインスタンスクラスを変更すると、次のようなイベントを確認できる。インスタンスが複数回再起動することからわかるとおり、長いダウンタイム (約 <code>6</code>～<code>8</code> 分) が発生する。そのため、フェイルオーバーを利用してダウンタイムを最小化する。<br>・<a href="https://dev.classmethod.jp/articles/rds-scaleup-instancetype/">https://dev.classmethod.jp/articles/rds-scaleup-instancetype/</a> <br>・プライマリーインスタンスのイベント<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_change-instance-class_primary-instance.png" alt="rds_change-instance-class_primary-instance"><br>・リードレプリカのイベント<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_change-instance-class_read-replica.png" alt="rds_change-instance-class_read-replica"></td>
+    </tr>
+    <tr>
+      <td>サブネットグループ</td>
+      <td>あり</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>メンテナンスウィンドウ</td>
+      <td>条件付きでなし</td>
+      <td>ダウンタイムが発生する操作が保留中になっている状態で、メンテナンス時間を現在が含まれるように変更すると、保留中の操作がすぐに適用される。そのため、ダウンタイムが発生する。</td>
+    </tr>
+    <tr>
+      <td>パフォーマンスインサイト</td>
+      <td>条件付きでなし</td>
+      <td>パフォーマンスインサイトの有効化ではダウンタイムが発生しない。ただし、有効化のためにパラメーターグループの <code>performance_schema</code> を有効化する必要がある。パラメーターグループの変更を DB インスタンスに反映させるうえで再起動が必要なため、ここでダウンタイムが発生する。</td>
+    </tr>
+    <tr>
+      <td>バックアップウインドウ</td>
+      <td>条件付きでなし</td>
+      <td><code>0</code> から <code>0</code> 以外の値、<code>0</code> 以外の値から <code>0</code> に変更した場合、ダウンタイムが発生する。</td>
+    </tr>
+    <tr>
+      <td>パラメーターグループ</td>
+      <td>なし</td>
+      <td>パラメーターグループ自体の変更ではダウンタイムは発生しない。また、静的パラメーターはパラメーターグループの変更に合わせて適用される。ただし、動的パラメーターを変更した場合は、これを DB インスタンスに反映させるために再起動が必要であり、ここでダウンタイムが発生する。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html</a></td>
+    </tr>
+    <tr>
+      <td>セキュリティグループ</td>
+      <td>なし</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>マイナーバージョン自動アップグレード</td>
+      <td>なし</td>
+      <td>エンジンバージョンの変更にはダウンタイムが発生するが、自動アップグレードの設定にはダウンタイムが発生しない。</td>
+    </tr>
+    <tr>
+      <td>ストレージの AutoScaling</td>
+      <td>なし</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Modifying an Amazon RDS DB instance - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings)
 

@@ -1483,9 +1483,20 @@ func NewTracerProvider() {
 
 ### パッケージ
 
-| 項目 | 必要なパッケージ                                                  |
-| ---- | ----------------------------------------------------------------- |
-| Go   | `go.opentelemetry.io/otel/sdk/trace` パッケージからコールできる。 |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>必要なパッケージ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Go</td>
+      <td><code>go.opentelemetry.io/otel/sdk/trace</code> パッケージからコールできる。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -1495,10 +1506,24 @@ func NewTracerProvider() {
 
 サンプリングする場所によって、方式が異なる。
 
-| 方式       | 説明                                                                                                                                                                                                                           |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Head-based | クライアント側で、スパンをサンプリングする。パフォーマンス (例：CPU、メモリ、スループット) に影響が低いが、エラーリクエストをサンプリングできない。                                                                            |
-| Tail-based | サーバー側 (OpenTelemetry Collector) で、収集したスパンからサンプリングする (実際はすべてをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。 |
+<table>
+  <thead>
+    <tr>
+      <th>方式</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Head-based</td>
+      <td>クライアント側で、スパンをサンプリングする。パフォーマンス (例：CPU、メモリ、スループット) に影響が低いが、エラーリクエストをサンプリングできない。</td>
+    </tr>
+    <tr>
+      <td>Tail-based</td>
+      <td>サーバー側 (OpenTelemetry Collector) で、収集したスパンからサンプリングする (実際はすべてをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [OpenTelemetryでのSampling - Carpe Diem](https://christina04.hatenablog.com/entry/opentelemetry-sampling)
 > - [Sampling \| OpenTelemetry](https://opentelemetry.io/docs/concepts/sampling/)
@@ -1511,12 +1536,32 @@ Tail-based 方式の場合、前提としてアプリケーションですべて
 
 ただ、負荷を抑える目的で、一定割合のアプリケーションでサンプリングすることもある。
 
-| 設定                 | 説明                                                                                      |
-| -------------------- | ----------------------------------------------------------------------------------------- |
-| `AlwaysOn`           | すべてのスパンをサンプリングする。本番環境で注意して使用する (非推奨というわけではない)。 |
-| `AlwaysOff`          | スパンをサンプリングしない。                                                              |
-| `TraceIdRationBased` | 指定した割合でスパンをランダムにサンプリングする。                                        |
-| `ParentBased`        | 親スパンの設定を継承する。`TraceIdRationBased` と組み合わせて使用することが多い。         |
+<table>
+  <thead>
+    <tr>
+      <th>設定</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>AlwaysOn</code></td>
+      <td>すべてのスパンをサンプリングする。本番環境で注意して使用する (非推奨というわけではない)。</td>
+    </tr>
+    <tr>
+      <td><code>AlwaysOff</code></td>
+      <td>スパンをサンプリングしない。</td>
+    </tr>
+    <tr>
+      <td><code>TraceIdRationBased</code></td>
+      <td>指定した割合でスパンをランダムにサンプリングする。</td>
+    </tr>
+    <tr>
+      <td><code>ParentBased</code></td>
+      <td>親スパンの設定を継承する。<code>TraceIdRationBased</code> と組み合わせて使用することが多い。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [分散トレーシングとOpenTelemetryのススメ / Getting started distributed tracing and OpenTelemetry - Speaker Deck](https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26)
 > - [OpenTelemetry CollectorでTail-based samplingする](https://zenn.dev/ishii1648/articles/167e199bab5396)
@@ -1560,16 +1605,48 @@ OpenTelemetry の仕様では、あるべき環境変数が決まっている。
 
 指定する Sampler やパラメーターを環境変数で設定できる。
 
-| 環境変数                   | 説明                                                                                                                                |
-| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `OTEL_LOGS_EXPORTER`       | ログの Exporter 名を設定する。                                                                                                      |
-| `OTEL_METRICS_EXPORTER`    | メトリクスの Exporter 名を設定する。執筆時点 (2024/02/06) では、`otlp` (HTTP/gRPC) 、`prometheus`、`none`、から設定できる。         |
-| `OTEL_PROPAGATORS`         | トレースコンテキスト仕様を設定する。                                                                                                |
-| `OTEL_SERVICE_NAME`        | Resource の `service.name` を設定する。                                                                                             |
-| `OTEL_RESOURCE_ATTRIBUTES` | Resource の任意の属性を設定する。キーバリュー式 (`key1=value1,key2=value2`) で設定できる。                                          |
-| `OTEL_TRACES_EXPORTER`     | 分散トレースの Exporter 名を設定する。執筆時点 (2024/02/06) では、`otlp` (HTTP/gRPC) 、`jaeger`、`zipkin`、`none`、から設定できる。 |
-| `OTEL_TRACES_SAMPLER`      | 使用する Sampler を設定する。                                                                                                       |
-| `OTEL_TRACES_SAMPLER_ARG`  | Sampler のパラメーター (例：サンプリング率) を設定する。                                                                            |
+<table>
+  <thead>
+    <tr>
+      <th>環境変数</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>OTEL_LOGS_EXPORTER</code></td>
+      <td>ログの Exporter 名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_METRICS_EXPORTER</code></td>
+      <td>メトリクスの Exporter 名を設定する。執筆時点 (2024/02/06) では、<code>otlp</code> (HTTP/gRPC) 、<code>prometheus</code>、<code>none</code>、から設定できる。</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_PROPAGATORS</code></td>
+      <td>トレースコンテキスト仕様を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_SERVICE_NAME</code></td>
+      <td>Resource の <code>service.name</code> を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_RESOURCE_ATTRIBUTES</code></td>
+      <td>Resource の任意の属性を設定する。キーバリュー式 (<code>key1=value1,key2=value2</code>) で設定できる。</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_TRACES_EXPORTER</code></td>
+      <td>分散トレースの Exporter 名を設定する。執筆時点 (2024/02/06) では、<code>otlp</code> (HTTP/gRPC) 、<code>jaeger</code>、<code>zipkin</code>、<code>none</code>、から設定できる。</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_TRACES_SAMPLER</code></td>
+      <td>使用する Sampler を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_TRACES_SAMPLER_ARG</code></td>
+      <td>Sampler のパラメーター (例：サンプリング率) を設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [General SDK Configuration \| OpenTelemetry](https://opentelemetry.io/docs/languages/sdk-configuration/general/)
 
@@ -1577,23 +1654,76 @@ OpenTelemetry の仕様では、あるべき環境変数が決まっている。
 
 ### Exporter
 
-| 環境変数                              | 説明 |
-| ------------------------------------- | ---- |
-| `OTEL_EXPORTER_OTLP_ENDPOINT`         |      |
-| `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`  |      |
-| `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT` |      |
-| `OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`    |      |
-| `OTEL_EXPORTER_OTLP_HEADERS`          |      |
-| `OTEL_EXPORTER_OTLP_TRACES_HEADERS`   |      |
-| `OTEL_EXPORTER_OTLP_METRICS_HEADERS`  |      |
-| `OTEL_EXPORTER_OTLP_LOGS_HEADERS`     |      |
-| `OTEL_EXPORTER_OTLP_TIMEOUT`          |      |
-| `OTEL_EXPORTER_OTLP_TRACES_TIMEOUT`   |      |
-| `OTEL_EXPORTER_OTLP_METRICS_TIMEOUT`  |      |
-| `OTEL_EXPORTER_OTLP_LOGS_TIMEOUT`     |      |
-| `OTEL_EXPORTER_OTLP_PROTOCOL`         |      |
-| `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL`  |      |
-| `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL` |      |
+<table>
+  <thead>
+    <tr>
+      <th>環境変数</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_ENDPOINT</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_TRACES_ENDPOINT</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_METRICS_ENDPOINT</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_LOGS_ENDPOINT</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_HEADERS</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_TRACES_HEADERS</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_METRICS_HEADERS</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_LOGS_HEADERS</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_TIMEOUT</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_TRACES_TIMEOUT</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_METRICS_TIMEOUT</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_LOGS_TIMEOUT</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_PROTOCOL</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_TRACES_PROTOCOL</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_METRICS_PROTOCOL</code></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [OTLP Exporter Configuration \| OpenTelemetry](https://opentelemetry.io/docs/languages/sdk-configuration/otlp-exporter/)
 

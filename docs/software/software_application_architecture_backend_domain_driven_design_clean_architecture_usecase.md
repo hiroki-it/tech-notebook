@@ -49,13 +49,39 @@ description: ユースケース層＠クリーンアーキテクチャの知見�
 
 また、Interactor インターフェースを用意して、インターフェース層のコントローラーはこれを経由して、実装 Interactor クラスの関数をコールする。
 
-| 入力時/出力時 | 責務                                                                                                                                                           | 補足                                                                                                                     |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| 入力          | インターフェース層のコントローラーから入力されるリクエストパラメーターを、ソフトウェア上のルール (ユースケース) と照らし合わせてバリデーションを実行する。     | データの値がシステム上あり得ないか否かを検証する。ビジネス上あり得ない値か否かはドメイン層に仕様パターンとして実装する。 |
-|               | ドメイン層の関数を組み合わせて、ユーザーの要求に対するソフトウェアの振舞 (ユースケース) を具現化する。                                                         |                                                                                                                          |
-|               | インターフェース層のコントローラーから入力されるリクエストパラメーターを、ドメイン層のインターフェースリポジトリに渡せるドメインモデルに変換する。             |                                                                                                                          |
-| 出力          | ドメイン層のインターフェースリポジトリから出力されるドメインモデルをレスポンスモデルに変換し、インターフェース層のコントローラーに出力する。                   | バックエンドを API として使用する場合、プレゼンターは不要である。                                                        |
-|               | ドメイン層のインターフェースリポジトリから出力されるドメインモデルをレスポンスモデルを経てプレゼンターに変換し、インターフェース層のコントローラーに出力する。 | バックエンドでテンプレートエンジンを使用して HTML を作成する場合、プレゼンターが必要である。                             |
+<table>
+  <thead>
+    <tr>
+      <th>入力時/出力時</th>
+      <th>責務</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="3">入力</td>
+      <td>インターフェース層のコントローラーから入力されるリクエストパラメーターを、ソフトウェア上のルール (ユースケース) と照らし合わせてバリデーションを実行する。</td>
+      <td>データの値がシステム上あり得ないか否かを検証する。ビジネス上あり得ない値か否かはドメイン層に仕様パターンとして実装する。</td>
+    </tr>
+    <tr>
+      <td>ドメイン層の関数を組み合わせて、ユーザーの要求に対するソフトウェアの振舞 (ユースケース) を具現化する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>インターフェース層のコントローラーから入力されるリクエストパラメーターを、ドメイン層のインターフェースリポジトリに渡せるドメインモデルに変換する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td rowspan="2">出力</td>
+      <td>ドメイン層のインターフェースリポジトリから出力されるドメインモデルをレスポンスモデルに変換し、インターフェース層のコントローラーに出力する。</td>
+      <td>バックエンドを API として使用する場合、プレゼンターは不要である。</td>
+    </tr>
+    <tr>
+      <td>ドメイン層のインターフェースリポジトリから出力されるドメインモデルをレスポンスモデルを経てプレゼンターに変換し、インターフェース層のコントローラーに出力する。</td>
+      <td>バックエンドでテンプレートエンジンを使用して HTML を作成する場合、プレゼンターが必要である。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -100,15 +126,68 @@ Book ルートエンティティと Review ルートエンティティは親子�
 
 `CREATE` 処理と `UPDATE` 処理を SAVE 処理としてまとめてもよい。
 
-| ユースケース                                     | 関数名                                | 引数型                                                          | 返却値型                                                                                     | 処理内容                                                                                                                                                                                  |
-| ------------------------------------------------ | ------------------------------------- | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 下書き系 (UI 特有のユースケースで、API では不要) | `getDraftFoo()` 関数                  | `getDraftFooRequest` オブジェクト                               | `getDraftFooResponse` オブジェクト                                                           | リポジトリの関数は呼び出さず、登録前のデフォルト値を含むドメインオブジェクトを返却する。 デフォルト値はユースケース層で定義しておく。                                                     |
-| 閲覧系 (単一)                                    | `getFoo()` 関数                       | `getFooRequest` オブジェクト                                    | `getFooResponse` オブジェクト、 `null`                                                       | リポジトリの `findOne()` 関数をコールし、ドメインオブジェクトを取得する。                                                                                                                 |
-| 閲覧系 (複数)                                    | `listFoos()` 関数                     | `listFoosRequest` オブジェクト                                  | 空配列を含む `listFoosResponse` オブジェクト                                                 | リポジトリの `findAll()` 関数をコールし、ドメインオブジェクトを取得する。                                                                                                                 |
-| 登録系                                           | `registerFoo()` 関数                  | `registerFooRequest` オブジェクト                               | `registerFooResponse` オブジェクト、 `Exception` オブジェクト                                | リポジトリの `findOne()` 関数をコールし、重複を確認する。その結果に応じて、リポジトリの `create()` 関数をコールし、ドメインオブジェクトを新規登録する。                                   |
-| 変更系                                           | `changeFoo()` 関数                    | `changeFooRequest` オブジェクト                                 | `changeFooResponse` オブジェクト、`Exception` オブジェクト                                   | リポジトリの `findOne()` 関数をコールし、存在を確認する。その結果に応じて、 `update()` 関数をコールし、既存のドメインオブジェクトを更新する。                                             |
-| 登録系かつ変更系                                 | `saveFoo()` 関数 (`upsertFoo()` 関数) | `saveFooRequest` オブジェクト (`upsertFooRequest` オブジェクト) | `saveFooResponse` オブジェクト (`upsertFooResponse` オブジェクト) 、`Exception` オブジェクト | リポジトリの `findOne()` 関数をコールし、存在を確認する。その結果に応じて、 `create()` 関数または `update()` 関数を実行する。`<br>`https://github.com/little-hands/ddd-q-and-a/issues/241 |
-| 削除系                                           | `deleteFoo()` 関数                    | `deleteFooRequest` オブジェクト                                 | `deleteFooResponse` オブジェクト、 `Exception` オブジェクト                                  | リポジトリの `findOne()` 関数を実行し、存在を確認する。その結果に応じて、 `delete()` 関数をコールし、既存のドメインオブジェクトを削除する。                                               |
+<table>
+  <thead>
+    <tr>
+      <th>ユースケース</th>
+      <th>関数名</th>
+      <th>引数型</th>
+      <th>返却値型</th>
+      <th>処理内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>下書き系 (UI 特有のユースケースで、API では不要)</td>
+      <td><code>getDraftFoo()</code> 関数</td>
+      <td><code>getDraftFooRequest</code> オブジェクト</td>
+      <td><code>getDraftFooResponse</code> オブジェクト</td>
+      <td>リポジトリの関数は呼び出さず、登録前のデフォルト値を含むドメインオブジェクトを返却する。 デフォルト値はユースケース層で定義しておく。</td>
+    </tr>
+    <tr>
+      <td>閲覧系 (単一)</td>
+      <td><code>getFoo()</code> 関数</td>
+      <td><code>getFooRequest</code> オブジェクト</td>
+      <td><code>getFooResponse</code> オブジェクト、 <code>null</code></td>
+      <td>リポジトリの <code>findOne()</code> 関数をコールし、ドメインオブジェクトを取得する。</td>
+    </tr>
+    <tr>
+      <td>閲覧系 (複数)</td>
+      <td><code>listFoos()</code> 関数</td>
+      <td><code>listFoosRequest</code> オブジェクト</td>
+      <td>空配列を含む <code>listFoosResponse</code> オブジェクト</td>
+      <td>リポジトリの <code>findAll()</code> 関数をコールし、ドメインオブジェクトを取得する。</td>
+    </tr>
+    <tr>
+      <td>登録系</td>
+      <td><code>registerFoo()</code> 関数</td>
+      <td><code>registerFooRequest</code> オブジェクト</td>
+      <td><code>registerFooResponse</code> オブジェクト、 <code>Exception</code> オブジェクト</td>
+      <td>リポジトリの <code>findOne()</code> 関数をコールし、重複を確認する。その結果に応じて、リポジトリの <code>create()</code> 関数をコールし、ドメインオブジェクトを新規登録する。</td>
+    </tr>
+    <tr>
+      <td>変更系</td>
+      <td><code>changeFoo()</code> 関数</td>
+      <td><code>changeFooRequest</code> オブジェクト</td>
+      <td><code>changeFooResponse</code> オブジェクト、<code>Exception</code> オブジェクト</td>
+      <td>リポジトリの <code>findOne()</code> 関数をコールし、存在を確認する。その結果に応じて、 <code>update()</code> 関数をコールし、既存のドメインオブジェクトを更新する。</td>
+    </tr>
+    <tr>
+      <td>登録系かつ変更系</td>
+      <td><code>saveFoo()</code> 関数 (<code>upsertFoo()</code> 関数)</td>
+      <td><code>saveFooRequest</code> オブジェクト (<code>upsertFooRequest</code> オブジェクト)</td>
+      <td><code>saveFooResponse</code> オブジェクト (<code>upsertFooResponse</code> オブジェクト) 、<code>Exception</code> オブジェクト</td>
+      <td>リポジトリの <code>findOne()</code> 関数をコールし、存在を確認する。その結果に応じて、 <code>create()</code> 関数または <code>update()</code> 関数を実行する。<code>&lt;br&gt;</code><a href="https://github.com/little-hands/ddd-q-and-a/issues/241">https://github.com/little-hands/ddd-q-and-a/issues/241</a></td>
+    </tr>
+    <tr>
+      <td>削除系</td>
+      <td><code>deleteFoo()</code> 関数</td>
+      <td><code>deleteFooRequest</code> オブジェクト</td>
+      <td><code>deleteFooResponse</code> オブジェクト、 <code>Exception</code> オブジェクト</td>
+      <td>リポジトリの <code>findOne()</code> 関数を実行し、存在を確認する。その結果に応じて、 <code>delete()</code> 関数をコールし、既存のドメインオブジェクトを削除する。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

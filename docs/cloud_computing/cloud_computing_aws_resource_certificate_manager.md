@@ -39,10 +39,24 @@ DNS 検証か E メール検証かを設定する。
 
 認証局である ATS によって認証済みのサーバー証明書を管理できる。
 
-| サーバー提供者 | 名前                            |
-| -------------- | ------------------------------- |
-| 中間認証局     | Amazon 認証局                   |
-| ルート認証局   | Starfield 認証局、Amazon 認証局 |
+<table>
+  <thead>
+    <tr>
+      <th>サーバー提供者</th>
+      <th>名前</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>中間認証局</td>
+      <td>Amazon 認証局</td>
+    </tr>
+    <tr>
+      <td>ルート認証局</td>
+      <td>Starfield 認証局、Amazon 認証局</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://docs.aws.amazon.com/acm/latest/userguide/acm-certificate.html
 > - [Repository \| Amazon Trust Services](https://www.amazontrust.com/repository/)
@@ -105,11 +119,36 @@ CM によって Amazon Route 53 へ自動作成される CNAME レコード値�
 
 SSL/TLS プロトコルを許可しており、対応できるバージョンが異なるため、ブラウザがそのバージョンの SSL/TLS プロトコルを使用できるかを認識しておく必要がある。
 
-| バージョン       | Policy-2016-08 | Policy-TLS-1-1 | Policy-TLS-1-2 |
-| ---------------- | :------------: | :------------: | :------------: |
-| Protocol-TLSv1   |       ⭕️       |       ✕        |       ✕        |
-| Protocol-TLSv1.1 |       ⭕️       |       ⭕️       |       ✕        |
-| Protocol-TLSv1.2 |       ⭕️       |       ⭕️       |       ⭕️       |
+<table>
+  <thead>
+    <tr>
+      <th>バージョン</th>
+      <th style="text-align:center">Policy-2016-08</th>
+      <th style="text-align:center">Policy-TLS-1-1</th>
+      <th style="text-align:center">Policy-TLS-1-2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Protocol-TLSv1</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">✕</td>
+      <td style="text-align:center">✕</td>
+    </tr>
+    <tr>
+      <td>Protocol-TLSv1.1</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">✕</td>
+    </tr>
+    <tr>
+      <td>Protocol-TLSv1.2</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">⭕️</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -119,9 +158,20 @@ DNS 検証または E メール検証によって、ドメインの所有者で�
 
 サーバー証明書は、PKI による公開鍵検証に使用される。
 
-| 証明書の種類         | 説明                                               |
-| -------------------- | -------------------------------------------------- |
-| ワイルドカード証明書 | 証明するドメイン名にワイルドカードを使用したもの。 |
+<table>
+  <thead>
+    <tr>
+      <th>証明書の種類</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ワイルドカード証明書</td>
+      <td>証明するドメイン名にワイルドカードを使用したもの。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -174,12 +224,32 @@ AWS ALB で SSL/TLS 終端とする場合、Amazon EC2/Amazon ECS/Amazon EKS に
 
 Amazon EC2/Amazon ECS/Amazon EKS で SSL/TLS 終端とする場合、Amazon EC2/Amazon ECS/Amazon EKS に AWS 以外で作成したサーバー証明書を配置する。
 
-| パターン<br>(Amazon Route 53 には必ず配置)                                                                                           | SSL/TLS 終端<br>(HTTPS プロトコルの最終地点) |
-| ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------- |
-| Amazon Route 53 ➡️ AWS ALB (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS                            | AWS ALB                                      |
-| Amazon Route 53 ➡️ AWS ALB (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS (AWS 以外のサーバー証明書) | Amazon EC2/Amazon ECS/Amazon EKS             |
-| Amazon Route 53 ➡️ AWS ALB (AWS Certificate Manager のサーバー証明書) ➡️ Lightsail (AWS 以外のサーバー証明書)                        | Lightsail                                    |
-| Amazon Route 53 ➡️ NLB (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS (AWS 以外のサーバー証明書)     | Amazon EC2/Amazon ECS/Amazon EKS             |
+<table>
+  <thead>
+    <tr>
+      <th>パターン<br>(Amazon Route 53 には必ず配置)</th>
+      <th>SSL/TLS 終端<br>(HTTPS プロトコルの最終地点)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon Route 53 ➡️ AWS ALB (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS</td>
+      <td>AWS ALB</td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ AWS ALB (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS (AWS 以外のサーバー証明書)</td>
+      <td>Amazon EC2/Amazon ECS/Amazon EKS</td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ AWS ALB (AWS Certificate Manager のサーバー証明書) ➡️ Lightsail (AWS 以外のサーバー証明書)</td>
+      <td>Lightsail</td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ NLB (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS (AWS 以外のサーバー証明書)</td>
+      <td>Amazon EC2/Amazon ECS/Amazon EKS</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [ALBとバックエンドEC2間をHTTPS通信させてみた \| DevelopersIO](https://dev.classmethod.jp/articles/alb-backend-https/#toc-1)
 
@@ -187,11 +257,28 @@ Amazon EC2/Amazon ECS/Amazon EKS で SSL/TLS 終端とする場合、Amazon EC2/
 
 AWS リソースには AWS Certificate Manager のサーバー証明書を紐づけられるが、Kubernetes リソースには AWS 以外のサーバー証明書 (Let’s Encrypt、Cert Manager、Istio) しか紐づけられない。
 
-| パターン<br>(Amazon Route 53 には必ず配置)                                                                                         | SSL/TLS 終端<br>(HTTPS プロトコルの最終地点) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| Amazon Route 53 ➡️ Load Balancer Controller (AWS Certificate Manager のサーバー証明書) ➡️︎ Service / Pod                            | AWS ALB                                      |
-| Amazon Route 53 ➡️ Load Balancer Controller (AWS Certificate Manager のサーバー証明書) ➡️ Service / Pod                            | Ingress Controller                           |
-| Amazon Route 53 ➡️ Load Balancer Controller (AWS Certificate Manager のサーバー証明書) ➡️ Service / Pod (AWS 以外のサーバー証明書) | Pod                                          |
+<table>
+  <thead>
+    <tr>
+      <th>パターン<br>(Amazon Route 53 には必ず配置)</th>
+      <th>SSL/TLS 終端<br>(HTTPS プロトコルの最終地点)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon Route 53 ➡️ Load Balancer Controller (AWS Certificate Manager のサーバー証明書) ➡️︎ Service / Pod</td>
+      <td>AWS ALB</td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ Load Balancer Controller (AWS Certificate Manager のサーバー証明書) ➡️ Service / Pod</td>
+      <td>Ingress Controller</td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ Load Balancer Controller (AWS Certificate Manager のサーバー証明書) ➡️ Service / Pod (AWS 以外のサーバー証明書)</td>
+      <td>Pod</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [TLS-enabled Kubernetes clusters with ACM Private CA and Amazon EKS \| AWS Security Blog](https://aws.amazon.com/blogs/security/tls-enabled-kubernetes-clusters-with-acm-private-ca-and-amazon-eks-2/)
 > - [Setting up end-to-end TLS encryption on Amazon EKS with the new AWS Load Balancer Controller \| Containers](https://aws.amazon.com/blogs/containers/setting-up-end-to-end-tls-encryption-on-amazon-eks-with-the-new-aws-load-balancer-controller/)
@@ -204,11 +291,28 @@ Amazon CloudFront から AWS ALB に HTTPS リクエストを送信する場合�
 
 Amazon CloudFront に送信された HTTPS リクエストを AWS ALB へルーティングするために、両方に紐付ける証明書で承認するドメインは一致させる必要がある。
 
-| パターン<br>(Amazon Route 53 には必ず配置)                                                                                                                                | SSL/TLS 終端<br>(HTTPS プロトコルの最終地点) |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| Amazon Route 53 ➡️ Amazon CloudFront (AWS Certificate Manager のサーバー証明書) ➡️ AWS ALB (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS | AWS ALB                                      |
-| Amazon Route 53 ➡️ Amazon CloudFront (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS                                                       | Amazon CloudFront                            |
-| Amazon Route 53 ➡️ Amazon CloudFront (AWS Certificate Manager のサーバー証明書) ➡️ Amazon S3                                                                              | Amazon CloudFront                            |
+<table>
+  <thead>
+    <tr>
+      <th>パターン<br>(Amazon Route 53 には必ず配置)</th>
+      <th>SSL/TLS 終端<br>(HTTPS プロトコルの最終地点)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon Route 53 ➡️ Amazon CloudFront (AWS Certificate Manager のサーバー証明書) ➡️ AWS ALB (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS</td>
+      <td>AWS ALB</td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ Amazon CloudFront (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS</td>
+      <td>Amazon CloudFront</td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ Amazon CloudFront (AWS Certificate Manager のサーバー証明書) ➡️ Amazon S3</td>
+      <td>Amazon CloudFront</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ Amazon Route 53 ➡️ Amazon EC2/Amazon ECS/Amazon EKS、AWS Lightsail の場合
 
@@ -216,12 +320,32 @@ Amazon Route 53 で SSL/TLS 終端とする場合、Amazon EC2/Amazon ECS/Amazon
 
 Amazon EC2/Amazon ECS/Amazon EKS で SSL/TLS 終端とする場合、Amazon EC2/Amazon ECS/Amazon EKS に AWS 以外で作成したサーバー証明書を配置する。
 
-| パターン<br>(Amazon Route 53 には必ず配置)                                     | SSL/TLS 終端<br>(HTTPS プロトコルの最終地点) |
-| ------------------------------------------------------------------------------ | -------------------------------------------- |
-|                                                                                |
-| Amazon Route 53 ➡️ Amazon EC2/Amazon ECS/Amazon EKS (AWS 以外のサーバー証明書) | Amazon EC2/Amazon ECS/Amazon EKS             |
-| Amazon Route 53 ➡️ Lightsail (AWS Certificate Manager のサーバー証明書)        | Lightsail                                    |
-| Amazon Route 53 ➡️ Lightsail (AWS Certificate Manager のサーバー証明書)        | Lightsail                                    |
+<table>
+  <thead>
+    <tr>
+      <th>パターン<br>(Amazon Route 53 には必ず配置)</th>
+      <th>SSL/TLS 終端<br>(HTTPS プロトコルの最終地点)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ Amazon EC2/Amazon ECS/Amazon EKS (AWS 以外のサーバー証明書)</td>
+      <td>Amazon EC2/Amazon ECS/Amazon EKS</td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ Lightsail (AWS Certificate Manager のサーバー証明書)</td>
+      <td>Lightsail</td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ Lightsail (AWS Certificate Manager のサーバー証明書)</td>
+      <td>Lightsail</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

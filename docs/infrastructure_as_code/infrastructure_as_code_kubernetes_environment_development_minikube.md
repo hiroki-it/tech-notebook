@@ -54,11 +54,28 @@ description: Minikube＠開発環境の知見を記録しています。
 
 #### ▼ ドライバーの種類
 
-| ホスト側の OS | ゲスト (Node) 側の OS             |
-| ------------- | --------------------------------- |
-| Linux         | VirtualBox、Docker、KVM2、...     |
-| MacOS         | VirtualBox、Docker、HyperKit、... |
-| Windows       | VirtualBox、Docker、Hyper-V、...  |
+<table>
+  <thead>
+    <tr>
+      <th>ホスト側の OS</th>
+      <th>ゲスト (Node) 側の OS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Linux</td>
+      <td>VirtualBox、Docker、KVM2、...</td>
+    </tr>
+    <tr>
+      <td>MacOS</td>
+      <td>VirtualBox、Docker、HyperKit、...</td>
+    </tr>
+    <tr>
+      <td>Windows</td>
+      <td>VirtualBox、Docker、Hyper-V、...</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Drivers \| minikube](https://minikube.sigs.k8s.io/docs/drivers/)
 
@@ -88,14 +105,54 @@ $ minikube start
 
 ホスト以下のディレクトリ配下に保管したファイルは、ゲスト仮想環境内の Node の決められたディレクトリにマウントされる。
 
-| ドライバー名  | ホスト側の OS | ホスト側のディレクトリ    | ゲスト仮想環境内の Node のディレクトリ |
-| ------------- | ------------- | ------------------------- | -------------------------------------- |
-| VirtualBox    | Linux         | `/home`                   | `/hosthome`                            |
-| VirtualBox    | macOS         | `/Users`                  | `/Users`                               |
-| VirtualBox    | Windows       | `C://Users`               | `/c/Users`                             |
-| VMware Fusion | macOS         | `/Users`                  | `/mnt/hgfs/Users`                      |
-| KVM           | Linux         | なし                      |                                        |
-| HyperKit      | Linux         | なし (NFS マウントを参照) |                                        |
+<table>
+  <thead>
+    <tr>
+      <th>ドライバー名</th>
+      <th>ホスト側の OS</th>
+      <th>ホスト側のディレクトリ</th>
+      <th>ゲスト仮想環境内の Node のディレクトリ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>VirtualBox</td>
+      <td>Linux</td>
+      <td><code>/home</code></td>
+      <td><code>/hosthome</code></td>
+    </tr>
+    <tr>
+      <td>VirtualBox</td>
+      <td>macOS</td>
+      <td><code>/Users</code></td>
+      <td><code>/Users</code></td>
+    </tr>
+    <tr>
+      <td>VirtualBox</td>
+      <td>Windows</td>
+      <td><code>C://Users</code></td>
+      <td><code>/c/Users</code></td>
+    </tr>
+    <tr>
+      <td>VMware Fusion</td>
+      <td>macOS</td>
+      <td><code>/Users</code></td>
+      <td><code>/mnt/hgfs/Users</code></td>
+    </tr>
+    <tr>
+      <td>KVM</td>
+      <td>Linux</td>
+      <td>なし</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>HyperKit</td>
+      <td>Linux</td>
+      <td>なし (NFS マウントを参照)</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Mounting filesystems \| minikube](https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts)
 

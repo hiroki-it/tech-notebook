@@ -58,16 +58,75 @@ data:
 
 クライアント証明書の場合、これを使用するクライアント側には、クライアント証明書と秘密鍵の両方を配置することになる。
 
-| 送信元                                                                                     | 宛先           | 種類               | Node 上の証明書のマウント先 (kubeadm の場合)                                                    | 説明                                                                                                                                                                                                                                                                                                                                                                         |
-| ------------------------------------------------------------------------------------------ | -------------- | ------------------ | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| kube-apiserver                                                                             | kubelet        | クライアント証明書 | `/etc/kubernetes/kubelet.conf ` ファイル (証明書の中身は `/var/lib/kubelet/pki/*.pem` ファイル) | kube-apiserver が、kubelet に HTTPS リクエストを送信するための証明書。                                                                                                                                                                                                                                                                                                       |
-| kube-apiserver                                                                             | etcd           | クライアント証明書 | 記入中...                                                                                       | kube-apiserver が、etcd に HTTPS リクエストを送信するための証明書。                                                                                                                                                                                                                                                                                                          |
-| kube-apiserver クライアント (`kubectl` クライアント、Kubernetes リソース) のローカルマシン | kube-apiserver | クライアント証明書 | `/etc/kubernetes/admin.conf` ファイル                                                           | クライアントが、kube-apiserver に HTTPS リクエストを送信するための証明書。証明書の値は、`kubeconfig` ファイルの `client-certificate-data` キーに設定されている。証明書に不一致があると、クライアントからのリクエストで、『`x509: certificate has expired or is not yet valid`』や『`error: You must be logged in to the server (Unauthorized)`』というエラーになってしまう。 |
-| kube-controller-manager                                                                    | kube-apiserver | クライアント証明書 | `/etc/kubernetes/controller-manager.conf ` ファイル                                             | kube-controller-manager が kube-apiserver に HTTPS リクエストを送信するための証明書。証明書とは別に、`kubeconfig` ファイルも必要になる。                                                                                                                                                                                                                                     |
-| kube-scheduler                                                                             | kube-apiserver | クライアント証明書 | `/etc/kubernetes/scheduler.conf ` ファイル                                                      | kube-scheduler が kube-apiserver に HTTPS リクエストを送信するための証明書。証明書とは別に、`kubeconfig` ファイルも必要になる。                                                                                                                                                                                                                                              |
-| その他のコンポーネント                                                                     | kube-apiserver | サーバー証明書     | 記入中...                                                                                       | kube-apiserver が各コンポーネントから HTTPS リクエストを受信するための証明書。                                                                                                                                                                                                                                                                                               |
-| kube-apiserver                                                                             | kubelet        | サーバー証明書     | 記入中                                                                                          | kubelet が、kube-apiserver からの HTTPS リクエストを受信するための証明書。                                                                                                                                                                                                                                                                                                   |
-| kube-apiserver                                                                             | front-proxy    | サーバー証明書     | 記入中...                                                                                       | front-proxy が、kube-apiserver からの HTTPS リクエストを受信するための証明書。                                                                                                                                                                                                                                                                                               |
+<table>
+  <thead>
+    <tr>
+      <th>送信元</th>
+      <th>宛先</th>
+      <th>種類</th>
+      <th>Node 上の証明書のマウント先 (kubeadm の場合)</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>kube-apiserver</td>
+      <td>kubelet</td>
+      <td>クライアント証明書</td>
+      <td><code>/etc/kubernetes/kubelet.conf </code> ファイル (証明書の中身は <code>/var/lib/kubelet/pki/*.pem</code> ファイル)</td>
+      <td>kube-apiserver が、kubelet に HTTPS リクエストを送信するための証明書。</td>
+    </tr>
+    <tr>
+      <td>kube-apiserver</td>
+      <td>etcd</td>
+      <td>クライアント証明書</td>
+      <td>記入中...</td>
+      <td>kube-apiserver が、etcd に HTTPS リクエストを送信するための証明書。</td>
+    </tr>
+    <tr>
+      <td>kube-apiserver クライアント (<code>kubectl</code> クライアント、Kubernetes リソース) のローカルマシン</td>
+      <td>kube-apiserver</td>
+      <td>クライアント証明書</td>
+      <td><code>/etc/kubernetes/admin.conf</code> ファイル</td>
+      <td>クライアントが、kube-apiserver に HTTPS リクエストを送信するための証明書。証明書の値は、<code>kubeconfig</code> ファイルの <code>client-certificate-data</code> キーに設定されている。証明書に不一致があると、クライアントからのリクエストで、『<code>x509: certificate has expired or is not yet valid</code>』や『<code>error: You must be logged in to the server (Unauthorized)</code>』というエラーになってしまう。</td>
+    </tr>
+    <tr>
+      <td>kube-controller-manager</td>
+      <td>kube-apiserver</td>
+      <td>クライアント証明書</td>
+      <td><code>/etc/kubernetes/controller-manager.conf </code> ファイル</td>
+      <td>kube-controller-manager が kube-apiserver に HTTPS リクエストを送信するための証明書。証明書とは別に、<code>kubeconfig</code> ファイルも必要になる。</td>
+    </tr>
+    <tr>
+      <td>kube-scheduler</td>
+      <td>kube-apiserver</td>
+      <td>クライアント証明書</td>
+      <td><code>/etc/kubernetes/scheduler.conf </code> ファイル</td>
+      <td>kube-scheduler が kube-apiserver に HTTPS リクエストを送信するための証明書。証明書とは別に、<code>kubeconfig</code> ファイルも必要になる。</td>
+    </tr>
+    <tr>
+      <td>その他のコンポーネント</td>
+      <td>kube-apiserver</td>
+      <td>サーバー証明書</td>
+      <td>記入中...</td>
+      <td>kube-apiserver が各コンポーネントから HTTPS リクエストを受信するための証明書。</td>
+    </tr>
+    <tr>
+      <td>kube-apiserver</td>
+      <td>kubelet</td>
+      <td>サーバー証明書</td>
+      <td>記入中</td>
+      <td>kubelet が、kube-apiserver からの HTTPS リクエストを受信するための証明書。</td>
+    </tr>
+    <tr>
+      <td>kube-apiserver</td>
+      <td>front-proxy</td>
+      <td>サーバー証明書</td>
+      <td>記入中...</td>
+      <td>front-proxy が、kube-apiserver からの HTTPS リクエストを受信するための証明書。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [PKI certificates and requirements \| Kubernetes](https://kubernetes.io/docs/setup/best-practices/certificates/#how-certificates-are-used-by-your-cluster)
 > - [【図解】クライアント証明書(https,eap-tls)の仕組み ~シーケンス,クライアント認証,メリット~ \| SEの道標](https://milestone-of-se.nesuke.com/sv-advanced/digicert/client-cert/)

@@ -209,13 +209,48 @@ location / {
 
 ルートの一致条件は、以下の通りである。
 
-| 優先順位 | prefix | ルートの一致条件                         | ルート例                                                                   |
-| :------: | :----: | ---------------------------------------- | -------------------------------------------------------------------------- |
-|    1     |  `=`   | 指定したルートに一致する場合。           | `https://example.com/`                                                     |
-|    2     |  `^~`  | 指定したルートで始まる場合。             | `https://example.com/images/foo.gif`                                       |
-|    3     |  `~`   | 正規表現 (大文字・小文字を区別する) 。   | `https://example.com/images/FOO.jpg`                                       |
-|    4     |  `~*`  | 正規表現 (大文字・小文字を区別しない) 。 | `https://example.com/images/foo.jpg`                                       |
-|    5     |  なし  | 指定したルートで始まる場合。             | ・`https://example.com/foo.html` <br>・`https://example.com/docs/foo.html` |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center">優先順位</th>
+      <th style="text-align:center">prefix</th>
+      <th>ルートの一致条件</th>
+      <th>ルート例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center"><code>=</code></td>
+      <td>指定したルートに一致する場合。</td>
+      <td><code>https://example.com/</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:center">2</td>
+      <td style="text-align:center"><code>^~</code></td>
+      <td>指定したルートで始まる場合。</td>
+      <td><code>https://example.com/images/foo.gif</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center"><code>~</code></td>
+      <td>正規表現 (大文字・小文字を区別する) 。</td>
+      <td><code>https://example.com/images/FOO.jpg</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:center">4</td>
+      <td style="text-align:center"><code>~*</code></td>
+      <td>正規表現 (大文字・小文字を区別しない) 。</td>
+      <td><code>https://example.com/images/foo.jpg</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:center">5</td>
+      <td style="text-align:center">なし</td>
+      <td>指定したルートで始まる場合。</td>
+      <td>・<code>https://example.com/foo.html</code> <br>・<code>https://example.com/docs/foo.html</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Module ngx_http_core_module](https://nginx.org/en/docs/http/ngx_http_core_module.html#location)
 

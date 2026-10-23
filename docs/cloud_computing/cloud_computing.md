@@ -97,11 +97,28 @@ OpenStack を使用して、オンプレミス環境に仮想クラウドを作�
 
 仮想サーバー型 IaaS とは異なり、ハードウェアのみで仮想サーバーは提供されないため、ハードウェア上にユーザーが仮想サーバー (例：VMware) を作成し、管理する必要がある。
 
-| サービス名   | リソース名                                |
-| ------------ | ----------------------------------------- |
-| AWS          | Amazon EC2 (ベアメタルインスタンスタイプ) |
-| Google Cloud | Bare Metal Solution                       |
-| Azure        |                                           |
+<table>
+  <thead>
+    <tr>
+      <th>サービス名</th>
+      <th>リソース名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AWS</td>
+      <td>Amazon EC2 (ベアメタルインスタンスタイプ)</td>
+    </tr>
+    <tr>
+      <td>Google Cloud</td>
+      <td>Bare Metal Solution</td>
+    </tr>
+    <tr>
+      <td>Azure</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ 仮想サーバー型 IaaS
 
@@ -109,11 +126,28 @@ OpenStack を使用して、オンプレミス環境に仮想クラウドを作�
 
 ベアメタル型 IaaS とは異なり、ハードウェアと仮想サーバーの両方が提供される。
 
-| サービス名   | リソース名            |
-| ------------ | --------------------- |
-| AWS          | Amazon EC2            |
-| Google Cloud | Google Compute Engine |
-| Azure        | Azure Virtual Machine |
+<table>
+  <thead>
+    <tr>
+      <th>サービス名</th>
+      <th>リソース名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AWS</td>
+      <td>Amazon EC2</td>
+    </tr>
+    <tr>
+      <td>Google Cloud</td>
+      <td>Google Compute Engine</td>
+    </tr>
+    <tr>
+      <td>Azure</td>
+      <td>Azure Virtual Machine</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ CaaS
 
@@ -121,11 +155,28 @@ OpenStack を使用して、オンプレミス環境に仮想クラウドを作�
 
 CaaS で構築したシステムは、FaaS と同じくサーバーの管理が全く不要であるため、『サーバーレスなシステム』ともいう。
 
-| サービス名   | リソース名                |
-| ------------ | ------------------------- |
-| AWS          | AWS Fargate               |
-| Google Cloud | Google Cloud Run          |
-| Azure        | Azure Container Instances |
+<table>
+  <thead>
+    <tr>
+      <th>サービス名</th>
+      <th>リソース名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AWS</td>
+      <td>AWS Fargate</td>
+    </tr>
+    <tr>
+      <td>Google Cloud</td>
+      <td>Google Cloud Run</td>
+    </tr>
+    <tr>
+      <td>Azure</td>
+      <td>Azure Container Instances</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Understanding AWS Fargate (Serverless Container or CaaS) - DEV Community](https://dev.to/aws-builders/understanding-aws-fargate-serverless-container-or-caas-4kd7)
 
@@ -133,11 +184,28 @@ CaaS で構築したシステムは、FaaS と同じくサーバーの管理が�
 
 リクエスト／レスポンス方式のアプリケーション、データを用意する。
 
-| サービス名   | リソース名                                                                      |
-| ------------ | ------------------------------------------------------------------------------- |
-| AWS          | AWS Elastic Beanstalk、Amazon RDS、Amazon CloudFront、AWS Dynamo DB、Amazon SES |
-| Google Cloud | Google App Engine、Google CLoud SQL                                             |
-| Azure        | Azure App Service                                                               |
+<table>
+  <thead>
+    <tr>
+      <th>サービス名</th>
+      <th>リソース名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AWS</td>
+      <td>AWS Elastic Beanstalk、Amazon RDS、Amazon CloudFront、AWS Dynamo DB、Amazon SES</td>
+    </tr>
+    <tr>
+      <td>Google Cloud</td>
+      <td>Google App Engine、Google CLoud SQL</td>
+    </tr>
+    <tr>
+      <td>Azure</td>
+      <td>Azure App Service</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ FaaS
 
@@ -145,21 +213,55 @@ CaaS で構築したシステムは、FaaS と同じくサーバーの管理が�
 
 FaaS で構築したシステムは、CaaS と同じくサーバーの管理が全く不要であるため、『サーバーレスなシステム』ともいう。
 
-| サービス名   | リソース名      |
-| ------------ | --------------- |
-| AWS          | AWS Lambda      |
-| Google Cloud | Google AppSheet |
-| Azure        | Azure Functions |
+<table>
+  <thead>
+    <tr>
+      <th>サービス名</th>
+      <th>リソース名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AWS</td>
+      <td>AWS Lambda</td>
+    </tr>
+    <tr>
+      <td>Google Cloud</td>
+      <td>Google AppSheet</td>
+    </tr>
+    <tr>
+      <td>Azure</td>
+      <td>Azure Functions</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [他のクラウドコンピューティングのモデルとは？ – Technical Notes](https://hantechnote.wordpress.com/2019/12/01/%E4%BB%96%E3%81%AE%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%AE%E3%83%A2%E3%83%87%E3%83%AB%E3%81%A8%E3%81%AF%EF%BC%9F/)
 
 #### ▼ NoCode
 
-| サービス名   | リソース名                 |
-| ------------ | -------------------------- |
-| AWS          | AWS Honeycode              |
-| Google Cloud | Google Cloud Run Functions |
-| Azure        | Azure Logic Apps           |
+<table>
+  <thead>
+    <tr>
+      <th>サービス名</th>
+      <th>リソース名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AWS</td>
+      <td>AWS Honeycode</td>
+    </tr>
+    <tr>
+      <td>Google Cloud</td>
+      <td>Google Cloud Run Functions</td>
+    </tr>
+    <tr>
+      <td>Azure</td>
+      <td>Azure Logic Apps</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [クラウドコンピューティングの進化と新たな責任共有モデル \| CSAジャパンブログページ](https://cloudsecurityalliance.jp/newblog/2021/02/09/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%AE%E9%80%B2%E5%8C%96%E3%81%A8%E6%96%B0%E3%81%9F%E3%81%AA%E8%B2%AC%E4%BB%BB/)
 
@@ -167,11 +269,28 @@ FaaS で構築したシステムは、CaaS と同じくサーバーの管理が�
 
 何も用意する必要はない。
 
-| サービス名   | リソース名                                                       |
-| ------------ | ---------------------------------------------------------------- |
-| AWS          | Amazon S3、Amazon CloudWatch                                     |
-| Google Cloud | Google Apps (例：Google Map、Google Cloud、Google Calender など) |
-| Azure        | -                                                                |
+<table>
+  <thead>
+    <tr>
+      <th>サービス名</th>
+      <th>リソース名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AWS</td>
+      <td>Amazon S3、Amazon CloudWatch</td>
+    </tr>
+    <tr>
+      <td>Google Cloud</td>
+      <td>Google Apps (例：Google Map、Google Cloud、Google Calender など)</td>
+    </tr>
+    <tr>
+      <td>Azure</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

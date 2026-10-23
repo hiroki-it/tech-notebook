@@ -42,11 +42,32 @@ Active Record パターンで実装されている。
 
 ### メリット/デメリット
 
-| 項目   | メリット                                                                                                                                                                                                                                                                            | デメリット                                                                                                                                                                                                                                                                                                     |
-| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 保守性 | テーブル間のリレーションが、そのままモデル間の依存関係になるため、モデル間の依存関係を考える必要がなく、開発が早い。そのため、ビジネスロジックが複雑でないアプリケーションの開発に適している。                                                                                      | ・反対に、モデル間の依存関係によってテーブル間のリレーションが決まる。そのため、複雑な業務ロジックでモデル間が複雑な依存関係を持つと、テーブル間のリレーションも複雑になっていってしまう。<br>・モデルに対応するテーブルから必要なカラムだけでなく、すべてのカラムを取得するため、アプリに余分な負荷がかかる。 |
-| 拡張性 | テーブル間のリレーションがモデル間の依存関係によって定義されており、JOIN 句を使用せずに、各テーブルから必要なレコードを読み込める。そのため、テーブルを増やすやすい。                                                                                                               |                                                                                                                                                                                                                                                                                                                |
-| 可読性 | ・モデルとそのプロパティがそのままテーブルになるため、モデルを作成するためにどのテーブルからレコードを読み込むのかを推測しやすい (User モデル ⇄ users テーブル) 。<br>・リレーションを理解する必要がなく、複数のテーブルに対して無秩序に SQL を発行するような設計実装になりにくい。 |                                                                                                                                                                                                                                                                                                                |
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>メリット</th>
+      <th>デメリット</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>保守性</td>
+      <td>テーブル間のリレーションが、そのままモデル間の依存関係になるため、モデル間の依存関係を考える必要がなく、開発が早い。そのため、ビジネスロジックが複雑でないアプリケーションの開発に適している。</td>
+      <td>・反対に、モデル間の依存関係によってテーブル間のリレーションが決まる。そのため、複雑な業務ロジックでモデル間が複雑な依存関係を持つと、テーブル間のリレーションも複雑になっていってしまう。<br>・モデルに対応するテーブルから必要なカラムだけでなく、すべてのカラムを取得するため、アプリに余分な負荷がかかる。</td>
+    </tr>
+    <tr>
+      <td>拡張性</td>
+      <td>テーブル間のリレーションがモデル間の依存関係によって定義されており、JOIN 句を使用せずに、各テーブルから必要なレコードを読み込める。そのため、テーブルを増やすやすい。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>可読性</td>
+      <td>・モデルとそのプロパティがそのままテーブルになるため、モデルを作成するためにどのテーブルからレコードを読み込むのかを推測しやすい (User モデル ⇄ users テーブル) 。<br>・リレーションを理解する必要がなく、複数のテーブルに対して無秩序に SQL を発行するような設計実装になりにくい。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -616,12 +637,37 @@ Eloquent モデルにはより上位の関数が定義されていないこと�
 
 どちらの方法でコールしても同じである。
 
-| クラス                | 名前空間                                          | `__call()` 関数を経由してコールできるクラス              |
-| :-------------------- | :------------------------------------------------ | :------------------------------------------------------- |
-| Query ビルダー        | `Illuminate\Database\Query\Builder`               | なし                                                     |
-| Eloquent ビルダー     | `Illuminate\Database\Eloquent\Builder`            | Query ビルダー、                                         |
-| Eloquent リレーション | `Illuminate\Database\Eloquent\Relations\Relation` | Query ビルダー、Eloquent ビルダー、                      |
-| Eloquent モデル       | `Illuminate\Database\Eloquent\Model`              | Query ビルダー、Eloquent ビルダー、Eloquent リレーション |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">クラス</th>
+      <th style="text-align:left">名前空間</th>
+      <th style="text-align:left"><code>__call()</code> 関数を経由してコールできるクラス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">Query ビルダー</td>
+      <td style="text-align:left"><code>Illuminate\Database\Query\Builder</code></td>
+      <td style="text-align:left">なし</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Eloquent ビルダー</td>
+      <td style="text-align:left"><code>Illuminate\Database\Eloquent\Builder</code></td>
+      <td style="text-align:left">Query ビルダー、</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Eloquent リレーション</td>
+      <td style="text-align:left"><code>Illuminate\Database\Eloquent\Relations\Relation</code></td>
+      <td style="text-align:left">Query ビルダー、Eloquent ビルダー、</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Eloquent モデル</td>
+      <td style="text-align:left"><code>Illuminate\Database\Eloquent\Model</code></td>
+      <td style="text-align:left">Query ビルダー、Eloquent ビルダー、Eloquent リレーション</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [PHP: オーバーロード - Manual](https://www.php.net/manual/ja/language.oop5.overloading.php#object.call)
 > - [【Laravel】 第1回 Eloquent ソースコードリーディング - モデルの取得 #PHP - Qiita](https://qiita.com/mpyw/items/7c7e8dc665584122a275)
@@ -632,12 +678,42 @@ Eloquent ビルダーが持つ crud を実行する関数の返り値型と返�
 
 その他の関数については、以下のリンクを参考にせよ。
 
-| CRUD 関数の種類 |         返却値型         |         返却値         | 返却値の説明         |
-| :-------------: | :----------------------: | :--------------------: | :------------------- |
-|     create      |     collection/$this     | `{id:1, name: テスト}` | 作成したオブジェクト |
-|      find       | collection/Builder/Model | `{id:1, name:テスト}`  | 取得したオブジェクト |
-|     update      |          mixed           |   `0`、`1`、`2`、`3`   | 変更したレコード数   |
-|     delete      |          mixed           |   `0`、`1`、`2`、`3`   | 変更したレコード数   |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center">CRUD 関数の種類</th>
+      <th style="text-align:center">返却値型</th>
+      <th style="text-align:center">返却値</th>
+      <th style="text-align:left">返却値の説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center">create</td>
+      <td style="text-align:center">collection/$this</td>
+      <td style="text-align:center"><code>{id:1, name: テスト}</code></td>
+      <td style="text-align:left">作成したオブジェクト</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">find</td>
+      <td style="text-align:center">collection/Builder/Model</td>
+      <td style="text-align:center"><code>{id:1, name:テスト}</code></td>
+      <td style="text-align:left">取得したオブジェクト</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">update</td>
+      <td style="text-align:center">mixed</td>
+      <td style="text-align:center"><code>0</code>、<code>1</code>、<code>2</code>、<code>3</code></td>
+      <td style="text-align:left">変更したレコード数</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">delete</td>
+      <td style="text-align:center">mixed</td>
+      <td style="text-align:center"><code>0</code>、<code>1</code>、<code>2</code>、<code>3</code></td>
+      <td style="text-align:left">変更したレコード数</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Builder.html
 
@@ -647,11 +723,36 @@ Eloquent モデルが持つ crud を実行する関数の返り値型と返却�
 
 その他の関数については、以下のリンクを参考にせよ。
 
-| CRUD 関数の種類 | 返却値型 |     返却値      | 返却値の説明      |
-| :-------------: | :------: | :-------------: | :---------------- |
-|     update      |   bool   | `true`、`false` | 結果の boolean 値 |
-|      save       |   bool   | `true`、`false` | 結果の boolean 値 |
-|     delete      |   bool   | `true`、`false` | 結果の boolean 値 |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:center">CRUD 関数の種類</th>
+      <th style="text-align:center">返却値型</th>
+      <th style="text-align:center">返却値</th>
+      <th style="text-align:left">返却値の説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center">update</td>
+      <td style="text-align:center">bool</td>
+      <td style="text-align:center"><code>true</code>、<code>false</code></td>
+      <td style="text-align:left">結果の boolean 値</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">save</td>
+      <td style="text-align:center">bool</td>
+      <td style="text-align:center"><code>true</code>、<code>false</code></td>
+      <td style="text-align:left">結果の boolean 値</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">delete</td>
+      <td style="text-align:center">bool</td>
+      <td style="text-align:center"><code>true</code>、<code>false</code></td>
+      <td style="text-align:left">結果の boolean 値</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html
 

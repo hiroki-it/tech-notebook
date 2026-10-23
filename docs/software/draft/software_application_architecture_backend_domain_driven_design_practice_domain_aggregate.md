@@ -288,10 +288,24 @@ function createReview(bookId: string, rating: number, comment?: string): Promise
 
 ここでは、『集約は小さくする』『集約間は識別子で参照する』『デメテルの法則に従う』『集約の外部では結果整合性を用いる』という 4 つの原則を守って、集約を実装する。
 
-| 集約        | 属性                                                       |
-| ----------- | ---------------------------------------------------------- |
-| Book 集約   | ・BookId、Title、Author、Price という属性を持つ            |
-| Review 集約 | ・ReviewId、BookId、Name、Rating、Comment という属性を持つ |
+<table>
+  <thead>
+    <tr>
+      <th>集約</th>
+      <th>属性</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Book 集約</td>
+      <td>・BookId、Title、Author、Price という属性を持つ</td>
+    </tr>
+    <tr>
+      <td>Review 集約</td>
+      <td>・ReviewId、BookId、Name、Rating、Comment という属性を持つ</td>
+    </tr>
+  </tbody>
+</table>
 
 ### 11-3-2 Review 集約の実装
 

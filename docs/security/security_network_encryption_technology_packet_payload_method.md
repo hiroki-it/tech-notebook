@@ -55,14 +55,47 @@ description: 暗号方式＠アプリケーションデータの暗号化技術�
 
 ### 暗号方式の種類一覧
 
-|                    |        共通鍵暗号方式         |     公開鍵暗号方式     |
-| ------------------ | :---------------------------: | :--------------------: |
-| 暗号アルゴリズム   |    共通鍵暗号アルゴリズム     | 公開鍵暗号アルゴリズム |
-| アルゴリズムの種類 |      RC4、DES、3DES、AES      |      RSA、ElGamal      |
-| 暗号化に要する時間 |           より短い            |        より長い        |
-| 作成される暗号鍵   |            共通鍵             |     秘密鍵、公開鍵     |
-| 鍵の配布方法       | メール (情報漏洩に気を付ける) |      メール、PKI       |
-| 鍵の再利用         |      再利用は不要である       |    再利用してもよい    |
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th style="text-align:center">共通鍵暗号方式</th>
+      <th style="text-align:center">公開鍵暗号方式</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>暗号アルゴリズム</td>
+      <td style="text-align:center">共通鍵暗号アルゴリズム</td>
+      <td style="text-align:center">公開鍵暗号アルゴリズム</td>
+    </tr>
+    <tr>
+      <td>アルゴリズムの種類</td>
+      <td style="text-align:center">RC4、DES、3DES、AES</td>
+      <td style="text-align:center">RSA、ElGamal</td>
+    </tr>
+    <tr>
+      <td>暗号化に要する時間</td>
+      <td style="text-align:center">より短い</td>
+      <td style="text-align:center">より長い</td>
+    </tr>
+    <tr>
+      <td>作成される暗号鍵</td>
+      <td style="text-align:center">共通鍵</td>
+      <td style="text-align:center">秘密鍵、公開鍵</td>
+    </tr>
+    <tr>
+      <td>鍵の配布方法</td>
+      <td style="text-align:center">メール (情報漏洩に気を付ける)</td>
+      <td style="text-align:center">メール、PKI</td>
+    </tr>
+    <tr>
+      <td>鍵の再利用</td>
+      <td style="text-align:center">再利用は不要である</td>
+      <td style="text-align:center">再利用してもよい</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

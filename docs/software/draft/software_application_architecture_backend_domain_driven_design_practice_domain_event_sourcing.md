@@ -40,11 +40,32 @@ description: 21章＠ドメイン駆動設計実践入門の知見を記録し�
 
 イベントソーシングでは、イベントを真のデータとして扱う。
 
-| 観点               | ステートベース               | イベントベース                   |
-| ------------------ | ---------------------------- | -------------------------------- |
-| **保存対象**       | 現在の状態                   | 状態の変更を表すイベント         |
-| **更新時の扱い**   | 前の状態は上書きされる       | イベントが追記される             |
-| **現在状態の取得** | 保存済みの状態をそのまま読む | イベントを順番に適用して導出する |
+<table>
+  <thead>
+    <tr>
+      <th>観点</th>
+      <th>ステートベース</th>
+      <th>イベントベース</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>保存対象</strong></td>
+      <td>現在の状態</td>
+      <td>状態の変更を表すイベント</td>
+    </tr>
+    <tr>
+      <td><strong>更新時の扱い</strong></td>
+      <td>前の状態は上書きされる</td>
+      <td>イベントが追記される</td>
+    </tr>
+    <tr>
+      <td><strong>現在状態の取得</strong></td>
+      <td>保存済みの状態をそのまま読む</td>
+      <td>イベントを順番に適用して導出する</td>
+    </tr>
+  </tbody>
+</table>
 
 ```typescript
 // 解説を補足するために長谷川で追加
@@ -119,18 +140,72 @@ const reviewEvents: ReviewEvent[] = [
 
 ステートソーシングでは、レビューの現在状態だけを保存する。
 
-| レビューID | 書籍 ID | 投稿者名   | 評価 | コメント                                                                                                                               | 抽出された RecommendedBook             |
-| ---------- | ------- | ---------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| `REV001`   | `B001`  | `山田太郎` | `5`  | `実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします` | `["HTML/CSS 入門", "JavaScript 基礎"]` |
+<table>
+  <thead>
+    <tr>
+      <th>レビューID</th>
+      <th>書籍 ID</th>
+      <th>投稿者名</th>
+      <th>評価</th>
+      <th>コメント</th>
+      <th>抽出された RecommendedBook</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>REV001</code></td>
+      <td><code>B001</code></td>
+      <td><code>山田太郎</code></td>
+      <td><code>5</code></td>
+      <td><code>実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします</code></td>
+      <td><code>[&quot;HTML/CSS 入門&quot;, &quot;JavaScript 基礎&quot;]</code></td>
+    </tr>
+  </tbody>
+</table>
 
 一方、イベントソーシングではレビューの変化そのものを記録する。
 
-| イベント ID | レビューID | ドメインイベント種別  | イベント内容                                                                                                                                     | 発生日時     |
-| ----------- | ---------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------ |
-| `E001`      | `REV001`   | `ReviewCreated`       | `評価:4, コメント: 実践的な内容で良かったです`                                                                                                   | `2023-01-01` |
-| `E002`      | `REV001`   | `ReviewCommentEdited` | `コメント: 実践的な内容で良かったです。ただし初心者には少し難しいかも`                                                                           | `2023-01-03` |
-| `E003`      | `REV001`   | `ReviewCommentEdited` | `コメント: 実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします` | `2023-01-05` |
-| `E004`      | `REV001`   | `ReviewRatingChanged` | `評価:5`                                                                                                                                         | `2023-01-07` |
+<table>
+  <thead>
+    <tr>
+      <th>イベント ID</th>
+      <th>レビューID</th>
+      <th>ドメインイベント種別</th>
+      <th>イベント内容</th>
+      <th>発生日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>E001</code></td>
+      <td><code>REV001</code></td>
+      <td><code>ReviewCreated</code></td>
+      <td><code>評価:4, コメント: 実践的な内容で良かったです</code></td>
+      <td><code>2023-01-01</code></td>
+    </tr>
+    <tr>
+      <td><code>E002</code></td>
+      <td><code>REV001</code></td>
+      <td><code>ReviewCommentEdited</code></td>
+      <td><code>コメント: 実践的な内容で良かったです。ただし初心者には少し難しいかも</code></td>
+      <td><code>2023-01-03</code></td>
+    </tr>
+    <tr>
+      <td><code>E003</code></td>
+      <td><code>REV001</code></td>
+      <td><code>ReviewCommentEdited</code></td>
+      <td><code>コメント: 実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします</code></td>
+      <td><code>2023-01-05</code></td>
+    </tr>
+    <tr>
+      <td><code>E004</code></td>
+      <td><code>REV001</code></td>
+      <td><code>ReviewRatingChanged</code></td>
+      <td><code>評価:5</code></td>
+      <td><code>2023-01-07</code></td>
+    </tr>
+  </tbody>
+</table>
 
 イベント履歴があると、各時点の状態を取得できる。
 
@@ -235,11 +310,32 @@ async function findTop3RecommendedBooks(bookId: BookId): Promise<string[]> {
 
 イベントソーシングは、新しい概念（イベント設計、状態再構築、イベントスキーマ管理など）の理解が必要であり、学習コストが高い。
 
-| 観点               | ステートソーシング | イベントソーシング   |
-| ------------------ | ------------------ | -------------------- |
-| **設計対象**       | 状態設計           | イベント設計         |
-| **状態再構築方式** | 状態読取           | 状態再構築           |
-| **スキーマ管理**   | 状態スキーマ管理   | イベントスキーマ管理 |
+<table>
+  <thead>
+    <tr>
+      <th>観点</th>
+      <th>ステートソーシング</th>
+      <th>イベントソーシング</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>設計対象</strong></td>
+      <td>状態設計</td>
+      <td>イベント設計</td>
+    </tr>
+    <tr>
+      <td><strong>状態再構築方式</strong></td>
+      <td>状態読取</td>
+      <td>状態再構築</td>
+    </tr>
+    <tr>
+      <td><strong>スキーマ管理</strong></td>
+      <td>状態スキーマ管理</td>
+      <td>イベントスキーマ管理</td>
+    </tr>
+  </tbody>
+</table>
 
 ### 21-4-4 適用判断の重要性
 
@@ -349,12 +445,52 @@ async function calculateTrustScoreAt(
 
 レビュー編集や削除も含めて、起きた事実をすべて記録するため、誰がいつ何を変更したかの履歴が残る。
 
-| EventId  | ReviewId | EventType             | OperatorId | OccurredAt            | Payload                                                                     |
-| -------- | -------- | --------------------- | ---------- | --------------------- | --------------------------------------------------------------------------- |
-| `EVT001` | `REV001` | `ReviewCreated`       | `USER001`  | `2023-01-01 10:00:00` | `{"rating": 4, "comment": "実践的な内容で良かったです"}`                    |
-| `EVT002` | `REV001` | `ReviewCommentEdited` | `USER001`  | `2023-01-03 12:00:00` | `{"comment": "実践的な内容で良かったです。ただし初心者には少し難しいかも"}` |
-| `EVT003` | `REV001` | `ReviewRatingChanged` | `USER001`  | `2023-01-05 09:30:00` | `{"rating": 5}`                                                             |
-| `EVT004` | `REV001` | `ReviewDeleted`       | `ADMIN001` | `2023-01-07 15:00:00` | `{"reason": "policy violation"}`                                            |
+<table>
+  <thead>
+    <tr>
+      <th>EventId</th>
+      <th>ReviewId</th>
+      <th>EventType</th>
+      <th>OperatorId</th>
+      <th>OccurredAt</th>
+      <th>Payload</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>EVT001</code></td>
+      <td><code>REV001</code></td>
+      <td><code>ReviewCreated</code></td>
+      <td><code>USER001</code></td>
+      <td><code>2023-01-01 10:00:00</code></td>
+      <td><code>{&quot;rating&quot;: 4, &quot;comment&quot;: &quot;実践的な内容で良かったです&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>EVT002</code></td>
+      <td><code>REV001</code></td>
+      <td><code>ReviewCommentEdited</code></td>
+      <td><code>USER001</code></td>
+      <td><code>2023-01-03 12:00:00</code></td>
+      <td><code>{&quot;comment&quot;: &quot;実践的な内容で良かったです。ただし初心者には少し難しいかも&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>EVT003</code></td>
+      <td><code>REV001</code></td>
+      <td><code>ReviewRatingChanged</code></td>
+      <td><code>USER001</code></td>
+      <td><code>2023-01-05 09:30:00</code></td>
+      <td><code>{&quot;rating&quot;: 5}</code></td>
+    </tr>
+    <tr>
+      <td><code>EVT004</code></td>
+      <td><code>REV001</code></td>
+      <td><code>ReviewDeleted</code></td>
+      <td><code>ADMIN001</code></td>
+      <td><code>2023-01-07 15:00:00</code></td>
+      <td><code>{&quot;reason&quot;: &quot;policy violation&quot;}</code></td>
+    </tr>
+  </tbody>
+</table>
 
 ## 21-6 イベントソーシング適用の戦略的判断
 
@@ -364,11 +500,44 @@ async function calculateTrustScoreAt(
 
 例えば、次のような変更ログテーブル設計ではイベントソーシングを使用していない。
 
-| log_id   | review_id | action   | operator_id | occurred_at           | changed_fields                                                              |
-| -------- | --------- | -------- | ----------- | --------------------- | --------------------------------------------------------------------------- |
-| `LOG001` | `REV001`  | `CREATE` | `USER001`   | `2023-01-01 10:00:00` | `{"rating": 4, "comment": "実践的な内容で良かったです"}`                    |
-| `LOG002` | `REV001`  | `UPDATE` | `USER001`   | `2023-01-03 12:00:00` | `{"comment": "実践的な内容で良かったです。ただし初心者には少し難しいかも"}` |
-| `LOG003` | `REV001`  | `UPDATE` | `USER001`   | `2023-01-05 09:30:00` | `{"rating": 5}`                                                             |
+<table>
+  <thead>
+    <tr>
+      <th>log_id</th>
+      <th>review_id</th>
+      <th>action</th>
+      <th>operator_id</th>
+      <th>occurred_at</th>
+      <th>changed_fields</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>LOG001</code></td>
+      <td><code>REV001</code></td>
+      <td><code>CREATE</code></td>
+      <td><code>USER001</code></td>
+      <td><code>2023-01-01 10:00:00</code></td>
+      <td><code>{&quot;rating&quot;: 4, &quot;comment&quot;: &quot;実践的な内容で良かったです&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>LOG002</code></td>
+      <td><code>REV001</code></td>
+      <td><code>UPDATE</code></td>
+      <td><code>USER001</code></td>
+      <td><code>2023-01-03 12:00:00</code></td>
+      <td><code>{&quot;comment&quot;: &quot;実践的な内容で良かったです。ただし初心者には少し難しいかも&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>LOG003</code></td>
+      <td><code>REV001</code></td>
+      <td><code>UPDATE</code></td>
+      <td><code>USER001</code></td>
+      <td><code>2023-01-05 09:30:00</code></td>
+      <td><code>{&quot;rating&quot;: 5}</code></td>
+    </tr>
+  </tbody>
+</table>
 
 ### 21-6-2 段階的な意思決定プロセス
 
@@ -418,12 +587,32 @@ const aggregatePolicies: AggregatePersistencePolicy[] = [
 
 ### 21-7-2 スナップショットの作成タイミング
 
-| 戦略               | 内容                                                 |
-| ------------------ | ---------------------------------------------------- |
-| イベント数ベース   | 一定数（例: 100 件）のイベントが蓄積されるたびに作成 |
-| 時間ベース         | 定期的（例: 1 日 1 回の深夜）に作成                  |
-| 特定イベント発生時 | 重要な状態変更（例: 注文確定時）の際に作成           |
-| ハイブリッド戦略   | 上記を組み合わせて使用                               |
+<table>
+  <thead>
+    <tr>
+      <th>戦略</th>
+      <th>内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>イベント数ベース</td>
+      <td>一定数（例: 100 件）のイベントが蓄積されるたびに作成</td>
+    </tr>
+    <tr>
+      <td>時間ベース</td>
+      <td>定期的（例: 1 日 1 回の深夜）に作成</td>
+    </tr>
+    <tr>
+      <td>特定イベント発生時</td>
+      <td>重要な状態変更（例: 注文確定時）の際に作成</td>
+    </tr>
+    <tr>
+      <td>ハイブリッド戦略</td>
+      <td>上記を組み合わせて使用</td>
+    </tr>
+  </tbody>
+</table>
 
 ### 21-7-3 イベント数ベースのスナップショット作成例
 

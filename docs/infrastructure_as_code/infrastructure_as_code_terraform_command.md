@@ -404,12 +404,32 @@ $ terraform graph -draw-cycles | dot -Tpng > graph.png
 
 #### ▼ 図形の見方
 
-| 図形   | 種類                                                     |
-| ------ | -------------------------------------------------------- |
-| 楕円   | ルートモジュール                                         |
-| 菱形   | `provider` ブロック                                      |
-| 四角   | `resource` ブロック、`data` ブロック                     |
-| ノート | `variable` ブロック、`output` ブロック、`local` ブロック |
+<table>
+  <thead>
+    <tr>
+      <th>図形</th>
+      <th>種類</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>楕円</td>
+      <td>ルートモジュール</td>
+    </tr>
+    <tr>
+      <td>菱形</td>
+      <td><code>provider</code> ブロック</td>
+    </tr>
+    <tr>
+      <td>四角</td>
+      <td><code>resource</code> ブロック、<code>data</code> ブロック</td>
+    </tr>
+    <tr>
+      <td>ノート</td>
+      <td><code>variable</code> ブロック、<code>output</code> ブロック、<code>local</code> ブロック</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Terraformのgraphコマンドで、構成を可視化してみる - CLOVER🍀](https://kazuhira-r.hatenablog.com/entry/2020/05/02/225355)
 
@@ -671,13 +691,36 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 
 ただし、差分として認識されるものの `moved` ブロックを使用すれば、差分を回避できる。
 
-| 変更内容                                                                                   | される/されない |
-| ------------------------------------------------------------------------------------------ | --------------- |
-| `resource` ブロック名の変更                                                                | される          |
-| `module` ブロック名の変更                                                                  | される          |
-| ファイルやディレクトリを指定するパスの変更                                                 | されない        |
-| `resource` ブロックにハードコーディングされた値を環境変数に変更 (`.tfvars` ファイルに移行) | されない        |
-| `variables` ブロック名の変更                                                               | されない        |
+<table>
+  <thead>
+    <tr>
+      <th>変更内容</th>
+      <th>される/されない</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>resource</code> ブロック名の変更</td>
+      <td>される</td>
+    </tr>
+    <tr>
+      <td><code>module</code> ブロック名の変更</td>
+      <td>される</td>
+    </tr>
+    <tr>
+      <td>ファイルやディレクトリを指定するパスの変更</td>
+      <td>されない</td>
+    </tr>
+    <tr>
+      <td><code>resource</code> ブロックにハードコーディングされた値を環境変数に変更 (<code>.tfvars</code> ファイルに移行)</td>
+      <td>されない</td>
+    </tr>
+    <tr>
+      <td><code>variables</code> ブロック名の変更</td>
+      <td>されない</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://moneyforward.com/engineers_blog/2021/12/27/refactoring-terraform/
 

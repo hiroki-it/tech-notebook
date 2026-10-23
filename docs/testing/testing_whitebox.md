@@ -62,22 +62,102 @@ description: ホワイトボックステストの知見を記録しています�
 
 静的型付け言語では、アプリケーションの実行前（コンパイル）でこれを実施してくれる。
 
-| 言語         | 型付け | 実行前の型検証 | 実行時の型検証 |
-| ------------ | :----: | :------------: | :------------: |
-| C            |   静   |       ✅       |       ❌       |
-| C++          |   静   |       ✅       |       ❌       |
-| Go           |   静   |       ✅       |       ❌       |
-| Rust         |   静   |       ✅       |       ❌       |
-| Java         |   静   |       ✅       |       ❌       |
-| C# (.NET)    |   静   |       ✅       |       ❌       |
-| Swift        |   静   |       ✅       |       ❌       |
-| Kotlin (JVM) |   静   |       ✅       |       ❌       |
-| Scala        |   静   |       ✅       |       ❌       |
-| Haskell      |   静   |       ✅       |       ❌       |
-| TypeScript   |   静   |       ✅       |       ❌       |
-| Python       |   動   |       ❌       |       ✅       |
-| Ruby         |   動   |       ❌       |       ✅       |
-| JavaScript   |   動   |       ❌       |       ✅       |
+<table>
+  <thead>
+    <tr>
+      <th>言語</th>
+      <th style="text-align:center">型付け</th>
+      <th style="text-align:center">実行前の型検証</th>
+      <th style="text-align:center">実行時の型検証</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C</td>
+      <td style="text-align:center">静</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">❌</td>
+    </tr>
+    <tr>
+      <td>C++</td>
+      <td style="text-align:center">静</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">❌</td>
+    </tr>
+    <tr>
+      <td>Go</td>
+      <td style="text-align:center">静</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">❌</td>
+    </tr>
+    <tr>
+      <td>Rust</td>
+      <td style="text-align:center">静</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">❌</td>
+    </tr>
+    <tr>
+      <td>Java</td>
+      <td style="text-align:center">静</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">❌</td>
+    </tr>
+    <tr>
+      <td>C# (.NET)</td>
+      <td style="text-align:center">静</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">❌</td>
+    </tr>
+    <tr>
+      <td>Swift</td>
+      <td style="text-align:center">静</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">❌</td>
+    </tr>
+    <tr>
+      <td>Kotlin (JVM)</td>
+      <td style="text-align:center">静</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">❌</td>
+    </tr>
+    <tr>
+      <td>Scala</td>
+      <td style="text-align:center">静</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">❌</td>
+    </tr>
+    <tr>
+      <td>Haskell</td>
+      <td style="text-align:center">静</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">❌</td>
+    </tr>
+    <tr>
+      <td>TypeScript</td>
+      <td style="text-align:center">静</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">❌</td>
+    </tr>
+    <tr>
+      <td>Python</td>
+      <td style="text-align:center">動</td>
+      <td style="text-align:center">❌</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>Ruby</td>
+      <td style="text-align:center">動</td>
+      <td style="text-align:center">❌</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>JavaScript</td>
+      <td style="text-align:center">動</td>
+      <td style="text-align:center">❌</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ ベストプラクティス違反テスト
 
@@ -225,10 +305,27 @@ Roy Osherove 氏の命名規則については、以下のリンクを参考に�
 
 PHPUnit におけるモックについては、以下のリンクを参考にせよ。
 
-| ツールの種類 | モックの関数の返り値                                                                           | 補足                                                                                                                                                               |
-| ------------ | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| PHPUnit      | 関数は、`null` を返却する。                                                                    | 注意点として、`final`、`private` な関数はモック化されず、実体をそのまま引き継ぐ。また、`static` な関数は `BadMethodCallException` をスローするモックに置き換わる。 |
-| JUnit        | 関数は、元のオブジェクトの関数の返り値の型を基に、初期値を返す<br>(例：boolean 型なら `false`) |                                                                                                                                                                    |
+<table>
+  <thead>
+    <tr>
+      <th>ツールの種類</th>
+      <th>モックの関数の返り値</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PHPUnit</td>
+      <td>関数は、<code>null</code> を返却する。</td>
+      <td>注意点として、<code>final</code>、<code>private</code> な関数はモック化されず、実体をそのまま引き継ぐ。また、<code>static</code> な関数は <code>BadMethodCallException</code> をスローするモックに置き換わる。</td>
+    </tr>
+    <tr>
+      <td>JUnit</td>
+      <td>関数は、元のオブジェクトの関数の返り値の型を基に、初期値を返す<br>(例：boolean 型なら <code>false</code>)</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-mock-objects
 
@@ -365,9 +462,20 @@ services:
 
 A と B は、『1』または『0』になり得るとする。
 
-| 条件         | 処理実行の有無                |
-| ------------ | ----------------------------- |
-| A = 1、B = 1 | `return X` が実行されること。 |
+<table>
+  <thead>
+    <tr>
+      <th>条件</th>
+      <th>処理実行の有無</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A = 1、B = 1</td>
+      <td><code>return X</code> が実行されること。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.amazon.co.jp/dp/4297124513
 
@@ -381,10 +489,24 @@ A と B は、『1』または『0』になり得るとする。
 
 A と B は、『1』または『0』になり得るとする。
 
-| 条件         | 処理実行の有無                  |
-| ------------ | ------------------------------- |
-| A = 1、B = 1 | `return X` が実行されること。   |
-| A = 1、B = 0 | `return X` が実行されないこと。 |
+<table>
+  <thead>
+    <tr>
+      <th>条件</th>
+      <th>処理実行の有無</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A = 1、B = 1</td>
+      <td><code>return X</code> が実行されること。</td>
+    </tr>
+    <tr>
+      <td>A = 1、B = 0</td>
+      <td><code>return X</code> が実行されないこと。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.amazon.co.jp/dp/4297124513
 
@@ -398,17 +520,45 @@ A と B は、『1』または『0』になり得るとする。
 
 A と B は、『1』または『0』になり得るとする。
 
-| 条件         | 処理実行の有無                  |
-| ------------ | ------------------------------- |
-| A = 1、B = 0 | `return X` が実行されないこと。 |
-| A = 0、B = 1 | `return X` が実行されないこと。 |
+<table>
+  <thead>
+    <tr>
+      <th>条件</th>
+      <th>処理実行の有無</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A = 1、B = 0</td>
+      <td><code>return X</code> が実行されないこと。</td>
+    </tr>
+    <tr>
+      <td>A = 0、B = 1</td>
+      <td><code>return X</code> が実行されないこと。</td>
+    </tr>
+  </tbody>
+</table>
 
 または、次の組み合わせでもよい。
 
-| 条件         | 処理実行の有無                  |
-| ------------ | ------------------------------- |
-| A = 1、B = 1 | `return X` が実行されること。   |
-| A = 0、B = 0 | `return X` が実行されないこと。 |
+<table>
+  <thead>
+    <tr>
+      <th>条件</th>
+      <th>処理実行の有無</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A = 1、B = 1</td>
+      <td><code>return X</code> が実行されること。</td>
+    </tr>
+    <tr>
+      <td>A = 0、B = 0</td>
+      <td><code>return X</code> が実行されないこと。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.amazon.co.jp/dp/4297124513
 
@@ -424,12 +574,32 @@ A と B は、『1』または『0』になり得るとする。
 
 A と B は、『1』または『0』になり得るとする。
 
-| 条件         | 処理実行の有無                  |
-| ------------ | ------------------------------- |
-| A = 1、B = 1 | `return X` が実行されること。   |
-| A = 1、B = 0 | `return X` が実行されないこと。 |
-| A = 0、B = 1 | `return X` が実行されないこと。 |
-| A = 0、B = 0 | `return X` が実行されないこと。 |
+<table>
+  <thead>
+    <tr>
+      <th>条件</th>
+      <th>処理実行の有無</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A = 1、B = 1</td>
+      <td><code>return X</code> が実行されること。</td>
+    </tr>
+    <tr>
+      <td>A = 1、B = 0</td>
+      <td><code>return X</code> が実行されないこと。</td>
+    </tr>
+    <tr>
+      <td>A = 0、B = 1</td>
+      <td><code>return X</code> が実行されないこと。</td>
+    </tr>
+    <tr>
+      <td>A = 0、B = 0</td>
+      <td><code>return X</code> が実行されないこと。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://www.amazon.co.jp/dp/4297124513
 
@@ -449,12 +619,37 @@ A と B は、『1』または『0』になり得るとする。
 
 ### 循環複雑度の種類
 
-| 循環的複雑度 | 複雑さの状態                 | バグ混入率 |
-| ------------ | ---------------------------- | ---------- |
-| `10` 以下    | 非常によい                   | `25`%      |
-| `30` 以上    | 構造的なリスクあり           | `40`%      |
-| `50` 以上    | テストできない               | `70`%      |
-| `75` 以上    | 変更によって誤修正が生じる。 | `98`%      |
+<table>
+  <thead>
+    <tr>
+      <th>循環的複雑度</th>
+      <th>複雑さの状態</th>
+      <th>バグ混入率</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>10</code> 以下</td>
+      <td>非常によい</td>
+      <td><code>25</code>%</td>
+    </tr>
+    <tr>
+      <td><code>30</code> 以上</td>
+      <td>構造的なリスクあり</td>
+      <td><code>40</code>%</td>
+    </tr>
+    <tr>
+      <td><code>50</code> 以上</td>
+      <td>テストできない</td>
+      <td><code>70</code>%</td>
+    </tr>
+    <tr>
+      <td><code>75</code> 以上</td>
+      <td>変更によって誤修正が生じる。</td>
+      <td><code>98</code>%</td>
+    </tr>
+  </tbody>
+</table>
 
 > - https://jp.mathworks.com/discovery/cyclomatic-complexity.html
 > - [循環的複雑度を活かしたバグ潜在リスクの軽減 - 現場のためのソフトウェア開発プロセス - たかのり日記](https://szk-takanori.hatenablog.com/entry/20111219/p1)

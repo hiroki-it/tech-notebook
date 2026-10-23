@@ -106,13 +106,42 @@ Envoy は、マイクロサービスへのアクセスログ (インバウンド
 
 リクエストヘッダーから値を出力する。
 
-| リクエストヘッダー   | 出力方法                             | 例                                                        |
-| -------------------- | ------------------------------------ | --------------------------------------------------------- |
-| traceparent          | `%REQ(TRACEPARENT)%`                 | `00-d34ea2aa01d34d0fda79c6d09b097a83-fd0eae41e95a263c-01` |
-| HTTP メソッド        | `%REQ(:METHOD)%`                     | `GET`                                                     |
-| パス                 | `%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%` | `/foo/1`                                                  |
-| ユーザーエージェント | `%REQ(USER-AGENT)%`                  | `curl/8.7.1`                                              |
-| X-Forwarded-for      | `%REQ(X-FORWARDED-FOR)%`             | 記入中...                                                 |
+<table>
+  <thead>
+    <tr>
+      <th>リクエストヘッダー</th>
+      <th>出力方法</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>traceparent</td>
+      <td><code>%REQ(TRACEPARENT)%</code></td>
+      <td><code>00-d34ea2aa01d34d0fda79c6d09b097a83-fd0eae41e95a263c-01</code></td>
+    </tr>
+    <tr>
+      <td>HTTP メソッド</td>
+      <td><code>%REQ(:METHOD)%</code></td>
+      <td><code>GET</code></td>
+    </tr>
+    <tr>
+      <td>パス</td>
+      <td><code>%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%</code></td>
+      <td><code>/foo/1</code></td>
+    </tr>
+    <tr>
+      <td>ユーザーエージェント</td>
+      <td><code>%REQ(USER-AGENT)%</code></td>
+      <td><code>curl/8.7.1</code></td>
+    </tr>
+    <tr>
+      <td>X-Forwarded-for</td>
+      <td><code>%REQ(X-FORWARDED-FOR)%</code></td>
+      <td>記入中...</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Access logging — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules)
 
@@ -150,23 +179,93 @@ Cluster 外からのリクエスト/Pod 間通信時のレスポンスの補足�
 
 宛先が原因のメッセージは以下の通りである。
 
-| 名前  | 正式名称                          | ステータスコード | 説明                                                                         |
-| ----- | --------------------------------- | :--------------: | ---------------------------------------------------------------------------- |
-| `NC`  | `NO_CLUSTER_FOUND`                |       なし       | クラスターの設定が見つからず、Envoy は宛先に接続できなかった。               |
-| `UC`  | `UPSTREAM_CONNECTION_TERMINATION` |      `503`       | 遭遇率が一番高い。Envoy は何らかの理由で宛先に接続できなかった。             |
-| `UF`  | `UPSTREAM_CONNECTION_FAILURE`     |      `503`       | Envoy は通信障害で宛先に接続できなかった。                                   |
-| `UH`  | `NO_HEALTHY_UPSTREAM`             |      `503`       | Envoy は宛先異常で接続できなかった。                                         |
-| `UT`  | `UPSTREAM_REQUEST_TIMEOUT`        |      `503`       | Envoy はタイムアウトで宛先に接続できなかった。                               |
-| `UO`  | `UPSTREAM_OVERFLOW`               |      `503`       | サーキットブレイカーで、Envoy は宛先に接続できなかった。                     |
-| `URX` | `UPSTREAM_RETRY_LIMIT_EXCEEDED`   |       なし       | 宛先に対するリトライの上限数の超過で、Envoy は宛先に接続拒否されてしまった。 |
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>正式名称</th>
+      <th style="text-align:center">ステータスコード</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>NC</code></td>
+      <td><code>NO_CLUSTER_FOUND</code></td>
+      <td style="text-align:center">なし</td>
+      <td>クラスターの設定が見つからず、Envoy は宛先に接続できなかった。</td>
+    </tr>
+    <tr>
+      <td><code>UC</code></td>
+      <td><code>UPSTREAM_CONNECTION_TERMINATION</code></td>
+      <td style="text-align:center"><code>503</code></td>
+      <td>遭遇率が一番高い。Envoy は何らかの理由で宛先に接続できなかった。</td>
+    </tr>
+    <tr>
+      <td><code>UF</code></td>
+      <td><code>UPSTREAM_CONNECTION_FAILURE</code></td>
+      <td style="text-align:center"><code>503</code></td>
+      <td>Envoy は通信障害で宛先に接続できなかった。</td>
+    </tr>
+    <tr>
+      <td><code>UH</code></td>
+      <td><code>NO_HEALTHY_UPSTREAM</code></td>
+      <td style="text-align:center"><code>503</code></td>
+      <td>Envoy は宛先異常で接続できなかった。</td>
+    </tr>
+    <tr>
+      <td><code>UT</code></td>
+      <td><code>UPSTREAM_REQUEST_TIMEOUT</code></td>
+      <td style="text-align:center"><code>503</code></td>
+      <td>Envoy はタイムアウトで宛先に接続できなかった。</td>
+    </tr>
+    <tr>
+      <td><code>UO</code></td>
+      <td><code>UPSTREAM_OVERFLOW</code></td>
+      <td style="text-align:center"><code>503</code></td>
+      <td>サーキットブレイカーで、Envoy は宛先に接続できなかった。</td>
+    </tr>
+    <tr>
+      <td><code>URX</code></td>
+      <td><code>UPSTREAM_RETRY_LIMIT_EXCEEDED</code></td>
+      <td style="text-align:center">なし</td>
+      <td>宛先に対するリトライの上限数の超過で、Envoy は宛先に接続拒否されてしまった。</td>
+    </tr>
+  </tbody>
+</table>
 
 送信元が原因のメッセージは以下の通りである。
 
-| 名前  | 正式名称                            | ステータスコード | 説明                                                                             |
-| ----- | ----------------------------------- | :--------------: | -------------------------------------------------------------------------------- |
-| `DC`  | `DOWNSTREAM_CONNECTION_TERMINATION` |       なし       | Envoy の宛先へのリクエストが中断され、Envoy はレスポンスを受信できなかった。     |
-| `DPE` | `DOWNSTREAM_PROTOCOL_ERROR`         |       なし       | Envoy は HTTP リクエストのエラーで送信元に接続できなかった。                     |
-| `NR`  | `NO_ROUTE_FOUND`                    |      `404`       | ルートやフィルターチェーンの設定が見つからず、Envoy は送信元に接続できなかった。 |
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>正式名称</th>
+      <th style="text-align:center">ステータスコード</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>DC</code></td>
+      <td><code>DOWNSTREAM_CONNECTION_TERMINATION</code></td>
+      <td style="text-align:center">なし</td>
+      <td>Envoy の宛先へのリクエストが中断され、Envoy はレスポンスを受信できなかった。</td>
+    </tr>
+    <tr>
+      <td><code>DPE</code></td>
+      <td><code>DOWNSTREAM_PROTOCOL_ERROR</code></td>
+      <td style="text-align:center">なし</td>
+      <td>Envoy は HTTP リクエストのエラーで送信元に接続できなかった。</td>
+    </tr>
+    <tr>
+      <td><code>NR</code></td>
+      <td><code>NO_ROUTE_FOUND</code></td>
+      <td style="text-align:center"><code>404</code></td>
+      <td>ルートやフィルターチェーンの設定が見つからず、Envoy は送信元に接続できなかった。</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [proxy/extensions/common/util.cc at 1.14.3 · istio/proxy · GitHub](https://github.com/istio/proxy/blob/1.14.3/extensions/common/util.cc#L29-L56)
 > - [Access logging — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage)

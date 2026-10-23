@@ -142,10 +142,24 @@ Pod 内のコンテナから宛先の Pod にリクエストを送信する。
 
 このとき、Pod をスケジューリングさせている Node が同じ/異なるかのいずれの場合で、経由するネットワークが異なる。
 
-| 条件              | 経由するネットワーク                                            |
-| ----------------- | --------------------------------------------------------------- |
-| Node が異なる場合 | Node ネットワーク + Cluster ネットワーク + Service ネットワーク |
-| Node が同じ場合   | Cluster ネットワーク + Service ネットワーク                     |
+<table>
+  <thead>
+    <tr>
+      <th>条件</th>
+      <th>経由するネットワーク</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Node が異なる場合</td>
+      <td>Node ネットワーク + Cluster ネットワーク + Service ネットワーク</td>
+    </tr>
+    <tr>
+      <td>Node が同じ場合</td>
+      <td>Cluster ネットワーク + Service ネットワーク</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Cluster Networking \| Kubernetes](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
 

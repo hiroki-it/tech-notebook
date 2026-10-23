@@ -35,11 +35,28 @@ description: フロントエンドアーキテクチャ＠フロントエンド�
 
 Nuxt.js と Atomic Design のレイヤーは以下のように対応する。
 
-| Nuxt.js のディレクトリ | Atomic Design のレイヤー    |
-| ---------------------- | --------------------------- |
-| components             | Atoms、Molecules、Organisms |
-| pages                  | Pages                       |
-| layouts                | Templates                   |
+<table>
+  <thead>
+    <tr>
+      <th>Nuxt.js のディレクトリ</th>
+      <th>Atomic Design のレイヤー</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>components</td>
+      <td>Atoms、Molecules、Organisms</td>
+    </tr>
+    <tr>
+      <td>pages</td>
+      <td>Pages</td>
+    </tr>
+    <tr>
+      <td>layouts</td>
+      <td>Templates</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Nuxt.jsにおけるAtomic Designを考える - テコテック開発者ブログ](https://tec.tecotec.co.jp/entry/2020/03/27/090000)
 

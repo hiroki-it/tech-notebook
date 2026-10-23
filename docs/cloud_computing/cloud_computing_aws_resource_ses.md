@@ -29,21 +29,68 @@ description: Amazon SES＠AWSリソースの知見を記録しています。
 
 ![Amazon SES とは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon SES とは.png)
 
-| 設定項目           | 説明                                                                                                              | 補足                                                                                                                                           |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| Domain             | Amazon SES のドメイン名を設定する。                                                                               | 設定したドメイン名には、『`10 inbound-smtp.us-east-1.amazonaws.com`』という MX レコードタイプの値が紐付く。                                    |
-| Email Addresses    | 宛先として認証するメールアドレスを設定する。設定すると AWS からメールが届くため、指定されたリンクをクリックする。 | Sandbox モードのときだけ動作する。                                                                                                             |
-| Sending Statistics | Amazon SES で収集したデータをメトリクスで確認できる。                                                             | `Request Increased Sending Limits` のリンクにて、Sandbox モードの解除を申請できる。                                                            |
-| SMTP Settings      | SMTP-AUTH の接続情報を確認できる。                                                                                | アプリケーションの `25` 番ポートは送信制限があるため、`465` 番ポートを使用する。これに合わせて、Amazon SES も受信で `465` 番ポートを使用する。 |
-| Rule Sets          | メールの受信したトリガーとして実行するアクションを設定できる。                                                    |                                                                                                                                                |
-| IP Address Filters |                                                                                                                   |                                                                                                                                                |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Domain</td>
+      <td>Amazon SES のドメイン名を設定する。</td>
+      <td>設定したドメイン名には、『<code>10 inbound-smtp.us-east-1.amazonaws.com</code>』という MX レコードタイプの値が紐付く。</td>
+    </tr>
+    <tr>
+      <td>Email Addresses</td>
+      <td>宛先として認証するメールアドレスを設定する。設定すると AWS からメールが届くため、指定されたリンクをクリックする。</td>
+      <td>Sandbox モードのときだけ動作する。</td>
+    </tr>
+    <tr>
+      <td>Sending Statistics</td>
+      <td>Amazon SES で収集したデータをメトリクスで確認できる。</td>
+      <td><code>Request Increased Sending Limits</code> のリンクにて、Sandbox モードの解除を申請できる。</td>
+    </tr>
+    <tr>
+      <td>SMTP Settings</td>
+      <td>SMTP-AUTH の接続情報を確認できる。</td>
+      <td>アプリケーションの <code>25</code> 番ポートは送信制限があるため、<code>465</code> 番ポートを使用する。これに合わせて、Amazon SES も受信で <code>465</code> 番ポートを使用する。</td>
+    </tr>
+    <tr>
+      <td>Rule Sets</td>
+      <td>メールの受信したトリガーとして実行するアクションを設定できる。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>IP Address Filters</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 ### Rule Sets
 
-| 設定項目 | 説明                                                                   |
-| -------- | ---------------------------------------------------------------------- |
-| Recipiet | 受信したメールアドレスで、何の宛先のときにこれを許可するかを設定する。 |
-| Actions  | 受信を許可した後に、これをトリガーとして実行するアクションを設定する。 |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Recipiet</td>
+      <td>受信したメールアドレスで、何の宛先のときにこれを許可するかを設定する。</td>
+    </tr>
+    <tr>
+      <td>Actions</td>
+      <td>受信を許可した後に、これをトリガーとして実行するアクションを設定する。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -162,10 +209,24 @@ Sandbox モードでは以下の制限がかかっており。
 
 サポートセンターに解除申請が必要である。
 
-| 制限     | 説明                                                  |
-| -------- | ----------------------------------------------------- |
-| 送信制限 | Amazon SES で認証したメールアドレスのみに送信できる。 |
-| 受信制限 | 1 日に 200 メールのみ受信できる。                     |
+<table>
+  <thead>
+    <tr>
+      <th>制限</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>送信制限</td>
+      <td>Amazon SES で認証したメールアドレスのみに送信できる。</td>
+    </tr>
+    <tr>
+      <td>受信制限</td>
+      <td>1 日に 200 メールのみ受信できる。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

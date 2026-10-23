@@ -313,13 +313,36 @@ AWS リソースに関する認可のスコープを定義する。
 
 以下に主要なアクションを示す。
 
-| アクション名 | 説明                   |
-| ------------ | ---------------------- |
-| Create       | リソースを作成する。   |
-| Describe     | リソースを表示する。   |
-| Delete       | リソースを削除する。   |
-| Get          | リソースを取得する。   |
-| Put          | リソースを上書きする。 |
+<table>
+  <thead>
+    <tr>
+      <th>アクション名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Create</td>
+      <td>リソースを作成する。</td>
+    </tr>
+    <tr>
+      <td>Describe</td>
+      <td>リソースを表示する。</td>
+    </tr>
+    <tr>
+      <td>Delete</td>
+      <td>リソースを削除する。</td>
+    </tr>
+    <tr>
+      <td>Get</td>
+      <td>リソースを取得する。</td>
+    </tr>
+    <tr>
+      <td>Put</td>
+      <td>リソースを上書きする。</td>
+    </tr>
+  </tbody>
+</table>
 
 #### ▼ Resource
 
@@ -491,10 +514,31 @@ AWS IAM グループに対して、AWS IAM ロールを紐付ける。
 
 ### グループ一覧
 
-| グループ名      | 説明                                                                                        | 補足 |
-| --------------- | ------------------------------------------------------------------------------------------- | ---- |
-| Administrator   | すべてのリソースに認可スコープがある。                                                      |      |
-| PowerUserAccess | AWS IAM のみが参照の認可スコープであり、それ以外の AWS リソースに変更の認可スコープがある。 |      |
-| ViewOnlyAccess  | 参照のみの認可スコープがある。                                                              |      |
+<table>
+  <thead>
+    <tr>
+      <th>グループ名</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Administrator</td>
+      <td>すべてのリソースに認可スコープがある。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>PowerUserAccess</td>
+      <td>AWS IAM のみが参照の認可スコープであり、それ以外の AWS リソースに変更の認可スコープがある。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ViewOnlyAccess</td>
+      <td>参照のみの認可スコープがある。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>

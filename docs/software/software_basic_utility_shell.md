@@ -159,13 +159,42 @@ echo $0 # foo.sh
 
 ファイルが存在しなければ、自身で作成する。
 
-| bash の場合                | zsh の場合             | 読み込まれるタイミング                                                               |
-| -------------------------- | ---------------------- | ------------------------------------------------------------------------------------ |
-| なし                       | `~/.zshenv` ファイル   | ログインシェル、インタラクティブシェルの起動時                                       |
-| `~/.bash_profile` ファイル | `~/.zprofile` ファイル | ログインシェルの起動時                                                               |
-| `~/.bashrc` ファイル       | `~/.zshrc` ファイル    | ログインシェルの起動時。ただし、zsh ではインタラクティブシェルの起動時も含む。       |
-| `~/.bash_login` ファイル   | `~/.zlogin` ファイル   | ログインシェルの起動時。profile ファイルと機能が重複するため、個人的には使用しない。 |
-| `~/.bash_logout` ファイル  | `~/.zlogout` ファイル  | `exit` コマンド時                                                                    |
+<table>
+  <thead>
+    <tr>
+      <th>bash の場合</th>
+      <th>zsh の場合</th>
+      <th>読み込まれるタイミング</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>なし</td>
+      <td><code>~/.zshenv</code> ファイル</td>
+      <td>ログインシェル、インタラクティブシェルの起動時</td>
+    </tr>
+    <tr>
+      <td><code>~/.bash_profile</code> ファイル</td>
+      <td><code>~/.zprofile</code> ファイル</td>
+      <td>ログインシェルの起動時</td>
+    </tr>
+    <tr>
+      <td><code>~/.bashrc</code> ファイル</td>
+      <td><code>~/.zshrc</code> ファイル</td>
+      <td>ログインシェルの起動時。ただし、zsh ではインタラクティブシェルの起動時も含む。</td>
+    </tr>
+    <tr>
+      <td><code>~/.bash_login</code> ファイル</td>
+      <td><code>~/.zlogin</code> ファイル</td>
+      <td>ログインシェルの起動時。profile ファイルと機能が重複するため、個人的には使用しない。</td>
+    </tr>
+    <tr>
+      <td><code>~/.bash_logout</code> ファイル</td>
+      <td><code>~/.zlogout</code> ファイル</td>
+      <td><code>exit</code> コマンド時</td>
+    </tr>
+  </tbody>
+</table>
 
 > - [ログインシェルとインタラクティブシェルの違い](https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html)
 > - [Catalina から zsh になって bash_profile が利用できなくなった](https://leico.github.io/TechnicalNote/Mac/catalina-zsh)
@@ -286,17 +315,72 @@ $ apk add bash
 
 ### 終了ステータスの種類
 
-| 値        | 意味                                     | エラーの原因                                                                                  | 発生例                                        |
-| --------- | ---------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| `0`       | 正常な完了                               | -                                                                                             | -                                             |
-| `1`       | 一般的なエラー                           | 構文エラーではないが、ロジックが誤っている可能性がある。                                      | `$ let "var 1 = 1 / 0"`                       |
-| `2`       | シェルビルトインな機能の誤用             | シェルの構文や権限が誤っている可能性がある。                                                  | `$ empty_function(){}`                        |
-| `126`     | 呼び出したコマンドが実行できなかったとき | 権限やその他の理由でコマンドを実行できてない可能性がある。                                    | `$ /dev/null`                                 |
-| `127`     | コマンドが見つからないとき               | バイナリファイルの `$PATH` の未設定や、コマンドのタイポの可能性がある。                       | `$ illegal_command`                           |
-| `128`     | `exit` コマンドに不正な引数を渡したとき  | `exit` コマンドに 0〜255 以外の整数を渡している可能性がある。                                 | `$ exit 3.14159`                              |
-| `128 + n` | シグナル `n` で致命的なエラー            | kill がシグナル `n` で実行された可能性がある。                                                | `$ kill -9 $PPID`<br>(`128 + 9 = 137` で終了) |
-| `128 + 2` | スクリプトが `Ctrl+C` で終了             | `Ctrl+C` はシグナル `2` で終了するため、`Ctrl+C` が実行された可能性がある。 (`128 + 2 = 130`) | Ctrl+C                                        |
-| `255`     | 範囲外の終了ステータス                   | `exit` コマンドに 0〜255 以外の整数を渡している可能性がある。                                 | `$ exit -1`                                   |
+<table>
+  <thead>
+    <tr>
+      <th>値</th>
+      <th>意味</th>
+      <th>エラーの原因</th>
+      <th>発生例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>0</code></td>
+      <td>正常な完了</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><code>1</code></td>
+      <td>一般的なエラー</td>
+      <td>構文エラーではないが、ロジックが誤っている可能性がある。</td>
+      <td><code>$ let &quot;var 1 = 1 / 0&quot;</code></td>
+    </tr>
+    <tr>
+      <td><code>2</code></td>
+      <td>シェルビルトインな機能の誤用</td>
+      <td>シェルの構文や権限が誤っている可能性がある。</td>
+      <td><code>$ empty_function(){}</code></td>
+    </tr>
+    <tr>
+      <td><code>126</code></td>
+      <td>呼び出したコマンドが実行できなかったとき</td>
+      <td>権限やその他の理由でコマンドを実行できてない可能性がある。</td>
+      <td><code>$ /dev/null</code></td>
+    </tr>
+    <tr>
+      <td><code>127</code></td>
+      <td>コマンドが見つからないとき</td>
+      <td>バイナリファイルの <code>$PATH</code> の未設定や、コマンドのタイポの可能性がある。</td>
+      <td><code>$ illegal_command</code></td>
+    </tr>
+    <tr>
+      <td><code>128</code></td>
+      <td><code>exit</code> コマンドに不正な引数を渡したとき</td>
+      <td><code>exit</code> コマンドに 0〜255 以外の整数を渡している可能性がある。</td>
+      <td><code>$ exit 3.14159</code></td>
+    </tr>
+    <tr>
+      <td><code>128 + n</code></td>
+      <td>シグナル <code>n</code> で致命的なエラー</td>
+      <td>kill がシグナル <code>n</code> で実行された可能性がある。</td>
+      <td><code>$ kill -9 $PPID</code><br>(<code>128 + 9 = 137</code> で終了)</td>
+    </tr>
+    <tr>
+      <td><code>128 + 2</code></td>
+      <td>スクリプトが <code>Ctrl+C</code> で終了</td>
+      <td><code>Ctrl+C</code> はシグナル <code>2</code> で終了するため、<code>Ctrl+C</code> が実行された可能性がある。 (<code>128 + 2 = 130</code>)</td>
+      <td>Ctrl+C</td>
+    </tr>
+    <tr>
+      <td><code>255</code></td>
+      <td>範囲外の終了ステータス</td>
+      <td><code>exit</code> コマンドに 0〜255 以外の整数を渡している可能性がある。</td>
+      <td><code>$ exit -1</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [Exit Codes With Special Meanings](https://tldp.org/LDP/abs/html/exitcodes.html)
 > - [コマンドラインツールを書くなら知っておきたい Bash の 予約済み Exit Code #Zsh - Qiita](https://qiita.com/Linda_pp/items/1104d2d9a263b60e104b)

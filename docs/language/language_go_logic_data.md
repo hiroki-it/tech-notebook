@@ -27,11 +27,32 @@ description: データ＠Goの知見を記録しています。
 
 ### プリミティブ型に所属するデータ型
 
-| データ型   | 表記           | ゼロ値        |
-| ---------- | -------------- | ------------- |
-| 数値       | `int`、`float` | `0`           |
-| 文字列     | `string`       | `""` (空文字) |
-| boolean 値 | `boolean`      | `false`       |
+<table>
+  <thead>
+    <tr>
+      <th>データ型</th>
+      <th>表記</th>
+      <th>ゼロ値</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>数値</td>
+      <td><code>int</code>、<code>float</code></td>
+      <td><code>0</code></td>
+    </tr>
+    <tr>
+      <td>文字列</td>
+      <td><code>string</code></td>
+      <td><code>&quot;&quot;</code> (空文字)</td>
+    </tr>
+    <tr>
+      <td>boolean 値</td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -39,21 +60,63 @@ description: データ＠Goの知見を記録しています。
 
 構造体の場合、フィールドのゼロ値はフィールドのデータ型による。
 
-| データ型 | 表記     | ゼロ値 |
-| -------- | -------- | ------ |
-| 構造体   | `struct` |        |
-| 配列     | `[i]`    |        |
+<table>
+  <thead>
+    <tr>
+      <th>データ型</th>
+      <th>表記</th>
+      <th>ゼロ値</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>構造体</td>
+      <td><code>struct</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>配列</td>
+      <td><code>[i]</code></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
 ### 参照型に所属するデータ型
 
-| データ型 | 表記 | ゼロ値                    |
-| -------- | ---- | ------------------------- |
-| ポインタ | `*`  | `nil`                     |
-| slice    | `[]` | `nil` (要素数、サイズ：0) |
-| map      |      | `nil`                     |
-| チャネル |      | `nil`                     |
+<table>
+  <thead>
+    <tr>
+      <th>データ型</th>
+      <th>表記</th>
+      <th>ゼロ値</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ポインタ</td>
+      <td><code>*</code></td>
+      <td><code>nil</code></td>
+    </tr>
+    <tr>
+      <td>slice</td>
+      <td><code>[]</code></td>
+      <td><code>nil</code> (要素数、サイズ：0)</td>
+    </tr>
+    <tr>
+      <td>map</td>
+      <td></td>
+      <td><code>nil</code></td>
+    </tr>
+    <tr>
+      <td>チャネル</td>
+      <td></td>
+      <td><code>nil</code></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -109,22 +172,92 @@ type MyAppWriter io.Writer
 
 ### 各データ型のサイズ
 
-| データ型            | 型名       | サイズ(bit)  | 説明                         |
-| ------------------- | ---------- | ------------ | ---------------------------- |
-| int (符号付き整数)  | int8       | `8`          |                              |
-|                     | int16      | `16`         |                              |
-|                     | int32      | `32`         |                              |
-|                     | int64      | `64`         |                              |
-|                     | int        | `32` or `64` | 実装環境によって異なる。     |
-| uint (符号なし整数) | uint8      | `8`          |                              |
-|                     | uint16     | `16`         |                              |
-|                     | unit32     | `32`         |                              |
-|                     | uint64     | `64`         |                              |
-|                     | uint       | `32` or `64` | 実装環境によって異なる。     |
-| float (浮動小数点)  | float32    | `32`         |                              |
-|                     | float64    | `64`         |                              |
-| complex (複素数)    | complex64  | `64`         | 実部：float32、虚部：float32 |
-|                     | complex128 | `128`        | 実部：float64、虚部：float64 |
+<table>
+  <thead>
+    <tr>
+      <th>データ型</th>
+      <th>型名</th>
+      <th>サイズ(bit)</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="5">int (符号付き整数)</td>
+      <td>int8</td>
+      <td><code>8</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>int16</td>
+      <td><code>16</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>int32</td>
+      <td><code>32</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>int64</td>
+      <td><code>64</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>int</td>
+      <td><code>32</code> or <code>64</code></td>
+      <td>実装環境によって異なる。</td>
+    </tr>
+    <tr>
+      <td rowspan="5">uint (符号なし整数)</td>
+      <td>uint8</td>
+      <td><code>8</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>uint16</td>
+      <td><code>16</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>unit32</td>
+      <td><code>32</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>uint64</td>
+      <td><code>64</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>uint</td>
+      <td><code>32</code> or <code>64</code></td>
+      <td>実装環境によって異なる。</td>
+    </tr>
+    <tr>
+      <td rowspan="2">float (浮動小数点)</td>
+      <td>float32</td>
+      <td><code>32</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>float64</td>
+      <td><code>64</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td rowspan="2">complex (複素数)</td>
+      <td>complex64</td>
+      <td><code>64</code></td>
+      <td>実部：float32、虚部：float32</td>
+    </tr>
+    <tr>
+      <td>complex128</td>
+      <td><code>128</code></td>
+      <td>実部：float64、虚部：float64</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
@@ -763,11 +896,32 @@ func main() {
 
 ### ポインタ型で扱うべきデータ型
 
-| データ型                | ポインタ型で扱うべきか | 説明                                                                                                                                           |
-| ----------------------- | :--------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| 構造体                  |           ⭕️           | ポインタ型として扱うと、構造体が持つメモリアドレスを処理するのみでよくなる。ポインタ型としない場合と比べて、少ないメモリ消費で構造体を扱える。 |
-| slice、map、chan、 func |           △            | データサイズの大きさによる。                                                                                                                   |
-| プリミティブ型          |           ×️            | ポインタ型で扱うメリットはない。                                                                                                               |
+<table>
+  <thead>
+    <tr>
+      <th>データ型</th>
+      <th style="text-align:center">ポインタ型で扱うべきか</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>構造体</td>
+      <td style="text-align:center">⭕️</td>
+      <td>ポインタ型として扱うと、構造体が持つメモリアドレスを処理するのみでよくなる。ポインタ型としない場合と比べて、少ないメモリ消費で構造体を扱える。</td>
+    </tr>
+    <tr>
+      <td>slice、map、chan、 func</td>
+      <td style="text-align:center">△</td>
+      <td>データサイズの大きさによる。</td>
+    </tr>
+    <tr>
+      <td>プリミティブ型</td>
+      <td style="text-align:center">×️</td>
+      <td>ポインタ型で扱うメリットはない。</td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

@@ -75,14 +75,40 @@ spec:
 
 ブルー/グリーンデプロイメントを使用して、新しい Pod をデプロイする。
 
-| 設定項目                | 説明                                                                                                                                                     |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `activeService`         | 現環境へのルーティングに使用する Service を設定する。                                                                                                    |
-| `autoPromotionEnabled`  | 現環境から新環境への自動切り替えを有効化するか否かを設定する。もし無効化した場合、`autoPromotionSeconds` の秒数だけ切り替えを待機する。                  |
-| `autoPromotionSeconds`  | 現環境から新環境への切り替えを手動で実行する場合、切り替えを待機する最大秒数を設定する。最大秒数が経過すると、自動的に切り替わってしまうことに注意する。 |
-| `previewReplicaCount`   | 新環境の Pod 数を設定する。                                                                                                                              |
-| `previewService`        | 新環境へのルーティングに使用する Service を設定する。                                                                                                    |
-| `scaleDownDelaySeconds` |                                                                                                                                                          |
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>activeService</code></td>
+      <td>現環境へのルーティングに使用する Service を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>autoPromotionEnabled</code></td>
+      <td>現環境から新環境への自動切り替えを有効化するか否かを設定する。もし無効化した場合、<code>autoPromotionSeconds</code> の秒数だけ切り替えを待機する。</td>
+    </tr>
+    <tr>
+      <td><code>autoPromotionSeconds</code></td>
+      <td>現環境から新環境への切り替えを手動で実行する場合、切り替えを待機する最大秒数を設定する。最大秒数が経過すると、自動的に切り替わってしまうことに注意する。</td>
+    </tr>
+    <tr>
+      <td><code>previewReplicaCount</code></td>
+      <td>新環境の Pod 数を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>previewService</code></td>
+      <td>新環境へのルーティングに使用する Service を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>scaleDownDelaySeconds</code></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -113,9 +139,20 @@ spec:
 
 カナリアリリースを使用して、新しい Pod をデプロイする。
 
-| キー    | 説明                                                                                                                                                        |
-| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `steps` | カナリアリリースの手順を設定する。<br>・`setWeight`：新しい Pod への重み付けを設定する。<br>・`pause`：次の手順に移行せずに待機する。待機秒数を設定できる。 |
+<table>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>steps</code></td>
+      <td>カナリアリリースの手順を設定する。<br>・<code>setWeight</code>：新しい Pod への重み付けを設定する。<br>・<code>pause</code>：次の手順に移行せずに待機する。待機秒数を設定できる。</td>
+    </tr>
+  </tbody>
+</table>
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

@@ -73,11 +73,32 @@ APM エージェントを有効化し、分散トレース監視バックエン�
 
 #### ▼ デバッグ
 
-| 方法                       | 説明                                                                                                                                                                              | 補足                                                                                                                                                                             |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 起動ログの有効化           | 環境変数の `DD_TRACE_STARTUP_LOGS` を有効化することで、起動ログを標準出力に出力できる。起動ログから、クライアントパッケージの設定値を確認できる。                                 | ・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support                                                                          |
-| デバッグログの有効化       | 各クライアントパッケージが持つデバッグパラメーターを有効化することで、デバッグログを標準出力に出力できる。デバッグログから、実際に Datadog に送信されるスパンデータを確認できる。 | ・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad                                                                                    |
-| Agent Flare コマンドの実行 | datadog コンテナ内で Agent Flare コマンドを実行し、Datadog サポートに datadog コンテナの構成情報をメール送信する。                                                                | ・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad <br>・https://docs.datadoghq.com/agent/troubleshooting/send_a_flare/?tab=agentv6v7 |
+<table>
+  <thead>
+    <tr>
+      <th>方法</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>起動ログの有効化</td>
+      <td>環境変数の <code>DD_TRACE_STARTUP_LOGS</code> を有効化することで、起動ログを標準出力に出力できる。起動ログから、クライアントパッケージの設定値を確認できる。</td>
+      <td>・<a href="https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support">https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support</a></td>
+    </tr>
+    <tr>
+      <td>デバッグログの有効化</td>
+      <td>各クライアントパッケージが持つデバッグパラメーターを有効化することで、デバッグログを標準出力に出力できる。デバッグログから、実際に Datadog に送信されるスパンデータを確認できる。</td>
+      <td>・<a href="https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad">https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad</a></td>
+    </tr>
+    <tr>
+      <td>Agent Flare コマンドの実行</td>
+      <td>datadog コンテナ内で Agent Flare コマンドを実行し、Datadog サポートに datadog コンテナの構成情報をメール送信する。</td>
+      <td>・<a href="https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad">https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad</a> <br>・<a href="https://docs.datadoghq.com/agent/troubleshooting/send_a_flare/?tab=agentv6v7">https://docs.datadoghq.com/agent/troubleshooting/send_a_flare/?tab=agentv6v7</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 

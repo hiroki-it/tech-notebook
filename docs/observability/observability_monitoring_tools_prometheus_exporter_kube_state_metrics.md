@@ -133,20 +133,90 @@ kube_service_info
 
 #### ▼ よく使用するメトリクス
 
-| メトリクス                                       | メトリクスの種類 | 説明                                                                                                               | PromQL 例                                                                                                              |
-| ------------------------------------------------ | ---------------- | ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| `kube_node_status_condition`                     | 記入中...        | Node の現在のライフサイクルフェーズを表す。                                                                        | `kube_node_status_condition{job="kube-state-metrics",condition="Ready",status="true"}`                                 |
-| `kube_pod_status_phase`                          | 記入中...        | Pod の現在ライフサイクルフェーズを表す。                                                                           | `kube_pod_status_phase{job="kube-state-metrics",phase="Succeeded"}`                                                    |
-| `kube_pod_container_status_terminated`           | Count            | `Terminated` フェーズになったコンテナ数を表す。                                                                    | `kube_pod_container_status_terminated{job="kube-state-metrics"}`                                                       |
-| `kube_pod_container_resource_limits`             | Count            | Pod のハードウェアリソースの `.spec.containers[*].resources.limits` キーを表す。設定していなければ `null` になる。 | `kube_pod_container_resource_limits{job="kube-state-metrics"}`                                                         |
-| `kube_deployment_spec_replicas`                  | Count            | Deployment で指定している Pod のレプリカ数を表す。                                                                 | `kube_deployment_spec_replicas{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`                  |
-| `kube_deployment_status_replicas`                | Count            | Deployment で指定している Pod のレプリカ数のうち、現在実行されている Pod 数を表す。                                | `kube_deployment_status_replicas{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`                |
-| `kube_deployment_status_replicas_available`      | Count            | Deployment で指定している Pod のレプリカ数のうち、現在利用できる Pod 数を表す。                                    | `kube_deployment_status_replicas_available{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`      |
-| `kube_deployment_status_replicas_unavailable`    | Count            | Deployment で指定している Pod のレプリカ数のうち、現在利用できない Pod 数を表す。                                  | `kube_deployment_status_replicas_unavailable{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`    |
-| `kube_daemonset_status_desired_number_scheduled` | Count            | DaemonSet で指定している Pod のレプリカ数を表す。                                                                  | `kube_daemonset_status_desired_number_scheduled{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}` |
-| `kube_daemonset_status_current_number_scheduled` | Count            | DaemonSet で指定している Pod のレプリカ数のうち、現在実行されている Pod 数を表す。                                 | `kube_daemonset_status_current_number_scheduled{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}` |
-| `kube_daemonset_status_number_available`         | Count            | DaemonSet で指定している Pod のレプリカ数のうち、現在利用できる Pod 数を表す。                                     | `kube_daemonset_status_number_available{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`         |
-| `kube_daemonset_status_number_unavailable`       | Count            | DaemonSet で指定している Pod のレプリカ数のうち、現在利用できない Pod 数を表す。                                   | `kube_daemonset_status_number_unavailable{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`       |
+<table>
+  <thead>
+    <tr>
+      <th>メトリクス</th>
+      <th>メトリクスの種類</th>
+      <th>説明</th>
+      <th>PromQL 例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>kube_node_status_condition</code></td>
+      <td>記入中...</td>
+      <td>Node の現在のライフサイクルフェーズを表す。</td>
+      <td><code>kube_node_status_condition{job=&quot;kube-state-metrics&quot;,condition=&quot;Ready&quot;,status=&quot;true&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>kube_pod_status_phase</code></td>
+      <td>記入中...</td>
+      <td>Pod の現在ライフサイクルフェーズを表す。</td>
+      <td><code>kube_pod_status_phase{job=&quot;kube-state-metrics&quot;,phase=&quot;Succeeded&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>kube_pod_container_status_terminated</code></td>
+      <td>Count</td>
+      <td><code>Terminated</code> フェーズになったコンテナ数を表す。</td>
+      <td><code>kube_pod_container_status_terminated{job=&quot;kube-state-metrics&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>kube_pod_container_resource_limits</code></td>
+      <td>Count</td>
+      <td>Pod のハードウェアリソースの <code>.spec.containers[*].resources.limits</code> キーを表す。設定していなければ <code>null</code> になる。</td>
+      <td><code>kube_pod_container_resource_limits{job=&quot;kube-state-metrics&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>kube_deployment_spec_replicas</code></td>
+      <td>Count</td>
+      <td>Deployment で指定している Pod のレプリカ数を表す。</td>
+      <td><code>kube_deployment_spec_replicas{job=&quot;kube-state-metrics&quot;,deployment=&quot;foo-deployment&quot;,namespace=&quot;foo&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>kube_deployment_status_replicas</code></td>
+      <td>Count</td>
+      <td>Deployment で指定している Pod のレプリカ数のうち、現在実行されている Pod 数を表す。</td>
+      <td><code>kube_deployment_status_replicas{job=&quot;kube-state-metrics&quot;,deployment=&quot;foo-deployment&quot;,namespace=&quot;foo&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>kube_deployment_status_replicas_available</code></td>
+      <td>Count</td>
+      <td>Deployment で指定している Pod のレプリカ数のうち、現在利用できる Pod 数を表す。</td>
+      <td><code>kube_deployment_status_replicas_available{job=&quot;kube-state-metrics&quot;,deployment=&quot;foo-deployment&quot;,namespace=&quot;foo&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>kube_deployment_status_replicas_unavailable</code></td>
+      <td>Count</td>
+      <td>Deployment で指定している Pod のレプリカ数のうち、現在利用できない Pod 数を表す。</td>
+      <td><code>kube_deployment_status_replicas_unavailable{job=&quot;kube-state-metrics&quot;,deployment=&quot;foo-deployment&quot;,namespace=&quot;foo&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>kube_daemonset_status_desired_number_scheduled</code></td>
+      <td>Count</td>
+      <td>DaemonSet で指定している Pod のレプリカ数を表す。</td>
+      <td><code>kube_daemonset_status_desired_number_scheduled{job=&quot;kube-state-metrics&quot;,deployment=&quot;foo-deployment&quot;,namespace=&quot;foo&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>kube_daemonset_status_current_number_scheduled</code></td>
+      <td>Count</td>
+      <td>DaemonSet で指定している Pod のレプリカ数のうち、現在実行されている Pod 数を表す。</td>
+      <td><code>kube_daemonset_status_current_number_scheduled{job=&quot;kube-state-metrics&quot;,deployment=&quot;foo-deployment&quot;,namespace=&quot;foo&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>kube_daemonset_status_number_available</code></td>
+      <td>Count</td>
+      <td>DaemonSet で指定している Pod のレプリカ数のうち、現在利用できる Pod 数を表す。</td>
+      <td><code>kube_daemonset_status_number_available{job=&quot;kube-state-metrics&quot;,deployment=&quot;foo-deployment&quot;,namespace=&quot;foo&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>kube_daemonset_status_number_unavailable</code></td>
+      <td>Count</td>
+      <td>DaemonSet で指定している Pod のレプリカ数のうち、現在利用できない Pod 数を表す。</td>
+      <td><code>kube_daemonset_status_number_unavailable{job=&quot;kube-state-metrics&quot;,deployment=&quot;foo-deployment&quot;,namespace=&quot;foo&quot;}</code></td>
+    </tr>
+  </tbody>
+</table>
 
 > - [kube-state-metrics/docs at main · kubernetes/kube-state-metrics · GitHub](https://github.com/kubernetes/kube-state-metrics/tree/main/docs)
 > - [Kubernetes モニタリング用メトリクスまとめ](https://zenn.dev/sasakiki/articles/f47e4b2ea08bd1)
