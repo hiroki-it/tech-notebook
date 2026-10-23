@@ -34470,7 +34470,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:11:31 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:49:57 JST">2026-10-23</span>
   </span>
 
     
@@ -34563,70 +34563,70 @@
 <p><br></p>
 <h2 id="02">02. 特に汎用的なコンポーネント<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="console">Console<a class="headerlink" href="#console" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">Symfony\Component\Console\Application</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\Console\Command\LockableTrait</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\InputArgument</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\InputInterface</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\Console\Output\OutputInterface</span><span class="p">;</span>
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Command\LockableTrait;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 </code></pre></div>
 <p><br></p>
 <h3 id="httpfoundation">HttpFoundation<a class="headerlink" href="#httpfoundation" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Request</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Response</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\ResponseHeaderBag</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\BinaryFileResponse</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\JsonResponse</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\RedirectResponse</span><span class="p">;</span>
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 </code></pre></div>
 <p><br></p>
 <h3 id="httpkernel">HttpKernel<a class="headerlink" href="#httpkernel" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">Symfony\Component\HttpKernel\Event\FilterResponseEvent</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\HttpKernel\Event\GetResponseEvent</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\HttpKernel\Exception\BadRequestHttpException</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\HttpKernel\Exception\NotFoundHttpException</span><span class="p">;</span>
+use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 </code></pre></div>
 <p><br></p>
 <h3 id="pimple">Pimple<a class="headerlink" href="#pimple" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">Pimple\ConfigSupport</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Pimple\Container</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Pimple\DiSupport</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Pimple\ServiceProviderInterface</span><span class="p">;</span>
+use Pimple\ConfigSupport;
+use Pimple\Container;
+use Pimple\DiSupport;
+use Pimple\ServiceProviderInterface;
 </code></pre></div>
 <p><br></p>
 <h3 id="security">Security<a class="headerlink" href="#security" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">Symfony\Component\Security\Core\AuthenticationEvents</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\Security\Csrf\CsrfToken</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\Security\Csrf\CsrfTokenManager</span><span class="p">;</span>
+use Symfony\Component\Security\Core\AuthenticationEvents;
+use Symfony\Component\Security\Csrf\CsrfToken;
+use Symfony\Component\Security\Csrf\CsrfTokenManager;
 </code></pre></div>
 <p><br></p>
 <h3 id="eventdispatcher">EventDispatcher<a class="headerlink" href="#eventdispatcher" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">Symfony\Component\EventDispatcher\Event</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\EventDispatcher\EventDispatcherInterface</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\EventDispatcher\EventSubscriberInterface</span><span class="p">;</span>
+use Symfony\Component\EventDispatcher\Event;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 </code></pre></div>
 <p><br></p>
 <h3 id="routing">Routing<a class="headerlink" href="#routing" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator</span><span class="p">;</span>
+use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 </code></pre></div>
 <p><br></p>
 <h3 id="cache">Cache<a class="headerlink" href="#cache" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">Symfony\Component\Cache\Adapter\FilesystemAdapter</span><span class="p">;</span>
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 </code></pre></div>
 <p><br></p>
 <h2 id="03-console">03. Console<a class="headerlink" href="#03-console" title="Permanent link">&para;</a></h2>
@@ -34634,44 +34634,44 @@
 <h4 id="cli">▼ CLI とは<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h4>
 <p>シェルスクリプト (<code>.sh</code>) 、またはバッチファイル (<code>.bat</code>) におけるコマンドの処理内容を定義できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">Symfony\Component\Console\Command\LockableTrait</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\InputArgument</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\Console\Input\InputInterface</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\Console\Output\OutputInterface</span><span class="p">;</span>
+use Symfony\Component\Console\Command\LockableTrait;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
-<span class="k">class</span> <span class="nc">createExampleCommand</span> <span class="k">extends</span> <span class="nx">\Symfony\Component\Console\Command\Command</span>
-<span class="p">{</span>
-    <span class="c1">// オプションの設定</span>
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">configure</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// コマンド名</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s2">"create:example"</span><span class="p">);</span>
+class createExampleCommand extends \Symfony\Component\Console\Command\Command
+{
+    // オプションの設定
+    protected function configure()
+    {
+        // コマンド名
+        $this-&gt;setName("create:example");
 
-        <span class="c1">// コマンド名の後に追加したい引数名</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addArgument</span><span class="p">(</span>
-          <span class="s2">"year-month"</span><span class="p">,</span>
-          <span class="nx">InputArgument</span><span class="o">::</span><span class="na">REQUIRED</span><span class="p">,</span>
-          <span class="s2">"処理年月を設定してください。"</span>
-        <span class="p">);</span>
-    <span class="p">}</span>
+        // コマンド名の後に追加したい引数名
+        $this-&gt;addArgument(
+          "year-month",
+          InputArgument::REQUIRED,
+          "処理年月を設定してください。"
+        );
+    }
 
-    <span class="c1">// コマンドの処理内容</span>
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">execute</span><span class="p">(</span><span class="nx">InputInterface</span> <span class="nv">$input</span><span class="p">,</span> <span class="nx">OutputInterface</span> <span class="nv">$output</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">try</span> <span class="p">{</span>
-                <span class="c1">// 日時フォーマットからCarbonインスタンスを作成する。</span>
-                <span class="nv">$year_month</span> <span class="o">=</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">createFromFormat</span><span class="p">(</span>
-                  <span class="s2">"Y-m"</span><span class="p">,</span>
-                  <span class="nv">$input</span><span class="o">-&gt;</span><span class="na">getArgument</span><span class="p">(</span><span class="s2">"year-month"</span><span class="p">)</span>
-                <span class="p">);</span>
+    // コマンドの処理内容
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        try {
+                // 日時フォーマットからCarbonインスタンスを作成する。
+                $year_month = Carbon::createFromFormat(
+                  "Y-m",
+                  $input-&gt;getArgument("year-month")
+                );
 
-        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// エラーログの文章を作成</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        } catch (\Exception $e) {
+            // エラーログの文章を作成
+        }
+    }
+}
 </code></pre></div>
 <p><br></p>
 <h3 id="cli_1">CLI をコールするバッチファイル<a class="headerlink" href="#cli_1" title="Permanent link">&para;</a></h3>
@@ -34733,55 +34733,55 @@
 </dd>
 </dl>
 <p><strong>【app.php の実装例】</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Request</span><span class="p">;</span>
+use Symfony\Component\HttpFoundation\Request;
 
 
-<span class="nv">$kernel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AppKernel</span><span class="p">(</span><span class="s2">"dev"</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+$kernel = new AppKernel("dev", true);
 
-<span class="k">if</span> <span class="p">(</span><span class="nx">PHP_VERSION_ID</span> <span class="o">&lt;</span> <span class="mi">70000</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">loadClassCache</span><span class="p">();</span>
-<span class="p">}</span>
+if (PHP_VERSION_ID &lt; 70000) {
+    $kernel-&gt;loadClassCache();
+}
 
-<span class="nv">$request</span> <span class="o">=</span> <span class="nx">Request</span><span class="o">::</span><span class="na">createFromGlobals</span><span class="p">();</span>  <span class="c1">//`(1)`</span>
+$request = Request::createFromGlobals();  //`(1)`
 
-<span class="o">:</span>
+:
 
-<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span> <span class="c1">//`(2)`</span>
+$response = $kernel-&gt;handle($request); //`(2)`
 
-<span class="o">:</span>
+:
 
-<span class="nv">$response</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span> <span class="c1">//`(3)`</span>
+$response-&gt;send(); //`(3)`
 
-<span class="o">:</span>
+:
 
-<span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">terminate</span><span class="p">(</span><span class="nv">$request</span><span class="p">,</span> <span class="nv">$response</span><span class="p">);</span>
+$kernel-&gt;terminate($request, $response);
 </code></pre></div>
 <p>上記の <code>handle()</code> 関数が定義されているファイル。</p>
 <p>ここで定義された <code>handle()</code> 関数が、C/A に対するルートの特定、特定された C/A の実行、テンプレートのレンダリングを実行する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span>
-<span class="p">(</span>
-    <span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span>
-    <span class="nv">$type</span> <span class="o">=</span> <span class="nx">HttpKernelInterface</span><span class="o">::</span><span class="na">MASTER_REQUEST</span><span class="p">,</span>
-    <span class="nv">$catch</span> <span class="o">=</span> <span class="k">true</span>
-<span class="p">)</span>
-<span class="p">{</span>
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">boot</span><span class="p">();</span>
+public function handle
+(
+    Request $request,
+    $type = HttpKernelInterface::MASTER_REQUEST,
+    $catch = true
+)
+{
+    $this-&gt;boot();
 
-    <span class="o">++</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">requestStackSize</span><span class="p">;</span>
+    ++$this-&gt;requestStackSize;
 
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resetServices</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+    $this-&gt;resetServices = true;
 
-    <span class="k">try</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getHttpKernel</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="nv">$request</span><span class="p">,</span> <span class="nv">$type</span><span class="p">,</span> <span class="nv">$catch</span><span class="p">);</span>
+    try {
+        return $this-&gt;getHttpKernel()-&gt;handle($request, $type, $catch);
 
-    <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
-        <span class="o">--</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">requestStackSize</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    } finally {
+        --$this-&gt;requestStackSize;
+    }
+}
 </code></pre></div>
 <p><br></p>
 <h3 id="requestresponse">Request、Response<a class="headerlink" href="#requestresponse" title="Permanent link">&para;</a></h3>
@@ -34793,61 +34793,61 @@
 </dd>
 </dl>
 <p>(2) Ajax によるリクエストでない場合、ページレンダリングのみ</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Controller\AbstractController</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\JsonResponse</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\HttpFoundation\Request</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Repository\FooRepository</span><span class="p">;</span>
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use App\Repository\FooRepository;
 
-<span class="k">class</span> <span class="nc">ExampleController</span> <span class="k">extends</span> <span class="nx">AbstractController</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$req</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="c1">// Ajaxによるリクエストの場合。</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$req</span><span class="o">-&gt;</span><span class="na">headers</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s2">"content-type"</span><span class="p">)</span> <span class="o">===</span> <span class="s2">"application/json"</span><span class="p">)</span> <span class="p">{</span>
+class ExampleController extends AbstractController
+{
+    public function get(Request $req)
+    {
+        // Ajaxによるリクエストの場合。
+        if ($req-&gt;headers-&gt;get("content-type") === "application/json") {
 
-            <span class="nv">$fooRepository</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FooRepository</span><span class="p">;</span>
-            <span class="nv">$entityObject</span> <span class="o">=</span> <span class="nv">$fooRepository</span><span class="o">-&gt;</span><span class="na">getEntity</span><span class="p">();</span>
+            $fooRepository = new FooRepository;
+            $entityObject = $fooRepository-&gt;getEntity();
 
-            <span class="c1">//-- entityをObject型からArray型に変換する何らかの処理。--//</span>
+            //-- entityをObject型からArray型に変換する何らかの処理。--//
 
-            <span class="c1">// Ajaxにレンスポンス。</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="nx">JsonResponse</span><span class="p">([</span>
-                <span class="s2">"value"</span> <span class="o">=&gt;</span> <span class="nv">$entityArray</span>
-              <span class="p">]);</span>
-        <span class="p">}</span>
+            // Ajaxにレンスポンス。
+            return new JsonResponse([
+                "value" =&gt; $entityArray
+              ]);
+        }
 
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s2">".../foo.twig"</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        return $this-&gt;render(".../foo.twig")-&gt;setStatusCode(200);
+    }
+}
 </code></pre></div>
 <h4 id="_4">▼ リクエストヘッダーの取得<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="c1">// $_GET['foo']</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">query</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">);</span>
+// $_GET['foo']
+$request-&gt;query-&gt;get('foo');
 
-<span class="c1">// $_POST['foo']</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">);</span>
+// $_POST['foo']
+$request-&gt;request-&gt;get('foo');
 
-<span class="c1">// ルーティングパラメータ / ex) @Route('/{foo}')</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">attributes</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">);</span>
+// ルーティングパラメータ / ex) @Route('/{foo}')
+$request-&gt;attributes-&gt;get('foo');
 
-<span class="c1">// $_COOKIE['foo']</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">cookies</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">);</span>
+// $_COOKIE['foo']
+$request-&gt;cookies-&gt;get('foo');
 
-<span class="c1">// $_FILES['foo']</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">files</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">);</span>
+// $_FILES['foo']
+$request-&gt;files-&gt;get('foo');
 
-<span class="c1">// $_SERVER['SCRIPT_FILENAME']</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">server</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'SCRIPT_FILENAME'</span><span class="p">);</span>
+// $_SERVER['SCRIPT_FILENAME']
+$request-&gt;server-&gt;get('SCRIPT_FILENAME');
 
-<span class="c1">// $_SERVER['HTTP_USER_AGENT']</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">headers</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'User-Agent'</span><span class="p">);</span>
+// $_SERVER['HTTP_USER_AGENT']
+$request-&gt;headers-&gt;get('User-Agent');
 
-<span class="c1">// query &gt; attribute  &gt; request の順で検索</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">);</span>
+// query &gt; attribute  &gt; request の順で検索
+$request-&gt;get('foo');
 </code></pre></div>
 <p><br></p>
 <h2 id="03-03-httpkernel">03-03. HttpKernel<a class="headerlink" href="#03-03-httpkernel" title="Permanent link">&para;</a></h2>
@@ -34862,21 +34862,21 @@
 <h3 id="routingconfigurator">RoutingConfigurator<a class="headerlink" href="#routingconfigurator" title="Permanent link">&para;</a></h3>
 <h4 id="routingconfigurator_1">▼ RoutingConfigurator とは<a class="headerlink" href="#routingconfigurator_1" title="Permanent link">&para;</a></h4>
 <p>コントローラーに対するルーティングを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">App\Controller\BlogApiController</span><span class="p">;</span> <span class="c1">// ルーティング先のコントローラーを読み出し</span>
-<span class="k">use</span> <span class="nx">Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator</span><span class="p">;</span>
+use App\Controller\BlogApiController; // ルーティング先のコントローラーを読み出し
+use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
-<span class="k">return</span> <span class="k">function</span> <span class="p">(</span><span class="nx">RoutingConfigurator</span> <span class="nv">$routes</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">"api_post_show"</span><span class="p">,</span> <span class="s2">"/api/posts/{id}"</span><span class="p">)</span>
-        <span class="o">-&gt;</span><span class="na">controller</span><span class="p">([</span><span class="nx">BlogApiController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s2">"show"</span><span class="p">])</span>
-        <span class="o">-&gt;</span><span class="na">methods</span><span class="p">([</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"HEAD"</span><span class="p">])</span>
-    <span class="p">;</span>
-    <span class="nv">$routes</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="s2">"api_post_edit"</span><span class="p">,</span> <span class="s2">"/api/posts/{id}"</span><span class="p">)</span>
-        <span class="o">-&gt;</span><span class="na">controller</span><span class="p">([</span><span class="nx">BlogApiController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s2">"edit"</span><span class="p">])</span>
-        <span class="o">-&gt;</span><span class="na">methods</span><span class="p">([</span><span class="s2">"PUT"</span><span class="p">])</span>
-    <span class="p">;</span>
-<span class="p">};</span>
+return function (RoutingConfigurator $routes) {
+    $routes-&gt;add("api_post_show", "/api/posts/{id}")
+        -&gt;controller([BlogApiController::class, "show"])
+        -&gt;methods(["GET", "HEAD"])
+    ;
+    $routes-&gt;add("api_post_edit", "/api/posts/{id}")
+        -&gt;controller([BlogApiController::class, "edit"])
+        -&gt;methods(["PUT"])
+    ;
+};
 </code></pre></div>
 <p><br></p>
 <h2 id="03-06-cache">03-06. Cache<a class="headerlink" href="#03-06-cache" title="Permanent link">&para;</a></h2>
@@ -34884,25 +34884,25 @@
 <h4 id="filesystemadapter_1">▼ FilesystemAdapter とは<a class="headerlink" href="#filesystemadapter_1" title="Permanent link">&para;</a></h4>
 <p>データをキャッシングできる。</p>
 <p>オプションで、名前空間、キャッシュ存続時間、キャッシュルートパスを指定できる。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">Symfony\Component\Cache\Adapter\FilesystemAdapter</span><span class="p">;</span>
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
-<span class="nv">$cache</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FilesystemAdapter</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"example/cache/"</span><span class="p">);</span>
+$cache = new FilesystemAdapter("", 0, "example/cache/");
 
-<span class="c1">// キャッシュIDに紐付くキャッシュアイテムオブジェクトを取得</span>
-<span class="nv">$cacheItemObj</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">getItem</span><span class="p">(</span><span class="s2">"stats.products_count"</span><span class="p">);</span>
+// キャッシュIDに紐付くキャッシュアイテムオブジェクトを取得
+$cacheItemObj = $cache-&gt;getItem("stats.products_count");
 
-<span class="c1">// キャッシュIDに紐付くキャッシュアイテムオブジェクトに、データが設定されていない場合</span>
-<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$cacheItemObj</span><span class="o">-&gt;</span><span class="na">isHit</span><span class="p">())</span> <span class="p">{</span>
-  <span class="c1">// キャッシュアイテムオブジェクトに、データを設定</span>
-  <span class="nv">$cacheItemObj</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="mi">777</span><span class="p">);</span>
-  <span class="c1">// キャッシュアイテムオブジェクトを紐付ける。</span>
-  <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$cacheItemObj</span><span class="p">);</span>
-<span class="p">}</span>
+// キャッシュIDに紐付くキャッシュアイテムオブジェクトに、データが設定されていない場合
+if (!$cacheItemObj-&gt;isHit()) {
+  // キャッシュアイテムオブジェクトに、データを設定
+  $cacheItemObj-&gt;set(777);
+  // キャッシュアイテムオブジェクトを紐付ける。
+  $cache-&gt;save($cacheItemObj);
+}
 
-<span class="c1">// キャッシュIDに紐付くデータがあった場合、キャッシュアイテムオブジェクトを取得。</span>
-<span class="nv">$cacheItemObj</span> <span class="o">=</span> <span class="nv">$cache</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+// キャッシュIDに紐付くデータがあった場合、キャッシュアイテムオブジェクトを取得。
+$cacheItemObj = $cache-&gt;get();
 </code></pre></div>
 
   

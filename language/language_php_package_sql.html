@@ -33918,7 +33918,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月6日 18:19:37 JST">2026-10-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:49:57 JST">2026-10-23</span>
   </span>
 
     
@@ -33985,97 +33985,97 @@
 <h4 id="fetchall">▼ <code>fetchAll()</code> 関数<a class="headerlink" href="#fetchall" title="Permanent link">&para;</a></h4>
 <p>読み出されたすべてのレコードの、すべてのカラムを取得し、2 次元の連想配列で返却する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$sql</span> <span class="o">=</span> <span class="s2">"SELECT * FROM doraemon_characters"</span><span class="p">;</span>
-<span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$dbh</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span> <span class="c1">// プリペアードステートメントを定義。</span>
-<span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span> <span class="c1">// 実行。</span>
+$sql = "SELECT * FROM doraemon_characters";
+$stmt = $dbh-&gt;prepare($sql); // プリペアードステートメントを定義。
+$stmt-&gt;execute(); // 実行。
 
 
-<span class="c1">// 全てのレコードを読み込む。</span>
-<span class="nv">$data</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">();</span>
+// 全てのレコードを読み込む。
+$data = $stmt-&gt;fetchAll();
 
-<span class="c1">// 出力</span>
-<span class="nb">print_r</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+// 出力
+print_r($data);
 
-<span class="c1">// カラム名と値の連想配列として取得できる。</span>
-<span class="c1">// Array</span>
-<span class="c1">// (</span>
-<span class="c1">//     [0] =&gt; Array</span>
-<span class="c1">//     (</span>
-<span class="c1">//         [id] =&gt; 1</span>
-<span class="c1">//         [name] =&gt; のび太</span>
-<span class="c1">//         [gender] =&gt; man</span>
-<span class="c1">//         [type] =&gt; human</span>
-<span class="c1">//     )</span>
-<span class="c1">//     [1] =&gt; Array</span>
-<span class="c1">//     (</span>
-<span class="c1">//         [id] =&gt; 2</span>
-<span class="c1">//         [name] =&gt; ドラえもん</span>
-<span class="c1">//         [gender] =&gt; man</span>
-<span class="c1">//         [type] =&gt; robot</span>
-<span class="c1">//     )</span>
-<span class="c1">// )</span>
+// カラム名と値の連想配列として取得できる。
+// Array
+// (
+//     [0] =&gt; Array
+//     (
+//         [id] =&gt; 1
+//         [name] =&gt; のび太
+//         [gender] =&gt; man
+//         [type] =&gt; human
+//     )
+//     [1] =&gt; Array
+//     (
+//         [id] =&gt; 2
+//         [name] =&gt; ドラえもん
+//         [gender] =&gt; man
+//         [type] =&gt; robot
+//     )
+// )
 </code></pre></div>
 <h4 id="fetchcolumn">▼ <code>fetchColumn()</code> 関数<a class="headerlink" href="#fetchcolumn" title="Permanent link">&para;</a></h4>
 <p>読み出された全レコードのうち、最初のレコードにある一番左のカラムのみを取得し、混合型で返却する。</p>
 <p>主に、<code>COUNT()</code> 関数の場合に使用する</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$sql</span> <span class="o">=</span> <span class="s2">"SELECT COUNT(*) FROM doraemon_characters"</span><span class="p">;</span>
-<span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$dbh</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span> <span class="c1">// プリペアードステートメントを定義。</span>
-<span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span> <span class="c1">// 実行。</span>
+$sql = "SELECT COUNT(*) FROM doraemon_characters";
+$stmt = $dbh-&gt;prepare($sql); // プリペアードステートメントを定義。
+$stmt-&gt;execute(); // 実行。
 
-<span class="c1">// レコードを読み込む。</span>
-<span class="nv">$data</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetchColumn</span><span class="p">();</span>
+// レコードを読み込む。
+$data = $stmt-&gt;fetchColumn();
 
-<span class="c1">// 出力</span>
-<span class="nb">print_r</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+// 出力
+print_r($data);
 
-<span class="c1">// 10 (件)</span>
+// 10 (件)
 </code></pre></div>
 <p><br></p>
 <h3 id="_6">書き込み<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="insert">▼ <code>INSERT</code><a class="headerlink" href="#insert" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="c1">// $_POSTを使用して、送信されたPOSTメソッドのリクエストを受け取り、属性から各値を取得する。</span>
-<span class="nv">$staff_name</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s2">"name"</span><span class="p">];</span>
-<span class="nv">$staff_pass</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s2">"pass"</span><span class="p">];</span>
-
-
-<span class="c1">// HTMLとして変数の内容を出力する際、『&lt;』『&gt;』などの特殊文字をエスケープ (無害化)</span>
-<span class="nv">$staff_name</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$staff_name</span><span class="p">,</span> <span class="nx">ENT_QUOTES</span><span class="p">,</span> <span class="s2">"UTF-8"</span><span class="p">);</span>
-<span class="nv">$staff_pass</span> <span class="o">=</span> <span class="nb">htmlspecialchars</span><span class="p">(</span><span class="nv">$staff_pass</span><span class="p">,</span> <span class="nx">ENT_QUOTES</span><span class="p">,</span> <span class="s2">"UTF-8"</span><span class="p">);</span>
+// $_POSTを使用して、送信されたPOSTメソッドのリクエストを受け取り、属性から各値を取得する。
+$staff_name = $_POST["name"];
+$staff_pass = $_POST["pass"];
 
 
-<span class="c1">// DBと接続 (イコールの間にスペースを入れるとエラーになってしまう)</span>
-<span class="nv">$dsn</span> <span class="o">=</span> <span class="s2">"mysql:dbname=kizukeba_pronami_php;</span>
-<span class="s2">host=kizukebapronamiphp</span>
-<span class="s2">charaset=UTF-8"</span><span class="p">;</span>
-<span class="nv">$user</span> <span class="o">=</span> <span class="s2">"root"</span><span class="p">;</span>
-<span class="nv">$password</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
-<span class="nv">$dbh</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="nv">$dsn</span><span class="p">,</span> <span class="nv">$user</span><span class="p">,</span> <span class="nv">$password</span><span class="p">);</span>
-<span class="nv">$dbh</span><span class="o">-&gt;</span><span class="na">setAttribute</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">ATTR_ERRMODE</span><span class="p">,</span><span class="nx">PDO</span><span class="o">::</span><span class="na">ERRMODE_EXCEPTION</span><span class="p">);</span>
+// HTMLとして変数の内容を出力する際、『&lt;』『&gt;』などの特殊文字をエスケープ (無害化)
+$staff_name = htmlspecialchars($staff_name, ENT_QUOTES, "UTF-8");
+$staff_pass = htmlspecialchars($staff_pass, ENT_QUOTES, "UTF-8");
 
 
-<span class="c1">// 列名と値を指定してINSERT</span>
-<span class="nv">$sql</span><span class="o">=</span><span class="s2">"INSERT INTO mst_staff (name,password) VALUES (?,?)"</span><span class="p">;</span>
-<span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$dbh</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+// DBと接続 (イコールの間にスペースを入れるとエラーになってしまう)
+$dsn = "mysql:dbname=kizukeba_pronami_php;
+host=kizukebapronamiphp
+charaset=UTF-8";
+$user = "root";
+$password = "";
+$dbh = new PDO($dsn, $user, $password);
+$dbh-&gt;setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 
-<span class="c1">// 配列に値を格納 (格納する値の順番と、SQLでの引数の順番は、合わせる必要がある)</span>
-<span class="nv">$data</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$staff_name</span><span class="p">;</span>
-<span class="nv">$data</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$staff_pass</span><span class="p">;</span>
+// 列名と値を指定してINSERT
+$sql="INSERT INTO mst_staff (name,password) VALUES (?,?)";
+$stmt = $dbh-&gt;prepare($sql);
 
 
-<span class="c1">// Write処理を実行</span>
-<span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+// 配列に値を格納 (格納する値の順番と、SQLでの引数の順番は、合わせる必要がある)
+$data[] = $staff_name;
+$data[] = $staff_pass;
 
 
-<span class="c1">// DBとの接続を切断</span>
-<span class="nv">$dbh</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+// Write処理を実行
+$stmt-&gt;execute($data);
+
+
+// DBとの接続を切断
+$dbh = null;
 </code></pre></div>
 <h4 id="update">▼ <code>UPDATE</code><a class="headerlink" href="#update" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>

@@ -35058,7 +35058,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:11:31 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:49:57 JST">2026-10-23</span>
   </span>
 
     
@@ -35143,16 +35143,16 @@
 <h4 id="eloquent_1">▼ Eloquent モデルの継承<a class="headerlink" href="#eloquent_1" title="Permanent link">&para;</a></h4>
 <p>Eloquent モデルを継承したクラスは、<code>INSERT</code> 文や <code>UPDATE</code> 文などのデータアクセスロジックを使用できるようになる。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+namespace App\Domain\DTO;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
 
-<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="c1">// クラスチェーンによって、データアクセスロジックをコール</span>
-<span class="p">}</span>
+class Foo extends Model
+{
+    // クラスチェーンによって、データアクセスロジックをコール
+}
 </code></pre></div>
 <h4 id="_3">▼ テーブルの定義<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>テーブルを定義するため、<code>table</code> プロパティにテーブル名を割り当てる。</p>
@@ -35160,85 +35160,85 @@
 <p>Eloquent がクラス名の複数形をテーブル名と見なし、これをスネークケースにした文字列を <code>table</code> プロパティに自動的に代入する。</p>
 <p>また、テーブル名を自前で命名したい場合は、代入による Override を行ってもよい。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+namespace App\Domain\DTO;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
 
-<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s2">"foos"</span><span class="p">;</span> <span class="c1">// Eloquentモデルと関連しているテーブル</span>
-<span class="p">}</span>
+class Foo extends Model
+{
+    /**
+     * @var string
+     */
+    protected $table = "foos"; // Eloquentモデルと関連しているテーブル
+}
 </code></pre></div>
 <h4 id="_4">▼ テーブル間リレーションシップの定義<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>ER 図における各テーブルのリレーションシップを元に、モデル間の関連性を定義する。</p>
 <p><code>hasOne()</code> 関数、<code>hasMany()</code> 関数、<code>belongsTo()</code> 関数を使用して表す。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>Department モデルで、<code>hasMany()</code> 関数を使用して、Department モデル (親) と Employees モデル (子) のテーブル関係を定義する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+namespace App\Domain\DTO;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Relations\HasMany</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-<span class="k">class</span> <span class="nc">Department</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">"department_id"</span><span class="p">;</span> <span class="c1">// 主キーとするカラム</span>
+class Department extends Model
+{
+    /**
+     * @var string
+     */
+    protected $primaryKey = "department_id"; // 主キーとするカラム
 
-     <span class="sd">/**</span>
-<span class="sd">     * @return HasMany</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">employees</span><span class="p">()</span><span class="o">:</span> <span class="nx">HasMany</span>
-    <span class="p">{</span>
-        <span class="c1">// 一対多の関係を定義します。</span>
-        <span class="c1">// デフォルトではemployee_idに紐付けます。</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span><span class="nx">Employee</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+     /**
+     * @return HasMany
+     */
+    public function employees(): HasMany
+    {
+        // 一対多の関係を定義します。
+        // デフォルトではemployee_idに紐付けます。
+        return $this-&gt;hasMany(Employee::class);
+    }
+}
 </code></pre></div>
 <p>また、Employees モデルでは、<code>belongsTo()</code> 関数を使用して、Department モデル (親) と Employees モデル (子) のテーブル関係を定義する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+namespace App\Domain\DTO;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Relations\BelongsTo</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-<span class="k">class</span> <span class="nc">Employee</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">"employee_id"</span><span class="p">;</span> <span class="c1">// 主キーとするカラム</span>
+class Employee extends Model
+{
+    /**
+     * @var string
+     */
+    protected $primaryKey = "employee_id"; // 主キーとするカラム
 
-    <span class="sd">/**</span>
-<span class="sd">     * @return BelongsTo</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">department</span><span class="p">()</span><span class="o">:</span> <span class="nx">BelongsTo</span>
-    <span class="p">{</span>
-        <span class="c1">// 多対一の関係を定義します。</span>
-        <span class="c1">// デフォルトではdepartment_idに紐付けます。</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span><span class="nx">Department</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    /**
+     * @return BelongsTo
+     */
+    public function department(): BelongsTo
+    {
+        // 多対一の関係を定義します。
+        // デフォルトではdepartment_idに紐付けます。
+        return $this-&gt;belongsTo(Department::class);
+    }
+}
 </code></pre></div>
 <p>リレーションを基に JOIN 句の SQL を発行するために、Department モデル (親) の <code>hasMany()</code> 関数を実行する。</p>
 <p>これにより、Department モデルの ID に紐付く Employees モデル (子) を配列で参照できる。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="c1">// Departmentオブジェクトを取得</span>
-<span class="nv">$department</span> <span class="o">=</span> <span class="nx">Department</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+// Departmentオブジェクトを取得
+$department = Department::find(1);
 
-<span class="c1">// 部署ID=1に紐付く全てのemployeeオブジェクトをarray型で取得</span>
-<span class="nv">$employees</span> <span class="o">=</span> <span class="nv">$department</span><span class="o">-&gt;</span><span class="na">employees</span><span class="p">();</span>
+// 部署ID=1に紐付く全てのemployeeオブジェクトをarray型で取得
+$employees = $department-&gt;employees();
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35251,136 +35251,136 @@
 <p>Eloquent は、<code>primaryKey</code> プロパティの値を主キーのカラム名と見なす。</p>
 <p><code>keyType</code> プロパティで主キーのデータ型、また <code>incrementing</code> プロパティで主キーの自動増分を有効化するか否かを設定できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+namespace App\Domain\DTO;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
 
-<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">"foo_id"</span><span class="p">;</span> <span class="c1">// 主キーとするカラム (デフォルトではidが主キー)</span>
+class Foo extends Model
+{
+    /**
+     * @var string
+     */
+    protected $primaryKey = "foo_id"; // 主キーとするカラム (デフォルトではidが主キー)
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$keyType</span> <span class="o">=</span> <span class="s2">"int"</span><span class="p">;</span> <span class="c1">// 主キーのデータ型</span>
+    /**
+     * @var string
+     */
+    protected $keyType = "int"; // 主キーのデータ型
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var bool</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="nv">$incrementing</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span> <span class="c1">// 主キーの自動増分の有効化します。</span>
-<span class="p">}</span>
+    /**
+     * @var bool
+     */
+    public $incrementing = true; // 主キーの自動増分の有効化します。
+}
 </code></pre></div>
 <h4 id="timestamp">▼ TIMESTAMP 型カラムの定義<a class="headerlink" href="#timestamp" title="Permanent link">&para;</a></h4>
 <p>Eloquent は、<code>timestamps</code> プロパティの値が <code>true</code> のときに、Eloquent モデルに紐付くテーブルの <code>created_at</code> カラムと <code>updated_at</code> カラムを自動的に更新する。</p>
 <p>また、TIMESTAMP 型カラム名を自前で命名したい場合は、代入による Overide を行ってもよい。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+namespace App\Domain\DTO;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
 
-<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="k">const</span> <span class="no">CREATED_AT</span> <span class="o">=</span> <span class="s2">"created_date_time"</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">UPDATED_AT</span> <span class="o">=</span> <span class="s2">"updated_date_time"</span><span class="p">;</span>
+class Foo extends Model
+{
+    const CREATED_AT = "created_date_time";
+    const UPDATED_AT = "updated_date_time";
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var bool</span>
-<span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$timestamps</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span> <span class="c1">// Eloquentモデルのタイムスタンプを更新するかの指示します。</span>
-<span class="p">}</span>
+    /**
+     * @var bool
+     */
+    protected $timestamps = true; // Eloquentモデルのタイムスタンプを更新するかの指示します。
+}
 </code></pre></div>
 <h4 id="timestamp_1">▼ TIMESTAMP 型カラム読み出し時のデータ型変換<a class="headerlink" href="#timestamp_1" title="Permanent link">&para;</a></h4>
 <p>DB からタイムスタンプ型カラムの Read 処理を実行すると同時に、Carbon の DateTime クラスに変換したい場合、<code>data</code> プロパティにて、カラム名を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+namespace App\Domain\DTO;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
 
-<span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * CarbonのDateTimeクラスに自動変換したいカラム名</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var array</span>
-<span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$dates</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">"created_at"</span><span class="p">,</span>
-        <span class="s2">"updated_at"</span><span class="p">,</span>
-        <span class="s2">"deleted_at"</span>
-    <span class="p">];</span>
-<span class="p">}</span>
+class User extends Model
+{
+    /**
+     * CarbonのDateTimeクラスに自動変換したいカラム名
+     *
+     * @var array
+     */
+    protected $dates = [
+        "created_at",
+        "updated_at",
+        "deleted_at"
+    ];
+}
 </code></pre></div>
 <h4 id="_6">▼ カラムデフォルト値の定義<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>特定のカラムのデフォルト値を設定したい場合、<code>attributes</code> プロパティにて、カラム名と値を定義する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+namespace App\Domain\DTO;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
 
-<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * カラム名とデフォルト値</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var array</span>
-<span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">"is_deleted"</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
-    <span class="p">];</span>
-<span class="p">}</span>
+class Foo extends Model
+{
+    /**
+     * カラム名とデフォルト値
+     *
+     * @var array
+     */
+    protected $attributes = [
+        "is_deleted" =&gt; false,
+    ];
+}
 </code></pre></div>
 <h4 id="_7">▼ 変更できる/できないカラムの定義<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>変更できるカラム名を <code>fillable</code> プロパティを使用して定義する。</p>
 <p>カラムが増えるたびに、実装する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+namespace App\Domain\DTO;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
 
-<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * カラム名</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var array</span>
-<span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">"name"</span><span class="p">,</span>
-    <span class="p">];</span>
-<span class="p">}</span>
+class Foo extends Model
+{
+    /**
+     * カラム名
+     *
+     * @var array
+     */
+    protected $fillable = [
+        "name",
+    ];
+}
 </code></pre></div>
 <p>もしくは、変更できないカラム名を <code>guarded</code> プロパティで定義する。</p>
 <p>これらのいずれかの設定は、Eloquent モデルで必須である。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+namespace App\Domain\DTO;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
 
-<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * カラム名</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var array</span>
-<span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$guarded</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">"bar"</span><span class="p">,</span>
-    <span class="p">];</span>
-<span class="p">}</span>
+class Foo extends Model
+{
+    /**
+     * カラム名
+     *
+     * @var array
+     */
+    protected $guarded = [
+        "bar",
+    ];
+}
 </code></pre></div>
 <p><br></p>
 <h3 id="_8">使用に注意する機能<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
@@ -35389,154 +35389,154 @@
 <p>しかし、この機能のプロパティは public アクセスである必要があるため、オブジェクト機能のメリットを享受できない。</p>
 <p>そのため、これを使用せずに、<code>constructor()</code> 関数を使用したコンストラクタインジェクション、またはセッターインジェクションを使用するようにする。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+namespace App\Domain\DTO;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
 
-<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var FooName</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">FooName</span> <span class="nv">$fooName</span><span class="p">;</span>
+class Foo extends Model
+{
+    /**
+     * @var FooName
+     */
+    private FooName $fooName;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 名前を取得します。</span>
+    /**
+     * 名前を取得します。
 
 
-<span class="sd">     *</span>
-<span class="sd">     * @return string</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooName</span> <span class="nv">$fooName</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooName</span> <span class="o">=</span> <span class="nv">$fooName</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+     *
+     * @return string
+     */
+    public function __construct(FooName $fooName)
+    {
+        $this-&gt;fooName = $fooName;
+    }
+}
 </code></pre></div>
 <h4 id="_10">▼ ゲッター<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>Laravel では、<code>getFooBarAttribute()</code> という名前の関数を、<code>foo_bar</code> という名前でコールできる。</p>
 <p>一見、プロパティをコールしているように見えるため、注意が必要である。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+namespace App\Domain\DTO;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
 
-<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var FooName</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">FooName</span> <span class="nv">$fooName</span><span class="p">;</span>
+class Foo extends Model
+{
+    /**
+     * @var FooName
+     */
+    private FooName $fooName;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 名前を取得します。</span>
+    /**
+     * 名前を取得します。
 
 
-<span class="sd">     *</span>
-<span class="sd">     * @return string</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getNameAttribute</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooName</span> <span class="o">.</span> <span class="s2">"です。"</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+     *
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        return $this-&gt;fooName . "です。";
+    }
+}
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$foo</span> <span class="o">=</span> <span class="nx">Foo</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+$foo = Foo::find(1);
 
-<span class="c1">// nameプロパティを取得しているわけでなく、getNameAttribute関数を実行している。</span>
-<span class="nv">$fooName</span> <span class="o">=</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+// nameプロパティを取得しているわけでなく、getNameAttribute関数を実行している。
+$fooName = $foo-&gt;name;
 </code></pre></div>
 <p><br></p>
 <h3 id="_11">データ型変換<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ シリアライズ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>PHP のオブジェクト型を JSON に変換 (シリアライズ) する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$collection</span> <span class="o">=</span> <span class="nx">collect</span><span class="p">([</span>
-    <span class="p">[</span>
-        <span class="s2">"user_id"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">"name"</span>    <span class="o">=&gt;</span> <span class="s2">"佐藤太郎"</span><span class="p">,</span>
-    <span class="p">],</span>
-    <span class="p">[</span>
-        <span class="s2">"user_id"</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="s2">"name"</span>    <span class="o">=&gt;</span> <span class="s2">"山田次郎"</span><span class="p">,</span>
-    <span class="p">],</span>
-<span class="p">]);</span>
+$collection = collect([
+    [
+        "user_id" =&gt; 1,
+        "name"    =&gt; "佐藤太郎",
+    ],
+    [
+        "user_id" =&gt; 2,
+        "name"    =&gt; "山田次郎",
+    ],
+]);
 
-<span class="c1">// Array型に変換する</span>
-<span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
+// Array型に変換する
+$collection-&gt;toArray();
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$users</span> <span class="o">=</span> <span class="nx">App\User</span><span class="o">::</span><span class="na">all</span><span class="p">();</span>
+$users = App\User::all();
 
-<span class="c1">// Array型に変換する</span>
-<span class="k">return</span> <span class="nv">$users</span><span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
+// Array型に変換する
+return $users-&gt;toArray();
 </code></pre></div>
 <h4 id="_13">▼ デシリアライズ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>JSON を PHP のオブジェクト型に変換 (デシリアライズ) する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="x">実装中...</span>
+<div class="highlight"><pre><span></span><code>実装中...
 </code></pre></div>
 <p><br></p>
 <h3 id="_14">フィルタリング<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="filter">▼ <code>filter()</code> 関数<a class="headerlink" href="#filter" title="Permanent link">&para;</a></h4>
 <p>コールバック関数の返り値が <code>true</code> であった要素をすべて抽出する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$collection</span> <span class="o">=</span> <span class="nx">collect</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]);</span>
+$collection = collect([1, 2, 3, 4]);
 
-<span class="c1">// trueを返却した要素を全て抽出する</span>
-<span class="nv">$filtered</span> <span class="o">=</span> <span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$value</span><span class="p">,</span> <span class="nv">$key</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nv">$value</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">;</span>
-<span class="p">});</span>
+// trueを返却した要素を全て抽出する
+$filtered = $collection-&gt;filter(function ($value, $key) {
+    return $value &gt; 2;
+});
 
-<span class="nv">$filtered</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">();</span>
+$filtered-&gt;all();
 
-<span class="c1">// [3, 4]</span>
+// [3, 4]
 </code></pre></div>
 <p>補足として、複数の条件を設定したいときは、早期リターンを使用する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$collection</span> <span class="o">=</span> <span class="nx">collect</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">"yes"</span><span class="p">]);</span>
+$collection = collect([1, 2, 3, 4, "yes"]);
 
-<span class="c1">// 複数の条件で抽出する。</span>
-<span class="nv">$filtered</span> <span class="o">=</span> <span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$value</span><span class="p">,</span> <span class="nv">$key</span><span class="p">)</span> <span class="p">{</span>
+// 複数の条件で抽出する。
+$filtered = $collection-&gt;filter(function ($value, $key) {
 
-    <span class="c1">// まずはyesを検証する。</span>
-    <span class="k">if</span><span class="p">(</span><span class="nv">$value</span> <span class="o">==</span> <span class="s2">"yes"</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-    <span class="p">}</span>
+    // まずはyesを検証する。
+    if($value == "yes") {
+        return true;
+    }
 
-    <span class="k">return</span> <span class="nv">$value</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">;</span>
-<span class="p">});</span>
+    return $value &gt; 2;
+});
 
-<span class="nv">$filtered</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">();</span>
+$filtered-&gt;all();
 
-<span class="c1">// [3, 4, "yes"]</span>
+// [3, 4, "yes"]
 </code></pre></div>
 <h4 id="first">▼ <code>first()</code> 関数<a class="headerlink" href="#first" title="Permanent link">&para;</a></h4>
 <p>コールバック関数の返り値が <code>true</code> であった最初の要素のみを抽出する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$collection</span> <span class="o">=</span> <span class="nx">collect</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]);</span>
+$collection = collect([1, 2, 3, 4]);
 
-<span class="c1">// trueを返却した要素のみ抽出する</span>
-<span class="nv">$filtered</span> <span class="o">=</span> <span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$value</span><span class="p">,</span> <span class="nv">$key</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nv">$value</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">;</span>
-<span class="p">});</span>
+// trueを返却した要素のみ抽出する
+$filtered = $collection-&gt;first(function ($value, $key) {
+    return $value &gt; 2;
+});
 
-<span class="c1">// 3</span>
+// 3
 </code></pre></div>
 <p><br></p>
 <h2 id="03-02-eloquent-crud">03-02. Eloquent モデルとビルダーによる CRUD<a class="headerlink" href="#03-02-eloquent-crud" title="Permanent link">&para;</a></h2>
@@ -35675,53 +35675,53 @@
 <p><code>create()</code> 関数または <code>save()</code> 関数による <code>CREATE</code> 処理では、レコードの挿入後に、<code>lastInsertId()</code> 関数に相当する処理が実行される。</p>
 <p>これにより、挿入されたレコードのプライマリーキーが取得され、Eloquent モデルの ID 値のプロパティに保持される。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+namespace App\Http\Controllers;
 
-<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Http\Request;
 
-<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @param Request $request</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">createFoo</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     */
+    public function createFoo(Request $request)
+    {
+        $foo = new Foo();
 
-        <span class="nx">DB</span><span class="o">::</span><span class="na">transaction</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$foo</span><span class="p">,</span> <span class="nv">$request</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// INSERT文を実行する。また同時にIDを取得する。</span>
-            <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">());</span>
+        DB::transaction(function () use ($foo, $request) {
+            // INSERT文を実行する。また同時にIDを取得する。
+            $foo-&gt;create($request-&gt;all());
 
-            <span class="c1">// 以下の実装でもよい</span>
-            <span class="c1">// $foo-&gt;fill($request-&gt;all())-&gt;save();</span>
-        <span class="p">});</span>
+            // 以下の実装でもよい
+            // $foo-&gt;fill($request-&gt;all())-&gt;save();
+        });
 
-        <span class="c1">// 処理後にはEloquentモデルにID値が保持されている。</span>
-        <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">();</span>
+        // 処理後にはEloquentモデルにID値が保持されている。
+        $foo-&gt;id();
 
-        <span class="c1">// 続きの処理</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        // 続きの処理
+    }
+}
 </code></pre></div>
 <p>Eloquent モデルには <code>fillable</code> プロパティを設定しておく。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+namespace App\Domain\DTO;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
 
-<span class="k">class</span> <span class="nc">FooDTO</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="c1">// 更新できるカラム</span>
-    <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">"name"</span><span class="p">,</span>
-        <span class="s2">"age"</span><span class="p">,</span>
-    <span class="p">];</span>
-<span class="p">}</span>
+class FooDTO extends Model
+{
+    // 更新できるカラム
+    protected $fillable = [
+        "name",
+        "age",
+    ];
+}
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35738,26 +35738,26 @@
 <p>すべてのプライマリーキーの Collection 型を配列型として返却する。</p>
 <p><code>toArray()</code> 関数で配列型に再帰的に変換できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+namespace App\Http\Controllers;
 
-<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Collection</span><span class="p">;</span>
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
 
-<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @return Collection</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAll</span><span class="p">()</span><span class="o">:</span> <span class="nx">Collection</span>
-    <span class="p">{</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+class FooController extends Controller
+{
+    /**
+     * @return Collection
+     */
+    public function findAll(): Collection
+    {
+        $foo = new Foo();
 
-        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        return $foo-&gt;all();
+    }
+}
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35772,27 +35772,27 @@
 <p>引数としてプライマリーキーを渡した場合、指定したプライマリーキーを持つ Eloquent モデルを返却する。</p>
 <p><code>toArray()</code> 関数で配列型に変換できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+namespace App\Http\Controllers;
 
-<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Collection</span><span class="p">;</span>
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
 
-<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @param int $id</span>
-<span class="sd">     * @return Collection</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">findById</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">Collection</span>
-    <span class="p">{</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+class FooController extends Controller
+{
+    /**
+     * @param int $id
+     * @return Collection
+     */
+    public function findById(int $id): Collection
+    {
+        $foo = new Foo();
 
-        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        return $foo-&gt;find($id);
+    }
+}
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35806,57 +35806,57 @@
 <p>foreach を使用してコレクションから Eloquent モデルを取り出してもよいが、無駄が多い。</p>
 <p>そこで、<code>first()</code> 関数を使用して、Eloquent モデルを直接的に取得する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+namespace App\Http\Controllers;
 
-<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Collection</span><span class="p">;</span>
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
 
-<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @param string $emailAddress</span>
-<span class="sd">     * @return Foo</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">findByEmail</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$emailAddress</span><span class="p">)</span><span class="o">:</span> <span class="nx">Foo</span>
-    <span class="p">{</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+class FooController extends Controller
+{
+    /**
+     * @param string $emailAddress
+     * @return Foo
+     */
+    public function findByEmail(string $emailAddress): Foo
+    {
+        $foo = new Foo();
 
-        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">'foo_email'</span><span class="p">,</span> <span class="nv">$emailAddress</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        return $foo-&gt;where('foo_email', $emailAddress)-&gt;first();
+    }
+}
 </code></pre></div>
 <h4 id="limit-offset">▼ <code>limit()</code> 関数、<code>offset()</code> 関数<a class="headerlink" href="#limit-offset" title="Permanent link">&para;</a></h4>
 <p>指定した <code>offset</code> 値以降のレコードをすべて取得する SELECT 句を発行する。</p>
 <p>これにより、ページネーションで、1 ページ当たりのレコード数 (<code>limit</code>) と、次のページの開始レコード (<code>offset</code>) を定義できる。</p>
 <p>これらのパラメーターはクエリパラメーターとして渡すとよい。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+namespace App\Http\Controllers;
 
-<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Collection</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 
-<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @param Request $request</span>
-<span class="sd">     * @return Collection</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAllByPagination</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">Collection</span>
-    <span class="p">{</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     * @return Collection
+     */
+    public function findAllByPagination(Request $request): Collection
+    {
+        $foo = new Foo();
 
-        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">offset</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">offset</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">limit</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        return $foo-&gt;offset($request-&gt;offset)
+            -&gt;limit($request-&gt;limit)
+            -&gt;get();
+    }
+}
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35868,38 +35868,38 @@
 <p>並び替えた結果を取得するためには、<code>get()</code> 関数を使用する。</p>
 <p>プライマリーキーの昇順で取得する場合、<code>all()</code> 関数ではなく、<code>orderBy()</code> 関数を使用して、プライマリーキーの昇順を明示的に設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+namespace App\Http\Controllers;
 
-<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Collection</span><span class="p">;</span>
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
 
-<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @return Collection</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAllByAsc</span><span class="p">()</span><span class="o">:</span> <span class="nx">Collection</span>
-    <span class="p">{</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+class FooController extends Controller
+{
+    /**
+     * @return Collection
+     */
+    public function findAllByAsc(): Collection
+    {
+        $foo = new Foo();
 
-        <span class="c1">// 昇順</span>
-        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s1">'foo_id'</span><span class="p">,</span> <span class="s1">'asc'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
-    <span class="p">}</span>
+        // 昇順
+        return $foo-&gt;orderBy('foo_id', 'asc')-&gt;get();
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * @return Collection</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAllByDesc</span><span class="p">()</span><span class="o">:</span> <span class="nx">Collection</span>
-    <span class="p">{</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+    /**
+     * @return Collection
+     */
+    public function findAllByDesc(): Collection
+    {
+        $foo = new Foo();
 
-        <span class="c1">// 降順</span>
-        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s1">'foo_id'</span><span class="p">,</span> <span class="s1">'desc'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        // 降順
+        return $foo-&gt;orderBy('foo_id', 'desc')-&gt;get();
+    }
+}
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35909,26 +35909,26 @@
 <h4 id="sortby">▼ <code>sortBy()</code> 関数<a class="headerlink" href="#sortby" title="Permanent link">&para;</a></h4>
 <p>指定したカラムの昇順でレコードを並び替える SELECT 句を発行する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+namespace App\Http\Controllers;
 
-<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Collection</span><span class="p">;</span>
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
 
-<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @return Collection</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAllByAsc</span><span class="p">()</span><span class="o">:</span> <span class="nx">Collection</span>
-    <span class="p">{</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+class FooController extends Controller
+{
+    /**
+     * @return Collection
+     */
+    public function findAllByAsc(): Collection
+    {
+        $foo = new Foo();
 
-        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">sortBy</span><span class="p">(</span><span class="s1">'foo_id'</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        return $foo-&gt;all()-&gt;sortBy('foo_id');
+    }
+}
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35937,26 +35937,26 @@
 </blockquote>
 <h4 id="sortbydesc">▼ <code>sortByDesc()</code> 関数<a class="headerlink" href="#sortbydesc" title="Permanent link">&para;</a></h4>
 <p>指定したカラムの降順でレコードを並び替える SELECT 句を発行する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+namespace App\Http\Controllers;
 
-<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Collection</span><span class="p">;</span>
+use App\Http\Controllers\Controller;
+use App\Models\Foo;
+use Illuminate\Database\Eloquent\Collection;
 
-<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @return Collection</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAllByDesc</span><span class="p">()</span><span class="o">:</span> <span class="nx">Collection</span>
-    <span class="p">{</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+class FooController extends Controller
+{
+    /**
+     * @return Collection
+     */
+    public function findAllByDesc(): Collection
+    {
+        $foo = new Foo();
 
-        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">sortByDesc</span><span class="p">(</span><span class="s1">'foo_id'</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        return $foo-&gt;all()-&gt;sortByDesc('foo_id');
+    }
+}
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35983,93 +35983,93 @@
 <p><strong>＊実装例＊</strong></p>
 <p>コントローラーにて、Department (親) と、これに紐付く Employee (子) を読み出す。</p>
 <p>これらのモデルの間では、<code>hasMany()</code> 関数と <code>belongsTo()</code> 関数を使用して、テーブルにおける一対多のリレーションを定義しておく。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+namespace App\Http\Controllers;
 
-<span class="k">use</span> <span class="nx">App\Models\Department</span><span class="p">;</span>
+use App\Models\Department;
 
-<span class="k">class</span> <span class="nc">EmployeeController</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getEmployeesByDepartment</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$department</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Department</span><span class="p">();</span>
+class EmployeeController
+{
+    public function getEmployeesByDepartment()
+    {
+        $department = new Department();
 
-        <span class="c1">// Departmentに属するEmployeesを全て読み出します。</span>
-        <span class="c1">// (departments : employees = 1 : 多)</span>
-        <span class="nv">$employees</span> <span class="o">=</span> <span class="nv">$department</span><span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="s2">"employees"</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+        // Departmentに属するEmployeesを全て読み出します。
+        // (departments : employees = 1 : 多)
+        $employees = $department-&gt;with("employees")-&gt;get();
 
-        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$employees</span> <span class="k">as</span> <span class="nv">$employee</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// ここではDBアクセスはせずに、プロパティに保持された値を取得するだけ。</span>
-            <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$employee</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+        foreach ($employees as $employee) {
+            // ここではDBアクセスはせずに、プロパティに保持された値を取得するだけ。
+            $name = $employee-&gt;name;
 
-        <span class="p">}</span>
+        }
 
-        <span class="c1">// 続きの処理</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        // 続きの処理
+    }
+}
 </code></pre></div>
 <p>Department (親) に、departments テーブルと employees テーブルの間に、一対多の関係を定義する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Models\Department</span><span class="p">;</span>
+namespace App\Models\Department;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Relations\HasMany</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-<span class="k">class</span> <span class="nc">Department</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * 主キーとするカラム</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">"department_id"</span><span class="p">;</span>
+class Department extends Model
+{
+    /**
+     * 主キーとするカラム
+     *
+     * @var string
+     */
+    protected $primaryKey = "department_id";
 
-    <span class="sd">/**</span>
-<span class="sd">     * 一対多の関係を定義します。</span>
+    /**
+     * 一対多の関係を定義します。
 
 
-<span class="sd">     * (デフォルトではemployee_idに紐付けます)</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return HasMany</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">employees</span><span class="p">()</span><span class="o">:</span> <span class="nx">HasMany</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span><span class="nx">Employee</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+     * (デフォルトではemployee_idに紐付けます)
+     *
+     * @return HasMany
+     */
+    public function employees(): HasMany
+    {
+        return $this-&gt;hasMany(Employee::class);
+    }
+}
 </code></pre></div>
 <p>また、Employee (子) に、反対の多対一の関係を定義する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Models\Department</span><span class="p">;</span>
+namespace App\Models\Department;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Relations\BelongsTo</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-<span class="k">class</span> <span class="nc">Employee</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * 主キーとするカラム</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">"employee_id"</span><span class="p">;</span>
+class Employee extends Model
+{
+    /**
+     * 主キーとするカラム
+     *
+     * @var string
+     */
+    protected $primaryKey = "employee_id";
 
-    <span class="sd">/**</span>
-<span class="sd">     * 多対一の関係を定義します。</span>
+    /**
+     * 多対一の関係を定義します。
 
 
-<span class="sd">     * (デフォルトではdepartment_idに紐付けます)</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return BelongsTo</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">department</span><span class="p">()</span><span class="o">:</span> <span class="nx">BelongsTo</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span><span class="nx">Department</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+     * (デフォルトではdepartment_idに紐付けます)
+     *
+     * @return BelongsTo
+     */
+    public function department(): BelongsTo
+    {
+        return $this-&gt;belongsTo(Department::class);
+    }
+}
 </code></pre></div>
 <p><br></p>
 <h3 id="update">UPDATE<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
@@ -36078,48 +36078,48 @@
 <p>Eloquent ビルダーの <code>fill()</code> 関数で挿入先のカラムと値を設定し、<code>save()</code> 関数を実行する。</p>
 <p><code>save()</code> 関数は <code>CREATE</code> 処理も実行できるが、<code>fill()</code> 関数で ID 値を割り当てた場合は、<code>UPDATE</code> 処理が実行される。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Infrastructure\Repositories</span><span class="p">;</span>
+namespace App\Infrastructure\Repositories;
 
-<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Domain\Foo\Entities</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+use App\Http\Controllers\Controller;
+use App\Domain\Foo\Entities;
+use Illuminate\Http\Request;
 
-<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @param Request $request</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">updateFoo</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+class FooController extends Controller
+{
+    /**
+     * @param Request $request
+     */
+    public function updateFoo(Request $request)
+    {
+        $foo = new Foo();
 
-        <span class="nx">DB</span><span class="o">::</span><span class="na">transaction</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$foo</span><span class="p">,</span> <span class="nv">$request</span><span class="p">)</span> <span class="p">{</span>
+        DB::transaction(function () use ($foo, $request) {
 
-            <span class="c1">// UPDATE文を実行する。</span>
-            <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">fill</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
-        <span class="p">});</span>
+            // UPDATE文を実行する。
+            $foo-&gt;fill($request-&gt;all())-&gt;save();
+        });
 
-        <span class="c1">// 続きの処理</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        // 続きの処理
+    }
+}
 </code></pre></div>
 <p>Eloquent モデルには <code>fillable</code> プロパティを設定しておく。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+namespace App\Domain\DTO;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
 
-<span class="k">class</span> <span class="nc">FooDTO</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="c1">// 更新できるカラム</span>
-    <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">"name"</span><span class="p">,</span>
-        <span class="s2">"age"</span><span class="p">,</span>
-    <span class="p">];</span>
-<span class="p">}</span>
+class FooDTO extends Model
+{
+    // 更新できるカラム
+    protected $fillable = [
+        "name",
+        "age",
+    ];
+}
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36140,69 +36140,69 @@
 <p>手順として、テーブルに対応する Model にて、SoftDeletes の Trait を読み込む。</p>
 <p>DB マイグレーション時に追加される <code>delete_at</code> カラムを SQL で取得するときは、DataTime クラスへ変換できるようにしておく。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+namespace App\Domain\DTO;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\SoftDeletes</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-<span class="k">class</span> <span class="nc">FooDTO</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">    * Traitの読み出し</span>
-<span class="sd">    */</span>
-    <span class="k">use</span> <span class="nx">SoftDeletes</span><span class="p">;</span>
+class FooDTO extends Model
+{
+    /**
+    * Traitの読み出し
+    */
+    use SoftDeletes;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 読み出し時にCarbonのDateTimeクラスへ自動変換するカラム</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var array</span>
-<span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$dates</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">"deleted_at"</span>
-    <span class="p">];</span>
-<span class="p">}</span>
+    /**
+     * 読み出し時にCarbonのDateTimeクラスへ自動変換するカラム
+     *
+     * @var array
+     */
+    protected $dates = [
+        "deleted_at"
+    ];
+}
 </code></pre></div>
 <p>DB マイグレーションファイルにて <code>softDeletes()</code> 関数を使用すると、削除フラグとして <code>deleted_at</code> カラムが追加されるようになる。</p>
 <p><code>deleted_at</code> カラムのデフォルト値は <code>NULL</code> である。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Migrations\Migration</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Database\Schema\Blueprint</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Schema</span><span class="p">;</span>
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-<span class="k">class</span> <span class="nc">CreateFooTable</span> <span class="k">extends</span> <span class="nx">Migration</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * マイグレート</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return void</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">up</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nx">Schema</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
+class CreateFooTable extends Migration
+{
+    /**
+     * マイグレート
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create("foo", function (Blueprint $table) {
 
-            <span class="o">...</span>
+            ...
 
-            <span class="c1">// deleted_atカラムを追加する。</span>
-            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">softDeletes</span><span class="p">();</span>
+            // deleted_atカラムを追加する。
+            $table-&gt;softDeletes();
 
-            <span class="o">...</span>
+            ...
 
-        <span class="p">});</span>
-    <span class="p">}</span>
+        });
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * ロールバック</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return void</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">down</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nx">Schema</span><span class="o">::</span><span class="na">drop</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    /**
+     * ロールバック
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop("foo");
+    }
+}
 </code></pre></div>
 <p>上記の状態で、同様に <code>destroy</code>/<code>delete()</code> 関数を使用して、自身を削除する。</p>
 <p>物理削除ではなく、<code>deleled_at</code> カラムが更新されるようになる。</p>
@@ -36226,347 +36226,347 @@
 <p>詰め替えモデルをドメインモデルに変換する処理を関数として切り分けておくと便利である。</p>
 <p>ドメインモデルと DTO クラスの間でデータを詰め替えるようにすると、DTO クラスがドメインモデルと DB の間でレコードのやり取りを中継し、これらを疎結合にしてくれる。</p>
 <p>そのため、Repository パターンを実現できる。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+declare(strict_types=1);
 
-<span class="k">namespace</span> <span class="nx">App\Infrastructure\Foo\DTOs</span><span class="p">;</span>
+namespace App\Infrastructure\Foo\DTOs;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Factories\HasFactory</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-<span class="k">final</span> <span class="k">class</span> <span class="nc">FooDTO</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="k">use</span> <span class="nx">HasFactory</span><span class="p">;</span>
+final class FooDTO extends Model
+{
+    use HasFactory;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var array</span>
-<span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$dates</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s1">'created_at'</span><span class="p">,</span>
-        <span class="s1">'updated_at'</span><span class="p">,</span>
-        <span class="s1">'deleted_at'</span><span class="p">,</span>
-    <span class="p">];</span>
+    /**
+     * @var array
+     */
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var array</span>
-<span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s1">'name'</span><span class="p">,</span>
-        <span class="s1">'age'</span><span class="p">,</span>
-    <span class="p">];</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var int</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">int</span> <span class="nv">$id</span><span class="p">;</span>
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'age',
+    ];
+    /**
+     * @var int
+     */
+    private int $id;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">;</span>
+    /**
+     * @var string
+     */
+    private string $name;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var int</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">int</span> <span class="nv">$age</span><span class="p">;</span>
+    /**
+     * @var int
+     */
+    private int $age;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$email</span><span class="p">;</span>
+    /**
+     * @var string
+     */
+    private string $email;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @return Foo</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">toFoo</span><span class="p">()</span><span class="o">:</span> <span class="nx">Foo</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span>
-            <span class="k">new</span> <span class="nx">FooId</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">),</span>
-            <span class="k">new</span> <span class="nx">FooName</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">),</span>
-            <span class="k">new</span> <span class="nx">FooAge</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">),</span>
-        <span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    /**
+     * @return Foo
+     */
+    public function toFoo(): Foo
+    {
+        return new Foo(
+            new FooId($this-&gt;id),
+            new FooName($this-&gt;name),
+            new FooAge($this-&gt;age),
+        );
+    }
+}
 </code></pre></div>
 <p><br></p>
 <h3 id="create_2">CREATE<a class="headerlink" href="#create_2" title="Permanent link">&para;</a></h3>
 <h4 id="create_3">▼ <code>create()</code> 関数<a class="headerlink" href="#create_3" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Infrastructure\Repositories</span><span class="p">;</span>
+namespace App\Infrastructure\Repositories;
 
-<span class="k">use</span> <span class="nx">App\Domain\Foo\Entities\Foo</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Domain\Foo\Repositories\FooRepository</span> <span class="k">as</span> <span class="nx">DomainFooRepository</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Infrastructure\Foo\DTO\FooDTO</span><span class="p">;</span>
+use App\Domain\Foo\Entities\Foo;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTO\FooDTO;
 
-<span class="k">class</span> <span class="nc">FooRepository</span> <span class="k">extends</span> <span class="nx">Repository</span> <span class="k">implements</span> <span class="nx">DomainFooRepository</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var FooDTO</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">;</span>
+class FooRepository extends Repository implements DomainFooRepository
+{
+    /**
+     * @var FooDTO
+     */
+    private FooDTO $fooDTO;
 
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span> <span class="o">=</span> <span class="nv">$fooDTO</span><span class="p">;</span>
-    <span class="p">}</span>
+    public function __construct(FooDTO $fooDTO)
+    {
+        $this-&gt;fooDTO = $fooDTO;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param Foo $foo</span>
-<span class="sd">     * @return void</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="nx">Foo</span> <span class="nv">$foo</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
-    <span class="p">{</span>
+    /**
+     * @param Foo $foo
+     * @return void
+     */
+    public function create(Foo $foo): void
+    {
 
-      <span class="nx">DB</span><span class="o">::</span><span class="na">transaction</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$foo</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span>
-              <span class="c1">// INSERT文を実行する。</span>
-              <span class="o">-&gt;</span><span class="na">create</span><span class="p">([</span>
-                  <span class="c1">// ドメインモデルのデータをDTOに詰め替える。</span>
-                  <span class="s2">"name"</span>  <span class="o">=&gt;</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(),</span>
-                  <span class="s2">"age"</span>   <span class="o">=&gt;</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">(),</span>
-              <span class="p">]);</span>
+      DB::transaction(function () use ($foo) {
+          $this-&gt;fooDTO
+              // INSERT文を実行する。
+              -&gt;create([
+                  // ドメインモデルのデータをDTOに詰め替える。
+                  "name"  =&gt; $foo-&gt;name(),
+                  "age"   =&gt; $foo-&gt;age(),
+              ]);
 
-<span class="c1">//          以下の実装でも良い。</span>
-<span class="c1">//          $this-&gt;fooDTO</span>
-<span class="c1">//              -&gt;fill([</span>
-<span class="c1">//                  "name"  =&gt; $foo-&gt;name(),</span>
-<span class="c1">//                  "age"   =&gt; $foo-&gt;age(),</span>
-<span class="c1">//              ])</span>
-<span class="c1">//              -&gt;save();</span>
-          <span class="p">});</span>
-      <span class="p">}</span>
-<span class="p">}</span>
+//          以下の実装でも良い。
+//          $this-&gt;fooDTO
+//              -&gt;fill([
+//                  "name"  =&gt; $foo-&gt;name(),
+//                  "age"   =&gt; $foo-&gt;age(),
+//              ])
+//              -&gt;save();
+          });
+      }
+}
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+namespace App\Domain\DTO;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
 
-<span class="k">class</span> <span class="nc">FooDTO</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="c1">// 更新できるカラム</span>
-    <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">"name"</span><span class="p">,</span>
-        <span class="s2">"age"</span><span class="p">,</span>
-    <span class="p">];</span>
-<span class="p">}</span>
+class FooDTO extends Model
+{
+    // 更新できるカラム
+    protected $fillable = [
+        "name",
+        "age",
+    ];
+}
 </code></pre></div>
 <p><br></p>
 <h3 id="read_1">READ<a class="headerlink" href="#read_1" title="Permanent link">&para;</a></h3>
 <h4 id="find_1">▼ <code>find()</code> 関数<a class="headerlink" href="#find_1" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Infrastructure\Foo\Repositories</span><span class="p">;</span>
+namespace App\Infrastructure\Foo\Repositories;
 
-<span class="k">use</span> <span class="nx">App\Domain\Foo\Entities\Foo</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Domain\Foo\Ids\FooId</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Domain\Foo\Repositories\FooRepository</span> <span class="k">as</span> <span class="nx">DomainFooRepository</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Infrastructure\Foo\DTOs\FooDTO</span><span class="p">;</span>
+use App\Domain\Foo\Entities\Foo;
+use App\Domain\Foo\Ids\FooId;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTOs\FooDTO;
 
-<span class="k">class</span> <span class="nc">FooRepository</span> <span class="k">extends</span> <span class="nx">Repository</span> <span class="k">implements</span> <span class="nx">DomainFooRepository</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var FooDTO</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">;</span>
+class FooRepository extends Repository implements DomainFooRepository
+{
+    /**
+     * @var FooDTO
+     */
+    private FooDTO $fooDTO;
 
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span> <span class="o">=</span> <span class="nv">$fooDTO</span><span class="p">;</span>
-    <span class="p">}</span>
+    public function __construct(FooDTO $fooDTO)
+    {
+        $this-&gt;fooDTO = $fooDTO;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param FooId $fooId</span>
-<span class="sd">     * @return Foo</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">findById</span><span class="p">(</span><span class="nx">FooId</span> <span class="nv">$fooId</span><span class="p">)</span><span class="o">:</span> <span class="nx">Foo</span>
-    <span class="p">{</span>
-        <span class="nv">$fooDTO</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span>
-            <span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$fooId</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">());</span>
+    /**
+     * @param FooId $fooId
+     * @return Foo
+     */
+    public function findById(FooId $fooId): Foo
+    {
+        $fooDTO = $this-&gt;fooDTO
+            -&gt;find($fooId-&gt;id());
 
-        <span class="c1">// DBアクセス処理後のDTOをドメインモデルに変換する。</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span>
-            <span class="nv">$fooDTO</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">(),</span>
-            <span class="nv">$fooDTO</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(),</span>
-            <span class="nv">$fooDTO</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">(),</span>
-            <span class="nv">$fooDTO</span><span class="o">-&gt;</span><span class="na">email</span><span class="p">()</span>
-        <span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        // DBアクセス処理後のDTOをドメインモデルに変換する。
+        return new Foo(
+            $fooDTO-&gt;id(),
+            $fooDTO-&gt;name(),
+            $fooDTO-&gt;age(),
+            $fooDTO-&gt;email()
+        );
+    }
+}
 </code></pre></div>
 <h4 id="all_1">▼ <code>all()</code> 関数<a class="headerlink" href="#all_1" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Infrastructure\Foo\Repositories</span><span class="p">;</span>
+namespace App\Infrastructure\Foo\Repositories;
 
-<span class="k">use</span> <span class="nx">App\Domain\Foo\Entities\Foo</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Domain\Foo\Repositories\FooRepository</span> <span class="k">as</span> <span class="nx">DomainFooRepository</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Infrastructure\Foo\DTOs\FooDTO</span><span class="p">;</span>
+use App\Domain\Foo\Entities\Foo;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTOs\FooDTO;
 
-<span class="k">class</span> <span class="nc">FooRepository</span> <span class="k">extends</span> <span class="nx">Repository</span> <span class="k">implements</span> <span class="nx">DomainFooRepository</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var FooDTO</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">;</span>
+class FooRepository extends Repository implements DomainFooRepository
+{
+    /**
+     * @var FooDTO
+     */
+    private FooDTO $fooDTO;
 
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span> <span class="o">=</span> <span class="nv">$fooDTO</span><span class="p">;</span>
-    <span class="p">}</span>
+    public function __construct(FooDTO $fooDTO)
+    {
+        $this-&gt;fooDTO = $fooDTO;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * @return array</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAll</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
-    <span class="p">{</span>
-        <span class="nv">$fooDTOs</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span>
-            <span class="o">-&gt;</span><span class="na">all</span><span class="p">();</span>
+    /**
+     * @return array
+     */
+    public function findAll(): array
+    {
+        $fooDTOs = $this-&gt;fooDTO
+            -&gt;all();
 
-        <span class="nv">$foos</span> <span class="o">=</span> <span class="p">[];</span>
-        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$fooDTOs</span> <span class="k">as</span> <span class="nv">$fooDTO</span><span class="p">)</span>
-            <span class="c1">// DBアクセス後のDTOをドメインモデルに変換する。</span>
-            <span class="nv">$foos</span><span class="p">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span>
-                <span class="nv">$fooDTO</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">(),</span>
-                <span class="nv">$fooDTO</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(),</span>
-                <span class="nv">$fooDTO</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">(),</span>
-                <span class="nv">$fooDTO</span><span class="o">-&gt;</span><span class="na">email</span><span class="p">(),</span>
-            <span class="p">);</span>
+        $foos = [];
+        foreach ($fooDTOs as $fooDTO)
+            // DBアクセス後のDTOをドメインモデルに変換する。
+            $foos[] = new Foo(
+                $fooDTO-&gt;id(),
+                $fooDTO-&gt;name(),
+                $fooDTO-&gt;age(),
+                $fooDTO-&gt;email(),
+            );
 
-        <span class="k">return</span> <span class="nv">$foos</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        return $foos;
+    }
+}
 </code></pre></div>
 <h4 id="with_1">▼ <code>with()</code> 関数<a class="headerlink" href="#with_1" title="Permanent link">&para;</a></h4>
 <p><br></p>
 <h3 id="update_1">UPDATE<a class="headerlink" href="#update_1" title="Permanent link">&para;</a></h3>
 <h4 id="save_1">▼ <code>save()</code> 関数<a class="headerlink" href="#save_1" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Infrastructure\Foo\Repositories</span><span class="p">;</span>
+namespace App\Infrastructure\Foo\Repositories;
 
-<span class="k">use</span> <span class="nx">App\Domain\Foo\Entities\Foo</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Domain\Foo\Repositories\FooRepository</span> <span class="k">as</span> <span class="nx">DomainFooRepository</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Infrastructure\Foo\DTOs\FooDTO</span><span class="p">;</span>
+use App\Domain\Foo\Entities\Foo;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTOs\FooDTO;
 
-<span class="k">class</span> <span class="nc">FooRepository</span> <span class="k">extends</span> <span class="nx">Repository</span> <span class="k">implements</span> <span class="nx">DomainFooRepository</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var FooDTO</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">;</span>
+class FooRepository extends Repository implements DomainFooRepository
+{
+    /**
+     * @var FooDTO
+     */
+    private FooDTO $fooDTO;
 
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span> <span class="o">=</span> <span class="nv">$fooDTO</span><span class="p">;</span>
-    <span class="p">}</span>
+    public function __construct(FooDTO $fooDTO)
+    {
+        $this-&gt;fooDTO = $fooDTO;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param Foo $foo</span>
-<span class="sd">     * @return void</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">save</span><span class="p">(</span><span class="nx">Foo</span> <span class="nv">$foo</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
-    <span class="p">{</span>
-        <span class="nx">DB</span><span class="o">::</span><span class="na">transaction</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$foo</span><span class="p">)</span> <span class="p">{</span>
+    /**
+     * @param Foo $foo
+     * @return void
+     */
+    public function save(Foo $foo): void
+    {
+        DB::transaction(function () use ($foo) {
 
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span>
-                <span class="c1">// ドメインモデルのデータをDTOに詰め替える。</span>
-                <span class="o">-&gt;</span><span class="na">fill</span><span class="p">([</span>
-                    <span class="s2">"name"</span>  <span class="o">=&gt;</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(),</span>
-                    <span class="s2">"age"</span>   <span class="o">=&gt;</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">(),</span>
-                <span class="p">])</span>
-                <span class="c1">// UPDATE文を実行する。</span>
-                <span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
-        <span class="p">});</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+            $this-&gt;fooDTO
+                // ドメインモデルのデータをDTOに詰め替える。
+                -&gt;fill([
+                    "name"  =&gt; $foo-&gt;name(),
+                    "age"   =&gt; $foo-&gt;age(),
+                ])
+                // UPDATE文を実行する。
+                -&gt;save();
+        });
+    }
+}
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+namespace App\Domain\DTO;
 
-<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+use Illuminate\Database\Eloquent\Model;
 
-<span class="k">class</span> <span class="nc">FooDTO</span> <span class="k">extends</span> <span class="nx">Model</span>
-<span class="p">{</span>
-    <span class="c1">// 更新できるカラム</span>
-    <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">"name"</span><span class="p">,</span>
-        <span class="s2">"age"</span><span class="p">,</span>
-    <span class="p">];</span>
-<span class="p">}</span>
+class FooDTO extends Model
+{
+    // 更新できるカラム
+    protected $fillable = [
+        "name",
+        "age",
+    ];
+}
 </code></pre></div>
 <p><br></p>
 <h3 id="delete_1">DELETE<a class="headerlink" href="#delete_1" title="Permanent link">&para;</a></h3>
 <h4 id="destroydelete_1">▼ <code>destroy</code>/<code>delete()</code> 関数<a class="headerlink" href="#destroydelete_1" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Infrastructure\Repositories</span><span class="p">;</span>
+namespace App\Infrastructure\Repositories;
 
-<span class="k">use</span> <span class="nx">App\Domain\Foo\Entities\Foo</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Domain\Foo\Ids\FooId</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Domain\Foo\Repositories\FooRepository</span> <span class="k">as</span> <span class="nx">DomainFooRepository</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Infrastructure\Foo\DTOs\FooDTO</span><span class="p">;</span>
+use App\Domain\Foo\Entities\Foo;
+use App\Domain\Foo\Ids\FooId;
+use App\Domain\Foo\Repositories\FooRepository as DomainFooRepository;
+use App\Infrastructure\Foo\DTOs\FooDTO;
 
-<span class="k">class</span> <span class="nc">FooRepository</span> <span class="k">extends</span> <span class="nx">Repository</span> <span class="k">implements</span> <span class="nx">DomainFooRepository</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var FooDTO</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">;</span>
+class FooRepository extends Repository implements DomainFooRepository
+{
+    /**
+     * @var FooDTO
+     */
+    private FooDTO $fooDTO;
 
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span> <span class="o">=</span> <span class="nv">$fooDTO</span><span class="p">;</span>
-    <span class="p">}</span>
+    public function __construct(FooDTO $fooDTO)
+    {
+        $this-&gt;fooDTO = $fooDTO;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param FooId $fooId</span>
-<span class="sd">     * @return void</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nx">FooId</span> <span class="nv">$fooId</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
-    <span class="p">{</span>
-        <span class="c1">// destroy関数でレコードを削除する。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span><span class="o">-&gt;</span><span class="na">destroy</span><span class="p">(</span><span class="nv">$fooId</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">());</span>
+    /**
+     * @param FooId $fooId
+     * @return void
+     */
+    public function delete(FooId $fooId): void
+    {
+        // destroy関数でレコードを削除する。
+        $this-&gt;fooDTO-&gt;destroy($fooId-&gt;id());
 
-        <span class="c1">// delete関数を使用しても良い。</span>
-        <span class="c1">// $this-&gt;fooDTO-&gt;find($fooId-&gt;id())-&gt;delete();</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        // delete関数を使用しても良い。
+        // $this-&gt;fooDTO-&gt;find($fooId-&gt;id())-&gt;delete();
+    }
+}
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+namespace App\Http\Controllers;
 
-<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+use Illuminate\Http\Request;
 
-<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooRepository</span> <span class="nv">$fooRepository</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span> <span class="o">=</span> <span class="nv">$fooRepository</span><span class="p">;</span>
-    <span class="p">}</span>
+class FooController extends Controller
+{
+    public function __construct(FooRepository $fooRepository)
+    {
+        $this-&gt;fooRepository = $fooRepository;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param FooId $fooId</span>
-<span class="sd">     * @return mixed</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nx">FooId</span> <span class="nv">$fooId</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span>
-            <span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$fooId</span><span class="p">);</span>
+    /**
+     * @param FooId $fooId
+     * @return mixed
+     */
+    public function delete(FooId $fooId)
+    {
+        $this-&gt;fooRepository
+            -&gt;delete($fooId);
 
-        <span class="k">return</span> <span class="nx">response</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">view</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        return response()-&gt;view("foo")
+            -&gt;setStatusCode(200);
+    }
+}
 </code></pre></div>
 <p><br></p>
 

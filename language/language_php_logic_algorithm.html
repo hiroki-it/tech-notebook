@@ -33974,7 +33974,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:11:31 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:49:57 JST">2026-10-23</span>
   </span>
 
     
@@ -34033,51 +34033,51 @@
 <p>この処理を <code>n-1</code> 回繰り返す。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">function</span> <span class="nf">minSelectSort</span><span class="p">(</span><span class="k">array</span> <span class="nv">$array</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
-<span class="p">{</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
+function minSelectSort(array $array): array
+{
 
-    <span class="c1">// 比較基準値を固定し、それ以外の数値と比べていく。</span>
-    <span class="k">for</span><span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
+    // 比較基準値を固定し、それ以外の数値と比べていく。
+    for($i = 0; $i &lt; count($array)-1; $i++){
 
-        <span class="c1">// 比較基準値を仮の最小値として定義。</span>
-        <span class="nv">$min</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
+        // 比較基準値を仮の最小値として定義。
+        $min = $array[$i];
 
-        <span class="c1">// 比較基準値の位置を定義</span>
-        <span class="nv">$position</span> <span class="o">=</span> <span class="nv">$i</span><span class="p">;</span>
+        // 比較基準値の位置を定義
+        $position = $i;
 
-        <span class="c1">// 比較基準値の位置以降で、数値を固定し、順番に評価していく。</span>
-        <span class="k">for</span><span class="p">(</span><span class="nv">$j</span> <span class="o">=</span> <span class="nv">$position</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$j</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span> <span class="nv">$j</span><span class="o">++</span><span class="p">){</span>
+        // 比較基準値の位置以降で、数値を固定し、順番に評価していく。
+        for($j = $position + 1; $j &lt; count($array); $j++){
 
-            <span class="c1">// 比較基準値の位置以降に小さい数値があれば、比較基準値と最小値を更新。</span>
-            <span class="k">if</span><span class="p">(</span><span class="nv">$min</span> <span class="o">&gt;</span> <span class="nv">$array</span><span class="p">[</span><span class="nv">$j</span><span class="p">]){</span>
-                <span class="nv">$position</span> <span class="o">=</span> <span class="nv">$j</span><span class="p">;</span>
-                <span class="nv">$min</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="nv">$j</span><span class="p">];</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
+            // 比較基準値の位置以降に小さい数値があれば、比較基準値と最小値を更新。
+            if($min &gt; $array[$j]){
+                $position = $j;
+                $min = $array[$j];
+            }
+        }
 
-        <span class="c1">// 比較基準値の位置が更新されていなかった場合、次の比較基準値に進む。</span>
-        <span class="k">if</span><span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="nv">$position</span><span class="p">){</span>
-            <span class="k">continue</span><span class="p">;</span>
-        <span class="p">}</span>
+        // 比較基準値の位置が更新されていなかった場合、次の比較基準値に進む。
+        if($i == $position){
+            continue;
+        }
 
-        <span class="c1">// 親のfor文の最小値を更新。</span>
-        <span class="nv">$array</span><span class="p">[</span><span class="nv">$position</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
-        <span class="nv">$array</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$min</span><span class="p">;</span>
+        // 親のfor文の最小値を更新。
+        $array[$position] = $array[$i];
+        $array[$i] = $min;
 
-        <span class="c1">// 次に2番目を比較基準値とし、同じ処理を繰り返していく。</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="nv">$array</span><span class="p">;</span>
-<span class="p">}</span>
+        // 次に2番目を比較基準値とし、同じ処理を繰り返していく。
+    }
+    return $array;
+}
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="c1">// 実際に使用してみる。</span>
-<span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">13</span><span class="p">);</span>
-<span class="nv">$result</span> <span class="o">=</span> <span class="nx">minSelectSort</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
+// 実際に使用してみる。
+$array = array(10,2,12,7,16,8,13);
+$result = minSelectSort($array);
+var_dump($result);
 
-<span class="c1">// 昇順に並び替えられている。</span>
-<span class="c1">// 2, 7, 8, 10, 12, 13, 16</span>
+// 昇順に並び替えられている。
+// 2, 7, 8, 10, 12, 13, 16
 </code></pre></div>
 <p><strong>＊アルゴリズム解説＊</strong></p>
 <p>データ中の最小値を求め、次にそれを除いた部分のなかから最小値を求める。</p>
@@ -34110,59 +34110,59 @@
 <p>ソートを繰り返し実行する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="k">function</span> <span class="nf">quickSort</span><span class="p">(</span><span class="k">array</span> <span class="nv">$array</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
-<span class="p">{</span>
-    <span class="c1">// 配列の要素数が1つしかない場合、クイックソートする必要がないため、返却する。</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$array</span><span class="p">;</span>
-    <span class="p">}</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
+function quickSort(array $array): array
+{
+    // 配列の要素数が1つしかない場合、クイックソートする必要がないため、返却する。
+    if (count($array) &lt;= 1) {
+        return $array;
+    }
 
-    <span class="c1">// 一番最初の値をPivotとする。</span>
-    <span class="nv">$pivot</span> <span class="o">=</span> <span class="nb">array_shift</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
+    // 一番最初の値をPivotとする。
+    $pivot = array_shift($array);
 
-    <span class="c1">// グループを定義</span>
-    <span class="nv">$left</span> <span class="o">=</span> <span class="nv">$right</span> <span class="o">=</span> <span class="p">[];</span>
+    // グループを定義
+    $left = $right = [];
 
-    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$array</span> <span class="k">as</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+    foreach ($array as $value) {
 
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$value</span> <span class="o">&lt;</span> <span class="nv">$pivot</span><span class="p">)</span> <span class="p">{</span>
+        if ($value &lt; $pivot) {
 
-            <span class="c1">// Pivotより小さい数は左グループに格納</span>
-            <span class="nv">$left</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
+            // Pivotより小さい数は左グループに格納
+            $left[] = $value;
 
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        } else {
 
-            <span class="c1">// Pivotより大きい数は右グループに格納</span>
-            <span class="nv">$right</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
+            // Pivotより大きい数は右グループに格納
+            $right[] = $value;
 
-            <span class="p">}</span>
+            }
 
-    <span class="p">}</span>
+    }
 
-    <span class="c1">// 処理の周回ごとに、結果の配列を結合。</span>
-    <span class="k">return</span> <span class="nb">array_merge</span>
-    <span class="p">(</span>
-        <span class="c1">// 左のグループを再帰的にクイックソート。</span>
-        <span class="nx">quickSort</span><span class="p">(</span><span class="nv">$left</span><span class="p">),</span>
+    // 処理の周回ごとに、結果の配列を結合。
+    return array_merge
+    (
+        // 左のグループを再帰的にクイックソート。
+        quickSort($left),
 
-        <span class="c1">// Pivotを結果に組み込む。</span>
-        <span class="k">array</span><span class="p">(</span><span class="nv">$pivot</span><span class="p">),</span>
+        // Pivotを結果に組み込む。
+        array($pivot),
 
-        <span class="c1">// 左のグループを再帰的にクイックソート。</span>
-        <span class="nx">quickSort</span><span class="p">(</span><span class="nv">$right</span><span class="p">)</span>
-    <span class="p">);</span>
+        // 左のグループを再帰的にクイックソート。
+        quickSort($right)
+    );
 
-<span class="p">}</span>
+}
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="c1">// 実際に使用してみる。</span>
-<span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="nv">$result</span> <span class="o">=</span> <span class="nx">quickSort</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
+// 実際に使用してみる。
+$array = array(6, 4, 3, 7, 8, 5, 2, 9, 1);
+$result = quickSort($array);
+var_dump($result);
 
-<span class="c1">// 昇順に並び替えられている。</span>
-<span class="c1">// 1, 2, 3, 4, 5, 6, 7, 8</span>
+// 昇順に並び替えられている。
+// 1, 2, 3, 4, 5, 6, 7, 8
 </code></pre></div>
 <p><strong>＊アルゴリズム解説＊</strong></p>
 <p>適当な値を基準値 (Pivot) とし、それより小さな値のグループと大きな値のグループに分割する。</p>
@@ -34243,82 +34243,82 @@
 <p>地点間の距離を表で表す。ただし、同地点間の距離は『0』、隣り合わない地点間の距離は『-1』とする。</p>
 <p><img alt="ダイクストラ法_距離テーブル" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_距離テーブル.png" /></p>
 <p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="c1">// 各地点間の距離を二次元の連想配列で定義</span>
-<span class="nv">$matrix</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s2">"P0"</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
-    <span class="s2">"P1"</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
-    <span class="s2">"P2"</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
-    <span class="s2">"P3"</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
-    <span class="s2">"P4"</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
-    <span class="s2">"P5"</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
-    <span class="s2">"P6"</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="p">);</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
+// 各地点間の距離を二次元の連想配列で定義
+$matrix = array(
+    "P0" =&gt; array(0, 2, 8, 4, -1, -1, -1),
+    "P1" =&gt; array(2, 0, -1, -1, 3, -1, -1),
+    "P2" =&gt; array(8, -1, 0, -1, 2, 3, -1),
+    "P3" =&gt; array(4, -1, -1, 0, -1, 8, -1),
+    "P4" =&gt; array(-1, 3, 2, -1, 0, -1, 9),
+    "P5" =&gt; array(-1, -1, 3, 8, -1, 0, 3),
+    "P6" =&gt; array(-1, -1, -1, -1, 9, 3, 0)
+);
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
-<span class="c1">// 各地点間の距離、出発地点、開始地点を引数にとる。</span>
-<span class="k">function</span> <span class="nf">bestFirstSearchByDijkstra</span><span class="p">(</span>
-    <span class="k">array</span> <span class="nv">$matrix</span><span class="p">,</span>
-    <span class="nx">int</span> <span class="nv">$startPoint</span><span class="p">,</span>
-    <span class="nx">int</span> <span class="nv">$goalPoint</span>
-<span class="p">)</span>
-<span class="p">{</span>
-    <span class="c1">// 地点数を定数で定義</span>
-    <span class="nb">define</span><span class="p">(</span><span class="s2">"POINT_NUMBER"</span><span class="p">,</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$matrix</span><span class="p">));</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
+// 各地点間の距離、出発地点、開始地点を引数にとる。
+function bestFirstSearchByDijkstra(
+    array $matrix,
+    int $startPoint,
+    int $goalPoint
+)
+{
+    // 地点数を定数で定義
+    define("POINT_NUMBER", count($matrix));
 
-    <span class="k">if</span><span class="p">(</span><span class="nv">$startPoint</span> <span class="o">&lt;</span> <span class="nx">POINT_NUMBER</span>
-        <span class="o">||</span> <span class="nx">POINT_NUMBER</span> <span class="o">&lt;</span> <span class="nv">$goalPoint</span><span class="p">){</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">"存在しない地点番号は設定できません。"</span><span class="p">);</span>
-    <span class="p">}</span>
+    if($startPoint &lt; POINT_NUMBER
+        || POINT_NUMBER &lt; $goalPoint){
+            throw new Exception("存在しない地点番号は設定できません。");
+    }
 
-    <span class="c1">// 出発地点を定数で定義</span>
-    <span class="nb">define</span><span class="p">(</span><span class="s2">"START_POINT"</span><span class="p">,</span> <span class="nv">$startPoint</span><span class="p">);</span>
+    // 出発地点を定数で定義
+    define("START_POINT", $startPoint);
 
-    <span class="c1">// 到着地点を定数で定義</span>
-    <span class="nb">define</span><span class="p">(</span><span class="s2">"GOAL_POINT"</span><span class="p">,</span> <span class="nv">$goalPoint</span><span class="p">);</span>
+    // 到着地点を定数で定義
+    define("GOAL_POINT", $goalPoint);
 
-    <span class="c1">// 無限大の定数のINFを使いたいが、定数は上書きできないため、代わりに-1を使用。</span>
-    <span class="c1">// 各頂点に対して、最短ルート地点番号、地点間距離のゼロ値、最短距離確定フラグを設定。</span>
-    <span class="k">for</span><span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nx">POINT_NUMBER</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">++</span><span class="p">){</span>
-        <span class="nv">$route</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-        <span class="nv">$distance</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-        <span class="nv">$fixFlg</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
-        <span class="p">}</span>
+    // 無限大の定数のINFを使いたいが、定数は上書きできないため、代わりに-1を使用。
+    // 各頂点に対して、最短ルート地点番号、地点間距離のゼロ値、最短距離確定フラグを設定。
+    for($i = 0; $i &lt; POINT_NUMBER; $i ++){
+        $route[$i] = -1;
+        $distance[$i] = -1;
+        $fixFlg[$i] = false;
+        }
 
-    <span class="c1">// ＊別の書き方＊</span>
-    <span class="c1">// $cost = array_fill(0, POINT_NUMBER, -1);</span>
-    <span class="c1">// $distance = array_fill(0, POINT_NUMBER, -1);</span>
-    <span class="c1">// $fix = array_fill(0, POINT_NUMBER, false);</span>
+    // ＊別の書き方＊
+    // $cost = array_fill(0, POINT_NUMBER, -1);
+    // $distance = array_fill(0, POINT_NUMBER, -1);
+    // $fix = array_fill(0, POINT_NUMBER, false);
 
-    <span class="c1">// 出発地点から出発地点への距離をゼロとする。</span>
-    <span class="nv">$distance</span><span class="p">[</span><span class="nx">START_POINT</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    // 出発地点から出発地点への距離をゼロとする。
+    $distance[START_POINT] = 0;
 
-    <span class="c1">//</span>
-    <span class="k">while</span><span class="p">(</span><span class="k">true</span><span class="p">){</span>
-        <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    //
+    while(true){
+        $i = 0;
 
-        <span class="k">while</span><span class="p">(</span><span class="nv">$i</span> <span class="o">&lt;</span> <span class="nx">POINT_NUMBER</span><span class="p">){</span>
-            <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$fixFlg</span><span class="p">[</span><span class="nv">$i</span><span class="p">]){</span>
-                <span class="k">break</span> <span class="mi">1</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="nv">$i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="p">}</span>
+        while($i &lt; POINT_NUMBER){
+            if(!$fixFlg[$i]){
+                break 1;
+            }
+            $i += 1;
+        }
 
-        <span class="k">if</span><span class="p">(</span><span class="nv">$i</span> <span class="o">===</span> <span class="nx">POINT_NUMBER</span><span class="p">){</span>
-            <span class="k">break</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="p">}</span>
+        if($i === POINT_NUMBER){
+            break 1;
+        }
 
-        <span class="k">for</span><span class="p">(</span><span class="nv">$j</span> <span class="o">=</span> <span class="nv">$i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$j</span> <span class="o">&lt;</span> <span class="nx">POINT_NUMBER</span><span class="p">;</span> <span class="nv">$j</span> <span class="o">++</span><span class="p">){</span>
-            <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$fixFlg</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="nv">$distance</span><span class="p">[</span><span class="nv">$j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nv">$distance</span><span class="p">[</span><span class="nv">$i</span><span class="p">]){</span>
-                <span class="nv">$i</span> <span class="o">=</span> <span class="nv">$j</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
+        for($j = $i + 1; $j &lt; POINT_NUMBER; $j ++){
+            if(!$fixFlg[$i] &amp;&amp; $distance[$j] &lt; $distance[$i]){
+                $i = $j;
+            }
+        }
 
-        <span class="c1">// 今の自分には、これ以上は難しい…</span>
-        <span class="c1">// 未来の俺、頑張ってくれ…</span>
+        // 今の自分には、これ以上は難しい…
+        // 未来の俺、頑張ってくれ…
 
-    <span class="p">}</span>
-<span class="p">}</span>
+    }
+}
 </code></pre></div>
 <p><strong>＊最短経路探索処理の解説＊</strong></p>
 <p>$startPoint = 0</p>

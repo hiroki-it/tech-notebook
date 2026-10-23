@@ -34348,7 +34348,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:11:31 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:49:57 JST">2026-10-23</span>
   </span>
 
     
@@ -34496,13 +34496,13 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <h3 id="_3">アサーション関数とは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>実測値と期待値を比較し、結果に応じて <code>SUCCESS</code> または <code>FAILURES</code> を返却する。</p>
 <p>非 static または static としてコールできる。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">();</span>
+$this-&gt;assertTrue();
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nx">self</span><span class="o">::</span><span class="na">assertTrue</span><span class="p">()</span>
+self::assertTrue()
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34512,25 +34512,25 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <p><br></p>
 <h3 id="asserttrue">assertTrue<a class="headerlink" href="#asserttrue" title="Permanent link">&para;</a></h3>
 <p>実際値が <code>true</code> か否かを検証する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">isOk</span><span class="p">());</span>
+$this-&gt;assertTrue($response-&gt;isOk());
 </code></pre></div>
 <p><br></p>
 <h3 id="assertequals">assertEquals<a class="headerlink" href="#assertequals" title="Permanent link">&para;</a></h3>
 <p>『<code>==</code>』を使用して、期待値と実際値の整合性を検証する。</p>
 <p>データ型を検証できないため、<code>assertSame()</code> 関数を使用するほうがよい。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+$this-&gt;assertSame(200, $response-&gt;getStatusCode());
 </code></pre></div>
 <p><br></p>
 <h3 id="assertsame">assertSame<a class="headerlink" href="#assertsame" title="Permanent link">&para;</a></h3>
 <p>『<code>===</code>』を使用して、期待値と実際値の整合性を検証する。</p>
 <p>値のみでなく、データ型も検証できる。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+$this-&gt;assertSame(200, $response-&gt;getStatusCode());
 </code></pre></div>
 <p><br></p>
 <h2 id="05">05. 初期データ<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
@@ -34544,40 +34544,40 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+use PHPUnit\Framework\TestCase;
 
-<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * find関数をテストする</span>
-
-
-<span class="sd">     *</span>
-<span class="sd">     * @test</span>
-<span class="sd">     * @dataProvider methodDataProvider</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFind_Bar_Baz</span><span class="p">(</span><span class="nv">$paramA</span><span class="p">,</span> <span class="nv">$paramB</span><span class="p">,</span> <span class="nv">$paramC</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="c1">// 何らかの処理</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**</span>
-<span class="sd">     * find関数を引数を用意する</span>
+class FooTest extends TestCase
+{
+    /**
+     * find関数をテストする
 
 
-<span class="sd">     *</span>
-<span class="sd">     * @return array</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">methodDataProvider</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="p">[</span>
-            <span class="c1">// 配列データは複数あっても良い、</span>
-            <span class="p">[</span><span class="s2">"1"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">]</span>
-        <span class="p">];</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+     *
+     * @test
+     * @dataProvider methodDataProvider
+     */
+    public function testFind_Bar_Baz($paramA, $paramB, $paramC)
+    {
+        // 何らかの処理
+    }
+
+    /**
+     * find関数を引数を用意する
+
+
+     *
+     * @return array
+     */
+    public function methodDataProvider(): array
+    {
+        return [
+            // 配列データは複数あっても良い、
+            ["1", "2", "3"]
+        ];
+    }
+}
 </code></pre></div>
 <p><br></p>
 <h2 id="06">06. 事前処理と事後処理<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
@@ -34585,76 +34585,76 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <p>事前処理として、すべてのテスト関数の前にコールされる関数である。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>IoC コンテナを事前に作成する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+use PHPUnit\Framework\TestCase;
 
-<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-    <span class="k">protected</span> <span class="nv">$container</span><span class="p">;</span>
+class FooTest extends TestCase
+{
+    protected $container;
 
-    <span class="c1">// 全てのテスト関数の前に実行される。</span>
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// IoCコンテナにデータを格納する。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="p">[</span><span class="s2">"option"</span><span class="p">];</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    // 全てのテスト関数の前に実行される。
+    protected function setUp()
+    {
+        // IoCコンテナにデータを格納する。
+        $this-&gt;container["option"];
+    }
+}
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <p>ユニットテストで検証するクラスが実際の処理のなかでインスタンス化されるとき、依存先のクラスはすでにインスタンス化されているはずである。</p>
 <p>そのため、これと同様に依存先のクラスのモックを事前に作成しておく。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+use PHPUnit\Framework\TestCase;
 
-<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-    <span class="k">protected</span> <span class="nv">$foo</span><span class="p">;</span>
+class FooTest extends TestCase
+{
+    protected $foo;
 
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// 基本的には、一番最初に記述する。</span>
-        <span class="k">parent</span><span class="o">::</span><span class="na">setUp</span><span class="p">();</span>
+    protected function setUp()
+    {
+        // 基本的には、一番最初に記述する。
+        parent::setUp();
 
-        <span class="c1">// 事前にモックを作成しておく。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bar</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Bar</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-    <span class="p">}</span>
+        // 事前にモックを作成しておく。
+        $this-&gt;bar = Phake::mock(Bar::class);
+    }
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo_Xxx_Xxx</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// 実際の処理では、インスタンス化時、FooクラスはBarクラスに依存している。</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bar</span><span class="p">)</span>
+    public function testFoo_Xxx_Xxx()
+    {
+        // 実際の処理では、インスタンス化時、FooクラスはBarクラスに依存している。
+        $foo = new Foo($this-&gt;bar)
 
-        <span class="c1">// 何らかのテストコード</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        // 何らかのテストコード
+    }
+}
 </code></pre></div>
 <p><br></p>
 <h3 id="teardown"><code>tearDown()</code> 関数<a class="headerlink" href="#teardown" title="Permanent link">&para;</a></h3>
 <p>事後処理として、すべてのテスト関数の後にコールされる関数である。</p>
 <p>グローバル変数やサービスコンテナにデータを格納する場合、後の検証でもそのデータが誤って使用されてしまわないように、サービスコンテナを破棄するために使用される。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+use PHPUnit\Framework\TestCase;
 
-<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-    <span class="k">protected</span> <span class="nv">$container</span><span class="p">;</span>
+class FooTest extends TestCase
+{
+    protected $container;
 
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="p">[</span><span class="s2">"option"</span><span class="p">];</span>
-    <span class="p">}</span>
+    protected function setUp()
+    {
+        $this-&gt;container["option"];
+    }
 
-    <span class="c1">// 全てのテスト関数の後に実行される。</span>
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">tearDown</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// IoCコンテナにnullを格納する。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    // 全てのテスト関数の後に実行される。
+    protected function tearDown()
+    {
+        // IoCコンテナにnullを格納する。
+        $this-&gt;container = null;
+    }
+}
 </code></pre></div>
 <p><br></p>
 <h2 id="07">07. テストダブル<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
@@ -34662,201 +34662,201 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <p>クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを作成する。</p>
 <p>以降の処理での用途によって、呼び名が異なることに注意する。</p>
 <p>補足として、PHPUnit の場合、モックの関数は <code>null</code> を返却する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+use PHPUnit\Framework\TestCase;
 
-<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-   <span class="sd">/**</span>
-<span class="sd">    * @test</span>
-<span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// モックとして使用する擬似オブジェクトを作成する。</span>
-        <span class="nv">$mock</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createMock</span><span class="p">(</span><span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+class FooTest extends TestCase
+{
+   /**
+    * @test
+    */
+    public function testFoo()
+    {
+        // モックとして使用する擬似オブジェクトを作成する。
+        $mock = $this-&gt;createMock(Foo::class);
 
-        <span class="c1">// null</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="nv">$mock</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        // null
+        $foo = $mock-&gt;find(1)
+    }
+}
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">class</span> <span class="nc">Foo</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">    * @param  int</span>
-<span class="sd">    * @return array</span>
-<span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="c1">// 参照する処理</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+class Foo
+{
+    /**
+    * @param  int
+    * @return array
+    */
+    public function find(int $id)
+    {
+        // 参照する処理
+    }
+}
 </code></pre></div>
 <p><br></p>
 <h3 id="method"><code>method()</code> 関数<a class="headerlink" href="#method" title="Permanent link">&para;</a></h3>
 <p>モックまたはスタブの関数に対して、処理の内容を定義する。</p>
 <p>特定の変数が渡されたとき、特定の値を返却させられる。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+use PHPUnit\Framework\TestCase;
 
-<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-   <span class="sd">/**</span>
-<span class="sd">    * @test</span>
-<span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo_Xxx_Xxx</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// スタブとして使用する擬似オブジェクトを作成する。</span>
-        <span class="nv">$stub</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createMock</span><span class="p">(</span><span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+class FooTest extends TestCase
+{
+   /**
+    * @test
+    */
+    public function testFoo_Xxx_Xxx()
+    {
+        // スタブとして使用する擬似オブジェクトを作成する。
+        $stub = $this-&gt;createMock(Foo::class);
 
-        <span class="c1">// スタブの関数に処理内容を定義する。</span>
-        <span class="nv">$stub</span><span class="o">-&gt;</span><span class="na">method</span><span class="p">(</span><span class="s2">"find"</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">willReturn</span><span class="p">([]);</span>
+        // スタブの関数に処理内容を定義する。
+        $stub-&gt;method("find")
+            -&gt;with(1)
+            -&gt;willReturn([]);
 
-        <span class="c1">// [] (空配列)</span>
-        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$stub</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        // [] (空配列)
+        $result = $stub-&gt;find(1)
+    }
+}
 </code></pre></div>
 <p><br></p>
 <h2 id="08">08. テストケース<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
 <h3 id="_4">ユニットテストの場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
 <p>以降のテストケースでは、次のような通知クラスとメッセージクラスが前提にあるとする。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">CouldNotSendMessageException</span><span class="p">;</span>
+use CouldNotSendMessageException;
 
-<span class="k">class</span> <span class="nc">FooNotification</span>
-<span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$httpClient</span><span class="p">;</span>
+class FooNotification
+{
+    private $httpClient;
 
-    <span class="k">private</span> <span class="nv">$token</span><span class="p">;</span>
+    private $token;
 
-    <span class="k">private</span> <span class="nv">$logger</span><span class="p">;</span>
+    private $logger;
 
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">Client</span> <span class="nv">$httpClient</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$token</span><span class="p">,</span> <span class="nx">LoggerInterface</span> <span class="nv">$logger</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">httpClient</span> <span class="o">=</span> <span class="nv">$httpClient</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span> <span class="o">=</span> <span class="nv">$token</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="nv">$logger</span><span class="p">;</span>
-    <span class="p">}</span>
+    public function __construct(Client $httpClient, string $token, LoggerInterface $logger)
+    {
+        $this-&gt;httpClient = $httpClient;
+        $this-&gt;token = $token;
+        $this-&gt;logger = $logger;
+    }
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">FooMessage</span> <span class="nv">$fooMessage</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span><span class="p">))</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">CouldNotSendMessageException</span><span class="p">(</span><span class="s2">"API requests is required."</span><span class="p">);</span>
-        <span class="p">}</span>
+    public function sendMessage(FooMessage $fooMessage)
+    {
+        if (empty($this-&gt;token)) {
+            throw new CouldNotSendMessageException("API requests is required.");
+        }
 
-        <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$fooMessage</span><span class="o">-&gt;</span><span class="na">channel_id</span><span class="p">))</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">CouldNotSendMessageException</span><span class="p">(</span><span class="s2">"Channel ID is required."</span><span class="p">);</span>
-        <span class="p">}</span>
+        if (empty($fooMessage-&gt;channel_id)) {
+            throw new CouldNotSendMessageException("Channel ID is required.");
+        }
 
-        <span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$fooMessage</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">);</span>
+        $json = json_encode($fooMessage-&gt;message);
 
-        <span class="k">try</span> <span class="p">{</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">httpClient</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
-                <span class="s2">"POST"</span><span class="p">,</span>
-                <span class="s2">"https://example.com"</span><span class="p">,</span>
-                <span class="p">[</span>
-                    <span class="s2">"headers"</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                        <span class="s2">"Authorization"</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span><span class="p">,</span>
-                        <span class="s2">"Content-Length"</span> <span class="o">=&gt;</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$json</span><span class="p">),</span>
-                        <span class="s2">"Content-Type"</span> <span class="o">=&gt;</span> <span class="s2">"application/json"</span><span class="p">,</span>
-                    <span class="p">],</span>
-                    <span class="s2">"form_params"</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                        <span class="s2">"body"</span> <span class="o">=&gt;</span>  <span class="nv">$fooMessage</span><span class="o">-&gt;</span><span class="na">message</span>
-                    <span class="p">]</span>
-                <span class="p">]</span>
-            <span class="p">);</span>
+        try {
+            $this-&gt;httpClient-&gt;request(
+                "POST",
+                "https://example.com",
+                [
+                    "headers" =&gt; [
+                        "Authorization" =&gt; $this-&gt;token,
+                        "Content-Length" =&gt; strlen($json),
+                        "Content-Type" =&gt; "application/json",
+                    ],
+                    "form_params" =&gt; [
+                        "body" =&gt;  $fooMessage-&gt;message
+                    ]
+                ]
+            );
 
-        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ClientException</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
+        } catch (ClientException $exception) {
 
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
-                <span class="s2">"ERROR: %s at %s line %s"</span><span class="p">,</span>
-                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span>
-                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(),</span>
-                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">()</span>
-            <span class="p">));</span>
+            $this-&gt;logger-&gt;error(sprintf(
+                "ERROR: %s at %s line %s",
+                $exception-&gt;getMessage(),
+                $exception-&gt;getFile(),
+                $exception-&gt;getLine()
+            ));
 
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">CouldNotSendMessageException</span><span class="p">(</span><span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
-        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
+            throw new CouldNotSendMessageException($exception-&gt;getMessage());
+        } catch (\Exception $exception) {
 
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
-                <span class="s2">"ERROR: %s at %s line %s"</span><span class="p">,</span>
-                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span>
-                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(),</span>
-                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">()</span>
-            <span class="p">));</span>
+            $this-&gt;logger-&gt;error(sprintf(
+                "ERROR: %s at %s line %s",
+                $exception-&gt;getMessage(),
+                $exception-&gt;getFile(),
+                $exception-&gt;getLine()
+            ));
 
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">CouldNotSendMessageException</span><span class="p">(</span><span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
-        <span class="p">}</span>
+            throw new CouldNotSendMessageException($exception-&gt;getMessage());
+        }
 
-        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        return true;
+    }
+}
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">class</span> <span class="nc">FooMessage</span>
-<span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$channel_id</span><span class="p">;</span>
+class FooMessage
+{
+    private $channel_id;
 
-    <span class="k">private</span> <span class="nv">$message</span><span class="p">;</span>
+    private $message;
 
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$channel_id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$message</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">channel_id</span> <span class="o">=</span> <span class="nv">$channel_id</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="nv">$message</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    public function __construct(string $channel_id, string $message)
+    {
+        $this-&gt;channel_id = $channel_id;
+        $this-&gt;message = $message;
+    }
+}
 </code></pre></div>
 <h4 id="_5">▼ 正常系テストの場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>関数のアノテーションで、<code>@test</code> を宣言する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>リクエストにて、チャンネルとメッセージを送信したとき、レスポンスとして <code>TRUE</code> が返信されるかを検証する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">FooMessage</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">FooNotifiation</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+use FooMessage;
+use FooNotifiation;
+use PHPUnit\Framework\TestCase;
 
-<span class="k">class</span> <span class="nc">FooNotificationTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$logger</span><span class="p">;</span>
+class FooNotificationTest extends TestCase
+{
+    private $logger;
 
-    <span class="k">private</span> <span class="nv">$client</span><span class="p">;</span>
+    private $client;
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// 検証対象外のクラスはモックとする。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span> <span class="o">=</span> <span class="nx">\Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Client</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="nx">\Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">LoggerInterface</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-    <span class="p">}</span>
+    public function setUp()
+    {
+        // 検証対象外のクラスはモックとする。
+        $this-&gt;client = \Phake::mock(Client::class);
+        $this-&gt;logger = \Phake::mock(LoggerInterface::class);
+    }
 
-   <span class="sd">/**</span>
-<span class="sd">    * @test</span>
-<span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testSendMessage_FooMessage_ReturnTrue</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$fooNotification</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FooNotification</span><span class="p">(</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span><span class="p">,</span>
-            <span class="s2">"xxxxxxx"</span><span class="p">,</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span>
-        <span class="p">);</span>
+   /**
+    * @test
+    */
+    public function testSendMessage_FooMessage_ReturnTrue()
+    {
+        $fooNotification = new FooNotification(
+            $this-&gt;client,
+            "xxxxxxx",
+            $this-&gt;logger
+        );
 
-        <span class="nv">$fooMessage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FooMessage</span><span class="p">(</span><span class="s2">"test"</span><span class="p">,</span> <span class="s2">"X-CHANNEL"</span><span class="p">);</span>
+        $fooMessage = new FooMessage("test", "X-CHANNEL");
 
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span>
-            <span class="nv">$fooNotification</span><span class="o">-&gt;</span><span class="na">sendMessage</span><span class="p">(</span><span class="nv">$fooMessage</span><span class="p">)</span>
-        <span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        $this-&gt;assertTrue(
+            $fooNotification-&gt;sendMessage($fooMessage)
+        );
+    }
+}
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># Time: x seconds</span>
 <span class="c1"># OK</span>
@@ -34865,42 +34865,42 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <p>関数のアノテーションで、<code>@test</code> と <code>@expectedException</code> を宣言する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>リクエストにて、メッセージのみを送信しようとしたとき、例外を発生させられるかを検証する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">FooMessage</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">FooNotifiation</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+use FooMessage;
+use FooNotifiation;
+use PHPUnit\Framework\TestCase;
 
-<span class="k">class</span> <span class="nc">FooNotificationTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$logger</span><span class="p">;</span>
+class FooNotificationTest extends TestCase
+{
+    private $logger;
 
-    <span class="k">private</span> <span class="nv">$client</span><span class="p">;</span>
+    private $client;
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// 検証対象外のクラスはモックとする。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span> <span class="o">=</span> <span class="nx">\Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Client</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="nx">\Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">LoggerInterface</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
-    <span class="p">}</span>
+    public function setUp()
+    {
+        // 検証対象外のクラスはモックとする。
+        $this-&gt;client = \Phake::mock(Client::class);
+        $this-&gt;logger = \Phake::mock(LoggerInterface::class);
+    }
 
-   <span class="sd">/**</span>
-<span class="sd">    * @test</span>
-<span class="sd">    * @expectedException</span>
-<span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testSendMessage_EmptyMessage_ExceptionThrown</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$fooNotification</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FooNotification</span><span class="p">(</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span><span class="p">,</span>
-            <span class="s2">"xxxxxxx"</span><span class="p">,</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span>
-        <span class="p">);</span>
+   /**
+    * @test
+    * @expectedException
+    */
+    public function testSendMessage_EmptyMessage_ExceptionThrown()
+    {
+        $fooNotification = new FooNotification(
+            $this-&gt;client,
+            "xxxxxxx",
+            $this-&gt;logger
+        );
 
-        <span class="nv">$fooMessage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FooMessage</span><span class="p">(</span><span class="s2">"test"</span><span class="p">,</span> <span class="s2">""</span><span class="p">);</span>
+        $fooMessage = new FooMessage("test", "");
 
-        <span class="nv">$fooNotification</span><span class="o">-&gt;</span><span class="na">sendMessage</span><span class="p">(</span><span class="nv">$fooMessage</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        $fooNotification-&gt;sendMessage($fooMessage);
+    }
+}
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># Time: x seconds</span>
 <span class="c1"># OK</span>
@@ -34909,33 +34909,33 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <h3 id="_7">機能テストの場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
 <p>関数のアノテーションで、<code>@test</code> を宣言する必要がある。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
+use PHPUnit\Framework\TestCase;
+use GuzzleHttp\Client;
 
-<span class="k">class</span> <span class="nc">FooControllerTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @test</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// アプリケーション自身のコントローラークラスにリクエストを送信する処理。</span>
-        <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
-        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
-            <span class="s2">"GET"</span><span class="p">,</span>
-            <span class="s2">"https://example.com"</span><span class="p">,</span>
-            <span class="p">[</span>
-                <span class="s2">"query"</span> <span class="o">=&gt;</span> <span class="p">[</span>
-                    <span class="s2">"id"</span> <span class="o">=&gt;</span> <span class="mi">1</span>
-                <span class="p">]</span>
-            <span class="p">]</span>
-        <span class="p">);</span>
+class FooControllerTest extends TestCase
+{
+    /**
+     * @test
+     */
+    public function testFoo()
+    {
+        // アプリケーション自身のコントローラークラスにリクエストを送信する処理。
+        $client = new Client();
+        $response = $client-&gt;request(
+            "GET",
+            "https://example.com",
+            [
+                "query" =&gt; [
+                    "id" =&gt; 1
+                ]
+            ]
+        );
 
-        <span class="c1">// レスポンスの実際値と期待値の整合性を検証する。</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        // レスポンスの実際値と期待値の整合性を検証する。
+    }
+}
 </code></pre></div>
 <h4 id="_8">▼ テストケース<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>外部 Web サイトが正常であることを前提として、外部 Web サービスとの連携が含まれていることに注意する。</p>
@@ -35032,133 +35032,133 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <h4 id="get">▼ 正常系 GET<a class="headerlink" href="#get" title="Permanent link">&para;</a></h4>
 <p>コントローラーが <code>200</code> ステータスを含むレスポンスを返信することを検証する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+use GuzzleHttp\Client;
+use PHPUnit\Framework\TestCase;
 
-<span class="k">class</span> <span class="nc">FooControllerTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-   <span class="sd">/**</span>
-<span class="sd">    * @test</span>
-<span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testGetPage_GetRequest_Return200</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// 外部サービスがクライアントの場合はモックを使用する。</span>
-        <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+class FooControllerTest extends TestCase
+{
+   /**
+    * @test
+    */
+    public function testGetPage_GetRequest_Return200()
+    {
+        // 外部サービスがクライアントの場合はモックを使用する。
+        $client = new Client();
 
-        <span class="c1">// GETリクエスト</span>
-        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
-            <span class="s2">"GET"</span><span class="p">,</span>
-            <span class="s2">"/xxx/yyy/"</span>
-        <span class="p">);</span>
+        // GETリクエスト
+        $client-&gt;request(
+            "GET",
+            "/xxx/yyy/"
+        );
 
-        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">();</span>
+        $response = $client-&gt;getResponse();
 
-        <span class="c1">// 200ステータスが返却されるかを検証する。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        // 200ステータスが返却されるかを検証する。
+        $this-&gt;assertSame(200, $response-&gt;getStatusCode());
+    }
+}
 </code></pre></div>
 <h4 id="post">▼ 正常系 POST<a class="headerlink" href="#post" title="Permanent link">&para;</a></h4>
 <p>コントローラーが <code>200</code> ステータスを含むレスポンスを返信すること、更新されたデータの ID が期待通りであること、レスポンスされたデータが期待通りであることを検証する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+use GuzzleHttp\Client;
+use PHPUnit\Framework\TestCase;
 
-<span class="k">class</span> <span class="nc">FooControllerTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @test</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testPostMessage_GetRequest_Return200NormalMessage</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+class FooControllerTest extends TestCase
+{
+    /**
+     * @test
+     */
+    public function testPostMessage_GetRequest_Return200NormalMessage()
+    {
+        $client = new Client();
 
-        <span class="c1">// APIにPOSTリクエスト</span>
-        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
-            <span class="s2">"POST"</span><span class="p">,</span>
-            <span class="s2">"/xxx/yyy/"</span><span class="p">,</span>
-            <span class="p">[</span>
-                <span class="s2">"id"</span>      <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
-                <span class="s2">"message"</span> <span class="o">=&gt;</span> <span class="s2">"Hello World!"</span>
-            <span class="p">],</span>
-            <span class="p">[</span>
-                <span class="s2">"HTTP_X_API_Token"</span> <span class="o">=&gt;</span> <span class="s2">"Bearer &lt;APIキー&gt;"</span>
-            <span class="p">]</span>
-        <span class="p">);</span>
+        // APIにPOSTリクエスト
+        $client-&gt;request(
+            "POST",
+            "/xxx/yyy/",
+            [
+                "id"      =&gt; 1,
+                "message" =&gt; "Hello World!"
+            ],
+            [
+                "HTTP_X_API_Token" =&gt; "Bearer &lt;APIキー&gt;"
+            ]
+        );
 
-        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">();</span>
+        $response = $client-&gt;getResponse();
 
-        <span class="c1">// 200ステータスが返却されるかを検証する。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+        // 200ステータスが返却されるかを検証する。
+        $this-&gt;assertSame(200, $response-&gt;getStatusCode());
 
-        <span class="c1">// レスポンスデータを抽出する。</span>
-        <span class="nv">$actual</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">(),</span> <span class="k">true</span><span class="p">);</span>
+        // レスポンスデータを抽出する。
+        $actual = json_decode($response-&gt;getContent(), true);
 
-        <span class="c1">// 更新されたデータのIDが正しいかを検証する。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$actual</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]);</span>
+        // 更新されたデータのIDが正しいかを検証する。
+        $this-&gt;assertSame(1, $actual["id"]);
 
-        <span class="c1">// レスポンスされたメッセージが正しいかを検証する。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span>
-            <span class="p">[</span>
-                <span class="s2">"データを変更しました。"</span>
-            <span class="p">],</span>
-            <span class="nv">$actual</span><span class="p">[</span><span class="s2">"message"</span><span class="p">]</span>
-        <span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        // レスポンスされたメッセージが正しいかを検証する。
+        $this-&gt;assertSame(
+            [
+                "データを変更しました。"
+            ],
+            $actual["message"]
+        );
+    }
+}
 </code></pre></div>
 <h4 id="post_1">▼ 異常系 POST<a class="headerlink" href="#post_1" title="Permanent link">&para;</a></h4>
 <p>コントローラーが <code>400</code> ステータスを含むレスポンスを返信すること、レスポンスされたデータが期待通りであることを検証する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+use GuzzleHttp\Client;
+use PHPUnit\Framework\TestCase;
 
-<span class="k">class</span> <span class="nc">FooControllerTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @test</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testPostMessage_EmptyMessage_Return400ErrorMessage</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+class FooControllerTest extends TestCase
+{
+    /**
+     * @test
+     */
+    public function testPostMessage_EmptyMessage_Return400ErrorMessage()
+    {
+        $client = new Client();
 
-        <span class="c1">// APIにPOSTリクエスト</span>
-        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
-            <span class="s2">"POST"</span><span class="p">,</span>
-            <span class="s2">"/xxx/yyy/"</span><span class="p">,</span>
-            <span class="p">[</span>
-                <span class="s2">"id"</span>      <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
-                <span class="s2">"message"</span> <span class="o">=&gt;</span> <span class="s2">""</span>
-            <span class="p">],</span>
-            <span class="p">[</span>
-                <span class="s2">"HTTP_X_API_Token"</span> <span class="o">=&gt;</span> <span class="s2">"Bearer &lt;APIキー&gt;"</span>
-            <span class="p">]</span>
-        <span class="p">);</span>
+        // APIにPOSTリクエスト
+        $client-&gt;request(
+            "POST",
+            "/xxx/yyy/",
+            [
+                "id"      =&gt; 1,
+                "message" =&gt; ""
+            ],
+            [
+                "HTTP_X_API_Token" =&gt; "Bearer &lt;APIキー&gt;"
+            ]
+        );
 
-        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">();</span>
+        $response = $client-&gt;getResponse();
 
-        <span class="c1">// 400ステータスが返却されるかを検証する。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+        // 400ステータスが返却されるかを検証する。
+        $this-&gt;assertSame(400, $response-&gt;getStatusCode());
 
-        <span class="c1">// レスポンスデータのエラーを抽出する。</span>
-        <span class="nv">$actual</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">(),</span> <span class="k">true</span><span class="p">);</span>
+        // レスポンスデータのエラーを抽出する。
+        $actual = json_decode($response-&gt;getContent(), true);
 
-        <span class="c1">// レスポンスされたエラーメッセージが正しいかを検証する。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span>
-            <span class="p">[</span>
-                <span class="s2">"IDは必ず入力してください。"</span><span class="p">,</span>
-                <span class="s2">"メッセージは必ず入力してください。"</span>
-            <span class="p">],</span>
-            <span class="nv">$actual</span><span class="p">[</span><span class="s2">"errors"</span><span class="p">]</span>
-        <span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        // レスポンスされたエラーメッセージが正しいかを検証する。
+        $this-&gt;assertSame(
+            [
+                "IDは必ず入力してください。",
+                "メッセージは必ず入力してください。"
+            ],
+            $actual["errors"]
+        );
+    }
+}
 </code></pre></div>
 <p><br></p>
 

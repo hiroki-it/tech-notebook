@@ -35196,7 +35196,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:11:31 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:49:57 JST">2026-10-23</span>
   </span>
 
     
@@ -35255,212 +35255,212 @@
 <p>ただし、類似するパターンとして値オブジェクトのディレクトリ内に配置してもよい。</p>
 <h4 id="_12">▼ 色<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\Foo\ValueObjects</span><span class="p">;</span>
+namespace App\Domain\Foo\ValueObjects;
 
-<span class="sd">/**</span>
-<span class="sd"> * 色の区分オブジェクト</span>
-<span class="sd"> */</span>
-<span class="k">class</span> <span class="nc">ColorType</span>
-<span class="p">{</span>
-    <span class="k">const</span> <span class="no">RED</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">BLUE</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+/**
+ * 色の区分オブジェクト
+ */
+class ColorType
+{
+    const RED = 1;
+    const BLUE = 2;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 『self::定数名』で、定義の値へアクセスする</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="k">static</span> <span class="nv">$set</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">RED</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"レッド"</span><span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">BLUE</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"ブルー"</span><span class="p">]</span>
-    <span class="p">];</span>
+    /**
+     * 『self::定数名』で、定義の値へアクセスする
+     */
+    private static $set = [
+        self::RED  =&gt; ["name" =&gt; "レッド"],
+        self::BLUE =&gt; ["name" =&gt; "ブルー"]
+    ];
 
-    <span class="sd">/**</span>
-<span class="sd">     * 値</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$value</span><span class="p">;</span>
+    /**
+     * 値
+     */
+    private $value;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 色名</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+    /**
+     * 色名
+     */
+    private $name;
 
-    <span class="c1">// インスタンス化の時に、『色の区分値』を受け取る。</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$value</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="c1">// $kbnValueに応じて、色名をnameデータにセットする。</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$set</span><span class="p">[</span><span class="nv">$value</span><span class="p">][</span><span class="s2">"name"</span><span class="p">];</span>
-    <span class="p">}</span>
+    // インスタンス化の時に、『色の区分値』を受け取る。
+    public function __construct(string $value)
+    {
+        // $kbnValueに応じて、色名をnameデータにセットする。
+        $this-&gt;value = $value;
+        $this-&gt;name = static::$set[$value]["name"];
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 値を返却する</span>
-
-
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">value</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     * 値を返却する
 
 
-    <span class="sd">/**</span>
-<span class="sd">     * 色名を返却する</span>
+     */
+    public function value(): int
+    {
+        return $this-&gt;value;
+    }
 
 
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">name</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    /**
+     * 色名を返却する
+
+
+     */
+    public function name(): string
+    {
+        return $this-&gt;name;
+    }
+}
 </code></pre></div>
 <h4 id="_13">▼ 性別<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\Foo\ValueObjects</span><span class="p">;</span>
+namespace App\Domain\Foo\ValueObjects;
 
-<span class="sd">/**</span>
-<span class="sd"> * 性別の区分オブジェクト</span>
-<span class="sd"> */</span>
-<span class="k">class</span> <span class="nc">SexType</span>
-<span class="p">{</span>
-    <span class="k">const</span> <span class="no">MAN</span>     <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">WOMAN</span>   <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">UNKNOWN</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+/**
+ * 性別の区分オブジェクト
+ */
+class SexType
+{
+    const MAN     = 1;
+    const WOMAN   = 2;
+    const UNKNOWN = 3;
 
-    <span class="k">private</span> <span class="k">static</span> <span class="nv">$set</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">MAN</span>     <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"男性"</span><span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">WOMAN</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"女性"</span><span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">UNKNOWN</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"不明"</span><span class="p">],</span>
-    <span class="p">];</span>
+    private static $set = [
+        self::MAN     =&gt; ["name" =&gt; "男性"],
+        self::WOMAN   =&gt; ["name" =&gt; "女性"],
+        self::UNKNOWN =&gt; ["name" =&gt; "不明"],
+    ];
 
-    <span class="sd">/**</span>
-<span class="sd">     * 値</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$value</span><span class="p">;</span>
+    /**
+     * 値
+     */
+    private $value;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 名前</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+    /**
+     * 名前
+     */
+    private $name;
 
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$set</span><span class="p">[</span><span class="nv">$value</span><span class="p">][</span><span class="s2">"name"</span><span class="p">];</span>
-    <span class="p">}</span>
+    public function __construct($value)
+    {
+        $this-&gt;value = $value;
+        $this-&gt;name = static::$set[$value]["name"];
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 値を返却する</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">value</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="sd">/**</span>
-<span class="sd">     * 名前を返却する</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">name</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    /**
+     * 値を返却する
+     */
+    public function value(): int
+    {
+        return $this-&gt;value;
+    }
+    /**
+     * 名前を返却する
+     */
+    public function name()
+    {
+        return $this-&gt;name;
+    }
+}
 </code></pre></div>
 <h4 id="_14">▼ 年号<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\Foo\ValueObjects</span><span class="p">;</span>
+namespace App\Domain\Foo\ValueObjects;
 
-<span class="sd">/**</span>
-<span class="sd"> * 年月日の区分オブジェクト</span>
-<span class="sd"> */</span>
-<span class="k">class</span> <span class="nc">YmdType</span> <span class="k">extends</span> <span class="nx">Type</span>
-<span class="p">{</span>
-    <span class="k">const</span> <span class="no">MEIJI</span>   <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 明治</span>
-    <span class="k">const</span> <span class="no">TAISHO</span>  <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 大正</span>
-    <span class="k">const</span> <span class="no">SHOWA</span>   <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 昭和</span>
-    <span class="k">const</span> <span class="no">HEISEI</span>  <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 平成</span>
-    <span class="k">const</span> <span class="no">REIWA</span>   <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 令和</span>
-    <span class="k">const</span> <span class="no">SEIREKI</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">// 西暦</span>
+/**
+ * 年月日の区分オブジェクト
+ */
+class YmdType extends Type
+{
+    const MEIJI   = 1; // 明治
+    const TAISHO  = 2; // 大正
+    const SHOWA   = 3; // 昭和
+    const HEISEI  = 4; // 平成
+    const REIWA   = 5; // 令和
+    const SEIREKI = 9; // 西暦
 
-    <span class="k">private</span> <span class="k">static</span> <span class="nv">$set</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">MEIJI</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"明治"</span><span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">TAISHO</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"大正"</span><span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">SHOWA</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"昭和"</span><span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">HEISEI</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"平成"</span><span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">REIWA</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"令和"</span><span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">SEIREKI</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"西暦"</span><span class="p">],</span>
-    <span class="p">];</span>
+    private static $set = [
+        self::MEIJI   =&gt; ["name" =&gt; "明治"],
+        self::TAISHO  =&gt; ["name" =&gt; "大正"],
+        self::SHOWA   =&gt; ["name" =&gt; "昭和"],
+        self::HEISEI  =&gt; ["name" =&gt; "平成"],
+        self::REIWA   =&gt; ["name" =&gt; "令和"],
+        self::SEIREKI =&gt; ["name" =&gt; "西暦"],
+    ];
 
-    <span class="k">private</span> <span class="k">static</span> <span class="nv">$ymd</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">MEIJI</span>  <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s2">"start"</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">1868</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">25</span><span class="p">,</span> <span class="p">],</span>
-            <span class="s2">"end"</span>   <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">1912</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">29</span><span class="p">,</span> <span class="p">],</span>
-        <span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">TAISHO</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s2">"start"</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">1912</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">7</span><span class="p">,</span>  <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span> <span class="p">],</span>
-            <span class="s2">"end"</span>   <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">1926</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">24</span><span class="p">,</span> <span class="p">],</span>
-        <span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">SHOWA</span>  <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s2">"start"</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">1926</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">25</span><span class="p">,</span> <span class="p">],</span>
-            <span class="s2">"end"</span>   <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">1989</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>  <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">7</span><span class="p">,</span> <span class="p">],</span>
-        <span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">HEISEI</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s2">"start"</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">1989</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>  <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">8</span><span class="p">,</span> <span class="p">],</span>
-            <span class="s2">"end"</span>   <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">2019</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span> <span class="p">],</span>
-        <span class="p">],</span>
-        <span class="nx">self</span><span class="o">::</span><span class="na">REIWA</span> <span class="o">=&gt;</span> <span class="p">[</span>
-            <span class="s2">"start"</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">2019</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span>  <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="p">],</span>
-            <span class="s2">"end"</span>   <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">9999</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">31</span><span class="p">,</span> <span class="p">],</span>
-        <span class="p">],</span>
-    <span class="p">];</span>
+    private static $ymd = [
+        self::MEIJI  =&gt; [
+            "start" =&gt; [ "year" =&gt; 1868, "month" =&gt; 1, "day" =&gt; 25, ],
+            "end"   =&gt; [ "year" =&gt; 1912, "month" =&gt; 7, "day" =&gt; 29, ],
+        ],
+        self::TAISHO =&gt; [
+            "start" =&gt; [ "year" =&gt; 1912, "month" =&gt; 7,  "day" =&gt; 30, ],
+            "end"   =&gt; [ "year" =&gt; 1926, "month" =&gt; 12, "day" =&gt; 24, ],
+        ],
+        self::SHOWA  =&gt; [
+            "start" =&gt; [ "year" =&gt; 1926, "month" =&gt; 12, "day" =&gt; 25, ],
+            "end"   =&gt; [ "year" =&gt; 1989, "month" =&gt; 1,  "day" =&gt; 7, ],
+        ],
+        self::HEISEI =&gt; [
+            "start" =&gt; [ "year" =&gt; 1989, "month" =&gt; 1,  "day" =&gt; 8, ],
+            "end"   =&gt; [ "year" =&gt; 2019, "month" =&gt; 4, "day" =&gt; 30, ],
+        ],
+        self::REIWA =&gt; [
+            "start" =&gt; [ "year" =&gt; 2019, "month" =&gt; 5,  "day" =&gt; 1, ],
+            "end"   =&gt; [ "year" =&gt; 9999, "month" =&gt; 12, "day" =&gt; 31, ],
+        ],
+    ];
 
-    <span class="sd">/**</span>
-<span class="sd">     * 値</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$value</span><span class="p">;</span>
+    /**
+     * 値
+     *
+     * @var string
+     */
+    private $value;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 年号名</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+    /**
+     * 年号名
+     *
+     * @var string
+     */
+    private $name;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 値を返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return string</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">value</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     * 値を返却する
+     *
+     * @return string
+     */
+    public function value(): string
+    {
+        return $this-&gt;value;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param $value</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$set</span><span class="p">[</span><span class="nv">$value</span><span class="p">][</span><span class="s2">"name"</span><span class="p">];</span>
-    <span class="p">}</span>
+    /**
+     * @param $value
+     */
+    public function __construct($value)
+    {
+        $this-&gt;value = $value;
+        $this-&gt;name = static::$set[$value]["name"];
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 年号名を返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return string</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">name</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    /**
+     * 年号名を返却する
+     *
+     * @return string
+     */
+    public function name()
+    {
+        return $this-&gt;name;
+    }
+}
 </code></pre></div>
 <p><br></p>
 <h3 id="_15">ドメインサービス<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
@@ -35481,41 +35481,41 @@
 <p>ドメイン層のリポジトリを使用して、該当の名前のエンティティが DB に存在するか否かを検証する。</p>
 <p>ドメインサービスではなく、アプリケーションサービスとして定義してもよい。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\Foo\Services</span><span class="p">;</span>
+namespace App\Domain\Foo\Services;
 
-<span class="k">class</span> <span class="nc">CheckDuplicateFooService</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var FooRepository</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">FooRepository</span> <span class="nv">$fooRepository</span><span class="p">;</span>
+class CheckDuplicateFooService
+{
+    /**
+     * @var FooRepository
+     */
+    private FooRepository $fooRepository;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param FooRepository $fooRepository</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooRepository</span> <span class="nv">$fooRepository</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span> <span class="o">=</span> <span class="nv">$fooRepository</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     * @param FooRepository $fooRepository
+     */
+    public function __construct(FooRepository $fooRepository)
+    {
+        $this-&gt;fooRepository = $fooRepository;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * エンティティがすでに存在しているか否かを判定する</span>
+    /**
+     * エンティティがすでに存在しているか否かを判定する
 
 
-<span class="sd">     *</span>
-<span class="sd">     * @param Foo $foo</span>
-<span class="sd">     * @return bool</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">exists</span><span class="p">(</span><span class="nx">Foo</span> <span class="nv">$foo</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
-    <span class="p">{</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span>
-            <span class="o">-&gt;</span><span class="na">findByName</span><span class="p">(</span><span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">());</span>
+     *
+     * @param Foo $foo
+     * @return bool
+     */
+    public function exists(Foo $foo): bool
+    {
+        $foo = $this-&gt;fooRepository
+            -&gt;findByName($foo-&gt;name());
 
-        <span class="k">return</span> <span class="nv">$foo</span> <span class="o">!==</span> <span class="k">null</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        return $foo !== null;
+    }
+}
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35555,40 +35555,40 @@
 </tbody>
 </table>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\Foo\Services</span><span class="p">;</span>
+namespace App\Domain\Foo\Services;
 
-<span class="k">class</span> <span class="nc">AuthorizeFooService</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var FooRepository</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">FooRepository</span> <span class="nv">$fooRepository</span><span class="p">;</span>
+class AuthorizeFooService
+{
+    /**
+     * @var FooRepository
+     */
+    private FooRepository $fooRepository;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param FooRepository $fooRepository</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooRepository</span> <span class="nv">$fooRepository</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span> <span class="o">=</span> <span class="nv">$fooRepository</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     * @param FooRepository $fooRepository
+     */
+    public function __construct(FooRepository $fooRepository)
+    {
+        $this-&gt;fooRepository = $fooRepository;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 更新処理を実行できるかを検証する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param FooId  $fooId</span>
-<span class="sd">     * @param UserId $userId</span>
-<span class="sd">     * @return bool</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">canUpdateById</span><span class="p">(</span><span class="nx">FooId</span> <span class="nv">$fooId</span><span class="p">,</span> <span class="nx">UserId</span> <span class="nv">$userId</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span>
-            <span class="o">-&gt;</span><span class="na">findById</span><span class="p">(</span><span class="nv">$fooId</span><span class="p">)</span>
-            <span class="o">-&gt;</span><span class="na">userId</span>
-            <span class="o">-&gt;</span><span class="na">equals</span><span class="p">(</span><span class="nv">$userId</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    /**
+     * 更新処理を実行できるかを検証する
+     *
+     * @param FooId  $fooId
+     * @param UserId $userId
+     * @return bool
+     */
+    public function canUpdateById(FooId $fooId, UserId $userId): bool
+    {
+        return $this-&gt;fooRepository
+            -&gt;findById($fooId)
+            -&gt;userId
+            -&gt;equals($userId);
+    }
+}
 </code></pre></div>
 <blockquote>
 <ul>
@@ -35601,14 +35601,14 @@
 <h4 id="_19">▼ ドメイン例外<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>ドメイン層の例外処理をまとめた例外クラス。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\Foo\Services</span><span class="p">;</span>
+namespace App\Domain\Foo\Services;
 
-<span class="k">class</span> <span class="nc">FooException</span> <span class="k">extends</span> <span class="nx">Exception</span>
-<span class="p">{</span>
+class FooException extends Exception
+{
 
-<span class="p">}</span>
+}
 </code></pre></div>
 <p><br></p>
 <h3 id="specification">仕様パターン (Specification パターン)<a class="headerlink" href="#specification" title="Permanent link">&para;</a></h3>
@@ -35629,27 +35629,27 @@
 </ul>
 <p>単一のエンティティに関する単一のドメインルールの場合は、Specification パターンとして切り分けずに、そのエンティティに boolean 値関数 (<code>isFoo()</code> 関数) をもたせる。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\Foo\Specifications</span><span class="p">;</span>
+namespace App\Domain\Foo\Specifications;
 
-<span class="k">class</span> <span class="nc">FooSpecification</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * ドメインルールを判定する</span>
-<span class="sd">     * @param Entity $entity</span>
-<span class="sd">     * @return bool</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">isSatisfiedBy</span><span class="p">(</span><span class="nx">Entity</span> <span class="nv">$entity</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
-    <span class="p">{</span>
-        <span class="c1">// 複数の仕様を組み合わせる条件</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">isX</span><span class="p">)</span> <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">isY</span><span class="p">)</span> <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">isZ</span><span class="p">)</span> <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+class FooSpecification
+{
+    /**
+     * ドメインルールを判定する
+     * @param Entity $entity
+     * @return bool
+     */
+    public function isSatisfiedBy(Entity $entity): bool
+    {
+        // 複数の仕様を組み合わせる条件
+        if (!$entity-&gt;isX) return false;
+        if (!$entity-&gt;isY) return false;
+        if (!$entity-&gt;isZ) return false;
 
-        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        return true;
+    }
+}
 </code></pre></div>
 <h4 id="_22">▼ クエリ検索条件<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p>リポジトリの引数に渡すクエリ検索条件オブジェクトとして実装する。</p>
@@ -35657,53 +35657,53 @@
 <p>ユースケースに対応する検索条件をオブジェクトに閉じ込めるとよい。</p>
 <p>ドメインルールのバリデーションを実行する Specification クラスと区別するために、Criteria オブジェクトという名前としても使用される。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\Foo\Criterion</span><span class="p">;</span>
+namespace App\Domain\Foo\Criterion;
 
-<span class="k">class</span> <span class="nc">FooCriteria</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var int</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">int</span> <span class="nv">$id</span><span class="p">;</span>
+class FooCriteria
+{
+    /**
+     * @var int
+     */
+    private int $id;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">;</span>
+    /**
+     * @var string
+     */
+    private string $name;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$email</span><span class="p">;</span>
+    /**
+     * @var string
+     */
+    private string $email;
 
-    <span class="sd">/**</span>
-<span class="sd">     * クエリ検索条件オブジェクトを作成する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param array $array</span>
-<span class="sd">     * @return $this</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">build</span><span class="p">(</span><span class="k">array</span> <span class="nv">$array</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="c1">// 自身をインスタンス化。</span>
-        <span class="nv">$criteria</span> <span class="o">=</span> <span class="k">new</span> <span class="k">static</span><span class="p">();</span>
+    /**
+     * クエリ検索条件オブジェクトを作成する
+     *
+     * @param array $array
+     * @return $this
+     */
+    public function build(array $array)
+    {
+        // 自身をインスタンス化。
+        $criteria = new static();
 
-        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$array</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]))</span> <span class="p">{</span>
-            <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="s2">"id"</span><span class="p">];</span>
-        <span class="p">}</span>
+        if (isset($array["id"])) {
+            $criteria-&gt;id = $array["id"];
+        }
 
-        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$array</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]))</span> <span class="p">{</span>
-            <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="s2">"name"</span><span class="p">];</span>
-        <span class="p">}</span>
+        if (isset($array["name"])) {
+            $criteria-&gt;name = $array["name"];
+        }
 
-        <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$array</span><span class="p">[</span><span class="s2">"email"</span><span class="p">]))</span> <span class="p">{</span>
-            <span class="nv">$criteria</span><span class="o">-&gt;</span><span class="na">email</span> <span class="o">=</span> <span class="nv">$array</span><span class="p">[</span><span class="s2">"email"</span><span class="p">];</span>
-        <span class="p">}</span>
+        if (isset($array["email"])) {
+            $criteria-&gt;email = $array["email"];
+        }
 
-        <span class="k">return</span> <span class="nv">$criteria</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        return $criteria;
+    }
+}
 </code></pre></div>
 <h4 id="_23">▼ クエリ条件<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
 <p>特</p>
@@ -35715,53 +35715,53 @@
 <p><strong>＊実装例＊</strong></p>
 <p>ドメインオブジェクトであるエンティティがゲッターとセッターしか持っていない。</p>
 <p>これは、ドメイン貧血症である。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+declare(strict_types=1);
 
-<span class="k">namespace</span> <span class="nx">App\Domain\User\Entities</span><span class="p">;</span>
+namespace App\Domain\User\Entities;
 
-<span class="k">use</span> <span class="nx">App\Domain\User\Ids\UserId</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Domain\User\ValueObjects\UserName</span><span class="p">;</span>
+use App\Domain\User\Ids\UserId;
+use App\Domain\User\ValueObjects\UserName;
 
-<span class="k">final</span> <span class="k">class</span> <span class="nc">User</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var UserId</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">UserId</span> <span class="nv">$userId</span><span class="p">;</span>
+final class User
+{
+    /**
+     * @var UserId
+     */
+    private UserId $userId;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var UserName</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">UserName</span> <span class="nv">$userName</span><span class="p">;</span>
+    /**
+     * @var UserName
+     */
+    private UserName $userName;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param UserId           $userId</span>
-<span class="sd">     * @param UserName         $userName</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">UserId</span> <span class="nv">$userId</span><span class="p">,</span> <span class="nx">UserName</span> <span class="nv">$userName</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span> <span class="o">=</span> <span class="nv">$userId</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userName</span> <span class="o">=</span> <span class="nv">$userName</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     * @param UserId           $userId
+     * @param UserName         $userName
+     */
+    public function __construct(UserId $userId, UserName $userName)
+    {
+        $this-&gt;userId = $userId;
+        $this-&gt;userName = $userName;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * @return UserId</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">id</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     * @return UserId
+     */
+    public function id()
+    {
+        return $this-&gt;userId;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * @return UserName</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">userName</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userName</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    /**
+     * @return UserName
+     */
+    public function userName()
+    {
+        return $this-&gt;userName;
+    }
+}
 </code></pre></div>
 <p><br></p>
 <h3 id="_26">ドメインサービスへのドメインロジックの流出<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
@@ -35788,87 +35788,87 @@
 <h4 id="_30">▼ 識別可能とは<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
 <p>オブジェクトが識別子 (例：DB のオートインクリメント ID、UUID など) を持ち、他のオブジェクトと同じ属性をもっていても、区別される。</p>
 <p>この識別子は、DB のオートインクリメント ID に対応している。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\Foo\Entities</span><span class="p">;</span>
+namespace App\Domain\Foo\Entities;
 
-<span class="k">use</span> <span class="nx">App\Domain\Entity</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Domain\Id</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Domain\Foo\ValueObjects\ToyName</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Domain\Foo\ValueObjects\Number</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Domain\Foo\ValueObjects\PriceVO</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Domain\Foo\ValueObjects\ColorVO</span><span class="p">;</span>
+use App\Domain\Entity;
+use App\Domain\Id;
+use App\Domain\Foo\ValueObjects\ToyName;
+use App\Domain\Foo\ValueObjects\Number;
+use App\Domain\Foo\ValueObjects\PriceVO;
+use App\Domain\Foo\ValueObjects\ColorVO;
 
-<span class="sd">/**</span>
-<span class="sd"> * 犬用おもちゃのエンティティ</span>
-<span class="sd"> */</span>
-<span class="k">class</span> <span class="nc">DogToy</span> <span class="k">extends</span> <span class="nx">Entity</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * 犬用おもちゃタイプ</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var ToyType</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$type</span><span class="p">;</span>
+/**
+ * 犬用おもちゃのエンティティ
+ */
+class DogToy extends Entity
+{
+    /**
+     * 犬用おもちゃタイプ
+     *
+     * @var ToyType
+     */
+    private $type;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 犬用おもちゃ商品名</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var ToyName</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+    /**
+     * 犬用おもちゃ商品名
+     *
+     * @var ToyName
+     */
+    private $name;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 数量</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var Number</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$number</span><span class="p">;</span>
+    /**
+     * 数量
+     *
+     * @var Number
+     */
+    private $number;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 価格の値オブジェクト</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var PriceVO</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$priceVO</span><span class="p">;</span>
+    /**
+     * 価格の値オブジェクト
+     *
+     * @var PriceVO
+     */
+    private $priceVO;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 色の値オブジェクト</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var ColorVO</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$colorVO</span><span class="p">;</span>
+    /**
+     * 色の値オブジェクト
+     *
+     * @var ColorVO
+     */
+    private $colorVO;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param ToyType $type</span>
-<span class="sd">     * @param ToyName $name</span>
-<span class="sd">     * @param Number  $number</span>
-<span class="sd">     * @param PriceVO $priceVO</span>
-<span class="sd">     * @param ColorVO $colorVO</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">ToyType</span> <span class="nv">$type</span><span class="p">,</span> <span class="nx">ToyName</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">Number</span> <span class="nv">$number</span><span class="p">,</span> <span class="nx">PriceVO</span> <span class="nv">$priceVO</span><span class="p">,</span> <span class="nx">ColorVO</span> <span class="nv">$colorVO</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">type</span> <span class="o">=</span> <span class="nv">$type</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">number</span> <span class="o">=</span> <span class="nv">$number</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">priceVO</span> <span class="o">=</span> <span class="nv">$priceVO</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">colorVO</span> <span class="o">=</span> <span class="nv">$colorVO</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     * @param ToyType $type
+     * @param ToyName $name
+     * @param Number  $number
+     * @param PriceVO $priceVO
+     * @param ColorVO $colorVO
+     */
+    public function __construct(ToyType $type, ToyName $name, Number $number, PriceVO $priceVO, ColorVO $colorVO)
+    {
+        $this-&gt;type = $type;
+        $this-&gt;name = $name;
+        $this-&gt;number = $number;
+        $this-&gt;priceVO = $priceVO;
+        $this-&gt;colorVO = $colorVO;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 犬用おもちゃ名 (色) を返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return string</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">nameWithColor</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
-            <span class="s2">"%s (%s) "</span><span class="p">,</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">(),</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">colorVO</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">()</span>
-        <span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    /**
+     * 犬用おもちゃ名 (色) を返却する
+     *
+     * @return string
+     */
+    public function nameWithColor()
+    {
+        return sprintf(
+            "%s (%s) ",
+            $this-&gt;name-&gt;value(),
+            $this-&gt;colorVO-&gt;name()
+        );
+    }
+}
 </code></pre></div>
 <h4 id="_31">▼ エンティティの識別子として適するもの<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
 <p>エンティティの識別子にはドメインルールを持たせないほうがよいため、システムで使用する ID が適する。</p>
@@ -35885,46 +35885,46 @@
 <h4 id="_34">▼ 等価性の検証方法<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
 <p>すべてのエンティティに等価性のバリデーション関数を持たせると可読性が低い。</p>
 <p>そこで、すべてのエンティティに等価性バリデーション用の <code>equals()</code> 関数を持たせることをやめ、継承元の抽象クラスのエンティティにこれを定義するとよい。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain</span><span class="p">;</span>
+namespace App\Domain;
 
-<span class="sd">/**</span>
-<span class="sd"> * エンティティ抽象クラス</span>
-<span class="sd"> */</span>
-<span class="k">abstract</span> <span class="k">class</span> <span class="nc">Entity</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * IDクラス</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var Id</span>
-<span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nx">Id</span> <span class="nv">$id</span><span class="p">;</span>
+/**
+ * エンティティ抽象クラス
+ */
+abstract class Entity
+{
+    /**
+     * IDクラス
+     *
+     * @var Id
+     */
+    protected Id $id;
 
-    <span class="sd">/**</span>
-<span class="sd">     * エンティティの等価性を検証する</span>
-
-
-<span class="sd">     *</span>
-<span class="sd">     * @param Entity $entity</span>
-<span class="sd">     * @return bool</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">equals</span><span class="p">(</span><span class="nx">Entity</span> <span class="nv">$entity</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="p">(</span><span class="nv">$entity</span> <span class="nx">instanceof</span> <span class="nv">$this</span> <span class="o">||</span> <span class="nv">$this</span> <span class="nx">instanceof</span> <span class="nv">$entity</span><span class="p">)</span> <span class="c1">// エンティティのデータ型の等価性</span>
-            <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span><span class="o">-&gt;</span><span class="na">equals</span><span class="p">(</span><span class="nv">$entity</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">());</span> <span class="c1">// IDオブジェクトの等価性</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**</span>
-<span class="sd">     * IDクラスを返却する</span>
+    /**
+     * エンティティの等価性を検証する
 
 
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">id</span><span class="p">()</span><span class="o">:</span> <span class="nx">Id</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+     *
+     * @param Entity $entity
+     * @return bool
+     */
+    public function equals(Entity $entity): bool
+    {
+        return ($entity instanceof $this || $this instanceof $entity) // エンティティのデータ型の等価性
+            &amp;&amp; $this-&gt;id-&gt;equals($entity-&gt;id()); // IDオブジェクトの等価性
+    }
+
+    /**
+     * IDクラスを返却する
+
+
+     */
+    public function id(): Id
+    {
+        return $this-&gt;id;
+    }
+}
 </code></pre></div>
 <h4 id="php">▼ 複合主キーへの対応 (PHP では不要)<a class="headerlink" href="#php" title="Permanent link">&para;</a></h4>
 <p>以降の説明は Java について適用されるため、PHP では不要である。</p>
@@ -35934,64 +35934,64 @@
 <p>標準搭載の関数では、異なるセッションに渡ったオブジェクトの比較では、必ず異なるオブジェクトであると判定してしまう。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>PHP では不要であるが、参考までに、PHP で実装した。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain</span><span class="p">;</span>
+namespace App\Domain;
 
-<span class="sd">/**</span>
-<span class="sd"> * ID抽象クラス</span>
-<span class="sd"> */</span>
-<span class="k">abstract</span> <span class="k">class</span> <span class="nc">Id</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * ID</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$id</span><span class="p">;</span>
+/**
+ * ID抽象クラス
+ */
+abstract class Id
+{
+    /**
+     * ID
+     *
+     * @var string
+     */
+    private $id;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param string $id</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">=</span> <span class="nv">$id</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     * @param string $id
+     */
+    public function __construct(string $id)
+    {
+        $this-&gt;id = $id;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * ハッシュ値を返却する</span>
-
-
-<span class="sd">     *</span>
-<span class="sd">     * NOTE: 複合主キーを持つオブジェクトの等価性を正しく検証するために、標準の関数をオーバーライドする</span>
+    /**
+     * ハッシュ値を返却する
 
 
-<span class="sd">     *</span>
-<span class="sd">     * @return string</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">hash</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**</span>
-<span class="sd">     * オブジェクトの等価性を検証する</span>
+     *
+     * NOTE: 複合主キーを持つオブジェクトの等価性を正しく検証するために、標準の関数をオーバーライドする
 
 
-<span class="sd">     *</span>
-<span class="sd">     * NOTE: 複合主キーを持つオブジェクトの等価性を正しく検証するために、標準の関数をオーバーライドする</span>
+     *
+     * @return string
+     */
+    public function hash(): string
+    {
+        return $this-&gt;id;
+    }
+
+    /**
+     * オブジェクトの等価性を検証する
 
 
-<span class="sd">     *</span>
-<span class="sd">     * @param Id $id</span>
-<span class="sd">     * @return bool</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">equals</span><span class="p">(</span><span class="nx">Id</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="p">(</span><span class="nv">$id</span> <span class="nx">instanceof</span> <span class="nv">$this</span> <span class="o">||</span> <span class="nv">$this</span> <span class="nx">instanceof</span> <span class="nv">$id</span><span class="p">)</span> <span class="c1">// IDオブジェクトのデータ型の等価性</span>
-            <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hash</span><span class="p">()</span> <span class="o">==</span> <span class="nv">$id</span><span class="o">-&gt;</span><span class="na">hash</span><span class="p">();</span> <span class="c1">// ハッシュ値の等価性</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+     *
+     * NOTE: 複合主キーを持つオブジェクトの等価性を正しく検証するために、標準の関数をオーバーライドする
+
+
+     *
+     * @param Id $id
+     * @return bool
+     */
+    public function equals(Id $id): bool
+    {
+        return ($id instanceof $this || $this instanceof $id) // IDオブジェクトのデータ型の等価性
+            &amp;&amp; $this-&gt;hash() == $id-&gt;hash(); // ハッシュ値の等価性
+    }
+}
 </code></pre></div>
 <p><br></p>
 <h3 id="_35">データの可変性/不変性<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
@@ -36024,317 +36024,317 @@
 <h4 id="_40">▼ 金額<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
 <p>金額データの計算を Interactor 内処理やエンティティ内関数で行うのではなく、金額計算をする値オブジェクトの関数として分割する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\Foo\ValueObjects</span><span class="p">;</span>
+namespace App\Domain\Foo\ValueObjects;
 
-<span class="sd">/**</span>
-<span class="sd"> * 金額の値オブジェクト</span>
-<span class="sd"> */</span>
-<span class="k">class</span> <span class="nc">MoneyVO</span> <span class="k">extends</span> <span class="nx">ValueObject</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * 金額</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var float</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$amount</span><span class="p">;</span>
+/**
+ * 金額の値オブジェクト
+ */
+class MoneyVO extends ValueObject
+{
+    /**
+     * 金額
+     *
+     * @var float
+     */
+    private $amount;
 
-    <span class="sd">/**</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param int $amount</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$amount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">amount</span> <span class="o">=</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$amount</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     *
+     * @param int $amount
+     */
+    public function __construct(int $amount = 0)
+    {
+        $this-&gt;amount = (float) $amount;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 金額を返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return float</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">amount</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">amount</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     * 金額を返却する
+     *
+     * @return float
+     */
+    public function amount()
+    {
+        return $this-&gt;amount;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 単位を返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return string</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">unit</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="s2">"円"</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     * 単位を返却する
+     *
+     * @return string
+     */
+    public function unit()
+    {
+        return "円";
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 足し算の結果を返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param Money $price</span>
-<span class="sd">     * @return $this</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">add</span><span class="p">(</span><span class="nx">Money</span> <span class="nv">$price</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="k">static</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">amount</span> <span class="o">+</span> <span class="nv">$price</span><span class="o">-&gt;</span><span class="na">amount</span><span class="p">);</span>
-    <span class="p">}</span>
+    /**
+     * 足し算の結果を返却する
+     *
+     * @param Money $price
+     * @return $this
+     */
+    public function add(Money $price)
+    {
+        return new static($this-&gt;amount + $price-&gt;amount);
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 引き算の結果を返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param Money $price</span>
-<span class="sd">     * @return $this</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">subtract</span><span class="p">(</span><span class="nx">Money</span> <span class="nv">$price</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="k">static</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">amount</span> <span class="o">-</span> <span class="nv">$price</span><span class="o">-&gt;</span><span class="na">amount</span><span class="p">);</span>
-    <span class="p">}</span>
+    /**
+     * 引き算の結果を返却する
+     *
+     * @param Money $price
+     * @return $this
+     */
+    public function subtract(Money $price)
+    {
+        return new static($this-&gt;amount - $price-&gt;amount);
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 掛け算の結果を返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param Money $price</span>
-<span class="sd">     * @return $this</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">multiply</span><span class="p">(</span><span class="nx">Money</span> <span class="nv">$price</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="k">static</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">amount</span> <span class="o">*</span> <span class="nv">$price</span><span class="o">-&gt;</span><span class="na">amount</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    /**
+     * 掛け算の結果を返却する
+     *
+     * @param Money $price
+     * @return $this
+     */
+    public function multiply(Money $price)
+    {
+        return new static($this-&gt;amount * $price-&gt;amount);
+    }
+}
 </code></pre></div>
 <h4 id="_41">▼ 所要時間<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
 <p>所要時間データの計算を Interactor クラス内処理やエンティティ内関数で行うのではなく、所要時間計算をする値オブジェクトの関数として分割する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\Foo\ValueObjects</span><span class="p">;</span>
+namespace App\Domain\Foo\ValueObjects;
 
-<span class="sd">/**</span>
-<span class="sd"> * 所要時間の値オブジェクト</span>
-<span class="sd"> */</span>
-<span class="k">class</span> <span class="nc">RequiredTime</span> <span class="k">extends</span> <span class="nx">ValueObject</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * 判定値、歩行速度の目安、車速度の目安を定数で定義する。</span>
-<span class="sd">     */</span>
-    <span class="k">const</span> <span class="no">JUDGMENT_MINUTE</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">WALKING_SPEED_PER_MINUTE</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">CAR_SPEED_PER_MINUTE</span> <span class="o">=</span> <span class="mi">400</span><span class="p">;</span>
+/**
+ * 所要時間の値オブジェクト
+ */
+class RequiredTime extends ValueObject
+{
+    /**
+     * 判定値、歩行速度の目安、車速度の目安を定数で定義する。
+     */
+    const JUDGMENT_MINUTE = 21;
+    const WALKING_SPEED_PER_MINUTE = 80;
+    const CAR_SPEED_PER_MINUTE = 400;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 距離</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var int</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$distance</span><span class="p">;</span>
+    /**
+     * 距離
+     *
+     * @var int
+     */
+    private $distance;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param int $distance</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$distance</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">distance</span> <span class="o">=</span> <span class="nv">$distance</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     * @param int $distance
+     */
+    public function __construct(int $distance)
+    {
+        $this-&gt;distance = $distance;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 徒歩または車のどちらを使用するかを判定する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return bool</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">isMinuteByWalking</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">distance</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">/</span> <span class="nx">self</span><span class="o">::</span><span class="na">WALKING_SPEED_PER_MINUTE</span> <span class="o">&lt;</span> <span class="nx">self</span><span class="o">::</span><span class="na">JUDGMENT_MINUTE</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-        <span class="p">}</span>
+    /**
+     * 徒歩または車のどちらを使用するかを判定する
+     *
+     * @return bool
+     */
+    public function isMinuteByWalking(): bool
+    {
+        if ($this-&gt;distance * 1000 / self::WALKING_SPEED_PER_MINUTE &lt; self::JUDGMENT_MINUTE) {
+            return true;
+        }
 
-        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-    <span class="p">}</span>
+        return false;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 徒歩での所要時間を計算する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return float</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">minuteByWalking</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span>
-    <span class="p">{</span>
-        <span class="nv">$minute</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">distance</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">/</span> <span class="nx">self</span><span class="o">::</span><span class="na">WALKING_SPEED_PER_MINUTE</span><span class="p">;</span>
-        <span class="k">return</span> <span class="nb">ceil</span><span class="p">(</span><span class="nv">$minute</span><span class="p">);</span>
-    <span class="p">}</span>
+    /**
+     * 徒歩での所要時間を計算する
+     *
+     * @return float
+     */
+    public function minuteByWalking(): float
+    {
+        $minute = $this-&gt;distance * 1000 / self::WALKING_SPEED_PER_MINUTE;
+        return ceil($minute);
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 車での所要時間を計算する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return float</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">minuteByCar</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span>
-    <span class="p">{</span>
-        <span class="nv">$minute</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">distance</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">/</span> <span class="nx">self</span><span class="o">::</span><span class="na">CAR_SPEED_PER_MINUTE</span><span class="p">;</span>
-        <span class="k">return</span> <span class="nb">ceil</span><span class="p">(</span><span class="nv">$minute</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    /**
+     * 車での所要時間を計算する
+     *
+     * @return float
+     */
+    public function minuteByCar(): float
+    {
+        $minute = $this-&gt;distance * 1000 / self::CAR_SPEED_PER_MINUTE;
+        return ceil($minute);
+    }
+}
 </code></pre></div>
 <h4 id="_42">▼ 住所<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
 <p>郵便番号データとその処理を値オブジェクトとして分割する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\Foo\ValueObjects</span><span class="p">;</span>
+namespace App\Domain\Foo\ValueObjects;
 
-<span class="sd">/**</span>
-<span class="sd"> * 住所の値オブジェクト</span>
-<span class="sd"> */</span>
-<span class="k">class</span> <span class="nc">Address</span> <span class="k">extends</span> <span class="nx">ValueObject</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * 住所の文字数上限</span>
-<span class="sd">     */</span>
-    <span class="k">const</span> <span class="no">ADDRESS_MAX_LENGTH</span> <span class="o">=</span> <span class="mi">512</span><span class="p">;</span>
+/**
+ * 住所の値オブジェクト
+ */
+class Address extends ValueObject
+{
+    /**
+     * 住所の文字数上限
+     */
+    const ADDRESS_MAX_LENGTH = 512;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 郵便番号</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$zip</span><span class="p">;</span>
+    /**
+     * 郵便番号
+     *
+     * @var string
+     */
+    private $zip;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 住所 (番地など)</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$address</span><span class="p">;</span>
+    /**
+     * 住所 (番地など)
+     *
+     * @var string
+     */
+    private $address;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 市区町村</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$city</span><span class="p">;</span>
+    /**
+     * 市区町村
+     *
+     * @var string
+     */
+    private $city;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param string $city</span>
-<span class="sd">     * @param string $zip</span>
-<span class="sd">     * @param string $address</span>
-<span class="sd">     * @param string $kana</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$city</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$zip</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$address</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$kana</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">city</span> <span class="o">=</span> <span class="nv">$city</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span> <span class="o">=</span> <span class="nv">$zip</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">address</span> <span class="o">=</span> <span class="nv">$address</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     * @param string $city
+     * @param string $zip
+     * @param string $address
+     * @param string $kana
+     */
+    public function __construct(string $city, string $zip, string $address, string $kana)
+    {
+        $this-&gt;city = $city;
+        $this-&gt;zip = $zip;
+        $this-&gt;address = $address;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 郵便番号を作成し、返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return string</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">zip</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
-            <span class="s2">"〒%s-%s"</span><span class="p">,</span>
-            <span class="nb">substr</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
-            <span class="nb">substr</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">zip</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-        <span class="p">);</span>
-    <span class="p">}</span>
+    /**
+     * 郵便番号を作成し、返却する
+     *
+     * @return string
+     */
+    public function zip()
+    {
+        return sprintf(
+            "〒%s-%s",
+            substr($this-&gt;zip, 0, 3),
+            substr($this-&gt;zip, 3)
+        );
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 住所を作成し、返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return string</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">address</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
-            <span class="s2">"%s%s"</span><span class="p">,</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">city</span><span class="p">,</span>
-            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">address</span>
-        <span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    /**
+     * 住所を作成し、返却する
+     *
+     * @return string
+     */
+    public function address(): string
+    {
+        return sprintf(
+            "%s%s",
+            $this-&gt;city,
+            $this-&gt;address
+        );
+    }
+}
 </code></pre></div>
 <h4 id="_43">▼ 氏名<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h4>
 <p>氏名、性別、データとその処理を値オブジェクトとして分割する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\Foo\ValueObjects</span><span class="p">;</span>
+namespace App\Domain\Foo\ValueObjects;
 
-<span class="sd">/**</span>
-<span class="sd"> * 氏名クラスの値オブジェクト</span>
-<span class="sd"> */</span>
-<span class="k">class</span> <span class="nc">Name</span> <span class="k">extends</span> <span class="nx">ValueObject</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * 名前の文字数上限下限</span>
-<span class="sd">     */</span>
-    <span class="k">const</span> <span class="no">MIN_NAME_LENGTH</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">MAX_NAME_LENGTH</span> <span class="o">=</span> <span class="mi">64</span><span class="p">;</span>
+/**
+ * 氏名クラスの値オブジェクト
+ */
+class Name extends ValueObject
+{
+    /**
+     * 名前の文字数上限下限
+     */
+    const MIN_NAME_LENGTH = 1;
+    const MAX_NAME_LENGTH = 64;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 姓</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$lastName</span><span class="p">;</span>
+    /**
+     * 姓
+     *
+     * @var
+     */
+    private $lastName;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 名</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$firstName</span><span class="p">;</span>
+    /**
+     * 名
+     *
+     * @var string
+     */
+    private $firstName;
 
-    <span class="sd">/**</span>
-<span class="sd">     * セイ</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$lastKanaName</span><span class="p">;</span>
+    /**
+     * セイ
+     *
+     * @var string
+     */
+    private $lastKanaName;
 
-    <span class="sd">/**</span>
-<span class="sd">     * メイ</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$firstKanaName</span><span class="p">;</span>
+    /**
+     * メイ
+     *
+     * @var string
+     */
+    private $firstKanaName;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param string $lastName</span>
-<span class="sd">     * @param string $firstName</span>
-<span class="sd">     * @param string $lastKanaName</span>
-<span class="sd">     * @param string $firstKanaName</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$lastName</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$firstName</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$lastKanaName</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$firstKanaName</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">lastName</span> <span class="o">=</span> <span class="nv">$lastName</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">firstName</span> <span class="o">=</span> <span class="nv">$firstName</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">lastKanaName</span> <span class="o">=</span> <span class="nv">$lastKanaName</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">firstKanaName</span> <span class="o">=</span> <span class="nv">$firstKanaName</span><span class="p">;</span>
+    /**
+     * @param string $lastName
+     * @param string $firstName
+     * @param string $lastKanaName
+     * @param string $firstKanaName
+     */
+    public function __construct(string $lastName, string $firstName, string $lastKanaName, string $firstKanaName)
+    {
+        $this-&gt;lastName = $lastName;
+        $this-&gt;firstName = $firstName;
+        $this-&gt;lastKanaName = $lastKanaName;
+        $this-&gt;firstKanaName = $firstKanaName;
 
-    <span class="p">}</span>
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 氏名を作成する</span>
-
-
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">fullName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">lastName</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">firstName</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**</span>
-<span class="sd">     * カナ氏名を作成する</span>
+    /**
+     * 氏名を作成する
 
 
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">fullKanaName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">lastKanaName</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">firstKanaName</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+     */
+    public function fullName(): string
+    {
+        return $this-&gt;lastName . $this-&gt;firstName;
+    }
+
+    /**
+     * カナ氏名を作成する
+
+
+     */
+    public function fullKanaName(): string
+    {
+        return $this-&gt;lastKanaName . $this-&gt;firstKanaName;
+    }
+}
 </code></pre></div>
 <p><br></p>
 <h3 id="_44">データの不変性 (イミュータブル)<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h3>
@@ -36342,65 +36342,65 @@
 <p>値オブジェクトは不変的であり、インスタンスとして作成されて以降、データは変更されない。</p>
 <p>オブジェクトの不変性を実現するために、オブジェクトにセッターを定義しないようにし、データの設定には <code>construct()</code> 関数のみを使用するようにする。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\Foo\ValueObjects</span><span class="p">;</span>
+namespace App\Domain\Foo\ValueObjects;
 
-<span class="sd">/**</span>
-<span class="sd"> * 値オブジェクト</span>
-<span class="sd"> */</span>
-<span class="k">class</span> <span class="nc">FooVO</span> <span class="k">extends</span> <span class="nx">ValueObject</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$propertyA</span><span class="p">;</span>
+/**
+ * 値オブジェクト
+ */
+class FooVO extends ValueObject
+{
+    /**
+     * @var
+     */
+    private $propertyA;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$propertyB</span><span class="p">;</span>
+    /**
+     * @var
+     */
+    private $propertyB;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$propertyC</span><span class="p">;</span>
+    /**
+     * @var
+     */
+    private $propertyC;
 
-    <span class="sd">/**</span>
-<span class="sd">     * FooVO constructor.</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param $propertyA</span>
-<span class="sd">     * @param $propertyB</span>
-<span class="sd">     * @param $propertyC</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$propertyA</span><span class="p">,</span> <span class="nv">$propertyB</span><span class="p">,</span> <span class="nv">$propertyC</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">propertyA</span> <span class="o">=</span> <span class="nv">$propertyA</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">propertyB</span> <span class="o">=</span> <span class="nv">$propertyB</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">propertyC</span> <span class="o">=</span> <span class="nv">$propertyC</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    /**
+     * FooVO constructor.
+     *
+     * @param $propertyA
+     * @param $propertyB
+     * @param $propertyC
+     */
+    public function __construct($propertyA, $propertyB, $propertyC)
+    {
+        $this-&gt;propertyA = $propertyA;
+        $this-&gt;propertyB = $propertyB;
+        $this-&gt;propertyC = $propertyC;
+    }
+}
 </code></pre></div>
 <h4 id="_46">▼ セッターでは不変的にならない理由<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <p>Test01 クラスインスタンスの <code>$property01</code> データに値を設定するためには、インスタンスからセッターをコールする。</p>
 <p>セッターは何度でも呼び出せ、そのたびにデータの値を上書きできてしまう。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$test01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test01</span><span class="p">;</span>
+$test01 = new Test01;
 
-<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">"データ01の値"</span><span class="p">);</span>
+$test01-&gt;setProperty01("データ01の値");
 
-<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">"新しいデータ01の値"</span><span class="p">);</span>
+$test01-&gt;setProperty01("新しいデータ01の値");
 </code></pre></div>
 <p>Test02 クラスインスタンスの <code>$property02</code> データに値を設定するためには、インスタンスを作り直さなければならない。</p>
 <p>つまり、以前に作ったインスタンスの <code>$property02</code> の値は上書きできない。</p>
 <p>セッターを持たせずに、<code>construct()</code> 関数のみを持たせれば、不変的なオブジェクトとなる。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">"データ02の値"</span><span class="p">);</span>
+$test02 = new Test02("データ02の値");
 
-<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">"新しいデータ02の値"</span><span class="p">);</span>
+$test02 = new Test02("新しいデータ02の値");
 </code></pre></div>
 <h4 id="_47">▼ 過剰なゲッターへの対処法<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h4>
 <p>不変的なデータはゲッターを使用しなければアクセスできない。</p>
@@ -36408,62 +36408,62 @@
 <p>そこで、例えば PHP では、マジック関数の <code>__get()</code> 関数を使用して、ゲッターの実装を省略できる。</p>
 <p>すべての値オブジェクトの基底クラスに、『コールされたゲッターがクラス内に存在していなければ、動的にプロパティにアクセスして返却する』処理を持った <code>__get()</code> 関数を定義しておく。</p>
 <p>すると、マジック関数のオーバーライド機能により、自身で定義した <code>__get()</code> 関数が代わりにコールされる。そのため、ゲッターを定義する必要がなくなる。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+declare(strict_types=1);
 
-<span class="k">namespace</span> <span class="nx">App\Traits</span><span class="p">;</span>
+namespace App\Traits;
 
-<span class="k">use</span> <span class="nx">LogicException</span><span class="p">;</span>
+use LogicException;
 
-<span class="sd">/**</span>
-<span class="sd"> * イミュータブルトレイト</span>
-<span class="sd"> * NOTE: イミュータブルなオブジェクトで使用する汎用的な関数を定義する</span>
-<span class="sd"> */</span>
-<span class="k">trait</span> <span class="nx">ImmutableTrait</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * ゲッターが定義されていなくとも、プロパティにアクセスできるようにする</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param string $name</span>
-<span class="sd">     * @return mixed</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">property_exists</span><span class="p">(</span><span class="nv">$this</span><span class="p">,</span> <span class="nv">$name</span><span class="p">))</span> <span class="p">{</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="nx">LogicException</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
-                <span class="s2">"property %s is not found in %s"</span><span class="p">,</span>
-                <span class="nv">$name</span><span class="p">,</span>
-                <span class="k">static</span><span class="o">::</span><span class="na">class</span> <span class="c1">// 関数が実行されたクラスを取得</span>
-            <span class="p">));</span>
-        <span class="p">}</span>
+/**
+ * イミュータブルトレイト
+ * NOTE: イミュータブルなオブジェクトで使用する汎用的な関数を定義する
+ */
+trait ImmutableTrait
+{
+    /**
+     * ゲッターが定義されていなくとも、プロパティにアクセスできるようにする
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function __get(string $name)
+    {
+        if (!property_exists($this, $name)) {
+            throw new LogicException(sprintf(
+                "property %s is not found in %s",
+                $name,
+                static::class // 関数が実行されたクラスを取得
+            ));
+        }
 
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="p">{</span><span class="nv">$name</span><span class="p">};</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        return $this-&gt;{$name};
+    }
+}
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">class</span> <span class="nc">Foo</span>
-<span class="p">{</span>
-    <span class="k">use</span> <span class="nx">ImmutableTrait</span><span class="p">;</span>
+class Foo
+{
+    use ImmutableTrait;
 
-    <span class="k">private</span> <span class="nv">$bar</span><span class="p">;</span>
+    private $bar;
 
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$bar</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bar</span> <span class="o">=</span> <span class="nv">$bar</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    public function __construct($bar)
+    {
+        $this-&gt;bar = $bar;
+    }
+}
 
-<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span><span class="s2">"BAR"</span><span class="p">);</span>
-<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">bar</span><span class="p">;</span> <span class="c1">// __get関数が代わりにコールされ、プロパティ値が返却される。</span>
+$foo = new Foo("BAR");
+$foo-&gt;bar; // __get関数が代わりにコールされ、プロパティ値が返却される。
 </code></pre></div>
 <p><br></p>
 <h3 id="_48">概念的な統一体<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="c1">// ここに実装例</span>
+// ここに実装例
 </code></pre></div>
 <p><br></p>
 <h3 id="_49">交換可能性<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h3>
@@ -36476,143 +36476,143 @@
 <h4 id="_52">▼ 等価性の検証方法<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <p>属性を 1 つだけ保持する場合、<code>1</code> 個の属性のみを検証すればよいため、以下の通りとなる。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\Foo\ValueObjects</span><span class="p">;</span>
+namespace App\Domain\Foo\ValueObjects;
 
-<span class="sd">/**</span>
-<span class="sd"> * 連絡先メールアドレスの値オブジェクト</span>
-<span class="sd"> */</span>
-<span class="k">final</span> <span class="k">class</span> <span class="nc">ContactMail</span> <span class="k">extends</span> <span class="nx">ValueObject</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$value</span><span class="p">;</span>
+/**
+ * 連絡先メールアドレスの値オブジェクト
+ */
+final class ContactMail extends ValueObject
+{
+    /**
+     * @var string
+     */
+    private string $value;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param string $value</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$value</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     * @param string $value
+     */
+    public function __construct(string $value)
+    {
+        $this-&gt;value = $value;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * @return string</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">value</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     * @return string
+     */
+    public function value(): string
+    {
+        return $this-&gt;value;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 値オブジェクトの等価性を検証する</span>
+    /**
+     * 値オブジェクトの等価性を検証する
 
 
-<span class="sd">     *</span>
-<span class="sd">     * @param ValueObject $VO</span>
-<span class="sd">     * @return bool</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">equals</span><span class="p">(</span><span class="nx">ValueObject</span> <span class="nv">$VO</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
-    <span class="p">{</span>
-        <span class="c1">// 単一の属性を対象とする。</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">()</span> <span class="o">===</span> <span class="nv">$VO</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+     *
+     * @param ValueObject $VO
+     * @return bool
+     */
+    public function equals(ValueObject $VO): bool
+    {
+        // 単一の属性を対象とする。
+        return $this-&gt;value() === $VO-&gt;value();
+    }
+}
 </code></pre></div>
 <p>属性を複数保持する値オブジェクトの場合、すべての属性を検証する必要があるため、以下の通りとなる。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\Foo\ValueObjects</span><span class="p">;</span>
+namespace App\Domain\Foo\ValueObjects;
 
-<span class="sd">/**</span>
-<span class="sd"> * 支払情報の値オブジェクト</span>
-<span class="sd"> */</span>
-<span class="k">final</span> <span class="k">class</span> <span class="nc">PaymentInfoVO</span> <span class="k">extends</span> <span class="nx">ValueObject</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * 支払い方法</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var PaymentType</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$paymentType</span><span class="p">;</span>
+/**
+ * 支払情報の値オブジェクト
+ */
+final class PaymentInfoVO extends ValueObject
+{
+    /**
+     * 支払い方法
+     *
+     * @var PaymentType
+     */
+    private $paymentType;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 連絡先メールアドレス</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var ContactMail</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$contactMail</span><span class="p">;</span>
+    /**
+     * 連絡先メールアドレス
+     *
+     * @var ContactMail
+     */
+    private $contactMail;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 金額</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var Money</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$price</span><span class="p">;</span>
+    /**
+     * 金額
+     *
+     * @var Money
+     */
+    private $price;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param PaymentType $paymentType</span>
-<span class="sd">     * @param ContactMail $contactMail</span>
-<span class="sd">     * @param Money       $price</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">PaymentType</span> <span class="nv">$paymentType</span><span class="p">,</span> <span class="nx">ContactMail</span> <span class="nv">$contactMail</span><span class="p">,</span> <span class="nx">Money</span> <span class="nv">$price</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">paymentType</span> <span class="o">=</span> <span class="nv">$paymentType</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">contactMail</span> <span class="o">=</span> <span class="nv">$contactMail</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">price</span> <span class="o">=</span> <span class="nv">$price</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     * @param PaymentType $paymentType
+     * @param ContactMail $contactMail
+     * @param Money       $price
+     */
+    public function __construct(PaymentType $paymentType, ContactMail $contactMail, Money $price)
+    {
+        $this-&gt;paymentType = $paymentType;
+        $this-&gt;contactMail = $contactMail;
+        $this-&gt;price = $price;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 値オブジェクトの等価性を検証する</span>
+    /**
+     * 値オブジェクトの等価性を検証する
 
 
-<span class="sd">     *</span>
-<span class="sd">     * @param ValueObject $VO</span>
-<span class="sd">     * @return bool</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">equals</span><span class="p">(</span><span class="nx">ValueObject</span> <span class="nv">$VO</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
-    <span class="p">{</span>
-        <span class="c1">// 複数の属性を対象とする。</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">paymentType</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">()</span> <span class="o">===</span> <span class="nv">$VO</span><span class="o">-&gt;</span><span class="na">paymentType</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">()</span>
-            <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">contactMail</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">()</span> <span class="o">===</span> <span class="nv">$VO</span><span class="o">-&gt;</span><span class="na">contactMail</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">()</span>
-            <span class="o">&amp;&amp;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">price</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">()</span> <span class="o">===</span> <span class="nv">$VO</span><span class="o">-&gt;</span><span class="na">price</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+     *
+     * @param ValueObject $VO
+     * @return bool
+     */
+    public function equals(ValueObject $VO): bool
+    {
+        // 複数の属性を対象とする。
+        return $this-&gt;paymentType-&gt;value() === $VO-&gt;paymentType-&gt;value()
+            &amp;&amp; $this-&gt;contactMail-&gt;value() === $VO-&gt;contactMail-&gt;value()
+            &amp;&amp; $this-&gt;price-&gt;value() === $VO-&gt;price-&gt;value();
+    }
+}
 </code></pre></div>
 <p>すべての値オブジェクトに等価性のバリデーション関数を持たせると可読性が低い。</p>
 <p>そこで、継承元の抽象クラスの値オブジェクトに定義するとよい。</p>
 <p>そのときは、保持している属性を反復的に検証できるよう実装するとよい。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain</span><span class="p">;</span>
+namespace App\Domain;
 
-<span class="sd">/**</span>
-<span class="sd"> * 値オブジェクト抽象クラス</span>
-<span class="sd"> */</span>
-<span class="k">abstract</span> <span class="k">class</span> <span class="nc">ValueObject</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * 値オブジェクトの等価性を検証する</span>
+/**
+ * 値オブジェクト抽象クラス
+ */
+abstract class ValueObject
+{
+    /**
+     * 値オブジェクトの等価性を検証する
 
 
-<span class="sd">     *</span>
-<span class="sd">     * @param ValueObject $VO</span>
-<span class="sd">     * @return bool</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">equals</span><span class="p">(</span><span class="nx">ValueObject</span> <span class="nv">$VO</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
-    <span class="p">{</span>
-        <span class="c1">// 全ての属性を反復的に検証する</span>
-        <span class="k">foreach</span> <span class="p">(</span><span class="nb">get_object_vars</span><span class="p">(</span><span class="nv">$this</span><span class="p">)</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">__get</span><span class="p">(</span><span class="nv">$key</span><span class="p">)</span> <span class="o">!==</span> <span class="nv">$VO</span><span class="o">-&gt;</span><span class="na">__get</span><span class="p">(</span><span class="nv">$key</span><span class="p">))</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
+     *
+     * @param ValueObject $VO
+     * @return bool
+     */
+    public function equals(ValueObject $VO): bool
+    {
+        // 全ての属性を反復的に検証する
+        foreach (get_object_vars($this) as $key =&gt; $value) {
+            if ($this-&gt;__get($key) !== $VO-&gt;__get($key)) {
+                return false;
+            }
+        }
 
-        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        return true;
+    }
+}
 </code></pre></div>
 <p><br></p>
 <h2 id="05">05. ルートエンティティとトランザクション<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
@@ -36630,71 +36630,71 @@
 <li>調達管理部門の調達ルートエンティティ</li>
 </ul>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">namespace</span> <span class="nx">App\Domain\Foo\Entities</span><span class="p">;</span>
+namespace App\Domain\Foo\Entities;
 
-<span class="k">use</span> <span class="nx">App\Domain\Entity</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Domain\Id</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Domain\Dog\Entities\DogToy</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">App\Domain\Dog\Entities\DogFood</span><span class="p">;</span>
+use App\Domain\Entity;
+use App\Domain\Id;
+use App\Domain\Dog\Entities\DogToy;
+use App\Domain\Dog\Entities\DogFood;
 
-<span class="sd">/**</span>
-<span class="sd"> * 犬用注文エンティティ</span>
-<span class="sd"> */</span>
-<span class="k">class</span> <span class="nc">DogOrder</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * 犬用商品コンボID</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var Id</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$id</span><span class="p">;</span>
+/**
+ * 犬用注文エンティティ
+ */
+class DogOrder
+{
+    /**
+     * 犬用商品コンボID
+     *
+     * @var Id
+     */
+    private $id;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 犬用おもちゃ</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var DogToy</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$dogToy</span><span class="p">;</span>
+    /**
+     * 犬用おもちゃ
+     *
+     * @var DogToy
+     */
+    private $dogToy;
 
-    <span class="sd">/**</span>
-<span class="sd">     * 犬用えさ</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var DogFood</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$dogFood</span><span class="p">;</span>
+    /**
+     * 犬用えさ
+     *
+     * @var DogFood
+     */
+    private $dogFood;
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param DogToy  $dogToy</span>
-<span class="sd">     * @param DogFood $dogFood</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">DogToy</span> <span class="nv">$dogToy</span><span class="p">,</span> <span class="nx">DogFood</span> <span class="nv">$dogFood</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dogToy</span> <span class="o">=</span> <span class="nv">$dogToy</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dogFood</span> <span class="o">=</span> <span class="nv">$dogFood</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     * @param DogToy  $dogToy
+     * @param DogFood $dogFood
+     */
+    public function __construct(DogToy $dogToy, DogFood $dogFood)
+    {
+        $this-&gt;dogToy = $dogToy;
+        $this-&gt;dogFood = $dogFood;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 犬用おもちゃを返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return DogToy</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getDogToy</span><span class="p">()</span><span class="o">:</span> <span class="nx">DogToy</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dogToy</span><span class="p">;</span>
-    <span class="p">}</span>
+    /**
+     * 犬用おもちゃを返却する
+     *
+     * @return DogToy
+     */
+    public function getDogToy(): DogToy
+    {
+        return $this-&gt;dogToy;
+    }
 
-    <span class="sd">/**</span>
-<span class="sd">     * 犬用えさを返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return DogFood</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getDogFood</span><span class="p">()</span><span class="o">:</span> <span class="nx">DogFood</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dogFood</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    /**
+     * 犬用えさを返却する
+     *
+     * @return DogFood
+     */
+    public function getDogFood(): DogFood
+    {
+        return $this-&gt;dogFood;
+    }
+}
 </code></pre></div>
 <blockquote>
 <ul>

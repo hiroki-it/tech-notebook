@@ -34412,7 +34412,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:11:31 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:49:57 JST">2026-10-23</span>
   </span>
 
     
@@ -34456,50 +34456,50 @@
 <h4 id="_4">▼ 内部ポインタと配列の関係<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>『内部ポインタ』とは、PHP の配列で、参照したい要素を位置で指定するためのカーソルのこと。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$array</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'あ'</span><span class="p">,</span> <span class="s1">'い'</span><span class="p">,</span> <span class="s1">'う'</span><span class="p">];</span>
+$array = ['あ', 'い', 'う'];
 
-<span class="c1">// 内部ポインタが現在指定している要素を出力。</span>
-<span class="k">echo</span> <span class="nb">current</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span> <span class="c1">// あ</span>
+// 内部ポインタが現在指定している要素を出力。
+echo current($array); // あ
 
-<span class="c1">// 内部ポインタを1つ進め、要素を出力。</span>
-<span class="k">echo</span> <span class="nb">next</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span> <span class="c1">// い</span>
+// 内部ポインタを1つ進め、要素を出力。
+echo next($array); // い
 
-<span class="c1">// 内部ポインタを1つ戻し、要素を出力。</span>
-<span class="k">echo</span> <span class="nb">prev</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span> <span class="c1">// あ</span>
+// 内部ポインタを1つ戻し、要素を出力。
+echo prev($array); // あ
 
-<span class="c1">// 内部ポインタを最後まで進め、要素を出力。</span>
-<span class="k">echo</span> <span class="nb">end</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span> <span class="c1">// う</span>
+// 内部ポインタを最後まで進め、要素を出力。
+echo end($array); // う
 
-<span class="c1">// 内部ポインタを最初まで戻し、要素を出力</span>
-<span class="k">echo</span> <span class="nb">reset</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span> <span class="c1">// あ</span>
+// 内部ポインタを最初まで戻し、要素を出力
+echo reset($array); // あ
 </code></pre></div>
 <p><br></p>
 <h2 id="02-foreach">02. foreach<a class="headerlink" href="#02-foreach" title="Permanent link">&para;</a></h2>
 <h3 id="_5">文法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ 基本<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>配列を走査する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
-<span class="k">foreach</span> <span class="p">(</span><span class="nv">$array</span> <span class="k">as</span> <span class="o">&amp;</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$value</span> <span class="o">=</span> <span class="nv">$value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nv">$value</span><span class="p">;</span>
-<span class="p">}</span>
+$array = [1, 2, 3, 4];
+foreach ($array as &amp;$value) {
+    $value = $value * 2;
+    echo $value;
+}
 </code></pre></div>
 <h4 id="_7">▼ 制御文<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p><img alt="流れ図_foreach文" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/流れ図_foreach文.png" /></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">];</span>
-<span class="nv">$sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+$a = [1, -1, 2];
+$sum = 0;
 
-<span class="k">foreach</span> <span class="p">(</span><span class="nv">$a</span> <span class="k">as</span> <span class="nv">$foo</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$foo</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$sum</span> <span class="o">+=</span> <span class="nv">$foo</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+foreach ($a as $foo) {
+    if ($foo &gt; 0) {
+        $sum += $foo;
+    }
+}
 </code></pre></div>
 <p><br></p>
 <h3 id="_8">一次元配列の走査<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
@@ -34512,91 +34512,91 @@
 </blockquote>
 <h4 id="_10">▼ 配列の値へのアクセス<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>単に配列を作るのみでなく、要素にアクセスするためにも使われる。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="k">class</span> <span class="nc">Foo</span>
-<span class="p">{</span>
-     <span class="sd">/**</span>
-<span class="sd">     * オプションを調べて、文字列を返却します。</span>
+class Foo
+{
+     /**
+     * オプションを調べて、文字列を返却します。
 
 
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">printOption</span><span class="p">(</span><span class="k">array</span> <span class="nv">$options</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="nv">$result</span> <span class="o">=</span> <span class="s1">'何も設定されていません。'</span><span class="p">;</span>
+     */
+    public function printOption(array $options)
+    {
+        $result = '何も設定されていません。';
 
-        <span class="c1">// $options配列には、OptionA,B,Cエンティティのいずれかが格納されていると想定</span>
-        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$options</span> <span class="k">as</span> <span class="nv">$option</span><span class="p">)</span> <span class="p">{</span>
+        // $options配列には、OptionA,B,Cエンティティのいずれかが格納されていると想定
+        foreach ($options as $option) {
 
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'オプションA'</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nv">$result</span> <span class="o">=</span> <span class="s1">'オプションAが設定されています。'</span><span class="p">;</span>
-            <span class="p">}</span>
+            if ($option-&gt;name() == 'オプションA') {
+                $result = 'オプションAが設定されています。';
+            }
 
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'オプションB'</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nv">$result</span> <span class="o">=</span> <span class="s1">'オプションBが設定されています。'</span><span class="p">;</span>
-            <span class="p">}</span>
+            if ($option-&gt;name() == 'オプションB') {
+                $result = 'オプションBが設定されています。';
+            }
 
-            <span class="k">if</span> <span class="p">(</span><span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'オプションC'</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nv">$result</span> <span class="o">=</span> <span class="s1">'オプションCが設定されています。'</span><span class="p">;</span>
-            <span class="p">}</span>
+            if ($option-&gt;name() == 'オプションC') {
+                $result = 'オプションCが設定されています。';
+            }
 
-            <span class="k">return</span> <span class="nv">$result</span><span class="p">;</span>
-        <span class="p">}</span>
+            return $result;
+        }
 
-        <span class="k">return</span> <span class="nv">$result</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        return $result;
+    }
+}
 </code></pre></div>
 <h4 id="_11">▼ 配列の各値を加算代入<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="c1">// 以下の引数が渡されると想定</span>
-<span class="c1">// ($K, $A) = (4, [1, 2, 3, 4, 1, 1, 3])</span>
+// 以下の引数が渡されると想定
+// ($K, $A) = (4, [1, 2, 3, 4, 1, 1, 3])
 
-<span class="k">function</span> <span class="nf">iteration</span><span class="p">(</span><span class="nv">$K</span><span class="p">,</span> <span class="nv">$A</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="nv">$topesNumber</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+function iteration($K, $A)
+{
+    $topesNumber = 0;
 
-    <span class="nv">$currentLength</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    $currentLength = 0;
 
-    <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$A</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    for ($i = 0; $i &lt; count($A); $i++) {
 
-        <span class="c1">// 前回の走査に今回のものを加算する。</span>
-        <span class="nv">$currentLength</span> <span class="o">+=</span> <span class="nv">$A</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
+        // 前回の走査に今回のものを加算する。
+        $currentLength += $A[$i];
 
-        <span class="k">if</span> <span class="p">(</span><span class="nv">$currentLength</span> <span class="o">&gt;=</span> <span class="nv">$K</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// 加算代入</span>
-            <span class="nv">$topesNumber</span><span class="o">++</span><span class="p">;</span>
+        if ($currentLength &gt;= $K) {
+            // 加算代入
+            $topesNumber++;
 
-            <span class="c1">// 長さを元に戻す。</span>
-            <span class="nv">$currentLength</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+            // 長さを元に戻す。
+            $currentLength = 0;
+        }
+    }
+}
 </code></pre></div>
 <h4 id="_12">▼ 配列の値を固定<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="c1">// 以下の引数が渡されると想定</span>
-<span class="c1">// ($M, $A) = (6, [3, 4, 5, 5, 2])</span>
+// 以下の引数が渡されると想定
+// ($M, $A) = (6, [3, 4, 5, 5, 2])
 
-<span class="k">function</span> <span class="nf">iteration</span><span class="p">(</span><span class="nv">$M</span><span class="p">,</span> <span class="nv">$A</span><span class="p">)</span> <span class="p">{</span>
+function iteration($M, $A) {
 
-    <span class="nv">$count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    $count = 0;
 
-    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$A</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+    foreach ($A as $key =&gt; $value) {
 
-        <span class="c1">// vを固定して、以降のvと比較する。</span>
-        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="nv">$key</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$A</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">if</span><span class="p">(</span><span class="nv">$value</span> <span class="o">&lt;=</span> <span class="nv">$A</span><span class="p">[</span><span class="nv">$i</span><span class="p">]){</span>
-                <span class="c1">// 加算代入</span>
-                <span class="nv">$count</span><span class="o">++</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+        // vを固定して、以降のvと比較する。
+        for ($i = $key; $i &lt; count($A); $i++) {
+            if($value &lt;= $A[$i]){
+                // 加算代入
+                $count++;
+            }
+        }
+    }
 
-    <span class="k">return</span> <span class="nv">$count</span><span class="p">;</span>
-<span class="p">}</span>
+    return $count;
+}
 </code></pre></div>
 <p><br></p>
 <h3 id="_13">多次元配列の走査<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
@@ -34605,54 +34605,54 @@
 <p><code>call_user_func_array()</code> 関数の第一引数に、コールバック関数の <code>array_merge()</code> 関数の文字列を渡し、第二引数に 2 次元配列を渡す。</p>
 <p>その結果、平坦になって 1 次元配列になる。</p>
 <p>例えば、不要なインデックス (0) で入れ子になっている場合に役に立つ。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$twoDimension</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="p">[</span>
-    <span class="s1">'date'</span>  <span class="o">=&gt;</span> <span class="s1">'2015/11/1'</span><span class="p">,</span>
-    <span class="s1">'score'</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
-    <span class="s1">'color'</span> <span class="o">=&gt;</span> <span class="s1">'red'</span><span class="p">,</span>
-  <span class="p">],</span>
-  <span class="p">[</span>
-    <span class="s1">'date'</span>  <span class="o">=&gt;</span> <span class="s1">'2015/11/2'</span><span class="p">,</span>
-    <span class="s1">'score'</span> <span class="o">=&gt;</span> <span class="mi">75</span><span class="p">,</span>
-    <span class="s1">'color'</span> <span class="o">=&gt;</span> <span class="s1">'blue'</span><span class="p">,</span>
-  <span class="p">]</span>
-<span class="p">];</span>
+$twoDimension = [
+  [
+    'date'  =&gt; '2015/11/1',
+    'score' =&gt; 100,
+    'color' =&gt; 'red',
+  ],
+  [
+    'date'  =&gt; '2015/11/2',
+    'score' =&gt; 75,
+    'color' =&gt; 'blue',
+  ]
+];
 
-<span class="nv">$oneDimension</span> <span class="o">=</span> <span class="nb">call_user_func_array</span><span class="p">(</span>
-  <span class="s1">'array_merge'</span><span class="p">,</span>
-  <span class="c1">// 二次元配列</span>
-  <span class="nv">$twoDimension</span>
-<span class="p">);</span>
+$oneDimension = call_user_func_array(
+  'array_merge',
+  // 二次元配列
+  $twoDimension
+);
 </code></pre></div>
 <h4 id="_15">▼ 多次元配列でキー名から値を取得<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <p>例えば、以下のような多次元配列があったとする。</p>
 <p>配列の score キーから値を取り出し、1 次元配列を作成する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$twoDimension</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="p">[</span>
-    <span class="s1">'date'</span>  <span class="o">=&gt;</span> <span class="s1">'2015/11/1'</span><span class="p">,</span>
-    <span class="s1">'score'</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">,</span>
-    <span class="s1">'color'</span> <span class="o">=&gt;</span> <span class="s1">'red'</span><span class="p">,</span>
-  <span class="p">],</span>
-  <span class="p">[</span>
-    <span class="s1">'date'</span>  <span class="o">=&gt;</span> <span class="s1">'2015/11/2'</span><span class="p">,</span>
-    <span class="s1">'score'</span> <span class="o">=&gt;</span> <span class="mi">75</span><span class="p">,</span>
-    <span class="s1">'color'</span> <span class="o">=&gt;</span> <span class="s1">'blue'</span><span class="p">,</span>
-  <span class="p">]</span>
-<span class="p">];</span>
+$twoDimension = [
+  [
+    'date'  =&gt; '2015/11/1',
+    'score' =&gt; 100,
+    'color' =&gt; 'red',
+  ],
+  [
+    'date'  =&gt; '2015/11/2',
+    'score' =&gt; 75,
+    'color' =&gt; 'blue',
+  ]
+];
 
-<span class="c1">// この配列のscoreキーから値を取り出し、一次元配列を作成する。</span>
-<span class="nv">$oneDimension</span> <span class="o">=</span> <span class="nb">array_column</span><span class="p">(</span><span class="nv">$twoDimension</span><span class="p">,</span> <span class="s1">'score'</span><span class="p">);</span>
+// この配列のscoreキーから値を取り出し、一次元配列を作成する。
+$oneDimension = array_column($twoDimension, 'score');
 
-<span class="c1">// Array</span>
-<span class="c1">// (</span>
-<span class="c1">//     [0] =&gt; 100</span>
-<span class="c1">//     [1] =&gt; 75</span>
-<span class="c1">// )</span>
+// Array
+// (
+//     [0] =&gt; 100
+//     [1] =&gt; 75
+// )
 </code></pre></div>
 <p><br></p>
 <h2 id="03-while">03. while<a class="headerlink" href="#03-while" title="Permanent link">&para;</a></h2>
@@ -34661,45 +34661,45 @@
 <p>配列の走査を含む反復処理を実行する。</p>
 <p>ただし、配列の走査は、<code>while</code> ではなく <code>foreach</code> を使用する。</p>
 <p>また、<code>for</code> とは異なり、反復回数が決まっていない場合に使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="c1">// 反復回数が決まっていないため、満たせたらbreakで停止する。</span>
-<span class="k">while</span><span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+$count = 0;
+// 反復回数が決まっていないため、満たせたらbreakで停止する。
+while(true) {
 
-    <span class="k">if</span><span class="p">(</span><span class="nv">$count</span> <span class="o">==</span> <span class="mi">10</span><span class="p">){</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
+    if($count == 10){
+        break;
+    }
 
-    <span class="nv">$count</span><span class="o">++</span><span class="p">;</span>
-<span class="p">}</span>
+    $count++;
+}
 
-<span class="k">echo</span> <span class="nv">$count</span><span class="p">;</span>
+echo $count;
 </code></pre></div>
 <h4 id="_18">▼ 制御文<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p><img alt="流れ図_while文" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/流れ図_while文.png" /></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">];</span>
-<span class="nv">$sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+$a = [1, -1, 2];
+$sum = 0;
 
-<span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="k">while</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+$i = 0;
+while (true) {
 
-    <span class="c1">// 全て走査したら停止</span>
-    <span class="k">if</span><span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$a</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
+    // 全て走査したら停止
+    if($i == count($a)) {
+        break;
+    }
 
-    <span class="nv">$foo</span> <span class="o">=</span> <span class="nv">$a</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
+    $foo = $a[$i];
 
-    <span class="k">if</span><span class="p">(</span><span class="nv">$foo</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$sum</span> <span class="o">+=</span> <span class="nv">$foo</span><span class="p">;</span>
-    <span class="p">}</span>
+    if($foo &gt; 0) {
+        $sum += $foo;
+    }
 
-    <span class="c1">// 代入加算</span>
-    <span class="nv">$i</span> <span class="o">++</span><span class="p">;</span>
-<span class="p">}</span>
+    // 代入加算
+    $i ++;
+}
 </code></pre></div>
 <p><br></p>
 <h3 id="_19">無限ループ<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
@@ -34713,94 +34713,94 @@
 <p>配列の走査を含む反復処理を実行する。</p>
 <p>ただし、配列の走査は、<code>for</code> ではなく <code>foreach</code> を使用する。</p>
 <p>また、<code>while</code> とは異なり、反復回数が決まっている場合に使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="c1">// 10回反復することが決まっている。</span>
-<span class="k">for</span><span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">){</span>
-    <span class="nv">$count</span><span class="o">++</span><span class="p">;</span>
-<span class="p">}</span>
+// 10回反復することが決まっている。
+for($i = 1; $i &lt;= 10; $i++){
+    $count++;
+}
 
-<span class="k">echo</span> <span class="nv">$count</span><span class="p">;</span>
+echo $count;
 </code></pre></div>
 <h4 id="_23">▼ 制御文<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
 <p><img alt="流れ図_for文" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/流れ図_for文.png" /></p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">];</span>
-<span class="nv">$sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+$a = [1, -1, 2];
+$sum = 0;
 
-<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$foo</span> <span class="o">=</span> <span class="nv">$a</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$foo</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$sum</span> <span class="o">+=</span> <span class="nv">$foo</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+for ($i = 0; $i &lt; 2; $i++) {
+    $foo = $a[$i];
+    if ($foo &gt; 0) {
+        $sum += $foo;
+    }
+}
 
-<span class="k">echo</span> <span class="nv">$sum</span><span class="p">;</span>
+echo $sum;
 
-<span class="c1">// 1</span>
+// 1
 </code></pre></div>
 <p><br></p>
 <h2 id="05">05. 反復回数の変更<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="continue">continue<a class="headerlink" href="#continue" title="Permanent link">&para;</a></h3>
 <h4 id="continue_1">▼ continue とは<a class="headerlink" href="#continue_1" title="Permanent link">&para;</a></h4>
 <p>反復処理の現在のループをスキップし、次のループを開始する。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+$array = [1, 2, 3, 4, 5];
 
-<span class="k">foreach</span> <span class="p">(</span><span class="nv">$array</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+foreach ($array as $key =&gt; $value) {
 
-    <span class="c1">// キーが偶数の組をスキップする。</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nv">$key</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">continue</span><span class="p">;</span>
-    <span class="p">}</span>
+    // キーが偶数の組をスキップする。
+    if (!($key % 2 == 0)) {
+        continue;
+    }
 
-    <span class="k">echo</span> <span class="nv">$value</span> <span class="o">.</span> <span class="s1">'は奇数です'</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<span class="p">}</span>
+    echo $value . 'は奇数です' . "\n";
+}
 
-<span class="c1">// 1は奇数です</span>
-<span class="c1">// 3は奇数です</span>
-<span class="c1">// 5は奇数です</span>
+// 1は奇数です
+// 3は奇数です
+// 5は奇数です
 </code></pre></div>
 <h4 id="array_walk">▼ array_walk を使用した代替法<a class="headerlink" href="#array_walk" title="Permanent link">&para;</a></h4>
 <p>反復処理のループを <code>continue</code> でスキップするときと同じ動作を、配列を処理する関数のコールバック関数の早期リターンで実現できる。</p>
 <p><code>continue</code> を使用するより、こちらのほうがよい。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+$array = [1, 2, 3, 4, 5];
 
-<span class="nb">array_walk</span><span class="p">(</span><span class="nv">$array</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$value</span><span class="p">,</span> <span class="nv">$key</span><span class="p">)</span> <span class="p">{</span>
+array_walk($array, function ($value, $key) {
 
-    <span class="c1">// キーが偶数の組をスキップする。</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nv">$key</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">return</span><span class="p">;</span> <span class="c1">// continueと同じ動作を早期リターンで実現する。</span>
-    <span class="p">}</span>
+    // キーが偶数の組をスキップする。
+    if (!($key % 2 == 0)) {
+        return; // continueと同じ動作を早期リターンで実現する。
+    }
 
-    <span class="k">echo</span> <span class="nv">$value</span> <span class="o">.</span> <span class="s1">'は奇数です'</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<span class="p">});</span>
+    echo $value . 'は奇数です' . "\n";
+});
 
-<span class="c1">// 1は奇数です</span>
-<span class="c1">// 3は奇数です</span>
-<span class="c1">// 5は奇数です</span>
+// 1は奇数です
+// 3は奇数です
+// 5は奇数です
 </code></pre></div>
 <p><br></p>
 <h3 id="break">break<a class="headerlink" href="#break" title="Permanent link">&para;</a></h3>
 <h4 id="break_1">▼ break とは<a class="headerlink" href="#break_1" title="Permanent link">&para;</a></h4>
 <p>反復処理の現在のループを停止し、以降のループも実行しない。</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<div class="highlight"><pre><span></span><code>&lt;?php
 
-<span class="nv">$array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
+$array = [1, 2, 3, 4, '', 5];
 
-<span class="k">foreach</span> <span class="p">(</span><span class="nv">$array</span> <span class="k">as</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+foreach ($array as $value) {
 
-    <span class="c1">// 空の値で繰り返しを停止する。</span>
-    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$value</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
+    // 空の値で繰り返しを停止する。
+    if (empty($value)) {
+        break;
+    }
 
-    <span class="k">echo</span> <span class="nv">$value</span><span class="p">;</span>
-<span class="p">}</span>
+    echo $value;
+}
 </code></pre></div>
 <p><br></p>
 
