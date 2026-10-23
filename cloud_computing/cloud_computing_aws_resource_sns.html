@@ -33850,7 +33850,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:04:05 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -33889,29 +33889,30 @@
 <p>送受信の関係が多対多のパブリッシュ／サブスクライブ方式であり、プッシュ型の通信方式である。</p>
 <p>AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能が少なくシンプルである。</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th>Amazon SNS</th>
-<th>SQS</th>
-<th>EventBridge</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>処理</td>
-<td>ルーティング</td>
-<td>キューイング</td>
-<td>ルーティング</td>
-</tr>
-<tr>
-<td>通信方式</td>
-<td>プッシュ型のパブリッシュ／サブスクライブ方式</td>
-<td>プロデュース/コンシューム</td>
-<td>パブリッシュ／サブスクライブ方式</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Amazon SNS</th>
+      <th>SQS</th>
+      <th>EventBridge</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>処理</td>
+      <td>ルーティング</td>
+      <td>キューイング</td>
+      <td>ルーティング</td>
+    </tr>
+    <tr>
+      <td>通信方式</td>
+      <td>プッシュ型のパブリッシュ／サブスクライブ方式</td>
+      <td>プロデュース/コンシューム</td>
+      <td>パブリッシュ／サブスクライブ方式</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-difference-from-amazon-mq-sns.html">https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-difference-from-amazon-mq-sns.html</a></li>
@@ -33932,55 +33933,57 @@
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">コンソール画面の場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th>設定項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>トピック</td>
-<td>複数のサブスクリプションをグループ化したもの。</td>
-</tr>
-<tr>
-<td>サブスクリプション</td>
-<td>宛先に送信するメッセージの種類を設定する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>トピック</td>
+      <td>複数のサブスクリプションをグループ化したもの。</td>
+    </tr>
+    <tr>
+      <td>サブスクリプション</td>
+      <td>宛先に送信するメッセージの種類を設定する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_3">トピック<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th>設定項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>サブスクリプション</td>
-<td>サブスクリプションを登録する。</td>
-</tr>
-<tr>
-<td>アクセスポリシー</td>
-<td>トピックへの認可スコープを設定する。</td>
-</tr>
-<tr>
-<td>配信リトライポリシー</td>
-<td>サブスクリプションの HTTP/HTTPS エンドポイントが失敗したときのリトライ方法を設定する。<br>- <a href="https://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html">https://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html</a></td>
-</tr>
-<tr>
-<td>配信ステータスのログ記録</td>
-<td>サブスクリプションへの発信のログを Amazon CloudWatch Logs にフォワーディングするように設定する。</td>
-</tr>
-<tr>
-<td>暗号化</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>サブスクリプション</td>
+      <td>サブスクリプションを登録する。</td>
+    </tr>
+    <tr>
+      <td>アクセスポリシー</td>
+      <td>トピックへの認可スコープを設定する。</td>
+    </tr>
+    <tr>
+      <td>配信リトライポリシー</td>
+      <td>サブスクリプションの HTTP/HTTPS エンドポイントが失敗したときのリトライ方法を設定する。<br>- <a href="https://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html">https://docs.aws.amazon.com/sns/latest/dg/sns-message-delivery-retries.html</a></td>
+    </tr>
+    <tr>
+      <td>配信ステータスのログ記録</td>
+      <td>サブスクリプションへの発信のログを Amazon CloudWatch Logs にフォワーディングするように設定する。</td>
+    </tr>
+    <tr>
+      <td>暗号化</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_4">サブスクリプション<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="kinesis-data-firehose">▼ Kinesis Data Firehose<a class="headerlink" href="#kinesis-data-firehose" title="Permanent link">&para;</a></h4>

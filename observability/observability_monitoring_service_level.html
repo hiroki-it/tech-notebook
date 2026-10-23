@@ -34268,7 +34268,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:04:05 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -34434,116 +34434,118 @@
 <p>KPI (組織内での合意) に基づいた性能目標値とは区別したい。</p>
 <h4 id="_8">▼ 目標値の例 (自社プロダクト)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>項目</th>
-<th>100%</th>
-<th>目標値</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>計画停止</td>
-<td></td>
-<td>計画停止は、<code>1</code> ヶ月当たり <code>1</code> 回まで、<code>1</code> 回当たり <code>3</code> 時間まで、とする。</td>
-</tr>
-<tr>
-<td>サーバー稼働率</td>
-<td>サーバーが <code>24</code> 時間稼働する。</td>
-<td><code>0.01</code>% (<code>0.24</code> 時間) 以内の時間にダウンタイムを抑えること。</td>
-</tr>
-<tr>
-<td>レスポンス速度</td>
-<td>全リクエストの平均レスポンス速度が <code>3000</code>ms (<code>3</code> 秒) である。</td>
-<td>リクエストの <code>50</code>%が <code>3000</code>ms より早くレスポンスできること。</td>
-</tr>
-<tr>
-<td>秒当たりの平均トランザクション数</td>
-<td></td>
-<td>登録 (<code>100</code>TPS) 、参照 (<code>100</code>TPS) 、変更 (<code>100</code>TPS) 、削除 (<code>100</code>TPS) とする。</td>
-</tr>
-<tr>
-<td>障害対応</td>
-<td></td>
-<td>検知時間 (<code>10</code> 分以内) 、ビジネス側への発生報告 (<code>20</code> 分以内) 、障害一次対処 ( <code>1</code> 時間以内) とする。</td>
-</tr>
-<tr>
-<td>RPO</td>
-<td></td>
-<td><code>2</code> 時間前以内とする。</td>
-</tr>
-<tr>
-<td>RTO</td>
-<td></td>
-<td><code>2</code> 時間以内とする。</td>
-</tr>
-<tr>
-<td>バックアップ保管期間</td>
-<td></td>
-<td><code>12</code> ヶ月とする。</td>
-</tr>
-<tr>
-<td>復元時点</td>
-<td></td>
-<td><code>1</code> 日前までとする。</td>
-</tr>
-<tr>
-<td>ログ保管期間</td>
-<td></td>
-<td><code>3</code> ヶ月とする。</td>
-</tr>
-<tr>
-<td>パケットのアプリケーションデータの暗号化強度</td>
-<td></td>
-<td>SSL/TLS による暗号化とする。</td>
-</tr>
-<tr>
-<td>問い合わせ</td>
-<td></td>
-<td>国の定める祝日を除く月から金までの <code>9:00 ~ 17:00</code> とする。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>100%</th>
+      <th>目標値</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>計画停止</td>
+      <td></td>
+      <td>計画停止は、<code>1</code> ヶ月当たり <code>1</code> 回まで、<code>1</code> 回当たり <code>3</code> 時間まで、とする。</td>
+    </tr>
+    <tr>
+      <td>サーバー稼働率</td>
+      <td>サーバーが <code>24</code> 時間稼働する。</td>
+      <td><code>0.01</code>% (<code>0.24</code> 時間) 以内の時間にダウンタイムを抑えること。</td>
+    </tr>
+    <tr>
+      <td>レスポンス速度</td>
+      <td>全リクエストの平均レスポンス速度が <code>3000</code>ms (<code>3</code> 秒) である。</td>
+      <td>リクエストの <code>50</code>%が <code>3000</code>ms より早くレスポンスできること。</td>
+    </tr>
+    <tr>
+      <td>秒当たりの平均トランザクション数</td>
+      <td></td>
+      <td>登録 (<code>100</code>TPS) 、参照 (<code>100</code>TPS) 、変更 (<code>100</code>TPS) 、削除 (<code>100</code>TPS) とする。</td>
+    </tr>
+    <tr>
+      <td>障害対応</td>
+      <td></td>
+      <td>検知時間 (<code>10</code> 分以内) 、ビジネス側への発生報告 (<code>20</code> 分以内) 、障害一次対処 ( <code>1</code> 時間以内) とする。</td>
+    </tr>
+    <tr>
+      <td>RPO</td>
+      <td></td>
+      <td><code>2</code> 時間前以内とする。</td>
+    </tr>
+    <tr>
+      <td>RTO</td>
+      <td></td>
+      <td><code>2</code> 時間以内とする。</td>
+    </tr>
+    <tr>
+      <td>バックアップ保管期間</td>
+      <td></td>
+      <td><code>12</code> ヶ月とする。</td>
+    </tr>
+    <tr>
+      <td>復元時点</td>
+      <td></td>
+      <td><code>1</code> 日前までとする。</td>
+    </tr>
+    <tr>
+      <td>ログ保管期間</td>
+      <td></td>
+      <td><code>3</code> ヶ月とする。</td>
+    </tr>
+    <tr>
+      <td>パケットのアプリケーションデータの暗号化強度</td>
+      <td></td>
+      <td>SSL/TLS による暗号化とする。</td>
+    </tr>
+    <tr>
+      <td>問い合わせ</td>
+      <td></td>
+      <td>国の定める祝日を除く月から金までの <code>9:00 ~ 17:00</code> とする。</td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="datadog">▼ 目標値の例 (Datadog)<a class="headerlink" href="#datadog" title="Permanent link">&para;</a></h4>
 <p>SLO を期間のパーセントで定めることにより、状況によらず、一定の基準を設けることができる。</p>
 <p>目標値は、予測値を使用するとよい。</p>
 <p>Datadog では、平常時のメトリクスのデータから予測値を算出してくれる。</p>
 <table>
-<thead>
-<tr>
-<th>指標</th>
-<th>100%</th>
-<th>目標値</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>サーバー稼働率</td>
-<td>サーバーが <code>24</code> 時間稼働する。</td>
-<td><code>0.01</code>% (<code>0.24</code> 時間) 以内の時間にダウンタイムを抑えること。</td>
-</tr>
-<tr>
-<td>DB 稼働率</td>
-<td>DB が <code>24</code> 時間稼働する。</td>
-<td><code>0.01</code>% (<code>0.24</code> 時間) 以内の時間にダウンタイムを抑えること。</td>
-</tr>
-<tr>
-<td>レスポンス速度</td>
-<td>全リクエストの平均レスポンス速度が <code>300</code>ms である。</td>
-<td>リクエストの <code>50</code>%が <code>300</code>ms より早くレスポンスできること。</td>
-</tr>
-<tr>
-<td>レスポンスのステータスコード率</td>
-<td><code>24</code> 時間当たりの全リクエストが <code>200</code> ステータスである</td>
-<td><code>50</code>% 以上のリクエストが <code>200</code> ステータスになること。</td>
-</tr>
-<tr>
-<td>スループット</td>
-<td><code>24</code> 時間で、スループットが <code>50</code> 件/秒</td>
-<td><code>24</code> 時間で、<code>0.1</code>% 以下の時間にスループット低下を抑えること。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>指標</th>
+      <th>100%</th>
+      <th>目標値</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>サーバー稼働率</td>
+      <td>サーバーが <code>24</code> 時間稼働する。</td>
+      <td><code>0.01</code>% (<code>0.24</code> 時間) 以内の時間にダウンタイムを抑えること。</td>
+    </tr>
+    <tr>
+      <td>DB 稼働率</td>
+      <td>DB が <code>24</code> 時間稼働する。</td>
+      <td><code>0.01</code>% (<code>0.24</code> 時間) 以内の時間にダウンタイムを抑えること。</td>
+    </tr>
+    <tr>
+      <td>レスポンス速度</td>
+      <td>全リクエストの平均レスポンス速度が <code>300</code>ms である。</td>
+      <td>リクエストの <code>50</code>%が <code>300</code>ms より早くレスポンスできること。</td>
+    </tr>
+    <tr>
+      <td>レスポンスのステータスコード率</td>
+      <td><code>24</code> 時間当たりの全リクエストが <code>200</code> ステータスである</td>
+      <td><code>50</code>% 以上のリクエストが <code>200</code> ステータスになること。</td>
+    </tr>
+    <tr>
+      <td>スループット</td>
+      <td><code>24</code> 時間で、スループットが <code>50</code> 件/秒</td>
+      <td><code>24</code> 時間で、<code>0.1</code>% 以下の時間にスループット低下を抑えること。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.datadoghq.com/monitors/create/types/forecasts/?tabs=linear">https://docs.datadoghq.com/monitors/create/types/forecasts/?tabs=linear</a></li>
@@ -34572,35 +34574,36 @@
 <p>インターネットサービスに最低限のサービスのレベルを保証し、これを下回った場合には返金する、といった契約のこと。</p>
 <p>SLA として、例えば以下がある。</p>
 <table>
-<thead>
-<tr>
-<th>項目</th>
-<th>説明</th>
-<th>レベル例</th>
-<th>返金率</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>サーバー稼働率</td>
-<td>サーバーの時間当たりの稼働率</td>
-<td><code>99.9</code>%以上</td>
-<td><code>10</code>%</td>
-</tr>
-<tr>
-<td>障害回復時間</td>
-<td>障害が起こってから回復するまでの時間</td>
-<td><code>2</code> 時間以内</td>
-<td><code>10</code>%</td>
-</tr>
-<tr>
-<td>障害お問い合わせ</td>
-<td>障害発生時のお問い合わせ可能時間帯</td>
-<td><code>24</code> 時間 <code>365</code> 日</td>
-<td><code>10</code>%</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>説明</th>
+      <th>レベル例</th>
+      <th>返金率</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>サーバー稼働率</td>
+      <td>サーバーの時間当たりの稼働率</td>
+      <td><code>99.9</code>%以上</td>
+      <td><code>10</code>%</td>
+    </tr>
+    <tr>
+      <td>障害回復時間</td>
+      <td>障害が起こってから回復するまでの時間</td>
+      <td><code>2</code> 時間以内</td>
+      <td><code>10</code>%</td>
+    </tr>
+    <tr>
+      <td>障害お問い合わせ</td>
+      <td>障害発生時のお問い合わせ可能時間帯</td>
+      <td><code>24</code> 時間 <code>365</code> 日</td>
+      <td><code>10</code>%</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="sla_1">SLA の決め方<a class="headerlink" href="#sla_1" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ 前提<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
@@ -34624,31 +34627,32 @@
 <p><strong>＊例＊</strong></p>
 <p>Amazon EC2、AWS EBS、Amazon ECS、Amazon EKS の例を示す。</p>
 <table>
-<thead>
-<tr>
-<th>毎月の稼働率</th>
-<th>発生したダウンタイム</th>
-<th>返金率</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>99.0</code>%以上、<code>99.99</code>%未満</td>
-<td><code>87.6</code>～<code>0.876</code> 時間</td>
-<td><code>10</code>%</td>
-</tr>
-<tr>
-<td><code>95.0</code>%以上、<code>99.0</code>%未満</td>
-<td><code>438</code>～<code>87.6</code> 時間</td>
-<td><code>30</code>%</td>
-</tr>
-<tr>
-<td><code>95.0</code>%未満</td>
-<td><code>438</code> 時間以上</td>
-<td><code>100</code>%</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>毎月の稼働率</th>
+      <th>発生したダウンタイム</th>
+      <th>返金率</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>99.0</code>%以上、<code>99.99</code>%未満</td>
+      <td><code>87.6</code>～<code>0.876</code> 時間</td>
+      <td><code>10</code>%</td>
+    </tr>
+    <tr>
+      <td><code>95.0</code>%以上、<code>99.0</code>%未満</td>
+      <td><code>438</code>～<code>87.6</code> 時間</td>
+      <td><code>30</code>%</td>
+    </tr>
+    <tr>
+      <td><code>95.0</code>%未満</td>
+      <td><code>438</code> 時間以上</td>
+      <td><code>100</code>%</td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="purecloud">▼ 対応開始時間の例 (PureCloud)<a class="headerlink" href="#purecloud" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <blockquote>

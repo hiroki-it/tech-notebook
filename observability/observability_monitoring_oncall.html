@@ -33980,7 +33980,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月6日 18:19:37 JST">2026-10-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -34061,62 +34061,64 @@
 <p>そのため、どのようなイベントをエラーイベントと見なし、アラートを通知するかどうかを決めておく必要がある。</p>
 <p>また、レベルに応じてアラート先のチャンネルを区別するとよい。</p>
 <table>
-<thead>
-<tr>
-<th>メトリクスの単位</th>
-<th>エラーイベントと見なす閾値例</th>
-<th>閾値とするメトリクス例</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>パーセント</td>
-<td><code>60</code>%</td>
-<td>CPU 使用率、メモリ使用率など</td>
-<td>平常時は <code>30</code>%である仮定し、エラーイベントと見なす閾値を <code>60</code>%に設定することが多い。</td>
-</tr>
-<tr>
-<td>カウント</td>
-<td><code>1</code>〜<code>3</code> 個</td>
-<td>ログステータス、ステータスコードなど</td>
-<td>どのログステータスやステータスコードをカウントするかを決める必要がある。</td>
-</tr>
-<tr>
-<td>バイト数</td>
-<td>メトリクスによる</td>
-<td>メモリの空きサイズ、ストレージのスワップ領域の使用サイズなど</td>
-<td>メトリクスによって、エラーイベントと見なせるバイト数が異なる。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>メトリクスの単位</th>
+      <th>エラーイベントと見なす閾値例</th>
+      <th>閾値とするメトリクス例</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>パーセント</td>
+      <td><code>60</code>%</td>
+      <td>CPU 使用率、メモリ使用率など</td>
+      <td>平常時は <code>30</code>%である仮定し、エラーイベントと見なす閾値を <code>60</code>%に設定することが多い。</td>
+    </tr>
+    <tr>
+      <td>カウント</td>
+      <td><code>1</code>〜<code>3</code> 個</td>
+      <td>ログステータス、ステータスコードなど</td>
+      <td>どのログステータスやステータスコードをカウントするかを決める必要がある。</td>
+    </tr>
+    <tr>
+      <td>バイト数</td>
+      <td>メトリクスによる</td>
+      <td>メモリの空きサイズ、ストレージのスワップ領域の使用サイズなど</td>
+      <td>メトリクスによって、エラーイベントと見なせるバイト数が異なる。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_13">カウントする必要があるステータスの判断<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="_14">▼ ステータスの重要度レベルへの変換<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>ステータスは、重要度を判断しやすいように、重要度レベルに変換して考える。</p>
 <p>該当の重要度レベルに当てはまるステータスのみを、エラーイベントとしてカウントする。</p>
 <table>
-<thead>
-<tr>
-<th>重要度レベルの例</th>
-<th>エラーイベントと見なし、アラートを通知するか否かの判断例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>critical</td>
-<td>する</td>
-</tr>
-<tr>
-<td>warning</td>
-<td>しない</td>
-</tr>
-<tr>
-<td>information</td>
-<td>しない</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>重要度レベルの例</th>
+      <th>エラーイベントと見なし、アラートを通知するか否かの判断例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>critical</td>
+      <td>する</td>
+    </tr>
+    <tr>
+      <td>warning</td>
+      <td>しない</td>
+    </tr>
+    <tr>
+      <td>information</td>
+      <td>しない</td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="_15">▼ ログステータスの場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>エラーイベントと見なすログステータスの目安は以下の通りである。</p>
 <blockquote>
@@ -34125,95 +34127,97 @@
 </ul>
 </blockquote>
 <table>
-<thead>
-<tr>
-<th>ログステータス</th>
-<th>説明</th>
-<th>重要度レベルへの変換例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>emergency</td>
-<td>システムが使用できない状態にある緊急事態</td>
-<td>critical</td>
-</tr>
-<tr>
-<td>alert</td>
-<td>早急に対応すべき事態</td>
-<td>critical</td>
-</tr>
-<tr>
-<td>critical</td>
-<td>対処すべき重要な問題</td>
-<td>critical</td>
-</tr>
-<tr>
-<td>fatal</td>
-<td>対処すべき重要な問題</td>
-<td>critical</td>
-</tr>
-<tr>
-<td>error</td>
-<td>何かが失敗している</td>
-<td>critical または warning</td>
-</tr>
-<tr>
-<td>warn</td>
-<td>普通ではないことが発生したが、心配する必要はない</td>
-<td>critical または warning</td>
-</tr>
-<tr>
-<td>notice</td>
-<td>いたって普通だが、注意すべきことが起こっている</td>
-<td>information</td>
-</tr>
-<tr>
-<td>info</td>
-<td>知っておくといいかもしれない情報</td>
-<td>information</td>
-</tr>
-<tr>
-<td>debug</td>
-<td>問題が起こっている場所を知るのに有効な情報</td>
-<td>information</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>ログステータス</th>
+      <th>説明</th>
+      <th>重要度レベルへの変換例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>emergency</td>
+      <td>システムが使用できない状態にある緊急事態</td>
+      <td>critical</td>
+    </tr>
+    <tr>
+      <td>alert</td>
+      <td>早急に対応すべき事態</td>
+      <td>critical</td>
+    </tr>
+    <tr>
+      <td>critical</td>
+      <td>対処すべき重要な問題</td>
+      <td>critical</td>
+    </tr>
+    <tr>
+      <td>fatal</td>
+      <td>対処すべき重要な問題</td>
+      <td>critical</td>
+    </tr>
+    <tr>
+      <td>error</td>
+      <td>何かが失敗している</td>
+      <td>critical または warning</td>
+    </tr>
+    <tr>
+      <td>warn</td>
+      <td>普通ではないことが発生したが、心配する必要はない</td>
+      <td>critical または warning</td>
+    </tr>
+    <tr>
+      <td>notice</td>
+      <td>いたって普通だが、注意すべきことが起こっている</td>
+      <td>information</td>
+    </tr>
+    <tr>
+      <td>info</td>
+      <td>知っておくといいかもしれない情報</td>
+      <td>information</td>
+    </tr>
+    <tr>
+      <td>debug</td>
+      <td>問題が起こっている場所を知るのに有効な情報</td>
+      <td>information</td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="_16">▼ ステータスコードの場合<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>エラーイベントと見なすステータスコードの目安は以下の通りである。</p>
 <p>各ステータスコードをバラバラに扱うことは大変なため、系ごとにまとめて扱えるように、レベルを割り当てる。</p>
 <table>
-<thead>
-<tr>
-<th>ステータスコード</th>
-<th>本番環境のアラートの目安</th>
-<th>重要度レベルへの変換例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>500</code> 系</td>
-<td>する</td>
-<td>critical</td>
-</tr>
-<tr>
-<td><code>400</code> 系</td>
-<td>どちらでも</td>
-<td>warning</td>
-</tr>
-<tr>
-<td><code>300</code> 系</td>
-<td>しない</td>
-<td>information</td>
-</tr>
-<tr>
-<td><code>200</code> 系</td>
-<td>しない</td>
-<td>information</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>ステータスコード</th>
+      <th>本番環境のアラートの目安</th>
+      <th>重要度レベルへの変換例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>500</code> 系</td>
+      <td>する</td>
+      <td>critical</td>
+    </tr>
+    <tr>
+      <td><code>400</code> 系</td>
+      <td>どちらでも</td>
+      <td>warning</td>
+    </tr>
+    <tr>
+      <td><code>300</code> 系</td>
+      <td>しない</td>
+      <td>information</td>
+    </tr>
+    <tr>
+      <td><code>200</code> 系</td>
+      <td>しない</td>
+      <td>information</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 
   

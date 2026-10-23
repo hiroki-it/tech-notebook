@@ -34346,7 +34346,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:04:05 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -34412,41 +34412,42 @@
 </blockquote>
 <h4 id="_7">▼ シグナルの種類<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>代表的なシグナル</th>
-<th>説明</th>
-<th>実行方法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>SIGINT</code></td>
-<td>プロセスに割り込む。</td>
-<td>キーボードで <code>Ctrl + C</code> を打つ。</td>
-</tr>
-<tr>
-<td><code>SIGKILL</code></td>
-<td>プロセスを強制終了する。</td>
-<td><code>kill</code> コマンドを実行する。</td>
-</tr>
-<tr>
-<td><code>SIGTERM</code></td>
-<td>プロセスを通常終了する。</td>
-<td>記入中...</td>
-</tr>
-<tr>
-<td><code>SIGTSTP</code></td>
-<td>プロセスを一時中断する。</td>
-<td>キーボードで <code>Ctrl + Z</code> を打つ。</td>
-</tr>
-<tr>
-<td><code>SIGQUIT</code></td>
-<td>プロセスを終了させつつ、コアダンプする。</td>
-<td>キーボードで <code>Ctrl + Q</code> を打つ。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>代表的なシグナル</th>
+      <th>説明</th>
+      <th>実行方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>SIGINT</code></td>
+      <td>プロセスに割り込む。</td>
+      <td>キーボードで <code>Ctrl + C</code> を打つ。</td>
+    </tr>
+    <tr>
+      <td><code>SIGKILL</code></td>
+      <td>プロセスを強制終了する。</td>
+      <td><code>kill</code> コマンドを実行する。</td>
+    </tr>
+    <tr>
+      <td><code>SIGTERM</code></td>
+      <td>プロセスを通常終了する。</td>
+      <td>記入中...</td>
+    </tr>
+    <tr>
+      <td><code>SIGTSTP</code></td>
+      <td>プロセスを一時中断する。</td>
+      <td>キーボードで <code>Ctrl + Z</code> を打つ。</td>
+    </tr>
+    <tr>
+      <td><code>SIGQUIT</code></td>
+      <td>プロセスを終了させつつ、コアダンプする。</td>
+      <td>キーボードで <code>Ctrl + Q</code> を打つ。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://atmarkit.itmedia.co.jp/ait/articles/1708/04/news015.html">Linuxの「シグナル」って何だろう？：“応用力”をつけるためのLinux再入門（16） - ＠IT</a></li>
@@ -34543,81 +34544,82 @@ Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><spa
 <h4 id="_20">▼ 一覧<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>言語によって、シングルスレッドまたはマルチスレッドのどちらでプログラムを実行するのかが異なる。</p>
 <table>
-<thead>
-<tr>
-<th>言語</th>
-<th style="text-align: center;">シングルスレッド</th>
-<th style="text-align: center;">マルチスレッド</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>C</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-</tr>
-<tr>
-<td>C#</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-</tr>
-<tr>
-<td>C++</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-</tr>
-<tr>
-<td>Go</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-</tr>
-<tr>
-<td>Java</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-</tr>
-<tr>
-<td>JavaScript、TypeScript（ブラウザ上）</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td>JavaScript、TypeScript（Node.js 上など）</td>
-<td style="text-align: center;">✅（通常時）</td>
-<td style="text-align: center;">✅（Worker Threads 使用時）</td>
-</tr>
-<tr>
-<td>Kotlin</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-</tr>
-<tr>
-<td>PHP</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td>Python</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td>Ruby</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td>Rust</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-</tr>
-<tr>
-<td>Swift</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>言語</th>
+      <th style="text-align:center">シングルスレッド</th>
+      <th style="text-align:center">マルチスレッド</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>C#</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>C++</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>Go</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>Java</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>JavaScript、TypeScript（ブラウザ上）</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>JavaScript、TypeScript（Node.js 上など）</td>
+      <td style="text-align:center">✅（通常時）</td>
+      <td style="text-align:center">✅（Worker Threads 使用時）</td>
+    </tr>
+    <tr>
+      <td>Kotlin</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>PHP</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Python</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Ruby</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Rust</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>Swift</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="nodejs">▼ Node.js<a class="headerlink" href="#nodejs" title="Permanent link">&para;</a></h4>
 <p>例えば、Node.js は次のようにシングルスレッドでプログラムを実行する。</p>
 <div class="highlight"><pre><span></span><code>プログラムを実行する親プロセス

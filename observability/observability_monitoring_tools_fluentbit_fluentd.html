@@ -33874,7 +33874,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:04:05 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -33949,46 +33949,47 @@
 <p><br></p>
 <h3 id="_5">機能比較<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th></th>
-<th>FluentBit</th>
-<th>Fluentd</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>スコープ</td>
-<td>組み込み Linux/仮想環境</td>
-<td>仮想環境</td>
-</tr>
-<tr>
-<td>言語</td>
-<td>NS</td>
-<td>C &amp; Ruby</td>
-</tr>
-<tr>
-<td>メモリ最大サイズ</td>
-<td><code>650</code>KB</td>
-<td><code>40</code>MB</td>
-</tr>
-<tr>
-<td>依存関係</td>
-<td>標準プラグインではパッケージに依存しない。</td>
-<td>標準プラグインで一定数の Ruby gem に依存する。</td>
-</tr>
-<tr>
-<td>性能</td>
-<td>高</td>
-<td>高</td>
-</tr>
-<tr>
-<td>プラグイン数</td>
-<td><code>70</code> 個</td>
-<td><code>1000</code> 個以上</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th></th>
+      <th>FluentBit</th>
+      <th>Fluentd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>スコープ</td>
+      <td>組み込み Linux/仮想環境</td>
+      <td>仮想環境</td>
+    </tr>
+    <tr>
+      <td>言語</td>
+      <td>NS</td>
+      <td>C &amp; Ruby</td>
+    </tr>
+    <tr>
+      <td>メモリ最大サイズ</td>
+      <td><code>650</code>KB</td>
+      <td><code>40</code>MB</td>
+    </tr>
+    <tr>
+      <td>依存関係</td>
+      <td>標準プラグインではパッケージに依存しない。</td>
+      <td>標準プラグインで一定数の Ruby gem に依存する。</td>
+    </tr>
+    <tr>
+      <td>性能</td>
+      <td>高</td>
+      <td>高</td>
+    </tr>
+    <tr>
+      <td>プラグイン数</td>
+      <td><code>70</code> 個</td>
+      <td><code>1000</code> 個以上</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h2 id="02">02. デザインパターンの種類<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">エージェントパターン<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
@@ -34016,41 +34017,42 @@
 </blockquote>
 <h4 id="daemonset-pod">▼ DaemonSet パターンと Pod 内サイドカーパターンの比較<a class="headerlink" href="#daemonset-pod" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>項目</th>
-<th style="text-align: center;">Pod 内サイドカーパターン</th>
-<th style="text-align: center;">DaemonSet パターン</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Node のハードウェアリソース消費量が少ない</td>
-<td style="text-align: center;">×</td>
-<td style="text-align: center;">⭕️</td>
-</tr>
-<tr>
-<td>Node のストレージ使用量が少ない</td>
-<td style="text-align: center;">⭕️</td>
-<td style="text-align: center;">△</td>
-</tr>
-<tr>
-<td>FluentBit/Fluentd の冗長性が高い</td>
-<td style="text-align: center;">⭕️️</td>
-<td style="text-align: center;">△</td>
-</tr>
-<tr>
-<td>アプリごとの設定カスタマイズ度が高い</td>
-<td style="text-align: center;">⭕️</td>
-<td style="text-align: center;">△</td>
-</tr>
-<tr>
-<td>単純性が高い</td>
-<td style="text-align: center;">×</td>
-<td style="text-align: center;">⭕️</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th style="text-align:center">Pod 内サイドカーパターン</th>
+      <th style="text-align:center">DaemonSet パターン</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Node のハードウェアリソース消費量が少ない</td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">⭕️</td>
+    </tr>
+    <tr>
+      <td>Node のストレージ使用量が少ない</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">△</td>
+    </tr>
+    <tr>
+      <td>FluentBit/Fluentd の冗長性が高い</td>
+      <td style="text-align:center">⭕️️</td>
+      <td style="text-align:center">△</td>
+    </tr>
+    <tr>
+      <td>アプリごとの設定カスタマイズ度が高い</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">△</td>
+    </tr>
+    <tr>
+      <td>単純性が高い</td>
+      <td style="text-align:center">×</td>
+      <td style="text-align:center">⭕️</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://codersociety.com/blog/articles/kubernetes-logging">Kubernetes Logging in Production — Coder Society</a></li>

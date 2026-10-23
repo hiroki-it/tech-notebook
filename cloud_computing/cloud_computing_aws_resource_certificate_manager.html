@@ -34242,7 +34242,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月6日 18:19:37 JST">2026-10-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -34290,23 +34290,24 @@
 <h3 id="aws">AWS 認証局とは<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <p>認証局である ATS によって認証済みのサーバー証明書を管理できる。</p>
 <table>
-<thead>
-<tr>
-<th>サーバー提供者</th>
-<th>名前</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>中間認証局</td>
-<td>Amazon 認証局</td>
-</tr>
-<tr>
-<td>ルート認証局</td>
-<td>Starfield 認証局、Amazon 認証局</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>サーバー提供者</th>
+      <th>名前</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>中間認証局</td>
+      <td>Amazon 認証局</td>
+    </tr>
+    <tr>
+      <td>ルート認証局</td>
+      <td>Starfield 認証局、Amazon 認証局</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/acm/latest/userguide/acm-certificate.html">https://docs.aws.amazon.com/acm/latest/userguide/acm-certificate.html</a></li>
@@ -34361,53 +34362,55 @@
 <p>許可するプロトコルを定義したルールこと。</p>
 <p>SSL/TLS プロトコルを許可しており、対応できるバージョンが異なるため、ブラウザがそのバージョンの SSL/TLS プロトコルを使用できるかを認識しておく必要がある。</p>
 <table>
-<thead>
-<tr>
-<th>バージョン</th>
-<th style="text-align: center;">Policy-2016-08</th>
-<th style="text-align: center;">Policy-TLS-1-1</th>
-<th style="text-align: center;">Policy-TLS-1-2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Protocol-TLSv1</td>
-<td style="text-align: center;">⭕️</td>
-<td style="text-align: center;">✕</td>
-<td style="text-align: center;">✕</td>
-</tr>
-<tr>
-<td>Protocol-TLSv1.1</td>
-<td style="text-align: center;">⭕️</td>
-<td style="text-align: center;">⭕️</td>
-<td style="text-align: center;">✕</td>
-</tr>
-<tr>
-<td>Protocol-TLSv1.2</td>
-<td style="text-align: center;">⭕️</td>
-<td style="text-align: center;">⭕️</td>
-<td style="text-align: center;">⭕️</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>バージョン</th>
+      <th style="text-align:center">Policy-2016-08</th>
+      <th style="text-align:center">Policy-TLS-1-1</th>
+      <th style="text-align:center">Policy-TLS-1-2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Protocol-TLSv1</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">✕</td>
+      <td style="text-align:center">✕</td>
+    </tr>
+    <tr>
+      <td>Protocol-TLSv1.1</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">✕</td>
+    </tr>
+    <tr>
+      <td>Protocol-TLSv1.2</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">⭕️</td>
+      <td style="text-align:center">⭕️</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_8">サーバー証明書の種類<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>DNS 検証または E メール検証によって、ドメインの所有者であることが証明されると、発行される。</p>
 <p>サーバー証明書は、PKI による公開鍵検証に使用される。</p>
 <table>
-<thead>
-<tr>
-<th>証明書の種類</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ワイルドカード証明書</td>
-<td>証明するドメイン名にワイルドカードを使用したもの。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>証明書の種類</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ワイルドカード証明書</td>
+      <td>証明するドメイン名にワイルドカードを使用したもの。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_9">サーバー証明書の変更<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ サーバー証明書の確認<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
@@ -34443,31 +34446,32 @@
 <p>AWS ALB で SSL/TLS 終端とする場合、Amazon EC2/Amazon ECS/Amazon EKS にサーバー証明書は不要である。</p>
 <p>Amazon EC2/Amazon ECS/Amazon EKS で SSL/TLS 終端とする場合、Amazon EC2/Amazon ECS/Amazon EKS に AWS 以外で作成したサーバー証明書を配置する。</p>
 <table>
-<thead>
-<tr>
-<th>パターン<br>(Amazon Route 53 には必ず配置)</th>
-<th>SSL/TLS 終端<br>(HTTPS プロトコルの最終地点)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Amazon Route 53 ➡️ AWS ALB (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS</td>
-<td>AWS ALB</td>
-</tr>
-<tr>
-<td>Amazon Route 53 ➡️ AWS ALB (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS (AWS 以外のサーバー証明書)</td>
-<td>Amazon EC2/Amazon ECS/Amazon EKS</td>
-</tr>
-<tr>
-<td>Amazon Route 53 ➡️ AWS ALB (AWS Certificate Manager のサーバー証明書) ➡️ Lightsail (AWS 以外のサーバー証明書)</td>
-<td>Lightsail</td>
-</tr>
-<tr>
-<td>Amazon Route 53 ➡️ NLB (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS (AWS 以外のサーバー証明書)</td>
-<td>Amazon EC2/Amazon ECS/Amazon EKS</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>パターン<br>(Amazon Route 53 には必ず配置)</th>
+      <th>SSL/TLS 終端<br>(HTTPS プロトコルの最終地点)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon Route 53 ➡️ AWS ALB (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS</td>
+      <td>AWS ALB</td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ AWS ALB (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS (AWS 以外のサーバー証明書)</td>
+      <td>Amazon EC2/Amazon ECS/Amazon EKS</td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ AWS ALB (AWS Certificate Manager のサーバー証明書) ➡️ Lightsail (AWS 以外のサーバー証明書)</td>
+      <td>Lightsail</td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ NLB (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS (AWS 以外のサーバー証明書)</td>
+      <td>Amazon EC2/Amazon ECS/Amazon EKS</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/alb-backend-https/#toc-1">ALBとバックエンドEC2間をHTTPS通信させてみた | DevelopersIO</a></li>
@@ -34476,27 +34480,28 @@
 <h4 id="amazon-route-53-load-balancer-controller">▼ Amazon Route 53 ➡️ Load Balancer Controller 由来) の場合<a class="headerlink" href="#amazon-route-53-load-balancer-controller" title="Permanent link">&para;</a></h4>
 <p>AWS リソースには AWS Certificate Manager のサーバー証明書を紐づけられるが、Kubernetes リソースには AWS 以外のサーバー証明書 (Let’s Encrypt、Cert Manager、Istio) しか紐づけられない。</p>
 <table>
-<thead>
-<tr>
-<th>パターン<br>(Amazon Route 53 には必ず配置)</th>
-<th>SSL/TLS 終端<br>(HTTPS プロトコルの最終地点)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Amazon Route 53 ➡️ Load Balancer Controller (AWS Certificate Manager のサーバー証明書) ➡️︎ Service / Pod</td>
-<td>AWS ALB</td>
-</tr>
-<tr>
-<td>Amazon Route 53 ➡️ Load Balancer Controller (AWS Certificate Manager のサーバー証明書) ➡️ Service / Pod</td>
-<td>Ingress Controller</td>
-</tr>
-<tr>
-<td>Amazon Route 53 ➡️ Load Balancer Controller (AWS Certificate Manager のサーバー証明書) ➡️ Service / Pod (AWS 以外のサーバー証明書)</td>
-<td>Pod</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>パターン<br>(Amazon Route 53 には必ず配置)</th>
+      <th>SSL/TLS 終端<br>(HTTPS プロトコルの最終地点)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon Route 53 ➡️ Load Balancer Controller (AWS Certificate Manager のサーバー証明書) ➡️︎ Service / Pod</td>
+      <td>AWS ALB</td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ Load Balancer Controller (AWS Certificate Manager のサーバー証明書) ➡️ Service / Pod</td>
+      <td>Ingress Controller</td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ Load Balancer Controller (AWS Certificate Manager のサーバー証明書) ➡️ Service / Pod (AWS 以外のサーバー証明書)</td>
+      <td>Pod</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/blogs/security/tls-enabled-kubernetes-clusters-with-acm-private-ca-and-amazon-eks-2/">TLS-enabled Kubernetes clusters with ACM Private CA and Amazon EKS | AWS Security Blog</a></li>
@@ -34508,56 +34513,58 @@
 <p>ただし、Amazon CloudFront はバージニア北部、AWS ALB は東京リージョンで証明書を作成する必要がある。</p>
 <p>Amazon CloudFront に送信された HTTPS リクエストを AWS ALB へルーティングするために、両方に紐付ける証明書で承認するドメインは一致させる必要がある。</p>
 <table>
-<thead>
-<tr>
-<th>パターン<br>(Amazon Route 53 には必ず配置)</th>
-<th>SSL/TLS 終端<br>(HTTPS プロトコルの最終地点)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Amazon Route 53 ➡️ Amazon CloudFront (AWS Certificate Manager のサーバー証明書) ➡️ AWS ALB (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS</td>
-<td>AWS ALB</td>
-</tr>
-<tr>
-<td>Amazon Route 53 ➡️ Amazon CloudFront (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS</td>
-<td>Amazon CloudFront</td>
-</tr>
-<tr>
-<td>Amazon Route 53 ➡️ Amazon CloudFront (AWS Certificate Manager のサーバー証明書) ➡️ Amazon S3</td>
-<td>Amazon CloudFront</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>パターン<br>(Amazon Route 53 には必ず配置)</th>
+      <th>SSL/TLS 終端<br>(HTTPS プロトコルの最終地点)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon Route 53 ➡️ Amazon CloudFront (AWS Certificate Manager のサーバー証明書) ➡️ AWS ALB (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS</td>
+      <td>AWS ALB</td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ Amazon CloudFront (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS</td>
+      <td>Amazon CloudFront</td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ Amazon CloudFront (AWS Certificate Manager のサーバー証明書) ➡️ Amazon S3</td>
+      <td>Amazon CloudFront</td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="amazon-route-53-amazon-ec2amazon-ecsamazon-eksaws-lightsail">▼ Amazon Route 53 ➡️ Amazon EC2/Amazon ECS/Amazon EKS、AWS Lightsail の場合<a class="headerlink" href="#amazon-route-53-amazon-ec2amazon-ecsamazon-eksaws-lightsail" title="Permanent link">&para;</a></h4>
 <p>Amazon Route 53 で SSL/TLS 終端とする場合、Amazon EC2/Amazon ECS/Amazon EKS にサーバー証明書は不要である。</p>
 <p>Amazon EC2/Amazon ECS/Amazon EKS で SSL/TLS 終端とする場合、Amazon EC2/Amazon ECS/Amazon EKS に AWS 以外で作成したサーバー証明書を配置する。</p>
 <table>
-<thead>
-<tr>
-<th>パターン<br>(Amazon Route 53 には必ず配置)</th>
-<th>SSL/TLS 終端<br>(HTTPS プロトコルの最終地点)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Amazon Route 53 ➡️ Amazon EC2/Amazon ECS/Amazon EKS (AWS 以外のサーバー証明書)</td>
-<td>Amazon EC2/Amazon ECS/Amazon EKS</td>
-</tr>
-<tr>
-<td>Amazon Route 53 ➡️ Lightsail (AWS Certificate Manager のサーバー証明書)</td>
-<td>Lightsail</td>
-</tr>
-<tr>
-<td>Amazon Route 53 ➡️ Lightsail (AWS Certificate Manager のサーバー証明書)</td>
-<td>Lightsail</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>パターン<br>(Amazon Route 53 には必ず配置)</th>
+      <th>SSL/TLS 終端<br>(HTTPS プロトコルの最終地点)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ Amazon EC2/Amazon ECS/Amazon EKS (AWS 以外のサーバー証明書)</td>
+      <td>Amazon EC2/Amazon ECS/Amazon EKS</td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ Lightsail (AWS Certificate Manager のサーバー証明書)</td>
+      <td>Lightsail</td>
+    </tr>
+    <tr>
+      <td>Amazon Route 53 ➡️ Lightsail (AWS Certificate Manager のサーバー証明書)</td>
+      <td>Lightsail</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="amazon-ec2amazon-ecsamazon-eks_1">Amazon EC2/Amazon ECS/Amazon EKS の後段<a class="headerlink" href="#amazon-ec2amazon-ecsamazon-eks_1" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-aurora">▼ Amazon Aurora<a class="headerlink" href="#amazon-aurora" title="Permanent link">&para;</a></h4>

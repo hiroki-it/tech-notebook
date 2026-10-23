@@ -35194,7 +35194,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月21日 19:27:44 JST">2026-10-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -35724,21 +35724,22 @@ httpbin-app-service.services.svc.cluster.local<span class="w">                  
 </code></pre></div>
 <h4 id="virtualservice_1">▼ VirtualService 数<a class="headerlink" href="#virtualservice_1" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th></th>
-<th>API ゲートウェイを Istio で管理する場合</th>
-<th>API ゲートウェイを Istio で管理しない場合</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>VirtualService の数</td>
-<td>外部からのインバウンド通信を API ゲートウェイにルーティングする VirtualService を 1 つだけ作成しておけばよい。</td>
-<td>API ゲートウェイからすべてのマイクロサービスにルーティングできるように、各マイクロサービスにルーティングできる VirtualService を定義する必要がある。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th></th>
+      <th>API ゲートウェイを Istio で管理する場合</th>
+      <th>API ゲートウェイを Istio で管理しない場合</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>VirtualService の数</td>
+      <td>外部からのインバウンド通信を API ゲートウェイにルーティングする VirtualService を 1 つだけ作成しておけばよい。</td>
+      <td>API ゲートウェイからすべてのマイクロサービスにルーティングできるように、各マイクロサービスにルーティングできる VirtualService を定義する必要がある。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/">How to choose the right API Gateway for your platform: Comparison of Kong, Tyk, KrakenD, Apigee, and alternatives | Moesif Blog</a></li>
@@ -36390,47 +36391,48 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <p>設定によっては、リソースではなく pilot-agent の環境変数として直接的に渡す必要がある。</p>
 <p>これらの環境変数は、いずれ istio-sidecar-injector (ConfigMap) や istio-mesh-cm (ConfigMap) などに移行される可能性がある。</p>
 <table>
-<thead>
-<tr>
-<th>環境変数</th>
-<th>対応する設定 (実験段階)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ENHANCED_RESOURCE_SCOPING</code></td>
-<td>istio-mesh-cm (ConfigMap) で、<code>discoverySelectors</code> を有効化してもよい。</td>
-</tr>
-<tr>
-<td><code>ENABLE_NATIVE_SIDECARS</code></td>
-<td>istio-sidecar-injector (ConfigMap) で、istio-proxy の代わりに Kubernetes の Init Container</td>
-</tr>
-<tr>
-<td><code>ENABLE_RESOLUTION_NONE_TARGET_PORT</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>ENABLE_DELIMITED_STATS_TAG_REGEX</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>PREFER_JWTトークンLE_TLS_FOR_EXTERNAL_SERVICES</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>ENABLE_ENHANCED_JWTトークンLE_MERGE</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>PILOT_UNIFIED_SIDECAR_SCOPE</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>VERIFY_CERT_AT_CLIENT</code></td>
-<td>どこにこの変数あるんやろか...</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>環境変数</th>
+      <th>対応する設定 (実験段階)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ENHANCED_RESOURCE_SCOPING</code></td>
+      <td>istio-mesh-cm (ConfigMap) で、<code>discoverySelectors</code> を有効化してもよい。</td>
+    </tr>
+    <tr>
+      <td><code>ENABLE_NATIVE_SIDECARS</code></td>
+      <td>istio-sidecar-injector (ConfigMap) で、istio-proxy の代わりに Kubernetes の Init Container</td>
+    </tr>
+    <tr>
+      <td><code>ENABLE_RESOLUTION_NONE_TARGET_PORT</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>ENABLE_DELIMITED_STATS_TAG_REGEX</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>PREFER_JWTトークンLE_TLS_FOR_EXTERNAL_SERVICES</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>ENABLE_ENHANCED_JWTトークンLE_MERGE</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>PILOT_UNIFIED_SIDECAR_SCOPE</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>VERIFY_CERT_AT_CLIENT</code></td>
+      <td>どこにこの変数あるんやろか...</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/blob/release-1.23/pilot/pkg/features/experimental.go">istio/pilot/pkg/features/experimental.go at release-1.23 · istio/istio · GitHub</a></li>

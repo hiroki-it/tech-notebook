@@ -34244,7 +34244,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 21:24:34 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -34296,76 +34296,77 @@
 <h3 id="_2">コンソール画面の場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 設定項目と説明<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th style="text-align: left;">設定項目</th>
-<th>説明</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">クラスターエンジン</td>
-<td>すべての Redis ノードのキャッシュエンジンを設定する。Redis 通常モード、Redis クラスターモードから選択する。</td>
-<td>Redis クラスターモードと同様に、Redis 通常モードもクラスター構成になる。ただし、クラスターモードとはクラスターの構成方法が異なる。</td>
-</tr>
-<tr>
-<td style="text-align: left;">ロケーション</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: left;">エンジンバージョンの互換性</td>
-<td>すべての Redis ノードのキャッシュエンジンのバージョンを設定する。</td>
-<td>マイナーバージョンが自動的に更新されないように、例えば『<code>6.x</code>』は設定しないほうがよい。</td>
-</tr>
-<tr>
-<td style="text-align: left;">パラメーターグループ</td>
-<td>すべての Redis ノードのグローバルオプションを設定する。</td>
-<td>デフォルトを使用せずに自前定義する場合、事前に作成しておく必要がある。</td>
-</tr>
-<tr>
-<td style="text-align: left;">ノードのタイプ</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: left;">レプリケーション数</td>
-<td>プライマリーノードとは別に、リードレプリカノードをいくつ作成するかを設定する。</td>
-<td>マルチ AZ にプライマリーノードとリードレプリカノードを <code>1</code> 個ずつ配置させる場合、ここでは『<code>1</code> 個』を設定する。</td>
-</tr>
-<tr>
-<td style="text-align: left;">マルチ AZ</td>
-<td>プライマリーノードとリードレプリカを異なる AZ に配置するか否かを設定する。合わせて、自動フェイルオーバーを実行できるようになる。</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: left;">サブネットグループ</td>
-<td>Redis にリクエストを送信できるサブネットを設定する。</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: left;">セキュリティ</td>
-<td>セキュリティグループを設定する。</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: left;">クラスターへのデータのインポート</td>
-<td>あらかじめ作成しておいたバックアップをインポートし、これを元に Redis を作成する。</td>
-<td>セッションやクエリキャッシュを引き継げる。そのため、新しい Redis へのセッションデータの移行に役立つ。<br>・<a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-seeding-redis.html">https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-seeding-redis.html</a></td>
-</tr>
-<tr>
-<td style="text-align: left;">バックアップ</td>
-<td>バックアップの有効化、保持期間、時間を設定する。</td>
-<td>バックアップを取るほどでもないため、無効化しておいて問題ない。</td>
-</tr>
-<tr>
-<td style="text-align: left;">メンテナンス</td>
-<td>メンテナンスの時間を設定する。</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th style="text-align:left">設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">クラスターエンジン</td>
+      <td>すべての Redis ノードのキャッシュエンジンを設定する。Redis 通常モード、Redis クラスターモードから選択する。</td>
+      <td>Redis クラスターモードと同様に、Redis 通常モードもクラスター構成になる。ただし、クラスターモードとはクラスターの構成方法が異なる。</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">ロケーション</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">エンジンバージョンの互換性</td>
+      <td>すべての Redis ノードのキャッシュエンジンのバージョンを設定する。</td>
+      <td>マイナーバージョンが自動的に更新されないように、例えば『<code>6.x</code>』は設定しないほうがよい。</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">パラメーターグループ</td>
+      <td>すべての Redis ノードのグローバルオプションを設定する。</td>
+      <td>デフォルトを使用せずに自前定義する場合、事前に作成しておく必要がある。</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">ノードのタイプ</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">レプリケーション数</td>
+      <td>プライマリーノードとは別に、リードレプリカノードをいくつ作成するかを設定する。</td>
+      <td>マルチ AZ にプライマリーノードとリードレプリカノードを <code>1</code> 個ずつ配置させる場合、ここでは『<code>1</code> 個』を設定する。</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">マルチ AZ</td>
+      <td>プライマリーノードとリードレプリカを異なる AZ に配置するか否かを設定する。合わせて、自動フェイルオーバーを実行できるようになる。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">サブネットグループ</td>
+      <td>Redis にリクエストを送信できるサブネットを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">セキュリティ</td>
+      <td>セキュリティグループを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">クラスターへのデータのインポート</td>
+      <td>あらかじめ作成しておいたバックアップをインポートし、これを元に Redis を作成する。</td>
+      <td>セッションやクエリキャッシュを引き継げる。そのため、新しい Redis へのセッションデータの移行に役立つ。<br>・<a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-seeding-redis.html">https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-seeding-redis.html</a></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">バックアップ</td>
+      <td>バックアップの有効化、保持期間、時間を設定する。</td>
+      <td>バックアップを取るほどでもないため、無効化しておいて問題ない。</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">メンテナンス</td>
+      <td>メンテナンスの時間を設定する。</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="redis">Redis クラスター<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h3>
 <h4 id="redis_1">▼ Redis クラスターとは<a class="headerlink" href="#redis_1" title="Permanent link">&para;</a></h4>
@@ -34498,42 +34499,44 @@
 <h4 id="redis_6">▼ Redis のフェイルオーバー<a class="headerlink" href="#redis_6" title="Permanent link">&para;</a></h4>
 <p>プライマリーノードで障害が起こった場合に、リードレプリカノードをプライマリーノードに自動的に昇格する。</p>
 <table>
-<thead>
-<tr>
-<th>障害の発生したノード</th>
-<th>挙動</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>プライマリーノード</td>
-<td>リードレプリカの <code>1</code> 個がプライマリーノードに昇格し、障害が起きたプライマリーノードと置き換わる。</td>
-</tr>
-<tr>
-<td>リードレプリカノード</td>
-<td>障害が起きたリードレプリカノードが、別の新しいものに置き換わる。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>障害の発生したノード</th>
+      <th>挙動</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>プライマリーノード</td>
+      <td>リードレプリカの <code>1</code> 個がプライマリーノードに昇格し、障害が起きたプライマリーノードと置き換わる。</td>
+    </tr>
+    <tr>
+      <td>リードレプリカノード</td>
+      <td>障害が起きたリードレプリカノードが、別の新しいものに置き換わる。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="redis_7">Redis クラスターのダウンタイム<a class="headerlink" href="#redis_7" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ ダウンタイムの発生条件<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>変更する項目</th>
-<th>ダウンタイムの有無</th>
-<th>ダウンタイム</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>エンジンバージョン</td>
-<td>あり</td>
-<td><code>1</code> 分 <code>30</code> 秒ほどのダウンタイムが発生する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>変更する項目</th>
+      <th>ダウンタイムの有無</th>
+      <th>ダウンタイム</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>エンジンバージョン</td>
+      <td>あり</td>
+      <td><code>1</code> 分 <code>30</code> 秒ほどのダウンタイムが発生する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_12">計画的なダウンタイム<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ 計画的なダウンタイムとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>

@@ -35094,7 +35094,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:11:31 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -35140,88 +35140,91 @@
 <p><br></p>
 <h3 id="_3">プリミティブ型に所属するデータ型<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th>データ型</th>
-<th>表記</th>
-<th>ゼロ値</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>数値</td>
-<td><code>int</code>、<code>float</code></td>
-<td><code>0</code></td>
-</tr>
-<tr>
-<td>文字列</td>
-<td><code>string</code></td>
-<td><code>""</code> (空文字)</td>
-</tr>
-<tr>
-<td>boolean 値</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>データ型</th>
+      <th>表記</th>
+      <th>ゼロ値</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>数値</td>
+      <td><code>int</code>、<code>float</code></td>
+      <td><code>0</code></td>
+    </tr>
+    <tr>
+      <td>文字列</td>
+      <td><code>string</code></td>
+      <td><code>&quot;&quot;</code> (空文字)</td>
+    </tr>
+    <tr>
+      <td>boolean 値</td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_4">合成型に所属するデータ型<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>構造体の場合、フィールドのゼロ値はフィールドのデータ型による。</p>
 <table>
-<thead>
-<tr>
-<th>データ型</th>
-<th>表記</th>
-<th>ゼロ値</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>構造体</td>
-<td><code>struct</code></td>
-<td></td>
-</tr>
-<tr>
-<td>配列</td>
-<td><code>[i]</code></td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>データ型</th>
+      <th>表記</th>
+      <th>ゼロ値</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>構造体</td>
+      <td><code>struct</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>配列</td>
+      <td><code>[i]</code></td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_5">参照型に所属するデータ型<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th>データ型</th>
-<th>表記</th>
-<th>ゼロ値</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ポインタ</td>
-<td><code>*</code></td>
-<td><code>nil</code></td>
-</tr>
-<tr>
-<td>slice</td>
-<td><code>[]</code></td>
-<td><code>nil</code> (要素数、サイズ：0)</td>
-</tr>
-<tr>
-<td>map</td>
-<td></td>
-<td><code>nil</code></td>
-</tr>
-<tr>
-<td>チャネル</td>
-<td></td>
-<td><code>nil</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>データ型</th>
+      <th>表記</th>
+      <th>ゼロ値</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ポインタ</td>
+      <td><code>*</code></td>
+      <td><code>nil</code></td>
+    </tr>
+    <tr>
+      <td>slice</td>
+      <td><code>[]</code></td>
+      <td><code>nil</code> (要素数、サイズ：0)</td>
+    </tr>
+    <tr>
+      <td>map</td>
+      <td></td>
+      <td><code>nil</code></td>
+    </tr>
+    <tr>
+      <td>チャネル</td>
+      <td></td>
+      <td><code>nil</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h2 id="02">02. プリミティブ型のまとめ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">プリミティブ型とは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
@@ -35252,101 +35255,92 @@
 <p><br></p>
 <h3 id="_8">各データ型のサイズ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th>データ型</th>
-<th>型名</th>
-<th>サイズ(bit)</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>int (符号付き整数)</td>
-<td>int8</td>
-<td><code>8</code></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>int16</td>
-<td><code>16</code></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>int32</td>
-<td><code>32</code></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>int64</td>
-<td><code>64</code></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>int</td>
-<td><code>32</code> or <code>64</code></td>
-<td>実装環境によって異なる。</td>
-</tr>
-<tr>
-<td>uint (符号なし整数)</td>
-<td>uint8</td>
-<td><code>8</code></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>uint16</td>
-<td><code>16</code></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>unit32</td>
-<td><code>32</code></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>uint64</td>
-<td><code>64</code></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>uint</td>
-<td><code>32</code> or <code>64</code></td>
-<td>実装環境によって異なる。</td>
-</tr>
-<tr>
-<td>float (浮動小数点)</td>
-<td>float32</td>
-<td><code>32</code></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>float64</td>
-<td><code>64</code></td>
-<td></td>
-</tr>
-<tr>
-<td>complex (複素数)</td>
-<td>complex64</td>
-<td><code>64</code></td>
-<td>実部：float32、虚部：float32</td>
-</tr>
-<tr>
-<td></td>
-<td>complex128</td>
-<td><code>128</code></td>
-<td>実部：float64、虚部：float64</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>データ型</th>
+      <th>型名</th>
+      <th>サイズ(bit)</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="5">int (符号付き整数)</td>
+      <td>int8</td>
+      <td><code>8</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>int16</td>
+      <td><code>16</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>int32</td>
+      <td><code>32</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>int64</td>
+      <td><code>64</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>int</td>
+      <td><code>32</code> or <code>64</code></td>
+      <td>実装環境によって異なる。</td>
+    </tr>
+    <tr>
+      <td rowspan="5">uint (符号なし整数)</td>
+      <td>uint8</td>
+      <td><code>8</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>uint16</td>
+      <td><code>16</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>unit32</td>
+      <td><code>32</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>uint64</td>
+      <td><code>64</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>uint</td>
+      <td><code>32</code> or <code>64</code></td>
+      <td>実装環境によって異なる。</td>
+    </tr>
+    <tr>
+      <td rowspan="2">float (浮動小数点)</td>
+      <td>float32</td>
+      <td><code>32</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>float64</td>
+      <td><code>64</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td rowspan="2">complex (複素数)</td>
+      <td>complex64</td>
+      <td><code>64</code></td>
+      <td>実部：float32、虚部：float32</td>
+    </tr>
+    <tr>
+      <td>complex128</td>
+      <td><code>128</code></td>
+      <td>実部：float64、虚部：float64</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h2 id="03">03. 構造体<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_9">構造体とは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
@@ -35852,31 +35846,32 @@
 <p><br></p>
 <h3 id="_21">ポインタ型で扱うべきデータ型<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th>データ型</th>
-<th style="text-align: center;">ポインタ型で扱うべきか</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>構造体</td>
-<td style="text-align: center;">⭕️</td>
-<td>ポインタ型として扱うと、構造体が持つメモリアドレスを処理するのみでよくなる。ポインタ型としない場合と比べて、少ないメモリ消費で構造体を扱える。</td>
-</tr>
-<tr>
-<td>slice、map、chan、 func</td>
-<td style="text-align: center;">△</td>
-<td>データサイズの大きさによる。</td>
-</tr>
-<tr>
-<td>プリミティブ型</td>
-<td style="text-align: center;">×️</td>
-<td>ポインタ型で扱うメリットはない。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>データ型</th>
+      <th style="text-align:center">ポインタ型で扱うべきか</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>構造体</td>
+      <td style="text-align:center">⭕️</td>
+      <td>ポインタ型として扱うと、構造体が持つメモリアドレスを処理するのみでよくなる。ポインタ型としない場合と比べて、少ないメモリ消費で構造体を扱える。</td>
+    </tr>
+    <tr>
+      <td>slice、map、chan、 func</td>
+      <td style="text-align:center">△</td>
+      <td>データサイズの大きさによる。</td>
+    </tr>
+    <tr>
+      <td>プリミティブ型</td>
+      <td style="text-align:center">×️</td>
+      <td>ポインタ型で扱うメリットはない。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h2 id="07-slice">07. slice<a class="headerlink" href="#07-slice" title="Permanent link">&para;</a></h2>
 <h3 id="slice">slice とは<a class="headerlink" href="#slice" title="Permanent link">&para;</a></h3>

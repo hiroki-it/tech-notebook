@@ -34444,7 +34444,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月21日 19:27:44 JST">2026-10-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -34580,36 +34580,37 @@
 <p>使い方に応じた料金体系を選択できる。</p>
 <p>レスポンスの返信時に料金が発生する。</p>
 <table>
-<thead>
-<tr>
-<th>使い方名</th>
-<th>説明</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>オンデマンドインスタンス</td>
-<td>Amazon EC2 の使用期間に応じて使用料金を支払う。</td>
-<td>・<a href="https://aws.amazon.com/jp/ec2/pricing/on-demand/">https://aws.amazon.com/jp/ec2/pricing/on-demand/</a></td>
-</tr>
-<tr>
-<td>Savings Plans</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>リザーブドインスタンス</td>
-<td>Amazon EC2 の一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。</td>
-<td></td>
-</tr>
-<tr>
-<td>スポットインスタンス</td>
-<td>休止している Amazon EC2 を使用する。格安で使用できる。ただし、スポットインスタンスの絶対数が減少したり、スポットインスタンスの希望ユーザーが増えた場合に、利用を強制的に中断されてしまうことがある。</td>
-<td>・<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-spot-instances-work.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-spot-instances-work.html</a></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>使い方名</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>オンデマンドインスタンス</td>
+      <td>Amazon EC2 の使用期間に応じて使用料金を支払う。</td>
+      <td>・<a href="https://aws.amazon.com/jp/ec2/pricing/on-demand/">https://aws.amazon.com/jp/ec2/pricing/on-demand/</a></td>
+    </tr>
+    <tr>
+      <td>Savings Plans</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>リザーブドインスタンス</td>
+      <td>Amazon EC2 の一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>スポットインスタンス</td>
+      <td>休止している Amazon EC2 を使用する。格安で使用できる。ただし、スポットインスタンスの絶対数が減少したり、スポットインスタンスの希望ユーザーが増えた場合に、利用を強制的に中断されてしまうことがある。</td>
+      <td>・<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-spot-instances-work.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-spot-instances-work.html</a></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing">What is Amazon EC2? - Amazon Elastic Compute Cloud</a></li>
@@ -34621,46 +34622,47 @@
 <p>Amazon EC2 を実行している時間分だけ料金がかかる。</p>
 <p>インスタンスを使用せずに配置しているのみであれば、料金はかからない。</p>
 <table>
-<thead>
-<tr>
-<th>フェーズ名</th>
-<th>料金発生の有無</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pending</td>
-<td>なし</td>
-<td></td>
-</tr>
-<tr>
-<td>running</td>
-<td>あり</td>
-<td></td>
-</tr>
-<tr>
-<td>stopping</td>
-<td>条件付きでなし</td>
-<td>停止準備中の間は料金が発生し、休止準備中の間は発生しない。</td>
-</tr>
-<tr>
-<td>stopped</td>
-<td>なし</td>
-<td></td>
-</tr>
-<tr>
-<td>shutting-down</td>
-<td>なし</td>
-<td></td>
-</tr>
-<tr>
-<td>terminated</td>
-<td>なし</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>フェーズ名</th>
+      <th>料金発生の有無</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>pending</td>
+      <td>なし</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>running</td>
+      <td>あり</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>stopping</td>
+      <td>条件付きでなし</td>
+      <td>停止準備中の間は料金が発生し、休止準備中の間は発生しない。</td>
+    </tr>
+    <tr>
+      <td>stopped</td>
+      <td>なし</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>shutting-down</td>
+      <td>なし</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>terminated</td>
+      <td>なし</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html">Amazon EC2 instance state changes - Amazon Elastic Compute Cloud</a></li>
@@ -34704,23 +34706,24 @@ Fargate のコンピューティングの月額料金 = 3.04 USD + 1.33 USD = 4.
 <h3 id="rds">RDS<a class="headerlink" href="#rds" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ 料金体系の種類<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th style="text-align: left;">使い方名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">オンデマンドインスタンス</td>
-<td>・<a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html</a></td>
-</tr>
-<tr>
-<td style="text-align: left;">リザーブドインスタンス</td>
-<td>RDS インスタンスの一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。<br>・<a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html</a></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th style="text-align:left">使い方名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">オンデマンドインスタンス</td>
+      <td>・<a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html</a></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">リザーブドインスタンス</td>
+      <td>RDS インスタンスの一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。<br>・<a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html</a></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/User_DBInstanceBilling.html">DB instance billing for Amazon RDS - Amazon Relational Database Service</a></li>

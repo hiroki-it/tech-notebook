@@ -35768,7 +35768,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 21:24:34 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -35806,141 +35806,142 @@
 <h3 id="_3">予約された変数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>デプロイツール内 (例：ArgoCD、Flux) で Helm を使用する場合、そのツールの実行環境によってバージョン値が変わる。</p>
 <table>
-<thead>
-<tr>
-<th>変数名</th>
-<th>デフォルト値</th>
-<th>値</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.Release.Name</code></td>
-<td></td>
-<td>リリース名</td>
-</tr>
-<tr>
-<td><code>.Release.Time</code></td>
-<td></td>
-<td>リリースした時間</td>
-</tr>
-<tr>
-<td><code>.Release.Namespace</code></td>
-<td></td>
-<td>リリースされる名前空間</td>
-</tr>
-<tr>
-<td><code>.Release.Service</code></td>
-<td><code>v3</code> の場合 <code>Helm</code>、<code>v2</code></td>
-<td>リリースに使用したツール名</td>
-</tr>
-<tr>
-<td><code>.Release.Revision</code></td>
-<td></td>
-<td>リリースのリビジョン</td>
-</tr>
-<tr>
-<td><code>.Release.IsUpgrade</code></td>
-<td></td>
-<td>upgrade か rollback 操作の場合、true がセットされる</td>
-</tr>
-<tr>
-<td><code>.Release.IsInstall</code></td>
-<td></td>
-<td>install 操作の場合、true がセットされる</td>
-</tr>
-<tr>
-<td><code>.Values</code></td>
-<td></td>
-<td>values ファイルもしくはユーザーから-f で指定されたファイルからテンプレートに渡される値。変数名は任意で定義。「Values.変数キー名」で変数の値を取得可能</td>
-</tr>
-<tr>
-<td><code>.Chart.ApiVersion</code></td>
-<td></td>
-<td>Chart.yaml に記載されるチャート API のバージョン</td>
-</tr>
-<tr>
-<td><code>.Chart.Name</code></td>
-<td></td>
-<td>Chart.yaml に記載されるチャートの名前</td>
-</tr>
-<tr>
-<td><code>.Chart.Version</code></td>
-<td></td>
-<td>Chart.yaml に記載されるチャート自体のバージョン</td>
-</tr>
-<tr>
-<td><code>.Chart.KubeVersion</code></td>
-<td></td>
-<td>Chart.yaml に記載される互換性のある Kubernetes バージョン</td>
-</tr>
-<tr>
-<td><code>.Chart.Description</code></td>
-<td></td>
-<td>Chart.yaml に記載されるチャートの概要一文</td>
-</tr>
-<tr>
-<td><code>.Chart.Home</code></td>
-<td></td>
-<td>Chart.yaml に記載されるサイトの URL</td>
-</tr>
-<tr>
-<td><code>.Chart.Sources</code></td>
-<td></td>
-<td>Chart.yaml に記載されるソースコードの URL</td>
-</tr>
-<tr>
-<td><code>.Chart.Maintainers</code></td>
-<td></td>
-<td>Chart.yaml に記載されるチャートのメンテナーの名前と Email (配列)</td>
-</tr>
-<tr>
-<td><code>.Chart.engine</code></td>
-<td></td>
-<td>Chart.yaml に記載されるテンプレートエンジン</td>
-</tr>
-<tr>
-<td><code>.Chart.Icon</code></td>
-<td></td>
-<td>Chart.yaml に記載されるアイコンの URL</td>
-</tr>
-<tr>
-<td><code>.Chart.AppVersion</code></td>
-<td></td>
-<td>Chart.yaml に記載されるコンテナアプリケーションのバージョン</td>
-</tr>
-<tr>
-<td><code>.Chart.Deprecated</code></td>
-<td></td>
-<td>Chart.yaml に記載されるチャートの推奨／非推奨 (boolean 値)</td>
-</tr>
-<tr>
-<td><code>.Capabilities.APIVersions</code></td>
-<td></td>
-<td>Kubernetes リソースのバージョン</td>
-</tr>
-<tr>
-<td><code>.Capabilities.APIVersions.Has</code></td>
-<td></td>
-<td>その kube-apiserver のバージョンで、その API バージョンを使用可能かどうか。例えば、EndpointSlice は特定のバージョン以降でしか使用できない。<br>- <a href="https://github.com/prometheus-community/helm-charts/blob/0e2aa2e9c47e3eb5fadbb0186808bc5996001afe/charts/kube-prometheus-stack/templates/prometheus-operator/clusterrole.yaml#L82-L91">https://github.com/prometheus-community/helm-charts/blob/0e2aa2e9c47e3eb5fadbb0186808bc5996001afe/charts/kube-prometheus-stack/templates/prometheus-operator/clusterrole.yaml#L82-L91</a></td>
-</tr>
-<tr>
-<td><code>.Capabilities.KubeVersion</code></td>
-<td></td>
-<td>コンテキストの Kubernetes バージョン</td>
-</tr>
-<tr>
-<td><code>.Template.Name</code></td>
-<td></td>
-<td>カレントパスの相対ファイルパス</td>
-</tr>
-<tr>
-<td><code>.Template.BasePath</code></td>
-<td></td>
-<td>チャートの templates ディレクトリの相対パス</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>変数名</th>
+      <th>デフォルト値</th>
+      <th>値</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>.Release.Name</code></td>
+      <td></td>
+      <td>リリース名</td>
+    </tr>
+    <tr>
+      <td><code>.Release.Time</code></td>
+      <td></td>
+      <td>リリースした時間</td>
+    </tr>
+    <tr>
+      <td><code>.Release.Namespace</code></td>
+      <td></td>
+      <td>リリースされる名前空間</td>
+    </tr>
+    <tr>
+      <td><code>.Release.Service</code></td>
+      <td><code>v3</code> の場合 <code>Helm</code>、<code>v2</code></td>
+      <td>リリースに使用したツール名</td>
+    </tr>
+    <tr>
+      <td><code>.Release.Revision</code></td>
+      <td></td>
+      <td>リリースのリビジョン</td>
+    </tr>
+    <tr>
+      <td><code>.Release.IsUpgrade</code></td>
+      <td></td>
+      <td>upgrade か rollback 操作の場合、true がセットされる</td>
+    </tr>
+    <tr>
+      <td><code>.Release.IsInstall</code></td>
+      <td></td>
+      <td>install 操作の場合、true がセットされる</td>
+    </tr>
+    <tr>
+      <td><code>.Values</code></td>
+      <td></td>
+      <td>values ファイルもしくはユーザーから-f で指定されたファイルからテンプレートに渡される値。変数名は任意で定義。「Values.変数キー名」で変数の値を取得可能</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.ApiVersion</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるチャート API のバージョン</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.Name</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるチャートの名前</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.Version</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるチャート自体のバージョン</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.KubeVersion</code></td>
+      <td></td>
+      <td>Chart.yaml に記載される互換性のある Kubernetes バージョン</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.Description</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるチャートの概要一文</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.Home</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるサイトの URL</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.Sources</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるソースコードの URL</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.Maintainers</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるチャートのメンテナーの名前と Email (配列)</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.engine</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるテンプレートエンジン</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.Icon</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるアイコンの URL</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.AppVersion</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるコンテナアプリケーションのバージョン</td>
+    </tr>
+    <tr>
+      <td><code>.Chart.Deprecated</code></td>
+      <td></td>
+      <td>Chart.yaml に記載されるチャートの推奨／非推奨 (boolean 値)</td>
+    </tr>
+    <tr>
+      <td><code>.Capabilities.APIVersions</code></td>
+      <td></td>
+      <td>Kubernetes リソースのバージョン</td>
+    </tr>
+    <tr>
+      <td><code>.Capabilities.APIVersions.Has</code></td>
+      <td></td>
+      <td>その kube-apiserver のバージョンで、その API バージョンを使用可能かどうか。例えば、EndpointSlice は特定のバージョン以降でしか使用できない。<br>- <a href="https://github.com/prometheus-community/helm-charts/blob/0e2aa2e9c47e3eb5fadbb0186808bc5996001afe/charts/kube-prometheus-stack/templates/prometheus-operator/clusterrole.yaml#L82-L91">https://github.com/prometheus-community/helm-charts/blob/0e2aa2e9c47e3eb5fadbb0186808bc5996001afe/charts/kube-prometheus-stack/templates/prometheus-operator/clusterrole.yaml#L82-L91</a></td>
+    </tr>
+    <tr>
+      <td><code>.Capabilities.KubeVersion</code></td>
+      <td></td>
+      <td>コンテキストの Kubernetes バージョン</td>
+    </tr>
+    <tr>
+      <td><code>.Template.Name</code></td>
+      <td></td>
+      <td>カレントパスの相対ファイルパス</td>
+    </tr>
+    <tr>
+      <td><code>.Template.BasePath</code></td>
+      <td></td>
+      <td>チャートの templates ディレクトリの相対パス</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://helm.sh/docs/chart_template_guide/builtin_objects/">Built-in Objects | Helm</a></li>

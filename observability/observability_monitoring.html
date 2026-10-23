@@ -35012,7 +35012,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月21日 19:27:44 JST">2026-10-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -35062,27 +35062,28 @@
 <h4 id="_5">▼ テレメトリーの作成<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>データソースが、テレメトリーを作成する。</p>
 <table>
-<thead>
-<tr>
-<th>テレメトリー</th>
-<th>データ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ログ</td>
-<td>ログファイルである。</td>
-</tr>
-<tr>
-<td>メトリクス</td>
-<td>データポイントである。メトリクス名と数値のセット (例：Prometheus であれば <code>foo{x=1, y=2}</code>) で表す。</td>
-</tr>
-<tr>
-<td>トレース</td>
-<td>タイムスタンプとスパンである。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>テレメトリー</th>
+      <th>データ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ログ</td>
+      <td>ログファイルである。</td>
+    </tr>
+    <tr>
+      <td>メトリクス</td>
+      <td>データポイントである。メトリクス名と数値のセット (例：Prometheus であれば <code>foo{x=1, y=2}</code>) で表す。</td>
+    </tr>
+    <tr>
+      <td>トレース</td>
+      <td>タイムスタンプとスパンである。</td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="_6">▼ テレメトリーの収集<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>プル型の場合、監視バックエンド自体がテレメトリーを収集する。</p>
 <p>一方でプル型の場合、監視バックエンドがエージェントを提供しており、これがテレメトリーを監視バックエンドに送信する。</p>
@@ -35097,35 +35098,36 @@
 <p>収集したテレメトリーを監視バックエンドのストレージに保管する。</p>
 <p>保管期間は、<code>90</code> 日が個人的には推奨である。</p>
 <table>
-<thead>
-<tr>
-<th>要件</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ストレージ容量</td>
-<td>ログファイルのメトリクスのストレージのサイズを決める。メトリクスの場合、データポイント数を抑えて (例：収集間隔の拡大、ダウンサンプリング、重複排除) 、データサイズを小さくするとよい。</td>
-</tr>
-<tr>
-<td>バックアップしないログ</td>
-<td>すべてのログを保管するとストレージ容量を圧迫してしまうため、一部のログ (例：ヘルスチェックのアクセスログ) は捨てるように決めておくとよい。</td>
-</tr>
-<tr>
-<td>バックアップの保管期間 (リテンション)</td>
-<td>ログファイルのメトリクスのバックアップを実施し、また保管期間ポリシー (例：<code>3</code> ヶ月) を決めておくとよい。</td>
-</tr>
-<tr>
-<td>ローテーション</td>
-<td>ログローテーションによって、ファイルを小さく分割して保管しておく。ログファイルやメトリクスのローテーション期間 (例：<code>7</code> 日) をポリシーとして決めておくとよい。ローテションされた過去のログやメトリクスのファイルでは、ファイル名の末尾に最終日付 (例：<code>-20220101</code>) をつけておく。</td>
-</tr>
-<tr>
-<td>世代数</td>
-<td>ローテションの結果作成されるファイルの世代数 (例：<code>5</code>) をポリシーとして決めておくとよい。ただ、これは設定できないツールがある。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>要件</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ストレージ容量</td>
+      <td>ログファイルのメトリクスのストレージのサイズを決める。メトリクスの場合、データポイント数を抑えて (例：収集間隔の拡大、ダウンサンプリング、重複排除) 、データサイズを小さくするとよい。</td>
+    </tr>
+    <tr>
+      <td>バックアップしないログ</td>
+      <td>すべてのログを保管するとストレージ容量を圧迫してしまうため、一部のログ (例：ヘルスチェックのアクセスログ) は捨てるように決めておくとよい。</td>
+    </tr>
+    <tr>
+      <td>バックアップの保管期間 (リテンション)</td>
+      <td>ログファイルのメトリクスのバックアップを実施し、また保管期間ポリシー (例：<code>3</code> ヶ月) を決めておくとよい。</td>
+    </tr>
+    <tr>
+      <td>ローテーション</td>
+      <td>ログローテーションによって、ファイルを小さく分割して保管しておく。ログファイルやメトリクスのローテーション期間 (例：<code>7</code> 日) をポリシーとして決めておくとよい。ローテションされた過去のログやメトリクスのファイルでは、ファイル名の末尾に最終日付 (例：<code>-20220101</code>) をつけておく。</td>
+    </tr>
+    <tr>
+      <td>世代数</td>
+      <td>ローテションの結果作成されるファイルの世代数 (例：<code>5</code>) をポリシーとして決めておくとよい。ただ、これは設定できないツールがある。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://www.timescale.com/blog/a-different-and-often-better-way-to-downsample-your-prometheus-metrics/">https://www.timescale.com/blog/a-different-and-often-better-way-to-downsample-your-prometheus-metrics/</a></li>
@@ -35159,88 +35161,89 @@
 <p><br></p>
 <h3 id="_14">監視フロントエンド<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th>OSS ツール</th>
-<th style="text-align: center;">ログ</th>
-<th style="text-align: center;">メトリクス</th>
-<th style="text-align: center;">トレース</th>
-<th style="text-align: center;">イベント</th>
-<th style="text-align: center;">ネットワーク</th>
-<th style="text-align: center;">ユーザー体験</th>
-<th style="text-align: center;">ビジネス指標</th>
-<th style="text-align: center;">セキュリティ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Grafana</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td>Kibana</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-</tr>
-<tr>
-<td>OpenSearch Dashboards</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-</tr>
-<tr>
-<td>Redash</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td>Apache Superset</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td>Netdata</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>OSS ツール</th>
+      <th style="text-align:center">ログ</th>
+      <th style="text-align:center">メトリクス</th>
+      <th style="text-align:center">トレース</th>
+      <th style="text-align:center">イベント</th>
+      <th style="text-align:center">ネットワーク</th>
+      <th style="text-align:center">ユーザー体験</th>
+      <th style="text-align:center">ビジネス指標</th>
+      <th style="text-align:center">セキュリティ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Grafana</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Kibana</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>OpenSearch Dashboards</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+    </tr>
+    <tr>
+      <td>Redash</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Apache Superset</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td>Netdata</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center">✅</td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h2 id="02">02. ユーザー体験の監視<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_15">ユーザー体験の監視とは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
@@ -35249,23 +35252,24 @@
 <h3 id="_16">メトリクスの場合<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="_17">▼ メトリクスの種類<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>メトリクスの種類</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Histogram 系</td>
-<td>時間を単位とするアプリケーションのフロントエンド領域のメトリクス</td>
-</tr>
-<tr>
-<td>Count 系</td>
-<td>数を単位とするアプリケーションのフロントエンド領域のメトリクス</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>メトリクスの種類</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Histogram 系</td>
+      <td>時間を単位とするアプリケーションのフロントエンド領域のメトリクス</td>
+    </tr>
+    <tr>
+      <td>Count 系</td>
+      <td>数を単位とするアプリケーションのフロントエンド領域のメトリクス</td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="rum">▼ リアルユーザー監視 (RUM)<a class="headerlink" href="#rum" title="Permanent link">&para;</a></h4>
 <p>特にページ性能に関するメトリクスの元になるデータポイントを収集し、監視する。</p>
 <p>Web ページのローディング時に、Navigation-timing-API へリクエストを送信すると、Web ページ性能に関するメトリクスの元になるデータポイントを収集できる。</p>
@@ -35329,19 +35333,20 @@
 <h3 id="_19">ログの場合<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <p>ブラウザのコンソールログを収集し、監視する。</p>
 <table>
-<thead>
-<tr>
-<th>ログの種類</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>コンソールログ (Chrome の場合は <code>console.log</code> ファイル)</td>
-<td>ブラウザのコンソールログを出力する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>ログの種類</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>コンソールログ (Chrome の場合は <code>console.log</code> ファイル)</td>
+      <td>ブラウザのコンソールログを出力する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h2 id="03">03. バックエンドの監視<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_20">バックエンドの監視とは<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
@@ -35351,26 +35356,27 @@
 <h4 id="_22">▼ メトリクスの種類<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p>アプリケーションのメトリクスの元になるデータポイントを収集し、監視する。</p>
 <table>
-<thead>
-<tr>
-<th>メトリクスの種類</th>
-<th>データポイントの内容</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Count 系</td>
-<td>データポイントのタイムスタンプ、数</td>
-<td>数を単位とするアプリケーションのバックエンド領域のメトリクス (例：リクエストの受信数、ログイン数)</td>
-</tr>
-<tr>
-<td>Histogram 系</td>
-<td>データポイントのタイムスタンプ、処理時間</td>
-<td>時間を単位とするアプリケーションのバックエンド領域のメトリクス (例：SQL にかかる時間、ビルドまたはデプロイの開始/完了時間、外部 API コールにかかる時間)</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>メトリクスの種類</th>
+      <th>データポイントの内容</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Count 系</td>
+      <td>データポイントのタイムスタンプ、数</td>
+      <td>数を単位とするアプリケーションのバックエンド領域のメトリクス (例：リクエストの受信数、ログイン数)</td>
+    </tr>
+    <tr>
+      <td>Histogram 系</td>
+      <td>データポイントのタイムスタンプ、処理時間</td>
+      <td>時間を単位とするアプリケーションのバックエンド領域のメトリクス (例：SQL にかかる時間、ビルドまたはデプロイの開始/完了時間、外部 API コールにかかる時間)</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://prometheus.io/docs/concepts/metric_types/">Metric types | Prometheus</a></li>
@@ -35403,27 +35409,28 @@
 <h4 id="_25">▼ ログの種類<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
 <p>アプリケーションのログを収集し、監視する。</p>
 <table>
-<thead>
-<tr>
-<th>ログの種類</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>システムログ (<code>/var/log/message</code> ファイル)</td>
-<td>基本的には OS やミドルウェアの処理のログの出力先ではあるが、場合よってはアプリケーション処理のログも出力する。<br>・<a href="https://thinkit.co.jp/article/724/1">https://thinkit.co.jp/article/724/1</a></td>
-</tr>
-<tr>
-<td>アプリケーションログ (ログファイルはフレームワークによる)</td>
-<td>アプリケーションの任意の重要な処理 (アクセスログ、ログイン、ログアウトなど) のログを出力する。</td>
-</tr>
-<tr>
-<td>クエリログ (<code>/var/log/&lt;ベンダー名&gt;/general-query.log</code> ファイル)</td>
-<td>アプリケーションから DB へのクエリ処理の内容をログとして出力する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>ログの種類</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>システムログ (<code>/var/log/message</code> ファイル)</td>
+      <td>基本的には OS やミドルウェアの処理のログの出力先ではあるが、場合よってはアプリケーション処理のログも出力する。<br>・<a href="https://thinkit.co.jp/article/724/1">https://thinkit.co.jp/article/724/1</a></td>
+    </tr>
+    <tr>
+      <td>アプリケーションログ (ログファイルはフレームワークによる)</td>
+      <td>アプリケーションの任意の重要な処理 (アクセスログ、ログイン、ログアウトなど) のログを出力する。</td>
+    </tr>
+    <tr>
+      <td>クエリログ (<code>/var/log/&lt;ベンダー名&gt;/general-query.log</code> ファイル)</td>
+      <td>アプリケーションから DB へのクエリ処理の内容をログとして出力する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_26">分散トレースの場合<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
@@ -35437,64 +35444,66 @@
 <p><br></p>
 <h3 id="_29">メトリクスの場合<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th>メトリクスの種類</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>RATE 系</td>
-<td>割合を単位とするサーバー/コンテナのメトリクス (例：CPU 使用率、メモリ使用率、ディスク使用率)</td>
-</tr>
-<tr>
-<td>Histogram 系</td>
-<td>時間を単位とするサーバー/コンテナのメトリクス</td>
-</tr>
-<tr>
-<td>Count 系</td>
-<td>数を単位とするサーバー/コンテナのメトリクス</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>メトリクスの種類</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RATE 系</td>
+      <td>割合を単位とするサーバー/コンテナのメトリクス (例：CPU 使用率、メモリ使用率、ディスク使用率)</td>
+    </tr>
+    <tr>
+      <td>Histogram 系</td>
+      <td>時間を単位とするサーバー/コンテナのメトリクス</td>
+    </tr>
+    <tr>
+      <td>Count 系</td>
+      <td>数を単位とするサーバー/コンテナのメトリクス</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_30">ログの場合<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
 <h4 id="_31">▼ ログの種類<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>ログの種類</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>システムログ (<code>/var/log/message</code> ファイル)</td>
-<td>OS やミドルウェアの処理ログを出力する。<br>・<a href="https://thinkit.co.jp/article/724/1">https://thinkit.co.jp/article/724/1</a></td>
-</tr>
-<tr>
-<td>セキュリティログ (<code>/var/log/secure</code> ファイル)</td>
-<td>OS のセキュリティ処理のログを出力する。</td>
-</tr>
-<tr>
-<td>cron ログ (<code>/var/log/cron</code> ファイル)</td>
-<td>OS のジョブ処理 (例：Unix であれば cron) のログを出力する。</td>
-</tr>
-<tr>
-<td>メールログ (<code>/var/log/maillog</code> ファイル)</td>
-<td>OS のメール処理のログを出力する。</td>
-</tr>
-<tr>
-<td>印刷ログ (<code>/var/log/spooler</code> ファイル)</td>
-<td>OS の印刷処理のログを出力する。</td>
-</tr>
-<tr>
-<td>OS ブートログ (<code>/var/log/boot.log</code> ファイル)</td>
-<td>OS の起動処理のログを出力する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>ログの種類</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>システムログ (<code>/var/log/message</code> ファイル)</td>
+      <td>OS やミドルウェアの処理ログを出力する。<br>・<a href="https://thinkit.co.jp/article/724/1">https://thinkit.co.jp/article/724/1</a></td>
+    </tr>
+    <tr>
+      <td>セキュリティログ (<code>/var/log/secure</code> ファイル)</td>
+      <td>OS のセキュリティ処理のログを出力する。</td>
+    </tr>
+    <tr>
+      <td>cron ログ (<code>/var/log/cron</code> ファイル)</td>
+      <td>OS のジョブ処理 (例：Unix であれば cron) のログを出力する。</td>
+    </tr>
+    <tr>
+      <td>メールログ (<code>/var/log/maillog</code> ファイル)</td>
+      <td>OS のメール処理のログを出力する。</td>
+    </tr>
+    <tr>
+      <td>印刷ログ (<code>/var/log/spooler</code> ファイル)</td>
+      <td>OS の印刷処理のログを出力する。</td>
+    </tr>
+    <tr>
+      <td>OS ブートログ (<code>/var/log/boot.log</code> ファイル)</td>
+      <td>OS の起動処理のログを出力する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://www.infraeye.com/study/linuxz46.html">https://www.infraeye.com/study/linuxz46.html</a></li>
@@ -35529,31 +35538,32 @@
 <p>ロードバランサーからヘルスチェックエンドポイントに専用のリクエストを送信し、ターゲットが正常に動作しているか否かを確認する。</p>
 <p>OSI 参照モデルのいずれのレイヤーまでの動作を確認するかによって、ヘルスチェックに種類がある。</p>
 <table>
-<thead>
-<tr>
-<th>ヘルスチェックの種類</th>
-<th>ヘルスチェックの範囲</th>
-<th>方法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>L3</code> チェック</td>
-<td><code>L1</code> から <code>L3</code> (ネットワーク層) まで</td>
-<td>サーバー/コンテナの IP アドレスに Ping リクエスト (ICMP エコーリクエスト) を送信し、レスポンスを検証する。Ping のレスポンスが正常に返信されれば、サーバー/コンテナまでのネットワークが正常に動作していると判断できる。<br>・<a href="https://milestone-of-se.nesuke.com/nw-basic/ip/icmp/">https://milestone-of-se.nesuke.com/nw-basic/ip/icmp/</a></td>
-</tr>
-<tr>
-<td><code>L4</code> チェック</td>
-<td><code>L1</code> から <code>L4</code> (トランスポート層) まで</td>
-<td>サーバー/コンテナのポートに TCP スリーウェイハンドシェイクを実行し、TCP 接続を確立できるかを検証する。TCP 接続の確立が成功すれば、サーバー/コンテナの開放ポートまでのネットワークが正しく動作していると判断できる。</td>
-</tr>
-<tr>
-<td><code>L7</code> チェック</td>
-<td><code>L1</code> から <code>L7</code> (アプリケーション層) まで</td>
-<td>サーバー/コンテナ上のアプリケーションのエンドポイントに HTTP リクエストを送信し、HTTP レスポンスを検証する。正しい HTTP レスポンスが返信されれば、アプリケーション自体とその開放ポートが正しく動作していると判断できる。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>ヘルスチェックの種類</th>
+      <th>ヘルスチェックの範囲</th>
+      <th>方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>L3</code> チェック</td>
+      <td><code>L1</code> から <code>L3</code> (ネットワーク層) まで</td>
+      <td>サーバー/コンテナの IP アドレスに Ping リクエスト (ICMP エコーリクエスト) を送信し、レスポンスを検証する。Ping のレスポンスが正常に返信されれば、サーバー/コンテナまでのネットワークが正常に動作していると判断できる。<br>・<a href="https://milestone-of-se.nesuke.com/nw-basic/ip/icmp/">https://milestone-of-se.nesuke.com/nw-basic/ip/icmp/</a></td>
+    </tr>
+    <tr>
+      <td><code>L4</code> チェック</td>
+      <td><code>L1</code> から <code>L4</code> (トランスポート層) まで</td>
+      <td>サーバー/コンテナのポートに TCP スリーウェイハンドシェイクを実行し、TCP 接続を確立できるかを検証する。TCP 接続の確立が成功すれば、サーバー/コンテナの開放ポートまでのネットワークが正しく動作していると判断できる。</td>
+    </tr>
+    <tr>
+      <td><code>L7</code> チェック</td>
+      <td><code>L1</code> から <code>L7</code> (アプリケーション層) まで</td>
+      <td>サーバー/コンテナ上のアプリケーションのエンドポイントに HTTP リクエストを送信し、HTTP レスポンスを検証する。正しい HTTP レスポンスが返信されれば、アプリケーション自体とその開放ポートが正しく動作していると判断できる。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://www.f5.com/ja_jp/services/resources/glossary/health-check">https://www.f5.com/ja_jp/services/resources/glossary/health-check</a></li>

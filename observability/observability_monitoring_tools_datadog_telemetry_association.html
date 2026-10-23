@@ -34248,7 +34248,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 21:24:34 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -34285,39 +34285,40 @@
 <h2 id="01">01. タグ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">タグの種類<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th>タグ名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>host</code></td>
-<td>メトリクス、ログ、分散トレースの送信元のホスト名を示す。テレメトリーが作成元とは別の場所から受信した場合に役立つ。</td>
-</tr>
-<tr>
-<td><code>device</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>source</code></td>
-<td>ログの作成元のベンダー名を示す。</td>
-</tr>
-<tr>
-<td><code>service</code></td>
-<td>メトリクス、ログ、分散トレースの作成元のアプリケーション名を示す。</td>
-</tr>
-<tr>
-<td><code>env</code></td>
-<td>メトリクス、ログ、分散トレースの作成元の実行環境名 (dev、stg、prd) を示す。</td>
-</tr>
-<tr>
-<td><code>version</code></td>
-<td>メトリクス、ログ、分散トレースの作成元のリリースバージョンを示す。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>タグ名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>host</code></td>
+      <td>メトリクス、ログ、分散トレースの送信元のホスト名を示す。テレメトリーが作成元とは別の場所から受信した場合に役立つ。</td>
+    </tr>
+    <tr>
+      <td><code>device</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>source</code></td>
+      <td>ログの作成元のベンダー名を示す。</td>
+    </tr>
+    <tr>
+      <td><code>service</code></td>
+      <td>メトリクス、ログ、分散トレースの作成元のアプリケーション名を示す。</td>
+    </tr>
+    <tr>
+      <td><code>env</code></td>
+      <td>メトリクス、ログ、分散トレースの作成元の実行環境名 (dev、stg、prd) を示す。</td>
+    </tr>
+    <tr>
+      <td><code>version</code></td>
+      <td>メトリクス、ログ、分散トレースの作成元のリリースバージョンを示す。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.datadoghq.com/getting_started/tagging/">https://docs.datadoghq.com/getting_started/tagging/</a></li>
@@ -34359,19 +34360,20 @@
 <h4 id="service">▼ service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h4>
 <p>スパンの作成元のアプリケーション名を表す。</p>
 <table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;マイクロサービス名&gt;-&lt;フレームワーク名/パッケージ名&gt;</code></td>
-<td>・<code>order-pdo</code><br>・<code>order-phpredis</code><br>・<code>order-eloquent</code><br>・<code>order-doctrine</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;マイクロサービス名&gt;-&lt;フレームワーク名/パッケージ名&gt;</code></td>
+      <td>・<code>order-pdo</code><br>・<code>order-phpredis</code><br>・<code>order-eloquent</code><br>・<code>order-doctrine</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <p>ただし、フレームワークのインテグレーション名は接尾辞を付けずに、単に『<code>&lt;マイクロサービス名&gt;</code>』とする。</p>
 <p>なぜ接尾辞を付けないかというと、分散トレースと他のテレメトリーを紐付けるときに、同じマイクロサービス名をタグに使用しなければならないためである。</p>
 <p>〇：<code>laravel</code> ➡️ <code>order</code>、<code>order-service</code>
@@ -34389,36 +34391,38 @@
 <p>スパンの作成元の実行環境名を表す。</p>
 <p>env タグは、datadog コンテナの環境変数を使用してタグ付けする。</p>
 <table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;実行環境名&gt;</code></td>
-<td>・<code>prd</code><br>・<code>stg</code><br>・<code>tes</code><br>・<code>dev</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;実行環境名&gt;   </code></td>
+      <td>・<code>prd</code><br>・<code>stg</code><br>・<code>tes</code><br>・<code>dev</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="version">▼ version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h4>
 <p>リリース時のタグのバージョンを表す。</p>
 <p>ただし、リリースのたびに変更することが面倒なため、<code>1.0.0</code> で固定する。</p>
 <table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;リリースタグのバージョン&gt;</code></td>
-<td><code>1.0.0</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;リリースタグのバージョン&gt;</code></td>
+      <td><code>1.0.0</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="amazon-ecs">Amazon ECS コンテナのタグ<a class="headerlink" href="#amazon-ecs" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ セットアップ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
@@ -34426,52 +34430,55 @@
 <h4 id="env_1">▼ env<a class="headerlink" href="#env_1" title="Permanent link">&para;</a></h4>
 <p>AWS の実行環境名を表す。</p>
 <table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;実行環境名&gt;</code></td>
-<td>・<code>prd</code><br>・<code>stg</code><br>・<code>tes</code><br>・<code>dev</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;実行環境名&gt;   </code></td>
+      <td>・<code>prd</code><br>・<code>stg</code><br>・<code>tes</code><br>・<code>dev</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="service_1">▼ service<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h4>
 <p>コンテナのアプリケーション名を表す。</p>
 <table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;マイクロサービス名&gt;</code></td>
-<td>・<code>order-service</code><br>・<code>account-service</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;マイクロサービス名&gt;</code></td>
+      <td>・<code>order-service</code><br>・<code>account-service</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="version_1">▼ version<a class="headerlink" href="#version_1" title="Permanent link">&para;</a></h4>
 <p>リリース時のタグのバージョンを表す。</p>
 <p>ただし、リリースのたびに変更することが面倒なため、<code>1.0.0</code> で固定する。</p>
 <table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;リリースタグのバージョン&gt;</code></td>
-<td><code>1.0.0</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;リリースタグのバージョン&gt;</code></td>
+      <td><code>1.0.0</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_8">ログのタグ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ セットアップ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
@@ -34479,51 +34486,54 @@
 <h4 id="env_2">▼ env<a class="headerlink" href="#env_2" title="Permanent link">&para;</a></h4>
 <p>ログの作成元の実行環境名 (dev、stg、prd) を表す。</p>
 <table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;実行環境名&gt;</code></td>
-<td>・<code>prd</code><br>・<code>stg</code><br>・<code>tes</code><br>・<code>dev</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;実行環境名&gt;   </code></td>
+      <td>・<code>prd</code><br>・<code>stg</code><br>・<code>tes</code><br>・<code>dev</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="service_2">▼ service<a class="headerlink" href="#service_2" title="Permanent link">&para;</a></h4>
 <p>ログの作成元のアプリケーション名を表す。</p>
 <table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;マイクロサービス名&gt;</code></td>
-<td>・<code>order</code><br>・<code>order-service</code><br>・<code>account</code><br>・<code>account-service</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;マイクロサービス名&gt;</code></td>
+      <td>・<code>order</code><br>・<code>order-service</code><br>・<code>account</code><br>・<code>account-service</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="source">▼ source<a class="headerlink" href="#source" title="Permanent link">&para;</a></h4>
 <p>ログの作成元のベンダー名を表す。</p>
 <table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;ソース名&gt;</code></td>
-<td>・<code>laravel</code><br>・<code>nginx</code><br>・<code>apigateway</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;ソース名&gt;</code></td>
+      <td>・<code>laravel</code><br>・<code>nginx</code><br>・<code>apigateway</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_10">タグの候補<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="role">▼ role<a class="headerlink" href="#role" title="Permanent link">&para;</a></h4>

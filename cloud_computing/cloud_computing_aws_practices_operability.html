@@ -33906,7 +33906,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月21日 19:27:44 JST">2026-10-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -33979,91 +33979,93 @@
 <h4 id="_6">▼ ユーザー定義の名前空間<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>名前空間ユーザー定義としたメトリクスの監視ポリシーは以下の通りである。</p>
 <table>
-<thead>
-<tr>
-<th>メトリクス名</th>
-<th>単位</th>
-<th>説明</th>
-<th>アラート条件例 (合致したら発火)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;任意のプレフィクス&gt;LogMetrics</code></td>
-<td>カウント</td>
-<td>ログステータスの検出数をデータポイントとする。メトリクスと検出ルールはフィルターパターンで作成できる。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>メトリクス名</th>
+      <th>単位</th>
+      <th>説明</th>
+      <th>アラート条件例 (合致したら発火)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;任意のプレフィクス&gt;LogMetrics</code></td>
+      <td>カウント</td>
+      <td>ログステータスの検出数をデータポイントとする。メトリクスと検出ルールはフィルターパターンで作成できる。</td>
+      <td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="aws-alb">▼ AWS ALB<a class="headerlink" href="#aws-alb" title="Permanent link">&para;</a></h4>
 <p>名前空間を AWS ALB としたメトリクスの監視ポリシーは以下の通りである。</p>
 <table>
-<thead>
-<tr>
-<th>メトリクス名</th>
-<th>単位</th>
-<th>説明</th>
-<th>アラート条件例 (合致したら発火)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>HTTPCode_ELB_4XX_Count</code></td>
-<td>カウント</td>
-<td>AWS ALB が原因で返信した <code>400</code> 系ステータスをデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>24</code> 時間<br>・閾値 : <code>&gt;= 1</code></td>
-</tr>
-<tr>
-<td><code>HTTPCode_ELB_5XX_Count</code></td>
-<td>カウント</td>
-<td>AWS ALB が原因で返信した <code>500</code> 系ステータスをデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
-</tr>
-<tr>
-<td><code>HealthyHostCount</code></td>
-<td>カウント</td>
-<td>ターゲットグループ内の正常なターゲットの数をデータポイントとする。</td>
-<td></td>
-</tr>
-<tr>
-<td><code>UnHealthyHostCount</code></td>
-<td>カウント</td>
-<td>ターゲットグループ内の異常なターゲットの数をデータポイントとする。</td>
-<td></td>
-</tr>
-<tr>
-<td><code>HTTPCode_TARGET_4XX_Count</code></td>
-<td>カウント</td>
-<td>ターゲットグループ内のターゲットが <code>400</code> レスポンスを返信した数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>24</code> 時間<br>・閾値 : <code>&gt;= 1</code></td>
-</tr>
-<tr>
-<td><code>HTTPCode_TARGET_5XX_Count</code></td>
-<td>カウント</td>
-<td>ターゲットグループ内のターゲットが <code>500</code> レスポンスを返信した数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 :<code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
-</tr>
-<tr>
-<td><code>RejectedConnectionCount</code></td>
-<td>カウント</td>
-<td>ターゲットグループ内のターゲットから接続拒否された数をデータポイントとする。</td>
-<td></td>
-</tr>
-<tr>
-<td><code>TargetConnectionErrorCount</code></td>
-<td>カウント</td>
-<td>ターゲットグループ内のターゲットに対する通信でエラーが発生した数をデータポイントとする。</td>
-<td></td>
-</tr>
-<tr>
-<td><code>TargetTLSNegotiationErrorCount</code></td>
-<td>カウント</td>
-<td>ターゲットグループ内のターゲットへの HTTPS プロトコルでエラーが発生した数をデータポイントとする。</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>メトリクス名</th>
+      <th>単位</th>
+      <th>説明</th>
+      <th>アラート条件例 (合致したら発火)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>HTTPCode_ELB_4XX_Count</code></td>
+      <td>カウント</td>
+      <td>AWS ALB が原因で返信した <code>400</code> 系ステータスをデータポイントとする。</td>
+      <td>・統計 : 期間内合計数<br>・期間 : <code>24</code> 時間<br>・閾値 : <code>&gt;= 1</code></td>
+    </tr>
+    <tr>
+      <td><code>HTTPCode_ELB_5XX_Count</code></td>
+      <td>カウント</td>
+      <td>AWS ALB が原因で返信した <code>500</code> 系ステータスをデータポイントとする。</td>
+      <td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
+    </tr>
+    <tr>
+      <td><code>HealthyHostCount</code></td>
+      <td>カウント</td>
+      <td>ターゲットグループ内の正常なターゲットの数をデータポイントとする。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>UnHealthyHostCount</code></td>
+      <td>カウント</td>
+      <td>ターゲットグループ内の異常なターゲットの数をデータポイントとする。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>HTTPCode_TARGET_4XX_Count</code></td>
+      <td>カウント</td>
+      <td>ターゲットグループ内のターゲットが <code>400</code> レスポンスを返信した数をデータポイントとする。</td>
+      <td>・統計 : 期間内合計数<br>・期間 : <code>24</code> 時間<br>・閾値 : <code>&gt;= 1</code></td>
+    </tr>
+    <tr>
+      <td><code>HTTPCode_TARGET_5XX_Count</code></td>
+      <td>カウント</td>
+      <td>ターゲットグループ内のターゲットが <code>500</code> レスポンスを返信した数をデータポイントとする。</td>
+      <td>・統計 : 期間内合計数<br>・期間 :<code> 5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
+    </tr>
+    <tr>
+      <td><code>RejectedConnectionCount</code></td>
+      <td>カウント</td>
+      <td>ターゲットグループ内のターゲットから接続拒否された数をデータポイントとする。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>TargetConnectionErrorCount</code></td>
+      <td>カウント</td>
+      <td>ターゲットグループ内のターゲットに対する通信でエラーが発生した数をデータポイントとする。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>TargetTLSNegotiationErrorCount</code></td>
+      <td>カウント</td>
+      <td>ターゲットグループ内のターゲットへの HTTPS プロトコルでエラーが発生した数をデータポイントとする。</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html">CloudWatch metrics for your Application Load Balancer - Elastic Load Balancing</a></li>
@@ -34072,41 +34074,42 @@
 <h4 id="amazon-api-gateway">▼ Amazon API Gateway<a class="headerlink" href="#amazon-api-gateway" title="Permanent link">&para;</a></h4>
 <p>名前空間を Amazon API Gateway としたメトリクスの監視ポリシーは以下の通りである。</p>
 <table>
-<thead>
-<tr>
-<th>メトリクス名</th>
-<th>単位</th>
-<th>説明</th>
-<th>アラート条件例 (合致したら発火)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>IntegrationLatency</code></td>
-<td>マイクロ秒</td>
-<td>Amazon API Gateway がリクエストをバックエンドにルーティングしてから、バックエンドからレスポンスを受信するまでの時間をデータポイントとする。</td>
-<td></td>
-</tr>
-<tr>
-<td><code>Latency</code></td>
-<td>マイクロ秒</td>
-<td>Amazon API Gateway がクライアントからリクエストを受信してから、クライアントにこれを返信するまでの時間をデータポイントとする。</td>
-<td></td>
-</tr>
-<tr>
-<td><code>4XXError</code></td>
-<td>カウント</td>
-<td><code>400</code> 系ステータスの数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>24</code> 時間<br>・閾値 : <code>&gt;= 1</code></td>
-</tr>
-<tr>
-<td><code>5XXError</code></td>
-<td>カウント</td>
-<td><code>500</code> 系ステータスの数をデータポイントとする。アプリケーションが停止してしまうようなインシデントを検出することに適する。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>メトリクス名</th>
+      <th>単位</th>
+      <th>説明</th>
+      <th>アラート条件例 (合致したら発火)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>IntegrationLatency</code></td>
+      <td>マイクロ秒</td>
+      <td>Amazon API Gateway がリクエストをバックエンドにルーティングしてから、バックエンドからレスポンスを受信するまでの時間をデータポイントとする。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Latency</code></td>
+      <td>マイクロ秒</td>
+      <td>Amazon API Gateway がクライアントからリクエストを受信してから、クライアントにこれを返信するまでの時間をデータポイントとする。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>4XXError</code></td>
+      <td>カウント</td>
+      <td><code>400</code> 系ステータスの数をデータポイントとする。</td>
+      <td>・統計 : 期間内合計数<br>・期間 : <code>24</code> 時間<br>・閾値 : <code>&gt;= 1</code></td>
+    </tr>
+    <tr>
+      <td><code>5XXError</code></td>
+      <td>カウント</td>
+      <td><code>500</code> 系ステータスの数をデータポイントとする。アプリケーションが停止してしまうようなインシデントを検出することに適する。</td>
+      <td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-metrics-and-dimensions.html#api-gateway-metrics">Amazon API Gateway dimensions and metrics - Amazon API Gateway</a></li>
@@ -34115,41 +34118,42 @@
 <h4 id="amazon-ec2">▼ Amazon EC2<a class="headerlink" href="#amazon-ec2" title="Permanent link">&para;</a></h4>
 <p>名前空間を EC2 としたメトリクスの監視ポリシーは以下の通りである。</p>
 <table>
-<thead>
-<tr>
-<th>メトリクス名</th>
-<th>単位</th>
-<th>説明</th>
-<th>アラート条件例 (合致したら発火)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>CPUUtilization</code></td>
-<td>%</td>
-<td>EC2 で使用されている CPU 使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
-</tr>
-<tr>
-<td><code>MemoryUtilization</code></td>
-<td>%</td>
-<td>EC2 で使用されているメモリ使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
-</tr>
-<tr>
-<td><code>StatusCheckFailed_Instance</code></td>
-<td>カウント</td>
-<td>インスタンスのインスタンスステータスの失敗数をデータポイントとする。インスタンスが停止してしまうようなインシデントに適する。反対に、インスタンスが正常に稼働していて、プロセスが停止しているようなインシデントを検出することには不適である。<br><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks</a></td>
-<td></td>
-</tr>
-<tr>
-<td><code>StatusCheckFailed_System</code></td>
-<td>カウント</td>
-<td>インスタンスのシステムステータスの失敗数をデータポイントとする。AWS の障害によるインシデントの検出に適する。<br><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks</a></td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>メトリクス名</th>
+      <th>単位</th>
+      <th>説明</th>
+      <th>アラート条件例 (合致したら発火)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>CPUUtilization</code></td>
+      <td>%</td>
+      <td>EC2 で使用されている CPU 使用率をデータポイントとする。</td>
+      <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
+    </tr>
+    <tr>
+      <td><code>MemoryUtilization</code></td>
+      <td>%</td>
+      <td>EC2 で使用されているメモリ使用率をデータポイントとする。</td>
+      <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
+    </tr>
+    <tr>
+      <td><code>StatusCheckFailed_Instance</code></td>
+      <td>カウント</td>
+      <td>インスタンスのインスタンスステータスの失敗数をデータポイントとする。インスタンスが停止してしまうようなインシデントに適する。反対に、インスタンスが正常に稼働していて、プロセスが停止しているようなインシデントを検出することには不適である。<br><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>StatusCheckFailed_System</code></td>
+      <td>カウント</td>
+      <td>インスタンスのシステムステータスの失敗数をデータポイントとする。AWS の障害によるインシデントの検出に適する。<br><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks</a></td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#ec2-cloudwatch-metrics">CloudWatch metrics that are available for your instances - Amazon Elastic Compute Cloud</a></li>
@@ -34166,39 +34170,40 @@
 <p>名前空間を Amazon ECS クラスターまたは Amazon ECS サービスとしたメトリクスの監視ポリシーは以下の通りである。</p>
 <p>ClusterName ディメンションと ServiceName ディメンションを使用して、Amazon ECS クラスターと Amazon ECS サービスに関するメトリクスを区別できる。</p>
 <table>
-<thead>
-<tr>
-<th>メトリクス名</th>
-<th>単位</th>
-<th>説明</th>
-<th>アラート条件例 (合致したら発火)</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>CPUUtilization</code></td>
-<td>%</td>
-<td>Amazon ECS クラスターまたはサービスで使用されている CPU 使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>MemoryUtilization</code></td>
-<td>%</td>
-<td>Amazon ECS クラスターまたはサービスで使用されているメモリ使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>RunningTaskCount</code></td>
-<td>カウント</td>
-<td>稼働中の Amazon ECS タスク数をデータポイントとする。</td>
-<td></td>
-<td>Amazon ECS タスク数の増減の遷移から、デプロイのおおよその時間がわかる。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>メトリクス名</th>
+      <th>単位</th>
+      <th>説明</th>
+      <th>アラート条件例 (合致したら発火)</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>CPUUtilization</code></td>
+      <td>%</td>
+      <td>Amazon ECS クラスターまたはサービスで使用されている CPU 使用率をデータポイントとする。</td>
+      <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>MemoryUtilization</code></td>
+      <td>%</td>
+      <td>Amazon ECS クラスターまたはサービスで使用されているメモリ使用率をデータポイントとする。</td>
+      <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>RunningTaskCount</code></td>
+      <td>カウント</td>
+      <td>稼働中の Amazon ECS タスク数をデータポイントとする。</td>
+      <td></td>
+      <td>Amazon ECS タスク数の増減の遷移から、デプロイのおおよその時間がわかる。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics">Monitor Amazon ECS using CloudWatch - Amazon Elastic Container Service</a></li>
@@ -34207,46 +34212,47 @@
 <h4 id="amazon-elasticache-redis">▼ Amazon ElastiCache Redis<a class="headerlink" href="#amazon-elasticache-redis" title="Permanent link">&para;</a></h4>
 <p>名前空間を Amazon ElastiCache Redis としたメトリクスの監視ポリシーは以下の通りである。</p>
 <table>
-<thead>
-<tr>
-<th>メトリクス名</th>
-<th>単位</th>
-<th>説明</th>
-<th>アラート条件例 (合致したら発火)</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>BytesUsedForCache</code></td>
-<td>バイト数</td>
-<td>Redis で使用されているメモリ使用サイズをデータポイントとする。</td>
-<td>・統計 : 期間内合計サイズ<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 8</code>GB</td>
-<td></td>
-</tr>
-<tr>
-<td><code>CPUUtilization</code></td>
-<td>%</td>
-<td>ノードの CPU 使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>Evictions</code></td>
-<td>カウント</td>
-<td>空きサイズを確保するために削除された Redis のキー数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>SwapUsage</code></td>
-<td>バイト数</td>
-<td>ストレージ上のスワップ領域の使用サイズをデータポイントとする。</td>
-<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 50</code>GB</td>
-<td>使用可能な最大メモリを超えると、Redis はストレージ上のスワップ領域を使用する。<br><a href="https://zenn.dev/dehio3/scraps/710a9714ce9496">https://zenn.dev/dehio3/scraps/710a9714ce9496</a></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>メトリクス名</th>
+      <th>単位</th>
+      <th>説明</th>
+      <th>アラート条件例 (合致したら発火)</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>BytesUsedForCache</code></td>
+      <td>バイト数</td>
+      <td>Redis で使用されているメモリ使用サイズをデータポイントとする。</td>
+      <td>・統計 : 期間内合計サイズ<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 8</code>GB</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>CPUUtilization</code></td>
+      <td>%</td>
+      <td>ノードの CPU 使用率をデータポイントとする。</td>
+      <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>Evictions</code></td>
+      <td>カウント</td>
+      <td>空きサイズを確保するために削除された Redis のキー数をデータポイントとする。</td>
+      <td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>SwapUsage</code></td>
+      <td>バイト数</td>
+      <td>ストレージ上のスワップ領域の使用サイズをデータポイントとする。</td>
+      <td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 50</code>GB</td>
+      <td>使用可能な最大メモリを超えると、Redis はストレージ上のスワップ領域を使用する。<br><a href="https://zenn.dev/dehio3/scraps/710a9714ce9496">https://zenn.dev/dehio3/scraps/710a9714ce9496</a></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html">https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html</a></li>
@@ -34255,81 +34261,82 @@
 <h4 id="amazon-aurora">▼ Amazon Aurora<a class="headerlink" href="#amazon-aurora" title="Permanent link">&para;</a></h4>
 <p>名前空間を Amazon Aurora としたメトリクスの監視ポリシーは以下の通りである。</p>
 <table>
-<thead>
-<tr>
-<th>メトリクス名</th>
-<th>単位</th>
-<th>説明</th>
-<th>アラート条件例 (合致したら発火)</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>BlockedTransactions</code></td>
-<td>カウント</td>
-<td>秒当たりトランザクションの拒否の回数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>CPUUtilization</code></td>
-<td>%</td>
-<td>Amazon Aurora の DB インスタンスの CPU 使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>DatabaseConnections</code></td>
-<td>カウント</td>
-<td>Amazon Aurora の DB インスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 400</code></td>
-<td>クライアントが DB にリクエストしている時間帯がわかるため、メンテナンスウィンドウの実施時間の参考になる。</td>
-</tr>
-<tr>
-<td><code>Deadlocks</code></td>
-<td>カウント</td>
-<td>秒当たりデッドロック平均数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>EngineUptime</code></td>
-<td>秒</td>
-<td>インスタンスの起動時間をデータポイントとする。</td>
-<td></td>
-<td>ダウンタイムの最低発生時間の参考になる。</td>
-</tr>
-<tr>
-<td><code>DMLLatency</code></td>
-<td>マイクロ秒</td>
-<td>Amazon Aurora の DB インスタンスに対する DML 系クエリの遅延秒数をデータポイントとする。</td>
-<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 2</code>GB</td>
-<td></td>
-</tr>
-<tr>
-<td><code>FreeableMemory</code></td>
-<td>バイト数</td>
-<td>Amazon Aurora の DB インスタンスの使用できるメモリの最大空きサイズをデータポイントとする。</td>
-<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 2</code>GB</td>
-<td></td>
-</tr>
-<tr>
-<td><code>FreeLocalStorage</code></td>
-<td>バイト数</td>
-<td>Amazon Aurora の DB インスタンスの使用できるローカルストレージの最大空きサイズをデータポイントとする。</td>
-<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 10</code>GB</td>
-<td>DB インスタンスのローカルストレージは、一時テーブルやログの保管に使用される。</td>
-</tr>
-<tr>
-<td><code>LoginFailures</code></td>
-<td>カウント</td>
-<td>Amazon Aurora の DB へのログインの失敗回数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>メトリクス名</th>
+      <th>単位</th>
+      <th>説明</th>
+      <th>アラート条件例 (合致したら発火)</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>BlockedTransactions</code></td>
+      <td>カウント</td>
+      <td>秒当たりトランザクションの拒否の回数をデータポイントとする。</td>
+      <td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>CPUUtilization</code></td>
+      <td>%</td>
+      <td>Amazon Aurora の DB インスタンスの CPU 使用率をデータポイントとする。</td>
+      <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>DatabaseConnections</code></td>
+      <td>カウント</td>
+      <td>Amazon Aurora の DB インスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。</td>
+      <td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 400</code></td>
+      <td>クライアントが DB にリクエストしている時間帯がわかるため、メンテナンスウィンドウの実施時間の参考になる。</td>
+    </tr>
+    <tr>
+      <td><code>Deadlocks</code></td>
+      <td>カウント</td>
+      <td>秒当たりデッドロック平均数をデータポイントとする。</td>
+      <td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>EngineUptime</code></td>
+      <td>秒</td>
+      <td>インスタンスの起動時間をデータポイントとする。</td>
+      <td></td>
+      <td>ダウンタイムの最低発生時間の参考になる。</td>
+    </tr>
+    <tr>
+      <td><code>DMLLatency</code></td>
+      <td>マイクロ秒</td>
+      <td>Amazon Aurora の DB インスタンスに対する DML 系クエリの遅延秒数をデータポイントとする。</td>
+      <td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 2</code>GB</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>FreeableMemory</code></td>
+      <td>バイト数</td>
+      <td>Amazon Aurora の DB インスタンスの使用できるメモリの最大空きサイズをデータポイントとする。</td>
+      <td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 2</code>GB</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>FreeLocalStorage</code></td>
+      <td>バイト数</td>
+      <td>Amazon Aurora の DB インスタンスの使用できるローカルストレージの最大空きサイズをデータポイントとする。</td>
+      <td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 10</code>GB</td>
+      <td>DB インスタンスのローカルストレージは、一時テーブルやログの保管に使用される。</td>
+    </tr>
+    <tr>
+      <td><code>LoginFailures</code></td>
+      <td>カウント</td>
+      <td>Amazon Aurora の DB へのログインの失敗回数をデータポイントとする。</td>
+      <td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraMySQL.Monitoring.Metrics.html">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraMySQL.Monitoring.Metrics.html</a></li>
@@ -34339,39 +34346,40 @@
 <p>名前空間を Amazon RDS としたメトリクスの監視ポリシーは以下の通りである。</p>
 <p>Amazon RDS のコンソール画面にも同じメトリクスが表示されるが、単位が MByte であり、Amazon CloudWatch Metrics と異なることに注意する。</p>
 <table>
-<thead>
-<tr>
-<th>メトリクス名</th>
-<th>単位</th>
-<th>説明</th>
-<th>アラート条件例 (合致したら発火)</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>CPUUtilization</code></td>
-<td>%</td>
-<td>DB インスタンスの CPU 使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>DatabaseConnections</code></td>
-<td>カウント</td>
-<td>DB インスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 400</code></td>
-<td>クライアントが DB にリクエストしている時間帯がわかるため、メンテナンスウィンドウの実施時間の参考になる。</td>
-</tr>
-<tr>
-<td><code>FreeableMemory</code></td>
-<td>バイト数</td>
-<td>DB インスタンスの使用できるメモリサイズをデータポイントとする。</td>
-<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 2</code>GB</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>メトリクス名</th>
+      <th>単位</th>
+      <th>説明</th>
+      <th>アラート条件例 (合致したら発火)</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>CPUUtilization</code></td>
+      <td>%</td>
+      <td>DB インスタンスの CPU 使用率をデータポイントとする。</td>
+      <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>DatabaseConnections</code></td>
+      <td>カウント</td>
+      <td>DB インスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。</td>
+      <td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 400</code></td>
+      <td>クライアントが DB にリクエストしている時間帯がわかるため、メンテナンスウィンドウの実施時間の参考になる。</td>
+    </tr>
+    <tr>
+      <td><code>FreeableMemory</code></td>
+      <td>バイト数</td>
+      <td>DB インスタンスの使用できるメモリサイズをデータポイントとする。</td>
+      <td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 2</code>GB</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html#rds-metrics">Monitoring Amazon RDS metrics with Amazon CloudWatch - Amazon Relational Database Service</a></li>
@@ -34380,23 +34388,24 @@
 <h4 id="amazon-s3">▼ Amazon S3<a class="headerlink" href="#amazon-s3" title="Permanent link">&para;</a></h4>
 <p>名前空間を Amazon S3 としたメトリクスの監視ポリシーは以下の通りである。</p>
 <table>
-<thead>
-<tr>
-<th>メトリクス名</th>
-<th>単位</th>
-<th>説明</th>
-<th>アラート条件例 (合致したら発火)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>5xxErrors</code></td>
-<td>カウント</td>
-<td>S3 バケットが原因で返信した <code>500</code> 系ステータスをデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>メトリクス名</th>
+      <th>単位</th>
+      <th>説明</th>
+      <th>アラート条件例 (合致したら発火)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>5xxErrors</code></td>
+      <td>カウント</td>
+      <td>S3 バケットが原因で返信した <code>500</code> 系ステータスをデータポイントとする。</td>
+      <td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 1</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 
   

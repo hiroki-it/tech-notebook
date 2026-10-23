@@ -35690,7 +35690,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:23:00 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -37065,41 +37065,43 @@
 <p><br></p>
 <h3 id="_16">パッケージ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th>項目</th>
-<th>必要なパッケージ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Go</td>
-<td><code>go.opentelemetry.io/otel/sdk/trace</code> パッケージからコールできる。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>必要なパッケージ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Go</td>
+      <td><code>go.opentelemetry.io/otel/sdk/trace</code> パッケージからコールできる。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_17">サンプリング方式<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <h4 id="_18">▼ 場所<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>サンプリングする場所によって、方式が異なる。</p>
 <table>
-<thead>
-<tr>
-<th>方式</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Head-based</td>
-<td>クライアント側で、スパンをサンプリングする。パフォーマンス (例：CPU、メモリ、スループット) に影響が低いが、エラーリクエストをサンプリングできない。</td>
-</tr>
-<tr>
-<td>Tail-based</td>
-<td>サーバー側 (OpenTelemetry Collector) で、収集したスパンからサンプリングする (実際はすべてをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>方式</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Head-based</td>
+      <td>クライアント側で、スパンをサンプリングする。パフォーマンス (例：CPU、メモリ、スループット) に影響が低いが、エラーリクエストをサンプリングできない。</td>
+    </tr>
+    <tr>
+      <td>Tail-based</td>
+      <td>サーバー側 (OpenTelemetry Collector) で、収集したスパンからサンプリングする (実際はすべてをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://christina04.hatenablog.com/entry/opentelemetry-sampling">OpenTelemetryでのSampling - Carpe Diem</a></li>
@@ -37111,31 +37113,32 @@
 <p>Tail-based 方式の場合、前提としてアプリケーションですべてのスパンをサンプリングするため、サンプリング率は <code>100</code>% (<code>AlwaysOn</code> または <code>TraceIdRationBased=1.0</code>) が推奨である。</p>
 <p>ただ、負荷を抑える目的で、一定割合のアプリケーションでサンプリングすることもある。</p>
 <table>
-<thead>
-<tr>
-<th>設定</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>AlwaysOn</code></td>
-<td>すべてのスパンをサンプリングする。本番環境で注意して使用する (非推奨というわけではない)。</td>
-</tr>
-<tr>
-<td><code>AlwaysOff</code></td>
-<td>スパンをサンプリングしない。</td>
-</tr>
-<tr>
-<td><code>TraceIdRationBased</code></td>
-<td>指定した割合でスパンをランダムにサンプリングする。</td>
-</tr>
-<tr>
-<td><code>ParentBased</code></td>
-<td>親スパンの設定を継承する。<code>TraceIdRationBased</code> と組み合わせて使用することが多い。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>設定</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>AlwaysOn</code></td>
+      <td>すべてのスパンをサンプリングする。本番環境で注意して使用する (非推奨というわけではない)。</td>
+    </tr>
+    <tr>
+      <td><code>AlwaysOff</code></td>
+      <td>スパンをサンプリングしない。</td>
+    </tr>
+    <tr>
+      <td><code>TraceIdRationBased</code></td>
+      <td>指定した割合でスパンをランダムにサンプリングする。</td>
+    </tr>
+    <tr>
+      <td><code>ParentBased</code></td>
+      <td>親スパンの設定を継承する。<code>TraceIdRationBased</code> と組み合わせて使用することが多い。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26">分散トレーシングとOpenTelemetryのススメ / Getting started distributed tracing and OpenTelemetry - Speaker Deck</a></li>
@@ -37177,47 +37180,48 @@
 <h3 id="_21">共通<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <p>指定する Sampler やパラメーターを環境変数で設定できる。</p>
 <table>
-<thead>
-<tr>
-<th>環境変数</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>OTEL_LOGS_EXPORTER</code></td>
-<td>ログの Exporter 名を設定する。</td>
-</tr>
-<tr>
-<td><code>OTEL_METRICS_EXPORTER</code></td>
-<td>メトリクスの Exporter 名を設定する。執筆時点 (2024/02/06) では、<code>otlp</code> (HTTP/gRPC) 、<code>prometheus</code>、<code>none</code>、から設定できる。</td>
-</tr>
-<tr>
-<td><code>OTEL_PROPAGATORS</code></td>
-<td>トレースコンテキスト仕様を設定する。</td>
-</tr>
-<tr>
-<td><code>OTEL_SERVICE_NAME</code></td>
-<td>Resource の <code>service.name</code> を設定する。</td>
-</tr>
-<tr>
-<td><code>OTEL_RESOURCE_ATTRIBUTES</code></td>
-<td>Resource の任意の属性を設定する。キーバリュー式 (<code>key1=value1,key2=value2</code>) で設定できる。</td>
-</tr>
-<tr>
-<td><code>OTEL_TRACES_EXPORTER</code></td>
-<td>分散トレースの Exporter 名を設定する。執筆時点 (2024/02/06) では、<code>otlp</code> (HTTP/gRPC) 、<code>jaeger</code>、<code>zipkin</code>、<code>none</code>、から設定できる。</td>
-</tr>
-<tr>
-<td><code>OTEL_TRACES_SAMPLER</code></td>
-<td>使用する Sampler を設定する。</td>
-</tr>
-<tr>
-<td><code>OTEL_TRACES_SAMPLER_ARG</code></td>
-<td>Sampler のパラメーター (例：サンプリング率) を設定する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>環境変数</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>OTEL_LOGS_EXPORTER</code></td>
+      <td>ログの Exporter 名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_METRICS_EXPORTER</code></td>
+      <td>メトリクスの Exporter 名を設定する。執筆時点 (2024/02/06) では、<code>otlp</code> (HTTP/gRPC) 、<code>prometheus</code>、<code>none</code>、から設定できる。</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_PROPAGATORS</code></td>
+      <td>トレースコンテキスト仕様を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_SERVICE_NAME</code></td>
+      <td>Resource の <code>service.name</code> を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_RESOURCE_ATTRIBUTES</code></td>
+      <td>Resource の任意の属性を設定する。キーバリュー式 (<code>key1=value1,key2=value2</code>) で設定できる。</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_TRACES_EXPORTER</code></td>
+      <td>分散トレースの Exporter 名を設定する。執筆時点 (2024/02/06) では、<code>otlp</code> (HTTP/gRPC) 、<code>jaeger</code>、<code>zipkin</code>、<code>none</code>、から設定できる。</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_TRACES_SAMPLER</code></td>
+      <td>使用する Sampler を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>OTEL_TRACES_SAMPLER_ARG</code></td>
+      <td>Sampler のパラメーター (例：サンプリング率) を設定する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/languages/sdk-configuration/general/">General SDK Configuration | OpenTelemetry</a></li>
@@ -37226,75 +37230,76 @@
 <p><br></p>
 <h3 id="exporter_2">Exporter<a class="headerlink" href="#exporter_2" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th>環境変数</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>OTEL_EXPORTER_OTLP_ENDPOINT</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>OTEL_EXPORTER_OTLP_TRACES_ENDPOINT</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>OTEL_EXPORTER_OTLP_METRICS_ENDPOINT</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>OTEL_EXPORTER_OTLP_LOGS_ENDPOINT</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>OTEL_EXPORTER_OTLP_HEADERS</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>OTEL_EXPORTER_OTLP_TRACES_HEADERS</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>OTEL_EXPORTER_OTLP_METRICS_HEADERS</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>OTEL_EXPORTER_OTLP_LOGS_HEADERS</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>OTEL_EXPORTER_OTLP_TIMEOUT</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>OTEL_EXPORTER_OTLP_TRACES_TIMEOUT</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>OTEL_EXPORTER_OTLP_METRICS_TIMEOUT</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>OTEL_EXPORTER_OTLP_LOGS_TIMEOUT</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>OTEL_EXPORTER_OTLP_PROTOCOL</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>OTEL_EXPORTER_OTLP_TRACES_PROTOCOL</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>OTEL_EXPORTER_OTLP_METRICS_PROTOCOL</code></td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>環境変数</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_ENDPOINT</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_TRACES_ENDPOINT</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_METRICS_ENDPOINT</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_LOGS_ENDPOINT</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_HEADERS</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_TRACES_HEADERS</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_METRICS_HEADERS</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_LOGS_HEADERS</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_TIMEOUT</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_TRACES_TIMEOUT</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_METRICS_TIMEOUT</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_LOGS_TIMEOUT</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_PROTOCOL</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_TRACES_PROTOCOL</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>OTEL_EXPORTER_OTLP_METRICS_PROTOCOL</code></td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/languages/sdk-configuration/otlp-exporter/">OTLP Exporter Configuration | OpenTelemetry</a></li>

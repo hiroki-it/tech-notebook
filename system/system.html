@@ -34296,7 +34296,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月6日 18:19:37 JST">2026-10-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -34361,59 +34361,60 @@
 <h4 id="web-app">▼ Web サーバー、App サーバーが必要な場合<a class="headerlink" href="#web-app" title="Permanent link">&para;</a></h4>
 <p>Nginx または Envoy を使用する場合で考えるとする。</p>
 <table>
-<thead>
-<tr>
-<th>経路</th>
-<th style="text-align: left;">Java の一例</th>
-<th>PHP の一例</th>
-<th>Python の一例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>リバースプロキシ</td>
-<td style="text-align: left;">Envoy、Nginx</td>
-<td>Envoy、Nginx</td>
-<td>Envoy、Nginx</td>
-</tr>
-<tr>
-<td>⬇️⬆️</td>
-<td style="text-align: left;">⬇️⬆️</td>
-<td>⬇️⬆️</td>
-<td>⬇️⬆️</td>
-</tr>
-<tr>
-<td>Web サーバー</td>
-<td style="text-align: left;">Nginx</td>
-<td>Nginx</td>
-<td>Nginx</td>
-</tr>
-<tr>
-<td>⬇️⬆️</td>
-<td style="text-align: left;">⬇️⬆️</td>
-<td>⬇️⬆️</td>
-<td>⬇️⬆️</td>
-</tr>
-<tr>
-<td>App サーバー</td>
-<td style="text-align: left;">Apache Tomcat</td>
-<td>なし</td>
-<td>Uvicorn</td>
-</tr>
-<tr>
-<td>⬇️⬆️</td>
-<td style="text-align: left;">⬇️⬆️</td>
-<td>⬇️⬆️</td>
-<td>⬇️⬆️</td>
-</tr>
-<tr>
-<td>DB サーバー</td>
-<td style="text-align: left;">MySQL、PostgreSQL</td>
-<td>MySQL、PostgreSQL</td>
-<td>MySQL、PostgreSQL</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>経路</th>
+      <th style="text-align:left">Java の一例</th>
+      <th>PHP の一例</th>
+      <th>Python の一例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>リバースプロキシ</td>
+      <td style="text-align:left">Envoy、Nginx</td>
+      <td>Envoy、Nginx</td>
+      <td>Envoy、Nginx</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+      <td>⬇️⬆️</td>
+      <td>⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>Web サーバー</td>
+      <td style="text-align:left">Nginx</td>
+      <td>Nginx</td>
+      <td>Nginx</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+      <td>⬇️⬆️</td>
+      <td>⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>App サーバー</td>
+      <td style="text-align:left">Apache Tomcat</td>
+      <td>なし</td>
+      <td>Uvicorn</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+      <td>⬇️⬆️</td>
+      <td>⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>DB サーバー</td>
+      <td style="text-align:left">MySQL、PostgreSQL</td>
+      <td>MySQL、PostgreSQL</td>
+      <td>MySQL、PostgreSQL</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/tanayasu1228/items/11e22a18dbfa796745b5#%E3%81%93%E3%81%93%E3%81%A7%E7%96%91%E5%95%8F%E3%81%AB%E6%80%9D%E3%81%86%E3%81%93%E3%81%A8%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99%E3%82%88%E3%81%AD">図解で解説！！ Apache、Tomcatってなんなの？ #Java - Qiita</a></li>
@@ -34423,43 +34424,44 @@
 <h4 id="web-app_1">▼ Web サーバー、App サーバーが不要な場合<a class="headerlink" href="#web-app_1" title="Permanent link">&para;</a></h4>
 <p>Go、JavaScript、では Web サーバーと App サーバーがいらない。</p>
 <table>
-<thead>
-<tr>
-<th>経路</th>
-<th style="text-align: left;">Go、JavaScript の場合</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>リバースプロキシ</td>
-<td style="text-align: left;">Envoy、Nginx</td>
-</tr>
-<tr>
-<td>⬇️⬆️</td>
-<td style="text-align: left;">⬇️⬆️</td>
-</tr>
-<tr>
-<td>Web サーバー</td>
-<td style="text-align: left;">なし</td>
-</tr>
-<tr>
-<td>⬇️⬆️</td>
-<td style="text-align: left;">⬇️⬆️</td>
-</tr>
-<tr>
-<td>App サーバー</td>
-<td style="text-align: left;">なし (Go、JavaScript のアプリケーションのみ)</td>
-</tr>
-<tr>
-<td>⬇️⬆️</td>
-<td style="text-align: left;">⬇️⬆️</td>
-</tr>
-<tr>
-<td>DB サーバー</td>
-<td style="text-align: left;">MySQL、PostgreSQL</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>経路</th>
+      <th style="text-align:left">Go、JavaScript の場合</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>リバースプロキシ</td>
+      <td style="text-align:left">Envoy、Nginx</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>Web サーバー</td>
+      <td style="text-align:left">なし</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>App サーバー</td>
+      <td style="text-align:left">なし (Go、JavaScript のアプリケーションのみ)</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>DB サーバー</td>
+      <td style="text-align:left">MySQL、PostgreSQL</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://teratail.com/questions/103909">Node.jsやGo言語でアプリケーションサーバー必要でないのはなぜでしょうか？ | teratail</a></li>
@@ -34478,23 +34480,24 @@
 <h4 id="_7">▼ ロードバランシング<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p><img alt="フォワードプロキシサーバーとリバースプロキシサーバー" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/フォワードプロキシサーバーとリバースプロキシサーバー.png" /></p>
 <table>
-<thead>
-<tr>
-<th>サーバー名</th>
-<th>処理</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>フォワードプロキシサーバー</td>
-<td>特定のクライアントのアウトバウンド通信を、不特定多数の宛先にロードバランシングする。</td>
-</tr>
-<tr>
-<td>リバースプロキシサーバー</td>
-<td>不特定のクライアントからのインバウンド通信を、特定の Web サーバーにロードバランシングする。また、ロードバランサーのように負荷分散もできる。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>サーバー名</th>
+      <th>処理</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>フォワードプロキシサーバー</td>
+      <td>特定のクライアントのアウトバウンド通信を、不特定多数の宛先にロードバランシングする。</td>
+    </tr>
+    <tr>
+      <td>リバースプロキシサーバー</td>
+      <td>不特定のクライアントからのインバウンド通信を、特定の Web サーバーにロードバランシングする。また、ロードバランサーのように負荷分散もできる。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://www.winserver.ne.jp/column/about_reverse-proxy/#i-5">リバースプロキシとは。プロキシとの違いは？仕組みやメリットを解説！ | Winserverのススメ</a></li>
@@ -34506,23 +34509,24 @@
 <p>以前に Web サーバーが返却した静的コンテンツのキャッシュを作成する。</p>
 <p><img alt="プロキシサーバーのキャッシュ能力" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プロキシサーバーのキャッシュ能力.png" /></p>
 <table>
-<thead>
-<tr>
-<th>サーバー名</th>
-<th>処理</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>フォワードプロキシサーバー</td>
-<td>クライアント側にて、ロードバランシングのレスポンスのキャッシュを作成する。</td>
-</tr>
-<tr>
-<td>リバースプロキシサーバー</td>
-<td>サーバー側にて、ロードバランシングのレスポンスのキャッシュを作成する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>サーバー名</th>
+      <th>処理</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>フォワードプロキシサーバー</td>
+      <td>クライアント側にて、ロードバランシングのレスポンスのキャッシュを作成する。</td>
+    </tr>
+    <tr>
+      <td>リバースプロキシサーバー</td>
+      <td>サーバー側にて、ロードバランシングのレスポンスのキャッシュを作成する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://www.winserver.ne.jp/column/about_reverse-proxy/#i-5">リバースプロキシとは。プロキシとの違いは？仕組みやメリットを解説！ | Winserverのススメ</a></li>
@@ -34569,84 +34573,86 @@
 <p>ブラウザから静的コンテンツのみのリクエストがあった場合、静的コンテンツをレスポンスする。</p>
 <p>App サーバーにはリクエストを送信しない。</p>
 <table>
-<thead>
-<tr>
-<th>経路</th>
-<th style="text-align: left;">処理の内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>リバースプロキシ</td>
-<td style="text-align: left;">ロードバランシング、静的コンテンツのキャッシュ</td>
-</tr>
-<tr>
-<td>⬇️⬆️</td>
-<td style="text-align: left;">⬇️⬆️</td>
-</tr>
-<tr>
-<td>Web サーバー</td>
-<td style="text-align: left;">静的コンテンツの返却</td>
-</tr>
-<tr>
-<td>⬇️⬆️</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td>App サーバー</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td>⬇️⬆️</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td>DB サーバー</td>
-<td style="text-align: left;"></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>経路</th>
+      <th style="text-align:left">処理の内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>リバースプロキシ</td>
+      <td style="text-align:left">ロードバランシング、静的コンテンツのキャッシュ</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>Web サーバー</td>
+      <td style="text-align:left">静的コンテンツの返却</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td>App サーバー</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td>DB サーバー</td>
+      <td style="text-align:left"></td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="_14">▼ 静的 + 動的コンテンツのレスポンス<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>静的コンテンツと動的コンテンツの両方のリクエストがあった場合、App サーバーに動的コンテンツのリクエストを送信する。</p>
 <p>App サーバーからレスポンスを受け取り、ブラウザにレスポンスを実行する。</p>
 <table>
-<thead>
-<tr>
-<th>経路</th>
-<th style="text-align: left;">処理の内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>リバースプロキシ</td>
-<td style="text-align: left;">ロードバランシング、静的コンテンツのキャッシュ</td>
-</tr>
-<tr>
-<td>⬇️⬆️</td>
-<td style="text-align: left;">⬇️⬆️</td>
-</tr>
-<tr>
-<td>Web サーバー</td>
-<td style="text-align: left;">静的コンテンツの返却</td>
-</tr>
-<tr>
-<td>⬇️⬆️</td>
-<td style="text-align: left;">⬇️⬆️</td>
-</tr>
-<tr>
-<td>App サーバー</td>
-<td style="text-align: left;">動的コンテンツの返却</td>
-</tr>
-<tr>
-<td>⬇️⬆️</td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td>DB サーバー</td>
-<td style="text-align: left;"></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>経路</th>
+      <th style="text-align:left">処理の内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>リバースプロキシ</td>
+      <td style="text-align:left">ロードバランシング、静的コンテンツのキャッシュ</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>Web サーバー</td>
+      <td style="text-align:left">静的コンテンツの返却</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>App サーバー</td>
+      <td style="text-align:left">動的コンテンツの返却</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td>DB サーバー</td>
+      <td style="text-align:left"></td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="ssltls_1">▼ SSL/TLS 終端<a class="headerlink" href="#ssltls_1" title="Permanent link">&para;</a></h4>
 <p>Web サーバーを SSL/TLS 終端として、HTTP プロトコルで App サーバーにリクエストをロードバランシングする。</p>
 <blockquote>
@@ -34664,43 +34670,44 @@
 <p>Web サーバーから動的コンテンツのリクエストがあった場合、プログラミング言語を言語プロセッサーで翻訳し、DB サーバーにクエリを送信する。</p>
 <p>DB サーバーからのレスポンスを受け取り、Web サーバーに動的なコンテンツのレスポンスを実行する。</p>
 <table>
-<thead>
-<tr>
-<th>経路</th>
-<th style="text-align: left;">処理の内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>リバースプロキシ</td>
-<td style="text-align: left;">ロードバランシング、静的コンテンツのキャッシュ</td>
-</tr>
-<tr>
-<td>⬇️⬆️</td>
-<td style="text-align: left;">⬇️⬆️</td>
-</tr>
-<tr>
-<td>Web サーバー</td>
-<td style="text-align: left;">動的コンテンツの返却</td>
-</tr>
-<tr>
-<td>⬇️⬆️</td>
-<td style="text-align: left;">⬇️⬆️</td>
-</tr>
-<tr>
-<td>App サーバー</td>
-<td style="text-align: left;">動的コンテンツの返却</td>
-</tr>
-<tr>
-<td>⬇️⬆️</td>
-<td style="text-align: left;">⬇️⬆️</td>
-</tr>
-<tr>
-<td>DB サーバー</td>
-<td style="text-align: left;">DB レコードの返却</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>経路</th>
+      <th style="text-align:left">処理の内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>リバースプロキシ</td>
+      <td style="text-align:left">ロードバランシング、静的コンテンツのキャッシュ</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>Web サーバー</td>
+      <td style="text-align:left">動的コンテンツの返却</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>App サーバー</td>
+      <td style="text-align:left">動的コンテンツの返却</td>
+    </tr>
+    <tr>
+      <td>⬇️⬆️</td>
+      <td style="text-align:left">⬇️⬆️</td>
+    </tr>
+    <tr>
+      <td>DB サーバー</td>
+      <td style="text-align:left">DB レコードの返却</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h2 id="02-05-db">02-05. DB サーバー<a class="headerlink" href="#02-05-db" title="Permanent link">&para;</a></h2>
 <h3 id="db">DB サーバーとは<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>

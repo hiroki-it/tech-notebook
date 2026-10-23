@@ -44104,7 +44104,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 21:24:34 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -44760,23 +44760,24 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p>デプロイメントの方法を設定する。</p>
 <p>以下のタイミングで Deployment は Pod を再デプロイする。</p>
 <table>
-<thead>
-<tr>
-<th>箇所</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>.spec.replicas</code> キー</td>
-<td>Pod のレプリカ数を変更すると、Deployment は Pod を再デプロイする。</td>
-</tr>
-<tr>
-<td><code>.spec.template</code> キー配下の任意のキー</td>
-<td>Pod テンプレートを変更した場合、Deployment は Pod を再デプロイする。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>箇所</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>.spec.replicas</code> キー</td>
+      <td>Pod のレプリカ数を変更すると、Deployment は Pod を再デプロイする。</td>
+    </tr>
+    <tr>
+      <td><code>.spec.template</code> キー配下の任意のキー</td>
+      <td>Pod テンプレートを変更した場合、Deployment は Pod を再デプロイする。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment">Deployments | Kubernetes</a></li>
@@ -45108,36 +45109,37 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p>以下のタイプを設定できる。</p>
 <p>なお、カスタムメトリクスの元になるデータポイントを収集するためには、別途ツール (例：prometheus-adapter) が必要である。</p>
 <table>
-<thead>
-<tr>
-<th>タイプ名</th>
-<th>説明</th>
-<th>メトリクス例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Resource</code></td>
-<td>リソースメトリクス</td>
-<td>CPU 使用率、メモリ使用率など</td>
-</tr>
-<tr>
-<td><code>Pods</code></td>
-<td>Pod のカスタムメトリクス</td>
-<td>Queries Per Second、message broker’s queue など</td>
-</tr>
-<tr>
-<td><code>Object</code></td>
-<td>Pod 以外の Kubernetes リソースのカスタムメトリクス</td>
-<td>Ingress に関するメトリクスなど</td>
-</tr>
-<tr>
-<td><code>External</code></td>
-<td>Kubernetes 以外の任意のメトリクス</td>
-<td>AWS、Google Cloud、Azure に固有のメトリクス</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>タイプ名</th>
+      <th>説明</th>
+      <th>メトリクス例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Resource</code></td>
+      <td>リソースメトリクス</td>
+      <td>CPU 使用率、メモリ使用率など</td>
+    </tr>
+    <tr>
+      <td><code>Pods</code></td>
+      <td>Pod のカスタムメトリクス</td>
+      <td>Queries Per Second、message broker’s queue など</td>
+    </tr>
+    <tr>
+      <td><code>Object</code></td>
+      <td>Pod 以外の Kubernetes リソースのカスタムメトリクス</td>
+      <td>Ingress に関するメトリクスなど</td>
+    </tr>
+    <tr>
+      <td><code>External</code></td>
+      <td>Kubernetes 以外の任意のメトリクス</td>
+      <td>AWS、Google Cloud、Azure に固有のメトリクス</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/masahata/items/062a2ee5762b108e8850">prometheus-adapterの設定を完全理解したい #kubernetes - Qiita</a></li>
@@ -45290,31 +45292,32 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="specruleshttppathspathtype">▼ .spec.rules[<em>].http.paths[</em>].pathType<a class="headerlink" href="#specruleshttppathspathtype" title="Permanent link">&para;</a></h4>
 <p>パスベースルーティング判定時のルールの厳しさを設定する。</p>
 <table>
-<thead>
-<tr>
-<th>厳しさ</th>
-<th>タイプ</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>パス名の前方一致</td>
-<td>Prefix</td>
-<td>前方一致である。最初のパスさえ合致すれば、トレイリングスラッシュの有無や最初のパス以降のパスも許容して合致させる。そのため、ワイルドカード (<code>*</code>) は不要である。</td>
-</tr>
-<tr>
-<td>パス名の完全一致</td>
-<td>Exact</td>
-<td>完全一致である。指定したパスのみを合致させ、トレイリングスラッシュも有無も許容しない。</td>
-</tr>
-<tr>
-<td>IngressClass の機能による</td>
-<td>ImplementationSpecific</td>
-<td>IngressClass (例：Nginx、ALB など) の設定に応じて、独自タイプ、Prefix、Exact を自動的に切り替える。そのため、Ingress のルーティングルールが IngressClass に依存している。IngressClass の仕様変更や別の IngressClass への移行があった場合に、Ingress Controller が想定外のルーティングを実行する可能性がある。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>厳しさ</th>
+      <th>タイプ</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>パス名の前方一致</td>
+      <td>Prefix</td>
+      <td>前方一致である。最初のパスさえ合致すれば、トレイリングスラッシュの有無や最初のパス以降のパスも許容して合致させる。そのため、ワイルドカード (<code>*</code>) は不要である。</td>
+    </tr>
+    <tr>
+      <td>パス名の完全一致</td>
+      <td>Exact</td>
+      <td>完全一致である。指定したパスのみを合致させ、トレイリングスラッシュも有無も許容しない。</td>
+    </tr>
+    <tr>
+      <td>IngressClass の機能による</td>
+      <td>ImplementationSpecific</td>
+      <td>IngressClass (例：Nginx、ALB など) の設定に応じて、独自タイプ、Prefix、Exact を自動的に切り替える。そのため、Ingress のルーティングルールが IngressClass に依存している。IngressClass の仕様変更や別の IngressClass への移行があった場合に、Ingress Controller が想定外のルーティングを実行する可能性がある。</td>
+    </tr>
+  </tbody>
 </table>
+
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46016,31 +46019,32 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="requirednodeselectortermsmatchexpressions">▼ required.nodeSelectorTerms.matchExpressions<a class="headerlink" href="#requirednodeselectortermsmatchexpressions" title="Permanent link">&para;</a></h4>
 <p>作成先の Node の <code>.metadata.labels</code> キーを指定するための条件 (<code>In</code>、<code>NotIn</code>、<code>Exists</code>) を設定する。</p>
 <table>
-<thead>
-<tr>
-<th>設定値</th>
-<th>条件の説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>In</td>
-<td>指定した <code>metadata.labels</code> キー配下に、指定した値を持つ。</td>
-</tr>
-<tr>
-<td>NotIn</td>
-<td>指定した <code>metadata.labels</code> キー配下に、指定した値を持たない。</td>
-</tr>
-<tr>
-<td>Exists</td>
-<td>指定した <code>metadata.labels</code> キーを持つ。</td>
-</tr>
-<tr>
-<td>DoesNotExists</td>
-<td>指定した <code>metadata.labels</code> キーを持たない。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>設定値</th>
+      <th>条件の説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>In</td>
+      <td>指定した <code>metadata.labels</code> キー配下に、指定した値を持つ。</td>
+    </tr>
+    <tr>
+      <td>NotIn</td>
+      <td>指定した <code>metadata.labels</code> キー配下に、指定した値を持たない。</td>
+    </tr>
+    <tr>
+      <td>Exists</td>
+      <td>指定した <code>metadata.labels</code> キーを持つ。</td>
+    </tr>
+    <tr>
+      <td>DoesNotExists</td>
+      <td>指定した <code>metadata.labels</code> キーを持たない。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
@@ -46135,35 +46139,36 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p>PersistentVolume にストレージクラス名を設定しない場合、これを要求できるのは、同じくストレージクラス名を持たない PersistentVolumeClaim だけである。</p>
 <p>注意点として、もし異なる StorageClassName に変更したい場合は、PersistentVolume を作成し直す必要がある。</p>
 <table>
-<thead>
-<tr>
-<th>クラス名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>""</code> (明示的な空文字)</td>
-<td>PersistentVolume に対応する StorageClass がない場合 (PersistentVolume を使用するが、StorageClass は使用しない場合) につける。</td>
-</tr>
-<tr>
-<td><code>local</code></td>
-<td>PersistentVolume に対応する StorageClass が中速中容量ストレージの場合につける。</td>
-</tr>
-<tr>
-<td><code>standard</code></td>
-<td>PersistentVolume に対応する StorageClass が中速中容量ストレージの場合につける。</td>
-</tr>
-<tr>
-<td><code>fast</code></td>
-<td>PersistentVolume に対応する StorageClass が高速小容量ストレージの場合につける。</td>
-</tr>
-<tr>
-<td><code>slow</code></td>
-<td>PersistentVolume に対応する StorageClass が低速大容量ストレージの場合につける。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>クラス名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&quot;&quot;</code> (明示的な空文字)</td>
+      <td>PersistentVolume に対応する StorageClass がない場合 (PersistentVolume を使用するが、StorageClass は使用しない場合) につける。</td>
+    </tr>
+    <tr>
+      <td><code>local</code></td>
+      <td>PersistentVolume に対応する StorageClass が中速中容量ストレージの場合につける。</td>
+    </tr>
+    <tr>
+      <td><code>standard</code></td>
+      <td>PersistentVolume に対応する StorageClass が中速中容量ストレージの場合につける。</td>
+    </tr>
+    <tr>
+      <td><code>fast</code></td>
+      <td>PersistentVolume に対応する StorageClass が高速小容量ストレージの場合につける。</td>
+    </tr>
+    <tr>
+      <td><code>slow</code></td>
+      <td>PersistentVolume に対応する StorageClass が低速大容量ストレージの場合につける。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
@@ -46597,27 +46602,28 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="imagepullpolicy">▼ imagePullPolicy<a class="headerlink" href="#imagepullpolicy" title="Permanent link">&para;</a></h4>
 <p>イメージのプルのルールを設定する。</p>
 <table>
-<thead>
-<tr>
-<th>オプション</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>IfNotPresent</td>
-<td>Node 上にコンテナイメージのキャッシュがあればこれを使用する。なければイメージリポジトリからぷるする。</td>
-</tr>
-<tr>
-<td>Always</td>
-<td>Node 上のキャッシュを使用せず、常にイメージリポジトリからコンテナイメージをプルする。</td>
-</tr>
-<tr>
-<td>Never</td>
-<td>Node 上にコンテナイメージのキャッシュを常にを使用する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>オプション</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>IfNotPresent</td>
+      <td>Node 上にコンテナイメージのキャッシュがあればこれを使用する。なければイメージリポジトリからぷるする。</td>
+    </tr>
+    <tr>
+      <td>Always</td>
+      <td>Node 上のキャッシュを使用せず、常にイメージリポジトリからコンテナイメージをプルする。</td>
+    </tr>
+    <tr>
+      <td>Never</td>
+      <td>Node 上にコンテナイメージのキャッシュを常にを使用する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46642,26 +46648,27 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p>このとき kube-scheduler は、コンテナの <code>resource</code> キーの値に基づいて、どの Node に Pod を作成するかを決めている。</p>
 <p>同じ Pod 内に <code>resources</code> キーを設定したコンテナが複数ある場合、下限/上限の必要サイズを満たしているか否かは、同じ Pod 内にあるコンテナの要求サイズ合計値に基づいて判定する。</p>
 <table>
-<thead>
-<tr>
-<th>キー名</th>
-<th>説明</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>requests</code></td>
-<td>ハードウェアリソースの下限必要サイズを設定する。</td>
-<td>・高くしすぎると、その Pod 内のコンテナがハードウェアリソースを常に要求するため、他の Pod がスケーリングしにくくなる。<br>・もし、設定値が Node のハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>・<a href="https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu">https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu</a> <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetes が重要な Pod にリソースを必要最低限しか割かず、性能が低くなる可能性がある。</td>
-</tr>
-<tr>
-<td><code>limits</code></td>
-<td>ハードウェアリソースの上限必要サイズを設定する。</td>
-<td>・低くしすぎると、コンテナにハードウェアリソースを割り当てられないため、性能が常時悪くなる。<br>・もし、コンテナが上限値以上のハードウェアリソースを要求すると、CPU の場合は Pod は削除されずに、コンテナのスロットリング (起動と停止を繰り返す) が起こる。一方でメモリの場合は、OOM キラーによって Pod のプロセスが削除され、Pod は再作成される。<br>・<a href="https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/">https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/</a> <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの上限がなくなる。そのため、Kubernetes が重要でない Pod にリソースを割いてしまう可能性がある。<br>・<a href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit">https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit</a> <br>・<a href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit">https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit</a></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>キー名</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>requests</code></td>
+      <td>ハードウェアリソースの下限必要サイズを設定する。</td>
+      <td>・高くしすぎると、その Pod 内のコンテナがハードウェアリソースを常に要求するため、他の Pod がスケーリングしにくくなる。<br>・もし、設定値が Node のハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>・<a href="https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu">https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu</a> <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetes が重要な Pod にリソースを必要最低限しか割かず、性能が低くなる可能性がある。</td>
+    </tr>
+    <tr>
+      <td><code>limits</code></td>
+      <td>ハードウェアリソースの上限必要サイズを設定する。</td>
+      <td>・低くしすぎると、コンテナにハードウェアリソースを割り当てられないため、性能が常時悪くなる。<br>・もし、コンテナが上限値以上のハードウェアリソースを要求すると、CPU の場合は Pod は削除されずに、コンテナのスロットリング (起動と停止を繰り返す) が起こる。一方でメモリの場合は、OOM キラーによって Pod のプロセスが削除され、Pod は再作成される。<br>・<a href="https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/">https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/</a> <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの上限がなくなる。そのため、Kubernetes が重要でない Pod にリソースを割いてしまう可能性がある。<br>・<a href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit">https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit</a> <br>・<a href="https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit">https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit</a></td>
+    </tr>
+  </tbody>
 </table>
+
 <p>補足として、Node 全体のハードウェアリソースは、<code>kubectl describe</code> コマンドから確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>describe<span class="w"> </span>node<span class="w"> </span>&lt;Node名&gt;
 
@@ -46695,31 +46702,32 @@ Allocatable:
 </blockquote>
 <h4 id="resourcesrequestslimits">▼ resources.requests/limits.&lt;ハードウェアリソース&gt;<a class="headerlink" href="#resourcesrequestslimits" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>ハードウェアリソース名</th>
-<th></th>
-<th>単位</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>cpu</code></td>
-<td>コンテナの CPU</td>
-<td>m：millicores (<code>1</code>m = <code>1</code> ユニット = <code>0.001</code> コア)</td>
-</tr>
-<tr>
-<td><code>memory</code></td>
-<td>コンテナのメモリ</td>
-<td>Mi：mebibyte (<code>1</code>Mi = <code>1.04858</code>MB)</td>
-</tr>
-<tr>
-<td><code>ephemeral-storage</code></td>
-<td>EmptyDir Volume、ログ、ローカルディスクへの書き込み</td>
-<td>Mi：mebibyte</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>ハードウェアリソース名</th>
+      <th></th>
+      <th>単位</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>cpu</code></td>
+      <td>コンテナの CPU</td>
+      <td>m：millicores (<code>1</code>m = <code>1</code> ユニット = <code>0.001</code> コア)</td>
+    </tr>
+    <tr>
+      <td><code>memory</code></td>
+      <td>コンテナのメモリ</td>
+      <td>Mi：mebibyte (<code>1</code>Mi = <code>1.04858</code>MB)</td>
+    </tr>
+    <tr>
+      <td><code>ephemeral-storage</code></td>
+      <td>EmptyDir Volume、ログ、ローカルディスクへの書き込み</td>
+      <td>Mi：mebibyte</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46941,35 +46949,36 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </code></pre></div>
 <p>自身のアプリケーションではエンドポイントを実装する必要があるが、OSS ではすでに用意されていることが多い。</p>
 <table>
-<thead>
-<tr>
-<th>ツール</th>
-<th>エンドポイント</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Alertmaanger</td>
-<td><code>/-/healthy</code></td>
-</tr>
-<tr>
-<td>Grafana</td>
-<td><code>/healthz</code></td>
-</tr>
-<tr>
-<td>Kiali</td>
-<td><code>/kiali/healthz</code></td>
-</tr>
-<tr>
-<td>Prometheus</td>
-<td><code>/-/healthy</code></td>
-</tr>
-<tr>
-<td>...</td>
-<td>...</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>ツール</th>
+      <th>エンドポイント</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Alertmaanger</td>
+      <td><code>/-/healthy</code></td>
+    </tr>
+    <tr>
+      <td>Grafana</td>
+      <td><code>/healthz</code></td>
+    </tr>
+    <tr>
+      <td>Kiali</td>
+      <td><code>/kiali/healthz</code></td>
+    </tr>
+    <tr>
+      <td>Prometheus</td>
+      <td><code>/-/healthy</code></td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="failurethreshold">▼ failureThreshold<a class="headerlink" href="#failurethreshold" title="Permanent link">&para;</a></h4>
 <p>デフォルト値は <code>3</code> である。</p>
 <p>コンテナの LivenessProbe ヘルスチェックが失敗したとみなす試行回数を設定する。</p>
@@ -47660,31 +47669,32 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <p>Pod のスケジューリングの優先度を設定する。</p>
 <p>何らかの理由 (例：ハードウェアリソース不足など) でより優先度の高い Pod をスケジューリングさせられない場合、より優先度の低い Pod を Node から退去させ、優先度の高い Pod をスケジューリングさせる。</p>
 <table>
-<thead>
-<tr>
-<th>設定値</th>
-<th style="text-align: center;">優先度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>system-node-critical</code>、<code>system-cluster-critical</code></td>
-<td style="text-align: center;">最優先</td>
-</tr>
-<tr>
-<td><code>high</code></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td><code>low-non-preemptible</code></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td><code>low</code></td>
-<td style="text-align: center;">後回し</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>設定値</th>
+      <th style="text-align:center">優先度</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>system-node-critical</code>、<code>system-cluster-critical</code></td>
+      <td style="text-align:center">最優先</td>
+    </tr>
+    <tr>
+      <td><code>high</code></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td><code>low-non-preemptible</code></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td><code>low</code></td>
+      <td style="text-align:center">後回し</td>
+    </tr>
+  </tbody>
 </table>
+
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>

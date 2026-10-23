@@ -33752,7 +33752,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:04:05 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -33795,77 +33795,76 @@
 <p>CircleCI の操作アカウントを認証し、認可する。</p>
 <p>利便的かつ安全な認証／認可方法を選ぶ。</p>
 <table>
-<thead>
-<tr>
-<th>認証／認可方法</th>
-<th style="text-align: center;">二要素認証</th>
-<th style="text-align: center;">推奨/非推奨</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ベーシック認証</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">非推奨</td>
-</tr>
-<tr>
-<td>OAuth</td>
-<td style="text-align: center;">あり</td>
-<td style="text-align: center;">推奨</td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align: center;">なし</td>
-<td style="text-align: center;">非推奨</td>
-</tr>
-<tr>
-<td>OIDC</td>
-<td style="text-align: center;">あり</td>
-<td style="text-align: center;">推奨</td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align: center;">なし</td>
-<td style="text-align: center;">非推奨</td>
-</tr>
-<tr>
-<td>SAML</td>
-<td style="text-align: center;">あり</td>
-<td style="text-align: center;">推奨</td>
-</tr>
-<tr>
-<td></td>
-<td style="text-align: center;">なし</td>
-<td style="text-align: center;">非推奨</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>認証／認可方法</th>
+      <th style="text-align:center">二要素認証</th>
+      <th style="text-align:center">推奨/非推奨</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ベーシック認証</td>
+      <td style="text-align:center">-</td>
+      <td style="text-align:center">非推奨</td>
+    </tr>
+    <tr>
+      <td rowspan="2">OAuth</td>
+      <td style="text-align:center">あり</td>
+      <td style="text-align:center">推奨</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">非推奨</td>
+    </tr>
+    <tr>
+      <td rowspan="2">OIDC</td>
+      <td style="text-align:center">あり</td>
+      <td style="text-align:center">推奨</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">非推奨</td>
+    </tr>
+    <tr>
+      <td rowspan="2">SAML</td>
+      <td style="text-align:center">あり</td>
+      <td style="text-align:center">推奨</td>
+    </tr>
+    <tr>
+      <td style="text-align:center">なし</td>
+      <td style="text-align:center">非推奨</td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="circleci_3">▼ CircleCI 自体の場合<a class="headerlink" href="#circleci_3" title="Permanent link">&para;</a></h4>
 <p>CircleCI を認証し、認可する。</p>
 <table>
-<thead>
-<tr>
-<th>期限</th>
-<th>説明</th>
-<th>方法</th>
-<th style="text-align: center;">推奨/非推奨</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>恒久的</td>
-<td>CircleCI を恒久的に認証し、また同様に恒久的に認可する。</td>
-<td>・AWS の場合、ツールに IAM ユーザを紐付けておき、この IAM ユーザーに常に IAM ロールを紐付けておく。<br>・GCP の場合、ツールに IAM ユーザを紐付けておき、この IAM ユーザーに常にロールを紐付けておく。</td>
-<td style="text-align: center;">非推奨</td>
-</tr>
-<tr>
-<td>一時的</td>
-<td>CircleCI を一時的に認証し、また同様に一時的に認可する。</td>
-<td>・AWS の場合、ツールに IAM ユーザー/SAML ユーザー/OIDC ユーザーを紐付けておき、AWS STS で一時的に認証する。また、AssumeRole によるスイッチロールでは、認可スコープを一時的に付与する。<br>・GCP の場合、ツールに IAM ユーザーを紐付けておき、条件付きロールバインディングで認可スコープを付与する。</td>
-<td style="text-align: center;">推奨</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>期限</th>
+      <th>説明</th>
+      <th>方法</th>
+      <th style="text-align:center">推奨/非推奨</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>恒久的</td>
+      <td>CircleCI を恒久的に認証し、また同様に恒久的に認可する。</td>
+      <td>・AWS の場合、ツールに IAM ユーザを紐付けておき、この IAM ユーザーに常に IAM ロールを紐付けておく。<br>・GCP の場合、ツールに IAM ユーザを紐付けておき、この IAM ユーザーに常にロールを紐付けておく。</td>
+      <td style="text-align:center">非推奨</td>
+    </tr>
+    <tr>
+      <td>一時的</td>
+      <td>CircleCI を一時的に認証し、また同様に一時的に認可する。</td>
+      <td>・AWS の場合、ツールに IAM ユーザー/SAML ユーザー/OIDC ユーザーを紐付けておき、AWS STS で一時的に認証する。また、AssumeRole によるスイッチロールでは、認可スコープを一時的に付与する。<br>・GCP の場合、ツールに IAM ユーザーを紐付けておき、条件付きロールバインディングで認可スコープを付与する。</td>
+      <td style="text-align:center">推奨</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_3">機密な変数やファイルの管理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>たとえ、CircleCI から機密な変数が漏洩しても、復号しにくいようにする。</p>

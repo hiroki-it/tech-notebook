@@ -35352,7 +35352,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月21日 19:27:44 JST">2026-10-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -35953,59 +35953,60 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="_11">アラート内で使用できる予約変数<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th>変数名</th>
-<th>データ型</th>
-<th>デフォルトラベル例</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Receiver</td>
-<td>string 型</td>
-<td><code>.Receiver</code></td>
-<td>アラートの受信者が割り当てられている。</td>
-</tr>
-<tr>
-<td>Status</td>
-<td>string 型</td>
-<td><code>.Status</code></td>
-<td>アラートが Firing 状態/Resolved 状態が割り当てられている。</td>
-</tr>
-<tr>
-<td>Alerts</td>
-<td>map 型</td>
-<td><code>.Alerts.Labels.SortedPairs</code></td>
-<td>アラートの情報が割り当てられている。<br>・<a href="https://prometheus.io/docs/alerting/latest/notifications/#alert">https://prometheus.io/docs/alerting/latest/notifications/#alert</a></td>
-</tr>
-<tr>
-<td>GroupLabels</td>
-<td>map 型</td>
-<td>・<code>.GroupLabels.alertname</code> <br>・<code>.GroupLabels.instance</code> <br>・<code>.GroupLabels.job</code></td>
-<td>特定のアラートグループに関するラベルが割り当てられている。<code>.spec.groups[*].rules[*].labels</code> キー配下で設定したユーザー定義のラベルも含む。<br>・<a href="https://prometheus.io/docs/alerting/latest/notifications/#kv">https://prometheus.io/docs/alerting/latest/notifications/#kv</a></td>
-</tr>
-<tr>
-<td>CommonLabels</td>
-<td>map 型</td>
-<td><code>.CommonLabels.alertname</code></td>
-<td>すべてのアラートに共通するラベルが割り当てられている。</td>
-</tr>
-<tr>
-<td>CommonAnnotations</td>
-<td>map 型</td>
-<td><code>.CommonAnnotations.summary</code></td>
-<td>すべてのアラートに共通するアノテーションが割り当てられている。<code>.spec.groups[*].rules[*].labels</code> キー配下で設定したユーザー定義のアノテーションも含む。</td>
-</tr>
-<tr>
-<td>ExternalURL</td>
-<td>string 型</td>
-<td><code>.ExternalURL</code></td>
-<td>Alertmanger の URL が割り当てられている。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>変数名</th>
+      <th>データ型</th>
+      <th>デフォルトラベル例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Receiver</td>
+      <td>string 型</td>
+      <td><code>.Receiver</code></td>
+      <td>アラートの受信者が割り当てられている。</td>
+    </tr>
+    <tr>
+      <td>Status</td>
+      <td>string 型</td>
+      <td><code>.Status</code></td>
+      <td>アラートが Firing 状態/Resolved 状態が割り当てられている。</td>
+    </tr>
+    <tr>
+      <td>Alerts</td>
+      <td>map 型</td>
+      <td><code>.Alerts.Labels.SortedPairs</code></td>
+      <td>アラートの情報が割り当てられている。<br>・<a href="https://prometheus.io/docs/alerting/latest/notifications/#alert">https://prometheus.io/docs/alerting/latest/notifications/#alert</a></td>
+    </tr>
+    <tr>
+      <td>GroupLabels</td>
+      <td>map 型</td>
+      <td>・<code>.GroupLabels.alertname</code> <br>・<code>.GroupLabels.instance</code> <br>・<code>.GroupLabels.job</code></td>
+      <td>特定のアラートグループに関するラベルが割り当てられている。<code>.spec.groups[*].rules[*].labels</code> キー配下で設定したユーザー定義のラベルも含む。<br>・<a href="https://prometheus.io/docs/alerting/latest/notifications/#kv">https://prometheus.io/docs/alerting/latest/notifications/#kv</a></td>
+    </tr>
+    <tr>
+      <td>CommonLabels</td>
+      <td>map 型</td>
+      <td><code>.CommonLabels.alertname</code></td>
+      <td>すべてのアラートに共通するラベルが割り当てられている。</td>
+    </tr>
+    <tr>
+      <td>CommonAnnotations</td>
+      <td>map 型</td>
+      <td><code>.CommonAnnotations.summary</code></td>
+      <td>すべてのアラートに共通するアノテーションが割り当てられている。<code>.spec.groups[*].rules[*].labels</code> キー配下で設定したユーザー定義のアノテーションも含む。</td>
+    </tr>
+    <tr>
+      <td>ExternalURL</td>
+      <td>string 型</td>
+      <td><code>.ExternalURL</code></td>
+      <td>Alertmanger の URL が割り当てられている。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://www.amazon.co.jp/dp/4910313001">https://www.amazon.co.jp/dp/4910313001</a></li>
@@ -36045,35 +36046,36 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><code>alert</code> キーを宣言し、アラートルールを設定する。</p>
 <p>アラートルールは、『アッパーキャメルケース』で命名する。</p>
 <table>
-<thead>
-<tr>
-<th>項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>alert</code></td>
-<td>アラートルール名を設定する</td>
-</tr>
-<tr>
-<td><code>annotations</code></td>
-<td>アラートルールによるアラートの通知内容を設定する。<code>.metadata.labels</code> キーや発火値 (<code>$value</code>) を通知内容に変数で出力できる。</td>
-</tr>
-<tr>
-<td><code>expr</code></td>
-<td>アラートルールで監視するメトリクスに関する PromQL を設定する。ロジックを変更すればアラートの発火をテストできる。</td>
-</tr>
-<tr>
-<td><code>for</code></td>
-<td>アラートの通知のクールダウン期間を設定する。クールダウン期間中に発火したアラートは通知されない。</td>
-</tr>
-<tr>
-<td><code>labels</code></td>
-<td>アラートの通知内容に付与するラベルを設定する</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>alert</code></td>
+      <td>アラートルール名を設定する</td>
+    </tr>
+    <tr>
+      <td><code>annotations</code></td>
+      <td>アラートルールによるアラートの通知内容を設定する。<code>.metadata.labels</code> キーや発火値 (<code>$value</code>) を通知内容に変数で出力できる。</td>
+    </tr>
+    <tr>
+      <td><code>expr</code></td>
+      <td>アラートルールで監視するメトリクスに関する PromQL を設定する。ロジックを変更すればアラートの発火をテストできる。</td>
+    </tr>
+    <tr>
+      <td><code>for</code></td>
+      <td>アラートの通知のクールダウン期間を設定する。クールダウン期間中に発火したアラートは通知されない。</td>
+    </tr>
+    <tr>
+      <td><code>labels</code></td>
+      <td>アラートの通知内容に付与するラベルを設定する</td>
+    </tr>
+  </tbody>
 </table>
+
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PrometheusRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36110,23 +36112,24 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><code>record</code> キーを宣言し、レコーディングルールを設定する。</p>
 <p>アラートルールは、『スネークケース』『コロン区切り』で命名する。</p>
 <table>
-<thead>
-<tr>
-<th>項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>record</code></td>
-<td>レコーディングルール名を設定する</td>
-</tr>
-<tr>
-<td><code>expr</code></td>
-<td>レコーディングルールで監視するメトリクスに関する PromQL を設定する。ロジックを変更すればアラートの発火をテストできる。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>record</code></td>
+      <td>レコーディングルール名を設定する</td>
+    </tr>
+    <tr>
+      <td><code>expr</code></td>
+      <td>レコーディングルールで監視するメトリクスに関する PromQL を設定する。ロジックを変更すればアラートの発火をテストできる。</td>
+    </tr>
+  </tbody>
 </table>
+
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PrometheusRule</span>
 <span class="nt">metadata</span><span class="p">:</span>

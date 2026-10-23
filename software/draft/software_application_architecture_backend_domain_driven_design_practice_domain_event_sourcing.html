@@ -33816,7 +33816,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 21:24:34 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -33872,31 +33872,32 @@
 <p>ステートベース（≒ ステートソーシング）とイベントベース（≒ イベントソーシング）の違いは、以下のとおりである。</p>
 <p>イベントソーシングでは、イベントを真のデータとして扱う。</p>
 <table>
-<thead>
-<tr>
-<th>観点</th>
-<th>ステートベース</th>
-<th>イベントベース</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>保存対象</strong></td>
-<td>現在の状態</td>
-<td>状態の変更を表すイベント</td>
-</tr>
-<tr>
-<td><strong>更新時の扱い</strong></td>
-<td>前の状態は上書きされる</td>
-<td>イベントが追記される</td>
-</tr>
-<tr>
-<td><strong>現在状態の取得</strong></td>
-<td>保存済みの状態をそのまま読む</td>
-<td>イベントを順番に適用して導出する</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>観点</th>
+      <th>ステートベース</th>
+      <th>イベントベース</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>保存対象</strong></td>
+      <td>現在の状態</td>
+      <td>状態の変更を表すイベント</td>
+    </tr>
+    <tr>
+      <td><strong>更新時の扱い</strong></td>
+      <td>前の状態は上書きされる</td>
+      <td>イベントが追記される</td>
+    </tr>
+    <tr>
+      <td><strong>現在状態の取得</strong></td>
+      <td>保存済みの状態をそのまま読む</td>
+      <td>イベントを順番に適用して導出する</td>
+    </tr>
+  </tbody>
 </table>
+
 <div class="highlight"><pre><span></span><code><span class="c1">// 解説を補足するために長谷川で追加</span>
 
 <span class="kr">type</span><span class="w"> </span><span class="nx">Review</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -33965,69 +33966,71 @@
 <h3 id="21-2-2-vs">21-2-2 レビューの例（現在の状態 vs イベントの記録）<a class="headerlink" href="#21-2-2-vs" title="Permanent link">&para;</a></h3>
 <p>ステートソーシングでは、レビューの現在状態だけを保存する。</p>
 <table>
-<thead>
-<tr>
-<th>レビューID</th>
-<th>書籍 ID</th>
-<th>投稿者名</th>
-<th>評価</th>
-<th>コメント</th>
-<th>抽出された RecommendedBook</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>REV001</code></td>
-<td><code>B001</code></td>
-<td><code>山田太郎</code></td>
-<td><code>5</code></td>
-<td><code>実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします</code></td>
-<td><code>["HTML/CSS 入門", "JavaScript 基礎"]</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>レビューID</th>
+      <th>書籍 ID</th>
+      <th>投稿者名</th>
+      <th>評価</th>
+      <th>コメント</th>
+      <th>抽出された RecommendedBook</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>REV001</code></td>
+      <td><code>B001</code></td>
+      <td><code>山田太郎</code></td>
+      <td><code>5</code></td>
+      <td><code>実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします</code></td>
+      <td><code>[&quot;HTML/CSS 入門&quot;, &quot;JavaScript 基礎&quot;]</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <p>一方、イベントソーシングではレビューの変化そのものを記録する。</p>
 <table>
-<thead>
-<tr>
-<th>イベント ID</th>
-<th>レビューID</th>
-<th>ドメインイベント種別</th>
-<th>イベント内容</th>
-<th>発生日時</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>E001</code></td>
-<td><code>REV001</code></td>
-<td><code>ReviewCreated</code></td>
-<td><code>評価:4, コメント: 実践的な内容で良かったです</code></td>
-<td><code>2023-01-01</code></td>
-</tr>
-<tr>
-<td><code>E002</code></td>
-<td><code>REV001</code></td>
-<td><code>ReviewCommentEdited</code></td>
-<td><code>コメント: 実践的な内容で良かったです。ただし初心者には少し難しいかも</code></td>
-<td><code>2023-01-03</code></td>
-</tr>
-<tr>
-<td><code>E003</code></td>
-<td><code>REV001</code></td>
-<td><code>ReviewCommentEdited</code></td>
-<td><code>コメント: 実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします</code></td>
-<td><code>2023-01-05</code></td>
-</tr>
-<tr>
-<td><code>E004</code></td>
-<td><code>REV001</code></td>
-<td><code>ReviewRatingChanged</code></td>
-<td><code>評価:5</code></td>
-<td><code>2023-01-07</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>イベント ID</th>
+      <th>レビューID</th>
+      <th>ドメインイベント種別</th>
+      <th>イベント内容</th>
+      <th>発生日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>E001</code></td>
+      <td><code>REV001</code></td>
+      <td><code>ReviewCreated</code></td>
+      <td><code>評価:4, コメント: 実践的な内容で良かったです</code></td>
+      <td><code>2023-01-01</code></td>
+    </tr>
+    <tr>
+      <td><code>E002</code></td>
+      <td><code>REV001</code></td>
+      <td><code>ReviewCommentEdited</code></td>
+      <td><code>コメント: 実践的な内容で良かったです。ただし初心者には少し難しいかも</code></td>
+      <td><code>2023-01-03</code></td>
+    </tr>
+    <tr>
+      <td><code>E003</code></td>
+      <td><code>REV001</code></td>
+      <td><code>ReviewCommentEdited</code></td>
+      <td><code>コメント: 実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします</code></td>
+      <td><code>2023-01-05</code></td>
+    </tr>
+    <tr>
+      <td><code>E004</code></td>
+      <td><code>REV001</code></td>
+      <td><code>ReviewRatingChanged</code></td>
+      <td><code>評価:5</code></td>
+      <td><code>2023-01-07</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <p>イベント履歴があると、各時点の状態を取得できる。</p>
 <ul>
 <li>2023-01-01 時点: 評価 4、RecommendedBook なし</li>
@@ -34111,31 +34114,32 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <h3 id="21-4-3">21-4-3 開発チームの学習コスト<a class="headerlink" href="#21-4-3" title="Permanent link">&para;</a></h3>
 <p>イベントソーシングは、新しい概念（イベント設計、状態再構築、イベントスキーマ管理など）の理解が必要であり、学習コストが高い。</p>
 <table>
-<thead>
-<tr>
-<th>観点</th>
-<th>ステートソーシング</th>
-<th>イベントソーシング</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>設計対象</strong></td>
-<td>状態設計</td>
-<td>イベント設計</td>
-</tr>
-<tr>
-<td><strong>状態再構築方式</strong></td>
-<td>状態読取</td>
-<td>状態再構築</td>
-</tr>
-<tr>
-<td><strong>スキーマ管理</strong></td>
-<td>状態スキーマ管理</td>
-<td>イベントスキーマ管理</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>観点</th>
+      <th>ステートソーシング</th>
+      <th>イベントソーシング</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>設計対象</strong></td>
+      <td>状態設計</td>
+      <td>イベント設計</td>
+    </tr>
+    <tr>
+      <td><strong>状態再構築方式</strong></td>
+      <td>状態読取</td>
+      <td>状態再構築</td>
+    </tr>
+    <tr>
+      <td><strong>スキーマ管理</strong></td>
+      <td>状態スキーマ管理</td>
+      <td>イベントスキーマ管理</td>
+    </tr>
+  </tbody>
 </table>
+
 <h3 id="21-4-4">21-4-4 適用判断の重要性<a class="headerlink" href="#21-4-4" title="Permanent link">&para;</a></h3>
 <p>まずはステートソーシングで設計する。</p>
 <p>任意時点の状態再現や後からの再分析が必要になった場合は、イベントソーシングの導入を検討する。</p>
@@ -34231,93 +34235,95 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <h3 id="21-5-2">21-5-2 変更の透明性と監査性の確保<a class="headerlink" href="#21-5-2" title="Permanent link">&para;</a></h3>
 <p>レビュー編集や削除も含めて、起きた事実をすべて記録するため、誰がいつ何を変更したかの履歴が残る。</p>
 <table>
-<thead>
-<tr>
-<th>EventId</th>
-<th>ReviewId</th>
-<th>EventType</th>
-<th>OperatorId</th>
-<th>OccurredAt</th>
-<th>Payload</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>EVT001</code></td>
-<td><code>REV001</code></td>
-<td><code>ReviewCreated</code></td>
-<td><code>USER001</code></td>
-<td><code>2023-01-01 10:00:00</code></td>
-<td><code>{"rating": 4, "comment": "実践的な内容で良かったです"}</code></td>
-</tr>
-<tr>
-<td><code>EVT002</code></td>
-<td><code>REV001</code></td>
-<td><code>ReviewCommentEdited</code></td>
-<td><code>USER001</code></td>
-<td><code>2023-01-03 12:00:00</code></td>
-<td><code>{"comment": "実践的な内容で良かったです。ただし初心者には少し難しいかも"}</code></td>
-</tr>
-<tr>
-<td><code>EVT003</code></td>
-<td><code>REV001</code></td>
-<td><code>ReviewRatingChanged</code></td>
-<td><code>USER001</code></td>
-<td><code>2023-01-05 09:30:00</code></td>
-<td><code>{"rating": 5}</code></td>
-</tr>
-<tr>
-<td><code>EVT004</code></td>
-<td><code>REV001</code></td>
-<td><code>ReviewDeleted</code></td>
-<td><code>ADMIN001</code></td>
-<td><code>2023-01-07 15:00:00</code></td>
-<td><code>{"reason": "policy violation"}</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>EventId</th>
+      <th>ReviewId</th>
+      <th>EventType</th>
+      <th>OperatorId</th>
+      <th>OccurredAt</th>
+      <th>Payload</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>EVT001</code></td>
+      <td><code>REV001</code></td>
+      <td><code>ReviewCreated</code></td>
+      <td><code>USER001</code></td>
+      <td><code>2023-01-01 10:00:00</code></td>
+      <td><code>{&quot;rating&quot;: 4, &quot;comment&quot;: &quot;実践的な内容で良かったです&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>EVT002</code></td>
+      <td><code>REV001</code></td>
+      <td><code>ReviewCommentEdited</code></td>
+      <td><code>USER001</code></td>
+      <td><code>2023-01-03 12:00:00</code></td>
+      <td><code>{&quot;comment&quot;: &quot;実践的な内容で良かったです。ただし初心者には少し難しいかも&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>EVT003</code></td>
+      <td><code>REV001</code></td>
+      <td><code>ReviewRatingChanged</code></td>
+      <td><code>USER001</code></td>
+      <td><code>2023-01-05 09:30:00</code></td>
+      <td><code>{&quot;rating&quot;: 5}</code></td>
+    </tr>
+    <tr>
+      <td><code>EVT004</code></td>
+      <td><code>REV001</code></td>
+      <td><code>ReviewDeleted</code></td>
+      <td><code>ADMIN001</code></td>
+      <td><code>2023-01-07 15:00:00</code></td>
+      <td><code>{&quot;reason&quot;: &quot;policy violation&quot;}</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <h2 id="21-6">21-6 イベントソーシング適用の戦略的判断<a class="headerlink" href="#21-6" title="Permanent link">&para;</a></h2>
 <h3 id="21-6-1">21-6-1 問題の本質を見極める<a class="headerlink" href="#21-6-1" title="Permanent link">&para;</a></h3>
 <p>「データの履歴が欲しい」だけで採用せず、単純な変更ログで十分なのか、任意時点の完全な状態再現が必要なのかを見極める。</p>
 <p>例えば、次のような変更ログテーブル設計ではイベントソーシングを使用していない。</p>
 <table>
-<thead>
-<tr>
-<th>log_id</th>
-<th>review_id</th>
-<th>action</th>
-<th>operator_id</th>
-<th>occurred_at</th>
-<th>changed_fields</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>LOG001</code></td>
-<td><code>REV001</code></td>
-<td><code>CREATE</code></td>
-<td><code>USER001</code></td>
-<td><code>2023-01-01 10:00:00</code></td>
-<td><code>{"rating": 4, "comment": "実践的な内容で良かったです"}</code></td>
-</tr>
-<tr>
-<td><code>LOG002</code></td>
-<td><code>REV001</code></td>
-<td><code>UPDATE</code></td>
-<td><code>USER001</code></td>
-<td><code>2023-01-03 12:00:00</code></td>
-<td><code>{"comment": "実践的な内容で良かったです。ただし初心者には少し難しいかも"}</code></td>
-</tr>
-<tr>
-<td><code>LOG003</code></td>
-<td><code>REV001</code></td>
-<td><code>UPDATE</code></td>
-<td><code>USER001</code></td>
-<td><code>2023-01-05 09:30:00</code></td>
-<td><code>{"rating": 5}</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>log_id</th>
+      <th>review_id</th>
+      <th>action</th>
+      <th>operator_id</th>
+      <th>occurred_at</th>
+      <th>changed_fields</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>LOG001</code></td>
+      <td><code>REV001</code></td>
+      <td><code>CREATE</code></td>
+      <td><code>USER001</code></td>
+      <td><code>2023-01-01 10:00:00</code></td>
+      <td><code>{&quot;rating&quot;: 4, &quot;comment&quot;: &quot;実践的な内容で良かったです&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>LOG002</code></td>
+      <td><code>REV001</code></td>
+      <td><code>UPDATE</code></td>
+      <td><code>USER001</code></td>
+      <td><code>2023-01-03 12:00:00</code></td>
+      <td><code>{&quot;comment&quot;: &quot;実践的な内容で良かったです。ただし初心者には少し難しいかも&quot;}</code></td>
+    </tr>
+    <tr>
+      <td><code>LOG003</code></td>
+      <td><code>REV001</code></td>
+      <td><code>UPDATE</code></td>
+      <td><code>USER001</code></td>
+      <td><code>2023-01-05 09:30:00</code></td>
+      <td><code>{&quot;rating&quot;: 5}</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <h3 id="21-6-2">21-6-2 段階的な意思決定プロセス<a class="headerlink" href="#21-6-2" title="Permanent link">&para;</a></h3>
 <p>イベントソーシングを段階的に導入する。</p>
 <ol>
@@ -34353,31 +34359,32 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <p><img alt="software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-1.png" /></p>
 <h3 id="21-7-2">21-7-2 スナップショットの作成タイミング<a class="headerlink" href="#21-7-2" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th>戦略</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>イベント数ベース</td>
-<td>一定数（例: 100 件）のイベントが蓄積されるたびに作成</td>
-</tr>
-<tr>
-<td>時間ベース</td>
-<td>定期的（例: 1 日 1 回の深夜）に作成</td>
-</tr>
-<tr>
-<td>特定イベント発生時</td>
-<td>重要な状態変更（例: 注文確定時）の際に作成</td>
-</tr>
-<tr>
-<td>ハイブリッド戦略</td>
-<td>上記を組み合わせて使用</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>戦略</th>
+      <th>内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>イベント数ベース</td>
+      <td>一定数（例: 100 件）のイベントが蓄積されるたびに作成</td>
+    </tr>
+    <tr>
+      <td>時間ベース</td>
+      <td>定期的（例: 1 日 1 回の深夜）に作成</td>
+    </tr>
+    <tr>
+      <td>特定イベント発生時</td>
+      <td>重要な状態変更（例: 注文確定時）の際に作成</td>
+    </tr>
+    <tr>
+      <td>ハイブリッド戦略</td>
+      <td>上記を組み合わせて使用</td>
+    </tr>
+  </tbody>
 </table>
+
 <h3 id="21-7-3">21-7-3 イベント数ベースのスナップショット作成例<a class="headerlink" href="#21-7-3" title="Permanent link">&para;</a></h3>
 <p><img alt="software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-2.png" /></p>
 <h3 id="21-7-4">21-7-4 スナップショットの導入検討<a class="headerlink" href="#21-7-4" title="Permanent link">&para;</a></h3>

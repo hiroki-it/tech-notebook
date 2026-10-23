@@ -35222,7 +35222,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:23:00 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -35447,71 +35447,72 @@
 <p>Saga オーケストレーターごとに DB を分割するとよい。</p>
 <p>AWS StepFunctions のステートも設計例として、参考になる。</p>
 <table>
-<thead>
-<tr>
-<th><code>id</code></th>
-<th><code>order_saga_execution_id</code></th>
-<th><code>order_saga_current_step</code></th>
-<th><code>order_id</code></th>
-<th><code>order_saga_payload</code></th>
-<th><code>order_saga_status</code></th>
-<th><code>order_saga_state</code></th>
-<th><code>order_saga_version</code></th>
-<th><code>start_data</code></th>
-<th><code>end_data</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td><code>9db5b6da-daba-4633-b3cf-9c79f2bcf6f5</code></td>
-<td>CreditApproval</td>
-<td>1</td>
-<td><code>"\"order-id\": 1, \"customer-id\": 456, \"payment-due\": 4999, \"credit-card-no\": \"xxxx-yyyy-dddd-9999\"}"</code></td>
-<td>SUCCEEDED</td>
-<td><code>"{\"creditApproval\":\"SUCCEEDED\"}"</code></td>
-<td>楽観的ロックに使用するバージョン値 (例：最終更新日など)</td>
-<td>開始時刻</td>
-<td>終了時刻</td>
-</tr>
-<tr>
-<td>2</td>
-<td><code>b1f14b72-393d-432b-8ec2-782974a6ed60</code></td>
-<td>Payment</td>
-<td>1</td>
-<td><code>"{ \"order-id\": 1, \"customer-id\": 456, ... }"</code></td>
-<td>STARTED</td>
-<td><code>"{\"creditApproval\":\"SUCCEEDED\",\"payment\":\"STARTED\"}"</code></td>
-<td>〃</td>
-<td>〃</td>
-<td>〃</td>
-</tr>
-<tr>
-<td>3</td>
-<td><code>b38229c6-30df-4166-a725-8b2c578e5ed5</code></td>
-<td>CreditApproval</td>
-<td>2</td>
-<td><code>"{ \"order-id\": 2, \"customer-id\": 456, ... }"</code></td>
-<td>STARTED</td>
-<td><code>"{\"creditApproval\":\"STARTED\"}"</code></td>
-<td>〃</td>
-<td>〃</td>
-<td>〃</td>
-</tr>
-<tr>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th><code>id</code></th>
+      <th><code>order_saga_execution_id</code></th>
+      <th><code>order_saga_current_step</code></th>
+      <th><code>order_id</code></th>
+      <th><code>order_saga_payload</code></th>
+      <th><code>order_saga_status</code></th>
+      <th><code>order_saga_state</code></th>
+      <th><code>order_saga_version</code></th>
+      <th><code>start_data</code></th>
+      <th><code>end_data</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><code>9db5b6da-daba-4633-b3cf-9c79f2bcf6f5</code></td>
+      <td>CreditApproval</td>
+      <td>1</td>
+      <td><code>&quot;\&quot;order-id\&quot;: 1, \&quot;customer-id\&quot;: 456, \&quot;payment-due\&quot;: 4999, \&quot;credit-card-no\&quot;: \&quot;xxxx-yyyy-dddd-9999\&quot;}&quot;</code></td>
+      <td>SUCCEEDED</td>
+      <td><code>&quot;{\&quot;creditApproval\&quot;:\&quot;SUCCEEDED\&quot;}&quot;</code></td>
+      <td>楽観的ロックに使用するバージョン値 (例：最終更新日など)</td>
+      <td>開始時刻</td>
+      <td>終了時刻</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code>b1f14b72-393d-432b-8ec2-782974a6ed60</code></td>
+      <td>Payment</td>
+      <td>1</td>
+      <td><code>&quot;{ \&quot;order-id\&quot;: 1, \&quot;customer-id\&quot;: 456, ... }&quot;</code></td>
+      <td>STARTED</td>
+      <td><code>&quot;{\&quot;creditApproval\&quot;:\&quot;SUCCEEDED\&quot;,\&quot;payment\&quot;:\&quot;STARTED\&quot;}&quot;</code></td>
+      <td>〃</td>
+      <td>〃</td>
+      <td>〃</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><code>b38229c6-30df-4166-a725-8b2c578e5ed5</code></td>
+      <td>CreditApproval</td>
+      <td>2</td>
+      <td><code>&quot;{ \&quot;order-id\&quot;: 2, \&quot;customer-id\&quot;: 456, ... }&quot;</code></td>
+      <td>STARTED</td>
+      <td><code>&quot;{\&quot;creditApproval\&quot;:\&quot;STARTED\&quot;}&quot;</code></td>
+      <td>〃</td>
+      <td>〃</td>
+      <td>〃</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://www.infoq.com/articles/saga-orchestration-outbox/">Saga Orchestration for Microservices Using the Outbox Pattern - InfoQ</a></li>
@@ -36122,39 +36123,40 @@
 <p>Outbox パターンでは、Saga ログテーブルに加えて、Outbox テーブルを作成する。</p>
 <p>メッセージリレージョブは Outbox テーブルのイベントを定期的にクエリし、メッセージブローカーにパブリッシュする。</p>
 <table>
-<thead>
-<tr>
-<th>Id</th>
-<th>AggregateType</th>
-<th>AggregateId</th>
-<th>Type</th>
-<th>Payload</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ec6e</td>
-<td>Order</td>
-<td>123</td>
-<td>OrderCreated</td>
-<td><code>{"id": 123, ...}</code></td>
-</tr>
-<tr>
-<td>8af8</td>
-<td>Order</td>
-<td>456</td>
-<td>OrderDetailCanceled</td>
-<td><code>{"id": 456, ...}</code></td>
-</tr>
-<tr>
-<td>890b</td>
-<td>Customer</td>
-<td>789</td>
-<td>InvoiceCreated</td>
-<td><code>{"id": 789, ...}</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>AggregateType</th>
+      <th>AggregateId</th>
+      <th>Type</th>
+      <th>Payload</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ec6e</td>
+      <td>Order</td>
+      <td>123</td>
+      <td>OrderCreated</td>
+      <td><code>{&quot;id&quot;: 123, ...}</code></td>
+    </tr>
+    <tr>
+      <td>8af8</td>
+      <td>Order</td>
+      <td>456</td>
+      <td>OrderDetailCanceled</td>
+      <td><code>{&quot;id&quot;: 456, ...}</code></td>
+    </tr>
+    <tr>
+      <td>890b</td>
+      <td>Customer</td>
+      <td>789</td>
+      <td>InvoiceCreated</td>
+      <td><code>{&quot;id&quot;: 789, ...}</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <p><img alt="saga-pattern_orchestrator_outbox-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern.png" /></p>
 <blockquote>
 <ul>

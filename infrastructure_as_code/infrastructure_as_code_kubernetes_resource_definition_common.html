@@ -34936,7 +34936,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月6日 18:19:37 JST">2026-10-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -35033,21 +35033,22 @@
 <p>Kubernetes リソースに関する情報を設定する。</p>
 <p><code>.metadata.annotations</code> キー配下にも同じキーがあることに注意する。</p>
 <table>
-<thead>
-<tr>
-<th>キー</th>
-<th>値の例</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>kubernetes.io/createdby</code></td>
-<td><code>aws-ebs-dynamic-provisioner</code></td>
-<td>Kubernetes リソースを作成したツールを設定する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>kubernetes.io/createdby</code></td>
+      <td><code>aws-ebs-dynamic-provisioner</code></td>
+      <td>Kubernetes リソースを作成したツールを設定する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="ingress">Ingress の場合<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h3>
 <h4 id="kubernetesioingressclass">▼ kubernetes.io/ingress.class<a class="headerlink" href="#kubernetesioingressclass" title="Permanent link">&para;</a></h4>
@@ -35087,52 +35088,54 @@
 <p>kube-controller が設定してくれるため、開発者が設定する必要はない。</p>
 <h4 id="_4">▼ 種類<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>キー</th>
-<th>値の例</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>pv.kubernetes.io/bound-by-controller</code></td>
-<td><code>yes</code></td>
-<td>PersistentVolume の CSI ドライバーの Controller がプロビジョニングしたかどうかを設定する。</td>
-</tr>
-<tr>
-<td><code>pv.kubernetes.io/provisioned-by</code></td>
-<td><code>ebs.csi.aws.com</code> (AWS EBS CSI ドライバー)、<code>kubernetes.io/aws-ebs</code> (非推奨)</td>
-<td>その PersistVolume を作成したツールを設定する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>pv.kubernetes.io/bound-by-controller</code></td>
+      <td><code>yes</code></td>
+      <td>PersistentVolume の CSI ドライバーの Controller がプロビジョニングしたかどうかを設定する。</td>
+    </tr>
+    <tr>
+      <td><code>pv.kubernetes.io/provisioned-by</code></td>
+      <td><code>ebs.csi.aws.com</code> (AWS EBS CSI ドライバー)、<code>kubernetes.io/aws-ebs</code> (非推奨)</td>
+      <td>その PersistVolume を作成したツールを設定する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="persistentvolumeclaim">PersistentVolumeClaim の場合<a class="headerlink" href="#persistentvolumeclaim" title="Permanent link">&para;</a></h3>
 <h4 id="volumekubernetesio">▼ <code>volume.kubernetes.io</code> キーとは<a class="headerlink" href="#volumekubernetesio" title="Permanent link">&para;</a></h4>
 <p>PersistentVolumeClaim に関する情報を設定する。</p>
 <p>kube-controller が設定してくれるため、開発者が設定する必要はない。</p>
 <table>
-<thead>
-<tr>
-<th>キー</th>
-<th>値の例</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>volume.kubernetes.io/storage-provisioner</code></td>
-<td><code>ebs.csi.aws.com</code> (AWS EBS CSI ドライバー)、<code>kubernetes.io/aws-ebs</code> (非推奨)、<code>k8s.io/minikube-hostpath</code> (Minikube)</td>
-<td>PersistentVolumeClaim に紐づく PersistentVolume を作成したツールを設定する。</td>
-</tr>
-<tr>
-<td><code>volume.kubernetes.io/selected-node</code></td>
-<td><code>ip-*-*-*-*.ap-northeast-1.compute.internal</code></td>
-<td>PersistentVolumeClaim に紐づく PersistentVolume が配置されている Node 名を設定する。正しい Node 名を指定しないと、<code>N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector</code> というエラーになってしまう。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>volume.kubernetes.io/storage-provisioner</code></td>
+      <td><code>ebs.csi.aws.com</code> (AWS EBS CSI ドライバー)、<code>kubernetes.io/aws-ebs</code> (非推奨)、<code>k8s.io/minikube-hostpath</code> (Minikube)</td>
+      <td>PersistentVolumeClaim に紐づく PersistentVolume を作成したツールを設定する。</td>
+    </tr>
+    <tr>
+      <td><code>volume.kubernetes.io/selected-node</code></td>
+      <td><code>ip-*-*-*-*.ap-northeast-1.compute.internal</code></td>
+      <td>PersistentVolumeClaim に紐づく PersistentVolume が配置されている Node 名を設定する。正しい Node 名を指定しないと、<code>N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector</code> というエラーになってしまう。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h2 id="03-02-metadatafinalizers">03-02. metadata.finalizers<a class="headerlink" href="#03-02-metadatafinalizers" title="Permanent link">&para;</a></h2>
 <h3 id="finalizers">finalizers とは<a class="headerlink" href="#finalizers" title="Permanent link">&para;</a></h3>
@@ -35204,66 +35207,67 @@
 <h4 id="appkubernetesio">▼ <code>app.kubernetes.io</code> キー<a class="headerlink" href="#appkubernetesio" title="Permanent link">&para;</a></h4>
 <p>Kubernetes 上で稼働するコンテナの情報を設定する。</p>
 <table>
-<thead>
-<tr>
-<th>キー</th>
-<th>値の例</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>app.kubernetes.io/app</code></td>
-<td><code>foo</code>、<code>foo-service</code></td>
-<td>マイクロサービス名を設定する。</td>
-</tr>
-<tr>
-<td><code>app.kubernetes.io/component</code></td>
-<td><code>app</code>、<code>database</code></td>
-<td>K8s リソースをシステムの要素と捉えたときに、その役割名を設定する。</td>
-</tr>
-<tr>
-<td><code>app.kubernetes.io/created-by</code></td>
-<td><code>kube-controller-manager</code></td>
-<td>この Kubernetes リソースを作成したリソースやユーザーを設定する。</td>
-</tr>
-<tr>
-<td><code>app.kubernetes.io/env</code></td>
-<td><code>prd</code>、<code>stg</code>、<code>tes</code>、<code>dev</code></td>
-<td>アプリケーションの実行環境名を設定する。</td>
-</tr>
-<tr>
-<td><code>app.kubernetes.io/instance</code></td>
-<td><code>mysql-12345</code></td>
-<td>アプリケーションのインスタンス名を設定する。</td>
-</tr>
-<tr>
-<td><code>app.kubernetes.io/managed-by</code></td>
-<td><code>helm</code>、<code>foo-operator</code></td>
-<td>K8s リソースの管理ツール名を設定する。</td>
-</tr>
-<tr>
-<td><code>app.kubernetes.io/name</code></td>
-<td><code>foo-service</code>、<code>prometheus</code></td>
-<td>アプリ側であればマイクロサービス名、インフラ側であればツール名を設定する。</td>
-</tr>
-<tr>
-<td><code>app.kubernetes.io/part-of</code></td>
-<td><code>bar</code></td>
-<td>K8s リソースをシステムの要素と捉えたときに、その親のシステム名を設定する。</td>
-</tr>
-<tr>
-<td><code>app.kubernetes.io/type</code></td>
-<td><code>host</code> (PV のマウント対象)</td>
-<td>リソースの設定方法の種類名を設定する。</td>
-</tr>
-<tr>
-<td><code>app.kubernetes.io/version</code></td>
-<td><code>5.7.21</code></td>
-<td>K8s リソースのリリースバージョン名を設定する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>app.kubernetes.io/app</code></td>
+      <td><code>foo</code>、<code>foo-service</code></td>
+      <td>マイクロサービス名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>app.kubernetes.io/component</code></td>
+      <td><code>app</code>、<code>database</code></td>
+      <td>K8s リソースをシステムの要素と捉えたときに、その役割名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>app.kubernetes.io/created-by</code></td>
+      <td><code>kube-controller-manager</code></td>
+      <td>この Kubernetes リソースを作成したリソースやユーザーを設定する。</td>
+    </tr>
+    <tr>
+      <td><code>app.kubernetes.io/env</code></td>
+      <td><code>prd</code>、<code>stg</code>、<code>tes</code>、<code>dev</code></td>
+      <td>アプリケーションの実行環境名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>app.kubernetes.io/instance</code></td>
+      <td><code>mysql-12345</code></td>
+      <td>アプリケーションのインスタンス名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>app.kubernetes.io/managed-by</code></td>
+      <td><code>helm</code>、<code>foo-operator</code></td>
+      <td>K8s リソースの管理ツール名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>app.kubernetes.io/name</code></td>
+      <td><code>foo-service</code>、<code>prometheus</code></td>
+      <td>アプリ側であればマイクロサービス名、インフラ側であればツール名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>app.kubernetes.io/part-of</code></td>
+      <td><code>bar</code></td>
+      <td>K8s リソースをシステムの要素と捉えたときに、その親のシステム名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>app.kubernetes.io/type</code></td>
+      <td><code>host</code> (PV のマウント対象)</td>
+      <td>リソースの設定方法の種類名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>app.kubernetes.io/version</code></td>
+      <td><code>5.7.21</code></td>
+      <td>K8s リソースのリリースバージョン名を設定する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/">Recommended Labels | Kubernetes</a></li>
@@ -35275,31 +35279,32 @@
 <p><code>.metadata.annotations</code> キー配下にも同じキーがあることに注意する。</p>
 <p>kube-controller が設定してくれるため、開発者が設定する必要はない。</p>
 <table>
-<thead>
-<tr>
-<th>キー</th>
-<th>値の例</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>kubernetes.io/arch</code></td>
-<td><code>amd64</code></td>
-<td>Node の CPU アーキテクチャを設定する。</td>
-</tr>
-<tr>
-<td><code>kubernetes.io/hostname</code></td>
-<td><code>ip-*-*-*-*.ap-northeast-1.compute.internal</code> (AWS の場合)</td>
-<td>Node のホスト名を設定する。</td>
-</tr>
-<tr>
-<td><code>kubernetes.io/os</code></td>
-<td><code>linux</code></td>
-<td>Node の OS を設定する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>kubernetes.io/arch</code></td>
+      <td><code>amd64</code></td>
+      <td>Node の CPU アーキテクチャを設定する。</td>
+    </tr>
+    <tr>
+      <td><code>kubernetes.io/hostname</code></td>
+      <td><code>ip-*-*-*-*.ap-northeast-1.compute.internal</code> (AWS の場合)</td>
+      <td>Node のホスト名を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>kubernetes.io/os</code></td>
+      <td><code>linux</code></td>
+      <td>Node の OS を設定する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="node">Node の場合<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ ラベルの設定方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
@@ -35314,94 +35319,98 @@
 <h4 id="nodekubernetesio">▼ <code>node.kubernetes.io</code> キー<a class="headerlink" href="#nodekubernetesio" title="Permanent link">&para;</a></h4>
 <p>Node の情報を設定する。</p>
 <table>
-<thead>
-<tr>
-<th>キー</th>
-<th>値の例</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>node.kubernetes.io/nodetype</code></td>
-<td><code>batch</code>、<code>ingress</code>、<code>master</code></td>
-<td>コンテナを持つ Pod のスケジューリング先とする Node グループを設定する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>node.kubernetes.io/nodetype</code></td>
+      <td><code>batch</code>、<code>ingress</code>、<code>master</code></td>
+      <td>コンテナを持つ Pod のスケジューリング先とする Node グループを設定する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="node-rolekubernetesio">▼ <code>node-role.kubernetes.io</code> キー<a class="headerlink" href="#node-rolekubernetesio" title="Permanent link">&para;</a></h4>
 <p>Node の taints を設定する。</p>
 <table>
-<thead>
-<tr>
-<th>キー</th>
-<th>値の例</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>node-role.kubernetes.io/master</code></td>
-<td><code>NoSchedule</code>、<code>PreferNoSchedule</code></td>
-<td>Pod のスケジューリングのルールを設定する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>node-role.kubernetes.io/master</code></td>
+      <td><code>NoSchedule</code>、<code>PreferNoSchedule</code></td>
+      <td>Pod のスケジューリングのルールを設定する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="topologykubernetesio">▼ <code>topology.kubernetes.io</code> キー<a class="headerlink" href="#topologykubernetesio" title="Permanent link">&para;</a></h4>
 <p>Node に関する情報を設定する。</p>
 <p>kube-controller が設定してくれるため、開発者が設定する必要はない。</p>
 <table>
-<thead>
-<tr>
-<th>キー</th>
-<th>値の例</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>topology.kubernetes.io/region</code></td>
-<td><code>ap-northeast-1</code> (AWS の場合)</td>
-<td>Node が稼働しているリージョンを設定する。</td>
-</tr>
-<tr>
-<td><code>topology.kubernetes.io/zone</code></td>
-<td><code>ap-northeast-1a</code> (AWS の場合)</td>
-<td>Node が稼働している AZ を設定する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>topology.kubernetes.io/region</code></td>
+      <td><code>ap-northeast-1</code> (AWS の場合)</td>
+      <td>Node が稼働しているリージョンを設定する。</td>
+    </tr>
+    <tr>
+      <td><code>topology.kubernetes.io/zone</code></td>
+      <td><code>ap-northeast-1a</code> (AWS の場合)</td>
+      <td>Node が稼働している AZ を設定する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="roleclusterrole">Role、ClusterRole の場合<a class="headerlink" href="#roleclusterrole" title="Permanent link">&para;</a></h3>
 <h4 id="rbacauthorizationk8sio">▼ <code>rbac.authorization.k8s.io</code> キー<a class="headerlink" href="#rbacauthorizationk8sio" title="Permanent link">&para;</a></h4>
 <p>すべての Kubernetes リソースに対して、一括して認可スコープを定義する。</p>
 <p>特定の Kubernetes リソースの認可スコープを狭くしたい場合、<code>.rules</code> キー配下でそれを定義する。</p>
 <table>
-<thead>
-<tr>
-<th>キー</th>
-<th>値の例</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>rbac.authorization.k8s.io/aggregate-to-admin</code></td>
-<td><code>true</code></td>
-<td>Cluster 内のすべての Kubernetes リソースにすべての操作が可能な認可スコープを設定する。</td>
-</tr>
-<tr>
-<td><code>rbac.authorization.k8s.io/aggregate-to-edit</code></td>
-<td><code>true</code></td>
-<td>Namespace 内のすべての Kubernetes リソースに変更操作が可能な認可スコープを設定する。</td>
-</tr>
-<tr>
-<td><code>rbac.authorization.k8s.io/aggregate-to-view</code></td>
-<td><code>true</code></td>
-<td>Cluster 内のすべての Kubernetes リソースに対して閲覧操作が可能な認可スコープを設定する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>キー</th>
+      <th>値の例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>rbac.authorization.k8s.io/aggregate-to-admin</code></td>
+      <td><code>true</code></td>
+      <td>Cluster 内のすべての Kubernetes リソースにすべての操作が可能な認可スコープを設定する。</td>
+    </tr>
+    <tr>
+      <td><code>rbac.authorization.k8s.io/aggregate-to-edit</code></td>
+      <td><code>true</code></td>
+      <td>Namespace 内のすべての Kubernetes リソースに変更操作が可能な認可スコープを設定する。</td>
+    </tr>
+    <tr>
+      <td><code>rbac.authorization.k8s.io/aggregate-to-view</code></td>
+      <td><code>true</code></td>
+      <td>Cluster 内のすべての Kubernetes リソースに対して閲覧操作が可能な認可スコープを設定する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRole</span>
 <span class="nt">metadata</span><span class="p">:</span>

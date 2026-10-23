@@ -36618,7 +36618,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月21日 19:27:44 JST">2026-10-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -36679,71 +36679,72 @@
 <h2 id="01-02">01-02. セットアップ (コンソールの場合)<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
 <h3 id="_7">設定項目と説明<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th>設定項目</th>
-<th>説明</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>名前</td>
-<td>クラスターの名前を設定する。</td>
-<td></td>
-</tr>
-<tr>
-<td>Kubernetes バージョン</td>
-<td>Amazon EKS 上で稼働する Kubernetes のバージョンを設定する。</td>
-<td>Amazon EKS が対応できる Kubernetes のバージョンは以下を参考にせよ。<br><a href="https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html">https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html</a></td>
-</tr>
-<tr>
-<td>クラスターサービスロール</td>
-<td>Amazon EKS Cluster のサービスリンクロールを設定する。</td>
-<td>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html">https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html</a></td>
-</tr>
-<tr>
-<td>シークレット</td>
-<td>Secret に保管するデータを AWS KMS の暗号化キーで暗号化するか否かを設定する。</td>
-<td></td>
-</tr>
-<tr>
-<td>Amazon VPC、サブネット</td>
-<td>ENI を配置するサブネットを設定する。</td>
-<td>複数の AZ にまたがっている必要がある。</td>
-</tr>
-<tr>
-<td>クラスターセキュリティグループ</td>
-<td>Amazon EKS Cluster のセキュリティグループを設定する。</td>
-<td>インバウンドとアウトバウンド通信の両方のルールで、すべての IP アドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWS によって <code>eks-cluster-sg-&lt;Amazon EKS Cluster名&gt;</code> というセキュリティグループも自動設定される。<br><a href="https://yuutookun.hatenablog.com/entry/fargate_for_eks">https://yuutookun.hatenablog.com/entry/fargate_for_eks</a></td>
-</tr>
-<tr>
-<td>クラスターIP アドレスファミリー</td>
-<td>Pod と Service に割り当てる ClusterIP の IP アドレスタイプ (IPv4、IPv6) を設定する。</td>
-<td></td>
-</tr>
-<tr>
-<td>CIDR ブロック</td>
-<td>ClusterIP Service に割り当てる IP アドレスの CIDR ブロックを設定する。</td>
-<td></td>
-</tr>
-<tr>
-<td>クラスターエンドポイントアクセス</td>
-<td>kube-apiserver のリクエスト制限を設定する。</td>
-<td></td>
-</tr>
-<tr>
-<td>ネットワークアドオン</td>
-<td>ネットワークに関する Amazon EKS アドオンを設定する。</td>
-<td>執筆時点 (2023/02/05) では、AWS kube-proxy、AWS CoreDNS、Amazon VPC CNI を使用できる。</td>
-</tr>
-<tr>
-<td>コントロールプレーンのログ</td>
-<td>コントロールプレーンコンポーネントのログを Amazon CloudWatch Logs に出力するかどうかを設定する。</td>
-<td>執筆時点 (2023/02/05) では、kube-apiserver (処理ログと監査ログの両方) 、aws-iam-authenticator-server (処理ログ) 、kube-controller-manager (処理ログ) 、cloud-controller-manager (処理ログ) 、kube-scheduler (処理ログ) のログを出力できる。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>名前</td>
+      <td>クラスターの名前を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Kubernetes バージョン</td>
+      <td>Amazon EKS 上で稼働する Kubernetes のバージョンを設定する。</td>
+      <td>Amazon EKS が対応できる Kubernetes のバージョンは以下を参考にせよ。<br><a href="https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html">https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html</a></td>
+    </tr>
+    <tr>
+      <td>クラスターサービスロール</td>
+      <td>Amazon EKS Cluster のサービスリンクロールを設定する。</td>
+      <td>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html">https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html</a></td>
+    </tr>
+    <tr>
+      <td>シークレット</td>
+      <td>Secret に保管するデータを AWS KMS の暗号化キーで暗号化するか否かを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Amazon VPC、サブネット</td>
+      <td>ENI を配置するサブネットを設定する。</td>
+      <td>複数の AZ にまたがっている必要がある。</td>
+    </tr>
+    <tr>
+      <td>クラスターセキュリティグループ</td>
+      <td>Amazon EKS Cluster のセキュリティグループを設定する。</td>
+      <td>インバウンドとアウトバウンド通信の両方のルールで、すべての IP アドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWS によって <code>eks-cluster-sg-&lt;Amazon EKS Cluster名&gt;</code> というセキュリティグループも自動設定される。<br><a href="https://yuutookun.hatenablog.com/entry/fargate_for_eks">https://yuutookun.hatenablog.com/entry/fargate_for_eks</a></td>
+    </tr>
+    <tr>
+      <td>クラスターIP アドレスファミリー</td>
+      <td>Pod と Service に割り当てる ClusterIP の IP アドレスタイプ (IPv4、IPv6) を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>CIDR ブロック</td>
+      <td>ClusterIP Service に割り当てる IP アドレスの CIDR ブロックを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>クラスターエンドポイントアクセス</td>
+      <td>kube-apiserver のリクエスト制限を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ネットワークアドオン</td>
+      <td>ネットワークに関する Amazon EKS アドオンを設定する。</td>
+      <td>執筆時点 (2023/02/05) では、AWS kube-proxy、AWS CoreDNS、Amazon VPC CNI を使用できる。</td>
+    </tr>
+    <tr>
+      <td>コントロールプレーンのログ</td>
+      <td>コントロールプレーンコンポーネントのログを Amazon CloudWatch Logs に出力するかどうかを設定する。</td>
+      <td>執筆時点 (2023/02/05) では、kube-apiserver (処理ログと監査ログの両方) 、aws-iam-authenticator-server (処理ログ) 、kube-controller-manager (処理ログ) 、cloud-controller-manager (処理ログ) 、kube-scheduler (処理ログ) のログを出力できる。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h2 id="01-03-terraform">01-03. セットアップ (Terraform の場合)<a class="headerlink" href="#01-03-terraform" title="Permanent link">&para;</a></h2>
 <p>ここでは、Terraform の公式モジュールを使用する。</p>
@@ -36865,31 +36866,32 @@
 <h2 id="02">02. コントロールプレーンのコンポーネント<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_8">対応関係<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th>コントロールプレーン上の AWS リソース</th>
-<th>Kubernetes リソース</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Amazon EKS コントロールプレーン</td>
-<td>コントロールプレーン Node</td>
-<td><a href="https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html">https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html</a></td>
-</tr>
-<tr>
-<td>kube-apiserver</td>
-<td>kube-apiserver</td>
-<td></td>
-</tr>
-<tr>
-<td>kube-apiserver のロードバランサー (例：HAProxy)</td>
-<td>NLB</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>コントロールプレーン上の AWS リソース</th>
+      <th>Kubernetes リソース</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon EKS コントロールプレーン</td>
+      <td>コントロールプレーン Node</td>
+      <td><a href="https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html">https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html</a></td>
+    </tr>
+    <tr>
+      <td>kube-apiserver</td>
+      <td>kube-apiserver</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>kube-apiserver のロードバランサー (例：HAProxy)</td>
+      <td>NLB</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="node">コントロールプレーン Node<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
 <p>コントロールプレーン Node は、ユーザーの管理外の Amazon VPC に所属している。</p>
@@ -37135,61 +37137,62 @@
 <h3 id="_13">対応関係<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p><img alt="eks" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks.png" /></p>
 <table>
-<thead>
-<tr>
-<th>データプレーン上の AWS リソース</th>
-<th>Kubernetes リソース</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Fargate ワーカーNode、Amazon EC2 ワーカーNode</td>
-<td>ワーカーNode</td>
-<td>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html">https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html</a></td>
-</tr>
-<tr>
-<td>Amazon EKS Cluster</td>
-<td>Cluster</td>
-<td>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/clusters.html">https://docs.aws.amazon.com/eks/latest/userguide/clusters.html</a></td>
-</tr>
-<tr>
-<td>AWS ALB</td>
-<td>Ingress</td>
-<td>Ingress は AWS ALB に置き換える必要がある。AWS Load Balancer Controller を作成すると、AWS ALB は自動的に作成される。<br>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html">https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html</a> <br>・<a href="https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes">https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes</a></td>
-</tr>
-<tr>
-<td>AWS Load Balancer Controller</td>
-<td>Ingress Controller</td>
-<td>AWS ALB を自動的に作成する。<br>・<a href="https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on">https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on</a></td>
-</tr>
-<tr>
-<td>Amazon API Gateway + NLB</td>
-<td></td>
-<td>・<a href="https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/">https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/</a></td>
-</tr>
-<tr>
-<td>EBS、AWS EFS</td>
-<td>PersistentVolume</td>
-<td>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/storage.html">https://docs.aws.amazon.com/eks/latest/userguide/storage.html</a></td>
-</tr>
-<tr>
-<td>Secrets Manager</td>
-<td>Secret</td>
-<td>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html">https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html</a></td>
-</tr>
-<tr>
-<td>AWS IAM ユーザー</td>
-<td>ServiceAccount、UserAccount</td>
-<td>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html">https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html</a></td>
-</tr>
-<tr>
-<td>AWS IAM ロール</td>
-<td>Role、ClusterRole</td>
-<td>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html">https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html</a></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>データプレーン上の AWS リソース</th>
+      <th>Kubernetes リソース</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Fargate ワーカーNode、Amazon EC2 ワーカーNode</td>
+      <td>ワーカーNode</td>
+      <td>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html">https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html</a></td>
+    </tr>
+    <tr>
+      <td>Amazon EKS Cluster</td>
+      <td>Cluster</td>
+      <td>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/clusters.html">https://docs.aws.amazon.com/eks/latest/userguide/clusters.html</a></td>
+    </tr>
+    <tr>
+      <td>AWS ALB</td>
+      <td>Ingress</td>
+      <td>Ingress は AWS ALB に置き換える必要がある。AWS Load Balancer Controller を作成すると、AWS ALB は自動的に作成される。<br>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html">https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html</a> <br>・<a href="https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes">https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes</a></td>
+    </tr>
+    <tr>
+      <td>AWS Load Balancer Controller</td>
+      <td>Ingress Controller</td>
+      <td>AWS ALB を自動的に作成する。<br>・<a href="https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on">https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on</a></td>
+    </tr>
+    <tr>
+      <td>Amazon API Gateway + NLB</td>
+      <td></td>
+      <td>・<a href="https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/">https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/</a></td>
+    </tr>
+    <tr>
+      <td>EBS、AWS EFS</td>
+      <td>PersistentVolume</td>
+      <td>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/storage.html">https://docs.aws.amazon.com/eks/latest/userguide/storage.html</a></td>
+    </tr>
+    <tr>
+      <td>Secrets Manager</td>
+      <td>Secret</td>
+      <td>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html">https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html</a></td>
+    </tr>
+    <tr>
+      <td>AWS IAM ユーザー</td>
+      <td>ServiceAccount、UserAccount</td>
+      <td>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html">https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html</a></td>
+    </tr>
+    <tr>
+      <td>AWS IAM ロール</td>
+      <td>Role、ClusterRole</td>
+      <td>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html">https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html</a></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/yoshinori_satoh/articles/2021-02-13-eks-ecs-compare">AWS EKSとECSの比較と選択基準</a></li>
@@ -37557,53 +37560,54 @@
 <p>これにより、データプレーンが Amazon VPC 外のコントロールプレーンと通信できるようになる。</p>
 <p>データプレーンがコントロールプレーンとリクエストを送受信する場合、コントロールプレーンのクラスターエンドポイントの設定 (パブリック、プライベート) によって、マネージドな Interface 型 Amazon VPC エンドポイントまたは AWS NAT Gateway が必要になる。</p>
 <table>
-<thead>
-<tr>
-<th>Amazon VPC エンドポイントの接続先</th>
-<th>タイプ</th>
-<th>プライベート DNS 名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Amazon EKS コントロールプレーン</td>
-<td>(たぶん) Interface</td>
-<td>マネージド</td>
-<td>プライベートサブネット内の Amazon EC2 Node からコントロールプレーンのある Amazon VPC にリクエストを送信するため。</td>
-</tr>
-<tr>
-<td>Amazon CloudWatch Logs</td>
-<td>Interface</td>
-<td><code>logs.ap-northeast-1.amazonaws.com</code></td>
-<td>Pod 内のコンテナのログを POST リクエストを送信するため。</td>
-</tr>
-<tr>
-<td>Amazon ECR</td>
-<td>Interface</td>
-<td><code>api.ecr.ap-northeast-1.amazonaws.com</code><br><code>*.dkr.ecr.ap-northeast-1.amazonaws.com</code></td>
-<td>コンテナイメージの GET リクエストを送信するため。</td>
-</tr>
-<tr>
-<td>Amazon S3</td>
-<td>Gateway</td>
-<td>なし</td>
-<td>コンテナイメージのレイヤーを POST リクエストを送信するため</td>
-</tr>
-<tr>
-<td>AWS Systems Manager</td>
-<td>Interface</td>
-<td><code>ssm.ap-northeast-1.amazonaws.com</code></td>
-<td>AWS Systems Manager のパラメーターストアに GET リクエストを送信するため。</td>
-</tr>
-<tr>
-<td>AWS Secrets Manager</td>
-<td>Interface</td>
-<td><code>ssmmessage.ap-northeast-1.amazonaws.com</code></td>
-<td>Secrets Manager を使用するため。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Amazon VPC エンドポイントの接続先</th>
+      <th>タイプ</th>
+      <th>プライベート DNS 名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon EKS コントロールプレーン</td>
+      <td>(たぶん) Interface</td>
+      <td>マネージド</td>
+      <td>プライベートサブネット内の Amazon EC2 Node からコントロールプレーンのある Amazon VPC にリクエストを送信するため。</td>
+    </tr>
+    <tr>
+      <td>Amazon CloudWatch Logs</td>
+      <td>Interface</td>
+      <td><code>logs.ap-northeast-1.amazonaws.com</code></td>
+      <td>Pod 内のコンテナのログを POST リクエストを送信するため。</td>
+    </tr>
+    <tr>
+      <td>Amazon ECR</td>
+      <td>Interface</td>
+      <td><code>api.ecr.ap-northeast-1.amazonaws.com</code><br><code>*.dkr.ecr.ap-northeast-1.amazonaws.com</code></td>
+      <td>コンテナイメージの GET リクエストを送信するため。</td>
+    </tr>
+    <tr>
+      <td>Amazon S3</td>
+      <td>Gateway</td>
+      <td>なし</td>
+      <td>コンテナイメージのレイヤーを POST リクエストを送信するため</td>
+    </tr>
+    <tr>
+      <td>AWS Systems Manager</td>
+      <td>Interface</td>
+      <td><code>ssm.ap-northeast-1.amazonaws.com</code></td>
+      <td>AWS Systems Manager のパラメーターストアに GET リクエストを送信するため。</td>
+    </tr>
+    <tr>
+      <td>AWS Secrets Manager</td>
+      <td>Interface</td>
+      <td><code>ssmmessage.ap-northeast-1.amazonaws.com</code></td>
+      <td>Secrets Manager を使用するため。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/eks_basic/">EKS入門者向けに「今こそ振り返るEKSの基礎」というタイトルで登壇しました #jawsug_ct | DevelopersIO</a></li>
@@ -37645,53 +37649,54 @@
 <p><img alt="eks_control-plane_worker_network_public_private_endpoint" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network_public_private_endpoint.png" /></p>
 <p>Amazon VPC 外の AWS リソース (例：Amazon EKS コントロールプレーン、Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、DynamoDB など) にリクエストを送信する場合、専用の Amazon VPC エンドポイントを設ける必要がある。</p>
 <table>
-<thead>
-<tr>
-<th>Amazon VPC エンドポイントの接続先</th>
-<th>タイプ</th>
-<th>プライベート DNS 名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Amazon EKS コントロールプレーン</td>
-<td>(たぶん) Interface</td>
-<td>マネージド</td>
-<td>プライベートサブネット内の Amazon EC2 Node からコントロールプレーンのある Amazon VPC にリクエストを送信するため。</td>
-</tr>
-<tr>
-<td>Amazon CloudWatch Logs</td>
-<td>Interface</td>
-<td><code>logs.ap-northeast-1.amazonaws.com</code></td>
-<td>Pod 内のコンテナのログを POST リクエストを送信するため。</td>
-</tr>
-<tr>
-<td>Amazon ECR</td>
-<td>Interface</td>
-<td><code>api.ecr.ap-northeast-1.amazonaws.com</code><br><code>*.dkr.ecr.ap-northeast-1.amazonaws.com</code></td>
-<td>コンテナイメージの GET リクエストを送信するため。</td>
-</tr>
-<tr>
-<td>Amazon S3</td>
-<td>Gateway</td>
-<td>なし</td>
-<td>コンテナイメージのレイヤーを POST リクエストを送信するため</td>
-</tr>
-<tr>
-<td>AWS Systems Manager</td>
-<td>Interface</td>
-<td><code>ssm.ap-northeast-1.amazonaws.com</code></td>
-<td>AWS Systems Manager のパラメーターストアに GET リクエストを送信するため。</td>
-</tr>
-<tr>
-<td>Secrets Manager</td>
-<td>Interface</td>
-<td><code>ssmmessage.ap-northeast-1.amazonaws.com</code></td>
-<td>Secrets Manager を使用するため。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Amazon VPC エンドポイントの接続先</th>
+      <th>タイプ</th>
+      <th>プライベート DNS 名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon EKS コントロールプレーン</td>
+      <td>(たぶん) Interface</td>
+      <td>マネージド</td>
+      <td>プライベートサブネット内の Amazon EC2 Node からコントロールプレーンのある Amazon VPC にリクエストを送信するため。</td>
+    </tr>
+    <tr>
+      <td>Amazon CloudWatch Logs</td>
+      <td>Interface</td>
+      <td><code>logs.ap-northeast-1.amazonaws.com</code></td>
+      <td>Pod 内のコンテナのログを POST リクエストを送信するため。</td>
+    </tr>
+    <tr>
+      <td>Amazon ECR</td>
+      <td>Interface</td>
+      <td><code>api.ecr.ap-northeast-1.amazonaws.com</code><br><code>*.dkr.ecr.ap-northeast-1.amazonaws.com</code></td>
+      <td>コンテナイメージの GET リクエストを送信するため。</td>
+    </tr>
+    <tr>
+      <td>Amazon S3</td>
+      <td>Gateway</td>
+      <td>なし</td>
+      <td>コンテナイメージのレイヤーを POST リクエストを送信するため</td>
+    </tr>
+    <tr>
+      <td>AWS Systems Manager</td>
+      <td>Interface</td>
+      <td><code>ssm.ap-northeast-1.amazonaws.com</code></td>
+      <td>AWS Systems Manager のパラメーターストアに GET リクエストを送信するため。</td>
+    </tr>
+    <tr>
+      <td>Secrets Manager</td>
+      <td>Interface</td>
+      <td><code>ssmmessage.ap-northeast-1.amazonaws.com</code></td>
+      <td>Secrets Manager を使用するため。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access">Cluster API server endpoint - Amazon EKS</a></li>
@@ -37745,27 +37750,27 @@
 <h3 id="_25">監視<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <h4 id="_26">▼ ログ収集<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>Node 上のログの場所</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>/var/log/containers</code></td>
-<td>このディレクトリに、その Amazon EC2 ワーカーNode 上の Pod 内コンテナのログファイルのシンボリックリンクを作成する。</td>
-</tr>
-<tr>
-<td><code>var/log/aws-routed-eni/ipamd.log</code></td>
-<td>このディレクトリに、Amazon VPC CNI の L-IPAM デーモンのログを出力する。</td>
-</tr>
-<tr>
-<td><code>/var/log/aws-routed-eni/plugin.log</code></td>
-<td>同上</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Node 上のログの場所</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>/var/log/containers </code></td>
+      <td>このディレクトリに、その Amazon EC2 ワーカーNode 上の Pod 内コンテナのログファイルのシンボリックリンクを作成する。</td>
+    </tr>
+    <tr>
+      <td><code>var/log/aws-routed-eni/ipamd.log</code></td>
+      <td rowspan="2">このディレクトリに、Amazon VPC CNI の L-IPAM デーモンのログを出力する。</td>
+    </tr>
+    <tr>
+      <td><code>/var/log/aws-routed-eni/plugin.log</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/implementing-logging-monitoring-cloudwatch/kubernetes-eks-logging.html#eks-node-application-logging">https://docs.aws.amazon.com/prescriptive-guidance/latest/implementing-logging-monitoring-cloudwatch/kubernetes-eks-logging.html#eks-node-application-logging</a></li>
@@ -37840,21 +37845,22 @@
 <h3 id="amazon-ec2">Amazon EC2 へのタグ付けの例<a class="headerlink" href="#amazon-ec2" title="Permanent link">&para;</a></h3>
 <h4 id="node_9">▼ マネージド Node グループ<a class="headerlink" href="#node_9" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>タグ</th>
-<th>値</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Name</code></td>
-<td>Amazon EC2 ワーカーNode の名前</td>
-<td>Node グループで指定する起動テンプレートのタグに、<code>Name</code> タグを設定しておく。Amazon EC2 ワーカーNode の名前は <code>Name</code> タグで決まるため、起動テンプレートでワーカーNode 名を設定できる。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>タグ</th>
+      <th>値</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Name</code></td>
+      <td>Amazon EC2 ワーカーNode の名前</td>
+      <td>Node グループで指定する起動テンプレートのタグに、<code>Name</code> タグを設定しておく。Amazon EC2 ワーカーNode の名前は <code>Name</code> タグで決まるため、起動テンプレートでワーカーNode 名を設定できる。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html">Customize managed nodes with launch templates - Amazon EKS</a></li>
@@ -37862,26 +37868,27 @@
 </blockquote>
 <h4 id="node_10">▼ セルフマネージド Node グループ<a class="headerlink" href="#node_10" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>タグ</th>
-<th>値</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Name</code></td>
-<td>Amazon EC2 ワーカーNode の名前</td>
-<td>Amazon EC2 の名前は <code>Name</code> タグで決まる仕組みのため、Node グループに参加させる Amazon EC2 ワーカーNode の <code>Name</code> タグに、ワーカーNode 名を設定しておく。</td>
-</tr>
-<tr>
-<td><code>kubernetes.io/cluster/&lt;Amazon EKS Cluster名&gt;</code></td>
-<td><code>owned</code></td>
-<td>セルフマネージド型の Amazon EC2 ワーカーNode を使用する場合、ユーザーが作成した Amazon EC2 を Node グループに参加させるために、必要である。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>タグ</th>
+      <th>値</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Name</code></td>
+      <td>Amazon EC2 ワーカーNode の名前</td>
+      <td>Amazon EC2 の名前は <code>Name</code> タグで決まる仕組みのため、Node グループに参加させる Amazon EC2 ワーカーNode の <code>Name</code> タグに、ワーカーNode 名を設定しておく。</td>
+    </tr>
+    <tr>
+      <td><code>kubernetes.io/cluster/&lt;Amazon EKS Cluster名&gt;</code></td>
+      <td><code>owned</code></td>
+      <td>セルフマネージド型の Amazon EC2 ワーカーNode を使用する場合、ユーザーが作成した Amazon EC2 を Node グループに参加させるために、必要である。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/worker.html">Maintain nodes yourself with self-managed nodes - Amazon EKS</a></li>
@@ -38037,41 +38044,42 @@
 <p>なお、設定可能なすべてのパラメーターは、以下から確認できる。</p>
 <p>よく使用するパラメーター配下の通りである。</p>
 <table>
-<thead>
-<tr>
-<th>パラメーター</th>
-<th>例</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>--apiserver-endpoint</code></td>
-<td></td>
-<td>Amazon EKS Cluster の kube-apiserver のエンドポイントを設定する。</td>
-</tr>
-<tr>
-<td><code>--b64-cluster-ca</code></td>
-<td></td>
-<td>kube-apiserver のエンドポイントを設定した場合、HTTPS でリクエストするために、サーバー証明書を設定する。</td>
-</tr>
-<tr>
-<td><code>--container-runtime</code></td>
-<td><code>containerd</code></td>
-<td>コンテナランタイムの種類を設定する。</td>
-</tr>
-<tr>
-<td><code>--kubelet-extra-args</code></td>
-<td><code>--node-labels=nodetype=foo --max-pods=110</code></td>
-<td>KubeletConfiguration のデフォルト値を上書きする。</td>
-</tr>
-<tr>
-<td><code>--use-max-pods</code></td>
-<td><code>false</code></td>
-<td>kubelet の <code>--max-pods</code> オプションを有効化するフラグを設定する。Kubelet が実行可能な Pod 数を設定する。Kubelet ではこのオプションは非推奨になっており、代わりに KubeletConfiguration に渡すようにする。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>パラメーター</th>
+      <th>例</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--apiserver-endpoint </code></td>
+      <td></td>
+      <td>Amazon EKS Cluster の kube-apiserver のエンドポイントを設定する。</td>
+    </tr>
+    <tr>
+      <td><code>--b64-cluster-ca</code></td>
+      <td></td>
+      <td>kube-apiserver のエンドポイントを設定した場合、HTTPS でリクエストするために、サーバー証明書を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>--container-runtime</code></td>
+      <td><code>containerd</code></td>
+      <td>コンテナランタイムの種類を設定する。</td>
+    </tr>
+    <tr>
+      <td><code>--kubelet-extra-args</code></td>
+      <td><code>--node-labels=nodetype=foo --max-pods=110</code></td>
+      <td>KubeletConfiguration のデフォルト値を上書きする。</td>
+    </tr>
+    <tr>
+      <td><code>--use-max-pods</code></td>
+      <td><code>false</code></td>
+      <td>kubelet の <code>--max-pods</code> オプションを有効化するフラグを設定する。Kubelet が実行可能な Pod 数を設定する。Kubelet ではこのオプションは非推奨になっており、代わりに KubeletConfiguration に渡すようにする。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://github.com/awslabs/amazon-eks-ami/blob/v20231106/files/bootstrap.sh#L17-L41">amazon-eks-ami/files/bootstrap.sh at v20231106 · awslabs/amazon-eks-ami · GitHub</a></li>
@@ -38475,36 +38483,37 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <h4 id="fargate">▼ Fargate プロファイル<a class="headerlink" href="#fargate" title="Permanent link">&para;</a></h4>
 <p>Fargate を設定する。</p>
 <table>
-<thead>
-<tr>
-<th>コンポーネント名</th>
-<th>説明</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Pod 実行ロール</td>
-<td>kubelet が AWS リソースにリクエストを送信できるように、Pod にロールを設定する。</td>
-<td>・実行ポリシー (<code>AmazonEKSFargatePodExecutionRolePolicy</code>) には、Amazon ECR への認可スコープのみが付与されている。<br>・信頼されたエンティティでは、<code>eks-fargate-pods.amazonaws.com</code> を設定する必要がある。<br><a href="https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html">https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html</a></td>
-</tr>
-<tr>
-<td>サブネット</td>
-<td>Amazon EKS Fargate ワーカーNode が起動するサブネット ID を設定する。</td>
-<td>プライベートサブネットを設定する必要がある。</td>
-</tr>
-<tr>
-<td>ポッドセレクタ (Namespace)</td>
-<td>Amazon EKS Fargate ワーカーNode にスケジューリングさせる Pod を固定できるように、Pod の Namespace の値を設定する。</td>
-<td>・<code>kube-system</code> や <code>default</code> を指定する Kubernetes リソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・Istio や ArgoCD を、それ専用の Namespace で稼働させる場合は、その Namespace のためのプロファイルを作成しておく必要がある。</td>
-</tr>
-<tr>
-<td>ポッドセレクタ (Label)</td>
-<td>Amazon EKS Fargate ワーカーNode にスケジューリングさせる Pod を固定できるように、Pod の任意の label キーの値を設定する。</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>コンポーネント名</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Pod 実行ロール</td>
+      <td>kubelet が AWS リソースにリクエストを送信できるように、Pod にロールを設定する。</td>
+      <td>・実行ポリシー (<code>AmazonEKSFargatePodExecutionRolePolicy</code>) には、Amazon ECR への認可スコープのみが付与されている。<br>・信頼されたエンティティでは、<code>eks-fargate-pods.amazonaws.com</code> を設定する必要がある。<br><a href="https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html">https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html</a></td>
+    </tr>
+    <tr>
+      <td>サブネット</td>
+      <td>Amazon EKS Fargate ワーカーNode が起動するサブネット ID を設定する。</td>
+      <td>プライベートサブネットを設定する必要がある。</td>
+    </tr>
+    <tr>
+      <td>ポッドセレクタ (Namespace)</td>
+      <td>Amazon EKS Fargate ワーカーNode にスケジューリングさせる Pod を固定できるように、Pod の Namespace の値を設定する。</td>
+      <td>・<code>kube-system</code> や <code>default</code> を指定する Kubernetes リソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・Istio や ArgoCD を、それ専用の Namespace で稼働させる場合は、その Namespace のためのプロファイルを作成しておく必要がある。</td>
+    </tr>
+    <tr>
+      <td>ポッドセレクタ (Label)</td>
+      <td>Amazon EKS Fargate ワーカーNode にスケジューリングさせる Pod を固定できるように、Pod の任意の label キーの値を設定する。</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html#fargate-profile-components">Define which Pods use AWS Fargate when launched - Amazon EKS</a></li>

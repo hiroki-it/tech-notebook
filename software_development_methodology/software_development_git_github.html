@@ -34792,7 +34792,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:49:57 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -34994,31 +34994,32 @@ $<span class="w"> </span>./foo-bainary<span class="w"> </span>--version
 <p>ブランチのデプロイ先となる実行環境は、以下の通りに分類できる。</p>
 <p>より上位の実行環境ほど、本番環境に近くなる。</p>
 <table>
-<thead>
-<tr>
-<th>実行環境名</th>
-<th>ブランチ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>開発環境 (ローカルマシン)</td>
-<td><code>feature</code></td>
-</tr>
-<tr>
-<td>テスト環境 (サンドボックス環境、検証環境)</td>
-<td><code>develop/testing</code> (<code>develop/sandbox</code>)</td>
-</tr>
-<tr>
-<td>ステージング環境 (ユーザー受け入れ環境)</td>
-<td><code>develop/staging</code> (<code>develop/ua</code>)</td>
-</tr>
-<tr>
-<td>本番環境</td>
-<td><code>release</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>実行環境名</th>
+      <th>ブランチ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>開発環境 (ローカルマシン)</td>
+      <td><code>feature</code></td>
+    </tr>
+    <tr>
+      <td>テスト環境 (サンドボックス環境、検証環境)</td>
+      <td><code>develop/testing</code> (<code>develop/sandbox</code>)</td>
+    </tr>
+    <tr>
+      <td>ステージング環境 (ユーザー受け入れ環境)</td>
+      <td><code>develop/staging</code> (<code>develop/ua</code>)</td>
+    </tr>
+    <tr>
+      <td>本番環境</td>
+      <td><code>release</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://note.com/gunj/n/nf139710d0e4a">開発環境、テスト環境、ステージング環境、本番環境について｜gun</a></li>
@@ -35073,27 +35074,28 @@ $<span class="w"> </span>./foo-bainary<span class="w"> </span>--version
 <h4 id="_27">▼ タグ<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
 <p>『<code>release/v&lt;セマンティックバージョニング&gt;</code>』とする。タグの付与先対象とするブランチは、『<code>Target: main</code>』を選択する。</p>
 <table>
-<thead>
-<tr>
-<th><code>X.Y.Z</code></th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>メジャー (<code>X</code>)</td>
-<td>機能の追加/変更/バグ修正である。後方のバージョンと互換性がない。ユーザーは、既存の実装を変更しないと既存機能と新機能を利用できない。</td>
-</tr>
-<tr>
-<td>マイナー (<code>Y</code>)</td>
-<td>機能の追加/変更/バグ修正である。後方のバージョンと互換性がある。ユーザーは、実装を追加するだけで新機能を利用でき、また実装を変更せずに既存機能を利用できる。</td>
-</tr>
-<tr>
-<td>パッチ (<code>Z</code>)</td>
-<td>機能のバグ修正である。後方のバージョンと互換性がある。ユーザーは、実装はそのままで既存機能を利用できる。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th><code>X.Y.Z</code></th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>メジャー (<code>X</code>)</td>
+      <td>機能の追加/変更/バグ修正である。後方のバージョンと互換性がない。ユーザーは、既存の実装を変更しないと既存機能と新機能を利用できない。</td>
+    </tr>
+    <tr>
+      <td>マイナー (<code>Y</code>)</td>
+      <td>機能の追加/変更/バグ修正である。後方のバージョンと互換性がある。ユーザーは、実装を追加するだけで新機能を利用でき、また実装を変更せずに既存機能を利用できる。</td>
+    </tr>
+    <tr>
+      <td>パッチ (<code>Z</code>)</td>
+      <td>機能のバグ修正である。後方のバージョンと互換性がある。ユーザーは、実装はそのままで既存機能を利用できる。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://semver.org/lang/ja/">セマンティック バージョニング 2.0.0 | Semantic Versioning</a></li>

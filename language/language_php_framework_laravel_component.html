@@ -39608,7 +39608,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:23:00 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -39647,91 +39647,92 @@
 <p><img alt="laravel-lifecycle" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/laravel-lifecycle.png" /></p>
 <p>大まかな処理フローは以下の通りである。</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th>用語</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>リクエストを受信する。</td>
-<td></td>
-</tr>
-<tr>
-<td>2</td>
-<td><code>index.php</code> ファイル</td>
-<td>エントリーポイントから処理が開始する。</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Autoload</td>
-<td><code>autoload.php</code> ファイルにて、パッケージを自動的にロードする。</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Load App</td>
-<td><code>bootstrap/app.php</code> ファイルにて、ServiceContainer (<code>Illuminate\Foundation\Application.php</code>) を実行する。</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Http Kernel</td>
-<td>Kernel を実行する。</td>
-</tr>
-<tr>
-<td>6</td>
-<td>・Register ServiceProviders<br>・Boot Service Providers</td>
-<td>ServiceProvider の <code>register()</code> 関数や <code>boot()</code> 関数を実行する。これにより、ServiceContainer にクラスがバインドされる。</td>
-</tr>
-<tr>
-<td>7</td>
-<td>Middleware</td>
-<td>BeforeMiddleware を実行する。</td>
-</tr>
-<tr>
-<td>8</td>
-<td>・Dispatch by Router<br>・Routes Match</td>
-<td><code>web.php</code> ファイル、<code>app.php</code> ファイルなどのルーティング定義を元に、Router が実行する。</td>
-</tr>
-<tr>
-<td>9</td>
-<td>FormRequest</td>
-<td>バリデーションを実行する。</td>
-</tr>
-<tr>
-<td>10</td>
-<td>Controller</td>
-<td>Controller を起点として、DB にまで処理が走る。</td>
-</tr>
-<tr>
-<td>11</td>
-<td>Resource</td>
-<td>DB から読み込んだコレクション型データを配列型データに変換する。</td>
-</tr>
-<tr>
-<td>12</td>
-<td>Response</td>
-<td>Response を実行する。配列型データを JSON 型データに変換する。</td>
-</tr>
-<tr>
-<td>13</td>
-<td>Terminate Middleware</td>
-<td>AfterMiddleware が実行される。</td>
-</tr>
-<tr>
-<td>14</td>
-<td>View</td>
-<td><code>blade.php</code> ファイルを基に静的ファイルを作成する。</td>
-</tr>
-<tr>
-<td>15</td>
-<td>レスポンスを返信する。</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th></th>
+      <th>用語</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>リクエストを受信する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><code>index.php</code> ファイル</td>
+      <td>エントリーポイントから処理が開始する。</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Autoload</td>
+      <td><code>autoload.php</code> ファイルにて、パッケージを自動的にロードする。</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Load App</td>
+      <td><code>bootstrap/app.php</code> ファイルにて、ServiceContainer (<code>Illuminate\Foundation\Application.php</code>) を実行する。</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Http Kernel</td>
+      <td>Kernel を実行する。</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>・Register ServiceProviders<br>・Boot Service Providers</td>
+      <td>ServiceProvider の <code>register()</code> 関数や <code>boot()</code> 関数を実行する。これにより、ServiceContainer にクラスがバインドされる。</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Middleware</td>
+      <td>BeforeMiddleware を実行する。</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>・Dispatch by Router<br>・Routes Match</td>
+      <td><code>web.php</code> ファイル、<code>app.php</code> ファイルなどのルーティング定義を元に、Router が実行する。</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>FormRequest</td>
+      <td>バリデーションを実行する。</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Controller</td>
+      <td>Controller を起点として、DB にまで処理が走る。</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Resource</td>
+      <td>DB から読み込んだコレクション型データを配列型データに変換する。</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Response</td>
+      <td>Response を実行する。配列型データを JSON 型データに変換する。</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Terminate Middleware</td>
+      <td>AfterMiddleware が実行される。</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>View</td>
+      <td><code>blade.php</code> ファイルを基に静的ファイルを作成する。</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>レスポンスを返信する。</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/">The Integration of Laravel with Swoole (Part 1)</a></li>
@@ -40509,241 +40510,242 @@
 <h4 id="facade_5">▼ 標準登録された Facade クラスの種類<a class="headerlink" href="#facade_5" title="Permanent link">&para;</a></h4>
 <p>以下のクラスは、デフォルトで登録されている Facade である。</p>
 <table>
-<thead>
-<tr>
-<th style="text-align: left;">エイリアス</th>
-<th style="text-align: left;">クラス名</th>
-<th style="text-align: left;">サービスコンテナ結合キー</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">App</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Foundation/Application.html">Illuminate\Foundation\Application</a></td>
-<td style="text-align: left;"><code>app</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Artisan</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Console/Kernel.html">Illuminate\Contracts\Console\Kernel</a></td>
-<td style="text-align: left;"><code>artisan</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Auth</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html">Illuminate\Auth\AuthManager</a></td>
-<td style="text-align: left;"><code>auth</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Auth (Instance)</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html">Illuminate\Contracts\Auth\Guard</a></td>
-<td style="text-align: left;"><code>auth.driver</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Blade</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/View/Compilers/BladeCompiler.html">Illuminate\View\Compilers\BladeCompiler</a></td>
-<td style="text-align: left;"><code>blade.compiler</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Broadcast</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Broadcasting/Factory.html">Illuminate\Contracts\Broadcasting\Factory</a></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">Broadcast (Instance)</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Broadcasting/Broadcaster.html">Illuminate\Contracts\Broadcasting\Broadcaster</a></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">Bus</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Bus/Dispatcher.html">Illuminate\Contracts\Bus\Dispatcher</a></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">Cache</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Cache/CacheManager.html">Illuminate\Cache\CacheManager</a></td>
-<td style="text-align: left;"><code>cache</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Cache (Instance)</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Cache/Repository.html">Illuminate\Cache\Repository</a></td>
-<td style="text-align: left;"><code>cache.store</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Config</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Config/Repository.html">Illuminate\Config\Repository</a></td>
-<td style="text-align: left;"><code>config</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Cookie</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Cookie/CookieJar.html">Illuminate\Cookie\CookieJar</a></td>
-<td style="text-align: left;"><code>cookie</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Crypt</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Encryption/Encrypter.html">Illuminate\Encryption\Encrypter</a></td>
-<td style="text-align: left;"><code>encrypter</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">DB</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Database/DatabaseManager.html">Illuminate\Database\DatabaseManager</a></td>
-<td style="text-align: left;"><code>db</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">DB (Instance)</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Database/Connection.html">Illuminate\Database\Connection</a></td>
-<td style="text-align: left;"><code>db.connection</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Event</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Events/Dispatcher.html">Illuminate\Events\Dispatcher</a></td>
-<td style="text-align: left;"><code>events</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">File</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Filesystem/Filesystem.html">Illuminate\Filesystem\Filesystem</a></td>
-<td style="text-align: left;"><code>files</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Gate</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Access/Gate.html">Illuminate\Contracts\Auth\Access\Gate</a></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">Hash</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Hashing/Hasher.html">Illuminate\Contracts\Hashing\Hasher</a></td>
-<td style="text-align: left;"><code>hash</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Lang</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Translation/Translator.html">Illuminate\Translation\Translator</a></td>
-<td style="text-align: left;"><code>translator</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Log</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Log/LogManager.html">Illuminate\Log\LogManager</a></td>
-<td style="text-align: left;"><code>log</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Mail</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Mail/Mailer.html">Illuminate\Mail\Mailer</a></td>
-<td style="text-align: left;"><code>mailer</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Notification</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Notifications/ChannelManager.html">Illuminate\Notifications\ChannelManager</a></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">Password</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Auth/Passwords/PasswordBrokerManager.html">Illuminate\Auth\Passwords\PasswordBrokerManager</a></td>
-<td style="text-align: left;"><code>auth.password</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Password (Instance)</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Auth/Passwords/PasswordBroker.html">Illuminate\Auth\Passwords\PasswordBroker</a></td>
-<td style="text-align: left;"><code>auth.password.broker</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Queue</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Queue/QueueManager.html">Illuminate\Queue\QueueManager</a></td>
-<td style="text-align: left;"><code>queue</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Queue (Instance)</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Queue/Queue.html">Illuminate\Contracts\Queue\Queue</a></td>
-<td style="text-align: left;"><code>queue.connection</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Queue (Base Class)</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Queue/Queue.html">Illuminate\Queue\Queue</a></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">Redirect</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Routing/Redirector.html">Illuminate\Routing\Redirector</a></td>
-<td style="text-align: left;"><code>redirect</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Redis</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Redis/RedisManager.html">Illuminate\Redis\RedisManager</a></td>
-<td style="text-align: left;"><code>redis</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Redis (Instance)</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Redis/Connections/Connection.html">Illuminate\Redis\Connections\Connection</a></td>
-<td style="text-align: left;"><code>redis.connection</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Request</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Http/Request.html">Illuminate\Http\Request</a></td>
-<td style="text-align: left;"><code>request</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Response</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Routing/ResponseFactory.html">Illuminate\Contracts\Routing\ResponseFactory</a></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">Response (Instance)</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Http/Response.html">Illuminate\Http\Response</a></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">Route</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Routing/Router.html">Illuminate\Routing\Router</a></td>
-<td style="text-align: left;"><code>router</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Schema</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Database/Schema/Builder.html">Illuminate\Database\Schema\Builder</a></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">Session</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Session/SessionManager.html">Illuminate\Session\SessionManager</a></td>
-<td style="text-align: left;"><code>session</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Session (Instance)</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Session/Store.html">Illuminate\Session\Store</a></td>
-<td style="text-align: left;"><code>session.store</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Storage</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Filesystem/FilesystemManager.html">Illuminate\Filesystem\FilesystemManager</a></td>
-<td style="text-align: left;"><code>filesystem</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Storage (Instance)</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Filesystem/Filesystem.html">Illuminate\Contracts\Filesystem\Filesystem</a></td>
-<td style="text-align: left;"><code>filesystem.disk</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">URL</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Routing/UrlGenerator.html">Illuminate\Routing\UrlGenerator</a></td>
-<td style="text-align: left;"><code>url</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Validator</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Validation/Factory.html">Illuminate\Validation\Factory</a></td>
-<td style="text-align: left;"><code>validator</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">Validator (Instance)</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/Validation/Validator.html">Illuminate\Validation\Validator</a></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">View</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/View/Factory.html">Illuminate\View\Factory</a></td>
-<td style="text-align: left;"><code>view</code></td>
-</tr>
-<tr>
-<td style="text-align: left;">View (Instance)</td>
-<td style="text-align: left;"><a href="https://laravel.com/api/8.x/Illuminate/View/View.html">Illuminate\View\View</a></td>
-<td style="text-align: left;"></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th style="text-align:left">エイリアス</th>
+      <th style="text-align:left">クラス名</th>
+      <th style="text-align:left">サービスコンテナ結合キー</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">App</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Foundation/Application.html">Illuminate\Foundation\Application</a></td>
+      <td style="text-align:left"><code>app</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Artisan</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Console/Kernel.html">Illuminate\Contracts\Console\Kernel</a></td>
+      <td style="text-align:left"><code>artisan</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Auth</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html">Illuminate\Auth\AuthManager</a></td>
+      <td style="text-align:left"><code>auth</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Auth (Instance)</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html">Illuminate\Contracts\Auth\Guard</a></td>
+      <td style="text-align:left"><code>auth.driver</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Blade</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/View/Compilers/BladeCompiler.html">Illuminate\View\Compilers\BladeCompiler</a></td>
+      <td style="text-align:left"><code>blade.compiler</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Broadcast</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Broadcasting/Factory.html">Illuminate\Contracts\Broadcasting\Factory</a></td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Broadcast (Instance)</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Broadcasting/Broadcaster.html">Illuminate\Contracts\Broadcasting\Broadcaster</a></td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Bus</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Bus/Dispatcher.html">Illuminate\Contracts\Bus\Dispatcher</a></td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Cache</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Cache/CacheManager.html">Illuminate\Cache\CacheManager</a></td>
+      <td style="text-align:left"><code>cache</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Cache (Instance)</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Cache/Repository.html">Illuminate\Cache\Repository</a></td>
+      <td style="text-align:left"><code>cache.store</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Config</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Config/Repository.html">Illuminate\Config\Repository</a></td>
+      <td style="text-align:left"><code>config</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Cookie</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Cookie/CookieJar.html">Illuminate\Cookie\CookieJar</a></td>
+      <td style="text-align:left"><code>cookie</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Crypt</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Encryption/Encrypter.html">Illuminate\Encryption\Encrypter</a></td>
+      <td style="text-align:left"><code>encrypter</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">DB</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Database/DatabaseManager.html">Illuminate\Database\DatabaseManager</a></td>
+      <td style="text-align:left"><code>db</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">DB (Instance)</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Database/Connection.html">Illuminate\Database\Connection</a></td>
+      <td style="text-align:left"><code>db.connection</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Event</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Events/Dispatcher.html">Illuminate\Events\Dispatcher</a></td>
+      <td style="text-align:left"><code>events</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">File</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Filesystem/Filesystem.html">Illuminate\Filesystem\Filesystem</a></td>
+      <td style="text-align:left"><code>files</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Gate</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Access/Gate.html">Illuminate\Contracts\Auth\Access\Gate</a></td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Hash</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Hashing/Hasher.html">Illuminate\Contracts\Hashing\Hasher</a></td>
+      <td style="text-align:left"><code>hash</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Lang</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Translation/Translator.html">Illuminate\Translation\Translator</a></td>
+      <td style="text-align:left"><code>translator</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Log</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Log/LogManager.html">Illuminate\Log\LogManager</a></td>
+      <td style="text-align:left"><code>log</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Mail</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Mail/Mailer.html">Illuminate\Mail\Mailer</a></td>
+      <td style="text-align:left"><code>mailer</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Notification</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Notifications/ChannelManager.html">Illuminate\Notifications\ChannelManager</a></td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Password</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Auth/Passwords/PasswordBrokerManager.html">Illuminate\Auth\Passwords\PasswordBrokerManager</a></td>
+      <td style="text-align:left"><code>auth.password</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Password (Instance)</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Auth/Passwords/PasswordBroker.html">Illuminate\Auth\Passwords\PasswordBroker</a></td>
+      <td style="text-align:left"><code>auth.password.broker</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Queue</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Queue/QueueManager.html">Illuminate\Queue\QueueManager</a></td>
+      <td style="text-align:left"><code>queue</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Queue (Instance)</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Queue/Queue.html">Illuminate\Contracts\Queue\Queue</a></td>
+      <td style="text-align:left"><code>queue.connection</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Queue (Base Class)</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Queue/Queue.html">Illuminate\Queue\Queue</a></td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Redirect</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Routing/Redirector.html">Illuminate\Routing\Redirector</a></td>
+      <td style="text-align:left"><code>redirect</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Redis</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Redis/RedisManager.html">Illuminate\Redis\RedisManager</a></td>
+      <td style="text-align:left"><code>redis</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Redis (Instance)</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Redis/Connections/Connection.html">Illuminate\Redis\Connections\Connection</a></td>
+      <td style="text-align:left"><code>redis.connection</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Request</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Http/Request.html">Illuminate\Http\Request</a></td>
+      <td style="text-align:left"><code>request</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Response</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Routing/ResponseFactory.html">Illuminate\Contracts\Routing\ResponseFactory</a></td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Response (Instance)</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Http/Response.html">Illuminate\Http\Response</a></td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Route</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Routing/Router.html">Illuminate\Routing\Router</a></td>
+      <td style="text-align:left"><code>router</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Schema</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Database/Schema/Builder.html">Illuminate\Database\Schema\Builder</a></td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Session</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Session/SessionManager.html">Illuminate\Session\SessionManager</a></td>
+      <td style="text-align:left"><code>session</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Session (Instance)</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Session/Store.html">Illuminate\Session\Store</a></td>
+      <td style="text-align:left"><code>session.store</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Storage</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Filesystem/FilesystemManager.html">Illuminate\Filesystem\FilesystemManager</a></td>
+      <td style="text-align:left"><code>filesystem</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Storage (Instance)</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Filesystem/Filesystem.html">Illuminate\Contracts\Filesystem\Filesystem</a></td>
+      <td style="text-align:left"><code>filesystem.disk</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">URL</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Routing/UrlGenerator.html">Illuminate\Routing\UrlGenerator</a></td>
+      <td style="text-align:left"><code>url</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Validator</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Validation/Factory.html">Illuminate\Validation\Factory</a></td>
+      <td style="text-align:left"><code>validator</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Validator (Instance)</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/Validation/Validator.html">Illuminate\Validation\Validator</a></td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">View</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/View/Factory.html">Illuminate\View\Factory</a></td>
+      <td style="text-align:left"><code>view</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">View (Instance)</td>
+      <td style="text-align:left"><a href="https://laravel.com/api/8.x/Illuminate/View/View.html">Illuminate\View\View</a></td>
+      <td style="text-align:left"></td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="auth">Auth ファサード<a class="headerlink" href="#auth" title="Permanent link">&para;</a></h3>
 <h4 id="auth_1">▼ Auth ファサードとは<a class="headerlink" href="#auth_1" title="Permanent link">&para;</a></h4>
@@ -43535,31 +43537,32 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <h3 id="serviceprovider">ServiceProvider<a class="headerlink" href="#serviceprovider" title="Permanent link">&para;</a></h3>
 <h4 id="serviceprovider_1">▼ ServiceProvider の用途<a class="headerlink" href="#serviceprovider_1" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>用途の種類</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AppServiceProvider</td>
-<td>・ServiceContainer へのクラスのバインド (登録) <br>・ServiceContainer からのインスタンスのリゾルブ (作成)</td>
-</tr>
-<tr>
-<td>MacroServiceProvider</td>
-<td>ServiceContainer への関数のバインド (登録)</td>
-</tr>
-<tr>
-<td>RouteServiceProvider<br>(<code>app.php</code>、<code>web.php</code> も使用)</td>
-<td>ルーティングとコントローラーの対応関係の定義</td>
-</tr>
-<tr>
-<td>EventServiceProvider</td>
-<td>EventListener と Eventhandler 関数の対応関係の定義</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>用途の種類</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AppServiceProvider</td>
+      <td>・ServiceContainer へのクラスのバインド (登録) <br>・ServiceContainer からのインスタンスのリゾルブ (作成)</td>
+    </tr>
+    <tr>
+      <td>MacroServiceProvider</td>
+      <td>ServiceContainer への関数のバインド (登録)</td>
+    </tr>
+    <tr>
+      <td>RouteServiceProvider<br>(<code>app.php</code>、<code>web.php</code> も使用)</td>
+      <td>ルーティングとコントローラーの対応関係の定義</td>
+    </tr>
+    <tr>
+      <td>EventServiceProvider</td>
+      <td>EventListener と Eventhandler 関数の対応関係の定義</td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="serviceprovider_2">▼ ServiceProvider のコール<a class="headerlink" href="#serviceprovider_2" title="Permanent link">&para;</a></h4>
 <p>クラスの名前空間を、<code>config/app.php</code> ファイルの <code>providers</code> 配列に登録すると、アプリケーションの起動時に ServiceProvider をコールできる。</p>
 <p>そのため、ServiceContainer へのクラスのバインドが自動的に完了する。</p>
@@ -44095,39 +44098,40 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <p>FormRequest クラスの <code>session()</code> 関数は Store クラスを返却する。</p>
 <p>このクラスの関数を使用して、セッションを操作できる。</p>
 <table>
-<thead>
-<tr>
-<th>関数名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>get</code></td>
-<td>セッションデータのキー名を指定して、<code>1</code> 個の値を取得する。</td>
-</tr>
-<tr>
-<td><code>all</code></td>
-<td>セッションデータのすべての値を取得する。</td>
-</tr>
-<tr>
-<td><code>forget</code></td>
-<td>セッションデータのキー名を指定して、値を取得する。キー名を配列で渡して、複数を削除することも可能。</td>
-</tr>
-<tr>
-<td><code>flush</code></td>
-<td>セッションデータのすべての値を取得する。</td>
-</tr>
-<tr>
-<td><code>pull</code></td>
-<td>セッションデータのキー名を指定して、<code>1</code> 個の値を取得し、取得後に削除する。</td>
-</tr>
-<tr>
-<td><code>has</code></td>
-<td>セッションデータのキー名を指定して、値が存在しているかを検証する。<code>null</code> は <code>false</code> として判定する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>関数名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>get</code></td>
+      <td>セッションデータのキー名を指定して、<code>1</code> 個の値を取得する。</td>
+    </tr>
+    <tr>
+      <td><code>all</code></td>
+      <td>セッションデータのすべての値を取得する。</td>
+    </tr>
+    <tr>
+      <td><code>forget</code></td>
+      <td>セッションデータのキー名を指定して、値を取得する。キー名を配列で渡して、複数を削除することも可能。</td>
+    </tr>
+    <tr>
+      <td><code>flush</code></td>
+      <td>セッションデータのすべての値を取得する。</td>
+    </tr>
+    <tr>
+      <td><code>pull</code></td>
+      <td>セッションデータのキー名を指定して、<code>1</code> 個の値を取得し、取得後に削除する。</td>
+    </tr>
+    <tr>
+      <td><code>has</code></td>
+      <td>セッションデータのキー名を指定して、値が存在しているかを検証する。<code>null</code> は <code>false</code> として判定する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://laravel.com/api/8.x/Illuminate/Session/Store.html">https://laravel.com/api/8.x/Illuminate/Session/Store.html</a></li>

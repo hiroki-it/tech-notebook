@@ -34482,7 +34482,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:23:00 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -34519,27 +34519,28 @@
 <h2 id="01-rdbms-db">01. RDBMS (関係 DB 管理システム) の仕組み<a class="headerlink" href="#01-rdbms-db" title="Permanent link">&para;</a></h2>
 <h3 id="rdbms">RDBMS の種類<a class="headerlink" href="#rdbms" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th>RDBMS</th>
-<th>RDB</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>MariaDB</td>
-<td>MariaDB の DB</td>
-</tr>
-<tr>
-<td>MySQL</td>
-<td>MySQL の DB</td>
-</tr>
-<tr>
-<td>PostgreSQL</td>
-<td>PostgreSQL の DB</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>RDBMS</th>
+      <th>RDB</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MariaDB</td>
+      <td>MariaDB の DB</td>
+    </tr>
+    <tr>
+      <td>MySQL</td>
+      <td>MySQL の DB</td>
+    </tr>
+    <tr>
+      <td>PostgreSQL</td>
+      <td>PostgreSQL の DB</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>RDBMS は、リレーショナルエンジン、DB エンジン (ストレージエンジン) から構成される。</p>
@@ -34672,90 +34673,92 @@
 <span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">foo_table</span><span class="w"> </span><span class="p">(</span><span class="k">name</span><span class="p">,</span><span class="w"> </span><span class="n">address</span><span class="p">)</span>
 </code></pre></div>
 <table>
-<thead>
-<tr>
-<th>id</th>
-<th>name</th>
-<th>address</th>
-<th>old</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Suzuki</td>
-<td>Tokyo</td>
-<td>24</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Yamada</td>
-<td>Osaka</td>
-<td>18</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Takahashi</td>
-<td>Nagoya</td>
-<td>18</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Honda</td>
-<td>Tokyo</td>
-<td>16</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Endou</td>
-<td>Tokyo</td>
-<td>24</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>address</th>
+      <th>old</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Suzuki</td>
+      <td>Tokyo</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Yamada</td>
+      <td>Osaka</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Takahashi</td>
+      <td>Nagoya</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Honda</td>
+      <td>Tokyo</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Endou</td>
+      <td>Tokyo</td>
+      <td>24</td>
+    </tr>
+  </tbody>
 </table>
+
 <p>各カラムで値の異なるレコード数が計測され、<code>name</code> カラムは <code>address</code> カラムよりも一意のレコードが多いため、<code>name</code> カラムの昇順 (アルファベット順) に並び替えられ、DB インデックスとして保管される。</p>
 <table>
-<thead>
-<tr>
-<th>id</th>
-<th>name</th>
-<th>address</th>
-<th>old</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>5</td>
-<td>Endou</td>
-<td>Tokyo</td>
-<td>24</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Honda</td>
-<td>Tokyo</td>
-<td>18</td>
-</tr>
-<tr>
-<td>1</td>
-<td>Suzuki</td>
-<td>Tokyo</td>
-<td>24</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Takahashi</td>
-<td>Nagoya</td>
-<td>18</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Yamada</td>
-<td>Osaka</td>
-<td>18</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>address</th>
+      <th>old</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>5</td>
+      <td>Endou</td>
+      <td>Tokyo</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Honda</td>
+      <td>Tokyo</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Suzuki</td>
+      <td>Tokyo</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Takahashi</td>
+      <td>Nagoya</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Yamada</td>
+      <td>Osaka</td>
+      <td>18</td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="db_15">▼ DB インデックスのカラム変更<a class="headerlink" href="#db_15" title="Permanent link">&para;</a></h4>
 <p>DB インデックスのカラム変更によって、DB インデックスの削除と追加が起こる。</p>
 <p>次のように DB インデックスの追加と削除を別にすれば、負荷を少しでも抑えられる。</p>
@@ -34807,27 +34810,28 @@
 <h4 id="_8">▼ クエリパッケージ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>クエリの実装の抽象度に応じて、パッケージがある。</p>
 <table>
-<thead>
-<tr>
-<th>クエリパッケージ</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>生のクエリ</td>
-<td>RDB 固有のクエリのこと。</td>
-</tr>
-<tr>
-<td>クエリビルダー</td>
-<td>RDB 固有のクエリを実装しやすくしたパッケージのこと。</td>
-</tr>
-<tr>
-<td>ORM</td>
-<td>アプリケーション側にテーブルに対応したモデルを定義し、これを使用して RDB に固有のクエリを送信するパッケージのこと。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>クエリパッケージ</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>生のクエリ</td>
+      <td>RDB 固有のクエリのこと。</td>
+    </tr>
+    <tr>
+      <td>クエリビルダー</td>
+      <td>RDB 固有のクエリを実装しやすくしたパッケージのこと。</td>
+    </tr>
+    <tr>
+      <td>ORM</td>
+      <td>アプリケーション側にテーブルに対応したモデルを定義し、これを使用して RDB に固有のクエリを送信するパッケージのこと。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://levelup.gitconnected.com/raw-sql-vs-query-builder-vs-orm-eee72dbdd275">https://levelup.gitconnected.com/raw-sql-vs-query-builder-vs-orm-eee72dbdd275</a></li>

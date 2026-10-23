@@ -34564,7 +34564,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月21日 19:27:44 JST">2026-10-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -34748,36 +34748,37 @@
 <h2 id="03-http11-grpc">03. HTTP/1.1 と gRPC の違い<a class="headerlink" href="#03-http11-grpc" title="Permanent link">&para;</a></h2>
 <h3 id="_3">パケットの構造<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th>項目</th>
-<th>HTTP/1.1 の場合</th>
-<th>HTTP/2 の場合</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>アプリケーションデータの形式</td>
-<td>テキスト (例：JSON、XML など)</td>
-<td>バイナリ (例：Protocolbuf)</td>
-</tr>
-<tr>
-<td>TLS によるアプリケーションデータの暗号化</td>
-<td>任意</td>
-<td>必須 (Web ブラウザのみ)</td>
-</tr>
-<tr>
-<td>トランスポートヘッダー</td>
-<td>あり</td>
-<td>あり</td>
-</tr>
-<tr>
-<td>IP ヘッダー</td>
-<td>あり</td>
-<td>あり</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>HTTP/1.1 の場合</th>
+      <th>HTTP/2 の場合</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>アプリケーションデータの形式</td>
+      <td>テキスト (例：JSON、XML など)</td>
+      <td>バイナリ (例：Protocolbuf)</td>
+    </tr>
+    <tr>
+      <td>TLS によるアプリケーションデータの暗号化</td>
+      <td>任意</td>
+      <td>必須 (Web ブラウザのみ)</td>
+    </tr>
+    <tr>
+      <td>トランスポートヘッダー</td>
+      <td>あり</td>
+      <td>あり</td>
+    </tr>
+    <tr>
+      <td>IP ヘッダー</td>
+      <td>あり</td>
+      <td>あり</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://www.wallarm.com/what/what-is-http-2-and-how-is-it-different-from-http-1">HTTP/1 vs HTTP/2 What is the Difference?</a></li>
@@ -34788,51 +34789,52 @@
 <h4 id="_5">▼ リクエストメタデータ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>gRPC のリクエストでは、メタデータをヘッダーに格納する。</p>
 <table>
-<thead>
-<tr>
-<th>メタデータのキー名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>accept-encoding</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>content-type</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>grpc-accept-encoding</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>grpc-timeout</code></td>
-<td>gRPC のタイムアウト時間を表す。</td>
-</tr>
-<tr>
-<td><code>method</code></td>
-<td>リクエストの HTTP メソッドを表す。</td>
-</tr>
-<tr>
-<td><code>path</code></td>
-<td>リクエストのパスを表す。</td>
-</tr>
-<tr>
-<td><code>scheme</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>user-agent</code></td>
-<td></td>
-</tr>
-<tr>
-<td>...</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>メタデータのキー名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>accept-encoding</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>content-type</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>grpc-accept-encoding</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>grpc-timeout </code></td>
+      <td>gRPC のタイムアウト時間を表す。</td>
+    </tr>
+    <tr>
+      <td><code>method</code></td>
+      <td>リクエストの HTTP メソッドを表す。</td>
+    </tr>
+    <tr>
+      <td><code>path</code></td>
+      <td>リクエストのパスを表す。</td>
+    </tr>
+    <tr>
+      <td><code>scheme</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>user-agent</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#requests">grpc/doc/PROTOCOL-HTTP2.md at master · grpc/grpc · GitHub</a></li>
@@ -34895,119 +34897,120 @@
 <h3 id="_9">ステータスコード<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ 一覧<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>HTTP/1.1 の場合</th>
-<th>gRPC の場合</th>
-<th>意味</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>200</code></td>
-<td><code>0</code></td>
-<td><code>OK</code></td>
-<td>リクエストに成功した。</td>
-</tr>
-<tr>
-<td><code>499</code></td>
-<td><code>1</code></td>
-<td><code>Canceled</code></td>
-<td>gRPC クライアントが処理を中断した。</td>
-</tr>
-<tr>
-<td><code>500</code></td>
-<td><code>2</code></td>
-<td><code>Unknown</code></td>
-<td>いずれのステータスコードにも属していない不明なエラーである。</td>
-</tr>
-<tr>
-<td><code>400</code></td>
-<td><code>3</code></td>
-<td><code>InvalidArgument</code></td>
-<td>無効な引数を指定したリクエストである。</td>
-</tr>
-<tr>
-<td><code>504</code></td>
-<td><code>4</code></td>
-<td><code>DeadlineExceeded</code></td>
-<td>処理が完了する前にタイムアウト時間を超過した。正常な場合でも、タイムアウト時間の超過でこのエラーになることがある。</td>
-</tr>
-<tr>
-<td><code>404</code></td>
-<td><code>5</code></td>
-<td><code>NotFound</code></td>
-<td>リクエストしたデータが存在しない。</td>
-</tr>
-<tr>
-<td><code>409</code></td>
-<td><code>6</code></td>
-<td><code>AlreadyExists</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>403</code></td>
-<td><code>7</code></td>
-<td><code>PermissionDenied</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>429</code></td>
-<td><code>8</code></td>
-<td><code>ResourceExhausted</code></td>
-<td>gRPC クライアントがリクエスト送信しすぎている。</td>
-</tr>
-<tr>
-<td><code>400</code></td>
-<td><code>9</code></td>
-<td><code>FailedPrecondition</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>499</code></td>
-<td><code>10</code></td>
-<td><code>Aborted</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>400</code></td>
-<td><code>11</code></td>
-<td><code>OutOfRange</code></td>
-<td>リクエストのパラメーターが正しくない。</td>
-</tr>
-<tr>
-<td><code>501</code></td>
-<td><code>12</code></td>
-<td><code>Unimplemented</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>500</code></td>
-<td><code>13</code></td>
-<td><code>Internal</code></td>
-<td>gRPC サーバーがエラーを返却した。</td>
-</tr>
-<tr>
-<td><code>503</code></td>
-<td><code>14</code></td>
-<td><code>Unavailable</code></td>
-<td>gRPC サーバー側で関数を実行する準備ができておらず、gRPC クライアント側で関数のコールに失敗している。gRPC クライアントから gRPC サーバーへのリクエスト送信は完了したが、レスポンスが返信されていない可能性がある。</td>
-</tr>
-<tr>
-<td><code>500</code></td>
-<td><code>15</code></td>
-<td><code>DataLoss</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>401</code></td>
-<td><code>16</code></td>
-<td><code>Unauthenticated</code></td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>HTTP/1.1 の場合</th>
+      <th>gRPC の場合</th>
+      <th>意味</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>200</code></td>
+      <td><code>0</code></td>
+      <td><code>OK</code></td>
+      <td>リクエストに成功した。</td>
+    </tr>
+    <tr>
+      <td><code>499</code></td>
+      <td><code>1</code></td>
+      <td><code>Canceled</code></td>
+      <td>gRPC クライアントが処理を中断した。</td>
+    </tr>
+    <tr>
+      <td><code>500</code></td>
+      <td><code>2</code></td>
+      <td><code>Unknown</code></td>
+      <td>いずれのステータスコードにも属していない不明なエラーである。</td>
+    </tr>
+    <tr>
+      <td><code>400</code></td>
+      <td><code>3</code></td>
+      <td><code>InvalidArgument</code></td>
+      <td>無効な引数を指定したリクエストである。</td>
+    </tr>
+    <tr>
+      <td><code>504</code></td>
+      <td><code>4</code></td>
+      <td><code>DeadlineExceeded</code></td>
+      <td>処理が完了する前にタイムアウト時間を超過した。正常な場合でも、タイムアウト時間の超過でこのエラーになることがある。</td>
+    </tr>
+    <tr>
+      <td><code>404</code></td>
+      <td><code>5</code></td>
+      <td><code>NotFound</code></td>
+      <td>リクエストしたデータが存在しない。</td>
+    </tr>
+    <tr>
+      <td><code>409</code></td>
+      <td><code>6</code></td>
+      <td><code>AlreadyExists</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>403</code></td>
+      <td><code>7</code></td>
+      <td><code>PermissionDenied</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>429</code></td>
+      <td><code>8</code></td>
+      <td><code>ResourceExhausted</code></td>
+      <td>gRPC クライアントがリクエスト送信しすぎている。</td>
+    </tr>
+    <tr>
+      <td><code>400</code></td>
+      <td><code>9</code></td>
+      <td><code>FailedPrecondition</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>499</code></td>
+      <td><code>10</code></td>
+      <td><code>Aborted</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>400</code></td>
+      <td><code>11</code></td>
+      <td><code>OutOfRange</code></td>
+      <td>リクエストのパラメーターが正しくない。</td>
+    </tr>
+    <tr>
+      <td><code>501</code></td>
+      <td><code>12</code></td>
+      <td><code>Unimplemented</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>500</code></td>
+      <td><code>13</code></td>
+      <td><code>Internal</code></td>
+      <td>gRPC サーバーがエラーを返却した。</td>
+    </tr>
+    <tr>
+      <td><code>503</code></td>
+      <td><code>14</code></td>
+      <td><code>Unavailable</code></td>
+      <td>gRPC サーバー側で関数を実行する準備ができておらず、gRPC クライアント側で関数のコールに失敗している。gRPC クライアントから gRPC サーバーへのリクエスト送信は完了したが、レスポンスが返信されていない可能性がある。</td>
+    </tr>
+    <tr>
+      <td><code>500</code></td>
+      <td><code>15</code></td>
+      <td><code>DataLoss</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>401</code></td>
+      <td><code>16</code></td>
+      <td><code>Unauthenticated</code></td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://grpc.io/docs/guides/status-codes/">Status Codes | gRPC</a></li>

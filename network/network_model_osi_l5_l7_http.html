@@ -35792,7 +35792,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:23:00 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -36362,71 +36362,64 @@
 </ul>
 </blockquote>
 <table>
-<thead>
-<tr>
-<th>トップレベルタイプ</th>
-<th>サブレベルタイプ</th>
-<th>意味</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>application</td>
-<td>octet-stream</td>
-<td>任意の MIME type (指定なし) を示す。</td>
-</tr>
-<tr>
-<td></td>
-<td>javascript</td>
-<td>js ファイル</td>
-</tr>
-<tr>
-<td></td>
-<td>json</td>
-<td>json ファイル</td>
-</tr>
-<tr>
-<td></td>
-<td>x-www-form-urlencoded</td>
-<td>POST リクエストの送信データ</td>
-</tr>
-<tr>
-<td></td>
-<td>zip</td>
-<td><code>.zip</code> ファイル</td>
-</tr>
-<tr>
-<td>text</td>
-<td>html</td>
-<td><code>html</code> ファイル</td>
-</tr>
-<tr>
-<td></td>
-<td>css</td>
-<td><code>.css</code> ファイル</td>
-</tr>
-<tr>
-<td></td>
-<td>plain</td>
-<td>プレーンテキスト</td>
-</tr>
-<tr>
-<td>image</td>
-<td>png</td>
-<td>png ファイル</td>
-</tr>
-<tr>
-<td></td>
-<td>jpeg</td>
-<td>jpeg ファイル</td>
-</tr>
-<tr>
-<td></td>
-<td>gif</td>
-<td>gif ファイル</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>トップレベルタイプ</th>
+      <th>サブレベルタイプ</th>
+      <th>意味</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="5">application</td>
+      <td>octet-stream</td>
+      <td>任意の MIME type (指定なし) を示す。</td>
+    </tr>
+    <tr>
+      <td>javascript</td>
+      <td>js ファイル</td>
+    </tr>
+    <tr>
+      <td>json</td>
+      <td>json ファイル</td>
+    </tr>
+    <tr>
+      <td>x-www-form-urlencoded</td>
+      <td>POST リクエストの送信データ</td>
+    </tr>
+    <tr>
+      <td>zip</td>
+      <td><code>.zip</code> ファイル</td>
+    </tr>
+    <tr>
+      <td rowspan="3">text</td>
+      <td>html</td>
+      <td><code>html</code> ファイル</td>
+    </tr>
+    <tr>
+      <td>css</td>
+      <td><code>.css</code> ファイル</td>
+    </tr>
+    <tr>
+      <td>plain</td>
+      <td>プレーンテキスト</td>
+    </tr>
+    <tr>
+      <td rowspan="3">image</td>
+      <td>png</td>
+      <td>png ファイル</td>
+    </tr>
+    <tr>
+      <td>jpeg</td>
+      <td>jpeg ファイル</td>
+    </tr>
+    <tr>
+      <td>gif</td>
+      <td>gif ファイル</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/questions/5661596/do-i-need-a-content-type-header-for-http-get-requests">https://stackoverflow.com/questions/5661596/do-i-need-a-content-type-header-for-http-get-requests</a></li>
@@ -36457,65 +36450,54 @@
 <p>最初は、サーバーからのレスポンス時に <code>Set-Cookie</code> ヘッダーへ割り当てて送信する。</p>
 <p>反対に、クライアントからのリクエスト時は、<code>Cookie</code> ヘッダーに Cookie 情報を割り当てて送信される。</p>
 <table>
-<thead>
-<tr>
-<th>HTTP メッセージの種類</th>
-<th>ヘッダー名</th>
-<th>属性</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>レスポンス</td>
-<td>Set-Cookie</td>
-<td>Name</td>
-<td>Cookie 名と値</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Expires</td>
-<td>Cookie の有効期限 (日数)</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Max-Age</td>
-<td>Cookie の有効期限 (秒数)</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Domain</td>
-<td>クライアントがリクエストするときの Cookie 宛先ドメイン名。</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Path</td>
-<td>クライアントがリクエストするときの Cookie 宛先ディレクトリ</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>Secure</td>
-<td>クライアントからのリクエストで SSL プロトコルが使用されているときのみ、リクエストを送信できるようにする。</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>HttpOnly</td>
-<td>クライアント側で、JavaScript が Cookie を使用できないようにする。XSS 攻撃の対策になる。</td>
-</tr>
-<tr>
-<td>リクエスト</td>
-<td>Cookie</td>
-<td></td>
-<td>セッション ID などの Cookie 情報</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>HTTP メッセージの種類</th>
+      <th>ヘッダー名</th>
+      <th>属性</th>
+      <th>内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="7">レスポンス</td>
+      <td rowspan="7">Set-Cookie</td>
+      <td>Name</td>
+      <td>Cookie 名と値</td>
+    </tr>
+    <tr>
+      <td>Expires</td>
+      <td>Cookie の有効期限 (日数)</td>
+    </tr>
+    <tr>
+      <td>Max-Age</td>
+      <td>Cookie の有効期限 (秒数)</td>
+    </tr>
+    <tr>
+      <td>Domain</td>
+      <td>クライアントがリクエストするときの Cookie 宛先ドメイン名。</td>
+    </tr>
+    <tr>
+      <td>Path</td>
+      <td>クライアントがリクエストするときの Cookie 宛先ディレクトリ</td>
+    </tr>
+    <tr>
+      <td>Secure</td>
+      <td>クライアントからのリクエストで SSL プロトコルが使用されているときのみ、リクエストを送信できるようにする。</td>
+    </tr>
+    <tr>
+      <td>HttpOnly</td>
+      <td>クライアント側で、JavaScript が Cookie を使用できないようにする。XSS 攻撃の対策になる。</td>
+    </tr>
+    <tr>
+      <td>リクエスト</td>
+      <td>Cookie</td>
+      <td></td>
+      <td>セッション ID などの Cookie 情報</td>
+    </tr>
+  </tbody>
 </table>
+
 <p>クライアントから受信したリクエストの <code>Cookie</code> ヘッダーの内容は、グローバル変数に格納されている。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 

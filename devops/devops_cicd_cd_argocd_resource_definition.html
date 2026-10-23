@@ -35702,7 +35702,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 21:24:34 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -36478,31 +36478,32 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 </blockquote>
 <h4 id="_13">▼ 操作の種類<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>操作名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Sync</td>
-<td>ポーリング対象リポジトリとのマニフェストの差分を確認し、差分があれば <code>kubectl apply</code> コマンドを実行する。</td>
-</tr>
-<tr>
-<td>Refresh</td>
-<td>ポーリング対象リポジトリとのマニフェストの差分を確認する。差分を確認するのみで、apply は実行しない。</td>
-</tr>
-<tr>
-<td>Hard Refresh</td>
-<td>redis-server に保管されているキャッシュを削除する。また、ポーリング対象リポジトリとのマニフェストの差分を確認する。差分を確認するのみで、apply は実行しない。</td>
-</tr>
-<tr>
-<td>Restart</td>
-<td>すでに apply 済みの Kubernetes リソース内のコンテナを再デプロイする。コンテナを再起動するのみで、Kubernetes リソースを作成することはない。<br>- <a href="https://twitter.com/reoring/status/1476046977599406087">https://twitter.com/reoring/status/1476046977599406087</a></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>操作名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Sync</td>
+      <td>ポーリング対象リポジトリとのマニフェストの差分を確認し、差分があれば <code>kubectl apply</code> コマンドを実行する。</td>
+    </tr>
+    <tr>
+      <td>Refresh</td>
+      <td>ポーリング対象リポジトリとのマニフェストの差分を確認する。差分を確認するのみで、apply は実行しない。</td>
+    </tr>
+    <tr>
+      <td>Hard Refresh</td>
+      <td>redis-server に保管されているキャッシュを削除する。また、ポーリング対象リポジトリとのマニフェストの差分を確認する。差分を確認するのみで、apply は実行しない。</td>
+    </tr>
+    <tr>
+      <td>Restart</td>
+      <td>すでに apply 済みの Kubernetes リソース内のコンテナを再デプロイする。コンテナを再起動するのみで、Kubernetes リソースを作成することはない。<br>- <a href="https://twitter.com/reoring/status/1476046977599406087">https://twitter.com/reoring/status/1476046977599406087</a></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/core_concepts/">Core Concepts - Argo CD - Declarative GitOps CD for Kubernetes</a></li>
@@ -36511,39 +36512,40 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 </blockquote>
 <h4 id="_14">▼ ヘルスステータスの種類<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>ステータス名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Healthy</td>
-<td>すべての Kubernetes リソースは正常に稼働している。</td>
-</tr>
-<tr>
-<td>Progressing</td>
-<td>一部の Kubernetes リソースは正常に稼働していないが、リソースの状態が変化中のため、正常になる可能性がある。この状態の場合は、ステータスが他のいずれかになるまで待機する。</td>
-</tr>
-<tr>
-<td>Degraded</td>
-<td>一部の Kubernetes リソースは正常に稼働していない。</td>
-</tr>
-<tr>
-<td>Suspended</td>
-<td>一部の Kubernetes リソースは、イベント (例：CronJob など) が実行されることを待機している。</td>
-</tr>
-<tr>
-<td>Missing</td>
-<td>記入中...</td>
-</tr>
-<tr>
-<td>Unknown</td>
-<td>記入中...</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>ステータス名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Healthy</td>
+      <td>すべての Kubernetes リソースは正常に稼働している。</td>
+    </tr>
+    <tr>
+      <td>Progressing</td>
+      <td>一部の Kubernetes リソースは正常に稼働していないが、リソースの状態が変化中のため、正常になる可能性がある。この状態の場合は、ステータスが他のいずれかになるまで待機する。</td>
+    </tr>
+    <tr>
+      <td>Degraded</td>
+      <td>一部の Kubernetes リソースは正常に稼働していない。</td>
+    </tr>
+    <tr>
+      <td>Suspended</td>
+      <td>一部の Kubernetes リソースは、イベント (例：CronJob など) が実行されることを待機している。</td>
+    </tr>
+    <tr>
+      <td>Missing</td>
+      <td>記入中...</td>
+    </tr>
+    <tr>
+      <td>Unknown</td>
+      <td>記入中...</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#way-1-define-a-custom-health-check-in-argocd-cm-configmap">Resource Health - Argo CD - Declarative GitOps CD for Kubernetes</a></li>
@@ -36654,31 +36656,32 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <p>リポジトリ (マニフェストリポジトリ、チャートリポジトリ、OCI リポジトリ) の変更をポーリングし、これらからプルしたマニフェストで
 <code>kubectl apply</code> コマンドを実行。</p>
 <table>
-<thead>
-<tr>
-<th>リポジトリの種類</th>
-<th>管理方法</th>
-<th>マニフェストの apply 方法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>マニフェストリポジトリ (例：GitHub 内のリポジトリ)</td>
-<td>マニフェストそのまま</td>
-<td>ArgoCD で直接的に <code>kubectl apply</code> コマンドを実行する。</td>
-</tr>
-<tr>
-<td>チャートリポジトリ (例：ArtifactHub、GitHub Pages、内のリポジトリ、Amazon S3)</td>
-<td>チャートアーカイブ (<code>.tgz</code> 形式ファイル)</td>
-<td>Helm を使用して、ArgoCD で間接的に <code>kubectl apply</code> コマンドを実行する。パラメーターに応じて、内部的に <code>helm</code> コマンドが実行される。</td>
-</tr>
-<tr>
-<td>OCI リポジトリ (例：ECR 内のリポジトリ)</td>
-<td>チャートアーカイブ (<code>.tgz</code> 形式ファイル)</td>
-<td>Helm を使用して、ArgoCD で間接的に <code>kubectl apply</code> コマンドを実行する。パラメーターに応じて、内部的に <code>helm</code> コマンドが実行される。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>リポジトリの種類</th>
+      <th>管理方法</th>
+      <th>マニフェストの apply 方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>マニフェストリポジトリ (例：GitHub 内のリポジトリ)</td>
+      <td>マニフェストそのまま</td>
+      <td>ArgoCD で直接的に <code>kubectl apply</code> コマンドを実行する。</td>
+    </tr>
+    <tr>
+      <td>チャートリポジトリ (例：ArtifactHub、GitHub Pages、内のリポジトリ、Amazon S3)</td>
+      <td>チャートアーカイブ (<code>.tgz</code> 形式ファイル)</td>
+      <td>Helm を使用して、ArgoCD で間接的に <code>kubectl apply</code> コマンドを実行する。パラメーターに応じて、内部的に <code>helm</code> コマンドが実行される。</td>
+    </tr>
+    <tr>
+      <td>OCI リポジトリ (例：ECR 内のリポジトリ)</td>
+      <td>チャートアーカイブ (<code>.tgz</code> 形式ファイル)</td>
+      <td>Helm を使用して、ArgoCD で間接的に <code>kubectl apply</code> コマンドを実行する。パラメーターに応じて、内部的に <code>helm</code> コマンドが実行される。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml">argo-cd/docs/operator-manual/application.yaml at v2.6.0 · argoproj/argo-cd · GitHub</a></li>
@@ -36690,27 +36693,28 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <p>ポーリング対象のマニフェストリポジトリのディレクトリ構造について設定する。</p>
 <p>また、マニフェストリポジトリにチャートを配置している場合でも、チャートリポジトリと同様にチャートを扱える。</p>
 <table>
-<thead>
-<tr>
-<th>設定項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>include</code></td>
-<td><code>.spec.source.path</code> キーで指定したディレクトリ内で、特定のマニフェストのみを指定し、kube-apiserver に送信する</td>
-</tr>
-<tr>
-<td><code>exclude</code></td>
-<td><code>.spec.source.path</code> キーで指定したディレクトリ内で、特定のマニフェストを除外し、kube-apiserver に送信する</td>
-</tr>
-<tr>
-<td><code>recurse</code></td>
-<td><code>.spec.source.path</code> キーで指定したディレクトリにサブディレクトリが存在している場合、すべてのマニフェストを指定できるように、ディレクトリ内の再帰的検出を有効化するか否かを設定する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>include</code></td>
+      <td><code>.spec.source.path</code> キーで指定したディレクトリ内で、特定のマニフェストのみを指定し、kube-apiserver に送信する</td>
+    </tr>
+    <tr>
+      <td><code>exclude</code></td>
+      <td><code>.spec.source.path</code> キーで指定したディレクトリ内で、特定のマニフェストを除外し、kube-apiserver に送信する</td>
+    </tr>
+    <tr>
+      <td><code>recurse</code></td>
+      <td><code>.spec.source.path</code> キーで指定したディレクトリにサブディレクトリが存在している場合、すべてのマニフェストを指定できるように、ディレクトリ内の再帰的検出を有効化するか否かを設定する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36836,36 +36840,37 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <p><code>helm</code> コマンドに渡すオプションを設定する。</p>
 <p>helmfile と同じように <code>helm</code> コマンドを宣言的に実行しつつ、実行を自動化できる。</p>
 <table>
-<thead>
-<tr>
-<th>設定項目</th>
-<th>説明</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>releaseName</code></td>
-<td>Helm リリース名を設定する。多くのチャートではデフォルトで ArgoCD の名前を Helm リリース名としており、Helm リリース名はチャート内の Kubernetes リソースのプレフィクスになる。予期せぬ Application の再作成を防ぐにために、<code>releaseName</code> を明示的に設定したほうがよい。</td>
-<td></td>
-</tr>
-<tr>
-<td><code>values</code></td>
-<td><code>helm</code> コマンドに渡す <code>values</code> ファイルの値をハードコーディングする。</td>
-<td>執筆時点 (2022/10/31) では、<code>values</code> ファイルは、同じチャートリポジトリ内にある必要がある。チャートと <code>values</code> ファイルが異なるリポジトリにある場合 (例：チャートは OSS を参照し、<code>values</code> ファイルは自前で定義する) 、<code>valueFiles</code> オプションの代わりに <code>values</code> オプションを使用する。<br>・<a href="https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936">https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936</a> <br>・<a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62">https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62</a> <br><br>ただし、Application に <code>values</code> ファイルをハードコーディングした場合、共有 <code>values</code> ファイルと差分 <code>values</code> ファイルに切り分けて定義できなくなってしまう。そこで、<code>values</code> オプションの一部分を Helm のテンプレート機能で動的に出力する。ただし、新機能として複数のリポジトリの <code>values</code> ファイルを参照する方法が提案されており、これを使用すれば異なるリポジトリに <code>values</code> ファイルがあっても <code>valueFiles</code> オプションで指定できるようになる。<br>・<a href="https://github.com/argoproj/argo-cd/pull/10432">https://github.com/argoproj/argo-cd/pull/10432</a></td>
-</tr>
-<tr>
-<td><code>valueFiles</code></td>
-<td><code>helm</code> コマンドに渡す <code>values</code> ファイルを設定する。</td>
-<td></td>
-</tr>
-<tr>
-<td><code>version</code></td>
-<td><code>helm</code> コマンドのバージョンを設定する。デフォルトでは、<code>v3</code> になる。 ArgoCD 自体を Helm でセットアップする場合は、インストールする Helm のバージョンを指定できる。そのため、このオプションを使用する必要はない。</td>
-<td>・<a href="https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-version">https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-version</a></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>releaseName</code></td>
+      <td>Helm リリース名を設定する。多くのチャートではデフォルトで ArgoCD の名前を Helm リリース名としており、Helm リリース名はチャート内の Kubernetes リソースのプレフィクスになる。予期せぬ Application の再作成を防ぐにために、<code>releaseName</code> を明示的に設定したほうがよい。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>values</code></td>
+      <td><code>helm</code> コマンドに渡す <code>values</code> ファイルの値をハードコーディングする。</td>
+      <td>執筆時点 (2022/10/31) では、<code>values</code> ファイルは、同じチャートリポジトリ内にある必要がある。チャートと <code>values</code> ファイルが異なるリポジトリにある場合 (例：チャートは OSS を参照し、<code>values</code> ファイルは自前で定義する) 、<code>valueFiles</code> オプションの代わりに <code>values</code> オプションを使用する。<br>・<a href="https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936">https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936</a> <br>・<a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62">https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62</a> <br><br>ただし、Application に <code>values</code> ファイルをハードコーディングした場合、共有 <code>values</code> ファイルと差分 <code>values</code> ファイルに切り分けて定義できなくなってしまう。そこで、<code>values</code> オプションの一部分を Helm のテンプレート機能で動的に出力する。ただし、新機能として複数のリポジトリの <code>values</code> ファイルを参照する方法が提案されており、これを使用すれば異なるリポジトリに <code>values</code> ファイルがあっても <code>valueFiles</code> オプションで指定できるようになる。<br>・<a href="https://github.com/argoproj/argo-cd/pull/10432">https://github.com/argoproj/argo-cd/pull/10432</a></td>
+    </tr>
+    <tr>
+      <td><code>valueFiles</code></td>
+      <td><code>helm</code> コマンドに渡す <code>values</code> ファイルを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>version</code></td>
+      <td><code>helm</code> コマンドのバージョンを設定する。デフォルトでは、<code>v3</code> になる。 ArgoCD 自体を Helm でセットアップする場合は、インストールする Helm のバージョンを指定できる。そのため、このオプションを使用する必要はない。</td>
+      <td>・<a href="https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-version">https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-version</a></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-plugins">Helm - Argo CD - Declarative GitOps CD for Kubernetes</a></li>
@@ -37258,31 +37263,32 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <p>また、複数の実行環境やチームがある場合、Sync 漏れを防げる。</p>
 <p>一方で、App Of Apps パターンを採用している場合、親の Application の自動 Sync が有効化していると、子 Application の設定値 (例：ターゲットブランチ) を変更できず煩わしい。</p>
 <table>
-<thead>
-<tr>
-<th>設定項目</th>
-<th>説明</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>allowEmpty</code></td>
-<td>Prune 中に、Application 配下にリソースを検出できなくなると、Prune は失敗するようになっている。Application が空 (配下にリソースがない) 状態を許可するか否かを設定する。</td>
-<td>・<a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18">https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18</a><br>・<a href="https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted">https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted</a></td>
-</tr>
-<tr>
-<td><code>prune</code></td>
-<td>リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GitHub リポジトリでマニフェストが削除されても、ArgoCD はリソースを自動的に削除しない。開発者の気づかないうちに、残骸の Kubernetes リソースが溜まる可能性があるため、有効化したほうがよい。<code>rev:&lt;番号&gt;</code> という表記がある Kubernetes リソースは、<code>prune</code> を忘れて新旧バージョンが存在していることを表す。Application を削除するときには、Application 配下の Kubernetes リソースが残骸にならないように、Application 配下の Kubernetes リソースを先に削除しておく。</td>
-<td>・<a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning">https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning</a></td>
-</tr>
-<tr>
-<td><code>selfHeal</code></td>
-<td>ArgoCD 以外の方法で Cluster 内でマニフェストを変更した場合、リポジトリ (例：GitHub、Helm) の状態に自動 Sync する。デフォルトでは、ArgoCD 以外の方法で変更しても、自動 Sync は実行しない。</td>
-<td>・<a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing">https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing</a></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>allowEmpty</code></td>
+      <td>Prune 中に、Application 配下にリソースを検出できなくなると、Prune は失敗するようになっている。Application が空 (配下にリソースがない) 状態を許可するか否かを設定する。</td>
+      <td>・<a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18">https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18</a><br>・<a href="https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted">https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted</a></td>
+    </tr>
+    <tr>
+      <td><code>prune</code></td>
+      <td>リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GitHub リポジトリでマニフェストが削除されても、ArgoCD はリソースを自動的に削除しない。開発者の気づかないうちに、残骸の Kubernetes リソースが溜まる可能性があるため、有効化したほうがよい。<code>rev:&lt;番号&gt;</code> という表記がある Kubernetes リソースは、<code>prune</code> を忘れて新旧バージョンが存在していることを表す。Application を削除するときには、Application 配下の Kubernetes リソースが残骸にならないように、Application 配下の Kubernetes リソースを先に削除しておく。</td>
+      <td>・<a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning">https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning</a></td>
+    </tr>
+    <tr>
+      <td><code>selfHeal</code></td>
+      <td>ArgoCD 以外の方法で Cluster 内でマニフェストを変更した場合、リポジトリ (例：GitHub、Helm) の状態に自動 Sync する。デフォルトでは、ArgoCD 以外の方法で変更しても、自動 Sync は実行しない。</td>
+      <td>・<a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing">https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing</a></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy">Automated Sync Policy - Argo CD - Declarative GitOps CD for Kubernetes</a></li>
@@ -37309,41 +37315,42 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <h4 id="syncoptions">▼ syncOptions<a class="headerlink" href="#syncoptions" title="Permanent link">&para;</a></h4>
 <p>GitOps でのマニフェストの Sync 処理の詳細を設定する。</p>
 <table>
-<thead>
-<tr>
-<th>設定項目</th>
-<th>説明</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>CreateNamespace</code></td>
-<td>Application の作成対象の Namespace を自動的に作成する。</td>
-<td>Namespace ので出どころがわからなくなるため、ArgoCD の <code>createNamespace</code> オプションは無効化し、Namespace のマニフェストを定義しておくほうがよい。</td>
-</tr>
-<tr>
-<td><code>Validate</code></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>PrunePropagationPolicy</code></td>
-<td>Sync 後に不要になった Kubernetes リソースの削除方法を設定する。削除方法は、Kubernetes での Kubernetes リソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファンがある。</td>
-<td>・<a href="https://www.devopsschool.com/blog/sync-options-in-argo-cd/">https://www.devopsschool.com/blog/sync-options-in-argo-cd/</a><br>・<a href="https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/">https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/</a></td>
-</tr>
-<tr>
-<td><code>PruneLast</code></td>
-<td>通常の Prune では、Sync しながら古いリソースを独立的に削除していく。PruneLast では、一度すべての Kubernetes リソースを Sync してしまい、正常に稼働した後に古いリソースをまとめて削除していく。</td>
-<td>・<a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last">https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last</a></td>
-</tr>
-<tr>
-<td><code>ServerSideApply</code></td>
-<td>Sync 時、<code>kubectl apply</code> コマンド <code>--server-side</code> オプションを有効化する。</td>
-<td>・<a href="https://argo-cd.readthedocs.io/en/latest/user-guide/sync-options/#server-side-apply">https://argo-cd.readthedocs.io/en/latest/user-guide/sync-options/#server-side-apply</a></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>CreateNamespace</code></td>
+      <td>Application の作成対象の Namespace を自動的に作成する。</td>
+      <td>Namespace ので出どころがわからなくなるため、ArgoCD の <code>createNamespace</code> オプションは無効化し、Namespace のマニフェストを定義しておくほうがよい。</td>
+    </tr>
+    <tr>
+      <td><code>Validate</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>PrunePropagationPolicy</code></td>
+      <td>Sync 後に不要になった Kubernetes リソースの削除方法を設定する。削除方法は、Kubernetes での Kubernetes リソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファンがある。</td>
+      <td>・<a href="https://www.devopsschool.com/blog/sync-options-in-argo-cd/">https://www.devopsschool.com/blog/sync-options-in-argo-cd/</a><br>・<a href="https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/">https://hyoublog.com/2020/06/09/kubernetes-カスケード削除連鎖削除/</a></td>
+    </tr>
+    <tr>
+      <td><code>PruneLast</code></td>
+      <td>通常の Prune では、Sync しながら古いリソースを独立的に削除していく。PruneLast では、一度すべての Kubernetes リソースを Sync してしまい、正常に稼働した後に古いリソースをまとめて削除していく。</td>
+      <td>・<a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last">https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last</a></td>
+    </tr>
+    <tr>
+      <td><code>ServerSideApply</code></td>
+      <td>Sync 時、<code>kubectl apply</code> コマンド <code>--server-side</code> オプションを有効化する。</td>
+      <td>・<a href="https://argo-cd.readthedocs.io/en/latest/user-guide/sync-options/#server-side-apply">https://argo-cd.readthedocs.io/en/latest/user-guide/sync-options/#server-side-apply</a></td>
+    </tr>
+  </tbody>
 </table>
+
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>

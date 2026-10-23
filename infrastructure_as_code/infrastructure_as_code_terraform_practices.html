@@ -36094,7 +36094,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月21日 19:27:44 JST">2026-10-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -36769,35 +36769,36 @@ crash.*.log
 <h3 id="_28">機密な変数やファイルの扱い<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
 <h4 id="secret">▼ パラメーターの暗号化と Secret ストア<a class="headerlink" href="#secret" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>方法</th>
-<th>リポジトリ</th>
-<th>リポジトリ + キーバリュー型ストア</th>
-<th>リポジトリ + クラウドキーバリュー型ストア</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>バージョン管理</td>
-<td>管理できる。</td>
-<td>管理できる。</td>
-<td>管理できない。</td>
-</tr>
-<tr>
-<td>暗号化</td>
-<td><code>base64</code> 方式エンコード値をリポジトリ内でそのまま管理する。非推奨である。</td>
-<td><code>base64</code> 方式エンコード値を暗号化キー (例：AWS KMS、Google Cloud CKM、GnuPG、PGP など) で暗号化する。</td>
-<td><code>base64</code> 方式エンコード値を暗号化キー (例：AWS KMS、Google Cloud CKM、GnuPG、PGP など) で暗号化する。</td>
-</tr>
-<tr>
-<td>Secret ストア</td>
-<td>なし</td>
-<td>リポジトリ上でキーバリュー型ストア (例：SOPS、Hashicorp Vault) で管理する。クラウドインフラへのプロビジョニング時に <code>base64</code> 方式エンコード値に復号する。</td>
-<td>クラウドプロバイダー内のキーバリュー型ストア (例：AWS パラメーターストア、Google Cloud Secret Manager など) で管理する。クラウドインフラへのプロビジョニング時に <code>base64</code> 方式エンコード値に復号する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>方法</th>
+      <th>リポジトリ</th>
+      <th>リポジトリ + キーバリュー型ストア</th>
+      <th>リポジトリ + クラウドキーバリュー型ストア</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>バージョン管理</td>
+      <td>管理できる。</td>
+      <td>管理できる。</td>
+      <td>管理できない。</td>
+    </tr>
+    <tr>
+      <td>暗号化</td>
+      <td><code>base64</code> 方式エンコード値をリポジトリ内でそのまま管理する。非推奨である。</td>
+      <td><code>base64</code> 方式エンコード値を暗号化キー (例：AWS KMS、Google Cloud CKM、GnuPG、PGP など) で暗号化する。</td>
+      <td><code>base64</code> 方式エンコード値を暗号化キー (例：AWS KMS、Google Cloud CKM、GnuPG、PGP など) で暗号化する。</td>
+    </tr>
+    <tr>
+      <td>Secret ストア</td>
+      <td>なし</td>
+      <td>リポジトリ上でキーバリュー型ストア (例：SOPS、Hashicorp Vault) で管理する。クラウドインフラへのプロビジョニング時に <code>base64</code> 方式エンコード値に復号する。</td>
+      <td>クラウドプロバイダー内のキーバリュー型ストア (例：AWS パラメーターストア、Google Cloud Secret Manager など) で管理する。クラウドインフラへのプロビジョニング時に <code>base64</code> 方式エンコード値に復号する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="tfstate">▼ <code>tfstate</code> ファイルへの書き込みを防ぐ<a class="headerlink" href="#tfstate" title="Permanent link">&para;</a></h4>
 <p>機密な変数を <code>ignore_changes</code> 引数を使用して、<code>tfstate</code> ファイルへの書き込みを防ぐ。</p>
 <p>そのうえで、特定の方法 (例：SOPS、kubesec、AWS Secrets Manager) で実際の値を管理し、これを <code>data</code> ブロックで参照する。</p>
@@ -36947,31 +36948,32 @@ crash.*.log
 <p>Terraform の整形コマンド (<code>terraform fmt</code> コマンド) を使用して、ソースコードを整形する。</p>
 <h4 id="_34">▼ 静的解析<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>観点</th>
-<th>説明</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Terraform の文法違反テスト</td>
-<td>Terraform の静的解析コマンド (<code>terraform validate</code> コマンド) を使用する。機能追加/変更を含むブロックの文法違反を検証する。代わりに、外部の静的解析ツール (例：tflint) を使用してもよい。</td>
-<td></td>
-</tr>
-<tr>
-<td>ベストプラクティス違反テスト</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Terraform の脆弱性診断</td>
-<td>外部の脆弱性診断ツール (例：tfsec) を使用する。報告された CVE に基づいて、Terraform の実装方法に起因する脆弱性を検証する。</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>観点</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Terraform の文法違反テスト</td>
+      <td>Terraform の静的解析コマンド (<code>terraform validate</code> コマンド) を使用する。機能追加/変更を含むブロックの文法違反を検証する。代わりに、外部の静的解析ツール (例：tflint) を使用してもよい。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ベストプラクティス違反テスト</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Terraform の脆弱性診断</td>
+      <td>外部の脆弱性診断ツール (例：tfsec) を使用する。報告された CVE に基づいて、Terraform の実装方法に起因する脆弱性を検証する。</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="_35">▼ ドライラン<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
 <p>テスト環境に対して <code>terraform plan</code> コマンドを実行することで、ドライランを実施する。</p>
 <p><code>terraform plan</code> コマンドの結果は可読性が高いわけではない。そのため、差分が増えるほど確認が大変になる。</p>

@@ -34496,7 +34496,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:04:05 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -34553,31 +34553,32 @@
 <h4 id="_3">▼ デザインパターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>Exporter には、Kubernetes の Node 上でどう稼働させるかに応じて、デザインパターンがある。</p>
 <table>
-<thead>
-<tr>
-<th>タイプ</th>
-<th>配置方法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DaemonSet パターン</td>
-<td>各 Node 上に DaemonSet として配置する。</td>
-</tr>
-<tr>
-<td>Deployment パターン</td>
-<td>各 Node 上に Deployment として配置する。</td>
-</tr>
-<tr>
-<td>Pod 内サイドカーパターン</td>
-<td>Pod 内にサイドカーとして配置する。</td>
-</tr>
-<tr>
-<td>埋め込み型パターン</td>
-<td>ライブラリとして、アプリケーション内に埋め込む。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>タイプ</th>
+      <th>配置方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DaemonSet パターン</td>
+      <td>各 Node 上に DaemonSet として配置する。</td>
+    </tr>
+    <tr>
+      <td>Deployment パターン</td>
+      <td>各 Node 上に Deployment として配置する。</td>
+    </tr>
+    <tr>
+      <td>Pod 内サイドカーパターン</td>
+      <td>Pod 内にサイドカーとして配置する。</td>
+    </tr>
+    <tr>
+      <td>埋め込み型パターン</td>
+      <td>ライブラリとして、アプリケーション内に埋め込む。</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2205/31/news011.html#072">かゆいところに手が届く実践「Prometheus」「Grafana」――PromQL、スクレイプ、Exporter、運用のためのポイント：Cloud Nativeチートシート（15） - ＠IT</a></li>
@@ -34587,151 +34588,147 @@
 </blockquote>
 <h4 id="daemonset">▼ DaemonSet パターン<a class="headerlink" href="#daemonset" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th style="text-align: left;">Exporter 名</th>
-<th>説明</th>
-<th>待ち受けポート番号</th>
-<th>待ち受けエンドポイント</th>
-<th>メトリクス名</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><a href="https://github.com/prometheus/node_exporter">Node Exporter</a></td>
-<td>Node に関するメトリクスの元になるデータポイントを収集する。</td>
-<td><code>9100</code></td>
-<td><code>/metrics</code></td>
-<td><code>node_*</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="https://github.com/ncabatoff/process-exporter">Process Exporter</a></td>
-<td>Node の非コンテナのプロセスに関するメトリクスの元になるデータポイントを収集する。収集対象のプロセス名は <code>config.yaml</code> ファイルで設定できる。 <br>・<a href="https://qiita.com/kkentaro/items/c01b8cf332da893791bb">https://qiita.com/kkentaro/items/c01b8cf332da893791bb</a></td>
-<td><code>9256</code></td>
-<td>同上</td>
-<td><code>namedprocess_*</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th style="text-align:left">Exporter 名</th>
+      <th>説明</th>
+      <th>待ち受けポート番号</th>
+      <th>待ち受けエンドポイント</th>
+      <th>メトリクス名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><a href="https://github.com/prometheus/node_exporter">Node Exporter</a></td>
+      <td>Node に関するメトリクスの元になるデータポイントを収集する。</td>
+      <td><code>9100</code></td>
+      <td rowspan="2"><code>/metrics</code></td>
+      <td><code>node_*</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://github.com/ncabatoff/process-exporter">Process Exporter</a></td>
+      <td>Node の非コンテナのプロセスに関するメトリクスの元になるデータポイントを収集する。収集対象のプロセス名は <code>config.yaml</code> ファイルで設定できる。 <br>・<a href="https://qiita.com/kkentaro/items/c01b8cf332da893791bb">https://qiita.com/kkentaro/items/c01b8cf332da893791bb</a></td>
+      <td><code>9256</code></td>
+      <td><code>namedprocess_*</code></td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="deployment">▼ Deployment パターン<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th style="text-align: left;">Exporter 名</th>
-<th>説明</th>
-<th>待ち受けポート番号</th>
-<th>待ち受けエンドポイント</th>
-<th>メトリクス名</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><a href="https://github.com/kubernetes/kube-state-metrics">kube-state-metrics</a></td>
-<td>Kubernetes のソース単位でメトリクスの元になるデータポイントを収集する。似た名前のツールに metrics-server があるが、metrics-server は Node と Pod のみを対象としており、また apiserver として稼働する。<br>・<a href="https://tech-blog.abeja.asia/entry/2016/12/20/202631">https://tech-blog.abeja.asia/entry/2016/12/20/202631</a> <br>・<a href="https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/">https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/</a></td>
-<td><code>8080</code></td>
-<td>同上</td>
-<td><code>kube_*</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="https://github.com/prometheus/blackbox_exporter">Blackbox Exporter</a></td>
-<td>指定したプロトコルで外形監視する。外形監視のため、リクエストは一度 Cluster 外に出る。リクエストの成否以外にも、各種メトリクス (レスポンスタイム、HTTP ステータスなど) を収集できる。<br>・<a href="https://handon.hatenablog.jp/entry/2019/01/29/005935">https://handon.hatenablog.jp/entry/2019/01/29/005935</a> <br>・<a href="https://medium.com/@lambdaEranga/monitor-kubernets-services-endpoints-with-prometheus-blackbox-exporter-a64e062c05d5">https://medium.com/@lambdaEranga/monitor-kubernets-services-endpoints-with-prometheus-blackbox-exporter-a64e062c05d5</a></td>
-<td><code>9115</code></td>
-<td>同上</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="https://github.com/prometheus-community/elasticsearch_exporter">Elasticsearch Exporter</a></td>
-<td>ElasticSearch に関するメトリクスの元になるデータポイントを収集する。</td>
-<td><code>9114</code></td>
-<td>同上</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="https://github.com/opsgenie/kubernetes-event-exporter/blob/master/deploy/02-deployment.yaml">Kubernetes Event Exporter</a></td>
-<td>Kubernetes リソースのイベントを収集する。Fluentd/FluentBit に似たことを実現できる kubernetes-events プラグインがある。</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th style="text-align:left">Exporter 名</th>
+      <th>説明</th>
+      <th>待ち受けポート番号</th>
+      <th>待ち受けエンドポイント</th>
+      <th>メトリクス名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><a href="https://github.com/kubernetes/kube-state-metrics">kube-state-metrics</a></td>
+      <td>Kubernetes のソース単位でメトリクスの元になるデータポイントを収集する。似た名前のツールに metrics-server があるが、metrics-server は Node と Pod のみを対象としており、また apiserver として稼働する。<br>・<a href="https://tech-blog.abeja.asia/entry/2016/12/20/202631">https://tech-blog.abeja.asia/entry/2016/12/20/202631</a> <br>・<a href="https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/">https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/</a></td>
+      <td><code>8080</code></td>
+      <td rowspan="3"><code>/metrics</code></td>
+      <td><code>kube_*</code></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://github.com/prometheus/blackbox_exporter">Blackbox Exporter</a></td>
+      <td>指定したプロトコルで外形監視する。外形監視のため、リクエストは一度 Cluster 外に出る。リクエストの成否以外にも、各種メトリクス (レスポンスタイム、HTTP ステータスなど) を収集できる。<br>・<a href="https://handon.hatenablog.jp/entry/2019/01/29/005935">https://handon.hatenablog.jp/entry/2019/01/29/005935</a> <br>・<a href="https://medium.com/@lambdaEranga/monitor-kubernets-services-endpoints-with-prometheus-blackbox-exporter-a64e062c05d5">https://medium.com/@lambdaEranga/monitor-kubernets-services-endpoints-with-prometheus-blackbox-exporter-a64e062c05d5</a></td>
+      <td><code>9115</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://github.com/prometheus-community/elasticsearch_exporter">Elasticsearch Exporter</a></td>
+      <td>ElasticSearch に関するメトリクスの元になるデータポイントを収集する。</td>
+      <td><code>9114</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://github.com/opsgenie/kubernetes-event-exporter/blob/master/deploy/02-deployment.yaml">Kubernetes Event Exporter</a></td>
+      <td>Kubernetes リソースのイベントを収集する。Fluentd/FluentBit に似たことを実現できる kubernetes-events プラグインがある。</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="pod">▼ Pod 内サイドカーパターン<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th style="text-align: left;">Exporter 名</th>
-<th>説明</th>
-<th>待ち受けポート番号</th>
-<th>待ち受けエンドポイント</th>
-<th>メトリクス名</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><a href="https://github.com/hnlq715/nginx-vts-exporter">Nginx Vts Exporter</a></td>
-<td>Nginx に関するメトリクスの元になるデータポイントを収集する。</td>
-<td><code>9113</code></td>
-<td>同上</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="https://github.com/Lusitaniae/apache_exporter">Apache Exporter</a></td>
-<td>Apache に関するメトリクスの元になるデータポイントを収集する。</td>
-<td><code>9117</code></td>
-<td>同上</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="https://github.com/prometheus/mysqld_exporter">Mysqld Exporter</a></td>
-<td>MySQL/MariaDB に関するメトリクスの元になるデータポイントを収集する。</td>
-<td><code>9104</code></td>
-<td>同上</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="https://github.com/prometheus-community/postgres_exporter">Postgres Exporter</a></td>
-<td>PostgreSQL に関するメトリクスの元になるデータポイントを収集する。<br>・<a href="https://grafana.com/oss/prometheus/exporters/postgres-exporter/#metrics-usage">https://grafana.com/oss/prometheus/exporters/postgres-exporter/#metrics-usage</a></td>
-<td><code>9187</code></td>
-<td>同上</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="https://github.com/iamseth/oracledb_exporter">Oracledb Exporter</a></td>
-<td>Oracle に関するメトリクスの元になるデータポイントを収集する。</td>
-<td><code>9121</code></td>
-<td>同上</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="https://github.com/oliver006/redis_exporter">Redis Exporter</a></td>
-<td>Redis に関するメトリクスの元になるデータポイントを収集する。</td>
-<td><code>9121</code></td>
-<td>同上</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th style="text-align:left">Exporter 名</th>
+      <th>説明</th>
+      <th>待ち受けポート番号</th>
+      <th>待ち受けエンドポイント</th>
+      <th>メトリクス名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><a href="https://github.com/hnlq715/nginx-vts-exporter">Nginx Vts Exporter</a></td>
+      <td>Nginx に関するメトリクスの元になるデータポイントを収集する。</td>
+      <td><code>9113</code></td>
+      <td rowspan="6"><code>/metrics</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://github.com/Lusitaniae/apache_exporter">Apache Exporter</a></td>
+      <td>Apache に関するメトリクスの元になるデータポイントを収集する。</td>
+      <td><code>9117</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://github.com/prometheus/mysqld_exporter">Mysqld Exporter</a></td>
+      <td>MySQL/MariaDB に関するメトリクスの元になるデータポイントを収集する。</td>
+      <td><code>9104</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://github.com/prometheus-community/postgres_exporter">Postgres Exporter</a></td>
+      <td>PostgreSQL に関するメトリクスの元になるデータポイントを収集する。<br>・<a href="https://grafana.com/oss/prometheus/exporters/postgres-exporter/#metrics-usage">https://grafana.com/oss/prometheus/exporters/postgres-exporter/#metrics-usage</a></td>
+      <td><code>9187</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://github.com/iamseth/oracledb_exporter">Oracledb Exporter</a></td>
+      <td>Oracle に関するメトリクスの元になるデータポイントを収集する。</td>
+      <td><code>9121</code></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://github.com/oliver006/redis_exporter">Redis Exporter</a></td>
+      <td>Redis に関するメトリクスの元になるデータポイントを収集する。</td>
+      <td><code>9121</code></td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <h3 id="_4">▼ 埋め込み型パターン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th style="text-align: left;">Exporter 名</th>
-<th>説明</th>
-<th>待ち受けポート番号</th>
-<th>待ち受けエンドポイント</th>
-<th>メトリクス名</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">open-telemetry の SDK</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th style="text-align:left">Exporter 名</th>
+      <th>説明</th>
+      <th>待ち受けポート番号</th>
+      <th>待ち受けエンドポイント</th>
+      <th>メトリクス名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">open-telemetry の SDK</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_5">セットアップ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ チャートとして<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>

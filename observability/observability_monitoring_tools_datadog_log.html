@@ -35900,7 +35900,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:23:00 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -36174,53 +36174,54 @@
 <h3 id="_10">属性<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ 予約済み属性<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>属性名</th>
-<th>説明</th>
-<th>補足</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>host</code></td>
-<td>ログの作成元のホスト名を示す。</td>
-<td>ログが作成元とは別の場所から受信した場合に役立つ。datadog コンテナの環境変数にて、<code>DD_HOSTNAME</code> を使用して <code>host</code> 属性を設定する。これにより、ホストマップでホストを俯瞰できるようになるのみでなく、ログエクスプローラでホストタグが属性として付与される。他に AWS インテグレーションでは、送信元のロググループ名やバケット名が付与される。</td>
-<td>・<code>foo</code><br>・<code>foo-backend</code><br>・<code>foo-frontend</code><br>・<code>foo-log-group</code><br>・<code>foo-bucket</code></td>
-</tr>
-<tr>
-<td><code>source</code></td>
-<td>ログの作成元の名前を示す。</td>
-<td>ベンダー名を使用するとわかりやすい。</td>
-<td>・<code>laravel</code><br>・<code>nginx</code><br>・<code>redis</code></td>
-</tr>
-<tr>
-<td><code>status</code></td>
-<td>ログのレベルを示す。</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>service</code></td>
-<td>ログの作成元のアプリケーション名を示す。</td>
-<td>ログと APM 分散トレースを紐付けるため、両方に同じ名前を割り当てる必要がある。</td>
-<td>・<code>foo</code><br>・<code>bar-backend</code><br>・<code>baz-frontend</code></td>
-</tr>
-<tr>
-<td><code>trace_id</code></td>
-<td>ログを分散トレースやスパンと紐付ける ID を示す。</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>message</code></td>
-<td>ログメッセージを示す。</td>
-<td>受信したログが非構造化ログの場合、これは Datadog の基底構造化ログの <code>message</code> 属性に割り当てられる。一方で、構造化ログであった場合は <code>message</code> 属性は使用されない。</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>属性名</th>
+      <th>説明</th>
+      <th>補足</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>host</code></td>
+      <td>ログの作成元のホスト名を示す。</td>
+      <td>ログが作成元とは別の場所から受信した場合に役立つ。datadog コンテナの環境変数にて、<code>DD_HOSTNAME</code> を使用して <code>host</code> 属性を設定する。これにより、ホストマップでホストを俯瞰できるようになるのみでなく、ログエクスプローラでホストタグが属性として付与される。他に AWS インテグレーションでは、送信元のロググループ名やバケット名が付与される。</td>
+      <td>・<code>foo</code><br>・<code>foo-backend</code><br>・<code>foo-frontend</code><br>・<code>foo-log-group</code><br>・<code>foo-bucket</code></td>
+    </tr>
+    <tr>
+      <td><code>source</code></td>
+      <td>ログの作成元の名前を示す。</td>
+      <td>ベンダー名を使用するとわかりやすい。</td>
+      <td>・<code>laravel</code><br>・<code>nginx</code><br>・<code>redis</code></td>
+    </tr>
+    <tr>
+      <td><code>status</code></td>
+      <td>ログのレベルを示す。</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>service</code></td>
+      <td>ログの作成元のアプリケーション名を示す。</td>
+      <td>ログと APM 分散トレースを紐付けるため、両方に同じ名前を割り当てる必要がある。</td>
+      <td>・<code>foo</code><br>・<code>bar-backend</code><br>・<code>baz-frontend</code></td>
+    </tr>
+    <tr>
+      <td><code>trace_id</code></td>
+      <td>ログを分散トレースやスパンと紐付ける ID を示す。</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>message</code></td>
+      <td>ログメッセージを示す。</td>
+      <td>受信したログが非構造化ログの場合、これは Datadog の基底構造化ログの <code>message</code> 属性に割り当てられる。一方で、構造化ログであった場合は <code>message</code> 属性は使用されない。</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/">https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/</a></li>
@@ -36241,35 +36242,36 @@
 </ul>
 </blockquote>
 <table>
-<thead>
-<tr>
-<th>属性名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>logger.name</code></td>
-<td>ログパッケージの名前を示す。</td>
-</tr>
-<tr>
-<td><code>logger.thread_name</code></td>
-<td>スレッド名を示す。</td>
-</tr>
-<tr>
-<td><code>error.stack</code></td>
-<td>スタックトレースログ全体を示す。</td>
-</tr>
-<tr>
-<td><code>error.message</code></td>
-<td>スタックトレースログのメッセージ部分を示す。</td>
-</tr>
-<tr>
-<td><code>error.kind</code></td>
-<td>エラーの種類 (Exception、OSError など) を示す。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>属性名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>logger.name</code></td>
+      <td>ログパッケージの名前を示す。</td>
+    </tr>
+    <tr>
+      <td><code>logger.thread_name</code></td>
+      <td>スレッド名を示す。</td>
+    </tr>
+    <tr>
+      <td><code>error.stack</code></td>
+      <td>スタックトレースログ全体を示す。</td>
+    </tr>
+    <tr>
+      <td><code>error.message</code></td>
+      <td>スタックトレースログのメッセージ部分を示す。</td>
+    </tr>
+    <tr>
+      <td><code>error.kind</code></td>
+      <td>エラーの種類 (Exception、OSError など) を示す。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_14">タグ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <blockquote>
@@ -36494,31 +36496,32 @@ CRITICAL<span class="w"> </span>@http.status_code:<span class="o">[</span><span 
 </blockquote>
 <h4 id="_22">▼ パースルール<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>名前</th>
-<th>説明</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>マッチャー名</td>
-<td>パース対象の文字列を検出できるマッチャー関数を設定する。それぞれマッチャーは、検出後に何らかの処理を実行する。</td>
-<td>・<a href="https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#matcher-and-filter">https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#matcher-and-filter</a></td>
-</tr>
-<tr>
-<td>エクストラクト名</td>
-<td>処理結果の出力先の属性を設定する。</td>
-<td>出力先の属性が存在しない場合、これを新しく作成する。存在する場合は、既存の属性値を上書きする。</td>
-</tr>
-<tr>
-<td>フィルター名</td>
-<td>マッチャーの追加処理を実行するフィルター関数を設定する。</td>
-<td>・<a href="https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filters#matcher-and-filter">https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filters#matcher-and-filter</a></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>マッチャー名</td>
+      <td>パース対象の文字列を検出できるマッチャー関数を設定する。それぞれマッチャーは、検出後に何らかの処理を実行する。</td>
+      <td>・<a href="https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#matcher-and-filter">https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#matcher-and-filter</a></td>
+    </tr>
+    <tr>
+      <td>エクストラクト名</td>
+      <td>処理結果の出力先の属性を設定する。</td>
+      <td>出力先の属性が存在しない場合、これを新しく作成する。存在する場合は、既存の属性値を上書きする。</td>
+    </tr>
+    <tr>
+      <td>フィルター名</td>
+      <td>マッチャーの追加処理を実行するフィルター関数を設定する。</td>
+      <td>・<a href="https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filters#matcher-and-filter">https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filters#matcher-and-filter</a></td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="1">▼ 例１<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
 <p>Laravel から、以下のような非構造化ログを受信する例を考える。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span><span class="m">2021</span>-01-01<span class="w"> </span><span class="m">00</span>:00:00<span class="o">]</span><span class="w"> </span>staging.ERROR:<span class="w"> </span>ログのメッセージ
@@ -36826,80 +36829,84 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 <h3 id="_27">名前<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <h4 id="_28">▼ パイプライン<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;マイクロサービス名&gt;-pipeline</code></td>
-<td><code>order-pipeline</code></td>
-<td><code>order</code> マイクロサービスのログを処理する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+      <th>用途</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;マイクロサービス名&gt;-pipeline</code></td>
+      <td><code>order-pipeline</code></td>
+      <td><code>order</code> マイクロサービスのログを処理する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="_29">▼ プロセッサー系<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;プロセッサーに合わせた動詞&gt; &lt;属性へのアクセス&gt;</code></td>
-<td><code>Categorize http.status_code</code></td>
-<td><code>http.status_code</code> 属性にアクセスし、値に応じてカテゴリプロセッサーを実行する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+      <th>用途</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&lt;プロセッサーに合わせた動詞&gt; &lt;属性へのアクセス&gt;</code></td>
+      <td><code>Categorize http.status_code</code></td>
+      <td><code>http.status_code</code> 属性にアクセスし、値に応じてカテゴリプロセッサーを実行する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="_30">▼ パーサー系<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>規則</th>
-<th>パーサーの種類</th>
-<th>例</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Parse &lt;属性へのアクセス名&gt;</code></td>
-<td>Grok パーサー以外</td>
-<td><code>Parse http.url</code></td>
-<td><code>http.url</code> 属性にアクセスし、パーサーを実行する。</td>
-</tr>
-<tr>
-<td><code>Parse &lt;タグ名&gt; &lt;ログの種類&gt;</code></td>
-<td>Grok パーサー</td>
-<td>・<code>Parse php-fpm access logs</code><br>・<code>Parse php-fpm error logs</code></td>
-<td>指定したタグの付いたログに対して Grok パーサーを実行する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>パーサーの種類</th>
+      <th>例</th>
+      <th>用途</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Parse &lt;属性へのアクセス名&gt;</code></td>
+      <td>Grok パーサー以外</td>
+      <td><code>Parse http.url</code></td>
+      <td><code>http.url</code> 属性にアクセスし、パーサーを実行する。</td>
+    </tr>
+    <tr>
+      <td><code>Parse &lt;タグ名&gt; &lt;ログの種類&gt;</code></td>
+      <td>Grok パーサー</td>
+      <td>・<code>Parse php-fpm access logs</code><br>・<code>Parse php-fpm error logs</code></td>
+      <td>指定したタグの付いたログに対して Grok パーサーを実行する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="_31">▼ リマッパー系<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>規則</th>
-<th>例</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Remap &lt;属性へのアクセス名&gt;</code></td>
-<td><code>Remap http.status_category</code></td>
-<td><code>http.status_category</code> 属性にアクセスし、属性のリマップを実行する。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>規則</th>
+      <th>例</th>
+      <th>用途</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Remap &lt;属性へのアクセス名&gt;</code></td>
+      <td><code>Remap http.status_category</code></td>
+      <td><code>http.status_category</code> 属性にアクセスし、属性のリマップを実行する。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_32">粒度<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
 <h4 id="service">▼ service 流入パターン<a class="headerlink" href="#service" title="Permanent link">&para;</a></h4>
@@ -37027,27 +37034,28 @@ autoFilledRule3<span class="w"> </span>...
 <p><img alt="log-query_non-auto-complete" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/log-query_non-auto-complete.png" /></p>
 <h4 id="_49">▼ 文法<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>ユースケース</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>一致するものを抽出する。</td>
-<td><code>service:foo</code></td>
-</tr>
-<tr>
-<td>一致するものを除外する。</td>
-<td><code>-service:foo</code></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>ユースケース</th>
+      <th>例</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>一致するものを抽出する。</td>
+      <td><code>service:foo</code></td>
+    </tr>
+    <tr>
+      <td>一致するものを除外する。</td>
+      <td><code>-service:foo</code></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_50">ファセット<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h3>
 <h4 id="_51">▼ ファセットとは<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h4>

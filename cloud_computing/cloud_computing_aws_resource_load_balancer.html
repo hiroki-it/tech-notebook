@@ -34486,7 +34486,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:49:57 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
   </span>
 
     
@@ -34523,56 +34523,57 @@
 <h2 id="01-lb">01. LB<a class="headerlink" href="#01-lb" title="Permanent link">&para;</a></h2>
 <p>ロードバランシングしたいプロトコルに合わせて、使用するロードバランサーを選択する。</p>
 <table>
-<thead>
-<tr>
-<th>LB 名</th>
-<th>OSI 階層モデルのレイヤー</th>
-<th>リスナーが処理できるプロトコル</th>
-<th>ターゲット</th>
-<th>リクエストヘッダー (<code>L7</code>)</th>
-<th>パケットヘッダーのフィールド (<code>L4</code>)</th>
-<th>セキュリティグループ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ALB：Application Load Balancer</td>
-<td><code>L7</code> (アプリケーション層)</td>
-<td>HTTP、HTTPS、gRPC</td>
-<td>IP アドレス、Amazon EC2 インスタンス、Lambda</td>
-<td>URL、HTTP ヘッダー</td>
-<td>ポート番号フィールド</td>
-<td>可</td>
-</tr>
-<tr>
-<td>NLB：Network Load Balancer</td>
-<td><code>L4</code> (トランスポート層)</td>
-<td>TCP、UDP、TLS</td>
-<td>IP アドレス、Amazon EC2 インスタンス、ALB</td>
-<td>不可</td>
-<td>IP アドレスフィールド、ポート番号フィールド</td>
-<td>不可</td>
-</tr>
-<tr>
-<td>GLB：Gateway Load Balancer</td>
-<td><code>L3</code> (ネットワーク層) 、<code>L4</code></td>
-<td>IP</td>
-<td>IP アドレス、Amazon EC2 インスタンス</td>
-<td>不可</td>
-<td>IP アドレスフィールド、ポート番号フィールド</td>
-<td>不可</td>
-</tr>
-<tr>
-<td>CLB：Classic Load Balancer</td>
-<td><code>L4</code>、<code>L7</code></td>
-<td>HTTP、HTTPS、TCP、SSL/TLS</td>
-<td>なし</td>
-<td>URL、HTTP ヘッダー</td>
-<td>IP アドレスフィールド、ポート番号フィールド</td>
-<td>可</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>LB 名</th>
+      <th>OSI 階層モデルのレイヤー</th>
+      <th>リスナーが処理できるプロトコル</th>
+      <th>ターゲット</th>
+      <th>リクエストヘッダー (<code>L7</code>)</th>
+      <th>パケットヘッダーのフィールド (<code>L4</code>)</th>
+      <th>セキュリティグループ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ALB：Application Load Balancer</td>
+      <td><code>L7</code> (アプリケーション層)</td>
+      <td>HTTP、HTTPS、gRPC</td>
+      <td>IP アドレス、Amazon EC2 インスタンス、Lambda</td>
+      <td>URL、HTTP ヘッダー</td>
+      <td>ポート番号フィールド</td>
+      <td>可</td>
+    </tr>
+    <tr>
+      <td>NLB：Network Load Balancer</td>
+      <td><code>L4</code> (トランスポート層)</td>
+      <td>TCP、UDP、TLS</td>
+      <td>IP アドレス、Amazon EC2 インスタンス、ALB</td>
+      <td>不可</td>
+      <td>IP アドレスフィールド、ポート番号フィールド</td>
+      <td>不可</td>
+    </tr>
+    <tr>
+      <td>GLB：Gateway Load Balancer</td>
+      <td><code>L3</code> (ネットワーク層) 、<code>L4</code></td>
+      <td>IP</td>
+      <td>IP アドレス、Amazon EC2 インスタンス</td>
+      <td>不可</td>
+      <td>IP アドレスフィールド、ポート番号フィールド</td>
+      <td>不可</td>
+    </tr>
+    <tr>
+      <td>CLB：Classic Load Balancer</td>
+      <td><code>L4</code>、<code>L7</code></td>
+      <td>HTTP、HTTPS、TCP、SSL/TLS</td>
+      <td>なし</td>
+      <td>URL、HTTP ヘッダー</td>
+      <td>IP アドレスフィールド、ポート番号フィールド</td>
+      <td>可</td>
+    </tr>
+  </tbody>
 </table>
+
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/jp/elasticloadbalancing/features/">ネットワークトラフィックディストリビューション - Elastic Load Balancing - アマゾン ウェブ サービス</a></li>
@@ -34597,95 +34598,98 @@
 <h3 id="_2">コンソール画面の場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 設定項目と説明<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>設定項目</th>
-<th>説明</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>リスナー</td>
-<td>ALB に割り振るポート番号と受信するプロトコルを設定する。リバースプロキシサーバーかつロードバランサ－として、これらの通信をターゲットグループにルーティングする。</td>
-<td></td>
-</tr>
-<tr>
-<td>スキーム</td>
-<td>パブリックネットワークからのリクエストを待ち受けるか、あるいはプライベートネットワークからのリクエストを待ち受けるかを設定する。</td>
-<td></td>
-</tr>
-<tr>
-<td>セキュリティポリシー</td>
-<td>リクエストの送信者が使用する SSL/TLS プロトコルや暗号化方式のバージョンに合わせて、ALB が受信できるこれらのバージョンを設定する。</td>
-<td>・リクエストの送信者には、ブラウザ、API にリクエストを送信する外部サービス、フォワーディング元の AWS リソース (例：CloudFront など) などを含む。<br>・- <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies</a></td>
-</tr>
-<tr>
-<td>ルール</td>
-<td>リクエストのルーティングのロジックを設定する。</td>
-<td></td>
-</tr>
-<tr>
-<td>ターゲットグループ</td>
-<td>ルーティング時に使用するプロトコルと、宛先とするポート番号を設定する。</td>
-<td>ターゲットグループ内のターゲットのうち、トラフィックはヘルスチェックが OK になっているターゲットにルーティングされる。</td>
-</tr>
-<tr>
-<td>ヘルスチェック</td>
-<td>ターゲットグループに所属するプロトコルとアプリケーションのポート番号を指定して、定期的にリクエストを送信する。</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>リスナー</td>
+      <td>ALB に割り振るポート番号と受信するプロトコルを設定する。リバースプロキシサーバーかつロードバランサ－として、これらの通信をターゲットグループにルーティングする。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>スキーム</td>
+      <td>パブリックネットワークからのリクエストを待ち受けるか、あるいはプライベートネットワークからのリクエストを待ち受けるかを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>セキュリティポリシー</td>
+      <td>リクエストの送信者が使用する SSL/TLS プロトコルや暗号化方式のバージョンに合わせて、ALB が受信できるこれらのバージョンを設定する。</td>
+      <td>・リクエストの送信者には、ブラウザ、API にリクエストを送信する外部サービス、フォワーディング元の AWS リソース (例：CloudFront など) などを含む。<br>・- <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies</a></td>
+    </tr>
+    <tr>
+      <td>ルール</td>
+      <td>リクエストのルーティングのロジックを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ターゲットグループ</td>
+      <td>ルーティング時に使用するプロトコルと、宛先とするポート番号を設定する。</td>
+      <td>ターゲットグループ内のターゲットのうち、トラフィックはヘルスチェックが OK になっているターゲットにルーティングされる。</td>
+    </tr>
+    <tr>
+      <td>ヘルスチェック</td>
+      <td>ターゲットグループに所属するプロトコルとアプリケーションのポート番号を指定して、定期的にリクエストを送信する。</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
 <h4 id="_4">▼ ターゲットグループ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <table>
-<thead>
-<tr>
-<th>ターゲットの指定方法</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Amazon EC2 インスタンス</td>
-<td>ターゲットは Amazon EC2 である必要がある。</td>
-</tr>
-<tr>
-<td>IP アドレス</td>
-<td>ターゲットのパブリック IP アドレスは静的である必要がある。</td>
-</tr>
-<tr>
-<td>Lambda</td>
-<td>ターゲットは Lambda である必要がある。</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>ターゲットの指定方法</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon EC2 インスタンス</td>
+      <td>ターゲットは Amazon EC2 である必要がある。</td>
+    </tr>
+    <tr>
+      <td>IP アドレス</td>
+      <td>ターゲットのパブリック IP アドレスは静的である必要がある。</td>
+    </tr>
+    <tr>
+      <td>Lambda</td>
+      <td>ターゲットは Lambda である必要がある。</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="_5">ルールの設定例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <table>
-<thead>
-<tr>
-<th>ユースケース</th>
-<th>ポート</th>
-<th>IF</th>
-<th>THEN</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>リクエストが <code>80</code> 番ポートを指定したときに、<code>443</code> 番ポートにリダイレクトしたい。</td>
-<td><code>80</code></td>
-<td>それ以外の場合はルーティングされないリクエスト</td>
-<td>ルーティング先：<code>https://#{host}:443/#{path}?#{query}</code><br>ステータスコード：<code>HTTP_301</code></td>
-</tr>
-<tr>
-<td>リクエストが <code>443</code> 番ポートを指定したときに、ターゲットグループにフォワーディングしたい。</td>
-<td><code>443</code></td>
-<td>それ以外の場合はルーティングされないリクエスト</td>
-<td>特定のターゲットグループ</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>ユースケース</th>
+      <th>ポート</th>
+      <th>IF</th>
+      <th>THEN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>リクエストが <code>80</code> 番ポートを指定したときに、<code>443</code> 番ポートにリダイレクトしたい。</td>
+      <td><code>80</code></td>
+      <td>それ以外の場合はルーティングされないリクエスト</td>
+      <td>ルーティング先：<code>https://#{host}:443/#{path}?#{query}</code><br>ステータスコード：<code>HTTP_301</code></td>
+    </tr>
+    <tr>
+      <td>リクエストが <code>443</code> 番ポートを指定したときに、ターゲットグループにフォワーディングしたい。</td>
+      <td><code>443</code></td>
+      <td>それ以外の場合はルーティングされないリクエスト</td>
+      <td>特定のターゲットグループ</td>
+    </tr>
+  </tbody>
 </table>
+
 <p><br></p>
 <h3 id="terraform">Terraform の場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-eks-alb">▼ Amazon EKS に紐づける ALB<a class="headerlink" href="#amazon-eks-alb" title="Permanent link">&para;</a></h4>
