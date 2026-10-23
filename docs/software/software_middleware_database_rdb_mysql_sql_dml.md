@@ -251,7 +251,7 @@ $expression = call_user_func(function () use ($orders, $joinedIdList) {
     }
 
     // IN句順の場合
-    return sprintf("FIELD(ss.id, %s)", $idList);
+    return sprintf("FIELD(ss.id, %s)", $joinedIdList);
 });
 
 $sql = <<<SQL

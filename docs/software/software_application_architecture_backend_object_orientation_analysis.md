@@ -150,8 +150,8 @@ stateDiagram-v2
     success --> alert : 最新ログが正常<br>かつ<br>2つ目がError
     success --> error : 全ログがError
 
-    alert --> success : 全ログがError
-    alert --> error : 最新ログと2つ目がともに正常
+    alert --> success : 最新ログと2つ目がともに正常
+    alert --> error : 全ログがError
 
     error --> alert : 最新ログが正常<br>かつ<br>2つ目がError
     error --> success : 全ログがErrorではない

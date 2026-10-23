@@ -79,7 +79,7 @@ class ColorType
     /**
      * 『self::定数名』で、定義の値へアクセスする
      */
-    private $set = [
+    private static $set = [
         self::RED  => ["name" => "レッド"],
         self::BLUE => ["name" => "ブルー"]
     ];
@@ -531,11 +531,11 @@ class FooCriteria
         }
 
         if (isset($array["name"])) {
-            $criteria->id = $array["name"];
+            $criteria->name = $array["name"];
         }
 
         if (isset($array["email"])) {
-            $criteria->id = $array["email"];
+            $criteria->email = $array["email"];
         }
 
         return $criteria;
@@ -672,13 +672,6 @@ use App\Domain\Foo\ValueObjects\ColorVO;
  */
 class DogToy extends Entity
 {
-    /**
-     * 犬用おもちゃID
-     *
-     * @var Id
-     */
-    private $id;
-
     /**
      * 犬用おもちゃタイプ
      *
@@ -1007,7 +1000,7 @@ class MoneyVO extends ValueObject
      * @param Money $price
      * @return $this
      */
-    public function substract(Money $price)
+    public function subtract(Money $price)
     {
         return new static($this->amount - $price->amount);
     }
@@ -1020,7 +1013,7 @@ class MoneyVO extends ValueObject
      */
     public function multiply(Money $price)
     {
-        return new static($this->amount * $price);
+        return new static($this->amount * $price->amount);
     }
 }
 ```
@@ -1089,7 +1082,7 @@ class RequiredTime extends ValueObject
     }
 
     /**
-     * 車での所用時間を計算する
+     * 車での所要時間を計算する
      *
      * @return float
      */
@@ -1178,10 +1171,9 @@ class Address extends ValueObject
     public function address(): string
     {
         return sprintf(
-            "%s%s%s",
-            $this->city->prefecture->name ?? '',
-            $this->city->name ?? '',
-            $this->address ?? ''
+            "%s%s",
+            $this->city,
+            $this->address
         );
     }
 }
@@ -1384,7 +1376,7 @@ use LogicException;
  * イミュータブルトレイト
  * NOTE: イミュータブルなオブジェクトで使用する汎用的な関数を定義する
  */
-trait イミュータブルTrait
+trait ImmutableTrait
 {
     /**
      * ゲッターが定義されていなくとも、プロパティにアクセスできるようにする
@@ -1408,20 +1400,22 @@ trait イミュータブルTrait
 ```
 
 ```php
+<?php
+
 class Foo
 {
     use ImmutableTrait;
 
     private $bar;
 
-    public function __constructor($bar)
+    public function __construct($bar)
     {
-        $this->bar = $bar
+        $this->bar = $bar;
     }
 }
 
-$foo = new Foo()
-$foo->bar // __get関数が代わりにコールされ、プロパティ値が返却される。
+$foo = new Foo("BAR");
+$foo->bar; // __get関数が代わりにコールされ、プロパティ値が返却される。
 ```
 
 <br>
@@ -1474,7 +1468,7 @@ final class ContactMail extends ValueObject
     /**
      * @param string $value
      */
-    public function __constructor(string $value)
+    public function __construct(string $value)
     {
         $this->value = $value;
     }
@@ -1541,7 +1535,7 @@ final class PaymentInfoVO extends ValueObject
      * @param ContactMail $contactMail
      * @param Money       $price
      */
-    public function __constructor(PaymentType $paymentType, ContactMail $contactMail, Money $price)
+    public function __construct(PaymentType $paymentType, ContactMail $contactMail, Money $price)
     {
         $this->paymentType = $paymentType;
         $this->contactMail = $contactMail;

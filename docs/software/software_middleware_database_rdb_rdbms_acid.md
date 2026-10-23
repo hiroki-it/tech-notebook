@@ -115,17 +115,17 @@ try{
     // トランザクション処理を開始する。
     $db->beginTransaction();
     // いくつかのWrite処理を実行する。※もし失敗した場合、ERRMODE_EXCEPTIONを実行。
-    $db->exec("INSERT INTO movie(title, price) VALUES("ハリポタ", 2000)")
-    $db->exec("INSERT INTO movie(title, price) VALUES("シスター", 2000)")
+    $db->exec("INSERT INTO movie(title, price) VALUES('ハリポタ', 2000)");
+    $db->exec("INSERT INTO movie(title, price) VALUES('シスター', 2000)");
 
     // コミットを実行する
     // トランザクション内の一連のSQLステートメントが成功したら、ログファイルにコミット。
     $db->commit();
 
-} catch{
+} catch (PDOException $e) {
     // 例外が発生したらロールバックし、エラーメッセージを出力。
     $db->rollBack();
-    print "失敗しました。：{$e->getMessage()}"
+    print "失敗しました。：{$e->getMessage()}";
 }
 ```
 

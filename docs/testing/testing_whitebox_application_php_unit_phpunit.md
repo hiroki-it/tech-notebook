@@ -164,10 +164,14 @@ Composer の実行時はメモリ不足を避ける。
 非 static または static としてコールできる。
 
 ```php
+<?php
+
 $this->assertTrue();
 ```
 
 ```php
+<?php
+
 self::assertTrue()
 ```
 
@@ -180,6 +184,8 @@ self::assertTrue()
 実際値が `true` か否かを検証する。
 
 ```php
+<?php
+
 $this->assertTrue($response->isOk());
 ```
 
@@ -192,6 +198,8 @@ $this->assertTrue($response->isOk());
 データ型を検証できないため、`assertSame()` 関数を使用するほうがよい。
 
 ```php
+<?php
+
 $this->assertSame(200, $response->getStatusCode());
 ```
 
@@ -204,6 +212,8 @@ $this->assertSame(200, $response->getStatusCode());
 値のみでなく、データ型も検証できる。
 
 ```php
+<?php
+
 $this->assertSame(200, $response->getStatusCode());
 ```
 

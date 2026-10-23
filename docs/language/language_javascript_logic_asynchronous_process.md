@@ -173,6 +173,10 @@ const asyncFunc = () => {
   // return;
 };
 
+console.log(asyncFunc()); // Promise { 'SUCCESS' }
+```
+
+```javascript
 const asyncFunc = () => {
   //処理が失敗の場合に実行する。
   Promise.reject("FAILED"); // Promise { "FAILED" }
@@ -181,7 +185,7 @@ const asyncFunc = () => {
   // return;
 };
 
-console.log(asyncFunc()); // Promise { 'SUCCESS' }
+console.log(asyncFunc()); // Promise { 'FAILED' }
 ```
 
 ```javascript
@@ -305,7 +309,7 @@ const resolveFunc = () => {
 
 resolveFunc.then((value) => {
   // resolveFuncはPromiseを返さないため、エラーが発生して動かない
-  // Uncaught TypeError: resolveError(...).then is not a function
+  // Uncaught TypeError: resolveFunc.then is not a function
   console.log(value);
 });
 ```
@@ -385,7 +389,9 @@ const asyncFunc = async () => {
     console.log(response.data);
   });
 };
+```
 
+```javascript
 // awaitを使用した場合
 const asyncFunc = async () => {
   // 非同期処理の結果がthen関数に渡される。
@@ -409,7 +415,9 @@ const asyncFunc = async () => {
     });
   });
 };
+```
 
+```javascript
 // awaitを使用した場合
 const asyncFunc = async () => {
   const response1 = await axios.get("https://example1.com");
@@ -465,7 +473,7 @@ const asyncFunc = async () => {
 ```javascript
 const asyncFunc = async () => {
   // 初期化
-  let res;
+  let response;
 
   try {
     response = await axios.get("https://example1.com");
@@ -474,7 +482,7 @@ const asyncFunc = async () => {
     console.error(error);
   }
 
-  return res;
+  return response;
 };
 ```
 
@@ -610,7 +618,7 @@ $.ajax({
 
   // 非同期通信の失敗時のコールバック処理
   .fail((error) => {
-    console.info(data);
+    console.info(error);
     toastr.error("", "エラーが発生しました。");
   })
 

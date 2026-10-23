@@ -304,7 +304,10 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
 
 //========================
 // サプライヤー側
@@ -376,7 +379,10 @@ Go には継承がなく、代わりに委譲がある。
 ```go
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
 
 //========================
 // 委譲する側 (埋め込む構造体)
@@ -423,7 +429,10 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
 
 //========================
 // 委譲する側 (埋め込む構造体)
@@ -536,7 +545,7 @@ func main() {
 	}
 
 	// エンコード結果を出力
-	log.Printf("%v", string(byteJson)) // "{\"Name\":\"Hiroki\"}"
+	log.Printf("%v", string(byteJson)) // "{\"name\":\"Hiroki\"}"
 }
 ```
 
@@ -802,7 +811,7 @@ func main() {
 	var y []string = []string{"Hiroki", "Gopher"}
 
 	log.Printf("%v", y) // [Hiroki Gopher]
-	log.Printf("%v", y) // [Hiroki", "Gopher"}
+	log.Printf("%v", y) // []string{"Hiroki", "Gopher"}
 }
 ```
 
@@ -821,7 +830,7 @@ func main() {
 	x := []string{"Hiroki", "Gopher"}
 
 	log.Printf("%v", x) // [Hiroki Gopher]
-	log.Printf("%v", x) // [Hiroki", "Gopher"}
+	log.Printf("%v", x) // []string{"Hiroki", "Gopher"}
 }
 ```
 
@@ -887,7 +896,7 @@ func main() {
 	// 要素番号は0から始まることに注意する
 	// 4番の要素を参照する
 	xb := x[4]
-	log.Printf("%v", x) // [お]
+	log.Printf("%v", xb) // [お]
 }
 ```
 
@@ -994,7 +1003,7 @@ func main() {
 	s2 := []int{50, 60, 70, 80}
 
 	// 要素を追加
-	s = append(s1, s2...)
+	s := append(s1, s2...)
 	fmt.Println(s) // [10 20 30 40 50 60 70 80]
 }
 ```
@@ -1026,7 +1035,7 @@ func main() {
 		"baz": true,
 	}
 
-	fmt.Println(m) // map[0:Hiroki 1:Hiroko 2:Hiroshi]
+	fmt.Println(m) // map[bar:1 baz:true foo:FOO]
 }
 ```
 
@@ -1063,7 +1072,7 @@ func main() {
 	m := map[int]string{}
 
 	m[0] = "Hiroki"
-	m[1] = "Hiroshi"
+	m[1] = "Hiroko"
 	m[2] = "Hiroshi"
 
 	fmt.Println(m) // map[0:Hiroki 1:Hiroko 2:Hiroshi]
@@ -1083,7 +1092,7 @@ func main() {
 	m := make(map[int]string)
 
 	m[0] = "Hiroki"
-	m[1] = "Hiroshi"
+	m[1] = "Hiroko"
 	m[2] = "Hiroshi"
 
 	fmt.Println(m) // map[0:Hiroki 1:Hiroko 2:Hiroshi]
@@ -1185,7 +1194,10 @@ InspectImpl 構造体に Animal インターフェースを埋め込み、構造
 ```go
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
 
 // インターフェースとその関数を定義する。
 type AnimalInterface interface {
@@ -1269,7 +1281,10 @@ func main() {
 ```go
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+)
 
 // アップキャストの可否を使用して、構造体がインターフェースを満たしているを検証する。
 var _ AnimalInterface = &InsectImpl{} // もしくは (*InsectImpl)(nil)
@@ -1345,7 +1360,7 @@ func main() {
 	log.Printf("%v", foo) // "Hiroki"
 
 	foo = [...]uint8{1, 2, 3, 4, 5}
-	log.Printf("%v", x) // [5]uint8{0x1, 0x2, 0x3, 0x4, 0x5}
+	log.Printf("%v", foo) // [5]uint8{0x1, 0x2, 0x3, 0x4, 0x5}
 }
 ```
 
@@ -1394,9 +1409,9 @@ func main() {
 	foo, bar = 1, 2
 
 	// インターフェース型からinteger型に変換 (変換しないと演算できない)
-	foo := foo.(int)
-	bar := bar.(int)
-	baz := foo + bar
+	fooInt := foo.(int)
+	barInt := bar.(int)
+	baz := fooInt + barInt
 
 	log.Printf("%v", baz)
 }

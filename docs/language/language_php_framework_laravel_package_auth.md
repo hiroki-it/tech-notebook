@@ -576,9 +576,9 @@ class FooController extends Controller
         // Eloquentモデルが不要な検証であれば名前空間
         // if (!auth()->user()->can('update', Foo::class) {}
 
-        DB::transaction(function () use ($foo) {
+        DB::transaction(function () use ($foo, $request) {
             $foo->fill($request->all())->save();
-        }
+        });
     }
 }
 ```
@@ -708,6 +708,8 @@ OAuth では、以下のトークン付与タイプを実装できる。
 : `guards` キーにて、認証方式を設定する。ここでは、`api` を設定する。
 
 ```php
+<?php
+
 return [
 
     ...
@@ -728,6 +730,8 @@ return [
 **＊実装例＊**
 
 ```php
+<?php
+
 return [
 
     ...
@@ -760,6 +764,8 @@ return [
      もしDBファサードのクエリビルダーを使用したい場合は、`database`ドライバを設定する。
 
 ```php
+<?php
+
 return [
 
     ...
@@ -790,6 +796,8 @@ return [
 **＊実装例＊**
 
 ```php
+<?php
+
 Route::get("user", "UserController@index")->middleware("auth:api");
 ```
 
@@ -979,6 +987,8 @@ $ php artisan passport:client --personal
     IDプロバイダーでクライアントIDを事前に発行しておく。
 
 ```php
+<?php
+
 /**
  * 全認証／認可の登録
  *

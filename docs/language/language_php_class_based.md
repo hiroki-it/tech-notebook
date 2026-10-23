@@ -771,7 +771,7 @@ class Bar
 {
     public function method()
     {
-        $e1 = new Foo:
+        $e1 = new Foo;
         $e1->className();
     }
 }
@@ -870,7 +870,7 @@ class Bar
 {
     public function method2()
     {
-        $e1 = new Foo:
+        $e1 = new Foo;
         $e1->method1();
     }
 }
@@ -1039,7 +1039,7 @@ $supplier = new Supplier();
 $client = new Client();
 
 // ClientクラスはSuppierクラスに依存している。
-$client->setSupplier($supplier)
+$client->setSupplier($supplier);
 ```
 
 **＊実装例＊**

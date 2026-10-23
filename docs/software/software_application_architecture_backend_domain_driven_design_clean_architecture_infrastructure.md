@@ -348,8 +348,8 @@ class DogToyRepository
             new DogId($entity["dog_toy_id"]),
             new DogName($entity["dog_toy_name"]),
             new DogToyType($entity["dog_toy_type"]),
-            new PriceVO($entity["dog_toy_price"],
-            new ColorVO($entity["dog_toy_color"]
+            new PriceVO($entity["dog_toy_price"]),
+            new ColorVO($entity["dog_toy_color"])
         );
 
         return $dogToy;

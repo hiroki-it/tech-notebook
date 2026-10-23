@@ -164,8 +164,8 @@ Laravel では `with()` 関数を使用すると、内部的に親テーブル�
 ```php
 <?php
 
-// SQL発行 (2回)
-// 内部的にIN句
+// 親テーブルと子テーブルにSQLを発行する (2回)
+// 子テーブルへのSQLでは、内部的にIN句を使用する
 $departments = Department::with('employees')->get();
 
 foreach($departments as $department) {

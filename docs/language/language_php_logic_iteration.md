@@ -70,7 +70,7 @@ echo reset($array); // あ
 $array = [1, 2, 3, 4];
 foreach ($array as &$value) {
     $value = $value * 2;
-    echo $value
+    echo $value;
 }
 ```
 
@@ -117,9 +117,7 @@ class Foo
      */
     public function printOption(array $options)
     {
-        $result = '何も設定されていません。
-
-'
+        $result = '何も設定されていません。';
 
         // $options配列には、OptionA,B,Cエンティティのいずれかが格納されていると想定
         foreach ($options as $option) {
@@ -290,18 +288,18 @@ $oneDimension = array_column($twoDimension, 'score');
 ```php
 <?php
 
-$count = 0
+$count = 0;
 // 反復回数が決まっていないため、満たせたらbreakで停止する。
 while(true) {
 
-    if($count = 10){
+    if($count == 10){
         break;
     }
 
-    $count++
+    $count++;
 }
 
-echo $count
+echo $count;
 ```
 
 #### ▼ 制御文
@@ -318,7 +316,7 @@ $i = 0;
 while (true) {
 
     // 全て走査したら停止
-    if($count == count($a)) {
+    if($i == count($a)) {
         break;
     }
 
@@ -329,7 +327,7 @@ while (true) {
     }
 
     // 代入加算
-    $count ++;
+    $i ++;
 }
 ```
 
@@ -362,10 +360,10 @@ while (true) {
 
 // 10回反復することが決まっている。
 for($i = 1; $i <= 10; $i++){
-    $count++
+    $count++;
 }
 
-echo $count
+echo $count;
 ```
 
 #### ▼ 制御文

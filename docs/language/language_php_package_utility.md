@@ -104,7 +104,7 @@ echo $carbonFromTime; // 19:07:07
 
 // 日付、時間、日時フォーマットから、Carbonインスタンスを作成する。
 // 第一引数でフォーマットを指定する必要がある。
-$carbonFromFormat = Carbon::createFromFormat("Y-m-d H:m:s", "2019-07-07 19:07:07");
+$carbonFromFormat = Carbon::createFromFormat("Y-m-d H:i:s", "2019-07-07 19:07:07");
 
 echo $carbonFromFormat; // 2019-07-07 19:07:07
 ```
@@ -131,7 +131,7 @@ echo $carbonFromTimestamp; // 2019-07-07 19:07:07
 ```php
 <?php
 
-$carbon = Carbon::parse("2019-07-07 19:07:07")
+$carbon = Carbon::parse("2019-07-07 19:07:07");
 ```
 
 <br>

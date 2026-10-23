@@ -143,7 +143,7 @@ class FooCreateInteractor
     /**
      * @param FooRepository $fooRepository
      */
-    public function __constructor(FooRepository $fooRepository)
+    public function __construct(FooRepository $fooRepository)
     {
         $this->fooRepository = $fooRepository;
     }
@@ -187,7 +187,7 @@ use Illuminate\Support\Facades\DB;
 
 /**
  * Fooインターラクタークラス
- * ※CURD全てのユースケースを、1個のクラスを定義する方法
+ * ※CRUD全てのユースケースを、1個のクラスを定義する方法
  */
 class FooInteractor
 {
@@ -199,7 +199,7 @@ class FooInteractor
     /**
      * @param FooRepository $fooRepository
      */
-    public function __constructor(FooRepository $fooRepository)
+    public function __construct(FooRepository $fooRepository)
     {
         $this->fooRepository = $fooRepository;
     }
@@ -332,25 +332,25 @@ interface FooInteractorInterface
      * @param RegisterFooRequest $registerFooRequest
      * @return RegisterFooResponse
      */
-    public function registerFoo(RegisterFooRequest $registerFooRequest): RegisterFooResponse
+    public function registerFoo(RegisterFooRequest $registerFooRequest): RegisterFooResponse;
 
     /**
      * @param GetFooRequest $getFooRequest
      * @return GetFooResponse
      */
-    public function getFoo(GetFooRequest $getFooRequest): GetFooResponse
+    public function getFoo(GetFooRequest $getFooRequest): GetFooResponse;
 
     /**
      * @param ChangeFooRequest $changeFooRequest
      * @return ChangeFooResponse
      */
-    public function changeFoo(ChangeFooRequest $changeFooRequest): ChangeFooResponse
+    public function changeFoo(ChangeFooRequest $changeFooRequest): ChangeFooResponse;
 
     /**
      * @param DeleteFooRequest $deleteFooRequest
      * @return DeleteFooResponse
      */
-    public function deleteFoo(DeleteFooRequest $deleteFooRequest): DeleteFooResponse
+    public function deleteFoo(DeleteFooRequest $deleteFooRequest): DeleteFooResponse;
 }
 ```
 
@@ -563,8 +563,8 @@ class FooInteractor
 {
     public function foo()
     {
-        $message = new Message(/* メッセージに関するデータを渡す */)
-        $notifyFooService = new NotifyFooService($message)
+        $message = new Message(/* メッセージに関するデータを渡す */);
+        $notifyFooService = new NotifyFooService($message);
         $notifyFooService->notify();
     }
 }

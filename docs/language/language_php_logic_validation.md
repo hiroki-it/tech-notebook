@@ -434,7 +434,7 @@ function leapYear(int $year): string
         return "平年";
 
     // (1)
-    dafault:
+    default:
         return "うるう年";
     }
 

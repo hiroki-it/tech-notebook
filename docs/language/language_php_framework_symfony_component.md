@@ -209,7 +209,7 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
     }
 
     // コマンドの処理内容
-    protected function execute(InputeInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         try {
                 // 日時フォーマットからCarbonインスタンスを作成する。
@@ -370,7 +370,7 @@ public function handle
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use App\Repository\FooReposiroy;
+use App\Repository\FooRepository;
 
 class ExampleController extends AbstractController
 {
@@ -380,7 +380,7 @@ class ExampleController extends AbstractController
         if ($req->headers->get("content-type") === "application/json") {
 
             $fooRepository = new FooRepository;
-            $entityObject = $FooRepository->getEntity();
+            $entityObject = $fooRepository->getEntity();
 
             //-- entityをObject型からArray型に変換する何らかの処理。--//
 

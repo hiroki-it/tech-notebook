@@ -273,12 +273,16 @@ class Foo
 #### ▼ `self::`
 
 ```php
+<?php
+
 // ここに実装例
 ```
 
 #### ▼ `static::`
 
 ```php
+<?php
+
 // ここに実装例
 ```
 
@@ -511,6 +515,8 @@ class Foo
 ```
 
 ```php
+<?php
+
 class Foo {
 // 中身は省略
 }
@@ -616,6 +622,8 @@ $foo([1, 2, 3]);
 #### ▼ `__clone()` 関数
 
 ```php
+<?php
+
 // ここに実装例
 ```
 
@@ -739,7 +747,7 @@ $ObjA = new Obj_A;
 
 $ObjB = $ObjA->objB();
 
-$ObjC = $ObjB->objB();
+$ObjC = $ObjB->objC();
 
 $ObjD = $ObjC->objD();
 ```
@@ -749,7 +757,7 @@ $ObjD = $ObjC->objD();
 ```php
 <?php
 
-$D = objB()->objC()->objC();
+$D = objB()->objC()->objD();
 
 // $D には ObjD が格納されている。
 ```
@@ -828,20 +836,20 @@ class Foo
         return array_merge
         (
         // 左のグループを再帰的にクイックソート。
-            quickSort($left),
+            $this->quickSort($left),
 
             // Pivotを結果に組み込む。
             [$pivot],
 
-            // 左のグループを再帰的にクイックソート。
-            quickSort($right)
+            // 右のグループを再帰的にクイックソート。
+            $this->quickSort($right)
         );
     }
 }
 
 // 実際に使用してみる。
 $array = [6, 4, 3, 7, 8, 5, 2, 9, 1];
-$result = quickSort($array);
+$result = (new Foo())->quickSort($array);
 var_dump($result);
 
 // 昇順に並び替えられている。
@@ -857,6 +865,8 @@ var_dump($result);
 引数が与えられなければ、指定の値を渡す方法
 
 ```php
+<?php
+
 // ここに実装例
 ```
 
@@ -1117,7 +1127,7 @@ $optionName = function () use ($item) {
 };
 
 // function()には引数が設定されていないため、コール時に引数は不要。
-echo $optionName;
+echo $optionName();
 
 // 出力結果
 // オプションA
@@ -1212,7 +1222,7 @@ $param = "BC";
 // $paramは、コール時に使用する変数。
 $optionName = call_user_func(function ($param) use ($item) {
     $item->optionName() . $param;
-});
+}, $param);
 
 // $paramはすでに即コール時に渡されている。
 // これはコールではなく、即コール時に格納された返却値の出力。
@@ -1385,7 +1395,7 @@ class Foo
 
             // 引数の無名関数によって、データに対する加工方法が異なる。
             // 例えば、判定でtrueのもののみを返す関数を渡すと、自データを絞り込むような処理を行える。
-            $returned = call_user_func($property, $callback);
+            $returned = call_user_func($callback, $property);
             if ($returned) {
 
                 // 再格納。
@@ -1529,8 +1539,8 @@ class Foo
 ```php
 <?php
 
-foo = new Foo;
-foo->foo(); // Foo::foo が返却される。
+$foo = new Foo;
+$foo->foo(); // Foo::foo が返却される。
 ```
 
 <br>
@@ -1765,7 +1775,7 @@ file_put_contents(
 $var = "0123456789";
 
 // OR条件と範囲指定
-$result = preg_match("/[0-9]/", $var)
+$result = preg_match("/[0-9]/", $var);
 
 var_dump($result); // true
 ```
@@ -1782,7 +1792,7 @@ var_dump($result); // true
 $var = "aAbBcC";
 
 // OR条件と範囲指定
-$result = preg_match("/[a-zA-Z]/", $var)
+$result = preg_match("/[a-zA-Z]/", $var);
 
 var_dump($result); // true
 ```
@@ -1802,7 +1812,7 @@ var_dump($result); // true
 
 $var = "?";
 
-$result = preg_match("/[\?.*$]/", $var)
+$result = preg_match("/[\?.*$]/", $var);
 
 var_dump($result); // 1
 ```

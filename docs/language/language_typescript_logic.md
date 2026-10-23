@@ -28,7 +28,7 @@ description: ロジック＠TypeScriptの知見を記録しています。
 ```typescript
 class User {
   private _name: string;
-  private _age: string;
+  private _age: number;
 
   // オブジェクトの状態を設定する
   constructor(name: string, age: number) {
@@ -38,7 +38,7 @@ class User {
 
   // 振る舞い
   isAdult(): boolean {
-    return this.age >= 18;
+    return this._age >= 18;
   }
 }
 
@@ -202,7 +202,7 @@ user.changeName("Bob");
 
 ```typescript
 function greet(
-  // パラメーターからnameプロパティとuserプロパティを直接取り出さない
+  // パラメーターからnameプロパティとageプロパティを直接取り出さない
   user: {
     name: string;
     age: number;
@@ -221,7 +221,7 @@ greet(user);
 
 ```typescript
 function greet(
-  // パラメーターからnameプロパティとuserプロパティを直接取り出す
+  // パラメーターからnameプロパティとageプロパティを直接取り出す
   {
     name,
     age,
@@ -398,14 +398,14 @@ export async function fetchUser(id: string) {
     return response.data;
   } catch (error: unknown) {
     // axiosが投げたエラーの場合
-    if (axios.isAxiosError(e)) {
+    if (axios.isAxiosError(error)) {
       throw new Error(
         `通信エラーが発生しました (${error.response?.status ?? "unknown"})`,
       );
     }
 
     // 通常のErrorオブジェクトの場合
-    if (e instanceof Error) {
+    if (error instanceof Error) {
       throw new Error(`予期しないエラー: ${error.message}`);
     }
 
@@ -730,8 +730,7 @@ async function getUserNames(
 for (const inputKey of inputKeys) {
   // ループ内で線形探索処理を実行してしまっている
   if (items.some((item) => item.key === inputKey)) {
-
-     ...
+    // ...
   }
 }
 ```

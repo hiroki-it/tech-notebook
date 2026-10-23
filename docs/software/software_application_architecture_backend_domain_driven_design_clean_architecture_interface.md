@@ -126,7 +126,7 @@ class UrlValidator
     /**
      * URLクエリストリングの値を検証し、不正ならデフォルト値を返す。
      */
-    public function validateFormat($value, $validator)
+    public function validateFormat(string $key, $value, $validator)
     {
         // 例：ページングやソートのURLクエリストリングを想定する。
         // - page: 1始まり
@@ -140,7 +140,7 @@ class UrlValidator
 
         // クエリストリングが不正ならデフォルト値を使用する
         if (!$validator->validate($value)) {
-            return $defaultValue;
+            return $defaultValues[$key];
         }
 
         return $value;

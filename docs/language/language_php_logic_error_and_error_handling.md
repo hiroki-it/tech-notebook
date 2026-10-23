@@ -64,7 +64,7 @@ class FooNotFoundException extends Exception
 ```php
 <?php
 
-use Exception\FooNotFound;
+use Exception\FooNotFoundException;
 
 function foo(string $foo) {
 
@@ -137,7 +137,7 @@ function value() {
         throw new FooInvalidArgumentException();
     }
 
-    return "成功です。"
+    return "成功です。";
 }
 ```
 
@@ -212,32 +212,24 @@ class Foo
         try {
 
             // `(1)`
-
-:
             echo "Aの直前です";
             return "Aです。";
 
         } catch (ExternalApiErrorException $exception) {
 
             // `(2)`
-
-:
             echo "Bの直前です";
             return "Bです。";
 
         } catch (HttpRequestErrorException $exception) {
 
             // `(3)`
-
-:
             echo "Cの直前です";
             return "Cです。";
 
         } catch (Exception $exception) {
 
             // `(4)`
-
-:
             echo "Dの直前です";
             return "Dです。";
 
@@ -258,30 +250,24 @@ class Foo
 : のいずれかで返却されるときは、返却の直前に finally 句が実行されるとわかる。
 
 ```php
-// `(1)`
+<?php
 
-:    の場合
+// `(1)` の場合
 // Aの直前です。
 // Eです。
 // Aです。
 
-// `(2)`
-
-:    の場合
+// `(2)` の場合
 // Bの直前です。
 // Eです。
 // Bです。
 
-// `(3)`
-
-:    の場合
+// `(3)` の場合
 // Cの直前です。
 // Eです。
 // Cです。
 
-// `(4)`
-
-:    の場合
+// `(4)` の場合
 // Dの直前です。
 // Eです。
 // Dです。
@@ -328,11 +314,13 @@ class Foo
 > - [PHP: error_log - Manual](https://www.php.net/manual/ja/function.error-log.php)
 
 ```php
+<?php
+
 error_log(
     "<エラーメッセージ>",
     "<メッセージの出力先 (3の場合にファイル出力) >",
     "<ログファイルへのパス>"
-)
+);
 ```
 
 **＊実装例＊**
@@ -436,7 +424,7 @@ class Foo
             // 外部APIのためのリクエストを作成。
             // 外部APIのURL、送信方法、トークンなどのパラメーターを設定。
 
-        } catch (\HttpRequestErrorException $exception) {
+        } catch (HttpRequestErrorException $exception) {
 
             // 子クラスによる例外スローを含む処理
 
@@ -448,7 +436,7 @@ class Foo
                 $exception->getLine()
             ));
 
-        } catch (\ExternalApiErrorException $exception) {
+        } catch (ExternalApiErrorException $exception) {
 
             // 子クラスによる例外スローを含む処理
 

@@ -178,7 +178,7 @@ class Employee extends Model
 $department = Department::find(1);
 
 // 部署ID=1に紐付く全てのemployeeオブジェクトをarray型で取得
-$employees = $department->employees()
+$employees = $department->employees();
 ```
 
 > - [8.x Eloquent:リレーション Laravel](https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-one)
@@ -237,7 +237,7 @@ use Illuminate\Database\Eloquent\Model;
 class Foo extends Model
 {
     const CREATED_AT = "created_date_time";
-    const UPDATED_AT = "updated_data_time";
+    const UPDATED_AT = "updated_date_time";
 
     /**
      * @var bool
@@ -497,6 +497,8 @@ JSON を PHP のオブジェクト型に変換 (デシリアライズ) する。
 **＊実装例＊**
 
 ```php
+<?php
+
 $collection = collect([1, 2, 3, 4]);
 
 // trueを返却した要素を全て抽出する
@@ -514,6 +516,8 @@ $filtered->all();
 **＊実装例＊**
 
 ```php
+<?php
+
 $collection = collect([1, 2, 3, 4, "yes"]);
 
 // 複数の条件で抽出する。
@@ -539,6 +543,8 @@ $filtered->all();
 **＊実装例＊**
 
 ```php
+<?php
+
 $collection = collect([1, 2, 3, 4]);
 
 // trueを返却した要素のみ抽出する
@@ -642,13 +648,13 @@ class FooController extends Controller
     {
         $foo = new Foo();
 
-        DB::transaction(function () use ($foo) {
+        DB::transaction(function () use ($foo, $request) {
             // INSERT文を実行する。また同時にIDを取得する。
             $foo->create($request->all());
 
             // 以下の実装でもよい
             // $foo->fill($request->all())->save();
-        }
+        });
 
         // 処理後にはEloquentモデルにID値が保持されている。
         $foo->id();
@@ -1098,11 +1104,11 @@ class FooController extends Controller
     {
         $foo = new Foo();
 
-        DB::transaction(function () use ($foo) {
+        DB::transaction(function () use ($foo, $request) {
 
             // UPDATE文を実行する。
             $foo->fill($request->all())->save();
-        }
+        });
 
         // 続きの処理
     }
@@ -1379,7 +1385,7 @@ class FooRepository extends Repository implements DomainFooRepository
 //                  "age"   => $foo->age(),
 //              ])
 //              ->save();
-          }
+          });
       }
 }
 ```
@@ -1487,7 +1493,7 @@ class FooRepository extends Repository implements DomainFooRepository
         $foos = [];
         foreach ($fooDTOs as $fooDTO)
             // DBアクセス後のDTOをドメインモデルに変換する。
-            $foos = new Foo(
+            $foos[] = new Foo(
                 $fooDTO->id(),
                 $fooDTO->name(),
                 $fooDTO->age(),
@@ -1546,7 +1552,7 @@ class FooRepository extends Repository implements DomainFooRepository
                 ])
                 // UPDATE文を実行する。
                 ->save();
-        }
+        });
     }
 }
 ```

@@ -67,12 +67,13 @@ function minSelectSort(array $array): array
             }
         }
 
-        // 比較基準値の位置が更新されていなかった場合、親のfor文から抜ける。
+        // 比較基準値の位置が更新されていなかった場合、次の比較基準値に進む。
         if($i == $position){
-            break;
+            continue;
         }
 
         // 親のfor文の最小値を更新。
+        $array[$position] = $array[$i];
         $array[$i] = $min;
 
         // 次に2番目を比較基準値とし、同じ処理を繰り返していく。
@@ -84,8 +85,8 @@ function minSelectSort(array $array): array
 ```php
 <?php
 // 実際に使用してみる。
-$array = array(10,2,12,7,16,8,13)
-$result = selectSort($array);
+$array = array(10,2,12,7,16,8,13);
+$result = minSelectSort($array);
 var_dump($result);
 
 // 昇順に並び替えられている。
@@ -376,8 +377,8 @@ function bestFirstSearchByDijkstra(
     // 地点数を定数で定義
     define("POINT_NUMBER", count($matrix));
 
-    if($startPoint < self::POINT_NUMBER
-        || self::POINT_NUMBER < $goalPoint){
+    if($startPoint < POINT_NUMBER
+        || POINT_NUMBER < $goalPoint){
             throw new Exception("存在しない地点番号は設定できません。");
     }
 
@@ -385,40 +386,40 @@ function bestFirstSearchByDijkstra(
     define("START_POINT", $startPoint);
 
     // 到着地点を定数で定義
-    define("GOAL_POINT", $goalPoint));
+    define("GOAL_POINT", $goalPoint);
 
     // 無限大の定数のINFを使いたいが、定数は上書きできないため、代わりに-1を使用。
     // 各頂点に対して、最短ルート地点番号、地点間距離のゼロ値、最短距離確定フラグを設定。
-    for($i = 0; $i < self::POINT_NUMBER; $i ++){
+    for($i = 0; $i < POINT_NUMBER; $i ++){
         $route[$i] = -1;
         $distance[$i] = -1;
         $fixFlg[$i] = false;
         }
 
     // ＊別の書き方＊
-    // $cost = array_fill(0, self::POINT_NUMBER, -1);
-    // $distance = array_fill(0, self::POINT_NUMBER, -1);
-    // $fix = array_fill(0, self::POINT_NUMBER, false);
+    // $cost = array_fill(0, POINT_NUMBER, -1);
+    // $distance = array_fill(0, POINT_NUMBER, -1);
+    // $fix = array_fill(0, POINT_NUMBER, false);
 
     // 出発地点から出発地点への距離をゼロとする。
-    $distance[self::START_POINT] = 0;
+    $distance[START_POINT] = 0;
 
     //
     while(true){
         $i = 0;
 
-        while($i < self::POINT_NUMBER){
+        while($i < POINT_NUMBER){
             if(!$fixFlg[$i]){
                 break 1;
             }
             $i += 1;
         }
 
-        if($i === self::POINT_NUMBER){
+        if($i === POINT_NUMBER){
             break 1;
         }
 
-        for($j = $i + 1; j < self::POINT_NUMBER; $j ++){
+        for($j = $i + 1; $j < POINT_NUMBER; $j ++){
             if(!$fixFlg[$i] && $distance[$j] < $distance[$i]){
                 $i = $j;
             }

@@ -611,7 +611,7 @@ trait UpdatedModelTrait
      *
      * @return void
      */
-    protected static function saveWithoutEvents(): void
+    protected function saveWithoutEvents(): void
     {
         // 無限ループを防ぐために、save実行時にイベントが発火しないようにする。
         return static::withoutEvents(function () use ($options) {
@@ -642,7 +642,7 @@ class UpdatedModelEvent
      */
     public function __construct(Model $updatedModel)
     {
-        $this->$updatedModel = $updatedModel;
+        $this->updatedModel = $updatedModel;
     }
 }
 ```
@@ -1109,7 +1109,7 @@ class FooRepository extends Repository implements DomainFooRepository
                     "age"   => $foo->age(),
                 ])
                 ->save();
-        }
+        });
     }
 }
 
@@ -1378,7 +1378,7 @@ class RouteServiceProvider extends ServiceProvider
 ```php
 <?php
 
-Route::group(["prefix" => "foo" , "middleware" => "auth"], (function () {
+Route::group(["prefix" => "foo" , "middleware" => "auth"], function () {
     Route::get("/", [FooController::class, "getFoo"]);
     Route::get("/{fooId}", [FooController::class, "index"]);
     Route::post("/", [FooController::class, "createFoo"]);
@@ -1408,6 +1408,8 @@ $ php artisan storage:link
 ```
 
 ```php
+<?php
+
 return [
 
     "default" => env("FILESYSTEM_DRIVER", "local"),
@@ -1439,12 +1441,16 @@ Storage ファサードの `disk()` 関数を使用して local ディスクを�
 `file.txt` ファイルを `storage/app/file.txt` として保管する。
 
 ```php
+<?php
+
 Storage::disk("local")->put("file.txt", "file.txt");
 ```
 
 ただし、`filesytems.php` ファイルでデフォルトディスクは `local` になっているため、`put()` 関数を直接的に使用できる。
 
 ```php
+<?php
+
 Storage::put("file.txt", "file.txt");
 ```
 
@@ -1457,6 +1463,8 @@ Storage::put("file.txt", "file.txt");
 事前に、`filesystems.php` ファイルに設定が必要である。
 
 ```php
+<?php
+
 return [
 
     "default" => env("FILESYSTEM_DRIVER", "local"),
@@ -1487,6 +1495,8 @@ Storage ファサードの `disk()` 関数を使用して public ディスクを
 また、`file.txt` ファイルを `storage/app/public/file.txt` として保管する。
 
 ```php
+<?php
+
 Storage::disk("s3")->put("file.txt", "file.txt");
 ```
 
@@ -1497,6 +1507,8 @@ FILESYSTEM_DRIVER=s3
 ```
 
 ```php
+<?php
+
 Storage::put("file.txt", "file.txt");
 ```
 
@@ -1520,7 +1532,7 @@ class FileSystemPublicController extends Controller
         $disk = Storage::disk("public");
 
         // 保管先のファイルを読み込む
-        $file_path = "/path/to/public/foo.jpg"
+        $file_path = "/path/to/public/foo.jpg";
         $contents = file_get_contents($file_path);
 
         // 保管先パス (ディレクトリ+ファイル名)
@@ -1556,6 +1568,8 @@ AWS_BUCKET=<バケット名>
 ```
 
 ```php
+<?php
+
 return [
 
     "default" => env("FILESYSTEM_DRIVER", "local"),
@@ -1586,6 +1600,8 @@ Storage ファサードの `disk()` 関数を使用して s3 ディスクを指�
 また、`file.txt` ファイルを S3 バケットのルートに `file.txt` として保管する。
 
 ```php
+<?php
+
 Storage::disk("s3")->put("file.txt", "file.txt");
 ```
 
@@ -1596,6 +1612,8 @@ FILESYSTEM_DRIVER=s3
 ```
 
 ```php
+<?php
+
 Storage::put("file.txt", "file.txt");
 ```
 
@@ -2051,6 +2069,8 @@ Factory に対応する Eloquent モデルで使用する必要がある。
 > - [8.x データベーステスト Laravel](https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories)
 
 ```php
+<?php
+
 class Foo
 {
     use HasFactory;
@@ -2238,7 +2258,7 @@ class FooController extends Controller
         // ルールの定義、メッセージボディのバリデーションを実行する。
         // エラーが発生した場合は元のWebページにリダイレクト
         $validated = $request->validate([
-            "title" => "required|string|max:5255",
+            "title" => "required|string|max:255",
             "body"  => "required|string|max:255",
             "date"  => "required|date",
         ]);
@@ -2643,6 +2663,8 @@ class FooController extends Controller
 すべてのセッション変数を取得もできる。
 
 ```php
+<?php
+
 $session = $request->session()->all();
 ```
 
@@ -2651,6 +2673,8 @@ $session = $request->session()->all();
 現在のセッションで、今回と次回のリクエストのみで有効な一時的なデータを設定できる。
 
 ```php
+<?php
+
 $request->session()
     ->flash("status", "Task was successful!");
 ```
@@ -2666,6 +2690,8 @@ $request->session()
 **＊実装例＊**
 
 ```php
+<?php
+
 /**
  * ユーザーがこのリクエストの権限を持っているかを判断する
  *
@@ -3027,6 +3053,8 @@ class FooController extends Controller
 Request ではなく、FormRequest を使用したほうがバリデーションにおすすめである。
 
 ```php
+<?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -3141,6 +3169,8 @@ return [
 すべてのログを `/storage/logs/laravel-<日付>.log` ファイルに対して出力する。
 
 ```php
+<?php
+
 return [
 
     ...
@@ -3171,6 +3201,8 @@ Docker 上で Laravel を稼働させる場合は、作成されるログファ�
 注意点として、自前カスタマイズとして、`stream` キーを stdout 変更すれば、標準出力にログを出力もできる。
 
 ```php
+<?php
+
 return [
 
     ...
@@ -3420,7 +3452,7 @@ class RenameColumn extends Migration
     {
         // データ型の変更後でも、ロールバックできるようにしておく。
         Schema::table('foos', function (Blueprint $table) {
-            $table->renameColumn('foo_id', 'foo_id');
+            $table->renameColumn('foo_id', 'id');
         });
     }
 }
@@ -3560,6 +3592,8 @@ $ php artisan migrate
 **＊実装例＊**
 
 ```php
+<?php
+
 Schema::create("foos", function (Blueprint $table) {
 
     ...
@@ -3580,6 +3614,8 @@ Schema::create("foos", function (Blueprint $table) {
 プライマリーキーではない ID カラムのために使用する。
 
 ```php
+<?php
+
 Schema::create("foos", function (Blueprint $table) {
 
     ...
@@ -3601,6 +3637,8 @@ VARCHAR 型カラムを作成する。
 **＊実装例＊**
 
 ```php
+<?php
+
 Schema::create("foos", function (Blueprint $table) {
 
     ...
@@ -3619,6 +3657,8 @@ TIMESTAMP 型カラムを作成する。
 **＊実装例＊**
 
 ```php
+<?php
+
 Schema::create("foos", function (Blueprint $table) {
 
     ...
@@ -4012,8 +4052,8 @@ Notification::send($users, new FooNotification());
 
 Notification::route('mail', $user->email_address)
             ->route('nexmo', $user->phone_number)
-            ->route('slack', $slackMessage->usl)
-            ->notify(new FooMotification());
+            ->route('slack', $slackMessage->url)
+            ->notify(new FooNotification());
 ```
 
 > - [Notifications without Eloquent User Model](https://laracasts.com/discuss/channels/laravel/notifications-without-eloquent-user-model)
@@ -4069,7 +4109,7 @@ class FooJsonResource extends JsonResource
             "name"     => $this->name,
         ];
     }
-}。
+}
 
 
 ```
@@ -4106,6 +4146,8 @@ class FooController extends Controller
 複数の Eloquent モデル (Collection 型) を配列に変換する。
 
 ```php
+<?php
+
 // ここに実装例
 ```
 
@@ -4343,6 +4385,7 @@ class ProductsSeeder extends Seeder
     public function run()
     {
         DB::table("products")->insert([
+            [
                 "product_name" => "シャープペンシル",
                 "price"        => 300,
                 "product_type" => 1,
@@ -4451,7 +4494,7 @@ class ProductsSeeder extends Seeder
         foreach ($this->tables as $table) {
 
             // S3に保管してあるCSVファイルを読み込む。
-            $csv = \Storage::get(migrations/csv/ . $table . '.csv');
+            $csv = \Storage::get('migrations/csv/' . $table . '.csv');
 
             // 一時CSVファイルに書き込む。
             file_put_contents('/tmp/csv', $csv);
@@ -4803,7 +4846,7 @@ class FooServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             "App\Domain\Foo\Repositories\FooRepositoryInterface", // インターフェース
-            "App\Infrastructure\Doo\Repositories\FooRepository" // 実装クラス
+            "App\Infrastructure\Foo\Repositories\FooRepository" // 実装クラス
         );
     }
 }
@@ -4822,7 +4865,7 @@ class Interactor
     /**
      * @param FooRepositoryIF $fooRepository
      */
-    public function __constructor(FooRepositoryIF $fooRepository) // リゾルブされる。
+    public function __construct(FooRepositoryIF $fooRepository) // リゾルブされる。
     {
         $this->fooRepository = $fooRepository;
     }

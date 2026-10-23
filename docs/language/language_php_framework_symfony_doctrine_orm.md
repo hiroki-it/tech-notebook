@@ -74,7 +74,7 @@ QueryBuilder クラスの `insert()` 関数に、値を設定する。
 <?php
 
 $queryBuilder
-    ->insert("mst_users")
+    ->insert("mst_users");
 ```
 
 #### ▼ `update()` 関数
@@ -199,14 +199,14 @@ class Foo
         $queryBuilder = $this->createQueryBuilder();
 
         // 何らかのSQLを定義
-        $query = $queryBuilder->select()->from()
+        $query = $queryBuilder->select()->from();
 
         // キャッシュがある場合、ArrayStatementオブジェクトを格納
         // キャッシュがない場合、ResultCacheStatementを格納
         $statement = $this->connection->executeQuery(
           $query->getSQL(),
           $query->getParameters(),
-          $queryParameterTypes(),
+          $query->getParameterTypes(),
           new QueryCacheProfile()
         );
 
@@ -232,7 +232,7 @@ RDB の処理用語に相当する `beginTransaction()` 関数、`commit()` 関�
 ```php
 <?php
 
-$conn = new Doctrine\DBAL\Connection
+$conn = new Doctrine\DBAL\Connection;
 
 // トランザクション処理を開始する
 $conn->beginTransaction();
