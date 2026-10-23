@@ -136,6 +136,15 @@ describe("<パブリックな関数名>", async () => {
 });
 ```
 
+#### ▼ ファイルの命名
+
+
+| ファイル名パターン | 用途 |
+|---|---|
+| `<リソース名>.cy.ts`（単数形） | 単一リソースの詳細表示・作成・編集・削除 |
+| `<リソース名>s.cy.ts`（複数形） | 一覧表示・検索・フィルタリング |
+
+
 #### ▼ テストケースの命名
 
 `test()` 関数と `it()` 関数は、振る舞いの主語（濁した主語）としての `it` または `test` として見ることができる。
@@ -154,6 +163,37 @@ describe("<テストスイート>", () => {
 Cypress のドキュメントに BDD（振る舞い駆動開発）の記載がある。
 
 > [Writing and organizing Cypress tests \| Cypress Documentation](https://docs.cypress.io/app/core-concepts/writing-and-organizing-tests)
+
+#### ▼ E2Eテストの構成
+
+```typescript
+import "../../support/commands";
+
+describe("画面名", () => {
+  beforeEach(() => {
+    // 事前処理
+    // 初期データの投入
+    cy.task("resetTestDb");
+
+    // ハイドレーションエラーの抑制
+    cy.on("uncaught:exception", (error) => {
+      console.log(`${error.message}`);
+      return false;
+    });
+
+    // 画面操作
+    // ログイン
+    cy.login();
+    
+    // data-cy を使用して要素を見つけ、画面を操作する
+    // 閲覧系：閲覧画面に遷移 -> 閲覧操作 -> 画面結果と期待値の照合
+    // 登録系：登録画面に遷移 -> 登録操作 -> 登録確定/登録しない -> 画面結果と期待値の照合
+    // 更新系：更新画面に遷移 -> 更新操作 -> 更新確定/更新しない -> 画面結果と期待値の照合
+    // 削除系：削除画面に遷移 -> 削除操作 -> 削除確定/削除しない -> 画面結果と期待値の照合
+    cy.get("[data-cy=projects]").click();
+  });
+});
+```
 
 <br>
 
