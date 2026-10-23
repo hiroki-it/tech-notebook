@@ -35276,7 +35276,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 21:24:34 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:23:00 JST">2026-10-23</span>
   </span>
 
     
@@ -35325,7 +35325,7 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">"bytes"</span>
-<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"log"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -35414,11 +35414,11 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithValue</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">Foo</span><span class="p">,</span><span class="w"> </span><span class="s">"&lt;値&gt;"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -35472,6 +35472,8 @@ should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </s
 <span class="w">    </span><span class="c1">// タイムアウト時間経過後に処理を中断する</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cancel</span><span class="p">()</span>
 
+<span class="w">    </span><span class="nx">neverReady</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kt">chan</span><span class="w"> </span><span class="kd">struct</span><span class="p">{})</span>
+
 <span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 先に終了したcaseに条件分岐する</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">neverReady</span><span class="p">:</span>
@@ -35516,11 +35518,13 @@ should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </s
 <span class="w">    </span><span class="c1">// タイムアウト時間経過後に処理を中断する</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cancel</span><span class="p">()</span>
 
+<span class="w">    </span><span class="nx">neverReady</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kt">chan</span><span class="w"> </span><span class="kd">struct</span><span class="p">{})</span>
+
 <span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 先に終了したcaseに条件分岐する</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">neverReady</span><span class="p">:</span>
 <span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"ready"</span><span class="p">)</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">():</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">ctx2</span><span class="p">.</span><span class="nx">Done</span><span class="p">():</span>
 <span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ctx2</span><span class="p">.</span><span class="nx">Err</span><span class="p">())</span><span class="w"> </span><span class="c1">// prints "context deadline exceeded"</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -35600,16 +35604,16 @@ should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </s
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"context"</span>
-<span class="w">    </span><span class="s">"fmt"</span>
 <span class="w">    </span><span class="s">"time"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">fn1</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">(</span><span class="s">"start fn1"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">logTiming</span><span class="p">(</span><span class="s">"start fn1"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">log</span><span class="p">(</span><span class="s">"done fn1"</span><span class="p">)</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">logTiming</span><span class="p">(</span><span class="s">"done fn1"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">select</span><span class="w"> </span><span class="p">{</span>
@@ -35617,7 +35621,7 @@ should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </s
 <span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">():</span>
 <span class="w">            </span><span class="k">return</span>
 <span class="w">        </span><span class="k">default</span><span class="p">:</span>
-<span class="w">            </span><span class="nx">log</span><span class="p">(</span><span class="s">"loop fn1"</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">logTiming</span><span class="p">(</span><span class="s">"loop fn1"</span><span class="p">)</span>
 <span class="w">            </span><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -35625,9 +35629,9 @@ should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </s
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">fn2</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">(</span><span class="s">"start fn2"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">logTiming</span><span class="p">(</span><span class="s">"start fn2"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">log</span><span class="p">(</span><span class="s">"done fn2"</span><span class="p">)</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">logTiming</span><span class="p">(</span><span class="s">"done fn2"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">select</span><span class="w"> </span><span class="p">{</span>
@@ -35635,20 +35639,20 @@ should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </s
 <span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">():</span>
 <span class="w">            </span><span class="k">return</span>
 <span class="w">        </span><span class="k">default</span><span class="p">:</span>
-<span class="w">            </span><span class="nx">log</span><span class="p">(</span><span class="s">"loop fn2"</span><span class="p">)</span>
+<span class="w">            </span><span class="nx">logTiming</span><span class="p">(</span><span class="s">"loop fn2"</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">log</span><span class="p">(</span><span class="nx">timing</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">logTiming</span><span class="p">(</span><span class="nx">timing</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v second:%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">timing</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Second</span><span class="p">())</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">log</span><span class="p">(</span><span class="s">"start main"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">logTiming</span><span class="p">(</span><span class="s">"start main"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">log</span><span class="p">(</span><span class="s">"done main"</span><span class="p">)</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">logTiming</span><span class="p">(</span><span class="s">"done main"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// タイムアウト時間を設定し、コンテキストを作成する</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">cancel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithTimeout</span><span class="p">(</span>
@@ -35692,13 +35696,16 @@ should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </s
 <span class="w">    </span><span class="nx">parentCtx</span><span class="p">,</span><span class="w"> </span><span class="nx">parentCancel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithCancel</span><span class="p">(</span><span class="nx">rootCtx</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 親コンテキストをパラメータとして、子コンテキストを作成する</span>
-<span class="w">    </span><span class="nx">childCtx</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithCancel</span><span class="p">(</span><span class="nx">parentCtx</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">childCtx</span><span class="p">,</span><span class="w"> </span><span class="nx">childCancel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithCancel</span><span class="p">(</span><span class="nx">parentCtx</span><span class="p">)</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">childCancel</span><span class="p">()</span>
 
 <span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">parentCancel</span><span class="p">()</span>
 <span class="w">    </span><span class="p">}()</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="o">&lt;-</span><span class="nx">childCtx</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -35749,7 +35756,6 @@ should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </s
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">"encoding/json"</span>
-<span class="w">    </span><span class="s">"fmt"</span>
 <span class="w">    </span><span class="s">"log"</span>
 <span class="p">)</span>
 
@@ -35779,7 +35785,6 @@ should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </s
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">"encoding/json"</span>
-<span class="w">    </span><span class="s">"fmt"</span>
 <span class="w">    </span><span class="s">"log"</span>
 <span class="p">)</span>
 
@@ -35857,7 +35862,7 @@ should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </s
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">)</span><span class="w"> </span><span class="c1">// main.Person{Name:""} (変数はまだ書き換えられていない)</span>
 
 <span class="w">    </span><span class="c1">// person変数を変換後の値に書き換えている。</span>
-<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">(</span><span class="nx">byteJson</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">person</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">(</span><span class="kt">byte</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">person</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
@@ -35876,13 +35881,12 @@ should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </s
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">"encoding/json"</span>
-<span class="w">    </span><span class="s">"time"</span>
 <span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">CloudWatchEvent</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Version</span><span class="w">    </span><span class="kt">string</span><span class="w">          </span><span class="s">`json:"version"`</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">Resources</span><span class="w">  </span><span class="p">[]</span><span class="kt">string</span><span class="w">        </span><span class="s">`json:"resources"`</span>
 
@@ -35893,14 +35897,17 @@ should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </s
 <p>イベントの JSON を文字列のまま取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">handler</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/events"</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="p">)</span>
 
 <span class="cm">/**</span>
 <span class="cm"> * Lambdaハンドラー関数</span>
 <span class="cm"> */</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">HandleRequest</span><span class="p">(</span><span class="nx">event</span><span class="w"> </span><span class="nx">events</span><span class="p">.</span><span class="nx">CloudWatchEvent</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">Detail</span><span class="p">)</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">HandleRequest</span><span class="p">(</span><span class="nx">event</span><span class="w"> </span><span class="nx">events</span><span class="p">.</span><span class="nx">CloudWatchEvent</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">Detail</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kt">string</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">Detail</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -36003,19 +36010,28 @@ should<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </s
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">"flag"</span>
 <span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"os"</span>
+<span class="w">    </span><span class="s">"path/filepath"</span>
+<span class="w">    </span><span class="s">"flag"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">kubeconfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">flag</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">home</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">UserHomeDir</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to get home directory: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">kubeconfig</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">flag</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span>
 <span class="w">        </span><span class="s">"kubeconfig"</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">home</span><span class="p">,</span><span class="w"> </span><span class="s">".kube"</span><span class="p">,</span><span class="w"> </span><span class="s">"config"</span><span class="p">),</span>
 <span class="w">        </span><span class="s">"(optional) absolute path to the kubeconfig file"</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">flag</span><span class="p">.</span><span class="nx">Parse</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="o">*</span><span class="nx">kubeconfig</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><code>help</code> オプションで確認できる。</p>
@@ -36310,7 +36326,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">    </span><span class="c1">// 何らかの処理</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="c1">// 何らかの処理</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="c1">// 何らかの処理で生じたエラーを格納する</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"error shutting down: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
@@ -36319,7 +36335,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">shutdown</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w">  </span><span class="o">:=</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">shutdown</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// 本来であればmain関数の最後に実行できるが、後述のFatal関数を実行した場合は、そこでプロセスが終わってしまう</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">shutdown</span><span class="p">()</span>
@@ -36374,16 +36390,17 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">"http"</span>
+<span class="w">    </span><span class="s">"net/http"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">fooHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Context</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ctx</span><span class="w"> </span><span class="c1">// 後続処理で使用する</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="header">▼ Header<a class="headerlink" href="#header" title="Permanent link">&para;</a></h4>
@@ -36391,16 +36408,17 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">"http"</span>
+<span class="w">    </span><span class="s">"net/http"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">"&lt;ヘッダーのキー名&gt;"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ctx</span><span class="w"> </span><span class="c1">// 後続処理で使用する</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -36461,6 +36479,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"fmt"</span>
 <span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"net/http"</span>
 <span class="p">)</span>
@@ -36510,12 +36529,13 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"fmt"</span>
 <span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"net/http"</span>
 <span class="p">)</span>
 
 <span class="c1">// RecoverHttpMiddleware HttpHandlerのパニックをリカバーする</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">RecoverHttpMiddleware</span><span class="p">()</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">RecoverHttpMiddleware</span><span class="p">(</span><span class="nx">next</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">fn</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">        </span><span class="c1">// deferを使用しているため事後処理</span>
@@ -36567,14 +36587,15 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">"https://example/api.com"</span><span class="p">)</span>
 
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="c1">// レスポンスを操作した後、レスポンスボディを必ず閉じる</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -36591,15 +36612,15 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">id</span><span class="w">   </span><span class="kt">int</span><span class="w">    </span><span class="s">`json:"id"`</span>
-<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:"name"`</span>
+<span class="w">    </span><span class="nx">ID</span><span class="w">   </span><span class="kt">int</span><span class="w">    </span><span class="s">`json:"id"`</span>
+<span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:"name"`</span>
 <span class="p">}</span>
 
 <span class="c1">// コンストラクタ</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">NewUser</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">User</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">id</span><span class="p">:</span><span class="w">   </span><span class="nx">id</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">ID</span><span class="p">:</span><span class="w">   </span><span class="nx">id</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -36607,6 +36628,10 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">    </span><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewUser</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">"Hiroki"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">byteJson</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to marshal: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Post</span><span class="p">(</span>
 <span class="w">        </span><span class="s">"http://foo-api.com"</span><span class="p">,</span><span class="w">      </span><span class="c1">// URL</span>
@@ -36614,14 +36639,15 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">        </span><span class="nx">bytes</span><span class="p">.</span><span class="nx">NewBuffer</span><span class="p">(</span><span class="nx">byteJson</span><span class="p">),</span><span class="w"> </span><span class="c1">// メッセージボディ</span>
 <span class="w">    </span><span class="p">)</span>
 
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="c1">// レスポンスを操作した後、レスポンスボディを必ず閉じる</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -36630,24 +36656,24 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"io/ioutil"</span>
 <span class="w">    </span><span class="s">"bytes"</span>
 <span class="w">    </span><span class="s">"encoding/json"</span>
-<span class="w">    </span><span class="s">"fmt"</span>
 <span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"net/http"</span>
 <span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">id</span><span class="w">   </span><span class="kt">int</span><span class="w">    </span><span class="s">`json:"id"`</span>
-<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:"name"`</span>
+<span class="w">    </span><span class="nx">ID</span><span class="w">   </span><span class="kt">int</span><span class="w">    </span><span class="s">`json:"id"`</span>
+<span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:"name"`</span>
 <span class="p">}</span>
 
 <span class="c1">// コンストラクタ</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">NewUser</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">User</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{</span>
-<span class="w">        </span><span class="nx">id</span><span class="p">:</span><span class="w">   </span><span class="nx">id</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">ID</span><span class="p">:</span><span class="w">   </span><span class="nx">id</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -36656,6 +36682,10 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">    </span><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewUser</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">"Hiroki"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">byteJson</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to marshal: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// リクエストを作成する。</span>
 <span class="w">    </span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">NewRequest</span><span class="p">(</span>
@@ -36663,6 +36693,11 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">        </span><span class="s">"https://example.api.com"</span><span class="p">,</span><span class="w"> </span><span class="c1">// URL</span>
 <span class="w">        </span><span class="nx">bytes</span><span class="p">.</span><span class="nx">NewBuffer</span><span class="p">(</span><span class="nx">byteJson</span><span class="p">),</span><span class="w"> </span><span class="c1">// メッセージボディ</span>
 <span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to create request: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// ヘッダーを作成する。</span>
 <span class="w">    </span><span class="nx">request</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span><span class="w"> </span><span class="s">"application/json"</span><span class="p">)</span><span class="w"> </span><span class="c1">// Content-Type</span>
@@ -36673,16 +36708,21 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">    </span><span class="c1">// リクエストを送信する。</span>
 <span class="w">    </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">Do</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span>
 
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="c1">// レスポンスを操作した後、レスポンスボディを必ず閉じる</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">StatusCode</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">StatusCode</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Unexpected status: %d"</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">StatusCode</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// レスポンスのボディを取得する。</span>
 <span class="w">    </span><span class="c1">// 代わりに、httputil.DumpResponseを使用しても良い。</span>
-<span class="w">    </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="nx">body</span><span class="p">))</span>
 <span class="p">}</span>
@@ -36721,6 +36761,7 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"fmt"</span>
 <span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"net/http"</span>
 <span class="p">)</span>
@@ -36772,6 +36813,10 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">    </span><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewUser</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">"Hiroki"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">byteJson</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to marshal: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to do something: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
@@ -36877,11 +36922,10 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"syscall"</span>
 <span class="w">    </span><span class="s">"context"</span>
-<span class="w">    </span><span class="s">"fmt"</span>
 <span class="w">    </span><span class="s">"os"</span>
 <span class="w">    </span><span class="s">"os/signal"</span>
-<span class="w">    </span><span class="s">"time"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -36900,7 +36944,8 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <span class="w">    </span><span class="c1">// 処理を終了する</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">stop</span><span class="p">()</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">()</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -36917,8 +36962,8 @@ Usage<span class="w"> </span>of<span class="w"> </span>main.go:
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">"fmt"</span>
 <span class="w">    </span><span class="s">"strings"</span>
+<span class="w">    </span><span class="s">"fmt"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>

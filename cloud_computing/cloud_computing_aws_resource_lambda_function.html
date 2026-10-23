@@ -34594,7 +34594,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:04:05 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:23:00 JST">2026-10-23</span>
   </span>
 
     
@@ -34820,7 +34820,6 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">"context"</span>
-
 <span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/events"</span>
 <span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/lambda"</span>
 <span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/lambdacontext"</span>
@@ -34842,7 +34841,6 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">"context"</span>
-
 <span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/events"</span>
 <span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/lambda"</span>
 <span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/lambdacontext"</span>
@@ -34864,7 +34862,6 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">"context"</span>
-
 <span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/events"</span>
 <span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/lambda"</span>
 <span class="w">    </span><span class="s">"github.com/aws/aws-lambda-go/lambdacontext"</span>
@@ -35058,9 +35055,9 @@
 <p>AWS Amplify のイベントを Amazon EventBridge でキャッチし、これを AWS Lambda にフォワーディングする。AWS Lambda では、メッセージを構成し、Slack-API に送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="s2">"use strict"</span><span class="p">;</span>
 
-<span class="k">import</span><span class="w"> </span><span class="nx">aws</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"aws-sdk"</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"https"</span>
-<span class="k">import</span><span class="w"> </span><span class="nx">format</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"util"</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"aws-sdk"</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"https"</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">format</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"util"</span><span class="p">);</span>
 
 <span class="cm">/**</span>
 <span class="cm"> * @param event</span>
@@ -35069,7 +35066,7 @@
 <span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">event</span><span class="p">},</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">));</span>
 
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">amplify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">AWS</span><span class="w"> </span><span class="nx">Amplify</span><span class="p">({</span><span class="nx">apiVersion</span><span class="o">:</span><span class="w"> </span><span class="s2">"2017-07-25"</span><span class="p">});</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">amplify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">aws</span><span class="p">.</span><span class="nx">Amplify</span><span class="p">({</span><span class="nx">apiVersion</span><span class="o">:</span><span class="w"> </span><span class="s2">"2017-07-25"</span><span class="p">});</span>
 
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">option</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">appId</span><span class="o">:</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">appId</span><span class="p">,</span>
@@ -35100,8 +35097,6 @@
 
 <span class="cm">/**</span>
 <span class="cm"> * メッセージを作成します。</span>
-
-
 <span class="cm"> *</span>
 <span class="cm"> * @param event</span>
 <span class="cm"> * @param app</span>
@@ -35200,8 +35195,6 @@
 
 <span class="cm">/**</span>
 <span class="cm"> * メッセージを送信します。</span>
-
-
 <span class="cm"> *</span>
 <span class="cm"> * @param message</span>
 <span class="cm"> * @returns Promise&lt;json&gt;</span>
@@ -35224,28 +35217,27 @@
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">https</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">({</span><span class="nx">response</span><span class="p">},</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
 
-<span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">tmp</span><span class="p">;</span>
+<span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">;</span>
 
 <span class="w">      </span><span class="c1">// 正常なレスポンスからデータを取り出します。</span>
 <span class="w">      </span><span class="nx">response</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"data"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">tmp</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
 <span class="w">      </span><span class="p">});</span>
 
 <span class="w">      </span><span class="c1">// 異常なレスポンスからエラーを取り出します。</span>
 <span class="w">      </span><span class="nx">response</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"error"</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 <span class="w">      </span><span class="p">});</span>
 
 <span class="w">      </span><span class="c1">//  data、error、endの間でawaitの効力は横断できない。</span>
 <span class="w">      </span><span class="c1">// そのため、できるだけendで事後処理を実装し、awaitを使用する。</span>
 <span class="w">      </span><span class="nx">response</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"end"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">param</span><span class="p">.</span><span class="nx">toString</span><span class="p">(</span><span class="nx">tmp</span><span class="p">);</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">tmp</span><span class="p">);</span>
+<span class="w">         </span><span class="kd">const</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">tmp</span><span class="p">);</span>
 <span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">          </span><span class="nx">statusCode</span><span class="o">:</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">,</span>
 <span class="w">          </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">body</span><span class="p">,</span>
 <span class="w">        </span><span class="p">};</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">200</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">body</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="mf">200</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">body</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="nx">reject</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>

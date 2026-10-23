@@ -36404,7 +36404,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:49:57 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:23:00 JST">2026-10-23</span>
   </span>
 
     
@@ -36452,9 +36452,9 @@
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
     <span class="c1">// オブジェクトはデータを保持する。</span>
-    <span class="k">private</span> <span class="nv">$state</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">mixed</span> <span class="nv">$state</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">state</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">state</span><span class="p">()</span><span class="o">:</span> <span class="nx">mixed</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">state</span><span class="p">;</span>
     <span class="p">}</span>
@@ -36471,10 +36471,10 @@
 
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$state</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">mixed</span> <span class="nv">$state</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 
     <span class="c1">// 自身が持つ状態を操作する.</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">state</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">state</span><span class="p">()</span><span class="o">:</span> <span class="nx">mixed</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">state</span><span class="p">;</span>
     <span class="p">}</span>
@@ -36491,14 +36491,14 @@
 
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
-    <span class="k">public</span> <span class="nv">$state</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">mixed</span> <span class="nv">$state</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$state</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">mixed</span> <span class="nv">$state</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">state</span> <span class="o">=</span> <span class="nv">$state</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">state</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">state</span><span class="p">()</span><span class="o">:</span> <span class="nx">mixed</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">state</span><span class="p">;</span>
     <span class="p">}</span>
@@ -36509,7 +36509,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-<span class="k">function</span> <span class="nf">foo</span><span class="p">(</span><span class="nv">$state</span><span class="p">){</span>
+<span class="k">function</span> <span class="nf">foo</span><span class="p">(</span><span class="nx">mixed</span> <span class="nv">$state</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">{</span>
     <span class="k">return</span> <span class="nv">$state</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -36532,12 +36532,12 @@
 
 <span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">ParentFoo</span>
 <span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$state</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">mixed</span> <span class="nv">$state</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">state</span> <span class="o">=</span> <span class="nv">$state</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span><span class="o">:</span> <span class="nx">mixed</span>
     <span class="p">{</span>
         <span class="c1">// dataは親で定義されている</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">state</span><span class="p">;</span>
@@ -36549,7 +36549,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-<span class="k">function</span> <span class="nf">foo</span><span class="p">(</span><span class="nv">$state</span><span class="p">){</span>
+<span class="k">function</span> <span class="nf">foo</span><span class="p">(</span><span class="nx">mixed</span> <span class="nv">$state</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">{</span>
     <span class="k">return</span> <span class="nv">$state</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -36569,20 +36569,20 @@
 
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$state</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">mixed</span> <span class="nv">$state</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$state</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">mixed</span> <span class="nv">$state</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">state</span> <span class="o">=</span> <span class="nv">$state</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">state</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Desu</span><span class="p">();</span>
     <span class="p">}</span>
 
     <span class="c1">// クラス内からしかアクセスできない</span>
-    <span class="k">private</span> <span class="k">function</span> <span class="nf">Desu</span><span class="p">()</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">Desu</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="s2">"です。"</span><span class="p">;</span>
     <span class="p">}</span>
@@ -36593,7 +36593,7 @@
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-<span class="k">function</span> <span class="nf">foo</span><span class="p">(</span><span class="nv">$state</span><span class="p">){</span>
+<span class="k">function</span> <span class="nf">foo</span><span class="p">(</span><span class="nx">mixed</span> <span class="nv">$state</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">{</span>
     <span class="k">return</span> <span class="nv">$state</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -36649,9 +36649,9 @@
 
 <span class="k">class</span> <span class="nc">ABC</span> <span class="p">{</span>
 
-    <span class="k">private</span> <span class="nv">$property</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">mixed</span> <span class="nv">$property</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">property</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">property</span><span class="p">()</span><span class="o">:</span> <span class="nx">mixed</span>
     <span class="p">{</span>
         <span class="c1">// 単なるGetterではなく、例外処理も加える。</span>
         <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">property</span><span class="p">)){</span>
@@ -36671,10 +36671,10 @@
 
 <span class="k">class</span> <span class="nc">Test01</span> <span class="p">{</span>
 
-    <span class="k">private</span> <span class="nv">$property01</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">mixed</span> <span class="nv">$property01</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 
     <span class="c1">// Setterで$property01に値を設定</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">setProperty</span><span class="p">(</span><span class="nv">$property01</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setProperty</span><span class="p">(</span><span class="nx">mixed</span> <span class="nv">$property01</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">property01</span> <span class="o">=</span> <span class="nv">$property01</span><span class="p">;</span>
     <span class="p">}</span>
@@ -36688,10 +36688,10 @@
 
 <span class="k">class</span> <span class="nc">Test02</span> <span class="p">{</span>
 
-    <span class="k">private</span> <span class="nv">$property02</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">mixed</span> <span class="nv">$property02</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 
     <span class="c1">// コンストラクタで$property02に値を設定</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$property02</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">mixed</span> <span class="nv">$property02</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">property02</span> <span class="o">=</span> <span class="nv">$property02</span><span class="p">;</span>
     <span class="p">}</span>
@@ -36743,7 +36743,7 @@
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
 
-    <span class="k">private</span> <span class="nv">$foo</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">private</span> <span class="k">array</span> <span class="nv">$foo</span> <span class="o">=</span> <span class="p">[];</span>
 
     <span class="c1">// 引数と返却値のデータ型を指定</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
@@ -36784,10 +36784,10 @@
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
 
-    <span class="k">private</span> <span class="nv">$foo</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">private</span> <span class="k">array</span> <span class="nv">$foo</span> <span class="o">=</span> <span class="p">[];</span>
 
     <span class="c1">// 引数と返り値のデータ型を指定</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__set</span><span class="p">(</span><span class="nx">String</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">String</span> <span class="nv">$value</span><span class="p">)</span><span class="o">:</span> <span class="nx">String</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__set</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">mixed</span> <span class="nv">$value</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="k">echo</span> <span class="s2">"</span><span class="si">{</span><span class="nv">$name</span><span class="si">}</span><span class="s2">データは存在しないため、</span><span class="si">{</span><span class="nv">$value</span><span class="si">}</span><span class="s2">を設定できません。"</span><span class="p">;</span>
     <span class="p">}</span>
@@ -36817,10 +36817,10 @@
 <span class="k">class</span> <span class="nc">Test02</span>
 <span class="p">{</span>
 
-    <span class="k">private</span> <span class="nv">$property02</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">mixed</span> <span class="nv">$property02</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 
     <span class="c1">// コンストラクタで$property02に値を設定</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$property02</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">mixed</span> <span class="nv">$property02</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">property02</span> <span class="o">=</span> <span class="nv">$property02</span><span class="p">;</span>
     <span class="p">}</span>
@@ -36856,7 +36856,7 @@
 
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="k">array</span> <span class="nv">$array</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="k">array</span> <span class="nv">$array</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="nb">print_r</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
     <span class="p">}</span>
@@ -36886,18 +36886,13 @@
 
 <span class="k">class</span> <span class="nc">A</span>
 <span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @return A</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">get_self</span><span class="p">()</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">get_self</span><span class="p">()</span><span class="o">:</span> <span class="nx">A</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="k">new</span> <span class="nx">self</span><span class="p">();</span>
     <span class="p">}</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @return static</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">get_static</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">get_static</span><span class="p">()</span><span class="o">:</span> <span class="k">static</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="k">new</span> <span class="k">static</span><span class="p">();</span>
     <span class="p">}</span>
@@ -36926,7 +36921,7 @@
 
 <span class="k">class</span> <span class="nc">Obj_A</span>
 <span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$objB</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">ObjB</span> <span class="nv">$objB</span><span class="p">;</span>
 
     <span class="c1">// 返却値のデータ型を指定</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">objB</span><span class="p">()</span><span class="o">:</span> <span class="nx">ObjB</span>
@@ -36940,7 +36935,7 @@
 
 <span class="k">class</span> <span class="nc">Obj_B</span>
 <span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$objC</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">ObjC</span> <span class="nv">$objC</span><span class="p">;</span>
 
     <span class="c1">// 返却値のデータ型を指定</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">objC</span><span class="p">()</span><span class="o">:</span> <span class="nx">ObjC</span>
@@ -36954,7 +36949,7 @@
 
 <span class="k">class</span> <span class="nc">Obj_C</span>
 <span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$objD</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">ObjD</span> <span class="nv">$objD</span><span class="p">;</span>
 
     <span class="c1">// 返却値のデータ型を指定</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">objD</span><span class="p">()</span><span class="o">:</span> <span class="nx">ObjD</span>
@@ -37016,10 +37011,7 @@
 
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @param array $array</span>
-<span class="sd">     * @return array</span>
-<span class="sd">     */</span>
+
     <span class="k">public</span> <span class="k">function</span> <span class="nf">quickSort</span><span class="p">(</span><span class="k">array</span> <span class="nv">$array</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
     <span class="p">{</span>
         <span class="c1">// 配列の要素数が1つしかない場合、クイックソートする必要がないため、返却する。</span>
@@ -37087,7 +37079,7 @@
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">returnMethod</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">returnMethod</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="k">print</span> <span class="s2">"returnMethod()です。</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
         <span class="k">return</span><span class="p">;</span> <span class="c1">// 何も返さない。</span>
@@ -37105,7 +37097,7 @@
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
 
-    <span class="k">function</span> <span class="nf">exitMethod</span><span class="p">()</span>
+    <span class="k">function</span> <span class="nf">exitMethod</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="k">print</span> <span class="s2">"exitMethod()です。</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
         <span class="k">exit</span><span class="p">;</span>
@@ -37122,16 +37114,14 @@
 <p>関数がコールされた場所に値を返却した後、その処理が終了する。</p>
 <h4 id="yield">▼ <code>yield</code><a class="headerlink" href="#yield" title="Permanent link">&para;</a></h4>
 <p>関数がコールされた場所に値を返却した後、そこで終了せず、<code>yield</code> の次の処理が続く。</p>
-<p>返却値は、array 型である。</p>
+<p>返却値は、<code>Generator</code> 型である。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @return array|Generator</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">oneToThree</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">oneToThree</span><span class="p">()</span><span class="o">:</span> <span class="nx">Generator</span>
     <span class="p">{</span>
         <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// yield を返却した後、$i の値が維持される。</span>
@@ -37167,7 +37157,7 @@
 <span class="nv">$name</span> <span class="o">=</span> <span class="s2">"foo"</span><span class="p">;</span>
 
 <span class="c1">// 名前に紐付ける関数を定義。</span>
-<span class="nv">$listener</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$param</span><span class="p">){</span>
+<span class="nv">$listener</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$param</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">{</span>
     <span class="c1">// 何らかの処理</span>
 <span class="p">};</span>
 
@@ -37200,18 +37190,11 @@
 
 <span class="k">class</span> <span class="nc">ResultCacher</span>
 <span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$resultCollection</span><span class="p">;</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var array[]</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$funcCollection</span><span class="p">;</span>
+    <span class="k">private</span> <span class="k">array</span> <span class="nv">$resultCollection</span> <span class="o">=</span> <span class="p">[];</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     */</span>
+    <span class="k">private</span> <span class="k">array</span> <span class="nv">$funcCollection</span><span class="p">;</span>
+
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">funcCollection</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addListener</span><span class="p">();</span>
@@ -37220,16 +37203,12 @@
     <span class="sd">/**</span>
 <span class="sd">     * 集計関数</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">computeRevenue</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">computeRevenue</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="c1">// 時間のかかる集計処理;</span>
     <span class="p">}</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param string $funcName</span>
-<span class="sd">     * @return false|mixed</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">funcNameListener</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$funcName</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">funcNameListener</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$funcName</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span>
     <span class="p">{</span>
         <span class="c1">// 返却値が設定されていなかった場合、値を設定.</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resultCollection</span><span class="p">[</span><span class="nv">$funcName</span><span class="p">]))</span> <span class="p">{</span>
@@ -37244,21 +37223,15 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 返却値をキャッシュしたい関数名を登録しておく</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return array[]</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="k">function</span> <span class="nf">addListener</span><span class="p">()</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">addListener</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="p">[</span>
             <span class="s2">"computeRevenue"</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nv">$this</span><span class="p">,</span> <span class="s2">"computeRevenue"</span><span class="p">]</span>
         <span class="p">];</span>
     <span class="p">}</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param string $funcName</span>
-<span class="sd">     * @return false|mixed</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="k">function</span> <span class="nf">dispatch</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$funcName</span><span class="p">)</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">dispatch</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$funcName</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span>
     <span class="p">{</span>
         <span class="c1">// call_user_funcで関数を実行</span>
         <span class="k">return</span> <span class="nb">call_user_func</span><span class="p">(</span>
@@ -37284,8 +37257,8 @@
 
 <span class="c1">// 最初の括弧を使用しないことにより、普段よくやっている値渡しの関数を定義しているのと同じになる。</span>
 <span class="c1">// use()に、親関数 ($optionName) のスコープの$itemを渡す。</span>
-<span class="nv">$optionName</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$item</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">optionName</span><span class="p">();</span>
+<span class="nv">$optionName</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$item</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">optionName</span><span class="p">();</span>
 <span class="p">};</span>
 
 <span class="c1">// function()には引数が設定されていないため、コール時に引数は不要。</span>
@@ -37307,8 +37280,8 @@
 <span class="c1">// 最初の括弧を使用しないことにより、普段よくやっている値渡しの関数を定義しているのと同じになる。</span>
 <span class="c1">// 親関数 ($optionName) のスコープの$itemを、use()に渡す。</span>
 <span class="c1">// $paramは、コール時に使用する変数。</span>
-<span class="nv">$optionName</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$para</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$item</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">optionName</span><span class="p">()</span> <span class="o">.</span> <span class="nv">$para</span><span class="p">;</span>
+<span class="nv">$optionName</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nx">string</span> <span class="nv">$para</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$item</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">optionName</span><span class="p">()</span> <span class="o">.</span> <span class="nv">$para</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="c1">// コール時、$paramをfunction()に渡す。</span>
@@ -37328,7 +37301,7 @@
 
 <span class="k">class</span> <span class="nc">Option</span>
 <span class="p">{</span>
-    <span class="c1">// 中身は省略</span>
+    <span class="k">public</span> <span class="nx">Closure</span> <span class="nv">$name</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="nv">$item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Item</span><span class="p">;</span>
@@ -37339,12 +37312,12 @@
 <span class="nv">$option</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Option</span><span class="p">;</span>
 
 <span class="c1">// データの値に無名関数を格納する。</span>
-<span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$para</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$item</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">optionName</span><span class="p">()</span> <span class="o">.</span> <span class="nv">$para</span><span class="p">;</span>
+<span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nx">string</span> <span class="nv">$para</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$item</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">optionName</span><span class="p">()</span> <span class="o">.</span> <span class="nv">$para</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="c1">// コール時、$paramをfunction()に渡す。</span>
-<span class="k">echo</span> <span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s2">"BC"</span><span class="p">);</span>
+<span class="k">echo</span> <span class="p">(</span><span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">)(</span><span class="s2">"BC"</span><span class="p">);</span>
 
 <span class="c1">// 出力結果</span>
 <span class="c1">// オプションABC</span>
@@ -37367,8 +37340,8 @@
 <span class="c1">// use()に、親関数のスコープの$itemを渡す。</span>
 <span class="c1">// 無名関数を定義し、同時にcall_user_func()で即コールする。</span>
 <span class="c1">// $paramは、コール時に使用する変数。</span>
-<span class="nv">$optionName</span> <span class="o">=</span> <span class="nb">call_user_func</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$param</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$item</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">optionName</span><span class="p">()</span> <span class="o">.</span> <span class="nv">$param</span><span class="p">;</span>
+<span class="nv">$optionName</span> <span class="o">=</span> <span class="nb">call_user_func</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nx">string</span> <span class="nv">$param</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$item</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">optionName</span><span class="p">()</span> <span class="o">.</span> <span class="nv">$param</span><span class="p">;</span>
 <span class="p">},</span> <span class="nv">$param</span><span class="p">);</span>
 
 <span class="c1">// $paramはすでに即コール時に渡されている。</span>
@@ -37390,10 +37363,8 @@
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * 高階関数を定義</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param $callback</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">test</span><span class="p">(</span><span class="nv">$callback</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">test</span><span class="p">(</span><span class="nx">callable</span> <span class="nv">$callback</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="k">echo</span> <span class="nv">$callback</span><span class="p">();</span>
     <span class="p">}</span>
@@ -37401,10 +37372,6 @@
     <span class="sd">/**</span>
 <span class="sd">     * コールバックを定義</span>
 <span class="sd">     * 関数の中でコールされるため、『後で呼び出される』という意味合いから、コールバック関数といえる。</span>
-
-
-<span class="sd">     *</span>
-<span class="sd">     * @return string</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">callbackMethod</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
@@ -37414,7 +37381,7 @@
 
 <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
 <span class="c1">// 高階関数の引数として、コールバック関数を渡す</span>
-<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">test</span><span class="p">(</span><span class="s2">"callbackMethod"</span><span class="p">);</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">test</span><span class="p">([</span><span class="nv">$foo</span><span class="p">,</span> <span class="s2">"callbackMethod"</span><span class="p">]);</span>
 
 <span class="c1">// 出力結果</span>
 <span class="c1">// 出力に成功しました。</span>
@@ -37427,23 +37394,16 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 高階関数を定義</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param $param</span>
-<span class="sd">     * @param $callback</span>
-<span class="sd">     * @return mixed</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">higherOrder</span><span class="p">(</span><span class="nv">$param</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">higherOrder</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$param</span><span class="p">,</span> <span class="nx">callable</span> <span class="nv">$callback</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$callback</span><span class="p">(</span><span class="nv">$param</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * コールバック関数を定義</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param $param</span>
-<span class="sd">     * @return string</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">callbackMethod</span><span class="p">(</span><span class="nv">$param</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">callbackMethod</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$param</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$param</span><span class="o">.</span><span class="s2">"の出力に成功しました。"</span><span class="p">;</span>
     <span class="p">}</span>
@@ -37452,7 +37412,7 @@
 <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
 
 <span class="c1">// 高階関数の第一引数にコールバック関数の引数、第二引数にコールバック関数を渡す</span>
-<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">higherOrder</span><span class="p">(</span><span class="s2">"第一引数"</span><span class="p">,</span> <span class="s2">"callbackMethod"</span><span class="p">);</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">higherOrder</span><span class="p">(</span><span class="s2">"第一引数"</span><span class="p">,</span> <span class="p">[</span><span class="nv">$foo</span><span class="p">,</span> <span class="s2">"callbackMethod"</span><span class="p">]);</span>
 
 <span class="c1">// 出力結果</span>
 <span class="c1">// 第一引数の出力に成功しました。</span>
@@ -37465,14 +37425,8 @@
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * 高階関数のように、関数を引数として渡す。</span>
-
-
-<span class="sd">     *</span>
-<span class="sd">     * @param $parentVar</span>
-<span class="sd">     * @param $callback</span>
-<span class="sd">     * @return mixed</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">higherOrder</span><span class="p">(</span><span class="nv">$parentVar</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">higherOrder</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$parentVar</span><span class="p">,</span> <span class="nx">callable</span> <span class="nv">$callback</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span>
     <span class="p">{</span>
         <span class="nv">$parentVar</span> <span class="o">=</span> <span class="s2">"&amp;親関数のスコープの変数"</span><span class="p">;</span>
         <span class="k">return</span> <span class="nv">$callback</span><span class="p">(</span><span class="nv">$parentVar</span><span class="p">);</span>
@@ -37484,7 +37438,7 @@
 <span class="c1">// 第二引数の無名関数。関数の中でコールされるため、『後でコールされる』という意味合いから、コールバック関数といえる。</span>
 <span class="c1">// コールバック関数は再利用されないため、名前をつけずに無名関数とすることが多い。</span>
 <span class="c1">// 親関数のスコープで定義されている変数を引数として渡す。</span>
-<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">higherOrder</span><span class="p">(</span><span class="nv">$parentVar</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$parentVar</span><span class="p">)</span> <span class="p">{</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">higherOrder</span><span class="p">(</span><span class="nv">$parentVar</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$parentVar</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nv">$parentVar</span> <span class="o">.</span> <span class="s2">"の出力に成功しました。"</span><span class="p">;</span>
 <span class="p">});</span>
 
@@ -37499,20 +37453,12 @@
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var array</span>
-<span class="sd">     */</span>
-    <span class="k">protected</span> <span class="nv">$properties</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="k">array</span> <span class="nv">$properties</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 非無名関数あるいは無名関数を引数で渡す。</span>
-
-
-<span class="sd">     *</span>
-<span class="sd">     * @param $callback</span>
-<span class="sd">     * @return $this</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">Shiborikomi</span><span class="p">(</span><span class="nv">$callback</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">Shiborikomi</span><span class="p">(</span><span class="nx">callable</span> <span class="nv">$callback</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span>
     <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_callable</span><span class="p">(</span><span class="nv">$callback</span><span class="p">))</span> <span class="p">{</span>
             <span class="k">throw</span> <span class="k">new</span> <span class="nx">\LogicException</span><span class="p">;</span>
@@ -37617,7 +37563,7 @@
 
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="k">echo</span> <span class="no">__FUNCTION__</span><span class="p">;</span>
     <span class="p">}</span>
@@ -37627,7 +37573,7 @@
 
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">(){}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">{}</span>
 <span class="p">}</span>
 
 <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">;</span>
@@ -37640,7 +37586,7 @@
 
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="k">echo</span> <span class="no">__METHOD__</span><span class="p">;</span>
     <span class="p">}</span>
@@ -37680,7 +37626,6 @@
 <p>変数の前後に半角スペースを置いた場合にのみ、変数は展開される。</p>
 <p>(※半角スペースがないとエラーになってしまう)</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
-
 
 <span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">"リンゴ"</span><span class="p">;</span>
 
@@ -37731,7 +37676,6 @@
 <span class="nv">$a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 <span class="nv">$b</span> <span class="o">=</span> <span class="nv">$a</span><span class="p">;</span>  <span class="c1">// 変数aを代入</span>
 <span class="nv">$a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">// 変数aの値を変更</span>
-
 
 <span class="c1">// 出力結果</span>
 <span class="k">echo</span> <span class="nv">$b</span><span class="p">;</span> <span class="c1">// 2</span>

@@ -34488,7 +34488,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月6日 18:19:37 JST">2026-10-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:23:00 JST">2026-10-23</span>
   </span>
 
     
@@ -34536,6 +34536,11 @@
 <h3 id="db">DB との接続<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
 <h4 id="mysql">▼ MySQL の場合<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">db</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"os"</span>
+<span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">NewDB</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
@@ -34589,11 +34594,21 @@
 <p>構造体をマッピングしたテーブルに、対応するカラム (<code>id</code>、<code>created_at</code>、<code>updated_at</code>、<code>deleted_at</code>) を持つレコードを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">model</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="p">)</span>
+
 <span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// gormモデルを埋め込む</span>
 <span class="w">    </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Model</span>
 <span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
 <span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">model</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"time"</span>
+<span class="w">    </span><span class="s">"gorm.io/gorm"</span>
+<span class="p">)</span>
 
 <span class="c1">// 以下と同じ</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
@@ -34601,7 +34616,7 @@
 <span class="w">    </span><span class="nx">Name</span><span class="w">      </span><span class="kt">string</span>
 <span class="w">    </span><span class="nx">CreatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
 <span class="w">    </span><span class="nx">UpdatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
-<span class="w">    </span><span class="nx">DeletedAt</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DeleteAt</span><span class="w"> </span><span class="s">`gorm:"index"`</span>
+<span class="w">    </span><span class="nx">DeletedAt</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DeletedAt</span><span class="w"> </span><span class="s">`gorm:"index"`</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -34614,6 +34629,10 @@
 <p>明示的に設定しない限り、スネークケースに変換して自動的にマッピングする。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">model</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"time"</span>
+<span class="p">)</span>
+
 <span class="c1">// usersテーブルにマッピング</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// usersテーブルの主キーにマッピング</span>
@@ -34625,7 +34644,7 @@
 <span class="w">    </span><span class="c1">// updated_atカラムにマッピング</span>
 <span class="w">    </span><span class="nx">UpdatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
 <span class="w">    </span><span class="c1">// deleted_atカラムにマッピング</span>
-<span class="w">    </span><span class="nx">DeletedAt</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DeleteAt</span>
+<span class="w">    </span><span class="nx">DeletedAt</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DeletedAt</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -34656,7 +34675,7 @@
 </ul>
 </blockquote>
 <h4 id="softdelete">▼ SoftDelete<a class="headerlink" href="#softdelete" title="Permanent link">&para;</a></h4>
-<p>構造体が、<code>gorm.DeleteAt</code> をデータ型とするフィールドを持っていると、その構造体を使用した <code>DELETE</code> 処理では論理削除が実行される。</p>
+<p>構造体が、<code>gorm.DeletedAt</code> をデータ型とするフィールドを持っていると、その構造体を使用した <code>DELETE</code> 処理では論理削除が実行される。</p>
 <p>gorm モデルを埋め込むことによりこのフィールドを持たせるか、または自前定義することにより、SoftDelete を有効化できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">model</span>
 
@@ -34930,12 +34949,12 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">NewDb</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="c1">// Createの前</span>
 <span class="w">    </span><span class="nx">db</span><span class="p">.</span><span class="nx">Callback</span><span class="p">().</span><span class="nx">Create</span><span class="p">().</span><span class="nx">Before</span><span class="p">(</span><span class="s">"gorm:before_create"</span><span class="p">).</span><span class="nx">Register</span><span class="p">(</span><span class="s">"&lt;フック名&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s">"&lt;CRUD関数名&gt;"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -34946,12 +34965,20 @@
 <h4 id="crud_1">▼ すべての CRUD 関数の前後<a class="headerlink" href="#crud_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">db</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"time"</span>
+<span class="p">)</span>
+
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="w"> </span><span class="o">*</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="nx">BeforeSave</span><span class="p">(</span><span class="nx">tx</span><span class="w"> </span><span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">user</span><span class="p">.</span><span class="nx">LastUpdated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">db</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="w"> </span><span class="o">*</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="nx">AfterSave</span><span class="p">(</span><span class="nx">tx</span><span class="w"> </span><span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"User successfully saved:"</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">ID</span><span class="p">)</span>
@@ -34968,6 +34995,13 @@
 <h4 id="statement_1">▼ Statement とは<a class="headerlink" href="#statement_1" title="Permanent link">&para;</a></h4>
 <p>gorm クエリに関する情報を持つ。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">db</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"context"</span>
+<span class="w">    </span><span class="s">"reflect"</span>
+<span class="w">    </span><span class="s">"strings"</span>
+<span class="w">    </span><span class="s">"sync"</span>
+<span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">DB</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="o">*</span><span class="nx">Config</span>

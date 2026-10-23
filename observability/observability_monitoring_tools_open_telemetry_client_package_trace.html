@@ -35690,7 +35690,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月21日 19:27:44 JST">2026-10-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:23:00 JST">2026-10-23</span>
   </span>
 
     
@@ -35731,7 +35731,7 @@
 <p><code>NewTracerProvider()</code> 関数に分散トレースのオプションを渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">(</span><span class="nx">serviceName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// Exporterを設定する</span>
@@ -35746,7 +35746,7 @@
 
 <span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">options</span><span class="p">...)</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="c1">// TraceProviderインターフェースを実装する構造体を作成する</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
@@ -35793,12 +35793,20 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="p">)</span>
+
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to initialize tracer provider: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">()</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -35814,7 +35822,7 @@
 <p>分散トレースのオプションを持つ <code>TracerProviderOption</code> 構造体を別に作成し、TracerProvider に渡してもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">(</span><span class="nx">serviceName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">options</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="nx">trace</span><span class="p">.</span><span class="nx">TracerProviderOption</span><span class="p">{</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">exporter</span><span class="p">),</span>
@@ -35825,7 +35833,7 @@
 
 <span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">options</span><span class="p">...)</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="c1">// TraceProviderインターフェースを実装する構造体を作成する</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
@@ -35872,12 +35880,20 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="p">)</span>
+
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to initialize tracer provider: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">()</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -35898,7 +35914,7 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">traceEnabled</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">"TRACE_ENABLED"</span><span class="p">)</span>
 
@@ -35907,7 +35923,7 @@
 <span class="w">        </span><span class="c1">// TracerProviderに関する一連の処理</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -35951,7 +35967,7 @@
 <p>また、TracerProvider を意図的に無効化したい場合 (分散トレースが不要な開発環境) にも役立つが、SDK 固有の一部の関数 (<code>ForceFlush()</code> 関数) がある場合は使用できない。</p>
 <p>Go (<code>v1.20</code>) から <code>go.opentelemetry.io/otel/trace/noop</code> に移動したため、アップグレード時はパッケージを変更する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">TracerProvider</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">noopTracerProvider</span><span class="w"> </span><span class="kd">struct</span><span class="p">{</span>
@@ -35972,6 +35988,7 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"os"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel/sdk/resource"</span>
 <span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">"go.opentelemetry.io/otel/sdk/trace"</span>
 <span class="w">    </span><span class="nx">semconv</span><span class="w"> </span><span class="s">"go.opentelemetry.io/otel/semconv/v1.20.0"</span>
@@ -36190,11 +36207,11 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">foo</span><span class="p">()</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
@@ -36228,11 +36245,11 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">foo</span><span class="p">()</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
@@ -36266,11 +36283,11 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">foo</span><span class="p">()</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
@@ -36304,11 +36321,11 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">foo</span><span class="p">()</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
@@ -36342,11 +36359,11 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">foo</span><span class="p">()</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
@@ -36380,11 +36397,11 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">foo</span><span class="p">()</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
@@ -36427,7 +36444,6 @@
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">"error"</span>
 <span class="w">    </span><span class="s">"fmt"</span>
-
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
 <span class="p">)</span>
 
@@ -36452,11 +36468,11 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetErrorHandler</span><span class="p">(</span><span class="nx">IgnoreExporterErrorsHandler</span><span class="p">{})</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -36469,7 +36485,7 @@
 <p>処理の失敗時に Span Processor 内へ未送信のスパンが残っている場合、これを送信し切ってしまうほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">(</span><span class="nx">serviceName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">exporter</span><span class="p">),</span>
@@ -36478,7 +36494,7 @@
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSpanProcessor</span><span class="p">(</span><span class="nx">batchSpanProcessor</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="c1">// TraceProviderインターフェースを実装する構造体を作成する</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
@@ -36525,12 +36541,20 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="p">)</span>
+
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to initialize tracer provider: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">()</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -36548,7 +36572,7 @@
 <p>なお、TracerProvider で Graceful Shutdown 処理を実行すれば、Exporter や Span Processor も連鎖的に Graceful Shutdown できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">(</span><span class="nx">serviceName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">exporter</span><span class="p">),</span>
@@ -36557,7 +36581,7 @@
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSpanProcessor</span><span class="p">(</span><span class="nx">batchSpanProcessor</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="c1">// TraceProviderインターフェースを実装する構造体を作成する</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
@@ -36604,12 +36628,20 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="p">)</span>
+
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to initialize tracer provider: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">()</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -36666,7 +36698,7 @@
 <p>なお、TracerProvider で Graceful Shutdown 処理を実行すれば、Exporter も連鎖的に Graceful Shutdown できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">(</span><span class="nx">serviceName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">exporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewGrpcExporter</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 
@@ -36738,12 +36770,20 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="p">)</span>
+
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to initialize tracer provider: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">()</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -36770,13 +36810,13 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">tp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdkTrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithIDGenerator</span><span class="p">(</span><span class="nx">xray</span><span class="p">.</span><span class="nx">NewIDGenerator</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36954,7 +36994,7 @@
 
 <span class="w">    </span><span class="c1">// 監視バックエンドが対応するトレースコンテキスト仕様を設定する必要がある</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
-<span class="w">      </span><span class="p">...</span>
+<span class="w">      </span><span class="c1">// ...</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36964,7 +37004,7 @@
 
 <span class="w">    </span><span class="c1">// 監視バックエンドが対応するトレースコンテキスト仕様を設定する必要がある</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
-<span class="w">      </span><span class="p">...</span>
+<span class="w">      </span><span class="c1">// ...</span>
 <span class="w">    </span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>

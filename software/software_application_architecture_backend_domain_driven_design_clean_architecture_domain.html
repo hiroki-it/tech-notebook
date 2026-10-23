@@ -35196,7 +35196,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:49:57 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:23:00 JST">2026-10-23</span>
   </span>
 
     
@@ -35270,7 +35270,7 @@
     <span class="sd">/**</span>
 <span class="sd">     * 『self::定数名』で、定義の値へアクセスする</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="k">static</span> <span class="nv">$set</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="k">array</span> <span class="nv">$set</span> <span class="o">=</span> <span class="p">[</span>
         <span class="nx">self</span><span class="o">::</span><span class="na">RED</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"レッド"</span><span class="p">],</span>
         <span class="nx">self</span><span class="o">::</span><span class="na">BLUE</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"ブルー"</span><span class="p">]</span>
     <span class="p">];</span>
@@ -35278,36 +35278,31 @@
     <span class="sd">/**</span>
 <span class="sd">     * 値</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$value</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">int</span> <span class="nv">$value</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 色名</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">;</span>
 
     <span class="c1">// インスタンス化の時に、『色の区分値』を受け取る。</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$value</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$value</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="c1">// $kbnValueに応じて、色名をnameデータにセットする。</span>
+        <span class="c1">// $valueに応じて、色名をnameデータにセットする。</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$set</span><span class="p">[</span><span class="nv">$value</span><span class="p">][</span><span class="s2">"name"</span><span class="p">];</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 値を返却する</span>
-
-
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">value</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">;</span>
     <span class="p">}</span>
 
-
     <span class="sd">/**</span>
 <span class="sd">     * 色名を返却する</span>
-
-
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">name</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
@@ -35330,7 +35325,7 @@
     <span class="k">const</span> <span class="no">WOMAN</span>   <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
     <span class="k">const</span> <span class="no">UNKNOWN</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
 
-    <span class="k">private</span> <span class="k">static</span> <span class="nv">$set</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="k">array</span> <span class="nv">$set</span> <span class="o">=</span> <span class="p">[</span>
         <span class="nx">self</span><span class="o">::</span><span class="na">MAN</span>     <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"男性"</span><span class="p">],</span>
         <span class="nx">self</span><span class="o">::</span><span class="na">WOMAN</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"女性"</span><span class="p">],</span>
         <span class="nx">self</span><span class="o">::</span><span class="na">UNKNOWN</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"不明"</span><span class="p">],</span>
@@ -35339,14 +35334,14 @@
     <span class="sd">/**</span>
 <span class="sd">     * 値</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$value</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">int</span> <span class="nv">$value</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 名前</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$value</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$set</span><span class="p">[</span><span class="nv">$value</span><span class="p">][</span><span class="s2">"name"</span><span class="p">];</span>
@@ -35362,7 +35357,7 @@
     <span class="sd">/**</span>
 <span class="sd">     * 名前を返却する</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">name</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">name</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
     <span class="p">}</span>
@@ -35386,7 +35381,7 @@
     <span class="k">const</span> <span class="no">REIWA</span>   <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// 令和</span>
     <span class="k">const</span> <span class="no">SEIREKI</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">// 西暦</span>
 
-    <span class="k">private</span> <span class="k">static</span> <span class="nv">$set</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="k">array</span> <span class="nv">$set</span> <span class="o">=</span> <span class="p">[</span>
         <span class="nx">self</span><span class="o">::</span><span class="na">MEIJI</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"明治"</span><span class="p">],</span>
         <span class="nx">self</span><span class="o">::</span><span class="na">TAISHO</span>  <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"大正"</span><span class="p">],</span>
         <span class="nx">self</span><span class="o">::</span><span class="na">SHOWA</span>   <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"昭和"</span><span class="p">],</span>
@@ -35395,7 +35390,7 @@
         <span class="nx">self</span><span class="o">::</span><span class="na">SEIREKI</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"西暦"</span><span class="p">],</span>
     <span class="p">];</span>
 
-    <span class="k">private</span> <span class="k">static</span> <span class="nv">$ymd</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="k">array</span> <span class="nv">$ymd</span> <span class="o">=</span> <span class="p">[</span>
         <span class="nx">self</span><span class="o">::</span><span class="na">MEIJI</span>  <span class="o">=&gt;</span> <span class="p">[</span>
             <span class="s2">"start"</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">1868</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">25</span><span class="p">,</span> <span class="p">],</span>
             <span class="s2">"end"</span>   <span class="o">=&gt;</span> <span class="p">[</span> <span class="s2">"year"</span> <span class="o">=&gt;</span> <span class="mi">1912</span><span class="p">,</span> <span class="s2">"month"</span> <span class="o">=&gt;</span> <span class="mi">7</span><span class="p">,</span> <span class="s2">"day"</span> <span class="o">=&gt;</span> <span class="mi">29</span><span class="p">,</span> <span class="p">],</span>
@@ -35420,32 +35415,23 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 値</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$value</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$value</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 年号名</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 値を返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return string</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">value</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param $value</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$value</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="k">static</span><span class="o">::</span><span class="nv">$set</span><span class="p">[</span><span class="nv">$value</span><span class="p">][</span><span class="s2">"name"</span><span class="p">];</span>
@@ -35453,10 +35439,8 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 年号名を返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return string</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">name</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">name</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
     <span class="p">}</span>
@@ -35487,14 +35471,9 @@
 
 <span class="k">class</span> <span class="nc">CheckDuplicateFooService</span>
 <span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var FooRepository</span>
-<span class="sd">     */</span>
+
     <span class="k">private</span> <span class="nx">FooRepository</span> <span class="nv">$fooRepository</span><span class="p">;</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param FooRepository $fooRepository</span>
-<span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooRepository</span> <span class="nv">$fooRepository</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span> <span class="o">=</span> <span class="nv">$fooRepository</span><span class="p">;</span>
@@ -35502,11 +35481,6 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * エンティティがすでに存在しているか否かを判定する</span>
-
-
-<span class="sd">     *</span>
-<span class="sd">     * @param Foo $foo</span>
-<span class="sd">     * @return bool</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">exists</span><span class="p">(</span><span class="nx">Foo</span> <span class="nv">$foo</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
     <span class="p">{</span>
@@ -35561,14 +35535,9 @@
 
 <span class="k">class</span> <span class="nc">AuthorizeFooService</span>
 <span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var FooRepository</span>
-<span class="sd">     */</span>
+
     <span class="k">private</span> <span class="nx">FooRepository</span> <span class="nv">$fooRepository</span><span class="p">;</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param FooRepository $fooRepository</span>
-<span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooRepository</span> <span class="nv">$fooRepository</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span> <span class="o">=</span> <span class="nv">$fooRepository</span><span class="p">;</span>
@@ -35576,10 +35545,6 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 更新処理を実行できるかを検証する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param FooId  $fooId</span>
-<span class="sd">     * @param UserId $userId</span>
-<span class="sd">     * @return bool</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">canUpdateById</span><span class="p">(</span><span class="nx">FooId</span> <span class="nv">$fooId</span><span class="p">,</span> <span class="nx">UserId</span> <span class="nv">$userId</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
     <span class="p">{</span>
@@ -35637,8 +35602,6 @@
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * ドメインルールを判定する</span>
-<span class="sd">     * @param Entity $entity</span>
-<span class="sd">     * @return bool</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">isSatisfiedBy</span><span class="p">(</span><span class="nx">Entity</span> <span class="nv">$entity</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
     <span class="p">{</span>
@@ -35663,28 +35626,17 @@
 
 <span class="k">class</span> <span class="nc">FooCriteria</span>
 <span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var int</span>
-<span class="sd">     */</span>
+
     <span class="k">private</span> <span class="nx">int</span> <span class="nv">$id</span><span class="p">;</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
     <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">;</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
     <span class="k">private</span> <span class="nx">string</span> <span class="nv">$email</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * クエリ検索条件オブジェクトを作成する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param array $array</span>
-<span class="sd">     * @return $this</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">build</span><span class="p">(</span><span class="k">array</span> <span class="nv">$array</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">build</span><span class="p">(</span><span class="k">array</span> <span class="nv">$array</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span>
     <span class="p">{</span>
         <span class="c1">// 自身をインスタンス化。</span>
         <span class="nv">$criteria</span> <span class="o">=</span> <span class="k">new</span> <span class="k">static</span><span class="p">();</span>
@@ -35726,38 +35678,23 @@
 
 <span class="k">final</span> <span class="k">class</span> <span class="nc">User</span>
 <span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var UserId</span>
-<span class="sd">     */</span>
+
     <span class="k">private</span> <span class="nx">UserId</span> <span class="nv">$userId</span><span class="p">;</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var UserName</span>
-<span class="sd">     */</span>
     <span class="k">private</span> <span class="nx">UserName</span> <span class="nv">$userName</span><span class="p">;</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param UserId           $userId</span>
-<span class="sd">     * @param UserName         $userName</span>
-<span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">UserId</span> <span class="nv">$userId</span><span class="p">,</span> <span class="nx">UserName</span> <span class="nv">$userName</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span> <span class="o">=</span> <span class="nv">$userId</span><span class="p">;</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userName</span> <span class="o">=</span> <span class="nv">$userName</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @return UserId</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">id</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">id</span><span class="p">()</span><span class="o">:</span> <span class="nx">UserId</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @return UserName</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">userName</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">userName</span><span class="p">()</span><span class="o">:</span> <span class="nx">UserName</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userName</span><span class="p">;</span>
     <span class="p">}</span>
@@ -35806,46 +35743,29 @@
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * 犬用おもちゃタイプ</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var ToyType</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$type</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">ToyType</span> <span class="nv">$type</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 犬用おもちゃ商品名</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var ToyName</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">ToyName</span> <span class="nv">$name</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 数量</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var Number</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$number</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">Number</span> <span class="nv">$number</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 価格の値オブジェクト</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var PriceVO</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$priceVO</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">PriceVO</span> <span class="nv">$priceVO</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 色の値オブジェクト</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var ColorVO</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$colorVO</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">ColorVO</span> <span class="nv">$colorVO</span><span class="p">;</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param ToyType $type</span>
-<span class="sd">     * @param ToyName $name</span>
-<span class="sd">     * @param Number  $number</span>
-<span class="sd">     * @param PriceVO $priceVO</span>
-<span class="sd">     * @param ColorVO $colorVO</span>
-<span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">ToyType</span> <span class="nv">$type</span><span class="p">,</span> <span class="nx">ToyName</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">Number</span> <span class="nv">$number</span><span class="p">,</span> <span class="nx">PriceVO</span> <span class="nv">$priceVO</span><span class="p">,</span> <span class="nx">ColorVO</span> <span class="nv">$colorVO</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">type</span> <span class="o">=</span> <span class="nv">$type</span><span class="p">;</span>
@@ -35857,10 +35777,8 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 犬用おもちゃ名 (色) を返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return string</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">nameWithColor</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">nameWithColor</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
             <span class="s2">"%s (%s) "</span><span class="p">,</span>
@@ -35896,18 +35814,11 @@
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * IDクラス</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var Id</span>
 <span class="sd">     */</span>
     <span class="k">protected</span> <span class="nx">Id</span> <span class="nv">$id</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * エンティティの等価性を検証する</span>
-
-
-<span class="sd">     *</span>
-<span class="sd">     * @param Entity $entity</span>
-<span class="sd">     * @return bool</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">equals</span><span class="p">(</span><span class="nx">Entity</span> <span class="nv">$entity</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
     <span class="p">{</span>
@@ -35917,8 +35828,6 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * IDクラスを返却する</span>
-
-
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">id</span><span class="p">()</span><span class="o">:</span> <span class="nx">Id</span>
     <span class="p">{</span>
@@ -35945,14 +35854,9 @@
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * ID</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$id</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$id</span><span class="p">;</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param string $id</span>
-<span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span> <span class="o">=</span> <span class="nv">$id</span><span class="p">;</span>
@@ -35960,14 +35864,8 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * ハッシュ値を返却する</span>
-
-
 <span class="sd">     *</span>
 <span class="sd">     * NOTE: 複合主キーを持つオブジェクトの等価性を正しく検証するために、標準の関数をオーバーライドする</span>
-
-
-<span class="sd">     *</span>
-<span class="sd">     * @return string</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">hash</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
@@ -35976,15 +35874,8 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * オブジェクトの等価性を検証する</span>
-
-
 <span class="sd">     *</span>
 <span class="sd">     * NOTE: 複合主キーを持つオブジェクトの等価性を正しく検証するために、標準の関数をオーバーライドする</span>
-
-
-<span class="sd">     *</span>
-<span class="sd">     * @param Id $id</span>
-<span class="sd">     * @return bool</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">equals</span><span class="p">(</span><span class="nx">Id</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
     <span class="p">{</span>
@@ -36035,69 +35926,50 @@
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * 金額</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var float</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$amount</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">float</span> <span class="nv">$amount</span><span class="p">;</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param int $amount</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$amount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$amount</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">amount</span> <span class="o">=</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$amount</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">amount</span> <span class="o">=</span> <span class="nv">$amount</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 金額を返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return float</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">amount</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">amount</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">amount</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 単位を返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return string</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">unit</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">unit</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="s2">"円"</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 足し算の結果を返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param Money $price</span>
-<span class="sd">     * @return $this</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">add</span><span class="p">(</span><span class="nx">Money</span> <span class="nv">$price</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">add</span><span class="p">(</span><span class="nx">self</span> <span class="nv">$price</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="k">new</span> <span class="k">static</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">amount</span> <span class="o">+</span> <span class="nv">$price</span><span class="o">-&gt;</span><span class="na">amount</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 引き算の結果を返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param Money $price</span>
-<span class="sd">     * @return $this</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">subtract</span><span class="p">(</span><span class="nx">Money</span> <span class="nv">$price</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">subtract</span><span class="p">(</span><span class="nx">self</span> <span class="nv">$price</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="k">new</span> <span class="k">static</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">amount</span> <span class="o">-</span> <span class="nv">$price</span><span class="o">-&gt;</span><span class="na">amount</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 掛け算の結果を返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param Money $price</span>
-<span class="sd">     * @return $this</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">multiply</span><span class="p">(</span><span class="nx">Money</span> <span class="nv">$price</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">multiply</span><span class="p">(</span><span class="nx">self</span> <span class="nv">$price</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="k">new</span> <span class="k">static</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">amount</span> <span class="o">*</span> <span class="nv">$price</span><span class="o">-&gt;</span><span class="na">amount</span><span class="p">);</span>
     <span class="p">}</span>
@@ -36124,14 +35996,9 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 距離</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var int</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$distance</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">int</span> <span class="nv">$distance</span><span class="p">;</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param int $distance</span>
-<span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$distance</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">distance</span> <span class="o">=</span> <span class="nv">$distance</span><span class="p">;</span>
@@ -36139,8 +36006,6 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 徒歩または車のどちらを使用するかを判定する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return bool</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">isMinuteByWalking</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span>
     <span class="p">{</span>
@@ -36153,8 +36018,6 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 徒歩での所要時間を計算する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return float</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">minuteByWalking</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span>
     <span class="p">{</span>
@@ -36164,8 +36027,6 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 車での所要時間を計算する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return float</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">minuteByCar</span><span class="p">()</span><span class="o">:</span> <span class="nx">float</span>
     <span class="p">{</span>
@@ -36193,31 +36054,19 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 郵便番号</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$zip</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$zip</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 住所 (番地など)</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$address</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$address</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 市区町村</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$city</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$city</span><span class="p">;</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param string $city</span>
-<span class="sd">     * @param string $zip</span>
-<span class="sd">     * @param string $address</span>
-<span class="sd">     * @param string $kana</span>
-<span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$city</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$zip</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$address</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$kana</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">city</span> <span class="o">=</span> <span class="nv">$city</span><span class="p">;</span>
@@ -36227,10 +36076,8 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 郵便番号を作成し、返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return string</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">zip</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">zip</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
             <span class="s2">"〒%s-%s"</span><span class="p">,</span>
@@ -36241,8 +36088,6 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 住所を作成し、返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return string</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">address</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
@@ -36274,38 +36119,24 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 姓</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$lastName</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$lastName</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 名</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$firstName</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$firstName</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * セイ</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$lastKanaName</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$lastKanaName</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * メイ</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var string</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$firstKanaName</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$firstKanaName</span><span class="p">;</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param string $lastName</span>
-<span class="sd">     * @param string $firstName</span>
-<span class="sd">     * @param string $lastKanaName</span>
-<span class="sd">     * @param string $firstKanaName</span>
-<span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$lastName</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$firstName</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$lastKanaName</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$firstKanaName</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">lastName</span> <span class="o">=</span> <span class="nv">$lastName</span><span class="p">;</span>
@@ -36317,8 +36148,6 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 氏名を作成する</span>
-
-
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">fullName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
@@ -36327,8 +36156,6 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * カナ氏名を作成する</span>
-
-
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">fullKanaName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
@@ -36351,29 +36178,17 @@
 <span class="sd"> */</span>
 <span class="k">class</span> <span class="nc">FooVO</span> <span class="k">extends</span> <span class="nx">ValueObject</span>
 <span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$propertyA</span><span class="p">;</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$propertyB</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">mixed</span> <span class="nv">$propertyA</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @var</span>
-<span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$propertyC</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">mixed</span> <span class="nv">$propertyB</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="nx">mixed</span> <span class="nv">$propertyC</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * FooVO constructor.</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param $propertyA</span>
-<span class="sd">     * @param $propertyB</span>
-<span class="sd">     * @param $propertyC</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$propertyA</span><span class="p">,</span> <span class="nv">$propertyB</span><span class="p">,</span> <span class="nv">$propertyC</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">mixed</span> <span class="nv">$propertyA</span><span class="p">,</span> <span class="nx">mixed</span> <span class="nv">$propertyB</span><span class="p">,</span> <span class="nx">mixed</span> <span class="nv">$propertyC</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">propertyA</span> <span class="o">=</span> <span class="nv">$propertyA</span><span class="p">;</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">propertyB</span> <span class="o">=</span> <span class="nv">$propertyB</span><span class="p">;</span>
@@ -36424,11 +36239,8 @@
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * ゲッターが定義されていなくとも、プロパティにアクセスできるようにする</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param string $name</span>
-<span class="sd">     * @return mixed</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span>
     <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">property_exists</span><span class="p">(</span><span class="nv">$this</span><span class="p">,</span> <span class="nv">$name</span><span class="p">))</span> <span class="p">{</span>
             <span class="k">throw</span> <span class="k">new</span> <span class="nx">LogicException</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
@@ -36448,9 +36260,9 @@
 <span class="p">{</span>
     <span class="k">use</span> <span class="nx">ImmutableTrait</span><span class="p">;</span>
 
-    <span class="k">private</span> <span class="nv">$bar</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$bar</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$bar</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$bar</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bar</span> <span class="o">=</span> <span class="nv">$bar</span><span class="p">;</span>
     <span class="p">}</span>
@@ -36485,22 +36297,14 @@
 <span class="sd"> */</span>
 <span class="k">final</span> <span class="k">class</span> <span class="nc">ContactMail</span> <span class="k">extends</span> <span class="nx">ValueObject</span>
 <span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * @var string</span>
-<span class="sd">     */</span>
+
     <span class="k">private</span> <span class="nx">string</span> <span class="nv">$value</span><span class="p">;</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param string $value</span>
-<span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$value</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @return string</span>
-<span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">value</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
         <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">;</span>
@@ -36508,11 +36312,6 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 値オブジェクトの等価性を検証する</span>
-
-
-<span class="sd">     *</span>
-<span class="sd">     * @param ValueObject $VO</span>
-<span class="sd">     * @return bool</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">equals</span><span class="p">(</span><span class="nx">ValueObject</span> <span class="nv">$VO</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
     <span class="p">{</span>
@@ -36533,30 +36332,19 @@
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * 支払い方法</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var PaymentType</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$paymentType</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">PaymentType</span> <span class="nv">$paymentType</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 連絡先メールアドレス</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var ContactMail</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$contactMail</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">ContactMail</span> <span class="nv">$contactMail</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 金額</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var Money</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$price</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">Money</span> <span class="nv">$price</span><span class="p">;</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param PaymentType $paymentType</span>
-<span class="sd">     * @param ContactMail $contactMail</span>
-<span class="sd">     * @param Money       $price</span>
-<span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">PaymentType</span> <span class="nv">$paymentType</span><span class="p">,</span> <span class="nx">ContactMail</span> <span class="nv">$contactMail</span><span class="p">,</span> <span class="nx">Money</span> <span class="nv">$price</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">paymentType</span> <span class="o">=</span> <span class="nv">$paymentType</span><span class="p">;</span>
@@ -36566,11 +36354,6 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 値オブジェクトの等価性を検証する</span>
-
-
-<span class="sd">     *</span>
-<span class="sd">     * @param ValueObject $VO</span>
-<span class="sd">     * @return bool</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">equals</span><span class="p">(</span><span class="nx">ValueObject</span> <span class="nv">$VO</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
     <span class="p">{</span>
@@ -36595,11 +36378,6 @@
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * 値オブジェクトの等価性を検証する</span>
-
-
-<span class="sd">     *</span>
-<span class="sd">     * @param ValueObject $VO</span>
-<span class="sd">     * @return bool</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">equals</span><span class="p">(</span><span class="nx">ValueObject</span> <span class="nv">$VO</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
     <span class="p">{</span>
@@ -36646,29 +36424,19 @@
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * 犬用商品コンボID</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var Id</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$id</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">Id</span> <span class="nv">$id</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 犬用おもちゃ</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var DogToy</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$dogToy</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">DogToy</span> <span class="nv">$dogToy</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * 犬用えさ</span>
-<span class="sd">     *</span>
-<span class="sd">     * @var DogFood</span>
 <span class="sd">     */</span>
-    <span class="k">private</span> <span class="nv">$dogFood</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">DogFood</span> <span class="nv">$dogFood</span><span class="p">;</span>
 
-    <span class="sd">/**</span>
-<span class="sd">     * @param DogToy  $dogToy</span>
-<span class="sd">     * @param DogFood $dogFood</span>
-<span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">DogToy</span> <span class="nv">$dogToy</span><span class="p">,</span> <span class="nx">DogFood</span> <span class="nv">$dogFood</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dogToy</span> <span class="o">=</span> <span class="nv">$dogToy</span><span class="p">;</span>
@@ -36677,8 +36445,6 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 犬用おもちゃを返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return DogToy</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getDogToy</span><span class="p">()</span><span class="o">:</span> <span class="nx">DogToy</span>
     <span class="p">{</span>
@@ -36687,8 +36453,6 @@
 
     <span class="sd">/**</span>
 <span class="sd">     * 犬用えさを返却する</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return DogFood</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">getDogFood</span><span class="p">()</span><span class="o">:</span> <span class="nx">DogFood</span>
     <span class="p">{</span>

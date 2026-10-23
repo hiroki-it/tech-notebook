@@ -35614,7 +35614,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 21:24:34 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:23:00 JST">2026-10-23</span>
   </span>
 
     
@@ -35940,22 +35940,22 @@
 
 <span class="c1">// 親のremixコンポーネントで、ローダーからデータを取得する</span>
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Posts</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">posts</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useLoaderData</span><span class="o">&lt;</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">loader</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">posts</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useLoaderData</span><span class="p">&lt;</span><span class="nt">typeof</span><span class="w"> </span><span class="na">loader</span><span class="p">&gt;();</span>
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">PostList</span><span class="w"> </span><span class="nx">posts</span><span class="o">=</span><span class="p">{</span><span class="nx">posts</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">PostList</span><span class="w"> </span><span class="na">posts</span><span class="o">=</span><span class="p">{</span><span class="nx">posts</span><span class="p">}</span><span class="w"> </span><span class="p">/&gt;;</span>
 <span class="p">}</span>
 
 <span class="c1">// 子のremixコンポーネントで、親コンポーネントからpropsとしてpostsを受け取る</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">PostList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="nx">posts</span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="nx">main</span><span class="o">&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Posts</span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Posts</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
 <span class="w">        </span><span class="p">{</span><span class="nx">posts</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">post</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span>
-<span class="w">          </span><span class="o">&lt;</span><span class="nx">li</span><span class="w"> </span><span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">post</span><span class="p">.</span><span class="nx">slug</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">post</span><span class="p">.</span><span class="nx">title</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
+<span class="w">          </span><span class="p">&lt;</span><span class="nt">li</span><span class="w"> </span><span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">post</span><span class="p">.</span><span class="nx">slug</span><span class="p">}&gt;{</span><span class="nx">post</span><span class="p">.</span><span class="nx">title</span><span class="p">}&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 <span class="w">        </span><span class="p">))}</span>
-<span class="w">      </span><span class="o">&lt;</span><span class="err">/ul&gt;</span>
-<span class="w">    </span><span class="o">&lt;</span><span class="err">/main&gt;</span>
+<span class="w">      </span><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
 <span class="w">  </span><span class="p">);</span>
 <span class="p">};</span>
 </code></pre></div>
@@ -35965,7 +35965,7 @@
 <p>レンダリング後のブラウザ操作に応じて、デザインパターンのコントローラーのようにクエリストリングやリクエストのコンテキストを受信し、DB のデータを変更する。</p>
 <p>また、レスポンスのデータを remix コンポーネントに渡す。</p>
 <p>component を同じファイルへ実装する以外に、<code>.server</code> ディレクトリへ切り分ける方法もある。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ActionFunctionArgs</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@remix-run/node"</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ActionFunctionArgs</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@remix-run/node"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">redirect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@remix-run/node"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Form</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@remix-run/react"</span><span class="p">;</span>
 
@@ -36011,17 +36011,17 @@
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">todo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fakeCreateTodo</span><span class="p">({</span>
-<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="nx">body</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"title"</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="kt">body.get</span><span class="p">(</span><span class="s2">"title"</span><span class="p">),</span>
 <span class="w">    </span><span class="p">});</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">redirect</span><span class="p">(</span><span class="sb">`/todos/</span><span class="si">${</span><span class="nx">todo</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// さまざまな型のerrorを処理できるように対処する</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">errorMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">error</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">errorMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">error</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">error.message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">String</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 <span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">errorMessage</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"title"</span><span class="p">))</span>
 <span class="w">    </span><span class="c1">// error.statusが未定義の場合、一律で500ステータスとして扱う</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="nx">errorMessage</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="mf">500</span><span class="p">});</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">errorMessage</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">error.status</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="mf">500</span><span class="p">});</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36214,7 +36214,7 @@
 <h4 id="handledatarequest">▼ handleDataRequest<a class="headerlink" href="#handledatarequest" title="Permanent link">&para;</a></h4>
 <p>Remix の内部で実行され、JSON データを作成し、Remix のフロントエンド処理に渡す。</p>
 <p><code>useLoaderData()</code> 関数や <code>useFetcher().data</code> 関数で取得できる。</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">handleDataRequest</span><span class="p">(</span><span class="nx">response</span><span class="o">:</span><span class="w"> </span><span class="nx">Response</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="nx">LoaderFunctionArgs</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">ActionFunctionArgs</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">handleDataRequest</span><span class="p">(</span><span class="nx">response</span><span class="o">:</span><span class="w"> </span><span class="kt">Response</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="nx">LoaderFunctionArgs</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">ActionFunctionArgs</span>
 <span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">response</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">"X-Custom-Header"</span><span class="p">,</span><span class="w"> </span><span class="s2">"value"</span><span class="p">);</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
@@ -36581,7 +36581,8 @@
 
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">typedjson</span><span class="p">({</span>
 <span class="w">    </span><span class="c1">// 新しいクエリストリングで再リクエストを送信する</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">page</span><span class="p">,</span>
+<span class="w">  </span><span class="p">});</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -36867,12 +36868,12 @@
 <span class="w">            </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">"inline-flex justify-center p-3"</span><span class="p">&gt;</span>
 <span class="w">              </span><span class="p">{</span><span class="cm">/* 403ステータスの場合に使用するアイコン */</span><span class="p">}</span>
 <span class="w">              </span><span class="p">{</span><span class="nx">error</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">403</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span>
-<span class="w">                </span><span class="p">{</span><span class="cm">/* 南京錠アイコン */</span><span class="p">}</span>
+<span class="w">                </span><span class="c1">// 南京錠アイコン</span>
 <span class="w">                </span><span class="p">&lt;</span><span class="nt">LockClosedIcon</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">"h-[20%] w-[20%] text-yellow-500"</span><span class="w"> </span><span class="p">/&gt;</span>
 <span class="w">              </span><span class="p">)}</span>
 <span class="w">              </span><span class="p">{</span><span class="cm">/* 404ステータスの場合に使用するアイコン */</span><span class="p">}</span>
 <span class="w">              </span><span class="p">{</span><span class="nx">error</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">404</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span>
-<span class="w">                </span><span class="p">{</span><span class="cm">/* 虫眼鏡アイコン */</span><span class="p">}</span>
+<span class="w">                </span><span class="c1">// 虫眼鏡アイコン</span>
 <span class="w">                </span><span class="p">&lt;</span><span class="nt">MagnifyingGlassIcon</span>
 <span class="w">                  </span><span class="na">className</span><span class="o">=</span><span class="s">"h-[20%] w-[20%] text-sky-400"</span>
 <span class="w">                  </span><span class="na">data-cy</span><span class="o">=</span><span class="s">"notFoundError"</span>

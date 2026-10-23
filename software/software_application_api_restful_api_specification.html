@@ -34192,7 +34192,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 21:24:34 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:23:00 JST">2026-10-23</span>
   </span>
 
     
@@ -34378,30 +34378,30 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 
 <span class="c1"># --template-dirを使用すると、ユーザー定義のテンプレートからコードを作成できる</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// テンプレートファイル (mustache形式)</span>
-<span class="p">{{</span><span class="o">&gt;</span><span class="nx">partial_header</span><span class="p">}}</span>
-<span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+<div class="highlight"><pre><span></span><code>// テンプレートファイル (mustache形式)
+{{&gt;partial_header}}
+package main
 
-<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">"log"</span>
-<span class="w">    </span><span class="c1">// WARNING!</span>
-<span class="w">    </span><span class="c1">// Change this to a fully-qualified import path</span>
-<span class="w">    </span><span class="c1">// once you place this file into your project.</span>
-<span class="w">    </span><span class="c1">// For example,</span>
-<span class="w">    </span><span class="c1">//</span>
-<span class="w">    </span><span class="c1">//    sw "github.com/myname/myrepo/{{apiPath}}"</span>
-<span class="w">    </span><span class="c1">//</span>
-<span class="w">    </span><span class="nx">sw</span><span class="w"> </span><span class="s">"openapi-gin-server/{{apiPath}}"</span>
-<span class="p">)</span>
+import (
+    "log"
+    // WARNING!
+    // Change this to a fully-qualified import path
+    // once you place this file into your project.
+    // For example,
+    //
+    //    sw "github.com/myname/myrepo/{{apiPath}}"
+    //
+    sw "openapi-gin-server/{{apiPath}}"
+)
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+func main() {
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Server started"</span><span class="p">)</span>
+    log.Printf("Server started")
 
-<span class="w">    </span><span class="nx">router</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sw</span><span class="p">.</span><span class="nx">NewRouter</span><span class="p">()</span>
+    router := sw.NewRouter()
 
-<span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">router</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="s">":{{serverPort}}"</span><span class="p">))</span>
-<span class="p">}</span>
+    log.Fatal(router.Run(":{{serverPort}}"))
+}
 </code></pre></div>
 <dl>
 <dt><code>(3)</code></dt>
@@ -34422,7 +34422,6 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">"net/http"</span>
-
 <span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
 <span class="p">)</span>
 

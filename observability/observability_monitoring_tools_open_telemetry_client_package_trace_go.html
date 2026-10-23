@@ -34656,7 +34656,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月21日 19:27:44 JST">2026-10-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:23:00 JST">2026-10-23</span>
   </span>
 
     
@@ -34697,7 +34697,7 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
+<span class="w">    </span><span class="s">"fmt"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel/exporters/otlp/otlptrace"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel/sdk/resource"</span>
 <span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">"go.opentelemetry.io/otel/sdk/trace"</span>
@@ -34732,6 +34732,9 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/propagators/autoprop"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
+<span class="w">    </span><span class="s">"sort"</span>
 <span class="w">    </span><span class="s">"context"</span>
 <span class="w">    </span><span class="s">"log"</span>
 <span class="p">)</span>
@@ -34747,7 +34750,7 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// TracerProviderのインターフェースを作成する</span>
-<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">newTracerProvider</span><span class="p">(</span><span class="nx">exporter</span>
+<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">newTracerProvider</span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 事後処理</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -34767,7 +34770,7 @@
 <span class="w">    </span><span class="c1">// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// Composit Propagatorを設定する</span>
-<span class="w">        </span><span class="nx">propagator</span>
+<span class="w">        </span><span class="nx">propagator</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">propagatorList</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">propagator</span><span class="p">.</span><span class="nx">Fields</span><span class="p">()</span>
@@ -34777,7 +34780,7 @@
 <span class="w">    </span><span class="c1">// ログにpropagator名を出力しておく</span>
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Propagator %v initialize successfully"</span><span class="p">,</span><span class="w"> </span><span class="nx">propagatorList</span><span class="p">)</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -34828,7 +34831,7 @@
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">parentSpan</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -34849,7 +34852,7 @@
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">childSpan</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -34902,16 +34905,15 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"sort"</span>
 <span class="w">    </span><span class="s">"context"</span>
 <span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"os"</span>
 <span class="w">    </span><span class="s">"time"</span>
-
 <span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/propagators/autoprop"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel/sdk/resource"</span>
-
 <span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">"go.opentelemetry.io/otel/sdk/trace"</span>
 <span class="p">)</span>
 
@@ -34956,7 +34958,7 @@
 <span class="w">    </span><span class="c1">// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// Composit Propagatorを設定する</span>
-<span class="w">        </span><span class="nx">propagator</span>
+<span class="w">        </span><span class="nx">propagator</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">propagatorList</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">propagator</span><span class="p">.</span><span class="nx">Fields</span><span class="p">()</span>
@@ -34995,12 +34997,20 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="p">)</span>
+
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to initialize tracer provider: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">()</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -35015,13 +35025,13 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"fmt"</span>
 <span class="w">    </span><span class="s">"context"</span>
 <span class="w">    </span><span class="s">"net/http"</span>
 <span class="w">    </span><span class="s">"os"</span>
 <span class="w">    </span><span class="s">"os/signal"</span>
 <span class="w">    </span><span class="s">"syscall"</span>
 <span class="w">    </span><span class="s">"time"</span>
-
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel/trace"</span>
 <span class="w">    </span><span class="s">"github.com/hiroki-hasegawa/infrastructure/tracer"</span>
@@ -35108,13 +35118,13 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"fmt"</span>
 <span class="w">    </span><span class="s">"context"</span>
 <span class="w">    </span><span class="s">"net/http"</span>
 <span class="w">    </span><span class="s">"os"</span>
 <span class="w">    </span><span class="s">"os/signal"</span>
 <span class="w">    </span><span class="s">"syscall"</span>
 <span class="w">    </span><span class="s">"time"</span>
-
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel/trace"</span>
 <span class="w">    </span><span class="s">"github.com/hiroki-hasegawa/foo/infrastructure/tracer"</span>
@@ -35199,17 +35209,15 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"sort"</span>
 <span class="w">    </span><span class="s">"context"</span>
-<span class="w">    </span><span class="s">"fmt"</span>
-
 <span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/propagators/autoprop"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"</span>
-<span class="w">    </span><span class="s">"go.opentelemetry.io/otel/propagation"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel/sdk/resource"</span>
 <span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="w">    </span><span class="s">"google.golang.org/grpc/credentials/insecure"</span>
-
 <span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">"go.opentelemetry.io/otel/sdk/trace"</span>
 <span class="w">    </span><span class="nx">semconv</span><span class="w"> </span><span class="s">"go.opentelemetry.io/otel/semconv/v1.4.0"</span>
 <span class="p">)</span>
@@ -35272,7 +35280,7 @@
 <span class="w">    </span><span class="c1">// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// Composit Propagatorを設定する</span>
-<span class="w">        </span><span class="nx">propagator</span>
+<span class="w">        </span><span class="nx">propagator</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">propagatorList</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">propagator</span><span class="p">.</span><span class="nx">Fields</span><span class="p">()</span>
@@ -35301,11 +35309,11 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
 <span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"time"</span>
 <span class="w">    </span><span class="s">"todobff/app/SessionInfo"</span>
 <span class="w">    </span><span class="s">"todobff/config"</span>
-
 <span class="w">    </span><span class="s">"github.com/gin-contrib/sessions"</span>
 <span class="w">    </span><span class="s">"github.com/gin-contrib/sessions/cookie"</span>
 <span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
@@ -35357,7 +35365,7 @@
 <span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">"trace_id"</span><span class="p">,</span><span class="w"> </span><span class="nx">TraceId</span><span class="p">),</span>
 <span class="w">        </span><span class="c1">// 実行時間</span>
 <span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="s">"elapsed"</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Since</span><span class="p">(</span><span class="nx">start</span><span class="p">)),</span>
-<span class="w">        </span><span class="p">...</span>
+<span class="w">        </span><span class="c1">// ...</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">span</span>
@@ -35374,7 +35382,7 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">StartMainServer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">shutdown</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">()</span>
 
@@ -35390,23 +35398,23 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}()</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="nx">rTodos</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">checkSession</span><span class="p">())</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">checkSession</span><span class="p">()</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ginCtx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">        </span><span class="p">...</span>
+<span class="w">        </span><span class="c1">// ...</span>
 
 <span class="w">        </span><span class="c1">// イベントごとに同階層スパンを作成する</span>
 <span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="nx">LoggerAndCreateSpan</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="s">"セッションチェック開始"</span><span class="p">).</span><span class="nx">End</span><span class="p">()</span>
 
-<span class="w">        </span><span class="p">...</span>
+<span class="w">        </span><span class="c1">// ...</span>
 
 <span class="w">        </span><span class="c1">// イベントごとに同階層スパンを作成する</span>
 <span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="nx">LoggerAndCreateSpan</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="s">"セッションチェック終了"</span><span class="p">).</span><span class="nx">End</span><span class="p">()</span>
@@ -35427,11 +35435,14 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"net/http"</span>
+<span class="w">    </span><span class="s">"encoding/json"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
 <span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"time"</span>
 <span class="w">    </span><span class="s">"todobff/app/SessionInfo"</span>
 <span class="w">    </span><span class="s">"todobff/config"</span>
-
 <span class="w">    </span><span class="s">"github.com/gin-contrib/sessions"</span>
 <span class="w">    </span><span class="s">"github.com/gin-contrib/sessions/cookie"</span>
 <span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
@@ -35484,7 +35495,7 @@
 <span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">"trace_id"</span><span class="p">,</span><span class="w"> </span><span class="nx">TraceId</span><span class="p">),</span>
 <span class="w">        </span><span class="c1">// 実行時間</span>
 <span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="s">"elapsed"</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Since</span><span class="p">(</span><span class="nx">start</span><span class="p">)),</span>
-<span class="w">        </span><span class="p">...</span>
+<span class="w">        </span><span class="c1">// ...</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">span</span>
@@ -35547,25 +35558,23 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/propagators/autoprop"</span>
+<span class="w">    </span><span class="s">"sort"</span>
 <span class="w">    </span><span class="s">"context"</span>
 <span class="w">    </span><span class="s">"log"</span>
-
 <span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/propagators/aws/xray"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"</span>
-<span class="w">    </span><span class="s">"go.opentelemetry.io/otel/propagation"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel/sdk/resource"</span>
-
 <span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="w">    </span><span class="s">"google.golang.org/grpc/credentials/insecure"</span>
-
 <span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">"go.opentelemetry.io/otel/sdk/trace"</span>
 <span class="w">    </span><span class="nx">semconv</span><span class="w"> </span><span class="s">"go.opentelemetry.io/otel/semconv/v1.4.0"</span>
 <span class="p">)</span>
 
-<span class="p">...</span>
+<span class="c1">// ...</span>
 
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -35626,7 +35635,7 @@
 <span class="w">    </span><span class="c1">// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// Composit Propagatorを設定する</span>
-<span class="w">        </span><span class="nx">propagator</span>
+<span class="w">        </span><span class="nx">propagator</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">propagatorList</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">propagator</span><span class="p">.</span><span class="nx">Fields</span><span class="p">()</span>
@@ -35657,17 +35666,17 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
 <span class="w">    </span><span class="s">"context"</span>
 <span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"os"</span>
 <span class="w">    </span><span class="s">"os/signal"</span>
 <span class="w">    </span><span class="s">"time"</span>
-
 <span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"</span>
 <span class="p">)</span>
 
-<span class="p">...</span>
+<span class="c1">// ...</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
@@ -35740,12 +35749,12 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
 <span class="w">    </span><span class="s">"context"</span>
 <span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"os"</span>
 <span class="w">    </span><span class="s">"os/signal"</span>
 <span class="w">    </span><span class="s">"time"</span>
-
 <span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"</span>
 <span class="p">)</span>
@@ -35837,15 +35846,17 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"github.com/GoogleCloudPlatform/opentelemetry-operations-go/propagator"</span>
+<span class="w">    </span><span class="s">"github.com/GoogleCloudPlatform/opentelemetry-operations-go/propagator"</span>
+<span class="w">    </span><span class="s">"github.com/GoogleCloudPlatform/opentelemetry-operations-go/propagator"</span>
+<span class="w">    </span><span class="s">"go.opentelemetry.io/otel/propagation"</span>
 <span class="w">    </span><span class="s">"context"</span>
 <span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"os"</span>
-
 <span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/detectors/gcp"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel/sdk/resource"</span>
-
-<span class="w">    </span><span class="nx">texporter</span><span class="w"> </span><span class="s">"github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace"</span>
+<span class="w">    </span><span class="nx">cloudtrace</span><span class="w"> </span><span class="s">"github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace"</span>
 <span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">"go.opentelemetry.io/otel/sdk/trace"</span>
 <span class="w">    </span><span class="nx">semconv</span><span class="w"> </span><span class="s">"go.opentelemetry.io/otel/semconv/v1.7.0"</span>
 <span class="p">)</span>
@@ -35896,7 +35907,7 @@
 <span class="w">        </span><span class="c1">// Composite Propagatorを設定する</span>
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">NewCompositeTextMapPropagator</span><span class="p">(</span>
 <span class="w">            </span><span class="c1">// Cloud Trace形式のトレースコンテキストを伝播できるPropagatorを設定する</span>
-<span class="w">            </span><span class="nx">gcppropagator</span><span class="p">.</span><span class="nx">Cloud</span><span class="w"> </span><span class="nx">TraceOneWayPropagator</span><span class="p">{},</span>
+<span class="w">            </span><span class="nx">gcppropagator</span><span class="p">.</span><span class="nx">CloudTraceOneWayPropagator</span><span class="p">{},</span>
 <span class="w">            </span><span class="c1">// W3C Trace Context仕様のトレースコンテキストを伝播できるPropagatorを設定する</span>
 <span class="w">            </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
 <span class="w">            </span><span class="c1">// W3C Baggage仕様のトレースコンテキストを伝播できるPropagatorを設定する</span>
@@ -35916,9 +35927,10 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"io"</span>
 <span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"net/http"</span>
-
 <span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"</span>
 <span class="p">)</span>
 
@@ -35968,9 +35980,10 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"fmt"</span>
+<span class="w">    </span><span class="s">"io"</span>
 <span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"net/http"</span>
-
 <span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"</span>
 <span class="p">)</span>
 
@@ -36025,10 +36038,10 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"log"</span>
+<span class="w">    </span><span class="s">"sort"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/propagators/autoprop"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel"</span>
-<span class="w">    </span><span class="s">"go.opentelemetry.io/otel/propagation"</span>
-
 <span class="w">    </span><span class="nx">stdout</span><span class="w"> </span><span class="s">"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"</span>
 <span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">"go.opentelemetry.io/otel/sdk/trace"</span>
 <span class="p">)</span>
@@ -36062,7 +36075,7 @@
 <span class="w">    </span><span class="c1">// 受信したリクエストのCarrierからトレースコンテキストを抽出し、送信するリクエストのCarrierにトレースコンテキストを注入できるようにする。</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// Composit Propagatorを設定する</span>
-<span class="w">        </span><span class="nx">propagator</span>
+<span class="w">        </span><span class="nx">propagator</span><span class="p">,</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">propagatorList</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">propagator</span><span class="p">.</span><span class="nx">Fields</span><span class="p">()</span>
@@ -36089,16 +36102,16 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"context"</span>
 <span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"</span>
-
 <span class="w">    </span><span class="c1">// pb.goファイルを読み込む。</span>
 <span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">"github.com/hiroki-hasegawa/foo/foo"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとの接続を作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
@@ -36120,7 +36133,7 @@
 <span class="w">        </span><span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">Message</span><span class="p">{</span><span class="nx">Body</span><span class="p">:</span><span class="w"> </span><span class="s">"Hello From Client!"</span><span class="p">},</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">server</span><span class="p">)</span><span class="w"> </span><span class="nx">parent</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -36145,7 +36158,7 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとの接続を作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
@@ -36155,7 +36168,7 @@
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithStatsHandler</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">NewClientHandler</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36171,13 +36184,12 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"context"</span>
 <span class="w">    </span><span class="s">"fmt"</span>
 <span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"net"</span>
-
 <span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="w">    </span><span class="s">"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"</span>
-
 <span class="w">    </span><span class="c1">// pb.goファイルを読み込む。</span>
 <span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">"github.com/hiroki-hasegawa/foo/foo"</span>
 <span class="p">)</span>
@@ -36247,14 +36259,14 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーを作成する。</span>
 <span class="w">    </span><span class="nx">grpcServer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">StatsHandler</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">NewServerHandler</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36273,9 +36285,9 @@
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"context"</span>
 <span class="w">    </span><span class="s">"flag"</span>
 <span class="w">    </span><span class="s">"fmt"</span>
-
 <span class="w">    </span><span class="c1">// ここではv1を使用しているが、v2が推奨である</span>
 <span class="w">    </span><span class="s">"github.com/aws/aws-sdk-go/aws"</span>
 <span class="w">    </span><span class="s">"github.com/aws/aws-sdk-go/aws/session"</span>
@@ -36287,7 +36299,7 @@
 <span class="w">    </span><span class="c1">// 空のトレースコンテキストを作成する</span>
 <span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="c1">// キュー名を取得する</span>
 <span class="w">    </span><span class="nx">queue</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">flag</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">"q"</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="s">"The name of the queue"</span><span class="p">)</span>
@@ -36336,7 +36348,7 @@
 <span class="w">            </span><span class="nx">QueueUrl</span><span class="p">:</span><span class="w">    </span><span class="nx">queueURL</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36355,7 +36367,6 @@
 <span class="w">    </span><span class="s">"flag"</span>
 <span class="w">    </span><span class="s">"fmt"</span>
 <span class="w">    </span><span class="s">"log"</span>
-
 <span class="w">    </span><span class="c1">// ここではv1を使用しているが、v2が推奨である</span>
 <span class="w">    </span><span class="s">"github.com/aws/aws-sdk-go/aws"</span>
 <span class="w">    </span><span class="s">"github.com/aws/aws-sdk-go/aws/session"</span>
@@ -36364,7 +36375,7 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="w">    </span><span class="c1">// キュー名を取得する</span>
 <span class="w">    </span><span class="nx">queue</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">flag</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">"q"</span><span class="p">,</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="s">"The name of the queue"</span><span class="p">)</span>
@@ -36421,7 +36432,7 @@
 
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">"Message Handle: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">*</span><span class="nx">msgResult</span><span class="p">.</span><span class="nx">Messages</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">ReceiptHandle</span><span class="p">)</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
 
 <span class="p">}</span>
 </code></pre></div>
@@ -36439,10 +36450,9 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">"context"</span>
+<span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"encoding/hex"</span>
 <span class="w">    </span><span class="s">"fmt"</span>
-<span class="w">    </span><span class="s">"reflect"</span>
-
 <span class="w">    </span><span class="s">"go.opentelemetry.io/otel/trace"</span>
 <span class="w">    </span><span class="s">"go.uber.org/zap"</span>
 <span class="p">)</span>

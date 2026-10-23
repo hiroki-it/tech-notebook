@@ -34122,7 +34122,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月21日 19:27:44 JST">2026-10-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:23:00 JST">2026-10-23</span>
   </span>
 
     
@@ -34322,7 +34322,7 @@ DATADOG<span class="w"> </span>TRACER<span class="w"> </span><span class="nv">CO
 <span class="k">import</span><span class="w"> </span><span class="s1">'./datadogTracer'</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Configuration</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'@nuxt/types'</span>
 
-<span class="p">...</span>
+<span class="c1">// ...</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34387,16 +34387,11 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"net/http"</span>
-
 <span class="w">    </span><span class="s">"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// Tracerを作成する</span>
-<span class="w">    </span><span class="c1">// Tracer名はパッケージ名が推奨である</span>
-<span class="w">    </span><span class="c1">// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">"計装パッケージ名"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">"Info: Trace provider is initializing ..."</span><span class="p">)</span>
 
@@ -34441,9 +34436,8 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"net/http"</span>
-
+<span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"</span>
 <span class="p">)</span>
 
@@ -34460,10 +34454,6 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="s">"Info: Tracer provider initialize successfully"</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// Tracerを作成する</span>
-<span class="w">    </span><span class="c1">// Tracer名はパッケージ名が推奨である</span>
-<span class="w">    </span><span class="c1">// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">"計装パッケージ名"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 子スパンを作成する。</span>
 <span class="w">    </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">StartSpan</span><span class="p">(</span>
@@ -34492,19 +34482,13 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <span class="w">    </span><span class="s">"fmt"</span>
 <span class="w">    </span><span class="s">"log"</span>
 <span class="w">    </span><span class="s">"net"</span>
-
 <span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
 <span class="w">    </span><span class="s">"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"</span>
-
-<span class="w">    </span><span class="nx">grpctracer</span><span class="w"> </span><span class="s">"gopkg.in/DataDog/dd-trace-go.v1/contrib/google.golang.org/grpc"</span>
+<span class="w">    </span><span class="nx">grpctrace</span><span class="w"> </span><span class="s">"gopkg.in/DataDog/dd-trace-go.v1/contrib/google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// Tracerを作成する</span>
-<span class="w">    </span><span class="c1">// Tracer名はパッケージ名が推奨である</span>
-<span class="w">    </span><span class="c1">// @see https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">"計装パッケージ名"</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// パッケージをセットアップする。</span>
 <span class="w">    </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">tracer</span><span class="p">.</span><span class="nx">WithEnv</span><span class="p">(</span><span class="s">"prd"</span><span class="p">))</span>
@@ -34515,17 +34499,17 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <span class="w">    </span><span class="nx">grpcServer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// 単項RPCのインターセプター処理</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryInterceptor</span><span class="p">(</span>
-<span class="w">            </span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">datadogAPMServiceName</span><span class="p">,</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">DefaultTracer</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">WithServiceName</span><span class="p">(</span><span class="s">"foo-service"</span><span class="p">)),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">        </span><span class="c1">// ストリーミングRPCのインターセプター処理</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">StreamInterceptor</span><span class="p">(</span>
-<span class="w">            </span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(</span><span class="nx">datadogAPMServiceName</span><span class="p">,</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">DefaultTracer</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(</span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">WithServiceName</span><span class="p">(</span><span class="s">"foo-service"</span><span class="p">)),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="c1">// pb.goファイルに関する実装は省略している。</span>
+<span class="w">    </span><span class="c1">// ... pb.goファイルに関する実装は省略している。</span>
 
-<span class="w">    </span><span class="nx">listenPort</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nx">Listen</span><span class="p">(</span><span class="s">"tcp"</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">":%d"</span><span class="p">,</span><span class="w"> </span><span class="mi">9000</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">listenPort</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nx">Listen</span><span class="p">(</span><span class="s">"tcp"</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">":%d"</span><span class="p">,</span><span class="w"> </span><span class="mi">9000</span><span class="p">))</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"Failed to listen: %v"</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
@@ -34554,16 +34538,17 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"context"</span>
 <span class="w">    </span><span class="s">"log"</span>
-
 <span class="w">    </span><span class="s">"google.golang.org/grpc"</span>
-
+<span class="w">    </span><span class="s">"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"</span>
 <span class="w">    </span><span class="nx">grpctrace</span><span class="w"> </span><span class="s">"gopkg.in/DataDog/dd-trace-go.v1/contrib/google.golang.org/grpc"</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとの接続を作成する</span>
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
@@ -34571,8 +34556,8 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <span class="w">        </span><span class="s">":9000"</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithInsecure</span><span class="p">(),</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithBlock</span><span class="p">(),</span>
-<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithChainUnaryInterceptor</span><span class="p">(</span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">(</span><span class="nx">datadogAPMServiceName</span><span class="p">,</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">DefaultTracer</span><span class="p">)),</span>
-<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithChainStreamInterceptor</span><span class="p">(</span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">UnaryStreamInterceptor</span><span class="p">(</span><span class="nx">datadogAPMServiceName</span><span class="p">,</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">DefaultTracer</span><span class="p">)),</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithChainUnaryInterceptor</span><span class="p">(</span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">(</span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">WithServiceName</span><span class="p">(</span><span class="s">"foo-service"</span><span class="p">))),</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithChainStreamInterceptor</span><span class="p">(</span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">StreamClientInterceptor</span><span class="p">(</span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">WithServiceName</span><span class="p">(</span><span class="s">"foo-service"</span><span class="p">))),</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
@@ -34581,7 +34566,7 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">conn</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
 
-<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="c1">// pb.goファイルに関する実装は省略している。</span>
+<span class="w">    </span><span class="c1">// ... pb.goファイルに関する実装は省略している。</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>

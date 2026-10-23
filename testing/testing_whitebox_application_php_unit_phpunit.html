@@ -34348,7 +34348,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 21:49:57 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:23:00 JST">2026-10-23</span>
   </span>
 
     
@@ -34502,7 +34502,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-<span class="nx">self</span><span class="o">::</span><span class="na">assertTrue</span><span class="p">()</span>
+<span class="nx">self</span><span class="o">::</span><span class="na">assertTrue</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -34552,23 +34552,17 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <span class="p">{</span>
     <span class="sd">/**</span>
 <span class="sd">     * find関数をテストする</span>
-
-
 <span class="sd">     *</span>
 <span class="sd">     * @test</span>
 <span class="sd">     * @dataProvider methodDataProvider</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFind_Bar_Baz</span><span class="p">(</span><span class="nv">$paramA</span><span class="p">,</span> <span class="nv">$paramB</span><span class="p">,</span> <span class="nv">$paramC</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFind_Bar_Baz</span><span class="p">(</span><span class="nx">mixed</span> <span class="nv">$paramA</span><span class="p">,</span> <span class="nx">mixed</span> <span class="nv">$paramB</span><span class="p">,</span> <span class="nx">mixed</span> <span class="nv">$paramC</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="c1">// 何らかの処理</span>
     <span class="p">}</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * find関数を引数を用意する</span>
-
-
-<span class="sd">     *</span>
-<span class="sd">     * @return array</span>
 <span class="sd">     */</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">methodDataProvider</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
     <span class="p">{</span>
@@ -34591,10 +34585,10 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 
 <span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
 <span class="p">{</span>
-    <span class="k">protected</span> <span class="nv">$container</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="o">?</span><span class="k">array</span> <span class="nv">$container</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 
     <span class="c1">// 全てのテスト関数の前に実行される。</span>
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="c1">// IoCコンテナにデータを格納する。</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="p">[</span><span class="s2">"option"</span><span class="p">];</span>
@@ -34610,9 +34604,9 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 
 <span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
 <span class="p">{</span>
-    <span class="k">protected</span> <span class="nv">$foo</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nx">Bar</span> <span class="nv">$bar</span><span class="p">;</span>
 
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="c1">// 基本的には、一番最初に記述する。</span>
         <span class="k">parent</span><span class="o">::</span><span class="na">setUp</span><span class="p">();</span>
@@ -34621,10 +34615,10 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bar</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Bar</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo_Xxx_Xxx</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo_Xxx_Xxx</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="c1">// 実際の処理では、インスタンス化時、FooクラスはBarクラスに依存している。</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bar</span><span class="p">)</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bar</span><span class="p">);</span>
 
         <span class="c1">// 何らかのテストコード</span>
     <span class="p">}</span>
@@ -34641,15 +34635,15 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 
 <span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
 <span class="p">{</span>
-    <span class="k">protected</span> <span class="nv">$container</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="o">?</span><span class="k">array</span> <span class="nv">$container</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
 
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="p">[</span><span class="s2">"option"</span><span class="p">];</span>
     <span class="p">}</span>
 
     <span class="c1">// 全てのテスト関数の後に実行される。</span>
-    <span class="k">protected</span> <span class="k">function</span> <span class="nf">tearDown</span><span class="p">()</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">tearDown</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="c1">// IoCコンテナにnullを格納する。</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
@@ -34671,13 +34665,13 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
    <span class="sd">/**</span>
 <span class="sd">    * @test</span>
 <span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="c1">// モックとして使用する擬似オブジェクトを作成する。</span>
         <span class="nv">$mock</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createMock</span><span class="p">(</span><span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
 
         <span class="c1">// null</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="nv">$mock</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="nv">$mock</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -34685,13 +34679,10 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">    * @param  int</span>
-<span class="sd">    * @return array</span>
-<span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="k">array</span>
     <span class="p">{</span>
         <span class="c1">// 参照する処理</span>
+        <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -34708,7 +34699,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
    <span class="sd">/**</span>
 <span class="sd">    * @test</span>
 <span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo_Xxx_Xxx</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo_Xxx_Xxx</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="c1">// スタブとして使用する擬似オブジェクトを作成する。</span>
         <span class="nv">$stub</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createMock</span><span class="p">(</span><span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
@@ -34719,7 +34710,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
             <span class="o">-&gt;</span><span class="na">willReturn</span><span class="p">([]);</span>
 
         <span class="c1">// [] (空配列)</span>
-        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$stub</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$stub</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -34730,15 +34721,14 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <p>以降のテストケースでは、次のような通知クラスとメッセージクラスが前提にあるとする。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-<span class="k">use</span> <span class="nx">CouldNotSendMessageException</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">FooNotification</span>
 <span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$httpClient</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">Client</span> <span class="nv">$httpClient</span><span class="p">;</span>
 
-    <span class="k">private</span> <span class="nv">$token</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$token</span><span class="p">;</span>
 
-    <span class="k">private</span> <span class="nv">$logger</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">LoggerInterface</span> <span class="nv">$logger</span><span class="p">;</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">Client</span> <span class="nv">$httpClient</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$token</span><span class="p">,</span> <span class="nx">LoggerInterface</span> <span class="nv">$logger</span><span class="p">)</span>
     <span class="p">{</span>
@@ -34747,7 +34737,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="nv">$logger</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">FooMessage</span> <span class="nv">$fooMessage</span><span class="p">)</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">FooMessage</span> <span class="nv">$fooMessage</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
     <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span><span class="p">))</span> <span class="p">{</span>
             <span class="k">throw</span> <span class="k">new</span> <span class="nx">CouldNotSendMessageException</span><span class="p">(</span><span class="s2">"API requests is required."</span><span class="p">);</span>
@@ -34805,9 +34795,9 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 
 <span class="k">class</span> <span class="nc">FooMessage</span>
 <span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$channel_id</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$channel_id</span><span class="p">;</span>
 
-    <span class="k">private</span> <span class="nv">$message</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$message</span><span class="p">;</span>
 
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$channel_id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$message</span><span class="p">)</span>
     <span class="p">{</span>
@@ -34822,17 +34812,15 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <p>リクエストにて、チャンネルとメッセージを送信したとき、レスポンスとして <code>TRUE</code> が返信されるかを検証する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-<span class="k">use</span> <span class="nx">FooMessage</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">FooNotifiation</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">FooNotificationTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
 <span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$logger</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">LoggerInterface</span> <span class="nv">$logger</span><span class="p">;</span>
 
-    <span class="k">private</span> <span class="nv">$client</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">Client</span> <span class="nv">$client</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="c1">// 検証対象外のクラスはモックとする。</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span> <span class="o">=</span> <span class="nx">\Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Client</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
@@ -34842,7 +34830,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
    <span class="sd">/**</span>
 <span class="sd">    * @test</span>
 <span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testSendMessage_FooMessage_ReturnTrue</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testSendMessage_FooMessage_ReturnTrue</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="nv">$fooNotification</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FooNotification</span><span class="p">(</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span><span class="p">,</span>
@@ -34867,17 +34855,15 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <p>リクエストにて、メッセージのみを送信しようとしたとき、例外を発生させられるかを検証する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
-<span class="k">use</span> <span class="nx">FooMessage</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">FooNotifiation</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">FooNotificationTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
 <span class="p">{</span>
-    <span class="k">private</span> <span class="nv">$logger</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">LoggerInterface</span> <span class="nv">$logger</span><span class="p">;</span>
 
-    <span class="k">private</span> <span class="nv">$client</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">Client</span> <span class="nv">$client</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="c1">// 検証対象外のクラスはモックとする。</span>
         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span> <span class="o">=</span> <span class="nx">\Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Client</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
@@ -34888,7 +34874,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <span class="sd">    * @test</span>
 <span class="sd">    * @expectedException</span>
 <span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testSendMessage_EmptyMessage_ExceptionThrown</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testSendMessage_EmptyMessage_ExceptionThrown</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="nv">$fooNotification</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FooNotification</span><span class="p">(</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span><span class="p">,</span>
@@ -34919,7 +34905,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
     <span class="sd">/**</span>
 <span class="sd">     * @test</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="c1">// アプリケーション自身のコントローラークラスにリクエストを送信する処理。</span>
         <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
@@ -35042,7 +35028,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
    <span class="sd">/**</span>
 <span class="sd">    * @test</span>
 <span class="sd">    */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testGetPage_GetRequest_Return200</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testGetPage_GetRequest_Return200</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="c1">// 外部サービスがクライアントの場合はモックを使用する。</span>
         <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
@@ -35073,7 +35059,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
     <span class="sd">/**</span>
 <span class="sd">     * @test</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testPostMessage_GetRequest_Return200NormalMessage</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testPostMessage_GetRequest_Return200NormalMessage</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
 
@@ -35124,7 +35110,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
     <span class="sd">/**</span>
 <span class="sd">     * @test</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">testPostMessage_EmptyMessage_Return400ErrorMessage</span><span class="p">()</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testPostMessage_EmptyMessage_Return400ErrorMessage</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
 
