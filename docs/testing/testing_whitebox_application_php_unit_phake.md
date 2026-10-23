@@ -29,7 +29,7 @@ description: Phake＠PHPユニットテストの知見を記録しています�
 
 以降の処理での用途によって、モックまたはスタブの呼び名が異なることに注意する。
 
-```php
+```injectablephp
 <?php
 
 // モックとして使用する擬似オブジェクトを作成する。
@@ -51,7 +51,7 @@ $stub = Phake::mock(Foo::class);
 
 スタブの `find()` 関数は、`1` が渡されたときに、空配列を返却する。
 
-```php
+```injectablephp
 <?php
 
 // スタブとして使用する擬似オブジェクトを作成する。
@@ -71,7 +71,7 @@ $stub = Phake::mock(Foo::class);
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 use PHPUnit\Framework\TestCase;

@@ -33,7 +33,7 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $array = ['あ', 'い', 'う'];
@@ -64,7 +64,7 @@ echo reset($array); // あ
 
 配列を走査する。
 
-```php
+```injectablephp
 <?php
 
 $array = [1, 2, 3, 4];
@@ -78,7 +78,7 @@ foreach ($array as &$value) {
 
 ![流れ図_foreach文](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/流れ図_foreach文.png)
 
-```php
+```injectablephp
 <?php
 
 $a = [1, -1, 2];
@@ -105,7 +105,7 @@ foreach ($a as $foo) {
 
 単に配列を作るのみでなく、要素にアクセスするためにも使われる。
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -144,7 +144,7 @@ class Foo
 
 #### ▼ 配列の各値を加算代入
 
-```php
+```injectablephp
 <?php
 
 // 以下の引数が渡されると想定
@@ -175,7 +175,7 @@ function iteration($K, $A)
 
 #### ▼ 配列の値を固定
 
-```php
+```injectablephp
 <?php
 
 // 以下の引数が渡されると想定
@@ -214,7 +214,7 @@ function iteration($M, $A) {
 
 例えば、不要なインデックス (0) で入れ子になっている場合に役に立つ。
 
-```php
+```injectablephp
 <?php
 
 $twoDimension = [
@@ -245,7 +245,7 @@ $oneDimension = call_user_func_array(
 
 配列の score キーから値を取り出し、1 次元配列を作成する。
 
-```php
+```injectablephp
 <?php
 
 $twoDimension = [
@@ -285,7 +285,7 @@ $oneDimension = array_column($twoDimension, 'score');
 
 また、`for` とは異なり、反復回数が決まっていない場合に使用する。
 
-```php
+```injectablephp
 <?php
 
 $count = 0;
@@ -306,7 +306,7 @@ echo $count;
 
 ![流れ図_while文](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/流れ図_while文.png)
 
-```php
+```injectablephp
 <?php
 
 $a = [1, -1, 2];
@@ -355,7 +355,7 @@ while (true) {
 
 また、`while` とは異なり、反復回数が決まっている場合に使用する。
 
-```php
+```injectablephp
 <?php
 
 // 10回反復することが決まっている。
@@ -370,7 +370,7 @@ echo $count;
 
 ![流れ図_for文](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/流れ図_for文.png)
 
-```php
+```injectablephp
 <?php
 
 $a = [1, -1, 2];
@@ -398,7 +398,7 @@ echo $sum;
 
 反復処理の現在のループをスキップし、次のループを開始する。
 
-```php
+```injectablephp
 <?php
 
 $array = [1, 2, 3, 4, 5];
@@ -424,7 +424,7 @@ foreach ($array as $key => $value) {
 
 `continue` を使用するより、こちらのほうがよい。
 
-```php
+```injectablephp
 <?php
 
 $array = [1, 2, 3, 4, 5];
@@ -452,7 +452,7 @@ array_walk($array, function ($value, $key) {
 
 反復処理の現在のループを停止し、以降のループも実行しない。
 
-```php
+```injectablephp
 <?php
 
 $array = [1, 2, 3, 4, '', 5];

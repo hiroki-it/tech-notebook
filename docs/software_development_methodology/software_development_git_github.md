@@ -390,7 +390,7 @@ Unmerged paths:
 
 : コンフリクトしていたコード行を取捨選択する。
 
-```php
+```injectablephp
 <?php
 /// Phpstromにて、コンフリクトしていたコード行を取捨選択する。
 ```

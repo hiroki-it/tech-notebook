@@ -23,7 +23,7 @@ description: デバッグロジック＠PHPの知見を記録しています。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 var_dump($var);
@@ -37,7 +37,7 @@ var_dump($var);
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 throw new \Exception(var_dump($var));
@@ -53,7 +53,7 @@ throw new \Exception(var_dump($var));
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 if ($foo = 1){
@@ -80,7 +80,7 @@ if ($foo = 3){
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 if ($foo = 1){

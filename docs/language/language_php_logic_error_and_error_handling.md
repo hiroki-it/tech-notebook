@@ -49,7 +49,7 @@ description: エラーとエラーハンドリング＠PHPの知見を記録し�
 
 『Foo 変数が見つからない』というエラーに対応する例外クラスを定義する。
 
-```php
+```injectablephp
 <?php
 
 class FooNotFoundException extends Exception
@@ -61,7 +61,7 @@ class FooNotFoundException extends Exception
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 use Exception\FooNotFoundException;
@@ -108,7 +108,7 @@ if-throw 文を使用して、エラー検出と例外スローを実行する�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 function value(int $value) {
@@ -124,7 +124,7 @@ function value(int $value) {
 
 ただし、if-throw では、都度例外を検証するがあり、さまざまな可能性を考慮しなければいけなくなる。
 
-```php
+```injectablephp
 <?php
 
 function value() {
@@ -161,7 +161,7 @@ try-catch-finally では、特定の処理のなかで起こる想定できな�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 use \Exception\ExternalApiErrorException;
@@ -199,7 +199,7 @@ class Foo
 
 finally 句は、try 句や catch 句が値を返す直前に実行されるため、finally 句では、`return` や `continue` を使用しないようにする。
 
-```php
+```injectablephp
 <?php
 
 use Exception\ExternalApiErrorException;
@@ -249,7 +249,7 @@ class Foo
 
 : のいずれかで返却されるときは、返却の直前に finally 句が実行されるとわかる。
 
-```php
+```injectablephp
 <?php
 
 // `(1)` の場合
@@ -313,7 +313,7 @@ class Foo
 
 > - [PHP: error_log - Manual](https://www.php.net/manual/ja/function.error-log.php)
 
-```php
+```injectablephp
 <?php
 
 error_log(
@@ -325,7 +325,7 @@ error_log(
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Notification
@@ -357,7 +357,7 @@ class Notification
 
 > - [GitHub - php-fig/log · GitHub](https://github.com/php-fig/log)
 
-```php
+```injectablephp
 <?php
 
 use Psr\Log\LoggerInterface;
@@ -408,7 +408,7 @@ class Notification
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 use Exception\ExternalApiErrorException;

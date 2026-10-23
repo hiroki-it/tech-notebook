@@ -213,7 +213,7 @@ class Foo {
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -336,7 +336,7 @@ JSON から PHP 型オブジェクトの変換には。
 
 リクエストで送信する JSON はエスケープする必要があることに注意する。
 
-```php
+```injectablephp
 <?php
 
 // リクエストで取得したJSON
@@ -361,7 +361,7 @@ var_dump($object);
 
 第二引数が `true` の場合、連想配列形式に変換する。
 
-```php
+```injectablephp
 <?php
 
 // リクエストで取得したJSON
@@ -386,7 +386,7 @@ var_dump($array);
 
 #### ▼ シリアライズ：PHP 型から JSON
 
-```php
+```injectablephp
 <?php
 
 $object = '{"fruit":["banana","apple"],"account":200}';

@@ -49,7 +49,7 @@ description: クラス＠PHPの知見を記録しています。
 
 User は UserName を状態として保持する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\User\Entity;
@@ -78,7 +78,7 @@ final class User
 
 そのため、User クラスと UserName クラスは『Aggregation』の関係にある。
 
-```php
+```injectablephp
 <?php
 
 $name = new UserName();
@@ -87,7 +87,7 @@ $user = new User($name); // 集約の関係
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 use App\Domain\Car\Entity\Tire1;
@@ -138,7 +138,7 @@ class Car
 
 そのため、Car クラスと Tire クラスは『Aggregation』の関係にある。
 
-```php
+```injectablephp
 <?php
 
 // Tireクラスをインスタンス化
@@ -167,7 +167,7 @@ $car = new Car($tire1, $tire2, $tire3, $tire4);
 
 User クラスは UserName クラスを状態として保持する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\User\Entity;
@@ -198,7 +198,7 @@ final class User
 
 そのため、User クラスと UserName クラスは『Composition』の関係にある。
 
-```php
+```injectablephp
 <?php
 
 $user = new User();
@@ -208,7 +208,7 @@ $user = new User();
 
 Car クラスは Lock クラスを状態として保持する。
 
-```php
+```injectablephp
 <?php
 
 class Car
@@ -230,7 +230,7 @@ class Car
 
 そのため、Car クラスと Lock クラスは『Composition』の関係にある。
 
-```php
+```injectablephp
 <?php
 
 // Carクラスのインスタンスの中で、Lockクラスがインスタンス化される。
@@ -257,7 +257,7 @@ $car = new Car();
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 // 親クラス
@@ -297,7 +297,7 @@ class Goods
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 // 子クラス
@@ -366,7 +366,7 @@ class GoodsWithTax extends Goods
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 // 抽象クラス。型として提供したいものを定義する。
@@ -417,7 +417,7 @@ abstract class ShainManagement
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 // 子クラス
@@ -469,7 +469,7 @@ class EnginnerShainManagement extends ShainManagement
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 interface Animal
@@ -481,7 +481,7 @@ interface Animal
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 class Mammal implements Animal
@@ -546,7 +546,7 @@ class Mammal implements Animal
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 // 継承元クラス
@@ -561,7 +561,7 @@ class Foo
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 // 継承先クラス
@@ -576,7 +576,7 @@ class SubFoo extends Foo
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 $subFoo = new SubFoo;
@@ -592,7 +592,7 @@ echo $subFoo->getValue();
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 abstract class Foo
@@ -604,7 +604,7 @@ abstract class Foo
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 class SubFoo extends Foo
@@ -635,7 +635,7 @@ Trait 自体は不完全なクラスであり、インスタンス化できな�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 trait FooTrait
@@ -670,7 +670,7 @@ $bar->foo(); // Hello World
 
 マジックゲッター関数とマジックセッター関数がコールされることを禁止する。
 
-```php
+```injectablephp
 <?php
 
 declare(strict_types=1);
@@ -747,7 +747,7 @@ PHP では、集約や合成の関係性を作り、委譲先クラスの関数�
 
 #### ▼ クラスから関数をコール
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -761,7 +761,7 @@ class Foo
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 // 外部ファイル名を指定して、クラスを読み込む。
@@ -779,7 +779,7 @@ class Bar
 
 #### ▼ クラスから定数をコール
 
-```php
+```injectablephp
 <?php
 
 // 外部ファイル名を指定して、クラスを読み込む。
@@ -797,7 +797,7 @@ class Bar
 
 #### ▼ 非クラスから関数をコール
 
-```php
+```injectablephp
 <?php
 
 function printTest() {
@@ -805,7 +805,7 @@ function printTest() {
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 // 外部ファイル名を指定して読み込む。
@@ -840,7 +840,7 @@ Composer のオートロード機能を有効化したうえで、外部ファ�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 // 名前空間を定義。
@@ -858,7 +858,7 @@ class Foo
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 namespace Domain\Foo;
@@ -880,7 +880,7 @@ class Bar
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace Domain\Foo;
@@ -929,7 +929,7 @@ User は UserName を引数として使用する。
 
 User は UserName に依存している。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\User\Entity;
@@ -978,7 +978,7 @@ final class User
 
 依存先の Supplier クラスを、`construct()` 関数の引数として、Client クラスに注入する。
 
-```php
+```injectablephp
 <?php
 
 $supplier = new Supplier();
@@ -991,7 +991,7 @@ $client = new Client($supplier);
 
 依存先の UserName クラスを、`construct()` 関数の引数として、User クラスに注入する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\User\Entity;
@@ -1015,7 +1015,7 @@ final class User
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 $name = new UserName();
@@ -1032,7 +1032,7 @@ $user = new User($name); // インジェクション
 
 依存先の Supplier クラスを、セッターの引数として、Client クラスに注入する。
 
-```php
+```injectablephp
 <?php
 
 $supplier = new Supplier();
@@ -1046,7 +1046,7 @@ $client->setSupplier($supplier);
 
 依存先の UserName クラスを、セッターの引数として、User クラスに注入する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\User\Entity;
@@ -1070,7 +1070,7 @@ final class User
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 $user = new User();
@@ -1088,7 +1088,7 @@ $user->setUserName($name); // インジェクション
 
 依存先の UserName クラスを、関数の引数として、User クラスに注入する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\User\Entity;
@@ -1109,7 +1109,7 @@ final class User
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 $user = new User();
@@ -1131,7 +1131,7 @@ $user->method($name); // インジェクション
 
 Pimple パッケージを使用した場合
 
-```php
+```injectablephp
 <?php
 
 use Pimple\Container;
@@ -1155,14 +1155,14 @@ class Container
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 // autoload.php で、IoCコンテナ自体のインスタンスを事前に作成。
 $container = new Container();
 ```
 
-```php
+```injectablephp
 <?php
 
 // IoCコンテナの読み出し
@@ -1180,7 +1180,7 @@ Service Locater パターンはアンチパターンである。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Sample
@@ -1193,7 +1193,7 @@ class Sample
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 // IoCコンテナ自体をインジェクションしてしまうと、不要なインスタンスにも依存してしまう。
@@ -1320,7 +1320,7 @@ $sample = new Sample($container);
 
 ModuleA と ModuleB は、データ結合の関係にある。
 
-```php
+```injectablephp
 <?php
 
 class ModuleA // コールされる側
@@ -1332,7 +1332,7 @@ class ModuleA // コールされる側
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 class ModuleB // コールする側
@@ -1351,7 +1351,7 @@ class ModuleB // コールする側
 
 Factory クラスのインスタンスと、これをコールするほかインスタンス は、データ結合の関係にある。
 
-```php
+```injectablephp
 <?php
 
 /**
@@ -1383,7 +1383,7 @@ object 型のデータをサプライヤー側として、クライアント側�
 
 ModuleA と ModuleB は、スタンプ結合の関係にある。
 
-```php
+```injectablephp
 <?php
 
 class Shared
@@ -1403,7 +1403,7 @@ class Shared
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 class ModuleA
@@ -1419,7 +1419,7 @@ class ModuleA
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 class ModuleB

@@ -64,7 +64,7 @@ DB からの値を直接的に表示する場合と異なり、新しく作ら�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 // 変数に Tue を格納
 $weeks = "Tue";
@@ -96,7 +96,7 @@ if ($weeks == "Mon") {
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 // 変数に Tue を格納
@@ -143,7 +143,7 @@ switch ($weeks) {
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Example
@@ -198,7 +198,7 @@ class Example
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Example
@@ -246,7 +246,7 @@ class Example
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Example
@@ -326,13 +326,13 @@ class Example
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 // 西暦を格納する。
 $year = N;
 ```
 
-```php
+```injectablephp
 <?php
 
 function leapYear(int $year): string
@@ -368,7 +368,7 @@ function leapYear(int $year): string
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 // 西暦を格納する。
@@ -410,7 +410,7 @@ if 文の代わりに、`switch-case-break` によって、実装に、『◯◯
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 function leapYear(int $year): string
@@ -447,7 +447,7 @@ function leapYear(int $year): string
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 function leapYear(int $year): string
@@ -482,7 +482,7 @@ function leapYear(int $year): string
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Example {};
@@ -501,7 +501,7 @@ if(new Example == new Example){
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Example {};
@@ -520,7 +520,7 @@ if (new Example === new Example) {
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Example {};

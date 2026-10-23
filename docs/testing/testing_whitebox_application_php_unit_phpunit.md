@@ -163,13 +163,13 @@ Composer の実行時はメモリ不足を避ける。
 
 非 static または static としてコールできる。
 
-```php
+```injectablephp
 <?php
 
 $this->assertTrue();
 ```
 
-```php
+```injectablephp
 <?php
 
 self::assertTrue()
@@ -183,7 +183,7 @@ self::assertTrue()
 
 実際値が `true` か否かを検証する。
 
-```php
+```injectablephp
 <?php
 
 $this->assertTrue($response->isOk());
@@ -197,7 +197,7 @@ $this->assertTrue($response->isOk());
 
 データ型を検証できないため、`assertSame()` 関数を使用するほうがよい。
 
-```php
+```injectablephp
 <?php
 
 $this->assertSame(200, $response->getStatusCode());
@@ -211,7 +211,7 @@ $this->assertSame(200, $response->getStatusCode());
 
 値のみでなく、データ型も検証できる。
 
-```php
+```injectablephp
 <?php
 
 $this->assertSame(200, $response->getStatusCode());
@@ -233,7 +233,7 @@ $this->assertSame(200, $response->getStatusCode());
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 use PHPUnit\Framework\TestCase;
@@ -282,7 +282,7 @@ class FooTest extends TestCase
 
 IoC コンテナを事前に作成する。
 
-```php
+```injectablephp
 <?php
 
 use PHPUnit\Framework\TestCase;
@@ -306,7 +306,7 @@ class FooTest extends TestCase
 
 そのため、これと同様に依存先のクラスのモックを事前に作成しておく。
 
-```php
+```injectablephp
 <?php
 
 use PHPUnit\Framework\TestCase;
@@ -344,7 +344,7 @@ class FooTest extends TestCase
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 use PHPUnit\Framework\TestCase;
@@ -379,7 +379,7 @@ class FooTest extends TestCase
 
 補足として、PHPUnit の場合、モックの関数は `null` を返却する。
 
-```php
+```injectablephp
 <?php
 
 use PHPUnit\Framework\TestCase;
@@ -400,7 +400,7 @@ class FooTest extends TestCase
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -424,7 +424,7 @@ class Foo
 
 特定の変数が渡されたとき、特定の値を返却させられる。
 
-```php
+```injectablephp
 <?php
 
 use PHPUnit\Framework\TestCase;
@@ -460,7 +460,7 @@ class FooTest extends TestCase
 
 以降のテストケースでは、次のような通知クラスとメッセージクラスが前提にあるとする。
 
-```php
+```injectablephp
 <?php
 
 use CouldNotSendMessageException;
@@ -535,7 +535,7 @@ class FooNotification
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 class FooMessage
@@ -560,7 +560,7 @@ class FooMessage
 
 リクエストにて、チャンネルとメッセージを送信したとき、レスポンスとして `TRUE` が返信されるかを検証する。
 
-```php
+```injectablephp
 <?php
 
 use FooMessage;
@@ -613,7 +613,7 @@ class FooNotificationTest extends TestCase
 
 リクエストにて、メッセージのみを送信しようとしたとき、例外を発生させられるかを検証する。
 
-```php
+```injectablephp
 <?php
 
 use FooMessage;
@@ -665,7 +665,7 @@ class FooNotificationTest extends TestCase
 
 関数のアノテーションで、`@test` を宣言する必要がある。
 
-```php
+```injectablephp
 <?php
 
 use PHPUnit\Framework\TestCase;
@@ -721,7 +721,7 @@ class FooControllerTest extends TestCase
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 use GuzzleHttp\Client;
@@ -757,7 +757,7 @@ class FooControllerTest extends TestCase
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 use GuzzleHttp\Client;
@@ -813,7 +813,7 @@ class FooControllerTest extends TestCase
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 use GuzzleHttp\Client;

@@ -63,7 +63,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\Foo\ValueObjects;
@@ -129,7 +129,7 @@ class ColorType
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\Foo\ValueObjects;
@@ -186,7 +186,7 @@ class SexType
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\Foo\ValueObjects;
@@ -308,7 +308,7 @@ class YmdType extends Type
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\Foo\Services;
@@ -366,7 +366,7 @@ class CheckDuplicateFooService
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\Foo\Services;
@@ -414,7 +414,7 @@ class AuthorizeFooService
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\Foo\Services;
@@ -457,7 +457,7 @@ boolean 値関数 (`isFoo()` 関数) のように、仕様を満たしている�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\Foo\Specifications;
@@ -493,7 +493,7 @@ Specification パターンを検索条件オブジェクトとして使った場
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\Foo\Criterion;
@@ -563,7 +563,7 @@ class FooCriteria
 
 これは、ドメイン貧血症である。
 
-```php
+```injectablephp
 <?php
 
 declare(strict_types=1);
@@ -655,7 +655,7 @@ final class User
 
 この識別子は、DB のオートインクリメント ID に対応している。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\Foo\Entities;
@@ -764,7 +764,7 @@ class DogToy extends Entity
 
 そこで、すべてのエンティティに等価性バリデーション用の `equals()` 関数を持たせることをやめ、継承元の抽象クラスのエンティティにこれを定義するとよい。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain;
@@ -823,7 +823,7 @@ abstract class Entity
 
 PHP では不要であるが、参考までに、PHP で実装した。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain;
@@ -937,7 +937,7 @@ abstract class Id
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\Foo\ValueObjects;
@@ -1024,7 +1024,7 @@ class MoneyVO extends ValueObject
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\Foo\ValueObjects;
@@ -1100,7 +1100,7 @@ class RequiredTime extends ValueObject
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\Foo\ValueObjects;
@@ -1185,7 +1185,7 @@ class Address extends ValueObject
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\Foo\ValueObjects;
@@ -1278,7 +1278,7 @@ class Name extends ValueObject
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\Foo\ValueObjects;
@@ -1327,7 +1327,7 @@ Test01 クラスインスタンスの `$property01` データに値を設定す�
 
 セッターは何度でも呼び出せ、そのたびにデータの値を上書きできてしまう。
 
-```php
+```injectablephp
 <?php
 
 $test01 = new Test01;
@@ -1343,7 +1343,7 @@ Test02 クラスインスタンスの `$property02` データに値を設定す�
 
 セッターを持たせずに、`construct()` 関数のみを持たせれば、不変的なオブジェクトとなる。
 
-```php
+```injectablephp
 <?php
 
 $test02 = new Test02("データ02の値");
@@ -1363,7 +1363,7 @@ $test02 = new Test02("新しいデータ02の値");
 
 すると、マジック関数のオーバーライド機能により、自身で定義した `__get()` 関数が代わりにコールされる。そのため、ゲッターを定義する必要がなくなる。
 
-```php
+```injectablephp
 <?php
 
 declare(strict_types=1);
@@ -1399,7 +1399,7 @@ trait ImmutableTrait
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -1422,7 +1422,7 @@ $foo->bar; // __get関数が代わりにコールされ、プロパティ値が�
 
 ### 概念的な統一体
 
-```php
+```injectablephp
 <?php
 
 // ここに実装例
@@ -1450,7 +1450,7 @@ $foo->bar; // __get関数が代わりにコールされ、プロパティ値が�
 
 属性を 1 つだけ保持する場合、`1` 個の属性のみを検証すればよいため、以下の通りとなる。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\Foo\ValueObjects;
@@ -1499,7 +1499,7 @@ final class ContactMail extends ValueObject
 
 属性を複数保持する値オブジェクトの場合、すべての属性を検証する必要があるため、以下の通りとなる。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\Foo\ValueObjects;
@@ -1566,7 +1566,7 @@ final class PaymentInfoVO extends ValueObject
 
 そのときは、保持している属性を反復的に検証できるよう実装するとよい。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain;
@@ -1622,7 +1622,7 @@ EC サイトであれは、業務フローに沿って、以下のルートエ�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\Foo\Entities;

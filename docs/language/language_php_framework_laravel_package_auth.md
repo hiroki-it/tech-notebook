@@ -53,7 +53,7 @@ API ガードの認証で使用するトークンを JWT に変更したいと�
 
 `auth.php` ファイルにて、例えば token ドライバーを選択した場合は、TokenGuard クラスが返却される。
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -117,7 +117,7 @@ SessionGuard クラスの `attempt()` 関数をコールしてパスワードを
 
 > - [8.x 認証 Laravel](https://readouble.com/laravel/8.x/ja/authentication.html#authenticating-users)
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers\Authentication;
@@ -152,7 +152,7 @@ final class AuthenticationController
 
 認証後のページは RouteServiceProvider クラスで定義しておく。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Providers;
@@ -176,7 +176,7 @@ class RouteServiceProvider extends ServiceProvider
 
 権限の異なるユーザーに応じたガード、またガードに紐付ける Eloquent モデルをプロバイダを定義しておく。
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -226,7 +226,7 @@ Auth ファサードの `guard()` 関数を使用して、ガードに応じた�
 
 これにより、同じ認証後ページへリダイレクトした後、ユーザーの Eloquent モデルに応じた処理を実行できるようになる。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers\Authentication;
@@ -269,7 +269,7 @@ final class AuthenticationController
 
 現在のセッションのユーザーが認証済みであれば、ユーザーの Eloquent モデルを取得する。
 
-```php
+```injectablephp
 <?php
 
 // Illuminate\Contracts\Auth\Guard
@@ -287,7 +287,7 @@ $user = auth()->user();
 
 そのために、BeforeMiddleware を使用して、認証済みのユーザーからのリクエストを認証済みページにリダイレクトさせる。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Middleware\Auth;
@@ -349,7 +349,7 @@ Eloquent モデルと Policy クラスの紐付けは AuthServiceProvider クラ
 
 > - [【Laravel】 認証や認可に関する補足資料 #PHP - Qiita](https://qiita.com/mpyw/items/8c5413b99b8e299f7002#%E7%AC%AC1%E5%BC%95%E6%95%B0%E3%81%AF%E5%BF%85%E3%81%9A-authenticatable-%E3%81%AB%E3%81%AA%E3%82%8B%E4%BD%86%E3%81%97)
 
-```php
+```injectablephp
 <?php
 
 namespace App\Policies;
@@ -406,7 +406,7 @@ final class FooPolicy
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 declare(strict_types=1);
@@ -452,7 +452,7 @@ AuthorizeMiddleware のエイリアスのデフォルト値は `can` であり�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 declare(strict_types=1);
@@ -487,7 +487,7 @@ Route::group(['middleware' => ['auth:web']], function () {
 
 ユーザーが該当 ID の Foo モデルを更新する権限があるか否かを検証する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -546,7 +546,7 @@ DB アクセスが、そのアカウントに設定された認可スコープ�
 
 ユーザーが Foo モデルを作成する権限があるか否かを検証する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -707,7 +707,7 @@ OAuth では、以下のトークン付与タイプを実装できる。
 
 : `guards` キーにて、認証方式を設定する。ここでは、`api` を設定する。
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -729,7 +729,7 @@ return [
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -763,7 +763,7 @@ return [
 
      もしDBファサードのクエリビルダーを使用したい場合は、`database`ドライバを設定する。
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -795,7 +795,7 @@ return [
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 Route::get("user", "UserController@index")->middleware("auth:api");
@@ -807,7 +807,7 @@ Route::get("user", "UserController@index")->middleware("auth:api");
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -834,7 +834,7 @@ class User extends Authenticatable
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 use Laravel\Passport\Passport;
@@ -874,7 +874,7 @@ $ php artisan passport:client --password
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $http = new GuzzleHttp\Client;
@@ -909,7 +909,7 @@ $response = $http->post("http://your-app.com/oauth/token", [
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $response = $client->request("GET", "/api/user", [
@@ -926,7 +926,7 @@ return (string)$response->getBody();
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -986,7 +986,7 @@ $ php artisan passport:client --personal
 
     IDプロバイダーでクライアントIDを事前に発行しておく。
 
-```php
+```injectablephp
 <?php
 
 /**
@@ -1008,7 +1008,7 @@ public function boot()
 
 : Laravel にクライアント ID を含むリクエストを送信すると、Laravel はアクセストークンをレスポンスする。
 
-```php
+```injectablephp
 <?php
 
 $user = User::find(1);

@@ -409,7 +409,7 @@ GET リクエストではあるが、ボディにクエリパラメーターを�
 
 #### ▼ PHP の場合
 
-```php
+```injectablephp
 <?php
 
 define("URL", "https://example.com");
@@ -792,7 +792,7 @@ HTTP はステートレスなプロトコルであるが、Cookie 情報によ�
 
 クライアントから受信したリクエストの `Cookie` ヘッダーの内容は、グローバル変数に格納されている。
 
-```php
+```injectablephp
 <?php
 
 $_COOKIE = ["Cookie名" => "値"]
@@ -810,7 +810,7 @@ $_COOKIE = ["Cookie名" => "値"]
 
 : サーバーは、レスポンスヘッダーの `Set-Cookie` ヘッダーに Cookie 情報を埋め込んで送信する。
 
-```php
+```injectablephp
 <?php
 
 setcookie(
@@ -890,7 +890,7 @@ GoogleConsole におけるセッションについては、以下のリンクを
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 // セッションの開始。セッションIDを発行する。

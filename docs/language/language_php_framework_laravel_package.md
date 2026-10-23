@@ -58,7 +58,7 @@ BenSampo の enum 型のクラスを継承し、区分値と判定関数を実�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\ValueObject\Type;
@@ -131,7 +131,7 @@ class RoleType extends Enum
 
 DB から区分値を取得し、これを元に enum 型のクラスを作成する。
 
-```php
+```injectablephp
 <?php
 
 // Staff
@@ -160,7 +160,7 @@ PHPStrom で Laravel を開発する場合、拡張機能を提供する。
 
 プロバイダーを `app.php` ファイルに登録する必要がある。
 
-```php
+```injectablephp
 <?php
 
 return [

@@ -117,7 +117,7 @@ COPY ../software /var/www/foo/
 
 ほかの型と共存できる。
 
-```php
+```injectablephp
 <?php
 
 class User {
@@ -152,7 +152,7 @@ echo $user->isAdult() ? "true" : "false"; // true
 
 ほかの型と共存できる。
 
-```php
+```injectablephp
 <?php
 
 // オブジェクトの状態を設定する

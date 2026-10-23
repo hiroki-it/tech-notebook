@@ -130,7 +130,7 @@ const user = await prisma.user.findUnique({
 
 内部的には、親テーブルへの SQL と、Where 句を持つ SQL が親テーブルのレコード数分だけ発行される。
 
-```php
+```injectablephp
 <?php
 
 // 親テーブルにSQLを発行 (1回)
@@ -161,7 +161,7 @@ select * from `employees` where `department_id` = 3
 
 Laravel では `with()` 関数を使用すると、内部的に親テーブルへの SQL と IN 句を使用した SQL が発行され、最終的に 2 回で済む。
 
-```php
+```injectablephp
 <?php
 
 // 親テーブルと子テーブルにSQLを発行する (2回)

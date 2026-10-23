@@ -71,7 +71,7 @@ APP_URL=<アプリケーションのURL>
 
 #### ▼ `app.php` ファイルの基本設定
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -128,7 +128,7 @@ return [
 
 artisan コマンドで実行できるコマンド処理を定義する。
 
-```php
+```injectablephp
 <?php
 
 declare(strict_types=1);
@@ -198,7 +198,7 @@ DB_PASSWORD=<アプリケーションユーザーのパスワード>
 
 #### ▼ RDB と Redis の選択
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -247,7 +247,7 @@ return [
 
 単一のエンドポイントしかない場合、`DB_HOST` を 1 つだけ設定する。
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -305,7 +305,7 @@ DB_HOST_READ=<リードレプリカのエンドポイント>
 
 プライマリーインスタンスのデータ更新がリードレプリカへ同期される前に読み出し処理が起こる場合でも、これを防げる。
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -378,7 +378,7 @@ REDIS_PORT=<Redisのポート>
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Events;
@@ -404,7 +404,7 @@ final class UserCreatedEvent
 
 任意の場所でイベントを発行できる。
 
-```php
+```injectablephp
 <?php
 
 event(new UserCreatedEvent($user));
@@ -422,7 +422,7 @@ Eloquent モデルでは、DB アクセスに関する関数の実行開始や�
 
 プロパティにて、`CREATE` 処理と `DELETE` 処理を独自イベントクラスに紐付ける。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Models;
@@ -452,7 +452,7 @@ class User extends Authenticatable
 
 無名関数にて、`CREATE` 処理を独自イベントクラスに紐付ける。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Models;
@@ -489,7 +489,7 @@ Listener クラスがコールされたときに実行する処理を `handle()`
 
 ユーザーが作成されたときに、メールアドレスにメッセージを送信する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Listeners;
@@ -514,7 +514,7 @@ final class UserCreatedEventListener
 
 任意の場所でイベントを発行すると、リスナーが自動的にコールする。
 
-```php
+```injectablephp
 <?php
 
 event(new UserCreatedEvent($user));
@@ -526,7 +526,7 @@ EventServiceProvider クラスにて、Event クラスに紐付ける 1 つ以�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 declare(strict_types=1);
@@ -576,7 +576,7 @@ Trait に `boot+<クラス名>` という名前の静的関数が定義されて
 
 `saved()` 関数に Eloquent モデルの更新イベントを登録可能にする。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Models\Traits;
@@ -625,7 +625,7 @@ trait UpdatedModelTrait
 
 イベントを定義する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Events;
@@ -653,7 +653,7 @@ Model 更新イベントが発火してコールするリスナーを定義す�
 
 注意点として、イベントとリスナーの対応関係は、EventServiceProvider で登録する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Listeners;
@@ -707,7 +707,7 @@ class UpdatedModelListener
 
 実行者名は、定数として管理しておくとよい。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Constants;
@@ -826,7 +826,7 @@ Laravel はスローされる例外のメッセージをスタックトレース
 
 Laravel 内部でキャッチされた例外を基に、ロギングを実行する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Exceptions;
@@ -864,7 +864,7 @@ Laravel 内部でキャッチされた例外を基に、異常系レスポンス
 
 代わりに、各コントローラーに try-catch と異常系レスポンスの返信処理を実装する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Exceptions;
@@ -903,7 +903,7 @@ new 演算子でインスタンスを作成する。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -917,7 +917,7 @@ class Foo
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 // 通常
@@ -937,7 +937,7 @@ $foo->method();
 
 Facade として使用したいクラスを定義する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -953,7 +953,7 @@ class Foo
 
 エイリアスとクラスの名前空間を `config/app.php` ファイルを `aliases` キーに登録すると、そのエイリアスでインスタンス化と関数コールを行えるようになる。
 
-```php
+```injectablephp
 <?php
 
 "aliases" => [
@@ -963,7 +963,7 @@ class Foo
 
 インスタンス化と関数コールを実行する。
 
-```php
+```injectablephp
 <?php
 
 use Illuminate\Support\Facades\Foo;
@@ -1074,7 +1074,7 @@ Active Record のロジックを持たないため、Repository パターンの�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Infrastructure\Repositories;
@@ -1123,7 +1123,7 @@ class FooRepository extends Repository implements DomainFooRepository
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Infrastructure\Repositories;
@@ -1210,7 +1210,7 @@ Webサーバー
 Appサーバー # /healthcheck で、200 ステータスを返却する
 ```
 
-```php
+```injectablephp
 <?php
 
 # ヘルスチェックを受信するパス
@@ -1229,7 +1229,7 @@ Route::get("/healthcheck", function () {
 
 認証方法として Web ガードを使用する場合、`auth` エイリアスを設定する。
 
-```php
+```injectablephp
 <?php
 
 use App\Http\Controllers\Foo\FooController;
@@ -1247,7 +1247,7 @@ Route::middleware("auth")->group(function () {
 
 デフォルトでは、`App\Http\Kernel.php` ファイルにて、`auth` エイリアスに `\App\Http\Middleware\Authenticate` クラスが紐付けられている。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http;
@@ -1273,7 +1273,7 @@ class Kernel extends HttpKernel
 
 一方で、認証方法として API ガードを使用する場合、`auth:api` エイリアスを設定する。
 
-```php
+```injectablephp
 <?php
 
 // authエイリアスのMiddlewareクラスが使用される。
@@ -1290,7 +1290,7 @@ Route::middleware("auth:api")->group(function () {
 
 各エンドポイントの最初の『`foos`』を接頭辞として定義する。
 
-```php
+```injectablephp
 <?php
 
 use App\Http\Controllers\Foo\FooController;
@@ -1314,7 +1314,7 @@ RouteServiceProvider の `boot()` 関数にて、`pattern()` 関数で制約を�
 
 userId の形式を『0〜9 が 1 つ以上』に設定している。
 
-```php
+```injectablephp
 <?php
 
 use App\Http\Controllers\Foo\FooController;
@@ -1338,7 +1338,7 @@ Route::prefix("foos")->group(function () {
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 declare(strict_types=1);
@@ -1375,7 +1375,7 @@ class RouteServiceProvider extends ServiceProvider
 
 エンドポイントの接頭辞とミドルウェアの指定を定義する。
 
-```php
+```injectablephp
 <?php
 
 Route::group(["prefix" => "foo" , "middleware" => "auth"], function () {
@@ -1407,7 +1407,7 @@ Route::group(["prefix" => "foo" , "middleware" => "auth"], function () {
 $ php artisan storage:link
 ```
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -1440,7 +1440,7 @@ Storage ファサードの `disk()` 関数を使用して local ディスクを�
 
 `file.txt` ファイルを `storage/app/file.txt` として保管する。
 
-```php
+```injectablephp
 <?php
 
 Storage::disk("local")->put("file.txt", "file.txt");
@@ -1448,7 +1448,7 @@ Storage::disk("local")->put("file.txt", "file.txt");
 
 ただし、`filesytems.php` ファイルでデフォルトディスクは `local` になっているため、`put()` 関数を直接的に使用できる。
 
-```php
+```injectablephp
 <?php
 
 Storage::put("file.txt", "file.txt");
@@ -1462,7 +1462,7 @@ Storage::put("file.txt", "file.txt");
 
 事前に、`filesystems.php` ファイルに設定が必要である。
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -1494,7 +1494,7 @@ Storage ファサードの `disk()` 関数を使用して public ディスクを
 
 また、`file.txt` ファイルを `storage/app/public/file.txt` として保管する。
 
-```php
+```injectablephp
 <?php
 
 Storage::disk("s3")->put("file.txt", "file.txt");
@@ -1506,7 +1506,7 @@ Storage::disk("s3")->put("file.txt", "file.txt");
 FILESYSTEM_DRIVER=s3
 ```
 
-```php
+```injectablephp
 <?php
 
 Storage::put("file.txt", "file.txt");
@@ -1514,7 +1514,7 @@ Storage::put("file.txt", "file.txt");
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -1567,7 +1567,7 @@ AWS_DEFAULT_REGION=ap-northeast-1
 AWS_BUCKET=<バケット名>
 ```
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -1599,7 +1599,7 @@ Storage ファサードの `disk()` 関数を使用して s3 ディスクを指�
 
 また、`file.txt` ファイルを S3 バケットのルートに `file.txt` として保管する。
 
-```php
+```injectablephp
 <?php
 
 Storage::disk("s3")->put("file.txt", "file.txt");
@@ -1611,7 +1611,7 @@ Storage::disk("s3")->put("file.txt", "file.txt");
 FILESYSTEM_DRIVER=s3
 ```
 
-```php
+```injectablephp
 <?php
 
 Storage::put("file.txt", "file.txt");
@@ -1639,7 +1639,7 @@ Validate ファサードの `make()` 関数を使用して、ルールを定義�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -1682,7 +1682,7 @@ Validator クラスの `validate()` 関数を使用すると、FormRequest ク�
 
 バリデーションでエラーが発生した場合、Handler クラスの `invalid()` 関数がコールされ、元の Web ページにリダイレクトされる。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -1752,7 +1752,7 @@ class FooController extends Controller
 
 > - https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
 
-```php
+```injectablephp
 <?php
 
 // Illuminate\Auth\AuthManager
@@ -1771,7 +1771,7 @@ $auth = auth();
 
 デフォルトで搭載されている `app.php` ファイルの `timezone` キーの値を出力する。
 
-```php
+```injectablephp
 <?php
 
 $value = config("app.timezone");
@@ -1785,13 +1785,13 @@ $value = config("app.timezone");
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $requestUrl = config("api.foo.endpoint_url");
 ```
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -1812,7 +1812,7 @@ return [
 
 > - [8.x ヘルパ Laravel](https://readouble.com/laravel/8.x/ja/helpers.html#method-bcrypt)
 
-```php
+```injectablephp
 <?php
 
 $hash = bcrypt('foo'); // 『foo』をハッシュ化して、『$2y$10$ZkYG.whhdcogCCzbG.VlQ』としてDBで管理する。
@@ -1838,7 +1838,7 @@ $hash = bcrypt('foo'); // 『foo』をハッシュ化して、『$2y$10$ZkYG.whh
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -1871,7 +1871,7 @@ class FooController extends Controller
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers\Foo;
@@ -1898,7 +1898,7 @@ class FooController extends Controller
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -1931,7 +1931,7 @@ class FooController extends Controller
 
 > - [8.x ヘルパ Laravel](https://readouble.com/laravel/8.x/ja/helpers.html#method-route)
 
-```php
+```injectablephp
 <?php
 
 Route::get('/foo', [FooController::class, 'index'])->name('foos_index');
@@ -1950,7 +1950,7 @@ $url = route('foos_index');
 
 また、project ルートディレクトリからの相対パスを引数として、絶対パスを作成する。
 
-```php
+```injectablephp
 <?php
 
 // /var/www/project
@@ -1966,7 +1966,7 @@ $path = base_path("vendor/bin");
 
 また、public ディレクトリからの相対パスを引数として、絶対パスを作成する。
 
-```php
+```injectablephp
 <?php
 
 // /var/www/project/public
@@ -1982,7 +1982,7 @@ $path = public_path("css/app.css");
 
 まあ、storage ディレクトリからの相対パスを引数として、絶対パスを作成する。
 
-```php
+```injectablephp
 <?php
 
 // /var/www/project/storage
@@ -2004,7 +2004,7 @@ $path = storage_path("app/file.txt");
 
 > - [5.7 URL生成 Laravel](https://readouble.com/laravel/5.7/ja/urls.html)
 
-```php
+```injectablephp
 <?php
 
 // https://example.com/foo
@@ -2031,7 +2031,7 @@ Farker クラスは、プロパティにランダムなデータを保持して�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 declare(strict_types=1);
@@ -2068,7 +2068,7 @@ Factory に対応する Eloquent モデルで使用する必要がある。
 
 > - [8.x データベーステスト Laravel](https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories)
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -2089,7 +2089,7 @@ Factory の定義を基にして、指定した数だけ Seed の初期データ
 
 FooSeeder を定義し、`50` 個のダミーユーザーデータを量産する。
 
-```php
+```injectablephp
 <?php
 
 use App\Models\Foo;
@@ -2111,7 +2111,7 @@ class FooSeeder extends Seeder
 
 また、BarSeeder を定義し、`50` 個のダミーユーザーデータを量産する。
 
-```php
+```injectablephp
 <?php
 
 use App\Models\Bar;
@@ -2133,7 +2133,7 @@ class BarSeeder extends Seeder
 
 DatabaseSeeder にて、すべての Seeder をまとめて実行する。
 
-```php
+```injectablephp
 <?php
 
 use Illuminate\Database\Seeder;
@@ -2195,7 +2195,7 @@ class DatabaseSeeder extends Seeder
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -2241,7 +2241,7 @@ class FooController extends Controller
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -2285,7 +2285,7 @@ FormRequest クラスの `validated()` 関数を使用して、バリデーシ�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -2326,7 +2326,7 @@ FormRequest クラスの `rules()` 関数を使用して、ルールを定義す
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Requests;
@@ -2378,7 +2378,7 @@ Route ファサードの `pattern()` 関数または `where()` 関数で定義�
 
 日本語翻訳 `validation.php` ファイルについては、以下のリンクを参考にせよ。
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -2411,7 +2411,7 @@ return [
 
 注意点として、言語設定をしない場合、デフォルトでは `/resources/lang/en/validation.php` をバリデーションメッセージとして参照する。そのため、`app.php` で言語を変更することと、日本語翻訳 `validation.php` が必要である。
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -2467,7 +2467,7 @@ return [
 
 > - https://laravel.com/api/8.x/Illuminate/Validation/Rule.html#method_exists
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Requests;
@@ -2496,7 +2496,7 @@ class FooRequest extends FormRequest
 
 テーブルにカラム数が多い場合は、Where 句をつけることにより、特定のカラムのみ検証もできる。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Requests;
@@ -2527,7 +2527,7 @@ class FooRequest extends FormRequest
 
 決められた複数の値に合致する値であるか否かを検証する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Requests;
@@ -2567,7 +2567,7 @@ class FooRequest extends FormRequest
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Rules;
@@ -2601,7 +2601,7 @@ class UppercaseRule implements Rule
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Requests;
@@ -2639,7 +2639,7 @@ FormRequest クラスの `session()` 関数を使用して、セッション変�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -2662,7 +2662,7 @@ class FooController extends Controller
 
 すべてのセッション変数を取得もできる。
 
-```php
+```injectablephp
 <?php
 
 $session = $request->session()->all();
@@ -2672,7 +2672,7 @@ $session = $request->session()->all();
 
 現在のセッションで、今回と次回のリクエストのみで有効な一時的なデータを設定できる。
 
-```php
+```injectablephp
 <?php
 
 $request->session()
@@ -2689,7 +2689,7 @@ $request->session()
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 /**
@@ -2736,7 +2736,7 @@ public function authorize()
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Middleware;
@@ -2769,7 +2769,7 @@ class FooBeforeMiddleware
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Middleware;
@@ -2838,7 +2838,7 @@ Middleware クラスをコールするときの方法をカスタマイズでき
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http;
@@ -2927,7 +2927,7 @@ class Kernel extends HttpKernel
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -2966,7 +2966,7 @@ class FooController extends Controller
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -2995,7 +2995,7 @@ class FooController extends Controller
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -3022,7 +3022,7 @@ class FooController extends Controller
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -3052,7 +3052,7 @@ class FooController extends Controller
 
 Request ではなく、FormRequest を使用したほうがバリデーションにおすすめである。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -3115,7 +3115,7 @@ Laravel と PHP-FPM のプロセスはそれぞれ独立しているため、Lar
 
 他の単一/複数のチャンネルを利用するチャンネル。
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -3142,7 +3142,7 @@ return [
 
 すべてのログを `/storage/logs/laravel.log` ファイルに対して出力する。
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -3168,7 +3168,7 @@ return [
 
 すべてのログを `/storage/logs/laravel-<日付>.log` ファイルに対して出力する。
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -3200,7 +3200,7 @@ Docker 上で Laravel を稼働させる場合は、作成されるログファ�
 
 注意点として、自前カスタマイズとして、`stream` キーを stdout 変更すれば、標準出力にログを出力もできる。
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -3240,7 +3240,7 @@ return [
 
 このとき、リクエスト処理のために、Guzzle パッケージを使用している。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -3293,7 +3293,7 @@ class FooController extends Controller
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -3326,7 +3326,7 @@ return [
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -3381,7 +3381,7 @@ $ php artisan make:migration add_column --table=foos
 
 追加したいカラムのみを定義する。
 
-```php
+```injectablephp
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -3426,7 +3426,7 @@ $ php artisan make:migration rename_column --table=foos
 
 変更後でも、ロールバックできるように、`down()` 関数も定義しておく。
 
-```php
+```injectablephp
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -3482,7 +3482,7 @@ $ php artisan make:migration change_column_data_type --table=foos
 
 変更後でも、ロールバックできるように、`down()` 関数も定義しておく。
 
-```php
+```injectablephp
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -3538,7 +3538,7 @@ $ php artisan make:migration drop_column --table=foos
 
 変更後でも、ロールバックできるように、`down()` 関数も定義しておく。
 
-```php
+```injectablephp
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -3591,7 +3591,7 @@ $ php artisan migrate
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 Schema::create("foos", function (Blueprint $table) {
@@ -3613,7 +3613,7 @@ Schema::create("foos", function (Blueprint $table) {
 
 プライマリーキーではない ID カラムのために使用する。
 
-```php
+```injectablephp
 <?php
 
 Schema::create("foos", function (Blueprint $table) {
@@ -3636,7 +3636,7 @@ VARCHAR 型カラムを作成する。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 Schema::create("foos", function (Blueprint $table) {
@@ -3656,7 +3656,7 @@ TIMESTAMP 型カラムを作成する。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 Schema::create("foos", function (Blueprint $table) {
@@ -3695,7 +3695,7 @@ Schema::create("foos", function (Blueprint $table) {
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Notifications;
@@ -3755,7 +3755,7 @@ MailMessage クラスの関数を使用して、E メール通知の内容を作
 > - [8.x 通知 Laravel](https://readouble.com/laravel/8.x/ja/notifications.html#writing-the-message)
 > - https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_markdown
 
-```php
+```injectablephp
 <?php
 
 namespace App\Notifications;
@@ -3805,7 +3805,7 @@ class TfaTokenNotification extends Notification
 
 #### ▼ SMS 通知内容の定義
 
-```php
+```injectablephp
 <?php
 
 namespace App\Notifications;
@@ -3854,7 +3854,7 @@ class TfaTokenNotification extends Notification
 
 配列で DB に保管する内容を定義する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Notifications;
@@ -3914,7 +3914,7 @@ AWS から配布されているパッケージが必要である。
 $ composer require aws/aws-sdk-php-laravel
 ```
 
-```php
+```injectablephp
 <?php
 
 namespace App\Notifications\Channels;
@@ -3987,7 +3987,7 @@ Notifiable トレイトを継承する。
 
 これにより、`notify()` 関数を使用できるようになる。
 
-```php
+```injectablephp
 <?php
 
 namespace App;
@@ -4007,7 +4007,7 @@ class User extends Authenticatable
 
 これにより、通知処理が実行される。
 
-```php
+```injectablephp
 <?php
 
 $user->notify(new FooNotification());
@@ -4021,7 +4021,7 @@ $user->notify(new FooNotification());
 
 Notifiable トレイトを継承する。
 
-```php
+```injectablephp
 <?php
 
 namespace App;
@@ -4037,7 +4037,7 @@ class User extends Authenticatable
 
 Notification ファサードに通知先のモデルと通知クラスを渡す。
 
-```php
+```injectablephp
 <?php
 
 Notification::send($users, new FooNotification());
@@ -4047,7 +4047,7 @@ Notification::send($users, new FooNotification());
 
 オンデマンド通知を使用すると、通知対象となるモデルは Notificable トレイトに依存せず、通知できる。
 
-```php
+```injectablephp
 <?php
 
 Notification::route('mail', $user->email_address)
@@ -4085,7 +4085,7 @@ Laravel はレスポンスの JSON 型データを作成するために、まず
 
 Foo クラスからデータを取り出し、配列化する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Resources;
@@ -4114,7 +4114,7 @@ class FooJsonResource extends JsonResource
 
 ```
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -4145,7 +4145,7 @@ class FooController extends Controller
 
 複数の Eloquent モデル (Collection 型) を配列に変換する。
 
-```php
+```injectablephp
 <?php
 
 // ここに実装例
@@ -4165,7 +4165,7 @@ API のエンドポイントとして働くルーティング処理を実装す�
 
 API のエンドポイントは外部公開する必要があるため、`web` キーと比較して、セキュリティのためのミドルウェアが設定されていない。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http;
@@ -4210,7 +4210,7 @@ API 以外のルーティングは外部公開する必要がないため、`api
 
 例えば、CSRF 対策のための VerifyCsrfToken クラスがある。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http;
@@ -4264,7 +4264,7 @@ class Kernel extends HttpKernel
 
 ルーティング時に、パスパラメーター名を `user` としておく。
 
-```php
+```injectablephp
 <?php
 
 Route::get('/users/{user}', 'UserController@index');
@@ -4276,7 +4276,7 @@ Route::get('/users/{user}', 'UserController@index');
 
 このとき、『`/users/1`』へリクエストを送信すると、ユーザーID が `1` のユーザーが DB から読み出され、コントローラーにインジェクションされる。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -4367,7 +4367,7 @@ return pm.sendRequest("http://127.0.0.1:8000", (error, response, {cookies}) => {
 
 DB ファサードを使用して、初期データを定義する。
 
-```php
+```injectablephp
 <?php
 
 use Illuminate\Database\Seeder;
@@ -4425,7 +4425,7 @@ class ProductsSeeder extends Seeder
 
 実行者名は、定数として管理しておくとよい。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Constants;
@@ -4464,7 +4464,7 @@ DB ファサードを使用するよりも。
 
 > - [How to Import Large CSV Files into MySQL Faster \| i-407](https://i-407.com/blog/tech/n3/)
 
-```php
+```injectablephp
 <?php
 
 use Illuminate\Database\Seeder;
@@ -4520,7 +4520,7 @@ class ProductsSeeder extends Seeder
 
 DatabaseSeeder にて、すべての Seeder をまとめて実行する。
 
-```php
+```injectablephp
 <?php
 
 use Illuminate\Database\Seeder;
@@ -4584,7 +4584,7 @@ class DatabaseSeeder extends Seeder
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 "providers" => [
@@ -4605,7 +4605,7 @@ ServiceContainer、バインド、リゾルブについては、以下のリン�
 
 > - [【IT技術の知見】クラス＠PHP - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html)
 
-```php
+```injectablephp
 <?php
 
 namespace Illuminate\Contracts\Container;
@@ -4659,7 +4659,7 @@ Laravel では、クラスは ServiceContainer に自動的にバインドされ
 
 注意点として、Laravel では不要である。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Providers;
@@ -4687,7 +4687,7 @@ class FooServiceProvider extends ServiceProvider
 
 引数の型を元に、クラスのインスタンスがリゾルブされる。
 
-```php
+```injectablephp
 <?php
 
 class Qux
@@ -4705,7 +4705,7 @@ class Qux
 
 引数の型を指定しない場合は、手動で渡す必要がある。
 
-```php
+```injectablephp
 <?php
 
 use App\Models\Foo;
@@ -4728,7 +4728,7 @@ $qux = new Qux($foo); // 手動で渡す
 
 混合型の場合は、引数の型を指定できないため、リゾルブを実行できない。
 
-```php
+```injectablephp
 <?php
 
 use App\Models\Foo1;
@@ -4760,7 +4760,7 @@ $qux = new Qux($foo1);
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Providers;
@@ -4826,7 +4826,7 @@ Laravel ではクラスが自動的にバインドされ、そのインスタン
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Providers;
@@ -4852,7 +4852,7 @@ class FooServiceProvider extends ServiceProvider
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 class Interactor
@@ -4882,7 +4882,7 @@ class Interactor
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -4914,7 +4914,7 @@ Laravel のライフサイクルで、ServiceContainer にクラスをバイン�
 
 複数のテーブルに共通のカラムを作成する DB マイグレーション処理を提供する。
 
-```php
+```injectablephp
 <?php
 
 declare(strict_types=1);
@@ -4971,7 +4971,7 @@ class MigrationMacroServiceProvider extends ServiceProvider
 
 DB マイグレーションファイルにて、定義した `systemColumn()` 関数をコールする。
 
-```php
+```injectablephp
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -5015,7 +5015,7 @@ class CreateFooTable extends Migration
 
 最後に、`app.php` ファイルにて、MigrationMacroServiceProvider を新しく読み込む。
 
-```php
+```injectablephp
 <?php
 
 return [
@@ -5046,7 +5046,7 @@ return [
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 declare(strict_types=1);
@@ -5092,7 +5092,7 @@ class RouteServiceProvider extends ServiceProvider
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 declare(strict_types=1);
@@ -5144,7 +5144,7 @@ Event と Listener の対応関係を定義する。
 
 注意点として、Event を発火させて Listener を実行する方法は、Event コンポーネントを参考にせよ。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Providers;
@@ -5187,7 +5187,7 @@ class EventServiceProvider extends ServiceProvider
 
 #### ▼ 設定ファイル
 
-```php
+```injectablephp
 <?php
 
 use Illuminate\Support\Str;
@@ -5252,7 +5252,7 @@ FormRequest クラスの `session()` 関数は Store クラスを返却する。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;

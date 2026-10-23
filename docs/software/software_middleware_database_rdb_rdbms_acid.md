@@ -103,7 +103,7 @@ PDO では書き込み処理に `exec()` 関数、読み出し処理に `query()
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 try{
     // DBと接続する。

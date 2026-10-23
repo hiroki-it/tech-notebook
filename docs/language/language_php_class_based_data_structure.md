@@ -100,7 +100,7 @@ PHP の `list()` 関数は、List 型とは意味合いが異なる。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $array = array("あ", "い", "う");
@@ -115,7 +115,7 @@ echo $a.$i.$u; // あいう
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 list($a, $i, $u) = array("あ", "い", "う");
@@ -141,7 +141,7 @@ PHP では、`array_push()` 関数と `array_shift()` 関数を組み合わせ�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 $array = array("Blue", "Green");
 
@@ -332,7 +332,7 @@ PHP の連想配列に相当する。
 
 #### ▼ object
 
-```php
+```injectablephp
 <?php
 
 class A
@@ -403,7 +403,7 @@ print_r($a);
 
 #### ▼ `(string)`
 
-```php
+```injectablephp
 <?php
 
 $var = 10; // $varはinteger型。
@@ -414,7 +414,7 @@ $var = (string) $var; // $varはstring型
 
 #### ▼ `(int)`
 
-```php
+```injectablephp
 <?php
 
 $var = 1;
@@ -427,7 +427,7 @@ $var = (int) $var;
 
 #### ▼ `(bool)`
 
-```php
+```injectablephp
 <?php
 
 $var = 1;
@@ -440,7 +440,7 @@ $var = (bool) $var;
 
 #### ▼ `(float)`
 
-```php
+```injectablephp
 <?php
 
 $var = "1.0";
@@ -453,7 +453,7 @@ $var = (float) $var;
 
 #### ▼ `(array)`
 
-```php
+```injectablephp
 <?php
 
 // 配列型
@@ -462,7 +462,7 @@ $var = (array) $var;
 
 #### ▼ `(object)`
 
-```php
+```injectablephp
 <?php
 
 // Object型

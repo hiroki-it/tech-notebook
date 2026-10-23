@@ -122,7 +122,7 @@ Book ルートエンティティと Review ルートエンティティは親子�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Usecase\Foo\Interactors;
@@ -178,7 +178,7 @@ class FooCreateInteractor
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 namespace App\Usecase\Foo\Interactors;
@@ -318,7 +318,7 @@ class FooInteractor
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Usecase\Foo\InputBoundaries;
@@ -378,7 +378,7 @@ interface FooInteractorInterface
 
 インターラクターの関数ごとにリクエストモデルを用意するとよい。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Interface\Foo\Requests;
@@ -427,7 +427,7 @@ class FooCreateRequest
 
 JSON レスポンス関数が配列構造を引数に受け付けるため、これに渡せるよう、自身を配列構造に変換する関数を持たせる。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Interface\Foo\Responses;
@@ -461,7 +461,7 @@ class FooIndexResponse
 
 ユースケース層の create 関数に対応するレスポンスモデル。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Interface\Foo\Responses;
@@ -523,7 +523,7 @@ class FooCreateResponse
 
 エンティティへの通知処理をアプリケーションサービスとして切り分ける。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Usecase\Foo\Services\Notify;
@@ -552,7 +552,7 @@ class NotifyFooService
 
 これを、ユースケース層でコールする。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Usecase\Foo\Services;

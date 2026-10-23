@@ -92,7 +92,7 @@ description: インフラストラクチャ層＠クリーンアーキテクチ�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 declare(strict_types=1);
@@ -169,7 +169,7 @@ DB に対する書き込み操作をする。
 
 `CREATE` 処理のため、Laravel の `insert()` 関数を実行する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Infrastructure\Foo\Repositories;
@@ -201,7 +201,7 @@ class DogToyRepository
 
 `UPDATE` 処理のため、Laravel の `update()` 関数を実行する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Infrastructure\Foo\Repositories;
@@ -234,7 +234,7 @@ class DogToyRepository
 
 `DELETE` 処理 (論理削除) のため、Laravel の `update()` 関数を実行する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Infrastructure\Foo\Repositories;
@@ -292,7 +292,7 @@ DB に対する書き込み操作をする。
 
 `READ` 処理のため、Doctrine の QueryBuilder クラスの `select()` 関数を実行する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Infrastructure\Foo\Repositories;
@@ -378,7 +378,7 @@ class DogToyRepository
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Infrastructure\Foo\Factories;

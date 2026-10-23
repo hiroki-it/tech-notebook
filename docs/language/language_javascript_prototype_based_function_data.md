@@ -534,7 +534,7 @@ for (const property in object) {
 
 反復処理の現在のループをスキップし、次のループを開始する。
 
-```php
+```javascript
 const array = ["foo", "bar", "baz"];
 
 for (const [key, value] of array.entries()) {

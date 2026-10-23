@@ -250,14 +250,14 @@ Composer のバージョンを設定する。
 
 エントリーポイント (`index.php` ファイル) あるいは `bootstrap.php` ファイルで、`autoload.php` ファイルを読み込むようにするとよい。
 
-```php
+```injectablephp
 <?php
 # エントリーポイント
 
 require_once realpath(__DIR__ . "/vendor/autoload.php");
 ```
 
-```php
+```injectablephp
 <?php
 # autoload.phpファイルの一部
 

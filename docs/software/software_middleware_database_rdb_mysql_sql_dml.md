@@ -235,7 +235,7 @@ FROM
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 $joinedIdList = implode(",", $idList);
 

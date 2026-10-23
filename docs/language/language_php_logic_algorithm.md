@@ -43,7 +43,7 @@ description: アルゴリズムロジック＠PHPの知見を記録していま�
 
 : この処理を `n-1` 回繰り返す。
 
-```php
+```injectablephp
 <?php
 function minSelectSort(array $array): array
 {
@@ -82,7 +82,7 @@ function minSelectSort(array $array): array
 }
 ```
 
-```php
+```injectablephp
 <?php
 // 実際に使用してみる。
 $array = array(10,2,12,7,16,8,13);
@@ -135,7 +135,7 @@ var_dump($result);
 
 : ソートを繰り返し実行する。
 
-```php
+```injectablephp
 <?php
 function quickSort(array $array): array
 {
@@ -182,7 +182,7 @@ function quickSort(array $array): array
 }
 ```
 
-```php
+```injectablephp
 <?php
 // 実際に使用してみる。
 $array = array(6, 4, 3, 7, 8, 5, 2, 9, 1);
@@ -351,7 +351,7 @@ var_dump($result);
 
 ![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
 
-```php
+```injectablephp
 <?php
 // 各地点間の距離を二次元の連想配列で定義
 $matrix = array(
@@ -365,7 +365,7 @@ $matrix = array(
 );
 ```
 
-```php
+```injectablephp
 <?php
 // 各地点間の距離、出発地点、開始地点を引数にとる。
 function bestFirstSearchByDijkstra(

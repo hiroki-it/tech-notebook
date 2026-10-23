@@ -44,7 +44,7 @@ description: ユーティリティパッケージ＠PHPの知見を記録して�
 
 DateTime インスタンスを引数として、Carbon インスタンスを作成する。
 
-```php
+```injectablephp
 <?php
 
 $datetime = new \DateTime("2019-07-07 19:07:07");
@@ -59,7 +59,7 @@ echo $carbon; // 2019-07-07 19:07:07
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $carbon = Carbon::create(2019, 07, 07, 19, 07, 07);
@@ -75,7 +75,7 @@ echo $carbon; // 2019-07-07 19:07:07
 
 日時数字から Carbon インスタンスを作成する。
 
-```php
+```injectablephp
 <?php
 
 // 日時数字から、Carbonインスタンスを作成する。
@@ -86,7 +86,7 @@ echo $carbonFromeDate; // 2019-07-07
 
 時間数字から Carbon インスタンスを作成する。
 
-```php
+```injectablephp
 <?php
 
 // 時間数字から、Carbonインスタンスを作成する。
@@ -99,7 +99,7 @@ echo $carbonFromTime; // 19:07:07
 
 第一引数でフォーマットを指定する必要がある。
 
-```php
+```injectablephp
 <?php
 
 // 日付、時間、日時フォーマットから、Carbonインスタンスを作成する。
@@ -111,7 +111,7 @@ echo $carbonFromFormat; // 2019-07-07 19:07:07
 
 タイムスタンプフォーマットから Carbon インスタンスを作成する。
 
-```php
+```injectablephp
 <?php
 
 // タイムスタンプフォーマットから、Carbonインスタンスを作成する。
@@ -128,7 +128,7 @@ echo $carbonFromTimestamp; // 2019-07-07 19:07:07
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $carbon = Carbon::parse("2019-07-07 19:07:07");
@@ -154,7 +154,7 @@ SQL の `SELECT` や `WHERE` といった単語を使用して、`foreach` の�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 use Pinq\Traversable;
@@ -199,7 +199,7 @@ class Foo
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 use GuzzleHttp\Client;
@@ -222,7 +222,7 @@ $response = $client->request(
 
 #### ▼ POST リクエスト
 
-```php
+```injectablephp
 <?php
 
 use GuzzleHttp\Client;
@@ -260,7 +260,7 @@ $response = $client->request(
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 use GuzzleHttp\Client;
@@ -310,7 +310,7 @@ $body = json_decode($response->getBody(), true);
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $snappy = new Pdf("/usr/local/bin/wkhtmltopdf");
@@ -330,7 +330,7 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 
 > - [GitHub - Respect/Validation: The most awesome validation engine ever created for PHP · GitHub](https://github.com/Respect/Validation)
 
-```php
+```injectablephp
 <?php
 
 // ここに実装例

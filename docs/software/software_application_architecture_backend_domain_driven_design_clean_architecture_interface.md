@@ -76,7 +76,7 @@ SSO の場合を選んだユーザーの場合、ID プロバイダーから取�
 
 日時データのフォーマットを検証する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Interface\Foo\Validators;
@@ -112,7 +112,7 @@ class FormatValidator
 
 受信した URL クエリストリングの形式が誤っていた場合、デフォルト値で処理するように実装するとよい。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Interface\Foo\Validators;

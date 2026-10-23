@@ -63,7 +63,7 @@ SQL の種類が異なっていても、共通のロジックでクエリを送�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $sql = "SELECT * FROM doraemon_characters";
@@ -105,7 +105,7 @@ print_r($data);
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $sql = "SELECT COUNT(*) FROM doraemon_characters";
@@ -127,7 +127,7 @@ print_r($data);
 
 #### ▼ `INSERT`
 
-```php
+```injectablephp
 <?php
 
 // $_POSTを使用して、送信されたPOSTメソッドのリクエストを受け取り、属性から各値を取得する。

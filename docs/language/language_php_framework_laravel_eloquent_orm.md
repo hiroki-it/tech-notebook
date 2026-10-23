@@ -60,7 +60,7 @@ Eloquent モデルを継承したクラスは、`INSERT` 文や `UPDATE` 文な�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -85,7 +85,7 @@ Eloquent がクラス名の複数形をテーブル名と見なし、これを�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -111,7 +111,7 @@ ER 図における各テーブルのリレーションシップを元に、モ�
 
 Department モデルで、`hasMany()` 関数を使用して、Department モデル (親) と Employees モデル (子) のテーブル関係を定義する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -140,7 +140,7 @@ class Department extends Model
 
 また、Employees モデルでは、`belongsTo()` 関数を使用して、Department モデル (親) と Employees モデル (子) のテーブル関係を定義する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -171,7 +171,7 @@ class Employee extends Model
 
 これにより、Department モデルの ID に紐付く Employees モデル (子) を配列で参照できる。
 
-```php
+```injectablephp
 <?php
 
 // Departmentオブジェクトを取得
@@ -193,7 +193,7 @@ Eloquent は、`primaryKey` プロパティの値を主キーのカラム名と�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -227,7 +227,7 @@ Eloquent は、`timestamps` プロパティの値が `true` のときに、Eloqu
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -252,7 +252,7 @@ DB からタイムスタンプ型カラムの Read 処理を実行すると同�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -280,7 +280,7 @@ class User extends Model
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -308,7 +308,7 @@ class Foo extends Model
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -332,7 +332,7 @@ class Foo extends Model
 
 これらのいずれかの設定は、Eloquent モデルで必須である。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -366,7 +366,7 @@ Laravel では、プロパティを定義しなくても、Eloquent モデルか
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -402,7 +402,7 @@ Laravel では、`getFooBarAttribute()` という名前の関数を、`foo_bar` 
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -430,7 +430,7 @@ class Foo extends Model
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 $foo = Foo::find(1);
@@ -449,7 +449,7 @@ PHP のオブジェクト型を JSON に変換 (シリアライズ) する。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $collection = collect([
@@ -467,7 +467,7 @@ $collection = collect([
 $collection->toArray();
 ```
 
-```php
+```injectablephp
 <?php
 
 $users = App\User::all();
@@ -482,7 +482,7 @@ JSON を PHP のオブジェクト型に変換 (デシリアライズ) する。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 実装中...
 ```
 
@@ -496,7 +496,7 @@ JSON を PHP のオブジェクト型に変換 (デシリアライズ) する。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $collection = collect([1, 2, 3, 4]);
@@ -515,7 +515,7 @@ $filtered->all();
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $collection = collect([1, 2, 3, 4, "yes"]);
@@ -542,7 +542,7 @@ $filtered->all();
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $collection = collect([1, 2, 3, 4]);
@@ -630,7 +630,7 @@ Eloquent モデルには `create()` 関数がない。代わりに、 Eloquent �
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -666,7 +666,7 @@ class FooController extends Controller
 
 Eloquent モデルには `fillable` プロパティを設定しておく。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -704,7 +704,7 @@ Eloquent モデルには `all()` 関数がない。代わりに、 Eloquent ビ�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -743,7 +743,7 @@ Eloquent モデルには `find()` 関数がない。代わりに、 Eloquent ビ
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -782,7 +782,7 @@ foreach を使用してコレクションから Eloquent モデルを取り出�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -816,7 +816,7 @@ class FooController extends Controller
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -855,7 +855,7 @@ class FooController extends Controller
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -898,7 +898,7 @@ class FooController extends Controller
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -927,7 +927,7 @@ class FooController extends Controller
 
 指定したカラムの降順でレコードを並び替える SELECT 句を発行する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -976,7 +976,7 @@ N+1 問題を防げる。
 
 これらのモデルの間では、`hasMany()` 関数と `belongsTo()` 関数を使用して、テーブルにおける一対多のリレーションを定義しておく。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;
@@ -1006,7 +1006,7 @@ class EmployeeController
 
 Department (親) に、departments テーブルと employees テーブルの間に、一対多の関係を定義する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Models\Department;
@@ -1040,7 +1040,7 @@ class Department extends Model
 
 また、Employee (子) に、反対の多対一の関係を定義する。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Models\Department;
@@ -1086,7 +1086,7 @@ Eloquent ビルダーの `fill()` 関数で挿入先のカラムと値を設定�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Infrastructure\Repositories;
@@ -1117,7 +1117,7 @@ class FooController extends Controller
 
 Eloquent モデルには `fillable` プロパティを設定しておく。
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -1163,7 +1163,7 @@ DB マイグレーション時に追加される `delete_at` カラムを SQL �
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -1193,7 +1193,7 @@ DB マイグレーションファイルにて `softDeletes()` 関数を使用す
 
 `deleted_at` カラムのデフォルト値は `NULL` である。
 
-```php
+```injectablephp
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -1269,7 +1269,7 @@ Laravel は Active Record パターンを採用しており、これはビジネ
 
 そのため、Repository パターンを実現できる。
 
-```php
+```injectablephp
 <?php
 
 declare(strict_types=1);
@@ -1341,7 +1341,7 @@ final class FooDTO extends Model
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Infrastructure\Repositories;
@@ -1390,7 +1390,7 @@ class FooRepository extends Repository implements DomainFooRepository
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -1415,7 +1415,7 @@ class FooDTO extends Model
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Infrastructure\Foo\Repositories;
@@ -1461,7 +1461,7 @@ class FooRepository extends Repository implements DomainFooRepository
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Infrastructure\Foo\Repositories;
@@ -1515,7 +1515,7 @@ class FooRepository extends Repository implements DomainFooRepository
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Infrastructure\Foo\Repositories;
@@ -1557,7 +1557,7 @@ class FooRepository extends Repository implements DomainFooRepository
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 namespace App\Domain\DTO;
@@ -1582,7 +1582,7 @@ class FooDTO extends Model
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 namespace App\Infrastructure\Repositories;
@@ -1619,7 +1619,7 @@ class FooRepository extends Repository implements DomainFooRepository
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 namespace App\Http\Controllers;

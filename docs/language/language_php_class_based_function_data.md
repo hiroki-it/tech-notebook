@@ -30,7 +30,7 @@ title: 【IT技術の知見】振る舞い／状態＠PHP
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -59,7 +59,7 @@ class Foo
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -88,7 +88,7 @@ class Foo
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -113,7 +113,7 @@ class Foo
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 function foo($state){
@@ -140,7 +140,7 @@ foo($state);
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Foo extends ParentFoo
@@ -164,7 +164,7 @@ class Foo extends ParentFoo
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 function foo($state){
@@ -193,7 +193,7 @@ foo($state);
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -224,7 +224,7 @@ class Foo
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 function foo($state){
@@ -257,7 +257,7 @@ foo($state);
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -272,7 +272,7 @@ class Foo
 
 #### ▼ `self::`
 
-```php
+```injectablephp
 <?php
 
 // ここに実装例
@@ -280,7 +280,7 @@ class Foo
 
 #### ▼ `static::`
 
-```php
+```injectablephp
 <?php
 
 // ここに実装例
@@ -312,7 +312,7 @@ Getter では、状態を取得するのみではなく、何かしらの処理�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class ABC {
@@ -341,7 +341,7 @@ class ABC {
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Test01 {
@@ -364,7 +364,7 @@ Setter を持たせずに、`__construct()` 関数のみを持たせれば、Val
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Test02 {
@@ -385,7 +385,7 @@ Test01 クラスインスタンスの `$property01` に値を設定するため�
 
 Setter は何度でも呼び出せ、そのたびにデータの値を上書きできる。
 
-```php
+```injectablephp
 <?php
 
 class Test01
@@ -406,7 +406,7 @@ $test01->setProperty01("新しいデータ01の値");
 
 Setter を持たせずに、`__construct()` 関数のみを持たせれば、『イミュータブル』なクラスとなる。
 
-```php
+```injectablephp
 <?php
 
 class Test02
@@ -443,7 +443,7 @@ PHP には最初からマジック関数は組み込まれているが、自身�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 class Foo
 {
@@ -498,7 +498,7 @@ PHP には最初からマジック関数は組み込まれているが、自身�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 class Foo
 {
@@ -514,7 +514,7 @@ class Foo
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 class Foo {
@@ -539,7 +539,7 @@ Setter を持たせずに、`__construct()` 関数のみで値を設定すれば
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Test02
@@ -562,7 +562,7 @@ Test01 クラスインスタンスの `$property01` に値を設定するため�
 
 Setter は何度でもコールでき、そのたびにデータの値を上書きできる。
 
-```php
+```injectablephp
 <?php
 
 $test01 = new Test01;
@@ -578,7 +578,7 @@ $test01->setProperty01("新しいデータ01の値");
 
 Setter を持たせずに、`__construct()` 関数のみを持たせれば、『イミュータブル』なオブジェクトとなる。
 
-```php
+```injectablephp
 <?php
 
 $test02 = new Test02("データ02の値");
@@ -596,7 +596,7 @@ $test02 = new Test02("新しいデータ02の値");
 
 `__invoke()` 関数自体は無名関数として扱われる。
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -621,7 +621,7 @@ $foo([1, 2, 3]);
 
 #### ▼ `__clone()` 関数
 
-```php
+```injectablephp
 <?php
 
 // ここに実装例
@@ -635,7 +635,7 @@ $foo([1, 2, 3]);
 
 どちらも、new 演算子と組み合わせて、自身のインスタンスを返却する関数であるが、作成の対象になるクラスが異なる。
 
-```php
+```injectablephp
 <?php
 
 class A
@@ -658,7 +658,7 @@ class A
 }
 ```
 
-```php
+```injectablephp
 <?php
 class B extends A {}
 ```
@@ -669,7 +669,7 @@ class B extends A {}
 
 自身のインスタンス化処理が継承される場合は、`static()` 関数を使用したほうがよい。
 
-```php
+```injectablephp
 <?php
 
 echo get_class(B::get_self());   // 継承元のクラスA
@@ -689,7 +689,7 @@ echo get_class(A::get_static()); // 継承元のクラスA
 
 【オブジェクト A (オブジェクト B を状態に持つ) 】
 
-```php
+```injectablephp
 <?php
 
 class Obj_A
@@ -706,7 +706,7 @@ class Obj_A
 
 【オブジェクト B (オブジェクト C を状態に持つ) 】
 
-```php
+```injectablephp
 <?php
 
 class Obj_B
@@ -723,7 +723,7 @@ class Obj_B
 
 【オブジェクト C (オブジェクト D を状態に持つ) 】
 
-```php
+```injectablephp
 <?php
 
 class Obj_C
@@ -740,7 +740,7 @@ class Obj_C
 
 以下のように、返却値のオブジェクトを使用して、より深い層に連続してアクセスしていく場合…
 
-```php
+```injectablephp
 <?php
 
 $ObjA = new Obj_A;
@@ -754,7 +754,7 @@ $ObjD = $ObjC->objD();
 
 以下のように、関数チェーンという書き方が可能。
 
-```php
+```injectablephp
 <?php
 
 $D = objB()->objC()->objD();
@@ -796,7 +796,7 @@ $D = objB()->objC()->objD();
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -864,7 +864,7 @@ var_dump($result);
 
 引数が与えられなければ、指定の値を渡す方法
 
-```php
+```injectablephp
 <?php
 
 // ここに実装例
@@ -878,7 +878,7 @@ var_dump($result);
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -900,7 +900,7 @@ $foo->returnMethod(); // returnMethod()です。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -934,7 +934,7 @@ $foo->exitMethod(); // exitMethod()です。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -971,7 +971,7 @@ foreach ($oneToThree as $value) {
 
 特定の名前と関数を紐付け、名前を渡すことにより、関数をコールするオブジェクトを Dispatcher という。
 
-```php
+```injectablephp
 <?php
 
 class Dispatcher
@@ -1005,7 +1005,7 @@ $dispatcher->dispatch("foo", "test");
 
 フレームワークの `EventDispatcher` クラスが簡単である。
 
-```php
+```injectablephp
 <?php
 
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -1026,7 +1026,7 @@ class FooEventDispatcher
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class ResultCacher
@@ -1110,7 +1110,7 @@ class ResultCacher
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Item
@@ -1137,7 +1137,7 @@ echo $optionName();
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 class Item
 {
@@ -1164,7 +1164,7 @@ echo $optionName("BC");
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Item
@@ -1206,7 +1206,7 @@ echo $option->name("BC");
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Item
@@ -1242,7 +1242,7 @@ echo $optionName;
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 // 第一引数のみの場合
@@ -1280,7 +1280,7 @@ $foo->test("callbackMethod");
 // 出力に成功しました。
 ```
 
-```php
+```injectablephp
 <?php
 
 // 第一引数と第二引数の場合
@@ -1324,7 +1324,7 @@ $foo->higherOrder("第一引数", "callbackMethod");
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -1364,7 +1364,7 @@ $foo->higherOrder($parentVar, function () use ($parentVar) {
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -1417,7 +1417,7 @@ class Foo
 
 #### ▼ フラグ ON/OFF
 
-```php
+```injectablephp
 <?php
 
 declare(strict_types=1);
@@ -1481,7 +1481,7 @@ URL を文字列を定数として扱う。
 
 以下の実装を持つファイルを、`/var/www/foo` ディレクトリ下に配置しておき、`/vendor/autoload.php` ファイルと結合してパスを通す。
 
-```php
+```injectablephp
 <?php
 
 # /var/www/foo/vendor/autoload.php
@@ -1494,7 +1494,7 @@ require_once realpath(__DIR__ . "/vendor/autoload.php");
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -1506,7 +1506,7 @@ class Foo
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -1524,7 +1524,7 @@ $foo->foo(); // foo が返却される。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 class Foo
@@ -1536,7 +1536,7 @@ class Foo
 }
 ```
 
-```php
+```injectablephp
 <?php
 
 $foo = new Foo;
@@ -1559,7 +1559,7 @@ $foo->foo(); // Foo::foo が返却される。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $fruit = "リンゴ";
@@ -1574,7 +1574,7 @@ echo 'これは$fruitです。'; // これは、$fruitです。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $fruit = "リンゴ";
@@ -1589,7 +1589,7 @@ echo 'これは{$fruit}です。'; // これは、{$fruit}です。
 
 (※半角スペースがないとエラーになってしまう)
 
-```php
+```injectablephp
 <?php
 
 
@@ -1605,7 +1605,7 @@ echo "これは $fruit です。"; // これは リンゴ です。
 
 これによって、変数の前後に半角スペースを配置しなくとも、変数は展開される。
 
-```php
+```injectablephp
 <?php
 
 $fruit = "リンゴ";
@@ -1622,7 +1622,7 @@ echo "これは{$fruit}です。"; // これは、リンゴです。
 
 『参照渡し』とは、変数に代入した値の参照先 (メモリアドレス) を渡すこと。
 
-```php
+```injectablephp
 <?php
 
 $value = 1;
@@ -1633,7 +1633,7 @@ $result = &$value; // 値の入れ物を参照先として代入
 
 変数の `$b` には、`$a` の参照によって 10 が格納される。
 
-```php
+```injectablephp
 <?php
 
 $a = 2;
@@ -1648,7 +1648,7 @@ echo $b; // 10
 
 『値渡し』とは、変数に代入した値のコピーを渡すこと。
 
-```php
+```injectablephp
 <?php
 
 $value = 1;
@@ -1659,7 +1659,7 @@ $result = $value; // 1をコピーして代入
 
 変数の `$b` には、`$a` の１行目の格納によって 2 が格納される。
 
-```php
+```injectablephp
 <?php
 
 $a = 2;
@@ -1687,7 +1687,7 @@ stdin：standard in (標準入力) を意味する。
 
 PHP のプロセスが、標準入力に対して、読み出し処理を送信できるようになる。
 
-```php
+```injectablephp
 <?php
 
 // ログを読み出す
@@ -1700,7 +1700,7 @@ stdout：standard out (標準出力) を意味する。
 
 PHP のプロセスが、標準出力に対して、書き込み処理を送信できるようになる。
 
-```php
+```injectablephp
 <?php
 
 // ログを書き込む
@@ -1714,7 +1714,7 @@ stderr：standard error (標準出力エラー) を意味する。
 
 PHP のプロセスが、標準エラー出力に対して、書き込み処理を送信できるようになる。
 
-```php
+```injectablephp
 <?php
 
 // エラーログを書き込む
@@ -1734,7 +1734,7 @@ fwrite($stderr, "エラーログです。");
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $array = [];
@@ -1769,7 +1769,7 @@ file_put_contents(
 
 『`0` から `9` のいずれか』の数字を意味する。
 
-```php
+```injectablephp
 <?php
 
 $var = "0123456789";
@@ -1786,7 +1786,7 @@ var_dump($result); // true
 
 『`a` から `z` のいずれか』または『A から Z のいずれか』のアルファベットを意味する。
 
-```php
+```injectablephp
 <?php
 
 $var = "aAbBcC";
@@ -1807,7 +1807,7 @@ var_dump($result); // true
 
 『`?`』『`.`』『`*`』『`$`』のいずれかのメタ文字を意味する。
 
-```php
+```injectablephp
 <?php
 
 $var = "?";
@@ -1827,7 +1827,7 @@ var_dump($result); // 1
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $var = "FooBarBaz";
@@ -1838,7 +1838,7 @@ $result = preg_match("/Foo.*/", $var);
 var_dump($result); // 1
 ```
 
-```php
+```injectablephp
 <?php
 
 $var = "FooBarBaz";
@@ -1855,7 +1855,7 @@ var_dump($result); // 1
 
 > - http://www.ipc.juen.ac.jp/contents/manuals/spam/regular.html
 
-```php
+```injectablephp
 <?php
 
 $var = "FooBarBaz";
@@ -1870,7 +1870,7 @@ var_dump($result); // 1
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $var = "jpeg";
@@ -1881,7 +1881,7 @@ $result = preg_match("/jpeg$/i", $var);
 var_dump($result); // 1
 ```
 
-```php
+```injectablephp
 <?php
 
 $var = "JPEG";
@@ -1900,7 +1900,7 @@ var_dump($result); // 1
 
 > - [正規表現の基礎](http://www.turtle.gr.jp/techno/regular-expression.html)
 
-```php
+```injectablephp
 <?php
 
 $var = "abcabcabc";

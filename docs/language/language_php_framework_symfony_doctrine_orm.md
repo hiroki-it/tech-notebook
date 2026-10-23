@@ -33,7 +33,7 @@ CRUD 処理に必要な SQL を保持し、トランザクションによって 
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 // QueryBuilderインスタンスを作成。
@@ -52,7 +52,7 @@ QueryBuilder クラスの `select()` 関数に、値を設定する。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $queryBuilder
@@ -70,7 +70,7 @@ QueryBuilder クラスの `insert()` 関数に、値を設定する。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $queryBuilder
@@ -83,7 +83,7 @@ QueryBuilder クラスの `update()` 関数に、値を設定する。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $queryBuilder
@@ -96,7 +96,7 @@ QueryBuilder クラスの `delete()` 関数に、値を設定する。
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $queryBuilder
@@ -115,7 +115,7 @@ DB 接続に関わる `getConnection()` 関数を開始点として、返り値�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 // DBに接続。
@@ -138,7 +138,7 @@ $queryBuilder->getConnection()
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 use Doctrine\DBAL\Connection;
@@ -184,7 +184,7 @@ class DogToyQuery
 
 読み出し系で取得したデータをキャッシュできる。
 
-```php
+```injectablephp
 <?php
 
 use Doctrine\Common\Cache\FilesystemCache;
@@ -229,7 +229,7 @@ RDB の処理用語に相当する `beginTransaction()` 関数、`commit()` 関�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 $conn = new Doctrine\DBAL\Connection;

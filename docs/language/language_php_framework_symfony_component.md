@@ -77,7 +77,7 @@ symfony/
 
 ### Console
 
-```php
+```injectablephp
 <?php
 
 use Symfony\Component\Console\Application;
@@ -91,7 +91,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 ### HttpFoundation
 
-```php
+```injectablephp
 <?php
 
 use Symfony\Component\HttpFoundation\Request;
@@ -106,7 +106,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 ### HttpKernel
 
-```php
+```injectablephp
 <?php
 
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
@@ -119,7 +119,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 ### Pimple
 
-```php
+```injectablephp
 <?php
 
 use Pimple\ConfigSupport;
@@ -132,7 +132,7 @@ use Pimple\ServiceProviderInterface;
 
 ### Security
 
-```php
+```injectablephp
 <?php
 
 use Symfony\Component\Security\Core\AuthenticationEvents;
@@ -144,7 +144,7 @@ use Symfony\Component\Security\Csrf\CsrfTokenManager;
 
 ### EventDispatcher
 
-```php
+```injectablephp
 <?php
 
 use Symfony\Component\EventDispatcher\Event;
@@ -156,7 +156,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 ### Routing
 
-```php
+```injectablephp
 <?php
 
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
@@ -166,7 +166,7 @@ use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
 ### Cache
 
-```php
+```injectablephp
 <?php
 
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
@@ -184,7 +184,7 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 use Symfony\Component\Console\Command\LockableTrait;
@@ -296,7 +296,7 @@ done
 
 **【app.php の実装例】**
 
-```php
+```injectablephp
 <?php
 
 use Symfony\Component\HttpFoundation\Request;
@@ -327,7 +327,7 @@ $kernel->terminate($request, $response);
 
 ここで定義された `handle()` 関数が、C/A に対するルートの特定、特定された C/A の実行、テンプレートのレンダリングを実行する。
 
-```php
+```injectablephp
 <?php
 
 public function handle
@@ -364,7 +364,7 @@ public function handle
 
 (2) Ajax によるリクエストでない場合、ページレンダリングのみ
 
-```php
+```injectablephp
 <?php
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -397,7 +397,7 @@ class ExampleController extends AbstractController
 
 #### ▼ リクエストヘッダーの取得
 
-```php
+```injectablephp
 <?php
 
 // $_GET['foo']
@@ -451,7 +451,7 @@ Symfony から提供される IoC コンテナのこと。
 
 コントローラーに対するルーティングを設定する。
 
-```php
+```injectablephp
 <?php
 
 use App\Controller\BlogApiController; // ルーティング先のコントローラーを読み出し
@@ -481,7 +481,7 @@ return function (RoutingConfigurator $routes) {
 
 オプションで、名前空間、キャッシュ存続時間、キャッシュルートパスを指定できる。
 
-```php
+```injectablephp
 <?php
 
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;

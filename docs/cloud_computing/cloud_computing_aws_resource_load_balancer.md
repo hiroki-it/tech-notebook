@@ -388,7 +388,7 @@ ALB へのリクエストが HTTPS プロトコルだった場合は、ALB か�
 
 **＊実装例＊**
 
-```php
+```injectablephp
 <?php
 
 // index.php
