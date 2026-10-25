@@ -323,6 +323,8 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
 
 **＊表＊**
 
+各業務を別のマイクロサービスに分けた場合の設計例を示す。
+
 <table>
   <thead>
     <tr>
@@ -334,16 +336,34 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
   </thead>
   <tbody>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>受注管理</td>
+      <td>ordering</td>
+      <td>注文</td>
+      <td>Order（注文）、OrderItem（注文明細）</td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>在庫管理</td>
+      <td>inventory</td>
+      <td>在庫</td>
+      <td>Inventory（在庫）</td>
+    </tr>
+    <tr>
+      <td>発送管理</td>
+      <td>shipping</td>
+      <td>発送</td>
+      <td>Shipment（発送）、ShipmentItem（発送明細）</td>
+    </tr>
+    <tr>
+      <td>請求管理</td>
+      <td>billing</td>
+      <td>請求</td>
+      <td>Invoice（請求）、InvoiceItem（請求明細）</td>
+    </tr>
+    <tr>
+      <td>仕入れ管理</td>
+      <td>purchasing</td>
+      <td>仕入れ</td>
+      <td>PurchaseOrder（仕入れ注文）、PurchaseOrderItem（仕入れ明細）</td>
     </tr>
   </tbody>
 </table>
@@ -356,30 +376,87 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
 
 監視は監視設定や SLO、インシデント管理はインシデントの起票から解決、通知はアラート通知連携を扱う。ユーザー管理、認証、認可、使用量管理はそれぞれ別のコンテキストとして定義する。
 
+**＊表＊**
+
+<table>
+  <thead>
+    <tr>
+      <th>境界づけられたコンテキスト名</th>
+      <th>マイクロサービス名</th>
+      <th>集約名</th>
+      <th>集約内のエンティティ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>監視</td>
+      <td>monitoring</td>
+      <td>監視設定</td>
+      <td>Monitor（監視設定）</td>
+    </tr>
+    <tr>
+      <td>インシデント管理</td>
+      <td>incident</td>
+      <td>インシデント</td>
+      <td>Incident（インシデント）、IncidentHistory（対応履歴）</td>
+    </tr>
+    <tr>
+      <td>通知</td>
+      <td>notification</td>
+      <td>通知設定</td>
+      <td>NotificationSetting（通知設定）、NotificationDestination（通知先）</td>
+    </tr>
+    <tr>
+      <td>ユーザー管理</td>
+      <td>user</td>
+      <td>ユーザー</td>
+      <td>User（ユーザー）</td>
+    </tr>
+    <tr>
+      <td>認証</td>
+      <td>authentication</td>
+      <td>認証アカウント</td>
+      <td>Account（認証アカウント）</td>
+    </tr>
+    <tr>
+      <td>認可</td>
+      <td>authorization</td>
+      <td>ロール</td>
+      <td>Role（ロール）、Permission（権限）</td>
+    </tr>
+    <tr>
+      <td>使用量管理</td>
+      <td>usage</td>
+      <td>使用量</td>
+      <td>Usage（使用量）</td>
+    </tr>
+  </tbody>
+</table>
+
 ```mermaid
 flowchart LR
   subgraph core["コアドメイン"]
-    monitoring["監視"]
-    incident["インシデント管理"]
+    monitoring("監視")
+    incident("インシデント管理")
   end
   subgraph supporting["支援サブドメイン"]
-    notification["通知"]
+    notification("通知")
   end
   subgraph generic["汎用サブドメイン"]
-    userManagement["ユーザー管理"]
-    authentication["認証"]
-    authorization["認可"]
-    usageManagement["使用量管理"]
+    userManagement("ユーザー管理")
+    authentication("認証")
+    authorization("認可")
+    usageManagement("使用量管理")
   end
 
-  monitoring --> usageManagement
-  monitoring --> incident
-  monitoring --> notification
-  userManagement --> authentication
-  userManagement --> authorization
-  userManagement --> monitoring
-  userManagement --> usageManagement
-  authorization --> authentication
+  monitoring -->|使用量を参照| usageManagement
+  monitoring -->|インシデントの対応状況を参照| incident
+  monitoring -->|通知先の設定を参照| notification
+  userManagement -->|認証アカウントを参照| authentication
+  userManagement -->|ユーザーの権限を参照| authorization
+  userManagement -->|ユーザーに紐づく監視設定を参照| monitoring
+  userManagement -->|ユーザーの使用量を参照| usageManagement
+  authorization -->|認証済みユーザーの識別情報を参照| authentication
 ```
 
 #### ▼ 例：書籍 EC サイト
@@ -387,6 +464,10 @@ flowchart LR
 書籍 EC サイトの例。
 
 コアドメインとサブドメインに基づいたユビキタス言語と境界づけられたコンテキストを以下に示す。
+
+書籍の品ぞろえと在庫管理を強みとするサイトを想定し、仕入れと在庫管理をコアドメイン、マーケティングを支援サブドメインに分類する。各ノードは境界づけられたコンテキストを表し、矢印は依存する側から依存先へ向ける。同じ書籍を扱っていても、業務ごとに異なるモデルとデータを持つ。
+
+在庫管理は仕入れで扱う書籍情報を参照し、マーケティングは在庫状況を参照してクーポンの対象書籍を決める例とする。認証などの汎用サブドメインは、この図では省略する。
 
 バイヤー (仕入れ) 部、マーケティング部、在庫管理部のドメインエキスパートは、『本 (商品) 』という名詞に対する意味合い/定義づけが異なる。
 
@@ -411,19 +492,39 @@ flowchart LR
   </thead>
   <tbody>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>仕入れ</td>
+      <td>purchasing</td>
+      <td>本</td>
+      <td>Book（本）</td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>マーケティング</td>
+      <td>marketing</td>
+      <td>クーポン</td>
+      <td>Coupon（クーポン）</td>
+    </tr>
+    <tr>
+      <td>在庫管理</td>
+      <td>inventory</td>
+      <td>在庫</td>
+      <td>Inventory（在庫）</td>
     </tr>
   </tbody>
 </table>
+
+```mermaid
+flowchart LR
+  subgraph core["コアドメイン"]
+    purchasing("仕入れ")
+    inventoryManagement("在庫管理")
+  end
+  subgraph supporting["支援サブドメイン"]
+    marketing("マーケティング")
+  end
+
+  inventoryManagement -->|書籍情報の参照| purchasing
+  marketing -->|在庫状況の参照| inventoryManagement
+```
 
 ![book_ec_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/book_ec_ubiquitous_language.png)
 
@@ -477,6 +578,8 @@ class Book {
 
 **＊表＊**
 
+以下のマイクロサービス名、集約名、エンティティ名は、上記のコンテキストに基づく説明用の設計例であり、実際のサービス構成や実装名を示すものではない。
+
 <table>
   <thead>
     <tr>
@@ -489,33 +592,33 @@ class Book {
   <tbody>
     <tr>
       <td>認証</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>authentication</td>
+      <td>認証アカウント</td>
+      <td>Account（認証アカウント）</td>
     </tr>
     <tr>
       <td>予約</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>reservation</td>
+      <td>予約</td>
+      <td>Reservation（予約）</td>
     </tr>
     <tr>
       <td>顧客管理</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>customer</td>
+      <td>顧客</td>
+      <td>Customer（顧客）</td>
     </tr>
     <tr>
       <td>銀行支払い</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>bank-payment</td>
+      <td>銀行支払い</td>
+      <td>BankPayment（銀行支払い）</td>
     </tr>
     <tr>
       <td>クレジットカード支払い</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>card-payment</td>
+      <td>クレジットカード支払い</td>
+      <td>CardPayment（クレジットカード支払い）</td>
     </tr>
   </tbody>
 </table>
@@ -537,6 +640,8 @@ class Book {
 
 **＊表＊**
 
+以下のマイクロサービス名、集約名、エンティティ名は、上記のコンテキストに基づく説明用の設計例であり、実際のサービス構成や実装名を示すものではない。
+
 <table>
   <thead>
     <tr>
@@ -549,24 +654,40 @@ class Book {
   <tbody>
     <tr>
       <td>契約管理</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>contract</td>
+      <td>契約</td>
+      <td>Contract（契約）、ContractItem（契約明細）</td>
     </tr>
     <tr>
       <td>商品管理</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>product</td>
+      <td>商品</td>
+      <td>Product（商品）</td>
     </tr>
     <tr>
       <td>請求管理</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>billing</td>
+      <td>請求</td>
+      <td>Invoice（請求）、InvoiceItem（請求明細）</td>
     </tr>
   </tbody>
 </table>
+
+契約と請求の管理を強みとする設計例として、契約管理と請求管理をコアドメイン、商品管理を支援サブドメインに分類する。各ノードは境界づけられたコンテキストを表し、矢印は依存する側から依存先へ向ける。この分類と依存関係は説明用の例である。
+
+```mermaid
+flowchart LR
+  subgraph core["コアドメイン"]
+    contract("契約管理")
+    billing("請求管理")
+  end
+  subgraph supporting["支援サブドメイン"]
+    product("商品管理")
+  end
+
+  contract -->|契約対象の商品を参照| product
+  billing -->|契約の請求条件を参照| contract
+```
 
 ![contract_billing_management_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/contract_billing_management_ubiquitous_language.png)
 
@@ -578,6 +699,8 @@ class Book {
 会計アプリケーションを提供する freee の例。
 
 財務会計コンテキスト、会計ワークフローコンテキスト、従業員管理コンテキストがある。
+
+以下のマイクロサービス名、集約名、エンティティ名は、上記のコンテキストに基づく説明用の設計例であり、実際のサービス構成や実装名を示すものではない。
 
 <table>
   <thead>
@@ -591,24 +714,42 @@ class Book {
   <tbody>
     <tr>
       <td>財務会計</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>accounting</td>
+      <td>仕訳</td>
+      <td>JournalEntry（仕訳）、JournalEntryLine（仕訳明細）</td>
     </tr>
     <tr>
       <td>会計ワークフロー</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>accounting-workflow</td>
+      <td>会計申請</td>
+      <td>AccountingApplication（会計申請）、ApprovalStep（承認ステップ）</td>
     </tr>
     <tr>
       <td>従業員管理</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>employee</td>
+      <td>従業員</td>
+      <td>Employee（従業員）</td>
     </tr>
   </tbody>
 </table>
+
+財務会計を強みとする設計例として、財務会計をコアドメイン、会計ワークフローを支援サブドメイン、従業員管理を汎用サブドメインに分類する。各ノードは境界づけられたコンテキストを表し、矢印は依存する側から依存先へ向ける。この分類と依存関係は説明用の例である。
+
+```mermaid
+flowchart LR
+  subgraph core["コアドメイン"]
+    accounting("財務会計")
+  end
+  subgraph supporting["支援サブドメイン"]
+    workflow("会計ワークフロー")
+  end
+  subgraph generic["汎用サブドメイン"]
+    employee("従業員管理")
+  end
+
+  accounting -->|承認済みの会計申請を参照| workflow
+  workflow -->|申請者と承認者の従業員情報を参照| employee
+```
 
 ![freee_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/freee_bounded-context.png)
 
@@ -699,6 +840,39 @@ class Book {
   </tbody>
 </table>
 
+個人間送金の取引処理を強みとする設計例として、送金取引をコアドメイン、請求、銀行口座、精算、送金照合、レポーティング、送金取引管理ポータルを支援サブドメイン、ユーザーを汎用サブドメインに分類する。各ノードは境界づけられたコンテキストを表し、矢印は依存する側から依存先へ向ける。
+
+```mermaid
+flowchart LR
+  subgraph core["コアドメイン"]
+    remittance("送金取引")
+  end
+  subgraph supporting["支援サブドメイン"]
+    payment("請求")
+    bankAccount("銀行口座")
+    settlement("精算")
+    reconciliation("送金照合")
+    reporting("レポーティング")
+    portal("送金取引管理ポータル")
+  end
+  subgraph generic["汎用サブドメイン"]
+    user("ユーザー")
+  end
+
+  remittance -->|送金元と受取先の口座を参照| bankAccount
+  remittance -->|送金人と受取人を参照| user
+  remittance -->|支払対象の請求を参照| payment
+  payment -->|請求先と請求元のユーザーを参照| user
+  bankAccount -->|口座所有者を参照| user
+  settlement -->|送金結果を参照| remittance
+  reconciliation -->|照合対象の送金記録を参照| remittance
+  reporting -->|送金履歴を参照| remittance
+  reporting -->|精算結果を参照| settlement
+  reporting -->|照合結果を参照| reconciliation
+  portal -->|送金取引の状況を参照| remittance
+  portal -->|照合結果を参照| reconciliation
+```
+
 #### ▼ QR 決済ドメイン
 
 QR 決済業務の担当者が変わる境目を見つけ、それを境界づけられたコンテキストにする。
@@ -767,6 +941,32 @@ QR決済取引管理ポータル：管理者がQR決済取引を照会し、例�
     </tr>
   </tbody>
 </table>
+
+QR 決済の取引処理を強みとする設計例として、QR 決済取引をコアドメイン、加盟店契約、精算、QR 決済照合、QR 決済取引管理ポータルを支援サブドメイン、ユーザーを汎用サブドメインに分類する。各ノードは境界づけられたコンテキストを表し、矢印は依存する側から依存先へ向ける。
+
+```mermaid
+flowchart LR
+  subgraph core["コアドメイン"]
+    transaction("QR 決済取引")
+  end
+  subgraph supporting["支援サブドメイン"]
+    merchant("加盟店契約")
+    settlement("精算")
+    reconciliation("QR 決済照合")
+    portal("QR 決済取引管理ポータル")
+  end
+  subgraph generic["汎用サブドメイン"]
+    user("ユーザー")
+  end
+
+  transaction -->|加盟店の契約条件を参照| merchant
+  transaction -->|決済するユーザーを参照| user
+  settlement -->|決済結果を参照| transaction
+  settlement -->|加盟店の精算条件を参照| merchant
+  reconciliation -->|照合対象の決済記録を参照| transaction
+  portal -->|決済取引の状況を参照| transaction
+  portal -->|照合結果を参照| reconciliation
+```
 
 <br>
 
