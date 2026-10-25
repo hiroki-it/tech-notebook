@@ -389,8 +389,8 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
 <table>
   <thead>
     <tr>
-      <th>境界づけられたコンテキスト名</th>
       <th>担当者</th>
+      <th>境界づけられたコンテキスト名</th>
       <th>業務内容</th>
       <th>マイクロサービス名</th>
       <th>集約名</th>
@@ -399,8 +399,8 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
   </thead>
   <tbody>
     <tr>
-      <td>受注管理</td>
       <td>受注担当者</td>
+      <td>受注管理</td>
       <td>受注担当者が注文内容と金額を確認し、注文を受け付ける。</td>
       <td><code>ordering</code> サービス</td>
       <td><code>Order</code>（注文）</td>
@@ -410,8 +410,8 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>在庫管理</td>
       <td>在庫管理者</td>
+      <td>在庫管理</td>
       <td>在庫管理者が在庫数を確認し、在庫を引き当てる。</td>
       <td><code>inventory</code> サービス</td>
       <td><code>Inventory</code>（在庫）</td>
@@ -421,8 +421,8 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>発送管理</td>
       <td>発送担当者</td>
+      <td>発送管理</td>
       <td>発送担当者が商品と配送先を確認し、発送状況を更新する。</td>
       <td><code>shipping</code> サービス</td>
       <td><code>Shipment</code>（発送）</td>
@@ -432,19 +432,29 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
       <td colspan="6">↓</td>
     </tr>
     <tr>
+      <td rowspan="3">経理担当者</td>
       <td>請求管理</td>
-      <td>請求担当者</td>
-      <td>請求担当者が請求明細と金額を確認し、請求書を発行する。</td>
+      <td>経理担当者が請求明細、金額、支払期限を確認し、請求書の発行と入金確認を行う。</td>
       <td><code>billing</code> サービス</td>
       <td><code>Invoice</code>（請求）</td>
       <td><code>Invoice</code> エンティティ（請求）、<code>InvoiceItem</code> エンティティ（請求明細）</td>
     </tr>
     <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>精算管理</td>
+      <td>経理担当者が事業者間の受け払い金額を確定し、精算状況を確認する。</td>
+      <td><code>settlement</code> サービス</td>
+      <td><code>Settlement</code>（精算）</td>
+      <td><code>Settlement</code> エンティティ（精算）、<code>SettlementItem</code> エンティティ（精算明細）</td>
+    </tr>
+    <tr>
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>仕入れ管理</td>
       <td>仕入れ担当者</td>
+      <td>仕入れ管理</td>
       <td>仕入れ担当者が仕入れ先と数量を決め、発注する。</td>
       <td><code>purchasing</code> サービス</td>
       <td><code>PurchaseOrder</code>（仕入れ）</td>
@@ -465,8 +475,8 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
 <table>
   <thead>
     <tr>
-      <th>境界づけられたコンテキスト名</th>
       <th>担当者</th>
+      <th>境界づけられたコンテキスト名</th>
       <th>業務内容</th>
       <th>マイクロサービス名</th>
       <th>集約名</th>
@@ -475,30 +485,28 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
   </thead>
   <tbody>
     <tr>
+      <td rowspan="5">運用担当者</td>
       <td>監視</td>
-      <td>運用担当者</td>
       <td>運用担当者が監視グループ、監視リクエスト、SLO を設定し、監視結果を確認する。</td>
       <td><code>monitoring</code> サービス</td>
       <td><code>Monitoring</code>（監視）</td>
       <td><code>MonitoringGroup</code> エンティティ（監視グループ）、<code>MonitoringRequest</code> エンティティ（監視リクエスト）</td>
     </tr>
     <tr>
-      <td colspan="6">↓</td>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>インシデント管理</td>
-      <td>運用担当者</td>
       <td>運用担当者がインシデントを起票し、対応経過と解決を記録する。</td>
       <td><code>incident</code> サービス</td>
       <td><code>Incident</code>（インシデント）</td>
       <td><code>Incident</code> エンティティ（インシデント）、<code>IncidentHistory</code> エンティティ（対応履歴）</td>
     </tr>
     <tr>
-      <td colspan="6">↓</td>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>通知</td>
-      <td>運用担当者</td>
       <td>運用担当者が通知連携を設定し、アラートを受け取る。</td>
       <td><code>notification</code> サービス</td>
       <td><code>Notification</code>（通知）</td>
@@ -508,8 +516,8 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>ユーザー管理</td>
       <td>管理者</td>
+      <td>ユーザー管理</td>
       <td>管理者が利用者を登録し、情報変更や利用停止を行う。</td>
       <td><code>user</code> サービス</td>
       <td><code>User</code>（ユーザー）</td>
@@ -519,8 +527,8 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>認証</td>
       <td>利用者</td>
+      <td>認証</td>
       <td>利用者が認証情報を入力し、ログインする。</td>
       <td><code>authentication</code> サービス</td>
       <td><code>Account</code>（認証アカウント）</td>
@@ -530,19 +538,18 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
       <td colspan="6">↓</td>
     </tr>
     <tr>
+      <td rowspan="3">管理者</td>
       <td>認可</td>
-      <td>管理者</td>
       <td>管理者がロールと権限を割り当て、操作できる範囲を決める。</td>
       <td><code>authorization</code> サービス</td>
       <td><code>Role</code>（ロール）</td>
       <td><code>Role</code> エンティティ（ロール）、<code>Permission</code> エンティティ（権限）</td>
     </tr>
     <tr>
-      <td colspan="6">↓</td>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>クォータ管理</td>
-      <td>管理者</td>
       <td>管理者が利用上限を設定し、変更する。</td>
       <td><code>quota</code> サービス</td>
       <td><code>Quota</code>（クォータ）</td>
@@ -608,8 +615,8 @@ flowchart LR
 <table>
   <thead>
     <tr>
-      <th>境界づけられたコンテキスト名</th>
       <th>担当者</th>
+      <th>境界づけられたコンテキスト名</th>
       <th>業務内容</th>
       <th>マイクロサービス名</th>
       <th>集約名</th>
@@ -618,8 +625,8 @@ flowchart LR
   </thead>
   <tbody>
     <tr>
-      <td>仕入れ</td>
       <td>バイヤー</td>
+      <td>仕入れ</td>
       <td>バイヤーが書籍を選定し、仕入れ条件と数量を決める。</td>
       <td><code>purchasing</code> サービス</td>
       <td><code>Book</code>（本）</td>
@@ -629,8 +636,8 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>マーケティング</td>
       <td>マーケ担当者</td>
+      <td>マーケティング</td>
       <td>マーケ担当者がクーポンの対象書籍と割引期間を決める。</td>
       <td><code>marketing</code> サービス</td>
       <td><code>Coupon</code>（クーポン）</td>
@@ -640,8 +647,8 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>在庫管理</td>
       <td>在庫管理者</td>
+      <td>在庫管理</td>
       <td>在庫管理者が在庫数を確認し、在庫を引き当てる。</td>
       <td><code>inventory</code> サービス</td>
       <td><code>Inventory</code>（在庫）</td>
@@ -721,8 +728,8 @@ class Book {
 <table>
   <thead>
     <tr>
-      <th>境界づけられたコンテキスト名</th>
       <th>担当者</th>
+      <th>境界づけられたコンテキスト名</th>
       <th>業務内容</th>
       <th>マイクロサービス名</th>
       <th>集約名</th>
@@ -731,19 +738,18 @@ class Book {
   </thead>
   <tbody>
     <tr>
+      <td rowspan="3">利用者</td>
       <td>認証</td>
-      <td>利用者</td>
       <td>利用者が認証情報を入力し、ログインする。</td>
       <td><code>authentication</code> サービス</td>
       <td><code>Account</code>（認証アカウント）</td>
       <td><code>Account</code> エンティティ（認証アカウント）</td>
     </tr>
     <tr>
-      <td colspan="6">↓</td>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>予約</td>
-      <td>利用者</td>
       <td>利用者が個室ジムの利用日時を選び、予約やキャンセルを行う。</td>
       <td><code>reservation</code> サービス</td>
       <td><code>Reservation</code>（予約）</td>
@@ -753,8 +759,8 @@ class Book {
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>顧客管理</td>
       <td>顧客管理担当者</td>
+      <td>顧客管理</td>
       <td>顧客管理担当者が顧客情報を登録・変更し、利用停止を行う。</td>
       <td><code>customer</code> サービス</td>
       <td><code>Customer</code>（顧客）</td>
@@ -764,19 +770,18 @@ class Book {
       <td colspan="6">↓</td>
     </tr>
     <tr>
+      <td rowspan="3">利用者、経理担当者</td>
       <td>銀行支払い</td>
-      <td>利用者、経理担当者</td>
       <td>利用者が銀行を通じて料金を支払い、経理担当者が入金を確認する。</td>
       <td><code>bank-payment</code> サービス</td>
       <td><code>BankPayment</code>（銀行支払い）</td>
       <td><code>BankPayment</code> エンティティ（銀行支払い）</td>
     </tr>
     <tr>
-      <td colspan="6">↓</td>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>クレジットカード支払い</td>
-      <td>利用者、経理担当者</td>
       <td>利用者がカードで料金を支払い、経理担当者が決済状況を確認する。</td>
       <td><code>card-payment</code> サービス</td>
       <td><code>CardPayment</code>（クレジットカード支払い）</td>
@@ -807,8 +812,8 @@ class Book {
 <table>
   <thead>
     <tr>
-      <th>境界づけられたコンテキスト名</th>
       <th>担当者</th>
+      <th>境界づけられたコンテキスト名</th>
       <th>業務内容</th>
       <th>マイクロサービス名</th>
       <th>集約名</th>
@@ -817,8 +822,8 @@ class Book {
   </thead>
   <tbody>
     <tr>
-      <td>契約管理</td>
       <td>契約担当者</td>
+      <td>契約管理</td>
       <td>契約担当者が契約商品、契約期間、請求条件を決め、契約を更新する。</td>
       <td><code>contract</code> サービス</td>
       <td><code>Contract</code>（契約）</td>
@@ -828,8 +833,8 @@ class Book {
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>商品管理</td>
       <td>商品管理担当者</td>
+      <td>商品管理</td>
       <td>商品管理担当者が契約対象の商品情報を登録・変更する。</td>
       <td><code>product</code> サービス</td>
       <td><code>Product</code>（商品）</td>
@@ -839,8 +844,8 @@ class Book {
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>請求管理</td>
       <td>請求担当者</td>
+      <td>請求管理</td>
       <td>請求担当者が請求明細と金額を確認し、請求書を発行する。</td>
       <td><code>billing</code> サービス</td>
       <td><code>Invoice</code>（請求）</td>
@@ -883,8 +888,8 @@ flowchart LR
 <table>
   <thead>
     <tr>
-      <th>境界づけられたコンテキスト名</th>
       <th>担当者</th>
+      <th>境界づけられたコンテキスト名</th>
       <th>業務内容</th>
       <th>マイクロサービス名</th>
       <th>集約名</th>
@@ -893,8 +898,8 @@ flowchart LR
   </thead>
   <tbody>
     <tr>
-      <td>財務会計</td>
       <td>経理担当者</td>
+      <td>財務会計</td>
       <td>経理担当者が仕訳を登録し、会計記録を確認する。</td>
       <td><code>accounting</code> サービス</td>
       <td><code>JournalEntry</code>（仕訳）</td>
@@ -904,8 +909,8 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>会計ワークフロー</td>
       <td>従業員、承認者</td>
+      <td>会計ワークフロー</td>
       <td>従業員が会計申請を提出し、承認者が内容を確認して承認する。</td>
       <td><code>accounting-workflow</code> サービス</td>
       <td><code>AccountingApplication</code>（会計申請）</td>
@@ -915,8 +920,8 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>従業員管理</td>
       <td>人事担当者</td>
+      <td>従業員管理</td>
       <td>人事担当者が従業員情報を登録・変更し、在籍状況を更新する。</td>
       <td><code>employee</code> サービス</td>
       <td><code>Employee</code>（従業員）</td>
@@ -962,8 +967,8 @@ flowchart LR
 <table>
   <thead>
     <tr>
-      <th>境界づけられたコンテキスト名</th>
       <th>担当者</th>
+      <th>境界づけられたコンテキスト名</th>
       <th>業務内容</th>
       <th>マイクロサービス名</th>
       <th>集約名</th>
@@ -972,8 +977,8 @@ flowchart LR
   </thead>
   <tbody>
     <tr>
-      <td>送金取引</td>
       <td>送金人</td>
+      <td>送金取引</td>
       <td>送金人が送金先と金額を指定し、送金状況を確認する。</td>
       <td><code>remittance</code> サービス</td>
       <td><code>Remittance</code>（送金）</td>
@@ -983,8 +988,8 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>請求</td>
       <td>受取人</td>
+      <td>請求</td>
       <td>受取人が送金人に支払いを依頼し、入金を確認する。</td>
       <td><code>payment</code> サービス</td>
       <td><code>Payment</code>（請求）</td>
@@ -994,19 +999,18 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
+      <td rowspan="3">利用者</td>
       <td>銀行口座</td>
-      <td>利用者</td>
       <td>利用者が送金元口座や受取口座を登録し、口座情報を確認する。</td>
       <td><code>BankAccount</code> サービス</td>
       <td><code>BankAccount</code>（銀行口座）</td>
       <td><code>BankAccount</code> エンティティ（銀行口座）</td>
     </tr>
     <tr>
-      <td colspan="6">↓</td>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>口座エイリアス</td>
-      <td>利用者</td>
       <td>利用者が口座エイリアスを登録・変更し、送金先の口座を指定する。</td>
       <td><code>account-alias</code> サービス</td>
       <td><code>BankAccount</code>（銀行口座）、<code>ValueAccount</code>（バリュー口座）</td>
@@ -1016,8 +1020,8 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>ユーザー</td>
       <td>利用者、本人確認担当者</td>
+      <td>ユーザー</td>
       <td>利用者が情報を登録し、本人確認担当者が本人確認や利用停止を行う。</td>
       <td><code>user</code> サービス</td>
       <td><code>User</code>（ユーザー）</td>
@@ -1027,30 +1031,28 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
+      <td rowspan="5">精算担当者</td>
       <td>精算集計</td>
-      <td>精算担当者</td>
       <td>精算担当者が対象期間を指定し、取引件数と金額の集計結果を確認する。</td>
       <td><code>settlement-aggregation</code> サービス</td>
       <td><code>AggregationSettlement</code>（精算集計）</td>
       <td><code>AggregationSettlement</code> エンティティ（精算集計）</td>
     </tr>
     <tr>
-      <td colspan="6">↓</td>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>銀行間精算</td>
-      <td>精算担当者</td>
       <td>精算担当者が銀行間の受け払い金額と精算ファイルを確認する。</td>
       <td><code>bank-settlement</code> サービス</td>
       <td><code>BankSettlementFile</code>（銀行間精算ファイル）</td>
       <td><code>BankSettlementFile</code> エンティティ（銀行間精算ファイル）、<code>BankSettlementRecord</code> エンティティ（銀行間精算レコード）</td>
     </tr>
     <tr>
-      <td colspan="6">↓</td>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>バリュー事業者精算</td>
-      <td>精算担当者</td>
       <td>精算担当者がバリュー事業者ごとの受け払い金額と精算ファイルを確認する。</td>
       <td><code>value-provider-settlement</code> サービス</td>
       <td><code>ValueProviderSettlementFile</code>（バリュー事業者精算ファイル）</td>
@@ -1060,8 +1062,8 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>送金照合</td>
       <td>照合担当者</td>
+      <td>送金照合</td>
       <td>照合担当者が送金記録と外部データを突き合わせ、差分を調べる。</td>
       <td><code>reconciliation</code> サービス</td>
       <td><code>Reconciliation</code>（照合）</td>
@@ -1071,19 +1073,18 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
+      <td rowspan="3">業務担当者</td>
       <td>レポーティング</td>
-      <td>業務担当者</td>
       <td>業務担当者が送金履歴、送金明細、精算結果、照合結果を出力する。</td>
       <td><code>reporting</code> サービス</td>
       <td><code>Reporting</code>（レポーティング）</td>
       <td><code>RemittanceHistory</code> エンティティ（送金履歴）、<code>RemittanceDetailFile</code> エンティティ（送金明細ファイル）</td>
     </tr>
     <tr>
-      <td colspan="6">↓</td>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>送金明細</td>
-      <td>業務担当者</td>
       <td>業務担当者が銀行やバリュー事業者向けの送金明細を取得・確認する。</td>
       <td><code>remittance-detail</code> サービス</td>
       <td><code>BankDailyRemittanceDetailFile</code>（銀行日次送金明細ファイル）</td>
@@ -1093,8 +1094,8 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>送金取引管理ポータル</td>
       <td>管理者</td>
+      <td>送金取引管理ポータル</td>
       <td>管理者が送金取引を照会し、例外対応や再処理を行う。</td>
       <td><code>web-portal</code> サービス</td>
       <td><code>RemittanceManagement</code>（送金取引管理）</td>
@@ -1163,8 +1164,8 @@ flowchart LR
 <table>
   <thead>
     <tr>
-      <th>境界づけられたコンテキスト名</th>
       <th>担当者</th>
+      <th>境界づけられたコンテキスト名</th>
       <th>業務内容</th>
       <th>マイクロサービス名</th>
       <th>集約名</th>
@@ -1173,30 +1174,28 @@ flowchart LR
   </thead>
   <tbody>
     <tr>
+      <td rowspan="5">利用者</td>
       <td>送金</td>
-      <td>利用者</td>
       <td>利用者が送金先と金額を指定し、送金結果を確認する。</td>
       <td><code>remittance</code> サービス</td>
       <td><code>Remittance</code>（送金）</td>
       <td><code>RemittanceHistory</code> エンティティ（送金履歴）、<code>RemittanceStatus</code> エンティティ（送金ステータス）</td>
     </tr>
     <tr>
-      <td colspan="6">↓</td>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>請求支払</td>
-      <td>利用者</td>
       <td>利用者が請求内容を確認し、支払いを行う。</td>
       <td><code>bill-payment</code> サービス</td>
       <td><code>BillPayment</code>（請求支払）</td>
       <td><code>BillPaymentHistory</code> エンティティ（請求支払履歴）、<code>BillPaymentInquiryHistory</code> エンティティ（請求照会履歴）</td>
     </tr>
     <tr>
-      <td colspan="6">↓</td>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>口座・エイリアス管理</td>
-      <td>利用者</td>
       <td>利用者が口座に紐づくエイリアスを登録し、利用限度額を確認する。</td>
       <td><code>user-account</code> サービス</td>
       <td><code>User</code>（利用者）、<code>AccountAlias</code>（口座エイリアス）</td>
@@ -1206,8 +1205,8 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>請求取引管理</td>
       <td>運用担当者</td>
+      <td>請求取引管理</td>
       <td>運用担当者が請求取引と最新の状態を確認する。</td>
       <td><code>bill-transaction</code> サービス</td>
       <td><code>BillTransaction</code>（請求取引）</td>
@@ -1217,19 +1216,18 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
+      <td rowspan="3">照合担当者</td>
       <td>送金照合</td>
-      <td>照合担当者</td>
       <td>照合担当者が送金記録と外部取引を突き合わせ、差分を調べる。</td>
       <td><code>remittance-reconciliation</code> サービス</td>
       <td><code>RemittanceReconciliation</code>（送金照合）</td>
       <td><code>ReconciliationProgress</code> エンティティ（照合処理の進捗）</td>
     </tr>
     <tr>
-      <td colspan="6">↓</td>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>請求支払照合</td>
-      <td>照合担当者</td>
       <td>照合担当者が請求支払記録と外部取引を突き合わせ、差分を調べる。</td>
       <td><code>bill-payment-reconciliation</code> サービス</td>
       <td><code>BillPaymentReconciliation</code>（請求支払照合）</td>
@@ -1239,19 +1237,18 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
+      <td rowspan="3">加盟店担当者</td>
       <td>加盟店・店舗・端末管理</td>
-      <td>加盟店担当者</td>
       <td>加盟店担当者が加盟店、店舗、端末を登録し、利用可否を変更する。</td>
       <td><code>merchant-management</code> サービス</td>
       <td><code>Merchant</code>（加盟店）、<code>ShopGroup</code>（店舗グループ）、<code>Shop</code>（店舗）、<code>Terminal</code>（端末）</td>
       <td><code>Merchant</code> エンティティ（加盟店）、<code>ShopGroup</code> エンティティ（店舗グループ）、<code>Shop</code> エンティティ（店舗）、<code>Terminal</code> エンティティ（端末）</td>
     </tr>
     <tr>
-      <td colspan="6">↓</td>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>売上・返金</td>
-      <td>加盟店担当者</td>
       <td>加盟店担当者が売上を確定し、必要に応じて返金する。</td>
       <td><code>sales-transaction</code> サービス</td>
       <td><code>TransactionSummary</code>（取引サマリ）</td>
@@ -1261,8 +1258,8 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>決済取引照会・出力</td>
       <td>業務担当者</td>
+      <td>決済取引照会・出力</td>
       <td>業務担当者が決済取引を検索し、取引一覧を出力する。</td>
       <td><code>transaction-query</code> サービス</td>
       <td>—（照会・出力用モデル）</td>
@@ -1272,8 +1269,8 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>金融機関管理</td>
       <td>運用担当者</td>
+      <td>金融機関管理</td>
       <td>運用担当者が金融機関の利用条件やメンテナンス予定を設定する。</td>
       <td><code>bank-management</code> サービス</td>
       <td><code>Bank</code>（金融機関）、<code>BankReservation</code>（変更予約）</td>
@@ -1283,8 +1280,8 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>請求元管理</td>
       <td>業務担当者</td>
+      <td>請求元管理</td>
       <td>業務担当者が請求元と請求項目を登録する。</td>
       <td><code>biller-management</code> サービス</td>
       <td><code>Biller</code>（請求元）、<code>BillItem</code>（請求項目）</td>
@@ -1294,8 +1291,8 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>決済事業者管理</td>
       <td>接続管理担当者</td>
+      <td>決済事業者管理</td>
       <td>接続管理担当者が決済事業者と接続条件を設定する。</td>
       <td><code>payment-provider-management</code> サービス</td>
       <td><code>PaymentProvider</code>（決済事業者）</td>
@@ -1305,19 +1302,18 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
+      <td rowspan="3">精算担当者</td>
       <td>精算先加盟店管理</td>
-      <td>精算担当者</td>
       <td>精算担当者が入金先口座を登録し、変更を予約する。</td>
       <td><code>settlement-merchant-management</code> サービス</td>
       <td><code>SettlementMerchant</code>（精算先加盟店）、<code>MerchantBankAccount</code>（入金先口座）</td>
       <td><code>SettlementMerchant</code> エンティティ（精算先加盟店）、<code>MerchantReservation</code> エンティティ（加盟店変更予約）、<code>MerchantBankAccount</code> エンティティ（入金先口座）、<code>MerchantBankAccountReservation</code> エンティティ（口座変更予約）</td>
     </tr>
     <tr>
-      <td colspan="6">↓</td>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>精算金融機関管理</td>
-      <td>精算担当者</td>
       <td>精算担当者が金融機関別の手数料を設定し、変更を予約する。</td>
       <td><code>settlement-bank-management</code> サービス</td>
       <td><code>SettlementBank</code>（精算金融機関）、<code>BankFee</code>（手数料）</td>
@@ -1327,8 +1323,8 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>入金情報照会</td>
       <td>加盟店担当者</td>
+      <td>入金情報照会</td>
       <td>加盟店担当者が入金額と明細を確認する。</td>
       <td><code>merchant-deposit-query</code> サービス</td>
       <td>—（照会用モデル）</td>
@@ -1338,19 +1334,18 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
+      <td rowspan="3">運用担当者</td>
       <td>ファイル・伝送管理</td>
-      <td>運用担当者</td>
       <td>運用担当者が業務ファイルと伝送結果を確認する。</td>
       <td><code>file-management</code> サービス、<code>file-transmission</code> サービス</td>
       <td><code>BusinessFile</code>（業務ファイル）、<code>Transmission</code>（伝送）</td>
       <td><code>BusinessFile</code> エンティティ（業務ファイル）、<code>Transmission</code> エンティティ（伝送）</td>
     </tr>
     <tr>
-      <td colspan="6">↓</td>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>バッチ実行管理</td>
-      <td>運用担当者</td>
       <td>運用担当者がバッチ処理の実行状況を確認する。</td>
       <td><code>batch-management</code> サービス</td>
       <td><code>Batch</code>（バッチ）</td>
@@ -1360,8 +1355,8 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>精算分類・連絡先管理</td>
       <td>精算担当者</td>
+      <td>精算分類・連絡先管理</td>
       <td>精算担当者が業務の分類と金融機関の連絡先を設定する。</td>
       <td><code>settlement-classification-management</code> サービス</td>
       <td><code>Classification</code>（分類）、<code>ContactPerson</code>（連絡先担当者）</td>
@@ -1371,8 +1366,8 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>管理者アカウント</td>
       <td>管理者</td>
+      <td>管理者アカウント</td>
       <td>管理者が加盟店業務や精算業務の担当者を登録し、権限を設定する。</td>
       <td><code>merchant-user-management</code> サービス、<code>settlement-user-management</code> サービス</td>
       <td><code>Administrator</code>（管理者）</td>
@@ -1382,8 +1377,8 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>お知らせ・メール管理</td>
       <td>業務担当者</td>
+      <td>お知らせ・メール管理</td>
       <td>業務担当者がお知らせを登録し、メールの内容や宛先を管理する。</td>
       <td><code>notice-management</code> サービス、<code>mail-management</code> サービス</td>
       <td><code>Notice</code>（お知らせ）、<code>Mail</code>（メール）、<code>MailTemplate</code>（メールテンプレート）</td>
@@ -1393,8 +1388,8 @@ flowchart LR
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>操作履歴管理</td>
       <td>管理者</td>
+      <td>操作履歴管理</td>
       <td>管理者が業務担当者の操作履歴を確認する。</td>
       <td><code>operation-history</code> サービス</td>
       <td><code>OperationHistory</code>（操作履歴）</td>
@@ -1471,8 +1466,8 @@ QR 決済業務の担当者が変わる境目を見つけ、それを境界づ�
 <table>
   <thead>
     <tr>
-      <th>境界づけられたコンテキスト名</th>
       <th>担当者</th>
+      <th>境界づけられたコンテキスト名</th>
       <th>業務内容</th>
       <th>マイクロサービス名</th>
       <th>集約名</th>
@@ -1481,8 +1476,8 @@ QR 決済業務の担当者が変わる境目を見つけ、それを境界づ�
   </thead>
   <tbody>
     <tr>
-      <td>QR 決済取引</td>
       <td>利用者</td>
+      <td>QR 決済取引</td>
       <td>利用者が QR コードを読み取り、決済内容を確認して支払いを行う。</td>
       <td><code>transaction</code> サービス</td>
       <td><code>Transaction</code>（取引）</td>
@@ -1492,8 +1487,8 @@ QR 決済業務の担当者が変わる境目を見つけ、それを境界づ�
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>加盟店契約</td>
       <td>加盟店担当者</td>
+      <td>加盟店契約</td>
       <td>加盟店担当者が利用可能な決済手段と精算条件を決め、契約を登録する。</td>
       <td><code>merchant</code> サービス</td>
       <td><code>MerchantContract</code>（契約）</td>
@@ -1503,8 +1498,8 @@ QR 決済業務の担当者が変わる境目を見つけ、それを境界づ�
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>精算</td>
       <td>精算担当者</td>
+      <td>精算</td>
       <td>精算担当者が取引結果を確認し、事業者間の受け払い金額を確定する。</td>
       <td><code>payment</code> サービス</td>
       <td><code>Payment</code>（精算）</td>
@@ -1514,8 +1509,8 @@ QR 決済業務の担当者が変わる境目を見つけ、それを境界づ�
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>ユーザー</td>
       <td>利用者、本人確認担当者</td>
+      <td>ユーザー</td>
       <td>利用者が情報を登録し、本人確認担当者が本人確認や利用停止を行う。</td>
       <td><code>user</code> サービス</td>
       <td><code>User</code>（ユーザー）</td>
@@ -1525,8 +1520,8 @@ QR 決済業務の担当者が変わる境目を見つけ、それを境界づ�
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>QR 決済照合</td>
       <td>照合担当者</td>
+      <td>QR 決済照合</td>
       <td>照合担当者が決済記録と外部データを突き合わせ、差分を調べる。</td>
       <td><code>reconciliation</code> サービス</td>
       <td><code>Reconciliation</code>（照合）</td>
@@ -1536,8 +1531,8 @@ QR 決済業務の担当者が変わる境目を見つけ、それを境界づ�
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>QR 決済取引管理ポータル</td>
       <td>管理者</td>
+      <td>QR 決済取引管理ポータル</td>
       <td>管理者が決済取引を照会し、例外対応や再処理を行う。</td>
       <td><code>web-portal</code> サービス</td>
       <td><code>QrPaymentManagement</code>（QR 決済取引管理）</td>
@@ -1547,8 +1542,8 @@ QR 決済業務の担当者が変わる境目を見つけ、それを境界づ�
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>マネーロンダリング対策の判定</td>
       <td>コンプライアンス担当者</td>
+      <td>マネーロンダリング対策の判定</td>
       <td>コンプライアンス担当者が判定条件を設定し、遮断された取引を確認する。</td>
       <td><code>anti-money-laundering</code> サービス</td>
       <td><code>AntiMoneyLaunderingCheck</code>（マネーロンダリング対策の判定）</td>
@@ -1558,8 +1553,8 @@ QR 決済業務の担当者が変わる境目を見つけ、それを境界づ�
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>決済事業者接続</td>
       <td>接続管理担当者</td>
+      <td>決済事業者接続</td>
       <td>接続管理担当者が決済事業者との接続条件を設定し、通信状況を確認する。</td>
       <td><code>payment-connector</code> サービス</td>
       <td><code>PaymentIntegration</code>（決済連携）</td>
@@ -1569,8 +1564,8 @@ QR 決済業務の担当者が変わる境目を見つけ、それを境界づ�
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>API 認証</td>
       <td>API 管理者</td>
+      <td>API 認証</td>
       <td>API 管理者が認証トークンを発行・失効し、接続元の認証情報を管理する。</td>
       <td><code>api-authentication</code> サービス</td>
       <td><code>AuthenticationToken</code>（認証トークン）</td>
@@ -1580,8 +1575,8 @@ QR 決済業務の担当者が変わる境目を見つけ、それを境界づ�
       <td colspan="6">↓</td>
     </tr>
     <tr>
-      <td>管理者ユーザー管理</td>
       <td>管理者</td>
+      <td>管理者ユーザー管理</td>
       <td>管理者が担当者のアカウントを登録し、権限変更や無効化を行う。</td>
       <td><code>user-management</code> サービス</td>
       <td><code>User</code>（管理者ユーザー）</td>
