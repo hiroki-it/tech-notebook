@@ -42,7 +42,8 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 `(2)`
 
-: ドメインエキスパートの部署や業務フローの立ち位置によっては、同じ『名詞』や『動詞』であっても、意味合い/定義づけが異なる場合もある。その場合、それぞれを異なる名前からなるユビキタス言語として定義づける。
+: ドメインエキスパートの部署や業務フローの立ち位置によっては、同じ『名詞』や『動詞』であっても、意味合い/定義づけが異なる場合もある。
+その場合、それぞれを異なる名前からなるユビキタス言語として定義づける。
 
 `(3)`
 
@@ -76,7 +77,8 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 `(4)`
 
-: ドメインモデル図を元に、クラス図を作成する。このとき、モデルをエンティティや値オブジェクトを切り分けるようにする。
+: ドメインモデル図を元に、クラス図を作成する。
+このとき、モデルをエンティティや値オブジェクトを切り分けるようにする。
 
 `(5)`
 
@@ -84,7 +86,8 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 `(6)`
 
-: 運用後に問題が発生した場合、特にオブジェクト図とドメインモデル図を修正する。場合によっては、デザインパターンに切り分ける。
+: 運用後に問題が発生した場合、特にオブジェクト図とドメインモデル図を修正する。
+場合によっては、デザインパターンに切り分ける。
 
 > - [ドメイン駆動設計 サンプルコード&FAQ - little-hands - BOOTH](https://booth.pm/ja/items/3363104)
 
@@ -106,7 +109,9 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 また、ビジネスモデルにおける一連の業務フローのなかで、業務担当者の属性が変化するタイミングに着目するとよい。
 
-担当者が変われば、業務をより小さな単位で抽出できるはずである。例えば、コールセンター部 (電話対応業務、顧客管理業務) や法人営業部 (受注業務) がある。また、マーケティング部 (ユーザー集客業務、広告運用業務) や管理部 (会計業務、財務業務、採用業務) がある。
+担当者が変われば、業務をより小さな単位で抽出できるはずである。
+例えば、コールセンター部 (電話対応業務、顧客管理業務) や法人営業部 (受注業務) がある。
+また、マーケティング部 (ユーザー集客業務、広告運用業務) や管理部 (会計業務、財務業務、採用業務) がある。
 
 このときの注意点として、業務領域は、ToB や ToC に関わらないことである。
 
@@ -329,6 +334,7 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
   <thead>
     <tr>
       <th>境界づけられたコンテキスト名</th>
+      <th>業務内容</th>
       <th>マイクロサービス名</th>
       <th>集約名</th>
       <th>集約内のエンティティ</th>
@@ -337,33 +343,50 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
   <tbody>
     <tr>
       <td>受注管理</td>
-      <td>ordering</td>
-      <td>注文</td>
-      <td>Order（注文）、OrderItem（注文明細）</td>
+      <td>受注担当者が注文内容と金額を確認し、注文を受け付ける。</td>
+      <td><code>ordering</code> サービス</td>
+      <td><code>Order</code>（注文）</td>
+      <td><code>Order</code> エンティティ（注文）、<code>OrderItem</code> エンティティ（注文明細）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>在庫管理</td>
-      <td>inventory</td>
-      <td>在庫</td>
-      <td>Inventory（在庫）</td>
+      <td>在庫管理者が在庫数を確認し、在庫を引き当てる。</td>
+      <td><code>inventory</code> サービス</td>
+      <td><code>Inventory</code>（在庫）</td>
+      <td><code>Inventory</code> エンティティ（在庫）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>発送管理</td>
-      <td>shipping</td>
-      <td>発送</td>
-      <td>Shipment（発送）、ShipmentItem（発送明細）</td>
+      <td>発送担当者が商品と配送先を確認し、発送状況を更新する。</td>
+      <td><code>shipping</code> サービス</td>
+      <td><code>Shipment</code>（発送）</td>
+      <td><code>Shipment</code> エンティティ（発送）、<code>ShipmentItem</code> エンティティ（発送明細）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>請求管理</td>
-      <td>billing</td>
-      <td>請求</td>
-      <td>Invoice（請求）、InvoiceItem（請求明細）</td>
+      <td>請求担当者が請求明細と金額を確認し、請求書を発行する。</td>
+      <td><code>billing</code> サービス</td>
+      <td><code>Invoice</code>（請求）</td>
+      <td><code>Invoice</code> エンティティ（請求）、<code>InvoiceItem</code> エンティティ（請求明細）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>仕入れ管理</td>
-      <td>purchasing</td>
-      <td>仕入れ</td>
-      <td>PurchaseOrder（仕入れ注文）、PurchaseOrderItem（仕入れ明細）</td>
+      <td>仕入れ担当者が仕入れ先と数量を決め、発注する。</td>
+      <td><code>purchasing</code> サービス</td>
+      <td><code>PurchaseOrder</code>（仕入れ）</td>
+      <td><code>PurchaseOrder</code> エンティティ（仕入れ注文）、<code>PurchaseOrderItem</code> エンティティ（仕入れ明細）</td>
     </tr>
   </tbody>
 </table>
@@ -372,9 +395,8 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
 
 #### ▼ 例：監視 SaaS
 
-監視 SaaS の境界づけられたコンテキストを、コアドメイン、支援サブドメイン、汎用サブドメインに分類した例を示す。各ノードは境界づけられたコンテキストを表し、矢印は依存する側から依存先へ向ける。
-
-監視は監視設定や SLO、インシデント管理はインシデントの起票から解決、通知はアラート通知連携を扱う。ユーザー管理、認証、認可、使用量管理はそれぞれ別のコンテキストとして定義する。
+監視 SaaS の境界づけられたコンテキストを、コアドメイン、支援サブドメイン、汎用サブドメインに分類した例を示す。
+各ノードは境界づけられたコンテキストを表し、矢印は依存する側から依存先へ向ける。
 
 **＊表＊**
 
@@ -382,6 +404,7 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
   <thead>
     <tr>
       <th>境界づけられたコンテキスト名</th>
+      <th>業務内容</th>
       <th>マイクロサービス名</th>
       <th>集約名</th>
       <th>集約内のエンティティ</th>
@@ -390,45 +413,70 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
   <tbody>
     <tr>
       <td>監視</td>
-      <td>monitoring</td>
-      <td>監視設定</td>
-      <td>Monitor（監視設定）</td>
+      <td>運用担当者が監視グループ、監視リクエスト、SLO を設定し、監視結果を確認する。</td>
+      <td><code>monitoring</code> サービス</td>
+      <td><code>Monitoring</code>（監視）</td>
+      <td><code>MonitoringGroup</code> エンティティ（監視グループ）、<code>MonitoringRequest</code> エンティティ（監視リクエスト）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>インシデント管理</td>
-      <td>incident</td>
-      <td>インシデント</td>
-      <td>Incident（インシデント）、IncidentHistory（対応履歴）</td>
+      <td>運用担当者がインシデントを起票し、対応経過と解決を記録する。</td>
+      <td><code>incident</code> サービス</td>
+      <td><code>Incident</code>（インシデント）</td>
+      <td><code>Incident</code> エンティティ（インシデント）、<code>IncidentHistory</code> エンティティ（対応履歴）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>通知</td>
-      <td>notification</td>
-      <td>通知設定</td>
-      <td>NotificationSetting（通知設定）、NotificationDestination（通知先）</td>
+      <td>運用担当者が通知連携を設定し、アラートを受け取る。</td>
+      <td><code>notification</code> サービス</td>
+      <td><code>Notification</code>（通知）</td>
+      <td><code>NotificationIntegration</code> エンティティ（通知連携）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>ユーザー管理</td>
-      <td>user</td>
-      <td>ユーザー</td>
-      <td>User（ユーザー）</td>
+      <td>管理者が利用者を登録し、情報変更や利用停止を行う。</td>
+      <td><code>user</code> サービス</td>
+      <td><code>User</code>（ユーザー）</td>
+      <td><code>User</code> エンティティ（ユーザー）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>認証</td>
-      <td>authentication</td>
-      <td>認証アカウント</td>
-      <td>Account（認証アカウント）</td>
+      <td>利用者が認証情報を入力し、ログインする。</td>
+      <td><code>authentication</code> サービス</td>
+      <td><code>Account</code>（認証アカウント）</td>
+      <td><code>Account</code> エンティティ（認証アカウント）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>認可</td>
-      <td>authorization</td>
-      <td>ロール</td>
-      <td>Role（ロール）、Permission（権限）</td>
+      <td>管理者がロールと権限を割り当て、操作できる範囲を決める。</td>
+      <td><code>authorization</code> サービス</td>
+      <td><code>Role</code>（ロール）</td>
+      <td><code>Role</code> エンティティ（ロール）、<code>Permission</code> エンティティ（権限）</td>
     </tr>
     <tr>
-      <td>使用量管理</td>
-      <td>usage</td>
-      <td>使用量</td>
-      <td>Usage（使用量）</td>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>クォータ管理</td>
+      <td>管理者が利用上限を設定し、変更する。</td>
+      <td><code>quota</code> サービス</td>
+      <td><code>Quota</code>（クォータ）</td>
+      <td><code>Quota</code> エンティティ（クォータ）</td>
     </tr>
   </tbody>
 </table>
@@ -446,17 +494,17 @@ flowchart LR
     userManagement("ユーザー管理")
     authentication("認証")
     authorization("認可")
-    usageManagement("使用量管理")
+    quotaManagement("クォータ管理")
   end
 
-  monitoring -->|使用量を参照| usageManagement
-  monitoring -->|インシデントの対応状況を参照| incident
-  monitoring -->|通知先の設定を参照| notification
-  userManagement -->|認証アカウントを参照| authentication
-  userManagement -->|ユーザーの権限を参照| authorization
-  userManagement -->|ユーザーに紐づく監視設定を参照| monitoring
-  userManagement -->|ユーザーの使用量を参照| usageManagement
-  authorization -->|認証済みユーザーの識別情報を参照| authentication
+  monitoring -.->|利用上限を参照| quotaManagement
+  monitoring -.->|インシデントの対応状況を参照| incident
+  monitoring -.->|通知先の設定を参照| notification
+  userManagement -.->|認証アカウントを参照| authentication
+  userManagement -.->|ユーザーの権限を参照| authorization
+  userManagement -.->|ユーザーに紐づく監視設定を参照| monitoring
+  userManagement -.->|ユーザーの利用上限を参照| quotaManagement
+  authorization -.->|認証済みユーザーの識別情報を参照| authentication
 ```
 
 #### ▼ 例：書籍 EC サイト
@@ -465,15 +513,21 @@ flowchart LR
 
 コアドメインとサブドメインに基づいたユビキタス言語と境界づけられたコンテキストを以下に示す。
 
-書籍の品ぞろえと在庫管理を強みとするサイトを想定し、仕入れと在庫管理をコアドメイン、マーケティングを支援サブドメインに分類する。各ノードは境界づけられたコンテキストを表し、矢印は依存する側から依存先へ向ける。同じ書籍を扱っていても、業務ごとに異なるモデルとデータを持つ。
+書籍の品ぞろえと在庫管理を強みとするサイトを想定し、仕入れと在庫管理をコアドメイン、マーケティングを支援サブドメインに分類する。
+各ノードは境界づけられたコンテキストを表し、矢印は依存する側から依存先へ向ける。
+同じ書籍を扱っていても、業務ごとに異なるモデルとデータを持つ。
 
-在庫管理は仕入れで扱う書籍情報を参照し、マーケティングは在庫状況を参照してクーポンの対象書籍を決める例とする。認証などの汎用サブドメインは、この図では省略する。
+在庫管理は仕入れで扱う書籍情報を参照し、マーケティングは在庫状況を参照してクーポンの対象書籍を決める例とする。
+認証などの汎用サブドメインは、この図では省略する。
 
 バイヤー (仕入れ) 部、マーケティング部、在庫管理部のドメインエキスパートは、『本 (商品) 』という名詞に対する意味合い/定義づけが異なる。
 
-そのため、それぞれを『本』『クーポン』『在庫』というユビキタス言語として定義できる。モデル名/データ名は、それぞれのユビキタス言語へ合わせた名前になる。
+そのため、それぞれを『本』『クーポン』『在庫』というユビキタス言語として定義できる。
+モデル名/データ名は、それぞれのユビキタス言語へ合わせた名前になる。
 
-例えば、マーケの境界づけられたコンテキストでは、モデル名は Coupon となる。また、割引期間データを保持する必要がある。一方で、仕入部や在庫部ではこのデータは不要である。
+例えば、マーケの境界づけられたコンテキストでは、モデル名は Coupon となる。
+また、割引期間データを保持する必要がある。
+一方で、仕入部や在庫部ではこのデータは不要である。
 
 一方、書籍の ISBN はすべての境界づけられたコンテキストのモデルに必要なデータである。
 
@@ -485,6 +539,7 @@ flowchart LR
   <thead>
     <tr>
       <th>境界づけられたコンテキスト名</th>
+      <th>業務内容</th>
       <th>マイクロサービス名</th>
       <th>集約名</th>
       <th>集約内のエンティティ</th>
@@ -493,21 +548,30 @@ flowchart LR
   <tbody>
     <tr>
       <td>仕入れ</td>
-      <td>purchasing</td>
-      <td>本</td>
-      <td>Book（本）</td>
+      <td>バイヤーが書籍を選定し、仕入れ条件と数量を決める。</td>
+      <td><code>purchasing</code> サービス</td>
+      <td><code>Book</code>（本）</td>
+      <td><code>Book</code> エンティティ（本）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>マーケティング</td>
-      <td>marketing</td>
-      <td>クーポン</td>
-      <td>Coupon（クーポン）</td>
+      <td>マーケ担当者がクーポンの対象書籍と割引期間を決める。</td>
+      <td><code>marketing</code> サービス</td>
+      <td><code>Coupon</code>（クーポン）</td>
+      <td><code>Coupon</code> エンティティ（クーポン）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>在庫管理</td>
-      <td>inventory</td>
-      <td>在庫</td>
-      <td>Inventory（在庫）</td>
+      <td>在庫管理者が在庫数を確認し、在庫を引き当てる。</td>
+      <td><code>inventory</code> サービス</td>
+      <td><code>Inventory</code>（在庫）</td>
+      <td><code>Inventory</code> エンティティ（在庫）</td>
     </tr>
   </tbody>
 </table>
@@ -522,8 +586,8 @@ flowchart LR
     marketing("マーケティング")
   end
 
-  inventoryManagement -->|書籍情報の参照| purchasing
-  marketing -->|在庫状況の参照| inventoryManagement
+  inventoryManagement -.->|書籍情報を参照| purchasing
+  marketing -.->|在庫状況を参照| inventoryManagement
 ```
 
 ![book_ec_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/book_ec_ubiquitous_language.png)
@@ -584,6 +648,7 @@ class Book {
   <thead>
     <tr>
       <th>境界づけられたコンテキスト名</th>
+      <th>業務内容</th>
       <th>マイクロサービス名</th>
       <th>集約名</th>
       <th>集約内のエンティティ</th>
@@ -592,33 +657,50 @@ class Book {
   <tbody>
     <tr>
       <td>認証</td>
-      <td>authentication</td>
-      <td>認証アカウント</td>
-      <td>Account（認証アカウント）</td>
+      <td>利用者が認証情報を入力し、ログインする。</td>
+      <td><code>authentication</code> サービス</td>
+      <td><code>Account</code>（認証アカウント）</td>
+      <td><code>Account</code> エンティティ（認証アカウント）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>予約</td>
-      <td>reservation</td>
-      <td>予約</td>
-      <td>Reservation（予約）</td>
+      <td>利用者が個室ジムの利用日時を選び、予約やキャンセルを行う。</td>
+      <td><code>reservation</code> サービス</td>
+      <td><code>Reservation</code>（予約）</td>
+      <td><code>Reservation</code> エンティティ（予約）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>顧客管理</td>
-      <td>customer</td>
-      <td>顧客</td>
-      <td>Customer（顧客）</td>
+      <td>顧客管理担当者が顧客情報を登録・変更し、利用停止を行う。</td>
+      <td><code>customer</code> サービス</td>
+      <td><code>Customer</code>（顧客）</td>
+      <td><code>Customer</code> エンティティ（顧客）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>銀行支払い</td>
-      <td>bank-payment</td>
-      <td>銀行支払い</td>
-      <td>BankPayment（銀行支払い）</td>
+      <td>利用者が銀行を通じて料金を支払い、経理担当者が入金を確認する。</td>
+      <td><code>bank-payment</code> サービス</td>
+      <td><code>BankPayment</code>（銀行支払い）</td>
+      <td><code>BankPayment</code> エンティティ（銀行支払い）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>クレジットカード支払い</td>
-      <td>card-payment</td>
-      <td>クレジットカード支払い</td>
-      <td>CardPayment（クレジットカード支払い）</td>
+      <td>利用者がカードで料金を支払い、経理担当者が決済状況を確認する。</td>
+      <td><code>card-payment</code> サービス</td>
+      <td><code>CardPayment</code>（クレジットカード支払い）</td>
+      <td><code>CardPayment</code> エンティティ（クレジットカード支払い）</td>
     </tr>
   </tbody>
 </table>
@@ -646,6 +728,7 @@ class Book {
   <thead>
     <tr>
       <th>境界づけられたコンテキスト名</th>
+      <th>業務内容</th>
       <th>マイクロサービス名</th>
       <th>集約名</th>
       <th>集約内のエンティティ</th>
@@ -654,26 +737,37 @@ class Book {
   <tbody>
     <tr>
       <td>契約管理</td>
-      <td>contract</td>
-      <td>契約</td>
-      <td>Contract（契約）、ContractItem（契約明細）</td>
+      <td>契約担当者が契約商品、契約期間、請求条件を決め、契約を更新する。</td>
+      <td><code>contract</code> サービス</td>
+      <td><code>Contract</code>（契約）</td>
+      <td><code>Contract</code> エンティティ（契約）、<code>ContractItem</code> エンティティ（契約明細）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>商品管理</td>
-      <td>product</td>
-      <td>商品</td>
-      <td>Product（商品）</td>
+      <td>商品管理担当者が契約対象の商品情報を登録・変更する。</td>
+      <td><code>product</code> サービス</td>
+      <td><code>Product</code>（商品）</td>
+      <td><code>Product</code> エンティティ（商品）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>請求管理</td>
-      <td>billing</td>
-      <td>請求</td>
-      <td>Invoice（請求）、InvoiceItem（請求明細）</td>
+      <td>請求担当者が請求明細と金額を確認し、請求書を発行する。</td>
+      <td><code>billing</code> サービス</td>
+      <td><code>Invoice</code>（請求）</td>
+      <td><code>Invoice</code> エンティティ（請求）、<code>InvoiceItem</code> エンティティ（請求明細）</td>
     </tr>
   </tbody>
 </table>
 
-契約と請求の管理を強みとする設計例として、契約管理と請求管理をコアドメイン、商品管理を支援サブドメインに分類する。各ノードは境界づけられたコンテキストを表し、矢印は依存する側から依存先へ向ける。この分類と依存関係は説明用の例である。
+契約と請求の管理を強みとする設計例として、契約管理と請求管理をコアドメイン、商品管理を支援サブドメインに分類する。
+各ノードは境界づけられたコンテキストを表し、矢印は依存する側から依存先へ向ける。
+この分類と依存関係は説明用の例である。
 
 ```mermaid
 flowchart LR
@@ -685,8 +779,8 @@ flowchart LR
     product("商品管理")
   end
 
-  contract -->|契約対象の商品を参照| product
-  billing -->|契約の請求条件を参照| contract
+  contract -.->|契約対象の商品を参照| product
+  billing -.->|契約の請求条件を参照| contract
 ```
 
 ![contract_billing_management_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/contract_billing_management_ubiquitous_language.png)
@@ -706,6 +800,7 @@ flowchart LR
   <thead>
     <tr>
       <th>境界づけられたコンテキスト名</th>
+      <th>業務内容</th>
       <th>マイクロサービス名</th>
       <th>集約名</th>
       <th>集約内のエンティティ</th>
@@ -714,26 +809,37 @@ flowchart LR
   <tbody>
     <tr>
       <td>財務会計</td>
-      <td>accounting</td>
-      <td>仕訳</td>
-      <td>JournalEntry（仕訳）、JournalEntryLine（仕訳明細）</td>
+      <td>経理担当者が仕訳を登録し、会計記録を確認する。</td>
+      <td><code>accounting</code> サービス</td>
+      <td><code>JournalEntry</code>（仕訳）</td>
+      <td><code>JournalEntry</code> エンティティ（仕訳）、<code>JournalEntryLine</code> エンティティ（仕訳明細）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>会計ワークフロー</td>
-      <td>accounting-workflow</td>
-      <td>会計申請</td>
-      <td>AccountingApplication（会計申請）、ApprovalStep（承認ステップ）</td>
+      <td>従業員が会計申請を提出し、承認者が内容を確認して承認する。</td>
+      <td><code>accounting-workflow</code> サービス</td>
+      <td><code>AccountingApplication</code>（会計申請）</td>
+      <td><code>AccountingApplication</code> エンティティ（会計申請）、<code>ApprovalStep</code> エンティティ（承認ステップ）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>従業員管理</td>
-      <td>employee</td>
-      <td>従業員</td>
-      <td>Employee（従業員）</td>
+      <td>人事担当者が従業員情報を登録・変更し、在籍状況を更新する。</td>
+      <td><code>employee</code> サービス</td>
+      <td><code>Employee</code>（従業員）</td>
+      <td><code>Employee</code> エンティティ（従業員）</td>
     </tr>
   </tbody>
 </table>
 
-財務会計を強みとする設計例として、財務会計をコアドメイン、会計ワークフローを支援サブドメイン、従業員管理を汎用サブドメインに分類する。各ノードは境界づけられたコンテキストを表し、矢印は依存する側から依存先へ向ける。この分類と依存関係は説明用の例である。
+財務会計を強みとする設計例として、財務会計をコアドメイン、会計ワークフローを支援サブドメイン、従業員管理を汎用サブドメインに分類する。
+各ノードは境界づけられたコンテキストを表し、矢印は依存する側から依存先へ向ける。
+この分類と依存関係は説明用の例である。
 
 ```mermaid
 flowchart LR
@@ -747,8 +853,8 @@ flowchart LR
     employee("従業員管理")
   end
 
-  accounting -->|承認済みの会計申請を参照| workflow
-  workflow -->|申請者と承認者の従業員情報を参照| employee
+  accounting -.->|承認済みの会計申請を参照| workflow
+  workflow -.->|申請者と承認者の従業員情報を参照| employee
 ```
 
 ![freee_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/freee_bounded-context.png)
@@ -758,24 +864,7 @@ flowchart LR
 #### ▼ 個人間送金ドメイン
 
 個人間送金業務の担当者が変わる境目を見つけ、それを境界づけられたコンテキストにする。
-
-```txt
-ユーザー：利用者の登録、本人確認、利用停止を扱う。
-↓
-口座：送金元口座や受取口座の登録、有効性確認を扱う。
-↓
-支払依頼：受取人から送金人への請求や支払依頼を扱う。
-↓
-送金取引：送金依頼の作成、送金実行、送金ステータス更新を扱う。
-↓
-送金精算：送金結果を集計し、参加金融機関間の受け払い金額を確定する。
-↓
-送金照合：自システムの送金記録と外部データを突き合わせ、差分を確認する。
-↓
-レポーティング：送金履歴、送金明細、精算結果、照合結果を出力する。
-↓
-送金取引管理ポータル：管理者が送金取引を照会し、例外対応や再処理を行う。
-```
+以下の業務説明・表・図は一般的な設計例であり、特定の実装のサービス構成や呼び出し関係を示すものではない。
 
 **＊表＊**
 
@@ -783,6 +872,7 @@ flowchart LR
   <thead>
     <tr>
       <th>境界づけられたコンテキスト名</th>
+      <th>業務内容</th>
       <th>マイクロサービス名</th>
       <th>集約名</th>
       <th>集約内のエンティティ</th>
@@ -791,56 +881,86 @@ flowchart LR
   <tbody>
     <tr>
       <td>送金取引</td>
-      <td>remittance</td>
-      <td>送金</td>
-      <td>Remittance（送金）、RemittanceHistories（送金履歴）、RemittanceStatuses（送金ステータス）</td>
+      <td>送金人が送金先と金額を指定し、送金状況を確認する。</td>
+      <td><code>remittance</code> サービス</td>
+      <td><code>Remittance</code>（送金）</td>
+      <td><code>Remittance</code> エンティティ（送金）、<code>RemittanceHistories</code> エンティティ（送金履歴）、<code>RemittanceStatuses</code> エンティティ（送金ステータス）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>請求</td>
-      <td>payment</td>
-      <td>請求</td>
-      <td>Payment（請求）、TransactionHistory（取引履歴）</td>
+      <td>受取人が送金人に支払いを依頼し、入金を確認する。</td>
+      <td><code>payment</code> サービス</td>
+      <td><code>Payment</code>（請求）</td>
+      <td><code>Payment</code> エンティティ（請求）、<code>TransactionHistory</code> エンティティ（取引履歴）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>銀行口座</td>
-      <td>BankAccount</td>
-      <td>銀行口座</td>
-      <td>BankAccount（銀行口座）</td>
+      <td>利用者が送金元口座や受取口座を登録し、口座情報を確認する。</td>
+      <td><code>BankAccount</code> サービス</td>
+      <td><code>BankAccount</code>（銀行口座）</td>
+      <td><code>BankAccount</code> エンティティ（銀行口座）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>ユーザー</td>
-      <td>user</td>
-      <td>ユーザー</td>
-      <td>User（ユーザー）</td>
+      <td>利用者が情報を登録し、本人確認担当者が本人確認や利用停止を行う。</td>
+      <td><code>user</code> サービス</td>
+      <td><code>User</code>（ユーザー）</td>
+      <td><code>User</code> エンティティ（ユーザー）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>精算</td>
-      <td>settlement</td>
-      <td>精算</td>
-      <td>Settlement（精算）</td>
+      <td>精算担当者が取引結果を確認し、事業者間の受け払い金額を確定する。</td>
+      <td><code>settlement</code> サービス</td>
+      <td><code>Settlement</code>（精算）</td>
+      <td><code>Settlement</code> エンティティ（精算）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>送金照合</td>
-      <td>reconciliation</td>
-      <td>照合</td>
-      <td>Reconciliation（照合）、ReconciliationResult（照合結果）、Difference（差分）</td>
+      <td>照合担当者が送金記録と外部データを突き合わせ、差分を調べる。</td>
+      <td><code>reconciliation</code> サービス</td>
+      <td><code>Reconciliation</code>（照合）</td>
+      <td><code>Reconciliation</code> エンティティ（照合）、<code>ReconciliationResult</code> エンティティ（照合結果）、<code>Difference</code> エンティティ（差分）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>レポーティング</td>
-      <td>reporting</td>
-      <td>レポーティング</td>
-      <td>RemittanceHistory（送金履歴）、RemittanceDetailFile（送金明細ファイル）</td>
+      <td>業務担当者が送金履歴、送金明細、精算結果、照合結果を出力する。</td>
+      <td><code>reporting</code> サービス</td>
+      <td><code>Reporting</code>（レポーティング）</td>
+      <td><code>RemittanceHistory</code> エンティティ（送金履歴）、<code>RemittanceDetailFile</code> エンティティ（送金明細ファイル）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>送金取引管理ポータル</td>
-      <td>web-portal</td>
-      <td>送金取引管理</td>
-      <td>web ポータルのフロントエンドアプリケーション</td>
+      <td>管理者が送金取引を照会し、例外対応や再処理を行う。</td>
+      <td><code>web-portal</code> サービス</td>
+      <td><code>RemittanceManagement</code>（送金取引管理）</td>
+      <td><code>web</code> ポータルのフロントエンドアプリケーション</td>
     </tr>
   </tbody>
 </table>
 
-個人間送金の取引処理を強みとする設計例として、送金取引をコアドメイン、請求、銀行口座、精算、送金照合、レポーティング、送金取引管理ポータルを支援サブドメイン、ユーザーを汎用サブドメインに分類する。各ノードは境界づけられたコンテキストを表し、矢印は依存する側から依存先へ向ける。
+個人間送金の取引処理を強みとする設計例として、送金取引をコアドメイン、請求、銀行口座、精算、送金照合、レポーティング、送金取引管理ポータルを支援サブドメイン、ユーザーを汎用サブドメインに分類する。
+各ノードは境界づけられたコンテキストを表し、矢印は依存する側から依存先へ向ける。
 
 ```mermaid
 flowchart LR
@@ -859,37 +979,122 @@ flowchart LR
     user("ユーザー")
   end
 
-  remittance -->|送金元と受取先の口座を参照| bankAccount
-  remittance -->|送金人と受取人を参照| user
-  remittance -->|支払対象の請求を参照| payment
-  payment -->|請求先と請求元のユーザーを参照| user
-  bankAccount -->|口座所有者を参照| user
-  settlement -->|送金結果を参照| remittance
-  reconciliation -->|照合対象の送金記録を参照| remittance
-  reporting -->|送金履歴を参照| remittance
-  reporting -->|精算結果を参照| settlement
-  reporting -->|照合結果を参照| reconciliation
-  portal -->|送金取引の状況を参照| remittance
-  portal -->|照合結果を参照| reconciliation
+  remittance -.->|送金元と受取先の口座を参照| bankAccount
+  remittance -.->|送金人と受取人を参照| user
+  remittance -.->|支払対象の請求を参照| payment
+  payment -.->|請求先と請求元のユーザーを参照| user
+  bankAccount -.->|口座所有者を参照| user
+  settlement -.->|送金結果を参照| remittance
+  reconciliation -.->|照合対象の送金記録を参照| remittance
+  reporting -.->|送金履歴を参照| remittance
+  reporting -.->|精算結果を参照| settlement
+  reporting -.->|照合結果を参照| reconciliation
+  portal -.->|送金取引の状況を参照| remittance
+  portal -.->|照合結果を参照| reconciliation
+```
+
+##### 実装を参考にした設計例：送金・精算サービスの分割
+
+精算を集計と事業者別の処理に分け、送金明細の作成も独立させる。
+
+<table>
+  <thead>
+    <tr>
+      <th>境界づけられたコンテキスト名</th>
+      <th>業務内容</th>
+      <th>マイクロサービス名</th>
+      <th>集約名</th>
+      <th>集約内のエンティティ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>送金</td>
+      <td>送金人が送金先と金額を指定し、送金履歴とステータスを確認する。</td>
+      <td><code>remittance</code> サービス</td>
+      <td><code>Remittance</code>（送金）</td>
+      <td><code>Remittance</code> エンティティ（送金）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>口座エイリアス</td>
+      <td>利用者が口座エイリアスを登録・変更し、送金先の口座を指定する。</td>
+      <td><code>account-alias</code> サービス</td>
+      <td><code>BankAccount</code>（銀行口座）、<code>ValueAccount</code>（バリュー口座）</td>
+      <td><code>BankAccount</code> エンティティ（銀行口座）、<code>ValueAccount</code> エンティティ（バリュー口座）。それぞれ別の集約とする。</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>精算集計</td>
+      <td>精算担当者が対象期間を指定し、取引件数と金額の集計結果を確認する。</td>
+      <td><code>settlement-aggregation</code> サービス</td>
+      <td><code>AggregationSettlement</code>（精算集計）</td>
+      <td><code>AggregationSettlement</code> エンティティ（精算集計）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>銀行間精算</td>
+      <td>精算担当者が銀行間の受け払い金額と精算ファイルを確認する。</td>
+      <td><code>bank-settlement</code> サービス</td>
+      <td><code>BankSettlementFile</code>（銀行間精算ファイル）</td>
+      <td><code>BankSettlementFile</code> エンティティ（銀行間精算ファイル）、<code>BankSettlementRecord</code> エンティティ（銀行間精算レコード）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>バリュー事業者精算</td>
+      <td>精算担当者がバリュー事業者ごとの受け払い金額と精算ファイルを確認する。</td>
+      <td><code>value-provider-settlement</code> サービス</td>
+      <td><code>ValueProviderSettlementFile</code>（バリュー事業者精算ファイル）</td>
+      <td><code>ValueProviderSettlementFile</code> エンティティ（バリュー事業者精算ファイル）、<code>ValueProviderSettlementRecord</code> エンティティ（バリュー事業者精算レコード）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>送金明細</td>
+      <td>業務担当者が銀行やバリュー事業者向けの送金明細を取得・確認する。</td>
+      <td><code>remittance-detail</code> サービス</td>
+      <td><code>BankDailyRemittanceDetailFile</code>（銀行日次送金明細ファイル）</td>
+      <td><code>BankDailyRemittanceDetailFile</code> エンティティ（銀行日次送金明細ファイル）</td>
+    </tr>
+  </tbody>
+</table>
+
+コア・支援の分類は設計上の仮定とし、破線は依存する側から参照先への依存関係を示す。
+この図では、各矢印のラベルにDB参照であることを記載する。
+口座情報の取得と送金の呼び出しはAPI層が調整するため、送金から口座エイリアスへの直接の矢印は付けない。
+
+```mermaid
+flowchart LR
+  subgraph core["コアドメイン"]
+    remittance("送金")
+    accountAlias("口座エイリアス")
+  end
+  subgraph supporting["支援サブドメイン"]
+    aggregation("精算集計")
+    bankSettlement("銀行間精算")
+    valueSettlement("バリュー事業者精算")
+    remittanceDetail("送金明細")
+  end
+
+  aggregation -.->|送金履歴をDB参照| remittance
+  bankSettlement -.->|銀行間の精算集計結果をDB参照| aggregation
+  valueSettlement -.->|バリュー事業者の精算集計結果をDB参照| aggregation
+  remittanceDetail -.->|送金履歴をDB参照| remittance
 ```
 
 #### ▼ QR 決済ドメイン
 
 QR 決済業務の担当者が変わる境目を見つけ、それを境界づけられたコンテキストにする。
-
-```txt
-ユーザー：利用者の登録、本人確認、利用停止を扱う。
-↓
-加盟店契約：加盟店との契約、利用可能な決済手段、精算条件を扱う。
-↓
-QR決済取引：QRコードを使った決済要求、決済実行、取引ステータス更新を扱う。
-↓
-QR決済精算：QR決済結果を集計し、加盟店への支払額や手数料を確定する。
-↓
-QR決済照合：自システムの取引記録と決済事業者や外部ファイルを突き合わせ、差分を確認する。
-↓
-QR決済取引管理ポータル：管理者がQR決済取引を照会し、例外対応や再処理を行う。
-```
+集約とエンティティ、コア・支援・汎用の分類は設計例とする。
 
 **＊表＊**
 
@@ -897,6 +1102,7 @@ QR決済取引管理ポータル：管理者がQR決済取引を照会し、例�
   <thead>
     <tr>
       <th>境界づけられたコンテキスト名</th>
+      <th>業務内容</th>
       <th>マイクロサービス名</th>
       <th>集約名</th>
       <th>集約内のエンティティ</th>
@@ -905,44 +1111,106 @@ QR決済取引管理ポータル：管理者がQR決済取引を照会し、例�
   <tbody>
     <tr>
       <td>QR 決済取引</td>
-      <td>transaction</td>
-      <td>取引</td>
-      <td>Transaction（取引）</td>
+      <td>利用者が QR コードを読み取り、決済内容を確認して支払いを行う。</td>
+      <td><code>transaction</code> サービス</td>
+      <td><code>Transaction</code>（取引）</td>
+      <td><code>Transaction</code> エンティティ（取引）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>加盟店契約</td>
-      <td>merchant</td>
-      <td>契約</td>
-      <td>MerchantContract（加盟店契約）、Merchant（加盟店）</td>
+      <td>加盟店担当者が利用可能な決済手段と精算条件を決め、契約を登録する。</td>
+      <td><code>merchant</code> サービス</td>
+      <td><code>MerchantContract</code>（契約）</td>
+      <td><code>MerchantContract</code> エンティティ（加盟店契約）、<code>Merchant</code> エンティティ（加盟店）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>精算</td>
-      <td>payment</td>
-      <td>精算</td>
-      <td>Payment（清算）</td>
+      <td>精算担当者が取引結果を確認し、事業者間の受け払い金額を確定する。</td>
+      <td><code>payment</code> サービス</td>
+      <td><code>Payment</code>（精算）</td>
+      <td><code>Payment</code> エンティティ（精算）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>ユーザー</td>
-      <td>user</td>
-      <td>ユーザー</td>
-      <td>User（ユーザー）</td>
+      <td>利用者が情報を登録し、本人確認担当者が本人確認や利用停止を行う。</td>
+      <td><code>user</code> サービス</td>
+      <td><code>User</code>（ユーザー）</td>
+      <td><code>User</code> エンティティ（ユーザー）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>QR 決済照合</td>
-      <td>reconciliation</td>
-      <td>照合</td>
-      <td>Reconciliation（照合）、ReconciliationResult（照合結果）、Difference（差分）</td>
+      <td>照合担当者が決済記録と外部データを突き合わせ、差分を調べる。</td>
+      <td><code>reconciliation</code> サービス</td>
+      <td><code>Reconciliation</code>（照合）</td>
+      <td><code>Reconciliation</code> エンティティ（照合）、<code>ReconciliationResult</code> エンティティ（照合結果）、<code>Difference</code> エンティティ（差分）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
     </tr>
     <tr>
       <td>QR 決済取引管理ポータル</td>
-      <td>web-portal</td>
-      <td>QR 決済取引管理</td>
-      <td>web ポータルのフロントエンドアプリケーション</td>
+      <td>管理者が決済取引を照会し、例外対応や再処理を行う。</td>
+      <td><code>web-portal</code> サービス</td>
+      <td><code>QrPaymentManagement</code>（QR 決済取引管理）</td>
+      <td><code>web</code> ポータルのフロントエンドアプリケーション</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>マネーロンダリング対策の判定</td>
+      <td>コンプライアンス担当者が判定条件を設定し、遮断された取引を確認する。</td>
+      <td><code>anti-money-laundering</code> サービス</td>
+      <td><code>AntiMoneyLaunderingCheck</code>（マネーロンダリング対策の判定）</td>
+      <td><code>AntiMoneyLaunderingCheck</code> エンティティ（マネーロンダリング対策の判定）、<code>BlockedTransaction</code> エンティティ（遮断取引）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>決済事業者接続</td>
+      <td>接続管理担当者が決済事業者との接続条件を設定し、通信状況を確認する。</td>
+      <td><code>payment-connector</code> サービス</td>
+      <td><code>PaymentIntegration</code>（決済連携）</td>
+      <td><code>PaymentIntegration</code> エンティティ（決済連携）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>API 認証</td>
+      <td>API 管理者が認証トークンを発行・失効し、接続元の認証情報を管理する。</td>
+      <td><code>api-authentication</code> サービス</td>
+      <td><code>AuthenticationToken</code>（認証トークン）</td>
+      <td><code>AuthenticationToken</code> エンティティ（認証トークン）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>管理者ユーザー管理</td>
+      <td>管理者が担当者のアカウントを登録し、権限変更や無効化を行う。</td>
+      <td><code>user-management</code> サービス</td>
+      <td><code>User</code>（管理者ユーザー）</td>
+      <td><code>User</code> エンティティ（管理者ユーザー）</td>
     </tr>
   </tbody>
 </table>
 
-QR 決済の取引処理を強みとする設計例として、QR 決済取引をコアドメイン、加盟店契約、精算、QR 決済照合、QR 決済取引管理ポータルを支援サブドメイン、ユーザーを汎用サブドメインに分類する。各ノードは境界づけられたコンテキストを表し、矢印は依存する側から依存先へ向ける。
+各ノードは境界づけられたコンテキストを表し、破線は依存する側から依存先へ向ける。
+取引処理は決済の方向ごとに分かれ、加盟店管理の照会はインバウンド、マネーロンダリング対策の判定はアウトバウンドで行う。
 
 ```mermaid
 flowchart LR
@@ -954,19 +1222,24 @@ flowchart LR
     settlement("精算")
     reconciliation("QR 決済照合")
     portal("QR 決済取引管理ポータル")
+    antiMoneyLaundering("マネーロンダリング対策の判定")
+    connector("決済事業者接続")
   end
   subgraph generic["汎用サブドメイン"]
     user("ユーザー")
+    authentication("API 認証")
+    administrator("管理者ユーザー管理")
   end
 
-  transaction -->|加盟店の契約条件を参照| merchant
-  transaction -->|決済するユーザーを参照| user
-  settlement -->|決済結果を参照| transaction
-  settlement -->|加盟店の精算条件を参照| merchant
-  reconciliation -->|照合対象の決済記録を参照| transaction
-  portal -->|決済取引の状況を参照| transaction
-  portal -->|照合結果を参照| reconciliation
+  transaction -.->|加盟店の利用可否を照会| merchant
+  transaction -.->|マネーロンダリング対策の判定を依頼| antiMoneyLaundering
+  transaction -.->|加盟店照会・決済を依頼| connector
+  reconciliation -.->|取引を取得し照合結果を反映| transaction
+  portal -.->|管理者の認証・ユーザー管理を依頼| administrator
 ```
+
+決済利用者と管理者のユーザー管理は別に扱い、API 認証への呼び出しは API 受付層で行う。
+精算取引の照会は実装されているが、日次精算ファイル作成バッチは未実装のため、精算の依存関係は図に含めない。
 
 <br>
 
@@ -1000,7 +1273,8 @@ flowchart LR
 
 一方で、同じユビキタス言語を使用する場合、境界づけられたコンテキストは複数のサブドメインにまたがる。
 
-できる限り、各境界づけられたコンテキストでは異なるユビキタス言語を使用する。そして、境界づけられたコンテキストが複数のサブドメインへまたがらないようにしたほうがよい (これ重要) 。
+できる限り、各境界づけられたコンテキストでは異なるユビキタス言語を使用する。
+そして、境界づけられたコンテキストが複数のサブドメインへまたがらないようにしたほうがよい (これ重要) 。
 
 ![context-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/context-map.png)
 
@@ -1122,13 +1396,18 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 `(2)`
 
-: ドメインエキスパートへの要件定義が終えた想定で、ユースケース図を作成する。オブジェクト図は省略する。
+: ドメインエキスパートへの要件定義が終えた想定で、ユースケース図を作成する。
+オブジェクト図は省略する。
 
 ![ticket-modeling_little-hands_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_usecase-diagram_example.jpg)
 
 `(3)`
 
-: 暫定的なドメインモデル図を作成する。`little_hands_s` さんは、ID のみを使用する関係であれば『実線矢印』とし、加えてオブジェクト全体を使用する関係であれば『黒塗りの菱形』としている。ユースケースから以下のオブジェクトを抽出する。このとき、実装パターンをおおまかに予想しておく。また、矢印と菱形の関係性から、集約の境界を設定する。
+: 暫定的なドメインモデル図を作成する。
+`little_hands_s` さんは、ID のみを使用する関係であれば『実線矢印』とし、加えてオブジェクト全体を使用する関係であれば『黒塗りの菱形』としている。
+ユースケースから以下のオブジェクトを抽出する。
+このとき、実装パターンをおおまかに予想しておく。
+また、矢印と菱形の関係性から、集約の境界を設定する。
 
 <table>
   <thead>
