@@ -1888,6 +1888,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ 銀行口座決済ドメイン
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#qr" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -34616,6 +34627,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ 銀行口座決済ドメイン
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#qr" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -35196,7 +35218,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月25日 21:10:09 JST">2026-10-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月25日 21:42:22 JST">2026-10-25</span>
   </span>
 
     
@@ -35984,8 +36006,9 @@
 </ul>
 </blockquote>
 <h4 id="_26">▼ 個人間送金ドメイン<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p>個人間送金業務の担当者が変わる境目を見つけ、それを境界づけられたコンテキストにする。
-以下の業務説明・表・図は一般的な設計例であり、特定の実装のサービス構成や呼び出し関係を示すものではない。</p>
+<p>個人間送金業務の担当者が変わる境目を見つけ、それを境界づけられたコンテキストにする。</p>
+<p>以下の表・図は一般的な設計例であり、特定の実装のサービス構成や呼び出し関係を示すものではない。</p>
+<p>精算は集計と事業者別の処理に分け、口座エイリアス管理と送金明細の作成も取り上げる。</p>
 <p><strong>＊表＊</strong></p>
 <table>
   <thead>
@@ -36029,114 +36052,21 @@
       <td colspan="5">↓</td>
     </tr>
     <tr>
-      <td>ユーザー</td>
-      <td>利用者が情報を登録し、本人確認担当者が本人確認や利用停止を行う。</td>
-      <td><code>user</code> サービス</td>
-      <td><code>User</code>（ユーザー）</td>
-      <td><code>User</code> エンティティ（ユーザー）</td>
-    </tr>
-    <tr>
-      <td colspan="5">↓</td>
-    </tr>
-    <tr>
-      <td>精算</td>
-      <td>精算担当者が取引結果を確認し、事業者間の受け払い金額を確定する。</td>
-      <td><code>settlement</code> サービス</td>
-      <td><code>Settlement</code>（精算）</td>
-      <td><code>Settlement</code> エンティティ（精算）</td>
-    </tr>
-    <tr>
-      <td colspan="5">↓</td>
-    </tr>
-    <tr>
-      <td>送金照合</td>
-      <td>照合担当者が送金記録と外部データを突き合わせ、差分を調べる。</td>
-      <td><code>reconciliation</code> サービス</td>
-      <td><code>Reconciliation</code>（照合）</td>
-      <td><code>Reconciliation</code> エンティティ（照合）、<code>ReconciliationResult</code> エンティティ（照合結果）、<code>Difference</code> エンティティ（差分）</td>
-    </tr>
-    <tr>
-      <td colspan="5">↓</td>
-    </tr>
-    <tr>
-      <td>レポーティング</td>
-      <td>業務担当者が送金履歴、送金明細、精算結果、照合結果を出力する。</td>
-      <td><code>reporting</code> サービス</td>
-      <td><code>Reporting</code>（レポーティング）</td>
-      <td><code>RemittanceHistory</code> エンティティ（送金履歴）、<code>RemittanceDetailFile</code> エンティティ（送金明細ファイル）</td>
-    </tr>
-    <tr>
-      <td colspan="5">↓</td>
-    </tr>
-    <tr>
-      <td>送金取引管理ポータル</td>
-      <td>管理者が送金取引を照会し、例外対応や再処理を行う。</td>
-      <td><code>web-portal</code> サービス</td>
-      <td><code>RemittanceManagement</code>（送金取引管理）</td>
-      <td><code>web</code> ポータルのフロントエンドアプリケーション</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>個人間送金の取引処理を強みとする設計例として、送金取引をコアドメイン、請求、銀行口座、精算、送金照合、レポーティング、送金取引管理ポータルを支援サブドメイン、ユーザーを汎用サブドメインに分類する。
-各ノードは境界づけられたコンテキストを表し、矢印は依存する側から依存先へ向ける。</p>
-<pre class="mermaid"><code>flowchart LR
-  subgraph core["コアドメイン"]
-    remittance("送金取引")
-  end
-  subgraph supporting["支援サブドメイン"]
-    payment("請求")
-    bankAccount("銀行口座")
-    settlement("精算")
-    reconciliation("送金照合")
-    reporting("レポーティング")
-    portal("送金取引管理ポータル")
-  end
-  subgraph generic["汎用サブドメイン"]
-    user("ユーザー")
-  end
-
-  remittance -.-&gt;|送金元と受取先の口座を参照| bankAccount
-  remittance -.-&gt;|送金人と受取人を参照| user
-  remittance -.-&gt;|支払対象の請求を参照| payment
-  payment -.-&gt;|請求先と請求元のユーザーを参照| user
-  bankAccount -.-&gt;|口座所有者を参照| user
-  settlement -.-&gt;|送金結果を参照| remittance
-  reconciliation -.-&gt;|照合対象の送金記録を参照| remittance
-  reporting -.-&gt;|送金履歴を参照| remittance
-  reporting -.-&gt;|精算結果を参照| settlement
-  reporting -.-&gt;|照合結果を参照| reconciliation
-  portal -.-&gt;|送金取引の状況を参照| remittance
-  portal -.-&gt;|照合結果を参照| reconciliation</code></pre>
-<h5 id="_27">実装を参考にした設計例：送金・精算サービスの分割<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h5>
-<p>精算を集計と事業者別の処理に分け、送金明細の作成も独立させる。</p>
-<table>
-  <thead>
-    <tr>
-      <th>境界づけられたコンテキスト名</th>
-      <th>業務内容</th>
-      <th>マイクロサービス名</th>
-      <th>集約名</th>
-      <th>集約内のエンティティ</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>送金</td>
-      <td>送金人が送金先と金額を指定し、送金履歴とステータスを確認する。</td>
-      <td><code>remittance</code> サービス</td>
-      <td><code>Remittance</code>（送金）</td>
-      <td><code>Remittance</code> エンティティ（送金）</td>
-    </tr>
-    <tr>
-      <td colspan="5">↓</td>
-    </tr>
-    <tr>
       <td>口座エイリアス</td>
       <td>利用者が口座エイリアスを登録・変更し、送金先の口座を指定する。</td>
       <td><code>account-alias</code> サービス</td>
       <td><code>BankAccount</code>（銀行口座）、<code>ValueAccount</code>（バリュー口座）</td>
       <td><code>BankAccount</code> エンティティ（銀行口座）、<code>ValueAccount</code> エンティティ（バリュー口座）。それぞれ別の集約とする。</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>ユーザー</td>
+      <td>利用者が情報を登録し、本人確認担当者が本人確認や利用停止を行う。</td>
+      <td><code>user</code> サービス</td>
+      <td><code>User</code>（ユーザー）</td>
+      <td><code>User</code> エンティティ（ユーザー）</td>
     </tr>
     <tr>
       <td colspan="5">↓</td>
@@ -36172,34 +36102,360 @@
       <td colspan="5">↓</td>
     </tr>
     <tr>
+      <td>送金照合</td>
+      <td>照合担当者が送金記録と外部データを突き合わせ、差分を調べる。</td>
+      <td><code>reconciliation</code> サービス</td>
+      <td><code>Reconciliation</code>（照合）</td>
+      <td><code>Reconciliation</code> エンティティ（照合）、<code>ReconciliationResult</code> エンティティ（照合結果）、<code>Difference</code> エンティティ（差分）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>レポーティング</td>
+      <td>業務担当者が送金履歴、送金明細、精算結果、照合結果を出力する。</td>
+      <td><code>reporting</code> サービス</td>
+      <td><code>Reporting</code>（レポーティング）</td>
+      <td><code>RemittanceHistory</code> エンティティ（送金履歴）、<code>RemittanceDetailFile</code> エンティティ（送金明細ファイル）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
       <td>送金明細</td>
       <td>業務担当者が銀行やバリュー事業者向けの送金明細を取得・確認する。</td>
       <td><code>remittance-detail</code> サービス</td>
       <td><code>BankDailyRemittanceDetailFile</code>（銀行日次送金明細ファイル）</td>
       <td><code>BankDailyRemittanceDetailFile</code> エンティティ（銀行日次送金明細ファイル）</td>
     </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>送金取引管理ポータル</td>
+      <td>管理者が送金取引を照会し、例外対応や再処理を行う。</td>
+      <td><code>web-portal</code> サービス</td>
+      <td><code>RemittanceManagement</code>（送金取引管理）</td>
+      <td><code>web</code> ポータルのフロントエンドアプリケーション</td>
+    </tr>
   </tbody>
 </table>
 
-<p>コア・支援の分類は設計上の仮定とし、破線は依存する側から参照先への依存関係を示す。
-この図では、各矢印のラベルにDB参照であることを記載する。
-口座情報の取得と送金の呼び出しはAPI層が調整するため、送金から口座エイリアスへの直接の矢印は付けない。</p>
+<p>個人間送金の取引処理を強みとする設計例として、送金取引をコアドメイン、ユーザーを汎用サブドメイン、その他を支援サブドメインに分類する。</p>
+<p>各ノードは境界づけられたコンテキストを表し、破線は依存する側から参照先へ向ける。</p>
+<p>口座情報の取得と送金の呼び出しをAPI層が調整する設計とし、送金取引から口座エイリアスへの直接の矢印は付けない。</p>
 <pre class="mermaid"><code>flowchart LR
   subgraph core["コアドメイン"]
-    remittance("送金")
-    accountAlias("口座エイリアス")
+    remittance("送金取引")
   end
   subgraph supporting["支援サブドメイン"]
+    payment("請求")
+    bankAccount("銀行口座")
+    accountAlias("口座エイリアス")
     aggregation("精算集計")
     bankSettlement("銀行間精算")
     valueSettlement("バリュー事業者精算")
+    reconciliation("送金照合")
+    reporting("レポーティング")
     remittanceDetail("送金明細")
+    portal("送金取引管理ポータル")
+  end
+  subgraph generic["汎用サブドメイン"]
+    user("ユーザー")
   end
 
-  aggregation -.-&gt;|送金履歴をDB参照| remittance
-  bankSettlement -.-&gt;|銀行間の精算集計結果をDB参照| aggregation
-  valueSettlement -.-&gt;|バリュー事業者の精算集計結果をDB参照| aggregation
-  remittanceDetail -.-&gt;|送金履歴をDB参照| remittance</code></pre>
+  remittance -.-&gt;|送金元と受取先の口座を参照| bankAccount
+  remittance -.-&gt;|送金人と受取人を参照| user
+  remittance -.-&gt;|支払対象の請求を参照| payment
+  payment -.-&gt;|請求先と請求元のユーザーを参照| user
+  bankAccount -.-&gt;|口座所有者を参照| user
+  aggregation -.-&gt;|送金履歴を参照| remittance
+  bankSettlement -.-&gt;|銀行間の精算集計結果を参照| aggregation
+  valueSettlement -.-&gt;|バリュー事業者の精算集計結果を参照| aggregation
+  reconciliation -.-&gt;|照合対象の送金記録を参照| remittance
+  reporting -.-&gt;|送金履歴を参照| remittance
+  reporting -.-&gt;|銀行間の精算結果を参照| bankSettlement
+  reporting -.-&gt;|バリュー事業者の精算結果を参照| valueSettlement
+  reporting -.-&gt;|照合結果を参照| reconciliation
+  remittanceDetail -.-&gt;|送金履歴を参照| remittance
+  portal -.-&gt;|送金取引の状況を参照| remittance
+  portal -.-&gt;|照合結果を参照| reconciliation</code></pre>
+<h4 id="_27">▼ 銀行口座決済ドメイン<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<p>決済・送金、加盟店の運用、精算で扱う業務の違いから、境界づけられたコンテキストを分ける。</p>
+<p>サービス名とモデル名は一般化し、集約とドメイン分類は設計例とする。</p>
+<p>売上・返金では取引サマリが子の取引を管理するが、その他の集約境界は候補である。</p>
+<p>加盟店業務と精算業務では、同じ加盟店でも扱う情報と変更の目的が異なる。</p>
+<p><strong>＊表＊</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>境界づけられたコンテキスト名</th>
+      <th>業務内容</th>
+      <th>マイクロサービス名</th>
+      <th>集約名</th>
+      <th>集約内のエンティティ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>送金</td>
+      <td>利用者が送金先と金額を指定し、送金結果を確認する。</td>
+      <td><code>remittance</code> サービス</td>
+      <td><code>Remittance</code>（送金）</td>
+      <td><code>RemittanceHistory</code> エンティティ（送金履歴）、<code>RemittanceStatus</code> エンティティ（送金ステータス）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>請求支払</td>
+      <td>利用者が請求内容を確認し、支払いを行う。</td>
+      <td><code>bill-payment</code> サービス</td>
+      <td><code>BillPayment</code>（請求支払）</td>
+      <td><code>BillPaymentHistory</code> エンティティ（請求支払履歴）、<code>BillPaymentInquiryHistory</code> エンティティ（請求照会履歴）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>口座・エイリアス管理</td>
+      <td>利用者が口座に紐づくエイリアスを登録し、利用限度額を確認する。</td>
+      <td><code>user-account</code> サービス</td>
+      <td><code>User</code>（利用者）、<code>AccountAlias</code>（口座エイリアス）</td>
+      <td><code>User</code> エンティティ（利用者）、<code>AccountAlias</code> エンティティ（口座エイリアス）、<code>UserLimitAmount</code> エンティティ（利用限度額）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>請求取引管理</td>
+      <td>運用担当者が請求取引と最新の状態を確認する。</td>
+      <td><code>bill-transaction</code> サービス</td>
+      <td><code>BillTransaction</code>（請求取引）</td>
+      <td><code>BillTransaction</code> エンティティ（請求取引）、<code>BillTransactionStatus</code> エンティティ（請求取引ステータス）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>送金照合</td>
+      <td>照合担当者が送金記録と外部取引を突き合わせ、差分を調べる。</td>
+      <td><code>remittance-reconciliation</code> サービス</td>
+      <td><code>RemittanceReconciliation</code>（送金照合）</td>
+      <td><code>ReconciliationProgress</code> エンティティ（照合処理の進捗）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>請求支払照合</td>
+      <td>照合担当者が請求支払記録と外部取引を突き合わせ、差分を調べる。</td>
+      <td><code>bill-payment-reconciliation</code> サービス</td>
+      <td><code>BillPaymentReconciliation</code>（請求支払照合）</td>
+      <td><code>ReconciliationProgress</code> エンティティ（照合処理の進捗）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>加盟店・店舗・端末管理</td>
+      <td>加盟店担当者が加盟店、店舗、端末を登録し、利用可否を変更する。</td>
+      <td><code>merchant-management</code> サービス</td>
+      <td><code>Merchant</code>（加盟店）、<code>ShopGroup</code>（店舗グループ）、<code>Shop</code>（店舗）、<code>Terminal</code>（端末）</td>
+      <td><code>Merchant</code> エンティティ（加盟店）、<code>ShopGroup</code> エンティティ（店舗グループ）、<code>Shop</code> エンティティ（店舗）、<code>Terminal</code> エンティティ（端末）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>売上・返金</td>
+      <td>加盟店担当者が売上を確定し、必要に応じて返金する。</td>
+      <td><code>sales-transaction</code> サービス</td>
+      <td><code>TransactionSummary</code>（取引サマリ）</td>
+      <td><code>TransactionSummary</code> エンティティ（取引サマリ）、<code>Transaction</code> エンティティ（売上・返金取引）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>決済取引照会・出力</td>
+      <td>業務担当者が決済取引を検索し、取引一覧を出力する。</td>
+      <td><code>transaction-query</code> サービス</td>
+      <td>—（照会・出力用モデル）</td>
+      <td>—（取引と加盟店の情報を参照する）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>金融機関管理</td>
+      <td>運用担当者が金融機関の利用条件やメンテナンス予定を設定する。</td>
+      <td><code>bank-management</code> サービス</td>
+      <td><code>Bank</code>（金融機関）、<code>BankReservation</code>（変更予約）</td>
+      <td><code>Bank</code> エンティティ（金融機関）、<code>BankReservation</code> エンティティ（変更予約）、<code>BankLimitAmount</code> エンティティ（限度額）、<code>BankMaintenanceTime</code> エンティティ（メンテナンス予定）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>請求元管理</td>
+      <td>業務担当者が請求元と請求項目を登録する。</td>
+      <td><code>biller-management</code> サービス</td>
+      <td><code>Biller</code>（請求元）、<code>BillItem</code>（請求項目）</td>
+      <td><code>Biller</code> エンティティ（請求元）、<code>BillItem</code> エンティティ（請求項目）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>決済事業者管理</td>
+      <td>接続管理担当者が決済事業者と接続条件を設定する。</td>
+      <td><code>payment-provider-management</code> サービス</td>
+      <td><code>PaymentProvider</code>（決済事業者）</td>
+      <td><code>PaymentProvider</code> エンティティ（決済事業者）、<code>PaymentProviderApi</code> エンティティ（接続先API）、<code>PaymentProviderKey</code> エンティティ（認証鍵）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>精算先加盟店管理</td>
+      <td>精算担当者が入金先口座を登録し、変更を予約する。</td>
+      <td><code>settlement-merchant-management</code> サービス</td>
+      <td><code>SettlementMerchant</code>（精算先加盟店）、<code>MerchantBankAccount</code>（入金先口座）</td>
+      <td><code>SettlementMerchant</code> エンティティ（精算先加盟店）、<code>MerchantReservation</code> エンティティ（加盟店変更予約）、<code>MerchantBankAccount</code> エンティティ（入金先口座）、<code>MerchantBankAccountReservation</code> エンティティ（口座変更予約）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>精算金融機関管理</td>
+      <td>精算担当者が金融機関別の手数料を設定し、変更を予約する。</td>
+      <td><code>settlement-bank-management</code> サービス</td>
+      <td><code>SettlementBank</code>（精算金融機関）、<code>BankFee</code>（手数料）</td>
+      <td><code>SettlementBank</code> エンティティ（精算金融機関）、<code>BankReservation</code> エンティティ（変更予約）、<code>BankFee</code> エンティティ（手数料）、<code>BankFeeReservation</code> エンティティ（手数料変更予約）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>入金情報照会</td>
+      <td>加盟店担当者が入金額と明細を確認する。</td>
+      <td><code>merchant-deposit-query</code> サービス</td>
+      <td>—（照会用モデル）</td>
+      <td>—（入金情報と入金明細を参照する）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>ファイル・伝送管理</td>
+      <td>運用担当者が業務ファイルと伝送結果を確認する。</td>
+      <td><code>file-management</code> サービス、<code>file-transmission</code> サービス</td>
+      <td><code>BusinessFile</code>（業務ファイル）、<code>Transmission</code>（伝送）</td>
+      <td><code>BusinessFile</code> エンティティ（業務ファイル）、<code>Transmission</code> エンティティ（伝送）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>バッチ実行管理</td>
+      <td>運用担当者がバッチ処理の実行状況を確認する。</td>
+      <td><code>batch-management</code> サービス</td>
+      <td><code>Batch</code>（バッチ）</td>
+      <td><code>Batch</code> エンティティ（バッチ）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>精算分類・連絡先管理</td>
+      <td>精算担当者が業務の分類と金融機関の連絡先を設定する。</td>
+      <td><code>settlement-classification-management</code> サービス</td>
+      <td><code>Classification</code>（分類）、<code>ContactPerson</code>（連絡先担当者）</td>
+      <td><code>Classification</code> エンティティ（分類）、<code>ContactPerson</code> エンティティ（連絡先担当者）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>管理者アカウント</td>
+      <td>管理者が加盟店業務や精算業務の担当者を登録し、権限を設定する。</td>
+      <td><code>merchant-user-management</code> サービス、<code>settlement-user-management</code> サービス</td>
+      <td><code>Administrator</code>（管理者）</td>
+      <td><code>Administrator</code> エンティティ（管理者）、<code>LoginHistory</code> エンティティ（ログイン履歴）、<code>AccessControl</code> エンティティ（アクセス制御）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>お知らせ・メール管理</td>
+      <td>業務担当者がお知らせを登録し、メールの内容や宛先を管理する。</td>
+      <td><code>notice-management</code> サービス、<code>mail-management</code> サービス</td>
+      <td><code>Notice</code>（お知らせ）、<code>Mail</code>（メール）、<code>MailTemplate</code>（メールテンプレート）</td>
+      <td><code>Notice</code> エンティティ（お知らせ）、<code>Mail</code> エンティティ（メール）、<code>MailAddress</code> エンティティ（宛先）、<code>MailTemplate</code> エンティティ（メールテンプレート）</td>
+    </tr>
+    <tr>
+      <td colspan="5">↓</td>
+    </tr>
+    <tr>
+      <td>操作履歴管理</td>
+      <td>管理者が業務担当者の操作履歴を確認する。</td>
+      <td><code>operation-history</code> サービス</td>
+      <td><code>OperationHistory</code>（操作履歴）</td>
+      <td><code>OperationHistory</code> エンティティ（操作履歴）</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>決済・送金処理を強みとする設計例として、送金、請求支払、売上・返金をコアドメインに分類する。</p>
+<p>管理者アカウント、お知らせ・メール管理、操作履歴管理は汎用サブドメイン、その他は支援サブドメインとする。</p>
+<p>各ノードはコンテキスト候補を表し、破線は呼び出す側から呼び出し先、またはデータを利用する側から管理元へ向ける。</p>
+<p>API呼び出しとDB参照・更新は、矢印のラベルで区別する。</p>
+<p>照会用モデルを独立した集約とは扱わず、未確認の参照関係は図に含めない。</p>
+<pre class="mermaid"><code>flowchart LR
+  subgraph core["コアドメイン"]
+    remittance("送金")
+    billPayment("請求支払")
+    sales("売上・返金")
+  end
+  subgraph supporting["支援サブドメイン"]
+    account("口座・エイリアス管理")
+    billTransaction("請求取引管理")
+    remittanceReconciliation("送金照合")
+    billReconciliation("請求支払照合")
+    merchant("加盟店・店舗・端末管理")
+    query("決済取引照会・出力")
+    bank("金融機関管理")
+    biller("請求元管理")
+    provider("決済事業者管理")
+    settlementMerchant("精算先加盟店管理")
+    settlementBank("精算金融機関管理")
+    deposit("入金情報照会")
+    file("ファイル・伝送管理")
+    batch("バッチ実行管理")
+    classification("精算分類・連絡先管理")
+  end
+  subgraph generic["汎用サブドメイン"]
+    administrator("管理者アカウント")
+    notice("お知らせ・メール管理")
+    history("操作履歴管理")
+  end
+
+  remittance -.-&gt;|利用限度額を参照| account
+  billPayment -.-&gt;|利用限度額を参照| account
+  bank -.-&gt;|決済事業者情報を参照| provider
+  sales -.-&gt;|加盟店・端末情報を取得| merchant
+  billTransaction -.-&gt;|請求元情報を参照| biller
+  billTransaction -.-&gt;|金融機関の限度額を参照| bank
+  billTransaction -.-&gt;|決済事業者情報を参照| provider
+  remittanceReconciliation -.-&gt;|送金履歴をDB参照・更新| remittance
+  billReconciliation -.-&gt;|請求支払履歴をDB参照・更新| billPayment
+  batch -.-&gt;|加盟店の変更予約の反映を依頼| settlementMerchant
+  batch -.-&gt;|金融機関の業務ファイル作成を依頼| settlementBank
+  batch -.-&gt;|分類・手数料ファイル作成を依頼| classification
+  batch -.-&gt;|メール送信処理を依頼| notice
+  settlementMerchant -.-&gt;|登録ファイルを取得し状態を更新| file
+  settlementMerchant -.-&gt;|メールテンプレート取得・送信登録を依頼| notice</code></pre>
 <h4 id="qr">▼ QR 決済ドメイン<a class="headerlink" href="#qr" title="Permanent link">&para;</a></h4>
 <p>QR 決済業務の担当者が変わる境目を見つけ、それを境界づけられたコンテキストにする。
 集約とエンティティ、コア・支援・汎用の分類は設計例とする。</p>
