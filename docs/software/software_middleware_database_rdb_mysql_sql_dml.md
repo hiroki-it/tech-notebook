@@ -694,3 +694,57 @@ EXEC SelectContact
 ```
 
 <br>
+
+## 09. DELETE
+
+### 削除方式
+
+
+#### ▼ 物理削除
+
+DB テーブルからレコード自体を削除する。
+
+復元する必要がないデータの場合、物理削除が適する。
+
+
+
+```mysql
+DELETE FROM foos
+WHERE id = 1;
+```
+
+### ▼ 論理削除
+
+DB テーブルからレコードを削除せず、フラグで削除したことにする。
+
+復元する必要があるデータの場合、論理削除が適する。
+
+
+```mysql
+-- is_deleted カラムを削除フラグとして使用する。
+UPDATE foos
+SET is_deleted = TRUE
+WHERE id = 1;
+
+-- UI に表示するレコードは、削除フラグが FALSE のものに絞る。
+SELECT * FROM foos
+WHERE is_deleted = FALSE;
+
+-- あとで、論理削除済みのレコードを物理削除する。
+DELETE FROM foos
+WHERE is_deleted = TRUE;
+```
+
+<br>
+
+### 削除タイミング
+
+#### ▼ 同期削除
+
+例えば、削除処理が終わるまで処理中の画面にする。
+
+#### ▼ 非同期削除
+
+例えば、削除処理の後にすぐに画面を戻し、あとは削除中のグレーアウトを見せる。
+
+<br>
