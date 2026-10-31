@@ -90,24 +90,24 @@ erDiagram
     string name
   }
 
-  equipment["equipment テーブル"] {
+  asset_equipment["asset_equipment テーブル"] {
     string asset_id PK,FK
     string model_number
   }
 
-  building["building テーブル"] {
+  asset_building["asset_building テーブル"] {
     string asset_id PK,FK
     decimal floor_area
   }
 
-  vehicle["vehicle テーブル"] {
+  asset_vehicle["asset_vehicle テーブル"] {
     string asset_id PK,FK
     string license_plate
   }
 
-  asset ||--o| equipment : "サブタイプ"
-  asset ||--o| building : "サブタイプ"
-  asset ||--o| vehicle : "サブタイプ"
+  asset ||--o| asset_equipment : "設備である"
+  asset ||--o| asset_building : "建物である"
+  asset ||--o| asset_vehicle : "車両である"
 ```
 
 #### ▼ Roles
@@ -186,12 +186,12 @@ erDiagram
     string resource_kind
   }
 
-  person["person テーブル"] {
+  resource_person["resource_person テーブル"] {
     string resource_id PK,FK
     string name
   }
 
-  asset["asset テーブル"] {
+  resource_asset["resource_asset テーブル"] {
     string resource_id PK,FK
     string name
   }
@@ -205,8 +205,8 @@ erDiagram
 
   activity ||--o{ resource_usage : "使う"
   resource ||--o{ resource_usage : "使われる"
-  resource ||--o| person : "サブタイプ"
-  resource ||--o| asset : "サブタイプ"
+  resource ||--o| resource_person : "人である"
+  resource ||--o| resource_asset : "資産である"
 ```
 
 #### ▼ Relationships
@@ -379,19 +379,19 @@ erDiagram
     string party_kind
   }
 
-  person["person テーブル"] {
+  party_person["party_person テーブル"] {
     string party_id PK,FK
     string first_name
     string last_name
   }
 
-  organization["organization テーブル"] {
+  party_organization["party_organization テーブル"] {
     string party_id PK,FK
     string name
   }
 
-  party ||--o| person : "サブタイプ"
-  party ||--o| organization : "サブタイプ"
+  party ||--o| party_person : "人である"
+  party ||--o| party_organization : "組織である"
 ```
 
 #### ▼ Employee Assignments
