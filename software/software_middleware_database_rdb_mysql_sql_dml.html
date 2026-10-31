@@ -5985,11 +5985,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
@@ -5998,6 +5993,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -6017,7 +6017,7 @@
   <a href="#_22" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 同期削除
+        ▼ 同期的な削除
       
     </span>
   </a>
@@ -6028,7 +6028,7 @@
   <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 非同期削除
+        ▼ 非同期的な削除
       
     </span>
   </a>
@@ -35149,11 +35149,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
@@ -35162,6 +35157,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -35181,7 +35181,7 @@
   <a href="#_22" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 同期削除
+        ▼ 同期的な削除
       
     </span>
   </a>
@@ -35192,7 +35192,7 @@
   <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 非同期削除
+        ▼ 非同期的な削除
       
     </span>
   </a>
@@ -35360,7 +35360,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月30日 23:06:48 JST">2026-10-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月31日 20:09:30 JST">2026-10-31</span>
   </span>
 
     
@@ -35837,14 +35837,16 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
 <h2 id="09-delete">09. DELETE<a class="headerlink" href="#09-delete" title="Permanent link">&para;</a></h2>
 <h3 id="_18">削除方式<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <h4 id="_19">▼ 物理削除<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p>DB テーブルからレコード自体を削除する。</p>
+<p><code>DELETE</code>文でDB テーブルからレコード自体を削除する。</p>
 <p>復元する必要がないデータの場合、物理削除が適する。</p>
+<p>UI上からも消せないため、見かけ上のパフォーマンスがいい。</p>
 <div class="highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">foos</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 </code></pre></div>
-<h3 id="_20">▼ 論理削除<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
-<p>DB テーブルからレコードを削除せず、フラグで削除したことにする。</p>
+<h4 id="_20">▼ 論理削除<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p>DB テーブルからレコードを削除せず、<code>UPDATE</code>文でフラグ値を変更し、削除したことにする。</p>
 <p>復元する必要があるデータの場合、論理削除が適する。</p>
+<p>UI上からも消せるため、見かけ上のパフォーマンスがいい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- is_deleted カラムを削除フラグとして使用する。</span>
 <span class="k">UPDATE</span><span class="w"> </span><span class="n">foos</span>
 <span class="k">SET</span><span class="w"> </span><span class="n">is_deleted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">TRUE</span>
@@ -35853,16 +35855,14 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
 <span class="c1">-- UI に表示するレコードは、削除フラグが FALSE のものに絞る。</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">foos</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">is_deleted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">FALSE</span><span class="p">;</span>
-
-<span class="c1">-- あとで、論理削除済みのレコードを物理削除する。</span>
-<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">foos</span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">is_deleted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">TRUE</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_21">削除タイミング<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
-<h4 id="_22">▼ 同期削除<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<h4 id="_22">▼ 同期的な削除<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p>削除処理の開始から完了まで操作できない。</p>
 <p>例えば、削除処理が終わるまで処理中の画面にする。</p>
-<h4 id="_23">▼ 非同期削除<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<h4 id="_23">▼ 非同期的な削除<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>削除処理の開始後に操作できるようになり、バックグラウンドで削除が完了する。</p>
 <p>例えば、削除処理の後にすぐに画面を戻し、あとは削除中のグレーアウトを見せる。</p>
 <p><br></p>
 
