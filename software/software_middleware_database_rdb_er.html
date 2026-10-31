@@ -5758,6 +5758,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        監視ドメインの場合
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -34140,6 +34151,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        監視ドメインの場合
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -34260,7 +34282,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月31日 20:45:35 JST">2026-10-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月31日 20:53:24 JST">2026-10-31</span>
   </span>
 
     
@@ -35149,6 +35171,81 @@
     string workspace_name PK,FK
     string name PK
   }</code></pre>
+<p><br></p>
+<h3 id="_6">監視ドメインの場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>監視ドメインでは、監視の設定（<code>monitor</code> テーブル）と監視の結果（<code>check_result</code> テーブル）を分けて扱う。</p>
+<pre class="mermaid"><code>erDiagram
+  project["project テーブル"] {
+    string id PK
+    string name
+  }
+
+  monitor["monitor テーブル"] {
+    string id PK
+    string project_id FK
+    string name
+    string monitor_kind
+    string schedule
+  }
+
+  monitor_http["monitor_http テーブル"] {
+    string monitor_id PK,FK
+    string url
+    int expected_status_code
+  }
+
+  monitor_tls["monitor_tls テーブル"] {
+    string monitor_id PK,FK
+    string hostname
+    int port
+  }
+
+  region["region テーブル"] {
+    string id PK
+    string name
+  }
+
+  monitor_region["monitor_region テーブル"] {
+    string monitor_id PK,FK
+    string region_id PK,FK
+    boolean enabled
+  }
+
+  check_result["check_result テーブル"] {
+    string id PK
+    string monitor_id FK
+    string region_id FK
+    datetime checked_at
+    string status
+    int response_time_ms
+  }
+
+  incident["incident テーブル"] {
+    string id PK
+    string monitor_id FK
+    string status
+    datetime opened_at
+    datetime resolved_at
+  }
+
+  incident_check_result["incident_check_result テーブル"] {
+    string incident_id PK,FK
+    string check_result_id PK,FK
+  }
+
+  project ||--o{ monitor : "持つ"
+  monitor ||--o| monitor_http : "HTTP監視である"
+  monitor ||--o| monitor_tls : "TLS監視である"
+  monitor ||--o{ monitor_region : "実行される"
+  region ||--o{ monitor_region : "実行する"
+  monitor ||--o{ check_result : "記録する"
+  region ||--o{ check_result : "記録する"
+  monitor ||--o{ incident : "起票される"
+  incident ||--o{ incident_check_result : "根拠にする"
+  check_result ||--o{ incident_check_result : "根拠になる"</code></pre>
+<p><code>monitor</code> テーブルは監視の種類に共通する設定を持ち、種類ごとの設定は <code>monitor_http</code> テーブルや <code>monitor_tls</code> テーブルに持たせる（Heterogeneous Entities）。</p>
+<p><code>check_result</code> テーブルは、監視の設定とリージョンごとに、実行した時刻と結果を記録する（Monitoring Processes）。</p>
+<p><code>incident</code> テーブルは、インシデントの根拠になった監視の結果を <code>incident_check_result</code> テーブルで紐づける（Relationships）。</p>
 <p><br></p>
 
   
