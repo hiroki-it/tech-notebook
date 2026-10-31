@@ -34260,7 +34260,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月31日 20:36:50 JST">2026-10-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月31日 20:45:35 JST">2026-10-31</span>
   </span>
 
     
@@ -34351,24 +34351,24 @@
     string name
   }
 
-  equipment["equipment テーブル"] {
+  asset_equipment["asset_equipment テーブル"] {
     string asset_id PK,FK
     string model_number
   }
 
-  building["building テーブル"] {
+  asset_building["asset_building テーブル"] {
     string asset_id PK,FK
     decimal floor_area
   }
 
-  vehicle["vehicle テーブル"] {
+  asset_vehicle["asset_vehicle テーブル"] {
     string asset_id PK,FK
     string license_plate
   }
 
-  asset ||--o| equipment : "サブタイプ"
-  asset ||--o| building : "サブタイプ"
-  asset ||--o| vehicle : "サブタイプ"</code></pre>
+  asset ||--o| asset_equipment : "設備である"
+  asset ||--o| asset_building : "建物である"
+  asset ||--o| asset_vehicle : "車両である"</code></pre>
 <h4 id="roles">▼ Roles<a class="headerlink" href="#roles" title="Permanent link">&para;</a></h4>
 <p>誰がどの立場で関わるかを、関連そのものを役割のテーブルにして表す。</p>
 <pre class="mermaid"><code>erDiagram
@@ -34432,12 +34432,12 @@
     string resource_kind
   }
 
-  person["person テーブル"] {
+  resource_person["resource_person テーブル"] {
     string resource_id PK,FK
     string name
   }
 
-  asset["asset テーブル"] {
+  resource_asset["resource_asset テーブル"] {
     string resource_id PK,FK
     string name
   }
@@ -34451,8 +34451,8 @@
 
   activity ||--o{ resource_usage : "使う"
   resource ||--o{ resource_usage : "使われる"
-  resource ||--o| person : "サブタイプ"
-  resource ||--o| asset : "サブタイプ"</code></pre>
+  resource ||--o| resource_person : "人である"
+  resource ||--o| resource_asset : "資産である"</code></pre>
 <h4 id="relationships">▼ Relationships<a class="headerlink" href="#relationships" title="Permanent link">&para;</a></h4>
 <p>テーブル同士の関係を、関係の種類を持つテーブルとして表す。</p>
 <pre class="mermaid"><code>erDiagram
@@ -34593,19 +34593,19 @@
     string party_kind
   }
 
-  person["person テーブル"] {
+  party_person["party_person テーブル"] {
     string party_id PK,FK
     string first_name
     string last_name
   }
 
-  organization["organization テーブル"] {
+  party_organization["party_organization テーブル"] {
     string party_id PK,FK
     string name
   }
 
-  party ||--o| person : "サブタイプ"
-  party ||--o| organization : "サブタイプ"</code></pre>
+  party ||--o| party_person : "人である"
+  party ||--o| party_organization : "組織である"</code></pre>
 <h4 id="employee-assignments">▼ Employee Assignments<a class="headerlink" href="#employee-assignments" title="Permanent link">&para;</a></h4>
 <p>組織の職位と人を分け、人が職位に就いた期間を配属のテーブルで記録する。</p>
 <pre class="mermaid"><code>erDiagram
