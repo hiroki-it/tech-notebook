@@ -34532,7 +34532,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月31日 23:47:18 JST">2026-10-31</span>
   </span>
 
     
@@ -35100,7 +35100,7 @@
     <tr>
       <td rowspan="4">ストレージ</td>
       <td>永続データの分割管理</td>
-      <td>・DB per service／Shared DB<br>・Polyglot Persistence／Multi-model DB</td>
+      <td>・DB per service／Shared Database<br>・Polyglot Persistence／Multi-model DB</td>
     </tr>
     <tr>
       <td>揮発性データの分割管理</td>
@@ -35620,7 +35620,7 @@ Messaging 分野のツールを使用できます。</p>
 <p>マイクロサービスアーキテクチャでは、とくに永続データ管理方法に DB per service を使用している場合に問題があります。</p>
 <p>各マイクロサービスの永続化の間に依存関係がある場合 (例えば、EC サイトで受注データの永続化が配送データや決済データに依存している) に各マイクロサービスの連続的な永続化を調整する必要があります。</p>
 <p>この問題を解決するパターンとして Saga や 2 フェーズコミットがあります。</p>
-<p>永続データ管理方法の 1 つである Shared DB や DB per service の問題解決パターンの 2 フェーズコミットは、一般的に非推奨なパターンとされています。</p>
+<p>永続データ管理方法の 1 つである Shared Database や DB per service の問題解決パターンの 2 フェーズコミットは、一般的に非推奨なパターンとされています。</p>
 <p>図 20 で、トランザクション管理方法のデザインパターンの種類を示します。</p>
 <p>Saga にはオーケストレーションベースとコレオグラフィベースがあります。</p>
 <p><br></p>
@@ -35634,7 +35634,7 @@ Messaging 分野のツールを使用できます。</p>
   トランザクション管理方法([トランザクション&lt;br&gt;管理方法]) --- トランザクション管理方法の基点(( ))
   トランザクション管理方法の基点 --- DB-per-serviceの場合([DB per serviceの場合])
   DB-per-serviceの場合 --- Saga
-  トランザクション管理方法の基点 ----- Shared-DBの場合(["Shared DBの場合&lt;br&gt;(非推奨)"])
+  トランザクション管理方法の基点 ----- Shared-DBの場合(["Shared Databaseの場合&lt;br&gt;(非推奨)"])
   Saga --- オーケストレーションベース[オーケストレーション&lt;br&gt;ベース]
   Saga --- コレオグラフィフィベース[コレオグラフィフィ&lt;br&gt;ベース]
   DB-per-serviceの場合 ---- 2フェーズコミット["2フェーズコミット&lt;br&gt;(非推奨)"]
@@ -35863,7 +35863,7 @@ Messaging 分野のツールを使用できます。</p>
 <p><br></p>
 <h3 id="81">8.1 永続データ管理方法<a class="headerlink" href="#81" title="Permanent link">&para;</a></h3>
 <p>図 27 で、マイクロサービスアーキテクチャにおける永続データ管理方法のデザインパターンの種類を示します。</p>
-<p>代表的なものには DB per service と Shared DB があります。</p>
+<p>代表的なものには DB per service と Shared Database があります。</p>
 <p><br></p>
 <p>図 28. 永続データ管理方法のデザインパターンの種類</p>
 <p><img alt="28" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/28.png" /></p>
@@ -35873,13 +35873,13 @@ Messaging 分野のツールを使用できます。</p>
 <pre class="mermaid"><code>flowchart LR
   永続データ管理方法([永続データ&lt;br&gt;管理方法]) --- 永続データ管理方法の基点(( ))
   永続データ管理方法の基点 --- DB-per-service[DB per service]
-  永続データ管理方法の基点 --- Shared-DB["Shared DB&lt;br&gt;(非推奨)"]</code></pre>
+  永続データ管理方法の基点 --- Shared-DB["Shared Database&lt;br&gt;(非推奨)"]</code></pre>
 
 </div>
 
 <p>DB per service では、各マイクロサービスが占有するデータベースを配置します。</p>
-<p>Shared DB では、各マイクロサービス間で共有するデータベースを配置し、共有データベースのテーブルをマイクロサービス用に分割します。</p>
-<p>Shared DB は一般的に非推奨なパターンとされているため、ここでは省略します。</p>
+<p>Shared Database では、各マイクロサービス間で共有するデータベースを配置し、共有データベースのテーブルをマイクロサービス用に分割します。</p>
+<p>Shared Database は一般的に非推奨なパターンとされているため、ここでは省略します。</p>
 <p>表 12 で、永続データ管理方法とクラウドネイティブ技術の関連性を整理します。</p>
 <p><br></p>
 <p>表 12. 永続データ管理方法とクラウドネイティブ技術の関連性</p>
@@ -35888,7 +35888,7 @@ Messaging 分野のツールを使用できます。</p>
     <tr>
       <th>パターン名</th>
       <th>DB per service</th>
-      <th>Shared DB</th>
+      <th>Shared Database</th>
     </tr>
   </thead>
   <tbody>

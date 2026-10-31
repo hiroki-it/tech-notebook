@@ -34282,7 +34282,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月31日 21:28:54 JST">2026-10-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月31日 23:47:18 JST">2026-10-31</span>
   </span>
 
     
@@ -34341,10 +34341,10 @@
     string name
   }
 
-  category_scheme ||--o{ category : "持つ"
-  category ||--o{ thing_type_category : "分類する"
-  thing_type ||--o{ thing_type_category : "分類される"
-  thing_type ||--o{ thing : "種類である"</code></pre>
+  category_scheme ||--o{ category : "持つ（1対多）"
+  category ||--o{ thing_type_category : "分類する（1対多）"
+  thing_type ||--o{ thing_type_category : "分類される（1対多）"
+  thing_type ||--o{ thing : "種類である（1対多）"</code></pre>
 <h4 id="type-and-instance">▼ Type and Instance パターン<a class="headerlink" href="#type-and-instance" title="Permanent link">&para;</a></h4>
 <p>種類（型）と実際の個々のモノ（実体）を、種類に共通する情報を記録する種類テーブルと、個々のモノを記録する実体テーブルで表す。</p>
 <pre class="mermaid"><code>erDiagram
@@ -34360,7 +34360,7 @@
     string serial_number
   }
 
-  product_type ||--o{ product : "実体になる"</code></pre>
+  product_type ||--o{ product : "実体になる（1対多）"</code></pre>
 <h4 id="structure">▼ Structure パターン<a class="headerlink" href="#structure" title="Permanent link">&para;</a></h4>
 <p>同じテーブルの行同士の親子関係（部品表や階層）を、親と子の組を記録する中間テーブルで表す。</p>
 <pre class="mermaid"><code>erDiagram
@@ -34375,8 +34375,8 @@
     int quantity
   }
 
-  part ||--o{ part_structure : "親部品である"
-  part ||--o{ part_structure : "子部品である"</code></pre>
+  part ||--o{ part_structure : "親部品である（1対多）"
+  part ||--o{ part_structure : "子部品である（1対多）"</code></pre>
 <h4 id="heterogeneous-entities">▼ Heterogeneous Entities パターン<a class="headerlink" href="#heterogeneous-entities" title="Permanent link">&para;</a></h4>
 <p>種類ごとに項目が異なるデータを、共通の項目を記録する親テーブルと、種類ごとの項目を記録する子テーブルで表す。</p>
 <pre class="mermaid"><code>erDiagram
@@ -34401,9 +34401,9 @@
     string license_plate
   }
 
-  asset ||--o| asset_equipment : "設備である"
-  asset ||--o| asset_building : "建物である"
-  asset ||--o| asset_vehicle : "車両である"</code></pre>
+  asset ||--o| asset_equipment : "設備である（1対1）"
+  asset ||--o| asset_building : "建物である（1対1）"
+  asset ||--o| asset_vehicle : "車両である（1対1）"</code></pre>
 <h4 id="roles">▼ Roles パターン<a class="headerlink" href="#roles" title="Permanent link">&para;</a></h4>
 <p>誰が何にどの立場で関わるかを、当事者とモノと役割の種類をつなぐ役割テーブルで表す。</p>
 <p>「Type and Instance」を応用したパターンである。</p>
@@ -34430,9 +34430,9 @@
     string role_type_id FK
   }
 
-  party ||--o{ role : "担う"
-  thing ||--o{ role : "対象になる"
-  role_type ||--o{ role : "種類である"</code></pre>
+  party ||--o{ role : "担う（1対多）"
+  thing ||--o{ role : "対象になる（1対多）"
+  role_type ||--o{ role : "種類である（1対多）"</code></pre>
 <h4 id="addresses">▼ Addresses パターン<a class="headerlink" href="#addresses" title="Permanent link">&para;</a></h4>
 <p>持ち主と住所を、別々のテーブルと、「自宅」「請求先」などの住所の使い道を記録する中間テーブルで表す。</p>
 <pre class="mermaid"><code>erDiagram
@@ -34453,8 +34453,8 @@
     string purpose
   }
 
-  party ||--o{ party_address : "所在する"
-  address ||--o{ party_address : "使われる"</code></pre>
+  party ||--o{ party_address : "所在する（1対多）"
+  address ||--o{ party_address : "使われる（1対多）"</code></pre>
 <h4 id="resources">▼ Resources パターン<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h4>
 <p>人や資産などの資源を、共通の親テーブルと、どの活動でどの資源をどれだけ使ったかを記録する使用実績テーブルで表す。</p>
 <p>「Heterogeneous Entities」を応用したパターンである。</p>
@@ -34486,10 +34486,10 @@
     decimal quantity
   }
 
-  activity ||--o{ resource_usage : "使う"
-  resource ||--o{ resource_usage : "使われる"
-  resource ||--o| resource_person : "人である"
-  resource ||--o| resource_asset : "資産である"</code></pre>
+  activity ||--o{ resource_usage : "使う（1対多）"
+  resource ||--o{ resource_usage : "使われる（1対多）"
+  resource ||--o| resource_person : "人である（1対1）"
+  resource ||--o| resource_asset : "資産である（1対1）"</code></pre>
 <h4 id="relationships">▼ Relationships パターン<a class="headerlink" href="#relationships" title="Permanent link">&para;</a></h4>
 <p>モノ同士のつながりを、つながりの元と先と種類を記録するテーブルで表す。</p>
 <p>「Type and Instance」を応用したパターンである。</p>
@@ -34511,9 +34511,9 @@
     string relationship_type_id FK
   }
 
-  thing ||--o{ thing_relationship : "関係元である"
-  thing ||--o{ thing_relationship : "関係先である"
-  relationship_type ||--o{ thing_relationship : "種類である"</code></pre>
+  thing ||--o{ thing_relationship : "関係元である（1対多）"
+  thing ||--o{ thing_relationship : "関係先である（1対多）"
+  relationship_type ||--o{ thing_relationship : "種類である（1対多）"</code></pre>
 <h4 id="variable-length-records">▼ Variable Length Records パターン<a class="headerlink" href="#variable-length-records" title="Permanent link">&para;</a></h4>
 <p>項目の数や種類が決まっていないデータを、列ではなく、項目の定義と値をそれぞれ1行ずつ記録するテーブルで表す。</p>
 <p>「Type and Instance」を応用したパターンである。</p>
@@ -34541,10 +34541,10 @@
     string value
   }
 
-  record_type ||--o{ attribute_definition : "定義する"
-  record_type ||--o{ record : "種類である"
-  record ||--o{ attribute_value : "持つ"
-  attribute_definition ||--o{ attribute_value : "定義する"</code></pre>
+  record_type ||--o{ attribute_definition : "定義する（1対多）"
+  record_type ||--o{ record : "種類である（1対多）"
+  record ||--o{ attribute_value : "持つ（1対多）"
+  attribute_definition ||--o{ attribute_value : "定義する（1対多）"</code></pre>
 <h4 id="usually-one-sometimes-many">▼ Usually One, Sometimes Many パターン<a class="headerlink" href="#usually-one-sometimes-many" title="Permanent link">&para;</a></h4>
 <p>普通は1つだがまれに複数になるつながり（例：勤務先）を、主となるものを示すフラグの列を持つ中間テーブルで表す。</p>
 <pre class="mermaid"><code>erDiagram
@@ -34564,8 +34564,8 @@
     boolean is_primary
   }
 
-  person ||--o{ employment : "雇用される"
-  organization ||--o{ employment : "雇用する"</code></pre>
+  person ||--o{ employment : "雇用される（1対多）"
+  organization ||--o{ employment : "雇用する（1対多）"</code></pre>
 <h4 id="mathematical-expressions-in-the-data-model">▼ Mathematical Expressions in the Data Model パターン<a class="headerlink" href="#mathematical-expressions-in-the-data-model" title="Permanent link">&para;</a></h4>
 <p>変数を計算する式を、演算子と順序を持つ項を1行ずつ記録するテーブルで表す。</p>
 <pre class="mermaid"><code>erDiagram
@@ -34582,8 +34582,8 @@
     string operator
   }
 
-  variable ||--o{ formula_term : "計算される"
-  variable ||--o{ formula_term : "被演算子になる"</code></pre>
+  variable ||--o{ formula_term : "計算される（1対多）"
+  variable ||--o{ formula_term : "被演算子になる（1対多）"</code></pre>
 <h4 id="the-universal-data-model">▼ The Universal Data Model パターン<a class="headerlink" href="#the-universal-data-model" title="Permanent link">&para;</a></h4>
 <p>あらゆるモノを、種類・項目・つながりのテーブルの組み合わせだけで表す。</p>
 <p>「Things, Thing Types, and Categories」と「Variable Length Records」と「Relationships」を組み合わせたパターンである。</p>
@@ -34617,12 +34617,12 @@
     string to_thing_id FK
   }
 
-  thing_type ||--o{ thing : "種類である"
-  thing_type ||--o{ attribute_type : "定義する"
-  thing ||--o{ attribute_value : "持つ"
-  attribute_type ||--o{ attribute_value : "定義する"
-  thing ||--o{ thing_relationship : "関係元である"
-  thing ||--o{ thing_relationship : "関係先である"</code></pre>
+  thing_type ||--o{ thing : "種類である（1対多）"
+  thing_type ||--o{ attribute_type : "定義する（1対多）"
+  thing ||--o{ attribute_value : "持つ（1対多）"
+  attribute_type ||--o{ attribute_value : "定義する（1対多）"
+  thing ||--o{ thing_relationship : "関係元である（1対多）"
+  thing ||--o{ thing_relationship : "関係先である（1対多）"</code></pre>
 <p><br></p>
 <h3 id="_3">ドメイン領域に特化したパターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="parties">▼ Parties パターン<a class="headerlink" href="#parties" title="Permanent link">&para;</a></h4>
@@ -34645,8 +34645,8 @@
     string name
   }
 
-  party ||--o| party_person : "人である"
-  party ||--o| party_organization : "組織である"</code></pre>
+  party ||--o| party_person : "人である（1対1）"
+  party ||--o| party_organization : "組織である（1対1）"</code></pre>
 <h4 id="employee-assignments">▼ Employee Assignments パターン<a class="headerlink" href="#employee-assignments" title="Permanent link">&para;</a></h4>
 <p>組織の職位と人を、別々のテーブルと、誰がどの職位にいつからいつまで就いていたかを記録する配属テーブルで表す。</p>
 <p>「Relationships」を応用したパターンである。</p>
@@ -34675,9 +34675,9 @@
     date end_date
   }
 
-  organization ||--o{ position : "持つ"
-  position ||--o{ position_assignment : "就任される"
-  person ||--o{ position_assignment : "配属される"</code></pre>
+  organization ||--o{ position : "持つ（1対多）"
+  position ||--o{ position_assignment : "就任される（1対多）"
+  person ||--o{ position_assignment : "配属される（1対多）"</code></pre>
 <h4 id="reporting-relationships">▼ Reporting Relationships パターン<a class="headerlink" href="#reporting-relationships" title="Permanent link">&para;</a></h4>
 <p>上司と部下などの報告関係を、上位と下位の当事者と関係の種類を記録するテーブルで表す。</p>
 <p>「Relationships」を応用したパターンである。</p>
@@ -34699,9 +34699,9 @@
     string reporting_relationship_type_id FK
   }
 
-  party ||--o{ reporting_relationship : "上位である"
-  party ||--o{ reporting_relationship : "下位である"
-  reporting_relationship_type ||--o{ reporting_relationship : "種類である"</code></pre>
+  party ||--o{ reporting_relationship : "上位である（1対多）"
+  party ||--o{ reporting_relationship : "下位である（1対多）"
+  reporting_relationship_type ||--o{ reporting_relationship : "種類である（1対多）"</code></pre>
 <h4 id="geographic-locations">▼ Geographic Locations パターン<a class="headerlink" href="#geographic-locations" title="Permanent link">&para;</a></h4>
 <p>国や都市などの地域の階層を、親の地域を指す列を持つ地域テーブルと、いずれかの地域に属する拠点テーブルで表す。</p>
 <p>「Structure」を応用したパターンである。</p>
@@ -34719,8 +34719,8 @@
     string name
   }
 
-  geographic_area ||--o{ geographic_area : "含む"
-  geographic_area ||--o{ site : "含む"</code></pre>
+  geographic_area ||--o{ geographic_area : "含む（1対多）"
+  geographic_area ||--o{ site : "含む（1対多）"</code></pre>
 <h4 id="products-and-product-types">▼ Products and Product Types パターン<a class="headerlink" href="#products-and-product-types" title="Permanent link">&para;</a></h4>
 <p>製品の種類と個々の製品を、別々のテーブルと、製品の種類同士の構成（どの部品が何個必要か）を記録するテーブルで表す。</p>
 <p>「Type and Instance」と「Structure」を組み合わせたパターンである。</p>
@@ -34742,9 +34742,9 @@
     int quantity
   }
 
-  product_type ||--o{ discrete_item : "具現化される"
-  product_type ||--o{ product_type_structure : "親部品である"
-  product_type ||--o{ product_type_structure : "子部品である"</code></pre>
+  product_type ||--o{ discrete_item : "具現化される（1対多）"
+  product_type ||--o{ product_type_structure : "親部品である（1対多）"
+  product_type ||--o{ product_type_structure : "子部品である（1対多）"</code></pre>
 <h4 id="inventory">▼ Inventory パターン<a class="headerlink" href="#inventory" title="Permanent link">&para;</a></h4>
 <p>どの製品の種類がどの拠点にいくつあるかを、在庫テーブルで表す。</p>
 <pre class="mermaid"><code>erDiagram
@@ -34764,8 +34764,8 @@
     decimal quantity
   }
 
-  product_type ||--o{ inventory : "在庫になる"
-  site ||--o{ inventory : "保管する"</code></pre>
+  product_type ||--o{ inventory : "在庫になる（1対多）"
+  site ||--o{ inventory : "保管する（1対多）"</code></pre>
 <h4 id="work-orders">▼ Work Orders パターン<a class="headerlink" href="#work-orders" title="Permanent link">&para;</a></h4>
 <p>作業指示を、複数の作業のテーブルと、作業ごとに誰が何時間働き、どの資産を何時間使ったかを記録するテーブルで表す。</p>
 <p>「Resources」を応用したパターンである。</p>
@@ -34805,11 +34805,11 @@
     decimal hours
   }
 
-  work_order ||--o{ work_order_task : "構成される"
-  work_order_task ||--o{ labor_usage : "使う"
-  person ||--o{ labor_usage : "作業する"
-  work_order_task ||--o{ asset_usage : "使う"
-  asset ||--o{ asset_usage : "使われる"</code></pre>
+  work_order ||--o{ work_order_task : "構成される（1対多）"
+  work_order_task ||--o{ labor_usage : "使う（1対多）"
+  person ||--o{ labor_usage : "作業する（1対多）"
+  work_order_task ||--o{ asset_usage : "使う（1対多）"
+  asset ||--o{ asset_usage : "使われる（1対多）"</code></pre>
 <h4 id="purchase-orders-and-sales-orders">▼ Purchase Orders and Sales Orders パターン<a class="headerlink" href="#purchase-orders-and-sales-orders" title="Permanent link">&para;</a></h4>
 <p>発注と受注を、買い手と売り手を記録する注文テーブルと、製品ごとの数量と単価を記録する明細テーブルで表す。</p>
 <p>「Parties」を応用したパターンである。</p>
@@ -34839,10 +34839,10 @@
     decimal unit_price
   }
 
-  party ||--o{ purchase_order : "買い手になる"
-  party ||--o{ purchase_order : "売り手になる"
-  purchase_order ||--o{ line_item : "構成される"
-  product_type ||--o{ line_item : "注文される"</code></pre>
+  party ||--o{ purchase_order : "買い手になる（1対多）"
+  party ||--o{ purchase_order : "売り手になる（1対多）"
+  purchase_order ||--o{ line_item : "構成される（1対多）"
+  product_type ||--o{ line_item : "注文される（1対多）"</code></pre>
 <h4 id="contract-roles">▼ Contract Roles パターン<a class="headerlink" href="#contract-roles" title="Permanent link">&para;</a></h4>
 <p>契約にどの当事者がどの立場（売り手、保証人など）で関わるかを、契約の役割テーブルで表す。</p>
 <p>「Roles」を応用したパターンである。</p>
@@ -34868,9 +34868,9 @@
     string contract_role_type_id FK
   }
 
-  contract ||--o{ contract_role : "関わる"
-  party ||--o{ contract_role : "担う"
-  contract_role_type ||--o{ contract_role : "種類である"</code></pre>
+  contract ||--o{ contract_role : "関わる（1対多）"
+  party ||--o{ contract_role : "担う（1対多）"
+  contract_role_type ||--o{ contract_role : "種類である（1対多）"</code></pre>
 <h4 id="basic-bookkeeping">▼ Basic Bookkeeping パターン<a class="headerlink" href="#basic-bookkeeping" title="Permanent link">&para;</a></h4>
 <p>1つの取引を、取引テーブルと、勘定ごとの借方と貸方を記録する仕訳テーブルで表す。</p>
 <pre class="mermaid"><code>erDiagram
@@ -34894,8 +34894,8 @@
     string debit_or_credit
   }
 
-  accounting_transaction ||--o{ accounting_entry : "構成される"
-  account ||--o{ accounting_entry : "記帳される"</code></pre>
+  accounting_transaction ||--o{ accounting_entry : "構成される（1対多）"
+  account ||--o{ accounting_entry : "記帳される（1対多）"</code></pre>
 <h4 id="samples-tests-and-observations">▼ Samples, Tests, and Observations パターン<a class="headerlink" href="#samples-tests-and-observations" title="Permanent link">&para;</a></h4>
 <p>サンプルに対する検査と、検査で測った項目ごとの値（観測値）を、別々のテーブルで表す。</p>
 <p>「Type and Instance」を応用したパターンである。</p>
@@ -34930,10 +34930,10 @@
     decimal value
   }
 
-  sample ||--o{ test : "検査される"
-  test_type ||--o{ test : "種類である"
-  test ||--o{ observation : "生み出す"
-  variable ||--o{ observation : "測定される"</code></pre>
+  sample ||--o{ test : "検査される（1対多）"
+  test_type ||--o{ test : "種類である（1対多）"
+  test ||--o{ observation : "生み出す（1対多）"
+  variable ||--o{ observation : "測定される（1対多）"</code></pre>
 <h4 id="material-requirements-planning">▼ Material Requirements Planning パターン<a class="headerlink" href="#material-requirements-planning" title="Permanent link">&para;</a></h4>
 <p>完成品の生産計画と、部品表と、部品がいつ何個必要かを計算した発注の計画を、それぞれ別のテーブルで表す。</p>
 <p>「Products and Product Types」を応用したパターンである。</p>
@@ -34963,10 +34963,10 @@
     int quantity
   }
 
-  product_type ||--o{ master_schedule_item : "計画される"
-  product_type ||--o{ product_type_structure : "親部品である"
-  product_type ||--o{ product_type_structure : "子部品である"
-  product_type ||--o{ firm_planned_order : "注文される"</code></pre>
+  product_type ||--o{ master_schedule_item : "計画される（1対多）"
+  product_type ||--o{ product_type_structure : "親部品である（1対多）"
+  product_type ||--o{ product_type_structure : "子部品である（1対多）"
+  product_type ||--o{ firm_planned_order : "注文される（1対多）"</code></pre>
 <h4 id="monitoring-processes">▼ Monitoring Processes パターン<a class="headerlink" href="#monitoring-processes" title="Permanent link">&para;</a></h4>
 <p>資産に付けた測定点（タグ）と、測定点ごとに測定した時刻と値を記録するテーブルで表す。</p>
 <p>「Samples, Tests, and Observations」を応用したパターンである。</p>
@@ -34995,9 +34995,9 @@
     decimal value
   }
 
-  asset ||--o{ tag : "監視される"
-  variable ||--o{ tag : "測定される"
-  tag ||--o{ tag_value : "記録する"</code></pre>
+  asset ||--o{ tag : "監視される（1対多）"
+  variable ||--o{ tag : "測定される（1対多）"
+  tag ||--o{ tag_value : "記録する（1対多）"</code></pre>
 <h4 id="the-document">▼ The Document パターン<a class="headerlink" href="#the-document" title="Permanent link">&para;</a></h4>
 <p>文書の種類、文書同士の構成（章や添付など）、文書に誰がどの立場（作成者、受領者など）で関わるかを、それぞれ別のテーブルで表す。</p>
 <p>「Type and Instance」と「Structure」と「Roles」を組み合わせたパターンである。</p>
@@ -35030,11 +35030,11 @@
     string role_name
   }
 
-  document_type ||--o{ document : "種類である"
-  document ||--o{ document_structure : "含む"
-  document ||--o{ document_structure : "一部である"
-  document ||--o{ document_role : "関わる"
-  party ||--o{ document_role : "担う"</code></pre>
+  document_type ||--o{ document : "種類である（1対多）"
+  document ||--o{ document_structure : "含む（1対多）"
+  document ||--o{ document_structure : "一部である（1対多）"
+  document ||--o{ document_role : "関わる（1対多）"
+  party ||--o{ document_role : "担う（1対多）"</code></pre>
 <h4 id="versions">▼ Versions パターン<a class="headerlink" href="#versions" title="Permanent link">&para;</a></h4>
 <p>文書の版を、文書とは別のテーブルで表し、どの版がどの版を置き換えたかを、前の版を指す列で表す。</p>
 <p>「Structure」を応用したパターンである。</p>
@@ -35051,8 +35051,8 @@
     int version_number
   }
 
-  document ||--o{ document_version : "持つ"
-  document_version ||--o| document_version : "置き換える"</code></pre>
+  document ||--o{ document_version : "持つ（1対多）"
+  document_version ||--o| document_version : "置き換える（1対1）"</code></pre>
 <p><br></p>
 <h2 id="_4">事例<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <h3 id="_5">マルチテナントの場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
@@ -35134,18 +35134,18 @@
 </table>
 
 <pre class="mermaid"><code>erDiagram
-  tenant ||--o{ user : "持つ"
-  tenant ||--o{ tenant_token : "持つ"
-  tenant ||--o{ workspace : "所有する"
-  tenant ||--o{ quota : "持つ"
+  tenant ||--o{ user : "持つ（1対多）"
+  tenant ||--o{ tenant_token : "持つ（1対多）"
+  tenant ||--o{ workspace : "所有する（1対多）"
+  tenant ||--o{ quota : "持つ（1対多）"
 
-  user }o--|| role : "割り当てられる"
-  tenant_token }o--|| role : "割り当てられる"
-  role ||--o{ role_policy : "持つ"
-  policy ||--o{ role_policy : "使われる"
+  user }o--|| role : "割り当てられる（多対1）"
+  tenant_token }o--|| role : "割り当てられる（多対1）"
+  role ||--o{ role_policy : "持つ（1対多）"
+  policy ||--o{ role_policy : "使われる（1対多）"
 
-  workspace ||--o{ foo : "持つ"
-  workspace ||--o{ bar : "持つ"
+  workspace ||--o{ foo : "持つ（1対多）"
+  workspace ||--o{ bar : "持つ（1対多）"
 
   tenant["tenant テーブル"] {
     string id PK
@@ -35269,16 +35269,16 @@
     string check_result_id PK,FK
   }
 
-  project ||--o{ monitor : "持つ"
-  monitor ||--o| monitor_http : "HTTP監視である"
-  monitor ||--o| monitor_tls : "TLS監視である"
-  monitor ||--o{ monitor_region : "実行される"
-  region ||--o{ monitor_region : "実行する"
-  monitor ||--o{ check_result : "記録する"
-  region ||--o{ check_result : "記録する"
-  monitor ||--o{ incident : "起票される"
-  incident ||--o{ incident_check_result : "根拠にする"
-  check_result ||--o{ incident_check_result : "根拠になる"</code></pre>
+  project ||--o{ monitor : "持つ（1対多）"
+  monitor ||--o| monitor_http : "HTTP監視である（1対1）"
+  monitor ||--o| monitor_tls : "TLS監視である（1対1）"
+  monitor ||--o{ monitor_region : "実行される（1対多）"
+  region ||--o{ monitor_region : "実行する（1対多）"
+  monitor ||--o{ check_result : "記録する（1対多）"
+  region ||--o{ check_result : "記録する（1対多）"
+  monitor ||--o{ incident : "起票される（1対多）"
+  incident ||--o{ incident_check_result : "根拠にする（1対多）"
+  check_result ||--o{ incident_check_result : "根拠になる（1対多）"</code></pre>
 <p><br></p>
 
   
