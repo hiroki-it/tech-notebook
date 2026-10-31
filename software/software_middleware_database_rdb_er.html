@@ -34282,7 +34282,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月31日 20:53:24 JST">2026-10-31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月31日 21:14:36 JST">2026-10-31</span>
   </span>
 
     
@@ -34311,17 +34311,28 @@
 <h2 id="_1">データモデルパターン<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <h3 id="_2">汎用的なパターン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="things-thing-types-and-categories">▼ Things, Thing Types, and Categories<a class="headerlink" href="#things-thing-types-and-categories" title="Permanent link">&para;</a></h4>
-<p>モノ、モノの種類、種類の分類を別々のテーブルに分け、最も抽象的な形でデータを表す。</p>
+<p>モノと、モノの種類と、種類を「車体の形」「動力」などの複数の分類体系で分類する分類を、それぞれ別のテーブルで表す。</p>
+<p>「Type and Instance」と「Relationships」を組み合わせたパターンである。</p>
 <pre class="mermaid"><code>erDiagram
+  category_scheme["category_scheme テーブル"] {
+    string id PK
+    string name
+  }
+
   category["category テーブル"] {
     string id PK
+    string category_scheme_id FK
     string name
   }
 
   thing_type["thing_type テーブル"] {
     string id PK
-    string category_id FK
     string name
+  }
+
+  thing_type_category["thing_type_category テーブル"] {
+    string thing_type_id PK,FK
+    string category_id PK,FK
   }
 
   thing["thing テーブル"] {
@@ -34330,10 +34341,12 @@
     string name
   }
 
-  category ||--o{ thing_type : "分類する"
+  category_scheme ||--o{ category : "持つ"
+  category ||--o{ thing_type_category : "分類する"
+  thing_type ||--o{ thing_type_category : "分類される"
   thing_type ||--o{ thing : "種類である"</code></pre>
 <h4 id="type-and-instance">▼ Type and Instance<a class="headerlink" href="#type-and-instance" title="Permanent link">&para;</a></h4>
-<p>「種類（型）」と「実際の個体（実体）」を別のテーブルに分け、種類ごとの共通情報を一か所で管理する。</p>
+<p>種類（型）と実際の個々のモノ（実体）を、種類に共通する情報を記録する種類テーブルと、個々のモノを記録する実体テーブルで表す。</p>
 <pre class="mermaid"><code>erDiagram
   product_type["product_type テーブル"] {
     string id PK
@@ -34349,7 +34362,7 @@
 
   product_type ||--o{ product : "実体になる"</code></pre>
 <h4 id="structure">▼ Structure<a class="headerlink" href="#structure" title="Permanent link">&para;</a></h4>
-<p>テーブル同士の親子関係（部品表や階層）を、自分自身への多対多の関連で表す。</p>
+<p>同じテーブルの行同士の親子関係（部品表や階層）を、親と子の組を記録する中間テーブルで表す。</p>
 <pre class="mermaid"><code>erDiagram
   part["part テーブル"] {
     string id PK
@@ -34365,7 +34378,7 @@
   part ||--o{ part_structure : "親部品である"
   part ||--o{ part_structure : "子部品である"</code></pre>
 <h4 id="heterogeneous-entities">▼ Heterogeneous Entities<a class="headerlink" href="#heterogeneous-entities" title="Permanent link">&para;</a></h4>
-<p>種類の異なるテーブルを共通の親テーブルにまとめ、種類ごとの情報は子テーブルに持たせる。</p>
+<p>種類ごとに項目が異なるデータを、共通の項目を記録する親テーブルと、種類ごとの項目を記録する子テーブルで表す。</p>
 <pre class="mermaid"><code>erDiagram
   asset["asset テーブル"] {
     string id PK
@@ -34392,7 +34405,8 @@
   asset ||--o| asset_building : "建物である"
   asset ||--o| asset_vehicle : "車両である"</code></pre>
 <h4 id="roles">▼ Roles<a class="headerlink" href="#roles" title="Permanent link">&para;</a></h4>
-<p>誰がどの立場で関わるかを、関連そのものを役割のテーブルにして表す。</p>
+<p>誰が何にどの立場で関わるかを、当事者とモノと役割の種類をつなぐ役割テーブルで表す。</p>
+<p>「Type and Instance」を応用したパターンである。</p>
 <pre class="mermaid"><code>erDiagram
   party["party テーブル"] {
     string id PK
@@ -34420,7 +34434,7 @@
   thing ||--o{ role : "対象になる"
   role_type ||--o{ role : "種類である"</code></pre>
 <h4 id="addresses">▼ Addresses<a class="headerlink" href="#addresses" title="Permanent link">&para;</a></h4>
-<p>住所を持ち主から切り離し、持ち主と住所の関連に用途を持たせる。</p>
+<p>持ち主と住所を、別々のテーブルと、「自宅」「請求先」などの住所の使い道を記録する中間テーブルで表す。</p>
 <pre class="mermaid"><code>erDiagram
   party["party テーブル"] {
     string id PK
@@ -34442,7 +34456,8 @@
   party ||--o{ party_address : "所在する"
   address ||--o{ party_address : "使われる"</code></pre>
 <h4 id="resources">▼ Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h4>
-<p>人やモノなどの資源を共通の親テーブルにまとめ、活動での使用実績を記録する。</p>
+<p>人や資産などの資源を、共通の親テーブルと、どの活動でどの資源をどれだけ使ったかを記録する使用実績テーブルで表す。</p>
+<p>「Heterogeneous Entities」を応用したパターンである。</p>
 <pre class="mermaid"><code>erDiagram
   activity["activity テーブル"] {
     string id PK
@@ -34476,7 +34491,8 @@
   resource ||--o| resource_person : "人である"
   resource ||--o| resource_asset : "資産である"</code></pre>
 <h4 id="relationships">▼ Relationships<a class="headerlink" href="#relationships" title="Permanent link">&para;</a></h4>
-<p>テーブル同士の関係を、関係の種類を持つテーブルとして表す。</p>
+<p>モノ同士のつながりを、つながりの元と先と種類を記録するテーブルで表す。</p>
+<p>「Type and Instance」を応用したパターンである。</p>
 <pre class="mermaid"><code>erDiagram
   thing["thing テーブル"] {
     string id PK
@@ -34499,7 +34515,8 @@
   thing ||--o{ thing_relationship : "関係先である"
   relationship_type ||--o{ thing_relationship : "種類である"</code></pre>
 <h4 id="variable-length-records">▼ Variable Length Records<a class="headerlink" href="#variable-length-records" title="Permanent link">&para;</a></h4>
-<p>項目数が決まっていないデータを、項目の定義と値を行として持つことで表す。</p>
+<p>項目の数や種類が決まっていないデータを、列ではなく、項目の定義と値をそれぞれ1行ずつ記録するテーブルで表す。</p>
+<p>「Type and Instance」を応用したパターンである。</p>
 <pre class="mermaid"><code>erDiagram
   record_type["record_type テーブル"] {
     string id PK
@@ -34529,7 +34546,7 @@
   record ||--o{ attribute_value : "持つ"
   attribute_definition ||--o{ attribute_value : "定義する"</code></pre>
 <h4 id="usually-one-sometimes-many">▼ Usually One, Sometimes Many<a class="headerlink" href="#usually-one-sometimes-many" title="Permanent link">&para;</a></h4>
-<p>普通は1つだがまれに複数になる関連を、多対多で持ち、主となるものを属性で示す。</p>
+<p>普通は1つだがまれに複数になるつながり（例：勤務先）を、主となるものを示すフラグの列を持つ中間テーブルで表す。</p>
 <pre class="mermaid"><code>erDiagram
   person["person テーブル"] {
     string id PK
@@ -34550,7 +34567,7 @@
   person ||--o{ employment : "雇用される"
   organization ||--o{ employment : "雇用する"</code></pre>
 <h4 id="mathematical-expressions-in-the-data-model">▼ Mathematical Expressions in the Data Model<a class="headerlink" href="#mathematical-expressions-in-the-data-model" title="Permanent link">&para;</a></h4>
-<p>変数を計算する式を、演算子と順序を持つ項の並びとしてデータで表す。</p>
+<p>変数を計算する式を、演算子と順序を持つ項を1行ずつ記録するテーブルで表す。</p>
 <pre class="mermaid"><code>erDiagram
   variable["variable テーブル"] {
     string id PK
@@ -34568,7 +34585,8 @@
   variable ||--o{ formula_term : "計算される"
   variable ||--o{ formula_term : "被演算子になる"</code></pre>
 <h4 id="the-universal-data-model">▼ The Universal Data Model<a class="headerlink" href="#the-universal-data-model" title="Permanent link">&para;</a></h4>
-<p>あらゆるモノを、種類・属性・関係の組み合わせで表す最も汎用的なデータモデルである。</p>
+<p>あらゆるモノを、種類・項目・つながりのテーブルの組み合わせだけで表す。</p>
+<p>「Things, Thing Types, and Categories」と「Variable Length Records」と「Relationships」を組み合わせたパターンである。</p>
 <pre class="mermaid"><code>erDiagram
   thing_type["thing_type テーブル"] {
     string id PK
@@ -34608,7 +34626,8 @@
 <p><br></p>
 <h3 id="_3">ドメイン領域に特化したパターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="parties">▼ Parties<a class="headerlink" href="#parties" title="Permanent link">&para;</a></h4>
-<p>人と組織を「当事者（Party）」としてまとめ、契約や担当の相手を同じ形で扱う。</p>
+<p>人と組織を、契約や住所などの相手として同じ形で紐づけられる「当事者（Party）」という共通の親テーブルで表す。</p>
+<p>「Heterogeneous Entities」を応用したパターンである。</p>
 <pre class="mermaid"><code>erDiagram
   party["party テーブル"] {
     string id PK
@@ -34629,7 +34648,8 @@
   party ||--o| party_person : "人である"
   party ||--o| party_organization : "組織である"</code></pre>
 <h4 id="employee-assignments">▼ Employee Assignments<a class="headerlink" href="#employee-assignments" title="Permanent link">&para;</a></h4>
-<p>組織の職位と人を分け、人が職位に就いた期間を配属のテーブルで記録する。</p>
+<p>組織の職位と人を、別々のテーブルと、誰がどの職位にいつからいつまで就いていたかを記録する配属テーブルで表す。</p>
+<p>「Relationships」を応用したパターンである。</p>
 <pre class="mermaid"><code>erDiagram
   organization["organization テーブル"] {
     string id PK
@@ -34659,7 +34679,8 @@
   position ||--o{ position_assignment : "就任される"
   person ||--o{ position_assignment : "配属される"</code></pre>
 <h4 id="reporting-relationships">▼ Reporting Relationships<a class="headerlink" href="#reporting-relationships" title="Permanent link">&para;</a></h4>
-<p>上司と部下などの報告関係を、当事者同士の関係のテーブルで表す。</p>
+<p>上司と部下などの報告関係を、上位と下位の当事者と関係の種類を記録するテーブルで表す。</p>
+<p>「Relationships」を応用したパターンである。</p>
 <pre class="mermaid"><code>erDiagram
   party["party テーブル"] {
     string id PK
@@ -34682,7 +34703,8 @@
   party ||--o{ reporting_relationship : "下位である"
   reporting_relationship_type ||--o{ reporting_relationship : "種類である"</code></pre>
 <h4 id="geographic-locations">▼ Geographic Locations<a class="headerlink" href="#geographic-locations" title="Permanent link">&para;</a></h4>
-<p>国や都市などの地理的な範囲を自分自身への関連で階層にし、拠点をその範囲に属させる。</p>
+<p>国や都市などの地域の階層を、親の地域を指す列を持つ地域テーブルと、いずれかの地域に属する拠点テーブルで表す。</p>
+<p>「Structure」を応用したパターンである。</p>
 <pre class="mermaid"><code>erDiagram
   geographic_area["geographic_area テーブル"] {
     string id PK
@@ -34700,7 +34722,8 @@
   geographic_area ||--o{ geographic_area : "含む"
   geographic_area ||--o{ site : "含む"</code></pre>
 <h4 id="products-and-product-types">▼ Products and Product Types<a class="headerlink" href="#products-and-product-types" title="Permanent link">&para;</a></h4>
-<p>製品の種類と個々の製品を分け、製品の種類同士の構成（部品表）を持つ。</p>
+<p>製品の種類と個々の製品を、別々のテーブルと、製品の種類同士の構成（どの部品が何個必要か）を記録するテーブルで表す。</p>
+<p>「Type and Instance」と「Structure」を組み合わせたパターンである。</p>
 <pre class="mermaid"><code>erDiagram
   product_type["product_type テーブル"] {
     string id PK
@@ -34723,7 +34746,7 @@
   product_type ||--o{ product_type_structure : "親部品である"
   product_type ||--o{ product_type_structure : "子部品である"</code></pre>
 <h4 id="inventory">▼ Inventory<a class="headerlink" href="#inventory" title="Permanent link">&para;</a></h4>
-<p>どの製品の種類がどの拠点にどれだけあるかを、在庫のテーブルで表す。</p>
+<p>どの製品の種類がどの拠点にいくつあるかを、在庫テーブルで表す。</p>
 <pre class="mermaid"><code>erDiagram
   product_type["product_type テーブル"] {
     string id PK
@@ -34744,7 +34767,8 @@
   product_type ||--o{ inventory : "在庫になる"
   site ||--o{ inventory : "保管する"</code></pre>
 <h4 id="work-orders">▼ Work Orders<a class="headerlink" href="#work-orders" title="Permanent link">&para;</a></h4>
-<p>作業指示を作業に分け、作業ごとに人と資産の使用実績を記録する。</p>
+<p>作業指示を、複数の作業のテーブルと、作業ごとに誰が何時間働き、どの資産を何時間使ったかを記録するテーブルで表す。</p>
+<p>「Resources」を応用したパターンである。</p>
 <pre class="mermaid"><code>erDiagram
   work_order["work_order テーブル"] {
     string id PK
@@ -34787,7 +34811,8 @@
   work_order_task ||--o{ asset_usage : "使う"
   asset ||--o{ asset_usage : "使われる"</code></pre>
 <h4 id="purchase-orders-and-sales-orders">▼ Purchase Orders and Sales Orders<a class="headerlink" href="#purchase-orders-and-sales-orders" title="Permanent link">&para;</a></h4>
-<p>発注と受注を、買い手と売り手を持つ注文と、製品ごとの明細で表す。</p>
+<p>発注と受注を、買い手と売り手を記録する注文テーブルと、製品ごとの数量と単価を記録する明細テーブルで表す。</p>
+<p>「Parties」を応用したパターンである。</p>
 <pre class="mermaid"><code>erDiagram
   party["party テーブル"] {
     string id PK
@@ -34819,7 +34844,8 @@
   purchase_order ||--o{ line_item : "構成される"
   product_type ||--o{ line_item : "注文される"</code></pre>
 <h4 id="contract-roles">▼ Contract Roles<a class="headerlink" href="#contract-roles" title="Permanent link">&para;</a></h4>
-<p>契約にどの当事者がどの立場で関わるかを、契約の役割のテーブルで表す。</p>
+<p>契約にどの当事者がどの立場（売り手、保証人など）で関わるかを、契約の役割テーブルで表す。</p>
+<p>「Roles」を応用したパターンである。</p>
 <pre class="mermaid"><code>erDiagram
   contract["contract テーブル"] {
     string id PK
@@ -34846,7 +34872,7 @@
   party ||--o{ contract_role : "担う"
   contract_role_type ||--o{ contract_role : "種類である"</code></pre>
 <h4 id="basic-bookkeeping">▼ Basic Bookkeeping<a class="headerlink" href="#basic-bookkeeping" title="Permanent link">&para;</a></h4>
-<p>取引を、勘定ごとの借方と貸方の仕訳に分けて記録する。</p>
+<p>1つの取引を、取引テーブルと、勘定ごとの借方と貸方を記録する仕訳テーブルで表す。</p>
 <pre class="mermaid"><code>erDiagram
   accounting_transaction["accounting_transaction テーブル"] {
     string id PK
@@ -34871,7 +34897,8 @@
   accounting_transaction ||--o{ accounting_entry : "構成される"
   account ||--o{ accounting_entry : "記帳される"</code></pre>
 <h4 id="samples-tests-and-observations">▼ Samples, Tests, and Observations<a class="headerlink" href="#samples-tests-and-observations" title="Permanent link">&para;</a></h4>
-<p>サンプルに対する検査と、検査で得られた観測値を分けて記録する。</p>
+<p>サンプルに対する検査と、検査で測った項目ごとの値（観測値）を、別々のテーブルで表す。</p>
+<p>「Type and Instance」を応用したパターンである。</p>
 <pre class="mermaid"><code>erDiagram
   sample["sample テーブル"] {
     string id PK
@@ -34908,7 +34935,8 @@
   test ||--o{ observation : "生み出す"
   variable ||--o{ observation : "測定される"</code></pre>
 <h4 id="material-requirements-planning">▼ Material Requirements Planning<a class="headerlink" href="#material-requirements-planning" title="Permanent link">&para;</a></h4>
-<p>完成品の生産計画と部品表から、部品の必要量と発注を計画する。</p>
+<p>完成品の生産計画と、部品表と、部品がいつ何個必要かを計算した発注の計画を、それぞれ別のテーブルで表す。</p>
+<p>「Products and Product Types」を応用したパターンである。</p>
 <pre class="mermaid"><code>erDiagram
   product_type["product_type テーブル"] {
     string id PK
@@ -34940,7 +34968,8 @@
   product_type ||--o{ product_type_structure : "子部品である"
   product_type ||--o{ firm_planned_order : "注文される"</code></pre>
 <h4 id="monitoring-processes">▼ Monitoring Processes<a class="headerlink" href="#monitoring-processes" title="Permanent link">&para;</a></h4>
-<p>資産に付けた測定点（タグ）ごとに、時刻と測定値を記録する。</p>
+<p>資産に付けた測定点（タグ）と、測定点ごとに測定した時刻と値を記録するテーブルで表す。</p>
+<p>「Samples, Tests, and Observations」を応用したパターンである。</p>
 <pre class="mermaid"><code>erDiagram
   asset["asset テーブル"] {
     string id PK
@@ -34970,7 +34999,8 @@
   variable ||--o{ tag : "測定される"
   tag ||--o{ tag_value : "記録する"</code></pre>
 <h4 id="the-document">▼ The Document<a class="headerlink" href="#the-document" title="Permanent link">&para;</a></h4>
-<p>文書の種類、文書同士の構成、文書に関わる当事者の役割を表す。</p>
+<p>文書の種類、文書同士の構成（章や添付など）、文書に誰がどの立場（作成者、受領者など）で関わるかを、それぞれ別のテーブルで表す。</p>
+<p>「Type and Instance」と「Structure」と「Roles」を組み合わせたパターンである。</p>
 <pre class="mermaid"><code>erDiagram
   document_type["document_type テーブル"] {
     string id PK
@@ -35006,7 +35036,8 @@
   document ||--o{ document_role : "関わる"
   party ||--o{ document_role : "担う"</code></pre>
 <h4 id="versions">▼ Versions<a class="headerlink" href="#versions" title="Permanent link">&para;</a></h4>
-<p>文書の版を文書から分け、どの版がどの版を置き換えたかを自分自身への関連で表す。</p>
+<p>文書の版を、文書とは別のテーブルで表し、どの版がどの版を置き換えたかを、前の版を指す列で表す。</p>
+<p>「Structure」を応用したパターンである。</p>
 <pre class="mermaid"><code>erDiagram
   document["document テーブル"] {
     string id PK
@@ -35243,7 +35274,7 @@
   monitor ||--o{ incident : "起票される"
   incident ||--o{ incident_check_result : "根拠にする"
   check_result ||--o{ incident_check_result : "根拠になる"</code></pre>
-<p><code>monitor</code> テーブルは監視の種類に共通する設定を持ち、種類ごとの設定は <code>monitor_http</code> テーブルや <code>monitor_tls</code> テーブルに持たせる（Heterogeneous Entities）。</p>
+<p><code>monitor</code> テーブルは監視の種類に共通する設定を記録し、種類ごとの設定は <code>monitor_http</code> テーブルや <code>monitor_tls</code> テーブルに記録する（Heterogeneous Entities）。</p>
 <p><code>check_result</code> テーブルは、監視の設定とリージョンごとに、実行した時刻と結果を記録する（Monitoring Processes）。</p>
 <p><code>incident</code> テーブルは、インシデントの根拠になった監視の結果を <code>incident_check_result</code> テーブルで紐づける（Relationships）。</p>
 <p><br></p>
