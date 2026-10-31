@@ -5391,10 +5391,375 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
+        データモデルパターン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="データモデルパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        汎用的なパターン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="汎用的なパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#things-thing-types-and-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Things, Thing Types, and Categories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-and-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Type and Instance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heterogeneous-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Heterogeneous Entities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Roles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Addresses
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Relationships
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-length-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Variable Length Records
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usually-one-sometimes-many" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Usually One, Sometimes Many
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-expressions-in-the-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Mathematical Expressions in the Data Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-universal-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ The Universal Data Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ドメイン領域に特化したパターン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ドメイン領域に特化したパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Parties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#employee-assignments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Employee Assignments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reporting-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Reporting Relationships
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geographic-locations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Geographic Locations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#products-and-product-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Products and Product Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Inventory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#work-orders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Work Orders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#purchase-orders-and-sales-orders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Purchase Orders and Sales Orders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contract-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Contract Roles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-bookkeeping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Basic Bookkeeping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#samples-tests-and-observations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Samples, Tests, and Observations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#material-requirements-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Material Requirements Planning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Monitoring Processes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ The Document
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Versions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        事例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="事例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         マルチテナントの場合
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -33408,10 +33773,375 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
+        データモデルパターン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="データモデルパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        汎用的なパターン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="汎用的なパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#things-thing-types-and-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Things, Thing Types, and Categories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-and-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Type and Instance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heterogeneous-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Heterogeneous Entities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Roles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Addresses
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Relationships
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-length-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Variable Length Records
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usually-one-sometimes-many" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Usually One, Sometimes Many
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-expressions-in-the-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Mathematical Expressions in the Data Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-universal-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ The Universal Data Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ドメイン領域に特化したパターン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ドメイン領域に特化したパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Parties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#employee-assignments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Employee Assignments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reporting-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Reporting Relationships
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geographic-locations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Geographic Locations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#products-and-product-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Products and Product Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Inventory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#work-orders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Work Orders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#purchase-orders-and-sales-orders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Purchase Orders and Sales Orders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contract-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Contract Roles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-bookkeeping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Basic Bookkeeping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#samples-tests-and-observations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Samples, Tests, and Observations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#material-requirements-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Material Requirements Planning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Monitoring Processes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ The Document
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Versions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        事例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="事例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         マルチテナントの場合
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -33530,7 +34260,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月31日 20:36:50 JST">2026-10-31</span>
   </span>
 
     
@@ -33556,151 +34286,867 @@
 
 
 <h1 id="er-rdb">ER 図＠RDB<a class="headerlink" href="#er-rdb" title="Permanent link">&para;</a></h1>
-<h2 id="_1">マルチテナントの場合<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>マルチテナントでは、<code>Tenant</code> モデルをデータ分離の境界として扱う。</p>
-<pre class="mermaid"><code>flowchart TB
-  subgraph Tenant["Tenant"]
-    User["User"]
-    TenantToken["TenantToken"]
-    Quota["Quota"]
+<h2 id="_1">データモデルパターン<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">汎用的なパターン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="things-thing-types-and-categories">▼ Things, Thing Types, and Categories<a class="headerlink" href="#things-thing-types-and-categories" title="Permanent link">&para;</a></h4>
+<p>モノ、モノの種類、種類の分類を別々のテーブルに分け、最も抽象的な形でデータを表す。</p>
+<pre class="mermaid"><code>erDiagram
+  category["category テーブル"] {
+    string id PK
+    string name
+  }
 
-    subgraph Workspace["Workspace"]
-      Foo["Foo"]
-      Bar["Bar"]
+  thing_type["thing_type テーブル"] {
+    string id PK
+    string category_id FK
+    string name
+  }
+
+  thing["thing テーブル"] {
+    string id PK
+    string thing_type_id FK
+    string name
+  }
+
+  category ||--o{ thing_type : "分類する"
+  thing_type ||--o{ thing : "種類である"</code></pre>
+<h4 id="type-and-instance">▼ Type and Instance<a class="headerlink" href="#type-and-instance" title="Permanent link">&para;</a></h4>
+<p>「種類（型）」と「実際の個体（実体）」を別のテーブルに分け、種類ごとの共通情報を一か所で管理する。</p>
+<pre class="mermaid"><code>erDiagram
+  product_type["product_type テーブル"] {
+    string id PK
+    string name
+    decimal list_price
+  }
+
+  product["product テーブル"] {
+    string id PK
+    string product_type_id FK
+    string serial_number
+  }
+
+  product_type ||--o{ product : "実体になる"</code></pre>
+<h4 id="structure">▼ Structure<a class="headerlink" href="#structure" title="Permanent link">&para;</a></h4>
+<p>テーブル同士の親子関係（部品表や階層）を、自分自身への多対多の関連で表す。</p>
+<pre class="mermaid"><code>erDiagram
+  part["part テーブル"] {
+    string id PK
+    string name
+  }
+
+  part_structure["part_structure テーブル"] {
+    string assembly_part_id PK,FK
+    string component_part_id PK,FK
+    int quantity
+  }
+
+  part ||--o{ part_structure : "親部品である"
+  part ||--o{ part_structure : "子部品である"</code></pre>
+<h4 id="heterogeneous-entities">▼ Heterogeneous Entities<a class="headerlink" href="#heterogeneous-entities" title="Permanent link">&para;</a></h4>
+<p>種類の異なるテーブルを共通の親テーブルにまとめ、種類ごとの情報は子テーブルに持たせる。</p>
+<pre class="mermaid"><code>erDiagram
+  asset["asset テーブル"] {
+    string id PK
+    string asset_kind
+    string name
+  }
+
+  equipment["equipment テーブル"] {
+    string asset_id PK,FK
+    string model_number
+  }
+
+  building["building テーブル"] {
+    string asset_id PK,FK
+    decimal floor_area
+  }
+
+  vehicle["vehicle テーブル"] {
+    string asset_id PK,FK
+    string license_plate
+  }
+
+  asset ||--o| equipment : "サブタイプ"
+  asset ||--o| building : "サブタイプ"
+  asset ||--o| vehicle : "サブタイプ"</code></pre>
+<h4 id="roles">▼ Roles<a class="headerlink" href="#roles" title="Permanent link">&para;</a></h4>
+<p>誰がどの立場で関わるかを、関連そのものを役割のテーブルにして表す。</p>
+<pre class="mermaid"><code>erDiagram
+  party["party テーブル"] {
+    string id PK
+    string name
+  }
+
+  thing["thing テーブル"] {
+    string id PK
+    string name
+  }
+
+  role_type["role_type テーブル"] {
+    string id PK
+    string name
+  }
+
+  role["role テーブル"] {
+    string id PK
+    string party_id FK
+    string thing_id FK
+    string role_type_id FK
+  }
+
+  party ||--o{ role : "担う"
+  thing ||--o{ role : "対象になる"
+  role_type ||--o{ role : "種類である"</code></pre>
+<h4 id="addresses">▼ Addresses<a class="headerlink" href="#addresses" title="Permanent link">&para;</a></h4>
+<p>住所を持ち主から切り離し、持ち主と住所の関連に用途を持たせる。</p>
+<pre class="mermaid"><code>erDiagram
+  party["party テーブル"] {
+    string id PK
+    string name
+  }
+
+  address["address テーブル"] {
+    string id PK
+    string postal_code
+    string street
+  }
+
+  party_address["party_address テーブル"] {
+    string party_id PK,FK
+    string address_id PK,FK
+    string purpose
+  }
+
+  party ||--o{ party_address : "所在する"
+  address ||--o{ party_address : "使われる"</code></pre>
+<h4 id="resources">▼ Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h4>
+<p>人やモノなどの資源を共通の親テーブルにまとめ、活動での使用実績を記録する。</p>
+<pre class="mermaid"><code>erDiagram
+  activity["activity テーブル"] {
+    string id PK
+    string name
+  }
+
+  resource["resource テーブル"] {
+    string id PK
+    string resource_kind
+  }
+
+  person["person テーブル"] {
+    string resource_id PK,FK
+    string name
+  }
+
+  asset["asset テーブル"] {
+    string resource_id PK,FK
+    string name
+  }
+
+  resource_usage["resource_usage テーブル"] {
+    string id PK
+    string activity_id FK
+    string resource_id FK
+    decimal quantity
+  }
+
+  activity ||--o{ resource_usage : "使う"
+  resource ||--o{ resource_usage : "使われる"
+  resource ||--o| person : "サブタイプ"
+  resource ||--o| asset : "サブタイプ"</code></pre>
+<h4 id="relationships">▼ Relationships<a class="headerlink" href="#relationships" title="Permanent link">&para;</a></h4>
+<p>テーブル同士の関係を、関係の種類を持つテーブルとして表す。</p>
+<pre class="mermaid"><code>erDiagram
+  thing["thing テーブル"] {
+    string id PK
+    string name
+  }
+
+  relationship_type["relationship_type テーブル"] {
+    string id PK
+    string name
+  }
+
+  thing_relationship["thing_relationship テーブル"] {
+    string id PK
+    string from_thing_id FK
+    string to_thing_id FK
+    string relationship_type_id FK
+  }
+
+  thing ||--o{ thing_relationship : "関係元である"
+  thing ||--o{ thing_relationship : "関係先である"
+  relationship_type ||--o{ thing_relationship : "種類である"</code></pre>
+<h4 id="variable-length-records">▼ Variable Length Records<a class="headerlink" href="#variable-length-records" title="Permanent link">&para;</a></h4>
+<p>項目数が決まっていないデータを、項目の定義と値を行として持つことで表す。</p>
+<pre class="mermaid"><code>erDiagram
+  record_type["record_type テーブル"] {
+    string id PK
+    string name
+  }
+
+  attribute_definition["attribute_definition テーブル"] {
+    string id PK
+    string record_type_id FK
+    string name
+    string data_type
+  }
+
+  record["record テーブル"] {
+    string id PK
+    string record_type_id FK
+  }
+
+  attribute_value["attribute_value テーブル"] {
+    string record_id PK,FK
+    string attribute_definition_id PK,FK
+    string value
+  }
+
+  record_type ||--o{ attribute_definition : "定義する"
+  record_type ||--o{ record : "種類である"
+  record ||--o{ attribute_value : "持つ"
+  attribute_definition ||--o{ attribute_value : "定義する"</code></pre>
+<h4 id="usually-one-sometimes-many">▼ Usually One, Sometimes Many<a class="headerlink" href="#usually-one-sometimes-many" title="Permanent link">&para;</a></h4>
+<p>普通は1つだがまれに複数になる関連を、多対多で持ち、主となるものを属性で示す。</p>
+<pre class="mermaid"><code>erDiagram
+  person["person テーブル"] {
+    string id PK
+    string name
+  }
+
+  organization["organization テーブル"] {
+    string id PK
+    string name
+  }
+
+  employment["employment テーブル"] {
+    string person_id PK,FK
+    string organization_id PK,FK
+    boolean is_primary
+  }
+
+  person ||--o{ employment : "雇用される"
+  organization ||--o{ employment : "雇用する"</code></pre>
+<h4 id="mathematical-expressions-in-the-data-model">▼ Mathematical Expressions in the Data Model<a class="headerlink" href="#mathematical-expressions-in-the-data-model" title="Permanent link">&para;</a></h4>
+<p>変数を計算する式を、演算子と順序を持つ項の並びとしてデータで表す。</p>
+<pre class="mermaid"><code>erDiagram
+  variable["variable テーブル"] {
+    string id PK
+    string name
+  }
+
+  formula_term["formula_term テーブル"] {
+    string id PK
+    string calculated_variable_id FK
+    string operand_variable_id FK
+    int sequence
+    string operator
+  }
+
+  variable ||--o{ formula_term : "計算される"
+  variable ||--o{ formula_term : "被演算子になる"</code></pre>
+<h4 id="the-universal-data-model">▼ The Universal Data Model<a class="headerlink" href="#the-universal-data-model" title="Permanent link">&para;</a></h4>
+<p>あらゆるモノを、種類・属性・関係の組み合わせで表す最も汎用的なデータモデルである。</p>
+<pre class="mermaid"><code>erDiagram
+  thing_type["thing_type テーブル"] {
+    string id PK
+    string name
+  }
+
+  thing["thing テーブル"] {
+    string id PK
+    string thing_type_id FK
+    string name
+  }
+
+  attribute_type["attribute_type テーブル"] {
+    string id PK
+    string thing_type_id FK
+    string name
+  }
+
+  attribute_value["attribute_value テーブル"] {
+    string thing_id PK,FK
+    string attribute_type_id PK,FK
+    string value
+  }
+
+  thing_relationship["thing_relationship テーブル"] {
+    string id PK
+    string from_thing_id FK
+    string to_thing_id FK
+  }
+
+  thing_type ||--o{ thing : "種類である"
+  thing_type ||--o{ attribute_type : "定義する"
+  thing ||--o{ attribute_value : "持つ"
+  attribute_type ||--o{ attribute_value : "定義する"
+  thing ||--o{ thing_relationship : "関係元である"
+  thing ||--o{ thing_relationship : "関係先である"</code></pre>
+<p><br></p>
+<h3 id="_3">ドメイン領域に特化したパターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="parties">▼ Parties<a class="headerlink" href="#parties" title="Permanent link">&para;</a></h4>
+<p>人と組織を「当事者（Party）」としてまとめ、契約や担当の相手を同じ形で扱う。</p>
+<pre class="mermaid"><code>erDiagram
+  party["party テーブル"] {
+    string id PK
+    string party_kind
+  }
+
+  person["person テーブル"] {
+    string party_id PK,FK
+    string first_name
+    string last_name
+  }
+
+  organization["organization テーブル"] {
+    string party_id PK,FK
+    string name
+  }
+
+  party ||--o| person : "サブタイプ"
+  party ||--o| organization : "サブタイプ"</code></pre>
+<h4 id="employee-assignments">▼ Employee Assignments<a class="headerlink" href="#employee-assignments" title="Permanent link">&para;</a></h4>
+<p>組織の職位と人を分け、人が職位に就いた期間を配属のテーブルで記録する。</p>
+<pre class="mermaid"><code>erDiagram
+  organization["organization テーブル"] {
+    string id PK
+    string name
+  }
+
+  position["position テーブル"] {
+    string id PK
+    string organization_id FK
+    string title
+  }
+
+  person["person テーブル"] {
+    string id PK
+    string name
+  }
+
+  position_assignment["position_assignment テーブル"] {
+    string id PK
+    string position_id FK
+    string person_id FK
+    date start_date
+    date end_date
+  }
+
+  organization ||--o{ position : "持つ"
+  position ||--o{ position_assignment : "就任される"
+  person ||--o{ position_assignment : "配属される"</code></pre>
+<h4 id="reporting-relationships">▼ Reporting Relationships<a class="headerlink" href="#reporting-relationships" title="Permanent link">&para;</a></h4>
+<p>上司と部下などの報告関係を、当事者同士の関係のテーブルで表す。</p>
+<pre class="mermaid"><code>erDiagram
+  party["party テーブル"] {
+    string id PK
+    string name
+  }
+
+  reporting_relationship_type["reporting_relationship_type テーブル"] {
+    string id PK
+    string name
+  }
+
+  reporting_relationship["reporting_relationship テーブル"] {
+    string id PK
+    string superior_party_id FK
+    string subordinate_party_id FK
+    string reporting_relationship_type_id FK
+  }
+
+  party ||--o{ reporting_relationship : "上位である"
+  party ||--o{ reporting_relationship : "下位である"
+  reporting_relationship_type ||--o{ reporting_relationship : "種類である"</code></pre>
+<h4 id="geographic-locations">▼ Geographic Locations<a class="headerlink" href="#geographic-locations" title="Permanent link">&para;</a></h4>
+<p>国や都市などの地理的な範囲を自分自身への関連で階層にし、拠点をその範囲に属させる。</p>
+<pre class="mermaid"><code>erDiagram
+  geographic_area["geographic_area テーブル"] {
+    string id PK
+    string parent_geographic_area_id FK
+    string name
+    string area_kind
+  }
+
+  site["site テーブル"] {
+    string id PK
+    string geographic_area_id FK
+    string name
+  }
+
+  geographic_area ||--o{ geographic_area : "含む"
+  geographic_area ||--o{ site : "含む"</code></pre>
+<h4 id="products-and-product-types">▼ Products and Product Types<a class="headerlink" href="#products-and-product-types" title="Permanent link">&para;</a></h4>
+<p>製品の種類と個々の製品を分け、製品の種類同士の構成（部品表）を持つ。</p>
+<pre class="mermaid"><code>erDiagram
+  product_type["product_type テーブル"] {
+    string id PK
+    string name
+  }
+
+  discrete_item["discrete_item テーブル"] {
+    string id PK
+    string product_type_id FK
+    string serial_number
+  }
+
+  product_type_structure["product_type_structure テーブル"] {
+    string assembly_product_type_id PK,FK
+    string component_product_type_id PK,FK
+    int quantity
+  }
+
+  product_type ||--o{ discrete_item : "具現化される"
+  product_type ||--o{ product_type_structure : "親部品である"
+  product_type ||--o{ product_type_structure : "子部品である"</code></pre>
+<h4 id="inventory">▼ Inventory<a class="headerlink" href="#inventory" title="Permanent link">&para;</a></h4>
+<p>どの製品の種類がどの拠点にどれだけあるかを、在庫のテーブルで表す。</p>
+<pre class="mermaid"><code>erDiagram
+  product_type["product_type テーブル"] {
+    string id PK
+    string name
+  }
+
+  site["site テーブル"] {
+    string id PK
+    string name
+  }
+
+  inventory["inventory テーブル"] {
+    string product_type_id PK,FK
+    string site_id PK,FK
+    decimal quantity
+  }
+
+  product_type ||--o{ inventory : "在庫になる"
+  site ||--o{ inventory : "保管する"</code></pre>
+<h4 id="work-orders">▼ Work Orders<a class="headerlink" href="#work-orders" title="Permanent link">&para;</a></h4>
+<p>作業指示を作業に分け、作業ごとに人と資産の使用実績を記録する。</p>
+<pre class="mermaid"><code>erDiagram
+  work_order["work_order テーブル"] {
+    string id PK
+    string description
+  }
+
+  work_order_task["work_order_task テーブル"] {
+    string id PK
+    string work_order_id FK
+    string name
+  }
+
+  person["person テーブル"] {
+    string id PK
+    string name
+  }
+
+  labor_usage["labor_usage テーブル"] {
+    string id PK
+    string work_order_task_id FK
+    string person_id FK
+    decimal hours
+  }
+
+  asset["asset テーブル"] {
+    string id PK
+    string name
+  }
+
+  asset_usage["asset_usage テーブル"] {
+    string id PK
+    string work_order_task_id FK
+    string asset_id FK
+    decimal hours
+  }
+
+  work_order ||--o{ work_order_task : "構成される"
+  work_order_task ||--o{ labor_usage : "使う"
+  person ||--o{ labor_usage : "作業する"
+  work_order_task ||--o{ asset_usage : "使う"
+  asset ||--o{ asset_usage : "使われる"</code></pre>
+<h4 id="purchase-orders-and-sales-orders">▼ Purchase Orders and Sales Orders<a class="headerlink" href="#purchase-orders-and-sales-orders" title="Permanent link">&para;</a></h4>
+<p>発注と受注を、買い手と売り手を持つ注文と、製品ごとの明細で表す。</p>
+<pre class="mermaid"><code>erDiagram
+  party["party テーブル"] {
+    string id PK
+    string name
+  }
+
+  purchase_order["purchase_order テーブル"] {
+    string id PK
+    string buyer_party_id FK
+    string seller_party_id FK
+    datetime ordered_at
+  }
+
+  product_type["product_type テーブル"] {
+    string id PK
+    string name
+  }
+
+  line_item["line_item テーブル"] {
+    string id PK
+    string purchase_order_id FK
+    string product_type_id FK
+    int quantity
+    decimal unit_price
+  }
+
+  party ||--o{ purchase_order : "買い手になる"
+  party ||--o{ purchase_order : "売り手になる"
+  purchase_order ||--o{ line_item : "構成される"
+  product_type ||--o{ line_item : "注文される"</code></pre>
+<h4 id="contract-roles">▼ Contract Roles<a class="headerlink" href="#contract-roles" title="Permanent link">&para;</a></h4>
+<p>契約にどの当事者がどの立場で関わるかを、契約の役割のテーブルで表す。</p>
+<pre class="mermaid"><code>erDiagram
+  contract["contract テーブル"] {
+    string id PK
+    date signed_on
+  }
+
+  party["party テーブル"] {
+    string id PK
+    string name
+  }
+
+  contract_role_type["contract_role_type テーブル"] {
+    string id PK
+    string name
+  }
+
+  contract_role["contract_role テーブル"] {
+    string contract_id PK,FK
+    string party_id PK,FK
+    string contract_role_type_id FK
+  }
+
+  contract ||--o{ contract_role : "関わる"
+  party ||--o{ contract_role : "担う"
+  contract_role_type ||--o{ contract_role : "種類である"</code></pre>
+<h4 id="basic-bookkeeping">▼ Basic Bookkeeping<a class="headerlink" href="#basic-bookkeeping" title="Permanent link">&para;</a></h4>
+<p>取引を、勘定ごとの借方と貸方の仕訳に分けて記録する。</p>
+<pre class="mermaid"><code>erDiagram
+  accounting_transaction["accounting_transaction テーブル"] {
+    string id PK
+    date transaction_date
+    string description
+  }
+
+  account["account テーブル"] {
+    string id PK
+    string name
+    string account_kind
+  }
+
+  accounting_entry["accounting_entry テーブル"] {
+    string id PK
+    string accounting_transaction_id FK
+    string account_id FK
+    decimal amount
+    string debit_or_credit
+  }
+
+  accounting_transaction ||--o{ accounting_entry : "構成される"
+  account ||--o{ accounting_entry : "記帳される"</code></pre>
+<h4 id="samples-tests-and-observations">▼ Samples, Tests, and Observations<a class="headerlink" href="#samples-tests-and-observations" title="Permanent link">&para;</a></h4>
+<p>サンプルに対する検査と、検査で得られた観測値を分けて記録する。</p>
+<pre class="mermaid"><code>erDiagram
+  sample["sample テーブル"] {
+    string id PK
+    datetime collected_at
+  }
+
+  test_type["test_type テーブル"] {
+    string id PK
+    string name
+  }
+
+  test["test テーブル"] {
+    string id PK
+    string sample_id FK
+    string test_type_id FK
+    datetime tested_at
+  }
+
+  variable["variable テーブル"] {
+    string id PK
+    string name
+    string unit
+  }
+
+  observation["observation テーブル"] {
+    string id PK
+    string test_id FK
+    string variable_id FK
+    decimal value
+  }
+
+  sample ||--o{ test : "検査される"
+  test_type ||--o{ test : "種類である"
+  test ||--o{ observation : "生み出す"
+  variable ||--o{ observation : "測定される"</code></pre>
+<h4 id="material-requirements-planning">▼ Material Requirements Planning<a class="headerlink" href="#material-requirements-planning" title="Permanent link">&para;</a></h4>
+<p>完成品の生産計画と部品表から、部品の必要量と発注を計画する。</p>
+<pre class="mermaid"><code>erDiagram
+  product_type["product_type テーブル"] {
+    string id PK
+    string name
+  }
+
+  product_type_structure["product_type_structure テーブル"] {
+    string assembly_product_type_id PK,FK
+    string component_product_type_id PK,FK
+    int quantity
+  }
+
+  master_schedule_item["master_schedule_item テーブル"] {
+    string id PK
+    string product_type_id FK
+    date due_date
+    int quantity
+  }
+
+  firm_planned_order["firm_planned_order テーブル"] {
+    string id PK
+    string product_type_id FK
+    date due_date
+    int quantity
+  }
+
+  product_type ||--o{ master_schedule_item : "計画される"
+  product_type ||--o{ product_type_structure : "親部品である"
+  product_type ||--o{ product_type_structure : "子部品である"
+  product_type ||--o{ firm_planned_order : "注文される"</code></pre>
+<h4 id="monitoring-processes">▼ Monitoring Processes<a class="headerlink" href="#monitoring-processes" title="Permanent link">&para;</a></h4>
+<p>資産に付けた測定点（タグ）ごとに、時刻と測定値を記録する。</p>
+<pre class="mermaid"><code>erDiagram
+  asset["asset テーブル"] {
+    string id PK
+    string name
+  }
+
+  variable["variable テーブル"] {
+    string id PK
+    string name
+    string unit
+  }
+
+  tag["tag テーブル"] {
+    string id PK
+    string asset_id FK
+    string variable_id FK
+    string name
+  }
+
+  tag_value["tag_value テーブル"] {
+    string tag_id PK,FK
+    datetime time PK
+    decimal value
+  }
+
+  asset ||--o{ tag : "監視される"
+  variable ||--o{ tag : "測定される"
+  tag ||--o{ tag_value : "記録する"</code></pre>
+<h4 id="the-document">▼ The Document<a class="headerlink" href="#the-document" title="Permanent link">&para;</a></h4>
+<p>文書の種類、文書同士の構成、文書に関わる当事者の役割を表す。</p>
+<pre class="mermaid"><code>erDiagram
+  document_type["document_type テーブル"] {
+    string id PK
+    string name
+  }
+
+  document["document テーブル"] {
+    string id PK
+    string document_type_id FK
+    string title
+  }
+
+  document_structure["document_structure テーブル"] {
+    string parent_document_id PK,FK
+    string child_document_id PK,FK
+    int sequence
+  }
+
+  party["party テーブル"] {
+    string id PK
+    string name
+  }
+
+  document_role["document_role テーブル"] {
+    string document_id PK,FK
+    string party_id PK,FK
+    string role_name
+  }
+
+  document_type ||--o{ document : "種類である"
+  document ||--o{ document_structure : "含む"
+  document ||--o{ document_structure : "一部である"
+  document ||--o{ document_role : "関わる"
+  party ||--o{ document_role : "担う"</code></pre>
+<h4 id="versions">▼ Versions<a class="headerlink" href="#versions" title="Permanent link">&para;</a></h4>
+<p>文書の版を文書から分け、どの版がどの版を置き換えたかを自分自身への関連で表す。</p>
+<pre class="mermaid"><code>erDiagram
+  document["document テーブル"] {
+    string id PK
+    string title
+  }
+
+  document_version["document_version テーブル"] {
+    string id PK
+    string document_id FK
+    string superseded_document_version_id FK
+    int version_number
+  }
+
+  document ||--o{ document_version : "持つ"
+  document_version ||--o| document_version : "置き換える"</code></pre>
+<p><br></p>
+<h2 id="_4">事例<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="_5">マルチテナントの場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>マルチテナントでは、<code>tenant</code> テーブルをデータ分離の境界として扱う。</p>
+<pre class="mermaid"><code>flowchart TB
+  subgraph tenant["tenant"]
+    user["user"]
+    tenant_token["tenant_token"]
+    quota["quota"]
+
+    subgraph workspace["workspace"]
+      foo["foo"]
+      bar["bar"]
     end
   end
 
-  Role["Role"]
-  Policy["Policy"]
+  role["role"]
+  policy["policy"]
 
-  User --&gt; Role
-  TenantToken --&gt; Role
-  Role --&gt; Policy</code></pre>
-<p><code>Tenant</code> モデルを境界として見ると、<code>Workspace</code> モデルや <code>Foo</code> モデル、<code>Bar</code> モデルは <code>Tenant</code> モデルの内側にある。</p>
-<p><code>User</code> モデルや <code>Workspace</code> モデルなどのテナント配下のテーブルは <code>tenantId</code> を持つ。</p>
-<p>これにより、認可後の Read 処理を <code>Tenant</code> 単位で絞り込める。</p>
-<p><code>Workspace</code> モデル配下のデータも <code>tenantId</code> を含むキーで親子関係を表す。</p>
-<p><code>Role</code> モデルと <code>Policy</code> モデルは <code>User</code> モデルや <code>TenantToken</code> モデルに紐づけ、画面操作や API 操作の権限を表現する。</p>
-<p><code>RolePolicy</code> のような中間モデルを用意すると、モデル間を多対多で紐付けられる。</p>
+  user --&gt; role
+  tenant_token --&gt; role
+  role --&gt; policy</code></pre>
+<p><code>tenant</code> テーブルを境界として見ると、<code>workspace</code> テーブルや <code>foo</code> テーブル、<code>bar</code> テーブルは <code>tenant</code> テーブルの内側にある。</p>
+<p><code>user</code> テーブルや <code>workspace</code> テーブルなどのテナント配下のテーブルは <code>tenant_id</code> を持つ。</p>
+<p>これにより、認可後の Read 処理を <code>tenant</code> 単位で絞り込める。</p>
+<p><code>workspace</code> テーブル配下のデータも <code>tenant_id</code> を含むキーで親子関係を表す。</p>
+<p><code>role</code> テーブルと <code>policy</code> テーブルは <code>user</code> テーブルや <code>tenant_token</code> テーブルに紐づけ、画面操作や API 操作の権限を表現する。</p>
+<p><code>role_policy</code> のような中間テーブルを用意すると、テーブル間を多対多で紐付けられる。</p>
 <table>
   <thead>
     <tr>
-      <th>モデル</th>
+      <th>テーブル</th>
       <th>役割</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><code>Tenant</code></td>
+      <td><code>tenant</code></td>
       <td>マルチテナントにおけるデータ分離の単位</td>
     </tr>
     <tr>
-      <td><code>User</code></td>
-      <td><code>Tenant</code> に所属する利用者。<code>Role</code> を通じて操作権限を持つ</td>
+      <td><code>user</code></td>
+      <td><code>tenant</code> に所属する利用者。<code>role</code> を通じて操作権限を持つ</td>
     </tr>
     <tr>
-      <td><code>TenantToken</code></td>
-      <td><code>Tenant</code> に紐づく API アクセス用のトークン。<code>User</code> と同様に <code>Role</code> を持つ</td>
+      <td><code>tenant_token</code></td>
+      <td><code>tenant</code> に紐づく API アクセス用のトークン。<code>user</code> と同様に <code>role</code> を持つ</td>
     </tr>
     <tr>
-      <td><code>Role</code></td>
-      <td><code>User</code> や <code>TenantToken</code> に割り当てる権限のまとまり</td>
+      <td><code>role</code></td>
+      <td><code>user</code> や <code>tenant_token</code> に割り当てる権限のまとまり</td>
     </tr>
     <tr>
-      <td><code>Policy</code></td>
+      <td><code>policy</code></td>
       <td>画面や API に対する操作可否を表すルール</td>
     </tr>
     <tr>
-      <td><code>RolePolicy</code></td>
-      <td><code>Role</code> と <code>Policy</code> を多対多で紐づける中間モデル</td>
+      <td><code>role_policy</code></td>
+      <td><code>role</code> と <code>policy</code> を多対多で紐づける中間テーブル</td>
     </tr>
     <tr>
-      <td><code>Workspace</code></td>
-      <td><code>Tenant</code> 配下で業務データをまとめる作業領域</td>
+      <td><code>workspace</code></td>
+      <td><code>tenant</code> 配下で業務データをまとめる作業領域</td>
     </tr>
     <tr>
-      <td><code>Quota</code></td>
-      <td><code>Tenant</code> ごとの利用上限</td>
+      <td><code>quota</code></td>
+      <td><code>tenant</code> ごとの利用上限</td>
     </tr>
     <tr>
-      <td><code>Foo</code></td>
-      <td><code>Workspace</code> 配下に作成される業務データの例 1</td>
+      <td><code>foo</code></td>
+      <td><code>workspace</code> 配下に作成される業務データの例 1</td>
     </tr>
     <tr>
-      <td><code>Bar</code></td>
-      <td><code>Workspace</code> 配下に作成される業務データの例 2</td>
+      <td><code>bar</code></td>
+      <td><code>workspace</code> 配下に作成される業務データの例 2</td>
     </tr>
   </tbody>
 </table>
 
 <pre class="mermaid"><code>erDiagram
-  Tenant ||--o{ User : has
-  Tenant ||--o{ TenantToken : has
-  Tenant ||--o{ Workspace : owns
-  Tenant ||--o{ Quota : has
+  tenant ||--o{ user : "持つ"
+  tenant ||--o{ tenant_token : "持つ"
+  tenant ||--o{ workspace : "所有する"
+  tenant ||--o{ quota : "持つ"
 
-  User }o--|| Role : assigned
-  TenantToken }o--|| Role : assigned
-  Role ||--o{ RolePolicy : has
-  Policy ||--o{ RolePolicy : used_by
+  user }o--|| role : "割り当てられる"
+  tenant_token }o--|| role : "割り当てられる"
+  role ||--o{ role_policy : "持つ"
+  policy ||--o{ role_policy : "使われる"
 
-  Workspace ||--o{ Foo : has
-  Workspace ||--o{ Bar : has
+  workspace ||--o{ foo : "持つ"
+  workspace ||--o{ bar : "持つ"
 
-  Tenant {
+  tenant["tenant テーブル"] {
     string id PK
     string name UK
-    string defaultRole
+    string default_role
   }
 
-  User {
+  user["user テーブル"] {
     string id PK
-    string tenantId FK
+    string tenant_id FK
     string email
-    string roleName FK
+    string role_name FK
   }
 
-  TenantToken {
-    string tenantId PK,FK
+  tenant_token["tenant_token テーブル"] {
+    string tenant_id PK,FK
     string name PK
     string token UK
-    string roleName FK
+    string role_name FK
   }
 
-  Role {
+  role["role テーブル"] {
     string name PK
     string scope
   }
 
-  Policy {
+  policy["policy テーブル"] {
     string name PK
     string context
   }
 
-  RolePolicy {
-    string roleName PK,FK
-    string policyName PK,FK
+  role_policy["role_policy テーブル"] {
+    string role_name PK,FK
+    string policy_name PK,FK
   }
 
-  Workspace {
-    string tenantId PK,FK
+  workspace["workspace テーブル"] {
+    string tenant_id PK,FK
     string name PK
   }
 
-  Quota {
-    string tenantId PK,FK
+  quota["quota テーブル"] {
+    string tenant_id PK,FK
     string resource PK
   }
 
-  Foo {
-    string tenantId PK,FK
-    string workspaceName PK,FK
+  foo["foo テーブル"] {
+    string tenant_id PK,FK
+    string workspace_name PK,FK
     string name PK
   }
 
-  Bar {
-    string tenantId PK,FK
-    string workspaceName PK,FK
+  bar["bar テーブル"] {
+    string tenant_id PK,FK
+    string workspace_name PK,FK
     string name PK
   }</code></pre>
 <p><br></p>
