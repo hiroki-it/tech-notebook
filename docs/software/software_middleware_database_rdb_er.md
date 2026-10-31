@@ -11,19 +11,31 @@ description: ER図＠RDBの知見を記録しています。
 
 #### ▼ Things, Thing Types, and Categories
 
-モノ、モノの種類、種類の分類を別々のテーブルに分け、最も抽象的な形でデータを表す。
+モノと、モノの種類と、種類を「車体の形」「動力」などの複数の分類体系で分類する分類を、それぞれ別のテーブルで表す。
+
+「Type and Instance」と「Relationships」を組み合わせたパターンである。
 
 ```mermaid
 erDiagram
+  category_scheme["category_scheme テーブル"] {
+    string id PK
+    string name
+  }
+
   category["category テーブル"] {
     string id PK
+    string category_scheme_id FK
     string name
   }
 
   thing_type["thing_type テーブル"] {
     string id PK
-    string category_id FK
     string name
+  }
+
+  thing_type_category["thing_type_category テーブル"] {
+    string thing_type_id PK,FK
+    string category_id PK,FK
   }
 
   thing["thing テーブル"] {
@@ -32,13 +44,15 @@ erDiagram
     string name
   }
 
-  category ||--o{ thing_type : "分類する"
+  category_scheme ||--o{ category : "持つ"
+  category ||--o{ thing_type_category : "分類する"
+  thing_type ||--o{ thing_type_category : "分類される"
   thing_type ||--o{ thing : "種類である"
 ```
 
 #### ▼ Type and Instance
 
-「種類（型）」と「実際の個体（実体）」を別のテーブルに分け、種類ごとの共通情報を一か所で管理する。
+種類（型）と実際の個々のモノ（実体）を、種類に共通する情報を記録する種類テーブルと、個々のモノを記録する実体テーブルで表す。
 
 ```mermaid
 erDiagram
@@ -59,7 +73,7 @@ erDiagram
 
 #### ▼ Structure
 
-テーブル同士の親子関係（部品表や階層）を、自分自身への多対多の関連で表す。
+同じテーブルの行同士の親子関係（部品表や階層）を、親と子の組を記録する中間テーブルで表す。
 
 ```mermaid
 erDiagram
@@ -80,7 +94,7 @@ erDiagram
 
 #### ▼ Heterogeneous Entities
 
-種類の異なるテーブルを共通の親テーブルにまとめ、種類ごとの情報は子テーブルに持たせる。
+種類ごとに項目が異なるデータを、共通の項目を記録する親テーブルと、種類ごとの項目を記録する子テーブルで表す。
 
 ```mermaid
 erDiagram
@@ -112,7 +126,9 @@ erDiagram
 
 #### ▼ Roles
 
-誰がどの立場で関わるかを、関連そのものを役割のテーブルにして表す。
+誰が何にどの立場で関わるかを、当事者とモノと役割の種類をつなぐ役割テーブルで表す。
+
+「Type and Instance」を応用したパターンである。
 
 ```mermaid
 erDiagram
@@ -145,7 +161,7 @@ erDiagram
 
 #### ▼ Addresses
 
-住所を持ち主から切り離し、持ち主と住所の関連に用途を持たせる。
+持ち主と住所を、別々のテーブルと、「自宅」「請求先」などの住所の使い道を記録する中間テーブルで表す。
 
 ```mermaid
 erDiagram
@@ -172,7 +188,9 @@ erDiagram
 
 #### ▼ Resources
 
-人やモノなどの資源を共通の親テーブルにまとめ、活動での使用実績を記録する。
+人や資産などの資源を、共通の親テーブルと、どの活動でどの資源をどれだけ使ったかを記録する使用実績テーブルで表す。
+
+「Heterogeneous Entities」を応用したパターンである。
 
 ```mermaid
 erDiagram
@@ -211,7 +229,9 @@ erDiagram
 
 #### ▼ Relationships
 
-テーブル同士の関係を、関係の種類を持つテーブルとして表す。
+モノ同士のつながりを、つながりの元と先と種類を記録するテーブルで表す。
+
+「Type and Instance」を応用したパターンである。
 
 ```mermaid
 erDiagram
@@ -239,7 +259,9 @@ erDiagram
 
 #### ▼ Variable Length Records
 
-項目数が決まっていないデータを、項目の定義と値を行として持つことで表す。
+項目の数や種類が決まっていないデータを、列ではなく、項目の定義と値をそれぞれ1行ずつ記録するテーブルで表す。
+
+「Type and Instance」を応用したパターンである。
 
 ```mermaid
 erDiagram
@@ -274,7 +296,7 @@ erDiagram
 
 #### ▼ Usually One, Sometimes Many
 
-普通は1つだがまれに複数になる関連を、多対多で持ち、主となるものを属性で示す。
+普通は1つだがまれに複数になるつながり（例：勤務先）を、主となるものを示すフラグの列を持つ中間テーブルで表す。
 
 ```mermaid
 erDiagram
@@ -300,7 +322,7 @@ erDiagram
 
 #### ▼ Mathematical Expressions in the Data Model
 
-変数を計算する式を、演算子と順序を持つ項の並びとしてデータで表す。
+変数を計算する式を、演算子と順序を持つ項を1行ずつ記録するテーブルで表す。
 
 ```mermaid
 erDiagram
@@ -323,7 +345,9 @@ erDiagram
 
 #### ▼ The Universal Data Model
 
-あらゆるモノを、種類・属性・関係の組み合わせで表す最も汎用的なデータモデルである。
+あらゆるモノを、種類・項目・つながりのテーブルの組み合わせだけで表す。
+
+「Things, Thing Types, and Categories」と「Variable Length Records」と「Relationships」を組み合わせたパターンである。
 
 ```mermaid
 erDiagram
@@ -370,7 +394,9 @@ erDiagram
 
 #### ▼ Parties
 
-人と組織を「当事者（Party）」としてまとめ、契約や担当の相手を同じ形で扱う。
+人と組織を、契約や住所などの相手として同じ形で紐づけられる「当事者（Party）」という共通の親テーブルで表す。
+
+「Heterogeneous Entities」を応用したパターンである。
 
 ```mermaid
 erDiagram
@@ -396,7 +422,9 @@ erDiagram
 
 #### ▼ Employee Assignments
 
-組織の職位と人を分け、人が職位に就いた期間を配属のテーブルで記録する。
+組織の職位と人を、別々のテーブルと、誰がどの職位にいつからいつまで就いていたかを記録する配属テーブルで表す。
+
+「Relationships」を応用したパターンである。
 
 ```mermaid
 erDiagram
@@ -431,7 +459,9 @@ erDiagram
 
 #### ▼ Reporting Relationships
 
-上司と部下などの報告関係を、当事者同士の関係のテーブルで表す。
+上司と部下などの報告関係を、上位と下位の当事者と関係の種類を記録するテーブルで表す。
+
+「Relationships」を応用したパターンである。
 
 ```mermaid
 erDiagram
@@ -459,7 +489,9 @@ erDiagram
 
 #### ▼ Geographic Locations
 
-国や都市などの地理的な範囲を自分自身への関連で階層にし、拠点をその範囲に属させる。
+国や都市などの地域の階層を、親の地域を指す列を持つ地域テーブルと、いずれかの地域に属する拠点テーブルで表す。
+
+「Structure」を応用したパターンである。
 
 ```mermaid
 erDiagram
@@ -482,7 +514,9 @@ erDiagram
 
 #### ▼ Products and Product Types
 
-製品の種類と個々の製品を分け、製品の種類同士の構成（部品表）を持つ。
+製品の種類と個々の製品を、別々のテーブルと、製品の種類同士の構成（どの部品が何個必要か）を記録するテーブルで表す。
+
+「Type and Instance」と「Structure」を組み合わせたパターンである。
 
 ```mermaid
 erDiagram
@@ -510,7 +544,7 @@ erDiagram
 
 #### ▼ Inventory
 
-どの製品の種類がどの拠点にどれだけあるかを、在庫のテーブルで表す。
+どの製品の種類がどの拠点にいくつあるかを、在庫テーブルで表す。
 
 ```mermaid
 erDiagram
@@ -536,7 +570,9 @@ erDiagram
 
 #### ▼ Work Orders
 
-作業指示を作業に分け、作業ごとに人と資産の使用実績を記録する。
+作業指示を、複数の作業のテーブルと、作業ごとに誰が何時間働き、どの資産を何時間使ったかを記録するテーブルで表す。
+
+「Resources」を応用したパターンである。
 
 ```mermaid
 erDiagram
@@ -584,7 +620,9 @@ erDiagram
 
 #### ▼ Purchase Orders and Sales Orders
 
-発注と受注を、買い手と売り手を持つ注文と、製品ごとの明細で表す。
+発注と受注を、買い手と売り手を記録する注文テーブルと、製品ごとの数量と単価を記録する明細テーブルで表す。
+
+「Parties」を応用したパターンである。
 
 ```mermaid
 erDiagram
@@ -621,7 +659,9 @@ erDiagram
 
 #### ▼ Contract Roles
 
-契約にどの当事者がどの立場で関わるかを、契約の役割のテーブルで表す。
+契約にどの当事者がどの立場（売り手、保証人など）で関わるかを、契約の役割テーブルで表す。
+
+「Roles」を応用したパターンである。
 
 ```mermaid
 erDiagram
@@ -653,7 +693,7 @@ erDiagram
 
 #### ▼ Basic Bookkeeping
 
-取引を、勘定ごとの借方と貸方の仕訳に分けて記録する。
+1つの取引を、取引テーブルと、勘定ごとの借方と貸方を記録する仕訳テーブルで表す。
 
 ```mermaid
 erDiagram
@@ -683,7 +723,9 @@ erDiagram
 
 #### ▼ Samples, Tests, and Observations
 
-サンプルに対する検査と、検査で得られた観測値を分けて記録する。
+サンプルに対する検査と、検査で測った項目ごとの値（観測値）を、別々のテーブルで表す。
+
+「Type and Instance」を応用したパターンである。
 
 ```mermaid
 erDiagram
@@ -725,7 +767,9 @@ erDiagram
 
 #### ▼ Material Requirements Planning
 
-完成品の生産計画と部品表から、部品の必要量と発注を計画する。
+完成品の生産計画と、部品表と、部品がいつ何個必要かを計算した発注の計画を、それぞれ別のテーブルで表す。
+
+「Products and Product Types」を応用したパターンである。
 
 ```mermaid
 erDiagram
@@ -762,7 +806,9 @@ erDiagram
 
 #### ▼ Monitoring Processes
 
-資産に付けた測定点（タグ）ごとに、時刻と測定値を記録する。
+資産に付けた測定点（タグ）と、測定点ごとに測定した時刻と値を記録するテーブルで表す。
+
+「Samples, Tests, and Observations」を応用したパターンである。
 
 ```mermaid
 erDiagram
@@ -797,7 +843,9 @@ erDiagram
 
 #### ▼ The Document
 
-文書の種類、文書同士の構成、文書に関わる当事者の役割を表す。
+文書の種類、文書同士の構成（章や添付など）、文書に誰がどの立場（作成者、受領者など）で関わるかを、それぞれ別のテーブルで表す。
+
+「Type and Instance」と「Structure」と「Roles」を組み合わせたパターンである。
 
 ```mermaid
 erDiagram
@@ -838,7 +886,9 @@ erDiagram
 
 #### ▼ Versions
 
-文書の版を文書から分け、どの版がどの版を置き換えたかを自分自身への関連で表す。
+文書の版を、文書とは別のテーブルで表し、どの版がどの版を置き換えたかを、前の版を指す列で表す。
+
+「Structure」を応用したパターンである。
 
 ```mermaid
 erDiagram
@@ -1101,7 +1151,7 @@ erDiagram
   check_result ||--o{ incident_check_result : "根拠になる"
 ```
 
-`monitor` テーブルは監視の種類に共通する設定を持ち、種類ごとの設定は `monitor_http` テーブルや `monitor_tls` テーブルに持たせる（Heterogeneous Entities）。
+`monitor` テーブルは監視の種類に共通する設定を記録し、種類ごとの設定は `monitor_http` テーブルや `monitor_tls` テーブルに記録する（Heterogeneous Entities）。
 
 `check_result` テーブルは、監視の設定とリージョンごとに、実行した時刻と結果を記録する（Monitoring Processes）。
 
