@@ -1024,3 +1024,87 @@ erDiagram
 ```
 
 <br>
+
+### 監視ドメインの場合
+
+監視ドメインでは、監視の設定（`monitor` テーブル）と監視の結果（`check_result` テーブル）を分けて扱う。
+
+```mermaid
+erDiagram
+  project["project テーブル"] {
+    string id PK
+    string name
+  }
+
+  monitor["monitor テーブル"] {
+    string id PK
+    string project_id FK
+    string name
+    string monitor_kind
+    string schedule
+  }
+
+  monitor_http["monitor_http テーブル"] {
+    string monitor_id PK,FK
+    string url
+    int expected_status_code
+  }
+
+  monitor_tls["monitor_tls テーブル"] {
+    string monitor_id PK,FK
+    string hostname
+    int port
+  }
+
+  region["region テーブル"] {
+    string id PK
+    string name
+  }
+
+  monitor_region["monitor_region テーブル"] {
+    string monitor_id PK,FK
+    string region_id PK,FK
+    boolean enabled
+  }
+
+  check_result["check_result テーブル"] {
+    string id PK
+    string monitor_id FK
+    string region_id FK
+    datetime checked_at
+    string status
+    int response_time_ms
+  }
+
+  incident["incident テーブル"] {
+    string id PK
+    string monitor_id FK
+    string status
+    datetime opened_at
+    datetime resolved_at
+  }
+
+  incident_check_result["incident_check_result テーブル"] {
+    string incident_id PK,FK
+    string check_result_id PK,FK
+  }
+
+  project ||--o{ monitor : "持つ"
+  monitor ||--o| monitor_http : "HTTP監視である"
+  monitor ||--o| monitor_tls : "TLS監視である"
+  monitor ||--o{ monitor_region : "実行される"
+  region ||--o{ monitor_region : "実行する"
+  monitor ||--o{ check_result : "記録する"
+  region ||--o{ check_result : "記録する"
+  monitor ||--o{ incident : "起票される"
+  incident ||--o{ incident_check_result : "根拠にする"
+  check_result ||--o{ incident_check_result : "根拠になる"
+```
+
+`monitor` テーブルは監視の種類に共通する設定を持ち、種類ごとの設定は `monitor_http` テーブルや `monitor_tls` テーブルに持たせる（Heterogeneous Entities）。
+
+`check_result` テーブルは、監視の設定とリージョンごとに、実行した時刻と結果を記録する（Monitoring Processes）。
+
+`incident` テーブルは、インシデントの根拠になった監視の結果を `incident_check_result` テーブルで紐づける（Relationships）。
+
+<br>
