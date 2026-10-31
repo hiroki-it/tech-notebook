@@ -9,7 +9,7 @@ description: ER図＠RDBの知見を記録しています。
 
 ### 汎用的なパターン
 
-#### ▼ Things, Thing Types, and Categories
+#### ▼ Things, Thing Types, and Categories パターン
 
 モノと、モノの種類と、種類を「車体の形」「動力」などの複数の分類体系で分類する分類を、それぞれ別のテーブルで表す。
 
@@ -50,7 +50,7 @@ erDiagram
   thing_type ||--o{ thing : "種類である"
 ```
 
-#### ▼ Type and Instance
+#### ▼ Type and Instance パターン
 
 種類（型）と実際の個々のモノ（実体）を、種類に共通する情報を記録する種類テーブルと、個々のモノを記録する実体テーブルで表す。
 
@@ -71,7 +71,7 @@ erDiagram
   product_type ||--o{ product : "実体になる"
 ```
 
-#### ▼ Structure
+#### ▼ Structure パターン
 
 同じテーブルの行同士の親子関係（部品表や階層）を、親と子の組を記録する中間テーブルで表す。
 
@@ -92,7 +92,7 @@ erDiagram
   part ||--o{ part_structure : "子部品である"
 ```
 
-#### ▼ Heterogeneous Entities
+#### ▼ Heterogeneous Entities パターン
 
 種類ごとに項目が異なるデータを、共通の項目を記録する親テーブルと、種類ごとの項目を記録する子テーブルで表す。
 
@@ -124,7 +124,7 @@ erDiagram
   asset ||--o| asset_vehicle : "車両である"
 ```
 
-#### ▼ Roles
+#### ▼ Roles パターン
 
 誰が何にどの立場で関わるかを、当事者とモノと役割の種類をつなぐ役割テーブルで表す。
 
@@ -159,7 +159,7 @@ erDiagram
   role_type ||--o{ role : "種類である"
 ```
 
-#### ▼ Addresses
+#### ▼ Addresses パターン
 
 持ち主と住所を、別々のテーブルと、「自宅」「請求先」などの住所の使い道を記録する中間テーブルで表す。
 
@@ -186,7 +186,7 @@ erDiagram
   address ||--o{ party_address : "使われる"
 ```
 
-#### ▼ Resources
+#### ▼ Resources パターン
 
 人や資産などの資源を、共通の親テーブルと、どの活動でどの資源をどれだけ使ったかを記録する使用実績テーブルで表す。
 
@@ -227,7 +227,7 @@ erDiagram
   resource ||--o| resource_asset : "資産である"
 ```
 
-#### ▼ Relationships
+#### ▼ Relationships パターン
 
 モノ同士のつながりを、つながりの元と先と種類を記録するテーブルで表す。
 
@@ -257,7 +257,7 @@ erDiagram
   relationship_type ||--o{ thing_relationship : "種類である"
 ```
 
-#### ▼ Variable Length Records
+#### ▼ Variable Length Records パターン
 
 項目の数や種類が決まっていないデータを、列ではなく、項目の定義と値をそれぞれ1行ずつ記録するテーブルで表す。
 
@@ -294,7 +294,7 @@ erDiagram
   attribute_definition ||--o{ attribute_value : "定義する"
 ```
 
-#### ▼ Usually One, Sometimes Many
+#### ▼ Usually One, Sometimes Many パターン
 
 普通は1つだがまれに複数になるつながり（例：勤務先）を、主となるものを示すフラグの列を持つ中間テーブルで表す。
 
@@ -320,7 +320,7 @@ erDiagram
   organization ||--o{ employment : "雇用する"
 ```
 
-#### ▼ Mathematical Expressions in the Data Model
+#### ▼ Mathematical Expressions in the Data Model パターン
 
 変数を計算する式を、演算子と順序を持つ項を1行ずつ記録するテーブルで表す。
 
@@ -343,7 +343,7 @@ erDiagram
   variable ||--o{ formula_term : "被演算子になる"
 ```
 
-#### ▼ The Universal Data Model
+#### ▼ The Universal Data Model パターン
 
 あらゆるモノを、種類・項目・つながりのテーブルの組み合わせだけで表す。
 
@@ -392,7 +392,7 @@ erDiagram
 
 ### ドメイン領域に特化したパターン
 
-#### ▼ Parties
+#### ▼ Parties パターン
 
 人と組織を、契約や住所などの相手として同じ形で紐づけられる「当事者（Party）」という共通の親テーブルで表す。
 
@@ -420,7 +420,7 @@ erDiagram
   party ||--o| party_organization : "組織である"
 ```
 
-#### ▼ Employee Assignments
+#### ▼ Employee Assignments パターン
 
 組織の職位と人を、別々のテーブルと、誰がどの職位にいつからいつまで就いていたかを記録する配属テーブルで表す。
 
@@ -457,7 +457,7 @@ erDiagram
   person ||--o{ position_assignment : "配属される"
 ```
 
-#### ▼ Reporting Relationships
+#### ▼ Reporting Relationships パターン
 
 上司と部下などの報告関係を、上位と下位の当事者と関係の種類を記録するテーブルで表す。
 
@@ -487,7 +487,7 @@ erDiagram
   reporting_relationship_type ||--o{ reporting_relationship : "種類である"
 ```
 
-#### ▼ Geographic Locations
+#### ▼ Geographic Locations パターン
 
 国や都市などの地域の階層を、親の地域を指す列を持つ地域テーブルと、いずれかの地域に属する拠点テーブルで表す。
 
@@ -512,7 +512,7 @@ erDiagram
   geographic_area ||--o{ site : "含む"
 ```
 
-#### ▼ Products and Product Types
+#### ▼ Products and Product Types パターン
 
 製品の種類と個々の製品を、別々のテーブルと、製品の種類同士の構成（どの部品が何個必要か）を記録するテーブルで表す。
 
@@ -542,7 +542,7 @@ erDiagram
   product_type ||--o{ product_type_structure : "子部品である"
 ```
 
-#### ▼ Inventory
+#### ▼ Inventory パターン
 
 どの製品の種類がどの拠点にいくつあるかを、在庫テーブルで表す。
 
@@ -568,7 +568,7 @@ erDiagram
   site ||--o{ inventory : "保管する"
 ```
 
-#### ▼ Work Orders
+#### ▼ Work Orders パターン
 
 作業指示を、複数の作業のテーブルと、作業ごとに誰が何時間働き、どの資産を何時間使ったかを記録するテーブルで表す。
 
@@ -618,7 +618,7 @@ erDiagram
   asset ||--o{ asset_usage : "使われる"
 ```
 
-#### ▼ Purchase Orders and Sales Orders
+#### ▼ Purchase Orders and Sales Orders パターン
 
 発注と受注を、買い手と売り手を記録する注文テーブルと、製品ごとの数量と単価を記録する明細テーブルで表す。
 
@@ -657,7 +657,7 @@ erDiagram
   product_type ||--o{ line_item : "注文される"
 ```
 
-#### ▼ Contract Roles
+#### ▼ Contract Roles パターン
 
 契約にどの当事者がどの立場（売り手、保証人など）で関わるかを、契約の役割テーブルで表す。
 
@@ -691,7 +691,7 @@ erDiagram
   contract_role_type ||--o{ contract_role : "種類である"
 ```
 
-#### ▼ Basic Bookkeeping
+#### ▼ Basic Bookkeeping パターン
 
 1つの取引を、取引テーブルと、勘定ごとの借方と貸方を記録する仕訳テーブルで表す。
 
@@ -721,7 +721,7 @@ erDiagram
   account ||--o{ accounting_entry : "記帳される"
 ```
 
-#### ▼ Samples, Tests, and Observations
+#### ▼ Samples, Tests, and Observations パターン
 
 サンプルに対する検査と、検査で測った項目ごとの値（観測値）を、別々のテーブルで表す。
 
@@ -765,7 +765,7 @@ erDiagram
   variable ||--o{ observation : "測定される"
 ```
 
-#### ▼ Material Requirements Planning
+#### ▼ Material Requirements Planning パターン
 
 完成品の生産計画と、部品表と、部品がいつ何個必要かを計算した発注の計画を、それぞれ別のテーブルで表す。
 
@@ -804,7 +804,7 @@ erDiagram
   product_type ||--o{ firm_planned_order : "注文される"
 ```
 
-#### ▼ Monitoring Processes
+#### ▼ Monitoring Processes パターン
 
 資産に付けた測定点（タグ）と、測定点ごとに測定した時刻と値を記録するテーブルで表す。
 
@@ -841,7 +841,7 @@ erDiagram
   tag ||--o{ tag_value : "記録する"
 ```
 
-#### ▼ The Document
+#### ▼ The Document パターン
 
 文書の種類、文書同士の構成（章や添付など）、文書に誰がどの立場（作成者、受領者など）で関わるかを、それぞれ別のテーブルで表す。
 
@@ -884,7 +884,7 @@ erDiagram
   party ||--o{ document_role : "担う"
 ```
 
-#### ▼ Versions
+#### ▼ Versions パターン
 
 文書の版を、文書とは別のテーブルで表し、どの版がどの版を置き換えたかを、前の版を指す列で表す。
 
@@ -937,6 +937,8 @@ flowchart TB
   role --> policy
 ```
 
+ここでは「Roles パターン」を使用する。
+
 `tenant` テーブルを境界として見ると、`workspace` テーブルや `foo` テーブル、`bar` テーブルは `tenant` テーブルの内側にある。
 
 `user` テーブルや `workspace` テーブルなどのテナント配下のテーブルは `tenant_id` を持つ。
@@ -945,7 +947,7 @@ flowchart TB
 
 `workspace` テーブル配下のデータも `tenant_id` を含むキーで親子関係を表す。
 
-`role` テーブルと `policy` テーブルは `user` テーブルや `tenant_token` テーブルに紐づけ、画面操作や API 操作の権限を表現する。
+`role` テーブルと `policy` テーブルは `user` テーブルや `tenant_token` テーブルに紐づけ、画面操作や API 操作の権限を表現する（Roles パターン）。
 
 `role_policy` のような中間テーブルを用意すると、テーブル間を多対多で紐付けられる。
 
@@ -1079,6 +1081,14 @@ erDiagram
 
 監視ドメインでは、監視の設定（`monitor` テーブル）と監視の結果（`check_result` テーブル）を分けて扱う。
 
+ここでは「Heterogeneous Entities パターン」「Monitoring Processes パターン」「Relationships パターン」を使用する。
+
+`monitor` テーブルは監視の種類に共通する設定を記録し、種類ごとの設定は `monitor_http` テーブルや `monitor_tls` テーブルに記録する（Heterogeneous Entities パターン）。
+
+`check_result` テーブルは、監視の設定とリージョンごとに、実行した時刻と結果を記録する（Monitoring Processes パターン）。
+
+`incident` テーブルは、インシデントの根拠になった監視の結果を `incident_check_result` テーブルで紐づける（Relationships パターン）。
+
 ```mermaid
 erDiagram
   project["project テーブル"] {
@@ -1150,11 +1160,5 @@ erDiagram
   incident ||--o{ incident_check_result : "根拠にする"
   check_result ||--o{ incident_check_result : "根拠になる"
 ```
-
-`monitor` テーブルは監視の種類に共通する設定を記録し、種類ごとの設定は `monitor_http` テーブルや `monitor_tls` テーブルに記録する（Heterogeneous Entities）。
-
-`check_result` テーブルは、監視の設定とリージョンごとに、実行した時刻と結果を記録する（Monitoring Processes）。
-
-`incident` テーブルは、インシデントの根拠になった監視の結果を `incident_check_result` テーブルで紐づける（Relationships）。
 
 <br>
