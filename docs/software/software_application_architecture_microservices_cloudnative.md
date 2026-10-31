@@ -731,7 +731,7 @@ flowchart LR
     <tr>
       <td rowspan="4">ストレージ</td>
       <td>永続データの分割管理</td>
-      <td>・DB per service／Shared DB<br>・Polyglot Persistence／Multi-model DB</td>
+      <td>・DB per service／Shared Database<br>・Polyglot Persistence／Multi-model DB</td>
     </tr>
     <tr>
       <td>揮発性データの分割管理</td>
@@ -1487,7 +1487,7 @@ Messaging 分野のツールを使用できます。
 
 この問題を解決するパターンとして Saga や 2 フェーズコミットがあります。
 
-永続データ管理方法の 1 つである Shared DB や DB per service の問題解決パターンの 2 フェーズコミットは、一般的に非推奨なパターンとされています。
+永続データ管理方法の 1 つである Shared Database や DB per service の問題解決パターンの 2 フェーズコミットは、一般的に非推奨なパターンとされています。
 
 図 20 で、トランザクション管理方法のデザインパターンの種類を示します。
 
@@ -1509,7 +1509,7 @@ flowchart LR
   トランザクション管理方法([トランザクション<br>管理方法]) --- トランザクション管理方法の基点(( ))
   トランザクション管理方法の基点 --- DB-per-serviceの場合([DB per serviceの場合])
   DB-per-serviceの場合 --- Saga
-  トランザクション管理方法の基点 ----- Shared-DBの場合(["Shared DBの場合<br>(非推奨)"])
+  トランザクション管理方法の基点 ----- Shared-DBの場合(["Shared Databaseの場合<br>(非推奨)"])
   Saga --- オーケストレーションベース[オーケストレーション<br>ベース]
   Saga --- コレオグラフィフィベース[コレオグラフィフィ<br>ベース]
   DB-per-serviceの場合 ---- 2フェーズコミット["2フェーズコミット<br>(非推奨)"]
@@ -1853,7 +1853,7 @@ Kubernetes Node にアタッチされた AWS EBS や Kubernetes Volume は揮発
 
 図 27 で、マイクロサービスアーキテクチャにおける永続データ管理方法のデザインパターンの種類を示します。
 
-代表的なものには DB per service と Shared DB があります。
+代表的なものには DB per service と Shared Database があります。
 
 <br>
 
@@ -1869,16 +1869,16 @@ Kubernetes Node にアタッチされた AWS EBS や Kubernetes Volume は揮発
 flowchart LR
   永続データ管理方法([永続データ<br>管理方法]) --- 永続データ管理方法の基点(( ))
   永続データ管理方法の基点 --- DB-per-service[DB per service]
-  永続データ管理方法の基点 --- Shared-DB["Shared DB<br>(非推奨)"]
+  永続データ管理方法の基点 --- Shared-DB["Shared Database<br>(非推奨)"]
 ```
 
 </div>
 
 DB per service では、各マイクロサービスが占有するデータベースを配置します。
 
-Shared DB では、各マイクロサービス間で共有するデータベースを配置し、共有データベースのテーブルをマイクロサービス用に分割します。
+Shared Database では、各マイクロサービス間で共有するデータベースを配置し、共有データベースのテーブルをマイクロサービス用に分割します。
 
-Shared DB は一般的に非推奨なパターンとされているため、ここでは省略します。
+Shared Database は一般的に非推奨なパターンとされているため、ここでは省略します。
 
 表 12 で、永続データ管理方法とクラウドネイティブ技術の関連性を整理します。
 
@@ -1891,7 +1891,7 @@ Shared DB は一般的に非推奨なパターンとされているため、こ�
     <tr>
       <th>パターン名</th>
       <th>DB per service</th>
-      <th>Shared DB</th>
+      <th>Shared Database</th>
     </tr>
   </thead>
   <tbody>

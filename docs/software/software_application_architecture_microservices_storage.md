@@ -24,9 +24,9 @@ description: ストレージ領域＠マイクロサービスアーキテクチ�
 
 ## 02. 永続データ管理の分割方法
 
-### Shared DB パターン
+### Shared Database パターン
 
-#### ▼ Shared DB パターンとは
+#### ▼ Shared Database パターンとは
 
 各マイクロサービスで共有する DB を `1` 個だけ用意する。
 
@@ -37,7 +37,7 @@ description: ストレージ領域＠マイクロサービスアーキテクチ�
 
 #### ▼ マイクロサービス別の DB スキーマ
 
-Shared DB の場合に、マイクロサービス別に DB スキーマを作成する。
+Shared Database の場合に、マイクロサービス別に DB スキーマを作成する。
 
 ![microservices_share-db_diff-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-table.png)
 
@@ -45,7 +45,7 @@ Shared DB の場合に、マイクロサービス別に DB スキーマを作成
 
 #### ▼ マイクロサービス別のテーブル
 
-Shared DB の場合に、マイクロサービス別にテーブルを作成する。
+Shared Database の場合に、マイクロサービス別にテーブルを作成する。
 
 ![microservices_share-db_diff-scheme](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-scheme.png)
 
@@ -76,9 +76,9 @@ Shared DB の場合に、マイクロサービス別にテーブルを作成す�
 
 <br>
 
-### Shared DB パターンと DB per service パターンの共存
+### Shared Database パターンと DB per service パターンの共存
 
-#### ▼ Shared DB パターンが向いているマイクロサービス
+#### ▼ Shared Database パターンが向いているマイクロサービス
 
 <table>
   <thead>
@@ -90,7 +90,7 @@ Shared DB の場合に、マイクロサービス別にテーブルを作成す�
   <tbody>
     <tr>
       <td>バッチ処理サービス</td>
-      <td>バッチ処理を使うほかサービスと同じ DB（つまり、Shared DB パターン）に永続化したほうがいい</td>
+      <td>バッチ処理を使うほかサービスと同じ DB（つまり、Shared Database パターン）に永続化したほうがいい</td>
     </tr>
   </tbody>
 </table>
@@ -119,7 +119,7 @@ DDL はマイクロサービスに統合し、ORM で DDL を実装する。
 
 ### DDL の疎結合パターン
 
-Shared DB パターンと DB per Service パターンの両方と相性がよく、Shared DB パターンと DB per service パターンが共存している場合にも適する。
+Shared Database パターンと DB per Service パターンの両方と相性がよく、Shared Database パターンと DB per service パターンが共存している場合にも適する。
 
 マイクロサービスアーキテクチャで ORM を使用する場合に、ORM で DDL（DB スキーマ定義、テーブル定義）を実装せず、ORM は DCL（トランザクション制御）と DML（レコード操作）で実装する。
 
@@ -183,7 +183,7 @@ DDL はマイクロサービスから切り離し、DDL 専用のツール（例
 
 基本的には、Storage per service パターンが推奨である。
 
-オブジェクトストレージをマイクロサービス単位で作成すると粒度が細かすぎる場合、いくつかのマイクロサービスでは Shared DB パターンとするとよい。
+オブジェクトストレージをマイクロサービス単位で作成すると粒度が細かすぎる場合、いくつかのマイクロサービスでは Shared Database パターンとするとよい。
 
 <br>
 

@@ -506,7 +506,7 @@ flowchart LR
 
 ## DB 分割
 
-### Shared DB パターン
+### Shared Database パターン
 
 マイクロサービスで共有する DB を配置します。
 
@@ -1093,7 +1093,7 @@ flowchart LR
   トランザクション管理方法([トランザクション<br>管理方法]) --- トランザクション管理方法の基点(( ))
   トランザクション管理方法の基点 --- DB-per-serviceの場合([DB per serviceの場合])
   DB-per-serviceの場合 --- Saga
-  トランザクション管理方法の基点 ----- Shared-DBの場合(["Shared DBの場合<br>(非推奨)"])
+  トランザクション管理方法の基点 ----- Shared-DBの場合(["Shared Databaseの場合<br>(非推奨)"])
   Saga --- オーケストレーションベース[オーケストレーション<br>ベース]
   Saga --- コレオグラフィフィベース[コレオグラフィフィ<br>ベース]
   DB-per-serviceの場合 ---- 2フェーズコミット["2フェーズコミット<br>(非推奨)"]

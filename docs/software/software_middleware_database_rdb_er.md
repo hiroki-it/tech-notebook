@@ -44,10 +44,10 @@ erDiagram
     string name
   }
 
-  category_scheme ||--o{ category : "持つ"
-  category ||--o{ thing_type_category : "分類する"
-  thing_type ||--o{ thing_type_category : "分類される"
-  thing_type ||--o{ thing : "種類である"
+  category_scheme ||--o{ category : "持つ（1対多）"
+  category ||--o{ thing_type_category : "分類する（1対多）"
+  thing_type ||--o{ thing_type_category : "分類される（1対多）"
+  thing_type ||--o{ thing : "種類である（1対多）"
 ```
 
 #### ▼ Type and Instance パターン
@@ -68,7 +68,7 @@ erDiagram
     string serial_number
   }
 
-  product_type ||--o{ product : "実体になる"
+  product_type ||--o{ product : "実体になる（1対多）"
 ```
 
 #### ▼ Structure パターン
@@ -88,8 +88,8 @@ erDiagram
     int quantity
   }
 
-  part ||--o{ part_structure : "親部品である"
-  part ||--o{ part_structure : "子部品である"
+  part ||--o{ part_structure : "親部品である（1対多）"
+  part ||--o{ part_structure : "子部品である（1対多）"
 ```
 
 #### ▼ Heterogeneous Entities パターン
@@ -119,9 +119,9 @@ erDiagram
     string license_plate
   }
 
-  asset ||--o| asset_equipment : "設備である"
-  asset ||--o| asset_building : "建物である"
-  asset ||--o| asset_vehicle : "車両である"
+  asset ||--o| asset_equipment : "設備である（1対1）"
+  asset ||--o| asset_building : "建物である（1対1）"
+  asset ||--o| asset_vehicle : "車両である（1対1）"
 ```
 
 #### ▼ Roles パターン
@@ -154,9 +154,9 @@ erDiagram
     string role_type_id FK
   }
 
-  party ||--o{ role : "担う"
-  thing ||--o{ role : "対象になる"
-  role_type ||--o{ role : "種類である"
+  party ||--o{ role : "担う（1対多）"
+  thing ||--o{ role : "対象になる（1対多）"
+  role_type ||--o{ role : "種類である（1対多）"
 ```
 
 #### ▼ Addresses パターン
@@ -182,8 +182,8 @@ erDiagram
     string purpose
   }
 
-  party ||--o{ party_address : "所在する"
-  address ||--o{ party_address : "使われる"
+  party ||--o{ party_address : "所在する（1対多）"
+  address ||--o{ party_address : "使われる（1対多）"
 ```
 
 #### ▼ Resources パターン
@@ -221,10 +221,10 @@ erDiagram
     decimal quantity
   }
 
-  activity ||--o{ resource_usage : "使う"
-  resource ||--o{ resource_usage : "使われる"
-  resource ||--o| resource_person : "人である"
-  resource ||--o| resource_asset : "資産である"
+  activity ||--o{ resource_usage : "使う（1対多）"
+  resource ||--o{ resource_usage : "使われる（1対多）"
+  resource ||--o| resource_person : "人である（1対1）"
+  resource ||--o| resource_asset : "資産である（1対1）"
 ```
 
 #### ▼ Relationships パターン
@@ -252,9 +252,9 @@ erDiagram
     string relationship_type_id FK
   }
 
-  thing ||--o{ thing_relationship : "関係元である"
-  thing ||--o{ thing_relationship : "関係先である"
-  relationship_type ||--o{ thing_relationship : "種類である"
+  thing ||--o{ thing_relationship : "関係元である（1対多）"
+  thing ||--o{ thing_relationship : "関係先である（1対多）"
+  relationship_type ||--o{ thing_relationship : "種類である（1対多）"
 ```
 
 #### ▼ Variable Length Records パターン
@@ -288,10 +288,10 @@ erDiagram
     string value
   }
 
-  record_type ||--o{ attribute_definition : "定義する"
-  record_type ||--o{ record : "種類である"
-  record ||--o{ attribute_value : "持つ"
-  attribute_definition ||--o{ attribute_value : "定義する"
+  record_type ||--o{ attribute_definition : "定義する（1対多）"
+  record_type ||--o{ record : "種類である（1対多）"
+  record ||--o{ attribute_value : "持つ（1対多）"
+  attribute_definition ||--o{ attribute_value : "定義する（1対多）"
 ```
 
 #### ▼ Usually One, Sometimes Many パターン
@@ -316,8 +316,8 @@ erDiagram
     boolean is_primary
   }
 
-  person ||--o{ employment : "雇用される"
-  organization ||--o{ employment : "雇用する"
+  person ||--o{ employment : "雇用される（1対多）"
+  organization ||--o{ employment : "雇用する（1対多）"
 ```
 
 #### ▼ Mathematical Expressions in the Data Model パターン
@@ -339,8 +339,8 @@ erDiagram
     string operator
   }
 
-  variable ||--o{ formula_term : "計算される"
-  variable ||--o{ formula_term : "被演算子になる"
+  variable ||--o{ formula_term : "計算される（1対多）"
+  variable ||--o{ formula_term : "被演算子になる（1対多）"
 ```
 
 #### ▼ The Universal Data Model パターン
@@ -380,12 +380,12 @@ erDiagram
     string to_thing_id FK
   }
 
-  thing_type ||--o{ thing : "種類である"
-  thing_type ||--o{ attribute_type : "定義する"
-  thing ||--o{ attribute_value : "持つ"
-  attribute_type ||--o{ attribute_value : "定義する"
-  thing ||--o{ thing_relationship : "関係元である"
-  thing ||--o{ thing_relationship : "関係先である"
+  thing_type ||--o{ thing : "種類である（1対多）"
+  thing_type ||--o{ attribute_type : "定義する（1対多）"
+  thing ||--o{ attribute_value : "持つ（1対多）"
+  attribute_type ||--o{ attribute_value : "定義する（1対多）"
+  thing ||--o{ thing_relationship : "関係元である（1対多）"
+  thing ||--o{ thing_relationship : "関係先である（1対多）"
 ```
 
 <br>
@@ -416,8 +416,8 @@ erDiagram
     string name
   }
 
-  party ||--o| party_person : "人である"
-  party ||--o| party_organization : "組織である"
+  party ||--o| party_person : "人である（1対1）"
+  party ||--o| party_organization : "組織である（1対1）"
 ```
 
 #### ▼ Employee Assignments パターン
@@ -452,9 +452,9 @@ erDiagram
     date end_date
   }
 
-  organization ||--o{ position : "持つ"
-  position ||--o{ position_assignment : "就任される"
-  person ||--o{ position_assignment : "配属される"
+  organization ||--o{ position : "持つ（1対多）"
+  position ||--o{ position_assignment : "就任される（1対多）"
+  person ||--o{ position_assignment : "配属される（1対多）"
 ```
 
 #### ▼ Reporting Relationships パターン
@@ -482,9 +482,9 @@ erDiagram
     string reporting_relationship_type_id FK
   }
 
-  party ||--o{ reporting_relationship : "上位である"
-  party ||--o{ reporting_relationship : "下位である"
-  reporting_relationship_type ||--o{ reporting_relationship : "種類である"
+  party ||--o{ reporting_relationship : "上位である（1対多）"
+  party ||--o{ reporting_relationship : "下位である（1対多）"
+  reporting_relationship_type ||--o{ reporting_relationship : "種類である（1対多）"
 ```
 
 #### ▼ Geographic Locations パターン
@@ -508,8 +508,8 @@ erDiagram
     string name
   }
 
-  geographic_area ||--o{ geographic_area : "含む"
-  geographic_area ||--o{ site : "含む"
+  geographic_area ||--o{ geographic_area : "含む（1対多）"
+  geographic_area ||--o{ site : "含む（1対多）"
 ```
 
 #### ▼ Products and Product Types パターン
@@ -537,9 +537,9 @@ erDiagram
     int quantity
   }
 
-  product_type ||--o{ discrete_item : "具現化される"
-  product_type ||--o{ product_type_structure : "親部品である"
-  product_type ||--o{ product_type_structure : "子部品である"
+  product_type ||--o{ discrete_item : "具現化される（1対多）"
+  product_type ||--o{ product_type_structure : "親部品である（1対多）"
+  product_type ||--o{ product_type_structure : "子部品である（1対多）"
 ```
 
 #### ▼ Inventory パターン
@@ -564,8 +564,8 @@ erDiagram
     decimal quantity
   }
 
-  product_type ||--o{ inventory : "在庫になる"
-  site ||--o{ inventory : "保管する"
+  product_type ||--o{ inventory : "在庫になる（1対多）"
+  site ||--o{ inventory : "保管する（1対多）"
 ```
 
 #### ▼ Work Orders パターン
@@ -611,11 +611,11 @@ erDiagram
     decimal hours
   }
 
-  work_order ||--o{ work_order_task : "構成される"
-  work_order_task ||--o{ labor_usage : "使う"
-  person ||--o{ labor_usage : "作業する"
-  work_order_task ||--o{ asset_usage : "使う"
-  asset ||--o{ asset_usage : "使われる"
+  work_order ||--o{ work_order_task : "構成される（1対多）"
+  work_order_task ||--o{ labor_usage : "使う（1対多）"
+  person ||--o{ labor_usage : "作業する（1対多）"
+  work_order_task ||--o{ asset_usage : "使う（1対多）"
+  asset ||--o{ asset_usage : "使われる（1対多）"
 ```
 
 #### ▼ Purchase Orders and Sales Orders パターン
@@ -651,10 +651,10 @@ erDiagram
     decimal unit_price
   }
 
-  party ||--o{ purchase_order : "買い手になる"
-  party ||--o{ purchase_order : "売り手になる"
-  purchase_order ||--o{ line_item : "構成される"
-  product_type ||--o{ line_item : "注文される"
+  party ||--o{ purchase_order : "買い手になる（1対多）"
+  party ||--o{ purchase_order : "売り手になる（1対多）"
+  purchase_order ||--o{ line_item : "構成される（1対多）"
+  product_type ||--o{ line_item : "注文される（1対多）"
 ```
 
 #### ▼ Contract Roles パターン
@@ -686,9 +686,9 @@ erDiagram
     string contract_role_type_id FK
   }
 
-  contract ||--o{ contract_role : "関わる"
-  party ||--o{ contract_role : "担う"
-  contract_role_type ||--o{ contract_role : "種類である"
+  contract ||--o{ contract_role : "関わる（1対多）"
+  party ||--o{ contract_role : "担う（1対多）"
+  contract_role_type ||--o{ contract_role : "種類である（1対多）"
 ```
 
 #### ▼ Basic Bookkeeping パターン
@@ -717,8 +717,8 @@ erDiagram
     string debit_or_credit
   }
 
-  accounting_transaction ||--o{ accounting_entry : "構成される"
-  account ||--o{ accounting_entry : "記帳される"
+  accounting_transaction ||--o{ accounting_entry : "構成される（1対多）"
+  account ||--o{ accounting_entry : "記帳される（1対多）"
 ```
 
 #### ▼ Samples, Tests, and Observations パターン
@@ -759,10 +759,10 @@ erDiagram
     decimal value
   }
 
-  sample ||--o{ test : "検査される"
-  test_type ||--o{ test : "種類である"
-  test ||--o{ observation : "生み出す"
-  variable ||--o{ observation : "測定される"
+  sample ||--o{ test : "検査される（1対多）"
+  test_type ||--o{ test : "種類である（1対多）"
+  test ||--o{ observation : "生み出す（1対多）"
+  variable ||--o{ observation : "測定される（1対多）"
 ```
 
 #### ▼ Material Requirements Planning パターン
@@ -798,10 +798,10 @@ erDiagram
     int quantity
   }
 
-  product_type ||--o{ master_schedule_item : "計画される"
-  product_type ||--o{ product_type_structure : "親部品である"
-  product_type ||--o{ product_type_structure : "子部品である"
-  product_type ||--o{ firm_planned_order : "注文される"
+  product_type ||--o{ master_schedule_item : "計画される（1対多）"
+  product_type ||--o{ product_type_structure : "親部品である（1対多）"
+  product_type ||--o{ product_type_structure : "子部品である（1対多）"
+  product_type ||--o{ firm_planned_order : "注文される（1対多）"
 ```
 
 #### ▼ Monitoring Processes パターン
@@ -836,9 +836,9 @@ erDiagram
     decimal value
   }
 
-  asset ||--o{ tag : "監視される"
-  variable ||--o{ tag : "測定される"
-  tag ||--o{ tag_value : "記録する"
+  asset ||--o{ tag : "監視される（1対多）"
+  variable ||--o{ tag : "測定される（1対多）"
+  tag ||--o{ tag_value : "記録する（1対多）"
 ```
 
 #### ▼ The Document パターン
@@ -877,11 +877,11 @@ erDiagram
     string role_name
   }
 
-  document_type ||--o{ document : "種類である"
-  document ||--o{ document_structure : "含む"
-  document ||--o{ document_structure : "一部である"
-  document ||--o{ document_role : "関わる"
-  party ||--o{ document_role : "担う"
+  document_type ||--o{ document : "種類である（1対多）"
+  document ||--o{ document_structure : "含む（1対多）"
+  document ||--o{ document_structure : "一部である（1対多）"
+  document ||--o{ document_role : "関わる（1対多）"
+  party ||--o{ document_role : "担う（1対多）"
 ```
 
 #### ▼ Versions パターン
@@ -904,8 +904,8 @@ erDiagram
     int version_number
   }
 
-  document ||--o{ document_version : "持つ"
-  document_version ||--o| document_version : "置き換える"
+  document ||--o{ document_version : "持つ（1対多）"
+  document_version ||--o| document_version : "置き換える（1対1）"
 ```
 
 <br>
@@ -1004,18 +1004,18 @@ flowchart TB
 
 ```mermaid
 erDiagram
-  tenant ||--o{ user : "持つ"
-  tenant ||--o{ tenant_token : "持つ"
-  tenant ||--o{ workspace : "所有する"
-  tenant ||--o{ quota : "持つ"
+  tenant ||--o{ user : "持つ（1対多）"
+  tenant ||--o{ tenant_token : "持つ（1対多）"
+  tenant ||--o{ workspace : "所有する（1対多）"
+  tenant ||--o{ quota : "持つ（1対多）"
 
-  user }o--|| role : "割り当てられる"
-  tenant_token }o--|| role : "割り当てられる"
-  role ||--o{ role_policy : "持つ"
-  policy ||--o{ role_policy : "使われる"
+  user }o--|| role : "割り当てられる（多対1）"
+  tenant_token }o--|| role : "割り当てられる（多対1）"
+  role ||--o{ role_policy : "持つ（1対多）"
+  policy ||--o{ role_policy : "使われる（1対多）"
 
-  workspace ||--o{ foo : "持つ"
-  workspace ||--o{ bar : "持つ"
+  workspace ||--o{ foo : "持つ（1対多）"
+  workspace ||--o{ bar : "持つ（1対多）"
 
   tenant["tenant テーブル"] {
     string id PK
@@ -1149,16 +1149,16 @@ erDiagram
     string check_result_id PK,FK
   }
 
-  project ||--o{ monitor : "持つ"
-  monitor ||--o| monitor_http : "HTTP監視である"
-  monitor ||--o| monitor_tls : "TLS監視である"
-  monitor ||--o{ monitor_region : "実行される"
-  region ||--o{ monitor_region : "実行する"
-  monitor ||--o{ check_result : "記録する"
-  region ||--o{ check_result : "記録する"
-  monitor ||--o{ incident : "起票される"
-  incident ||--o{ incident_check_result : "根拠にする"
-  check_result ||--o{ incident_check_result : "根拠になる"
+  project ||--o{ monitor : "持つ（1対多）"
+  monitor ||--o| monitor_http : "HTTP監視である（1対1）"
+  monitor ||--o| monitor_tls : "TLS監視である（1対1）"
+  monitor ||--o{ monitor_region : "実行される（1対多）"
+  region ||--o{ monitor_region : "実行する（1対多）"
+  monitor ||--o{ check_result : "記録する（1対多）"
+  region ||--o{ check_result : "記録する（1対多）"
+  monitor ||--o{ incident : "起票される（1対多）"
+  incident ||--o{ incident_check_result : "根拠にする（1対多）"
+  check_result ||--o{ incident_check_result : "根拠になる（1対多）"
 ```
 
 <br>
