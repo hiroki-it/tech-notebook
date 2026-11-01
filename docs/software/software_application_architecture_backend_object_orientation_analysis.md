@@ -122,6 +122,48 @@ DFD、ユースケース図、アクティビティ図などがある。
 
 **＊例＊**
 
+UIとAPIの両方を提供するソフトウェアで、〇〇機能のユースケースを表す例。
+
+入力値や送信データの妥当性の確認は、登録や更新の機能を細分化すると含まれるため、包含（`<< include >>`）で表す。
+
+```mermaid
+graph LR
+  UiClient[UIクライアント]
+  ApiClient[APIクライアント]
+  FooValidator[入力値のFooが妥当かを確認する]
+  BarValidator[送信データのFooが妥当かを確認する]
+
+  subgraph UiUsecases["【UI】〇〇機能"]
+    UiGet([〇〇を閲覧する])
+    UiRegister([〇〇を登録する])
+    UiChange([〇〇を更新する])
+    UiDelete([〇〇を削除する])
+  end
+
+  UiClient --> UiGet
+  UiClient --> UiRegister
+  UiClient --> UiChange
+  UiClient --> UiDelete
+  UiRegister -. << include >> .-> FooValidator
+  UiChange -. << include >> .-> FooValidator
+
+  subgraph ApiUsecases["【API】〇〇機能"]
+    ApiGet([〇〇を閲覧する])
+    ApiRegister([〇〇を登録する])
+    ApiChange([〇〇を更新する])
+    ApiDelete([〇〇を削除する])
+  end
+
+  ApiClient --> ApiGet
+  ApiClient --> ApiRegister
+  ApiClient --> ApiChange
+  ApiClient --> ApiDelete
+  ApiRegister -. << include >> .-> BarValidator
+  ApiChange -. << include >> .-> BarValidator
+```
+
+**＊例＊**
+
 とある映画チケット料金を題材に、ハッシュタグチケット料金モデリングとして、いろいろなほうがユースケース図とクラス図を作成されている。
 
 いずれのほうも非常に参考になる

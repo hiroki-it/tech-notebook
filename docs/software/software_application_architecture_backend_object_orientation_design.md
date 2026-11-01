@@ -332,4 +332,46 @@ Dependency (依存) が使用される。
 > - https://www.itsenka.com/contents/development/uml/component.html
 > - https://www.bcm.co.jp/site/2002/uml/uml10.htm
 
+**＊例＊**
+
+レイヤードアーキテクチャで、UIとAPIからFooを登録する処理を表す例。
+
+```mermaid
+flowchart LR
+  UiClient[UIクライアント]
+  ApiClient[APIクライアント]
+
+  subgraph presentation[プレゼンテーション層]
+    UiFooRoute[foos.$foo.new.tsx]
+    ApiFooRoute[api.v1.foos.$foo.ts]
+  end
+
+  subgraph Usecase[ユースケース層]
+    subgraph UiFooUsecase[UiFooUsecase]
+      UiRegisterFoo["registerFoo()"]
+    end
+    subgraph ApiFooUsecase[ApiFooUsecase]
+      ApiRegisterFoo["registerFoo()"]
+    end
+  end
+
+  subgraph Infrastructure[インフラストラクチャ層]
+    subgraph Model[Models]
+      CreateFoo["createFoo()"]
+    end
+  end
+
+  Database[(データベース)]
+
+  UiClient --> UiFooRoute
+  UiFooRoute --> UiRegisterFoo
+  UiRegisterFoo --> CreateFoo
+  CreateFoo --> Database
+
+  ApiClient --> ApiFooRoute
+  ApiFooRoute --> ApiRegisterFoo
+  ApiRegisterFoo --> CreateFoo
+  CreateFoo --> Database
+```
+
 <br>

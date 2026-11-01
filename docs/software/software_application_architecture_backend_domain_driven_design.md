@@ -1671,6 +1671,132 @@ flowchart LR
 
 ![hacogym_subdomain_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_subdomain_modeling.png)
 
+#### ▼ コンテキストマップとテーブルの関係
+
+コンテキストマップに、各境界づけられたコンテキストに属するテーブルを点線の矢印で追加する。
+
+データベースを `1` 個のままにして、その中で境界づけられたコンテキストごとにテーブルを区切る場合、異なる境界づけられたコンテキストのデータを `1` 個のデータベースで管理する「Shared Database パターン」を採用していることになる。
+
+一方で、境界づけられたコンテキストごとにデータベースを分ける場合、「Database per service パターン」を採用していることになる。
+
+**＊例＊**
+
+監視 SaaS の例。
+
+Shared Database パターンの場合、`1` 個のデータベースの中で、境界づけられたコンテキストごとにテーブルを区切る。
+
+```mermaid
+flowchart LR
+  subgraph core["コアドメイン"]
+    monitoring("監視")
+    incident("インシデント管理")
+  end
+
+  subgraph supporting["支援サブドメイン"]
+    notification("通知連携")
+  end
+
+  subgraph generic["汎用サブドメイン"]
+    userManagement("ユーザー管理")
+    authorization("認可")
+    authentication("認証")
+    quotaManagement("クォータ管理")
+  end
+
+  monitoring --> quotaManagement
+  monitoring --> incident
+  monitoring --> notification
+  userManagement --> authentication
+  userManagement --> authorization
+  userManagement --> monitoring
+  userManagement --> quotaManagement
+  authorization --> authentication
+
+  subgraph database["データベース"]
+    userManagementTables@{ shape: st-rect, label: "User" }
+    authorizationTables@{ shape: st-rect, label: "Role<br>Permission" }
+    authenticationTables@{ shape: st-rect, label: "Account" }
+    quotaManagementTables@{ shape: st-rect, label: "Quota" }
+    monitoringTables@{ shape: st-rect, label: "MonitoringGroup<br>MonitoringRequest" }
+    incidentTables@{ shape: st-rect, label: "Incident<br>IncidentHistory" }
+    notificationTables@{ shape: st-rect, label: "NotificationIntegration" }
+  end
+
+  userManagement -.-> userManagementTables
+  authorization -.-> authorizationTables
+  authentication -.-> authenticationTables
+  quotaManagement -.-> quotaManagementTables
+  monitoring -.-> monitoringTables
+  incident -.-> incidentTables
+  notification -.-> notificationTables
+```
+
+Database per service パターンの場合、境界づけられたコンテキストごとにデータベースを分ける。
+
+```mermaid
+flowchart LR
+  subgraph core["コアドメイン"]
+    monitoring("監視")
+    incident("インシデント管理")
+  end
+
+  subgraph supporting["支援サブドメイン"]
+    notification("通知連携")
+  end
+
+  subgraph generic["汎用サブドメイン"]
+    userManagement("ユーザー管理")
+    authorization("認可")
+    authentication("認証")
+    quotaManagement("クォータ管理")
+  end
+
+  monitoring --> quotaManagement
+  monitoring --> incident
+  monitoring --> notification
+  userManagement --> authentication
+  userManagement --> authorization
+  userManagement --> monitoring
+  userManagement --> quotaManagement
+  authorization --> authentication
+
+  subgraph databases["データベース群"]
+    subgraph notificationDatabase["通知連携のデータベース"]
+      notificationTables@{ shape: st-rect, label: "NotificationIntegration" }
+    end
+    subgraph incidentDatabase["インシデント管理のデータベース"]
+      incidentTables@{ shape: st-rect, label: "Incident<br>IncidentHistory" }
+    end
+    subgraph monitoringDatabase["監視のデータベース"]
+      monitoringTables@{ shape: st-rect, label: "MonitoringGroup<br>MonitoringRequest" }
+    end
+    subgraph quotaManagementDatabase["クォータ管理のデータベース"]
+      quotaManagementTables@{ shape: st-rect, label: "Quota" }
+    end
+    subgraph authenticationDatabase["認証のデータベース"]
+      authenticationTables@{ shape: st-rect, label: "Account" }
+    end
+    subgraph authorizationDatabase["認可のデータベース"]
+      authorizationTables@{ shape: st-rect, label: "Role<br>Permission" }
+    end
+    subgraph userManagementDatabase["ユーザー管理のデータベース"]
+      userManagementTables@{ shape: st-rect, label: "User" }
+    end
+  end
+
+
+  notification -.-> notificationTables
+  incident -.-> incidentTables
+  monitoring -.-> monitoringTables
+  quotaManagement -.-> quotaManagementTables
+  authentication -.-> authenticationTables
+  authorization -.-> authorizationTables
+  userManagement -.-> userManagementTables
+```
+
+> - [Pattern: Shared database](https://microservices.io/patterns/data/shared-database.html)
+> - [Pattern: Database per service](https://microservices.io/patterns/data/database-per-service.html)
+
 <br>
 
 ## 04. 戦術的設計

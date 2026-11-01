@@ -36,6 +36,82 @@ description: 認可＠認証／認可の知見を記録しています。
 
 <br>
 
+### 層ごとの配置
+
+レイヤードアーキテクチャのアプリケーションで、認可処理を担うコンポーネントと、その層を示す。
+
+認証処理はプレゼンテーション層に置き、UserやAPIトークンの認可情報の取得と認可の判定の組み立てはユースケース層に置く。
+
+認可の判定ルールはドメイン層に置く。
+
+```mermaid
+flowchart LR
+  UiClient[UIクライアント]    
+  ApiClient[APIクライアント]
+
+  subgraph presentation[プレゼンテーション層]
+    UiFooRoute[UIルート]
+    ApiFooRoute[APIルート]
+    subgraph Authenticator[認証]
+      AuthenticateUser["authenticateUser()"]
+      AuthenticateApiToken["authenticateApiToken()"]
+    end
+  end
+
+  subgraph Usecase[ユースケース層]
+    subgraph UiAuthorizationUsecase[UiAuthorizationUsecase]
+      UiGetAuthorizedUser["getAuthorizedUser()"]
+    end
+    subgraph ApiAuthorizationUsecase[ApiAuthorizationUsecase]
+      ApiGetAuthorizedApiToken["getAuthorizedApiToken()"]
+    end
+    subgraph UiFooUsecase[UiFooUsecase]
+      UiRegisterFoo["registerFoo()"]
+    end
+    subgraph ApiFooUsecase[ApiFooUsecase]
+      ApiRegisterFoo["registerFoo()"]
+    end
+  end
+
+  subgraph Domain[ドメイン層]
+    subgraph Authorization[認可]
+      CanAccess["canAccess()"]
+    end
+  end
+
+  subgraph Infrastructure[インフラストラクチャ層]
+    subgraph Model[Models]
+      FindUserWithPermission["findUserWithPermission()"]
+      FindApiTokenWithPermission["findApiTokenWithPermission()"]
+      CreateFoo["createFoo()"]
+    end
+  end
+
+  Database[(データベース)]
+
+  UiClient --> UiFooRoute
+  UiFooRoute --> AuthenticateUser
+  AuthenticateUser --> UiGetAuthorizedUser
+  UiGetAuthorizedUser --> FindUserWithPermission
+  UiGetAuthorizedUser -- "アクセス可否を判定" --> CanAccess
+  UiFooRoute -- "許可された操作を実行" --> UiRegisterFoo
+  UiRegisterFoo --> CreateFoo
+
+  ApiClient --> ApiFooRoute
+  ApiFooRoute --> AuthenticateApiToken
+  AuthenticateApiToken --> ApiGetAuthorizedApiToken
+  ApiGetAuthorizedApiToken --> FindApiTokenWithPermission
+  ApiGetAuthorizedApiToken -- "アクセス可否を判定" --> CanAccess
+  ApiFooRoute -- "許可された操作を実行" --> ApiRegisterFoo
+  ApiRegisterFoo --> CreateFoo
+
+  FindUserWithPermission -- "User・認可情報を取得" --> Database
+  FindApiTokenWithPermission -- "APIToken・認可情報を取得" --> Database
+  CreateFoo --> Database
+```
+
+<br>
+
 ### エンドポイントの分割
 
 テナントが存在するアプリケーションで、テナント横断的な管理者ロールとそれ以外のロールを定義する場合を考える。
