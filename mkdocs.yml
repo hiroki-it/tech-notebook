@@ -466,6 +466,9 @@ nav:
           - ■ パッケージ:
               - パッケージ管理: language/language_python_package_management.md
       - R: language/language_r.md
+      - ■ Rust:
+          - Rust: language/language_rust.md
+          - 関数: language/language_rust_function.md
       - ■ TypeScript:
           - TypeScript: language/language_typescript.md
           - 設定: language/language_typescript_conf.md

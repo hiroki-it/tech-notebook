@@ -171,6 +171,14 @@ hide:
 
 <br>
 
+### Rust
+
+- #### [Rust](https://hiroki-it.github.io/tech-notebook/language/language_rust.html)
+
+- #### [関数](https://hiroki-it.github.io/tech-notebook/language/language_rust_function.html)
+
+<br>
+
 ### TypeScript
 
 - #### [TypeScript](https://hiroki-it.github.io/tech-notebook/language/language_typescript.html)
