@@ -78,9 +78,11 @@ HTTP リクエストを受信する API とこれを処理するハンドラー�
 === "Go"
 
     ```go title="Go の場合の実装例"
-    handler := WithAccessLog(WithAuth(projectListHandler))
+    func main() {
+    	handler := WithAccessLog(WithAuth(projectListHandler))
 
-    http.ListenAndServe(":8080", handler)
+    	http.ListenAndServe(":8080", handler)
+    }
 
     func WithAuth(next http.Handler) http.Handler {
     	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

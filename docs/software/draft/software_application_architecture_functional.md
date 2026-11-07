@@ -182,7 +182,7 @@ description: 関数型の知見を記録しています。
     };
 
     // 振る舞い
-    function isAdult(number: User): boolean {
+    function isAdult(user: User): boolean {
       return user.age >= 18;
     }
 

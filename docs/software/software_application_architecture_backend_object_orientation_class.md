@@ -277,9 +277,9 @@ User クラスは UserName クラスを状態として保持する。
     }
 
     func (u *User) Method() string {
-    	name := valueobject.NewUserName() // 合成の関係
+    	u.name = valueobject.NewUserName() // 合成の関係
 
-    	return "Hello! " + name.GetName()
+    	return "Hello! " + u.name.GetName()
     }
     ```
 
@@ -292,9 +292,9 @@ User クラスは UserName クラスを状態として保持する。
       private name?: UserName; // 状態として保持
 
       method(): string {
-        const name = new UserName(); // 合成の関係
+        this.name = new UserName(); // 合成の関係
 
-        return "Hello! " + name.getName();
+        return "Hello! " + this.name.getName();
       }
     }
     ```
@@ -314,9 +314,9 @@ User クラスは UserName クラスを状態として保持する。
 
         public function method(): string
         {
-            $name = new UserName(); // 合成の関係
+            $this->name = new UserName(); // 合成の関係
 
-            return "Hello! " . $name->getName();
+            return "Hello! " . $this->name->getName();
         }
     }
 
@@ -630,7 +630,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 1. 営業部社員オブジェクト、開発部社員オブジェクト、総務部社員オブジェクトを別々に実装
 
-    ⇒ メリット：同じ部署のほかのオブジェクトに影響を与えられる。
+    ⇒ メリット：ほかの部署のオブジェクトに影響を与えない。
 
     ⇒ デメリット：各社員オブジェクトで共通の処理を個別に実装しなければならない。
 
@@ -638,9 +638,9 @@ Car クラスは Lock クラスを状態として保持する。
 
 2. `1` 個の社員オブジェクトのなかで、働く関数に部署ごとで変化する引数を設定
 
-⇒ メリット：全部署の社員を `1` 個のオブジェクトで呼び出せる。
+    ⇒ メリット：全部署の社員を `1` 個のオブジェクトで呼び出せる。
 
-⇒ デメリット：`1` 個の修正が、全部署の社員の処理に影響を与えてしまう。
+    ⇒ デメリット：`1` 個の修正が、全部署の社員の処理に影響を与えてしまう。
 
 抽象オブジェクトと抽象関数を使用すると、`2` 個のメリットを生かしつつ、デメリットを解決可能。
 
@@ -656,8 +656,8 @@ Car クラスは Lock クラスを状態として保持する。
 
     // 定数の定義
     const (
-    	TimeToArrive = "10:00:00"
-    	TimeToLeave  = "19:00:00"
+    	TimeToArrive = "09:00:00"
+    	TimeToLeave  = "18:00:00"
     )
 
     // 抽象クラス。型として提供したいものを定義する。
@@ -722,8 +722,8 @@ Car クラスは Lock クラスを状態として保持する。
     // 抽象クラス。型として提供したいものを定義する。
     abstract class ShainManagement {
       // 定数の定義
-      static readonly TIME_TO_ARRIVE = "10:00:00";
-      static readonly TIME_TO_LEAVE = "19:00:00";
+      static readonly TIME_TO_ARRIVE = "09:00:00";
+      static readonly TIME_TO_LEAVE = "18:00:00";
 
       // 抽象関数。
       // 処理内容を子クラスでOverrideしなければならない。
@@ -784,8 +784,8 @@ Car クラスは Lock クラスを状態として保持する。
     abstract class ShainManagement
     {
         // 定数の定義
-        const TIME_TO_ARRIVE = "10:00:00";
-        const TIME_TO_LEAVE = "19:00:00";
+        const TIME_TO_ARRIVE = "09:00:00";
+        const TIME_TO_LEAVE = "18:00:00";
 
         // 抽象関数。
         // 処理内容を子クラスでOverrideしなければならない。
@@ -832,12 +832,12 @@ Car クラスは Lock クラスを状態として保持する。
 
     ```go title="Go の場合の実装例"
     // 子クラス
-    type EnginnerShainManagement struct {
+    type EngineerShainManagement struct {
     	BaseShainManagement
     }
 
     // 鋳型となった抽象クラスの抽象関数はOverrideしなければならない。
-    func (e *EnginnerShainManagement) ToWork() {
+    func (e *EngineerShainManagement) ToWork() {
     	// 処理内容
     }
     ```
@@ -846,7 +846,7 @@ Car クラスは Lock クラスを状態として保持する。
 
     ```typescript title="TypeScript の場合の実装例"
     // 子クラス
-    class EnginnerShainManagement extends ShainManagement {
+    class EngineerShainManagement extends ShainManagement {
       // 鋳型となった抽象クラスの抽象関数はOverrideしなければならない。
       toWork(): void {
         // 処理内容
@@ -860,7 +860,7 @@ Car クラスは Lock クラスを状態として保持する。
     <?php
 
     // 子クラス
-    class EnginnerShainManagement extends ShainManagement
+    class EngineerShainManagement extends ShainManagement
     {
         // 鋳型となった抽象クラスの抽象関数はOverrideしなければならない。
         public function toWork(): void
@@ -888,7 +888,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 各車は、モーター機能を必ず持っていなければ、正常に働けない。
 
-そこで、モータ機能に最低限必要な関数の実装を強制する。
+そこで、モーター機能に最低限必要な関数の実装を強制する。
 
 ![インターフェースとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/インターフェースとは.png)
 
@@ -929,10 +929,10 @@ Car クラスは Lock クラスを状態として保持する。
 
     interface Animal
     {
-         // インターフェイスでは、実装を伴う関数や状態の宣言はできない
-         public function eat(): void;
-         public function sleep(): void;
-         public function mating(): void;
+        // インターフェイスでは、実装を伴う関数や状態の宣言はできない
+        public function eat(): void;
+        public function sleep(): void;
+        public function mating(): void;
     }
     ```
 
@@ -984,20 +984,20 @@ Car クラスは Lock クラスを状態として保持する。
     class Mammal implements Animal
     {
         // 実装クラスが正常に動作するために最低限必要な関数の実装を強制する。
-         public function eat(): void
-         {
-              // 食べる
-         }
+        public function eat(): void
+        {
+            // 食べる
+        }
 
-         public function sleep(): void
-         {
-              // 眠る
-         }
+        public function sleep(): void
+        {
+            // 眠る
+        }
 
-         public function mating(): void
-         {
-              // 交尾する
-         }
+        public function mating(): void
+        {
+            // 交尾する
+        }
     }
     ```
 
@@ -1271,7 +1271,7 @@ Car クラスは Lock クラスを状態として保持する。
         public function subFoo(): void
         {
             // 継承元の関数を参照。
-            $foo = parent::foo();
+            parent::foo();
         }
     }
     ```
@@ -1286,7 +1286,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 処理の一部またはすべてを他のクラスに託すこと。
 
-PHP では、集約や合成の関係性を作り、委譲先クラスの関数では委譲元のコールして、処理を追加実装することに相当する。
+PHP では、集約や合成の関係性を作り、委譲元クラスの関数で委譲先クラスの関数をコールして、処理を追加実装することに相当する。
 
 他に、インターフェースによる Realization の関係性でも実現できる。
 
@@ -1382,7 +1382,7 @@ User は UserName に依存している。
 
 #### ▼ コンストラクタインジェクションとは
 
-関数の特に、`construct()` 関数 の引数として、サプライヤー側のインスタンスを注入する。
+関数のなかでも特に、`construct()` 関数 の引数として、サプライヤー側のインスタンスを注入する。
 
 サプライヤー側を状態として保持させ、Aggregation の関係性を作れる。
 
@@ -1399,7 +1399,7 @@ User は UserName に依存している。
     ```go title="Go の場合の実装例"
     supplier := NewSupplier()
 
-    // 依存されるSupplierクラスをClientクラス
+    // 依存されるSupplierクラスをClientクラスに注入
     client := NewClient(supplier)
     ```
 
@@ -1408,7 +1408,7 @@ User は UserName に依存している。
     ```typescript title="TypeScript の場合の実装例"
     const supplier = new Supplier();
 
-    // 依存されるSupplierクラスをClientクラス
+    // 依存されるSupplierクラスをClientクラスに注入
     const client = new Client(supplier);
     ```
 
@@ -1419,7 +1419,7 @@ User は UserName に依存している。
 
     $supplier = new Supplier();
 
-    // 依存されるSupplierクラスをClientクラス
+    // 依存されるSupplierクラスをClientクラスに注入
     $client = new Client($supplier);
     ```
 
@@ -1500,7 +1500,7 @@ User は UserName に依存している。
 
 #### ▼ セッターインジェクションとは
 
-関数の特に、セッターの引数として、サプライヤー側のインスタンスを注入する。
+関数のなかでも特に、セッターの引数として、サプライヤー側のインスタンスを注入する。
 
 サプライヤー側を状態として保持させ、Aggregation の関係性を作れる。
 
@@ -1512,7 +1512,7 @@ User は UserName に依存している。
     supplier := NewSupplier()
     client := NewClient()
 
-    // ClientクラスはSuppierクラスに依存している。
+    // ClientクラスはSupplierクラスに依存している。
     client.SetSupplier(supplier)
     ```
 
@@ -1522,7 +1522,7 @@ User は UserName に依存している。
     const supplier = new Supplier();
     const client = new Client();
 
-    // ClientクラスはSuppierクラスに依存している。
+    // ClientクラスはSupplierクラスに依存している。
     client.setSupplier(supplier);
     ```
 
@@ -1534,7 +1534,7 @@ User は UserName に依存している。
     $supplier = new Supplier();
     $client = new Client();
 
-    // ClientクラスはSuppierクラスに依存している。
+    // ClientクラスはSupplierクラスに依存している。
     $client->setSupplier($supplier);
     ```
 
@@ -1667,7 +1667,7 @@ User は UserName に依存している。
     {
         public function method(UserName $name): void
         {
-            $name = $name->getName();
+            $userName = $name->getName();
 
             // 何らかの処理
         }

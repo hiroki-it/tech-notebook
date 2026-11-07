@@ -329,7 +329,7 @@ flowchart TB
       <td><code>saveFoo()</code> 関数 (<code>upsertFoo()</code> 関数)</td>
       <td><code>saveFooRequest</code> オブジェクト (<code>upsertFooRequest</code> オブジェクト)</td>
       <td><code>saveFooResponse</code> オブジェクト (<code>upsertFooResponse</code> オブジェクト) 、<code>Exception</code> オブジェクト</td>
-      <td>リポジトリの <code>findOne()</code> 関数をコールし、存在を確認する。その結果に応じて、 <code>create()</code> 関数または <code>update()</code> 関数を実行する。<code>&lt;br&gt;</code><a href="https://github.com/little-hands/ddd-q-and-a/issues/241">https://github.com/little-hands/ddd-q-and-a/issues/241</a></td>
+      <td>リポジトリの <code>findOne()</code> 関数をコールし、存在を確認する。その結果に応じて、 <code>create()</code> 関数または <code>update()</code> 関数を実行する。<br><a href="https://github.com/little-hands/ddd-q-and-a/issues/241">https://github.com/little-hands/ddd-q-and-a/issues/241</a></td>
     </tr>
     <tr>
       <td>削除系</td>
@@ -382,7 +382,7 @@ flowchart TB
     		}
 
     		if duplicateFoo != nil {
-    			return errors.New("Foo is already exists.")
+    			return errors.New("Foo already exists.")
     		}
 
     		// CREATE処理を実行
@@ -423,7 +423,7 @@ flowchart TB
           );
 
           if (duplicateFoo !== null) {
-            throw new Error("Foo is already exists.");
+            throw new Error("Foo already exists.");
           }
 
           // CREATE処理を実行
@@ -476,7 +476,7 @@ flowchart TB
                 );
 
                 if ($duplicateFoo !== null) {
-                    throw new \Exception("Foo is already exists.");
+                    throw new \Exception("Foo already exists.");
                 }
 
                 // CREATE処理を実行
@@ -526,7 +526,7 @@ flowchart TB
     		}
 
     		if duplicateFoo != nil {
-    			return errors.New("Foo is already exists.")
+    			return errors.New("Foo already exists.")
     		}
 
     		// CREATE処理を実行
@@ -643,7 +643,7 @@ flowchart TB
           );
 
           if (duplicateFoo !== null) {
-            throw new Error("Foo is already exists.");
+            throw new Error("Foo already exists.");
           }
 
           // CREATE処理を実行
@@ -758,7 +758,7 @@ flowchart TB
                 );
 
                 if ($duplicateFoo !== null) {
-                    throw new \Exception("Foo is already exists.");
+                    throw new \Exception("Foo already exists.");
                 }
 
                 // CREATE処理を実行
@@ -852,7 +852,7 @@ flowchart TB
 
 インターラクターのインターフェースのこと。
 
-上位レイヤーにあるコントローラーは、インターラクターインタフェースに依存する。
+上位レイヤーにあるコントローラーは、インターラクターインターフェースに依存する。
 
 === "Go"
 
@@ -921,9 +921,7 @@ flowchart TB
 
 上位レイヤーにあるプレゼンターのインターフェースのこと。
 
-インターラクターは、レスポンスモデルではなく。
-
-アウトプットバウンダリをインターフェース層に出力する。
+インターラクターは、レスポンスモデルではなく、アウトプットバウンダリをインターフェース層に出力する。
 
 ただし、アプリケーションを API として使用する場合は、プレゼンターとアウトプットバウンダリが不要になる。そのため、インターラクターはレスポンスモデルを返却する。
 

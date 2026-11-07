@@ -259,7 +259,7 @@ OIDC ではなく OAuth のため、ID トークンではなく、リフレッ�
       <td>任意</td>
     </tr>
     <tr>
-      <td><code>code_challege_method</code></td>
+      <td><code>code_challenge_method</code></td>
       <td>メソッド</td>
       <td></td>
       <td>任意</td>
@@ -399,7 +399,7 @@ OIDC ではなく OAuth のため、ID トークンではなく、リフレッ�
     # ボディ
     {
       "access_token": "<アクセストークン>", # 必須
-      "token_type": " <トークンタイプ>", # 必須
+      "token_type": "<トークンタイプ>", # 必須
       "expires_in": <失効秒数>, # 任意
       "refresh_token": "<リフレッシュトークン>", # 任意
       "scope": "<認可スコープ>", # 要求したスコープ群と差異があれば必須
