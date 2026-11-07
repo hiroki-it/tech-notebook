@@ -385,6 +385,7 @@ nav:
       - language/index.md
       - 言語の種類: language/language_type.md
       - 言語別の処理方式: language/language_process_mode.md
+      - データ構造: language/language_data_structure.md
       - ■ データ記述言語:
           - ■ JSON:
               - JSON: language/language_data_description_language_json.md
@@ -445,7 +446,7 @@ nav:
           - ■ クラスベース:
               - クラス: language/language_php_class_based.md
               - 関数/データ: language/language_php_class_based_function_data.md
-              - データ構造: language/language_php_class_based_data_structure.md
+              - データ型: language/language_php_class_based_data_structure.md
           - ■ ロジック:
               - バリデーションロジック: language/language_php_logic_validation.md
               - エラーとエラーハンドリング: language/language_php_logic_error_and_error_handling.md

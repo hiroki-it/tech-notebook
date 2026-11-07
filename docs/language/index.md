@@ -13,6 +13,8 @@ hide:
 
 - #### [︎言語別の処理方式](https://hiroki-it.github.io/tech-notebook/language/language_process_mode.html)
 
+- #### [︎データ構造](https://hiroki-it.github.io/tech-notebook/language/language_data_structure.html)
+
 <br>
 
 ### データ記述言語
@@ -119,7 +121,7 @@ hide:
 
   > - ##### [︎クラス](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html)
   > - ##### [︎関数/データ](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based_function_data.html)
-  > - ##### [︎データ構造](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based_data_structure.html)
+  > - ##### [︎データ型](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based_data_structure.html)
 
 - #### <u>ロジック</u>
 
