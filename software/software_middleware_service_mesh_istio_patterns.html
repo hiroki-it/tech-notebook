@@ -34370,7 +34370,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
   </span>
 
     
@@ -34401,10 +34401,10 @@
 <p><br></p>
 <h2 id="01-kubernetes-cluster">01. 管理下の Kubernetes Cluster 数<a class="headerlink" href="#01-kubernetes-cluster" title="Permanent link">&para;</a></h2>
 <h3 id="kubernetes-cluster">単一 Kubernetes Cluster<a class="headerlink" href="#kubernetes-cluster" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>単一の Kubernetes Cluster 内のワークロードで、サービスメッシュを構成する。</p>
 <p><br></p>
 <h3 id="kubernetes-cluster_1">複数 Kubernetes Cluster<a class="headerlink" href="#kubernetes-cluster_1" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>複数の Kubernetes Cluster にまたがるワークロードで単一のサービスメッシュを構成し、Cluster 間での障害の分離やフェイルオーバーを実現する。</p>
 <p><br></p>
 <h2 id="02-istiod">02. Istiod コントロールプレーン数<a class="headerlink" href="#02-istiod" title="Permanent link">&para;</a></h2>
 <p>Istiod コントロールプレーン数に関するパターンである。</p>
@@ -34505,10 +34505,10 @@
 <p><br></p>
 <h2 id="04">04. 接続メッシュ数<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_8">単一メッシュ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>すべてのワークロードを単一のサービスメッシュで管理し、サービス名はメッシュ内で一意になる。</p>
 <p><br></p>
 <h3 id="_9">複数メッシュ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>複数のサービスメッシュを作成し、メッシュフェデレーションによってメッシュ間の通信を連携する。</p>
 <p><br></p>
 <h2 id="05">05. テナント分離<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="namespace">Namespace テナント<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h3>

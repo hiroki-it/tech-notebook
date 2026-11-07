@@ -34378,7 +34378,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
   </span>
 
     
@@ -34524,7 +34524,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="03">03. 揮発性データ管理の分割方法<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<p>記入中...</p>
+<p>セッションやキャッシュといった揮発性データも、永続データと同様に、各マイクロサービスで共有するキャッシュストレージを用意するか、マイクロサービスごとに個別に用意するかを選ぶ。</p>
 <p><br></p>
 <h2 id="04">04. 静的ファイル管理の分割方法<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="shared-storage">Shared Storage パターン<a class="headerlink" href="#shared-storage" title="Permanent link">&para;</a></h3>
@@ -34541,10 +34541,10 @@
 <p>オブジェクトストレージをマイクロサービス単位で作成すると粒度が細かすぎる場合、いくつかのマイクロサービスでは Shared Database パターンとするとよい。</p>
 <p><br></p>
 <h2 id="05">05. 分析用加工済データの分割方法<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
-<p>記入中...</p>
+<p>各マイクロサービスのデータを ETL 処理で加工し、データウェアハウスやデータレイクといった分析用のストレージに集約する。</p>
 <p><br></p>
 <h2 id="06">06. 保管データの暗号化<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
-<p>記入中...</p>
+<p>各マイクロサービスのストレージに保管するデータを暗号化キーで暗号化し、ストレージに不正にアクセスされたとしてもデータを閲覧できないようにする。</p>
 <p><br></p>
 
   

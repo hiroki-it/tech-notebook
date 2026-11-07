@@ -33788,7 +33788,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
   </span>
 
     
@@ -33819,7 +33819,7 @@
 <p><br></p>
 <h2 id="01-cluster">01. Cluster<a class="headerlink" href="#01-cluster" title="Permanent link">&para;</a></h2>
 <h3 id="cluster">Cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kubernetes Cluster を設定し、<code>.spec.controlPlaneRef</code> キーと <code>.spec.infrastructureRef</code> キーで、コントロールプレーンとインフラのカスタムリソースを紐づける。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster.x-k8s.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cluster</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33890,7 +33890,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="awsmanagedcluster">AWSManagedCluster<a class="headerlink" href="#awsmanagedcluster" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Amazon EKS Cluster のインフラを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">infrastructure.cluster.x-k8s.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWSManagedCluster</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33899,7 +33899,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="dockercluster">DockerCluster<a class="headerlink" href="#dockercluster" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Docker コンテナを Node として使用する Kubernetes Cluster のインフラを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">infrastructure.cluster.x-k8s.io/v1alpha2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DockerCluster</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33913,7 +33913,7 @@
 <p><br></p>
 <h2 id="02-configtemplate">02. ConfigTemplate<a class="headerlink" href="#02-configtemplate" title="Permanent link">&para;</a></h2>
 <h3 id="eksconfigtemplate">EKSConfigTemplate とは<a class="headerlink" href="#eksconfigtemplate" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Amazon EKS のワーカーNode を起動する時のブートストラップ設定を、テンプレートとして設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bootstrap.cluster.x-k8s.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EKSConfigTemplate</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33930,7 +33930,7 @@
 <p><br></p>
 <h2 id="03-controlplane">03. ControlPlane<a class="headerlink" href="#03-controlplane" title="Permanent link">&para;</a></h2>
 <h3 id="awsmanagedcontrolplane">AWSManagedControlPlane<a class="headerlink" href="#awsmanagedcontrolplane" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Amazon EKS のコントロールプレーンを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">controlplane.cluster.x-k8s.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWSManagedControlPlane</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33950,7 +33950,7 @@
 <p><br></p>
 <h2 id="04-machine">04. Machine<a class="headerlink" href="#04-machine" title="Permanent link">&para;</a></h2>
 <h3 id="machine">Machine<a class="headerlink" href="#machine" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Node となる単一のマシンを設定し、ブートストラップ設定とインフラのカスタムリソースを紐づける。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster.x-k8s.io/v1alpha2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Machine</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33992,7 +33992,7 @@
 <p>記入中...</p>
 <p><br></p>
 <h2 id="06-machinedeployment">06. MachineDeployment<a class="headerlink" href="#06-machinedeployment" title="Permanent link">&para;</a></h2>
-<p>記入中...</p>
+<p>MachineSet を管理し、Deployment が ReplicaSet を管理するのと同様に、Machine のローリングアップデートを実施する。</p>
 <p><br></p>
 <h2 id="07-machinepool">07. MachinePool<a class="headerlink" href="#07-machinepool" title="Permanent link">&para;</a></h2>
 <h3 id="machinepool">MachinePool とは<a class="headerlink" href="#machinepool" title="Permanent link">&para;</a></h3>
@@ -34026,7 +34026,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="awsmanagedmachinepool">AWSManagedMachinePool<a class="headerlink" href="#awsmanagedmachinepool" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Amazon EKS のマネージド Node グループを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">infrastructure.cluster.x-k8s.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWSManagedMachinePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34070,7 +34070,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="08-machineset">08. MachineSet<a class="headerlink" href="#08-machineset" title="Permanent link">&para;</a></h2>
-<p>記入中...</p>
+<p>ReplicaSet が Pod の数を維持するのと同様に、指定した数の Machine を維持する。</p>
 <p><br></p>
 
   

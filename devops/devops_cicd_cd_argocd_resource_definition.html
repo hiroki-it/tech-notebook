@@ -35856,7 +35856,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
   </span>
 
     
@@ -36160,7 +36160,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <p><br></p>
 <h3 id="deployment-pod">Deployment 配下の Pod<a class="headerlink" href="#deployment-pod" title="Permanent link">&para;</a></h3>
 <h4 id="argocd-server">▼ argocd-server<a class="headerlink" href="#argocd-server" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>ダッシュボードや <code>argocd</code> コマンドからのリクエストを受信する API サーバーであり、Application の情報の取得や Sync の実行といった操作を処理する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36276,7 +36276,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 </ul>
 </blockquote>
 <h4 id="repo-server">▼ repo-server<a class="headerlink" href="#repo-server" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>マニフェストリポジトリやチャートリポジトリをクローンし、Helm や Kustomize などでマニフェストを生成して、application-controller に返信する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36453,7 +36453,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <h4 id="redis-server">▼ redis-server<a class="headerlink" href="#redis-server" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>application-controller や argocd-server が取得したマニフェストや Kubernetes リソースの状態などを、キャッシュとして保存する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36477,7 +36477,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <h4 id="dex-server">▼ dex-server<a class="headerlink" href="#dex-server" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>外部の ID プロバイダーと連携する OIDC プロバイダーとして、ArgoCD への SSO を実現する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36540,7 +36540,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <p><br></p>
 <h3 id="statefulset">StatefulSet<a class="headerlink" href="#statefulset" title="Permanent link">&para;</a></h3>
 <h4 id="application-controller">▼ application-controller<a class="headerlink" href="#application-controller" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>Application を監視し、マニフェストリポジトリのマニフェストと Kubernetes リソースの実際の状態を比較して、差分があれば Sync する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36686,11 +36686,11 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
     </tr>
     <tr>
       <td>Missing</td>
-      <td>記入中...</td>
+      <td>Kubernetes リソースが Cluster 上に存在しない。</td>
     </tr>
     <tr>
       <td>Unknown</td>
-      <td>記入中...</td>
+      <td>ヘルスチェックに失敗し、Kubernetes リソースのヘルスステータスを判定できない。</td>
     </tr>
   </tbody>
 </table>

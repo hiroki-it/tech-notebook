@@ -34704,7 +34704,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
   </span>
 
     
@@ -34738,7 +34738,7 @@
 <p>Kiali の <code>config.yaml</code> ファイルを管理する。</p>
 <p><br></p>
 <h3 id="accessible_namespaces">accessible_namespaces<a class="headerlink" href="#accessible_namespaces" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali がアクセスでき、ユーザーに表示する Namespace を設定する。<code>**</code> とすると、全ての Namespace を対象とする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34751,7 +34751,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="additional_service_yaml">additional_service_yaml<a class="headerlink" href="#additional_service_yaml" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali の Service に追加する設定を YAML で設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34763,7 +34763,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="affinity">affinity<a class="headerlink" href="#affinity" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali の Pod をスケジューリングする Node を制限するアフィニティを、node、pod、pod_anti ごとに設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34778,7 +34778,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="configmap_annotations">configmap_annotations<a class="headerlink" href="#configmap_annotations" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali の ConfigMap に付与するアノテーションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34790,7 +34790,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="auth">auth<a class="headerlink" href="#auth" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali にログインする時の認証方式と、認証方式ごとの設定を設定する。認証方式には、anonymous、token、openshift、openid、header がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34807,7 +34807,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="custom_secrets">custom_secrets<a class="headerlink" href="#custom_secrets" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali の Pod にマウントする Secret を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34819,7 +34819,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="deployment">deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali の Pod のリソース、レプリカ数、ネットワーク、セキュリティなど、デプロイに関する設定を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34832,7 +34832,7 @@
 <p><br></p>
 <h3 id="external_services">external_services<a class="headerlink" href="#external_services" title="Permanent link">&para;</a></h3>
 <h4 id="custom_dashboards">▼ custom_dashboards<a class="headerlink" href="#custom_dashboards" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>Istio のメトリクスとは別の Prometheus からカスタムダッシュボードを検出し、表示するための設定を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34856,7 +34856,7 @@
 </ul>
 </blockquote>
 <h4 id="grafana">▼ grafana<a class="headerlink" href="#grafana" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>Grafana との連携を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34969,7 +34969,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="host_aliases">host_aliases<a class="headerlink" href="#host_aliases" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali の Pod の <code>/etc/hosts</code> ファイルに追加するホスト名と IP アドレスの対応を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34981,7 +34981,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="hpa">hpa<a class="headerlink" href="#hpa" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali の Pod を自動でスケーリングする HorizontalPodAutoscaler を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34995,7 +34995,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="identity">identity<a class="headerlink" href="#identity" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali が使用する TLS 証明書ファイルと秘密鍵ファイルのパスを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35009,7 +35009,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="image_digest">image_digest<a class="headerlink" href="#image_digest" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p><code>image_version</code> にダイジェスト値を設定した場合に、<code>sha256</code> などのダイジェストの種類を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35021,7 +35021,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="image_name">image_name<a class="headerlink" href="#image_name" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali のコンテナイメージ名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35033,7 +35033,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="image_pull_policy">image_pull_policy<a class="headerlink" href="#image_pull_policy" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali のコンテナイメージのプルポリシーを設定する。通常は <code>IfNotPresent</code> とし、<code>latest</code> のイメージを使う場合は <code>Always</code> とする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35045,7 +35045,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="image_pull_secrets">image_pull_secrets<a class="headerlink" href="#image_pull_secrets" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>プライベートなコンテナレジストリからコンテナイメージをプルするための Secret 名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35057,7 +35057,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="image_version">image_version<a class="headerlink" href="#image_version" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>インストールする Kiali のバージョンを設定する。<code>lastrelease</code>、<code>latest</code>、<code>operator_version</code>、または特定のバージョンを設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35069,7 +35069,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="ingress">ingress<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali を Ingress で外部に公開するかどうかと、その設定を設定する。OpenShift の場合は Route を使う。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35086,7 +35086,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="istio_namespace">istio_namespace<a class="headerlink" href="#istio_namespace" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Istio をインストールした Namespace を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35098,7 +35098,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="instance_name">instance_name<a class="headerlink" href="#instance_name" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali のインストールに付けるインスタンス名を設定する。インスタンス名は作成する Kubernetes リソース名の接頭辞となり、作成後は変更できない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35110,7 +35110,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="logger">logger<a class="headerlink" href="#logger" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali のログのログレベル、フォーマット、タイムスタンプの形式などを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35146,7 +35146,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="kiali_feature_flags">kiali_feature_flags<a class="headerlink" href="#kiali_feature_flags" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>証明書情報の表示、クラスタリング、バリデーションなど、Kiali の機能の有効化と無効化を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35169,7 +35169,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="namespace">namespace<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali をインストールする Namespace を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35181,7 +35181,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="override_ingress_yaml">override_ingress_yaml<a class="headerlink" href="#override_ingress_yaml" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali を公開する Ingress や Route のデフォルトの設定を上書きする設定を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35194,7 +35194,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="pod_annotations">pod_annotations<a class="headerlink" href="#pod_annotations" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali の Pod に付与するアノテーションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35206,7 +35206,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="pod_labels">pod_labels<a class="headerlink" href="#pod_labels" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali の Pod に付与するラベルを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35218,7 +35218,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="priority_class_name">priority_class_name<a class="headerlink" href="#priority_class_name" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali の Pod のスケジューリングの優先度を決める PriorityClass 名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35230,7 +35230,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="replicas">replicas<a class="headerlink" href="#replicas" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali の Deployment のレプリカ数を設定する。HorizontalPodAutoscaler を設定した場合、この値は無視される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35242,7 +35242,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="resources">resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali のコンテナのハードウェアリソースの要求量と上限を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35260,7 +35260,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="secret_name">secret_name<a class="headerlink" href="#secret_name" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali が使用する Secret 名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35272,7 +35272,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="security_context">security_context<a class="headerlink" href="#security_context" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali のコンテナのセキュリティコンテキストを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35284,7 +35284,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="server">server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali のサーバーのポート番号、メトリクスの公開、Web UI のルートパスなどを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35306,7 +35306,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="service_annotations">service_annotations<a class="headerlink" href="#service_annotations" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali の Service に付与するアノテーションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35318,7 +35318,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="service_type">service_type<a class="headerlink" href="#service_type" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali の Service のタイプを設定する。ClusterIP、NodePort、LoadBalancer などを設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35330,7 +35330,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="tolerations">tolerations<a class="headerlink" href="#tolerations" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali の Pod が許容する Node の Taint を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35342,7 +35342,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="version_label">version_label<a class="headerlink" href="#version_label" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali の Kubernetes リソースに付与する <code>version</code> ラベルの値を設定する。空の場合は <code>image_version</code> から自動で決まる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35354,7 +35354,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="view_only_mode">view_only_mode<a class="headerlink" href="#view_only_mode" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kiali を閲覧専用モードにするかどうかを設定する。<code>true</code> の場合、Kiali からサービスメッシュの設定を変更できなくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>

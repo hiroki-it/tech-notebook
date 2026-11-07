@@ -34464,7 +34464,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
   </span>
 
     
@@ -34549,69 +34549,69 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="load_plugins">load_plugins<a class="headerlink" href="#load_plugins" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>plugins で定義したプラグインのうち、実際に読み込むプラグインの名前を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">load_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="watch_config_files">watch_config_files<a class="headerlink" href="#watch_config_files" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>設定ファイルやルールファイルの変更を監視し、変更を検知したときに Falco を再読み込みするかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">watch_config_files</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="time_format_iso_8601">time_format_iso_8601<a class="headerlink" href="#time_format_iso_8601" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>アラートの日時を ISO 8601 形式で出力するかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">time_format_iso_8601</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="json_output">json_output<a class="headerlink" href="#json_output" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>アラートを JSON 形式で出力するかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">json_output</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="json_include_output_property">json_include_output_property<a class="headerlink" href="#json_include_output_property" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>JSON 形式のアラートに、ルールの output で整形したメッセージを <code>output</code> キーとして含めるかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">json_include_output_property</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="json_include_tags_property">json_include_tags_property<a class="headerlink" href="#json_include_tags_property" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>JSON 形式のアラートに、ルールのタグを <code>tags</code> キーとして含めるかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">json_include_tags_property</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="log_stderr">log_stderr<a class="headerlink" href="#log_stderr" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Falco 自身のログを標準エラー出力に出力するかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">log_stderr</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="log_syslog">log_syslog<a class="headerlink" href="#log_syslog" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Falco 自身のログを syslog に出力するかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">log_syslog</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="log_level">log_level<a class="headerlink" href="#log_level" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Falco 自身のログのうち、出力する最低のログレベルを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">log_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">info</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="libs_logger">libs_logger<a class="headerlink" href="#libs_logger" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Falco が内部で使用するライブラリのログを出力するかどうかと、出力する最低の重要度を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">libs_logger</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 <span class="w">  </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debug</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="priority">priority<a class="headerlink" href="#priority" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>アラートを出力するルールの最低の優先度を設定する。この優先度より低いルールに合致しても、アラートは出力しない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debug</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="buffered_outputs">buffered_outputs<a class="headerlink" href="#buffered_outputs" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>アラートの出力をバッファリングするかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">buffered_outputs</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="syscall_event_drops">syscall_event_drops<a class="headerlink" href="#syscall_event_drops" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>システムコールのイベントを取りこぼしたと判定するしきい値と、取りこぼしたときに実行するアクションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">syscall_event_drops</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
 <span class="w">  </span><span class="nt">actions</span><span class="p">:</span>
@@ -34623,36 +34623,36 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="syscall_event_timeouts">syscall_event_timeouts<a class="headerlink" href="#syscall_event_timeouts" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>イベントを受信できずにタイムアウトした回数が、何回連続したらアラートを出力するかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">syscall_event_timeouts</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">max_consecutives</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="syscall_buf_size_preset">syscall_buf_size_preset<a class="headerlink" href="#syscall_buf_size_preset" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>カーネルから Falco にシステムコールのイベントを受け渡すバッファのサイズを、プリセットの番号で設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">syscall_buf_size_preset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="output_timeout">output_timeout<a class="headerlink" href="#output_timeout" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>アラートの出力処理が停止したとみなすまでの時間をミリ秒で設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">output_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2000</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="outputs">outputs<a class="headerlink" href="#outputs" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>アラートの出力の流量を、トークンバケット方式の <code>rate</code> と <code>max_burst</code> で制限する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">outputs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">rate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
 <span class="w">  </span><span class="nt">max_burst</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="syslog_output">syslog_output<a class="headerlink" href="#syslog_output" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>アラートを syslog に出力するかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">syslog_output</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="file_output">file_output<a class="headerlink" href="#file_output" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>アラートをファイルに出力するかどうかと、出力先のファイルを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">file_output</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 <span class="w">  </span><span class="nt">keep_alive</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
@@ -34660,13 +34660,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="stdout_output">stdout_output<a class="headerlink" href="#stdout_output" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>アラートを標準出力に出力するかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">stdout_output</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="webserver">webserver<a class="headerlink" href="#webserver" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Falco が起動する Web サーバーを設定する。この Web サーバーは、ヘルスチェック用のエンドポイントなどを公開する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">webserver</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">  </span><span class="nt">threadiness</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
@@ -34677,7 +34677,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="program_output">program_output<a class="headerlink" href="#program_output" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>アラートを指定したプログラムの標準入力に渡すかどうかと、そのプログラムを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">program_output</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 <span class="w">  </span><span class="nt">keep_alive</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
@@ -34687,7 +34687,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="http_output">http_output<a class="headerlink" href="#http_output" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>アラートを指定した URL に HTTP で送信するかどうかと、送信先の URL を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">http_output</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 <span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">"http://some.url"</span>
@@ -34695,7 +34695,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="grpc">grpc<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Falco の gRPC サーバーを起動するかどうかと、gRPC サーバーが待ち受けるアドレスを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">grpc</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 <span class="w">  </span><span class="nt">bind_address</span><span class="p">:</span><span class="w"> </span><span class="s">"unix:///run/falco/falco.sock"</span>
@@ -34703,13 +34703,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="grpc_output">grpc_output<a class="headerlink" href="#grpc_output" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>アラートを gRPC サーバー経由で出力するかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">grpc_output</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="metadata_download">metadata_download<a class="headerlink" href="#metadata_download" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Kubernetes などからメタデータをダウンロードするときの最大サイズ、待機時間、監視の頻度を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">metadata_download</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">max_mb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
 <span class="w">  </span><span class="nt">chunk_wait_us</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>

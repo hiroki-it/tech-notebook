@@ -63,8 +63,6 @@ h2 {
 
 /* 節 */
 h3 {
-    background: #ffffd5;
-
     /** タグ全体の下線 **/
     border-bottom: solid 0.1em #313131;
 
@@ -97,7 +95,7 @@ h3:before {
 
 h4 {
     /*h4の上部にスペースを入れ、区別しやすいようにする。*/
-    padding-top: 1.5em;
+    padding-top: 0.5em;
 }
 
 
@@ -106,7 +104,7 @@ h4 {
 ***************/
 
 .md-typeset {
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
 
 .md-path {
@@ -237,6 +235,10 @@ p {
 
 /* 投稿者・最終更新日 */
 .md-content__inner > .md-source-file {
+    /* 項目の間の空白に下線が引かれないように、空白を描画しないflexで並べる */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     text-align: left;
     font-size: 0.8rem;
     text-decoration: underline;
@@ -377,8 +379,8 @@ th, td {
 }
 
 .md-typeset pre {
-    /* コードブロックの文字サイズ */
-    font-size: 1.25em;
+    /* コードブロックの文字サイズを本文とそろえる */
+    font-size: 1.15em;
 }
 
 /*!* インラインコード *!*/
@@ -480,7 +482,33 @@ blockquote {
   display: inline-block;
   width: 20px;
   height: 20px;
+  /* 本文中の画像の上限が効いてアイコンが細くならないようにする */
+  max-width: none;
+  max-height: none;
   flex-shrink: 0;
   border-radius: 50%;
   margin: 0;
+}
+
+
+/***************
+ 余白・文字サイズ
+***************/
+
+/* 画面が広くても、Materialの既定のように文字を拡大しない */
+@media screen and (min-width: 100em) {
+    html {
+        font-size: 125%;
+    }
+}
+
+@media screen and (min-width: 125em) {
+    html {
+        font-size: 125%;
+    }
+}
+
+/* 節の区切りの<br>だけの段落は、上下の余白を詰める */
+.md-typeset p:has(> br:only-child) {
+    margin: 0;
 }

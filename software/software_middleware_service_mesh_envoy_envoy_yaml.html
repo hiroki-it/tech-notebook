@@ -36000,7 +36000,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
   </span>
 
     
@@ -36083,7 +36083,7 @@
 <p><br></p>
 <h2 id="02-admin">02. admin<a class="headerlink" href="#02-admin" title="Permanent link">&para;</a></h2>
 <h3 id="admin">admin とは<a class="headerlink" href="#admin" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Envoy の管理ダッシュボードについて、アクセスログの出力先や待ち受けるアドレスを設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#admin">Envoy admin interface — envoy 1.40.0-dev-e07c88 documentation</a></li>
@@ -36099,7 +36099,7 @@
 <p><br></p>
 <h2 id="03-adminaddress">03. admin.address<a class="headerlink" href="#03-adminaddress" title="Permanent link">&para;</a></h2>
 <h3 id="address">address とは<a class="headerlink" href="#address" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>管理ダッシュボードが通信を待ち受けるアドレスを設定する。</p>
 <p><br></p>
 <h3 id="socket_address">socket_address<a class="headerlink" href="#socket_address" title="Permanent link">&para;</a></h3>
 <h4 id="protocol">▼ protocol<a class="headerlink" href="#protocol" title="Permanent link">&para;</a></h4>
@@ -36596,7 +36596,7 @@
 <p><br></p>
 <h3 id="dns_lookup_family">dns_lookup_family<a class="headerlink" href="#dns_lookup_family" title="Permanent link">&para;</a></h3>
 <h4 id="dns_lookup_family_1">▼ dns_lookup_family とは<a class="headerlink" href="#dns_lookup_family_1" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>宛先のホスト名を DNS で名前解決する時に、IPv4 と IPv6 のいずれのアドレスを使用するかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">dns_lookup_family</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v4_only</span>
@@ -36899,13 +36899,13 @@
 <span class="w">                      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./etc/istio/proxy/xds</span>
 </code></pre></div>
 <h4 id="set_node_on_first_message_only">▼ set_node_on_first_message_only<a class="headerlink" href="#set_node_on_first_message_only" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>xDS-API へのリクエストのうち、最初のメッセージのみに Node の識別子を含め、以降のメッセージでは省略するか否かを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">dynamic_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ads_config</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">set_node_on_first_message_only</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <h4 id="transport_api_version">▼ transport_api_version<a class="headerlink" href="#transport_api_version" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>xDS-API との通信で使用する API のバージョンを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">dynamic_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ads_config</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">transport_api_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">V3</span>

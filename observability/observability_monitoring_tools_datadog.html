@@ -34730,7 +34730,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:10:37 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
   </span>
 
     
@@ -34798,7 +34798,7 @@
 <p>通知内容に変数を使用することで、異なるアプリケーションに共通のアラート条件を適用できるようになる。</p>
 <p>そのため、アプリケーション間で重要度レベルを共通化できる。</p>
 <h4 id="_11">▼ テンプレート変数<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>アラートを発火させた値やしきい値など、モニターの評価結果に関する値を変数として出力する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#template-variables">https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#template-variables</a></li>
@@ -34946,30 +34946,38 @@ log.attributes.region }} {{ /is_alert }}
 </blockquote>
 <p><br></p>
 <h3 id="api">API テスト<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Datadog 社の物理サーバーから HTTP、SSL、DNS、TCP などのリクエストを単一で送信し、レスポンスを検証する。</p>
 <p><br></p>
 <h3 id="api_1">マルチステップ API テスト<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>複数の API リクエストを順番に送信し、前のレスポンスから取得した値を後のリクエストで使用しながら、一連の処理を検証する。</p>
 <p><br></p>
 <h2 id="05">05. セキュリティ監視<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
-<p>記入中</p>
+<p>ログやイベントを検出ルールで分析し、セキュリティ上の脅威となる操作を検知する。</p>
 <p><br></p>
 <h2 id="06">06. グラフ<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="_23">図の種類<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<ul>
+<li>Timeseries</li>
+<li>Query Value</li>
+<li>Top List</li>
+<li>Table</li>
+<li>Heatmap</li>
+<li>Distribution</li>
+<li>Pie Chart</li>
+</ul>
 <p><br></p>
 <h3 id="_24">スケールの種類<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <h4 id="log">▼ log (対数) スケール<a class="headerlink" href="#log" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>値の対数をとってグラフに表示し、桁の大きく異なる値を同じグラフで比較しやすくする。</p>
 <h4 id="linear">▼ linear (線形) スケール<a class="headerlink" href="#linear" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>値をそのままの比率でグラフに表示する。</p>
 <h4 id="2">▼ ２の累乗スケール<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>値を 2 乗してグラフに表示し、大きな値どうしの差を強調する。</p>
 <h4 id="sqrt">▼ sqrt (平方根) スケール<a class="headerlink" href="#sqrt" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>値の平方根をとってグラフに表示し、対数スケールよりも緩やかに大きな値の差を圧縮する。</p>
 <p><br></p>
 <h2 id="07">07. コスト<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
-<p>記入中...</p>
+<p>ホスト数やログの取り込み量などの使用量に応じて課金され、使用量の詳細は Usage ページで確認できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.datadoghq.com/account_management/billing/usage_details/">https://docs.datadoghq.com/account_management/billing/usage_details/</a></li>
