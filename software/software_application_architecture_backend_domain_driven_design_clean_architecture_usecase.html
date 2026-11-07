@@ -1304,6 +1304,8 @@
       
         
       
+        
+      
     
     
     
@@ -1420,6 +1422,34 @@
     
   
     オブジェクト指向設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_backend_object_orientation_class.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    クラス
   
 
     
@@ -2687,14 +2717,14 @@
   
   
     <li class="md-nav__item">
-      <a href="software_application_architecture_microservices_services_auth.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_services_general.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    認証／認可
+    汎用ロジック
   
 
     
@@ -34304,7 +34334,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 21:09:18 JST">2026-11-07</span>
   </span>
 
     
@@ -34397,7 +34427,52 @@
 <p>同じ操作でも、UI クライアントと API クライアントで入力や出力、呼び出し元の認証方法が異なる場合は、クライアントごとにインターラクターを分ける。</p>
 <p>インターラクターの中でクライアントの種類による分岐が不要になり、一方の変更がもう一方に影響しなくなる。</p>
 <p>両方に共通するルールはドメイン層に置き、インターラクター同士の重複は処理の組み立てだけに留める。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// UIクライアント向けのインターラクター</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Go</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// UIクライアント向けのインターラクター</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">UiFooInteractor</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fooRepository</span><span class="w"> </span><span class="nx">FooRepository</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewUiFooInteractor</span><span class="p">(</span><span class="nx">fooRepository</span><span class="w"> </span><span class="nx">FooRepository</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">UiFooInteractor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">UiFooInteractor</span><span class="p">{</span><span class="nx">fooRepository</span><span class="p">:</span><span class="w"> </span><span class="nx">fooRepository</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ログイン中のユーザーを所有者として登録する</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="nx">UiFooInteractor</span><span class="p">)</span><span class="w"> </span><span class="nx">RegisterFoo</span><span class="p">(</span><span class="nx">userID</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">Foo</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">CreateFoo</span><span class="p">(</span><span class="nx">userID</span><span class="p">,</span><span class="w"> </span><span class="nx">NewFooName</span><span class="p">(</span><span class="nx">name</span><span class="p">))</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">i</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">Save</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="c1">// APIクライアント向けのインターラクター</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">ApiFooInteractor</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fooRepository</span><span class="w"> </span><span class="nx">FooRepository</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewApiFooInteractor</span><span class="p">(</span><span class="nx">fooRepository</span><span class="w"> </span><span class="nx">FooRepository</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">ApiFooInteractor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">ApiFooInteractor</span><span class="p">{</span><span class="nx">fooRepository</span><span class="p">:</span><span class="w"> </span><span class="nx">fooRepository</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// APIトークンの所有者として登録し、APIクライアント向けのレスポンスモデルを返す</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="nx">ApiFooInteractor</span><span class="p">)</span><span class="w"> </span><span class="nx">RegisterFoo</span><span class="p">(</span><span class="nx">apiTokenOwnerID</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">FooApiResponseModel</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">foo</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">CreateFoo</span><span class="p">(</span><span class="nx">apiTokenOwnerID</span><span class="p">,</span><span class="w"> </span><span class="nx">NewFooName</span><span class="p">(</span><span class="nx">name</span><span class="p">))</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">i</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">Save</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">NewFooApiResponseModel</span><span class="p">(</span><span class="nx">foo</span><span class="p">),</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// UIクライアント向けのインターラクター</span>
 <span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UiFooInteractor</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">fooRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">FooRepository</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 
@@ -34431,6 +34506,47 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="c1">// UIクライアント向けのインターラクター</span>
+<span class="k">class</span> <span class="nc">UiFooInteractor</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="k">readonly</span> <span class="nx">FooRepository</span> <span class="nv">$fooRepository</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ログイン中のユーザーを所有者として登録する</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerFoo</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$userId</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">Foo</span>
+    <span class="p">{</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="nx">Foo</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="nx">ownerId</span><span class="o">:</span> <span class="nv">$userId</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="k">new</span> <span class="nx">FooName</span><span class="p">(</span><span class="nv">$name</span><span class="p">));</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$foo</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$foo</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// APIクライアント向けのインターラクター</span>
+<span class="k">class</span> <span class="nc">ApiFooInteractor</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="k">readonly</span> <span class="nx">FooRepository</span> <span class="nv">$fooRepository</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="c1">// APIトークンの所有者として登録し、APIクライアント向けのレスポンスモデルを返す</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerFoo</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$apiTokenOwnerId</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">FooApiResponseModel</span>
+    <span class="p">{</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="nx">Foo</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="nx">ownerId</span><span class="o">:</span> <span class="nv">$apiTokenOwnerId</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span> <span class="k">new</span> <span class="nx">FooName</span><span class="p">(</span><span class="nv">$name</span><span class="p">));</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$foo</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nx">FooApiResponseModel</span><span class="o">::</span><span class="na">from</span><span class="p">(</span><span class="nv">$foo</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><br></p>
 <h3 id="_10">呼び出せるリポジトリの種類<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>同じ境界づけられたコンテキストに属しているルートエンティティであれば、ユースケース層がそれぞれのルートエンティティに対応するリポジトリを操作することは許される。</p>
@@ -34544,7 +34660,97 @@
 <p>トランザクション処理はユースケース層で定義するとよい。</p>
 <p>例えば、<code>READ</code> 処理と <code>UPDATE</code> 処理の両方が必要な更新系ユースケースでは、<code>READ</code> 処理と <code>UPDATE</code> 処理の間のタイミングで、ほかのユーザーがデータを更新してしまう可能性がある。</p>
 <p>そのため、ユースケース層でトランザクション処理を定義し、定義したトランザクション範囲内でリポジトリを呼び出す。</p>
-<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Go</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">interactors</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="s">"errors"</span>
+
+<span class="c1">// Foo作成インターラクター構造体</span>
+<span class="c1">// ※ユースケースごとに構造体を定義する方法</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">FooCreateInteractor</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fooRepository</span><span class="w"> </span><span class="nx">FooRepository</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewFooCreateInteractor</span><span class="p">(</span><span class="nx">fooRepository</span><span class="w"> </span><span class="nx">FooRepository</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">FooCreateInteractor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">FooCreateInteractor</span><span class="p">{</span><span class="nx">fooRepository</span><span class="p">:</span><span class="w"> </span><span class="nx">fooRepository</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="nx">FooCreateInteractor</span><span class="p">)</span><span class="w"> </span><span class="nx">RegisterFoo</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="w"> </span><span class="o">*</span><span class="nx">RegisterFooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">RegisterFooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">*</span><span class="nx">Foo</span>
+
+<span class="w">    </span><span class="c1">// トランザクション処理を実行</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">Transaction</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 重複チェック (READ処理) を実行</span>
+<span class="w">        </span><span class="nx">duplicateFoo</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">i</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">FindByID</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">NewFooID</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="p">.</span><span class="nx">ID</span><span class="p">),</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">duplicateFoo</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">"Foo is already exists."</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// CREATE処理を実行</span>
+<span class="w">        </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">NewFoo</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">NewFooID</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="p">.</span><span class="nx">ID</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">NewBar</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="p">.</span><span class="nx">Bar</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">NewBaz</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="p">.</span><span class="nx">Baz</span><span class="p">),</span>
+<span class="w">        </span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">i</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">NewRegisterFooResponse</span><span class="p">(</span><span class="nx">foo</span><span class="p">),</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Foo作成インターラクタークラス</span>
+<span class="cm"> * ※ユースケースごとにクラスを定義する方法</span>
+<span class="cm"> */</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">FooCreateInteractor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">fooRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">FooRepository</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">registerFoo</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">registerFooRequest</span><span class="o">:</span><span class="w"> </span><span class="kt">RegisterFooRequest</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">RegisterFooResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// トランザクション処理を実行</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">transaction</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Foo</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// 重複チェック (READ処理) を実行</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">duplicateFoo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span>
+<span class="w">        </span><span class="ow">new</span><span class="w"> </span><span class="nx">FooId</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="p">.</span><span class="nx">id</span><span class="p">),</span>
+<span class="w">      </span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">duplicateFoo</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">"Foo is already exists."</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+
+<span class="w">      </span><span class="c1">// CREATE処理を実行</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span>
+<span class="w">        </span><span class="ow">new</span><span class="w"> </span><span class="nx">FooId</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="p">.</span><span class="nx">id</span><span class="p">),</span>
+<span class="w">        </span><span class="ow">new</span><span class="w"> </span><span class="nx">Bar</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="p">.</span><span class="nx">bar</span><span class="p">),</span>
+<span class="w">        </span><span class="ow">new</span><span class="w"> </span><span class="nx">Baz</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="p">.</span><span class="nx">baz</span><span class="p">),</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">foo</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">RegisterFooResponse</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Usecase\Foo\Interactors</span><span class="p">;</span>
 
@@ -34593,7 +34799,238 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+</div>
+</div>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Go</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">interactors</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="s">"errors"</span>
+
+<span class="c1">// Fooインターラクター構造体</span>
+<span class="c1">// ※CRUD全てのユースケースを、1個の構造体を定義する方法</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">FooInteractor</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fooRepository</span><span class="w"> </span><span class="nx">FooRepository</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewFooInteractor</span><span class="p">(</span><span class="nx">fooRepository</span><span class="w"> </span><span class="nx">FooRepository</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">FooInteractor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">FooInteractor</span><span class="p">{</span><span class="nx">fooRepository</span><span class="p">:</span><span class="w"> </span><span class="nx">fooRepository</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="nx">FooInteractor</span><span class="p">)</span><span class="w"> </span><span class="nx">RegisterFoo</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="w"> </span><span class="o">*</span><span class="nx">RegisterFooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">RegisterFooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">*</span><span class="nx">Foo</span>
+
+<span class="w">    </span><span class="c1">// トランザクション処理を実行</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">Transaction</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 重複チェック (READ処理) を実行</span>
+<span class="w">        </span><span class="nx">duplicateFoo</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">i</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">FindByID</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">NewFooID</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="p">.</span><span class="nx">ID</span><span class="p">),</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">duplicateFoo</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">"Foo is already exists."</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// CREATE処理を実行</span>
+<span class="w">        </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">NewFoo</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">NewFooID</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="p">.</span><span class="nx">ID</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">NewBar</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="p">.</span><span class="nx">Bar</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">NewBaz</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="p">.</span><span class="nx">Baz</span><span class="p">),</span>
+<span class="w">        </span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">i</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">NewRegisterFooResponse</span><span class="p">(</span><span class="nx">foo</span><span class="p">),</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="nx">FooInteractor</span><span class="p">)</span><span class="w"> </span><span class="nx">GetFoo</span><span class="p">(</span><span class="nx">getFooRequest</span><span class="w"> </span><span class="o">*</span><span class="nx">GetFooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">GetFooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// READ処理を実行</span>
+<span class="w">    </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">i</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">FindByID</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">NewFooID</span><span class="p">(</span><span class="nx">getFooRequest</span><span class="p">.</span><span class="nx">ID</span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">"Foo is not found."</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">NewGetFooResponse</span><span class="p">(</span><span class="nx">foo</span><span class="p">),</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="nx">FooInteractor</span><span class="p">)</span><span class="w"> </span><span class="nx">ChangeFoo</span><span class="p">(</span><span class="nx">changeFooRequest</span><span class="w"> </span><span class="o">*</span><span class="nx">ChangeFooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">ChangeFooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">*</span><span class="nx">Foo</span>
+
+<span class="w">    </span><span class="c1">// トランザクション処理を実行</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">Transaction</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 存在チェック (READ処理) を実行</span>
+<span class="w">        </span><span class="nx">existingFoo</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">i</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">FindByID</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">NewFooID</span><span class="p">(</span><span class="nx">changeFooRequest</span><span class="p">.</span><span class="nx">ID</span><span class="p">),</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">existingFoo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">"Foo is not found."</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// UPDATE処理を実行</span>
+<span class="w">        </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">NewFoo</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">NewFooID</span><span class="p">(</span><span class="nx">changeFooRequest</span><span class="p">.</span><span class="nx">ID</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">NewBar</span><span class="p">(</span><span class="nx">changeFooRequest</span><span class="p">.</span><span class="nx">Bar</span><span class="p">),</span>
+<span class="w">            </span><span class="nx">NewBaz</span><span class="p">(</span><span class="nx">changeFooRequest</span><span class="p">.</span><span class="nx">Baz</span><span class="p">),</span>
+<span class="w">        </span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">i</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">Update</span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">NewChangeFooResponse</span><span class="p">(</span><span class="nx">foo</span><span class="p">),</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="nx">FooInteractor</span><span class="p">)</span><span class="w"> </span><span class="nx">DeleteFoo</span><span class="p">(</span><span class="nx">deleteFooRequest</span><span class="w"> </span><span class="o">*</span><span class="nx">DeleteFooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">DeleteFooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// トランザクション処理を実行</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">Transaction</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 存在チェック (READ処理) を実行</span>
+<span class="w">        </span><span class="nx">existingFoo</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">i</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">FindByID</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">NewFooID</span><span class="p">(</span><span class="nx">deleteFooRequest</span><span class="p">.</span><span class="nx">ID</span><span class="p">),</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">existingFoo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">"Foo is not found."</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// DELETE処理を実行</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">i</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">Delete</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">NewFooID</span><span class="p">(</span><span class="nx">deleteFooRequest</span><span class="p">.</span><span class="nx">ID</span><span class="p">),</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">NewDeleteFooResponse</span><span class="p">(),</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Fooインターラクタークラス</span>
+<span class="cm"> * ※CRUD全てのユースケースを、1個のクラスを定義する方法</span>
+<span class="cm"> */</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">FooInteractor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">fooRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">FooRepository</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">registerFoo</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">registerFooRequest</span><span class="o">:</span><span class="w"> </span><span class="kt">RegisterFooRequest</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">RegisterFooResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// トランザクション処理を実行</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">transaction</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Foo</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// 重複チェック (READ処理) を実行</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">duplicateFoo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span>
+<span class="w">        </span><span class="ow">new</span><span class="w"> </span><span class="nx">FooId</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="p">.</span><span class="nx">id</span><span class="p">),</span>
+<span class="w">      </span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">duplicateFoo</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">"Foo is already exists."</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+
+<span class="w">      </span><span class="c1">// CREATE処理を実行</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span>
+<span class="w">        </span><span class="ow">new</span><span class="w"> </span><span class="nx">FooId</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="p">.</span><span class="nx">id</span><span class="p">),</span>
+<span class="w">        </span><span class="ow">new</span><span class="w"> </span><span class="nx">Bar</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="p">.</span><span class="nx">bar</span><span class="p">),</span>
+<span class="w">        </span><span class="ow">new</span><span class="w"> </span><span class="nx">Baz</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="p">.</span><span class="nx">baz</span><span class="p">),</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">foo</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">RegisterFooResponse</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">getFoo</span><span class="p">(</span><span class="nx">getFooRequest</span><span class="o">:</span><span class="w"> </span><span class="kt">GetFooRequest</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">GetFooResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// READ処理を実行</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span>
+<span class="w">      </span><span class="ow">new</span><span class="w"> </span><span class="nx">FooId</span><span class="p">(</span><span class="nx">getFooRequest</span><span class="p">.</span><span class="nx">id</span><span class="p">),</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">foo</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">"Foo is not found."</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">GetFooResponse</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">changeFoo</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">changeFooRequest</span><span class="o">:</span><span class="w"> </span><span class="kt">ChangeFooRequest</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">ChangeFooResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// トランザクション処理を実行</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">transaction</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Foo</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// 存在チェック (READ処理) を実行</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">existingFoo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span>
+<span class="w">        </span><span class="ow">new</span><span class="w"> </span><span class="nx">FooId</span><span class="p">(</span><span class="nx">changeFooRequest</span><span class="p">.</span><span class="nx">id</span><span class="p">),</span>
+<span class="w">      </span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">existingFoo</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">"Foo is not found."</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+
+<span class="w">      </span><span class="c1">// UPDATE処理を実行</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Foo</span><span class="p">(</span>
+<span class="w">        </span><span class="ow">new</span><span class="w"> </span><span class="nx">FooId</span><span class="p">(</span><span class="nx">changeFooRequest</span><span class="p">.</span><span class="nx">id</span><span class="p">),</span>
+<span class="w">        </span><span class="ow">new</span><span class="w"> </span><span class="nx">Bar</span><span class="p">(</span><span class="nx">changeFooRequest</span><span class="p">.</span><span class="nx">bar</span><span class="p">),</span>
+<span class="w">        </span><span class="ow">new</span><span class="w"> </span><span class="nx">Baz</span><span class="p">(</span><span class="nx">changeFooRequest</span><span class="p">.</span><span class="nx">baz</span><span class="p">),</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">foo</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ChangeFooResponse</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">deleteFoo</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">deleteFooRequest</span><span class="o">:</span><span class="w"> </span><span class="kt">DeleteFooRequest</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">DeleteFooResponse</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// トランザクション処理を実行</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">transaction</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// 存在チェック (READ処理) を実行</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">existingFoo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span>
+<span class="w">        </span><span class="ow">new</span><span class="w"> </span><span class="nx">FooId</span><span class="p">(</span><span class="nx">deleteFooRequest</span><span class="p">.</span><span class="nx">id</span><span class="p">),</span>
+<span class="w">      </span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">existingFoo</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">"Foo is not found."</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+
+<span class="w">      </span><span class="c1">// DELETE処理を実行</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">fooRepository</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">FooId</span><span class="p">(</span><span class="nx">deleteFooRequest</span><span class="p">.</span><span class="nx">id</span><span class="p">));</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DeleteFooResponse</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Usecase\Foo\Interactors</span><span class="p">;</span>
 
@@ -34707,6 +35144,9 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+</div>
+</div>
 <blockquote>
 <ul>
 <li><a href="https://tech.yappli.io/entry/ddd_usecase">【戦術的DDD】なぜトランザクションをユースケース層で張るのか - Yappli Tech Blog</a></li>
@@ -34717,7 +35157,42 @@
 <h3 id="_13">インプットバウンダリとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p>インターラクターのインターフェースのこと。</p>
 <p>上位レイヤーにあるコントローラーは、インターラクターインタフェースに依存する。</p>
-<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Go</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">inputboundaries</span>
+
+<span class="c1">// Fooインターラクターインターフェース</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">FooInteractorInterface</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">RegisterFoo</span><span class="p">(</span><span class="nx">registerFooRequest</span><span class="w"> </span><span class="o">*</span><span class="nx">RegisterFooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">RegisterFooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">GetFoo</span><span class="p">(</span><span class="nx">getFooRequest</span><span class="w"> </span><span class="o">*</span><span class="nx">GetFooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">GetFooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">ChangeFoo</span><span class="p">(</span><span class="nx">changeFooRequest</span><span class="w"> </span><span class="o">*</span><span class="nx">ChangeFooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">ChangeFooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">DeleteFoo</span><span class="p">(</span><span class="nx">deleteFooRequest</span><span class="w"> </span><span class="o">*</span><span class="nx">DeleteFooRequest</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">DeleteFooResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Fooインターラクターインターフェース</span>
+<span class="cm"> */</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">FooInteractorInterface</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">registerFoo</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">registerFooRequest</span><span class="o">:</span><span class="w"> </span><span class="kt">RegisterFooRequest</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">RegisterFooResponse</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">getFoo</span><span class="p">(</span><span class="nx">getFooRequest</span><span class="o">:</span><span class="w"> </span><span class="kt">GetFooRequest</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">GetFooResponse</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">changeFoo</span><span class="p">(</span><span class="nx">changeFooRequest</span><span class="o">:</span><span class="w"> </span><span class="kt">ChangeFooRequest</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">ChangeFooResponse</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">deleteFoo</span><span class="p">(</span><span class="nx">deleteFooRequest</span><span class="o">:</span><span class="w"> </span><span class="kt">DeleteFooRequest</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">DeleteFooResponse</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Usecase\Foo\InputBoundaries</span><span class="p">;</span>
 
@@ -34736,6 +35211,9 @@
     <span class="k">public</span> <span class="k">function</span> <span class="nf">deleteFoo</span><span class="p">(</span><span class="nx">DeleteFooRequest</span> <span class="nv">$deleteFooRequest</span><span class="p">)</span><span class="o">:</span> <span class="nx">DeleteFooResponse</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+</div>
+</div>
 <p><br></p>
 <h2 id="04">04. アウトプットバウンダリ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_14">アウトプットバウンダリとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
@@ -34748,7 +35226,40 @@
 <h3 id="_15">リクエストモデルとは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p>インターフェース層のコントローラーから入力されるリクエストパラメーターを、ユースケース層に入力するときの入力構造を定義する。</p>
 <p>インターラクターの関数ごとにリクエストモデルを用意するとよい。</p>
-<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Go</label><label for="__tabbed_5_2">TypeScript</label><label for="__tabbed_5_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">requests</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">FooCreateRequest</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fooID</span><span class="w"> </span><span class="kt">int</span>
+
+<span class="w">    </span><span class="nx">fooName</span><span class="w"> </span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewFooCreateRequest</span><span class="p">(</span><span class="nx">fooID</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">fooName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">FooCreateRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">FooCreateRequest</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">fooID</span><span class="p">:</span><span class="w">   </span><span class="nx">fooID</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">fooName</span><span class="p">:</span><span class="w"> </span><span class="nx">fooName</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">FooCreateRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">fooId</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">fooName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">fooId</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">fooName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">fooId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fooId</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">fooName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fooName</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Interface\Foo\Requests</span><span class="p">;</span>
 
@@ -34766,6 +35277,9 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+</div>
+</div>
 <p><br></p>
 <h2 id="06">06. レスポンスモデル (アウトプットデータ)<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="_16">レスポンスモデルとは<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
@@ -34775,7 +35289,44 @@
 <p>もし、クラス自身を渡して問題ない JSON レスポンス関数であれば、これは不要である。</p>
 <p>ユースケース層の index 関数に対応するレスポンスモデル。</p>
 <p>JSON レスポンス関数が配列構造を引数に受け付けるため、これに渡せるよう、自身を配列構造に変換する関数を持たせる。</p>
-<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Go</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">responses</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">FooIndexResponse</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">foos</span><span class="w"> </span><span class="p">[]</span><span class="o">*</span><span class="nx">Foo</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewFooIndexResponse</span><span class="p">(</span><span class="nx">foos</span><span class="w"> </span><span class="p">[]</span><span class="o">*</span><span class="nx">Foo</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">FooIndexResponse</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">FooIndexResponse</span><span class="p">{</span><span class="nx">foos</span><span class="p">:</span><span class="w"> </span><span class="nx">foos</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">FooIndexResponse</span><span class="p">)</span><span class="w"> </span><span class="nx">ToArray</span><span class="p">()</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span><span class="p">{</span>
+<span class="w">        </span><span class="s">"foos"</span><span class="p">:</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">foos</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">FooIndexResponse</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">foos</span><span class="o">:</span><span class="w"> </span><span class="kt">Foo</span><span class="p">[];</span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">foos</span><span class="o">:</span><span class="w"> </span><span class="kt">Foo</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">foos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">foos</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">toArray</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">unknown</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">foos</span><span class="o">:</span><span class="w"> </span><span class="kt">this.foos</span><span class="p">,</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Interface\Foo\Responses</span><span class="p">;</span>
 
@@ -34797,8 +35348,58 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+</div>
+</div>
 <p>ユースケース層の create 関数に対応するレスポンスモデル。</p>
-<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Go</label><label for="__tabbed_7_2">TypeScript</label><label for="__tabbed_7_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">responses</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">FooCreateResponse</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fooID</span><span class="w"> </span><span class="kt">int</span>
+
+<span class="w">    </span><span class="nx">fooName</span><span class="w"> </span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewFooCreateResponse</span><span class="p">(</span><span class="nx">fooID</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">fooName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">FooCreateResponse</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">FooCreateResponse</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">fooID</span><span class="p">:</span><span class="w">   </span><span class="nx">fooID</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">fooName</span><span class="p">:</span><span class="w"> </span><span class="nx">fooName</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">FooCreateResponse</span><span class="p">)</span><span class="w"> </span><span class="nx">ToArray</span><span class="p">()</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span><span class="p">{</span>
+<span class="w">        </span><span class="s">"id"</span><span class="p">:</span><span class="w">   </span><span class="nx">r</span><span class="p">.</span><span class="nx">fooID</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"name"</span><span class="p">:</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">fooName</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">FooCreateResponse</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">fooId</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">fooName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">fooId</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">fooName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">fooId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fooId</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">fooName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fooName</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nx">toArray</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">unknown</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">this.fooId</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">this.fooName</span><span class="p">,</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Interface\Foo\Responses</span><span class="p">;</span>
 
@@ -34824,6 +35425,9 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+</div>
+</div>
 <p><br></p>
 <h2 id="07">07. アプリケーションサービス<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="_17">アプリケーションサービスとは<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
@@ -34834,7 +35438,41 @@
 <p><br></p>
 <h3 id="_18">通知処理<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <p>エンティティへの通知処理をアプリケーションサービスとして切り分ける。</p>
-<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Go</label><label for="__tabbed_8_2">TypeScript</label><label for="__tabbed_8_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">notify</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">NotifyFooService</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">message</span><span class="w"> </span><span class="o">*</span><span class="nx">Message</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewNotifyFooService</span><span class="p">(</span><span class="nx">message</span><span class="w"> </span><span class="o">*</span><span class="nx">Message</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">NotifyFooService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">NotifyFooService</span><span class="p">{</span><span class="nx">message</span><span class="p">:</span><span class="w"> </span><span class="nx">message</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">NotifyFooService</span><span class="p">)</span><span class="w"> </span><span class="nx">Notify</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// SlackのAPIにメッセージを送信する処理</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">NotifyFooService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="kt">Message</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="kt">Message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">message</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">notify</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// SlackのAPIにメッセージを送信する処理</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Usecase\Foo\Services\Notify</span><span class="p">;</span>
 
@@ -34854,8 +35492,36 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+</div>
+</div>
 <p>これを、ユースケース層でコールする。</p>
-<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Go</label><label for="__tabbed_9_2">TypeScript</label><label for="__tabbed_9_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">services</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">FooInteractor</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">*</span><span class="nx">FooInteractor</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">message</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewMessage</span><span class="p">(</span><span class="w"> </span><span class="cm">/* メッセージに関するデータを渡す */</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="nx">notifyFooService</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewNotifyFooService</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">notifyFooService</span><span class="p">.</span><span class="nx">Notify</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">FooInteractor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Message</span><span class="p">(</span><span class="cm">/* メッセージに関するデータを渡す */</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">notifyFooService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">NotifyFooService</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">notifyFooService</span><span class="p">.</span><span class="nx">notify</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Usecase\Foo\Services</span><span class="p">;</span>
 
@@ -34871,6 +35537,9 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+</div>
+</div>
 <p><br></p>
 
   

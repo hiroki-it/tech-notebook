@@ -1295,6 +1295,8 @@
       
         
       
+        
+      
     
     
     
@@ -1411,6 +1413,34 @@
     
   
     オブジェクト指向設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_application_architecture_backend_object_orientation_class.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    クラス
   
 
     
@@ -2317,14 +2347,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../software_application_architecture_microservices_services_auth.html" class="md-nav__link">
+      <a href="../software_application_architecture_microservices_services_general.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    認証／認可
+    汎用ロジック
   
 
     
@@ -33716,7 +33746,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 21:09:18 JST">2026-11-07</span>
   </span>
 
     
@@ -33760,7 +33790,23 @@
 <h2 id="92">9.2 ファクトリーの実装方法（関数型）<a class="headerlink" href="#92" title="Permanent link">&para;</a></h2>
 <h3 id="_3">ドメイン層<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="username">▼ UserName<a class="headerlink" href="#username" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Go</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Value</span><span class="w"> </span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">createUserName</span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">UserName</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">TrimSpace</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">UserName</span><span class="p">{},</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">"UserName cannot be empty"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">UserName</span><span class="p">{</span><span class="nx">Value</span><span class="p">:</span><span class="w"> </span><span class="nx">value</span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="p">};</span>
 
@@ -33771,8 +33817,48 @@
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="nx">value</span><span class="p">};</span>
 <span class="p">};</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">final</span> <span class="k">readonly</span> <span class="k">class</span> <span class="nc">UserName</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">public</span> <span class="nx">string</span> <span class="nv">$value</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">createUserName</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$value</span><span class="p">)</span><span class="o">:</span> <span class="nx">UserName</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="o">===</span> <span class="s2">""</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">InvalidArgumentException</span><span class="p">(</span><span class="s2">"UserName cannot be empty"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">(</span><span class="nx">value</span><span class="o">:</span> <span class="nv">$value</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h4 id="userid">▼ UserId<a class="headerlink" href="#userid" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Go</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserId</span><span class="w"> </span><span class="kt">string</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Id</span><span class="w">   </span><span class="nx">UserId</span>
+<span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="nx">UserName</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">createUser</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="nx">UserId</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="nx">UserName</span><span class="p">)</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Id</span><span class="p">:</span><span class="w">   </span><span class="nx">id</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 
 <span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">;</span>
@@ -33784,10 +33870,74 @@
 <span class="w">  </span><span class="nx">name</span><span class="p">,</span>
 <span class="p">});</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">final</span> <span class="k">readonly</span> <span class="k">class</span> <span class="nc">UserId</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">public</span> <span class="nx">string</span> <span class="nv">$value</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">final</span> <span class="k">readonly</span> <span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">public</span> <span class="nx">UserId</span> <span class="nv">$id</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">UserName</span> <span class="nv">$name</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">createUser</span><span class="p">(</span><span class="nx">UserId</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">UserName</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">User</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="nv">$id</span><span class="p">,</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="nv">$name</span><span class="p">,</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><br></p>
 <h3 id="_4">ユーザーインターフェース層<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="userfactory">▼ UserFactory<a class="headerlink" href="#userfactory" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">v4</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">uuidv4</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"uuid"</span><span class="p">;</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Go</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="s">"github.com/google/uuid"</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">UserFactory</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">CreateUserWithId</span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="nx">UserName</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">userFactory</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">createUserFactory</span><span class="p">()</span><span class="w"> </span><span class="nx">UserFactory</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">userFactory</span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">f</span><span class="w"> </span><span class="o">*</span><span class="nx">userFactory</span><span class="p">)</span><span class="w"> </span><span class="nx">CreateUserWithId</span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="nx">UserName</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">nextId</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">generateId</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">User</span><span class="p">{},</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">createUser</span><span class="p">(</span><span class="nx">UserId</span><span class="p">(</span><span class="nx">nextId</span><span class="p">),</span><span class="w"> </span><span class="nx">name</span><span class="p">),</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="c1">// 採番処理</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">generateId</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">uuid</span><span class="p">.</span><span class="nx">NewRandom</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">id</span><span class="p">.</span><span class="nx">String</span><span class="p">(),</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">v4</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">uuidv4</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"uuid"</span><span class="p">;</span>
 
 <span class="kr">type</span><span class="w"> </span><span class="nx">UserFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">createUserWithId</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
@@ -33807,8 +33957,70 @@
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">uuidv4</span><span class="p">();</span>
 <span class="p">};</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">use</span> <span class="nx">Ramsey\Uuid\Uuid</span><span class="p">;</span>
+
+<span class="k">interface</span> <span class="nx">UserFactory</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">createUserWithId</span><span class="p">(</span><span class="nx">UserName</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">User</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">createUserFactory</span><span class="p">()</span><span class="o">:</span> <span class="nx">UserFactory</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="k">class</span> <span class="p">()</span> <span class="k">implements</span> <span class="nx">UserFactory</span> <span class="p">{</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">createUserWithId</span><span class="p">(</span><span class="nx">UserName</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">User</span>
+        <span class="p">{</span>
+            <span class="nv">$nextId</span> <span class="o">=</span> <span class="nx">generateId</span><span class="p">();</span>
+            <span class="k">return</span> <span class="nx">createUser</span><span class="p">(</span><span class="k">new</span> <span class="nx">UserId</span><span class="p">(</span><span class="nv">$nextId</span><span class="p">),</span> <span class="nv">$name</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// 採番処理</span>
+<span class="k">function</span> <span class="nf">generateId</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Uuid</span><span class="o">::</span><span class="na">uuid4</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">toString</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h4 id="userapplicationservice">▼ UserApplicationService<a class="headerlink" href="#userapplicationservice" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Go</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">RegisterUser</span><span class="p">(</span><span class="nx">userName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">userApplicationService</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">factory</span><span class="w"> </span><span class="nx">UserFactory</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">createUserApplicationService</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">factory</span><span class="w"> </span><span class="nx">UserFactory</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">userApplicationService</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">factory</span><span class="p">:</span><span class="w"> </span><span class="nx">factory</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">userApplicationService</span><span class="p">)</span><span class="w"> </span><span class="nx">RegisterUser</span><span class="p">(</span><span class="nx">userName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">createUserName</span><span class="p">(</span><span class="nx">userName</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">User</span><span class="p">{},</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">factory</span><span class="p">.</span><span class="nx">CreateUserWithId</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">User</span><span class="p">{},</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">registerUser</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">userName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="p">};</span>
 
@@ -33824,6 +34036,34 @@
 <span class="w">  </span><span class="p">};</span>
 <span class="p">};</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">interface</span> <span class="nx">UserApplicationService</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerUser</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$userName</span><span class="p">)</span><span class="o">:</span> <span class="nx">User</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">createUserApplicationService</span><span class="p">(</span>
+    <span class="nx">UserFactory</span> <span class="nv">$factory</span><span class="p">,</span>
+<span class="p">)</span><span class="o">:</span> <span class="nx">UserApplicationService</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="k">class</span> <span class="p">(</span><span class="nv">$factory</span><span class="p">)</span> <span class="k">implements</span> <span class="nx">UserApplicationService</span> <span class="p">{</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+            <span class="k">private</span> <span class="k">readonly</span> <span class="nx">UserFactory</span> <span class="nv">$factory</span><span class="p">,</span>
+        <span class="p">)</span> <span class="p">{</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">registerUser</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$userName</span><span class="p">)</span><span class="o">:</span> <span class="nx">User</span>
+        <span class="p">{</span>
+            <span class="nv">$name</span> <span class="o">=</span> <span class="nx">createUserName</span><span class="p">(</span><span class="nv">$userName</span><span class="p">);</span>
+            <span class="nv">$user</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">factory</span><span class="o">-&gt;</span><span class="na">createUserWithId</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nv">$user</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><br></p>
 <h2 id="93">9.3 採番処理をどこに実装するか<a class="headerlink" href="#93" title="Permanent link">&para;</a></h2>
 <h3 id="_5">ファクトリ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
@@ -33831,7 +34071,46 @@
 <p><br></p>
 <h3 id="_6">リポジトリ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>採番処理を採番テーブルを使用して実装する場合、データベースに関する処理になるため、リポジトリに実装できる。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Go</label><label for="__tabbed_5_2">TypeScript</label><label for="__tabbed_5_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserRepository</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">NextIdentity</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="nx">UserId</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">Save</span><span class="p">(</span><span class="nx">user</span><span class="w"> </span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
+<span class="p">}</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">userRepositoryImpl</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">userRepository</span><span class="w"> </span><span class="nx">UserRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">userRepositoryImpl</span><span class="p">{}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">userRepositoryImpl</span><span class="p">)</span><span class="w"> </span><span class="nx">NextIdentity</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="nx">UserId</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 採番テーブルが生成したIDを取得する</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="kt">int64</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">pool</span><span class="p">.</span><span class="nx">QueryRow</span><span class="p">(</span><span class="s">"SELECT nextval('user_seq') AS id"</span><span class="p">).</span><span class="nx">Scan</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">id</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">UserId</span><span class="p">(</span><span class="nx">strconv</span><span class="p">.</span><span class="nx">FormatInt</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)),</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">userRepositoryImpl</span><span class="p">)</span><span class="w"> </span><span class="nx">Save</span><span class="p">(</span><span class="nx">user</span><span class="w"> </span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">pool</span><span class="p">.</span><span class="nx">Conn</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">conn</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">conn</span><span class="p">.</span><span class="nx">ExecContext</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"INSERT INTO users(id, name) VALUES (?, ?)"</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">user</span><span class="p">.</span><span class="nx">Id</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">Name</span><span class="p">.</span><span class="nx">Value</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">nextIdentity</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">UserId</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">save</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="p">};</span>
@@ -33857,7 +34136,70 @@
 <span class="w">  </span><span class="p">},</span>
 <span class="p">};</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">mysql</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"mysql2/promise"</span><span class="p">;</span>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">interface</span> <span class="nx">UserRepository</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">nextIdentity</span><span class="p">()</span><span class="o">:</span> <span class="nx">UserId</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">save</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$user</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$userRepository</span> <span class="o">=</span> <span class="k">new</span> <span class="k">class</span> <span class="p">(</span><span class="nv">$pool</span><span class="p">)</span> <span class="k">implements</span> <span class="nx">UserRepository</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">PDO</span> <span class="nv">$pool</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">nextIdentity</span><span class="p">()</span><span class="o">:</span> <span class="nx">UserId</span>
+    <span class="p">{</span>
+        <span class="c1">// 採番テーブルが生成したIDを取得する</span>
+        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pool</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s2">"SELECT nextval('user_seq') AS id"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">UserId</span><span class="p">((</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">(</span><span class="nx">PDO</span><span class="o">::</span><span class="na">FETCH_ASSOC</span><span class="p">)[</span><span class="s2">"id"</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">save</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$user</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$statement</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">pool</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span>
+            <span class="s2">"INSERT INTO users(id, name) VALUES (?, ?)"</span>
+        <span class="p">);</span>
+        <span class="nv">$statement</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">id</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">,</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">name</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Go</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"database/sql"</span>
+<span class="w">    </span><span class="s">"os"</span>
+
+<span class="w">    </span><span class="s">"github.com/go-sql-driver/mysql"</span>
+<span class="p">)</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">pool</span><span class="w"> </span><span class="o">*</span><span class="nx">sql</span><span class="p">.</span><span class="nx">DB</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">config</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mysql</span><span class="p">.</span><span class="nx">NewConfig</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">config</span><span class="p">.</span><span class="nx">Net</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"tcp"</span>
+<span class="w">    </span><span class="nx">config</span><span class="p">.</span><span class="nx">Addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">"DB_HOST"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">config</span><span class="p">.</span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">"DB_USER"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">config</span><span class="p">.</span><span class="nx">Passwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">"DB_PASS"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">config</span><span class="p">.</span><span class="nx">DBName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">"DB_NAME"</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span>
+<span class="w">    </span><span class="nx">pool</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">"mysql"</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">FormatDSN</span><span class="p">())</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">mysql</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"mysql2/promise"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">v4</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">uuidv4</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"uuid"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">pool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mysql</span><span class="p">.</span><span class="nx">createPool</span><span class="p">({</span>
@@ -33867,6 +34209,17 @@
 <span class="w">  </span><span class="nx">database</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.DB_NAME</span><span class="p">,</span>
 <span class="p">});</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="nv">$pool</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span>
+    <span class="nb">sprintf</span><span class="p">(</span><span class="s2">"mysql:host=%s;dbname=%s"</span><span class="p">,</span> <span class="nb">getenv</span><span class="p">(</span><span class="s2">"DB_HOST"</span><span class="p">),</span> <span class="nb">getenv</span><span class="p">(</span><span class="s2">"DB_NAME"</span><span class="p">)),</span>
+    <span class="nb">getenv</span><span class="p">(</span><span class="s2">"DB_USER"</span><span class="p">),</span>
+    <span class="nb">getenv</span><span class="p">(</span><span class="s2">"DB_PASS"</span><span class="p">),</span>
+<span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><br></p>
 <h3 id="_7">エンティティのコンストラクタ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>採番処理を UUID の生成で実装する場合、データベースに依存しないため、エンティティのコンストラクタに実装できる。</p>

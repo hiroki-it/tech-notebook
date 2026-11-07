@@ -1295,6 +1295,8 @@
       
         
       
+        
+      
     
     
     
@@ -1411,6 +1413,34 @@
     
   
     オブジェクト指向設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_application_architecture_backend_object_orientation_class.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    クラス
   
 
     
@@ -2317,14 +2347,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../software_application_architecture_microservices_services_auth.html" class="md-nav__link">
+      <a href="../software_application_architecture_microservices_services_general.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    認証／認可
+    汎用ロジック
   
 
     
@@ -33699,7 +33729,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 21:09:18 JST">2026-11-07</span>
   </span>
 
     
@@ -33747,15 +33777,49 @@
 <p>次の例では、オブジェクト A はオブジェクト B を参照している。</p>
 <p>これは、オブジェクト A が B に依存している状況である。</p>
 <p>リスト 7.1：ObjectA は ObjectB に依存する。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">ObjectA</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Go</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">ObjectA</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">objectB</span><span class="w"> </span><span class="o">*</span><span class="nx">ObjectB</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">ObjectA</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">objectB?</span><span class="o">:</span><span class="w"> </span><span class="kt">ObjectB</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">ObjectA</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="o">?</span><span class="nx">ObjectB</span> <span class="nv">$objectB</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-02" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-02.png" /></p>
 <p>次の例では、実装リポジトリはインターフェースリポジトリの実装である。</p>
 <p>これも、UserRepository が IUserRepository に依存している状況である。</p>
 <p>リスト 7.2：UserRepository は IUserRepository に依存する</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Go</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Find</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="nx">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">UserRepository</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">UserRepository</span><span class="p">)</span><span class="w"> </span><span class="nx">Find</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="nx">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 中略</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">find</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="p">};</span>
 
@@ -33765,12 +33829,47 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">interface</span> <span class="nx">IUserRepository</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">UserId</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">User</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">UserRepository</span> <span class="k">implements</span> <span class="nx">IUserRepository</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">UserId</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">User</span>
+    <span class="p">{</span>
+        <span class="c1">// 中略</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-03" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-03.png" /></p>
 <h3 id="_4">よくない依存関係<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>次の例では、UserApplicationService は UserRepository（実装リポジトリ）に依存している。</p>
 <p>この状態では、UserApplicationService の処理を実行するときに、DB が必要になってしまう。</p>
 <p>リスト 7.3：UserApplicationService の依存関係に着目</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Go</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">repository</span><span class="w"> </span><span class="o">*</span><span class="nx">UserRepository</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewUserApplicationService</span><span class="p">(</span><span class="nx">repository</span><span class="w"> </span><span class="o">*</span><span class="nx">UserRepository</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">UserApplicationService</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">repository</span><span class="p">:</span><span class="w"> </span><span class="nx">repository</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 中略</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">repository</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepository</span><span class="p">;</span>
 
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">repository</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepository</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -33780,11 +33879,45 @@
 <span class="w">  </span><span class="c1">// 中略</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">UserApplicationService</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="nx">UserRepository</span> <span class="nv">$repository</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">UserRepository</span> <span class="nv">$repository</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">repository</span> <span class="o">=</span> <span class="nv">$repository</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 中略</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-04" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-04.png" /></p>
 <p>代わりに、IUserRepository（インターフェースリポジトリ）に依存させる。</p>
 <p>インメモリ実装リポジトリに差し替えられるため、テスト時などで DB がなくても UserApplicationService の処理を実行できるようになる。</p>
 <p>リスト 7.4：リポジトリのインターフェースを参照する</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Go</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">repository</span><span class="w"> </span><span class="nx">IUserRepository</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewUserApplicationService</span><span class="p">(</span><span class="nx">repository</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">UserApplicationService</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">repository</span><span class="p">:</span><span class="w"> </span><span class="nx">repository</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 中略</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">repository</span><span class="o">:</span><span class="w"> </span><span class="kt">IUserRepository</span><span class="p">;</span>
 
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">repository</span><span class="o">:</span><span class="w"> </span><span class="kt">IUserRepository</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -33794,9 +33927,41 @@
 <span class="w">  </span><span class="c1">// 中略</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">UserApplicationService</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="nx">IUserRepository</span> <span class="nv">$repository</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IUserRepository</span> <span class="nv">$repository</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">repository</span> <span class="o">=</span> <span class="nv">$repository</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 中略</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p>結果的に、『具体型』の UserApplicationService と UserRepository の両方が『抽象型』の IUserRepository に依存することとなる。</p>
 <p>これは依存関係逆転の原則を満たしている。</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Go</label><label for="__tabbed_5_2">TypeScript</label><label for="__tabbed_5_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Find</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="nx">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">UserRepository</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">UserRepository</span><span class="p">)</span><span class="w"> </span><span class="nx">Find</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="nx">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 中略</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">find</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="p">};</span>
 
@@ -33806,6 +33971,24 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">interface</span> <span class="nx">IUserRepository</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">UserId</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">User</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">UserRepository</span> <span class="k">implements</span> <span class="nx">IUserRepository</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">UserId</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">User</span>
+    <span class="p">{</span>
+        <span class="c1">// 中略</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-05" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-05.png" /></p>
 <h2 id="73">7.3 依存関係逆転の原則とは<a class="headerlink" href="#73" title="Permanent link">&para;</a></h2>
 <p>次に示す２つの条件のことである。</p>
@@ -33814,7 +33997,25 @@
 <h3 id="731">7.3.1 抽象に依存せよ<a class="headerlink" href="#731" title="Permanent link">&para;</a></h3>
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-06" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-06.png" /></p>
 <p>A を満たす。</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Go</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 上位レベル（≒ 上位レイヤー）が抽象に依存する</span>
+<span class="w">    </span><span class="nx">repository</span><span class="w"> </span><span class="nx">IUserRepository</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewUserApplicationService</span><span class="p">(</span><span class="nx">repository</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">UserApplicationService</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">repository</span><span class="p">:</span><span class="w"> </span><span class="nx">repository</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 中略</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 上位レベル（≒ 上位レイヤー）が抽象に依存する</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">repository</span><span class="o">:</span><span class="w"> </span><span class="kt">IUserRepository</span><span class="p">;</span>
 
@@ -33825,8 +34026,43 @@
 <span class="w">  </span><span class="c1">// 中略</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">UserApplicationService</span>
+<span class="p">{</span>
+    <span class="c1">// 上位レベル（≒ 上位レイヤー）が抽象に依存する</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="nx">IUserRepository</span> <span class="nv">$repository</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IUserRepository</span> <span class="nv">$repository</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">repository</span> <span class="o">=</span> <span class="nv">$repository</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 中略</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p>A と B を満たす。</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Go</label><label for="__tabbed_7_2">TypeScript</label><label for="__tabbed_7_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Find</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="nx">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// 下位レベル（≒ 下位レイヤー）が抽象に依存する</span>
+<span class="c1">// 実装の詳細が抽象に依存する</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">UserRepository</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">UserRepository</span><span class="p">)</span><span class="w"> </span><span class="nx">Find</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="nx">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 中略</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">find</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="p">};</span>
 
@@ -33838,6 +34074,26 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">interface</span> <span class="nx">IUserRepository</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">UserId</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">User</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 下位レベル（≒ 下位レイヤー）が抽象に依存する</span>
+<span class="c1">// 実装の詳細が抽象に依存する</span>
+<span class="k">class</span> <span class="nc">UserRepository</span> <span class="k">implements</span> <span class="nx">IUserRepository</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">UserId</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">User</span>
+    <span class="p">{</span>
+        <span class="c1">// 中略</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p>上記２つを実装すると、A と B の両方を満たすため、依存関係逆転の原則を満たせる。</p>
 <h3 id="732">7.3.2 主導権を抽象に<a class="headerlink" href="#732" title="Permanent link">&para;</a></h3>
 <p>上位モジュールが主導権をもつべき。</p>
@@ -33845,7 +34101,25 @@
 <h2 id="74">7.4 依存関係をコントロールする<a class="headerlink" href="#74" title="Permanent link">&para;</a></h2>
 <p>次の例のように、テスト時にインメモリ実装リポジトリを使用したいという目的で、インメモリ実装リポジトリの呼び出しをハードコーディングしてしまうのはよくない。</p>
 <p>リスト 7.5：インメモリ実装リポジトリをコンストラクタで生成する</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Go</label><label for="__tabbed_8_2">TypeScript</label><label for="__tabbed_8_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">userRepository</span><span class="w"> </span><span class="nx">IUserRepository</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewUserApplicationService</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">UserApplicationService</span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// テスト時はインメモリ実装リポジトリを呼び出すようにハードコーディングしてしまう</span>
+<span class="w">        </span><span class="nx">userRepository</span><span class="p">:</span><span class="w"> </span><span class="nx">NewInMemoryUserRepository</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 中略</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">userRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">IUserRepository</span><span class="p">;</span>
 
 <span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -33856,9 +34130,45 @@
 <span class="w">  </span><span class="c1">// 中略</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">UserApplicationService</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="nx">IUserRepository</span> <span class="nv">$userRepository</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// テスト時はインメモリ実装リポジトリを呼び出すようにハードコーディングしてしまう</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userRepository</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">InMemoryUserRepository</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 中略</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p>次の例のように、実環境で動かすときに実装リポジトリを呼び出すように書き換えないといけない</p>
 <p>リスト 7.6：プロダクション用のリポジトリに差し替える</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Go</label><label for="__tabbed_9_2">TypeScript</label><label for="__tabbed_9_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">userRepository</span><span class="w"> </span><span class="nx">IUserRepository</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewUserApplicationService</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">UserApplicationService</span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 実環境では実装リポジトリを呼び出すように書き換えないといけない</span>
+<span class="w">        </span><span class="nx">userRepository</span><span class="p">:</span><span class="w"> </span><span class="nx">NewUserRepository</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 中略</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">userRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">IUserRepository</span><span class="p">;</span>
 
 <span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -33869,6 +34179,24 @@
 <span class="w">  </span><span class="c1">// 中略</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">UserApplicationService</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="nx">IUserRepository</span> <span class="nv">$userRepository</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 実環境では実装リポジトリを呼び出すように書き換えないといけない</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userRepository</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserRepository</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 中略</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h3 id="741-service-locator">7.4.1 Service Locator パターン<a class="headerlink" href="#741-service-locator" title="Permanent link">&para;</a></h3>
 <p>インメモリ実装リポジトリと実装リポジトリをハードコーディングせずに差し替えたい。</p>
 <p>そんなときは、ServiceLocator パターンが役立つ。</p>
@@ -33880,7 +34208,24 @@
 </div></details>
 
 <p>リスト 7.7：ServiceLocator を適用する</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Go</label><label for="__tabbed_10_2">TypeScript</label><label for="__tabbed_10_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">userRepository</span><span class="w"> </span><span class="nx">IUserRepository</span>
+<span class="p">}</span>
+
+<span class="c1">// コンストラクタの引数はない</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewUserApplicationService</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">UserApplicationService</span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// IUserRepositoryを呼び出しているが、内部的にはServiceLocatorオブジェクトで登録したオブジェクトを呼び出している</span>
+<span class="w">        </span><span class="nx">userRepository</span><span class="p">:</span><span class="w"> </span><span class="nx">servicelocator</span><span class="p">.</span><span class="nx">Resolve</span><span class="p">[</span><span class="nx">IUserRepository</span><span class="p">](</span><span class="s">"IUserRepository"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">userRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">IUserRepository</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// コンストラクタの引数はない</span>
@@ -33891,21 +34236,76 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">UserApplicationService</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="nx">IUserRepository</span> <span class="nv">$userRepository</span><span class="p">;</span>
+
+    <span class="c1">// コンストラクタの引数はない</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// IUserRepositoryを呼び出しているが、内部的にはServiceLocatorオブジェクトで登録したオブジェクトを呼び出している</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userRepository</span> <span class="o">=</span> <span class="nx">ServiceLocator</span><span class="o">::</span><span class="na">resolve</span><span class="p">(</span><span class="nx">IUserRepository</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-07" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-07.png" /></p>
 <p>ServiceLocator パターンを実装した ServiceLocator オブジェクトには、呼び出しの紐づけを事前に登録しておく。</p>
 <p>例えば、テスト時は IUserRepository を呼び出すと InMemoryUserRepository が返却されるように実装しておく。</p>
 <p>リスト 7.8：事前にインスタンスを登録する</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:3"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Go</label><label for="__tabbed_11_2">TypeScript</label><label for="__tabbed_11_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
+<span class="nx">servicelocator</span><span class="p">.</span><span class="nx">RegisterClass</span><span class="p">(</span>
+<span class="w">    </span><span class="s">"IUserRepository"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">NewInMemoryUserRepository</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
 <span class="nx">ServiceLocator</span><span class="p">.</span><span class="nx">registerClass</span><span class="o">&lt;</span><span class="nx">IUserRepository</span><span class="o">&gt;</span><span class="p">(</span>
 <span class="w">  </span><span class="nx">IUserRepository</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">InMemoryUserRepository</span>
 <span class="p">);</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="c1">// ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
+<span class="nx">ServiceLocator</span><span class="o">::</span><span class="na">registerClass</span><span class="p">(</span>
+    <span class="nx">IUserRepository</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+    <span class="nx">InMemoryUserRepository</span><span class="o">::</span><span class="na">class</span>
+<span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p>また、実環境では IUserRepository を呼び出すと UserRepository が返却されるように実装しておく。</p>
 <p>リスト 7.9：プロダクションに移行するためリポジトリを切り替える</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:3"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Go</label><label for="__tabbed_12_2">TypeScript</label><label for="__tabbed_12_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
+<span class="nx">servicelocator</span><span class="p">.</span><span class="nx">RegisterClass</span><span class="p">(</span><span class="s">"IUserRepository"</span><span class="p">,</span><span class="w"> </span><span class="nx">NewUserRepository</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
 <span class="nx">ServiceLocator</span><span class="p">.</span><span class="nx">registerClass</span><span class="o">&lt;</span><span class="nx">IUserRepository</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">IUserRepository</span><span class="p">,</span><span class="w"> </span><span class="nx">UserRepository</span><span class="p">);</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="c1">// ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
+<span class="nx">ServiceLocator</span><span class="o">::</span><span class="na">registerClass</span><span class="p">(</span><span class="nx">IUserRepository</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">UserRepository</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p>これらの対応関係を実環境とテスト時で切り替えられるようにしておく。</p>
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-08" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-08.png" /></p>
 <details><summary>🚨補足（クリックで開く）</summary><div>
@@ -33914,7 +34314,67 @@ ServiceLocator オブジェクトには、呼び出しの紐づけを事前に�
 
 紐づけをキーバリューで定義しておき、（書籍では言及していないが）フラグで条件分岐させて切り替える。
 
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">IUserRepository</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./domain/IUserRepository"</span><span class="p">;</span>
+=== "Go"
+
+    <div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"os"</span>
+
+<span class="w">    </span><span class="s">"app/domain"</span>
+<span class="w">    </span><span class="s">"app/infrastructure"</span>
+<span class="w">    </span><span class="s">"app/servicelocator"</span>
+<span class="p">)</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">RepositoriesMap</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">token</span><span class="w">          </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">implementation</span><span class="w"> </span><span class="kt">any</span>
+<span class="p">}</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">tokens</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">IUserRepository</span><span class="w">   </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">ICircleRepository</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="c1">// 中略</span>
+<span class="p">}{</span>
+<span class="w">    </span><span class="nx">IUserRepository</span><span class="p">:</span><span class="w">   </span><span class="s">"IUserRepository"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">ICircleRepository</span><span class="p">:</span><span class="w"> </span><span class="s">"ICircleRepository"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// 中略</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 環境変数からフラグを取得する</span>
+<span class="w">    </span><span class="nx">inMemory</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">"IN_MEMORY"</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"true"</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">userRepository</span><span class="w"> </span><span class="nx">domain</span><span class="p">.</span><span class="nx">IUserRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">infrastructure</span><span class="p">.</span><span class="nx">NewUserRepository</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">circleRepository</span><span class="w"> </span><span class="nx">domain</span><span class="p">.</span><span class="nx">ICircleRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">infrastructure</span><span class="p">.</span><span class="nx">NewCircleRepository</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">inMemory</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">userRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">infrastructure</span><span class="p">.</span><span class="nx">NewInMemoryUserRepository</span><span class="p">()</span>
+<span class="w">        </span><span class="nx">circleRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">infrastructure</span><span class="p">.</span><span class="nx">NewInMemoryCircleRepository</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">repositoriesMap</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="nx">RepositoriesMap</span><span class="p">{</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">token</span><span class="p">:</span><span class="w">          </span><span class="nx">tokens</span><span class="p">.</span><span class="nx">IUserRepository</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">implementation</span><span class="p">:</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">token</span><span class="p">:</span><span class="w">          </span><span class="nx">tokens</span><span class="p">.</span><span class="nx">ICircleRepository</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">implementation</span><span class="p">:</span><span class="w"> </span><span class="nx">circleRepository</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="c1">// 中略</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">repository</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">repositoriesMap</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">servicelocator</span><span class="p">.</span><span class="nx">Register</span><span class="p">(</span><span class="nx">repository</span><span class="p">.</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">repository</span><span class="p">.</span><span class="nx">implementation</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+=== "TypeScript"
+
+    <div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">IUserRepository</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./domain/IUserRepository"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">ICircleRepository</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./domain/ICircleRepository"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">InMemoryUserRepository</span><span class="p">,</span>
@@ -33962,11 +34422,87 @@ ServiceLocator オブジェクトには、呼び出しの紐づけを事前に�
 <span class="p">}</span>
 </code></pre></div>
 
+=== "PHP"
+
+    <div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">App\Domain\IUserRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\ICircleRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Infrastructure\InMemoryUserRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Infrastructure\UserRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Infrastructure\InMemoryCircleRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Infrastructure\CircleRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\ServiceLocator</span><span class="p">;</span>
+
+<span class="k">final</span> <span class="k">class</span> <span class="nc">RepositoriesMap</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">public</span> <span class="k">readonly</span> <span class="nx">string</span> <span class="nv">$token</span><span class="p">,</span>
+        <span class="k">public</span> <span class="k">readonly</span> <span class="nx">object</span> <span class="nv">$implementation</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$tokens</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"IUserRepository"</span> <span class="o">=&gt;</span> <span class="nx">IUserRepository</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+    <span class="s2">"ICircleRepository"</span> <span class="o">=&gt;</span> <span class="nx">ICircleRepository</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+    <span class="c1">// 中略</span>
+<span class="p">];</span>
+
+<span class="c1">// 環境変数からフラグを取得する</span>
+<span class="nv">$inMemory</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s2">"IN_MEMORY"</span><span class="p">)</span> <span class="o">===</span> <span class="s2">"true"</span><span class="p">;</span>
+
+<span class="nv">$repositoriesMap</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="k">new</span> <span class="nx">RepositoriesMap</span><span class="p">(</span>
+        <span class="nx">token</span><span class="o">:</span> <span class="nv">$tokens</span><span class="p">[</span><span class="s2">"IUserRepository"</span><span class="p">],</span>
+        <span class="nx">implementation</span><span class="o">:</span> <span class="nv">$inMemory</span>
+            <span class="o">?</span> <span class="k">new</span> <span class="nx">InMemoryUserRepository</span><span class="p">()</span>
+            <span class="o">:</span> <span class="k">new</span> <span class="nx">UserRepository</span><span class="p">(),</span>
+    <span class="p">),</span>
+    <span class="k">new</span> <span class="nx">RepositoriesMap</span><span class="p">(</span>
+        <span class="nx">token</span><span class="o">:</span> <span class="nv">$tokens</span><span class="p">[</span><span class="s2">"ICircleRepository"</span><span class="p">],</span>
+        <span class="nx">implementation</span><span class="o">:</span> <span class="nv">$inMemory</span>
+            <span class="o">?</span> <span class="k">new</span> <span class="nx">InMemoryCircleRepository</span><span class="p">()</span>
+            <span class="o">:</span> <span class="k">new</span> <span class="nx">CircleRepository</span><span class="p">(),</span>
+    <span class="p">),</span>
+    <span class="c1">// 中略</span>
+<span class="p">];</span>
+
+<span class="c1">// ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$repositoriesMap</span> <span class="k">as</span> <span class="nv">$repository</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">ServiceLocator</span><span class="o">::</span><span class="na">register</span><span class="p">(</span><span class="nv">$repository</span><span class="o">-&gt;</span><span class="na">token</span><span class="p">,</span> <span class="nv">$repository</span><span class="o">-&gt;</span><span class="na">implementation</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
 書籍では言及していないが、ServiceLocator オブジェクトは自前で実装したり、フレームワークに備わっていればそれを使用する。
 
 典型的な ServiceLocator オブジェクトは static 宣言を使用する。
 
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ServiceLocator</span><span class="w"> </span><span class="p">{</span>
+=== "Go"
+
+    <div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">servicelocator</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">registry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span><span class="p">{}</span>
+
+<span class="c1">// インターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">Register</span><span class="p">(</span><span class="nx">token</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">implementation</span><span class="w"> </span><span class="kt">any</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">registry</span><span class="p">[</span><span class="nx">token</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">implementation</span>
+<span class="p">}</span>
+
+<span class="c1">// 登録済みの実装リポジトリのインスタンスを返却する</span>
+<span class="c1">// インスタンスは事前に作成されている</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">Resolve</span><span class="p">[</span><span class="nx">T</span><span class="w"> </span><span class="kt">any</span><span class="p">](</span><span class="nx">token</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="nx">T</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">registry</span><span class="p">[</span><span class="nx">token</span><span class="p">].(</span><span class="nx">T</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">Clear</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">registry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+=== "TypeScript"
+
+    <div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ServiceLocator</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="nx">registry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="o">&lt;</span><span class="nx">symbol</span><span class="p">,</span><span class="w"> </span><span class="nx">unknown</span><span class="o">&gt;</span><span class="p">();</span>
 
 <span class="w">  </span><span class="c1">// インターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
@@ -33986,12 +34522,53 @@ ServiceLocator オブジェクトには、呼び出しの紐づけを事前に�
 <span class="p">}</span>
 </code></pre></div>
 
+=== "PHP"
+
+    <div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">ServiceLocator</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="k">array</span> <span class="nv">$registry</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="c1">// インターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$token</span><span class="p">,</span> <span class="nx">object</span> <span class="nv">$implementation</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nx">self</span><span class="o">::</span><span class="nv">$registry</span><span class="p">[</span><span class="nv">$token</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$implementation</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 登録済みの実装リポジトリのインスタンスを返却する</span>
+    <span class="c1">// インスタンスは事前に作成されている</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">resolve</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$token</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="nv">$registry</span><span class="p">[</span><span class="nv">$token</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">clear</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nx">self</span><span class="o">::</span><span class="nv">$registry</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
 </div></details>
 
 <p>ServiceLocator オブジェクトのデメリットとして、依存関係がオブジェクトの外からはわからない。</p>
 <p>UserApplicationService を外から見ても、UserRepository に依存することはわからない。</p>
 <p>リスト 7.11：リスト 7.10 のコンストラクタ</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:3"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><input id="__tabbed_13_3" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Go</label><label for="__tabbed_13_2">TypeScript</label><label for="__tabbed_13_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">userRepository</span><span class="w"> </span><span class="nx">IUserRepository</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewUserApplicationService</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">UserApplicationService</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">userRepository</span><span class="p">:</span><span class="w"> </span><span class="nx">servicelocator</span><span class="p">.</span><span class="nx">Resolve</span><span class="p">[</span><span class="nx">IUserRepository</span><span class="p">](</span><span class="s">"IUserRepository"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">userRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">IUserRepository</span><span class="p">;</span>
 
 <span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -34000,13 +34577,44 @@ ServiceLocator オブジェクトには、呼び出しの紐づけを事前に�
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">UserApplicationService</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="nx">IUserRepository</span> <span class="nv">$userRepository</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userRepository</span> <span class="o">=</span> <span class="nx">ServiceLocator</span><span class="o">::</span><span class="na">resolve</span><span class="p">(</span><span class="nx">IUserRepository</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <details><summary>🚨補足（クリックで開く）</summary><div>
 
 ServiceLocator では static 宣言であるため、アプリ起動時にインスタンスを ServiceLocator 内で作る。
 
 UserApplicationService のなかでは、依存先の UserRepository がすでに準備されてしまっている
 
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserApplicationService</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./userApplicationService"</span><span class="p">;</span>
+=== "Go"
+
+    <div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="s">"app/application"</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// UserApplicationServiceを外から見ても、UserRepositoryに依存することはわからない。</span>
+<span class="w">    </span><span class="nx">userApplicationService</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">application</span><span class="p">.</span><span class="nx">NewUserApplicationService</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">userApplicationService</span><span class="p">.</span><span class="nx">FindById</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+=== "TypeScript"
+
+    <div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserApplicationService</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./userApplicationService"</span><span class="p">;</span>
 
 <span class="c1">// UserApplicationServiceを外から見ても、UserRepositoryに依存することはわからない。</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">userApplicationService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="p">();</span>
@@ -34014,11 +34622,39 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 <span class="nx">userApplicationService</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
 </code></pre></div>
 
+=== "PHP"
+
+    <div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">use</span> <span class="nx">App\Application\UserApplicationService</span><span class="p">;</span>
+
+<span class="c1">// UserApplicationServiceを外から見ても、UserRepositoryに依存することはわからない。</span>
+<span class="nv">$userApplicationService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserApplicationService</span><span class="p">();</span>
+
+<span class="nv">$userApplicationService</span><span class="o">-&gt;</span><span class="na">findById</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div>
+
 </div></details>
 
 <p>また、ServiceLocator は呼び出しを動的に切り替えるため、ビルドの段階ではエラーにならず、テストなどで実行しないとエラーにならない</p>
 <p>リスト 7.13：UserApplicationService に変化が起きた</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:3"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><input id="__tabbed_14_3" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Go</label><label for="__tabbed_14_2">TypeScript</label><label for="__tabbed_14_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">userRepository</span><span class="w"> </span><span class="nx">IUserRepository</span>
+<span class="w">    </span><span class="nx">fooRepository</span><span class="w">  </span><span class="nx">IFooRepository</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewUserApplicationService</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">UserApplicationService</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">userRepository</span><span class="p">:</span><span class="w"> </span><span class="nx">servicelocator</span><span class="p">.</span><span class="nx">Resolve</span><span class="p">[</span><span class="nx">IUserRepository</span><span class="p">](</span><span class="s">"IUserRepository"</span><span class="p">),</span>
+<span class="w">        </span><span class="c1">// repositoriesMapに対応関係をまだ登録していないが、ビルドの段階ではエラーにならない</span>
+<span class="w">        </span><span class="nx">fooRepository</span><span class="p">:</span><span class="w"> </span><span class="nx">servicelocator</span><span class="p">.</span><span class="nx">Resolve</span><span class="p">[</span><span class="nx">IFooRepository</span><span class="p">](</span><span class="s">"IFooRepository"</span><span class="p">),</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">userRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">IUserRepository</span><span class="p">;</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">fooRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">IFooRepository</span><span class="p">;</span>
 
@@ -34030,6 +34666,24 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">UserApplicationService</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="nx">IUserRepository</span> <span class="nv">$userRepository</span><span class="p">;</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="nx">IFooRepository</span> <span class="nv">$fooRepository</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userRepository</span> <span class="o">=</span> <span class="nx">ServiceLocator</span><span class="o">::</span><span class="na">resolve</span><span class="p">(</span><span class="nx">IUserRepository</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="c1">// repositoriesMapに対応関係をまだ登録していないが、ビルドの段階ではエラーにならない</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span> <span class="o">=</span> <span class="nx">ServiceLocator</span><span class="o">::</span><span class="na">resolve</span><span class="p">(</span><span class="nx">IFooRepository</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h3 id="742-ioc">7.4.2 IoC コンテナパターン<a class="headerlink" href="#742-ioc" title="Permanent link">&para;</a></h3>
 <p>ということで、Service Locator パターンとは別の方法で、インメモリ実装リポジトリと実装リポジトリを差し替えてみる。</p>
 <p>それには、次のプラクティスを使用する。</p>
@@ -34046,12 +34700,51 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 <p>まずは、コンストラクタインジェクションから説明する。</p>
 <p>次の例では、UserApplicationService を InMemoryUserRepository に依存させている（InMemoryUserRepository に対する依存を注入している）</p>
 <p>リスト 7.14：依存を注入する</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">userRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">InMemoryUserRepository</span><span class="p">();</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:3"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><input id="__tabbed_15_3" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Go</label><label for="__tabbed_15_2">TypeScript</label><label for="__tabbed_15_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="nx">userRepository</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewInMemoryUserRepository</span><span class="p">()</span>
+<span class="nx">userApplicationService</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewUserApplicationService</span><span class="p">(</span><span class="nx">userRepository</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">userRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">InMemoryUserRepository</span><span class="p">();</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">userApplicationService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="p">(</span><span class="nx">userRepository</span><span class="p">);</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="nv">$userRepository</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">InMemoryUserRepository</span><span class="p">();</span>
+<span class="nv">$userApplicationService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserApplicationService</span><span class="p">(</span><span class="nv">$userRepository</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p>コンストラクタを使用して依存させているため、コンストラクタインジェクションという。</p>
 <p>リスト 7.15：新たな依存関係を追加する</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:3"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><input id="__tabbed_16_3" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Go</label><label for="__tabbed_16_2">TypeScript</label><label for="__tabbed_16_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">userRepository</span><span class="w">   </span><span class="nx">IUserRepository</span>
+<span class="w">    </span><span class="nx">circleRepository</span><span class="w"> </span><span class="nx">ICircleRepository</span>
+<span class="p">}</span>
+
+<span class="c1">// コンストラクタを使用して依存させている</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewUserApplicationService</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">userRepository</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">circleRepository</span><span class="w"> </span><span class="nx">ICircleRepository</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">UserApplicationService</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">userRepository</span><span class="p">:</span><span class="w">   </span><span class="nx">userRepository</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">circleRepository</span><span class="p">:</span><span class="w"> </span><span class="nx">circleRepository</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// set(...) の実装は省略</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">userRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">IUserRepository</span><span class="p">;</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">circleRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">ICircleRepository</span><span class="p">;</span>
 
@@ -34067,6 +34760,28 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 <span class="w">  </span><span class="c1">// set(...) の実装は省略</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">UserApplicationService</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="nx">IUserRepository</span> <span class="nv">$userRepository</span><span class="p">;</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="nx">ICircleRepository</span> <span class="nv">$circleRepository</span><span class="p">;</span>
+
+    <span class="c1">// コンストラクタを使用して依存させている</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="nx">IUserRepository</span> <span class="nv">$userRepository</span><span class="p">,</span>
+        <span class="nx">ICircleRepository</span> <span class="nv">$circleRepository</span>
+    <span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userRepository</span> <span class="o">=</span> <span class="nv">$userRepository</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">circleRepository</span> <span class="o">=</span> <span class="nv">$circleRepository</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// set(...) の実装は省略</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p>他にも</p>
 <ul>
 <li>コンストラクタインジェクション：constructor(…)</li>
@@ -34081,7 +34796,24 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 <p>一方で、IoC コンテナオブジェクトでは UserApplicationService のコンストラクタに IUserRepository を渡すように実装しないといけない。</p>
 <p>そのため、ビルド時はエラーになってくれる。</p>
 <p>リスト 7.17：IoC コンテナを利用して依存関係を解決させる</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// IoCコンテナオブジェクト</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:3"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><input id="__tabbed_17_3" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Go</label><label for="__tabbed_17_2">TypeScript</label><label for="__tabbed_17_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// IoCコンテナオブジェクト</span>
+<span class="nx">serviceCollection</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewServiceCollection</span><span class="p">()</span>
+
+<span class="c1">// IoCコンテナオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
+<span class="nx">serviceCollection</span><span class="p">.</span><span class="nx">AddTransient</span><span class="p">((</span><span class="o">*</span><span class="nx">IUserRepository</span><span class="p">)(</span><span class="kc">nil</span><span class="p">),</span><span class="w"> </span><span class="nx">NewInMemoryUserRepository</span><span class="p">)</span>
+<span class="c1">// UserApplicationServiceのコンストラクタにIUserRepositoryを渡すように実装しておかないと、ここでエラーになる</span>
+<span class="nx">serviceCollection</span><span class="p">.</span><span class="nx">AddTransient</span><span class="p">((</span><span class="o">*</span><span class="nx">UserApplicationService</span><span class="p">)(</span><span class="kc">nil</span><span class="p">),</span><span class="w"> </span><span class="nx">NewUserApplicationService</span><span class="p">)</span>
+
+<span class="c1">// IoCコンテナオブジェクトからuserApplicationServiceを取得する</span>
+<span class="nx">provider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">serviceCollection</span><span class="p">.</span><span class="nx">BuildServiceProvider</span><span class="p">()</span>
+<span class="nx">userApplicationService</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">GetService</span><span class="p">((</span><span class="o">*</span><span class="nx">UserApplicationService</span><span class="p">)(</span><span class="kc">nil</span><span class="p">)).(</span><span class="o">*</span><span class="nx">UserApplicationService</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// IoCコンテナオブジェクト</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">serviceCollection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ServiceCollection</span><span class="p">();</span>
 
 <span class="c1">// IoCコンテナオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
@@ -34093,10 +34825,87 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 <span class="kd">const</span><span class="w"> </span><span class="nx">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">serviceCollection</span><span class="p">.</span><span class="nx">buildServiceProvider</span><span class="p">();</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">userApplicationService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">getService</span><span class="o">&lt;</span><span class="nx">UserApplicationService</span><span class="o">&gt;</span><span class="p">();</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="c1">// IoCコンテナオブジェクト</span>
+<span class="nv">$serviceCollection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ServiceCollection</span><span class="p">();</span>
+
+<span class="c1">// IoCコンテナオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
+<span class="nv">$serviceCollection</span><span class="o">-&gt;</span><span class="na">addTransient</span><span class="p">(</span><span class="nx">IUserRepository</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">InMemoryUserRepository</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<span class="c1">// UserApplicationServiceのコンストラクタにIUserRepositoryを渡すように実装しておかないと、ここでエラーになる</span>
+<span class="nv">$serviceCollection</span><span class="o">-&gt;</span><span class="na">addTransient</span><span class="p">(</span><span class="nx">UserApplicationService</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+<span class="c1">// IoCコンテナオブジェクトからuserApplicationServiceを取得する</span>
+<span class="nv">$provider</span> <span class="o">=</span> <span class="nv">$serviceCollection</span><span class="o">-&gt;</span><span class="na">buildServiceProvider</span><span class="p">();</span>
+<span class="nv">$userApplicationService</span> <span class="o">=</span> <span class="nv">$provider</span><span class="o">-&gt;</span><span class="na">getService</span><span class="p">(</span><span class="nx">UserApplicationService</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-09" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-09.png" /></p>
 <details><summary>🚨補足（クリックで開く）</summary><div>
 
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">IUserRepository</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./domain/IUserRepository"</span><span class="p">;</span>
+=== "Go"
+
+    <div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"os"</span>
+
+<span class="w">    </span><span class="s">"app/infrastructure"</span>
+<span class="w">    </span><span class="s">"app/iocontainer"</span>
+<span class="p">)</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">RepositoriesMap</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">token</span><span class="w">          </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">implementation</span><span class="w"> </span><span class="nx">iocontainer</span><span class="p">.</span><span class="nx">Constructor</span>
+<span class="p">}</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">tokens</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">IUserRepository</span><span class="w">   </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">ICircleRepository</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="c1">// 中略</span>
+<span class="p">}{</span>
+<span class="w">    </span><span class="nx">IUserRepository</span><span class="p">:</span><span class="w">   </span><span class="s">"IUserRepository"</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">ICircleRepository</span><span class="p">:</span><span class="w"> </span><span class="s">"ICircleRepository"</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// 中略</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 環境変数からフラグを取得する</span>
+<span class="w">    </span><span class="nx">inMemory</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">"IN_MEMORY"</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"true"</span>
+
+<span class="w">    </span><span class="nx">userRepository</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">iocontainer</span><span class="p">.</span><span class="nx">Constructor</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">any</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">infrastructure</span><span class="p">.</span><span class="nx">NewUserRepository</span><span class="p">()</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="nx">circleRepository</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">iocontainer</span><span class="p">.</span><span class="nx">Constructor</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">any</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">infrastructure</span><span class="p">.</span><span class="nx">NewCircleRepository</span><span class="p">()</span><span class="w"> </span><span class="p">})</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">inMemory</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">userRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">any</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">infrastructure</span><span class="p">.</span><span class="nx">NewInMemoryUserRepository</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">circleRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">any</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">infrastructure</span><span class="p">.</span><span class="nx">NewInMemoryCircleRepository</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">repositoriesMap</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="nx">RepositoriesMap</span><span class="p">{</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">token</span><span class="p">:</span><span class="w">          </span><span class="nx">tokens</span><span class="p">.</span><span class="nx">IUserRepository</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">implementation</span><span class="p">:</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">token</span><span class="p">:</span><span class="w">          </span><span class="nx">tokens</span><span class="p">.</span><span class="nx">ICircleRepository</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">implementation</span><span class="p">:</span><span class="w"> </span><span class="nx">circleRepository</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="c1">// 中略</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// IoCコンテナオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
+<span class="w">    </span><span class="nx">iocContainer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">iocontainer</span><span class="p">.</span><span class="nx">NewIocContainer</span><span class="p">()</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">repository</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">repositoriesMap</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">iocContainer</span><span class="p">.</span><span class="nx">Register</span><span class="p">(</span><span class="nx">repository</span><span class="p">.</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">repository</span><span class="p">.</span><span class="nx">implementation</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+=== "TypeScript"
+
+    <div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">IUserRepository</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./domain/IUserRepository"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">ICircleRepository</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./domain/ICircleRepository"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">InMemoryUserRepository</span><span class="p">,</span>
@@ -34141,13 +34950,98 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 <span class="p">}</span>
 </code></pre></div>
 
+=== "PHP"
+
+    <div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">use</span> <span class="nx">App\Domain\IUserRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\ICircleRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Infrastructure\InMemoryUserRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Infrastructure\UserRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Infrastructure\InMemoryCircleRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Infrastructure\CircleRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\IocContainer</span><span class="p">;</span>
+
+<span class="k">final</span> <span class="k">class</span> <span class="nc">RepositoriesMap</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">public</span> <span class="k">readonly</span> <span class="nx">string</span> <span class="nv">$token</span><span class="p">,</span>
+        <span class="k">public</span> <span class="k">readonly</span> <span class="nx">string</span> <span class="nv">$implementation</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$tokens</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"IUserRepository"</span> <span class="o">=&gt;</span> <span class="nx">IUserRepository</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+    <span class="s2">"ICircleRepository"</span> <span class="o">=&gt;</span> <span class="nx">ICircleRepository</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+    <span class="c1">// 中略</span>
+<span class="p">];</span>
+
+<span class="c1">// 環境変数からフラグを取得する</span>
+<span class="nv">$inMemory</span> <span class="o">=</span> <span class="nb">getenv</span><span class="p">(</span><span class="s2">"IN_MEMORY"</span><span class="p">)</span> <span class="o">===</span> <span class="s2">"true"</span><span class="p">;</span>
+
+<span class="nv">$repositoriesMap</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="k">new</span> <span class="nx">RepositoriesMap</span><span class="p">(</span>
+        <span class="nx">token</span><span class="o">:</span> <span class="nv">$tokens</span><span class="p">[</span><span class="s2">"IUserRepository"</span><span class="p">],</span>
+        <span class="nx">implementation</span><span class="o">:</span> <span class="nv">$inMemory</span> <span class="o">?</span> <span class="nx">InMemoryUserRepository</span><span class="o">::</span><span class="na">class</span> <span class="o">:</span> <span class="nx">UserRepository</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="k">new</span> <span class="nx">RepositoriesMap</span><span class="p">(</span>
+        <span class="nx">token</span><span class="o">:</span> <span class="nv">$tokens</span><span class="p">[</span><span class="s2">"ICircleRepository"</span><span class="p">],</span>
+        <span class="nx">implementation</span><span class="o">:</span> <span class="nv">$inMemory</span> <span class="o">?</span> <span class="nx">InMemoryCircleRepository</span><span class="o">::</span><span class="na">class</span> <span class="o">:</span> <span class="nx">CircleRepository</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+    <span class="p">),</span>
+    <span class="c1">// 中略</span>
+<span class="p">];</span>
+
+<span class="c1">// IoCコンテナオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
+<span class="nv">$iocContainer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">IocContainer</span><span class="p">();</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$repositoriesMap</span> <span class="k">as</span> <span class="nv">$repository</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$iocContainer</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">(</span><span class="nv">$repository</span><span class="o">-&gt;</span><span class="na">token</span><span class="p">,</span> <span class="nv">$repository</span><span class="o">-&gt;</span><span class="na">implementation</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
 書籍では言及していないが、IoC コンテナオブジェクトは自前で実装したり、フレームワークに備わっていればそれを使用する。
 
 典型的な IoC コンテナオブジェクトは ServiceLocator とは違い static 宣言を使用しない。
 
 そのため、IoC Container では実行したタイミングでインスタンスを作る。
 
-<div class="highlight"><pre><span></span><code><span class="c1">// IoCコンテナ</span>
+=== "Go"
+
+    <div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">iocontainer</span>
+
+<span class="c1">// IoCコンテナ</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">Constructor</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">any</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">IocContainer</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">registry</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">Constructor</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewIocContainer</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">IocContainer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">IocContainer</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">registry</span><span class="p">:</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">Constructor</span><span class="p">{},</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// インターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">IocContainer</span><span class="p">)</span><span class="w"> </span><span class="nx">Register</span><span class="p">(</span><span class="nx">token</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">implementation</span><span class="w"> </span><span class="nx">Constructor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">c</span><span class="p">.</span><span class="nx">registry</span><span class="p">[</span><span class="nx">token</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">implementation</span>
+<span class="p">}</span>
+
+<span class="c1">// 登録済みの実装リポジトリのインスタンスを返却する</span>
+<span class="c1">// インスタンスは事前に作成したものではなく、新しく作成される</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">Resolve</span><span class="p">[</span><span class="nx">T</span><span class="w"> </span><span class="kt">any</span><span class="p">](</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">IocContainer</span><span class="p">,</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="nx">T</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">implementation</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">registry</span><span class="p">[</span><span class="nx">token</span><span class="p">]</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">implementation</span><span class="p">().(</span><span class="nx">T</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">IocContainer</span><span class="p">)</span><span class="w"> </span><span class="nx">Clear</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">c</span><span class="p">.</span><span class="nx">registry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">Constructor</span><span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+=== "TypeScript"
+
+    <div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// IoCコンテナ</span>
 <span class="kr">type</span><span class="w"> </span><span class="nx">Constructor</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="p">(</span><span class="nx">...args</span><span class="o">:</span><span class="w"> </span><span class="kt">any</span><span class="p">[])</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">T</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">IocContainer</span><span class="w"> </span><span class="p">{</span>
@@ -34171,9 +35065,65 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 <span class="p">}</span>
 </code></pre></div>
 
+=== "PHP"
+
+    <div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="c1">// IoCコンテナ</span>
+<span class="k">class</span> <span class="nc">IocContainer</span>
+<span class="p">{</span>
+    <span class="sd">/** @var array&lt;string, class-string&gt; */</span>
+    <span class="k">private</span> <span class="k">array</span> <span class="nv">$registry</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="c1">// インターフェースリポジトリと実装リポジトリの対応関係を登録する</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$token</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$implementation</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">registry</span><span class="p">[</span><span class="nv">$token</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$implementation</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 登録済みの実装リポジトリのインスタンスを返却する</span>
+    <span class="c1">// インスタンスは事前に作成したものではなく、新しく作成される</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">resolve</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$token</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span>
+    <span class="p">{</span>
+        <span class="nv">$implementation</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">registry</span><span class="p">[</span><span class="nv">$token</span><span class="p">];</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nv">$implementation</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">clear</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">registry</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
 IoC コンテナオブジェクトでインスタンスを作成し、これをコンストラクタに渡す。
 
-<div class="highlight"><pre><span></span><code><span class="c1">// IoC Containerとコンストラクタインジェクションの場合</span>
+=== "Go"
+
+    <div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// IoC Containerとコンストラクタインジェクションの場合</span>
+
+<span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"app/application"</span>
+<span class="w">    </span><span class="s">"app/domain"</span>
+<span class="w">    </span><span class="s">"app/iocontainer"</span>
+<span class="w">    </span><span class="s">"app/repositories"</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// IoCコンテナからuserRepositoryインスタンスを取得する</span>
+<span class="w">    </span><span class="nx">userRepository</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">iocontainer</span><span class="p">.</span><span class="nx">Resolve</span><span class="p">[</span><span class="nx">domain</span><span class="p">.</span><span class="nx">IUserRepository</span><span class="p">](</span><span class="nx">repositories</span><span class="p">.</span><span class="nx">Container</span><span class="p">,</span><span class="w"> </span><span class="nx">iocontainer</span><span class="p">.</span><span class="nx">Tokens</span><span class="p">.</span><span class="nx">IUserRepository</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// コンストラクタに注入する</span>
+<span class="w">    </span><span class="c1">// 引数にリポジトリや他の依存する新しいリポジトリを渡さないとビルド段階でエラーになる</span>
+<span class="w">    </span><span class="nx">userApplicationService</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">application</span><span class="p">.</span><span class="nx">NewUserApplicationService</span><span class="p">(</span><span class="nx">userRepository</span><span class="w"> </span><span class="cm">/* 他の依存するリポジトリは省略 */</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">userApplicationService</span><span class="p">.</span><span class="nx">FindById</span><span class="p">(</span><span class="s">"1"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+=== "TypeScript"
+
+    <div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// IoC Containerとコンストラクタインジェクションの場合</span>
 
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./repositories"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">tokens</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./iocContainer"</span><span class="p">;</span>
@@ -34190,13 +35140,52 @@ IoC コンテナオブジェクトでインスタンスを作成し、これを�
 <span class="nx">userApplicationService</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="s2">"1"</span><span class="p">);</span>
 </code></pre></div>
 
+=== "PHP"
+
+    <div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="c1">// IoC Containerとコンストラクタインジェクションの場合</span>
+
+<span class="k">use</span> <span class="nx">App\Application\UserApplicationService</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\IUserRepository</span><span class="p">;</span>
+
+<span class="k">require_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">"/repositories.php"</span><span class="p">;</span>
+
+<span class="c1">// IoCコンテナからuserRepositoryインスタンスを取得する</span>
+<span class="sd">/** @var IUserRepository $userRepository */</span>
+<span class="nv">$userRepository</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">resolve</span><span class="p">(</span><span class="nv">$tokens</span><span class="p">[</span><span class="s2">"IUserRepository"</span><span class="p">]);</span>
+
+<span class="c1">// コンストラクタに注入する</span>
+<span class="c1">// 引数にリポジトリや他の依存する新しいリポジトリを渡さないとビルド段階でエラーになる</span>
+<span class="nv">$userApplicationService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserApplicationService</span><span class="p">(</span><span class="nv">$userRepository</span> <span class="cm">/* 他の依存するリポジトリは省略 */</span><span class="p">);</span>
+
+<span class="nv">$userApplicationService</span><span class="o">-&gt;</span><span class="na">findById</span><span class="p">(</span><span class="s2">"1"</span><span class="p">);</span>
+</code></pre></div>
+
 ServiceLocator オブジェクトでは static 宣言であるため、アプリ起動時にインスタンスを ServiceLocator オブジェクト内で作る。
 
 ServiceLocator オブジェクトからインスタンスを取り出せないため、コンストラクタにインスタンスを渡せない。
 
 また前述の通り、ServiceLocator オブジェクトはオブジェクトの呼び出しを動的に切り替えるため、ビルドの段階ではエラーにならない
 
-<div class="highlight"><pre><span></span><code><span class="c1">// ServiceLocatorオブジェクトの場合</span>
+=== "Go"
+
+    <div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// ServiceLocatorオブジェクトの場合</span>
+
+<span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="s">"app/application"</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// UserApplicationServiceを外から見ても、UserRepositoryに依存することはわからない。</span>
+<span class="w">    </span><span class="c1">// UserApplicationServiceにIUserRepositoryを渡し忘れても、ビルド段階ではエラーにならない</span>
+<span class="w">    </span><span class="nx">userApplicationService</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">application</span><span class="p">.</span><span class="nx">NewUserApplicationService</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">userApplicationService</span><span class="p">.</span><span class="nx">FindById</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+
+=== "TypeScript"
+
+    <div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// ServiceLocatorオブジェクトの場合</span>
 
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserApplicationService</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./userApplicationService"</span><span class="p">;</span>
 
@@ -34205,6 +35194,19 @@ ServiceLocator オブジェクトからインスタンスを取り出せない�
 <span class="kd">const</span><span class="w"> </span><span class="nx">userApplicationService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserApplicationService</span><span class="p">();</span>
 
 <span class="nx">userApplicationService</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+</code></pre></div>
+
+=== "PHP"
+
+    <div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="c1">// ServiceLocatorオブジェクトの場合</span>
+
+<span class="k">use</span> <span class="nx">App\Application\UserApplicationService</span><span class="p">;</span>
+
+<span class="c1">// UserApplicationServiceを外から見ても、UserRepositoryに依存することはわからない。</span>
+<span class="c1">// UserApplicationServiceにIUserRepositoryを渡し忘れても、ビルド段階ではエラーにならない</span>
+<span class="nv">$userApplicationService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserApplicationService</span><span class="p">();</span>
+
+<span class="nv">$userApplicationService</span><span class="o">-&gt;</span><span class="na">findById</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 </code></pre></div>
 
 </div></details>

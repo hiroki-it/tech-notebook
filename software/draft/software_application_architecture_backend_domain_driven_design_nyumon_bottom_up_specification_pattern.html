@@ -1295,6 +1295,8 @@
       
         
       
+        
+      
     
     
     
@@ -1411,6 +1413,34 @@
     
   
     オブジェクト指向設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_application_architecture_backend_object_orientation_class.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    クラス
   
 
     
@@ -2317,14 +2347,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../software_application_architecture_microservices_services_auth.html" class="md-nav__link">
+      <a href="../software_application_architecture_microservices_services_general.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    認証／認可
+    汎用ロジック
   
 
     
@@ -33610,7 +33640,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 21:09:18 JST">2026-11-07</span>
   </span>
 
     
@@ -33652,7 +33682,41 @@
 <p>エンティティから切り分けたドメインルール条件オブジェクトとして実装する。</p>
 <p>複数のエンティティをまたぐドメインルールの検証は Specification パターンに切り分けるのがよい。</p>
 <p>単一のエンティティに関する単一のドメインルールの場合は、Specification パターンとして切り分けずに、そのエンティティに boolean 値関数 (<code>isFoo()</code> 関数) をもたせる。</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CircleFullSpecification</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Go</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">CircleFullSpecification</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">userRepository</span><span class="w"> </span><span class="nx">IUserRepository</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewCircleFullSpecification</span><span class="p">(</span><span class="nx">userRepository</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">CircleFullSpecification</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">CircleFullSpecification</span><span class="p">{</span><span class="nx">userRepository</span><span class="p">:</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">CircleFullSpecification</span><span class="p">)</span><span class="w"> </span><span class="nx">IsSatisfiedBy</span><span class="p">(</span><span class="nx">circle</span><span class="w"> </span><span class="o">*</span><span class="nx">Circle</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">users</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="nx">circle</span><span class="p">.</span><span class="nx">Members</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">premiumUserNumber</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">IsPremium</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">premiumUserNumber</span><span class="o">++</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">circleUpperLimit</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">50</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">premiumUserNumber</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">circleUpperLimit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">circle</span><span class="p">.</span><span class="nx">CountMembers</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">circleUpperLimit</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CircleFullSpecification</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">userRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">IUserRepository</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 
 <span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">isSatisfiedBy</span><span class="p">(</span><span class="nx">circle</span><span class="o">:</span><span class="w"> </span><span class="kt">Circle</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">boolean</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -33666,7 +33730,103 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CircleApplicationService</span><span class="w"> </span><span class="p">{</span>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">final</span> <span class="k">class</span> <span class="nc">CircleFullSpecification</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">IUserRepository</span> <span class="nv">$userRepository</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">isSatisfiedBy</span><span class="p">(</span><span class="nx">Circle</span> <span class="nv">$circle</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+    <span class="p">{</span>
+        <span class="nv">$users</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userRepository</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$circle</span><span class="o">-&gt;</span><span class="na">members</span><span class="p">);</span>
+
+        <span class="nv">$premiumUserNumber</span> <span class="o">=</span> <span class="nb">count</span><span class="p">(</span><span class="nb">array_filter</span><span class="p">(</span><span class="nv">$users</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">(</span><span class="nx">User</span> <span class="nv">$user</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">isPremium</span><span class="p">));</span>
+
+        <span class="nv">$circleUpperLimit</span> <span class="o">=</span> <span class="nv">$premiumUserNumber</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="o">?</span> <span class="mi">30</span> <span class="o">:</span> <span class="mi">50</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="nv">$circle</span><span class="o">-&gt;</span><span class="na">countMembers</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="nv">$circleUpperLimit</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Go</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">CircleApplicationService</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">circleFactory</span><span class="w">    </span><span class="nx">ICircleFactory</span>
+<span class="w">    </span><span class="nx">circleRepository</span><span class="w"> </span><span class="nx">ICircleRepository</span>
+<span class="w">    </span><span class="nx">circleService</span><span class="w">    </span><span class="o">*</span><span class="nx">CircleService</span>
+<span class="w">    </span><span class="nx">userRepository</span><span class="w">   </span><span class="nx">IUserRepository</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewCircleApplicationService</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">circleFactory</span><span class="w"> </span><span class="nx">ICircleFactory</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">circleRepository</span><span class="w"> </span><span class="nx">ICircleRepository</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">circleService</span><span class="w"> </span><span class="o">*</span><span class="nx">CircleService</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">userRepository</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">CircleApplicationService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">CircleApplicationService</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">circleFactory</span><span class="p">:</span><span class="w">    </span><span class="nx">circleFactory</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">circleRepository</span><span class="p">:</span><span class="w"> </span><span class="nx">circleRepository</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">circleService</span><span class="p">:</span><span class="w">    </span><span class="nx">circleService</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">userRepository</span><span class="p">:</span><span class="w">   </span><span class="nx">userRepository</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">CircleApplicationService</span><span class="p">)</span><span class="w"> </span><span class="nx">Join</span><span class="p">(</span><span class="nx">command</span><span class="w"> </span><span class="nx">CircleJoinCommand</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">circleId</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewCircleId</span><span class="p">(</span><span class="nx">command</span><span class="p">.</span><span class="nx">CircleId</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">circle</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">circleRepository</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="nx">circleId</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">users</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="nx">circle</span><span class="p">.</span><span class="nx">Members</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// サークルに所属しているプレミアムユーザの人数により上限が変わる</span>
+<span class="w">    </span><span class="nx">premiumUserNumber</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">IsPremium</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">premiumUserNumber</span><span class="o">++</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">circleUpperLimit</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">50</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">premiumUserNumber</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">circleUpperLimit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">circle</span><span class="p">.</span><span class="nx">CountMembers</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">circleUpperLimit</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">NewCircleFullException</span><span class="p">(</span><span class="nx">circleId</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">memberId</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewUserId</span><span class="p">(</span><span class="nx">command</span><span class="p">.</span><span class="nx">UserId</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">member</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">FindById</span><span class="p">(</span><span class="nx">memberId</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">member</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">NewUserNotFoundException</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">memberId</span><span class="p">,</span>
+<span class="w">            </span><span class="s">"ユーザが見つかりませんでした。"</span><span class="p">,</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">circle</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">member</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">circleRepository</span><span class="p">.</span><span class="nx">Save</span><span class="p">(</span><span class="nx">circle</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CircleApplicationService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">circleFactory</span><span class="o">:</span><span class="w"> </span><span class="kt">ICircleFactory</span><span class="p">,</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">circleRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">ICircleRepository</span><span class="p">,</span>
@@ -33704,10 +33864,77 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">final</span> <span class="k">class</span> <span class="nc">CircleApplicationService</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">ICircleFactory</span> <span class="nv">$circleFactory</span><span class="p">,</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">ICircleRepository</span> <span class="nv">$circleRepository</span><span class="p">,</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">CircleService</span> <span class="nv">$circleService</span><span class="p">,</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">IUserRepository</span> <span class="nv">$userRepository</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">join</span><span class="p">(</span><span class="nx">CircleJoinCommand</span> <span class="nv">$command</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$circleId</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CircleId</span><span class="p">(</span><span class="nv">$command</span><span class="o">-&gt;</span><span class="na">circleId</span><span class="p">);</span>
+
+        <span class="nv">$circle</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">circleRepository</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$circleId</span><span class="p">);</span>
+
+        <span class="nv">$users</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userRepository</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$circle</span><span class="o">-&gt;</span><span class="na">members</span><span class="p">);</span>
+
+        <span class="c1">// サークルに所属しているプレミアムユーザの人数により上限が変わる</span>
+        <span class="nv">$premiumUserNumber</span> <span class="o">=</span> <span class="nb">count</span><span class="p">(</span><span class="nb">array_filter</span><span class="p">(</span><span class="nv">$users</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">(</span><span class="nx">User</span> <span class="nv">$user</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">isPremium</span><span class="p">));</span>
+        <span class="nv">$circleUpperLimit</span> <span class="o">=</span> <span class="nv">$premiumUserNumber</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="o">?</span> <span class="mi">30</span> <span class="o">:</span> <span class="mi">50</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$circle</span><span class="o">-&gt;</span><span class="na">countMembers</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="nv">$circleUpperLimit</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">CircleFullException</span><span class="p">(</span><span class="nv">$circleId</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$memberId</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserId</span><span class="p">(</span><span class="nv">$command</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">);</span>
+        <span class="nv">$member</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userRepository</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$memberId</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$member</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">UserNotFoundException</span><span class="p">(</span>
+                <span class="nv">$memberId</span><span class="p">,</span>
+                <span class="s2">"ユーザが見つかりませんでした。"</span><span class="p">,</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$circle</span><span class="o">-&gt;</span><span class="na">join</span><span class="p">(</span><span class="nv">$member</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">circleRepository</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$circle</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h3 id="_4">クエリ検索条件オブジェクトとして<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>リポジトリの引数に渡すクエリ検索条件オブジェクトとして実装する。</p>
 <p>Criteria パターンと呼ぶこともある。</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CircleRecommendSpecification</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Go</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">CircleRecommendSpecification</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">executeDateTime</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewCircleRecommendSpecification</span><span class="p">(</span><span class="nx">executeDateTime</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">CircleRecommendSpecification</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">CircleRecommendSpecification</span><span class="p">{</span><span class="nx">executeDateTime</span><span class="p">:</span><span class="w"> </span><span class="nx">executeDateTime</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">CircleRecommendSpecification</span><span class="p">)</span><span class="w"> </span><span class="nx">IsSatisfiedBy</span><span class="p">(</span><span class="nx">circle</span><span class="w"> </span><span class="o">*</span><span class="nx">Circle</span><span class="p">)</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">circle</span><span class="p">.</span><span class="nx">CountMembers</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">oneMonthAgo</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">executeDateTime</span><span class="p">.</span><span class="nx">AddDate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">circle</span><span class="p">.</span><span class="nx">Created</span><span class="p">.</span><span class="nx">After</span><span class="p">(</span><span class="nx">oneMonthAgo</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CircleRecommendSpecification</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">executeDateTime</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 
 <span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">isSatisfiedBy</span><span class="p">(</span><span class="nx">circle</span><span class="o">:</span><span class="w"> </span><span class="kt">Circle</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">{</span>
@@ -33720,7 +33947,75 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CircleApplicationService</span><span class="w"> </span><span class="p">{</span>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">final</span> <span class="k">class</span> <span class="nc">CircleRecommendSpecification</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">DateTimeImmutable</span> <span class="nv">$executeDateTime</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">isSatisfiedBy</span><span class="p">(</span><span class="nx">Circle</span> <span class="nv">$circle</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$circle</span><span class="o">-&gt;</span><span class="na">countMembers</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nv">$oneMonthAgo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">executeDateTime</span><span class="o">-&gt;</span><span class="na">modify</span><span class="p">(</span><span class="s2">"-1 month"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$circle</span><span class="o">-&gt;</span><span class="na">created</span> <span class="o">&gt;</span> <span class="nv">$oneMonthAgo</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Go</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">CircleApplicationService</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">circleFactory</span><span class="w">    </span><span class="nx">ICircleFactory</span>
+<span class="w">    </span><span class="nx">circleRepository</span><span class="w"> </span><span class="nx">ICircleRepository</span>
+<span class="w">    </span><span class="nx">circleService</span><span class="w">    </span><span class="o">*</span><span class="nx">CircleService</span>
+<span class="w">    </span><span class="nx">userRepository</span><span class="w">   </span><span class="nx">IUserRepository</span>
+<span class="w">    </span><span class="nx">now</span><span class="w">              </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewCircleApplicationService</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">circleFactory</span><span class="w"> </span><span class="nx">ICircleFactory</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">circleRepository</span><span class="w"> </span><span class="nx">ICircleRepository</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">circleService</span><span class="w"> </span><span class="o">*</span><span class="nx">CircleService</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">userRepository</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">now</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">CircleApplicationService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">CircleApplicationService</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">circleFactory</span><span class="p">:</span><span class="w">    </span><span class="nx">circleFactory</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">circleRepository</span><span class="p">:</span><span class="w"> </span><span class="nx">circleRepository</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">circleService</span><span class="p">:</span><span class="w">    </span><span class="nx">circleService</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">userRepository</span><span class="p">:</span><span class="w">   </span><span class="nx">userRepository</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">now</span><span class="p">:</span><span class="w">              </span><span class="nx">now</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">CircleApplicationService</span><span class="p">)</span><span class="w"> </span><span class="nx">GetRecommend</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">request</span><span class="w"> </span><span class="nx">CircleGetRecommendRequest</span><span class="p">,</span>
+<span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">CircleGetRecommendResult</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">circleRecommendSpecification</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewCircleRecommendSpecification</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">now</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// リポジトリに仕様を引き渡して抽出（フィルタリング）</span>
+<span class="w">    </span><span class="nx">circles</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">circleRepository</span><span class="p">.</span><span class="nx">FindBySpecification</span><span class="p">(</span><span class="nx">circleRecommendSpecification</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">recommendCircles</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">circles</span><span class="p">[:</span><span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">circles</span><span class="p">),</span><span class="w"> </span><span class="mi">10</span><span class="p">)]</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">NewCircleGetRecommendResult</span><span class="p">(</span><span class="nx">recommendCircles</span><span class="p">),</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CircleApplicationService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">circleFactory</span><span class="o">:</span><span class="w"> </span><span class="kt">ICircleFactory</span><span class="p">,</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">circleRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">ICircleRepository</span><span class="p">,</span>
@@ -33745,6 +34040,40 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">final</span> <span class="k">class</span> <span class="nc">CircleApplicationService</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">ICircleFactory</span> <span class="nv">$circleFactory</span><span class="p">,</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">ICircleRepository</span> <span class="nv">$circleRepository</span><span class="p">,</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">CircleService</span> <span class="nv">$circleService</span><span class="p">,</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">IUserRepository</span> <span class="nv">$userRepository</span><span class="p">,</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">DateTimeImmutable</span> <span class="nv">$now</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getRecommend</span><span class="p">(</span>
+        <span class="nx">CircleGetRecommendRequest</span> <span class="nv">$request</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">:</span> <span class="nx">CircleGetRecommendResult</span> <span class="p">{</span>
+        <span class="nv">$circleRecommendSpecification</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CircleRecommendSpecification</span><span class="p">(</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">now</span><span class="p">,</span>
+        <span class="p">);</span>
+
+        <span class="c1">// リポジトリに仕様を引き渡して抽出（フィルタリング）</span>
+        <span class="nv">$recommendCircles</span> <span class="o">=</span> <span class="nb">array_slice</span><span class="p">(</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">circleRepository</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$circleRecommendSpecification</span><span class="p">),</span>
+            <span class="mi">0</span><span class="p">,</span>
+            <span class="mi">10</span><span class="p">,</span>
+        <span class="p">);</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">CircleGetRecommendResult</span><span class="p">(</span><span class="nv">$recommendCircles</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><br></p>
 
   

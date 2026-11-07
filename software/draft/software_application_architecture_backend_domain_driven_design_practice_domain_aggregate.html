@@ -1295,6 +1295,8 @@
       
         
       
+        
+      
     
     
     
@@ -1411,6 +1413,34 @@
     
   
     オブジェクト指向設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_application_architecture_backend_object_orientation_class.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    クラス
   
 
     
@@ -2317,14 +2347,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../software_application_architecture_microservices_services_auth.html" class="md-nav__link">
+      <a href="../software_application_architecture_microservices_services_general.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    認証／認可
+    汎用ロジック
   
 
     
@@ -33777,7 +33807,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 21:09:18 JST">2026-11-07</span>
   </span>
 
     
@@ -33813,7 +33843,38 @@
 <p>まず『本に関するものを全部 <code>Book</code> 集約（≒ Book ルートエンティティ）に入れてしまう』設計の問題を通して、集約境界の考え方を説明する。</p>
 <p>この実装は一見わかりやすく見えるが、<code>Book</code> 集約、<code>Review</code> 集約、<code>Publisher</code> 集約、<code>Stock</code> 集約という異なる集約を 1 つの集約に押し込めている。</p>
 <p>その結果、集約が大きくなり、状態の整合性を守る範囲が広くなってしまっている。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Go</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">BookID</span><span class="w"> </span><span class="nx">BookID</span><span class="w"> </span><span class="c1">// ID値オブジェクト</span>
+<span class="w">    </span><span class="nx">Title</span><span class="w">  </span><span class="nx">Title</span><span class="w">  </span><span class="c1">// タイトル値オブジェクト</span>
+<span class="w">    </span><span class="nx">Author</span><span class="w"> </span><span class="nx">Author</span><span class="w"> </span><span class="c1">// 著者値オブジェクト</span>
+<span class="w">    </span><span class="nx">Price</span><span class="w">  </span><span class="nx">Price</span><span class="w">  </span><span class="c1">// 価格値オブジェクト</span>
+
+<span class="w">    </span><span class="c1">// いろんな集約</span>
+<span class="w">    </span><span class="nx">Reviews</span><span class="w">   </span><span class="p">[]</span><span class="o">*</span><span class="nx">Review</span><span class="w"> </span><span class="c1">// レビューエンティティ（本来は別集約にすべき)</span>
+<span class="w">    </span><span class="nx">Publisher</span><span class="w"> </span><span class="nx">Publisher</span><span class="w"> </span><span class="c1">// 出版社エンティティ（本来は別集約にすべき)</span>
+<span class="w">    </span><span class="nx">Stock</span><span class="w">     </span><span class="nx">Stock</span><span class="w">     </span><span class="c1">// 在庫エンティティ（本来は別集約にすべき)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewBook</span><span class="p">(</span><span class="nx">bookID</span><span class="w"> </span><span class="nx">BookID</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="nx">Title</span><span class="p">,</span><span class="w"> </span><span class="nx">author</span><span class="w"> </span><span class="nx">Author</span><span class="p">,</span><span class="w"> </span><span class="nx">price</span><span class="w"> </span><span class="nx">Price</span><span class="p">,</span><span class="w"> </span><span class="nx">reviews</span><span class="w"> </span><span class="p">[]</span><span class="o">*</span><span class="nx">Review</span><span class="p">,</span><span class="w"> </span><span class="nx">publisher</span><span class="w"> </span><span class="nx">Publisher</span><span class="p">,</span><span class="w"> </span><span class="nx">stock</span><span class="w"> </span><span class="nx">Stock</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Book</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">BookID</span><span class="p">:</span><span class="w">    </span><span class="nx">bookID</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Title</span><span class="p">:</span><span class="w">     </span><span class="nx">title</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Author</span><span class="p">:</span><span class="w">    </span><span class="nx">author</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Price</span><span class="p">:</span><span class="w">     </span><span class="nx">price</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Reviews</span><span class="p">:</span><span class="w">   </span><span class="nx">reviews</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Publisher</span><span class="p">:</span><span class="w"> </span><span class="nx">publisher</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Stock</span><span class="p">:</span><span class="w">     </span><span class="nx">stock</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// (省略) 本に関するあらゆる操作がここに混在する可能性がある</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">,</span><span class="w"> </span><span class="c1">// ID値オブジェクト</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="kt">Title</span><span class="p">,</span><span class="w"> </span><span class="c1">// タイトル値オブジェクト</span>
@@ -33828,6 +33889,28 @@
 <span class="w">  </span><span class="c1">// (省略) 本に関するあらゆる操作がここに混在する可能性がある</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">Book</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">public</span> <span class="nx">BookId</span> <span class="nv">$bookId</span><span class="p">,</span> <span class="c1">// ID値オブジェクト</span>
+        <span class="k">public</span> <span class="nx">Title</span> <span class="nv">$title</span><span class="p">,</span> <span class="c1">// タイトル値オブジェクト</span>
+        <span class="k">public</span> <span class="nx">Author</span> <span class="nv">$author</span><span class="p">,</span> <span class="c1">// 著者値オブジェクト</span>
+        <span class="k">public</span> <span class="nx">Price</span> <span class="nv">$price</span><span class="p">,</span> <span class="c1">// 価格値オブジェクト</span>
+
+        <span class="c1">// いろんな集約</span>
+        <span class="k">public</span> <span class="k">array</span> <span class="nv">$reviews</span><span class="p">,</span> <span class="c1">// レビューエンティティ（本来は別集約にすべき)</span>
+        <span class="k">public</span> <span class="nx">Publisher</span> <span class="nv">$publisher</span><span class="p">,</span> <span class="c1">// 出版社エンティティ（本来は別集約にすべき)</span>
+        <span class="k">public</span> <span class="nx">Stock</span> <span class="nv">$stock</span><span class="p">,</span> <span class="c1">// 在庫エンティティ（本来は別集約にすべき)</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+    <span class="c1">// (省略) 本に関するあらゆる操作がここに混在する可能性がある</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h2 id="11-2">11-2 集約の設計上の指針<a class="headerlink" href="#11-2" title="Permanent link">&para;</a></h2>
 <h3 id="11-2-1">11-2-1 集約は小さくする<a class="headerlink" href="#11-2-1" title="Permanent link">&para;</a></h3>
 <p>状態の整合性を守る範囲が広くなると、操作するオブジェクトが増えて処理や DB の性能問題が起こったり、ほかの集約と範囲が重なって DB で競合する可能性があるため、集約をできるだけ小さく保つ必要がある。</p>
@@ -33848,7 +33931,31 @@
 <p>この実装では、<code>Book</code> 集約が <code>Review</code> 集約のメソッドを直接コールしている。</p>
 <p>これでは <code>Review</code> 集約側が守るべき整合性の範囲を <code>Book</code> 集約が侵食してしまい、集約の結合度が高くなってしまう。</p>
 <p>識別子にはドメインルールを持たせないほうがよいため、ドメインルール上の識別子（例：書籍の ISBN）はエンティティの識別子にしないほうがいい。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// アンチパターン: 集約が他の集約を直接コールする</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Go</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// アンチパターン: 集約が他の集約を直接コールする</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">BookID</span><span class="w">  </span><span class="nx">BookID</span>
+<span class="w">    </span><span class="nx">Title</span><span class="w">   </span><span class="nx">Title</span>
+<span class="w">    </span><span class="nx">Price</span><span class="w">   </span><span class="nx">Price</span>
+<span class="w">    </span><span class="nx">Reviews</span><span class="w"> </span><span class="p">[]</span><span class="o">*</span><span class="nx">Review</span><span class="w"> </span><span class="c1">// Review集約のインスタンスを直接保持</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewBook</span><span class="p">(</span><span class="nx">bookID</span><span class="w"> </span><span class="nx">BookID</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="nx">Title</span><span class="p">,</span><span class="w"> </span><span class="nx">price</span><span class="w"> </span><span class="nx">Price</span><span class="p">,</span><span class="w"> </span><span class="nx">reviews</span><span class="w"> </span><span class="p">[]</span><span class="o">*</span><span class="nx">Review</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Book</span><span class="p">{</span><span class="nx">BookID</span><span class="p">:</span><span class="w"> </span><span class="nx">bookID</span><span class="p">,</span><span class="w"> </span><span class="nx">Title</span><span class="p">:</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">Price</span><span class="p">:</span><span class="w"> </span><span class="nx">price</span><span class="p">,</span><span class="w"> </span><span class="nx">Reviews</span><span class="p">:</span><span class="w"> </span><span class="nx">reviews</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Book集約からReview集約に関わる操作</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">b</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="p">)</span><span class="w"> </span><span class="nx">AntiPatternMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">b</span><span class="p">.</span><span class="nx">Reviews</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">b</span><span class="p">.</span><span class="nx">Reviews</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">UpdateRating</span><span class="p">(</span><span class="nx">NewRating</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// アンチパターン: 集約が他の集約を直接コールする</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">,</span>
@@ -33865,10 +33972,54 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="c1">// アンチパターン: 集約が他の集約を直接コールする</span>
+<span class="k">class</span> <span class="nc">Book</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">public</span> <span class="nx">BookId</span> <span class="nv">$bookId</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">Title</span> <span class="nv">$title</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">Price</span> <span class="nv">$price</span><span class="p">,</span>
+        <span class="k">public</span> <span class="k">array</span> <span class="nv">$reviews</span><span class="p">,</span> <span class="c1">// Review集約のインスタンスを直接保持</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Book集約からReview集約に関わる操作</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">antiPatternMethod</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">reviews</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">reviews</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">updateRating</span><span class="p">(</span><span class="k">new</span> <span class="nx">Rating</span><span class="p">(</span><span class="mi">4</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><code>Review</code> 集約が <code>Book</code> 集約そのものを保持するのではなく、BookId を保持する例が次の実装である。</p>
 <p>この形にすることで、<code>Review</code> 集約は <code>Book</code> 集約の内部構造を知らずに済む。</p>
 <p>これが『集約間は識別子でコールする』という指針の具体例である。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Review</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Go</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Review</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ReviewID</span><span class="w"> </span><span class="nx">ReviewID</span><span class="w"> </span><span class="c1">// ID値オブジェクト</span>
+<span class="w">    </span><span class="nx">BookID</span><span class="w">   </span><span class="nx">BookID</span>
+<span class="w">    </span><span class="nx">Name</span><span class="w">     </span><span class="nx">Name</span><span class="w">    </span><span class="c1">// 投稿者名値オブジェクト</span>
+<span class="w">    </span><span class="nx">Rating</span><span class="w">   </span><span class="nx">Rating</span><span class="w">  </span><span class="c1">// 評価値オブジェクト</span>
+<span class="w">    </span><span class="nx">Comment</span><span class="w">  </span><span class="nx">Comment</span><span class="w"> </span><span class="c1">// コメント値オブジェクト（任意）</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewReview</span><span class="p">(</span><span class="nx">reviewID</span><span class="w"> </span><span class="nx">ReviewID</span><span class="p">,</span><span class="w"> </span><span class="nx">bookID</span><span class="w"> </span><span class="nx">BookID</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="nx">Name</span><span class="p">,</span><span class="w"> </span><span class="nx">rating</span><span class="w"> </span><span class="nx">Rating</span><span class="p">,</span><span class="w"> </span><span class="nx">comment</span><span class="w"> </span><span class="nx">Comment</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Review</span><span class="p">{</span><span class="nx">ReviewID</span><span class="p">:</span><span class="w"> </span><span class="nx">reviewID</span><span class="p">,</span><span class="w"> </span><span class="nx">BookID</span><span class="p">:</span><span class="w"> </span><span class="nx">bookID</span><span class="p">,</span><span class="w"> </span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">Rating</span><span class="p">:</span><span class="w"> </span><span class="nx">rating</span><span class="p">,</span><span class="w"> </span><span class="nx">Comment</span><span class="p">:</span><span class="w"> </span><span class="nx">comment</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// (省略)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Review</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">ReviewId</span><span class="p">,</span><span class="w"> </span><span class="c1">// ID値オブジェクト</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">,</span>
@@ -33879,9 +34030,45 @@
 <span class="w">  </span><span class="c1">// (省略)</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">Review</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">public</span> <span class="nx">ReviewId</span> <span class="nv">$reviewId</span><span class="p">,</span> <span class="c1">// ID値オブジェクト</span>
+        <span class="k">public</span> <span class="nx">BookId</span> <span class="nv">$bookId</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">Name</span> <span class="nv">$name</span><span class="p">,</span> <span class="c1">// 投稿者名値オブジェクト</span>
+        <span class="k">public</span> <span class="nx">Rating</span> <span class="nv">$rating</span><span class="p">,</span> <span class="c1">// 評価値オブジェクト</span>
+        <span class="k">public</span> <span class="nx">Comment</span> <span class="nv">$comment</span><span class="p">,</span> <span class="c1">// コメント値オブジェクト（任意）</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+    <span class="c1">// (省略)</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><code>Book</code> 集約側が ReviewId のリストを持つパターンもある。</p>
 <p>このパターンでは、<code>Book</code> 集約と複数の <code>Review</code> 集約の関係を表現しつつ、<code>Review</code> 集約そのものを直接抱え込まずに済む。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Go</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">BookID</span><span class="w">    </span><span class="nx">BookID</span>
+<span class="w">    </span><span class="nx">Title</span><span class="w">     </span><span class="nx">Title</span>
+<span class="w">    </span><span class="nx">Price</span><span class="w">     </span><span class="nx">Price</span>
+<span class="w">    </span><span class="nx">ReviewIDs</span><span class="w"> </span><span class="p">[]</span><span class="nx">ReviewID</span><span class="w"> </span><span class="c1">// Review集約のID （値オブジェクト）のリストを保持</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewBook</span><span class="p">(</span><span class="nx">bookID</span><span class="w"> </span><span class="nx">BookID</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="nx">Title</span><span class="p">,</span><span class="w"> </span><span class="nx">price</span><span class="w"> </span><span class="nx">Price</span><span class="p">,</span><span class="w"> </span><span class="nx">reviewIDs</span><span class="w"> </span><span class="p">[]</span><span class="nx">ReviewID</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Book</span><span class="p">{</span><span class="nx">BookID</span><span class="p">:</span><span class="w"> </span><span class="nx">bookID</span><span class="p">,</span><span class="w"> </span><span class="nx">Title</span><span class="p">:</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">Price</span><span class="p">:</span><span class="w"> </span><span class="nx">price</span><span class="p">,</span><span class="w"> </span><span class="nx">ReviewIDs</span><span class="p">:</span><span class="w"> </span><span class="nx">reviewIDs</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// (省略)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">,</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="kt">Title</span><span class="p">,</span>
@@ -33891,10 +34078,55 @@
 <span class="w">  </span><span class="c1">// (省略)</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">Book</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">public</span> <span class="nx">BookId</span> <span class="nv">$bookId</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">Title</span> <span class="nv">$title</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">Price</span> <span class="nv">$price</span><span class="p">,</span>
+        <span class="k">public</span> <span class="k">array</span> <span class="nv">$reviewIds</span><span class="p">,</span> <span class="c1">// Review集約のID （値オブジェクト）のリストを保持</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+    <span class="c1">// (省略)</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h3 id="11-2-3">11-2-3 デメテルの法則に従う<a class="headerlink" href="#11-2-3" title="Permanent link">&para;</a></h3>
 <p>デメテルの法則（≒ オブジェクト内部のオブジェクトをチェーンでコールすることは避けるべきという法則）に違反する例である。</p>
 <p><code>Book</code> 集約から <code>Review</code> 集約を取り出し、さらに <code>Review</code> 集約内にもアクセスできてしまう。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 冒頭の悪い例</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Go</label><label for="__tabbed_5_2">TypeScript</label><label for="__tabbed_5_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// 冒頭の悪い例</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">BookID</span><span class="w">  </span><span class="nx">BookID</span>
+<span class="w">    </span><span class="nx">Title</span><span class="w">   </span><span class="nx">Title</span>
+<span class="w">    </span><span class="nx">Reviews</span><span class="w"> </span><span class="p">[]</span><span class="o">*</span><span class="nx">Review</span><span class="w"> </span><span class="c1">// publicになっているため外部から直接アクセス可能</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewBook</span><span class="p">(</span><span class="nx">bookID</span><span class="w"> </span><span class="nx">BookID</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="nx">Title</span><span class="p">,</span><span class="w"> </span><span class="nx">reviews</span><span class="w"> </span><span class="p">[]</span><span class="o">*</span><span class="nx">Review</span><span class="w"> </span><span class="cm">/* ... */</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Book</span><span class="p">{</span><span class="nx">BookID</span><span class="p">:</span><span class="w"> </span><span class="nx">bookID</span><span class="p">,</span><span class="w"> </span><span class="nx">Title</span><span class="p">:</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">Reviews</span><span class="p">:</span><span class="w"> </span><span class="nx">reviews</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// (省略) 本に関するあらゆる操作がここに混在する可能性がある</span>
+
+<span class="c1">// この構造だと外部コードは以下のようなアクセスが可能になる</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">NewBook</span><span class="p">(</span><span class="nx">bookID</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">reviews</span><span class="w"> </span><span class="cm">/* 他の引数は省略 */</span><span class="p">)</span>
+
+<span class="c1">// book.Reviewsを直接参照できる</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">firstReview</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">book</span><span class="p">.</span><span class="nx">Reviews</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1">// さらにReviewの内部構造にもアクセスできてしまう</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">reviewRating</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">firstReview</span><span class="p">.</span><span class="nx">Rating</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// 冒頭の悪い例</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">,</span>
@@ -33915,9 +34147,98 @@
 <span class="c1">// さらにReviewの内部構造にもアクセスできてしまう</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">reviewRating</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">firstReview</span><span class="p">.</span><span class="nx">rating</span><span class="p">;</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="c1">// 冒頭の悪い例</span>
+<span class="k">class</span> <span class="nc">Book</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">public</span> <span class="nx">BookId</span> <span class="nv">$bookId</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">Title</span> <span class="nv">$title</span><span class="p">,</span>
+        <span class="k">public</span> <span class="k">array</span> <span class="nv">$reviews</span><span class="p">,</span> <span class="c1">// publicになっているため外部から直接アクセス可能</span>
+        <span class="c1">// ...</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="c1">// (省略) 本に関するあらゆる操作がここに混在する可能性がある</span>
+<span class="p">}</span>
+
+<span class="c1">// この構造だと外部コードは以下のようなアクセスが可能になる</span>
+<span class="nv">$book</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Book</span><span class="p">(</span><span class="nv">$bookId</span><span class="p">,</span> <span class="nv">$title</span><span class="p">,</span> <span class="nv">$reviews</span> <span class="cm">/* 他の引数は省略 */</span><span class="p">);</span>
+
+<span class="c1">// $book-&gt;reviewsを直接参照できる</span>
+<span class="nv">$firstReview</span> <span class="o">=</span> <span class="nv">$book</span><span class="o">-&gt;</span><span class="na">reviews</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+<span class="c1">// さらにReviewの内部構造にもアクセスできてしまう</span>
+<span class="nv">$reviewRating</span> <span class="o">=</span> <span class="nv">$firstReview</span><span class="o">-&gt;</span><span class="na">rating</span><span class="p">;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p>それに対して、デメテルの法則に従う設計では、オブジェクト内部のオブジェクトをチェーンでコールしない</p>
 <p><code>Review</code> 集約から <code>review.extractRecommendedBooks()</code> をコールする。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 書籍の基本情報に焦点を当てた集約</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Go</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// 書籍の基本情報に焦点を当てた集約</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">bookID</span><span class="w"> </span><span class="nx">BookID</span>
+<span class="w">    </span><span class="nx">title</span><span class="w">  </span><span class="nx">Title</span>
+<span class="w">    </span><span class="nx">author</span><span class="w"> </span><span class="nx">Author</span>
+<span class="w">    </span><span class="nx">price</span><span class="w">  </span><span class="nx">Price</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewBook</span><span class="p">(</span><span class="nx">bookID</span><span class="w"> </span><span class="nx">BookID</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="nx">Title</span><span class="p">,</span><span class="w"> </span><span class="nx">author</span><span class="w"> </span><span class="nx">Author</span><span class="p">,</span><span class="w"> </span><span class="nx">price</span><span class="w"> </span><span class="nx">Price</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Book</span><span class="p">{</span><span class="nx">bookID</span><span class="p">:</span><span class="w"> </span><span class="nx">bookID</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="p">:</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">author</span><span class="p">:</span><span class="w"> </span><span class="nx">author</span><span class="p">,</span><span class="w"> </span><span class="nx">price</span><span class="p">:</span><span class="w"> </span><span class="nx">price</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 価格変更のメソッド</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">b</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="p">)</span><span class="w"> </span><span class="nx">ChangePrice</span><span class="p">(</span><span class="nx">newPrice</span><span class="w"> </span><span class="nx">Price</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">b</span><span class="p">.</span><span class="nx">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">newPrice</span>
+<span class="p">}</span>
+
+<span class="c1">// レビュー管理に焦点を当てた集約</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">Review</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">reviewID</span><span class="w"> </span><span class="nx">ReviewID</span>
+<span class="w">    </span><span class="nx">bookID</span><span class="w">   </span><span class="nx">BookID</span>
+<span class="w">    </span><span class="nx">rating</span><span class="w">   </span><span class="nx">Rating</span>
+<span class="w">    </span><span class="nx">comment</span><span class="w">  </span><span class="o">*</span><span class="nx">Comment</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewReview</span><span class="p">(</span><span class="nx">reviewID</span><span class="w"> </span><span class="nx">ReviewID</span><span class="p">,</span><span class="w"> </span><span class="nx">bookID</span><span class="w"> </span><span class="nx">BookID</span><span class="p">,</span><span class="w"> </span><span class="nx">rating</span><span class="w"> </span><span class="nx">Rating</span><span class="p">,</span><span class="w"> </span><span class="nx">comment</span><span class="w"> </span><span class="o">*</span><span class="nx">Comment</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Review</span><span class="p">{</span><span class="nx">reviewID</span><span class="p">:</span><span class="w"> </span><span class="nx">reviewID</span><span class="p">,</span><span class="w"> </span><span class="nx">bookID</span><span class="p">:</span><span class="w"> </span><span class="nx">bookID</span><span class="p">,</span><span class="w"> </span><span class="nx">rating</span><span class="p">:</span><span class="w"> </span><span class="nx">rating</span><span class="p">,</span><span class="w"> </span><span class="nx">comment</span><span class="p">:</span><span class="w"> </span><span class="nx">comment</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 推薦書籍抽出のロジックを集約内にカプセル化</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="p">)</span><span class="w"> </span><span class="nx">ExtractRecommendedBooks</span><span class="p">()</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">comment</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 推薦本を抽出する正規表現パターン（実装の詳細は集約内に隠蔽）</span>
+<span class="w">    </span><span class="c1">// 書籍名の後30文字以内に推薦キーワードがあるものを抽出</span>
+<span class="w">    </span><span class="nx">pattern</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">regexp</span><span class="p">.</span><span class="nx">MustCompile</span><span class="p">(</span><span class="s">`[『『]([^』』]+)[』』][^。]{0,30}(?:読む|読んだ|学ぶ|学んだ|必要|推奨|おすすめ|良い|いい|理解)`</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">matches</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">comment</span><span class="p">.</span><span class="nx">ExtractMatches</span><span class="p">(</span><span class="nx">pattern</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">seen</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">struct</span><span class="p">{},</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">matches</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">uniqueMatches</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">matches</span><span class="p">))</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">match</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">matches</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">seen</span><span class="p">[</span><span class="nx">match</span><span class="p">];</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">continue</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">seen</span><span class="p">[</span><span class="nx">match</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}{}</span>
+<span class="w">        </span><span class="nx">uniqueMatches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">uniqueMatches</span><span class="p">,</span><span class="w"> </span><span class="nx">match</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">uniqueMatches</span>
+<span class="p">}</span>
+
+<span class="c1">// デメテルの法則に従った使用例</span>
+<span class="c1">// レビューから推薦書籍を抽出</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">recommendedBooks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">review</span><span class="p">.</span><span class="nx">ExtractRecommendedBooks</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// 書籍の基本情報に焦点を当てた集約</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">,</span>
@@ -33959,11 +34280,92 @@
 <span class="c1">// レビューから推薦書籍を抽出</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">recommendedBooks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">review</span><span class="p">.</span><span class="nx">extractRecommendedBooks</span><span class="p">();</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="c1">// 書籍の基本情報に焦点を当てた集約</span>
+<span class="k">class</span> <span class="nc">Book</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">BookId</span> <span class="nv">$bookId</span><span class="p">,</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">Title</span> <span class="nv">$title</span><span class="p">,</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">Author</span> <span class="nv">$author</span><span class="p">,</span>
+        <span class="k">private</span> <span class="nx">Price</span> <span class="nv">$price</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 価格変更のメソッド</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">changePrice</span><span class="p">(</span><span class="nx">Price</span> <span class="nv">$newPrice</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">price</span> <span class="o">=</span> <span class="nv">$newPrice</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// レビュー管理に焦点を当てた集約</span>
+<span class="k">class</span> <span class="nc">Review</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">ReviewId</span> <span class="nv">$reviewId</span><span class="p">,</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">BookId</span> <span class="nv">$bookId</span><span class="p">,</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">Rating</span> <span class="nv">$rating</span><span class="p">,</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="o">?</span><span class="nx">Comment</span> <span class="nv">$comment</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 推薦書籍抽出のロジックを集約内にカプセル化</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">extractRecommendedBooks</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">comment</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">[];</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 推薦本を抽出する正規表現パターン（実装の詳細は集約内に隠蔽）</span>
+        <span class="c1">// 書籍名の後30文字以内に推薦キーワードがあるものを抽出</span>
+        <span class="nv">$pattern</span> <span class="o">=</span>
+            <span class="s2">"/[『『]([^』』]+)[』』][^。]{0,30}(?:読む|読んだ|学ぶ|学んだ|必要|推奨|おすすめ|良い|いい|理解)/u"</span><span class="p">;</span>
+
+        <span class="nv">$matches</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">comment</span><span class="o">-&gt;</span><span class="na">extractMatches</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">array_values</span><span class="p">(</span><span class="nb">array_unique</span><span class="p">(</span><span class="nv">$matches</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// デメテルの法則に従った使用例</span>
+<span class="c1">// レビューから推薦書籍を抽出</span>
+<span class="nv">$recommendedBooks</span> <span class="o">=</span> <span class="nv">$review</span><span class="o">-&gt;</span><span class="na">extractRecommendedBooks</span><span class="p">();</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h3 id="11-2-4">11-2-4 集約の外部では結果整合性を用いる<a class="headerlink" href="#11-2-4" title="Permanent link">&para;</a></h3>
 <p>異なる集約の状態の整合性を保ちたい場合、これらの集約を統合するのではなく、結果整合性を採用することで集約間の整合性を保つように妥協することも重要である。</p>
 <p><code>Book</code> 集約のなかに <code>Review</code> 集約を含め、状態の整合性を保とうとするとすると次のような設計になる。</p>
 <p>この実装は『1 冊につきレビューは 100 件まで』という Book 集約と Review 集約間の状態の整合性を保ちやすくなる一方、<code>Book</code> 集約が肥大化し、<code>Review</code> 集約の更新のたびに <code>Book</code> 集約全体を巻き込んでしまっている</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Go</label><label for="__tabbed_7_2">TypeScript</label><label for="__tabbed_7_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">BookID</span><span class="w"> </span><span class="nx">BookID</span>
+<span class="w">    </span><span class="c1">// ...</span>
+
+<span class="w">    </span><span class="nx">Reviews</span><span class="w"> </span><span class="p">[]</span><span class="o">*</span><span class="nx">Review</span><span class="w"> </span><span class="c1">// レビューを直接含める</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewBook</span><span class="p">(</span><span class="nx">bookID</span><span class="w"> </span><span class="nx">BookID</span><span class="w"> </span><span class="cm">/* ... */</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Book</span><span class="p">{</span><span class="nx">BookID</span><span class="p">:</span><span class="w"> </span><span class="nx">bookID</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// レビューを追加するメソッド</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">b</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="p">)</span><span class="w"> </span><span class="nx">AddReview</span><span class="p">(</span><span class="nx">review</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// レビュー数の制約を集約内で強制できる</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">b</span><span class="p">.</span><span class="nx">Reviews</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">"レビュー数が上限に達しています"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">b</span><span class="p">.</span><span class="nx">Reviews</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">b</span><span class="p">.</span><span class="nx">Reviews</span><span class="p">,</span><span class="w"> </span><span class="nx">review</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// ...</span>
@@ -33981,9 +34383,100 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">Book</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">array</span> <span class="nv">$reviews</span><span class="p">;</span> <span class="c1">// レビューを直接含める</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">public</span> <span class="nx">BookId</span> <span class="nv">$bookId</span><span class="p">,</span>
+        <span class="c1">// ...</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="c1">// レビューを追加するメソッド</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">addReview</span><span class="p">(</span><span class="nx">Review</span> <span class="nv">$review</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="c1">// レビュー数の制約を集約内で強制できる</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">reviews</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">"レビュー数が上限に達しています"</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">reviews</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$review</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p>それに対し、<code>Book</code> 集約と <code>Review</code> 集約を分けたまま、状態の結果整合性を保つ。</p>
 <p>この設計では、<code>Book</code> 集約と <code>Review</code> 集約を疎結合にしている。Book リポジトリで Books 集約の状態を取得し、Review リポジトリで取得した <code>Review</code> 集約に渡している。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Book集約 - 基本情報管理に特化</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Go</label><label for="__tabbed_8_2">TypeScript</label><label for="__tabbed_8_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// Book集約 - 基本情報管理に特化</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">bookID</span><span class="w"> </span><span class="nx">BookID</span>
+<span class="w">    </span><span class="nx">title</span><span class="w">  </span><span class="nx">Title</span>
+<span class="w">    </span><span class="nx">author</span><span class="w"> </span><span class="nx">Author</span>
+<span class="w">    </span><span class="nx">price</span><span class="w">  </span><span class="nx">Price</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewBook</span><span class="p">(</span><span class="nx">bookID</span><span class="w"> </span><span class="nx">BookID</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="nx">Title</span><span class="p">,</span><span class="w"> </span><span class="nx">author</span><span class="w"> </span><span class="nx">Author</span><span class="p">,</span><span class="w"> </span><span class="nx">price</span><span class="w"> </span><span class="nx">Price</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Book</span><span class="p">{</span><span class="nx">bookID</span><span class="p">:</span><span class="w"> </span><span class="nx">bookID</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="p">:</span><span class="w"> </span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">author</span><span class="p">:</span><span class="w"> </span><span class="nx">author</span><span class="p">,</span><span class="w"> </span><span class="nx">price</span><span class="p">:</span><span class="w"> </span><span class="nx">price</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 書籍の基本情報に関する機能のみを提供</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">b</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="p">)</span><span class="w"> </span><span class="nx">ChangePrice</span><span class="p">(</span><span class="nx">newPrice</span><span class="w"> </span><span class="nx">Price</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">b</span><span class="p">.</span><span class="nx">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">newPrice</span>
+<span class="p">}</span>
+
+<span class="c1">// Review集約 - レビュー分析という差別化ロジックに特化</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">Review</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">reviewID</span><span class="w"> </span><span class="nx">ReviewID</span>
+<span class="w">    </span><span class="nx">bookID</span><span class="w">   </span><span class="nx">BookID</span><span class="w"> </span><span class="c1">// 書籍IDで参照</span>
+<span class="w">    </span><span class="nx">rating</span><span class="w">   </span><span class="nx">Rating</span>
+<span class="w">    </span><span class="nx">comment</span><span class="w">  </span><span class="o">*</span><span class="nx">Comment</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewReview</span><span class="p">(</span><span class="nx">reviewID</span><span class="w"> </span><span class="nx">ReviewID</span><span class="p">,</span><span class="w"> </span><span class="nx">bookID</span><span class="w"> </span><span class="nx">BookID</span><span class="p">,</span><span class="w"> </span><span class="nx">rating</span><span class="w"> </span><span class="nx">Rating</span><span class="p">,</span><span class="w"> </span><span class="nx">comment</span><span class="w"> </span><span class="o">*</span><span class="nx">Comment</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Review</span><span class="p">{</span><span class="nx">reviewID</span><span class="p">:</span><span class="w"> </span><span class="nx">reviewID</span><span class="p">,</span><span class="w"> </span><span class="nx">bookID</span><span class="p">:</span><span class="w"> </span><span class="nx">bookID</span><span class="p">,</span><span class="w"> </span><span class="nx">rating</span><span class="p">:</span><span class="w"> </span><span class="nx">rating</span><span class="p">,</span><span class="w"> </span><span class="nx">comment</span><span class="p">:</span><span class="w"> </span><span class="nx">comment</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 差別化ロジック: レビューからの推薦書籍抽出</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="p">)</span><span class="w"> </span><span class="nx">ExtractRecommendedBooks</span><span class="p">()</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// レビューからの推薦書籍抽出ロジック</span>
+<span class="w">    </span><span class="c1">// これは競合他社にはない独自の機能</span>
+<span class="p">}</span>
+
+<span class="c1">// レビュー作成時に整合性を確認</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">createReview</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">bookID</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">rating</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">comment</span><span class="w"> </span><span class="o">*</span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 書籍の存在確認</span>
+<span class="w">    </span><span class="nx">book</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">bookRepository</span><span class="p">.</span><span class="nx">FindByID</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">bookID</span><span class="p">)</span><span class="w"> </span><span class="c1">// DBから書籍を取得</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">book</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">"対象の書籍が存在しません"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// レビュー数の確認（一時的な不整合の可能性あり）</span>
+<span class="w">    </span><span class="nx">reviewCount</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">reviewRepository</span><span class="p">.</span><span class="nx">CountByBookID</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">book</span><span class="p">.</span><span class="nx">bookID</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">reviewCount</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">"レビュー数が上限に達しています"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// レビューを作成</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// Book集約 - 基本情報管理に特化</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">,</span>
@@ -34032,6 +34525,77 @@
 <span class="w">  </span><span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="c1">// Book集約 - 基本情報管理に特化</span>
+<span class="k">class</span> <span class="nc">Book</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">BookId</span> <span class="nv">$bookId</span><span class="p">,</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">Title</span> <span class="nv">$title</span><span class="p">,</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">Author</span> <span class="nv">$author</span><span class="p">,</span>
+        <span class="k">private</span> <span class="nx">Price</span> <span class="nv">$price</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">bookId</span><span class="p">()</span><span class="o">:</span> <span class="nx">BookId</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bookId</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 書籍の基本情報に関する機能のみを提供</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">changePrice</span><span class="p">(</span><span class="nx">Price</span> <span class="nv">$newPrice</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">price</span> <span class="o">=</span> <span class="nv">$newPrice</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Review集約 - レビュー分析という差別化ロジックに特化</span>
+<span class="k">class</span> <span class="nc">Review</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">ReviewId</span> <span class="nv">$reviewId</span><span class="p">,</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">BookId</span> <span class="nv">$bookId</span><span class="p">,</span> <span class="c1">// 書籍IDで参照</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">Rating</span> <span class="nv">$rating</span><span class="p">,</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="o">?</span><span class="nx">Comment</span> <span class="nv">$comment</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 差別化ロジック: レビューからの推薦書籍抽出</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">extractRecommendedBooks</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="c1">// レビューからの推薦書籍抽出ロジック</span>
+        <span class="c1">// これは競合他社にはない独自の機能</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// レビュー作成時に整合性を確認</span>
+<span class="k">function</span> <span class="nf">createReview</span><span class="p">(</span>
+    <span class="nx">BookRepository</span> <span class="nv">$bookRepository</span><span class="p">,</span>
+    <span class="nx">ReviewRepository</span> <span class="nv">$reviewRepository</span><span class="p">,</span>
+    <span class="nx">string</span> <span class="nv">$bookId</span><span class="p">,</span>
+    <span class="nx">int</span> <span class="nv">$rating</span><span class="p">,</span>
+    <span class="o">?</span><span class="nx">string</span> <span class="nv">$comment</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+<span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+    <span class="c1">// 書籍の存在確認</span>
+    <span class="nv">$book</span> <span class="o">=</span> <span class="nv">$bookRepository</span><span class="o">-&gt;</span><span class="na">findById</span><span class="p">(</span><span class="nv">$bookId</span><span class="p">);</span> <span class="c1">// DBから書籍を取得</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$book</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">"対象の書籍が存在しません"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// レビュー数の確認（一時的な不整合の可能性あり）</span>
+    <span class="nv">$reviewCount</span> <span class="o">=</span> <span class="nv">$reviewRepository</span><span class="o">-&gt;</span><span class="na">countByBookId</span><span class="p">(</span><span class="nv">$book</span><span class="o">-&gt;</span><span class="na">bookId</span><span class="p">());</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$reviewCount</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s2">"レビュー数が上限に達しています"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// レビューを作成</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h2 id="11-3">11-3 複数の集約による実装<a class="headerlink" href="#11-3" title="Permanent link">&para;</a></h2>
 <h3 id="11-3-1">11-3-1 設計指針に基づいた実装アプローチ<a class="headerlink" href="#11-3-1" title="Permanent link">&para;</a></h3>
 <p>ここでは、『集約は小さくする』『集約間は識別子で参照する』『デメテルの法則に従う』『集約の外部では結果整合性を用いる』という 4 つの原則を守って、集約を実装する。</p>
@@ -34059,7 +34623,116 @@
 <p>この実装では、<code>Review</code> 集約が書籍 ID（<code>BookId</code>）などの状態を持ち、また信頼性評価（<code>isTrustworthy()</code>）、推薦本抽出（<code>extractRecommendedBooks()</code>）、名前変更（<code>updateName()</code>）、評価変更（<code>updateRating()</code>）、コメント編集（<code>editComment()</code>）という振る舞いを持つ。</p>
 <p><code>Review</code> 集約が <code>Book</code> 集約を参照するときは、<code>BookId</code> を使うだけである。</p>
 <p><code>Review</code> 集約と <code>Book</code> 集約は疎結合になっている。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">BookId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"../Book/BookId/BookId"</span><span class="p">;</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Go</label><label for="__tabbed_9_2">TypeScript</label><label for="__tabbed_9_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">review</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"regexp"</span>
+
+<span class="w">    </span><span class="s">"example.com/catalog/domain/models/book"</span>
+<span class="p">)</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">Review</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">identity</span><span class="w"> </span><span class="nx">ReviewIdentity</span>
+<span class="w">    </span><span class="nx">bookID</span><span class="w">   </span><span class="nx">book</span><span class="p">.</span><span class="nx">BookID</span>
+<span class="w">    </span><span class="nx">name</span><span class="w">     </span><span class="nx">Name</span>
+<span class="w">    </span><span class="nx">rating</span><span class="w">   </span><span class="nx">Rating</span>
+<span class="w">    </span><span class="nx">comment</span><span class="w">  </span><span class="o">*</span><span class="nx">Comment</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">Create</span><span class="p">(</span><span class="nx">identity</span><span class="w"> </span><span class="nx">ReviewIdentity</span><span class="p">,</span><span class="w"> </span><span class="nx">bookID</span><span class="w"> </span><span class="nx">book</span><span class="p">.</span><span class="nx">BookID</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="nx">Name</span><span class="p">,</span><span class="w"> </span><span class="nx">rating</span><span class="w"> </span><span class="nx">Rating</span><span class="p">,</span><span class="w"> </span><span class="nx">comment</span><span class="w"> </span><span class="o">*</span><span class="nx">Comment</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Review</span><span class="p">{</span><span class="nx">identity</span><span class="p">:</span><span class="w"> </span><span class="nx">identity</span><span class="p">,</span><span class="w"> </span><span class="nx">bookID</span><span class="p">:</span><span class="w"> </span><span class="nx">bookID</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">rating</span><span class="p">:</span><span class="w"> </span><span class="nx">rating</span><span class="p">,</span><span class="w"> </span><span class="nx">comment</span><span class="p">:</span><span class="w"> </span><span class="nx">comment</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">Reconstruct</span><span class="p">(</span><span class="nx">identity</span><span class="w"> </span><span class="nx">ReviewIdentity</span><span class="p">,</span><span class="w"> </span><span class="nx">bookID</span><span class="w"> </span><span class="nx">book</span><span class="p">.</span><span class="nx">BookID</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="nx">Name</span><span class="p">,</span><span class="w"> </span><span class="nx">rating</span><span class="w"> </span><span class="nx">Rating</span><span class="p">,</span><span class="w"> </span><span class="nx">comment</span><span class="w"> </span><span class="o">*</span><span class="nx">Comment</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Review</span><span class="p">{</span><span class="nx">identity</span><span class="p">:</span><span class="w"> </span><span class="nx">identity</span><span class="p">,</span><span class="w"> </span><span class="nx">bookID</span><span class="p">:</span><span class="w"> </span><span class="nx">bookID</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">rating</span><span class="p">:</span><span class="w"> </span><span class="nx">rating</span><span class="p">,</span><span class="w"> </span><span class="nx">comment</span><span class="p">:</span><span class="w"> </span><span class="nx">comment</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// IsTrustworthy このレビューが信頼できるかを判断</span>
+<span class="c1">// threshold: 信頼性閾値（0.0～1.0）</span>
+<span class="c1">// 信頼できる場合はtrueを返す</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="p">)</span><span class="w"> </span><span class="nx">IsTrustworthy</span><span class="p">(</span><span class="nx">threshold</span><span class="w"> </span><span class="kt">float64</span><span class="p">)</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// コメントがない場合は評価のみで判断</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">comment</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">rating</span><span class="p">.</span><span class="nx">GetQualityFactor</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">threshold</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 評価とコメントの係数を組み合わせる</span>
+<span class="w">    </span><span class="nx">ratingFactor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">rating</span><span class="p">.</span><span class="nx">GetQualityFactor</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">commentFactor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">comment</span><span class="p">.</span><span class="nx">GetQualityFactor</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">// 評価の重みを0.7、コメントの重みを0.3とする</span>
+<span class="w">    </span><span class="nx">combinedFactor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ratingFactor</span><span class="o">*</span><span class="mf">0.7</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">commentFactor</span><span class="o">*</span><span class="mf">0.3</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">combinedFactor</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">threshold</span>
+<span class="p">}</span>
+
+<span class="c1">// ExtractRecommendedBooks コメントから推薦本を抽出する</span>
+<span class="c1">// 推薦本のタイトル配列を返す</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="p">)</span><span class="w"> </span><span class="nx">ExtractRecommendedBooks</span><span class="p">()</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">comment</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 書籍名の後30文字以内に推薦キーワードがあるものを抽出</span>
+<span class="w">    </span><span class="nx">pattern</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">regexp</span><span class="p">.</span><span class="nx">MustCompile</span><span class="p">(</span><span class="s">`[『『]([^』』]+)[』』][^。]{0,30}(?:読む|読んだ|学ぶ|学んだ|必要|推奨|おすすめ|良い|いい|理解)`</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">matches</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">comment</span><span class="p">.</span><span class="nx">ExtractMatches</span><span class="p">(</span><span class="nx">pattern</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">seen</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">struct</span><span class="p">{},</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">matches</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">uniqueMatches</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">matches</span><span class="p">))</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">match</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">matches</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">seen</span><span class="p">[</span><span class="nx">match</span><span class="p">];</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">continue</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nx">seen</span><span class="p">[</span><span class="nx">match</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}{}</span>
+<span class="w">        </span><span class="nx">uniqueMatches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">uniqueMatches</span><span class="p">,</span><span class="w"> </span><span class="nx">match</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">uniqueMatches</span>
+<span class="p">}</span>
+
+<span class="c1">// Equals 別のレビューと同一かどうかを判定</span>
+<span class="c1">// other: 比較対象のレビュー</span>
+<span class="c1">// 同一の場合はtrueを返す</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="p">)</span><span class="w"> </span><span class="nx">Equals</span><span class="p">(</span><span class="nx">other</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="p">)</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">Equals</span><span class="p">(</span><span class="nx">other</span><span class="p">.</span><span class="nx">identity</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="p">)</span><span class="w"> </span><span class="nx">ReviewID</span><span class="p">()</span><span class="w"> </span><span class="nx">ReviewID</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">ReviewID</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="p">)</span><span class="w"> </span><span class="nx">BookID</span><span class="p">()</span><span class="w"> </span><span class="nx">book</span><span class="p">.</span><span class="nx">BookID</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">bookID</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="p">)</span><span class="w"> </span><span class="nx">Name</span><span class="p">()</span><span class="w"> </span><span class="nx">Name</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">name</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="p">)</span><span class="w"> </span><span class="nx">Rating</span><span class="p">()</span><span class="w"> </span><span class="nx">Rating</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">rating</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="p">)</span><span class="w"> </span><span class="nx">Comment</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">Comment</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">comment</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="p">)</span><span class="w"> </span><span class="nx">UpdateName</span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="nx">Name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="p">)</span><span class="w"> </span><span class="nx">UpdateRating</span><span class="p">(</span><span class="nx">rating</span><span class="w"> </span><span class="nx">Rating</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">rating</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rating</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Review</span><span class="p">)</span><span class="w"> </span><span class="nx">EditComment</span><span class="p">(</span><span class="nx">comment</span><span class="w"> </span><span class="nx">Comment</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">comment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">comment</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">BookId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"../Book/BookId/BookId"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Comment</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./Comment/Comment"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Name</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./Name/Name"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Rating</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./Rating/Rating"</span><span class="p">;</span>
@@ -34172,11 +34845,199 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Domain\Models\Review</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Domain\Models\Book\BookId\BookId</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Domain\Models\Review\Comment\Comment</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Domain\Models\Review\Name\Name</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Domain\Models\Review\Rating\Rating</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Domain\Models\Review\ReviewId\ReviewId</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Domain\Models\Review\ReviewIdentity\ReviewIdentity</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Review</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">ReviewIdentity</span> <span class="nv">$identity</span><span class="p">,</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">BookId</span> <span class="nv">$bookId</span><span class="p">,</span>
+        <span class="k">private</span> <span class="nx">Name</span> <span class="nv">$name</span><span class="p">,</span>
+        <span class="k">private</span> <span class="nx">Rating</span> <span class="nv">$rating</span><span class="p">,</span>
+        <span class="k">private</span> <span class="o">?</span><span class="nx">Comment</span> <span class="nv">$comment</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span>
+        <span class="nx">ReviewIdentity</span> <span class="nv">$identity</span><span class="p">,</span>
+        <span class="nx">BookId</span> <span class="nv">$bookId</span><span class="p">,</span>
+        <span class="nx">Name</span> <span class="nv">$name</span><span class="p">,</span>
+        <span class="nx">Rating</span> <span class="nv">$rating</span><span class="p">,</span>
+        <span class="o">?</span><span class="nx">Comment</span> <span class="nv">$comment</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">:</span> <span class="nx">self</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">self</span><span class="p">(</span><span class="nv">$identity</span><span class="p">,</span> <span class="nv">$bookId</span><span class="p">,</span> <span class="nv">$name</span><span class="p">,</span> <span class="nv">$rating</span><span class="p">,</span> <span class="nv">$comment</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">reconstruct</span><span class="p">(</span>
+        <span class="nx">ReviewIdentity</span> <span class="nv">$identity</span><span class="p">,</span>
+        <span class="nx">BookId</span> <span class="nv">$bookId</span><span class="p">,</span>
+        <span class="nx">Name</span> <span class="nv">$name</span><span class="p">,</span>
+        <span class="nx">Rating</span> <span class="nv">$rating</span><span class="p">,</span>
+        <span class="o">?</span><span class="nx">Comment</span> <span class="nv">$comment</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">:</span> <span class="nx">self</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">self</span><span class="p">(</span><span class="nv">$identity</span><span class="p">,</span> <span class="nv">$bookId</span><span class="p">,</span> <span class="nv">$name</span><span class="p">,</span> <span class="nv">$rating</span><span class="p">,</span> <span class="nv">$comment</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * このレビューが信頼できるかを判断</span>
+<span class="sd">     * @param float $threshold 信頼性閾値（0.0～1.0）</span>
+<span class="sd">     * @return bool 信頼できる場合はtrue</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">isTrustworthy</span><span class="p">(</span><span class="nx">float</span> <span class="nv">$threshold</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+    <span class="p">{</span>
+        <span class="c1">// コメントがない場合は評価のみで判断</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">comment</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">rating</span><span class="o">-&gt;</span><span class="na">getQualityFactor</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="nv">$threshold</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 評価とコメントの係数を組み合わせる</span>
+        <span class="nv">$ratingFactor</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">rating</span><span class="o">-&gt;</span><span class="na">getQualityFactor</span><span class="p">();</span>
+        <span class="nv">$commentFactor</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">comment</span><span class="o">-&gt;</span><span class="na">getQualityFactor</span><span class="p">();</span>
+
+        <span class="c1">// 評価の重みを0.7、コメントの重みを0.3とする</span>
+        <span class="nv">$combinedFactor</span> <span class="o">=</span> <span class="nv">$ratingFactor</span> <span class="o">*</span> <span class="mf">0.7</span> <span class="o">+</span> <span class="nv">$commentFactor</span> <span class="o">*</span> <span class="mf">0.3</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nv">$combinedFactor</span> <span class="o">&gt;=</span> <span class="nv">$threshold</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * コメントから推薦本を抽出する</span>
+<span class="sd">     * @return string[] 推薦本のタイトル配列</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">extractRecommendedBooks</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">comment</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">[];</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 書籍名の後30文字以内に推薦キーワードがあるものを抽出</span>
+        <span class="nv">$pattern</span> <span class="o">=</span>
+            <span class="s2">"/[『『]([^』』]+)[』』][^。]{0,30}(?:読む|読んだ|学ぶ|学んだ|必要|推奨|おすすめ|良い|いい|理解)/u"</span><span class="p">;</span>
+
+        <span class="nv">$matches</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">comment</span><span class="o">-&gt;</span><span class="na">extractMatches</span><span class="p">(</span><span class="nv">$pattern</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">array_values</span><span class="p">(</span><span class="nb">array_unique</span><span class="p">(</span><span class="nv">$matches</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 別のレビューと同一かどうかを判定</span>
+<span class="sd">     * @param Review $other 比較対象のレビュー</span>
+<span class="sd">     * @return bool 同一の場合はtrue</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">equals</span><span class="p">(</span><span class="nx">Review</span> <span class="nv">$other</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">identity</span><span class="o">-&gt;</span><span class="na">equals</span><span class="p">(</span><span class="nv">$other</span><span class="o">-&gt;</span><span class="na">identity</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">reviewId</span><span class="p">()</span><span class="o">:</span> <span class="nx">ReviewId</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">identity</span><span class="o">-&gt;</span><span class="na">reviewId</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">bookId</span><span class="p">()</span><span class="o">:</span> <span class="nx">BookId</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bookId</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">name</span><span class="p">()</span><span class="o">:</span> <span class="nx">Name</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">rating</span><span class="p">()</span><span class="o">:</span> <span class="nx">Rating</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">rating</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">comment</span><span class="p">()</span><span class="o">:</span> <span class="o">?</span><span class="nx">Comment</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">comment</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">updateName</span><span class="p">(</span><span class="nx">Name</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">updateRating</span><span class="p">(</span><span class="nx">Rating</span> <span class="nv">$rating</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">rating</span> <span class="o">=</span> <span class="nv">$rating</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">editComment</span><span class="p">(</span><span class="nx">Comment</span> <span class="nv">$comment</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">comment</span> <span class="o">=</span> <span class="nv">$comment</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h3 id="11-3-3-book">11-3-3 Book 集約の実装<a class="headerlink" href="#11-3-3-book" title="Permanent link">&para;</a></h3>
 <p><code>Book</code> 集約は書籍 ID（<code>BookId</code>）、タイトル（<code>Title</code>）、著者（<code>Author</code>）、価格（<code>Price</code>）という状態を持ち、また価格変更（<code>changePrice()</code>）という振る舞いを持つ。</p>
 <p><code>Book</code> 集約が <code>Review</code> 集約をコールすることはない。</p>
 <p><code>Review</code> 集約と <code>Book</code> 集約は疎結合になっている。</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Author</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./Author/Author"</span><span class="p">;</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Go</label><label for="__tabbed_10_2">TypeScript</label><label for="__tabbed_10_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">book</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">identity</span><span class="w"> </span><span class="nx">BookIdentity</span>
+<span class="w">    </span><span class="nx">price</span><span class="w">    </span><span class="nx">Price</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewBook</span><span class="p">(</span><span class="nx">identity</span><span class="w"> </span><span class="nx">BookIdentity</span><span class="p">,</span><span class="w"> </span><span class="nx">price</span><span class="w"> </span><span class="nx">Price</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Book</span><span class="p">{</span><span class="nx">identity</span><span class="p">:</span><span class="w"> </span><span class="nx">identity</span><span class="p">,</span><span class="w"> </span><span class="nx">price</span><span class="p">:</span><span class="w"> </span><span class="nx">price</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">Create</span><span class="p">(</span><span class="nx">identity</span><span class="w"> </span><span class="nx">BookIdentity</span><span class="p">,</span><span class="w"> </span><span class="nx">price</span><span class="w"> </span><span class="nx">Price</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">NewBook</span><span class="p">(</span><span class="nx">identity</span><span class="p">,</span><span class="w"> </span><span class="nx">price</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">Reconstruct</span><span class="p">(</span><span class="nx">identity</span><span class="w"> </span><span class="nx">BookIdentity</span><span class="p">,</span><span class="w"> </span><span class="nx">price</span><span class="w"> </span><span class="nx">Price</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">NewBook</span><span class="p">(</span><span class="nx">identity</span><span class="p">,</span><span class="w"> </span><span class="nx">price</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// Equals 別の書籍と同一かどうかを判定</span>
+<span class="c1">// other: 比較対象の書籍</span>
+<span class="c1">// 同一の場合はtrueを返す</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">b</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="p">)</span><span class="w"> </span><span class="nx">Equals</span><span class="p">(</span><span class="nx">other</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="p">)</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">Equals</span><span class="p">(</span><span class="nx">other</span><span class="p">.</span><span class="nx">identity</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">b</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="p">)</span><span class="w"> </span><span class="nx">BookID</span><span class="p">()</span><span class="w"> </span><span class="nx">BookID</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">BookID</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">b</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="p">)</span><span class="w"> </span><span class="nx">Title</span><span class="p">()</span><span class="w"> </span><span class="nx">Title</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">Title</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">b</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="p">)</span><span class="w"> </span><span class="nx">Author</span><span class="p">()</span><span class="w"> </span><span class="nx">Author</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">Author</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">b</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="p">)</span><span class="w"> </span><span class="nx">Price</span><span class="p">()</span><span class="w"> </span><span class="nx">Price</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">price</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">b</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="p">)</span><span class="w"> </span><span class="nx">ChangePrice</span><span class="p">(</span><span class="nx">price</span><span class="w"> </span><span class="nx">Price</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">b</span><span class="p">.</span><span class="nx">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">price</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Author</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./Author/Author"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">BookId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./BookId/BookId"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">BookIdentity</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./BookIdentity/BookIdentity"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Price</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./Price/Price"</span><span class="p">;</span>
@@ -34226,6 +35087,75 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">namespace</span> <span class="nx">Domain\Models\Book</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Domain\Models\Book\Author\Author</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Domain\Models\Book\BookId\BookId</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Domain\Models\Book\BookIdentity\BookIdentity</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Domain\Models\Book\Price\Price</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Domain\Models\Book\Title\Title</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Book</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="nx">BookIdentity</span> <span class="nv">$identity</span><span class="p">,</span>
+        <span class="k">private</span> <span class="nx">Price</span> <span class="nv">$price</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="nx">BookIdentity</span> <span class="nv">$identity</span><span class="p">,</span> <span class="nx">Price</span> <span class="nv">$price</span><span class="p">)</span><span class="o">:</span> <span class="nx">self</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">self</span><span class="p">(</span><span class="nv">$identity</span><span class="p">,</span> <span class="nv">$price</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">reconstruct</span><span class="p">(</span><span class="nx">BookIdentity</span> <span class="nv">$identity</span><span class="p">,</span> <span class="nx">Price</span> <span class="nv">$price</span><span class="p">)</span><span class="o">:</span> <span class="nx">self</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">self</span><span class="p">(</span><span class="nv">$identity</span><span class="p">,</span> <span class="nv">$price</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 別の書籍と同一かどうかを判定</span>
+<span class="sd">     * @param Book $other 比較対象の書籍</span>
+<span class="sd">     * @return bool 同一の場合はtrue</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">equals</span><span class="p">(</span><span class="nx">Book</span> <span class="nv">$other</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">identity</span><span class="o">-&gt;</span><span class="na">equals</span><span class="p">(</span><span class="nv">$other</span><span class="o">-&gt;</span><span class="na">identity</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">bookId</span><span class="p">()</span><span class="o">:</span> <span class="nx">BookId</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">identity</span><span class="o">-&gt;</span><span class="na">bookId</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">title</span><span class="p">()</span><span class="o">:</span> <span class="nx">Title</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">identity</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">author</span><span class="p">()</span><span class="o">:</span> <span class="nx">Author</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">identity</span><span class="o">-&gt;</span><span class="na">author</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">price</span><span class="p">()</span><span class="o">:</span> <span class="nx">Price</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">price</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">changePrice</span><span class="p">(</span><span class="nx">Price</span> <span class="nv">$price</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">price</span> <span class="o">=</span> <span class="nv">$price</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h2 id="11-4">11-4 集約のテスト<a class="headerlink" href="#11-4" title="Permanent link">&para;</a></h2>
 <h3 id="11-4-1">11-4-1 集約テストの役割<a class="headerlink" href="#11-4-1" title="Permanent link">&para;</a></h3>
 <p>集約のテストでは、状態を正常に変更できるか、ドメインルールに違反する操作を正常にバリデーションできるか、そしてドメインイベントなどの副作用が適切に発生するかをユニットテストする。</p>
