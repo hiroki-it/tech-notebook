@@ -34808,7 +34808,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 21:15:41 JST">2026-11-07</span>
   </span>
 
     
@@ -34845,7 +34845,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Go</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">"gorm.io/driver/mysql"</span>
 <span class="w">    </span><span class="s">"gorm.io/gorm"</span>
 <span class="p">)</span>
@@ -34864,7 +34864,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/services/prisma.server"</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">handler</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -34875,7 +34875,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">function</span> <span class="nf">handler</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
 <span class="p">{</span>
@@ -34899,21 +34899,21 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Go</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span>
 <span class="w">    </span><span class="nx">ID</span><span class="p">:</span><span class="w">        </span><span class="mi">1</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">BirthDate</span><span class="p">:</span><span class="w"> </span><span class="s">"2000-01-01"</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">birthDate</span><span class="o">:</span><span class="w"> </span><span class="s2">"2000-01-01"</span><span class="p">,</span>
 <span class="p">};</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$user</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">"id"</span>        <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
@@ -34930,7 +34930,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Go</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span>
 <span class="w">    </span><span class="nx">ID</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// 日付（DBではDATE型のカラムにする）</span>
 <span class="w">    </span><span class="nx">BirthDate</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Date</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">UTC</span><span class="p">),</span>
@@ -34950,7 +34950,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="p">,</span>
@@ -34972,7 +34972,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">use</span> <span class="nx">Brick\Math\BigDecimal</span><span class="p">;</span>
 
@@ -35006,7 +35006,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Go</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="nx">User</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="nx">User</span>
 <span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span>
 <span class="w">    </span><span class="c1">// 不要なカラムも取得してしまっている</span>
 <span class="w">    </span><span class="nx">Preload</span><span class="p">(</span><span class="s">"Team"</span><span class="p">).</span>
@@ -35017,7 +35017,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/services/prisma.server"</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">findUnique</span><span class="p">({</span>
@@ -35028,7 +35028,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$user</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
     <span class="c1">// 不要なカラムも取得してしまっている</span>
@@ -35050,7 +35050,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Go</label><label for="__tabbed_5_2">TypeScript</label><label for="__tabbed_5_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// 親テーブルにSQLを発行 (1回)</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// 親テーブルにSQLを発行 (1回)</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="p">[]</span><span class="nx">User</span>
 <span class="nx">db</span><span class="p">.</span><span class="nx">Where</span><span class="p">(</span><span class="s">"team_id = ?"</span><span class="p">,</span><span class="w"> </span><span class="nx">teamID</span><span class="p">).</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">users</span><span class="p">)</span>
 
@@ -35062,7 +35062,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/services/prisma.server"</span><span class="p">;</span>
 
 <span class="c1">// 親テーブルにSQLを発行 (1回)</span>
@@ -35077,7 +35077,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// 親テーブルにSQLを発行 (1回)</span>
 <span class="nv">$departments</span> <span class="o">=</span> <span class="nx">Department</span><span class="o">::</span><span class="na">all</span><span class="p">();</span>
@@ -35104,7 +35104,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Go</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// 親テーブルにSQLを発行 (1回)</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// 親テーブルにSQLを発行 (1回)</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="p">[]</span><span class="nx">User</span>
 <span class="nx">db</span><span class="p">.</span><span class="nx">Where</span><span class="p">(</span><span class="s">"team_id = ?"</span><span class="p">,</span><span class="w"> </span><span class="nx">teamID</span><span class="p">).</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">users</span><span class="p">)</span>
 
@@ -35122,7 +35122,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/services/prisma.server"</span><span class="p">;</span>
 
 <span class="c1">// 親テーブルにSQLを発行 (1回)</span>
@@ -35140,7 +35140,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// 親テーブルにSQLを発行 (1回)</span>
 <span class="nv">$departments</span> <span class="o">=</span> <span class="nx">Department</span><span class="o">::</span><span class="na">all</span><span class="p">();</span>
@@ -35160,7 +35160,7 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>GORM では、<code>Where()</code> 関数で IN 句を指定すると、IN 句を含む SQL が発行され、最終的に 2 回で済む。</p>
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// 親テーブルにSQLを発行 (1回)</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// 親テーブルにSQLを発行 (1回)</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="p">[]</span><span class="nx">User</span>
 <span class="nx">db</span><span class="p">.</span><span class="nx">Where</span><span class="p">(</span><span class="s">"team_id = ?"</span><span class="p">,</span><span class="w"> </span><span class="nx">teamID</span><span class="p">).</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">users</span><span class="p">)</span>
 
@@ -35177,7 +35177,7 @@
 </div>
 <div class="tabbed-block">
 <p>Prisma では、<code>in</code> プロパティを使用すると、IN 句を含む SQL が発行され、最終的に 2 回で済む。</p>
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/services/prisma.server"</span><span class="p">;</span>
 
 <span class="c1">// 親テーブルにSQLを発行 (1回)</span>
@@ -35194,7 +35194,7 @@
 </div>
 <div class="tabbed-block">
 <p>Laravel では <code>with()</code> 関数を使用すると、内部的に親テーブルへの SQL と IN 句を使用した SQL が発行され、最終的に 2 回で済む。</p>
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// 親テーブルと子テーブルにSQLを発行する (2回)</span>
 <span class="c1">// 子テーブルへのSQLでは、内部的にIN句を使用する</span>
@@ -35222,7 +35222,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Go</label><label for="__tabbed_8_2">TypeScript</label><label for="__tabbed_8_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="nx">page</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="nx">page</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span>
 <span class="nx">limit</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">50</span>
 
 <span class="kd">var</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="p">[]</span><span class="nx">User</span>
@@ -35235,7 +35235,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">findMany</span><span class="p">({</span>
@@ -35247,7 +35247,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$page</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="nv">$limit</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span>
@@ -35272,7 +35272,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Go</label><label for="__tabbed_9_2">TypeScript</label><label for="__tabbed_9_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">events</span><span class="w"> </span><span class="p">[]</span><span class="nx">Event</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">events</span><span class="w"> </span><span class="p">[]</span><span class="nx">Event</span>
 <span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span>
 <span class="w">    </span><span class="nx">Where</span><span class="p">(</span><span class="s">"tenant_id = ?"</span><span class="p">,</span><span class="w"> </span><span class="nx">tenantID</span><span class="p">).</span>
 <span class="w">    </span><span class="nx">Where</span><span class="p">(</span><span class="s">"occurred_at &gt;= ? AND occurred_at &lt; ?"</span><span class="p">,</span><span class="w"> </span><span class="nx">startAt</span><span class="p">,</span><span class="w"> </span><span class="nx">endAt</span><span class="p">).</span>
@@ -35282,7 +35282,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">findMany</span><span class="p">({</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">findMany</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">tenantId</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">occurredAt</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
@@ -35296,7 +35296,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$events</span> <span class="o">=</span> <span class="nx">Event</span><span class="o">::</span><span class="na">where</span><span class="p">(</span><span class="s2">"tenant_id"</span><span class="p">,</span> <span class="nv">$tenantId</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s2">"occurred_at"</span><span class="p">,</span> <span class="s2">"&gt;="</span><span class="p">,</span> <span class="nv">$startAt</span><span class="p">)</span>
@@ -35316,7 +35316,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Go</label><label for="__tabbed_10_2">TypeScript</label><label for="__tabbed_10_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span>
 <span class="w">    </span><span class="nx">Clauses</span><span class="p">(</span><span class="nx">clause</span><span class="p">.</span><span class="nx">OnConflict</span><span class="p">{</span>
 <span class="w">        </span><span class="nx">Columns</span><span class="p">:</span><span class="w">   </span><span class="p">[]</span><span class="nx">clause</span><span class="p">.</span><span class="nx">Column</span><span class="p">{{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"tenant_id"</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">"hour"</span><span class="p">}},</span>
 <span class="w">        </span><span class="nx">DoUpdates</span><span class="p">:</span><span class="w"> </span><span class="nx">clause</span><span class="p">.</span><span class="nx">Assignments</span><span class="p">(</span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}{</span><span class="s">"count"</span><span class="p">:</span><span class="w"> </span><span class="nx">eventCount</span><span class="p">}),</span>
@@ -35329,7 +35329,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">eventHourlySummary</span><span class="p">.</span><span class="nx">upsert</span><span class="p">({</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">eventHourlySummary</span><span class="p">.</span><span class="nx">upsert</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">tenantId_hour</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">tenantId</span><span class="p">,</span>
@@ -35348,7 +35348,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nx">EventHourlySummary</span><span class="o">::</span><span class="na">upsert</span><span class="p">(</span>
     <span class="p">[</span>
@@ -35382,7 +35382,7 @@ model EventHourlySummary {
 <div class="tabbed-set tabbed-alternate" data-tabs="11:3"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Go</label><label for="__tabbed_11_2">TypeScript</label><label for="__tabbed_11_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">eventSummary</span><span class="w"> </span><span class="nx">EventHourlySummary</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">eventSummary</span><span class="w"> </span><span class="nx">EventHourlySummary</span>
 <span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span>
 <span class="w">    </span><span class="nx">Where</span><span class="p">(</span><span class="s">"tenant_id = ? AND hour = ?"</span><span class="p">,</span><span class="w"> </span><span class="nx">tenantID</span><span class="p">,</span><span class="w"> </span><span class="nx">startAt</span><span class="p">).</span>
 <span class="w">    </span><span class="nx">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">eventSummary</span><span class="p">).</span><span class="nx">Error</span>
@@ -35394,7 +35394,7 @@ model EventHourlySummary {
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">eventSummary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">eventHourlySummary</span><span class="p">.</span><span class="nx">findUnique</span><span class="p">({</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">eventSummary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">eventHourlySummary</span><span class="p">.</span><span class="nx">findUnique</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">tenantId_hour</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">tenantId</span><span class="p">,</span>
@@ -35407,7 +35407,7 @@ model EventHourlySummary {
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$eventSummary</span> <span class="o">=</span> <span class="nx">EventHourlySummary</span><span class="o">::</span><span class="na">where</span><span class="p">(</span><span class="s2">"tenant_id"</span><span class="p">,</span> <span class="nv">$tenantId</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s2">"hour"</span><span class="p">,</span> <span class="nv">$startAt</span><span class="p">)</span>
@@ -35429,7 +35429,7 @@ model EventHourlySummary {
 <div class="tabbed-set tabbed-alternate" data-tabs="12:3"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Go</label><label for="__tabbed_12_2">TypeScript</label><label for="__tabbed_12_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">findByUserNames</span><span class="p">(</span><span class="nx">userNames</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">([]</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">findByUserNames</span><span class="p">(</span><span class="nx">userNames</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">([]</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="p">[]</span><span class="nx">User</span>
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span>
 <span class="w">        </span><span class="nx">Where</span><span class="p">(</span><span class="s">"name IN ?"</span><span class="p">,</span><span class="w"> </span><span class="nx">userNames</span><span class="p">).</span>
@@ -35439,7 +35439,7 @@ model EventHourlySummary {
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">findByUserNames</span><span class="p">(</span><span class="nx">userNames</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">findByUserNames</span><span class="p">(</span><span class="nx">userNames</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">findMany</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">in</span><span class="o">:</span><span class="w"> </span><span class="kt">userNames</span><span class="p">},</span>
@@ -35449,7 +35449,7 @@ model EventHourlySummary {
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">function</span> <span class="nf">findByUserNames</span><span class="p">(</span><span class="k">array</span> <span class="nv">$userNames</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
 <span class="p">{</span>
@@ -35465,7 +35465,7 @@ model EventHourlySummary {
 <div class="tabbed-set tabbed-alternate" data-tabs="13:3"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><input id="__tabbed_13_3" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Go</label><label for="__tabbed_13_2">TypeScript</label><label for="__tabbed_13_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">findByUserNames</span><span class="p">(</span><span class="nx">userNames</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">([]</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">findByUserNames</span><span class="p">(</span><span class="nx">userNames</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">([]</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">userNames</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">[]</span><span class="nx">User</span><span class="p">{},</span><span class="w"> </span><span class="kc">nil</span>
 <span class="w">    </span><span class="p">}</span>
@@ -35479,7 +35479,7 @@ model EventHourlySummary {
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">findByUserNames</span><span class="p">(</span><span class="nx">userNames</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">findByUserNames</span><span class="p">(</span><span class="nx">userNames</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">userNames</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">[];</span>
 <span class="w">  </span><span class="p">}</span>
@@ -35493,7 +35493,7 @@ model EventHourlySummary {
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">function</span> <span class="nf">findByUserNames</span><span class="p">(</span><span class="k">array</span> <span class="nv">$userNames</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
 <span class="p">{</span>
@@ -35518,7 +35518,7 @@ model EventHourlySummary {
 <div class="tabbed-set tabbed-alternate" data-tabs="14:3"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><input id="__tabbed_14_3" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Go</label><label for="__tabbed_14_2">TypeScript</label><label for="__tabbed_14_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="p">[]</span><span class="nx">User</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="p">[]</span><span class="nx">User</span>
 <span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span>
 <span class="w">    </span><span class="nx">Select</span><span class="p">(</span><span class="s">"team_id"</span><span class="p">).</span>
 <span class="w">    </span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">users</span><span class="p">).</span><span class="nx">Error</span>
@@ -35530,7 +35530,7 @@ model EventHourlySummary {
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">findMany</span><span class="p">({</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">findMany</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">select</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">teamId</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
@@ -35543,7 +35543,7 @@ model EventHourlySummary {
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$users</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">select</span><span class="p">(</span><span class="s2">"team_id"</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
 
@@ -35560,7 +35560,7 @@ model EventHourlySummary {
 <div class="tabbed-set tabbed-alternate" data-tabs="15:3"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><input id="__tabbed_15_3" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Go</label><label for="__tabbed_15_2">TypeScript</label><label for="__tabbed_15_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">userCountByTeam</span><span class="w"> </span><span class="p">[]</span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">userCountByTeam</span><span class="w"> </span><span class="p">[]</span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">TeamID</span><span class="w"> </span><span class="kt">string</span>
 <span class="w">    </span><span class="nx">Count</span><span class="w">  </span><span class="kt">int</span>
 <span class="p">}</span>
@@ -35572,7 +35572,7 @@ model EventHourlySummary {
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">userCountByTeam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">groupBy</span><span class="p">({</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">userCountByTeam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">groupBy</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">by</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"teamId"</span><span class="p">],</span>
 <span class="w">  </span><span class="nx">_count</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">_all</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
@@ -35581,7 +35581,7 @@ model EventHourlySummary {
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$userCountByTeam</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">selectRaw</span><span class="p">(</span><span class="s2">"team_id, COUNT(*)"</span><span class="p">)</span>
     <span class="o">-&gt;</span><span class="na">groupBy</span><span class="p">(</span><span class="s2">"team_id"</span><span class="p">)</span>
@@ -35606,7 +35606,7 @@ model EventHourlySummary {
 <div class="tabbed-set tabbed-alternate" data-tabs="16:3"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><input id="__tabbed_16_3" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Go</label><label for="__tabbed_16_2">TypeScript</label><label for="__tabbed_16_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">orders</span><span class="w"> </span><span class="p">[]</span><span class="nx">Order</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">orders</span><span class="w"> </span><span class="p">[]</span><span class="nx">Order</span>
 <span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span>
 <span class="w">    </span><span class="nx">Select</span><span class="p">(</span><span class="s">"amount"</span><span class="p">).</span>
 <span class="w">    </span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">orders</span><span class="p">).</span><span class="nx">Error</span>
@@ -35618,7 +35618,7 @@ model EventHourlySummary {
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">orders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">order</span><span class="p">.</span><span class="nx">findMany</span><span class="p">({</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">orders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">order</span><span class="p">.</span><span class="nx">findMany</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">select</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">amount</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
@@ -35628,7 +35628,7 @@ model EventHourlySummary {
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$orders</span> <span class="o">=</span> <span class="nx">Order</span><span class="o">::</span><span class="na">select</span><span class="p">(</span><span class="s2">"amount"</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
 
@@ -35642,7 +35642,7 @@ model EventHourlySummary {
 <div class="tabbed-set tabbed-alternate" data-tabs="17:3"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><input id="__tabbed_17_3" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Go</label><label for="__tabbed_17_2">TypeScript</label><label for="__tabbed_17_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">totalAmount</span><span class="w"> </span><span class="kt">int</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">totalAmount</span><span class="w"> </span><span class="kt">int</span>
 <span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span>
 <span class="w">    </span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">Order</span><span class="p">{}).</span>
 <span class="w">    </span><span class="nx">Select</span><span class="p">(</span><span class="s">"COALESCE(SUM(amount), 0)"</span><span class="p">).</span>
@@ -35650,7 +35650,7 @@ model EventHourlySummary {
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">order</span><span class="p">.</span><span class="nx">aggregate</span><span class="p">({</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">order</span><span class="p">.</span><span class="nx">aggregate</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">_sum</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">amount</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
 <span class="w">  </span><span class="p">},</span>
@@ -35660,7 +35660,7 @@ model EventHourlySummary {
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$totalAmount</span> <span class="o">=</span> <span class="nx">Order</span><span class="o">::</span><span class="na">sum</span><span class="p">(</span><span class="s2">"amount"</span><span class="p">);</span>
 </code></pre></div>

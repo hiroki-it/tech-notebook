@@ -33807,7 +33807,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 21:09:18 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 21:15:41 JST">2026-11-07</span>
   </span>
 
     
@@ -33846,7 +33846,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Go</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">BookID</span><span class="w"> </span><span class="nx">BookID</span><span class="w"> </span><span class="c1">// ID値オブジェクト</span>
 <span class="w">    </span><span class="nx">Title</span><span class="w">  </span><span class="nx">Title</span><span class="w">  </span><span class="c1">// タイトル値オブジェクト</span>
 <span class="w">    </span><span class="nx">Author</span><span class="w"> </span><span class="nx">Author</span><span class="w"> </span><span class="c1">// 著者値オブジェクト</span>
@@ -33874,7 +33874,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">,</span><span class="w"> </span><span class="c1">// ID値オブジェクト</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="kt">Title</span><span class="p">,</span><span class="w"> </span><span class="c1">// タイトル値オブジェクト</span>
@@ -33891,7 +33891,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">Book</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="k">class</span> <span class="nc">Book</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
         <span class="k">public</span> <span class="nx">BookId</span> <span class="nv">$bookId</span><span class="p">,</span> <span class="c1">// ID値オブジェクト</span>
@@ -33934,7 +33934,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Go</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// アンチパターン: 集約が他の集約を直接コールする</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// アンチパターン: 集約が他の集約を直接コールする</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">BookID</span><span class="w">  </span><span class="nx">BookID</span>
 <span class="w">    </span><span class="nx">Title</span><span class="w">   </span><span class="nx">Title</span>
@@ -33955,7 +33955,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// アンチパターン: 集約が他の集約を直接コールする</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="c1">// アンチパターン: 集約が他の集約を直接コールする</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">,</span>
@@ -33974,7 +33974,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="c1">// アンチパターン: 集約が他の集約を直接コールする</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="c1">// アンチパターン: 集約が他の集約を直接コールする</span>
 <span class="k">class</span> <span class="nc">Book</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
@@ -34003,7 +34003,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Go</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Review</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Review</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">ReviewID</span><span class="w"> </span><span class="nx">ReviewID</span><span class="w"> </span><span class="c1">// ID値オブジェクト</span>
 <span class="w">    </span><span class="nx">BookID</span><span class="w">   </span><span class="nx">BookID</span>
 <span class="w">    </span><span class="nx">Name</span><span class="w">     </span><span class="nx">Name</span><span class="w">    </span><span class="c1">// 投稿者名値オブジェクト</span>
@@ -34019,7 +34019,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Review</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Review</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">ReviewId</span><span class="p">,</span><span class="w"> </span><span class="c1">// ID値オブジェクト</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">,</span>
@@ -34032,7 +34032,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">Review</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="k">class</span> <span class="nc">Review</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
         <span class="k">public</span> <span class="nx">ReviewId</span> <span class="nv">$reviewId</span><span class="p">,</span> <span class="c1">// ID値オブジェクト</span>
@@ -34053,7 +34053,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Go</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">BookID</span><span class="w">    </span><span class="nx">BookID</span>
 <span class="w">    </span><span class="nx">Title</span><span class="w">     </span><span class="nx">Title</span>
 <span class="w">    </span><span class="nx">Price</span><span class="w">     </span><span class="nx">Price</span>
@@ -34068,7 +34068,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">,</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="kt">Title</span><span class="p">,</span>
@@ -34080,7 +34080,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">Book</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="k">class</span> <span class="nc">Book</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
         <span class="k">public</span> <span class="nx">BookId</span> <span class="nv">$bookId</span><span class="p">,</span>
@@ -34101,7 +34101,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Go</label><label for="__tabbed_5_2">TypeScript</label><label for="__tabbed_5_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// 冒頭の悪い例</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// 冒頭の悪い例</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">BookID</span><span class="w">  </span><span class="nx">BookID</span>
 <span class="w">    </span><span class="nx">Title</span><span class="w">   </span><span class="nx">Title</span>
@@ -34126,7 +34126,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// 冒頭の悪い例</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="c1">// 冒頭の悪い例</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">,</span>
@@ -34149,7 +34149,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="c1">// 冒頭の悪い例</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="c1">// 冒頭の悪い例</span>
 <span class="k">class</span> <span class="nc">Book</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
@@ -34180,7 +34180,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Go</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// 書籍の基本情報に焦点を当てた集約</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// 書籍の基本情報に焦点を当てた集約</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">bookID</span><span class="w"> </span><span class="nx">BookID</span>
 <span class="w">    </span><span class="nx">title</span><span class="w">  </span><span class="nx">Title</span>
@@ -34238,7 +34238,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// 書籍の基本情報に焦点を当てた集約</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="c1">// 書籍の基本情報に焦点を当てた集約</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">,</span>
@@ -34282,7 +34282,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="c1">// 書籍の基本情報に焦点を当てた集約</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="c1">// 書籍の基本情報に焦点を当てた集約</span>
 <span class="k">class</span> <span class="nc">Book</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
@@ -34342,7 +34342,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Go</label><label for="__tabbed_7_2">TypeScript</label><label for="__tabbed_7_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">BookID</span><span class="w"> </span><span class="nx">BookID</span>
 <span class="w">    </span><span class="c1">// ...</span>
 
@@ -34365,7 +34365,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">// ...</span>
@@ -34385,7 +34385,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">class</span> <span class="nc">Book</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="k">class</span> <span class="nc">Book</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">array</span> <span class="nv">$reviews</span><span class="p">;</span> <span class="c1">// レビューを直接含める</span>
 
@@ -34414,7 +34414,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Go</label><label for="__tabbed_8_2">TypeScript</label><label for="__tabbed_8_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// Book集約 - 基本情報管理に特化</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// Book集約 - 基本情報管理に特化</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">bookID</span><span class="w"> </span><span class="nx">BookID</span>
 <span class="w">    </span><span class="nx">title</span><span class="w">  </span><span class="nx">Title</span>
@@ -34476,7 +34476,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// Book集約 - 基本情報管理に特化</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="c1">// Book集約 - 基本情報管理に特化</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">,</span>
@@ -34527,7 +34527,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="c1">// Book集約 - 基本情報管理に特化</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="c1">// Book集約 - 基本情報管理に特化</span>
 <span class="k">class</span> <span class="nc">Book</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
@@ -34626,7 +34626,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Go</label><label for="__tabbed_9_2">TypeScript</label><label for="__tabbed_9_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">review</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">review</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">"regexp"</span>
@@ -34732,7 +34732,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">BookId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"../Book/BookId/BookId"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">BookId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"../Book/BookId/BookId"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Comment</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./Comment/Comment"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Name</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./Name/Name"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Rating</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./Rating/Rating"</span><span class="p">;</span>
@@ -34847,7 +34847,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">Domain\Models\Review</span><span class="p">;</span>
 
@@ -34989,7 +34989,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Go</label><label for="__tabbed_10_2">TypeScript</label><label for="__tabbed_10_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">book</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">book</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">identity</span><span class="w"> </span><span class="nx">BookIdentity</span>
@@ -35037,7 +35037,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Author</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./Author/Author"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Author</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./Author/Author"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">BookId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./BookId/BookId"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">BookIdentity</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./BookIdentity/BookIdentity"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Price</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./Price/Price"</span><span class="p">;</span>
@@ -35089,7 +35089,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">Domain\Models\Book</span><span class="p">;</span>
 
@@ -35173,7 +35173,7 @@
 <li>レビュアーの名前変更（<code>"updateName"</code>）、評価変更（<code>"updateRating"</code>）</li>
 <li>レビュアーのコメント編集（<code>"editComment"</code>）</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">BookId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"../Book/BookId/BookId"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">BookId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"../Book/BookId/BookId"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Comment</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./Comment/Comment"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Name</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./Name/Name"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Rating</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./Rating/Rating"</span><span class="p">;</span>
@@ -35413,7 +35413,7 @@
 <li><code>Book</code> 集約の同一性判定（<code>"equals"</code>）</li>
 <li>書籍価格の変更（<code>"changePrice"</code>）</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Author</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./Author/Author"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Author</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./Author/Author"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Book</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./Book"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">BookId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./BookId/BookId"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">BookIdentity</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./BookIdentity/BookIdentity"</span><span class="p">;</span>

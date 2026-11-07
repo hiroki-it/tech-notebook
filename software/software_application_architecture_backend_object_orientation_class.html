@@ -35438,7 +35438,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 21:02:11 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 21:15:41 JST">2026-11-07</span>
   </span>
 
     
@@ -35488,7 +35488,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Go</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">entity</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">entity</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">"app/domain/user/valueobject"</span>
 
@@ -35502,7 +35502,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/domain/user/valueObject/UserName"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/domain/user/valueObject/UserName"</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">;</span><span class="w"> </span><span class="c1">// 状態として保持</span>
@@ -35514,7 +35514,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
 
@@ -35538,17 +35538,17 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Go</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="nx">name</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewUserName</span><span class="p">()</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="nx">name</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewUserName</span><span class="p">()</span>
 <span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewUser</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="c1">// 集約の関係</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserName</span><span class="p">();</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserName</span><span class="p">();</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span><span class="w"> </span><span class="c1">// 集約の関係</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">();</span>
 <span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span> <span class="c1">// 集約の関係</span>
@@ -35559,7 +35559,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Go</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="s">"app/domain/car/entity"</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="s">"app/domain/car/entity"</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Car</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">tire1</span><span class="w"> </span><span class="o">*</span><span class="nx">entity</span><span class="p">.</span><span class="nx">Tire1</span>
@@ -35583,7 +35583,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Tire1</span><span class="p">,</span><span class="w"> </span><span class="nx">Tire2</span><span class="p">,</span><span class="w"> </span><span class="nx">Tire3</span><span class="p">,</span><span class="w"> </span><span class="nx">Tire4</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/domain/car/entity"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Tire1</span><span class="p">,</span><span class="w"> </span><span class="nx">Tire2</span><span class="p">,</span><span class="w"> </span><span class="nx">Tire3</span><span class="p">,</span><span class="w"> </span><span class="nx">Tire4</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/domain/car/entity"</span><span class="p">;</span>
 
 <span class="kd">class</span><span class="w"> </span><span class="nx">Car</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">tire1</span><span class="o">:</span><span class="w"> </span><span class="kt">Tire1</span><span class="p">;</span>
@@ -35605,7 +35605,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">use</span> <span class="nx">App\Domain\Car\Entity\Tire1</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">App\Domain\Car\Entity\Tire2</span><span class="p">;</span>
@@ -35640,7 +35640,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Go</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// Tireクラスをインスタンス化</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// Tireクラスをインスタンス化</span>
 <span class="nx">tire1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewTire1</span><span class="p">()</span>
 <span class="nx">tire2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewTire2</span><span class="p">()</span>
 <span class="nx">tire3</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewTire3</span><span class="p">()</span>
@@ -35651,7 +35651,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// Tireクラスをインスタンス化</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="c1">// Tireクラスをインスタンス化</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">tire1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Tire1</span><span class="p">();</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">tire2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Tire2</span><span class="p">();</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">tire3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Tire3</span><span class="p">();</span>
@@ -35662,7 +35662,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// Tireクラスをインスタンス化</span>
 <span class="nv">$tire1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tire1</span><span class="p">();</span>
@@ -35686,7 +35686,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Go</label><label for="__tabbed_5_2">TypeScript</label><label for="__tabbed_5_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">entity</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">entity</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">"app/domain/user/valueobject"</span>
 
@@ -35702,7 +35702,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/domain/user/valueObject/UserName"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/domain/user/valueObject/UserName"</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">name?</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">;</span><span class="w"> </span><span class="c1">// 状態として保持</span>
@@ -35716,7 +35716,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
 
@@ -35742,15 +35742,15 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Go</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{}</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">();</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">();</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
 </code></pre></div>
@@ -35761,7 +35761,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Go</label><label for="__tabbed_7_2">TypeScript</label><label for="__tabbed_7_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Car</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Car</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">lock</span><span class="w"> </span><span class="o">*</span><span class="nx">Lock</span>
 <span class="p">}</span>
 
@@ -35772,7 +35772,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Car</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Car</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">lock</span><span class="o">:</span><span class="w"> </span><span class="kt">Lock</span><span class="p">;</span>
 
 <span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -35783,7 +35783,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Car</span>
 <span class="p">{</span>
@@ -35804,17 +35804,17 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Go</label><label for="__tabbed_8_2">TypeScript</label><label for="__tabbed_8_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// Carクラスのインスタンスの中で、Lockクラスがインスタンス化される。</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// Carクラスのインスタンスの中で、Lockクラスがインスタンス化される。</span>
 <span class="nx">car</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewCar</span><span class="p">()</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// Carクラスのインスタンスの中で、Lockクラスがインスタンス化される。</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="c1">// Carクラスのインスタンスの中で、Lockクラスがインスタンス化される。</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">car</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Car</span><span class="p">();</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// Carクラスのインスタンスの中で、Lockクラスがインスタンス化される。</span>
 <span class="nv">$car</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Car</span><span class="p">();</span>
@@ -35834,7 +35834,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Go</label><label for="__tabbed_9_2">TypeScript</label><label for="__tabbed_9_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
 <span class="c1">// 親クラス</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">Goods</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
@@ -35871,7 +35871,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// 親クラス</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="c1">// 親クラス</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">Goods</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 商品名データ</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">;</span>
@@ -35904,7 +35904,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// 親クラス</span>
 <span class="k">class</span> <span class="nc">Goods</span>
@@ -35948,7 +35948,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Go</label><label for="__tabbed_10_2">TypeScript</label><label for="__tabbed_10_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">"fmt"</span>
 <span class="w">    </span><span class="s">"math"</span>
 <span class="p">)</span>
@@ -35968,7 +35968,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// 子クラス</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="c1">// 子クラス</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">GoodsWithTax</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Goods</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ★★★★★★注目★★★★★★</span>
 <span class="w">  </span><span class="c1">// printPrice関数をOverride</span>
@@ -35981,7 +35981,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// 子クラス</span>
 <span class="k">class</span> <span class="nc">GoodsWithTax</span> <span class="k">extends</span> <span class="nx">Goods</span>
@@ -36035,7 +36035,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="11:3"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Go</label><label for="__tabbed_11_2">TypeScript</label><label for="__tabbed_11_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">"fmt"</span>
 <span class="w">    </span><span class="s">"time"</span>
 <span class="p">)</span>
@@ -36103,7 +36103,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// 抽象クラス。型として提供したいものを定義する。</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="c1">// 抽象クラス。型として提供したいものを定義する。</span>
 <span class="k">abstract</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ShainManagement</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 定数の定義</span>
 <span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">TIME_TO_ARRIVE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"10:00:00"</span><span class="p">;</span>
@@ -36160,7 +36160,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// 抽象クラス。型として提供したいものを定義する。</span>
 <span class="k">abstract</span> <span class="k">class</span> <span class="nc">ShainManagement</span>
@@ -36215,7 +36215,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="12:3"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Go</label><label for="__tabbed_12_2">TypeScript</label><label for="__tabbed_12_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// 子クラス</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// 子クラス</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">EnginnerShainManagement</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">BaseShainManagement</span>
 <span class="p">}</span>
@@ -36227,7 +36227,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// 子クラス</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="c1">// 子クラス</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">EnginnerShainManagement</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">ShainManagement</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 鋳型となった抽象クラスの抽象関数はOverrideしなければならない。</span>
 <span class="w">  </span><span class="nx">toWork</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
@@ -36237,7 +36237,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// 子クラス</span>
 <span class="k">class</span> <span class="nc">EnginnerShainManagement</span> <span class="k">extends</span> <span class="nx">ShainManagement</span>
@@ -36270,7 +36270,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="13:3"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><input id="__tabbed_13_3" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Go</label><label for="__tabbed_13_2">TypeScript</label><label for="__tabbed_13_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Animal</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Animal</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// インターフェイスでは、実装を伴う関数や状態の宣言はできない</span>
 <span class="w">    </span><span class="nx">Eat</span><span class="p">()</span>
 <span class="w">    </span><span class="nx">Sleep</span><span class="p">()</span>
@@ -36279,7 +36279,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Animal</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Animal</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// インターフェイスでは、実装を伴う関数や状態の宣言はできない</span>
 <span class="w">  </span><span class="nx">eat</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">sleep</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
@@ -36288,7 +36288,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">interface</span> <span class="nx">Animal</span>
 <span class="p">{</span>
@@ -36304,7 +36304,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="14:3"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><input id="__tabbed_14_3" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Go</label><label for="__tabbed_14_2">TypeScript</label><label for="__tabbed_14_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// 実装クラスが正常に動作するために最低限必要な関数の実装を強制する。</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// 実装クラスが正常に動作するために最低限必要な関数の実装を強制する。</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="nx">Animal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">Mammal</span><span class="p">)(</span><span class="kc">nil</span><span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Mammal</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
@@ -36323,7 +36323,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Mammal</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">Animal</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Mammal</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">Animal</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 実装クラスが正常に動作するために最低限必要な関数の実装を強制する。</span>
 <span class="w">  </span><span class="nx">eat</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 食べる</span>
@@ -36340,7 +36340,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Mammal</span> <span class="k">implements</span> <span class="nx">Animal</span>
 <span class="p">{</span>
@@ -36440,7 +36440,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="15:3"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><input id="__tabbed_15_3" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Go</label><label for="__tabbed_15_2">TypeScript</label><label for="__tabbed_15_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// 継承元クラス</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// 継承元クラス</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">value1</span><span class="w"> </span><span class="kt">any</span>
 <span class="p">}</span>
@@ -36451,7 +36451,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// 継承元クラス</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="c1">// 継承元クラス</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">value1</span><span class="o">:</span><span class="w"> </span><span class="kt">unknown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
 
@@ -36462,7 +36462,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// 継承元クラス</span>
 <span class="k">class</span> <span class="nc">Foo</span>
@@ -36481,7 +36481,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="16:3"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><input id="__tabbed_16_3" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Go</label><label for="__tabbed_16_2">TypeScript</label><label for="__tabbed_16_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// 継承先クラス</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// 継承先クラス</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">SubFoo</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Foo</span>
 <span class="w">    </span><span class="nx">SubValue</span><span class="w"> </span><span class="kt">any</span>
@@ -36493,7 +36493,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// 継承先クラス</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="c1">// 継承先クラス</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">SubFoo</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">subValue</span><span class="o">:</span><span class="w"> </span><span class="kt">unknown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
 
@@ -36504,7 +36504,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// 継承先クラス</span>
 <span class="k">class</span> <span class="nc">SubFoo</span> <span class="k">extends</span> <span class="nx">Foo</span>
@@ -36523,7 +36523,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="17:3"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><input id="__tabbed_17_3" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Go</label><label for="__tabbed_17_2">TypeScript</label><label for="__tabbed_17_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="nx">subFoo</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">SubFoo</span><span class="p">{}</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="nx">subFoo</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">SubFoo</span><span class="p">{}</span>
 
 <span class="c1">// SubFooクラスにはgetValue()は無い。</span>
 <span class="c1">// 継承元まで辿り、Fooクラスから関数がコールされる (クラスチェーン) 。</span>
@@ -36531,7 +36531,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">subFoo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">SubFoo</span><span class="p">();</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">subFoo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">SubFoo</span><span class="p">();</span>
 
 <span class="c1">// SubFooクラスにはgetValue()は無い。</span>
 <span class="c1">// 継承元まで辿り、Fooクラスから関数がコールされる (クラスチェーン) 。</span>
@@ -36539,7 +36539,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$subFoo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SubFoo</span><span class="p">;</span>
 
@@ -36555,7 +36555,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="18:3"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><input id="__tabbed_18_3" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">Go</label><label for="__tabbed_18_2">TypeScript</label><label for="__tabbed_18_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">f</span><span class="w"> </span><span class="o">*</span><span class="nx">Foo</span><span class="p">)</span><span class="w"> </span><span class="nx">Foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 処理内容;</span>
@@ -36563,7 +36563,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">abstract</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">abstract</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">foo</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 処理内容;</span>
 <span class="w">  </span><span class="p">}</span>
@@ -36571,7 +36571,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">abstract</span> <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
@@ -36587,7 +36587,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="19:3"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><input id="__tabbed_19_3" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">Go</label><label for="__tabbed_19_2">TypeScript</label><label for="__tabbed_19_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">SubFoo</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">SubFoo</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Foo</span>
 <span class="p">}</span>
 
@@ -36598,7 +36598,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">SubFoo</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">SubFoo</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">subFoo</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 継承元の関数を参照。</span>
 <span class="w">    </span><span class="k">super</span><span class="p">.</span><span class="nx">foo</span><span class="p">();</span>
@@ -36607,7 +36607,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">SubFoo</span> <span class="k">extends</span> <span class="nx">Foo</span>
 <span class="p">{</span>
@@ -36660,7 +36660,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="20:3"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><input id="__tabbed_20_2" name="__tabbed_20" type="radio" /><input id="__tabbed_20_3" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">Go</label><label for="__tabbed_20_2">TypeScript</label><label for="__tabbed_20_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">entity</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">entity</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">"app/domain/user/valueobject"</span>
 
@@ -36672,7 +36672,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/domain/user/valueObject/UserName"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/domain/user/valueObject/UserName"</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">method</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 依存の関係</span>
@@ -36682,7 +36682,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
 
@@ -36720,21 +36720,21 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="21:3"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><input id="__tabbed_21_2" name="__tabbed_21" type="radio" /><input id="__tabbed_21_3" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">Go</label><label for="__tabbed_21_2">TypeScript</label><label for="__tabbed_21_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="nx">supplier</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewSupplier</span><span class="p">()</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="nx">supplier</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewSupplier</span><span class="p">()</span>
 
 <span class="c1">// 依存されるSupplierクラスをClientクラス</span>
 <span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewClient</span><span class="p">(</span><span class="nx">supplier</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">supplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Supplier</span><span class="p">();</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">supplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Supplier</span><span class="p">();</span>
 
 <span class="c1">// 依存されるSupplierクラスをClientクラス</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Client</span><span class="p">(</span><span class="nx">supplier</span><span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$supplier</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Supplier</span><span class="p">();</span>
 
@@ -36748,7 +36748,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="22:3"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><input id="__tabbed_22_2" name="__tabbed_22" type="radio" /><input id="__tabbed_22_3" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="__tabbed_22_1">Go</label><label for="__tabbed_22_2">TypeScript</label><label for="__tabbed_22_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">entity</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">entity</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">"app/domain/user/valueobject"</span>
 
@@ -36762,7 +36762,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/domain/user/valueObject/UserName"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/domain/user/valueObject/UserName"</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">;</span>
@@ -36774,7 +36774,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
 
@@ -36796,17 +36796,17 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="23:3"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><input id="__tabbed_23_2" name="__tabbed_23" type="radio" /><input id="__tabbed_23_3" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="__tabbed_23_1">Go</label><label for="__tabbed_23_2">TypeScript</label><label for="__tabbed_23_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="nx">name</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewUserName</span><span class="p">()</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="nx">name</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewUserName</span><span class="p">()</span>
 <span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewUser</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="c1">// インジェクション</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserName</span><span class="p">();</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserName</span><span class="p">();</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span><span class="w"> </span><span class="c1">// インジェクション</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">();</span>
 <span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span> <span class="c1">// インジェクション</span>
@@ -36821,7 +36821,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="24:3"><input checked="checked" id="__tabbed_24_1" name="__tabbed_24" type="radio" /><input id="__tabbed_24_2" name="__tabbed_24" type="radio" /><input id="__tabbed_24_3" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="__tabbed_24_1">Go</label><label for="__tabbed_24_2">TypeScript</label><label for="__tabbed_24_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="nx">supplier</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewSupplier</span><span class="p">()</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="nx">supplier</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewSupplier</span><span class="p">()</span>
 <span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewClient</span><span class="p">()</span>
 
 <span class="c1">// ClientクラスはSuppierクラスに依存している。</span>
@@ -36829,7 +36829,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">supplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Supplier</span><span class="p">();</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">supplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Supplier</span><span class="p">();</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Client</span><span class="p">();</span>
 
 <span class="c1">// ClientクラスはSuppierクラスに依存している。</span>
@@ -36837,7 +36837,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$supplier</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Supplier</span><span class="p">();</span>
 <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
@@ -36852,7 +36852,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="25:3"><input checked="checked" id="__tabbed_25_1" name="__tabbed_25" type="radio" /><input id="__tabbed_25_2" name="__tabbed_25" type="radio" /><input id="__tabbed_25_3" name="__tabbed_25" type="radio" /><div class="tabbed-labels"><label for="__tabbed_25_1">Go</label><label for="__tabbed_25_2">TypeScript</label><label for="__tabbed_25_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">entity</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">entity</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">"app/domain/user/valueobject"</span>
 
@@ -36866,7 +36866,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/domain/user/valueObject/UserName"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/domain/user/valueObject/UserName"</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">name?</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">;</span>
@@ -36878,7 +36878,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
 
@@ -36900,19 +36900,19 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="26:3"><input checked="checked" id="__tabbed_26_1" name="__tabbed_26" type="radio" /><input id="__tabbed_26_2" name="__tabbed_26" type="radio" /><input id="__tabbed_26_3" name="__tabbed_26" type="radio" /><div class="tabbed-labels"><label for="__tabbed_26_1">Go</label><label for="__tabbed_26_2">TypeScript</label><label for="__tabbed_26_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{}</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{}</span>
 <span class="nx">name</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewUserName</span><span class="p">()</span>
 <span class="nx">user</span><span class="p">.</span><span class="nx">SetUserName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="c1">// インジェクション</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">();</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">();</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserName</span><span class="p">();</span>
 <span class="nx">user</span><span class="p">.</span><span class="nx">setUserName</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span><span class="w"> </span><span class="c1">// インジェクション</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
 <span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">();</span>
@@ -36928,7 +36928,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="27:3"><input checked="checked" id="__tabbed_27_1" name="__tabbed_27" type="radio" /><input id="__tabbed_27_2" name="__tabbed_27" type="radio" /><input id="__tabbed_27_3" name="__tabbed_27" type="radio" /><div class="tabbed-labels"><label for="__tabbed_27_1">Go</label><label for="__tabbed_27_2">TypeScript</label><label for="__tabbed_27_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">entity</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">entity</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">"app/domain/user/valueobject"</span>
 
@@ -36942,7 +36942,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/domain/user/valueObject/UserName"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/domain/user/valueObject/UserName"</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">method</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
@@ -36954,7 +36954,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
 
@@ -36976,19 +36976,19 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="28:3"><input checked="checked" id="__tabbed_28_1" name="__tabbed_28" type="radio" /><input id="__tabbed_28_2" name="__tabbed_28" type="radio" /><input id="__tabbed_28_3" name="__tabbed_28" type="radio" /><div class="tabbed-labels"><label for="__tabbed_28_1">Go</label><label for="__tabbed_28_2">TypeScript</label><label for="__tabbed_28_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{}</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{}</span>
 <span class="nx">name</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewUserName</span><span class="p">()</span>
 <span class="nx">user</span><span class="p">.</span><span class="nx">Method</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="c1">// インジェクション</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">();</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">();</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserName</span><span class="p">();</span>
 <span class="nx">user</span><span class="p">.</span><span class="nx">method</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span><span class="w"> </span><span class="c1">// インジェクション</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
 <span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">();</span>
@@ -37003,7 +37003,7 @@
 <p>依存オブジェクト注入の責務に特化したデザインパターンを『Service Container』という。</p>
 <p>あらかじめクラスを登録 (バインド) しておき、必要なときにインスタンスを作成 (リゾルブ) してくれる。</p>
 <p>Pimple パッケージを使用した場合</p>
-<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">use</span> <span class="nx">Pimple\Container</span> <span class="k">as</span> <span class="nx">PimpleContainer</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">App\Domain\User\Entity\User</span><span class="p">;</span>
@@ -37027,12 +37027,12 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// autoload.php で、IoCコンテナ自体のインスタンスを事前に作成。</span>
 <span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// IoCコンテナの読み出し</span>
 <span class="k">require_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">"/autoload.php"</span><span class="p">;</span>
@@ -37046,7 +37046,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="29:3"><input checked="checked" id="__tabbed_29_1" name="__tabbed_29" type="radio" /><input id="__tabbed_29_2" name="__tabbed_29" type="radio" /><input id="__tabbed_29_3" name="__tabbed_29" type="radio" /><div class="tabbed-labels"><label for="__tabbed_29_1">Go</label><label for="__tabbed_29_2">TypeScript</label><label for="__tabbed_29_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Sample</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Sample</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">logger</span><span class="w">       </span><span class="kt">any</span>
 <span class="w">    </span><span class="nx">notification</span><span class="w"> </span><span class="kt">any</span>
 <span class="p">}</span>
@@ -37060,7 +37060,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Sample</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Sample</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">logger</span><span class="o">:</span><span class="w"> </span><span class="kt">unknown</span><span class="p">;</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">notification</span><span class="o">:</span><span class="w"> </span><span class="kt">unknown</span><span class="p">;</span>
 
@@ -37072,7 +37072,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Sample</span>
 <span class="p">{</span>
@@ -37092,17 +37092,17 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="30:3"><input checked="checked" id="__tabbed_30_1" name="__tabbed_30" type="radio" /><input id="__tabbed_30_2" name="__tabbed_30" type="radio" /><input id="__tabbed_30_3" name="__tabbed_30" type="radio" /><div class="tabbed-labels"><label for="__tabbed_30_1">Go</label><label for="__tabbed_30_2">TypeScript</label><label for="__tabbed_30_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// IoCコンテナ自体をインジェクションしてしまうと、不要なインスタンスにも依存してしまう。</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// IoCコンテナ自体をインジェクションしてしまうと、不要なインスタンスにも依存してしまう。</span>
 <span class="nx">sample</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewSample</span><span class="p">(</span><span class="nx">container</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="c1">// IoCコンテナ自体をインジェクションしてしまうと、不要なインスタンスにも依存してしまう。</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="c1">// IoCコンテナ自体をインジェクションしてしまうと、不要なインスタンスにも依存してしまう。</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Sample</span><span class="p">(</span><span class="nx">container</span><span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// IoCコンテナ自体をインジェクションしてしまうと、不要なインスタンスにも依存してしまう。</span>
 <span class="nv">$sample</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sample</span><span class="p">(</span><span class="nv">$container</span><span class="p">);</span>
@@ -37182,7 +37182,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="31:3"><input checked="checked" id="__tabbed_31_1" name="__tabbed_31" type="radio" /><input id="__tabbed_31_2" name="__tabbed_31" type="radio" /><input id="__tabbed_31_3" name="__tabbed_31" type="radio" /><div class="tabbed-labels"><label for="__tabbed_31_1">Go</label><label for="__tabbed_31_2">TypeScript</label><label for="__tabbed_31_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">ModuleA</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span><span class="w"> </span><span class="c1">// コールされる側</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">ModuleA</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span><span class="w"> </span><span class="c1">// コールされる側</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">ModuleA</span><span class="p">)</span><span class="w"> </span><span class="nx">MethodA</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"%d + %d"</span><span class="p">,</span><span class="w"> </span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">c</span>
@@ -37190,7 +37190,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">ModuleA</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// コールされる側</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">ModuleA</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// コールされる側</span>
 <span class="w">  </span><span class="nx">methodA</span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">a</span><span class="si">}</span><span class="sb"> + </span><span class="si">${</span><span class="nx">b</span><span class="si">}</span><span class="sb">`</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">c</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
@@ -37198,7 +37198,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">ModuleA</span> <span class="c1">// コールされる側</span>
 <span class="p">{</span>
@@ -37214,7 +37214,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="32:3"><input checked="checked" id="__tabbed_32_1" name="__tabbed_32" type="radio" /><input id="__tabbed_32_2" name="__tabbed_32" type="radio" /><input id="__tabbed_32_3" name="__tabbed_32" type="radio" /><div class="tabbed-labels"><label for="__tabbed_32_1">Go</label><label for="__tabbed_32_2">TypeScript</label><label for="__tabbed_32_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">ModuleB</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span><span class="w"> </span><span class="c1">// コールする側</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">ModuleB</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span><span class="w"> </span><span class="c1">// コールする側</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">ModuleB</span><span class="p">)</span><span class="w"> </span><span class="nx">MethodB</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">moduleA</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">ModuleA</span><span class="p">{}</span>
@@ -37223,7 +37223,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">ModuleB</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// コールする側</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">ModuleB</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// コールする側</span>
 <span class="w">  </span><span class="nx">methodB</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">moduleA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ModuleA</span><span class="p">();</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">moduleA</span><span class="p">.</span><span class="nx">methodA</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="s2">"です."</span><span class="p">);</span><span class="w"> </span><span class="c1">// スカラ型データを渡すだけ</span>
@@ -37232,7 +37232,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">ModuleB</span> <span class="c1">// コールする側</span>
 <span class="p">{</span>
@@ -37251,7 +37251,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="33:3"><input checked="checked" id="__tabbed_33_1" name="__tabbed_33" type="radio" /><input id="__tabbed_33_2" name="__tabbed_33" type="radio" /><input id="__tabbed_33_3" name="__tabbed_33" type="radio" /><div class="tabbed-labels"><label for="__tabbed_33_1">Go</label><label for="__tabbed_33_2">TypeScript</label><label for="__tabbed_33_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="c1">// コールされる側</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// コールされる側</span>
 <span class="c1">// 距離に応じて、移動手段のオブジェクトを作り分けるファクトリクラス</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">TransportationMethodsFactory</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
 
@@ -37268,7 +37268,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="cm">/**</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="cm">/**</span>
 <span class="cm"> * コールされる側</span>
 <span class="cm"> *</span>
 <span class="cm"> * 距離に応じて、移動手段のオブジェクトを作り分けるファクトリクラス</span>
@@ -37288,7 +37288,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="sd">/**</span>
 <span class="sd"> * コールされる側</span>
@@ -37319,7 +37319,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="34:3"><input checked="checked" id="__tabbed_34_1" name="__tabbed_34" type="radio" /><input id="__tabbed_34_2" name="__tabbed_34" type="radio" /><input id="__tabbed_34_3" name="__tabbed_34" type="radio" /><div class="tabbed-labels"><label for="__tabbed_34_1">Go</label><label for="__tabbed_34_2">TypeScript</label><label for="__tabbed_34_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Shared</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Shared</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">value</span><span class="w"> </span><span class="kt">int</span>
 <span class="p">}</span>
 
@@ -37333,7 +37333,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Shared</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Shared</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
 
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -37347,7 +37347,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Shared</span>
 <span class="p">{</span>
@@ -37370,7 +37370,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="35:3"><input checked="checked" id="__tabbed_35_1" name="__tabbed_35" type="radio" /><input id="__tabbed_35_2" name="__tabbed_35" type="radio" /><input id="__tabbed_35_3" name="__tabbed_35" type="radio" /><div class="tabbed-labels"><label for="__tabbed_35_1">Go</label><label for="__tabbed_35_2">TypeScript</label><label for="__tabbed_35_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">ModuleA</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">ModuleA</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">ModuleA</span><span class="p">)</span><span class="w"> </span><span class="nx">MethodA</span><span class="p">()</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">shared</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewShared</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -37382,7 +37382,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">ModuleA</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">ModuleA</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">methodA</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">shared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Shared</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
 
@@ -37394,7 +37394,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">ModuleA</span>
 <span class="p">{</span>
@@ -37414,7 +37414,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="36:3"><input checked="checked" id="__tabbed_36_1" name="__tabbed_36" type="radio" /><input id="__tabbed_36_2" name="__tabbed_36" type="radio" /><input id="__tabbed_36_3" name="__tabbed_36" type="radio" /><div class="tabbed-labels"><label for="__tabbed_36_1">Go</label><label for="__tabbed_36_2">TypeScript</label><label for="__tabbed_36_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">ModuleB</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">ModuleB</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">ModuleB</span><span class="p">)</span><span class="w"> </span><span class="nx">MethodB</span><span class="p">(</span><span class="nx">shared</span><span class="w"> </span><span class="o">*</span><span class="nx">Shared</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">shared</span><span class="p">.</span><span class="nx">GetValue</span><span class="p">()</span><span class="w"> </span><span class="c1">// 1</span>
@@ -37422,7 +37422,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">ModuleB</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">ModuleB</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">methodB</span><span class="p">(</span><span class="nx">shared</span><span class="o">:</span><span class="w"> </span><span class="kt">Shared</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">shared</span><span class="p">.</span><span class="nx">getValue</span><span class="p">();</span><span class="w"> </span><span class="c1">// 1</span>
 <span class="w">  </span><span class="p">}</span>
@@ -37430,7 +37430,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">ModuleB</span>
 <span class="p">{</span>

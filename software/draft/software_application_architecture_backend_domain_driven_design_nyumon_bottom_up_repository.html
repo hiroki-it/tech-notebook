@@ -33751,7 +33751,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 21:09:18 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 21:15:41 JST">2026-11-07</span>
   </span>
 
     
@@ -33795,21 +33795,21 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Go</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">FindById</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="nx">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">Save</span><span class="p">(</span><span class="nx">user</span><span class="w"> </span><span class="o">*</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">findById</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">save</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">interface</span> <span class="nx">UserRepositoryInterface</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="k">interface</span> <span class="nx">UserRepositoryInterface</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">findById</span><span class="p">(</span><span class="nx">UserId</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">User</span><span class="p">;</span>
 
@@ -33824,7 +33824,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Go</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">"database/sql"</span>
 <span class="w">    </span><span class="s">"errors"</span>
 
@@ -33870,7 +33870,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Pool</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"mysql2/promise"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Pool</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"mysql2/promise"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"../domain/user"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"../domain/userId"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserName</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"../domain/userName"</span><span class="p">;</span>
@@ -33915,7 +33915,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">use</span> <span class="nx">App\Domain\User</span><span class="p">;</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="k">use</span> <span class="nx">App\Domain\User</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">App\Domain\UserId</span><span class="p">;</span>
 <span class="k">use</span> <span class="nx">App\Domain\UserName</span><span class="p">;</span>
 
@@ -33969,7 +33969,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Go</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">userRepositoryInMemory</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">userRepositoryInMemory</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">store</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="nx">UserId</span><span class="p">]</span><span class="o">*</span><span class="nx">User</span>
 <span class="p">}</span>
 
@@ -33990,7 +33990,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">createUserRepositoryInMemory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">createUserRepositoryInMemory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">store</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="o">&lt;</span><span class="nx">UserId</span><span class="p">,</span><span class="w"> </span><span class="nx">User</span><span class="o">&gt;</span><span class="p">();</span>
 
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
@@ -34005,7 +34005,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">function</span> <span class="nf">createUserRepositoryInMemory</span><span class="p">()</span><span class="o">:</span> <span class="nx">UserRepositoryInterface</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="k">function</span> <span class="nf">createUserRepositoryInMemory</span><span class="p">()</span><span class="o">:</span> <span class="nx">UserRepositoryInterface</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="k">new</span> <span class="k">class</span> <span class="p">()</span> <span class="k">implements</span> <span class="nx">UserRepositoryInterface</span> <span class="p">{</span>
         <span class="sd">/** @var array&lt;string, User&gt; */</span>
@@ -34032,7 +34032,7 @@
 <p>エンティティと ORM のデータモデルを分離し、ORM のデータモデルをエンティティに詰め替える必要がある</p>
 <p>別の方法として、リポジトリで DTO に相当するロジックを実装してもよい。</p>
 <h4 id="dto_2">▼ DTO を使用しない場合<a class="headerlink" href="#dto_2" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"../domain/user"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"../domain/userId"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserName</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"../domain/userName"</span><span class="p">;</span>
@@ -34076,7 +34076,7 @@
 <span class="p">};</span>
 </code></pre></div>
 <h4 id="dto_3">▼ DTO を使用する場合<a class="headerlink" href="#dto_3" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@prisma/client"</span><span class="p">;</span>
 
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"../domain/user"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"../domain/userId"</span><span class="p">;</span>
@@ -34125,21 +34125,21 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Go</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">FindbyId</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="nx">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">UpdateName</span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="nx">UserName</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">findbyId</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">updateName</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">interface</span> <span class="nx">UserRepositoryInterface</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="k">interface</span> <span class="nx">UserRepositoryInterface</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">findbyId</span><span class="p">(</span><span class="nx">UserId</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">User</span><span class="p">;</span>
 
@@ -34152,7 +34152,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Go</label><label for="__tabbed_5_2">TypeScript</label><label for="__tabbed_5_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">FindById</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">FindById</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span>
 <span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="p">}</span>
@@ -34162,12 +34162,12 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">userId</span><span class="p">);</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">userId</span><span class="p">);</span>
 <span class="k">await</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">updateName</span><span class="p">(</span><span class="nx">getName</span><span class="p">(</span><span class="nx">user</span><span class="p">));</span><span class="w"> </span><span class="c1">// リポジトリの UpdateName のなかで、ドメインロジックを書くことになってしまう</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="nv">$user</span> <span class="o">=</span> <span class="nv">$userRepository</span><span class="o">-&gt;</span><span class="na">findById</span><span class="p">(</span><span class="nv">$userId</span><span class="p">);</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="nv">$user</span> <span class="o">=</span> <span class="nv">$userRepository</span><span class="o">-&gt;</span><span class="na">findById</span><span class="p">(</span><span class="nv">$userId</span><span class="p">);</span>
 <span class="nv">$userRepository</span><span class="o">-&gt;</span><span class="na">updateName</span><span class="p">(</span><span class="nx">getName</span><span class="p">(</span><span class="nv">$user</span><span class="p">));</span> <span class="c1">// リポジトリの UpdateName のなかで、ドメインロジックを書くことになってしまう</span>
 </code></pre></div>
 </div>
@@ -34179,21 +34179,21 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Go</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">FindById</span><span class="p">(</span><span class="nx">id</span><span class="w"> </span><span class="nx">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">Save</span><span class="p">(</span><span class="nx">user</span><span class="w"> </span><span class="o">*</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">findById</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">save</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="k">interface</span> <span class="nx">UserRepositoryInterface</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="k">interface</span> <span class="nx">UserRepositoryInterface</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">findById</span><span class="p">(</span><span class="nx">UserId</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="o">?</span><span class="nx">User</span><span class="p">;</span>
 
@@ -34206,7 +34206,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Go</label><label for="__tabbed_7_2">TypeScript</label><label for="__tabbed_7_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.go</span><pre><span></span><code><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">FindById</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">FindById</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span>
 <span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="p">}</span>
@@ -34217,13 +34217,13 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.ts</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">userId</span><span class="p">);</span>
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">userId</span><span class="p">);</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">updatedUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">changeName</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">newName</span><span class="p">);</span><span class="w"> </span><span class="c1">// ユーザーオブジェクトが自分でユーザー名の状態を変更する</span>
 <span class="k">await</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">updatedUser</span><span class="p">);</span><span class="w"> </span><span class="c1">// リポジトリは、状態の変更されたユーザーオブジェクトを保存するだけ</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">.php</span><pre><span></span><code><span class="nv">$user</span> <span class="o">=</span> <span class="nv">$userRepository</span><span class="o">-&gt;</span><span class="na">findById</span><span class="p">(</span><span class="nv">$userId</span><span class="p">);</span>
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="nv">$user</span> <span class="o">=</span> <span class="nv">$userRepository</span><span class="o">-&gt;</span><span class="na">findById</span><span class="p">(</span><span class="nv">$userId</span><span class="p">);</span>
 <span class="nv">$updatedUser</span> <span class="o">=</span> <span class="nx">changeName</span><span class="p">(</span><span class="nv">$user</span><span class="p">,</span> <span class="nv">$newName</span><span class="p">);</span> <span class="c1">// ユーザーオブジェクトが自分でユーザー名の状態を変更する</span>
 <span class="nv">$userRepository</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$updatedUser</span><span class="p">);</span> <span class="c1">// リポジトリは、状態の変更されたユーザーオブジェクトを保存するだけ</span>
 </code></pre></div>
