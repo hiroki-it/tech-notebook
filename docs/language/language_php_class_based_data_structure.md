@@ -6,9 +6,7 @@ title: 【IT技術の知見】データ構造＠PHP
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -250,17 +248,23 @@ PHP の連想配列に相当する。
 
 #### ▼ 単方向リスト
 
+単方向リストでは、各データが次のデータへのポインタのみを持つため、先頭から順にしかデータを辿れない。
+
 > - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
 
 ![p555-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p555-1.gif)
 
 #### ▼ 双方向リスト
 
+双方向リストでは、各データが次のデータと前のデータの両方へのポインタを持つため、前後のどちらにもデータを辿れる。
+
 > - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
 
 ![p555-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p555-2.gif)
 
 #### ▼ 循環リスト
+
+循環リストでは、最後尾のデータが先頭のデータへのポインタを持つため、リスト全体が環状につながり、最後尾から先頭に戻って辿り続けられる。
 
 > - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
 

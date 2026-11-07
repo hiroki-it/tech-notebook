@@ -7,9 +7,7 @@ description: 言語プロセッサー (言語処理プログラム) ＠基本ソ
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -59,6 +57,8 @@ exe ファイルとなる。
 
 ### 機械語翻訳とは
 
+コードは、字句解析でトークンの列に分解され、構文解析でツリー構造に変換された後、意味解析やコード最適化を経てバイナリ形式のコードに変換される。
+
 ![lexical_syntax_semantics](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lexical_syntax_semantics.png)
 
 #### `(1)` Lexical analysis (字句解析)
@@ -69,7 +69,7 @@ exe ファイルとなる。
 
 字句解析のアルゴリズムは、Lex や Flex で実装されている。
 
-解析器をルーツを辿れない問題をブートストラップ問題という。
+解析器のルーツを辿れない問題をブートストラップ問題という。
 
 ![構文規則と説明](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/構文規則と説明.png)
 
@@ -81,7 +81,7 @@ exe ファイルとなる。
 
 構文解析のアルゴリズムは、Bison や Yacc で実装されている。
 
-解析器をルーツを辿れない問題をブートストラップ問題という。
+解析器のルーツを辿れない問題をブートストラップ問題という。
 
 コンパイラ型言語の構文解析に失敗したとき、これらの構文解析言語はシンタックスエラーを出力する。
 

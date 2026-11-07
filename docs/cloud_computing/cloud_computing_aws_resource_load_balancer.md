@@ -7,9 +7,7 @@ description: LB＠AWSリソースの知見を記録しています。
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -76,7 +74,7 @@ description: LB＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 02. ALB：Application Load Balancing
+## 02. ALB：Application Load Balancer
 
 ### ALB とは
 
@@ -107,7 +105,7 @@ Amazon EC2 へのリクエストをバランスよく分配することで、サ
   <tbody>
     <tr>
       <td>リスナー</td>
-      <td>ALB に割り振るポート番号と受信するプロトコルを設定する。リバースプロキシサーバーかつロードバランサ－として、これらの通信をターゲットグループにルーティングする。</td>
+      <td>ALB に割り振るポート番号と受信するプロトコルを設定する。リバースプロキシサーバーかつロードバランサーとして、これらの通信をターゲットグループにルーティングする。</td>
       <td></td>
     </tr>
     <tr>
@@ -379,6 +377,8 @@ module "alb_eks_maintenance" {
 
 #### ▼ 同じドメインを設け、パスで複数の BFF に振り分ける場合
 
+`1` 個のドメインと ALB を共有し、ALB がリクエストのパスに応じて各 BFF の Service に振り分ける。
+
 ```mermaid
 flowchart LR
     user[クライアント]
@@ -399,6 +399,8 @@ flowchart LR
 ```
 
 #### ▼ 異なるドメインを設け、通信経路を分ける場合
+
+BFF ごとにドメインと ALB を設け、リクエストを BFF ごとに別々の経路で各 Service にルーティングする。
 
 ```mermaid
 flowchart LR

@@ -7,9 +7,7 @@ description: コマンド＠Serverless Frameworkの知見を記録していま�
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 

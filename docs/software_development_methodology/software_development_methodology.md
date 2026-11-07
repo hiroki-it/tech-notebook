@@ -7,9 +7,7 @@ description: 開発手法論＠開発手法の知見を記録しています。
 
 ### はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -18,6 +16,8 @@ description: 開発手法論＠開発手法の知見を記録しています。
 ### ウォーターフォール型開発
 
 #### ▼ ウォーターフォール型開発とは
+
+要件定義から運用・保守までの工程を、上流工程から下流工程に向かって順番に進める開発手法である。
 
 ![ウォーターフォール型](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ウォーターフォール型.png)
 
@@ -119,7 +119,7 @@ Visual Basic などの開発支援ツールを使用して、短期間で設計�
 
 ## 02. その他
 
-### CASE ツール：Computer Aided Software Enginnering
+### CASE ツール：Computer Aided Software Engineering
 
 #### ▼ CASE ツールとは
 

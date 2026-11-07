@@ -7,9 +7,7 @@ description: アンチパターン＠RDBの知見を記録しています。
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -21,18 +19,54 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 <br>
 
-### 実装例（TypeScript）
+### 実装例
 
-```typescript
-import type {User} from "@prisma/client";
-import {prisma} from "~/services/prisma.server";
+=== "Go"
 
-export async function handler() {
-  // 毎回、PrismaClientを作成してしまっている
-  const prisma = new PrismaClient();
-  return prisma.user.findMany();
-}
-```
+    ```go title=".go"
+    import (
+    	"gorm.io/driver/mysql"
+    	"gorm.io/gorm"
+    )
+
+    func Handler() ([]User, error) {
+    	// 毎回、DB接続を作成してしまっている
+    	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+    	if err != nil {
+    		return nil, err
+    	}
+
+    	var users []User
+    	err = db.Find(&users).Error
+    	return users, err
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    import type {User} from "@prisma/client";
+    import {prisma} from "~/services/prisma.server";
+
+    export async function handler() {
+      // 毎回、PrismaClientを作成してしまっている
+      const prisma = new PrismaClient();
+      return prisma.user.findMany();
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    function handler(): array
+    {
+        // 毎回、PDOを作成してしまっている
+        $pdo = new PDO(DSN, DB_USER, DB_PASSWORD);
+        return $pdo->query("SELECT * FROM users")->fetchAll();
+    }
+    ```
 
 <br>
 
@@ -48,16 +82,38 @@ export async function handler() {
 
 <br>
 
-### 実装例（TypeScript）
+### 実装例
 
 #### ▼ 問題がある実装
 
-```typescript
-const user = {
-  id: 1,
-  birthDate: "2000-01-01",
-};
-```
+=== "Go"
+
+    ```go title=".go"
+    user := User{
+    	ID:        1,
+    	BirthDate: "2000-01-01",
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    const user = {
+      id: 1,
+      birthDate: "2000-01-01",
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    $user = [
+        "id"        => 1,
+        "birthDate" => "2000-01-01",
+    ];
+    ```
 
 #### ▼ 解決方法
 
@@ -67,27 +123,77 @@ const user = {
 
 ただし、電話番号、郵便番号、商品コードなど、数字で構成されていても計算を目的としない値には `VARCHAR` 型のカラムを使用する。
 
-```typescript
-import {Prisma} from "@prisma/client";
+=== "Go"
 
-const user = {
-  id: 1,
-  // 日付（DBではDATE型のカラムにする）
-  birthDate: new Date("2000-01-01"),
-  // 金額（DBではDECIMAL型のカラムにする）
-  accountBalance: new Prisma.Decimal("1000.50"),
-  // 件数（DBではINT型のカラムにする）
-  loginCount: 10,
-  // 真偽値（DBではBOOLEAN型のカラムにする）
-  isActive: true,
-  // 電話番号（DBではVARCHAR型のカラムにする）
-  phoneNumber: "03-1234-5678",
-  // 郵便番号（DBではVARCHAR型のカラムにする）
-  postalCode: "012-3456",
-  // 商品コード（DBではVARCHAR型のカラムにする）
-  productCode: "001234",
-};
-```
+    ```go title=".go"
+    user := User{
+    	ID: 1,
+    	// 日付（DBではDATE型のカラムにする）
+    	BirthDate: time.Date(2000, 1, 1, 0, 0, 0, 0, time.UTC),
+    	// 金額（DBではDECIMAL型のカラムにする）
+    	AccountBalance: decimal.RequireFromString("1000.50"),
+    	// 件数（DBではINT型のカラムにする）
+    	LoginCount: 10,
+    	// 真偽値（DBではBOOLEAN型のカラムにする）
+    	IsActive: true,
+    	// 電話番号（DBではVARCHAR型のカラムにする）
+    	PhoneNumber: "03-1234-5678",
+    	// 郵便番号（DBではVARCHAR型のカラムにする）
+    	PostalCode: "012-3456",
+    	// 商品コード（DBではVARCHAR型のカラムにする）
+    	ProductCode: "001234",
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    import {Prisma} from "@prisma/client";
+
+    const user = {
+      id: 1,
+      // 日付（DBではDATE型のカラムにする）
+      birthDate: new Date("2000-01-01"),
+      // 金額（DBではDECIMAL型のカラムにする）
+      accountBalance: new Prisma.Decimal("1000.50"),
+      // 件数（DBではINT型のカラムにする）
+      loginCount: 10,
+      // 真偽値（DBではBOOLEAN型のカラムにする）
+      isActive: true,
+      // 電話番号（DBではVARCHAR型のカラムにする）
+      phoneNumber: "03-1234-5678",
+      // 郵便番号（DBではVARCHAR型のカラムにする）
+      postalCode: "012-3456",
+      // 商品コード（DBではVARCHAR型のカラムにする）
+      productCode: "001234",
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    use Brick\Math\BigDecimal;
+
+    $user = [
+        "id"             => 1,
+        // 日付（DBではDATE型のカラムにする）
+        "birthDate"      => new DateTimeImmutable("2000-01-01"),
+        // 金額（DBではDECIMAL型のカラムにする）
+        "accountBalance" => BigDecimal::of("1000.50"),
+        // 件数（DBではINT型のカラムにする）
+        "loginCount"     => 10,
+        // 真偽値（DBではBOOLEAN型のカラムにする）
+        "isActive"       => true,
+        // 電話番号（DBではVARCHAR型のカラムにする）
+        "phoneNumber"    => "03-1234-5678",
+        // 郵便番号（DBではVARCHAR型のカラムにする）
+        "postalCode"     => "012-3456",
+        // 商品コード（DBではVARCHAR型のカラムにする）
+        "productCode"    => "001234",
+    ];
+    ```
 
 <br>
 
@@ -99,18 +205,44 @@ const user = {
 
 <br>
 
-### 実装例（TypeScript）
+### 実装例
 
-```typescript
-import type {User} from "@prisma/client";
-import {prisma} from "~/services/prisma.server";
+=== "Go"
 
-const user = await prisma.user.findUnique({
-  where: {id},
-  // 不要なカラムも取得してしまっている
-  include: {team: true, bans: true, logs: true, profiles: true},
-});
-```
+    ```go title=".go"
+    var user User
+    err := db.
+    	// 不要なカラムも取得してしまっている
+    	Preload("Team").
+    	Preload("Bans").
+    	Preload("Logs").
+    	Preload("Profiles").
+    	First(&user, id).Error
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    import type {User} from "@prisma/client";
+    import {prisma} from "~/services/prisma.server";
+
+    const user = await prisma.user.findUnique({
+      where: {id},
+      // 不要なカラムも取得してしまっている
+      include: {team: true, bans: true, logs: true, profiles: true},
+    });
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    $user = User::query()
+        // 不要なカラムも取得してしまっている
+        ->with(["team", "bans", "logs", "profiles"])
+        ->find($id);
+    ```
 
 <br>
 
@@ -122,67 +254,7 @@ const user = await prisma.user.findUnique({
 
 <br>
 
-### 実装例（PHP）
-
-#### ▼ 問題がある実装
-
-反復処理のなかで子テーブルのレコードにアクセスしてしまう場合、N+1 問題が起こる。
-
-内部的には、親テーブルへの SQL と、Where 句を持つ SQL が親テーブルのレコード数分だけ発行される。
-
-```injectablephp
-<?php
-
-// 親テーブルにSQLを発行 (1回)
-$departments = Department::all();
-
-foreach($departments as $department) {
-    // 親テーブルのレコード数分のWhere句SQLを発行する (N回)
-    $department->employees;
-}
-```
-
-```bash
-# 1回
-select * from `departments`
-
-# N回
-select * from `employees` where `department_id` = 1
-select * from `employees` where `department_id` = 2
-select * from `employees` where `department_id` = 3
-...
-```
-
-#### ▼ 解決方法
-
-反復処理の前に、子テーブルへアクセスしておく。
-
-レコード取得時に IN 句や JOIN 句を使用すると、N+1 問題を解消できる。
-
-Laravel では `with()` 関数を使用すると、内部的に親テーブルへの SQL と IN 句を使用した SQL が発行され、最終的に 2 回で済む。
-
-```injectablephp
-<?php
-
-// 親テーブルと子テーブルにSQLを発行する (2回)
-// 子テーブルへのSQLでは、内部的にIN句を使用する
-$departments = Department::with('employees')->get();
-
-foreach($departments as $department) {
-    // キャッシュを使用するのでSQLの発行はされない (0回)
-    $department->employees;
-}
-```
-
-```bash
-# 2回
-select * from `departments`
-select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ... 100)
-```
-
-<br>
-
-### 実装例（TypeScript）
+### 実装例
 
 #### ▼ 問題がある実装（１）
 
@@ -190,64 +262,188 @@ select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 1
 
 内部的には、親テーブルへの SQL と、Where 句を持つ SQL が親テーブルのレコード数分だけ発行される。
 
-```typescript
-import type {User} from "@prisma/client";
-import {prisma} from "~/services/prisma.server";
+=== "Go"
 
-// 親テーブルにSQLを発行 (1回)
-const users = await prisma.user.findMany({where: {teamId}});
+    ```go title=".go"
+    // 親テーブルにSQLを発行 (1回)
+    var users []User
+    db.Where("team_id = ?", teamID).Find(&users)
 
-for (const u of users) {
-  // 親テーブルのレコード数分のWhere句SQLを発行する (N回)
-  const logs = await prisma.log.findMany({
-    where: {userId: u.id},
-  });
-}
-```
+    for _, u := range users {
+    	// 親テーブルのレコード数分のWhere句SQLを発行する (N回)
+    	var logs []Log
+    	db.Where("user_id = ?", u.ID).Find(&logs)
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    import type {User} from "@prisma/client";
+    import {prisma} from "~/services/prisma.server";
+
+    // 親テーブルにSQLを発行 (1回)
+    const users = await prisma.user.findMany({where: {teamId}});
+
+    for (const u of users) {
+      // 親テーブルのレコード数分のWhere句SQLを発行する (N回)
+      const logs = await prisma.log.findMany({
+        where: {userId: u.id},
+      });
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    // 親テーブルにSQLを発行 (1回)
+    $departments = Department::all();
+
+    foreach($departments as $department) {
+        // 親テーブルのレコード数分のWhere句SQLを発行する (N回)
+        $department->employees;
+    }
+    ```
+
+    ```bash
+    # 1回
+    select * from `departments`
+
+    # N回
+    select * from `employees` where `department_id` = 1
+    select * from `employees` where `department_id` = 2
+    select * from `employees` where `department_id` = 3
+    ...
+    ```
 
 #### ▼ 問題がある実装（２）
 
-`map()` 関数を使用した反復処理でも、もちろん N+1 問題が起こる。
+`map()` 関数や並行処理を使用した反復処理でも、もちろん N+1 問題が起こる。
 
-```typescript
-import type {User} from "@prisma/client";
-import {prisma} from "~/services/prisma.server";
+=== "Go"
 
-// 親テーブルにSQLを発行 (1回)
-const users = await prisma.user.findMany({where: {teamId}});
+    ```go title=".go"
+    // 親テーブルにSQLを発行 (1回)
+    var users []User
+    db.Where("team_id = ?", teamID).Find(&users)
 
-// 親テーブルのレコード数分のWhere句SQLを発行する (N回)
-const logs = await Promise.all(
-  users.map(async (u) => {
-    const logs = await prisma.log.findMany({
-      where: {userId: u.id},
+    // 親テーブルのレコード数分のWhere句SQLを発行する (N回)
+    logs := make([][]Log, len(users))
+    var eg errgroup.Group
+    for i, u := range users {
+    	eg.Go(func() error {
+    		return db.Where("user_id = ?", u.ID).Find(&logs[i]).Error
+    	})
+    }
+    if err := eg.Wait(); err != nil {
+    	return err
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    import type {User} from "@prisma/client";
+    import {prisma} from "~/services/prisma.server";
+
+    // 親テーブルにSQLを発行 (1回)
+    const users = await prisma.user.findMany({where: {teamId}});
+
+    // 親テーブルのレコード数分のWhere句SQLを発行する (N回)
+    const logs = await Promise.all(
+      users.map(async (u) => {
+        const logs = await prisma.log.findMany({
+          where: {userId: u.id},
+        });
+        return {user: u, logs};
+      }),
+    );
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    // 親テーブルにSQLを発行 (1回)
+    $departments = Department::all();
+
+    // 親テーブルのレコード数分のWhere句SQLを発行する (N回)
+    $employees = $departments->map(function ($department) {
+        return $department->employees;
     });
-    return {user: u, logs};
-  }),
-);
-```
+    ```
 
 #### ▼ 解決方法
 
+反復処理の前に、子テーブルへアクセスしておく。
+
 レコード取得時に IN 句や JOIN 句を使用すると、N+1 問題を解消できる。
 
-Prisma では、`in` プロパティを使用すると、IN 句を含む SQL が発行され、最終的に 2 回で済む。
+=== "Go"
 
-```typescript
-import type {User} from "@prisma/client";
-import {prisma} from "~/services/prisma.server";
+    GORM では、`Where()` 関数で IN 句を指定すると、IN 句を含む SQL が発行され、最終的に 2 回で済む。
 
-// 親テーブルにSQLを発行 (1回)
-const users = await prisma.user.findMany({where: {teamId}});
+    ```go title=".go"
+    // 親テーブルにSQLを発行 (1回)
+    var users []User
+    db.Where("team_id = ?", teamID).Find(&users)
 
-// 親テーブルのレコード数分のWhere句SQLを発行する (1回)
-const logs = await prisma.log.findMany({
-  where: {
+    userIDs := make([]int, 0, len(users))
+    for _, u := range users {
+    	userIDs = append(userIDs, u.ID)
+    }
+
+    // 子テーブルにIN句のSQLを発行する (1回)
+    var logs []Log
     // 内部的にIN句
-    userId: {in: users.map((u) => u.id)},
-  },
-});
-```
+    db.Where("user_id IN ?", userIDs).Find(&logs)
+    ```
+
+=== "TypeScript"
+
+    Prisma では、`in` プロパティを使用すると、IN 句を含む SQL が発行され、最終的に 2 回で済む。
+
+    ```typescript title=".ts"
+    import type {User} from "@prisma/client";
+    import {prisma} from "~/services/prisma.server";
+
+    // 親テーブルにSQLを発行 (1回)
+    const users = await prisma.user.findMany({where: {teamId}});
+
+    // 子テーブルにIN句のSQLを発行する (1回)
+    const logs = await prisma.log.findMany({
+      where: {
+        // 内部的にIN句
+        userId: {in: users.map((u) => u.id)},
+      },
+    });
+    ```
+
+=== "PHP"
+
+    Laravel では `with()` 関数を使用すると、内部的に親テーブルへの SQL と IN 句を使用した SQL が発行され、最終的に 2 回で済む。
+
+    ```injectablephp title=".php"
+    <?php
+
+    // 親テーブルと子テーブルにSQLを発行する (2回)
+    // 子テーブルへのSQLでは、内部的にIN句を使用する
+    $departments = Department::with('employees')->get();
+
+    foreach($departments as $department) {
+        // キャッシュを使用するのでSQLの発行はされない (0回)
+        $department->employees;
+    }
+    ```
+
+    ```bash
+    # 2回
+    select * from `departments`
+    select * from `employees` where `department_id` in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ... 100)
+    ```
 
 <br>
 
@@ -259,21 +455,53 @@ DB からレコードの一覧を取得する場合、ページング（取得�
 
 <br>
 
-### 実装例（TypeScript）
+### 実装例
 
 #### ▼ 解決方法
 
-```typescript
-const page = 1;
-const limit = 50;
+=== "Go"
 
-const users = await prisma.user.findMany({
-  where: {teamId},
-  skip: (page - 1) * limit,
-  take: limit,
-  orderBy: {createdAt: "desc"},
-});
-```
+    ```go title=".go"
+    page := 1
+    limit := 50
+
+    var users []User
+    err := db.
+    	Where("team_id = ?", teamID).
+    	Offset((page - 1) * limit).
+    	Limit(limit).
+    	Order("created_at DESC").
+    	Find(&users).Error
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    const page = 1;
+    const limit = 50;
+
+    const users = await prisma.user.findMany({
+      where: {teamId},
+      skip: (page - 1) * limit,
+      take: limit,
+      orderBy: {createdAt: "desc"},
+    });
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    $page = 1;
+    $limit = 50;
+
+    $users = User::where("team_id", $teamId)
+        ->skip(($page - 1) * $limit)
+        ->take($limit)
+        ->orderBy("created_at", "desc")
+        ->get();
+    ```
 
 <br>
 
@@ -287,23 +515,50 @@ const users = await prisma.user.findMany({
 
 <br>
 
-### 実装例（TypeScript）
+### 実装例
 
 #### ▼ 問題がある実装
 
-```typescript
-const events = await prisma.event.findMany({
-  where: {
-    tenantId,
-    occurredAt: {
-      gte: startAt,
-      lt: endAt,
-    },
-  },
-});
+=== "Go"
 
-const eventCount = events.length;
-```
+    ```go title=".go"
+    var events []Event
+    err := db.
+    	Where("tenant_id = ?", tenantID).
+    	Where("occurred_at >= ? AND occurred_at < ?", startAt, endAt).
+    	Find(&events).Error
+
+    eventCount := len(events)
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    const events = await prisma.event.findMany({
+      where: {
+        tenantId,
+        occurredAt: {
+          gte: startAt,
+          lt: endAt,
+        },
+      },
+    });
+
+    const eventCount = events.length;
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    $events = Event::where("tenant_id", $tenantId)
+        ->where("occurred_at", ">=", $startAt)
+        ->where("occurred_at", "<", $endAt)
+        ->get();
+
+    $eventCount = $events->count();
+    ```
 
 #### ▼ 解決方法
 
@@ -315,24 +570,59 @@ const eventCount = events.length;
 
 取得するレコード数を削減できる。
 
-```typescript
-await prisma.eventHourlySummary.upsert({
-  where: {
-    tenantId_hour: {
-      tenantId,
-      hour: startAt,
-    },
-  },
-  update: {
-    count: eventCount,
-  },
-  create: {
-    tenantId,
-    hour: startAt,
-    count: eventCount,
-  },
-});
-```
+=== "Go"
+
+    ```go title=".go"
+    err := db.
+    	Clauses(clause.OnConflict{
+    		Columns:   []clause.Column{{Name: "tenant_id"}, {Name: "hour"}},
+    		DoUpdates: clause.Assignments(map[string]interface{}{"count": eventCount}),
+    	}).
+    	Create(&EventHourlySummary{
+    		TenantID: tenantID,
+    		Hour:     startAt,
+    		Count:    eventCount,
+    	}).Error
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    await prisma.eventHourlySummary.upsert({
+      where: {
+        tenantId_hour: {
+          tenantId,
+          hour: startAt,
+        },
+      },
+      update: {
+        count: eventCount,
+      },
+      create: {
+        tenantId,
+        hour: startAt,
+        count: eventCount,
+      },
+    });
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    EventHourlySummary::upsert(
+        [
+            [
+                "tenant_id" => $tenantId,
+                "hour"      => $startAt,
+                "count"     => $eventCount,
+            ],
+        ],
+        ["tenant_id", "hour"],
+        ["count"]
+    );
+    ```
 
 ```prisma
 // EventHourlySummaryテーブル
@@ -351,18 +641,46 @@ model EventHourlySummary {
 
 バックエンドでは、共有の集計テーブルから集計結果を取得する。
 
-```typescript
-const eventSummary = await prisma.eventHourlySummary.findUnique({
-  where: {
-    tenantId_hour: {
-      tenantId,
-      hour: startAt,
-    },
-  },
-});
+=== "Go"
 
-const eventCount = eventSummary?.count ?? 0;
-```
+    ```go title=".go"
+    var eventSummary EventHourlySummary
+    err := db.
+    	Where("tenant_id = ? AND hour = ?", tenantID, startAt).
+    	First(&eventSummary).Error
+    if err != nil && !errors.Is(err, gorm.ErrRecordNotFound) {
+    	return err
+    }
+
+    eventCount := eventSummary.Count
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    const eventSummary = await prisma.eventHourlySummary.findUnique({
+      where: {
+        tenantId_hour: {
+          tenantId,
+          hour: startAt,
+        },
+      },
+    });
+
+    const eventCount = eventSummary?.count ?? 0;
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    $eventSummary = EventHourlySummary::where("tenant_id", $tenantId)
+        ->where("hour", $startAt)
+        ->first();
+
+    $eventCount = $eventSummary?->count ?? 0;
+    ```
 
 <br>
 
@@ -376,19 +694,44 @@ const eventCount = eventSummary?.count ?? 0;
 
 <br>
 
-### 実装例（TypeScript）
+### 実装例
 
 #### ▼ 問題がある実装
 
-```typescript
-async function findByUserNames(userNames: string[]) {
-  return prisma.user.findMany({
-    where: {
-      name: {in: userNames},
-    },
-  });
-}
-```
+=== "Go"
+
+    ```go title=".go"
+    func findByUserNames(userNames []string) ([]User, error) {
+    	var users []User
+    	err := db.
+    		Where("name IN ?", userNames).
+    		Find(&users).Error
+    	return users, err
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    async function findByUserNames(userNames: string[]) {
+      return prisma.user.findMany({
+        where: {
+          name: {in: userNames},
+        },
+      });
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    function findByUserNames(array $userNames): array
+    {
+        return User::whereIn("name", $userNames)->get()->all();
+    }
+    ```
 
 #### ▼ 解決方法
 
@@ -396,19 +739,52 @@ async function findByUserNames(userNames: string[]) {
 
 この早期リターンにより、不要な DB 処理を避け、性能低下や不具合を防げる。
 
-```typescript
-async function findByUserNames(userNames: string[]) {
-  if (userNames.length === 0) {
-    return [];
-  }
+=== "Go"
 
-  return prisma.user.findMany({
-    where: {
-      name: {in: userNames},
-    },
-  });
-}
-```
+    ```go title=".go"
+    func findByUserNames(userNames []string) ([]User, error) {
+    	if len(userNames) == 0 {
+    		return []User{}, nil
+    	}
+
+    	var users []User
+    	err := db.
+    		Where("name IN ?", userNames).
+    		Find(&users).Error
+    	return users, err
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    async function findByUserNames(userNames: string[]) {
+      if (userNames.length === 0) {
+        return [];
+      }
+
+      return prisma.user.findMany({
+        where: {
+          name: {in: userNames},
+        },
+      });
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    function findByUserNames(array $userNames): array
+    {
+        if (count($userNames) === 0) {
+            return [];
+        }
+
+        return User::whereIn("name", $userNames)->get()->all();
+    }
+    ```
 
 <br>
 
@@ -422,35 +798,90 @@ async function findByUserNames(userNames: string[]) {
 
 <br>
 
-### 実装例（TypeScript）
+### 実装例
 
 #### ▼ 問題がある実装
 
-```typescript
-const users = await prisma.user.findMany({
-  select: {
-    teamId: true,
-  },
-});
+=== "Go"
 
-const userCountByTeam = users.reduce<Record<string, number>>((counts, user) => {
-  counts[user.teamId] = (counts[user.teamId] ?? 0) + 1;
-  return counts;
-}, {});
-```
+    ```go title=".go"
+    var users []User
+    err := db.
+    	Select("team_id").
+    	Find(&users).Error
+
+    userCountByTeam := map[string]int{}
+    for _, user := range users {
+    	userCountByTeam[user.TeamID]++
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    const users = await prisma.user.findMany({
+      select: {
+        teamId: true,
+      },
+    });
+
+    const userCountByTeam = users.reduce<Record<string, number>>((counts, user) => {
+      counts[user.teamId] = (counts[user.teamId] ?? 0) + 1;
+      return counts;
+    }, {});
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    $users = User::select("team_id")->get();
+
+    $userCountByTeam = $users->reduce(function (array $counts, User $user) {
+        $counts[$user->team_id] = ($counts[$user->team_id] ?? 0) + 1;
+        return $counts;
+    }, []);
+    ```
 
 #### ▼ 解決方法
 
 Prisma の `groupBy()` 関数を使用し、チームごとのユーザー数を集計する処理をアプリケーションのインフラストラクチャ層から DB に委譲する。
 
-```typescript
-const userCountByTeam = await prisma.user.groupBy({
-  by: ["teamId"],
-  _count: {
-    _all: true,
-  },
-});
-```
+=== "Go"
+
+    ```go title=".go"
+    var userCountByTeam []struct {
+    	TeamID string
+    	Count  int
+    }
+    err := db.
+    	Model(&User{}).
+    	Select("team_id, COUNT(*) AS count").
+    	Group("team_id").
+    	Scan(&userCountByTeam).Error
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    const userCountByTeam = await prisma.user.groupBy({
+      by: ["teamId"],
+      _count: {
+        _all: true,
+      },
+    });
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    $userCountByTeam = User::selectRaw("team_id, COUNT(*)")
+        ->groupBy("team_id")
+        ->get();
+    ```
 
 内部的には、GROUP BY 句を使用した SQL が発行される。
 
@@ -472,33 +903,79 @@ GROUP BY team_id;
 
 <br>
 
-### 実装例（TypeScript）
+### 実装例
 
 #### ▼ 問題がある実装
 
-```typescript
-const orders = await prisma.order.findMany({
-  select: {
-    amount: true,
-  },
-});
+=== "Go"
 
-const totalAmount = orders.reduce((total, order) => total + order.amount, 0);
-```
+    ```go title=".go"
+    var orders []Order
+    err := db.
+    	Select("amount").
+    	Find(&orders).Error
+
+    totalAmount := 0
+    for _, order := range orders {
+    	totalAmount += order.Amount
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    const orders = await prisma.order.findMany({
+      select: {
+        amount: true,
+      },
+    });
+
+    const totalAmount = orders.reduce((total, order) => total + order.amount, 0);
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    $orders = Order::select("amount")->get();
+
+    $totalAmount = $orders->reduce(fn ($total, Order $order) => $total + $order->amount, 0);
+    ```
 
 #### ▼ 解決方法
 
 Prisma の `aggregate()` 関数を使用し、注文金額を合計する処理をアプリケーションのインフラストラクチャ層から DB に委譲する。
 
-```typescript
-const result = await prisma.order.aggregate({
-  _sum: {
-    amount: true,
-  },
-});
+=== "Go"
 
-const totalAmount = result._sum.amount ?? 0;
-```
+    ```go title=".go"
+    var totalAmount int
+    err := db.
+    	Model(&Order{}).
+    	Select("COALESCE(SUM(amount), 0)").
+    	Scan(&totalAmount).Error
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    const result = await prisma.order.aggregate({
+      _sum: {
+        amount: true,
+      },
+    });
+
+    const totalAmount = result._sum.amount ?? 0;
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    $totalAmount = Order::sum("amount");
+    ```
 
 内部的には、SUM 関数を使用した SQL が発行される。
 

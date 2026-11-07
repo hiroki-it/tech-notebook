@@ -7,9 +7,7 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -79,7 +77,7 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 ### S/MIME：Secure MIME
 
-#### ▼ S/MINE とは
+#### ▼ S/MIME とは
 
 暗号化ダイジェスト (署名) を含む証明書をメールに添付することによって、公開鍵のなりすましを防ぐセキュリティ技術。
 
@@ -234,7 +232,7 @@ SSH と FTP を組み合わせたプロトコルではなく、SSH の能力を�
 
 ゲートウェイマシン上で稼働するブラウザを経由して、異なるネットワーク内の Web アプリと通信する。
 
-送信元マシンから宛先マシン上 Web アプリケーションに対してコピーアンドペーストできない場合がある。
+送信元マシンから宛先マシン上の Web アプリケーションに対してコピーアンドペーストできない場合がある。
 
 その場合、ローカルマシンのコピーを一度リモート先にあるメモ帳などにペーストし、これをあらためてコピーアンドペーストするとよい。
 
@@ -260,7 +258,7 @@ SSH と FTP を組み合わせたプロトコルではなく、SSH の能力を�
       <td>ゲートウェイマシン</td>
       <td>宛先マシンで稼働する Web アプリケーションのクライアントであり、ブラウザが稼働している。</td>
       <td style="text-align:center"></td>
-      <td style="text-align:center">✅ (Guacamole サーバー + guard)</td>
+      <td style="text-align:center">✅ (Guacamole サーバー + guacd)</td>
       <td style="text-align:center">✅</td>
     </tr>
     <tr>
@@ -412,6 +410,8 @@ VPN 接続されると、自宅 PC からの TCP スリーウェイハンドシ�
 
 #### ▼ IPsec によるパケットのカプセル化
 
+IPsec では、元の IP ヘッダーを含むデータに ESP トレーラを付加して全体を暗号化し、ESP の認証データとヘッダー、新しい IP ヘッダーを付加することで、パケットをカプセル化する。
+
 ![IPsecによるカプセル化](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IPsecによるカプセル化.jpg)
 
 <br>
@@ -422,7 +422,7 @@ VPN 接続されると、自宅 PC からの TCP スリーウェイハンドシ�
 
 ![vpn_between_network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_between_network.png)
 
-異なるネットワーク間で安全な通信するための仕組み。
+異なるネットワーク間で安全な通信をするための仕組み。
 
 異なるネットワーク内の特定のアプリケーションにのみと通信できるリモートデスクトッププロトコルよりも、広範囲に通信できる。
 

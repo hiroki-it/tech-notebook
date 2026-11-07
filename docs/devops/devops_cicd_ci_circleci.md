@@ -9,6 +9,8 @@ description: CircleCI＠CIツールの知見を記録しています。
 
 ### アーキテクチャ
 
+CircleCI では、VCS からコードを取得した Services Cluster がビルド環境にジョブを振り分け、ビルド環境やリモートの実行環境がジョブを実行する。
+
 ![circleci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circleci_architecture.png)
 
 > - https://circleci.com/docs/2.0/server-3-overview/

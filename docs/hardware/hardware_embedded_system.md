@@ -7,9 +7,7 @@ description: 組み込み機器＠ハードウェアの知見を記録してい�
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -51,11 +49,15 @@ CPU として、『マイクロプロセッサ』を使用したコンピュー�
 
 ### A/D 変換器によるアナログ情報からデジタル情報への変換
 
+A/D 変換器は、連続的に変化するアナログ信号を一定の間隔で区切り、段階的な値を持つデジタル信号に変換する。
+
 ![AD変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AD変換.png)
 
 <br>
 
 ### D/A 変換器によるデジタル情報からアナログ情報への変換
+
+D/A 変換器は、段階的な値を持つデジタル信号をなめらかにつなぎ、連続的に変化するアナログ信号に戻す。
 
 ![DA変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DA変換.png)
 
@@ -171,17 +173,23 @@ CPU として、『マイクロプロセッサ』を使用したコンピュー�
 
 #### ▼ ドットインパクトプリンタ
 
+ドット単位でピンが飛び出す印字ヘッドでインクリボンを用紙に叩きつけ、インクを転写して印字するプリンタ。
+
 ![ドットインパクトプリンタ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドットインパクトプリンタ.jpg)
 
 ![ドットインパクトプリンタの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドットインパクトプリンタの仕組み.jpg)
 
 #### ▼ インクジェットプリンタ
 
+印字ヘッドのノズルから各色のインクを用紙に吐出して印字するプリンタ。
+
 ![インクジェットプリンタ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/インクジェットプリンタ.jpg)
 
 ![インクジェットプリンタの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/インクジェットプリンタの仕組み.jpg)
 
 #### ▼ レーザプリンタ
+
+感光ドラムにレーザを照射してトナーを引き寄せ、そのトナーを用紙に転写して印字するプリンタ。
 
 ![レーザプリンタ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/レーザプリンタ.jpg)
 
@@ -200,6 +208,8 @@ dpi が大きくなるにつれて、解像度は大きくなる。
 ![DPIの比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DPIの比較.jpg)
 
 #### ▼ プリンタの印字速度
+
+ドットインパクトプリンタの印字速度は `1` 秒当たりの印字文字数を表す CPS で、レーザプリンタの印字速度は `1` 分当たりの印字ページ数を表す PPM で表す。
 
 ![cps_ppm](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cps_ppm.jpg)
 
@@ -229,6 +239,8 @@ dpi が大きくなるにつれて、解像度は大きくなる。
 
 #### ▼ USB (Universal Serial Bus)
 
+USB のコネクタには、A コネクタ、B コネクタ、C コネクタ、マイクロ B コネクタ、ミニ USB コネクタなどの形状の種類がある。
+
 ![usbケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usbインターフェイス.png)
 
 #### ▼ IEEE1394
@@ -249,7 +261,7 @@ dpi が大きくなるにつれて、解像度は大きくなる。
 
 #### ▼ SCSI (Small Computer System Interface)
 
-ストレージ、CD-ROM、コンテナイメージスキャナなど、さまざまな周辺機器をデイジーチェーンするために使用するインターフェイス。
+ストレージ、CD-ROM、イメージスキャナなど、さまざまな周辺機器をデイジーチェーンするために使用するインターフェイス。
 
 ![scsiケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scsiインターフェイス.jpg)
 
@@ -257,7 +269,7 @@ dpi が大きくなるにつれて、解像度は大きくなる。
 
 ### 無線インターフェイス
 
-#### ▼ IrDA (infrared Data Assoiciation)
+#### ▼ IrDA (infrared Data Association)
 
 赤外線を使用して、無線通信するためのインターフェイス。
 

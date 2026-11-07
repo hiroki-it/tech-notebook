@@ -7,9 +7,7 @@ description: OAuth2 Proxy＠セキュリティ系ミドルウェアの知見を�
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -26,6 +24,8 @@ OAuth 2.0 をベースとした SSO (例：OAuth、OIDC など) のアクセス�
 ## 02. OAuth2 Proxy の仕組み
 
 ### アーキテクチャ
+
+OAuth2 Proxy は、Web アプリケーションの手前でリクエストを受信し、OAuth 2.0 の ID プロバイダーで認証した後に、リクエストを Web アプリケーションにプロキシする。
 
 ![oauth2-proxy_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth2-proxy_architecture.png)
 
@@ -52,7 +52,7 @@ OAuth 2.0 をベースとした SSO (例：OAuth、OIDC など) のアクセス�
 
 ユーザーが未認証の場合、リバースプロキシはアクセストークン署名検証リクエストを OAuth2 Proxy にフォワーディングする。
 
-OAuth2 Proxy は、指定された ID プロバイダー (例：Auth0、AWS Cognito、GitHub、Google Cloud Auth、Keycloak、Zitadel) の認可エンドポイントにアクセスアクセストークン署名検証リクエストをフォワーディングし、一連の処理の後に認可レスポンスを受信する。
+OAuth2 Proxy は、指定された ID プロバイダー (例：Auth0、AWS Cognito、GitHub、Google Cloud Auth、Keycloak、Zitadel) の認可エンドポイントにアクセストークン署名検証リクエストをフォワーディングし、一連の処理の後に認可レスポンスを受信する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -120,7 +120,7 @@ spec:
 
 Grafana の送信元にある Ingress は、OAuth2 Proxy に認可リクエストを送信する。
 
-一方で、Grafana は ID プロバイダーに認可リクエストを直背的に送信できるため、OAuth2 Proxy がなくてもよい。
+一方で、Grafana は ID プロバイダーに認可リクエストを直接的に送信できるため、OAuth2 Proxy がなくてもよい。
 
 ```yaml
 apiVersion: networking.k8s.io/v1

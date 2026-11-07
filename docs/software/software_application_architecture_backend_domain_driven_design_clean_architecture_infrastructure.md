@@ -7,9 +7,7 @@ description: インフラストラクチャ層＠クリーンアーキテクチ�
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -20,6 +18,8 @@ description: インフラストラクチャ層＠クリーンアーキテクチ�
 <br>
 
 ## 02. リポジトリ
+
+リポジトリは、ドメイン層のエンティティの永続化をインフラストラクチャ層の実装に任せることにより、ドメイン層が RDBMS や外部システムなどの永続化先に依存しないようにする。
 
 ![Repository](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Repository.png)
 
@@ -134,7 +134,7 @@ description: インフラストラクチャ層＠クリーンアーキテクチ�
       <td>・弱い <code>&lt;br&gt;</code>・手順としてドメインモデルの依存関係の設計が先にあり、テーブル間の関係性は自由である。<code>1</code> 個のドメインモデルが複数のテーブルを参照してもよい。</td>
       <td></td>
       <td>ビジネスロジックが複雑なアプリケーション</td>
-      <td>DB、RDBMS、NoSQL、なんでもでもよい。</td>
+      <td>DB、RDBMS、NoSQL、なんでもよい。</td>
     </tr>
     <tr>
       <td>なし</td>
@@ -596,7 +596,7 @@ DB に対する書き込み操作をする。
 
 ![ドメイン駆動設計_リポジトリ_データ取得](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_リポジトリ_データ取得.jpg)
 
-DB に対する書き込み操作をする。
+DB に対する読み出し操作をする。
 
 `(1)`
 

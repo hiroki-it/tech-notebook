@@ -7,9 +7,7 @@ description: 見積もり＠プロジェクトマネジメントの知見を記�
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -158,6 +156,8 @@ description: 見積もり＠プロジェクトマネジメントの知見を記�
 
 #### ▼ 進捗率の定量化
 
+第 8 週末時点の進捗率と以降の予測時間をメンバーごとに並べると、全体の進捗率が約 77% で、残りの作業が第 12 週まで続くことがわかる。
+
 ![進捗率](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/進捗率.png)
 
 <br>
@@ -174,7 +174,7 @@ description: 見積もり＠プロジェクトマネジメントの知見を記�
 
 > - https://www.amazon.co.jp/dp/4297124513
 
-#### ▼ もはや結合点時刻
+#### ▼ 最早結合点時刻
 
 全体的な工程のなかで、任意の結合点へ取り掛かるために必要な最少日数のこと。
 

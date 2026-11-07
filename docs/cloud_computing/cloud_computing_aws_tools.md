@@ -7,9 +7,7 @@ description: ツール＠AWSの知見を記録しています。
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -34,6 +32,8 @@ CloudFormation で作成でき、Amazon ECS Fargate を使用して、ユーザ�
 > - https://d1.awsstatic.com/Solutions/ja_JP/distributed-load-testing-on-aws.pdf
 
 #### ▼ インフラ構成
+
+分散ロードテストは、フロントエンドの Web コンソールや API で受け付けたテストを、バックエンドの Lambda が Fargate のタスクとして実行し、その結果を DynamoDB や S3 に保存する構成である。
 
 ![distributed_load_testing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed_load_testing.png)
 

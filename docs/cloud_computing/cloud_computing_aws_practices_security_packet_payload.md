@@ -7,9 +7,7 @@ description: アプリケーションデータ安全性＠AWSの知見を記録�
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -284,6 +282,8 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
 <br>
 
 ### ルートテーブルによる防御
+
+サブネットに紐付けるルートテーブルの宛先を制限することで、サブネット内のリクエストを Amazon VPC 内に閉じるか、パブリックネットワークに公開するかを制御できる。
 
 ![route-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/route-table.png)
 

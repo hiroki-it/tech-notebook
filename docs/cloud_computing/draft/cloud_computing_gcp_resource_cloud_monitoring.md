@@ -7,13 +7,13 @@ description: Cloud Monitoring＠Google Cloudリソースの知見を記録して
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
 ## 01. Cloud Monitoring とは
+
+複数のプロジェクトのメトリクスを監視用のプロジェクトに集約し、アラートポリシーに合致した場合に通知チャンネルを介して外部サービスに通知する。
 
 ![google_cloud_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_monitoring.png)
 

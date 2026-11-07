@@ -7,9 +7,7 @@ description: GitHub＠Gitの知見を記録しています。
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -195,7 +193,7 @@ DB からフロント出力までに至る実装をコミットする場合、�
 
 #### ▼ バリデーションは適切か
 
-まさしく区別して `empty()` 関数 や `isset()` 関数 などを使えているか否かを確認する
+正しく区別して `empty()` 関数 や `isset()` 関数 などを使えているか否かを確認する
 
 #### ▼ 冗長になっていないか
 
@@ -339,6 +337,8 @@ CI ツールや CD ツールを使用して、コミット (マージコミッ�
 ### リリースノート
 
 #### ▼ 例
+
+リリースノートでは、リリースのタグを指定し、新規追加や修正などの見出しごとに、関連する Issue やプルリクエストを `#<番号>` で列挙する。
 
 ![github_release-note](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/github_release-note.png)
 

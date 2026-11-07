@@ -7,9 +7,7 @@ description: Blackbox Exporter＠Prometheus
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -29,6 +27,8 @@ Blackbox Exporter は、外部システムに特定のプロトコル (例：HTT
 <br>
 
 ### Prometheus によるデータポイント収集
+
+Prometheus は Service を介して Blackbox Exporter の Pod からデータポイントを収集し、Grafana は Prometheus のデータポイントを可視化する。
 
 ![blackbox_exporter_prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/blackbox_exporter_prometheus_architecture.png)
 

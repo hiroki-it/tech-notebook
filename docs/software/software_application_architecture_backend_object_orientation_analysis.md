@@ -7,9 +7,7 @@ description: オブジェクト指向分析＠アーキテクチャの知見を�
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -30,6 +28,8 @@ DFD、ユースケース図、アクティビティ図などがある。
 ## 02. DFD：Data Flow Diagram (データフロー図)
 
 ### DFD とは
+
+データ発生源、データの流れ、処理、データストアを基に、ソフトウェアの処理間でデータがどのように受け渡されるかを表す。
 
 ![データフロー図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データフロー図.jpg)
 
@@ -176,7 +176,7 @@ graph LR
 
 `(2)`
 
-: 要件定義が終えた想定で、ユースケース図を作成する。オブジェクト図は省略する。
+: 要件定義を終えた想定で、ユースケース図を作成する。オブジェクト図は省略する。
 
 ![ticket-modeling_tooppoo_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_tooppoo_usecase-diagram_example.png)
 

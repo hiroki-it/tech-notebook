@@ -7,9 +7,7 @@ description: UIレンダリングパターン＠フロントエンドアーキ�
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -86,7 +84,7 @@ Ajax の仕組みで作成したアプリは SPA である。
       <td>ブラウザ</td>
     </tr>
     <tr>
-      <td>Paiting</td>
+      <td>Painting</td>
       <td>ブラウザ</td>
     </tr>
   </tbody>
@@ -116,7 +114,7 @@ CSR では、ページ全体の静的ファイルをリクエストするのは�
 
 CSR の仕組みで作成したアプリは SPA である (Ajax とは SPA 内部の仕組みが異なる) 。
 
-最初に取得する html ファイルはほぼ空で、ブラウザ上で javascript ファイルを実行し、html ファイルをすべてを作成する。
+最初に取得する html ファイルはほぼ空で、ブラウザ上で javascript ファイルを実行し、html ファイルをすべて作成する。
 
 その後、クライアントの操作で部分的にデータをリクエストし、html ファイルを部分的に変更する。
 
@@ -257,7 +255,7 @@ SSR では、フロントエンドアプリケーションへのリクエスト�
       <td>サーバー</td>
     </tr>
     <tr>
-      <td>Paiting</td>
+      <td>Painting</td>
       <td>ブラウザ</td>
     </tr>
   </tbody>
@@ -360,6 +358,8 @@ SSG と同じで事前にビルドし、静的ファイル (例：`html` ファ�
 <br>
 
 ### ブラウザとバックエンド間の通信
+
+ISR では、ブラウザは通常は CDN にキャッシュされた静的ファイルを受け取り、キャッシュが古いか存在しない場合にのみ、サーバーがページを再生成する。
 
 ![isr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/isr.png)
 

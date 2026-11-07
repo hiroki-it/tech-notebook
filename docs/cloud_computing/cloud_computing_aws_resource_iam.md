@@ -7,13 +7,11 @@ description: AWS IAM＠AWSリソースの知見を記録しています。
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
-## 01. AWS IAM とは：Identify and Access Management
+## 01. AWS IAM とは：Identity and Access Management
 
 AWS リソースへのアクセスに関する認証/認可を制御する。
 
@@ -39,7 +37,7 @@ AWS リソースを作成したときに自動的に作成されるロール。
 
 特に設定せずとも、自動的にリソースに紐付けられる。
 
-関連するリソースを削除するまで、ロール自体できない。
+関連するリソースを削除するまで、ロール自体を削除できない。
 
 サービスリンクロールの一覧については、以下のリンクを参考にせよ。
 
@@ -118,7 +116,7 @@ AWS IAM ロールにインラインポリシーを紐付ける。
 
 #### ▼ リソースベースのインラインポリシーとは
 
-単一の AWS リソースにインポリシーのこと。
+単一の AWS リソースに紐付けるためのインラインポリシーのこと。
 
 すでに紐付けられていると、他のものには紐付けできない。
 
@@ -340,7 +338,7 @@ AWS リソースに関する認可のスコープを定義する。
 
 ARN で AWS リソースの識別子を設定する。
 
-リージョンのグループには、`aws`、`aws-cn` (中国系ネットワーク) 、`aws-cn` (政府系ネットワーク) がある。
+リージョンのグループには、`aws`、`aws-cn` (中国系ネットワーク) 、`aws-us-gov` (政府系ネットワーク) がある。
 
 ```yaml
 {
@@ -450,17 +448,23 @@ AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設
 
 ### AWS IAM ユーザーに対する紐付け
 
+AWS IAM ユーザーに AWS IAM ポリシーを直接紐付けると、AWS IAM ユーザーは紐付けた AWS IAM ポリシーの認可スコープをもち、同じ AWS IAM ポリシーを複数の AWS IAM ユーザーで共有できる。
+
 ![AWS IAMユーザにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMユーザーにポリシーを付与.jpeg)
 
 <br>
 
 ### AWS IAM グループに対する紐付け
 
+AWS IAM グループに AWS IAM ポリシーを紐付けると、AWS IAM グループに所属する AWS IAM ユーザーがまとめて同じ認可スコープをもつため、AWS IAM ユーザーごとに AWS IAM ポリシーを紐付けずに済む。
+
 ![AWS IAMグループにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMグループにポリシーを付与.jpeg)
 
 <br>
 
 ### AWS IAM ロールに対する紐付け
+
+AWS IAM ロールに AWS IAM ポリシーを紐付けると、AWS IAM ロールを割り当てた EC2 などの AWS リソースが、AWS IAM ポリシーの認可スコープで他の AWS リソースを操作できる。
 
 ![AWS IAMロールにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMロールにポリシーを付与.jpeg)
 

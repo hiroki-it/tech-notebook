@@ -7,9 +7,7 @@ description: 認証／認可＠マイクロサービスの知見を記録して�
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -108,7 +106,7 @@ description: 認証／認可＠マイクロサービスの知見を記録して�
 
 ### セッションパターンの仕組み
 
-各マイクロサービスは、セッション ID に基づいてアカウントをする。
+各マイクロサービスは、セッション ID に基づいてアカウントを認証する。
 
 `1` 個のセッション中の認証アーティファクトをマイクロサービス間で共有するために、セッション ID を保管できるストレージ (例：Infinispan、Redis など) を `1` 個だけ配置する。
 
@@ -284,6 +282,8 @@ API ゲートウェイは、認証を集中的に管理し、認証とアクセ�
 ### ハイブリッドパターン
 
 #### ▼ ハイブリッドパターンとは
+
+認可処理を各マイクロサービスに実装しつつ、ほかのマイクロサービスの認可の判定結果も使用して操作の許否を決定する。
 
 ![microservices_authorization_hybrid-authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_hybrid-authorization.png)
 

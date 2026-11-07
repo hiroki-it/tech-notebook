@@ -7,9 +7,7 @@ description: 21章＠ドメイン駆動設計実践入門の知見を記録し�
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -286,7 +284,7 @@ async function getReview(reviewId: ReviewId): Promise<ReviewState> {
 
 ### 21-4-2 クエリの複雑性とパフォーマンスの問題
 
-イベントソーシングでが、異なる集約を横断する処理では負荷が大きくなる。
+イベントソーシングでは、異なる集約を横断する処理では負荷が大きくなる。
 
 ```typescript
 // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
@@ -616,11 +614,13 @@ const aggregatePolicies: AggregatePersistencePolicy[] = [
 
 ### 21-7-3 イベント数ベースのスナップショット作成例
 
+新しいイベントを保存する際に、再構築時のイベント数が閾値の 100 件を超えていれば、同じトランザクション内でイベントストアがスナップショットストアにスナップショットを保存する。
+
 ![software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-2.png)
 
 ### 21-7-4 スナップショットの導入検討
 
-イベントソーシングの課題よって性能に問題が起こった後から、スナップショットの導入を検討する。
+イベントソーシングの課題によって性能に問題が起こった後から、スナップショットの導入を検討する。
 
 ```typescript
 // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加

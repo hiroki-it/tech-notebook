@@ -7,9 +7,7 @@ description: HTTP＠L5 ~ L7の知見を記録しています。
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -57,7 +55,7 @@ JavaScript のフレームワーク。
 
 #### ▼ Lambda の場合
 
-フレームワークでなはいが、Lambda の場合にパラメーターとして context オブジェクトが用意されている。
+フレームワークではないが、Lambda の場合にパラメーターとして context オブジェクトが用意されている。
 
 <br>
 
@@ -155,7 +153,7 @@ GET https://example.com/bar-form.php?text1=a&text2=b
 Accept: text/html, application/xhtml+xml, application/xml; q=0
 ```
 
-#### ▼ Accept-Encondig
+#### ▼ Accept-Encoding
 
 ```yaml
 # リクエストライン
@@ -329,7 +327,7 @@ Accept: text/html, application/xhtml+xml, application/xml; q=0
 text=a&text2=b
 ```
 
-#### ▼ Accept-Encondig
+#### ▼ Accept-Encoding
 
 ```yaml
 # リクエストライン
@@ -407,39 +405,117 @@ GET リクエストではあるが、ボディにクエリパラメーターを�
 
 ### 送信例
 
-#### ▼ PHP の場合
+#### ▼ GET リクエストの場合
 
-```injectablephp
-<?php
+=== "Go"
 
-define("URL", "https://example.com");
+    ```go title=".go"
+    import (
+    	"crypto/tls"
+    	"io"
+    	"net/http"
+    )
 
-// curlセッションを初期化する
-$curl = curl_init();
+    const URL = "https://example.com"
 
-// オプションの設定
-curl_setopt_array(
-    $curl,
-    [
-        // URL
-        CURLOPT_URL            => URL,
-        // HTTPメソッド
-        CURLOPT_CUSTOMREQUEST  => "GET",
+    func main() {
+    	// HTTPクライアントを初期化する
+    	client := &http.Client{
+    		Transport: &http.Transport{
+    			// サーバー証明書の検証
+    			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+    		},
+    	}
+
+    	// オプションの設定
+    	req, err := http.NewRequest(
+    		// HTTPメソッド
+    		http.MethodGet,
+    		// URL
+    		URL,
+    		nil,
+    	)
+    	if err != nil {
+    		return
+    	}
+
+    	// リクエストの実行
+    	res, err := client.Do(req)
+    	if err != nil {
+    		return
+    	}
+
+    	// レスポンスボディを閉じる
+    	defer res.Body.Close()
+
+    	// string型で受信
+    	body, err := io.ReadAll(res.Body)
+    	if err != nil {
+    		return
+    	}
+    	messageBody := string(body)
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    import {Agent, fetch} from "undici";
+
+    const URL = "https://example.com";
+
+    // HTTPクライアントを初期化する
+    const dispatcher = new Agent({
+      connect: {
         // サーバー証明書の検証
-        CURLOPT_SSL_VERIFYPEER => false,
-        // string型で受信
-        CURLOPT_RETURNTRANSFER => true
-    ]
-);
+        rejectUnauthorized: false,
+      },
+    });
 
-// リクエストの実行
-$messageBody = (curl_exec($curl))
-    ? curl_exec($curl)
-    : [];
+    // リクエストの実行
+    const response = await fetch(URL, {
+      // HTTPメソッド
+      method: "GET",
+      dispatcher,
+    });
 
-// curlセッションを閉じる
-curl_close($curl);
-```
+    // string型で受信
+    const messageBody = response.ok ? await response.text() : "";
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    define("URL", "https://example.com");
+
+    // curlセッションを初期化する
+    $curl = curl_init();
+
+    // オプションの設定
+    curl_setopt_array(
+        $curl,
+        [
+            // URL
+            CURLOPT_URL            => URL,
+            // HTTPメソッド
+            CURLOPT_CUSTOMREQUEST  => "GET",
+            // サーバー証明書の検証
+            CURLOPT_SSL_VERIFYPEER => false,
+            // string型で受信
+            CURLOPT_RETURNTRANSFER => true
+        ]
+    );
+
+    // リクエストの実行
+    $messageBody = (curl_exec($curl))
+        ? curl_exec($curl)
+        : [];
+
+    // curlセッションを閉じる
+    curl_close($curl);
+    ```
 
 <br>
 
@@ -546,7 +622,7 @@ API に認証プロセスが存在し、トークンの発行が必要だとす�
 
 API に認証/認可プロセスが存在せず、トークン発行と参照権限検証が不要だとする。
 
-送信元 IP アドレスに参照権限がないと判定されてことを表す。
+送信元 IP アドレスに参照権限がないと判定されたことを表す。
 
 #### ▼ `404` (Web ページが見つからない)
 
@@ -814,7 +890,7 @@ POST https://example.com/users/12345?format=json
 
 クライアントからの次回のリクエスト時でも、Cookie 情報 (キー名/値のセット) を使用して、同一クライアントと認識できる仕組みを Cookie という。
 
-HTTP はステートレスなプロトコルであるが、Cookie 情報により擬似的にステートフルな通信できる。
+HTTP はステートレスなプロトコルであるが、Cookie 情報により擬似的にステートフルな通信ができる。
 
 > - [CookieとSessionを今度こそ完全に理解する【分かりやすく図解】｜Webエンジニア研究室](https://www.engilaboo.com/definitely-understand-cookie-session/)
 
@@ -961,7 +1037,7 @@ $_COOKIE = ["Cookie名" => "値"];
 
 このとき、セッション ID を使用すると、セッションの各クライアント側を同一クライアントとして識別できる。
 
-HTTP はステートレスなプロトコルであるが、セッション ID により擬似的にステートフルな通信できる。
+HTTP はステートレスなプロトコルであるが、セッション ID により擬似的にステートフルな通信ができる。
 
 例えばセッション ID により、ログイン後にページ遷移しても、ログイン情報を保持できる。
 

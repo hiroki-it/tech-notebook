@@ -7,9 +7,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -202,6 +200,8 @@ MMU によって、仮想メモリのアドレスは、物理メモリのアド�
 
 #### ▼ ページテーブルにおける仮想ページ番号と物理ページ番号の対応づけ
 
+ページテーブルは仮想ページ番号ごとに存在ビットと物理ページ番号をもち、存在ビットが 1 のページのみが物理メモリのページフレームにマッピングされている。
+
 > - https://www.amazon.co.jp/dp/4297124513
 
 ![仮想メモリとのマッピングによる大容量アドレス空間の再現_4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_4.png)
@@ -228,6 +228,8 @@ CPU によって稼働したプロセスが、仮想メモリのアドレス空�
 
 #### ▼ 『FIFO 方式：First In First Out』と『LIFO 方式：Last In First Out』
 
+FIFO 方式は最初にページインしたページを、LIFO 方式は最後にページインしたページをページアウトするため、同じ参照の順番でもページアウトするページが異なる。
+
 > - https://www.amazon.co.jp/dp/4297124513
 
 ![p261-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p261-2.png)
@@ -235,6 +237,8 @@ CPU によって稼働したプロセスが、仮想メモリのアドレス空�
 ![p261-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p261-3.png)
 
 #### ▼ 『LRU 方式：Least Recently Used』と『LFU 方式：Least Frequently Used』
+
+LRU 方式は最も長い間参照されていないページを、LFU 方式は最も参照回数の少ないページをページアウトし、いずれもページの参照の履歴をもとにページアウトするページを決める。
 
 > - https://www.amazon.co.jp/dp/4297124513
 

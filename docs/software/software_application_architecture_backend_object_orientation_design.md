@@ -7,9 +7,7 @@ description: オブジェクト指向設計＠アーキテクチャの知見を�
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -51,7 +49,7 @@ description: オブジェクト指向設計＠アーキテクチャの知見を�
 
 ![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データとして保持する関係性.png)
 
-『has-one』『has-many』な関係と表現され、より具体的に説明すると、と状態として保持する関係性である。
+『has-one』『has-many』な関係と表現され、より具体的に説明すると、状態として保持する関係性である。
 
 Association (関連) 、Aggregation (集約) 、Composition (合成) が使用される。
 
@@ -63,7 +61,7 @@ Association (関連) 、Aggregation (集約) 、Composition (合成) が使用�
 
 ![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループとメンバーの関係性.png)
 
-『is-a-kind-of』な関係と表現され、より具体的に説明すると、とグループとメンバーの関係性である。
+『is-a-kind-of』な関係と表現され、より具体的に説明すると、グループとメンバーの関係性である。
 
 Generalization (汎化) 、Realization (実現) が使用される。実装例は以下のリンクを参考にせよ。
 
@@ -73,7 +71,7 @@ Generalization (汎化) 、Realization (実現) が使用される。実装例�
 
 ![引数型または返却値型として使用する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/引数型または返却値型として使用する関係性.png)
 
-『use』な関係と表現され、より具体的に説明すると、と引数型/返却値型として使用する関係性である。
+『use』な関係と表現され、より具体的に説明すると、引数型/返却値型として使用する関係性である。
 
 Dependency (依存) が使用される。
 
@@ -162,6 +160,8 @@ Dependency (依存) が使用される。
 
 #### ▼ IE 記法とは
 
+エンティティ、属性、リレーション、カーディナリティを組み合わせて、テーブル間の関係性を表す記法のこと。
+
 ![er-diagram_ie](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/er-diagram_ie.png)
 
 #### ▼ エンティティ、属性
@@ -186,15 +186,19 @@ Dependency (依存) が使用される。
 
 #### ▼ 1：1
 
+日本語名称マスタと中国語名称マスタのように、一方のエンティティのレコードに対して、もう一方のエンティティのレコードが必ず 1 つだけ対応する関係性のこと。
+
 ![1対1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/1対1.png)
 
 #### ▼ 1：多 (リレーションが曖昧な状態)
 
-オブジェクト指向分析が進むにつれ、『1：0 以上の関係』『1：1 以上の関係』のように具体化しく。
+オブジェクト指向分析が進むにつれ、『1：0 以上の関係』『1：1 以上の関係』のように具体化していく。
 
 ![1対1以上](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/1対1以上.png)
 
 #### ▼ 1：1 以上
+
+注文テーブルと注文明細テーブルのように、一方のエンティティのレコードに対して、もう一方のエンティティのレコードが 1 つ以上対応する関係性のこと。
 
 ![1対1以上](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/1対1以上.png)
 
@@ -204,7 +208,7 @@ Dependency (依存) が使用される。
 
 ### シーケンス図とは
 
-オブジェクト間のとき系列的な関係性を基に、ソフトウェアの『動的な振舞』を表すダイアグラムのこと。
+オブジェクト間の時系列的な関係性を基に、ソフトウェアの『動的な振舞』を表すダイアグラムのこと。
 
 <table>
   <thead>
@@ -267,7 +271,7 @@ Dependency (依存) が使用される。
     </tr>
     <tr>
       <td>複合フラグメント (結合フラグメント)</td>
-      <td>条件分岐、繰り返しなどによって実行されたコールであること表す。実行仕様とメッセージを四角で囲い、左上隅にオペレーター名を記載する。</td>
+      <td>条件分岐、繰り返しなどによって実行されたコールであることを表す。実行仕様とメッセージを四角で囲い、左上隅にオペレーター名を記載する。</td>
       <td>条件分岐の場合はオペレーター名を <code>alt</code> (<code>alternative</code>) 、繰り返しの場合は <code>loop</code> とする。<br>・<a href="https://qiita.com/devopsCoordinator/items/4535c3cce207b114ad6c#%E8%A4%87%E5%90%88%E3%83%95%E3%83%A9%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88">https://qiita.com/devopsCoordinator/items/4535c3cce207b114ad6c#複合フラグメント</a>&gt;</td>
     </tr>
   </tbody>

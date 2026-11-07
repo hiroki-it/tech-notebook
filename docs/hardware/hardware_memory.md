@@ -7,9 +7,7 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -31,6 +29,8 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 #### ▼ Mask ROM とは
 
+製造時にデータを書き込み、以降は内容を書き換えられない読み出し専用のメモリのこと。
+
 ![p164-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p164-1.png)
 
 > - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
@@ -40,6 +40,8 @@ description: メモリ＠ハードウェアの知見を記録しています。
 ### Programmable ROM
 
 #### ▼ Programmable ROM とは
+
+ユーザーが内容を書き換えられる ROM のことで、データの消去方法によって EPROM、EEPROM、フラッシュメモリに分かれる。
 
 ![p164-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p164-2.png)
 
@@ -103,13 +105,15 @@ CPU とメインメモリの間に、キャッシュメモリを何段階か配�
 
 #### ▼ 二度目
 
+一次キャッシュメモリ ➔ 二次キャッシュメモリ ➔ メインメモリの順で命令を探すため、一度目よりも速く命令を実行できる。
+
 ![メモリとキャッシュメモリ_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリとキャッシュメモリ_2.jpg)
 
 <br>
 
 ### キャッシュメモリへの書き込み方式の種類
 
-#### ▼ Write-throught 方式
+#### ▼ Write-through 方式
 
 CPU は、命令をメインメモリとキャッシュメモリの両方に書き込む。
 
@@ -131,6 +135,8 @@ CPU は、キャッシュメモリのみに書き込む。
 
 ### 実効アクセス時間
 
+キャッシュメモリに目的のデータが存在する確率をヒット率とし、存在せずにメインメモリを読み出しに行く確率を `1 - ヒット率` として、実効アクセス時間を求める。
+
 ![p171-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p171-1.png)
 
 > - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
@@ -150,6 +156,8 @@ CPU は、キャッシュメモリのみに書き込む。
 ## 02-02. キャッシュの保管場所の種類
 
 ### 全体像
+
+キャッシュは、クライアント、CDN、ロードバランサー、API ゲートウェイ、アプリケーション、データベースなど、リクエストの経路上のさまざまな場所に保管できる。
 
 ![what_and_where_to_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/what_and_where_to_cache.jpeg)
 
@@ -238,7 +246,7 @@ Laravel のキャッシュ機能については、以下のリンクを参考に
 
 #### ▼ ETag 値による検証
 
-ブラウザは、Etag 値を使用してキャッシュの実現する。
+ブラウザは、Etag 値を使用してキャッシュを実現する。
 
 ![EtagとIf-NoneMach](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ETagとIf-None-Match.png)
 
@@ -335,7 +343,7 @@ Cache-Control: no-store
 
 レスポンスヘッダーにて、`Cache-Control` ヘッダーに `max-age=31536000` を設定する。
 
-Expire ヘッダーに有効時間を設定してもよいが、`Cache-Control` ヘッダーの有効時間が優先される。
+Expires ヘッダーに有効時間を設定してもよいが、`Cache-Control` ヘッダーの有効時間が優先される。
 
 この場合、有効時間を過ぎると、ETag 値を比較検証するようになる。
 
@@ -352,7 +360,7 @@ Cache-Control: max-age=31536000
 
 レスポンスヘッダーにて、`Cache-Control` ヘッダーに `max-age=0` を設定する。
 
-また、Expire ヘッダーに期限切れの日時を設定する。この場合、毎回のリクエスト時に ETag 値を比較検証するようになる。
+また、Expires ヘッダーに期限切れの日時を設定する。この場合、毎回のリクエスト時に ETag 値を比較検証するようになる。
 
 ```yaml
 HTTP/1.1 200
@@ -384,7 +392,7 @@ Expires: Sat, 01 Jan 2000 00:00:00 GMT
 
 CPU より少ないパラメーターで、より高速に並列処理を実行できる。
 
-画像処理や機械学習処理に的する。
+画像処理や機械学習処理に適する。
 
 <br>
 

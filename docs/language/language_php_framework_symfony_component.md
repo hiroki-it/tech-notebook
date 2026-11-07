@@ -7,9 +7,7 @@ description: コンポーネント＠Symfonyの知見を記録しています。
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -268,6 +266,8 @@ done
 
 ### AppKernel
 
+カーネルは、受け取ったリクエストをルーティングやコントローラーアクションに渡し、その結果をレスポンスとして返すアプリケーションの中心である。
+
 ![図2-9-ver2](https://user-images.githubusercontent.com/42175286/57711074-08c21b00-76a9-11e9-959e-b3777f70d2c6.png)
 
 #### ▼ カーネルに必要なオブジェクト
@@ -286,7 +286,7 @@ done
 
 `(1)`
 
-: カーネルが、クラアントからの HTTP リクエストをリクエストオブジェクトとして受け取る。
+: カーネルが、クライアントからの HTTP リクエストをリクエストオブジェクトとして受け取る。
 `(2)`
 
 : カーネルが、送られてきた URL とルート定義を基に、リクエストに対応するコントローラーアクションを探し、実行させる。その後、テンプレートが URL を作成。
@@ -438,6 +438,8 @@ $request->get('foo');
 ## 03-03. HttpKernel
 
 ### HttpKernel によるリクエストとレスポンス
+
+HttpKernel は、リクエストを RouterListener や ControllerResolver などに順番に渡してコントローラーと引数を決定し、コントローラーの実行結果をレスポンスとして返す。
 
 ![SymfonyのHttpKernelの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SymfonyのHttpKernelの仕組み.png)
 

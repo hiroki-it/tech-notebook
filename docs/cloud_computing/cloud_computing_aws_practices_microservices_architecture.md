@@ -7,9 +7,7 @@ description: マイクロサービスアーキテクチャ＠AWSの知見を記�
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -59,6 +57,8 @@ AWS CloudMap を使用して、Amazon ECS タスクの宛先情報を動的に A
 > - [Web アプリケーションにおける Amazon ECS / AWS Fargate アーキテクチャデザインパターン - builders.flash☆ - 変化を求めるデベロッパーを応援するウェブマガジン \| AWS](https://aws.amazon.com/jp/builders-flash/202409/web-app-architecture-design-pattern/)
 
 #### ▼ Amazon ECS Service Connect によるサービス検出
+
+Amazon ECS Service Connect では、Amazon ECS タスクの宛先情報が AWS Cloud Map に登録され、送信元の Amazon ECS タスクのサイドカーの Envoy がその宛先情報を使用して他の Amazon ECS タスクにリクエストを送信する。
 
 ![aws_ecs_service-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_ecs_service-connect.png)
 

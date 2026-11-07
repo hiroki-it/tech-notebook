@@ -7,13 +7,13 @@ description: マーメイド＠開発手法の知見を記録しています。
 
 ### はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
 ## フローチャート
+
+Terraform の tfstate をプロバイダーのアカウント別に分割し、tfstate 同士が互いに参照し合う関係を点線の矢印で表すフローチャートの例である。
 
 ```mermaid
 ---
@@ -47,6 +47,8 @@ flowchart LR
 
 ## Git グラフ
 
+ブランチごとに誰が Plan や Apply を実行したかを、コミットのラベルで表す Git グラフの例である。
+
 ```mermaid
 ---
 title: ブランチの作業状況
@@ -73,6 +75,8 @@ gitGraph
 <br>
 
 ## ガントチャート
+
+インフラ、バックエンド、フロントエンドの設計、実装、テストの期間が重なる様子を日付で表すガントチャートの例である。
 
 ```mermaid
 %%{init:{'theme':'default'}}%%

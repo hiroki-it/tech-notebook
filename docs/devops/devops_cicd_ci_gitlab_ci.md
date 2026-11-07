@@ -7,9 +7,7 @@ description: GitLab CI＠CIツールの知見を記録しています。
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -771,7 +769,7 @@ bar_job:
 
 通常、`dependencies` を指定せずに `artifacts` を使用した場合、すべての Job とファイルを継承する。
 
-`dependencies` を設定すれば、`artifacts` が設定された特定の Job を指定し、その Job のみをファイルを継承する。
+`dependencies` を設定すれば、`artifacts` が設定された特定の Job を指定し、その Job のみのファイルを継承する。
 
 ```yaml
 stages:
@@ -1053,7 +1051,7 @@ gemerate_template:
 
 Job の CI の実行コンテナとは別のサービスコンテナを作成する。
 
-両方のコンテナで使用するイメージのバーションは揃えるようにする。
+両方のコンテナで使用するイメージのバージョンは揃えるようにする。
 
 ```yaml
 foo_job:
@@ -1343,6 +1341,8 @@ GitLab Agentは、Kubernetesクラスタ内で動作し、GitLabとクラスタ�
 
 #### ▼ レビュー環境を構築する仕組み
 
+GitLab CIがGitLab Agentを介してMRごとにレビュー環境を作成し、external-dnsがDNSレコードを挿入したうえで、クリーナーのJobが事後にDNSレコードを削除する。
+
 ```mermaid
 flowchart LR
     CI{{"GitLab CI"}}
@@ -1367,6 +1367,8 @@ flowchart LR
 ```
 
 #### ▼ レビュー環境に接続する仕組み
+
+ブラウザからMRごとのドメインにアクセスすると、Route53での名前解決を経てIngressがreview-appのPodにリクエストを転送し、PodがAuroraやEMQXに接続する。
 
 ```mermaid
 flowchart LR

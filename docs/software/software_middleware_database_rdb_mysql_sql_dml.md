@@ -7,9 +7,7 @@ description: DML＠SQLの知見を記録しています。
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -172,6 +170,8 @@ FROM
 ### `FROM` 関数
 
 #### ▼ `JOIN` の種類
+
+`JOIN` の種類によって 2 つのテーブルから取得するレコードの範囲が異なり、`WHERE` で `NULL` を条件にすると片方のテーブルにしか存在しないレコードのみを取得できる。
 
 ![内部結合のベン図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/内部結合のベン図.jpg)
 
@@ -662,7 +662,7 @@ INSERT INTO <テーブル名> VALUES ('<カラム名>','<レコード値>'), ('<
 
 DB を閲覧する。
 
-主に動作確認使用できる。
+主に動作確認に使用できる。
 
 ```mysql
 SHOW TABLES;

@@ -7,9 +7,7 @@ description: クリーンアーキテクチャ＠アーキテクチャの知見�
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -28,6 +26,8 @@ description: クリーンアーキテクチャ＠アーキテクチャの知見�
 <br>
 
 ### 構成
+
+クリーンアーキテクチャは同心円状の層で構成され、外側の層から内側の層に向かってのみ依存する。
 
 > - [Clean Coder Blog](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 
@@ -122,12 +122,12 @@ description: クリーンアーキテクチャ＠アーキテクチャの知見�
     </tr>
     <tr>
       <td>Input (Command とも呼ぶ)</td>
-      <td>型変換、入力データ翻訳、フロントエンドインターフェース (あるいは受信 JSON データ) からバックエンドインターフェースへのオブジェクトからへの詰め替え</td>
+      <td>型変換、入力データ翻訳、フロントエンドインターフェース (あるいは受信 JSON データ) からバックエンドインターフェースへのオブジェクトへの詰め替え</td>
       <td>実装</td>
     </tr>
     <tr>
       <td>Output (DTO とも呼ぶ)</td>
-      <td>型変換、出力データ翻訳、バックエンドインターフェースからフロントエンドインターフェースへのオブジェクトからへの詰め替え</td>
+      <td>型変換、出力データ翻訳、バックエンドインターフェースからフロントエンドインターフェースへのオブジェクトへの詰め替え</td>
       <td>実装</td>
     </tr>
     <tr>
@@ -143,7 +143,7 @@ description: クリーンアーキテクチャ＠アーキテクチャの知見�
     </tr>
     <tr>
       <td>Input (Command とも呼ぶ)</td>
-      <td>型変換、バックエンドインターフェースからユースケースのオブジェクトからへの詰め替え</td>
+      <td>型変換、バックエンドインターフェースからユースケースのオブジェクトへの詰め替え</td>
       <td>実装</td>
     </tr>
     <tr>
@@ -153,7 +153,7 @@ description: クリーンアーキテクチャ＠アーキテクチャの知見�
     </tr>
     <tr>
       <td>Output (DTO とも呼ぶ)</td>
-      <td>型変換、ユースケースからフロントエンドインターフェースへのオブジェクトからへの詰め替え</td>
+      <td>型変換、ユースケースからフロントエンドインターフェースへのオブジェクトへの詰め替え</td>
       <td>実装</td>
     </tr>
     <tr>
@@ -286,6 +286,38 @@ description: クリーンアーキテクチャ＠アーキテクチャの知見�
 レイヤー間の依存関係の方向をドキュメントで明文化する。
 
 ```mermaid
+graph LR
+
+  %% インターフェース層
+  %% リクエストの受信やレスポンスの返信に関するロジックを置く
+  subgraph controllers ["【インターフェース層】./controllers"]
+    controller
+  end
+
+  %% ユースケース層
+  %% ドメイン層のロジックを組み合わせ、ユースケースを実現するロジックを置く
+  subgraph usecases ["【ユースケース層】./usecases"]
+    usecase
+  end
+
+  %% ドメイン層
+  %% ドメインルールに関するロジックと、リポジトリのインターフェースを置く
+  subgraph domain ["【ドメイン層】./domain"]
+    domainObject
+    repositoryInterface
+  end
+
+  %% インフラストラクチャ層
+  %% データベースへの接続や、リポジトリの実装に関するロジックを置く
+  subgraph infrastructure ["【インフラストラクチャ層】./infrastructure"]
+    repository
+    database
+  end
+
+  controllers --> usecases
+  usecases --> domain
+  infrastructure -->|インターフェースを実装| domain
+  repository -->|CRUD| database
 ```
 
 <br>

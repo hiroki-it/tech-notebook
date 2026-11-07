@@ -7,9 +7,7 @@ description: JMeter＠システムテストの知見を記録しています。
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -46,6 +44,8 @@ JMeter は、以下のコンポーネントから構成されている。
 
 #### ▼ 全体像
 
+JMeter が送信するリクエストの総数はスレッド数とループ数の積であり、それらのリクエストをランプアップ秒の期間で送信する。
+
 ![stress-test_parameter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/stress-test_parameter.png)
 
 > - [【図解】はじめてでもわかるJMeterの使い方 - RAKUS Developers Blog \| ラクス エンジニアブログ](https://tech-blog.rakus.co.jp/entry/2017/08/24/111332)
@@ -62,7 +62,7 @@ JMeter は、以下のコンポーネントから構成されている。
 
 リクエストを送信する期間に相当する。
 
-長くし過ぎすると、すべてのリクエスト数を送信するまでに時間がかかるため、負荷が小さくなる。
+長くし過ぎると、すべてのリクエスト数を送信するまでに時間がかかるため、負荷が小さくなる。
 
 <br>
 
@@ -115,7 +115,7 @@ Don't use GUI mode for load testing !, only for Test creation and Test debugging
 
 `(6)`
 
-: テストを修正して新しく実行したい場合、`jmx` ファイル、`jtl` ファイル、log ファイルをコピーして、バックアアップしておく。
+: テストを修正して新しく実行したい場合、`jmx` ファイル、`jtl` ファイル、log ファイルをコピーして、バックアップしておく。
 
 <br>
 

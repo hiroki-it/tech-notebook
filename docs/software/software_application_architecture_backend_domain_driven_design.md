@@ -7,9 +7,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -78,7 +76,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 `(4)`
 
 : ドメインモデル図を元に、クラス図を作成する。
-このとき、モデルをエンティティや値オブジェクトを切り分けるようにする。
+このとき、モデルをエンティティや値オブジェクトに切り分けるようにする。
 
 `(5)`
 
@@ -115,7 +113,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 このときの注意点として、業務領域は、ToB や ToC に関わらないことである。
 
-例えば、ToC なドメインには、マーケーティング部による業務 (ユーザー集客業務、広告運用業務) がある。
+例えば、ToC なドメインには、マーケティング部による業務 (ユーザー集客業務、広告運用業務) がある。
 
 > - [前から疑問だったのですが、DDDってtoCのサービスでもうまく機能するのでしょうか？toCのサービスの場合、どのようにドメインエキスパートを探す、あるいは設定するのでしょうか。 · Issue #191 · little-hands/ddd-q-and-a · GitHub](https://github.com/little-hands/ddd-q-and-a/issues/191)
 
@@ -175,6 +173,8 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 ### コアドメイン、サブドメイン、ドメインエキスパート
 
 #### ▼ コアドメイン、サブドメインとは
+
+広義のドメインの問題領域のうち、他と差別化する最も重要な業務領域がコアドメイン、コアドメインから使われる支援的または汎用的な業務領域がサブドメインである。
 
 ![core-domain_sub-domain_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/core-domain_sub-domain_bounded-context.png)
 
@@ -1747,7 +1747,7 @@ flowchart LR
 
 #### ▼ 共有モデル
 
-異なる境界づけられたコンテキスト間で、一部の状態を共有ドメインモデルのこと。
+異なる境界づけられたコンテキスト間で、一部の状態を共有するドメインモデルのこと。
 
 図では、在庫品目モデルがそれに相当する。
 
@@ -1956,7 +1956,7 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 一方でドメイン駆動設計の分析では、オブジェクトの具体化のためにユースケース図やオブジェクト図でオブジェクトを作成し、抽象化のためにドメインモデル図も作成する。
 
-この『具体例から抽象を導く』という作業により、オブジェクト思考分析よりも現実に沿ったモデリングが可能になる。
+この『具体例から抽象を導く』という作業により、オブジェクト指向分析よりも現実に沿ったモデリングが可能になる。
 
 > - [ドメイン駆動設計 サンプルコード&FAQ - little-hands - BOOTH](https://booth.pm/ja/items/3363104)
 
@@ -2016,7 +2016,7 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 `(2)`
 
-: ドメインエキスパートへの要件定義が終えた想定で、ユースケース図を作成する。
+: ドメインエキスパートへの要件定義を終えた想定で、ユースケース図を作成する。
 オブジェクト図は省略する。
 
 ![ticket-modeling_little-hands_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_usecase-diagram_example.jpg)
@@ -2197,7 +2197,7 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 `(6)`
 
-: 集約間の関係性のみに着目する、オブジェクト間の関係性は複雑であるが、集約間は単純であることがわかる。
+: 集約間の関係性のみに着目すると、オブジェクト間の関係性は複雑であるが、集約間は単純であることがわかる。
 
 ![ticket-modeling_little-hands_domain-model-diagram_example-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_domain-model-diagram_example-5.png)
 

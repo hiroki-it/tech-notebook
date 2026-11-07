@@ -7,9 +7,7 @@ description: シェル＠ユーティリティの知見を記録しています�
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -148,6 +146,8 @@ echo $0 # foo.sh
 ### シェルの種類
 
 #### ▼ 系譜
+
+シェルは sh 系と csh 系に分かれ、zsh は sh 系の bash の後継でありながら csh 系の構文にも対応している。
 
 ![shell_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shell_history.png)
 

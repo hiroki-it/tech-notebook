@@ -7,9 +7,7 @@ description: AWS Lambda＠AWSリソース
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
@@ -120,6 +118,8 @@ description: AWS Lambda＠AWSリソース
 <br>
 
 ### AWS Lambda と関数の関係性
+
+AWS Lambda サービスは、Init フェーズ、Invoke フェーズ、Shutdown フェーズのそれぞれで、API を経由してランタイムと拡張機能にイベントを送信し、関数の実行環境を制御する。
 
 ![lambda-execution-environment-api-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-execution-environment-api-flow.png)
 
@@ -331,7 +331,7 @@ AWS Lambda を実行するためには、デプロイされた関数を使用す
 
 コンテナイメージの関数のみで有効である。
 
-ビルド後のコードをコンテナイメージしてアップロードする。
+ビルド後のコードをコンテナイメージにしてアップロードする。
 
 Amazon ECR からアップロードできる。
 
@@ -432,7 +432,7 @@ AWS Lambda@Edge を実行するためには、最低限、以下の認可スコ�
 
 AWS Lambda の拡張機能である。
 
-通常の AWS Lambda では動かせないフレームワーク (例：Express.js、Next.js、SprintBoot、ASP.NET、Laravel など) のアプリを動かせるようにする。
+通常の AWS Lambda では動かせないフレームワーク (例：Express.js、Next.js、SpringBoot、ASP.NET、Laravel など) のアプリを動かせるようにする。
 
 アプリケーションのプロセスの前段でリクエストを変換し、アプリケーションがリクエストを処理できるようにする。
 

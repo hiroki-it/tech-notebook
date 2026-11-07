@@ -165,3 +165,12 @@ blockquote {
   margin-left: 0;
   padding-left: 0.6rem;
 }
+
+/* Mermaidの図はコードブロックと同じ要素で描かれるため、濃い背景を付けない */
+pre:has(svg),
+pre.mermaid,
+.mermaid,
+.mermaid pre {
+  background: transparent !important;
+  border: none;
+}

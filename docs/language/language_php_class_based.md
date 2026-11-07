@@ -7,15 +7,15 @@ description: クラス＠PHPの知見を記録しています。
 
 ## はじめに
 
-本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
-
-> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
+本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
 <br>
 
 ## 01. has-one、has-many (状態として保持する関係性)
 
 ### has-one、has-many な関係性とは
+
+クラスがほかのクラスを状態として保持する関係性のことで、ライフサイクルの依存の有無によって Association、Aggregation、Composition に分類できる。
 
 ![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データとして保持する関係性.png)
 
@@ -204,6 +204,8 @@ $car = new Car();
 
 ### is-a-kind-of な関係性とは
 
+クラスがほかのクラスの性質を継承する、またはその振る舞いを実装する関係性のことで、Generalization と Realization に分類できる。
+
 ![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループとメンバーの関係性.png)
 
 > - [【IT技術の知見】オブジェクト指向設計＠アーキテクチャ - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html)
@@ -299,7 +301,7 @@ class GoodsWithTax extends Goods
 
 ![抽象クラスと抽象関数-1](https://user-images.githubusercontent.com/42175286/59590447-12ff8b00-9127-11e9-802e-126279fcb0b1.PNG)
 
-これを解決するために、例えば、次の 2 つが実装方法が考えられる。
+これを解決するために、例えば、次の 2 つの実装方法が考えられる。
 
 `(1)`
 
@@ -658,7 +660,7 @@ $bar->foo(); // Hello World
 
 マジック関数を使用すると、処理が多くなるため、性能が悪くなる。
 
-そこで、各クラスで trait を使用して、マジック関数をコールしたときに、開発者向けにエラーが発生させる。
+そこで、各クラスで trait を使用して、マジック関数をコールしたときに、開発者向けにエラーを発生させる。
 
 マジックゲッター関数とマジックセッター関数がコールされることを禁止する。
 
@@ -941,7 +943,7 @@ final class User
 
 関数の特に、`construct()` 関数 の引数として、サプライヤー側のインスタンスを注入する。
 
-サプライヤー側を状態として保持させ、Aggregation の関係性を作られる。
+サプライヤー側を状態として保持させ、Aggregation の関係性を作れる。
 
 コンストラクタインジェクションのみが、`construct()` 関数 によって、インスタンス作成のために依存関係の要件を強制できる。
 
@@ -991,7 +993,7 @@ $user = new User($name); // インジェクション
 
 関数の特に、セッターの引数として、サプライヤー側のインスタンスを注入する。
 
-サプライヤー側を状態として保持させ、Aggregation の関係性を作られる。
+サプライヤー側を状態として保持させ、Aggregation の関係性を作れる。
 
 依存先の Supplier クラスを、セッターの引数として、Client クラスに注入する。
 
@@ -1124,9 +1126,9 @@ $sample = $container["sample"];
 
 #### ▼ Service Locator パターン
 
-Service Locater パターンはアンチパターンである。
+Service Locator パターンはアンチパターンである。
 
-インスタンスへのコンテナ渡しのファイルを実装せず、コンテナ自体を注入していまう誤った実装方法。
+インスタンスへのコンテナ渡しのファイルを実装せず、コンテナ自体を注入してしまう誤った実装方法。
 
 ```injectablephp
 <?php
@@ -1296,7 +1298,7 @@ class ModuleB // コールする側
 
 デザインパターンの Factory クラスでは、スカラ型データの値に応じて、インスタンスを作り分ける。
 
-Factory クラスのインスタンスと、これをコールするほかインスタンス は、データ結合の関係にある。
+Factory クラスのインスタンスと、これをコールするほかのインスタンス は、データ結合の関係にある。
 
 ```injectablephp
 <?php
@@ -1389,7 +1391,7 @@ class ModuleB
 
 クラスの責務が機能単位になるように、ロジックを振り分ける。
 
-#### ▼ LCOM：Lack Of Conhension of Methods
+#### ▼ LCOM：Lack Of Cohesion of Methods
 
 凝集度の程度を表す指標のこと。
 
