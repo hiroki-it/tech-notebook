@@ -10,19 +10,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="GraphQL＠GraphQL-APIの知見を記録しています。">
+        <meta name="description" content="GraphQL-API＠APIの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_api_graphql_api_graphql.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_api_graphql_api.html">
       
       
         <link rel="prev" href="software_application_api_rpc_api_grpc_client_package_tools.html">
       
       
-        <link rel="next" href="software_application_workflow_argoworkflow.html">
+        <link rel="next" href="software_application_api_graphql_api_specification_schema.html">
       
       
         
@@ -33,7 +33,7 @@
     
     
       
-        <title>【IT技術の知見】GraphQL＠GraphQL-API - 俺の技術ノート</title>
+        <title>【IT技術の知見】GraphQL-API＠API - 俺の技術ノート</title>
       
     
     
@@ -96,7 +96,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#graphqlgraphql-api" class="md-skip">
+        <a href="#graphql-apiapi" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -166,7 +166,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】GraphQL＠GraphQL-API
+              【IT技術の知見】GraphQL-API＠API
             
           </span>
         </div>
@@ -3850,6 +3850,8 @@
       
         
       
+        
+      
     
     
     
@@ -3916,7 +3918,7 @@
   <span class="md-ellipsis">
     
   
-    GraphQL
+    GraphQL-API
   
 
     
@@ -3927,14 +3929,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="software_application_api_graphql_api_graphql.html" class="md-nav__link md-nav__link--active">
+      <a href="software_application_api_graphql_api.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    GraphQL
+    GraphQL-API
   
 
     
@@ -4154,6 +4156,98 @@
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7_3_2" id="__nav_5_7_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ API仕様書
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_7_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ API仕様書
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_api_graphql_api_specification_schema.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    APIスキーマ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -34356,7 +34450,7 @@
     
     
       <li class="md-path__item">
-        <a href="software_application_api_graphql_api_graphql.html" class="md-path__link">
+        <a href="software_application_api_graphql_api.html" class="md-path__link">
           
   <span class="md-ellipsis">
     ■ GraphQL-API
@@ -34427,7 +34521,7 @@
   </aside>
 
 
-<h1 id="graphqlgraphql-api">GraphQL＠GraphQL-API<a class="headerlink" href="#graphqlgraphql-api" title="Permanent link">&para;</a></h1>
+<h1 id="graphql-apiapi">GraphQL-API＠API<a class="headerlink" href="#graphql-apiapi" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、<a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a> をご認識のほど宜しくお願いいたします。</p>
 <p><br></p>
@@ -34445,11 +34539,9 @@
 <p><br></p>
 <h3 id="graphql">GraphQL サーバー<a class="headerlink" href="#graphql" title="Permanent link">&para;</a></h3>
 <h4 id="api">▼ API スキーマ<a class="headerlink" href="#api" title="Permanent link">&para;</a></h4>
-<p>GraphQL-API が受信する CRUD のデータ型や必須データを定義したもの。受信したデータのバリデーションに使用する。</p>
 <blockquote>
 <ul>
-<li><a href="https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%9E%E3%81%AE%E8%A8%AD%E8%A8%88">https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%9E%E3%81%AE%E8%A8%AD%E8%A8%88</a></li>
-<li><a href="https://zenn.dev/hsaki/books/golang-graphql/viewer/tutorial">GraphQLサーバーを動かしてみる｜Goで学ぶGraphQLサーバーサイド入門</a></li>
+<li><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_api_graphql_api_specification_schema.html">【IT技術の知見】API スキーマ＠API仕様書 - 俺の技術ノート</a></li>
 </ul>
 </blockquote>
 <p><br></p>
