@@ -135,6 +135,6 @@ Don't use GUI mode for load testing !, only for Test creation and Test debugging
 
 ## 04. ストレステスト
 
-記入中...
+スレッド数を段階的に増やして想定以上の負荷をかけ、システムが処理できなくなる限界の負荷と、その時の挙動を確認する。
 
 <br>

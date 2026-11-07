@@ -13,7 +13,7 @@ description: Cloud Logging＠Google Cloudリソースの知見を記録してい
 
 ## 01. Cloud Logging とは
 
-記入中...
+Google Cloud リソースやアプリケーションのログを収集し、保管、検索、分析できるログ管理サービスである。
 
 <br>
 

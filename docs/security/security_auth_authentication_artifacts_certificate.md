@@ -184,7 +184,7 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
 
 #### ▼ TLS ハンドシェイク終了
 
-記入中...
+送信元マイクロサービスと宛先マイクロサービスが Finished メッセージを交換し、以降は共有した共通鍵を使用して通信を暗号化する。
 
 <br>
 
@@ -208,7 +208,7 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
     <tr>
       <td>自前</td>
       <td>Vault</td>
-      <td>記入中...</td>
+      <td>自前のルート認証局</td>
     </tr>
     <tr>
       <td>AWS</td>
@@ -218,7 +218,7 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
     <tr>
       <td>Google Cloud</td>
       <td>Google Cloud Trust Services</td>
-      <td>記入中...</td>
+      <td>Google Trust Services 社</td>
     </tr>
   </tbody>
 </table>
@@ -283,7 +283,7 @@ $ yum install -y ca-certificates
 
 ### リーフ証明書
 
-記入中...
+証明書チェーンの末端に位置し、ルート認証局や中間認証局によって署名された、サーバー証明書やクライアント証明書のこと。
 
 > - [一見不可解な TLS 証明書失効](https://itkq.jp/blog/2020/06/20/x509-chain/)
 

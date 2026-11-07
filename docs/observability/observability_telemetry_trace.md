@@ -423,7 +423,7 @@ AWS X-Ray が使用するヘッダーを追加する。
     <tr>
       <td><code>tracestate</code></td>
       <td>監視バックエンドのベンダー固有の値が割り当てられている。</td>
-      <td>記入中...</td>
+      <td><code>rojo=00f067aa0ba902b7,congo=t61rcWkgMzE</code></td>
     </tr>
   </tbody>
 </table>

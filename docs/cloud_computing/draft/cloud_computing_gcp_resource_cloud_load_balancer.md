@@ -13,7 +13,7 @@ description: Load Balancer＠Google Cloudリソースの知見を記録してい
 
 ## 01. Load Balancer とは
 
-記入中...
+Google Cloud が提供するマネージドなロードバランサーであり、受信したリクエストを複数のバックエンドに負荷分散する。
 
 <br>
 

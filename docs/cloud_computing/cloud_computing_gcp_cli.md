@@ -448,7 +448,7 @@ foo-gke-cluster    asia-northeast1  1.22.0-gke       *.*.*.*      e2-medium     
 
 #### ▼ container node-pools とは
 
-記入中...
+Google GKE Cluster の Node Pool を操作する。
 
 > - [gcloud container node-pools describe \| Google Cloud SDK \| Google Cloud Documentation](https://cloud.google.com/sdk/gcloud/reference/container/node-pools/describe)
 
@@ -577,7 +577,7 @@ User Config Directory: /root/.config/gcloud]
 
 #### ▼ project とは
 
-記入中...
+Google Cloud のプロジェクトを操作する。
 
 #### ▼ list
 

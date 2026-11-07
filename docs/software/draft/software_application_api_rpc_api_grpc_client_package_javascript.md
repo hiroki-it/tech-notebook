@@ -25,7 +25,7 @@ $ npm install grpc-tools
 
 #### ▼ gRPC サーバー
 
-記入中...
+npm リポジトリから、gRPC サーバーを実装するためのパッケージをインストールする。
 
 <br>
 
@@ -45,10 +45,10 @@ $ npm install grpc
 
 #### ▼ `proto` ファイル
 
-記入中...
+gRPC サーバーとクライアントで共有するサービスとメッセージの型を、Protocol Buffer の IDL で定義する。
 
 #### ▼ `pb.js` ファイル
 
-記入中...
+`proto` ファイルから grpc-tools で自動作成する JavaScript ファイルであり、メッセージのシリアライズとデシリアライズの処理を持つ。
 
 <br>

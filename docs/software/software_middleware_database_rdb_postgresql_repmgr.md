@@ -48,7 +48,7 @@ repmgrd は、DB インスタンス間でフェイルオーバーできるよう
 
 ## 02. セットアップ
 
-記入中...
+パッケージマネージャー (例：yum、apt) を使用して、PostgreSQL のバージョンに対応した repmgr をインストールする。
 
 > - [2.2. Installing repmgr from packages](https://repmgr.org/docs/current/installation-packages.html)
 

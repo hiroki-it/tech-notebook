@@ -36,7 +36,7 @@ description: IAM＠Google Cloudリソースの知見を記録しています。
 
 ### ユーザーとは
 
-記入中...
+Google アカウントや Google Workspace アカウントを使用する、人間が操作するためのアカウントである。
 
 <br>
 
@@ -44,7 +44,7 @@ description: IAM＠Google Cloudリソースの知見を記録しています。
 
 #### ▼ 資格情報
 
-記入中...
+Google アカウントのメールアドレスとパスワードを資格情報として使用する。
 
 #### ▼ 手動認証
 

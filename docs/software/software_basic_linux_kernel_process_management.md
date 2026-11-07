@@ -70,7 +70,7 @@ OS が稼働している間、メモリ上のアドレス空間の区画に恒�
     <tr>
       <td><code>SIGTERM</code></td>
       <td>プロセスを通常終了する。</td>
-      <td>記入中...</td>
+      <td>オプションなしで <code>kill</code> コマンドを実行する。</td>
     </tr>
     <tr>
       <td><code>SIGTSTP</code></td>

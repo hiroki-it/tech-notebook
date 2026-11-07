@@ -710,13 +710,13 @@ Kubernetes の以下のコンポーネントが、メトリクスエンドポイ
       <td><code>container_network_receive_bytes_total</code></td>
       <td>カウント</td>
       <td>同じ Cluster 内の受信したバイトの累積数をデータポイントとする。</td>
-      <td>記入中...</td>
+      <td>・統計 : 期間内増加量<br>・期間 : <code>5</code> 分<br>・閾値 : 平常時の期間内増加量の <code>2</code> 倍以上</td>
     </tr>
     <tr>
       <td><code>container_network_transmit_bytes_total</code></td>
       <td>カウント</td>
       <td>同じ Cluster 内の送信したバイトの累積数をデータポイントとする。</td>
-      <td>記入中...</td>
+      <td>・統計 : 期間内増加量<br>・期間 : <code>5</code> 分<br>・閾値 : 平常時の期間内増加量の <code>2</code> 倍以上</td>
     </tr>
   </tbody>
 </table>

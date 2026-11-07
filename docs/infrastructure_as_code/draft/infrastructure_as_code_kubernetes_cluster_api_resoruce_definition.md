@@ -15,7 +15,7 @@ description: リソース定義＠ClusterAPIの知見を記録しています。
 
 ### Cluster
 
-記入中...
+Kubernetes Cluster を設定し、`.spec.controlPlaneRef` キーと `.spec.infrastructureRef` キーで、コントロールプレーンとインフラのカスタムリソースを紐づける。
 
 ```yaml
 apiVersion: cluster.x-k8s.io/v1alpha3
@@ -90,7 +90,7 @@ spec:
 
 ### AWSManagedCluster
 
-記入中...
+Amazon EKS Cluster のインフラを設定する。
 
 ```yaml
 apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
@@ -104,7 +104,7 @@ metadata:
 
 ### DockerCluster
 
-記入中...
+Docker コンテナを Node として使用する Kubernetes Cluster のインフラを設定する。
 
 ```yaml
 apiVersion: infrastructure.cluster.x-k8s.io/v1alpha2
@@ -121,7 +121,7 @@ metadata:
 
 ### EKSConfigTemplate とは
 
-記入中...
+Amazon EKS のワーカーNode を起動する時のブートストラップ設定を、テンプレートとして設定する。
 
 ```yaml
 apiVersion: bootstrap.cluster.x-k8s.io/v1alpha3
@@ -141,7 +141,7 @@ spec:
 
 ### AWSManagedControlPlane
 
-記入中...
+Amazon EKS のコントロールプレーンを設定する。
 
 ```yaml
 apiVersion: controlplane.cluster.x-k8s.io/v1alpha3
@@ -164,7 +164,7 @@ spec:
 
 ### Machine
 
-記入中...
+Node となる単一のマシンを設定し、ブートストラップ設定とインフラのカスタムリソースを紐づける。
 
 ```yaml
 apiVersion: cluster.x-k8s.io/v1alpha2
@@ -212,7 +212,7 @@ metadata:
 
 ## 06. MachineDeployment
 
-記入中...
+MachineSet を管理し、Deployment が ReplicaSet を管理するのと同様に、Machine のローリングアップデートを実施する。
 
 <br>
 
@@ -251,7 +251,7 @@ spec:
 
 ### AWSManagedMachinePool
 
-記入中...
+Amazon EKS のマネージド Node グループを設定する。
 
 ```yaml
 apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
@@ -300,6 +300,6 @@ spec:
 
 ## 08. MachineSet
 
-記入中...
+ReplicaSet が Pod の数を維持するのと同様に、指定した数の Machine を維持する。
 
 <br>

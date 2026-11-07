@@ -21,7 +21,7 @@ Kiali の `config.yaml` ファイルを管理する。
 
 ### accessible_namespaces
 
-記入中...
+Kiali がアクセスでき、ユーザーに表示する Namespace を設定する。`**` とすると、全ての Namespace を対象とする。
 
 ```yaml
 apiVersion: v1
@@ -39,7 +39,7 @@ data:
 
 ### additional_service_yaml
 
-記入中...
+Kiali の Service に追加する設定を YAML で設定する。
 
 ```yaml
 apiVersion: v1
@@ -56,7 +56,7 @@ data:
 
 ### affinity
 
-記入中...
+Kiali の Pod をスケジューリングする Node を制限するアフィニティを、node、pod、pod_anti ごとに設定する。
 
 ```yaml
 apiVersion: v1
@@ -76,7 +76,7 @@ data:
 
 ### configmap_annotations
 
-記入中...
+Kiali の ConfigMap に付与するアノテーションを設定する。
 
 ```yaml
 apiVersion: v1
@@ -93,7 +93,7 @@ data:
 
 ### auth
 
-記入中...
+Kiali にログインする時の認証方式と、認証方式ごとの設定を設定する。認証方式には、anonymous、token、openshift、openid、header がある。
 
 ```yaml
 apiVersion: v1
@@ -115,7 +115,7 @@ data:
 
 ### custom_secrets
 
-記入中...
+Kiali の Pod にマウントする Secret を設定する。
 
 ```yaml
 apiVersion: v1
@@ -132,7 +132,7 @@ data:
 
 ### deployment
 
-記入中...
+Kiali の Pod のリソース、レプリカ数、ネットワーク、セキュリティなど、デプロイに関する設定を設定する。
 
 ```yaml
 apiVersion: v1
@@ -151,7 +151,7 @@ data:
 
 #### ▼ custom_dashboards
 
-記入中...
+Istio のメトリクスとは別の Prometheus からカスタムダッシュボードを検出し、表示するための設定を設定する。
 
 ```yaml
 apiVersion: v1
@@ -176,7 +176,7 @@ data:
 
 #### ▼ grafana
 
-記入中...
+Grafana との連携を設定する。
 
 ```yaml
 apiVersion: v1
@@ -294,7 +294,7 @@ data:
 
 ### host_aliases
 
-記入中...
+Kiali の Pod の `/etc/hosts` ファイルに追加するホスト名と IP アドレスの対応を設定する。
 
 ```yaml
 apiVersion: v1
@@ -311,7 +311,7 @@ data:
 
 ### hpa
 
-記入中...
+Kiali の Pod を自動でスケーリングする HorizontalPodAutoscaler を設定する。
 
 ```yaml
 apiVersion: v1
@@ -330,7 +330,7 @@ data:
 
 ### identity
 
-記入中...
+Kiali が使用する TLS 証明書ファイルと秘密鍵ファイルのパスを設定する。
 
 ```yaml
 apiVersion: v1
@@ -349,7 +349,7 @@ data:
 
 ### image_digest
 
-記入中...
+`image_version` にダイジェスト値を設定した場合に、`sha256` などのダイジェストの種類を設定する。
 
 ```yaml
 apiVersion: v1
@@ -366,7 +366,7 @@ data:
 
 ### image_name
 
-記入中...
+Kiali のコンテナイメージ名を設定する。
 
 ```yaml
 apiVersion: v1
@@ -383,7 +383,7 @@ data:
 
 ### image_pull_policy
 
-記入中...
+Kiali のコンテナイメージのプルポリシーを設定する。通常は `IfNotPresent` とし、`latest` のイメージを使う場合は `Always` とする。
 
 ```yaml
 apiVersion: v1
@@ -400,7 +400,7 @@ data:
 
 ### image_pull_secrets
 
-記入中...
+プライベートなコンテナレジストリからコンテナイメージをプルするための Secret 名を設定する。
 
 ```yaml
 apiVersion: v1
@@ -417,7 +417,7 @@ data:
 
 ### image_version
 
-記入中...
+インストールする Kiali のバージョンを設定する。`lastrelease`、`latest`、`operator_version`、または特定のバージョンを設定できる。
 
 ```yaml
 apiVersion: v1
@@ -434,7 +434,7 @@ data:
 
 ### ingress
 
-記入中...
+Kiali を Ingress で外部に公開するかどうかと、その設定を設定する。OpenShift の場合は Route を使う。
 
 ```yaml
 apiVersion: v1
@@ -456,7 +456,7 @@ data:
 
 ### istio_namespace
 
-記入中...
+Istio をインストールした Namespace を設定する。
 
 ```yaml
 apiVersion: v1
@@ -473,7 +473,7 @@ data:
 
 ### instance_name
 
-記入中...
+Kiali のインストールに付けるインスタンス名を設定する。インスタンス名は作成する Kubernetes リソース名の接頭辞となり、作成後は変更できない。
 
 ```yaml
 apiVersion: v1
@@ -490,7 +490,7 @@ data:
 
 ### logger
 
-記入中...
+Kiali のログのログレベル、フォーマット、タイムスタンプの形式などを設定する。
 
 ```yaml
 apiVersion: v1
@@ -534,7 +534,7 @@ data:
 
 ### kiali_feature_flags
 
-記入中...
+証明書情報の表示、クラスタリング、バリデーションなど、Kiali の機能の有効化と無効化を設定する。
 
 ```yaml
 apiVersion: v1
@@ -562,7 +562,7 @@ data:
 
 ### namespace
 
-記入中...
+Kiali をインストールする Namespace を設定する。
 
 ```yaml
 apiVersion: v1
@@ -579,7 +579,7 @@ data:
 
 ### override_ingress_yaml
 
-記入中...
+Kiali を公開する Ingress や Route のデフォルトの設定を上書きする設定を設定する。
 
 ```yaml
 apiVersion: v1
@@ -597,7 +597,7 @@ data:
 
 ### pod_annotations
 
-記入中...
+Kiali の Pod に付与するアノテーションを設定する。
 
 ```yaml
 apiVersion: v1
@@ -614,7 +614,7 @@ data:
 
 ### pod_labels
 
-記入中...
+Kiali の Pod に付与するラベルを設定する。
 
 ```yaml
 apiVersion: v1
@@ -631,7 +631,7 @@ data:
 
 ### priority_class_name
 
-記入中...
+Kiali の Pod のスケジューリングの優先度を決める PriorityClass 名を設定する。
 
 ```yaml
 apiVersion: v1
@@ -648,7 +648,7 @@ data:
 
 ### replicas
 
-記入中...
+Kiali の Deployment のレプリカ数を設定する。HorizontalPodAutoscaler を設定した場合、この値は無視される。
 
 ```yaml
 apiVersion: v1
@@ -665,7 +665,7 @@ data:
 
 ### resources
 
-記入中...
+Kiali のコンテナのハードウェアリソースの要求量と上限を設定する。
 
 ```yaml
 apiVersion: v1
@@ -688,7 +688,7 @@ data:
 
 ### secret_name
 
-記入中...
+Kiali が使用する Secret 名を設定する。
 
 ```yaml
 apiVersion: v1
@@ -705,7 +705,7 @@ data:
 
 ### security_context
 
-記入中...
+Kiali のコンテナのセキュリティコンテキストを設定する。
 
 ```yaml
 apiVersion: v1
@@ -722,7 +722,7 @@ data:
 
 ### server
 
-記入中...
+Kiali のサーバーのポート番号、メトリクスの公開、Web UI のルートパスなどを設定する。
 
 ```yaml
 apiVersion: v1
@@ -746,7 +746,7 @@ data:
 
 ### service_annotations
 
-記入中...
+Kiali の Service に付与するアノテーションを設定する。
 
 ```yaml
 apiVersion: v1
@@ -763,7 +763,7 @@ data:
 
 ### service_type
 
-記入中...
+Kiali の Service のタイプを設定する。ClusterIP、NodePort、LoadBalancer などを設定できる。
 
 ```yaml
 apiVersion: v1
@@ -780,7 +780,7 @@ data:
 
 ### tolerations
 
-記入中...
+Kiali の Pod が許容する Node の Taint を設定する。
 
 ```yaml
 apiVersion: v1
@@ -797,7 +797,7 @@ data:
 
 ### version_label
 
-記入中...
+Kiali の Kubernetes リソースに付与する `version` ラベルの値を設定する。空の場合は `image_version` から自動で決まる。
 
 ```yaml
 apiVersion: v1
@@ -814,7 +814,7 @@ data:
 
 ### view_only_mode
 
-記入中...
+Kiali を閲覧専用モードにするかどうかを設定する。`true` の場合、Kiali からサービスメッシュの設定を変更できなくなる。
 
 ```yaml
 apiVersion: v1

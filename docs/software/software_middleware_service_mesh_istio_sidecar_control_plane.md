@@ -29,7 +29,7 @@ description: コントロールプレーン＠Istioサイドカーの知見を�
 
 ### Envoy の設定値への変換
 
-記入中...
+Istiod コントロールプレーンは、Kubernetes リソースや Istio のカスタムリソースの状態を取得し、これを Envoy の設定値に変換したうえで、xDS-API を介して istio-proxy に配布する。
 
 <br>
 
@@ -409,7 +409,7 @@ func (s *DiscoveryServer) Stream(stream DiscoveryStream) error {
 
 ### インメモリストレージ
 
-記入中...
+Config Ingestion レイヤーで取得したリソースの状態や、Envoy の設定値に変換したデータをメモリ上に保持する。
 
 <br>
 

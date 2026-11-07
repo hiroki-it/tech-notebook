@@ -45,7 +45,7 @@ Apache は、Apache コアとモジュールから構成される。
 
 #### ▼ HTTP/HTTPS プロトコルでルーティング
 
-記入中...
+`mod_proxy` モジュールと `mod_proxy_http` モジュールを読み込むことによって、HTTP/HTTPS プロトコルでルーティングできるようになる。
 
 #### ▼ FastCGI プロトコルでルーティング
 

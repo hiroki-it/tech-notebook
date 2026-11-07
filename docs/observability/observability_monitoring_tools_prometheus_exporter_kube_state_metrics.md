@@ -13,9 +13,7 @@ description: kube-state-metrics＠Prometheus
 
 ## 01. kube-state-metrics の仕組み
 
-記入中
-
-...
+kube-state-metrics は、kube-apiserver から Kubernetes リソースの状態を取得し、これをメトリクスとして `/metrics` エンドポイントで公開する。
 
 <br>
 
@@ -143,13 +141,13 @@ kube_service_info
   <tbody>
     <tr>
       <td><code>kube_node_status_condition</code></td>
-      <td>記入中...</td>
+      <td>Count</td>
       <td>Node の現在のライフサイクルフェーズを表す。</td>
       <td><code>kube_node_status_condition{job=&quot;kube-state-metrics&quot;,condition=&quot;Ready&quot;,status=&quot;true&quot;}</code></td>
     </tr>
     <tr>
       <td><code>kube_pod_status_phase</code></td>
-      <td>記入中...</td>
+      <td>Count</td>
       <td>Pod の現在ライフサイクルフェーズを表す。</td>
       <td><code>kube_pod_status_phase{job=&quot;kube-state-metrics&quot;,phase=&quot;Succeeded&quot;}</code></td>
     </tr>

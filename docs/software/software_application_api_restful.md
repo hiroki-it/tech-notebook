@@ -64,7 +64,7 @@ RESTful 設計が使用された WebAPI を RESTful-API という。
 
 #### ▼ Connectability であること
 
-記入中...
+レスポンスに関連するリソースへのリンクを含めることによって、リソース間を遷移できること。
 
 #### ▼ Uniform Interface であること
 

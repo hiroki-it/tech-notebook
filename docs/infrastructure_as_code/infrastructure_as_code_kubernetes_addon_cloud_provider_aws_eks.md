@@ -205,6 +205,6 @@ Node に関するヘルスチェック (例：Amazon EC2 内の kubelet の正�
 
 ## 06. AWS Pod Identity agent
 
-記入中...
+EKS の各 Node 上で、`eks-pod-identity-agent` という名前の DaemonSet として稼働し、EKS Pod Identity を使用する Pod に IAM ロールの一時的な認証情報を提供する。
 
 <br>

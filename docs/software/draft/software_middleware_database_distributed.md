@@ -48,6 +48,9 @@ description: 分散DB＠DB系ミドルウェアの知見を記録しています
 
 #### ▼ NoSQL DB
 
-記入中...
+- Amazon DynamoDB
+- Azure Cosmos DB
+- Google Cloud Bigtable
+- MongoDB Atlas
 
 <br>

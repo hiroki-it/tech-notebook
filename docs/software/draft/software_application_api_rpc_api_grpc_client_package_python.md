@@ -17,11 +17,11 @@ description: Python＠gRPCクライアントパッケージの知見を記録し
 
 #### ▼ `proto` ファイル
 
-記入中...
+サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから `pb.py` ファイルをコンパイルする。
 
 #### ▼ `pb.py` ファイル
 
-記入中...
+gRPC クライアントと gRPC サーバーの両方で、`python -m grpc_tools.protoc` コマンドを使用して、`proto` ファイルから `_pb2.py` ファイルと `_pb2_grpc.py` ファイルをコンパイルする。
 
 <br>
 
@@ -37,7 +37,7 @@ $ pip3 install grpcio-tools
 
 #### ▼ gRPC サーバー
 
-記入中...
+`grpc.server()` 関数でサーバーを作成し、`pb.py` ファイルの `add_<サービス名>Servicer_to_server()` 関数でサービスを登録して、リモートプロシージャーコールを受け付ける。
 
 <br>
 

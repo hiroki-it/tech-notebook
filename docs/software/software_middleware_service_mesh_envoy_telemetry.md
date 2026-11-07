@@ -136,7 +136,7 @@ Envoy は、マイクロサービスへのアクセスログ (インバウンド
     <tr>
       <td>X-Forwarded-for</td>
       <td><code>%REQ(X-FORWARDED-FOR)%</code></td>
-      <td>記入中...</td>
+      <td><code>203.0.113.1, 10.0.0.1</code></td>
     </tr>
   </tbody>
 </table>
@@ -317,7 +317,7 @@ Istio が Prometheus 向けに変換した Envoy メトリクスには、`envoy_
 
 #### ▼ ルート系
 
-記入中...
+Envoy 統計は `vhost.<バーチャルホスト名>.vcluster.<バーチャルクラスター名>.*****` という名前を持ち、バーチャルクラスターごとのリクエスト数やレスポンスタイムを表す。
 
 #### ▼ クラスター系
 

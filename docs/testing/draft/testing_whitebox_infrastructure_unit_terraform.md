@@ -40,7 +40,7 @@ AWS リソースを単体コンポーネントと捉えて、ユニットテス�
 
 ## 02. terraform test コマンド
 
-記入中...
+`.tftest.hcl` ファイルに `run` ブロックと `assert` ブロックでテストケースを定義し、`terraform test` コマンドで `plan` や `apply` の結果が期待値に合致するかを検証する。
 
 > - https://www.hashicorp.com/blog/testing-hashicorp-terraform
 

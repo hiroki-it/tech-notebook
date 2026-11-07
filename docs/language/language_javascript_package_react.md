@@ -73,13 +73,13 @@ createRoot(document.getElementById('root')!).render(
 
 #### ▼ SSR モード
 
-記入中...
+サーバー側で `react-dom/server` パッケージの `renderToPipeableStream()` 関数や `renderToString()` 関数を実行し、コンポーネントを HTML に変換してレスポンスする。
 
 > - [Server React DOM APIs – React](https://react.dev/reference/react-dom/server)
 
 #### ▼ SSG モード
 
-記入中...
+ビルド時に `react-dom/static` パッケージの `prerender()` 関数や `prerenderToNodeStream()` 関数を実行し、コンポーネントを静的な HTML に変換する。
 
 > - [Static React DOM APIs – React](https://react.dev/reference/react-dom/static)
 
@@ -89,7 +89,7 @@ createRoot(document.getElementById('root')!).render(
 
 ### デフォルトエクスポート
 
-記入中...
+デフォルトエクスポートの場合、インポート側は定義した名前とは異なる任意の名前でインポートできる。
 
 > - [exportは名前付きエクスポートでやりましょう](https://zenn.dev/cocomina/articles/recommended-export)
 

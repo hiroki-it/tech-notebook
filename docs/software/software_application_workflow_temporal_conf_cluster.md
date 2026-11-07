@@ -31,7 +31,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/temporalio
 
 ## 02. global
 
-記入中...
+Temporal Server のプロセス全体に適用する設定を定義する。メンバーシップ、メトリクス、pprof、TLS、認可などを設定できる。
 
 > - https://docs.temporal.io/references/configuration#global
 

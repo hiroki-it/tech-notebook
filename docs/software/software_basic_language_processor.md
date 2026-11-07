@@ -175,7 +175,7 @@ JVM 言語 (例：Java、Scala、Kotlin など) に当てはまる。
 
 ### C 言語と Java の OS への依存度比較
 
-記入中...
+C 言語のプログラムは OS ごとの機械語にコンパイルされるため OS に依存するが、Java のプログラムは JVM 上で実行する中間コードにコンパイルされるため、JVM があれば OS に依存せずに実行できる。
 
 ![CとJavaのOSへの依存度比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CとJavaのOSへの依存度比較.png)
 

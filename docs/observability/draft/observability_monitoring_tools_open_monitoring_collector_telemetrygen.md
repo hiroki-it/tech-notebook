@@ -38,13 +38,13 @@ $ go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telem
 
 ### logs
 
-記入中...
+擬似的にログを作成し、OpenTelemetry Collector に送信する。
 
 <br>
 
 ### metrics
 
-記入中...
+擬似的にメトリクスを作成し、OpenTelemetry Collector に送信する。
 
 <br>
 

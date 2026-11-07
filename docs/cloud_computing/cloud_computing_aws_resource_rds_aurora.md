@@ -24,7 +24,25 @@ Amazon RDS をよりマネージドにした AWS リソースである。
 ## 2-02. セットアップ (Terraform の場合)
 
 ```terraform
-# 記入中...
+resource "aws_rds_cluster" "foo" {
+  cluster_identifier          = "foo-cluster"
+  engine                      = "aurora-mysql"
+  engine_version              = "8.0.mysql_aurora.3.05.2"
+  database_name               = "foo"
+  master_username             = "admin"
+  manage_master_user_password = true
+  db_subnet_group_name        = aws_db_subnet_group.foo.name
+  vpc_security_group_ids      = [aws_security_group.foo.id]
+}
+
+resource "aws_rds_cluster_instance" "foo" {
+  count              = 2
+  identifier         = "foo-instance-${count.index}"
+  cluster_identifier = aws_rds_cluster.foo.id
+  instance_class     = "db.r6g.large"
+  engine             = aws_rds_cluster.foo.engine
+  engine_version     = aws_rds_cluster.foo.engine_version
+}
 ```
 
 ### DB エンジン
@@ -441,7 +459,7 @@ mysql> SHOW TABLES;
 
 ## 02-05. Amazon ECS Fargate をプライベートサブネットに置く場合の接続方法
 
-記入中...
+ECS Exec を有効化した Amazon ECS Fargate のタスクを踏み台にして、AWS Systems Manager Session Manager の `AWS-StartPortForwardingSessionToRemoteHost` ドキュメントでローカル PC から Amazon Aurora にポートフォワーディングする。
 
 > - [ECS Fargateを踏み台にポートフォワードしてVPC内のRDSに接続する](https://zenn.dev/quiver/articles/1458e453118254)
 

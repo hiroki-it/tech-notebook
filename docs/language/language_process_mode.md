@@ -96,7 +96,9 @@ func main() {
 
 ### 言語別の並行処理
 
-記入中...
+- PHP：Fiber、ReactPHP
+- JavaScript：イベントループ、Promise、async/await
+- Go：Goroutines、channel
 
 <br>
 

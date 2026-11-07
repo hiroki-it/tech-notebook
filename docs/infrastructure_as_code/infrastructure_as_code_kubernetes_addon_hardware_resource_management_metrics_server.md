@@ -87,7 +87,7 @@ kubelet のデーモンはデータポイント収集用エンドポイント (�
 
 ### Deployment 配下の Pod
 
-記入中...
+metrics-server の Pod は、kubelet からデータポイントを収集してローカルストレージに保管し、kube-apiserver を介してクライアントにメトリクスを返信する。
 
 ```yaml
 apiVersion: apps/v1
@@ -158,7 +158,7 @@ spec:
 
 ### APIService
 
-記入中...
+kube-apiserver に `metrics.k8s.io` API グループを登録し、この API グループへのリクエストを metrics-server の Service に転送させる。
 
 ```yaml
 apiVersion: apiregistration.k8s.io/v1

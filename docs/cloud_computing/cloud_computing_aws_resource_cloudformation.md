@@ -13,7 +13,7 @@ description: CloudFormation＠AWSの知見を記録しています。
 
 ## 01. セットアップ
 
-記入中...
+テンプレートファイルを作成し、AWS コンソールや AWS CLI から、そのテンプレートを指定した Stack を作成する。
 
 <br>
 

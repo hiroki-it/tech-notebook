@@ -191,25 +191,25 @@ Karpenter 外から削除操作 (例：`kubectl delete` コマンド) があっ�
 
 #### ▼ Expiration
 
-記入中...
+NodePool で設定した有効期限 (`expireAfter`) を過ぎた Node を検知し、これを削除する。
 
 > - https://karpenter.sh/docs/concepts/#disrupting-nodes
 
 #### ▼ Consolidation
 
-記入中...
+空になった Node を削除したり、より低コストな Node に Pod を寄せたうえで不要な Node を削除したりする。
 
 > - https://karpenter.sh/docs/concepts/#disrupting-nodes
 
 #### ▼ Drift
 
-記入中...
+NodePool や EC2NodeClass の設定と実際の Node の設定に差分 (ドリフト) がある場合、これを検知し、Node を新しい設定の Node に置き換える。
 
 > - https://karpenter.sh/docs/concepts/#disrupting-nodes
 
 #### ▼ Interruption
 
-記入中...
+Spot インスタンスの中断通知や Amazon EC2 のスケジュールされたイベントを Amazon SQS 経由で検知し、Node が停止する前に Pod を退避させて Node を削除する。
 
 > - https://karpenter.sh/docs/concepts/#disrupting-nodes
 

@@ -15,7 +15,7 @@ description: Kong Ingress＠Kongの知見を記録しています。
 
 ### KongIngress とは
 
-記入中...
+Ingress では設定できない Kong 固有のプロキシ、ルート、アップストリームの設定を、Ingress や Service に追加するカスタムリソースである。
 
 > - https://docs.konghq.com/kubernetes-ingress-controller/latest/concepts/custom-resources/#kongingress
 

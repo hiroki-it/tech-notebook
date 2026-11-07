@@ -13,7 +13,7 @@ description: GI：Gateway Interface＠アプリケーション系ミドルウェ
 
 ## 01. CGI
 
-記入中...
+Web サーバーが、リクエストを受信するたびに外部のプログラムをプロセスとして起動し、プログラムの標準出力をレスポンスとして返信するためのインターフェース仕様のこと。
 
 ![CGIの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CGIの仕組み.png)
 
@@ -27,6 +27,6 @@ CGI プロトコルの性能を向上させたプロトコル仕様のこと。
 
 ## 03. WSGI
 
-記入中...
+Python の Web アプリケーションと Web サーバーを接続するためのインターフェース仕様のこと。
 
 <br>

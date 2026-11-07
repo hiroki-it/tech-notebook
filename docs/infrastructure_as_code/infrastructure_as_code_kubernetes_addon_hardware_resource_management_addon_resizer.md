@@ -41,7 +41,7 @@ addon-resizer は、Deployment (nanny) 、ConfigMap (nanny-config) などのマ�
 
 #### ▼ nanny
 
-記入中...
+nanny は、クラスター内の Node 数に応じて指定したコンテナのハードウェアリソースの要求量を計算し、要求量を変更する。
 
 ```yaml
 apiVersion: v1

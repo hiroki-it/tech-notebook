@@ -52,7 +52,7 @@ Kubernetes と Istio には重複する能力がいくつか (例：サービス
     <tr>
       <td>トラフィック管理</td>
       <td>VirtualService + Service + DestinationRule</td>
-      <td>記入中...</td>
+      <td><code>route</code> キー + <code>cluster</code> キー</td>
       <td>Service</td>
     </tr>
     <tr>

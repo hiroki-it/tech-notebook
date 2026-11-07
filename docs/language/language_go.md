@@ -611,7 +611,7 @@ func readConfig() error {
 
 ### コメントの書式
 
-記入中...
+コメントは完全な文で書き、説明する対象の名前から書き始め、ピリオドで終える。
 
 > - [CodeReviewComments · golang/go Wiki · GitHub](https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences)
 

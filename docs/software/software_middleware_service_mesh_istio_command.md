@@ -90,7 +90,7 @@ Istio の機能のセットを提供する。
       <td style="text-align:center">？</td>
       <td style="text-align:center">なし</td>
       <td style="text-align:center">？</td>
-      <td>記入中...</td>
+      <td>アンビエントモードを使用したい</td>
     </tr>
     <tr>
       <td style="text-align:left">istio-egressgateway</td>
@@ -102,7 +102,7 @@ Istio の機能のセットを提供する。
       <td style="text-align:center">？</td>
       <td style="text-align:center">なし</td>
       <td style="text-align:center">？</td>
-      <td>記入中...</td>
+      <td>なし</td>
     </tr>
     <tr>
       <td style="text-align:left">istio-ingressgateway</td>
@@ -114,7 +114,7 @@ Istio の機能のセットを提供する。
       <td style="text-align:center">？</td>
       <td style="text-align:center">✅</td>
       <td style="text-align:center">？</td>
-      <td>記入中...</td>
+      <td>なし</td>
     </tr>
     <tr>
       <td style="text-align:left">istiod</td>
@@ -126,7 +126,7 @@ Istio の機能のセットを提供する。
       <td style="text-align:center">？</td>
       <td style="text-align:center">✅</td>
       <td style="text-align:center">？</td>
-      <td>記入中...</td>
+      <td>✅</td>
     </tr>
   </tbody>
 </table>

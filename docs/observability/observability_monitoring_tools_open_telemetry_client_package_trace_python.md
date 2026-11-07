@@ -15,19 +15,19 @@ description: Python＠OpenTelemetryクライアントパッケージの知見を
 
 ### otel クライアントパッケージ
 
-記入中...
+OpenTelemetry が提供する Python 用の標準パッケージであり、API を定義する `opentelemetry-api` パッケージと、その実装である `opentelemetry-sdk` パッケージから構成される。
 
 <br>
 
 ### 拡張 otel クライアントパッケージ
 
-記入中...
+標準の otel クライアントパッケージと外部ツールを連携しやすいようにした、Exporter や Propagator のパッケージを提供する。
 
 <br>
 
 ### 分散トレース SDK
 
-記入中...
+分散トレース収集ツールが独自に提供するパッケージであり、対象のスパン収集ツールにスパンを送信するためだけのパッケージである。
 
 <br>
 

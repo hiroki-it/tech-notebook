@@ -23,7 +23,7 @@ description: Nginx Ingress Controller＠Ingress Controllerの知見を記録し�
 
 ### Ingress
 
-記入中...
+Ingress の `.spec.ingressClassName` キーに Nginx Ingress Controller の IngressClass 名を設定すると、Nginx Ingress Controller が Ingress のルーティングルールを Nginx の設定ファイルに反映する。
 
 <br>
 

@@ -2115,7 +2115,7 @@ spec:
   <tbody>
     <tr>
       <td><code>UNSET</code></td>
-      <td>記入中...</td>
+      <td>親の設定を継承し、親に設定がない場合は <code>PERMISSIVE</code> として扱う。</td>
     </tr>
     <tr>
       <td><code>DISABLE</code></td>

@@ -15,7 +15,7 @@ description: GitLab＠Gitの知見を記録しています。
 
 ### テンプレート
 
-記入中...
+リポジトリの直下に `.gitlab/issue_templates` ディレクトリを配置し、任意の名前の `.md` ファイルを配置する。
 
 <br>
 

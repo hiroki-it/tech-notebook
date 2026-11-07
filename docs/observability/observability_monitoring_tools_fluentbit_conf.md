@@ -917,7 +917,7 @@ drwxr-xr-x. 11 root root     150  9月 13 20:42 ..
 
 ### OUTPUT から
 
-記入中...
+OUTPUT セクションの `storage.total_limit_size` キーで、アウトプット先ごとにファイルシステム上のバッファーの上限サイズを設定する。
 
 <br>
 

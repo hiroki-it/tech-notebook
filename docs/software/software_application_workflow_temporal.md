@@ -545,7 +545,7 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 
 ### 仕組み
 
-記入中...
+ワークフローハンドラーが Temporal サーバーにワークフローの実行をリクエストすると、各 Temporal ワーカーがポーリングでタスクを取得して実行し、結果を Temporal サーバーに送信する。
 
 ```mermaid
 ---

@@ -313,7 +313,7 @@ customChecks:
 
 ### mutations
 
-記入中...
+脆弱性検出の項目のうち、Polaris が自動的に修正する項目を設定する。
 
 ```yaml
 mutations:

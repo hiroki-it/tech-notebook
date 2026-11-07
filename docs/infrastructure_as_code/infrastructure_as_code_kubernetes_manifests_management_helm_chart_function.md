@@ -654,7 +654,7 @@ data:
 
 #### ▼ required とは
 
-記入中...
+値が空の場合に、指定したエラーメッセージを出力し、テンプレートのレンダリングを失敗させる。
 
 > - [Chart Development Tips and Tricks \| Helm](https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function)
 

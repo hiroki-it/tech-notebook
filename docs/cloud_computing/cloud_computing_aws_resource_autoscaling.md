@@ -296,7 +296,7 @@ CPU 平均使用率に段階的な閾値を設定する。
 
 #### ▼ Amazon ECS の場合
 
-記入中...
+Amazon ECS サービスの CPU 平均使用率やメモリ平均使用率に段階的な閾値を設定し、それに応じて Amazon ECS サービスのタスク数を段階的に増減させる。
 
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/service-autoscaling-stepscaling.html
 

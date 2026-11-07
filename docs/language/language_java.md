@@ -13,7 +13,7 @@ description: Javaの知見を記録しています。
 
 ## 01. Java とは
 
-記入中...
+オブジェクト指向型の静的型付け言語であり、JVM 上で動作する。
 
 ## 02. JVM：Java Virtual Machine
 

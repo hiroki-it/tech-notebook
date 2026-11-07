@@ -5,15 +5,15 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 # ９章＠ドメイン駆動設計入門ボトムアップ
 
-## サンプルコード
-
-> - [itddd/SampleCodes/Chapter9 at master · nrslib/itddd · GitHub](https://github.com/nrslib/itddd/tree/master/SampleCodes/Chapter9)
-
-<br>
-
 ## はじめに
 
 本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
+
+<br>
+
+## サンプルコード
+
+> - [itddd/SampleCodes/Chapter9 at master · nrslib/itddd · GitHub](https://github.com/nrslib/itddd/tree/master/SampleCodes/Chapter9)
 
 <br>
 
@@ -164,6 +164,6 @@ const pool = mysql.createPool({
 
 ### エンティティのコンストラクタ
 
-記入中...
+採番処理を UUID の生成で実装する場合、データベースに依存しないため、エンティティのコンストラクタに実装できる。
 
 <br>

@@ -15,7 +15,7 @@ description: コントロールプレーン＠Istioアンビエントの知見�
 
 ### 仕組み
 
-記入中...
+istiod は、Kubernetes リソースや Istio のカスタムリソースの設定値を xDS API で ztunnel と waypoint-proxy に配布し、ztunnel には各 Pod の ServiceAccount に対応する証明書を発行する。
 
 <br>
 

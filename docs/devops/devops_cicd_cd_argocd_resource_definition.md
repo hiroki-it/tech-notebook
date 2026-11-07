@@ -346,7 +346,7 @@ statefulset.apps/argocd-application-controller   1/1     119d
 
 #### ▼ argocd-server
 
-記入中...
+ダッシュボードや `argocd` コマンドからのリクエストを受信する API サーバーであり、Application の情報の取得や Sync の実行といった操作を処理する。
 
 ```yaml
 apiVersion: v1
@@ -463,7 +463,7 @@ spec:
 
 #### ▼ repo-server
 
-記入中...
+マニフェストリポジトリやチャートリポジトリをクローンし、Helm や Kustomize などでマニフェストを生成して、application-controller に返信する。
 
 ```yaml
 apiVersion: v1
@@ -645,7 +645,7 @@ spec:
 
 #### ▼ redis-server
 
-記入中...
+application-controller や argocd-server が取得したマニフェストや Kubernetes リソースの状態などを、キャッシュとして保存する。
 
 ```yaml
 apiVersion: v1
@@ -674,7 +674,7 @@ spec:
 
 #### ▼ dex-server
 
-記入中...
+外部の ID プロバイダーと連携する OIDC プロバイダーとして、ArgoCD への SSO を実現する。
 
 ```yaml
 apiVersion: v1
@@ -741,7 +741,7 @@ spec:
 
 #### ▼ application-controller
 
-記入中...
+Application を監視し、マニフェストリポジトリのマニフェストと Kubernetes リソースの実際の状態を比較して、差分があれば Sync する。
 
 ```yaml
 apiVersion: v1
@@ -892,11 +892,11 @@ Application 自体もカスタムリソースなため、Application が Applica
     </tr>
     <tr>
       <td>Missing</td>
-      <td>記入中...</td>
+      <td>Kubernetes リソースが Cluster 上に存在しない。</td>
     </tr>
     <tr>
       <td>Unknown</td>
-      <td>記入中...</td>
+      <td>ヘルスチェックに失敗し、Kubernetes リソースのヘルスステータスを判定できない。</td>
     </tr>
   </tbody>
 </table>

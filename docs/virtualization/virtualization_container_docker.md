@@ -362,6 +362,6 @@ crw-rw-rw- 1 root root 1, 5 Oct 14 11:36 zero
 
 #### ▼ php-fpm イメージ
 
-記入中...
+公式の php-fpm イメージは、`/usr/local/etc/php-fpm.d/docker.conf` ファイルでエラーログとアクセスログの出力先を `/proc/self/fd/2` に設定しており、これらのログは標準エラー出力に出力される。
 
 <br>

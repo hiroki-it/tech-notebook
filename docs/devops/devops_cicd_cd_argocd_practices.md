@@ -766,7 +766,7 @@ ArgoCD を ServiceAccount で認証し、また ClusterRole で認可する。
 
 #### ▼ Secret の変数の場合
 
-記入中...
+Secret のマニフェストに機密な変数を直接書かずに、External Secrets Operator や Sealed Secrets などを使用し、外部のシークレットストアや暗号化した値から Secret を作成する。
 
 > - [How to Manage Kubernetes Secrets with GitOps for Secure Deployments](https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/)
 
@@ -1000,7 +1000,7 @@ ArgoCD はデータポイントを作成し、これを Prometheus で収集で�
     <tr>
       <td><code>argocd_app_labels</code></td>
       <td style="text-align:center">Gauge</td>
-      <td>記入中...</td>
+      <td>Application に設定したラベルを表す。</td>
     </tr>
     <tr>
       <td><code>argocd_app_reconcile</code></td>

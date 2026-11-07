@@ -58,7 +58,7 @@ Cluster やワーカーNode からメトリクスを受信し、コントロー�
 
 #### ▼ Kubernetes + Istio の場合
 
-記入中...
+Node エージェントが、istio-proxy コンテナや Istiod が公開するエンドポイントからメトリクスを収集し、Datadog にフォワーディングする。
 
 ![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes_istio.png)
 

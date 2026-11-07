@@ -79,7 +79,7 @@ plugins:
 
 ### load_plugins
 
-記入中...
+plugins で定義したプラグインのうち、実際に読み込むプラグインの名前を設定する。
 
 ```yaml
 load_plugins: []
@@ -89,7 +89,7 @@ load_plugins: []
 
 ### watch_config_files
 
-記入中...
+設定ファイルやルールファイルの変更を監視し、変更を検知したときに Falco を再読み込みするかどうかを設定する。
 
 ```yaml
 watch_config_files: "true"
@@ -99,7 +99,7 @@ watch_config_files: "true"
 
 ### time_format_iso_8601
 
-記入中...
+アラートの日時を ISO 8601 形式で出力するかどうかを設定する。
 
 ```yaml
 time_format_iso_8601: "false"
@@ -109,7 +109,7 @@ time_format_iso_8601: "false"
 
 ### json_output
 
-記入中...
+アラートを JSON 形式で出力するかどうかを設定する。
 
 ```yaml
 json_output: "false"
@@ -119,7 +119,7 @@ json_output: "false"
 
 ### json_include_output_property
 
-記入中...
+JSON 形式のアラートに、ルールの output で整形したメッセージを `output` キーとして含めるかどうかを設定する。
 
 ```yaml
 json_include_output_property: "true"
@@ -129,7 +129,7 @@ json_include_output_property: "true"
 
 ### json_include_tags_property
 
-記入中...
+JSON 形式のアラートに、ルールのタグを `tags` キーとして含めるかどうかを設定する。
 
 ```yaml
 json_include_tags_property: "true"
@@ -139,7 +139,7 @@ json_include_tags_property: "true"
 
 ### log_stderr
 
-記入中...
+Falco 自身のログを標準エラー出力に出力するかどうかを設定する。
 
 ```yaml
 log_stderr: "true"
@@ -149,7 +149,7 @@ log_stderr: "true"
 
 ### log_syslog
 
-記入中...
+Falco 自身のログを syslog に出力するかどうかを設定する。
 
 ```yaml
 log_syslog: "true"
@@ -159,7 +159,7 @@ log_syslog: "true"
 
 ### log_level
 
-記入中...
+Falco 自身のログのうち、出力する最低のログレベルを設定する。
 
 ```yaml
 log_level: info
@@ -169,7 +169,7 @@ log_level: info
 
 ### libs_logger
 
-記入中...
+Falco が内部で使用するライブラリのログを出力するかどうかと、出力する最低の重要度を設定する。
 
 ```yaml
 libs_logger:
@@ -181,7 +181,7 @@ libs_logger:
 
 ### priority
 
-記入中...
+アラートを出力するルールの最低の優先度を設定する。この優先度より低いルールに合致しても、アラートは出力しない。
 
 ```yaml
 priority: debug
@@ -191,7 +191,7 @@ priority: debug
 
 ### buffered_outputs
 
-記入中...
+アラートの出力をバッファリングするかどうかを設定する。
 
 ```yaml
 buffered_outputs: "false"
@@ -201,7 +201,7 @@ buffered_outputs: "false"
 
 ### syscall_event_drops
 
-記入中...
+システムコールのイベントを取りこぼしたと判定するしきい値と、取りこぼしたときに実行するアクションを設定する。
 
 ```yaml
 syscall_event_drops:
@@ -218,7 +218,7 @@ syscall_event_drops:
 
 ### syscall_event_timeouts
 
-記入中...
+イベントを受信できずにタイムアウトした回数が、何回連続したらアラートを出力するかを設定する。
 
 ```yaml
 syscall_event_timeouts:
@@ -229,7 +229,7 @@ syscall_event_timeouts:
 
 ### syscall_buf_size_preset
 
-記入中...
+カーネルから Falco にシステムコールのイベントを受け渡すバッファのサイズを、プリセットの番号で設定する。
 
 ```yaml
 syscall_buf_size_preset: 4
@@ -239,7 +239,7 @@ syscall_buf_size_preset: 4
 
 ### output_timeout
 
-記入中...
+アラートの出力処理が停止したとみなすまでの時間をミリ秒で設定する。
 
 ```yaml
 output_timeout: 2000
@@ -249,7 +249,7 @@ output_timeout: 2000
 
 ### outputs
 
-記入中...
+アラートの出力の流量を、トークンバケット方式の `rate` と `max_burst` で制限する。
 
 ```yaml
 outputs:
@@ -261,7 +261,7 @@ outputs:
 
 ### syslog_output
 
-記入中...
+アラートを syslog に出力するかどうかを設定する。
 
 ```yaml
 syslog_output:
@@ -272,7 +272,7 @@ syslog_output:
 
 ### file_output
 
-記入中...
+アラートをファイルに出力するかどうかと、出力先のファイルを設定する。
 
 ```yaml
 file_output:
@@ -285,7 +285,7 @@ file_output:
 
 ### stdout_output
 
-記入中...
+アラートを標準出力に出力するかどうかを設定する。
 
 ```yaml
 stdout_output:
@@ -296,7 +296,7 @@ stdout_output:
 
 ### webserver
 
-記入中...
+Falco が起動する Web サーバーを設定する。この Web サーバーは、ヘルスチェック用のエンドポイントなどを公開する。
 
 ```yaml
 webserver:
@@ -312,7 +312,7 @@ webserver:
 
 ### program_output
 
-記入中...
+アラートを指定したプログラムの標準入力に渡すかどうかと、そのプログラムを設定する。
 
 ```yaml
 program_output:
@@ -327,7 +327,7 @@ program_output:
 
 ### http_output
 
-記入中...
+アラートを指定した URL に HTTP で送信するかどうかと、送信先の URL を設定する。
 
 ```yaml
 http_output:
@@ -340,7 +340,7 @@ http_output:
 
 ### grpc
 
-記入中...
+Falco の gRPC サーバーを起動するかどうかと、gRPC サーバーが待ち受けるアドレスを設定する。
 
 ```yaml
 grpc:
@@ -353,7 +353,7 @@ grpc:
 
 ### grpc_output
 
-記入中...
+アラートを gRPC サーバー経由で出力するかどうかを設定する。
 
 ```yaml
 grpc_output:
@@ -364,7 +364,7 @@ grpc_output:
 
 ### metadata_download
 
-記入中...
+Kubernetes などからメタデータをダウンロードするときの最大サイズ、待機時間、監視の頻度を設定する。
 
 ```yaml
 metadata_download:

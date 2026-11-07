@@ -45,13 +45,13 @@ description: ︎ネットワークセキュリティ＠セキュリティの知�
   <tbody>
     <tr>
       <td>ソフトウェア型</td>
-      <td>記入中...</td>
-      <td>記入中...</td>
+      <td>サーバーにネットワークファイアウォールのソフトウェアをインストールする。</td>
+      <td>iptables、firewalld など</td>
     </tr>
     <tr>
       <td>アプライアンス型</td>
-      <td>記入中...</td>
-      <td>記入中...</td>
+      <td>ネットワークファイアウォール専用のハードウェアをネットワーク上に配置する。</td>
+      <td>FortiGate、Palo Alto Networks の PA シリーズなど</td>
     </tr>
     <tr>
       <td>クラウド型</td>

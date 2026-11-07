@@ -181,7 +181,7 @@ spec:
 
 #### ▼ usages とは
 
-記入中...
+署名済みのサーバー証明書の用途を設定する。
 
 > - https://www.ibm.com/docs/ja/cloud-paks/1.0?topic=certificates-customizing-cert-manager#keyUsage
 

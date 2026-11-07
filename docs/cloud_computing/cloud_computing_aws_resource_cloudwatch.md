@@ -347,7 +347,7 @@ encoding = utf_8
 # バッファーに蓄える期間
 buffer_duration = 5000
 
-# 記入中...
+# ログファイルの先頭から読み込みを開始する。
 initial_position = start_of_file
 
 # インスタンスID
@@ -832,7 +832,7 @@ AWS 以外 (オンプレミス、他のクラウドプロバイダー) のサー
 
 ### Amazon CloudWatch アラームとは
 
-記入中...
+Amazon CloudWatch のメトリクスを監視し、閾値を超えた場合にアラートを発火させ、通知や AWS リソースに対するアクションを実行する。
 
 <br>
 

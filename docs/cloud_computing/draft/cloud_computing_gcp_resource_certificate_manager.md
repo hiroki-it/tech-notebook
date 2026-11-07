@@ -45,7 +45,7 @@ AWS Certificate Manager でクライアント証明書を作成する場合、AW
     </tr>
     <tr>
       <td>ルート認証局</td>
-      <td>記入中...</td>
+      <td>GTS Root R1、GTS Root R4</td>
     </tr>
   </tbody>
 </table>

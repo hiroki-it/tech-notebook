@@ -450,7 +450,7 @@ ArgoCD は、argocd-repo-creds の `.url` キーを使用して、argocd-repo �
 
 ### admin
 
-記入中...
+admin ユーザーのパスワードの bcrypt ハッシュ値と、パスワードの最終更新日時を設定する。
 
 ```yaml
 apiVersion: v1
@@ -470,7 +470,7 @@ data:
 
 ### tls
 
-記入中...
+argocd-server の API サーバーが使用するサーバー証明書と秘密鍵を設定する。
 
 ```yaml
 apiVersion: v1
@@ -490,7 +490,7 @@ data:
 
 ### server
 
-記入中...
+argocd-server がセッションを検証するための署名鍵を設定する。
 
 ```yaml
 apiVersion: v1
@@ -509,7 +509,7 @@ data:
 
 ### webhook
 
-記入中...
+GitHub や GitLab などから受信した Webhook リクエストを認証するための共有シークレットを設定する。
 
 ```yaml
 apiVersion: v1

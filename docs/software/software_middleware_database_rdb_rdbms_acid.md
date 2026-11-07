@@ -444,21 +444,21 @@ RDBMS またはアプリケーションによる `UPDATE` 処理競合問題を�
 
 #### ▼ ギャップロック
 
-記入中...
+インデックスレコードの間の隙間をロックし、他のトランザクションがその範囲にレコードを `INSERT` できないようにする。
 
 > - [共有ロック・排他ロックとレコードロック｜概観 トランザクションとロック - 用語整理と最初の一歩 -](https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks)
 > - [データベースのロックについて #Database - Qiita](https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E)
 
 #### ▼ ネクストキーロック
 
-記入中...
+レコードロックと、そのレコードの直前の隙間に対するギャップロックを組み合わせたロックであり、ファントムリードを防ぐ。
 
 > - [共有ロック・排他ロックとレコードロック｜概観 トランザクションとロック - 用語整理と最初の一歩 -](https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks)
 > - [データベースのロックについて #Database - Qiita](https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E)
 
 #### ▼ 空振りロック
 
-記入中...
+条件に一致するレコードが存在しない場合に、そのレコードが入るはずの隙間をロックすることであり、他のトランザクションの `INSERT` が意図せずブロックされる。
 
 > - [共有ロック・排他ロックとレコードロック｜概観 トランザクションとロック - 用語整理と最初の一歩 -](https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks)
 > - [データベースのロックについて #Database - Qiita](https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E)

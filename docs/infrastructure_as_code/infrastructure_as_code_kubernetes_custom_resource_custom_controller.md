@@ -78,11 +78,11 @@ Delta FIFO キューから Kubernetes リソースの実体を取得する。
 
 #### ▼ リソースイベントハンドラー
 
-記入中...
+Informer から Kubernetes リソースの作成、更新、削除のイベントを受け取り、対象の Kubernetes リソースのキーをワークキューに追加する。
 
 #### ▼ ワークキュー
 
-記入中...
+処理対象の Kubernetes リソースのキーを保管するキューであり、アイテム処理はワークキューからキーを取り出して Reconciliation を実行する。
 
 > - https://github.com/kubernetes/client-go/blob/v12.0.0/util/workqueue
 
@@ -219,7 +219,7 @@ OperatorHub で公開されている。
 
 ### KubeBuilder
 
-記入中...
+CRD とカスタムコントローラーを開発するためのフレームワークであり、controller-runtime パッケージと controller-tools パッケージを使用したコードの雛形を作成する。
 
 <br>
 
@@ -241,6 +241,6 @@ Operator の、作成、削除を管理する。
 
 #### ▼ Operator Metering
 
-記入中...
+Operator が提供するサービスの使用状況をレポートする。
 
 <br>

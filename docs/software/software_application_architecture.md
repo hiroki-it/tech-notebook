@@ -38,7 +38,7 @@ description: アーキテクチャ＠アプリケーションの知見を記録�
 
 ### DRY
 
-記入中...
+Don't Repeat Yourself の略であり、同じ知識やロジックをソフトウェア内の複数箇所に重複させずに一箇所で定義しようとする原則のこと。
 
 > - [ソフトウェア設計についての原則や法則についてまとめてみた](https://zenn.dev/nanagi/articles/0e899711611630#dry%EF%BC%88don't-repeat-yourself%EF%BC%89)
 
@@ -46,7 +46,7 @@ description: アーキテクチャ＠アプリケーションの知見を記録�
 
 ### Kiss
 
-記入中...
+Keep It Simple, Stupid の略であり、不必要な複雑さを避けてソフトウェアをできる限りシンプルに設計しようとする原則のこと。
 
 > - [ソフトウェア設計についての原則や法則についてまとめてみた](https://zenn.dev/nanagi/articles/0e899711611630#kiss%E3%81%AE%E5%8E%9F%E5%89%87%EF%BC%88keep-it-simple-stupid.%EF%BC%89)
 
@@ -54,7 +54,7 @@ description: アーキテクチャ＠アプリケーションの知見を記録�
 
 ### SOLID
 
-記入中...
+単一責任の原則、オープン・クローズドの原則、リスコフの置換原則、インターフェース分離の原則、依存性逆転の原則の頭文字を取った、オブジェクト指向設計の 5 つの原則のこと。
 
 > - [ソフトウェア設計についての原則や法則についてまとめてみた](https://zenn.dev/nanagi/articles/0e899711611630#solid)
 
@@ -72,7 +72,7 @@ Web システムのソフトウェアを開発するうえでのベストプラ�
 
 ### YAGNI
 
-記入中...
+You Ain't Gonna Need It の略であり、現時点で必要のない機能を将来使うかもしれないという理由で実装しないようにする原則のこと。
 
 > - [ソフトウェア設計についての原則や法則についてまとめてみた](https://zenn.dev/nanagi/articles/0e899711611630#yagni%EF%BC%88you-ain't-gonna-need-it.%EF%BC%89)
 

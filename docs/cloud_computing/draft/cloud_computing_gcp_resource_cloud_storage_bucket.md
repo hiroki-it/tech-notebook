@@ -13,7 +13,7 @@ description: Google Cloud Storage Bucket＠Google Cloudリソースの知見を�
 
 ## セットアップ (コンソールの場合)
 
-記入中...
+コンソール画面から、バケット名、ロケーション、ストレージクラス、アクセス制御を設定し、バケットを作成する。
 
 <br>
 

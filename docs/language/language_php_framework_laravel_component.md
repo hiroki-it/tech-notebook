@@ -3720,7 +3720,7 @@ Schema::create("foos", function (Blueprint $table): void {
 
 ### artisan コマンド
 
-記入中...
+`php artisan make:notification <クラス名>` コマンドで、`app/Notifications` ディレクトリに Notification クラスを作成する。
 
 <br>
 

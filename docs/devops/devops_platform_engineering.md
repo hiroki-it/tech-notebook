@@ -164,7 +164,7 @@ SREing とは異なり、開発者体験の向上から DevOps を実現する�
 
 ### Centralized Provisioning (中央集中型)
 
-記入中...
+中央のチームがインフラの設計・構築・管理を一元的に担い、開発チームはチケットで構築を依頼して完了を待つ。
 
 > - [組織のクラウドオペレーションをいかにモダナイズするか \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/how-organizations-are-modernizing-for-cloud-operations/)
 
@@ -172,7 +172,7 @@ SREing とは異なり、開発者体験の向上から DevOps を実現する�
 
 ### Platform-enabled Golden Path (プラットフォーム型)
 
-記入中...
+プラットフォームチームがデフォルト設定やガードレールを備えた標準のテンプレートを提供・保守し、開発チームはその範囲内でカスタマイズして使用する。
 
 > - [組織のクラウドオペレーションをいかにモダナイズするか \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/how-organizations-are-modernizing-for-cloud-operations/)
 
@@ -180,7 +180,7 @@ SREing とは異なり、開発者体験の向上から DevOps を実現する�
 
 ### Embedded DevOps (組み込み型)
 
-記入中...
+DevOps エンジニアが開発チームに参加し、チームごとにインフラやテンプレートを保守する。
 
 > - [組織のクラウドオペレーションをいかにモダナイズするか \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/how-organizations-are-modernizing-for-cloud-operations/)
 
@@ -188,7 +188,7 @@ SREing とは異なり、開発者体験の向上から DevOps を実現する�
 
 ### Decentralized Provisioning (分散型)
 
-記入中...
+開発チームがインフラとパイプラインの定義と管理の責任をすべて持ち、中央のチームはガードレールの整備に集中する。
 
 > - [組織のクラウドオペレーションをいかにモダナイズするか \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/how-organizations-are-modernizing-for-cloud-operations/)
 

@@ -102,7 +102,7 @@ ExternalDNS アドオンは、Deployment (external-dns) 、Service などのマ�
 
 #### ▼ external-dns
 
-記入中...
+Kubernetes の Service や Ingress を監視し、それらに設定したホスト名の DNS レコードを AWS Route53 などの DNS プロバイダーに作成する。
 
 ```yaml
 apiVersion: v1

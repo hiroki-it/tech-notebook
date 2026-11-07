@@ -646,7 +646,7 @@ istio-proxy の `15001` 番ポートでは、マイクロサービスからの�
 
 istio-proxy の `15004` 番ポートでは、コントロールプレーンのコンテナの `8080` 番ポートと一緒に使用される。
 
-用途がわからず記入中...
+デバッグ用のポートであり、Pod 内部からのリクエストのみを待ち受ける。
 
 > - https://jimmysong.io/en/blog/istio-components-and-ports/#15004
 
@@ -685,7 +685,7 @@ istio-proxy 内の Envoy が、`/healthz/ready` エンドポイントで Readine
 
 ### `15053` 番
 
-記入中...
+istio-proxy の `15053` 番ポートでは、DNS プロキシを有効にしている場合に、マイクロサービスからの DNS クエリを待ち受ける。
 
 > - https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
 

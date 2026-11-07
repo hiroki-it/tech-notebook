@@ -213,7 +213,7 @@ data "aws_iam_policy_document" "opentelemetry_collector_policy" {
 
 #### ▼ ゲートウェイパターンのデメリット
 
-記入中...
+テレメトリーの送信元と監視バックエンドの間に `L7` ロードバランサーとゲートウェイが増えるため、運用するコンポーネントが増え、通信のレイテンシーも大きくなる。
 
 <br>
 
@@ -429,7 +429,7 @@ spec:
 
 ### StatefulSet (StatefulSet モード)
 
-記入中...
+OpenTelemetry Collector を StatefulSet として稼働させ、各 Pod に固定の名前と永続ボリュームを割り当てる。
 
 <br>
 

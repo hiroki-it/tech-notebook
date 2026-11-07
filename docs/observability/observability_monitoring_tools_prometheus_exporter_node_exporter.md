@@ -13,7 +13,7 @@ description: Node Exporter＠Prometheus
 
 ## 01. Node Exporter の仕組み
 
-記入中
+Node Exporter は Node 上でプロセスとして稼働し、`/proc` ディレクトリや `/sys` ディレクトリからハードウェアと OS のメトリクスを収集して、`/metrics` エンドポイントで Prometheus に公開する。
 
 ...
 

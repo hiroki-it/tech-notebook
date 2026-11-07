@@ -110,13 +110,19 @@ AWS KMS のリクエスト制限を設定する。
 
 #### ▼ オリジン
 
-記入中...
+- AWS KMS が作成したキーマテリアル (`AWS_KMS`)
+- インポートしたキーマテリアル (`EXTERNAL`)
+- AWS CloudHSM のカスタムキーストアで作成したキーマテリアル (`AWS_CLOUDHSM`)
+- 外部キーストアのキーマテリアル (`EXTERNAL_KEY_STORE`)
 
 > - [AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-origin)
 
 #### ▼ キーの仕様
 
-記入中...
+- 対称暗号化キー (`SYMMETRIC_DEFAULT`)
+- RSA キーペア (`RSA_2048`、`RSA_3072`、`RSA_4096`)
+- 楕円曲線キーペア (`ECC_NIST_P256`、`ECC_NIST_P384`、`ECC_NIST_P521`、`ECC_SECG_P256K1`)
+- HMAC キー (`HMAC_224`、`HMAC_256`、`HMAC_384`、`HMAC_512`)
 
 > - [AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-spec)
 

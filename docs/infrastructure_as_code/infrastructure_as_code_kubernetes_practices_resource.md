@@ -120,7 +120,7 @@ description: プラクティス集＠Kubernetesリソースの知見を記録し
 
 #### ▼ ストレージをサイジングする
 
-記入中...
+ロードテストの結果やメトリクスに基づいて、Node のルートボリュームや PersistentVolume の容量と性能を適切に選び、Cluster 全体のストレージをサイジングする。
 
 <br>
 
@@ -1597,7 +1597,7 @@ spec:
 
 #### ▼ InitContainer で初期データを DB に挿入する
 
-記入中...
+アプリコンテナの起動前に InitContainer で初期データを DB に挿入し、Pod のレプリカごとに実行されても問題ないように、挿入処理を冪等にする。
 
 > - [Deep Dive Into Kubernetes Init Containers](https://loft.sh/blog/kubernetes-init-containers/)
 
@@ -1609,13 +1609,13 @@ istio-init コンテナとかまさにその例
 
 #### ▼ InitContainer でサーバー証明書を準備する
 
-記入中...
+アプリコンテナの起動前に InitContainer でサーバー証明書を取得または作成し、emptyDir などの Volume を介してアプリコンテナに共有する。
 
 <br>
 
 ## コンテナのストレージの性能チューニング
 
-記入中...
+コンテナが読み書きするデータの特性に応じて Volume の種類や StorageClass を選び、ストレージの読み書きの性能を最適化する。
 
 <br>
 

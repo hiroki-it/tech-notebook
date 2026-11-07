@@ -1285,11 +1285,11 @@ spec:
 
 #### ▼ Object の場合
 
-記入中...
+Ingress など、Pod 以外の Kubernetes リソースに紐づくメトリクスを指定する。
 
 #### ▼ External の場合
 
-記入中...
+メッセージキューのメッセージ数など、Kubernetes Cluster 外部のシステムのメトリクスを指定する。
 
 <br>
 
@@ -1743,7 +1743,7 @@ spec:
 
 #### ▼ Traefik の場合
 
-記入中...
+Traefik を使用する場合、`.spec.controllerName` キーに `traefik.io/gateway-controller` を設定する。
 
 #### ▼ Amazon VPC Lattice の場合
 
@@ -5615,7 +5615,7 @@ spec:
 
 #### ▼ externalTrafficPolicy とは
 
-記入中...
+Kubernetes Cluster 外部からのリクエストを、Service に紐づくすべての Node 上の Pod にルーティングするか、リクエストを受信した Node 上の Pod にのみルーティングするかを設定する。
 
 #### ▼ Local
 

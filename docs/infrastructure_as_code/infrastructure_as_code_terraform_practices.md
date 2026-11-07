@@ -824,7 +824,7 @@ crash.*.log
 
 ## 06. CI ツールに関する脆弱性対策
 
-記入中...
+CI ツールに長期間有効なクレデンシャルを保存せず、OIDC などで発行した一時的なクレデンシャルを使用して Terraform を実行する。
 
 > - https://cloud.google.com/docs/terraform/best-practices-for-terraform#credentials
 

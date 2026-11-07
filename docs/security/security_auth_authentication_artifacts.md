@@ -333,17 +333,17 @@ Opaque トークンでは、トークンはランダム値で、署名と有効�
     <tr>
       <td>パーソナルアクセストークン</td>
       <td>パーソナルアクセストークン認証</td>
-      <td>記入中...</td>
+      <td>Opaque トークン</td>
     </tr>
     <tr>
       <td>XML ベースのトークン</td>
       <td>SAML</td>
-      <td>記入中...<br></td>
+      <td>必ず XML 仕様であり、Self-contained トークン<br></td>
     </tr>
     <tr>
       <td>API キー</td>
       <td>API キーベース認証</td>
-      <td>記入中...</td>
+      <td>Opaque トークン</td>
     </tr>
   </tbody>
 </table>
@@ -361,11 +361,12 @@ Opaque トークンでは、トークンはランダム値で、署名と有効�
 
 #### ▼ ID トークン
 
-記入中...
+- JWT トークン
 
 #### ▼ リフレッシュトークン
 
-記入中...
+- Self-contained トークン
+- Opaque トークン
 
 #### ▼ パーソナルアクセストークン
 

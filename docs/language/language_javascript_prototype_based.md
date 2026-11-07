@@ -33,7 +33,7 @@ const obj = new Object();
 
 ### Function
 
-記入中...
+関数を作成するオブジェクト。
 
 <br>
 
@@ -585,4 +585,4 @@ object1.printParam; // global param
 object2.printParam; // global param
 ```
 
-また、アロー関数がコールバック関数の引数となっている場合は、記入中...
+また、アロー関数がコールバック関数として引数に渡されている場合も、`this` は呼び出し元ではなく、アロー関数を宣言したスコープの `this` を指す。

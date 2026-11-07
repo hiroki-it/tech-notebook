@@ -65,7 +65,13 @@ APM エージェントを有効化し、分散トレース監視バックエン�
 
 #### ▼ クライアントパッケージ
 
-記入中...
+- dd-trace-go
+- dd-trace-java
+- dd-trace-js
+- dd-trace-php
+- dd-trace-py
+- dd-trace-rb
+- dd-trace-dotnet
 
 > - https://docs.datadoghq.com/developers/libraries/#apm-%E3%81%A8%E5%88%86%E6%95%A3%E5%9E%8B%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA
 
@@ -229,7 +235,7 @@ PHP 用のクライアントパッケージで laravel 内からタグを収集�
 
 #### ▼ エラートラッキングの仕組み
 
-記入中...
+エラーのスパンが持つ `error.type` 属性、`error.message` 属性、`error.stack` 属性からフィンガープリントを計算し、同じフィンガープリントを持つエラーを 1 つの issue にまとめる。
 
 > - https://docs.datadoghq.com/tracing/error_tracking/#how-datadog-error-tracking-works
 

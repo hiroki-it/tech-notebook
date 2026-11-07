@@ -76,7 +76,7 @@ Envoy では、YAML ファイルのキー名がスネークケースになって
 
 ### admin とは
 
-記入中...
+Envoy の管理ダッシュボードについて、アクセスログの出力先や待ち受けるアドレスを設定する。
 
 > - [Envoy admin interface — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#admin)
 
@@ -99,7 +99,7 @@ admin:
 
 ### address とは
 
-記入中...
+管理ダッシュボードが通信を待ち受けるアドレスを設定する。
 
 <br>
 
@@ -691,7 +691,7 @@ static_resources:
 
 #### ▼ dns_lookup_family とは
 
-記入中...
+宛先のホスト名を DNS で名前解決する時に、IPv4 と IPv6 のいずれのアドレスを使用するかを設定する。
 
 ```yaml
 static_resources:
@@ -1049,7 +1049,7 @@ staticResources:
 
 #### ▼ set_node_on_first_message_only
 
-記入中...
+xDS-API へのリクエストのうち、最初のメッセージのみに Node の識別子を含め、以降のメッセージでは省略するか否かを設定する。
 
 ```yaml
 dynamic_resources:
@@ -1059,7 +1059,7 @@ dynamic_resources:
 
 #### ▼ transport_api_version
 
-記入中...
+xDS-API との通信で使用する API のバージョンを設定する。
 
 ```yaml
 dynamic_resources:

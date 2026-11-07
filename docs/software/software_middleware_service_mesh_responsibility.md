@@ -216,7 +216,7 @@ Kubernetes の Service は、配下に新旧バージョンの Pod が混在し�
     </tr>
     <tr>
       <td>CNI</td>
-      <td>記入中...</td>
+      <td>CNI プラグイン<br>(例：Calico、Cilium など)</td>
       <td style="text-align:center"><code>⭕️</code></td>
       <td style="text-align:center"><code>⭕️</code></td>
       <td style="text-align:center"><code>⭕️</code></td>
@@ -245,7 +245,7 @@ Kubernetes の Service は、配下に新旧バージョンの Pod が混在し�
   <tbody>
     <tr>
       <td>サーキットブレイカー</td>
-      <td>記入中...</td>
+      <td>アプリで実装<br>(例：resilience4j など)</td>
       <td style="text-align:center"><code>⭕️</code></td>
       <td style="text-align:center">×</td>
       <td style="text-align:center"><code>⭕️</code></td>
@@ -253,7 +253,7 @@ Kubernetes の Service は、配下に新旧バージョンの Pod が混在し�
     </tr>
     <tr>
       <td>フォールトインジェクション</td>
-      <td>記入中...</td>
+      <td>カオスエンジニアリングツール<br>(例：Chaos Mesh、LitmusChaos など)</td>
       <td style="text-align:center"><code>⭕️</code></td>
       <td style="text-align:center"><code>⭕️</code></td>
       <td style="text-align:center">×</td>
@@ -261,7 +261,7 @@ Kubernetes の Service は、配下に新旧バージョンの Pod が混在し�
     </tr>
     <tr>
       <td>リトライ処理</td>
-      <td>記入中...</td>
+      <td>アプリで実装<br>(例：各言語の HTTP クライアントパッケージなど)</td>
       <td style="text-align:center"><code>⭕️</code></td>
       <td style="text-align:center"><code>⭕️</code></td>
       <td style="text-align:center"><code>⭕️</code></td>
@@ -269,7 +269,7 @@ Kubernetes の Service は、配下に新旧バージョンの Pod が混在し�
     </tr>
     <tr>
       <td>タイムアウト</td>
-      <td>記入中...</td>
+      <td>アプリで実装、Ingress Controller<br>(例：Nginx Ingress Controller など)</td>
       <td style="text-align:center"><code>⭕️</code></td>
       <td style="text-align:center"><code>⭕️</code></td>
       <td style="text-align:center"><code>⭕️</code></td>
@@ -277,7 +277,7 @@ Kubernetes の Service は、配下に新旧バージョンの Pod が混在し�
     </tr>
     <tr>
       <td>リクエスト数制限<br>(レートリミット)</td>
-      <td>記入中...</td>
+      <td>アプリで実装、Ingress Controller<br>(例：Nginx Ingress Controller など)</td>
       <td style="text-align:center"><code>⭕️</code></td>
       <td style="text-align:center"><code>⭕️</code></td>
       <td style="text-align:center"><code>⭕️</code></td>
@@ -461,7 +461,7 @@ Kubernetes では、Pod の作成に応じて証明書の Kubernetes リソー�
     </tr>
     <tr>
       <td>マイクロサービスのエンドポイント別にメトリクスをフィルタリングする</td>
-      <td style="text-align:center">記入中...</td>
+      <td style="text-align:center">クライアントパッケージ<br>(例：otel クライアントパッケージなど)</td>
       <td style="text-align:center"><code>⭕️</code></td>
       <td style="text-align:center"><code>⭕️</code></td>
       <td style="text-align:center"><code>⭕️</code></td>
@@ -525,19 +525,19 @@ Kubernetes では、Pod の作成に応じて証明書の Kubernetes リソー�
   <tbody>
     <tr>
       <td>必要なメトリクスを取得する</td>
-      <td>記入中...</td>
+      <td>-</td>
       <td style="text-align:center"><code>⭕</code>️</td>
       <td style="text-align:center"><code>⭕️</code></td>
     </tr>
     <tr>
       <td>サービスメッシュトポロジーをモデリングする</td>
-      <td>記入中...</td>
+      <td>-</td>
       <td style="text-align:center"><code>⭕️</code></td>
       <td style="text-align:center"><code>⭕️</code></td>
     </tr>
     <tr>
       <td>サービスメッシュトポロジーをモデリングする</td>
-      <td>記入中...</td>
+      <td>-</td>
       <td style="text-align:center"><code>⭕️</code></td>
       <td style="text-align:center"><code>⭕️</code></td>
     </tr>

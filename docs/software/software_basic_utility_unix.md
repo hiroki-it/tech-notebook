@@ -91,7 +91,7 @@ $ chmod -R 600 <ディレクトリ名>/
   <tbody>
     <tr>
       <td style="text-align:center"><code>500</code></td>
-      <td>記入中...</td>
+      <td><code>u=rx,go=</code></td>
       <td><code>r-x</code></td>
       <td style="text-align:left"><code>r-x</code></td>
       <td style="text-align:left"><code>---</code></td>
@@ -100,7 +100,7 @@ $ chmod -R 600 <ディレクトリ名>/
     </tr>
     <tr>
       <td style="text-align:center"><code>600</code></td>
-      <td>記入中...</td>
+      <td><code>u=rw,go=</code></td>
       <td>``</td>
       <td style="text-align:left"><code>rw-</code></td>
       <td style="text-align:left"><code>---</code></td>
@@ -109,7 +109,7 @@ $ chmod -R 600 <ディレクトリ名>/
     </tr>
     <tr>
       <td style="text-align:center"><code>700</code></td>
-      <td>記入中...</td>
+      <td><code>u=rwx,go=</code></td>
       <td>``</td>
       <td style="text-align:left"><code>rwx</code></td>
       <td style="text-align:left"><code>---</code></td>
@@ -187,7 +187,7 @@ $ chmod -R 600 <ディレクトリ名>/
   <tbody>
     <tr>
       <td style="text-align:center"><code>644</code></td>
-      <td>記入中...</td>
+      <td><code>u=rw,go=r</code></td>
       <td><code>rw-r--r--</code></td>
       <td style="text-align:left"><code>rw-</code></td>
       <td style="text-align:left"><code>r--</code></td>
@@ -196,7 +196,7 @@ $ chmod -R 600 <ディレクトリ名>/
     </tr>
     <tr>
       <td style="text-align:center"><code>755</code></td>
-      <td>記入中...</td>
+      <td><code>u=rwx,go=rx</code></td>
       <td><code>rwxr-xr-x</code></td>
       <td style="text-align:left"><code>rwx</code></td>
       <td style="text-align:left"><code>r-x</code></td>

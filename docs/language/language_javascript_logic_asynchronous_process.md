@@ -306,7 +306,7 @@ rejectFunc.catch((err) => {
 
 #### ▼ `finally()` 関数とは
 
-記入中...
+Promise オブジェクトが `resolve()` 関数と `reject()` 関数のどちらで完了した場合でも、完了後にコールバック関数を実行する。
 
 <br>
 

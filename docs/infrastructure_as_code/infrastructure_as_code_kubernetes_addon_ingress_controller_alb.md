@@ -558,7 +558,7 @@ secrets:
 
 ### TargetGroupBinding
 
-記入中...
+既存のターゲットグループに、Service の背後にある Pod をターゲットとして登録する。
 
 ```yaml
 kind: TargetGroupBinding

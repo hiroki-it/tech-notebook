@@ -23,7 +23,7 @@ description: Ceph＠ストレージ系ミドルウェアの知見を記録して
 
 ### アーキテクチャ
 
-記入中...
+Ceph は、RADOS という分散オブジェクトストアを基盤とし、Monitor、Manager、OSD、MDS といったデーモンから構成される。
 
 > - [Architecture — Ceph Documentation](https://docs.ceph.com/en/reef/architecture/)
 

@@ -40,6 +40,10 @@ $ kubectl -n goldilocks port-forward svc/goldilocks-dashboard 8080:80
 
 ### CLI
 
-記入中...
+- `goldilocks controller`：Cluster 内でコントローラーとして稼働し、ラベルを付与した Namespace のワークロードに VPA を作成する
+- `goldilocks create-vpas -n foo-namespace`：指定した Namespace のワークロードに VPA を作成する
+- `goldilocks delete-vpas -n foo-namespace`：指定した Namespace から goldilocks が作成した VPA を削除する
+- `goldilocks dashboard`：VPA の推奨値を表示するダッシュボードを起動する
+- `goldilocks summary`：全ての Namespace の VPA の推奨値を `json` 形式で出力する
 
 <br>

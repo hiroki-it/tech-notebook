@@ -28,7 +28,18 @@ Kubernetes のシークレットの概念が取り入れられている。
 ## 2-02. セットアップ (Terraform の場合)
 
 ```terraform
-# 記入中...
+resource "aws_secretsmanager_secret" "foo" {
+  name       = "foo-secret"
+  kms_key_id = aws_kms_key.foo.arn
+}
+
+resource "aws_secretsmanager_secret_version" "foo" {
+  secret_id     = aws_secretsmanager_secret.foo.id
+  secret_string = jsonencode({
+    username = "foo"
+    password = var.foo_password
+  })
+}
 ```
 
 ### 設定項目

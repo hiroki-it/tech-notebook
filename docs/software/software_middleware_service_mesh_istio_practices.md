@@ -489,7 +489,7 @@ $ helm upgrade <新しいバージョンのリリース名> <チャートリポ�
 
 ### 性能
 
-記入中...
+リクエストが istio-proxy を経由する分だけレイテンシーが増加し、また istio-proxy ごとに CPU やメモリを消費するため、性能が劣化する。
 
 > - https://lib.jimmysong.io/blog/performance-and-scalability/
 

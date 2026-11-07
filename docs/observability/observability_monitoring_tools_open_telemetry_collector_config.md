@@ -398,7 +398,7 @@ exporters:
 
 ### extension とは
 
-記入中...
+テレメトリーの処理には直接関与せず、ヘルスチェックや認証、プロファイリングなどの補助的な機能を OpenTelemetry Collector に追加する。
 
 > - [opentelemetry-collector/extension/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md)
 

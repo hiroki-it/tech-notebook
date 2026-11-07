@@ -83,7 +83,7 @@ Kiali は、Deployment、ConfigMap、Service などのマニフェストから�
 
 #### ▼ 設定例
 
-記入中...
+Kiali のコンテナを実行し、ConfigMap から読み込んだ設定ファイルを指定して起動する。
 
 ```yaml
 apiVersion: v1
@@ -131,7 +131,7 @@ spec:
 
 #### ▼ 設定例
 
-記入中...
+`config.yaml` キーに Kiali の設定ファイルを定義し、Pod にマウントする。
 
 ```yaml
 apiVersion: v1
@@ -158,7 +158,7 @@ Kiali のバージョンに応じたリビジョンの Istio を指定する。
 
 #### ▼ 設定例
 
-記入中...
+`20001` 番ポートで Kiali の API とダッシュボードを公開し、`9090` 番ポートでメトリクスを公開する。
 
 ```yaml
 apiVersion: v1

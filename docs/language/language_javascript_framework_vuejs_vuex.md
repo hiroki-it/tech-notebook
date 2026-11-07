@@ -19,7 +19,7 @@ Vue.js のパッケージの 1 つで、状態を管理する。
 
 一方、Vuex ストア内で状態の変化を管理すると、親子関係にかかわらず、すべてのコンポーネント間でデータを受け渡しできるようになる。
 
-※Vuex からなるモデルはどうあるべきか、について記入中...
+※Vuex からなるモデルでは、状態とその変更方法をストアに集約し、コンポーネントから直接的に状態を変更させないようにするとよい。
 
 ![VueコンポーネントツリーとVuexの関係](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VueコンポーネントツリーとVuexの関係.png)
 

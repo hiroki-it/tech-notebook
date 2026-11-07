@@ -65,7 +65,7 @@ description: テレメトリー間の紐付け＠Datadog
 
 ### 各コンソール画面での使い方
 
-記入中...
+各コンソール画面の検索バーやフィルターでタグを指定し、テレメトリーを絞り込んだりグループ化したりする。
 
 > - https://docs.datadoghq.com/getting_started/tagging/using_tags/
 

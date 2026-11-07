@@ -26,7 +26,7 @@ Redis と Memcached がある。
 
 ### Amazon ElastiCache for Redis とは
 
-記入中...
+Redis をキャッシュエンジンとして使用し、インメモリデータストアをフルマネージドで提供する。
 
 <br>
 

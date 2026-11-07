@@ -105,7 +105,7 @@ $ java -jar app.jar
 
 ## 04. テレメトリー間の紐付け
 
-記入中...
+ログやメトリクスにトレース ID やスパン ID を付与し、テレメトリー間を紐付ける。
 
 > - [マイクロサービスの障害で胃を痛めないための「シン・オブザーバビリティ基盤」をOpenTelemetryで作る：Cloud Nativeチートシート（25） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html)
 

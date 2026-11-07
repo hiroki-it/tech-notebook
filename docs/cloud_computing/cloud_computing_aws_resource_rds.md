@@ -13,7 +13,7 @@ description: Amazon RDS＠AWSリソース
 
 ## 01. Amazon RDS とは
 
-記入中...
+AWS が提供するマネージドな RDB であり、DB エンジンとして Aurora、MySQL、MariaDB、PostgreSQL、Oracle、SQL Server、Db2 を選べる。
 
 <br>
 
@@ -22,7 +22,16 @@ description: Amazon RDS＠AWSリソース
 ## 2-02. セットアップ (Terraform の場合)
 
 ```terraform
-# 記入中...
+resource "aws_db_instance" "this" {
+  identifier                  = "foo-rds"
+  engine                      = "mysql"
+  engine_version              = "8.0"
+  instance_class              = "db.t3.micro"
+  allocated_storage           = 20
+  username                    = "admin"
+  manage_master_user_password = true
+  skip_final_snapshot         = true
+}
 ```
 
 ### 他の DB エンジンの比較

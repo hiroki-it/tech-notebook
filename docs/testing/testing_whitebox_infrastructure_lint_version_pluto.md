@@ -267,7 +267,7 @@ $ pluto detect - -o markdown
 
 kube-apiserver からの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨 apiVersion を検出する。
 
-`pluto detect-api-resources` コマンドとの違いは記入中...
+`pluto detect-api-resources` コマンドとの違いは、稼働中の Kubernetes Cluster ではなく、ファイルまたは標準入力で入力されたマニフェストを検証する点である。
 
 ```bash
 $ pluto detect - -o wide
@@ -287,7 +287,7 @@ baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autosca
 
 kube-apiserver からの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨 apiVersion を検出する。
 
-`pluto detect` コマンドとの違いは記入中...
+`pluto detect` コマンドとの違いは、稼働中の Kubernetes Cluster にある Kubernetes リソースの `kubectl.kubernetes.io/last-applied-configuration` キーから apiVersion を取得する点である。
 
 ```bash
 $ pluto detect-api-resources - -o wide

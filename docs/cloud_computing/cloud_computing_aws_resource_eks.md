@@ -309,7 +309,7 @@ etcd # Amazon EKS アップグレードインサイトで検証
 
 ### NLB
 
-記入中...
+Amazon EKS コントロールプレーンでは、NLB が kube-apiserver の前段に位置し、複数の kube-apiserver にリクエストを分散する。
 
 <br>
 
@@ -1888,7 +1888,7 @@ resource "aws_autoscaling_group" "foo" {
 
 ### on Fargate (Fargate ワーカーNode) とは
 
-記入中...
+AWS が管理する Fargate 上の実行環境を Pod ごとにワーカーNode として起動し、ユーザーが Amazon EC2 ワーカーNode を管理せずに Pod を稼働させられる。
 
 <br>
 
@@ -2058,7 +2058,7 @@ Fargate を設定する。
 
 ## 05-02. Node グループ (on Fargate)
 
-記入中...
+Fargate ワーカーNode には Node グループがなく、代わりに Fargate プロファイルを使用して、Fargate ワーカーNode にスケジューリングさせる Pod を指定する。
 
 <br>
 

@@ -93,7 +93,7 @@ RedHat 上の OSS の CVE は、RedHat CVEDB で検索できる。
 
 #### ▼ セッション ID 固定化とは
 
-記入中...
+攻撃者が自身で取得したセッション ID をユーザーに使用させ、ユーザーがそのセッション ID のままログインした後に、同じセッション ID を使用してユーザーになりすます手法。
 
 ![session-fixation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/session-fixation.png)
 
@@ -231,7 +231,7 @@ Brute-force は力ずくの意味。ID を固定して、パスワードを総�
 
 #### ▼ パスワードのパターン数
 
-記入中...
+パスワードに使用できる文字の種類数を `n`、パスワードの桁数を `m` とすると、パスワードのパターン数は `n` の `m` 乗通りになる。
 
 ![パスワードのパターン数](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パスワードのパターン数.png)
 

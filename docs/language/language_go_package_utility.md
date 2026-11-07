@@ -50,7 +50,7 @@ Go のソースコードに変更があれば、ホットリロードし、コ�
 
 #### ▼ service パッケージ
 
-記入中...
+AWS の各サービスの API を操作するクライアントが、サービスごとのパッケージとして同梱されている。
 
 > - [amplify package versions - github.com/aws/aws-sdk-go-v2/service/amplify - Go Packages](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/amplify?tab=versions)
 
@@ -946,7 +946,7 @@ OpenTelemetry の TracerProvider を作成する。
 
 ### otel/trace とは
 
-記入中...
+OpenTelemetry の Tracer、Span、SpanContext など、分散トレースに関するインターフェースや関数が同梱されている。
 
 <br>
 

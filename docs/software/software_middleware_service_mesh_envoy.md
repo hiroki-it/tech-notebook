@@ -325,7 +325,14 @@ message DiscoveryResponse {
 
 #### ▼ リクエスト内容の種類
 
-記入中...
+- `envoy.config.listener.v3.Listener`
+- `envoy.config.route.v3.RouteConfiguration`
+- `envoy.config.route.v3.ScopedRouteConfiguration`
+- `envoy.config.route.v3.VirtualHost`
+- `envoy.config.cluster.v3.Cluster`
+- `envoy.config.endpoint.v3.ClusterLoadAssignment`
+- `envoy.extensions.transport_sockets.tls.v3.Secret`
+- `envoy.service.runtime.v3.Runtime`
 
 > - [xDS REST and gRPC protocol — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#resource-types)
 
@@ -341,7 +348,7 @@ message DiscoveryResponse {
 
 ### 仮想リスナー
 
-記入中...
+`bind_to_port` キーを `false` にしてポートにバインドしないリスナーであり、`use_original_dst` キーを有効にしたリスナーから、元の宛先に合致する通信を受け取る。
 
 <br>
 

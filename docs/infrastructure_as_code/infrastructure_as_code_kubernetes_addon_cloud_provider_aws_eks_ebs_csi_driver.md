@@ -158,7 +158,7 @@ AWS EBS CSI ドライバーは、Deployment (ebs-csi-controller) 、ServiceAccou
 
 ### Deployment 配下の Pod
 
-記入中...
+ebs-csi-controller の Pod は、PersistentVolumeClaim の作成や削除を検知し、AWS API を介して Amazon EBS ボリュームを作成、削除、アタッチ、デタッチする。
 
 <br>
 

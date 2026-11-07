@@ -227,7 +227,12 @@ Envoy
 
 ### 1. 送信元 Envoy から宛先 Envoy へのリクエストヘッダー
 
-記入中...
+- `x-envoy-attempt-count`
+- `x-envoy-is-timeout-retry`
+- `x-envoy-expected-rq-timeout-ms`
+- `x-envoy-original-path`
+- `x-envoy-original-host`
+- `x-envoy-upstream-stream-duration-ms`
 
 > - [Router — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#http-request-headers-set-on-upstream-calls)
 

@@ -853,7 +853,7 @@ data:
 
 ### loglevel.controller
 
-記入中...
+Karpenter のコントローラーのログレベルを設定する。
 
 ```yaml
 apiVersion: v1
@@ -868,7 +868,7 @@ data:
 
 ### loglevel.webhook
 
-記入中...
+Karpenter の webhook のログレベルを設定する。
 
 ```yaml
 apiVersion: v1

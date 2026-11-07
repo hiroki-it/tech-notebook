@@ -78,7 +78,7 @@ data:
       <td>kube-apiserver</td>
       <td>etcd</td>
       <td>クライアント証明書</td>
-      <td>記入中...</td>
+      <td><code>/etc/kubernetes/pki/apiserver-etcd-client.crt</code> ファイル</td>
       <td>kube-apiserver が、etcd に HTTPS リクエストを送信するための証明書。</td>
     </tr>
     <tr>
@@ -106,14 +106,14 @@ data:
       <td>その他のコンポーネント</td>
       <td>kube-apiserver</td>
       <td>サーバー証明書</td>
-      <td>記入中...</td>
+      <td><code>/etc/kubernetes/pki/apiserver.crt</code> ファイル</td>
       <td>kube-apiserver が各コンポーネントから HTTPS リクエストを受信するための証明書。</td>
     </tr>
     <tr>
       <td>kube-apiserver</td>
       <td>kubelet</td>
       <td>サーバー証明書</td>
-      <td>記入中</td>
+      <td><code>/var/lib/kubelet/pki/kubelet.crt</code> ファイル</td>
       <td>kubelet が、kube-apiserver からの HTTPS リクエストを受信するための証明書。</td>
     </tr>
     <tr>
@@ -287,7 +287,7 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 
 #### ▼ カスタムリソーステナントとは
 
-記入中...
+テナントカスタムリソースを使用して、テナントごとに独立したコントロールプレーンを提供する。
 
 <br>
 
@@ -533,7 +533,7 @@ resources:
             type: Container
 ```
 
-実装方法がなかなか複雑で、移行の実装方法は記入中...
+実装方法がなかなか複雑なため、以降の実装方法は kiosk のリポジトリを参照すること。
 
 > - [Amazon Elastic Kubernetes Service で Kiosk にソフトマルチテナンシーをセットアップする \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/set-up-soft-multi-tenancy-with-kiosk-on-amazon-elastic-kubernetes-service/)
 > - [GitHub - loft-sh/kiosk: kiosk 🏢 Multi-Tenancy Extension For Kubernetes - Secure Cluster Sharing & Self-Service Namespace Provisioning · GitHub](https://github.com/loft-sh/kiosk#51-manifest-templates)

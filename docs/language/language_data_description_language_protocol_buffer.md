@@ -46,7 +46,7 @@ message Person {
 
 ### map
 
-記入中...
+キーと値の組合せからなる連想配列型のフィールドを設定する。
 
 > - [Overview \| Protocol Buffers Documentation](https://protobuf.dev/overview/#syntax)
 
@@ -71,7 +71,7 @@ message Person {
 
 ### oneof
 
-記入中...
+複数のフィールドのうち、いずれか 1 つのフィールドだけに値を設定できるグループを設定する。
 
 > - [Overview \| Protocol Buffers Documentation](https://protobuf.dev/overview/#syntax)
 

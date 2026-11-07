@@ -84,6 +84,9 @@ version: 1
 
 ## 02. goreleaser コマンド
 
-記入中...
+- `goreleaser init`：`.goreleaser.yaml` ファイルを作成する
+- `goreleaser check`：設定ファイルを検証する
+- `goreleaser build`：バイナリをビルドする
+- `goreleaser release`：バイナリをビルドし、リリースを作成する
 
 <br>

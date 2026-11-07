@@ -25,7 +25,7 @@ $ gem install grpc-tools
 
 #### ▼ gRPC サーバー
 
-記入中...
+gRPC サーバーも `grpc` パッケージで実装するため、gem リポジトリから `grpc` パッケージをインストールする。
 
 <br>
 
@@ -45,10 +45,10 @@ $ gem install grpc
 
 #### ▼ `proto` ファイル
 
-記入中...
+gRPC サーバーとクライアントの間で共有するサービスやメッセージの型を、Protocol Buffers の IDL で定義する。
 
 #### ▼ `pb.rb` ファイル
 
-記入中...
+`grpc_tools_ruby_protoc` コマンドで `proto` ファイルから自動作成する Ruby のファイルであり、メッセージの型を定義する `_pb.rb` ファイルとサービスのスタブを定義する `_services_pb.rb` ファイルがある。
 
 <br>

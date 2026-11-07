@@ -557,7 +557,7 @@ AuthorizationPolicy で認可プロバイダー (例：Keycloak、Open Policy Ag
 
 ## 06. パケットのアプリケーションデータの暗号化
 
-記入中...
+Istio は、istio-proxy 間の通信で相互 TLS を使用し、パケットのアプリケーションデータを暗号化する。
 
 <br>
 
@@ -853,12 +853,12 @@ Prometheus 上でメトリクスをクエリすると、istio-proxy の `:15020/
     <tr>
       <td><code>envoy_cluster_upstream_rq_retry_backoff_expotential</code></td>
       <td>カウント</td>
-      <td>記入中...</td>
+      <td>istio-proxy が指数バックオフで実施したリトライ数を表す。</td>
     </tr>
     <tr>
       <td><code>envoy_cluster_upstream_rq_retry_limit_exceeded</code></td>
       <td>カウント</td>
-      <td>記入中...</td>
+      <td>istio-proxy がリトライの上限回数を超えたためにリトライしなかったリクエスト数を表す。</td>
     </tr>
   </tbody>
 </table>

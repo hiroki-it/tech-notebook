@@ -49,13 +49,13 @@ $ sudo lsof -i -P | grep LISTEN
 
 ### HTTP
 
-記入中...
+クライアントとサーバーの間で、リクエストとレスポンスを平文で送受信するためのプロトコルである。
 
 <br>
 
 ### HTTPS
 
-記入中...
+HTTP の通信を TLS で暗号化し、リクエストとレスポンスを安全に送受信するためのプロトコルである。
 
 <br>
 
@@ -63,7 +63,7 @@ $ sudo lsof -i -P | grep LISTEN
 
 ### DNS
 
-記入中...
+ドメイン名と IP アドレスを相互に変換する名前解決のためのプロトコルであり、`L7` に属する。
 
 > - https://www.quora.com/If-DNS-is-a-layer-7-service-How-does-layer-3-find-out-the-IP-address
 

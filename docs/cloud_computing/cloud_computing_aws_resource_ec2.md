@@ -1047,7 +1047,7 @@ $ df -hT
 
 #### ▼ アタッチ
 
-記入中...
+AWS EBS ボリュームを、同じアベイラビリティーゾーンにある Amazon EC2 に紐付け、デバイスパスを割り当てる。
 
 > - [Attach an Amazon EBS volume to an Amazon EC2 instance - Amazon EBS](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-attaching-volume.html)
 
@@ -1241,7 +1241,7 @@ ENI に Elastic IP アドレスが紐付けられる。
 
 #### ▼ GlobalAccelerator
 
-記入中...
+クライアント IP アドレスの保持を有効にした場合、AWS Global Accelerator はエンドポイントのあるサブネットに ENI を作成し、この ENI を経由してエンドポイントにトラフィックを送信する。
 
 #### ▼ AWS NAT Gateway
 
@@ -1249,7 +1249,7 @@ ENI に紐付けられたパブリック IP アドレスを、AWS NAT Gateway �
 
 #### ▼ Amazon RDS
 
-記入中...
+Amazon RDS の DB インスタンスに ENI が紐付けられ、この ENI を経由して Amazon VPC 内からの接続を受信する。
 
 #### ▼ セキュリティグループ
 
@@ -1280,7 +1280,7 @@ Amazon VPC エンドポイントを経由すれば異なる Amazon VPC に送信
 
 ### セカンダリーIP アドレス割り当てとは
 
-記入中...
+ENI に、プライマリー IP アドレスとは別の IP アドレスを追加で割り当てる。
 
 <br>
 
