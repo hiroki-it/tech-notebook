@@ -214,7 +214,7 @@ OAuth の認可コードフローと仕組みが似ており、アクセスト�
 
 短命な認可コードを送信すると、ID プロバイダーからリフレッシュトークンを含むアクセストークンと ID トークンを取得できる。
 
-![oidc_codeflow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_codeflow.jpeg)
+![oidc_codeflow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_codeflow.png)
 
 > - https://wagby.com/wdn8/juser-oidc.html
 > - [OpenID Connect入門（Authorization Codeフローを画面遷移と共に説明します） #OIDC - Qiita](https://qiita.com/nabeatsu/items/380058915629c0ce795e#authorization-code-%E3%83%95%E3%83%AD%E3%83%BC)

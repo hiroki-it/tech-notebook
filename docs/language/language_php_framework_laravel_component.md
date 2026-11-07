@@ -2837,7 +2837,7 @@ class UpdateCommentRequest extends FormRequest
 
 コントローラーの処理前に実行する BeforeMiddle と、コントローラーとビューの処理後に実行する AfterMiddleware がある。
 
-![design-pattern_middleware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LaravelのMiddlewareクラスの仕組み.png)
+![design-pattern_middleware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/design-pattern_middleware.png)
 
 > - [Laravelミドルウェアの基本入門（＆出力HTMLをminifyしWebサイト高速化） \| Ritolabo](https://www.ritolab.com/posts/69)
 > - [ASP.NET Core - Middleware](https://www.c-sharpcorner.com/article/asp-net-core-middleware/)
@@ -5322,9 +5322,7 @@ MessageBag クラスは、Blade 上で `errors` 変数に格納されており�
 
 MessageBag クラスの `all()` 関数で、すべてのエラーメッセージを出力する。
 
-```html
-<!-- /resources/views/foo/create.blade.php -->
-
+```html title=".php"
 <h1>ポスト作成</h1>
 
 @if ($errors->any())

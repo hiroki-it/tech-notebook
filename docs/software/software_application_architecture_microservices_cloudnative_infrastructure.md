@@ -548,7 +548,7 @@ flowchart LR
 
 各手順には対応するツールがあり、よりよく監視するためには適切なツールを採用しなければなりません。
 
-![クラウドネイティブ技術とドメイン駆動設計によるマイクロサービスアーキテクチャ設計の概説-可観測性ツール一覧.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/クラウドネイティブ技術とドメイン駆動設計によるマイクロサービスアーキテクチャ設計の概説-可観測性ツール一覧.drawio.png)
+![クラウドネイティブ技術とドメイン駆動設計によるマイクロサービスアーキテクチャ設計の概説-可観測性ツール一覧.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/クラウドネイティブ技術とドメイン駆動設計によるマイクロサービスアーキテクチャ設計の概説-可観測性ツール一覧.drawio.png)
 
 [入門 監視 ―モダンなモニタリングのためのデザインパターン](https://www.amazon.co.jp/dp/4873118646)
 
@@ -583,7 +583,7 @@ Fluentd / FluentBit の配置方法には、エージェントパターン (Daem
 - istio-proxy のアクセスログ
 - EKS コントロールプレーンのログ (実行ログ、監査ログなど)
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-ログ.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-ログ.drawio.png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-ログ.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-ログ.drawio.png)
 
 <table>
   <thead>
@@ -666,7 +666,7 @@ Fluentd / FluentBit の配置方法には、エージェントパターン (Daem
 
 Prometheus Server を使用して、Amazon EKS クラスター内で作成されるメトリクスを収集します。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-メトリクス.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9.drawio.png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-メトリクス.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-メトリクス.drawio.png)
 
 <table>
   <thead>
@@ -763,7 +763,7 @@ Prometheus Server を使用して、Amazon EKS クラスター内で作成され
 
 OpenTelemetry Collector を介して、Amazon EKS クラスター内のスパンを AWS X-Ray に送信します。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-トレース.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9.drawio.png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-トレース.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-トレース.drawio.png)
 
 <table>
   <thead>
@@ -812,7 +812,7 @@ flowchart LR
 
 なぜなら、インシデント管理をセルフホストにすると、インシデント管理システムで障害が起こったことを検知できなくなるになるためです。
 
-![クラウドネイティブ技術とドメイン駆動設計によるマイクロサービスアーキテクチャ設計の概説-インシデント管理ツール一覧.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E6%8A%80%E8%A1%93%E3%81%A8%E3%83%88%E3%82%99%E3%83%A1%E3%82%A4%E3%83%B3%E9%A7%86%E5%8B%95%E8%A8%AD%E8%A8%88%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E8%80%83%E5%AF%9F-%E3%82%A4%E3%83%B3%E3%82%B7%E3%83%86%E3%82%99%E3%83%B3%E3%83%88%E7%AE%A1%E7%90%86%E3%83%84%E3%83%BC%E3%83%AB%E4%B8%80%E8%A6%A7.drawio.png)
+![クラウドネイティブ技術とドメイン駆動設計によるマイクロサービスアーキテクチャ設計の概説-インシデント管理ツール一覧.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/クラウドネイティブ技術とドメイン駆動設計によるマイクロサービスアーキテクチャ設計の概説-インシデント管理ツール一覧.drawio.png)
 
 ## インシデント対処フローパターン
 
@@ -825,7 +825,7 @@ flowchart LR
 
 ## AWS リソース、Prometheus、Slack によるインシデント管理
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-インシデント管理フロー.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%82%A4%E3%83%B3%E3%82%B7%E3%83%86%E3%82%99%E3%83%B3%E3%83%88%E7%AE%A1%E7%90%86%E3%83%95%E3%83%AD%E3%83%BC.drawio.png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-インシデント管理フロー.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-インシデント管理フロー.drawio.png)
 
 <table>
   <thead>

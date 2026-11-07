@@ -31,8 +31,7 @@ $ brew install jq
 
 以降で使用する JSON 型データを以下の通りとする。
 
-```yaml
-# data.json
+```yaml title=".json"
 {"foo": "FOO", "bar": "BAR", "baz": [{"qux": "QUX"}, {"quux": "QUUX"}]}
 ```
 

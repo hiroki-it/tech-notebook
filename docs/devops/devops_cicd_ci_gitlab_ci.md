@@ -237,9 +237,7 @@ GitLab CI では、定義した Job は自動的に実行される。
 
 また、子リポジトリで上書きできる変数を親リポジトリに設定しておく。
 
-```yaml
-# foo-job.yaml
-
+```yaml title=".yaml"
 # 変数のデフォルト値を設定しておく
 variables:
   PATH: "default"
@@ -250,9 +248,7 @@ variables:
     - cat "${PATH}"/foo.txt
 ```
 
-```yaml
-# bar-job.yaml
-
+```yaml title=".yaml"
 # 変数のデフォルト値を設定しておく
 variables:
   PATH: "default"
@@ -263,9 +259,7 @@ variables:
     - cat "${PATH}"/bar.txt
 ```
 
-```yaml
-# baz-job.yaml
-
+```yaml title=".yaml"
 # 変数のデフォルト値を設定しておく
 variables:
   PATH: "default"
@@ -1183,8 +1177,7 @@ Job が発火した場合、特定のアクションを実施する。
 
 モノレポで GitLabCI を採用している場合、 親の `.gitlab-ci.yml` ファイルでディレクトリ配下の変更を検知し、子の `.gitlab-ci.yml` ファイルを読み込む (`include`) ようにする。
 
-```yaml
-# 親の.gitlab-ci.yml
+```yaml title=".yml"
 stage:
   - build
 

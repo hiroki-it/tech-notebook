@@ -31,7 +31,7 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 暗号アルゴリズムに基づく暗号方式を使用してアプリケーションデータを暗号化することによって、アプリケーションデータの情報漏洩を防ぐ。
 
-![情報漏洩_改竄_なりすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/情報漏洩_改竄_なりすまし_1.png)
+![情報漏洩_改竄_なりすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/盗聴_改竄_成りすまし_1.png)
 
 > - [情報セキュリティの基本について \| 日本レコードマネジメント株式会社](https://nrm.recruitment.jp/column/detail/id=631)
 > - [STRIDEモデルでセキュリティ対策 - ネットセキュリティ情報と説明](https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/)
@@ -44,7 +44,7 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 署名とハッシュ関数を使用して、送信したアプリケーションデータと受信したアプリケーションデータが同じか否かを確認することによって、アプリケーションデータの改竄を防ぐ。
 
-![情報漏洩_改竄_なりすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/情報漏洩_改竄_なりすまし_2.png)
+![情報漏洩_改竄_なりすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/盗聴_改竄_成りすまし_2.png)
 
 > - [情報セキュリティの基本について \| 日本レコードマネジメント株式会社](https://nrm.recruitment.jp/column/detail/id=631)
 > - [STRIDEモデルでセキュリティ対策 - ネットセキュリティ情報と説明](https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/)
@@ -57,7 +57,7 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 署名を使用して正しい相手であることを認証することによって、なりすましを防ぐ。
 
-![情報漏洩_改竄_なりすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/情報漏洩_改竄_なりすまし_3.png)
+![情報漏洩_改竄_なりすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/盗聴_改竄_成りすまし_3.png)
 
 > - [情報セキュリティの基本について \| 日本レコードマネジメント株式会社](https://nrm.recruitment.jp/column/detail/id=631)
 > - [STRIDEモデルでセキュリティ対策 - ネットセキュリティ情報と説明](https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/)

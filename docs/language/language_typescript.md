@@ -1071,16 +1071,14 @@ export {logger} from "./logger";
 
 `index.ts` ファイルで `export` しておくと、コールする側がディレクトリ単位でインポートできるようになる。
 
-```typescript
-// utils/index.ts
+```typescript title=".ts"
 export {logger} from "./logger";
 export {logger} from "./errorHandler";
 ```
 
 アスタリスクで一括エクスポートしてもよい。
 
-```typescript
-// utils/index.ts
+```typescript title=".ts"
 export * from "./logger";
 export * from "./errorHandler";
 ```

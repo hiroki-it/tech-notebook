@@ -353,8 +353,7 @@ Unix にて、Linux の能力の `1` 個であるジョブ管理を実装する�
 
 ### `cron` ファイル
 
-```bash
-# /etc/cron.hourly/cron-hourly.txt
+```bash title=".txt"
 # バッチ処理を、毎時・1分ごとに実行するように設定する。
 1 * * * * root run-parts /etc/cron.hourly
 # <- 最後は改行する。
@@ -496,29 +495,25 @@ $ crontab <ファイルへのパス>
 
 : 拡張子は自由で、時刻とコマンドが実装されたファイルを用意する。このとき、最後に改行がないとエラー (`premature EOF`) になるため、改行を追加する。
 
-```bash
-# /etc/cron.hourly/cron-hourly.txt
+```bash title=".txt"
 # 毎時・1分
 1 * * * * root run-parts /etc/cron.hourly
 # <- 最後は改行する。
 ```
 
-```bash
-# /etc/cron.daily/cron-daily.txt
+```bash title=".txt"
 # 毎日・2時5分
 5 2 * * * root run-parts /etc/cron.daily
 # <- 最後は改行する。
 ```
 
-```bash
-# /etc/cron.monthly/cron-monthly.txt
+```bash title=".txt"
 # 毎週日曜日・2時20分
 20 2 * * 0 root run-parts /etc/cron.weekly
 # <- 最後は改行する。
 ```
 
-```bash
-# /etc/cron.weekly/cron-weekly.txt
+```bash title=".txt"
 # 毎月一日・2時40分
 40 2 1 * * root run-parts /etc/cron.monthly
 # <- 最後は改行する。

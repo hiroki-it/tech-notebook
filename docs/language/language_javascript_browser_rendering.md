@@ -157,8 +157,7 @@ localNum
 <script src="sample.js"></script>
 ```
 
-```javascript
-// sample.js
+```javascript title=".js"
 // 無名関数の即時実行。定義と呼び出しを同時に実行する。
 (function () {
   // 外側の変数 (foo) を参照できる。
@@ -447,8 +446,7 @@ Downloading 処理で読みこまれたバイト形式ファイルは、文字�
 </html>
 ```
 
-```css
-/* style.css */
+```css title=".css"
 body {
   font-size: 16px;
 }

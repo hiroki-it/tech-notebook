@@ -155,7 +155,7 @@ description: 認証アーティファクトによる分類＠認証の知見を�
 
 #### ▼ ベーシック認証の仕組み
 
-![ベーシック認証](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ベーシック認証.png)
+![ベーシック認証](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Basic認証.png)
 
 <table>
   <thead>

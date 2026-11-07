@@ -235,8 +235,7 @@ url = "http://127.0.0.1:64342/stream"
 
 #### ▼ agents
 
-```yaml
-# openai.yaml
+```yaml title=".yaml"
 interface:
   # ドルマークで検索したときに表示されるスキル名
   display_name: "do-something"

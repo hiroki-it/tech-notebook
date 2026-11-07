@@ -89,7 +89,7 @@ description: 証明書ベース認証＠認証アーティファクトによる�
 
 『なりすまし』と『改竄』を防げる署名に、『情報漏洩』を防げる公開鍵暗号方式を組み込んだ暗号化技術。
 
-![署名と暗号化](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/署名と暗号化.png)
+![署名と暗号化](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/デジタル署名と暗号化.png)
 
 <br>
 

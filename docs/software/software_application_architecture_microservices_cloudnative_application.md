@@ -61,7 +61,7 @@ flowchart LR
 
 Docker やクラウドが広まって以降、プレゼンテーション・ドメイン分離や API Gateway 配置のアーキテクチャスタイルを採用することが、当然のようになってきた印象です。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-関連するアーキテクチャスタイル.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E9%96%A2%E9%80%A3%E3%81%99%E3%82%8B%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB.drawio.png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-関連するアーキテクチャスタイル.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-関連するアーキテクチャスタイル.drawio.png)
 
 以下の表で、各アーキテクチャスタイルの責務と結合度を概説しました。
 
@@ -443,7 +443,7 @@ flowchart LR
 
 ### AWS リソースと Kubernetes によるデータ管理
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-データ管理.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-データ管理.drawio.png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-データ管理.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-データ管理.drawio.png)
 
 <table>
   <thead>
@@ -593,7 +593,7 @@ flowchart LR
 
 通信方式にリクエスト / レスポンス方式を採用する場合、アプリアーキテクチャ領域 (フロントエンド領域、API Gateway 領域、マイクロサービス領域、ストレージ領域 (DB)) 間にはクライアントと API の関係性があります。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-リクエスト／レスポンスの詳細.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-リクエスト／レスポンスの詳細.drawio.png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-リクエスト／レスポンスの詳細.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-リクエスト／レスポンスの詳細.drawio.png)
 
 <table>
   <thead>
@@ -682,7 +682,7 @@ flowchart LR
 
 ## DDD に基づく分割
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービスの適切な大きさ.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービスの適切な大きさ.drawio.png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービスの適切な大きさ.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービスの適切な大きさ.drawio.png)
 
 ### 境界づけられたコンテキスト
 
@@ -934,7 +934,7 @@ flowchart LR
 
 例えば、Amazon のような小売業の EC 業務システムを考えます。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービスの分割.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービスの分割.drawio.png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービスの分割.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービスの分割.drawio.png)
 
 1. 既存のモノリスアーキテクチャのシステム関連図 (受注管理業務システムを取り巻く周辺システムの様子) を作成する。これにより、ドメイン全体と既存システム全体の対応関係を理解できる。
 2. システムについて、ドメインエキスパート (受注管理業務のプロ) にドメインルールや振る舞いをヒアリングする。
@@ -949,7 +949,7 @@ flowchart LR
 
 各境界づけられたコンテキストを 1 つのマイクロサービスとして扱います。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービスの分割.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービスの分割.drawio.png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービスの分割.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービスの分割.drawio.png)
 
 > 💡
 >

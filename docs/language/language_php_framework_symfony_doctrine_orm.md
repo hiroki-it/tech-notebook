@@ -209,7 +209,7 @@ class Foo
 
 #### ▼ トランザクション開始、コミット、ロールバック
 
-![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コミットメント制御.jpg)
+![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コミット制御.jpg)
 
 RDB の処理用語に相当する `beginTransaction()` 関数、`commit()` 関数、`rollBack()` 関数を使用して、RDB を操作する。
 

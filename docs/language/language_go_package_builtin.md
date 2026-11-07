@@ -1319,7 +1319,7 @@ func FooMiddleware() func(http.Handler) http.Handler {
 
 コントローラーの処理前に実行する BeforeMiddleware と、コントローラーとビューの処理後に実行する AfterMiddleware がある。
 
-![design-pattern_middleware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LaravelのMiddlewareクラスの仕組み.png)
+![design-pattern_middleware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/design-pattern_middleware.png)
 
 > - [Laravelミドルウェアの基本入門（＆出力HTMLをminifyしWebサイト高速化） \| Ritolabo](https://www.ritolab.com/posts/69)
 > - [ASP.NET Core - Middleware](https://www.c-sharpcorner.com/article/asp-net-core-middleware/)

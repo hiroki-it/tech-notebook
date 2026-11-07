@@ -33,7 +33,7 @@ description: エラー＠クリーンアーキテクチャの知見を記録し�
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     type BadRequestError struct {
     	name       string
     	statusCode int
@@ -56,7 +56,7 @@ description: エラー＠クリーンアーキテクチャの知見を記録し�
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     export class BadRequestError extends Error {
       private readonly _name: string;
       private readonly _statusCode: number;
@@ -77,7 +77,7 @@ description: エラー＠クリーンアーキテクチャの知見を記録し�
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     class BadRequestError extends Exception
     {
         // エラー名
@@ -100,7 +100,7 @@ description: エラー＠クリーンアーキテクチャの知見を記録し�
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     type UnauthorizedError struct {
     	name       string
     	statusCode int
@@ -123,7 +123,7 @@ description: エラー＠クリーンアーキテクチャの知見を記録し�
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     export class UnauthorizedError extends Error {
       private readonly _name: string;
       private readonly _statusCode: number;
@@ -144,7 +144,7 @@ description: エラー＠クリーンアーキテクチャの知見を記録し�
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     class UnauthorizedError extends Exception
     {
         // エラー名
@@ -167,7 +167,7 @@ description: エラー＠クリーンアーキテクチャの知見を記録し�
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     type ForbiddenError struct {
     	name       string
     	statusCode int
@@ -190,7 +190,7 @@ description: エラー＠クリーンアーキテクチャの知見を記録し�
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     export class ForbiddenError extends Error {
       private readonly _name: string;
       private readonly _statusCode: number;
@@ -211,7 +211,7 @@ description: エラー＠クリーンアーキテクチャの知見を記録し�
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     class ForbiddenError extends Exception
     {
         // エラー名
@@ -246,7 +246,7 @@ API クライアント向けのエラーレスポンスには、クライアン�
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     // ドメイン層：ドメインルールに違反した場合、ドメイン例外を返却する
     type FooName struct {
     	value string
@@ -337,7 +337,7 @@ API クライアント向けのエラーレスポンスには、クライアン�
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     // ドメイン層：ドメインルールに違反した場合、ドメイン例外をスローする
     export class FooName {
       constructor(private readonly value: string) {
@@ -414,7 +414,7 @@ API クライアント向けのエラーレスポンスには、クライアン�
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     // ドメイン層：ドメインルールに違反した場合、ドメイン例外をスローする
     class FooName
     {
@@ -524,7 +524,7 @@ Foo ドメインオブジェクトが存在しない。
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     type FooNotFoundError struct {
     	name string
     }
@@ -544,7 +544,7 @@ Foo ドメインオブジェクトが存在しない。
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     export class FooNotFoundError extends Error {
       private readonly _name: string;
 
@@ -562,7 +562,7 @@ Foo ドメインオブジェクトが存在しない。
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     class FooNotFoundError extends Exception
     {
         // エラー名
@@ -594,7 +594,7 @@ Foo ドメインオブジェクトの登録上限を超えている。
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     type FooRegisterFailedError struct {
     	name string
     }
@@ -614,7 +614,7 @@ Foo ドメインオブジェクトの登録上限を超えている。
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     export class FooRegisterFailedError extends Error {
       private readonly _name: string;
 
@@ -632,7 +632,7 @@ Foo ドメインオブジェクトの登録上限を超えている。
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     class FooRegisterFailedError extends Exception
     {
         // エラー名
@@ -674,7 +674,7 @@ Foo ドメインオブジェクトの登録上限を超えている。
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     // 登録系ユースケース
     func RegisterFoo(ctx context.Context, name string) error {
     	fooName, err := NewFooName(name)
@@ -701,7 +701,7 @@ Foo ドメインオブジェクトの登録上限を超えている。
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     // 登録系ユースケース
     export async function registerFoo({ name }: { name: string }) {
       try {
@@ -723,7 +723,7 @@ Foo ドメインオブジェクトの登録上限を超えている。
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     class FooUsecase
     {
         public function __construct(private readonly FooRepository $fooRepository)
@@ -766,7 +766,7 @@ Foo 名が許可された最大文字数を超えている。
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     type FooNameLengthExceededError struct {
     	name      string
     	maxLength int
@@ -789,7 +789,7 @@ Foo 名が許可された最大文字数を超えている。
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     export class FooNameLengthExceededError extends Error {
       private readonly _name: string;
       private readonly _maxLength: number;
@@ -810,7 +810,7 @@ Foo 名が許可された最大文字数を超えている。
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     class FooNameLengthExceededError extends Exception
     {
         // エラー名
@@ -833,7 +833,7 @@ Foo 名が空である。
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     type FooNameRequiredError struct {
     	name string
     }
@@ -853,7 +853,7 @@ Foo 名が空である。
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     export class FooNameRequiredError extends Error {
       private readonly _name: string;
 
@@ -871,7 +871,7 @@ Foo 名が空である。
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     class FooNameRequiredError extends Exception
     {
         // エラー名
@@ -901,7 +901,7 @@ Foo 名が空である。
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     type FooName struct {
     	value string
     }
@@ -923,7 +923,7 @@ Foo 名が空である。
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     export class FooName {
       constructor(private readonly value: string) {
         // 必須のドメインルール
@@ -941,7 +941,7 @@ Foo 名が空である。
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     class FooName
     {
         public function __construct(private readonly string $value)
@@ -973,7 +973,7 @@ Foo 名が空である。
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     type UniqueConstraintError struct {
     	name string
     }
@@ -993,7 +993,7 @@ Foo 名が空である。
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     export class UniqueConstraintError extends Error {
       private readonly _name: string;
 
@@ -1011,7 +1011,7 @@ Foo 名が空である。
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     class UniqueConstraintError extends Exception
     {
         // エラー名
@@ -1035,7 +1035,7 @@ DB 接続に失敗した。
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     type DatabaseConnectionError struct {
     	name string
     }
@@ -1055,7 +1055,7 @@ DB 接続に失敗した。
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     export class DatabaseConnectionError extends Error {
       private readonly _name: string;
 
@@ -1073,7 +1073,7 @@ DB 接続に失敗した。
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     class DatabaseConnectionError extends Exception
     {
         // エラー名
@@ -1107,7 +1107,7 @@ DB 接続に失敗した。
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     err := fooRepository.Save(ctx, foo)
 
     // 制約違反の場合、重複を表すユースケース例外に詰め替える
@@ -1130,7 +1130,7 @@ DB 接続に失敗した。
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     try {
       await fooRepository.save(foo);
     } catch (error) {
@@ -1153,7 +1153,7 @@ DB 接続に失敗した。
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     try {
         $this->fooRepository->save($foo);
     } catch (UniqueConstraintError $error) {

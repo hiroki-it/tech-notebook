@@ -33,8 +33,7 @@ $ sudo chmod +x /usr/local/bin/yq
 
 以降で使用する YAML データを以下の通りとする。
 
-```yaml
-# data.yaml
+```yaml title=".yaml"
 foo: FOO
 bar: BAR
 baz:

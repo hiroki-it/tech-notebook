@@ -63,7 +63,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package valueobjects
 
     const (
@@ -107,7 +107,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     /**
      * 色の区分オブジェクト
      */
@@ -158,7 +158,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain\Foo\ValueObjects;
@@ -219,7 +219,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package valueobjects
 
     const (
@@ -262,7 +262,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     /**
      * 性別の区分オブジェクト
      */
@@ -310,7 +310,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain\Foo\ValueObjects;
@@ -367,7 +367,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package valueobjects
 
     const (
@@ -439,7 +439,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     /**
      * 年月日の区分オブジェクト
      */
@@ -520,7 +520,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain\Foo\ValueObjects;
@@ -631,7 +631,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package services
 
     import "context"
@@ -657,7 +657,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     export class CheckDuplicateFooService {
       constructor(private readonly fooRepository: FooRepository) {}
 
@@ -674,7 +674,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain\Foo\Services;
@@ -743,7 +743,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package services
 
     import "context"
@@ -769,7 +769,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     export class AuthorizeFooService {
       constructor(private readonly fooRepository: FooRepository) {}
 
@@ -786,7 +786,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain\Foo\Services;
@@ -825,7 +825,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package services
 
     type FooException struct {
@@ -838,13 +838,13 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     export class FooException extends Error {}
     ```
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain\Foo\Services;
@@ -887,7 +887,7 @@ boolean 値関数 (`isFoo()` 関数) のように、仕様を満たしている�
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package specifications
 
     type FooSpecification struct {
@@ -912,7 +912,7 @@ boolean 値関数 (`isFoo()` 関数) のように、仕様を満たしている�
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     export class FooSpecification {
       /**
        * ドメインルールを判定する
@@ -930,7 +930,7 @@ boolean 値関数 (`isFoo()` 関数) のように、仕様を満たしている�
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain\Foo\Specifications;
@@ -964,7 +964,7 @@ Specification パターンを検索条件オブジェクトとして使った場
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package criterion
 
     type FooCriteria struct {
@@ -995,7 +995,7 @@ Specification パターンを検索条件オブジェクトとして使った場
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     export class FooCriteria {
       private id?: number;
 
@@ -1029,7 +1029,7 @@ Specification パターンを検索条件オブジェクトとして使った場
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain\Foo\Criterion;
@@ -1088,7 +1088,7 @@ Specification パターンを検索条件オブジェクトとして使った場
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package entities
 
     import (
@@ -1119,7 +1119,7 @@ Specification パターンを検索条件オブジェクトとして使った場
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     import { UserId } from "@/domain/user/ids/userId";
     import { UserName } from "@/domain/user/valueObjects/userName";
 
@@ -1141,7 +1141,7 @@ Specification パターンを検索条件オブジェクトとして使った場
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     declare(strict_types=1);
@@ -1220,7 +1220,7 @@ Specification パターンを検索条件オブジェクトとして使った場
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package entities
 
     import (
@@ -1267,7 +1267,7 @@ Specification パターンを検索条件オブジェクトとして使った場
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     import { Entity } from "@/domain/entity";
     import { ToyName } from "@/domain/foo/valueObjects/toyName";
     import { Number } from "@/domain/foo/valueObjects/number";
@@ -1314,7 +1314,7 @@ Specification パターンを検索条件オブジェクトとして使った場
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain\Foo\Entities;
@@ -1406,7 +1406,7 @@ Specification パターンを検索条件オブジェクトとして使った場
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package domain
 
     // エンティティ
@@ -1428,7 +1428,7 @@ Specification パターンを検索条件オブジェクトとして使った場
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     /**
      * エンティティ抽象クラス
      */
@@ -1459,7 +1459,7 @@ Specification パターンを検索条件オブジェクトとして使った場
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain;
@@ -1507,7 +1507,7 @@ Specification パターンを検索条件オブジェクトとして使った場
 
 PHP では不要であるが、参考までに、PHP で実装した。
 
-```injectablephp
+```injectablephp title=".php"
 <?php
 
 namespace App\Domain;
@@ -1603,7 +1603,7 @@ abstract class Id
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package valueobjects
 
     // 金額の値オブジェクト
@@ -1644,7 +1644,7 @@ abstract class Id
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     /**
      * 金額の値オブジェクト
      */
@@ -1698,7 +1698,7 @@ abstract class Id
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain\Foo\ValueObjects;
@@ -1766,7 +1766,7 @@ abstract class Id
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package valueobjects
 
     import "math"
@@ -1812,7 +1812,7 @@ abstract class Id
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     /**
      * 所要時間の値オブジェクト
      */
@@ -1865,7 +1865,7 @@ abstract class Id
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain\Foo\ValueObjects;
@@ -1930,7 +1930,7 @@ abstract class Id
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package valueobjects
 
     import "fmt"
@@ -1977,7 +1977,7 @@ abstract class Id
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     /**
      * 住所の値オブジェクト
      */
@@ -2027,7 +2027,7 @@ abstract class Id
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain\Foo\ValueObjects;
@@ -2096,7 +2096,7 @@ abstract class Id
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package valueobjects
 
     // 名前の文字数上限下限
@@ -2139,7 +2139,7 @@ abstract class Id
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     /**
      * 氏名クラスの値オブジェクト
      */
@@ -2196,7 +2196,7 @@ abstract class Id
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain\Foo\ValueObjects;
@@ -2271,7 +2271,7 @@ abstract class Id
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package valueobjects
 
     // 値オブジェクト
@@ -2293,7 +2293,7 @@ abstract class Id
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     /**
      * 値オブジェクト
      */
@@ -2318,7 +2318,7 @@ abstract class Id
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain\Foo\ValueObjects;
@@ -2355,7 +2355,7 @@ Test01 クラスインスタンスの `$property01` データに値を設定す�
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package main
 
     func main() {
@@ -2369,7 +2369,7 @@ Test01 クラスインスタンスの `$property01` データに値を設定す�
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     const test01 = new Test01();
 
     test01.setProperty01("データ01の値");
@@ -2379,7 +2379,7 @@ Test01 クラスインスタンスの `$property01` データに値を設定す�
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     $test01 = new Test01;
@@ -2397,7 +2397,7 @@ Test02 クラスインスタンスの `$property02` データに値を設定す�
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package main
 
     func main() {
@@ -2409,7 +2409,7 @@ Test02 クラスインスタンスの `$property02` データに値を設定す�
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     let test02 = new Test02("データ02の値");
 
     test02 = new Test02("新しいデータ02の値");
@@ -2417,7 +2417,7 @@ Test02 クラスインスタンスの `$property02` データに値を設定す�
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     $test02 = new Test02("データ02の値");
@@ -2437,7 +2437,7 @@ Test02 クラスインスタンスの `$property02` データに値を設定す�
 
 すると、マジック関数のオーバーライド機能により、自身で定義した `__get()` 関数が代わりにコールされる。そのため、ゲッターを定義する必要がなくなる。
 
-```injectablephp
+```injectablephp title=".php"
 <?php
 
 declare(strict_types=1);
@@ -2470,7 +2470,7 @@ trait ImmutableTrait
 }
 ```
 
-```injectablephp
+```injectablephp title=".php"
 <?php
 
 class Foo
@@ -2495,7 +2495,7 @@ $foo->bar; // __get関数が代わりにコールされ、プロパティ値が�
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package main
 
     // ここに実装例
@@ -2503,13 +2503,13 @@ $foo->bar; // __get関数が代わりにコールされ、プロパティ値が�
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     // ここに実装例
     ```
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     // ここに実装例
@@ -2537,7 +2537,7 @@ $foo->bar; // __get関数が代わりにコールされ、プロパティ値が�
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package valueobjects
 
     // 連絡先メールアドレスの値オブジェクト
@@ -2562,7 +2562,7 @@ $foo->bar; // __get関数が代わりにコールされ、プロパティ値が�
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     /**
      * 連絡先メールアドレスの値オブジェクト
      */
@@ -2587,7 +2587,7 @@ $foo->bar; // __get関数が代わりにコールされ、プロパティ値が�
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain\Foo\ValueObjects;
@@ -2625,7 +2625,7 @@ $foo->bar; // __get関数が代わりにコールされ、プロパティ値が�
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package valueobjects
 
     // 支払情報の値オブジェクト
@@ -2657,7 +2657,7 @@ $foo->bar; // __get関数が代わりにコールされ、プロパティ値が�
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     /**
      * 支払情報の値オブジェクト
      */
@@ -2695,7 +2695,7 @@ $foo->bar; // __get関数が代わりにコールされ、プロパティ値が�
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain\Foo\ValueObjects;
@@ -2748,7 +2748,7 @@ $foo->bar; // __get関数が代わりにコールされ、プロパティ値が�
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package domain
 
     import "reflect"
@@ -2771,7 +2771,7 @@ $foo->bar; // __get関数が代わりにコールされ、プロパティ値が�
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     /**
      * 値オブジェクト抽象クラス
      */
@@ -2794,7 +2794,7 @@ $foo->bar; // __get関数が代わりにコールされ、プロパティ値が�
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain;
@@ -2843,7 +2843,7 @@ EC サイトであれは、業務フローに沿って、以下のルートエ�
 
 === "Go"
 
-    ```go
+    ```go title=".go"
     package entities
 
     import (
@@ -2881,7 +2881,7 @@ EC サイトであれは、業務フローに沿って、以下のルートエ�
 
 === "TypeScript"
 
-    ```typescript
+    ```typescript title=".ts"
     import { Id } from "@/domain/id";
     import { DogToy } from "@/domain/dog/entities/dogToy";
     import { DogFood } from "@/domain/dog/entities/dogFood";
@@ -2928,7 +2928,7 @@ EC サイトであれは、業務フローに沿って、以下のルートエ�
 
 === "PHP"
 
-    ```injectablephp
+    ```injectablephp title=".php"
     <?php
 
     namespace App\Domain\Foo\Entities;

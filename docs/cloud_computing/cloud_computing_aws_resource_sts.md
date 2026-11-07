@@ -293,7 +293,7 @@ Cognito を ID プロバイダーとして使用するように、信頼され�
 
 #### ▼ Amazon EKS を ID プロバイダーとする場合
 
-![Amazon EKS_oidc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/EKS_oidc.png)
+![Amazon EKS_oidc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
 
 Amazon EKS を ID プロバイダーとして使用するように、`Federated` キーで Amazon EKS Cluster の識別子を設定する。
 

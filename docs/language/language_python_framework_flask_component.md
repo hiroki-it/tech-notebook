@@ -197,8 +197,7 @@ Cookie: session=*****
 
 Python のコードを配置するディレクトリに `__init__.py` ファイルを配置し、ここで Flask クラスのインスタンスを作成する関数を定義する。
 
-```python
-# __init__.py
+```python title=".py"
 from flask import Flask
 
 def create_app():

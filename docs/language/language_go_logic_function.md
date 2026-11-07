@@ -274,8 +274,7 @@ func main() {
 // 以下のパッケージ名とする
 ```
 
-```text
-// go.mod
+```text title=".mod"
 module example.com/foo
 ```
 

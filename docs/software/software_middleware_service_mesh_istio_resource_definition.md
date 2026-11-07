@@ -461,7 +461,7 @@ VirtualService を起点とした Pod のカナリアリリースで使用する
 
 `.spec.subsets[*].name` キーの値は、VirtualService で設定した `.spec.http[*].route[*].destination.subset` キーに合わせる必要がある。
 
-![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png)
+![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_destination-rule_subset.png)
 
 `subset` が `v1` に対するインバウンド通信では、`version` キーの値が `v1` である Pod にルーティングする。
 
@@ -1340,6 +1340,7 @@ spec:
 複数の istio-proxy にレートリミットを設定するグローバルレートリミットと、特定のものに設定するローカルレートリミットがある。
 
 <br>
+
 ### ローカルリミット
 
 #### ▼ 任意のリクエストに対して
@@ -3525,7 +3526,7 @@ spec:
 
 #### ▼ destination.subset
 
-![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png)
+![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_destination-rule_subset.png)
 
 VirtualService を起点とした Pod のカナリアリリースで使用する。
 
