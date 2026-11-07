@@ -43,6 +43,8 @@ theme:
     - navigation.indexes
     - search.suggest
     - toc.follow
+    # 同じラベルのタブをページ全体で連動して切り替える
+    - content.tabs.link
 
 # URL形式
 use_directory_urls: false
@@ -107,6 +109,9 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  # コードブロックのタブ切り替え
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.inlinehilite
   # URLテキストのリンク化
   - pymdownx.magiclink
