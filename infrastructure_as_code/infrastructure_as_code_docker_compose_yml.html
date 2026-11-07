@@ -34712,7 +34712,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:10:37 JST">2026-11-07</span>
   </span>
 
     
@@ -34743,12 +34743,6 @@
 <p><br></p>
 <h2 id="01-docker-composeyml">01. docker-compose.yml とは<a class="headerlink" href="#01-docker-composeyml" title="Permanent link">&para;</a></h2>
 <p>コンテナを宣言的に定義し、コンテナのプロビジョニングを実行する。</p>
-<p>プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker.html">【IT技術の知見】Docker＠コンテナ型仮想化 - 俺の技術ノート</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 <h2 id="02-services">02. services<a class="headerlink" href="#02-services" title="Permanent link">&para;</a></h2>
 <h3 id="services"><code>services</code> とは<a class="headerlink" href="#services" title="Permanent link">&para;</a></h3>
@@ -35168,12 +35162,6 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 </ul>
 </blockquote>
 <p>MySQL コンテナの datadir ディレクトリ (<code>/var/lib/mysql</code>) に、docker エリアのボリュームをマウントする。</p>
-<p>datadir ディレクトリについては、以下のリンクを参考にせよ。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_conf.html">【IT技術の知見】設定ファイル＠MySQL - 俺の技術ノート</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="nt">service</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">db</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql</span>
@@ -35404,12 +35392,6 @@ DRIVER<span class="w">    </span>VOLUME<span class="w"> </span>NAME
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n n-Quoted">`test`</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="s1">'utf8mb4_general_ci'</span><span class="w"> </span><span class="k">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="s1">'utf8mb4'</span><span class="p">;</span>
 <span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">'foo'</span><span class="nv">@'%'</span><span class="w"> </span><span class="p">;</span>
 </code></pre></div>
-<p>PHPUnit で接続する DB を指定する方法については、以下のリンクを参考にせよ。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php.html">【IT技術の知見】PHPのテストツール＠ホワイトボックステスト - 俺の技術ノート</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 
   

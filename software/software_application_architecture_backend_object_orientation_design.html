@@ -34370,7 +34370,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:10:37 JST">2026-11-07</span>
   </span>
 
     
@@ -34408,11 +34408,6 @@
 <p><br></p>
 <h3 id="_5">構造とドメインルール/制約の視点<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>ドメインモデル図がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html">【IT技術の知見】ドメイン駆動設計＠アーキテクチャ - 俺の技術ノート</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 <h2 id="02">02. クラス図<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">クラス図とは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
@@ -34424,31 +34419,15 @@
 <p><img alt="データとして保持する関係性" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データとして保持する関係性.png" /></p>
 <p>『has-one』『has-many』な関係と表現され、より具体的に説明すると、状態として保持する関係性である。</p>
 <p>Association (関連) 、Aggregation (集約) 、Composition (合成) が使用される。</p>
-<p>『Association ＞ Aggregation ＞ Composition』の順で、依存性が低くなる。実装例は以下のリンクを参考にせよ。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html">【IT技術の知見】クラス＠PHP - 俺の技術ノート</a></li>
-</ul>
-</blockquote>
+<p>『Association ＞ Aggregation ＞ Composition』の順で、依存性が低くなる。</p>
 <h4 id="is-a-kind-of">▼ is-a-kind-of (グループとメンバーの関係性)<a class="headerlink" href="#is-a-kind-of" title="Permanent link">&para;</a></h4>
 <p><img alt="グループとメンバーの関係性" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループとメンバーの関係性.png" /></p>
 <p>『is-a-kind-of』な関係と表現され、より具体的に説明すると、グループとメンバーの関係性である。</p>
-<p>Generalization (汎化) 、Realization (実現) が使用される。実装例は以下のリンクを参考にせよ。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html">【IT技術の知見】クラス＠PHP - 俺の技術ノート</a></li>
-</ul>
-</blockquote>
+<p>Generalization (汎化) 、Realization (実現) が使用される。</p>
 <h4 id="use">▼ use (引数型/返却値型として使用する関係性)<a class="headerlink" href="#use" title="Permanent link">&para;</a></h4>
 <p><img alt="引数型または返却値型として使用する関係性" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/引数型または返却値型として使用する関係性.png" /></p>
 <p>『use』な関係と表現され、より具体的に説明すると、引数型/返却値型として使用する関係性である。</p>
 <p>Dependency (依存) が使用される。</p>
-<p>実装例は以下のリンクを参考にせよ。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html">【IT技術の知見】クラス＠PHP - 俺の技術ノート</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 <h3 id="_8">状態として保持する関係性の多重度<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="multiplicity">▼ multiplicity (多重度) とは<a class="headerlink" href="#multiplicity" title="Permanent link">&para;</a></h4>
