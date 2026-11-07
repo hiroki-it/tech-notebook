@@ -283,7 +283,7 @@ ORM のデータモデルをエンティティそのままに使用する場合�
 
 #### ▼ DTO を使用しない場合
 
-```typescript
+```typescript title=".ts"
 import {PrismaClient} from "@prisma/client";
 import {User} from "../domain/user";
 import {UserId} from "../domain/userId";
@@ -330,7 +330,7 @@ export const save = async (
 
 #### ▼ DTO を使用する場合
 
-```typescript
+```typescript title=".ts"
 import {PrismaClient} from "@prisma/client";
 
 import {User} from "../domain/user";

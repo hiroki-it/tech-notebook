@@ -27,7 +27,7 @@ Trait 自体は不完全なクラスであり、インスタンス化できな�
 
 また、親クラスでトレイトを読み込むと、子クラスでもトレイトを使用できる。
 
-```injectablephp
+```injectablephp title=".php"
 <?php
 
 trait FooTrait
@@ -60,7 +60,7 @@ $bar->foo(); // Hello World
 
 マジックゲッター関数とマジックセッター関数がコールされることを禁止する。
 
-```injectablephp
+```injectablephp title=".php"
 <?php
 
 declare(strict_types=1);
@@ -112,7 +112,7 @@ trait UnsupportedMagicMethodTrait
 
 #### ▼ クラスから関数をコール
 
-```injectablephp
+```injectablephp title=".php"
 <?php
 
 class Foo
@@ -126,7 +126,7 @@ class Foo
 }
 ```
 
-```injectablephp
+```injectablephp title=".php"
 <?php
 
 // 外部ファイル名を指定して、クラスを読み込む。
@@ -144,7 +144,7 @@ class Bar
 
 #### ▼ クラスから定数をコール
 
-```injectablephp
+```injectablephp title=".php"
 <?php
 
 // 外部ファイル名を指定して、クラスを読み込む。
@@ -162,7 +162,7 @@ class Bar
 
 #### ▼ 非クラスから関数をコール
 
-```injectablephp
+```injectablephp title=".php"
 <?php
 
 function printTest(): string {
@@ -170,7 +170,7 @@ function printTest(): string {
 }
 ```
 
-```injectablephp
+```injectablephp title=".php"
 <?php
 
 // 外部ファイル名を指定して読み込む。
@@ -203,7 +203,7 @@ Composer のオートロード機能を有効化したうえで、外部ファ�
 
 クラスの `namespace` を `use` 文で指定する。
 
-```injectablephp
+```injectablephp title=".php"
 <?php
 
 // 名前空間を定義。
@@ -221,7 +221,7 @@ class Foo
 }
 ```
 
-```injectablephp
+```injectablephp title=".php"
 <?php
 
 namespace Domain\Foo;
@@ -241,7 +241,7 @@ class Bar
 
 #### ▼ 外部ファイルのクラスから定数をコール
 
-```injectablephp
+```injectablephp title=".php"
 <?php
 
 namespace Domain\Foo;

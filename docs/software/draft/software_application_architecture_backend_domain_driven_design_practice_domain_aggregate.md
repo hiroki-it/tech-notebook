@@ -1414,7 +1414,7 @@ npx jest src/Domain/models/Review/Review.test.ts
 - レビュアーの名前変更（`"updateName"`）、評価変更（`"updateRating"`）
 - レビュアーのコメント編集（`"editComment"`）
 
-```typescript
+```typescript title=".ts"
 import {BookId} from "../Book/BookId/BookId";
 import {Comment} from "./Comment/Comment";
 import {Name} from "./Name/Name";
@@ -1660,7 +1660,7 @@ npx jest src/Domain/models/Book/Book.test.ts
 - `Book` 集約の同一性判定（`"equals"`）
 - 書籍価格の変更（`"changePrice"`）
 
-```typescript
+```typescript title=".ts"
 import {Author} from "./Author/Author";
 import {Book} from "./Book";
 import {BookId} from "./BookId/BookId";

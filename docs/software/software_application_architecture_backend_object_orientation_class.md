@@ -1712,7 +1712,7 @@ User は UserName に依存している。
 
 Pimple パッケージを使用した場合
 
-```injectablephp
+```injectablephp title=".php"
 <?php
 
 use Pimple\Container as PimpleContainer;
@@ -1738,14 +1738,14 @@ class Container extends PimpleContainer
 }
 ```
 
-```injectablephp
+```injectablephp title=".php"
 <?php
 
 // autoload.php で、IoCコンテナ自体のインスタンスを事前に作成。
 $container = new Container();
 ```
 
-```injectablephp
+```injectablephp title=".php"
 <?php
 
 // IoCコンテナの読み出し

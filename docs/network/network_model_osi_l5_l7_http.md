@@ -947,7 +947,7 @@ HTTP はステートレスなプロトコルであるが、Cookie 情報によ�
 
 クライアントから受信したリクエストの `Cookie` ヘッダーの内容は、グローバル変数に格納されている。
 
-```injectablephp
+```injectablephp title=".php"
 <?php
 
 $_COOKIE = ["Cookie名" => "値"];
@@ -1067,7 +1067,7 @@ GoogleConsole におけるセッションについては、以下のリンクを
 
 もしクライアントにすでにセッション ID が発行されている場合、セッションデータを参照するようになる。
 
-```injectablephp
+```injectablephp title=".php"
 <?php
 
 // セッションの開始。セッションIDを発行する。
