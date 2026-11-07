@@ -1474,6 +1474,66 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_2" id="__nav_5_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ ドメイン駆動設計
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ ドメイン駆動設計
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="software_application_architecture_backend_domain_driven_design.html" class="md-nav__link">
         
@@ -1502,8 +1562,74 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="software_application_architecture_backend_domain_driven_design_strategic_design.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    戦略的設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_backend_domain_driven_design_tactical_design.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    戦術的設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
+      
+        
       
         
       
@@ -1687,6 +1813,34 @@
     
   
     インフラストラクチャ層
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_backend_domain_driven_design_clean_architecture_errors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エラー
   
 
     
@@ -35662,7 +35816,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 21:37:52 JST">2026-11-07</span>
   </span>
 
     
@@ -36546,14 +36700,9 @@ istio-sidecar-injector-1-11-0<span class="w">       </span><span class="m">1</sp
 istio-revision-tag-default<span class="w">          </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 現在のリビジョン (1.10.0) 定義するdefaultタグを持つ</span>
 </code></pre></div>
 </li>
-</ol>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+<li>
 <p>エイリアス (<code>istio.io/tag</code> キーの値) を指定して、リビジョンを書き換える。</p>
 <p>これにより、<code>istio-revision-tag-default</code>の<code>default</code>タグが指すリビジョンが変更される。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>tag<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default<span class="w"> </span>--revision<span class="w"> </span><span class="m">1</span>-11-0<span class="w"> </span>--overwrite
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># MutatingWebhookConfiguration</span>
@@ -36564,12 +36713,9 @@ istio-sidecar-injector-1-10-0<span class="w">       </span><span class="m">1</sp
 istio-sidecar-injector-1-11-0<span class="w">       </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 1.11.0 (今回のアップグレード先)</span>
 istio-revision-tag-default<span class="w">          </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 現在のリビジョン (1.11.0) 定義するdefaultタグを持つ</span>
 </code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>また、<code>istioctl tag list</code> コマンドでも、リビジョンが <code>1-11-0</code> になったことを確認できる。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>tag<span class="w"> </span>list
 
 TAG<span class="w">       </span>REVISION<span class="w">  </span>NAMESPACES
@@ -36586,6 +36732,8 @@ istio.io/tag:<span class="w"> </span>default
 <li><a href="https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action">https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action</a></li>
 </ul>
 </blockquote>
+</li>
+</ol>
 <p><br></p>
 <h2 id="proxy-status">proxy-status<a class="headerlink" href="#proxy-status" title="Permanent link">&para;</a></h2>
 <h3 id="proxy-status_1">proxy-status とは<a class="headerlink" href="#proxy-status_1" title="Permanent link">&para;</a></h3>

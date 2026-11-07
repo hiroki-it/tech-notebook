@@ -1474,6 +1474,66 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_2" id="__nav_5_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ ドメイン駆動設計
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ ドメイン駆動設計
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../software/software_application_architecture_backend_domain_driven_design.html" class="md-nav__link">
         
@@ -1502,8 +1562,74 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../software/software_application_architecture_backend_domain_driven_design_strategic_design.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    戦略的設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software/software_application_architecture_backend_domain_driven_design_tactical_design.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    戦術的設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
+      
+        
       
         
       
@@ -1687,6 +1813,34 @@
     
   
     インフラストラクチャ層
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software/software_application_architecture_backend_domain_driven_design_clean_architecture_errors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エラー
   
 
     
@@ -34088,7 +34242,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:36:04 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 21:37:52 JST">2026-11-07</span>
   </span>
 
     
@@ -34201,17 +34355,15 @@ Don<span class="err">'</span>t<span class="w"> </span>use<span class="w"> </span
 </ol>
 <p><br></p>
 <h3 id="_9">結果の評価<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<dl>
-<dt><code>(7)</code></dt>
-<dd>
+<ol start="7">
+<li>
 <p>JMeter の GUI 版にて、スレッドグループに、結果をツリーで表示、結果を表で表示のリスナーを追加する。</p>
 <p>これらの画面で、<code>jtl</code>ファイルを読み込むと、<code>jtl</code>ファイルに基づく集計データを得られる。</p>
-</dd>
-<dt><code>(8)</code></dt>
-<dd>
+</li>
+<li>
 <p>各種の Amazon CloudWatch Metrics にて、テスト時間帯に着目し、プロットから、数値を読み取る。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <p><br></p>
 <h2 id="04">04. ストレステスト<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <p>スレッド数を段階的に増やして想定以上の負荷をかけ、システムが処理できなくなる限界の負荷と、その時の挙動を確認する。</p>
