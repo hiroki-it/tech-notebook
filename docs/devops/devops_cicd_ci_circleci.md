@@ -19,27 +19,17 @@ CircleCI では、VCS からコードを取得した Services Cluster がビル�
 
 ### CI パイプライン/CD パイプライン
 
-`(1)`
+1. テストクラスを実装したうえで、新機能を設計実装する。
 
-: テストクラスを実装したうえで、新機能を設計実装する。
+2. リポジトリへプッシュすると、CI ツールが GitHub からブランチの状態を取得する。
 
-`(2)`
+3. CI ツールによって、CI パイプラインが実行される。
 
-: リポジトリへプッシュすると、CI ツールが GitHub からブランチの状態を取得する。
+4. CIOps を採用している場合に、CD パイプラインも実行される。
 
-`(3)`
+5. 結果を通知することも可能。
 
-: CI ツールによって、CI パイプラインが実行される。
-
-`(4)`
-
-: CIOps を採用している場合に、CD パイプラインも実行される。
-
-`(5)`
-
-: 結果を通知することも可能。
-
-![継続的インテグレーション](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/継続的インテグレーション.png)
+    ![継続的インテグレーション](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/継続的インテグレーション.png)
 
 <br>
 
@@ -117,17 +107,15 @@ $ circleci local execute -c .circleci/process.yml --job <job名>
 
 #### ▼ CircleCI コンテナに SSH 公開鍵認証
 
-`(1)`
+1. CircleCI 用に鍵を作成してもよいが、ここでは GitHub の鍵をそのまま使用することとする。
 
-: CircleCI 用に鍵を作成してもよいが、ここでは GitHub の鍵をそのまま使用することとする。
+    GitHubの秘密鍵の中身をコピーし、CircleCIのプロジェクト設定に登録する。
 
-     GitHubの秘密鍵の中身をコピーし、CircleCIのプロジェクト設定に登録する。
+    この時、他の連携サービスと区別しやすいように、ホスト名を`github`とする。
 
-     この時、他の連携サービスと区別しやすいように、ホスト名を`github`とする。
-
-```bash
-$ pbcopy < ~/.ssh/github/<秘密鍵名>
-```
+    ```bash
+    $ pbcopy < ~/.ssh/github/<秘密鍵名>
+    ```
 
 `(3)`
 

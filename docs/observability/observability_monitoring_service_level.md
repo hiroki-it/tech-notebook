@@ -43,21 +43,13 @@ description: サービスレベル＠監視の知見を記録しています。
 
 EC サイトであれば、以下の一連の行動がクリティカルユーザージャーニーとなる。
 
-`(1)`
+1. 商品を検索する。
 
-: 商品を検索する。
+2. 該当の商品を閲覧する。
 
-`(2)`
+3. 商品をカートに追加する。
 
-: 該当の商品を閲覧する。
-
-`(3)`
-
-: 商品をカートに追加する。
-
-`(4)`
-
-: 商品を購入する。
+4. 商品を購入する。
 
 > - [Learn how to set SLOs -- SRE tips \| Google Cloud Blog](https://cloud.google.com/blog/products/management-tools/practical-guide-to-setting-slos)
 > - [より意味のある監視を目指して、外形監視の有効活用 - Speaker Deck](https://speakerdeck.com/dogggggo/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19)

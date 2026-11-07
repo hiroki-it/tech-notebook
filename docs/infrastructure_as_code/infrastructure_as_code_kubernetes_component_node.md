@@ -506,110 +506,90 @@ MemoryAccounting=true
 
 #### ▼ Containerd のインストールの事前作業
 
-`(1)`
+1. `/etc/modules-load.d/containerd.conf` ファイルに、カーネルモジュールを設定する。
 
-: `/etc/modules-load.d/containerd.conf` ファイルに、カーネルモジュールを設定する。
+    > - [コンテナランタイム \| Kubernetes](https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#%E5%BF%85%E8%A6%81%E3%81%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E8%BF%BD%E5%8A%A0)
 
-> - [コンテナランタイム \| Kubernetes](https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#%E5%BF%85%E8%A6%81%E3%81%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E8%BF%BD%E5%8A%A0)
+    ```bash
+    overlay
+    br_netfilter
+    ```
 
-```bash
-overlay
-br_netfilter
-```
+2. カーネルモジュールを読み込む。
 
-`(2)`
+    ```bash
+    $ modprobe overlay
+    $ modprobe br_netfilter
+    ```
 
-: カーネルモジュールを読み込む。
+3. `/etc/sysctl.d/99-kubernetes-cri.conf` ファイルに、カーネルオプションを設定する。
 
-```bash
-$ modprobe overlay
-$ modprobe br_netfilter
-```
+    ```bash
+    net.bridge.bridge-nf-call-iptables=1
+    net.ipv4.ip_forward=1
+    net.bridge.bridge-nf-call-ip6tables=1
+    ```
 
-`(3)`
+    > - [Kubernetesのインストール方法の解説 （Ubuntu20.04.3＋containerd＋flannel） \| めもたんす](https://www.memotansu.jp/kubernetes/3790/#toc2)
 
-: `/etc/sysctl.d/99-kubernetes-cri.conf` ファイルに、カーネルオプションを設定する。
+4. カーネルに設定を反映する。
 
-```bash
-net.bridge.bridge-nf-call-iptables=1
-net.ipv4.ip_forward=1
-net.bridge.bridge-nf-call-ip6tables=1
-```
-
-> - [Kubernetesのインストール方法の解説 （Ubuntu20.04.3＋containerd＋flannel） \| めもたんす](https://www.memotansu.jp/kubernetes/3790/#toc2)
-
-`(4)`
-
-: カーネルに設定を反映する。
-
-```bash
-$ sysctl --system
-```
+    ```bash
+    $ sysctl --system
+    ```
 
 #### ▼ Containerd のインストール
 
-`(1)`
+1. 要件のパッケージをインストールする。
 
-: 要件のパッケージをインストールする。
+    ```bash
+    $ apt-get update -y \
+      && apt-get install -y \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        software-properties-common
+    ```
 
-```bash
-$ apt-get update -y \
-  && apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    software-properties-common
-```
+2. Docker 公式の提供する GPG キーを追加する。
 
-`(2)`
+    ```bash
+    $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+    ```
 
-: Docker 公式の提供する GPG キーを追加する。
+3. リポジトリを追加する。
 
-```bash
-$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-```
+    ```bash
+    $ add-apt-repository \
+        "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+        $(lsb_release -cs) \
+        stable"
+    ```
 
-`(3)`
+4. Containerd をインストールする。
 
-: リポジトリを追加する。
-
-```bash
-$ add-apt-repository \
-    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-    $(lsb_release -cs) \
-    stable"
-```
-
-`(4)`
-
-: Containerd をインストールする。
-
-```bash
-$ apt-get update && apt-get install containerd.io
-```
+    ```bash
+    $ apt-get update && apt-get install containerd.io
+    ```
 
 > - [コンテナランタイム \| Kubernetes](https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
 
 #### ▼ Containerd の設定ファイルの準備
 
-`(1)`
+1. 設定ファイルとして、`/etc/containerd/config.toml` ファイルを作成する。
 
-: 設定ファイルとして、`/etc/containerd/config.toml` ファイルを作成する。
+    > - [コンテナランタイム \| Kubernetes](https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
 
-> - [コンテナランタイム \| Kubernetes](https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
+    ```bash
+    $ mkdir -p /etc/containerd
+    $ containerd config default | sudo tee /etc/containerd/config.toml
+    ```
 
-```bash
-$ mkdir -p /etc/containerd
-$ containerd config default | sudo tee /etc/containerd/config.toml
-```
+2. Containerd に設定を反映する。
 
-`(2)`
-
-: Containerd に設定を反映する。
-
-```bash
-$ systemctl restart containerd
-```
+    ```bash
+    $ systemctl restart containerd
+    ```
 
 #### ▼ kubelet による Containerd の指定
 

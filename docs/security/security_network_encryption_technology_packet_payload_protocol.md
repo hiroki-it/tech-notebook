@@ -173,15 +173,11 @@ SSH を経由して、ファイルフォワーディングを実行する。
 
 SSH の能力をより拡張したプロトコルである。
 
-`(1)`
+1. クライアントは、リモート通信先のサーバーにファイル送信を命令する。
 
-: クライアントは、リモート通信先のサーバーにファイル送信を命令する。
+2. サーバーは、Shell を使用して SCP プログラムを起動し、クライアントにファイルを送信する。
 
-`(2)`
-
-: サーバーは、Shell を使用して SCP プログラムを起動し、クライアントにファイルを送信する。
-
-![SCPの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SCPの仕組み.png)
+    ![SCPの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SCPの仕組み.png)
 
 #### ▼ ファイルを要求する側に必要なソフトウェア
 

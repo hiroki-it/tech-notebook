@@ -178,71 +178,59 @@ description: 認証アーティファクトによる分類＠認証の知見を�
   </tbody>
 </table>
 
-`(1)`
+1. 最初、クライアントは、認証後にリクエストを送信できる Web ページのリクエストをサーバーに送信する。
 
-: 最初、クライアントは、認証後にリクエストを送信できる Web ページのリクエストをサーバーに送信する。
+    ```yaml
+    GET https://example.com/foo-form
+    ```
 
-```yaml
-GET https://example.com/foo-form
-```
+2. サーバーは、これ拒否し、`401` ステータスで realm 名を設定し、レスポンスを返信する。
 
-`(2)`
+    これにより、realm名の値をユーザーに示して、ユーザー名とパスワードの入力を求められる。
 
-: サーバーは、これ拒否し、`401` ステータスで realm 名を設定し、レスポンスを返信する。
+    ユーザーに表示するためのrealm名には、任意の値を持たせられ、サイト名が設定されることが多い。
 
-     これにより、realm名の値をユーザーに示して、ユーザー名とパスワードの入力を求められる。
+    ```yaml
+    401 Unauthorized
+    ---
+    WWW-Authenticate: Basic realm="<realm名>", charaset="UTF-8"
+    ```
 
-     ユーザーに表示するためのrealm名には、任意の値を持たせられ、サイト名が設定されることが多い。
+3. 『`<ユーザー名>:<パスワード>`』を base64 方式でエンコードした値を `Authorization` ヘッダーに割り当て、リクエストを送信する。
 
-```yaml
-401 Unauthorized
----
-WWW-Authenticate: Basic realm="<realm名>", charaset="UTF-8"
-```
+    ```yaml
+    POST https://example.com/foo-form
+    ---
+    Authorization: Basic bG9naW46cGFzc3dvcmQ=
+    ```
 
-`(3)`
+4. サーバーは、ユーザー名とパスワードを照合し、合致していれば、認証後の Web ページを返信する。
 
-: 『`<ユーザー名>:<パスワード>`』を base64 方式でエンコードした値を `Authorization` ヘッダーに割り当て、リクエストを送信する。
+    また、認証アーティファクトをブラウザのWebストレージに保管する。
 
-```yaml
-POST https://example.com/foo-form
----
-Authorization: Basic bG9naW46cGFzc3dvcmQ=
-```
+    ```yaml
+    200 OK
+    ---
+    WWW-Authenticate: Basic realm=""
+    ```
 
-`(4)`
+5. 認証の解除時は、誤った認証アーティファクトをブラウザに意図的に送信させて認証を失敗する。
 
-: サーバーは、ユーザー名とパスワードを照合し、合致していれば、認証後の Web ページを返信する。
+    ```yaml
+    POST https://example.com/foo-form/logout
+    ---
+    authorization: Basic <誤った認証アーティファクト>
+    ```
 
-     また、認証アーティファクトをブラウザのWebストレージに保管する。
+    > - https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out
 
-```yaml
-200 OK
----
-WWW-Authenticate: Basic realm=""
-```
+6. サーバーは、`401` ステータスでレスポンスを返信し、認証が解除される。
 
-`(5)`
-
-: 認証の解除時は、誤った認証アーティファクトをブラウザに意図的に送信させて認証を失敗する。
-
-```yaml
-POST https://example.com/foo-form/logout
----
-authorization: Basic <誤った認証アーティファクト>
-```
-
-> - https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out
-
-`(6)`
-
-: サーバーは、`401` ステータスでレスポンスを返信し、認証が解除される。
-
-```yaml
-401 Unauthorized
----
-WWW-Authenticate: Basic realm="<realm名>", charaset="UTF-8"
-```
+    ```yaml
+    401 Unauthorized
+    ---
+    WWW-Authenticate: Basic realm="<realm名>", charaset="UTF-8"
+    ```
 
 <br>
 
@@ -451,83 +439,73 @@ Bearer 認証にて、トークンとして使用する。
 
 ### Bearer 認証の仕組み
 
-`(1)`
+1. 指定されたエンドポイントに対して、`POST` リクエストを送信する。
 
-: 指定されたエンドポイントに対して、`POST` リクエストを送信する。
+    この時、`Content-Type`ヘッダーを`application/x-www-form-urlencoded`とする。
 
-     この時、`Content-Type`ヘッダーを`application/x-www-form-urlencoded`とする。
+    必要なボディパラメーターはAPIの提供元によって異なる。クライアントID、付与タイプなどが必要なことが多い。
 
-     必要なボディパラメーターはAPIの提供元によって異なる。クライアントID、付与タイプなどが必要なことが多い。
+    > - [アクセストークンのリクエスト方法 \| Amazon Device Messaging](https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format)
+    > - https://ja.developer.box.com/reference/post-oauth2-token/#request
 
-> - [アクセストークンのリクエスト方法 \| Amazon Device Messaging](https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format)
-> - https://ja.developer.box.com/reference/post-oauth2-token/#request
+    ```yaml
+    POST https://example.com/foo
+    ---
+    Content-Type: application/x-www-form-urlencoded
+    ---
+    # ボディ
+    client_id=*****&grant_type=client_credentials&scope=messaging:push
+    ```
 
-```yaml
-POST https://example.com/foo
----
-Content-Type: application/x-www-form-urlencoded
----
-# ボディ
-client_id=*****&grant_type=client_credentials&scope=messaging:push
-```
+2. レスポンスボディに Bearer トークンを含むレスポンスが返信される。
 
-`(2)`
+    他に、有効期限、権限のスコープ、指定できる認証スキーマなどが提供されることが多い。
 
-: レスポンスボディに Bearer トークンを含むレスポンスが返信される。
+    > - [アクセストークンのリクエスト方法 \| Amazon Device Messaging](https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format)
+    > - https://ja.developer.box.com/reference/resources/access-token/
 
-     他に、有効期限、権限のスコープ、指定できる認証スキーマなどが提供されることが多い。
+    ```yaml
+    200 OK
+    ---
+    X-Amzn-RequestId: d917ceac-2245-11e2-a270-0bc161cb589d
+    Content-Type: application/json
+    ---
+    {
+      "access_token": "*****",
+      "expires_in": 3600,
+      "scope": "messaging:push",
+      "token_type": "Bearer",
+    }
+    ```
 
-> - [アクセストークンのリクエスト方法 \| Amazon Device Messaging](https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format)
-> - https://ja.developer.box.com/reference/resources/access-token/
+3. 発行された Bearer トークンを指定された認証スキーマで `Authorization` ヘッダーに割り当て、リクエストを送信する。
 
-```yaml
-200 OK
----
-X-Amzn-RequestId: d917ceac-2245-11e2-a270-0bc161cb589d
-Content-Type: application/json
----
-{
-  "access_token": "*****",
-  "expires_in": 3600,
-  "scope": "messaging:push",
-  "token_type": "Bearer",
-}
-```
+    ここでは詳しく言及しないが、Bearerトークンをフォーム認証のように```Cookie```ヘッダーに割り当てることもある。
 
-`(3)`
+    > - https://stackoverflow.com/questions/34817617/should-jwt-be-stored-in-localstorage-or-cookie
+    > - https://ja.developer.box.com/reference/post-oauth2-token/#response
 
-: 発行された Bearer トークンを指定された認証スキーマで `Authorization` ヘッダーに割り当て、リクエストを送信する。
+    ```yaml
+    POST https://example.com/foo
+    ---
+    authorization: Bearer <Bearerトークン>
+    ```
 
-     ここでは詳しく言及しないが、Bearerトークンをフォーム認証のように```Cookie```ヘッダーに割り当てることもある。
+4. サーバーは、Bearer トークンを照合し、合致していれば、認証後の Web ページを返信する。
 
-> - https://stackoverflow.com/questions/34817617/should-jwt-be-stored-in-localstorage-or-cookie
-> - https://ja.developer.box.com/reference/post-oauth2-token/#response
+    無効なBearerトークンをブラックリストとしてRedis/DBで管理しておく。
 
-```yaml
-POST https://example.com/foo
----
-authorization: Bearer <Bearerトークン>
-```
+    DBでブラックリストを管理すると、リクエストの度にDBアクセス処理が実行されることなってしまうため、Redisでこれを管理したほうが良い。
 
-`(4)`
+    ```yaml
+    200 OK
+    ---
+    WWW-Authenticate: Bearer realm=""
+    ```
 
-: サーバーは、Bearer トークンを照合し、合致していれば、認証後の Web ページを返信する。
+5. 認証の解除時は、Redis/DB で Bearer トークンの状態を無効化する。
 
-     無効なBearerトークンをブラックリストとしてRedis/DBで管理しておく。
-
-     DBでブラックリストを管理すると、リクエストの度にDBアクセス処理が実行されることなってしまうため、Redisでこれを管理したほうが良い。
-
-```yaml
-200 OK
----
-WWW-Authenticate: Bearer realm=""
-```
-
-`(5)`
-
-: 認証の解除時は、Redis/DB で Bearer トークンの状態を無効化する。
-
-     またサーバーは、`401`ステータスでレスポンスを返信し、認証が解除される。
+    またサーバーは、`401`ステータスでレスポンスを返信し、認証が解除される。
 
 > - https://stackoverflow.com/questions/21978658/invalidating-json-web-tokens
 > - https://medium.com/devgorilla/how-to-log-out-when-using-jwt-a8c7823e8a6

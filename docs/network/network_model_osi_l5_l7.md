@@ -25,21 +25,17 @@ description: L5 ~ L7＠OSI参照モデルの知見を記録しています。
 
 ![application_expose-port](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/application_expose-port.png)
 
-`(1)`
-
-: 各アプリケーションがプロセスとして稼働しており、プロセスがパケットペイロードの元になるアプリケーションデータを作成する。
+1. 各アプリケーションがプロセスとして稼働しており、プロセスがパケットペイロードの元になるアプリケーションデータを作成する。
 
     アプリケーションデータに、IPヘッダーとトランスポートヘッダーを追加し、パケットペイロードとする。
 
-`(2)`
+2. 各プロセスは特定のポート番号を受信する。
 
-: 各プロセスは特定のポート番号を受信する。
+    補足として、ポート番号を使用しているプロセスの一覧は、以下のコマンドで表示できる。
 
-     補足として、ポート番号を使用しているプロセスの一覧は、以下のコマンドで表示できる。
-
-```bash
-$ sudo lsof -i -P | grep LISTEN
-```
+    ```bash
+    $ sudo lsof -i -P | grep LISTEN
+    ```
 
 > - [netstatコマンドでポートに紐づいたプロセスを調べよう！ \| .LOG](https://netdekagaku.com/netstat-command/)
 
@@ -77,27 +73,17 @@ HTTP の通信を TLS で暗号化し、リクエストとレスポンスを安�
 
 ![smtp_pop3_imap4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/smtp_pop3_imap4.png)
 
-`(1)`
+1. 送信元アプリ (例：任意のアプリ、Gmail など) は、メールを送信する。
 
-: 送信元アプリ (例：任意のアプリ、Gmail など) は、メールを送信する。
+2. SMTP サーバー (送信元メールサーバー) は、メールを受信する。
 
-`(2)`
+    なお、宛先にも仲介用のSMTPサーバーがある場合がある。
 
-: SMTP サーバー (送信元メールサーバー) は、メールを受信する。
+3. SMTP サーバーは、メールを POP/IMAP サーバー (宛先メールサーバー) にフォワーディングする。
 
-     なお、宛先にも仲介用のSMTPサーバーがある場合がある。
+4. POP/IMAP サーバーは、メールを保管する。
 
-`(3)`
-
-: SMTP サーバーは、メールを POP/IMAP サーバー (宛先メールサーバー) にフォワーディングする。
-
-`(4)`
-
-: POP/IMAP サーバーは、メールを保管する。
-
-`(5)`
-
-: 宛先のアプリ( 例：任意のアプリ、Gmail など) は、各々が指定したプロトコルに応じて、POP/IMAP サーバーからメールデータを定期的に取得する。
+5. 宛先のアプリ( 例：任意のアプリ、Gmail など) は、各々が指定したプロトコルに応じて、POP/IMAP サーバーからメールデータを定期的に取得する。
 
 > - [【送受信編】「POP」や「IMAP」ってよくわからない・・という人必見 \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/pc/article/basic/20120312/1043605/)
 

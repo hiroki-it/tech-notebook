@@ -331,13 +331,9 @@ DB インスタンスがマルチ AZ 構成の場合、以下の手順を使用�
 
 > - https://lab.taf-jp.com/rds%E3%81%AE%E3%83%95%E3%82%A7%E3%82%A4%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/
 
-`(1)`
+1. アプリケーションの接続先をプライマリーインスタンスにする。
 
-: アプリケーションの接続先をプライマリーインスタンスにする。
-
-`(2)`
-
-: 特定の条件下のみで、フェイルオーバーが自動的に実行される。
+2. 特定の条件下のみで、フェイルオーバーが自動的に実行される。
 
 > - [Configuring and managing a Multi-AZ deployment for Amazon RDS - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html#Concepts.MultiAZ.Failover)
 

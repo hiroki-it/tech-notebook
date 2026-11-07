@@ -62,105 +62,89 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 
 ### ストレージの変更方法
 
-`(1)`
+1. ストレージのサイズを現状から `100`GB まで拡張する。
 
-: ストレージのサイズを現状から `100`GB まで拡張する。
+2. ストレージサイズを OS に適用するため、OS を再起動する。
 
-`(2)`
+3. パーティション、物理ボリューム、論理ボリューム、ファイルシステムは拡張できていないため、拡張していく。
 
-: ストレージサイズを OS に適用するため、OS を再起動する。
+    > - [【Linux】LVMで論理ボリューム拡張-4ステップで設定できる \| ほそぼそ話](https://isleofhoso.com/linux-lvm-extend/)
 
-`(3)`
+    ```bash
+    $ lsblk
+    
+    NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+    sda             8:0    0  100G  0 disk             # <--- ストレージの拡張を適用できている。
+    ├─sda1          8:1    0    1G  0 part /boot
+    └─sda2          8:2    0   49G  0 part             # <--- パーティションを拡張できていない。
+      ├─root      253:0    0   44G  0 lvm  /           # <--- 論理ボリュームを拡張できていない。
+      └─swap      253:1    0    5G  0 lvm  [SWAP]
+    sr0            11:0    1 1024M  0 rom
+    ```
 
-: パーティション、物理ボリューム、論理ボリューム、ファイルシステムは拡張できていないため、拡張していく。
+    ```bash
+    $ df -hT
+    
+    Filesystem            Type       Size  Used  Avail  Use%  Mounted on
+    devtmpfs              devtmpfs   3.8G     0  3.8G     0%  /dev
+    tmpfs                 tmpfs      3.8G     0  3.8G     0%  /dev/shm
+    tmpfs                 tmpfs      3.8G  8.9M  3.8G     1%  /run
+    tmpfs                 tmpfs      3.8G     0  3.8G     0%  /sys/fs/cgroup
+    /dev/root             xfs         44G  4.9G   40G    12%  /               # <--- ファイルシステムを拡張できていない。
+    /dev/sda1             xfs       1014M  194M  821M    20%  /boot
+    tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
+    ```
 
-> - [【Linux】LVMで論理ボリューム拡張-4ステップで設定できる \| ほそぼそ話](https://isleofhoso.com/linux-lvm-extend/)
+4. パーティションを `growpart` コマンドで拡張する。
 
-```bash
-$ lsblk
+    ```bash
+    $ growpart /dev/sda 2
+    ```
 
-NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-sda             8:0    0  100G  0 disk             # <--- ストレージの拡張を適用できている。
-├─sda1          8:1    0    1G  0 part /boot
-└─sda2          8:2    0   49G  0 part             # <--- パーティションを拡張できていない。
-  ├─root      253:0    0   44G  0 lvm  /           # <--- 論理ボリュームを拡張できていない。
-  └─swap      253:1    0    5G  0 lvm  [SWAP]
-sr0            11:0    1 1024M  0 rom
-```
+5. 論理ボリュームを拡張できるように、事前に物理ボリュームを `pvresize` コマンドで拡張する。
 
-```bash
-$ df -hT
+    ```bash
+    $ pvresize /dev/sda2
+    ```
 
-Filesystem            Type       Size  Used  Avail  Use%  Mounted on
-devtmpfs              devtmpfs   3.8G     0  3.8G     0%  /dev
-tmpfs                 tmpfs      3.8G     0  3.8G     0%  /dev/shm
-tmpfs                 tmpfs      3.8G  8.9M  3.8G     1%  /run
-tmpfs                 tmpfs      3.8G     0  3.8G     0%  /sys/fs/cgroup
-/dev/root             xfs         44G  4.9G   40G    12%  /               # <--- ファイルシステムを拡張できていない。
-/dev/sda1             xfs       1014M  194M  821M    20%  /boot
-tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
-```
+6. 論理ボリュームを `lvextend` コマンドで拡張する。ここでは、空きサイズいっぱいに拡張する。
 
-`(4)`
+    ```bash
+    $ lvextend -l +100%FREE /dev/root
+    ```
 
-: パーティションを `growpart` コマンドで拡張する。
+7. パーティションのマウントポイントを指定し、ファイルシステムのサイズを拡張する。
 
-```bash
-$ growpart /dev/sda 2
-```
+    ```bash
+    $ xfs_growfs -d /
+    ```
 
-`(5)`
+8. パーティション、物理ボリューム、論理ボリューム、ファイルシステムを拡張できた。
 
-: 論理ボリュームを拡張できるように、事前に物理ボリュームを `pvresize` コマンドで拡張する。
+    ```bash
+    $ lsblk
+    
+    NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+    sda             8:0    0  100G  0 disk             # <--- OK
+    ├─sda1          8:1    0    1G  0 part /boot
+    └─sda2          8:2    0   99G  0 part             # <--- OK
+      ├─root      253:0    0   94G  0 lvm  /           # <--- OK
+      └─swap      253:1    0    5G  0 lvm  [SWAP]
+    sr0            11:0    1 1024M  0 rom
+    ```
 
-```bash
-$ pvresize /dev/sda2
-```
-
-`(6)`
-
-: 論理ボリュームを `lvextend` コマンドで拡張する。ここでは、空きサイズいっぱいに拡張する。
-
-```bash
-$ lvextend -l +100%FREE /dev/root
-```
-
-`(7)`
-
-: パーティションのマウントポイントを指定し、ファイルシステムのサイズを拡張する。
-
-```bash
-$ xfs_growfs -d /
-```
-
-`(8)`
-
-: パーティション、物理ボリューム、論理ボリューム、ファイルシステムを拡張できた。
-
-```bash
-$ lsblk
-
-NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-sda             8:0    0  100G  0 disk             # <--- OK
-├─sda1          8:1    0    1G  0 part /boot
-└─sda2          8:2    0   99G  0 part             # <--- OK
-  ├─root      253:0    0   94G  0 lvm  /           # <--- OK
-  └─swap      253:1    0    5G  0 lvm  [SWAP]
-sr0            11:0    1 1024M  0 rom
-```
-
-```bash
-$ df -hT
-
-Filesystem            Type       Size  Used  Avail  Use%  Mounted on
-devtmpfs              devtmpfs   3.8G     0  3.8G     0%  /dev
-tmpfs                 tmpfs      3.8G     0  3.8G     0%  /dev/shm
-tmpfs                 tmpfs      3.8G  8.9M  3.8G     1%  /run
-tmpfs                 tmpfs      3.8G     0  3.8G     0%  /sys/fs/cgroup
-/dev/mapper/rhel-root xfs         94G  5.3G   89G     6%  /                # <--- OK
-/dev/sda1             xfs       1014M  194M  821M    20%  /boot
-tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
-```
+    ```bash
+    $ df -hT
+    
+    Filesystem            Type       Size  Used  Avail  Use%  Mounted on
+    devtmpfs              devtmpfs   3.8G     0  3.8G     0%  /dev
+    tmpfs                 tmpfs      3.8G     0  3.8G     0%  /dev/shm
+    tmpfs                 tmpfs      3.8G  8.9M  3.8G     1%  /run
+    tmpfs                 tmpfs      3.8G     0  3.8G     0%  /sys/fs/cgroup
+    /dev/mapper/rhel-root xfs         94G  5.3G   89G     6%  /                # <--- OK
+    /dev/sda1             xfs       1014M  194M  821M    20%  /boot
+    tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
+    ```
 
 <br>
 
@@ -565,60 +549,52 @@ NFS サーバーに配置されたファイルを、他のサーバー (NFS ク�
 
 #### ▼ NFS の場合
 
-`(1)`
+1. ホスト側の MacOS にて、`/etc/exports` ファイルにマウントオプションを設定する。また、`/etc/exports` ファイルを検証する。
 
-: ホスト側の MacOS にて、`/etc/exports` ファイルにマウントオプションを設定する。また、`/etc/exports` ファイルを検証する。
+    > - [macOS CatalinaからNFS exportsするには #nfs - Qiita](https://qiita.com/imaiworks/items/b657046ea499ec8fd95c)
 
-> - [macOS CatalinaからNFS exportsするには #nfs - Qiita](https://qiita.com/imaiworks/items/b657046ea499ec8fd95c)
+    ```bash
+    # マウントオプションを設定する。
+    $ echo '
+      "/System/Volumes/Data/Users/hiroki.hasegawa/projects/<マウント元のディレクトリ>"
+      -network <マウント先のサーバーのIPアドレス>
+      -mask 255.255.255.0
+      -alldirs
+      -maproot=root:wheel
+      ' >> /etc/exports
+    
+    # 検証
+    $ nfsd checkexports
+    ```
 
-```bash
-# マウントオプションを設定する。
-$ echo '
-  "/System/Volumes/Data/Users/hiroki.hasegawa/projects/<マウント元のディレクトリ>"
-  -network <マウント先のサーバーのIPアドレス>
-  -mask 255.255.255.0
-  -alldirs
-  -maproot=root:wheel
-  ' >> /etc/exports
+2. MacOS に NFS サーバーを起動する。
 
-# 検証
-$ nfsd checkexports
-```
+    ```bash
+    # nfsdプロセスを起動する
+    $ sudo nfsd start
+    
+    # 動作確認
+    $ showmount -e localhost
+    
+    Exports list on localhost:
+    <マウント元のディレクトリ> <マウント先のサーバーのIPアドレス>
+    ```
 
-`(2)`
+3. NFS クライアントにて、必要なパッケージをインストールする。
 
-: MacOS に NFS サーバーを起動する。
+    > - [nfsマウント #Ubuntu - Qiita](https://qiita.com/tukiyo3/items/c4dfd6a12bf3255ddc78)
 
-```bash
-# nfsdプロセスを起動する
-$ sudo nfsd start
+    ```bash
+    # Ubuntuの場合
+    $ sudo apt-get install -y nfs-common
+    ```
 
-# 動作確認
-$ showmount -e localhost
+4. NFS クライアントにて、マウントを実行する。
 
-Exports list on localhost:
-<マウント元のディレクトリ> <マウント先のサーバーのIPアドレス>
-```
-
-`(3)`
-
-: NFS クライアントにて、必要なパッケージをインストールする。
-
-> - [nfsマウント #Ubuntu - Qiita](https://qiita.com/tukiyo3/items/c4dfd6a12bf3255ddc78)
-
-```bash
-# Ubuntuの場合
-$ sudo apt-get install -y nfs-common
-```
-
-`(4)`
-
-: NFS クライアントにて、マウントを実行する。
-
-```bash
-$ sudo mount -t nfs \
-    <MacOSのIPアドレス>:/System/Volumes/Data/Users/hiroki.hasegawa/projects/<マウント元のディレクトリ> \
-    <マウントポイント>
-```
+    ```bash
+    $ sudo mount -t nfs \
+        <MacOSのIPアドレス>:/System/Volumes/Data/Users/hiroki.hasegawa/projects/<マウント元のディレクトリ> \
+        <マウントポイント>
+    ```
 
 <br>

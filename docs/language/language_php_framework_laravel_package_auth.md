@@ -754,210 +754,190 @@ OAuth では、以下のトークン付与タイプを実装できる。
 
 #### ▼ バックエンド側の実装
 
-`(1)`
+1. `guards` キーにて、認証方式を設定する。ここでは、`api` を設定する。
 
-: `guards` キーにて、認証方式を設定する。ここでは、`api` を設定する。
-
-```injectablephp
-<?php
-
-return [
-
-    // ...
-
-    "defaults" => [
-        "guard" => "api",
-        "passwords" => "users",
-    ],
-
-    // ...
-];
-```
-
-`(2)`
-
-: OAuth (認証フェーズ + 認可フェーズ) を実行するために、`auth.php` ファイルで、`driver` キーに passport ドライバを設定する。また、`provider` キーで、`users` を設定する。
-
-```injectablephp
-<?php
-
-return [
-
-    // ...
-
-    "guards" => [
-        "web" => [
-            "driver"   => "session",
-            "provider" => "users",
+    ```injectablephp
+    <?php
+    
+    return [
+    
+        // ...
+    
+        "defaults" => [
+            "guard" => "api",
+            "passwords" => "users",
         ],
+    
+        // ...
+    ];
+    ```
 
-        "api" => [
-            "driver"   => "passport",
-            "provider" => "users",
-            "hash"     => false,
+2. OAuth (認証フェーズ + 認可フェーズ) を実行するために、`auth.php` ファイルで、`driver` キーに passport ドライバを設定する。また、`provider` キーで、`users` を設定する。
+
+    ```injectablephp
+    <?php
+    
+    return [
+    
+        // ...
+    
+        "guards" => [
+            "web" => [
+                "driver"   => "session",
+                "provider" => "users",
+            ],
+    
+            "api" => [
+                "driver"   => "passport",
+                "provider" => "users",
+                "hash"     => false,
+            ],
         ],
-    ],
+    
+        // ...
+    ];
+    ```
 
-    // ...
-];
-```
+3. `auth.php` ファイルにて、`driver` キーに eloquent ドライバを設定する。
 
-`(3)`
+    また、`model`キーで資格情報テーブルに対応するEloquentのEloquentモデルを設定する。
 
-: `auth.php` ファイルにて、`driver` キーに eloquent ドライバを設定する。
+    ここでは、Userクラスを設定する。Laravelでは、Eloquentモデルに対応するテーブル名はクラス名の複数形になるため、usersテーブルに資格情報が格納されることになる。
 
-     また、`model`キーで資格情報テーブルに対応するEloquentのEloquentモデルを設定する。
+    もしDBファサードのクエリビルダーを使用したい場合は、`database`ドライバを設定する。
 
-     ここでは、Userクラスを設定する。Laravelでは、Eloquentモデルに対応するテーブル名はクラス名の複数形になるため、usersテーブルに資格情報が格納されることになる。
-
-     もしDBファサードのクエリビルダーを使用したい場合は、`database`ドライバを設定する。
-
-```injectablephp
-<?php
-
-return [
-
-    // ...
-
-    "providers" => [
-        "users" => [
-            "driver" => "eloquent",
-            // Eloquentモデルは自由に指定できる。
-            "model"  => App\Models\User::class,
+    ```injectablephp
+    <?php
+    
+    return [
+    
+        // ...
+    
+        "providers" => [
+            "users" => [
+                "driver" => "eloquent",
+                // Eloquentモデルは自由に指定できる。
+                "model"  => App\Models\User::class,
+            ],
+    
+            // "users" => [
+            //     "driver" => "database",
+            //     "table" => "users",
+            // ],
         ],
+    
+        // ...
+    ];
+    ```
 
-        // "users" => [
-        //     "driver" => "database",
-        //     "table" => "users",
-        // ],
-    ],
+4. User へのルーティング時に、`middleware()` 関数による認証ガードを実行する。
 
-    // ...
-];
-```
+    これにより、OAuthに成功したユーザーのみがルーティングを行えるようになる。
 
-`(4)`
+    ```injectablephp
+    <?php
+    
+    Route::get("user", "UserController@index")->middleware("auth:api");
+    ```
 
-: User へのルーティング時に、`middleware()` 関数による認証ガードを実行する。
+5. 認証ガードを行った Eloquent モデルに対して、HasAPIToken、Notifiable の Trait をコールする。
 
-     これにより、OAuthに成功したユーザーのみがルーティングを行えるようになる。
-
-```injectablephp
-<?php
-
-Route::get("user", "UserController@index")->middleware("auth:api");
-```
-
-`(5)`
-
-: 認証ガードを行った Eloquent モデルに対して、HasAPIToken、Notifiable の Trait をコールする。
-
-```injectablephp
-<?php
-
-namespace App\Domain\DTO;
-
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Laravel\Passport\HasApiTokens;
-
-class User extends Authenticatable
-{
-    use HasApiTokens, Notifiable;
-
-    // ...
-}
-```
-
-`(6)`
-
-: Passport の `routes()` 関数をコールする。
-
-     これにより、Passportの認証フェーズに関わる全てのルーティング (`/oauth/xxx`) が有効になる。
-
-     また、リフレッシュトークンを含むアクセストークンを発行できるようになる。
-
-```injectablephp
-<?php
-
-use Laravel\Passport\Passport;
-
-class AuthServiceProvider extends ServiceProvider
-{
-    // ...
-
-    public function boot(): void
+    ```injectablephp
+    <?php
+    
+    namespace App\Domain\DTO;
+    
+    use Illuminate\Notifications\Notifiable;
+    use Illuminate\Foundation\Auth\User as Authenticatable;
+    use Laravel\Passport\HasApiTokens;
+    
+    class User extends Authenticatable
     {
-        $this->registerPolicies();
-
-        Passport::routes();
+        use HasApiTokens, Notifiable;
+    
+        // ...
     }
-}
-```
+    ```
 
-`(7)`
+6. Passport の `routes()` 関数をコールする。
 
-: 暗号キーとユーザーを作成する。
+    これにより、Passportの認証フェーズに関わる全てのルーティング (`/oauth/xxx`) が有効になる。
 
-```bash
-$ php artisan passport:keys
+    また、リフレッシュトークンを含むアクセストークンを発行できるようになる。
 
-$ php artisan passport:client --password
-```
+    ```injectablephp
+    <?php
+    
+    use Laravel\Passport\Passport;
+    
+    class AuthServiceProvider extends ServiceProvider
+    {
+        // ...
+    
+        public function boot(): void
+        {
+            $this->registerPolicies();
+    
+            Passport::routes();
+        }
+    }
+    ```
+
+7. 暗号キーとユーザーを作成する。
+
+    ```bash
+    $ php artisan passport:keys
+    
+    $ php artisan passport:client --password
+    ```
 
 #### ▼ クライアントアプリ側の実装
 
-`(1)`
+1. 『認証』のために、アクセストークンのリクエストを送信する。
 
-: 『認証』のために、アクセストークンのリクエストを送信する。
+    ユーザー側のアプリケーションは、`/oauth/authorize`へリクエストを送信する必要がある。
 
-     ユーザー側のアプリケーションは、`/oauth/authorize`へリクエストを送信する必要がある。
+    ここでは、リクエストGuzzleパッケージを使用して、リクエストを送信するものとする。
 
-     ここでは、リクエストGuzzleパッケージを使用して、リクエストを送信するものとする。
+    ```injectablephp
+    <?php
+    
+    $http = new GuzzleHttp\Client;
+    
+    $response = $http->post("http://your-app.com/oauth/token", [
+        "form_params" => [
+            "grant_type"    => "password",
+            "client_id"     => "client-id",
+            "client_secret" => "client-secret",
+            "username"      => "foo@example.com",
+            "password"      => "my-password",
+            "scope"         => "",
+        ],
+    ]);
+    ```
 
-```injectablephp
-<?php
+2. アクセストークンを含む JSON 型データを受信する。
 
-$http = new GuzzleHttp\Client;
+    ```yaml
+    {"token_type": "Bearer", "expires_in": 31536000, "access_token": "*****"}
+    ```
 
-$response = $http->post("http://your-app.com/oauth/token", [
-    "form_params" => [
-        "grant_type"    => "password",
-        "client_id"     => "client-id",
-        "client_secret" => "client-secret",
-        "username"      => "foo@example.com",
-        "password"      => "my-password",
-        "scope"         => "",
-    ],
-]);
-```
+3. ヘッダーにアクセストークンを含めて、認証ガードの設定されたバックエンド側のルーティングへリクエストを送信する。
 
-`(2)`
+    レスポンスのメッセージボディからデータを取得する。
 
-: アクセストークンを含む JSON 型データを受信する。
-
-```yaml
-{"token_type": "Bearer", "expires_in": 31536000, "access_token": "*****"}
-```
-
-`(3)`
-
-: ヘッダーにアクセストークンを含めて、認証ガードの設定されたバックエンド側のルーティングへリクエストを送信する。
-
-     レスポンスのメッセージボディからデータを取得する。
-
-```injectablephp
-<?php
-
-$response = $client->request("GET", "/api/user", [
-    "headers" => [
-        "Accept"        => "application/json",
-        "Authorization" => "Bearer <アクセストークン>",
-    ]
-]);
-
-return (string)$response->getBody();
-```
+    ```injectablephp
+    <?php
+    
+    $response = $client->request("GET", "/api/user", [
+        "headers" => [
+            "Accept"        => "application/json",
+            "Authorization" => "Bearer <アクセストークン>",
+        ]
+    ]);
+    
+    return (string)$response->getBody();
+    ```
 
 #### ▼ API ガード用のテーブル
 
@@ -1000,59 +980,53 @@ class CreateUsersTable extends Migration
 
 #### ▼ バックエンド側の実装
 
-`(1)`
+1. 暗号キーとユーザーを作成する。
 
-: 暗号キーとユーザーを作成する。
+    ```bash
+    $ php artisan passport:keys
+    
+    $ php artisan passport:client --personal
+    ```
 
-```bash
-$ php artisan passport:keys
-
-$ php artisan passport:client --personal
-```
-
-`(2)`
-
-: 作成したユーザーに、クライアント ID を付与する。
+2. 作成したユーザーに、クライアント ID を付与する。
 
     IDプロバイダーでクライアントIDを事前に発行しておく。
 
-```injectablephp
-<?php
-
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Laravel\Passport\Passport;
-
-class AuthServiceProvider extends ServiceProvider
-{
-    /**
-     * 全認証／認可の登録
-     */
-    public function boot(): void
+    ```injectablephp
+    <?php
+    
+    use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+    use Laravel\Passport\Passport;
+    
+    class AuthServiceProvider extends ServiceProvider
     {
-        $this->registerPolicies();
-
-        Passport::routes();
-
-        Passport::personalAccessClientId("<クライアントID>");
+        /**
+         * 全認証／認可の登録
+         */
+        public function boot(): void
+        {
+            $this->registerPolicies();
+    
+            Passport::routes();
+    
+            Passport::personalAccessClientId("<クライアントID>");
+        }
     }
-}
-```
+    ```
 
-`(3)`
+3. Laravel にクライアント ID を含むリクエストを送信すると、Laravel はアクセストークンをレスポンスする。
 
-: Laravel にクライアント ID を含むリクエストを送信すると、Laravel はアクセストークンをレスポンスする。
-
-```injectablephp
-<?php
-
-$user = User::find(1);
-
-// スコープ無しのアクセストークンを作成する
-$token = $user->createToken("<任意のアクセストークン文字列>")->accessToken;
-
-// スコープ付きのアクセストークンを作成する
-$token = $user->createToken("<任意のアクセストークン文字列>", ["place-orders"])->accessToken;
-```
+    ```injectablephp
+    <?php
+    
+    $user = User::find(1);
+    
+    // スコープ無しのアクセストークンを作成する
+    $token = $user->createToken("<任意のアクセストークン文字列>")->accessToken;
+    
+    // スコープ付きのアクセストークンを作成する
+    $token = $user->createToken("<任意のアクセストークン文字列>", ["place-orders"])->accessToken;
+    ```
 
 > - [8.x Laravel Passport Laravel](https://readouble.com/laravel/8.x/ja/passport.html#personal-access-tokens)
 

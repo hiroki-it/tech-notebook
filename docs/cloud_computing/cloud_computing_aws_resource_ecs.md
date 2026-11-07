@@ -1001,31 +1001,19 @@ exit ${EXIT_STATUS}
 
 #### ▼ ローリングアップデート
 
-`(1)`
+1. 最小ヘルス率の設定値を基に、ローリングアップデート時の稼働中タスクの最低合計数が決定される。
 
-: 最小ヘルス率の設定値を基に、ローリングアップデート時の稼働中タスクの最低合計数が決定される。
+2. 最大率の設定値を基に、ローリングアップデート時の稼働中/停止中タスクの最高合計数が決まる
 
-`(2)`
+3. Amazon ECS は、既存タスクを稼働中のまま、新タスクを最高合計数いっぱいまで作成する。
 
-: 最大率の設定値を基に、ローリングアップデート時の稼働中/停止中タスクの最高合計数が決まる
+4. Amazon ECS は、待機時間後に ALB/NLB による新タスクに対するヘルスチェックの結果を確認する。ヘルスチェックが成功していれば、既存タスクを停止する。ただし、最小ヘルス率によるタスクの最低合計数が保たれる。
 
-`(3)`
+5. 『新タスクの起動』と『ヘルスチェック確認後に既存タスクを停止する』プロセスが繰り返し実行され、徐々に既存タスクが新タスクに置き換わる。
 
-: Amazon ECS は、既存タスクを稼働中のまま、新タスクを最高合計数いっぱいまで作成する。
+6. すべての既存タスクが新タスクに置き換わる。
 
-`(4)`
-
-: Amazon ECS は、待機時間後に ALB/NLB による新タスクに対するヘルスチェックの結果を確認する。ヘルスチェックが成功していれば、既存タスクを停止する。ただし、最小ヘルス率によるタスクの最低合計数が保たれる。
-
-`(5)`
-
-: 『新タスクの起動』と『ヘルスチェック確認後に既存タスクを停止する』プロセスが繰り返し実行され、徐々に既存タスクが新タスクに置き換わる。
-
-`(6)`
-
-: すべての既存タスクが新タスクに置き換わる。
-
-![rolling-update](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rolling-update.png)
+    ![rolling-update](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rolling-update.png)
 
 > - [Amazon ECS でのコンテナデプロイの高速化 \| トリの部屋](https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments/)
 
@@ -1108,104 +1096,92 @@ AWS Systems Manager を使用してコンテナに接続する場合、コンテ
 
 ただし、AWS Fargate としての Amazon EC2 には、systems-manager エージェントがプリインストールされているため、これは不要である。
 
-`(1)`
+1. Amazon ECS サービスで、ECS-Exec オプションを有効化する。
 
-: Amazon ECS サービスで、ECS-Exec オプションを有効化する。
+2. Amazon VPC エンドポイントにて、ssmmessages エンドポイントを作成する。
 
-`(2)`
+3. Amazon ECS タスク実行ロールに IAM ポリシーを付与する。
 
-: Amazon VPC エンドポイントにて、ssmmessages エンドポイントを作成する。
+    これにより、Amazon ECSタスクがAWS SSM Session Managerにリクエストを送信できるようになる。
 
-`(3)`
+    ```yaml
+    {
+      "Version": "2012-10-17",
+      "Statement":
+        [
+          {
+            "Effect": "Allow",
+            "Action":
+              [
+                "ssmmessages:CreateControlChannel",
+                "ssmmessages:CreateDataChannel",
+                "ssmmessages:OpenControlChannel",
+                "ssmmessages:OpenDataChannel",
+              ],
+            "Resource": "*",
+          },
+        ],
+    }
+    ```
 
-: Amazon ECS タスク実行ロールに IAM ポリシーを付与する。
+4. Amazon ECS Exec の実行ユーザーに、IAM ポリシーを付与する。
 
-     これにより、Amazon ECSタスクがAWS SSM Session Managerにリクエストを送信できるようになる。
+    ```yaml
+    {
+      "Version": "2012-10-17",
+      "Statement":
+        [
+          {
+            "Effect": "Allow",
+            "Action": ["ecs:ExecuteCommand"],
+            "Resource":
+              [
+                "arn:aws:ecs:*:<AWSアカウントID>:cluster/*",
+                "arn:aws:ecs:*:<AWSアカウントID>:task/*",
+              ],
+          },
+        ],
+    }
+    ```
 
-```yaml
-{
-  "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Action":
-          [
-            "ssmmessages:CreateControlChannel",
-            "ssmmessages:CreateDataChannel",
-            "ssmmessages:OpenControlChannel",
-            "ssmmessages:OpenDataChannel",
-          ],
-        "Resource": "*",
-      },
-    ],
-}
-```
+5. 事前の設定がなされているか否かを ecs-exec-checker スクリプトを実行して確認する。
 
-`(4)`
+    > - [GitHub - aws-containers/amazon-ecs-exec-checker: 🚀 Pre-flight checks for ECS Exec · GitHub](https://github.com/aws-containers/amazon-ecs-exec-checker)
 
-: Amazon ECS Exec の実行ユーザーに、IAM ポリシーを付与する。
+    ```bash
+    #!/bin/bash
+    
+    ECS_CLUSTER_NAME=prd-foo-ecs-cluster
+    ECS_TASK_ID=bar
+    
+    bash <(curl -Ls https://raw.githubusercontent.com/aws-containers/amazon-ecs-exec-checker/main/check-ecs-exec.sh) $ECS_CLUSTER_NAME $ECS_TASK_ID
+    ```
 
-```yaml
-{
-  "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Action": ["ecs:ExecuteCommand"],
-        "Resource":
-          [
-            "arn:aws:ecs:*:<AWSアカウントID>:cluster/*",
-            "arn:aws:ecs:*:<AWSアカウントID>:task/*",
-          ],
-      },
-    ],
-}
-```
+6. Amazon ECS タスク内のコンテナに接続し、コンテナのログインシェルを起動する。bash を実行するときに、『`/bin/bash`』や『`/bin/sh`』で指定すると、bin より上のパスも Amazon ECS に送信されてしまう。
 
-`(5)`
+    例えば、Windowsなら『```C:/Program Files/Git/usr/bin/bash```』を送信する。
 
-: 事前の設定がなされているか否かを ecs-exec-checker スクリプトを実行して確認する。
+    これはCloudTrailでExecuteCommandイベントとして確認できる。
 
-> - [GitHub - aws-containers/amazon-ecs-exec-checker: 🚀 Pre-flight checks for ECS Exec · GitHub](https://github.com/aws-containers/amazon-ecs-exec-checker)
+    Amazon ECSコンテナ内ではbashへのパスが異なるため、接続に失敗する。そのため、bashを直接的に指定する。
 
-```bash
-#!/bin/bash
-
-ECS_CLUSTER_NAME=prd-foo-ecs-cluster
-ECS_TASK_ID=bar
-
-bash <(curl -Ls https://raw.githubusercontent.com/aws-containers/amazon-ecs-exec-checker/main/check-ecs-exec.sh) $ECS_CLUSTER_NAME $ECS_TASK_ID
-```
-
-`(6)`
-
-: Amazon ECS タスク内のコンテナに接続し、コンテナのログインシェルを起動する。bash を実行するときに、『`/bin/bash`』や『`/bin/sh`』で指定すると、bin より上のパスも Amazon ECS に送信されてしまう。
-
-     例えば、Windowsなら『```C:/Program Files/Git/usr/bin/bash```』を送信する。
-
-     これはCloudTrailでExecuteCommandイベントとして確認できる。
-
-     Amazon ECSコンテナ内ではbashへのパスが異なるため、接続に失敗する。そのため、bashを直接的に指定する。
-
-```bash
-#!/bin/bash
-
-set -xe
-
-ECS_CLUSTER_NAME=prd-foo-ecs-cluster
-ECS_TASK_ID=bar
-ECS_CONTAINER_NAME=laravel
-
-aws ecs execute-command \
-    --cluster $ECS_CLUSTER_NAME \
-    --task $ECS_TASK_ID \
-    --container $ECS_CONTAINER_NAME \
-    --interactive \
-    --debug \
-    --command "bash"
-```
+    ```bash
+    #!/bin/bash
+    
+    set -xe
+    
+    ECS_CLUSTER_NAME=prd-foo-ecs-cluster
+    ECS_TASK_ID=bar
+    ECS_CONTAINER_NAME=laravel
+    
+    aws ecs execute-command \
+        --cluster $ECS_CLUSTER_NAME \
+        --task $ECS_TASK_ID \
+        --container $ECS_CONTAINER_NAME \
+        --interactive \
+        --debug \
+        --command "bash"
+    ```
 
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-exec.html
 > - [Reference: ec2messages, ssmmessages, and other API operations - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up-messageAPIs.html)

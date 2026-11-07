@@ -21,33 +21,21 @@ Amazon CloudWatch アラームに通知されたエラーイベントのうち�
 
 また、各ロールの担当者にオンコールを自動的にエスカレーションする。
 
-`(1)`
+1. Amazon CloudWatch アラームから PagerDuty の Service に、インシデントを通知する。
 
-: Amazon CloudWatch アラームから PagerDuty の Service に、インシデントを通知する。
+2. Runbook Automation が、インシデントの自動回復を試みる。
 
-`(2)`
+3. Runbook Automation がインシデントを解決できなかったとする。
 
-: Runbook Automation が、インシデントの自動回復を試みる。
+    PagerDutyのServiceは、インシデントを責任者 (インシデントコマンダー) のメールや電話に通知する。
 
-`(3)`
+    執筆時点 (2022/12/26) では、電話での通知は英語である。
 
-: Runbook Automation がインシデントを解決できなかったとする。
+4. インシデントの通知を受けたオンコール担当者は、PagerDuty の Service を確認する。
 
-     PagerDutyのServiceは、インシデントを責任者 (インシデントコマンダー) のメールや電話に通知する。
+5. 解決フェーズが Open になっているインシデントを確認し、問題を解決する。
 
-     執筆時点 (2022/12/26) では、電話での通知は英語である。
-
-`(4)`
-
-: インシデントの通知を受けたオンコール担当者は、PagerDuty の Service を確認する。
-
-`(5)`
-
-: 解決フェーズが Open になっているインシデントを確認し、問題を解決する。
-
-`(6)`
-
-: 問題を解決できれば、Resolved 状態に移行する。
+6. 問題を解決できれば、Resolved 状態に移行する。
 
 > - https://blog.mapbox.com/building-on-call-mapboxs-managed-incident-response-tool-59fadd87317a
 > - [Wantedlyの障害対応文化とインシデントコマンダー / Wantedly Incident Commander - Speaker Deck](https://speakerdeck.com/irotoris/wantedly-incident-commander?slide=19)

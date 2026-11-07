@@ -282,25 +282,15 @@ options ndots:5
 
 そのため、最初は `example.com.default.svc.cluster.local.` から名前解決を始め、`example.com.` で終わる。
 
-`(1)`
+1. `example.com.default.svc.cluster.local.`
 
-: `example.com.default.svc.cluster.local.`
+2. `example.com.svc.cluster.local.`
 
-`(2)`
+3. `example.com.cluster.local.`
 
-: `example.com.svc.cluster.local.`
+4. `example.com.ec2.internal.`
 
-`(3)`
-
-: `example.com.cluster.local.`
-
-`(4)`
-
-: `example.com.ec2.internal.`
-
-`(5)`
-
-: `example.com.`
+5. `example.com.`
 
 > - [EKSのCoreDNSを安定させるための取り組み - Stanby Tech Blog](https://techblog.stanby.co.jp/entry/EKS_Coredns)
 > - [Kubernetes と名前解決](https://zenn.dev/toversus/articles/d9faba80f68ea2#kubernetes-%E3%81%AE%E8%A8%AD%E8%A8%88%E6%80%9D%E6%83%B3)

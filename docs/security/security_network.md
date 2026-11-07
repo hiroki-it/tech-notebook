@@ -344,50 +344,44 @@ Set-Cookie: csrftoken=<トークン>
 X-CSRF-TOKEN: <トークン>
 ```
 
-`(1)`
+1. ブラウザではレスポンスヘッダーからワンタイムトークンを取り出し、認証フォームの input タグの hidden 属性に割り当てる。
 
-: ブラウザではレスポンスヘッダーからワンタイムトークンを取り出し、認証フォームの input タグの hidden 属性に割り当てる。
+    他に、metaタグにトークンを割り当てることもある。
 
-     他に、metaタグにトークンを割り当てることもある。
+    ```html
+    <form method="POST" action="http://example.com/bar-form.php">
+      <input type="hidden" name="csrftoken" value="<csrfトークン>" />
+      <input type="text" name="email" />
+      <input type="text" name="password" />
+      <input type="submit value="ログイン">
+    </form>
+    ```
 
-```html
-<form method="POST" action="http://example.com/bar-form.php">
-  <input type="hidden" name="csrftoken" value="<csrfトークン>" />
-  <input type="text" name="email" />
-  <input type="text" name="password" />
-  <input type="submit value="ログイン">
-</form>
-```
+    ```html
+    <head>
+      <meta name="csrftoken" content="<ヘッダーから取り出したトークン>" />
+    </head>
+    ```
 
-```html
-<head>
-  <meta name="csrftoken" content="<ヘッダーから取り出したトークン>" />
-</head>
-```
+2. 認証のための POST リクエスト時に、リクエストボディや自前ヘッダーにアクセストークンを割り当て、リクエストを送信する。
 
-`(2)`
+    どちらを使用するかは、バックエンド側の仕様によって異なる。
 
-: 認証のための POST リクエスト時に、リクエストボディや自前ヘッダーにアクセストークンを割り当て、リクエストを送信する。
+    ```yaml
+    POST https://example.com/bar-form.php
+    ---
+    # 自前ヘッダー
+    x-csrf-token: <トークン>
+    ---
+    # ボディ
+    {_token=<トークン>}
+    ```
 
-     どちらを使用するかは、バックエンド側の仕様によって異なる。
+3. サーバー側では、POST リクエストによって送信されたトークンとワンタイムトークンを比較し、認証する。
 
-```yaml
-POST https://example.com/bar-form.php
----
-# 自前ヘッダー
-x-csrf-token: <トークン>
----
-# ボディ
-{_token=<トークン>}
-```
+    以降、POSTリクエストの場合はそのワンタイムトークンを使い回し、GETリクエストの場合は使用しない。
 
-`(3)`
-
-: サーバー側では、POST リクエストによって送信されたトークンとワンタイムトークンを比較し、認証する。
-
-     以降、POSTリクエストの場合はそのワンタイムトークンを使い回し、GETリクエストの場合は使用しない。
-
-     トークンが変更されていれば、誤った入力フォームからのリクエストとして判定し、`401`ステータスを返却する。
+    トークンが変更されていれば、誤った入力フォームからのリクエストとして判定し、`401`ステータスを返却する。
 
 > - [\[Q&A\] CSRFトークンをGETで送信するのは危険ですか？ - Qiita](https://qiita.com/Nsystem/questions/1bd6d30748957e1b6700)
 > - [これで完璧！今さら振り返る CSRF 対策と同一オリジンポリシーの基礎 #PHP - Qiita](https://qiita.com/mpyw/items/0595f07736cfa5b1f50c#%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95)
@@ -454,67 +448,63 @@ DB の SQL クエリのパラメーターとなる入力では、『シングル
 
 レスポンスの `Access-Control-Allow-Origin` ヘッダーは、リクエストの `Origin` ヘッダーと同じ値あるいはワイルドカード (`*`) とする必要がある。
 
-`(1)`
+1. リクエストの `Origin` ヘッダーに送信元オリジンを設定する。
 
-: リクエストの `Origin` ヘッダーに送信元オリジンを設定する。
+    加えて、`Cookie`ヘッダーを持つリクエストを送信したい場合は、JavaScriptの実装で`withCredentials`オプションに`true`を割り当てる。
 
-     加えて、`Cookie`ヘッダーを持つリクエストを送信したい場合は、JavaScriptの実装で`withCredentials`オプションに`true`を割り当てる。
+    JavaScriptのパッケージによってオプション名が異なるため注意する。
 
-     JavaScriptのパッケージによってオプション名が異なるため注意する。
+    ```yaml
+    GET https://example.com/bar
+    ---
+    # 送信元オリジン
+    Origin: https://example.com
+    ```
 
-```yaml
-GET https://example.com/bar
----
-# 送信元オリジン
-Origin: https://example.com
-```
-
-```javascript
-import axios from "axios";
-
-const instance = axios.create({
-  // Originヘッダーはデフォルトで『プロトコル + ドメイン + ポート番号』に設定されるため、特に対処する必要はない。
-  baseURL: "https://foo.co.jp",
-  // Cookieヘッダーを設定する
-  withCredentials: true,
-});
-
-const fetchBar = () => new Promise((resolve, reject) => {
-  instance
-    .get("/bar")
-    .then((data) => {
-      resolve(data);
-    })
-    .catch((err) => {
-      reject(err);
+    ```javascript
+    import axios from "axios";
+    
+    const instance = axios.create({
+      // Originヘッダーはデフォルトで『プロトコル + ドメイン + ポート番号』に設定されるため、特に対処する必要はない。
+      baseURL: "https://foo.co.jp",
+      // Cookieヘッダーを設定する
+      withCredentials: true,
     });
-});
-```
+    
+    const fetchBar = () => new Promise((resolve, reject) => {
+      instance
+        .get("/bar")
+        .then((data) => {
+          resolve(data);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+    ```
 
-> - [CORSまとめ #JavaScript - Qiita](https://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88)
+    > - [CORSまとめ #JavaScript - Qiita](https://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88)
 
-`(2)`
+2. 必須の設定として、レスポンスの `Access-Control-Allow-Origin` ヘッダーに、許可された送信元オリジンやワイルドカード (`*`) を割り当てて返信する。
 
-: 必須の設定として、レスポンスの `Access-Control-Allow-Origin` ヘッダーに、許可された送信元オリジンやワイルドカード (`*`) を割り当てて返信する。
+    `Cookie`ヘッダーを持つリクエストを許可する場合、同じくレスポンスの`Access-Control-Allow-Credentials`ヘッダーに`true`を割り当てる。
 
-     `Cookie`ヘッダーを持つリクエストを許可する場合、同じくレスポンスの`Access-Control-Allow-Credentials`ヘッダーに`true`を割り当てる。
+    その他、許可するHTTPメソッドやHTTPヘッダーも定義できるが、必須ではない。
 
-     その他、許可するHTTPメソッドやHTTPヘッダーも定義できるが、必須ではない。
+    例えば、許可されていないHTTPメソッドを使用して、異なるオリジンにリクエストを送信すると、`405`ステータスでエラーレスポンスが返信される。
 
-     例えば、許可されていないHTTPメソッドを使用して、異なるオリジンにリクエストを送信すると、`405`ステータスでエラーレスポンスが返信される。
-
-```yaml
-200 OK
----
-# 許可された送信元オリジン
-Access-Control-Allow-Origin: https://example.com
-# リクエストが Cookie ヘッダーを持つことを許可する場合
-Access-Control-Allow-Credentials: "true"
-# 許可する HTTP メソッド
-Access-Control-Allow-Methods: GET,POST,HEAD,OPTIONS
-# その他、許可する HTTP ヘッダー
-Access-Control-Allow-Headers: Content-Type
-```
+    ```yaml
+    200 OK
+    ---
+    # 許可された送信元オリジン
+    Access-Control-Allow-Origin: https://example.com
+    # リクエストが Cookie ヘッダーを持つことを許可する場合
+    Access-Control-Allow-Credentials: "true"
+    # 許可する HTTP メソッド
+    Access-Control-Allow-Methods: GET,POST,HEAD,OPTIONS
+    # その他、許可する HTTP ヘッダー
+    Access-Control-Allow-Headers: Content-Type
+    ```
 
 補足として、`Cookie` ヘッダーを持つリクエストを許可しない場合に限り、すべてのオリジンやヘッダーを許可できる。
 

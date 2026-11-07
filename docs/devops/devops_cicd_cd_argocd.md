@@ -238,33 +238,21 @@ Application さえ削除しなければ、Kubernetes リソースをダッシュ
 
 ![argocd_eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_eks.png)
 
-`(1)`
+1. アプリケーションリポジトリで、開発者がアプリケーションの変更を `main` ブランチにマージする。
 
-: アプリケーションリポジトリで、開発者がアプリケーションの変更を `main` ブランチにマージする。
+2. CI ツールが、コンテナイメージを ECR にプッシュする。
 
-`(2)`
+3. CI ツールは、マニフェストリポジトリをクローンし、マニフェストのコンテナイメージのハッシュ値を変更する。
 
-: CI ツールが、コンテナイメージを ECR にプッシュする。
+    このマニフェストの変更は、`yq`コマンドなどで直接的に実行する。
 
-`(3)`
+    変更したマニフェストをマニフェストリポジトリにプッシュする。
 
-: CI ツールは、マニフェストリポジトリをクローンし、マニフェストのコンテナイメージのハッシュ値を変更する。
+4. プルリクエストを自動作成する。
 
-     このマニフェストの変更は、`yq`コマンドなどで直接的に実行する。
+5. マニフェストリポジトリで、リリース責任者がプルリクエストを `main` ブランチにマージする。
 
-     変更したマニフェストをマニフェストリポジトリにプッシュする。
-
-`(4)`
-
-: プルリクエストを自動作成する。
-
-`(5)`
-
-: マニフェストリポジトリで、リリース責任者がプルリクエストを `main` ブランチにマージする。
-
-`(6)`
-
-: ArgoCD がマニフェストの変更を検知し、Kubernetes にプルする。
+6. ArgoCD がマニフェストの変更を検知し、Kubernetes にプルする。
 
 > - [Kubernetes活用への道のり 第1回 IaC編 \| オブジェクトの広場](https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html)
 
@@ -272,31 +260,19 @@ Application さえ削除しなければ、Kubernetes リソースをダッシュ
 
 ![argocd_eks_helm](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_eks_helm.png)
 
-`(1)`
+1. 同じ
 
-: 同じ
+2. 同じ
 
-`(2)`
+3. CI ツールは、マニフェストリポジトリをクローンし、チャート内マニフェストにあるコンテナイメージのハッシュ値を変更する。
 
-: 同じ
+    このマニフェストの変更は、`yq`コマンドなどで直接的に実行する。
 
-`(3)`
+4. 同じ
 
-: CI ツールは、マニフェストリポジトリをクローンし、チャート内マニフェストにあるコンテナイメージのハッシュ値を変更する。
+5. 同じ
 
-     このマニフェストの変更は、`yq`コマンドなどで直接的に実行する。
-
-`(4)`
-
-: 同じ
-
-`(5)`
-
-: 同じ
-
-`(6)`
-
-: ArgoCD がマニフェストの変更を検知し、Kubernetes にプルする。
+6. ArgoCD がマニフェストの変更を検知し、Kubernetes にプルする。
 
 > - https://medium.com/riskified-technology/how-to-build-a-ci-cd-process-that-deploys-on-kubernetes-and-focuses-on-developer-independence-7dc4c20984a
 > - [Azure DevOpsと Helm を使用した Kubernetes 上のマイクロサービス CI/CD パイプライン - Azure Architecture Center \| Microsoft Learn](https://docs.microsoft.com/ja-jp/azure/architecture/microservices/ci-cd-kubernetes)
@@ -307,17 +283,11 @@ Application さえ削除しなければ、Kubernetes リソースをダッシュ
 
 ![argocd_gcp](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_gcp.png)
 
-`(1)`
+1. マニフェストリポジトリで、開発者がマニフェストの変更を `main` ブランチにマージする。
 
-: マニフェストリポジトリで、開発者がマニフェストの変更を `main` ブランチにマージする。
+2. マニフェストリポジトリで、リリース責任者がマニフェストやチャートの変更を `main` ブランチにマージする。
 
-`(2)`
-
-: マニフェストリポジトリで、リリース責任者がマニフェストやチャートの変更を `main` ブランチにマージする。
-
-`(3)`
-
-: ArgoCD がマニフェストの変更を検知し、Kubernetes にプルする。
+3. ArgoCD がマニフェストの変更を検知し、Kubernetes にプルする。
 
 > - [GitHubActions + ArgoCD + HELMを使ったGitOps手法でGKEへアプリをデプロイ #helm - Qiita](https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1)
 

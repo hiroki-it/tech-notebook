@@ -320,39 +320,27 @@ Amazon ECS サービスの CPU 平均使用率やメモリ平均使用率に段�
 
 ターゲット値の設定に応じて、自動的にスケールアウトやスケールインが起こるシナリオ例を示す。
 
-`(1)`
+1. 最小 Amazon ECS タスク数を `2`、必要 Amazon ECS タスク数を `4`、最大数を `6`、CPU 平均使用率を `40`%に設定する例を考える。
 
-: 最小 Amazon ECS タスク数を `2`、必要 Amazon ECS タスク数を `4`、最大数を `6`、CPU 平均使用率を `40`%に設定する例を考える。
+2. 平常時、CPU 使用率 `40`%に維持される。
 
-`(2)`
+3. リクエストが増加し、CPU 使用率 `55`%に上昇する。
 
-: 平常時、CPU 使用率 `40`%に維持される。
+4. Amazon ECS タスク数が `6` 個にスケールアウトし、CPU 使用率 `40`%に維持される。
 
-`(3)`
+5. リクエスト数が減少し、CPU 使用率が `20`%に低下する。
 
-: リクエストが増加し、CPU 使用率 `55`%に上昇する。
+6. Amazon ECS タスク数が `2` 個にスケールインし、CPU 使用率 `40`%に維持される。
 
-`(4)`
-
-: Amazon ECS タスク数が `6` 個にスケールアウトし、CPU 使用率 `40`%に維持される。
-
-`(5)`
-
-: リクエスト数が減少し、CPU 使用率が `20`%に低下する。
-
-`(6)`
-
-: Amazon ECS タスク数が `2` 個にスケールインし、CPU 使用率 `40`%に維持される。
-
-<table>
-  <thead>
+    <table>
+      <thead>
     <tr>
       <th>設定項目</th>
       <th>説明</th>
       <th>補足</th>
     </tr>
-  </thead>
-  <tbody>
+      </thead>
+      <tbody>
     <tr>
       <td>ターゲット追跡スケーリングポリシー</td>
       <td>監視対象のメトリクスがターゲット値を超過しているか否かを基に、Amazon ECS タスク数のスケーリングが実行される。</td>
@@ -383,8 +371,8 @@ Amazon ECS サービスの CPU 平均使用率やメモリ平均使用率に段�
       <td></td>
       <td></td>
     </tr>
-  </tbody>
-</table>
+      </tbody>
+    </table>
 
 > - [Use a target metric to scale Amazon ECS services - Amazon Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html)
 

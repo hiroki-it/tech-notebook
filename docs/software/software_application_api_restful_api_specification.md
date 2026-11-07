@@ -124,90 +124,84 @@ API 仕様書に基づいて、API を実装する。
 
 ここでは、コードの自動作成に OpenAPI Generator を使用するものとする。
 
-`(1)`
+1. OpenAPI に基づいて API 仕様を定義する。
 
-: OpenAPI に基づいて API 仕様を定義する。
+    ```yaml
+    openapi: 3.0.3
+    info:
+      description: EC API
+      title: EC
+      version: 2023.1.1
+    servers:
+      - description: Online EC Example Service
+        url: http://example.com/v1
+    tags:
+      - description: Product Operation
+        name: Product
+    paths:
+      /products:
+        get:
+    
+        ...
+    
+      /products/{productId}:
+        get:
+    
+        ...
+    
+    
+    components:
+      schemas:
+    
+      ...
+    
+    ```
 
-```yaml
-openapi: 3.0.3
-info:
-  description: EC API
-  title: EC
-  version: 2023.1.1
-servers:
-  - description: Online EC Example Service
-    url: http://example.com/v1
-tags:
-  - description: Product Operation
-    name: Product
-paths:
-  /products:
-    get:
+2. OpenAPI Generator を使用して、API 仕様から静的ファイルを自動的に作成する。
 
-    ...
+    ```bash
+    $ openapi-generator generate -i docs/openapi.yaml -o docs/html -g html
+    ```
 
-  /products/{productId}:
-    get:
+3. OpenAPI Generator を使って、API 仕様からコードを自動的に作成する。
 
-    ...
+    ```bash
+    # brew、npmなどでインストールする
+    $ brew install openapi-generator
+    
+    # GoのAPIを作成する
+    # openapi-generator generate -i <OpenAPI仕様書> -g <言語、フレームワーク> -p packageVersion=<タグ> -o <出力先ディレクトリ>
+    $ openapi-generator generate -i docs/openapi.yaml -g go-gin-server -p packageVersion=0.0.1 -o go-gin
+    
+    # --template-dirを使用すると、ユーザー定義のテンプレートからコードを作成できる
+    ```
 
-
-components:
-  schemas:
-
-  ...
-
-```
-
-`(2)`
-
-: OpenAPI Generator を使用して、API 仕様から静的ファイルを自動的に作成する。
-
-```bash
-$ openapi-generator generate -i docs/openapi.yaml -o docs/html -g html
-```
-
-`(3)`
-
-: OpenAPI Generator を使って、API 仕様からコードを自動的に作成する。
-
-```bash
-# brew、npmなどでインストールする
-$ brew install openapi-generator
-
-# GoのAPIを作成する
-# openapi-generator generate -i <OpenAPI仕様書> -g <言語、フレームワーク> -p packageVersion=<タグ> -o <出力先ディレクトリ>
-$ openapi-generator generate -i docs/openapi.yaml -g go-gin-server -p packageVersion=0.0.1 -o go-gin
-
-# --template-dirを使用すると、ユーザー定義のテンプレートからコードを作成できる
-```
-
-```text
-// テンプレートファイル (mustache形式)
-{{>partial_header}}
-package main
-
-import (
-	"log"
-	// WARNING!
-	// Change this to a fully-qualified import path
-	// once you place this file into your project.
-	// For example,
-	//
-	//    sw "github.com/myname/myrepo/{{apiPath}}"
-	//
-	sw "openapi-gin-server/{{apiPath}}"
-)
-
-func main() {
-
-	log.Printf("Server started")
-
-	router := sw.NewRouter()
-
-	log.Fatal(router.Run(":{{serverPort}}"))
-}
-```
+    ```text
+    // テンプレートファイル (mustache形式)
+    {{>partial_header}}
+    package main
+    
+    import (
+    	"log"
+    	// WARNING!
+    	// Change this to a fully-qualified import path
+    	// once you place this file into your project.
+    	// For example,
+    	//
+    	//    sw "github.com/myname/myrepo/{{apiPath}}"
+    	//
+    	sw "openapi-gin-server/{{apiPath}}"
+    )
+    
+    func main() {
+    
+    	log.Printf("Server started")
+    
+    	router := sw.NewRouter()
+    
+    	log.Fatal(router.Run(":{{serverPort}}"))
+    }
+    ```
 
 `(3)`
 

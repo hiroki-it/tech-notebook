@@ -94,17 +94,11 @@ Informer から Kubernetes リソースの作成、更新、削除のイベン�
 
 ![custom_controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/custom_controller.png)
 
-`(1)`
+1. Custom Controller は、kube-apiserver を介して、etcd に watch イベントを送信している。
 
-: Custom Controller は、kube-apiserver を介して、etcd に watch イベントを送信している。
+2. カスタムリソースと CRD のマニフェストを何らかの方法 (例：`kubectl apply` コマンド、`kubectl edit` コマンドなど) で etcd 上に永続化したとする。
 
-`(2)`
-
-: カスタムリソースと CRD のマニフェストを何らかの方法 (例：`kubectl apply` コマンド、`kubectl edit` コマンドなど) で etcd 上に永続化したとする。
-
-`(3)`
-
-: Custom Controller は、etcd 上でカスタムリソースと CRD のマニフェストを検知し、実際にカスタムリソースを作成/変更する。
+3. Custom Controller は、etcd 上でカスタムリソースと CRD のマニフェストを検知し、実際にカスタムリソースを作成/変更する。
 
 クライアントからのマニフェストの作成/変更は、etcd 上のマニフェストの設定値を変更しているのみで、実際のカスタムリソースを作成/変更しているわけではないことに注意する。
 

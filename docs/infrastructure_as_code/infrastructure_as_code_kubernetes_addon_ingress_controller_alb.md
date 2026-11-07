@@ -188,43 +188,37 @@ AWS Load Balancer Controller のセットアップのうち、AWS 側で必要�
 
 ここではコマンドを使用しているが、IaC (例：Terraform) を使用してもよい。
 
-`(1)`
+1. ローカルマシンに IAM ポリシーの `json` ファイルをダウンロードする。
 
-: ローカルマシンに IAM ポリシーの `json` ファイルをダウンロードする。
+    ```bash
+    $ curl -L https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.0/docs/install/iam_policy.json -o iam_policy.json
+    ```
 
-```bash
-$ curl -L https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.0/docs/install/iam_policy.json -o iam_policy.json
-```
+    > - [Route internet traffic with AWS Load Balancer Controller - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html)
+    > - [aws-load-balancer-controller/helm/aws-load-balancer-controller at main · kubernetes-sigs/aws-load-balancer-controller · GitHub](https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#setup-iam-for-serviceaccount)
 
-> - [Route internet traffic with AWS Load Balancer Controller - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html)
-> - [aws-load-balancer-controller/helm/aws-load-balancer-controller at main · kubernetes-sigs/aws-load-balancer-controller · GitHub](https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#setup-iam-for-serviceaccount)
+2. `json` ファイルを使用して、ServiceAccount の IAM ロールに紐付けるための IAM ポリシーを作成する。
 
-`(2)`
+    ```bash
+    $ aws iam create-policy \
+        --policy-name AWSLoad BalancerControllerIAMPolicy \
+        --policy-document file://iam_policy.json
+    ```
 
-: `json` ファイルを使用して、ServiceAccount の IAM ロールに紐付けるための IAM ポリシーを作成する。
+3. Amazon EKS Cluster を OIDC プロバイダーとして使用する。
 
-```bash
-$ aws iam create-policy \
-    --policy-name AWSLoad BalancerControllerIAMPolicy \
-    --policy-document file://iam_policy.json
-```
+    これにより、Amazon EKS Cluster内で認証済みのServiceAccountにIAMロールを紐付けられるようになる。
 
-`(3)`
-
-: Amazon EKS Cluster を OIDC プロバイダーとして使用する。
-
-     これにより、Amazon EKS Cluster内で認証済みのServiceAccountにIAMロールを紐付けられるようになる。
-
-```bash
-$ eksctl utils associate-iam-oidc-provider \
-    --region=ap-northeast-1 \
-    --cluster=foo-eks-cluster \
-    --approve
-
-2022-05-30 23:39:04 [ℹ]  eksctl version 0.96.0
-2022-05-30 23:39:04 [ℹ]  using region ap-northeast-1
-2022-05-30 23:39:05 [ℹ]  IAM Open ID Connect provider is already associated with cluster "foo-eks-cluster" in "ap-northeast-1"
-```
+    ```bash
+    $ eksctl utils associate-iam-oidc-provider \
+        --region=ap-northeast-1 \
+        --cluster=foo-eks-cluster \
+        --approve
+    
+    2022-05-30 23:39:04 [ℹ]  eksctl version 0.96.0
+    2022-05-30 23:39:04 [ℹ]  using region ap-northeast-1
+    2022-05-30 23:39:05 [ℹ]  IAM Open ID Connect provider is already associated with cluster "foo-eks-cluster" in "ap-northeast-1"
+    ```
 
 <br>
 
@@ -290,90 +284,82 @@ secrets:
 
 AWS Load Balancer Controller のセットアップのうち、Kubernetes 側で必要なものをまとめる。
 
-`(1)`
+1. 指定したリージョンに AWS Load Balancer Controller をデプロイする。
 
-: 指定したリージョンに AWS Load Balancer Controller をデプロイする。
+    この時、事前にマニフェストや`eksclt create iamserviceaccount`コマンドで作成したServiceAcountをALBに紐付ける。
 
-     この時、事前にマニフェストや`eksclt create iamserviceaccount`コマンドで作成したServiceAcountをALBに紐付ける。
+    IRSAの仕組みにより、ServiceAccountを経由してPodとAWS IAMロールが紐づく。
 
-     IRSAの仕組みにより、ServiceAccountを経由してPodとAWS IAMロールが紐づく。
+    ```bash
+    $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-charts
+    
+    # FargateにAWS Load Balancer Controllerをデプロイする場合
+    $ helm install <Helmリリース名> <チャートリポジトリ名>/aws-load-balancer-controller \
+        -n kube-system \
+        --set clusterName=foo-eks-cluster \
+        --set serviceAccount.create=false \
+        --set serviceAccount.name=foo-aws-load-balancer-controller \
+        --set image.repository=602401143452.dkr.ecr.ap-northeast-1.amazonaws.com/amazon/aws-load-balancer-controller \
+        --set region=ap-northeast-1 \
+        --set vpcId=vpc-*****
+    
+    
+    AWS Load Balancer controller installed!
+    ```
 
-```bash
-$ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-charts
+    ```bash
+    $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-charts
+    
+    # EC2にAWS Load Balancer Controllerをデプロイする場合
+    $ helm install <Helmリリース名> <チャートリポジトリ名>/aws-load-balancer-controller \
+        -n kube-system \
+        --set clusterName=foo-eks-cluster \
+        --set serviceAccount.create=false \
+        --set serviceAccount.name=foo-aws-load-balancer-controller \
+        --set image.repository=602401143452.dkr.ecr.ap-northeast-1.amazonaws.com/amazon/aws-load-balancer-controller
+    
+    
+    AWS Load Balancer controller installed!
+    ```
 
-# FargateにAWS Load Balancer Controllerをデプロイする場合
-$ helm install <Helmリリース名> <チャートリポジトリ名>/aws-load-balancer-controller \
-    -n kube-system \
-    --set clusterName=foo-eks-cluster \
-    --set serviceAccount.create=false \
-    --set serviceAccount.name=foo-aws-load-balancer-controller \
-    --set image.repository=602401143452.dkr.ecr.ap-northeast-1.amazonaws.com/amazon/aws-load-balancer-controller \
-    --set region=ap-northeast-1 \
-    --set vpcId=vpc-*****
+    > - [eks-charts/stable/aws-load-balancer-controller at master · aws/eks-charts · GitHub](https://github.com/aws/eks-charts/tree/master/stable/aws-load-balancer-controller)
+    > - [aws-load-balancer-controller/helm/aws-load-balancer-controller at main · kubernetes-sigs/aws-load-balancer-controller · GitHub](https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#tldr)
 
+2. AWS Load Balancer Controller がデプロイされ、READY 状態になっていることを確認する。
 
-AWS Load Balancer controller installed!
-```
+    ```bash
+    $ helm list -n kube-system
+    
+    NAME                            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                                   APP VERSION
+    aws-load-balancer-controller    kube-system     2               2022-01-01 00:00:00.309065 +0900 JST    deployed        aws-load-balancer-controller-1.4.2      v2.4.2
+    ```
 
-```bash
-$ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-charts
+    ```bash
+    $ kubectl get deployment -n kube-system aws-load-balancer-controller
+    
+    NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
+    aws-load-balancer-controller   2/2     2            0           22m
+    ```
 
-# EC2にAWS Load Balancer Controllerをデプロイする場合
-$ helm install <Helmリリース名> <チャートリポジトリ名>/aws-load-balancer-controller \
-    -n kube-system \
-    --set clusterName=foo-eks-cluster \
-    --set serviceAccount.create=false \
-    --set serviceAccount.name=foo-aws-load-balancer-controller \
-    --set image.repository=602401143452.dkr.ecr.ap-northeast-1.amazonaws.com/amazon/aws-load-balancer-controller
+3. もし、以下のように、`53` 番ポートへの接続でエラーになってしまう場合は、CoreDNS による名前解決が正しくできていない。
 
+    そのため、CoreDNSが正常に稼働しているか否かを確認する。
 
-AWS Load Balancer controller installed!
-```
+    ```yaml
+    {
+      "level": "error",
+      "ts": "*****.*****",
+      "logger": "controller-runtime.manager.controller.ingress",
+      "msg": "Reconciler error",
+      "name": "foo-ingress",
+      "namespace": "foo",
+      "error": "ingress: foo/foo-ingress: WebIdentityErr: failed to retrieve credentials\ncaused by: RequestError: send request failed\ncaused by: Post \"https://sts.ap-northeast-1.amazonaws.com/\": dial tcp: lookup sts.ap-northeast-1.amazonaws.com on *.*.*.*:53: read udp *.*.*.*:43958->*.*.*.*:53: read: connection refused",
+    }
+    ```
 
-> - [eks-charts/stable/aws-load-balancer-controller at master · aws/eks-charts · GitHub](https://github.com/aws/eks-charts/tree/master/stable/aws-load-balancer-controller)
-> - [aws-load-balancer-controller/helm/aws-load-balancer-controller at main · kubernetes-sigs/aws-load-balancer-controller · GitHub](https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#tldr)
+4. Ingress をデプロイし、Ingress から AWS ALB を自動的に作成させる。
 
-`(2)`
-
-: AWS Load Balancer Controller がデプロイされ、READY 状態になっていることを確認する。
-
-```bash
-$ helm list -n kube-system
-
-NAME                            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                                   APP VERSION
-aws-load-balancer-controller    kube-system     2               2022-01-01 00:00:00.309065 +0900 JST    deployed        aws-load-balancer-controller-1.4.2      v2.4.2
-```
-
-```bash
-$ kubectl get deployment -n kube-system aws-load-balancer-controller
-
-NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
-aws-load-balancer-controller   2/2     2            0           22m
-```
-
-`(3)`
-
-: もし、以下のように、`53` 番ポートへの接続でエラーになってしまう場合は、CoreDNS による名前解決が正しくできていない。
-
-     そのため、CoreDNSが正常に稼働しているか否かを確認する。
-
-```yaml
-{
-  "level": "error",
-  "ts": "*****.*****",
-  "logger": "controller-runtime.manager.controller.ingress",
-  "msg": "Reconciler error",
-  "name": "foo-ingress",
-  "namespace": "foo",
-  "error": "ingress: foo/foo-ingress: WebIdentityErr: failed to retrieve credentials\ncaused by: RequestError: send request failed\ncaused by: Post \"https://sts.ap-northeast-1.amazonaws.com/\": dial tcp: lookup sts.ap-northeast-1.amazonaws.com on *.*.*.*:53: read udp *.*.*.*:43958->*.*.*.*:53: read: connection refused",
-}
-```
-
-`(4)`
-
-: Ingress をデプロイし、Ingress から AWS ALB を自動的に作成させる。
-
-     以下の条件を満たす必要がある。
+    以下の条件を満たす必要がある。
 
 > - [Route application and HTTP traffic with Application Load Balancers - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html)
 

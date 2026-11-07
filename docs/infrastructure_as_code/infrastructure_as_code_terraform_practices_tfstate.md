@@ -262,85 +262,75 @@ aws-remote-repository/
 
 AWS リソース値を参照しない関係であれば、これらは別の `tfstate` ファイルに分割できる。
 
-`(1)`
+1. 既存のバックエンド内に新しいディレクトリを作成し、その配下に `tfstate` ファイルを新しく作成する。
 
-: 既存のバックエンド内に新しいディレクトリを作成し、その配下に `tfstate` ファイルを新しく作成する。
+    ここでは、サブシステムを分割すると仮定する。
 
-     ここでは、サブシステムを分割すると仮定する。
+    ```yaml
+    repository/
+    ├── foo/
+    │   ├── backend.tf # バックエンド内の/foo/terraform.tfstate
+    │   ├── provider.tf
+    │   ...
+    │
+    ├── bar/
+    │   ├── backend.tf # バックエンド内の/bar/terraform.tfstate
+    │   ├── remote_state.tfvars # terraform_remote_state ブロックを使用し、foo の tfstate ファイルから状態を参照する
+    │   ├── resource.tf # foo の tfstate ファイルから参照した状態を使用する
+    │   ├── provider.tf
+    │   ...
+    │
+    ...
+    ```
 
-```yaml
-repository/
-├── foo/
-│   ├── backend.tf # バックエンド内の/foo/terraform.tfstate
-│   ├── provider.tf
-│   ...
-│
-├── bar/
-│   ├── backend.tf # バックエンド内の/bar/terraform.tfstate
-│   ├── remote_state.tfvars # terraform_remote_state ブロックを使用し、foo の tfstate ファイルから状態を参照する
-│   ├── resource.tf # foo の tfstate ファイルから参照した状態を使用する
-│   ├── provider.tf
-│   ...
-│
-...
-```
+    ```terraform
+    terraform {
+      backend "s3" {
+        bucket = "foo-tfstate"
+        key    = "foo-sub-system/terraform.tfstate"
+        region = "ap-northeast-1"
+      }
+    }
+    ```
 
-```terraform
-terraform {
-  backend "s3" {
-    bucket = "foo-tfstate"
-    key    = "foo-sub-system/terraform.tfstate"
-    region = "ap-northeast-1"
-  }
-}
-```
+2. bar 側では、foo 側の `tfstate` ファイルからリソース値を取得しつつ、
 
-`(2)`
+    ```terraform
+    # 分割した異なるfooというtfstateファイルから取得する
+    data "terraform_remote_state" "foo" {
+      backend = "s3"
+    
+      config = {
+        bucket = "foo-tfstate"
+        key    = "foo/terraform.tfstate"
+        region = "ap-northeast-1"
+      }
+    }
+    ```
 
-: bar 側では、foo 側の `tfstate` ファイルからリソース値を取得しつつ、
+3. 新しい `tfstate` ファイルに、既存のサブシステムの状態をインポートする。
 
-```terraform
-# 分割した異なるfooというtfstateファイルから取得する
-data "terraform_remote_state" "foo" {
-  backend = "s3"
+    事前に、バックエンドを新しいサブシステムの`tfstate`ファイルに切り替える。
 
-  config = {
-    bucket = "foo-tfstate"
-    key    = "foo/terraform.tfstate"
-    region = "ap-northeast-1"
-  }
-}
-```
+    ```bash
+    $ terraform init -reconfigure -backend-config=foo-sub-backend.tfvars
+    $ terraform import
+    ```
 
-`(3)`
+4. サブシステムの `tfstate` ファイルで差分がないことを確認する。
 
-: 新しい `tfstate` ファイルに、既存のサブシステムの状態をインポートする。
+    ```bash
+    $ terraform init -reconfigure -backend-config=foo-sub-backend.tfvars
+    $ terraform plan
+    ```
 
-     事前に、バックエンドを新しいサブシステムの`tfstate`ファイルに切り替える。
+5. モノリスな `tfstate` ファイルから、サブシステムの状態を削除する。
 
-```bash
-$ terraform init -reconfigure -backend-config=foo-sub-backend.tfvars
-$ terraform import
-```
+    事前に、バックエンドをモノリスな`tfstate`ファイルに切り替える。
 
-`(4)`
-
-: サブシステムの `tfstate` ファイルで差分がないことを確認する。
-
-```bash
-$ terraform init -reconfigure -backend-config=foo-sub-backend.tfvars
-$ terraform plan
-```
-
-`(5)`
-
-: モノリスな `tfstate` ファイルから、サブシステムの状態を削除する。
-
-     事前に、バックエンドをモノリスな`tfstate`ファイルに切り替える。
-
-```bash
-$ terraform init -reconfigure -backend-config=foo-backend.tfvars
-$ terraform state rm <サブシステムの状態>
-```
+    ```bash
+    $ terraform init -reconfigure -backend-config=foo-backend.tfvars
+    $ terraform state rm <サブシステムの状態>
+    ```
 
 <br>

@@ -25,23 +25,15 @@ Kubernetes の Node と Pod (それ以外の Kubernetes リソースは対象外
 
 似た名前のツールに kube-metrics-server があるが、こちらは Exporter として稼働する。
 
-`(1)`
+1. クライアント (`kubectl top` コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) が metrics-server の API からメトリクスを参照しようとする。
 
-: クライアント (`kubectl top` コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) が metrics-server の API からメトリクスを参照しようとする。
+2. クライアントは、kube-apiserver にリクエストが送信する。
 
-`(2)`
+3. kube-apiserver は、metrics-server のプロキシ (APIService) にリクストをフォワーディングする。
 
-: クライアントは、kube-apiserver にリクエストが送信する。
+4. APIService は、クライアントにメトリクスを返信する。
 
-`(3)`
-
-: kube-apiserver は、metrics-server のプロキシ (APIService) にリクストをフォワーディングする。
-
-`(4)`
-
-: APIService は、クライアントにメトリクスを返信する。
-
-![kubernetes_metrics-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_metrics-server.png)
+    ![kubernetes_metrics-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_metrics-server.png)
 
 > - [Metrics Server - Speaker Deck](https://speakerdeck.com/bells17/metrics-server?slide=20)
 > - [metrics-server/manifests/base at master · kubernetes-sigs/metrics-server · GitHub](https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base)

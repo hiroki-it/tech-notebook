@@ -23,44 +23,40 @@ IstioOperator によるデプロイ方法は、執筆 2026 年時点では非推
 
 プロファイルは、設定済みの IstioOperator であり、`istioctl` コマンドのインストール時、`manifests` ディレクトリ以下に同梱される。
 
-`(1)`
+1. `istioctl` コマンドで IstioOperator を指定する。IstioOperator は、デフォルト値は `istio-system` に Istio リソースを作成するようになっている。
 
-: `istioctl` コマンドで IstioOperator を指定する。IstioOperator は、デフォルト値は `istio-system` に Istio リソースを作成するようになっている。
+    ```bash
+    $ istioctl operator init
+    
+    Installing operator controller in namespace: istio-operator using image: docker.io/istio/operator:<リビジョン>
+    Operator controller will watch namespaces: istio-system
+    ✅ Istio operator installed
+    ✅ Installation complete
+    ```
 
-```bash
-$ istioctl operator init
+    > - https://istio.io/latest/docs/setup/install/operator/
 
-Installing operator controller in namespace: istio-operator using image: docker.io/istio/operator:<リビジョン>
-Operator controller will watch namespaces: istio-system
-✅ Istio operator installed
-✅ Installation complete
-```
+2. IstioOperator が定義されたマニフェストを、`istioctl` コマンドまたは `kubectl` コマンドを使用して、Istio リソースを作成する。
 
-> - https://istio.io/latest/docs/setup/install/operator/
+    その代わりにここで、IstioOperatorにHelmを使用させてIstioリソースを作成することもできる。`kubectl apply`コマンドでも作成できるが、成否の実行ログがわかりにくいことに注意する。
 
-`(2)`
+    ```bash
+    # istioctlコマンド
+    $ istioctl install -y -f ./istio-operator.yaml
+    
+    ✅ Istio core installed
+    ✅ Istiod installed
+    ✅ Ingress gateways installed
+    ✅ Installation complete
+    Making this installation the default for injection and validation.
+    ```
 
-: IstioOperator が定義されたマニフェストを、`istioctl` コマンドまたは `kubectl` コマンドを使用して、Istio リソースを作成する。
-
-     その代わりにここで、IstioOperatorにHelmを使用させてIstioリソースを作成することもできる。`kubectl apply`コマンドでも作成できるが、成否の実行ログがわかりにくいことに注意する。
-
-```bash
-# istioctlコマンド
-$ istioctl install -y -f ./istio-operator.yaml
-
-✅ Istio core installed
-✅ Istiod installed
-✅ Ingress gateways installed
-✅ Installation complete
-Making this installation the default for injection and validation.
-```
-
-```bash
-# kubectlコマンド
-$ kubectl apply -f istio-operator.yaml
-
-istiooperator.install.istio.io/istio-operator created
-```
+    ```bash
+    # kubectlコマンド
+    $ kubectl apply -f istio-operator.yaml
+    
+    istiooperator.install.istio.io/istio-operator created
+    ```
 
 > - [Istio / Install with Istioctl](https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile)
 > - https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator

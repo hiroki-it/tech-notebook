@@ -21,33 +21,21 @@ Amazon CloudWatch アラームのアラートを、Incident Manager にインシ
 
 また、各ロールの担当者にオンコールを自動的にエスカレーションする。
 
-`(1)`
+1. エラーイベントの送信元 (例：手動、Amazon CloudWatch アラーム、Amazon EventBridge など) から Incident Manager に、エラーイベントを通知する。
 
-: エラーイベントの送信元 (例：手動、Amazon CloudWatch アラーム、Amazon EventBridge など) から Incident Manager に、エラーイベントを通知する。
+2. Incident Manager は、エラーイベントからインシデントを作成する。
 
-`(2)`
+    Automationが、インシデントの自動回復を試みる。
 
-: Incident Manager は、エラーイベントからインシデントを作成する。
-
-     Automationが、インシデントの自動回復を試みる。
-
-`(3)`
-
-: Automation がインシデントを解決できなかったとする。
+3. Automation がインシデントを解決できなかったとする。
 
       Incident Managerは、インシデントを責任者 (インシデントコマンダー) にオンコールする。
 
-`(4)`
+4. インシデントの通知を受けたオンコール担当者は、Incident Manager を確認する。
 
-: インシデントの通知を受けたオンコール担当者は、Incident Manager を確認する。
+5. インシデントを確認し、問題を解決する。
 
-`(5)`
-
-: インシデントを確認し、問題を解決する。
-
-`(6)`
-
-: 問題を解決できれば、クローズに移行する。
+6. 問題を解決できれば、クローズに移行する。
 
 > - [Creating incidents automatically or manually in Incident Manager - Incident Manager](https://docs.aws.amazon.com/incident-manager/latest/userguide/incident-creation.html)
 > - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-Black-Belt_2023_AWS-SystemsManager-IncidentManager_0430_v1.pdf#page=34

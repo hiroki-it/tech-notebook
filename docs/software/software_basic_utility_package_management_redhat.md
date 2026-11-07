@@ -142,74 +142,68 @@ CentOS 公式リポジトリは、パッケージのバージョンが古い可�
 
 ### リポジトリ自体のインストール
 
-`(1)`
+1. CentOS の EPEL リポジトリをインストール。インストール時の設定ファイルは、`/etc/yu.repos.d` ディレクトリ配下に配置される。
 
-: CentOS の EPEL リポジトリをインストール。インストール時の設定ファイルは、`/etc/yu.repos.d` ディレクトリ配下に配置される。
+    ```bash
+    # 全てのバージョン
+    # @see https://dl.fedoraproject.org/pub/epel/
+    
+    # CentOS7系の場合
+    # 非推奨のため、アーカイブ (https://archives.fedoraproject.org/pub/archive/epel/) に移動している
+    $ yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    
+    # CentOS8系の場合
+    $ dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    
+    # CentOS9系の場合
+    $ dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+    
+    # こちらでもよい
+    $ yum install -y epel-release
+    ```
 
-```bash
-# 全てのバージョン
-# @see https://dl.fedoraproject.org/pub/epel/
+2. CentOS の Remi リポジトリをインストール。Remi バージョンは CentOS バージョンを要確認。インストール時の設定ファイルは、`/etc/yu.repos.d` ディレクトリ配下に配置される。
 
-# CentOS7系の場合
-# 非推奨のため、アーカイブ (https://archives.fedoraproject.org/pub/archive/epel/) に移動している
-$ yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    ```bash
+    # CentOS7系の場合
+    $ yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    
+    # CentOS8系の場合
+    $ dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+    ```
 
-# CentOS8系の場合
-$ dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+3. 設定ファイルへは、インストール先のリンクなどが自動的に書き込まれる。
 
-# CentOS9系の場合
-$ dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
-
-# こちらでもよい
-$ yum install -y epel-release
-```
-
-`(2)`
-
-: CentOS の Remi リポジトリをインストール。Remi バージョンは CentOS バージョンを要確認。インストール時の設定ファイルは、`/etc/yu.repos.d` ディレクトリ配下に配置される。
-
-```bash
-# CentOS7系の場合
-$ yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
-
-# CentOS8系の場合
-$ dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
-```
-
-`(3)`
-
-: 設定ファイルへは、インストール先のリンクなどが自動的に書き込まれる。
-
-```ini
-[epel]
-name=Extra Packages for Enterprise Linux 6 - $basearch
-#baseurl=http://download.fedoraproject.org/pub/epel/6/$basearch
-mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-6&arch=$basearch
-failovermethod=priority
-enabled=0
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
-
-
-[epel-debuginfo]
-name=Extra Packages for Enterprise Linux 6 - $basearch - Debug
-#baseurl=http://download.fedoraproject.org/pub/epel/6/$basearch/debug
-mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-debug-6&arch=$basearch
-failovermethod=priority
-enabled=0
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
-gpgcheck=1
-
-
-[epel-source]
-name=Extra Packages for Enterprise Linux 6 - $basearch - Source
-#baseurl=http://download.fedoraproject.org/pub/epel/6/SRPMS
-mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-source-6&arch=$basearch
-failovermethod=priority
-enabled=0
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
-gpgcheck=1
-```
+    ```ini
+    [epel]
+    name=Extra Packages for Enterprise Linux 6 - $basearch
+    #baseurl=http://download.fedoraproject.org/pub/epel/6/$basearch
+    mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-6&arch=$basearch
+    failovermethod=priority
+    enabled=0
+    gpgcheck=1
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
+    
+    
+    [epel-debuginfo]
+    name=Extra Packages for Enterprise Linux 6 - $basearch - Debug
+    #baseurl=http://download.fedoraproject.org/pub/epel/6/$basearch/debug
+    mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-debug-6&arch=$basearch
+    failovermethod=priority
+    enabled=0
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
+    gpgcheck=1
+    
+    
+    [epel-source]
+    name=Extra Packages for Enterprise Linux 6 - $basearch - Source
+    #baseurl=http://download.fedoraproject.org/pub/epel/6/SRPMS
+    mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-source-6&arch=$basearch
+    failovermethod=priority
+    enabled=0
+    gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
+    gpgcheck=1
+    ```
 
 <br>
 

@@ -375,33 +375,27 @@ Istio Ingress Gateway でダウンタイムが発生すると、アプリへの�
 
 #### ▼ 手順
 
-`(1)`
+1. CRD を更新する。
 
-: CRD を更新する。
+    必要なCRDのマニフェストは、リポジトリで確認する必要がある。
 
-     必要なCRDのマニフェストは、リポジトリで確認する必要がある。
+    ```bash
+    $ git clone https://github.com/istio/istio.git
+    
+    $ kubectl apply -f manifests/charts/base/crds
+    ```
 
-```bash
-$ git clone https://github.com/istio/istio.git
+2. Istiod コントロールプレーンと Istio Ingress Gateway の両方をインプレース方式でアップグレードする。
 
-$ kubectl apply -f manifests/charts/base/crds
-```
+    ```bash
+    $ istioctl install
+    ```
 
-`(2)`
+3. データプレーンの istio-proxy を再インジェクションする。
 
-: Istiod コントロールプレーンと Istio Ingress Gateway の両方をインプレース方式でアップグレードする。
-
-```bash
-$ istioctl install
-```
-
-`(3)`
-
-: データプレーンの istio-proxy を再インジェクションする。
-
-```bash
-$ kubectl rollout restart deployment app-deployment -n app
-```
+    ```bash
+    $ kubectl rollout restart deployment app-deployment -n app
+    ```
 
 > - [Istio / In-place Upgrades](https://istio.io/latest/docs/setup/upgrade/in-place/)
 
@@ -419,69 +413,53 @@ $ kubectl rollout restart deployment app-deployment -n app
 
 #### ▼ `helm` コマンドの場合
 
-`(1)`
+1. Helm では CRD を管理しないようにし、`kubectl` コマンドでこれを作成する。
 
-: Helm では CRD を管理しないようにし、`kubectl` コマンドでこれを作成する。
+    ```bash
+    $ kubectl diff -f https://raw.githubusercontent.com/istio/istio/1.15.3/manifests/charts/base/crds/crd-all.gen.yaml
+    ```
 
-```bash
-$ kubectl diff -f https://raw.githubusercontent.com/istio/istio/1.15.3/manifests/charts/base/crds/crd-all.gen.yaml
-```
-
-`(2)`
-
-: istiod チャートを使用して、古いバージョンの MutatingWebhookConfiguration のみを削除する。
+2. istiod チャートを使用して、古いバージョンの MutatingWebhookConfiguration のみを削除する。
 
     この時、既存のリリースは古いリリースとして扱う。
 
-```bash
-$ helm upgrade <古いバージョンのリリース名> <チャートリポジトリ名>/istiod -n istio-system --version <古いバージョン> --set revisionTags=null
-```
+    ```bash
+    $ helm upgrade <古いバージョンのリリース名> <チャートリポジトリ名>/istiod -n istio-system --version <古いバージョン> --set revisionTags=null
+    ```
 
-`(3)`
+3. istiod チャートを使用して、新しいバージョンの MutatingWebhookConfiguration を作成しつつ、Istiod コントロールプレーンに関する Kubernetes リソースを変更する。
 
-: istiod チャートを使用して、新しいバージョンの MutatingWebhookConfiguration を作成しつつ、Istiod コントロールプレーンに関する Kubernetes リソースを変更する。
+    この時、リリースを新しく命名する。
 
-     この時、リリースを新しく命名する。
+    ```bash
+    $ helm upgrade <新しいバージョンのリリース名> <チャートリポジトリ名>/istiod -n istio-system --version <新しいバージョン>
+    ```
 
-```bash
-$ helm upgrade <新しいバージョンのリリース名> <チャートリポジトリ名>/istiod -n istio-system --version <新しいバージョン>
-```
+4. 特定の Namespace をアップグレードする。
 
-`(4)`
+5. 動作確認し、問題なければ、残りの Namespace もアップグレードする。
 
-: 特定の Namespace をアップグレードする。
+6. istiod チャートを使用して、古いリリースで作成した Istiod コントロールプレーンに関する Kubernetes リソースを削除する。
 
-`(5)`
+    ```bash
+    $ helm upgrade <古いバージョンのリリース名> <チャートリポジトリ名>/istiod -n istio-system --version <古いバージョン> --set revisionTags=null
+    ```
 
-: 動作確認し、問題なければ、残りの Namespace もアップグレードする。
+7. istio-base を使用して、Istio に関する CRD を変更する。
 
-`(6)`
+    この時、リリースを新しく命名する。
 
-: istiod チャートを使用して、古いリリースで作成した Istiod コントロールプレーンに関する Kubernetes リソースを削除する。
+    ```bash
+    $ helm upgrade <新しいバージョンのリリース名> <チャートリポジトリ名>/base -n istio-system --version <新しいバージョン>
+    ```
 
-```bash
-$ helm upgrade <古いバージョンのリリース名> <チャートリポジトリ名>/istiod -n istio-system --version <古いバージョン> --set revisionTags=null
-```
+8. gateway チャートを使用して、Istio Ingress Gateway に関する Kubernetes リソースを変更する。
 
-`(7)`
+    この時、リリースを新しく命名する。
 
-: istio-base を使用して、Istio に関する CRD を変更する。
-
-     この時、リリースを新しく命名する。
-
-```bash
-$ helm upgrade <新しいバージョンのリリース名> <チャートリポジトリ名>/base -n istio-system --version <新しいバージョン>
-```
-
-`(8)`
-
-: gateway チャートを使用して、Istio Ingress Gateway に関する Kubernetes リソースを変更する。
-
-     この時、リリースを新しく命名する。
-
-```bash
-$ helm upgrade <新しいバージョンのリリース名> <チャートリポジトリ名>/gateway -n istio-ingress --version <新しいバージョン>
-```
+    ```bash
+    $ helm upgrade <新しいバージョンのリリース名> <チャートリポジトリ名>/gateway -n istio-ingress --version <新しいバージョン>
+    ```
 
 <br>
 

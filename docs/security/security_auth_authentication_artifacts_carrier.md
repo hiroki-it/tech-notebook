@@ -83,70 +83,56 @@ HTTP/2 では、ヘッダー名は小文字にする必要があります。
 
 セッションベース認証の場合、セッション ID を `Cookie` ヘッダーで運搬する。
 
-`(1)`
+1. セッション ID を `Cookie` ヘッダーに割り当て、リクエストを送信する。
 
-: セッション ID を `Cookie` ヘッダーに割り当て、リクエストを送信する。
+2. 最初、ユーザー作成の段階で、クライアントが資格情報をサーバーに送信する。サーバーは、資格情報を DB に保管する。
 
-`(2)`
+    ```yaml
+    POST https://example.com/users
+    ---
+    # ボディ
+    {"email_address": "foo@gmail.com", "password": "foo"}
+    ```
 
-: 最初、ユーザー作成の段階で、クライアントが資格情報をサーバーに送信する。サーバーは、資格情報を DB に保管する。
+3. 次回の認証時に、再びユーザーが資格情報を送信する。
 
-```yaml
-POST https://example.com/users
----
-# ボディ
-{"email_address": "foo@gmail.com", "password": "foo"}
-```
+    ```yaml
+    POST https://example.com/foo-form
+    ---
+    # ボディ
+    {"email_address": "foo@gmail.com", "password": "foo"}
+    ```
 
-`(3)`
+4. サーバーは、DB の資格情報を照合し、ログインを許可する。サーバーは、セッション ID を作成し、セッション ID に書き込む。
 
-: 次回の認証時に、再びユーザーが資格情報を送信する。
+    ```yaml
+    # セッション ID
+    { sessionid: ***** }
+    ```
 
-```yaml
-POST https://example.com/foo-form
----
-# ボディ
-{"email_address": "foo@gmail.com", "password": "foo"}
-```
+5. レスポンスの `Set-Cookie` ヘッダーにセッション ID を割り当て、クライアントに送信する。`Set-Cookie` ヘッダーにより、クライアントは `Cookie` ヘッダーを設定しなければいけなくなる。
 
-`(4)`
+    ```yaml
+    200 OK
+    ---
+    Set-Cookie: sessionid=<セッションID>
+    ```
 
-: サーバーは、DB の資格情報を照合し、ログインを許可する。サーバーは、セッション ID を作成し、セッション ID に書き込む。
+6. サーバーは、セッション ID とユーザーID を紐付けてサーバー内に保管する。
 
-```yaml
-# セッション ID
-{ sessionid: ***** }
-```
+    加えて次回のログイン時、クライアントは、リクエストの`Cookie`ヘッダーにセッションIDを割り当て、クライアントに送信する。
 
-`(5)`
+    サーバーは、保管したセッションIDに紐付くユーザーIDから、ユーザーを特定し、ログインを許可する。
 
-: レスポンスの `Set-Cookie` ヘッダーにセッション ID を割り当て、クライアントに送信する。`Set-Cookie` ヘッダーにより、クライアントは `Cookie` ヘッダーを設定しなければいけなくなる。
+    これにより、改めて資格情報を送信せずに、素早くログインできるようになる。
 
-```yaml
-200 OK
----
-Set-Cookie: sessionid=<セッションID>
-```
+    ```yaml
+    POST https://example.com/foo-form
+    ---
+    cookie: sessionid=<セッションID>
+    ```
 
-`(6)`
-
-: サーバーは、セッション ID とユーザーID を紐付けてサーバー内に保管する。
-
-     加えて次回のログイン時、クライアントは、リクエストの`Cookie`ヘッダーにセッションIDを割り当て、クライアントに送信する。
-
-     サーバーは、保管したセッションIDに紐付くユーザーIDから、ユーザーを特定し、ログインを許可する。
-
-     これにより、改めて資格情報を送信せずに、素早くログインできるようになる。
-
-```yaml
-POST https://example.com/foo-form
----
-cookie: sessionid=<セッションID>
-```
-
-`(7)`
-
-: 認証解除時、サーバーでセッション ID を削除する。
+7. 認証解除時、サーバーでセッション ID を削除する。
 
 > - [ログアウト機能の目的と実現方法 \| 徳丸浩の日記](https://blog.tokumaru.org/2013/02/purpose-and-implementation-of-the-logout-function.html)
 

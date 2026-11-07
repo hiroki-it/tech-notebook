@@ -25,49 +25,31 @@ description: 証明書ベース認証＠認証アーティファクトによる�
 
 **＊サーバーが実行すること＊**
 
-`(1)`
+1. サーバーは、受信者 (クライアント) にあらかじめ公開鍵を配布しておく。
 
-: サーバーは、受信者 (クライアント) にあらかじめ公開鍵を配布しておく。
+2. 平文をハッシュ化し、ダイジェストにする。
 
-`(2)`
+3. ダイジェストを秘密鍵で暗号化し、暗号ダイジェスト (署名) を作成する。
 
-: 平文をハッシュ化し、ダイジェストにする。
-
-`(3)`
-
-: ダイジェストを秘密鍵で暗号化し、暗号ダイジェスト (署名) を作成する。
-
-`(4)`
-
-: 『平文』、『暗号ダイジェスト (署名) 』を送信する。
+4. 『平文』、『暗号ダイジェスト (署名) 』を送信する。
 
 **＊受信者 (クライアント) が実行すること＊**
 
-`(1)`
+1. 受信者 (クライアント) は、『平文』と『暗号ダイジェスト (署名) 』を受信する。
 
-: 受信者 (クライアント) は、『平文』と『暗号ダイジェスト (署名) 』を受信する。
+2. 平文をハッシュ化し、ダイジェストにする。
 
-`(2)`
-
-: 平文をハッシュ化し、ダイジェストにする。
-
-`(3)`
-
-: 上記 `2` 個のダイジェストが同一なら、『なりすまし』と『改竄』が行われていないと判断
+3. 上記 `2` 個のダイジェストが同一なら、『なりすまし』と『改竄』が行われていないと判断
 
 #### ▼ 暗号ダイジェスト (署名) のメリット
 
-`(1)`
+1. 改竄を防げる
 
-: 改竄を防げる
+    サーバーから送られた『平文』と『暗号ダイジェスト』のどちらかが、通信の途中で改竄された場合、これらのダイジェストが同じになることは確率的にありえない。
 
-サーバーから送られた『平文』と『暗号ダイジェスト』のどちらかが、通信の途中で改竄された場合、これらのダイジェストが同じになることは確率的にありえない。
+    したがって、確かに改竄されていないと判断可能。
 
-したがって、確かに改竄されていないと判断可能。
-
-`(2)`
-
-: なりすましを防げる
+2. なりすましを防げる
 
 特定の秘密鍵を持つのは、特定のサーバーだけ。
 
@@ -129,23 +111,15 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
 
 中間認証局がいる場合、もう少し複雑な仕組みになる。
 
-`(1)`
+1. サーバーは公開鍵と秘密鍵を作成する。秘密鍵から証明書署名要求を作成する。
 
-: サーバーは公開鍵と秘密鍵を作成する。秘密鍵から証明書署名要求を作成する。
+2. サーバーはルート認証局に証明書署名要求を送信する。
 
-`(2)`
+3. ルート認証局は証明書署名要求からハッシュ値を算出し、ルート認証局のもつ秘密鍵を使用してハッシュ値を暗号化する。もとの証明書署名要求とハッシュ値を組み合わせたものを証明書とする。S/MIME で使用する場合には、『S/MIME 証明書』、SSL/TLS で使用する場合には、『サーバー証明書』という。
 
-: サーバーはルート認証局に証明書署名要求を送信する。
+4. サーバーに署名済み証明書 (S/MIME 証明書、サーバー証明書) をインストールする。
 
-`(3)`
-
-: ルート認証局は証明書署名要求からハッシュ値を算出し、ルート認証局のもつ秘密鍵を使用してハッシュ値を暗号化する。もとの証明書署名要求とハッシュ値を組み合わせたものを証明書とする。S/MIME で使用する場合には、『S/MIME 証明書』、SSL/TLS で使用する場合には、『サーバー証明書』という。
-
-`(4)`
-
-: サーバーに署名済み証明書 (S/MIME 証明書、サーバー証明書) をインストールする。
-
-![certificate_sign](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/certificate_sign.png)
+    ![certificate_sign](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/certificate_sign.png)
 
 > - [SSL証明書の署名と検証 \| DevelopersIO](https://dev.classmethod.jp/articles/ssl-certificate-system/)
 > - [【初心者向け】サーバ証明書の検証の流れについてまとめてみた - サーバーワークスエンジニアブログ](https://blog.serverworks.co.jp/server-cert-verification)
@@ -160,15 +134,11 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
 
 中間認証局がいる場合、もう少し複雑な仕組みになる。
 
-`(1)`
+1. TLS ハンドシェイク開始後、サーバーはクライアント (例：ブラウザ) に署名済み証明書とルート認証局の CA 証明書をクライアントに返信する。
 
-: TLS ハンドシェイク開始後、サーバーはクライアント (例：ブラウザ) に署名済み証明書とルート認証局の CA 証明書をクライアントに返信する。
+2. クライアントは、ルート認証局の CA 証明書に含まれる公開鍵を使用して、署名済み証明書のハッシュ値を復号する。また、署名済み証明書のもとになった証明書署名要求からハッシュ値を算出する。復号したハッシュ値と算出したハッシュ値が同じなら、正しい証明書であると判定する。
 
-`(2)`
-
-: クライアントは、ルート認証局の CA 証明書に含まれる公開鍵を使用して、署名済み証明書のハッシュ値を復号する。また、署名済み証明書のもとになった証明書署名要求からハッシュ値を算出する。復号したハッシュ値と算出したハッシュ値が同じなら、正しい証明書であると判定する。
-
-![certificate_validate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/certificate_validate.png)
+    ![certificate_validate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/certificate_validate.png)
 
 > - [SSL証明書の署名と検証 \| DevelopersIO](https://dev.classmethod.jp/articles/ssl-certificate-system/)
 > - [【初心者向け】サーバ証明書の検証の流れについてまとめてみた - サーバーワークスエンジニアブログ](https://blog.serverworks.co.jp/server-cert-verification)
@@ -521,166 +491,154 @@ OS ごとに、デフォルトのディレクトリが異なる。
 
 このときのルート認証局は『自分』である。
 
-`(1)`
+1. サーバー証明書の有効期限が切れてしまい、HTTPS リクエストを送信できなくなってしまったとする。
 
-: サーバー証明書の有効期限が切れてしまい、HTTPS リクエストを送信できなくなってしまったとする。
+    ```bash
+    $ curl https://foo.example.com -v
+    
+    *   Trying *.*.*.*...
+    * TCP_NODELAY set
+    * Connected to foo.example.com (*.*.*.*) port 443 (#0)
+    * ALPN, offering h2
+    * ALPN, offering http/1.1
+    * Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+    * successfully set certificate verify locations:
+    *   CAfile: /etc/pki/tls/certs/ca-bundle.crt
+      CApath: none
+    * TLSv1.2 (OUT), TLS header, Certificate Status (22):
+    * TLSv1.2 (OUT), TLS handshake, Client hello (1):
+    * TLSv1.2 (IN), TLS handshake, Server hello (2):
+    * TLSv1.2 (IN), TLS handshake, Certificate (11):
+    * TLSv1.2 (OUT), TLS alert, certificate expired (557):
+    * SSL certificate problem: certificate has expired
+    * Closing connection 0
+    curl: (60) SSL certificate problem: certificate has expired
+    More details here: https://curl.haxx.se/docs/sslcerts.html
+    
+    curl failed to verify the legitimacy of the server and therefore could not
+    establish a secure connection to it. To learn more about this situation and
+    how to fix it, please visit the web page mentioned above.
+    ```
 
-```bash
-$ curl https://foo.example.com -v
+2. 秘密鍵 (`.key` ファイル) を作成する。
 
-*   Trying *.*.*.*...
-* TCP_NODELAY set
-* Connected to foo.example.com (*.*.*.*) port 443 (#0)
-* ALPN, offering h2
-* ALPN, offering http/1.1
-* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
-* successfully set certificate verify locations:
-*   CAfile: /etc/pki/tls/certs/ca-bundle.crt
-  CApath: none
-* TLSv1.2 (OUT), TLS header, Certificate Status (22):
-* TLSv1.2 (OUT), TLS handshake, Client hello (1):
-* TLSv1.2 (IN), TLS handshake, Server hello (2):
-* TLSv1.2 (IN), TLS handshake, Certificate (11):
-* TLSv1.2 (OUT), TLS alert, certificate expired (557):
-* SSL certificate problem: certificate has expired
-* Closing connection 0
-curl: (60) SSL certificate problem: certificate has expired
-More details here: https://curl.haxx.se/docs/sslcerts.html
+    ```bash
+    $ openssl genrsa 2048 -keyout server.key
+    
+    Generating RSA private key, 2048 bit long modulus
+    .............................................+++
+    .....................................................................+++
+    e is 65537 (0x10001)
+    ```
 
-curl failed to verify the legitimacy of the server and therefore could not
-establish a secure connection to it. To learn more about this situation and
-how to fix it, please visit the web page mentioned above.
-```
+3. 秘密鍵 (`.key` ファイル) から、証明書署名要求 (`.csr` ファイル) を作成する。
 
-`(2)`
+    対話形式で入力を求められるため、『Common Name』に、Webサイトで使用する完全修飾ドメイン名を入力する以外は、何も入力せずにエンターとする。
 
-: 秘密鍵 (`.key` ファイル) を作成する。
+    ```bash
+    $ openssl req -new -key server.key -out server.csr
+    
+    Country Name (2 letter code) []:
+    State or Province Name (full name) []:
+    Locality Name (eg, city) []:
+    Organization Name (eg, company) []:
+    Organizational Unit Name (eg, section) []:
+    Common Name (eg, fully qualified host name) []:<完全修飾ドメイン名> # これのみ入力する。
+    Email Address []:
+    ```
 
-```bash
-$ openssl genrsa 2048 -keyout server.key
+4. 自己署名のサーバー証明書を作成する。
 
-Generating RSA private key, 2048 bit long modulus
-.............................................+++
-.....................................................................+++
-e is 65537 (0x10001)
-```
+    認証局はサーバー自身なため、サーバーの秘密鍵 (`.key`ファイル) と証明書署名要求 (`.csr`ファイル) による署名で、サーバー証明書 (`.crt`ファイル) を作成する。
 
-`(3)`
+    この時、あらかじめルート認証局を別に作成しておき、`signkey`オプションの代わりに`CA`オプションと`CAkey`オプションを使用して、ルート認証局が証明書で署名する方法もある。
 
-: 秘密鍵 (`.key` ファイル) から、証明書署名要求 (`.csr` ファイル) を作成する。
+    有効期限は`10`年 (`3650`日) とする。
 
-     対話形式で入力を求められるため、『Common Name』に、Webサイトで使用する完全修飾ドメイン名を入力する以外は、何も入力せずにエンターとする。
+    ```bash
+    $ openssl x509 \
+        -days 3650 \
+        -req \
+        -sha256 \
+        -signkey server.key \
+        -in server.csr \
+        -out server.crt
+    ```
 
-```bash
-$ openssl req -new -key server.key -out server.csr
+5. サーバー証明書 (`.crt` ファイル) 、サーバー証明書とペアになる秘密鍵 (`.key` ファイル) を該当の箇所に設定する。
 
-Country Name (2 letter code) []:
-State or Province Name (full name) []:
-Locality Name (eg, city) []:
-Organization Name (eg, company) []:
-Organizational Unit Name (eg, section) []:
-Common Name (eg, fully qualified host name) []:<完全修飾ドメイン名> # これのみ入力する。
-Email Address []:
-```
+    例えば、Nginxの設定ファイルなら、以下の通りとなる。
 
-`(4)`
+    ```nginx
+    #-------------------------------------
+    # HTTPリクエスト
+    #-------------------------------------
+    server {
+        # 443番ポートで待ち受けるようにし、サーバー証明書を使用する。
+        # listen 80;
+        listen 443 ssl;
+    
+        # Hostヘッダー
+        server_name foo.example.com;
+    
+        # サーバー証明書を設定する。
+        ssl_certificate     /etc/nginx/ssl/server.crt;
+        # 秘密鍵を設定する。
+        ssl_certificate_key /etc/nginx/ssl/server.key;
+    }
+    ```
 
-: 自己署名のサーバー証明書を作成する。
+6. サーバー証明書の開始日と失効日が新しくなっている。
 
-     認証局はサーバー自身なため、サーバーの秘密鍵 (`.key`ファイル) と証明書署名要求 (`.csr`ファイル) による署名で、サーバー証明書 (`.crt`ファイル) を作成する。
-
-     この時、あらかじめルート認証局を別に作成しておき、`signkey`オプションの代わりに`CA`オプションと`CAkey`オプションを使用して、ルート認証局が証明書で署名する方法もある。
-
-     有効期限は`10`年 (`3650`日) とする。
-
-```bash
-$ openssl x509 \
-    -days 3650 \
-    -req \
-    -sha256 \
-    -signkey server.key \
-    -in server.csr \
-    -out server.crt
-```
-
-`(5)`
-
-: サーバー証明書 (`.crt` ファイル) 、サーバー証明書とペアになる秘密鍵 (`.key` ファイル) を該当の箇所に設定する。
-
-     例えば、Nginxの設定ファイルなら、以下の通りとなる。
-
-```nginx
-#-------------------------------------
-# HTTPリクエスト
-#-------------------------------------
-server {
-    # 443番ポートで待ち受けるようにし、サーバー証明書を使用する。
-    # listen 80;
-    listen 443 ssl;
-
-    # Hostヘッダー
-    server_name foo.example.com;
-
-    # サーバー証明書を設定する。
-    ssl_certificate     /etc/nginx/ssl/server.crt;
-    # 秘密鍵を設定する。
-    ssl_certificate_key /etc/nginx/ssl/server.key;
-}
-```
-
-`(6)`
-
-: サーバー証明書の開始日と失効日が新しくなっている。
-
-```bash
-$ curl https://foo.example.com -v
-*   Trying *.*.*.*...
-* TCP_NODELAY set
-* Connected to foo.example.com (*.*.*.*) port 443 (#0)
-* ALPN, offering h2
-* ALPN, offering http/1.1
-* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
-* successfully set certificate verify locations:
-*   CAfile: /etc/pki/tls/certs/ca-bundle.crt
-  CApath: none
-* TLSv1.2 (OUT), TLS header, Certificate Status (22):
-* TLSv1.2 (OUT), TLS handshake, Client hello (1):
-* TLSv1.2 (IN), TLS handshake, Server hello (2):
-* TLSv1.2 (IN), TLS handshake, Certificate (11):
-* TLSv1.2 (IN), TLS handshake, Server key exchange (12):
-* TLSv1.2 (IN), TLS handshake, Server finished (14):
-* TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
-* TLSv1.2 (OUT), TLS change cipher, Change cipher spec (1):
-* TLSv1.2 (OUT), TLS handshake, Finished (20):
-* TLSv1.2 (IN), TLS change cipher, Change cipher spec (1):
-* TLSv1.2 (IN), TLS handshake, Finished (20):
-* SSL connection using TLSv1.2 / *-*-*-*-*
-* ALPN, server accepted to use h2
-* Server certificate:
-*  subject: C=JP; ST=Tokyo; L=***; O=***; CN=*.example.com
-*  start date: Dec 21 02:08:29 2022 GMT # サーバー証明書の開始日
-*  expire date: Jan 22 02:08:28 2024 GMT # サーバー証明書の失効日
-*  subjectAltName: host "foo.example.com" matched cert's "*.example.com"
-*  issuer: C=BE; O=* nv-sa; CN=* RSA OV SSL CA 2018
-*  SSL certificate verify ok.
-* Using HTTP2, server supports multi-use
-* Connection state changed (HTTP/2 confirmed)
-* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
-* Using Stream ID: 1 (easy handle *****)
-> GET /v1/health HTTP/2
-> Host: foo.example.com
-> User-Agent: curl/7.61.1
-> Accept: */*
->
-* Connection state changed (MAX_CONCURRENT_STREAMS == 2147483647)!
-< HTTP/2 200
-< content-type: application/json; charset=utf-8
-< date: Thu, 12 Jan 2023 02:07:12 GMT
-< content-length: 2
-< server: nginx
-<
-* Connection #0 to host foo.example.com left intact
-```
+    ```bash
+    $ curl https://foo.example.com -v
+    *   Trying *.*.*.*...
+    * TCP_NODELAY set
+    * Connected to foo.example.com (*.*.*.*) port 443 (#0)
+    * ALPN, offering h2
+    * ALPN, offering http/1.1
+    * Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+    * successfully set certificate verify locations:
+    *   CAfile: /etc/pki/tls/certs/ca-bundle.crt
+      CApath: none
+    * TLSv1.2 (OUT), TLS header, Certificate Status (22):
+    * TLSv1.2 (OUT), TLS handshake, Client hello (1):
+    * TLSv1.2 (IN), TLS handshake, Server hello (2):
+    * TLSv1.2 (IN), TLS handshake, Certificate (11):
+    * TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+    * TLSv1.2 (IN), TLS handshake, Server finished (14):
+    * TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+    * TLSv1.2 (OUT), TLS change cipher, Change cipher spec (1):
+    * TLSv1.2 (OUT), TLS handshake, Finished (20):
+    * TLSv1.2 (IN), TLS change cipher, Change cipher spec (1):
+    * TLSv1.2 (IN), TLS handshake, Finished (20):
+    * SSL connection using TLSv1.2 / *-*-*-*-*
+    * ALPN, server accepted to use h2
+    * Server certificate:
+    *  subject: C=JP; ST=Tokyo; L=***; O=***; CN=*.example.com
+    *  start date: Dec 21 02:08:29 2022 GMT # サーバー証明書の開始日
+    *  expire date: Jan 22 02:08:28 2024 GMT # サーバー証明書の失効日
+    *  subjectAltName: host "foo.example.com" matched cert's "*.example.com"
+    *  issuer: C=BE; O=* nv-sa; CN=* RSA OV SSL CA 2018
+    *  SSL certificate verify ok.
+    * Using HTTP2, server supports multi-use
+    * Connection state changed (HTTP/2 confirmed)
+    * Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+    * Using Stream ID: 1 (easy handle *****)
+    > GET /v1/health HTTP/2
+    > Host: foo.example.com
+    > User-Agent: curl/7.61.1
+    > Accept: */*
+    >
+    * Connection state changed (MAX_CONCURRENT_STREAMS == 2147483647)!
+    < HTTP/2 200
+    < content-type: application/json; charset=utf-8
+    < date: Thu, 12 Jan 2023 02:07:12 GMT
+    < content-length: 2
+    < server: nginx
+    <
+    * Connection #0 to host foo.example.com left intact
+    ```
 
 > - [オレオレSSL証明書（自己署名証明書）を作るワンライナー - karakaram-blog](https://www.karakaram.com/creating-self-signed-certificate/)
 > - [オレオレ証明書・秘密鍵・CSR全部まとめて作るワンライナー #HTTPS - Qiita](https://qiita.com/marcy-terui/items/2f63d7f170ff82531245#comment-15815a021373f84e74bd)
@@ -755,83 +713,69 @@ $ keytool -import -alias <エイリアス> -file <秘密鍵>.pem -keystore <公�
 
 このときのルート認証局は『自分』である。
 
-`(1)`
+1. クライアント証明書の有効期限が切れてしまい、リクエストを拒否されてしまったとする。
 
-: クライアント証明書の有効期限が切れてしまい、リクエストを拒否されてしまったとする。
+    ```bash
+    $ curl https://foo.example.com -v
+    ```
 
-```bash
-$ curl https://foo.example.com -v
-```
+2. 秘密鍵 (`.key` ファイル) を作成する。
 
-`(2)`
+    ```bash
+    $ openssl genrsa 2048 -keyout client.key
+    ```
 
-: 秘密鍵 (`.key` ファイル) を作成する。
+3. 秘密鍵 (`.key` ファイル) から、証明書署名要求 (`.csr` ファイル) を作成する。
 
-```bash
-$ openssl genrsa 2048 -keyout client.key
-```
+    対話形式で入力を求められるため、『Common Name』に、Webサイトで使用する完全修飾ドメイン名を入力する以外は、何も入力せずにエンターとする。
 
-`(3)`
+    ```bash
+    $ openssl req -new -key client.key -out client.csr
+    
+    Country Name (2 letter code) []:
+    State or Province Name (full name) []:
+    Locality Name (eg, city) []:
+    Organization Name (eg, company) []:
+    Organizational Unit Name (eg, section) []:
+    Common Name (eg, fully qualified host name) []:<完全修飾ドメイン名> # これのみ入力する。
+    Email Address []:
+    ```
 
-: 秘密鍵 (`.key` ファイル) から、証明書署名要求 (`.csr` ファイル) を作成する。
+4. 自己署名のクライアント証明書を作成する。
 
-     対話形式で入力を求められるため、『Common Name』に、Webサイトで使用する完全修飾ドメイン名を入力する以外は、何も入力せずにエンターとする。
+    認証局はクライアント自身なため、クライアントの秘密鍵 (`.key`ファイル) と証明書署名要求 (`.csr`ファイル) による署名で、クライアント証明書 (`.crt`ファイル) を作成する。
 
-```bash
-$ openssl req -new -key client.key -out client.csr
+    この時、あらかじめルート認証局を別に作成しておき、`signkey`オプションの代わりに`CA`オプションと`CAkey`オプションを使用して、ルート認証局が証明書で署名する方法もある。
 
-Country Name (2 letter code) []:
-State or Province Name (full name) []:
-Locality Name (eg, city) []:
-Organization Name (eg, company) []:
-Organizational Unit Name (eg, section) []:
-Common Name (eg, fully qualified host name) []:<完全修飾ドメイン名> # これのみ入力する。
-Email Address []:
-```
+    有効期限は`10`年 (`3650`日) とする。
 
-`(4)`
+    未来の俺に託すが、クライアント証明書の作成時に`signkey`オプションを使用している例が見つからず、基本的には`CA`オプションと`CAkey`オプションを使った方法になるっぽい。
 
-: 自己署名のクライアント証明書を作成する。
+    ```bash
+    $ openssl x509 \
+        -days 3650 \
+        -req \
+        -sha256 \
+        -signkey client.key \
+        -in client.csr \
+        -out client.crt
+    ```
 
-     認証局はクライアント自身なため、クライアントの秘密鍵 (`.key`ファイル) と証明書署名要求 (`.csr`ファイル) による署名で、クライアント証明書 (`.crt`ファイル) を作成する。
+5. 秘密鍵 (`.key` ファイル) とクライアント証明書 (`.crt` ファイル) の pkcs12 形式ペア (`.p12` ファイル) をエクスポートする。
 
-     この時、あらかじめルート認証局を別に作成しておき、`signkey`オプションの代わりに`CA`オプションと`CAkey`オプションを使用して、ルート認証局が証明書で署名する方法もある。
+    これをクライアントのマシン (例：ブラウザ、サーバーなど) に登録する。
 
-     有効期限は`10`年 (`3650`日) とする。
+    ```bash
+    $ openssl pkcs12 -export -inkey client.key -in client.crt -out client.p12
+    ```
 
-     未来の俺に託すが、クライアント証明書の作成時に`signkey`オプションを使用している例が見つからず、基本的には`CA`オプションと`CAkey`オプションを使った方法になるっぽい。
+6. クライアント証明書 (`.crt` ファイル) 、クライアント証明書とペアになる秘密鍵 (`.key` ファイル) を該当の箇所に設定する。
 
-```bash
-$ openssl x509 \
-    -days 3650 \
-    -req \
-    -sha256 \
-    -signkey client.key \
-    -in client.csr \
-    -out client.crt
-```
+7. クライアント証明書の開始日と失効日が新しくなっている。
 
-`(5)`
-
-: 秘密鍵 (`.key` ファイル) とクライアント証明書 (`.crt` ファイル) の pkcs12 形式ペア (`.p12` ファイル) をエクスポートする。
-
-     これをクライアントのマシン (例：ブラウザ、サーバーなど) に登録する。
-
-```bash
-$ openssl pkcs12 -export -inkey client.key -in client.crt -out client.p12
-```
-
-`(6)`
-
-: クライアント証明書 (`.crt` ファイル) 、クライアント証明書とペアになる秘密鍵 (`.key` ファイル) を該当の箇所に設定する。
-
-`(7)`
-
-: クライアント証明書の開始日と失効日が新しくなっている。
-
-```bash
-$ curl https://foo.example.com -v
-```
+    ```bash
+    $ curl https://foo.example.com -v
+    ```
 
 > - [Let’s Encryptと自己認証局でクライアント証明書接続 \| こねくりブログ](https://www.konekuri.com/87/)
 > - [クライアント証明書の作り方 – @y-yagi on Tumblr](https://www.tumblr.com/y-yagi/18179788088/%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9)

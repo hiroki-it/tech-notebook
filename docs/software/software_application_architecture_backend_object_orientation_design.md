@@ -272,27 +272,19 @@ Dependency (依存) が使用される。
 
 **＊例＊**
 
-`(1)`
+1. 5 つのライフライン (店員オブジェクト、管理画面オブジェクト、検索画面オブジェクト、商品 DB オブジェクト、商品詳細画面オブジェクト) を設定する。
 
-: 5 つのライフライン (店員オブジェクト、管理画面オブジェクト、検索画面オブジェクト、商品 DB オブジェクト、商品詳細画面オブジェクト) を設定する。
+2. 各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
 
-`(2)`
-
-: 各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
-
-![シーケンス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シーケンス図.png)
+    ![シーケンス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シーケンス図.png)
 
 **＊例＊**
 
-`(1)`
+1. `3` 個のライフラインを設定する。
 
-: `3` 個のライフラインを設定する。
+2. 各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
 
-`(2)`
-
-: 各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
-
-![シーケンス図_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シーケンス図_2.png)
+    ![シーケンス図_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シーケンス図_2.png)
 
 <br>
 

@@ -618,27 +618,21 @@ L-IPAM デーモンは、元からあるこの機能を利用し、Node の AWS 
 
 ### IP アドレス割り当ての仕組み
 
-`(1)`
+1. L-IPAM デーモンは、ENI とセカンダリープライベート IP アドレスの情報を、CNI バイナリにプールする。
 
-: L-IPAM デーモンは、ENI とセカンダリープライベート IP アドレスの情報を、CNI バイナリにプールする。
+    プールのENIとセカンダリープライベートIPアドレスの数は、`MINIMUM_IP_TARGET`と`WARM_IP_TARGET` (または`WARM_ENI_TARGET`) の合計数で決まる。
 
-     プールのENIとセカンダリープライベートIPアドレスの数は、`MINIMUM_IP_TARGET`と`WARM_IP_TARGET` (または`WARM_ENI_TARGET`) の合計数で決まる。
-
-`(2)`
-
-: kubelet は、kube-apiserver から Pod の `ADD`/`DEL` リクエストを受信する。
+2. kubelet は、kube-apiserver から Pod の `ADD`/`DEL` リクエストを受信する。
 
     Podの`ADD`/`DEL`リクエストをCNIバイナリに送信する。
 
-`(3)`
+3. L-IPAM デーモンは CNI バイナリを参照する。
 
-: L-IPAM デーモンは CNI バイナリを参照する。
+    また、CNIバイナリ上の情報に応じてEC2-APIをコールし、ENIをNodeに割り当てる。
 
-     また、CNIバイナリ上の情報に応じてEC2-APIをコールし、ENIをNodeに割り当てる。
+    反対に、NodeのENIを解放し、ENIのプールに戻す。
 
-     反対に、NodeのENIを解放し、ENIのプールに戻す。
-
-![aws-eks-vpc-cni-addon_standard-mode_architecture_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_1.png)
+    ![aws-eks-vpc-cni-addon_standard-mode_architecture_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_1.png)
 
 `(3)`
 
@@ -648,9 +642,9 @@ L-IPAM デーモンは、元からあるこの機能を利用し、Node の AWS 
 
 : CNI バイナリは、L-IPAM デーモンのプールから IP アドレスを取得し、Pod にこれを割り当てる。
 
-     反対に、PodからIPアドレスを解放し、L-IPAMデーモンのプールに戻す。
+    反対に、PodからIPアドレスを解放し、L-IPAMデーモンのプールに戻す。
 
-     必要に応じて、
+    必要に応じて、
 
 ![aws-eks-vpc-cni-addon_standard-mode_architecture_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png)
 
@@ -680,21 +674,15 @@ Pod の上限数を上げる場合、Amazon EKS が属する Amazon VPC サブ�
 
 例えば、Node 当たりにスケジューリングされる Pod 数の最大数が、Pod の冗長化の数も考慮して、`10` 個だとする。
 
-`(1)`
+1. Node で小さめのインスタンスサイズを選びつつ、`MINIMUM_IP_TARGET=10+2` と `WARM_IP_TARGET=2` を設定する。
 
-: Node で小さめのインスタンスサイズを選びつつ、`MINIMUM_IP_TARGET=10+2` と `WARM_IP_TARGET=2` を設定する。
+2. Node 当たり `12` 個のセカンダリープライベート IP アドレスを確保する。
 
-`(2)`
+    さらに追加で、常に`2`個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。
 
-: Node 当たり `12` 個のセカンダリープライベート IP アドレスを確保する。
+    結果、最初`12`個のPodをスケジューリングできる。
 
-     さらに追加で、常に`2`個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。
-
-     結果、最初`12`個のPodをスケジューリングできる。
-
-`(3)`
-
-: Pod が `12` 個を超えた段階で、合計のセカンダリープライベート IP アドレス数は `2` 個のウォーム状態数を維持しながら増えていく。
+3. Pod が `12` 個を超えた段階で、合計のセカンダリープライベート IP アドレス数は `2` 個のウォーム状態数を維持しながら増えていく。
 
 > - [amazon-vpc-cni-k8s/docs/eni-and-ip-target.md at master · aws/amazon-vpc-cni-k8s · GitHub](https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/eni-and-ip-target.md)
 > - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt

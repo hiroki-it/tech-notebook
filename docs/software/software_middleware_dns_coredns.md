@@ -213,40 +213,34 @@ Address:  10.105.157.184
 
 #### ▼ Pod 外から Service に対する正引き名前解決
 
-`(1)`
+1. Nginx の Pod にルーティングする Service が稼働しているとする。
 
-: Nginx の Pod にルーティングする Service が稼働しているとする。
+    ```bash
+    $ kubectl get service
+    
+    NAME            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+    nginx-service   ClusterIP   10.101.67.107   <none>        8080/TCP   3h34m
+    ```
 
-```bash
-$ kubectl get service
+2. CoreDNS の Pod が稼働しているとする。
 
-NAME            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
-nginx-service   ClusterIP   10.101.67.107   <none>        8080/TCP   3h34m
-```
+    ここで、CoreDNSのPodのIPアドレス (ここでは`10.244.0.2`) を確認しておく。
 
-`(2)`
+    ```bash
+    $ kubectl get pod -o wide -l k8s-app=kube-dns -n kube-system
+    
+    NAME            READY   STATUS    RESTARTS   AGE     IP           NODE       NOMINATED NODE   READINESS GATES
+    coredns-*****   1/1     Running   0          3h53m   10.244.0.2   minikube   <none>           <none>
+    ```
 
-: CoreDNS の Pod が稼働しているとする。
+3. ここで、Node 内に接続する。Service の完全修飾ドメイン名 (ここでは `nginx-service.default.svc.cluster.local`) を CoreDNS に正引きする。すると、Service の IP アドレスを取得できる。
 
-     ここで、CoreDNSのPodのIPアドレス (ここでは`10.244.0.2`) を確認しておく。
-
-```bash
-$ kubectl get pod -o wide -l k8s-app=kube-dns -n kube-system
-
-NAME            READY   STATUS    RESTARTS   AGE     IP           NODE       NOMINATED NODE   READINESS GATES
-coredns-*****   1/1     Running   0          3h53m   10.244.0.2   minikube   <none>           <none>
-```
-
-`(3)`
-
-: ここで、Node 内に接続する。Service の完全修飾ドメイン名 (ここでは `nginx-service.default.svc.cluster.local`) を CoreDNS に正引きする。すると、Service の IP アドレスを取得できる。
-
-```bash
-# Node内に接続する。
-$ dig nginx-service.default.svc.cluster.local +short @10.244.0.2
-
-10.101.67.107
-```
+    ```bash
+    # Node内に接続する。
+    $ dig nginx-service.default.svc.cluster.local +short @10.244.0.2
+    
+    10.101.67.107
+    ```
 
 > - [KubernetesのServiceの挙動を確認する](https://zenn.dev/tayusa/articles/c705cd65b6ee74)
 
@@ -256,28 +250,22 @@ $ dig nginx-service.default.svc.cluster.local +short @10.244.0.2
 
 #### ▼ 事前確認
 
-`(1)`
+1. Service がルーティング先のポート番号を確認する。
 
-: Service がルーティング先のポート番号を確認する。
+    ```bash
+    $ kubectl get service <Service名> -o yaml | grep targetPort:
+    ```
 
-```bash
-$ kubectl get service <Service名> -o yaml | grep targetPort:
-```
+2. Service がルーティング先の Pod にて、コンテナが待ち受けるポート番号を確認する。注意点として、`.spec.containers[*].ports` キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。
 
-`(2)`
+    ```bash
+    # 先にmetadata.labelキーから、Serviceのルーティング先のPodを確認する
+    $ kubectl get pod -l <名前>=<値> -o wide
+    
+    $ kubectl get pod <Pod名> -o yaml | grep containerPort:
+    ```
 
-: Service がルーティング先の Pod にて、コンテナが待ち受けるポート番号を確認する。注意点として、`.spec.containers[*].ports` キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。
-
-```bash
-# 先にmetadata.labelキーから、Serviceのルーティング先のPodを確認する
-$ kubectl get pod -l <名前>=<値> -o wide
-
-$ kubectl get pod <Pod名> -o yaml | grep containerPort:
-```
-
-`(3)`
-
-: 両方のポート番号が一致しているかを確認する。
+3. 両方のポート番号が一致しているかを確認する。
 
 #### ▼ Service を経由したアウトバウンド通信の送信
 

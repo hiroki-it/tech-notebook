@@ -959,15 +959,11 @@ $_COOKIE = ["Cookie名" => "値"];
 
 ![cookie](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cookie.png)
 
-`(1)`
+1. 最初、ブラウザはリクエストを送信する。
 
-: 最初、ブラウザはリクエストを送信する。
+2. サーバーは、レスポンスヘッダーの `Set-Cookie` ヘッダーに Cookie 情報を埋め込んで送信する。
 
-`(2)`
-
-: サーバーは、レスポンスヘッダーの `Set-Cookie` ヘッダーに Cookie 情報を埋め込んで送信する。
-
-=== "Go"
+    === "Go"
 
     ```go
     http.SetCookie(w, &http.Cookie{
@@ -981,7 +977,7 @@ $_COOKIE = ["Cookie名" => "値"];
     })
     ```
 
-=== "TypeScript"
+    === "TypeScript"
 
     ```typescript
     res.setHeader(
@@ -997,7 +993,7 @@ $_COOKIE = ["Cookie名" => "値"];
     );
     ```
 
-=== "PHP"
+    === "PHP"
 
     ```injectablephp
     <?php
@@ -1013,15 +1009,11 @@ $_COOKIE = ["Cookie名" => "値"];
     );
     ```
 
-`(3)`
+3. ブラウザは、その Cookie 情報を保管する。
 
-: ブラウザは、その Cookie 情報を保管する。
+4. 2 回目以降のリクエストでは、ブラウザは、リクエストヘッダーの `Cookie` ヘッダーに Cookie 情報を埋め込んでサーバーに送信する。
 
-`(4)`
-
-: 2 回目以降のリクエストでは、ブラウザは、リクエストヘッダーの `Cookie` ヘッダーに Cookie 情報を埋め込んでサーバーに送信する。
-
-     サーバーは、Cookie情報に紐付くクライアントのデータのRead処理を実行する。
+    サーバーは、Cookie情報に紐付くクライアントのデータのRead処理を実行する。
 
 <br>
 
@@ -1168,25 +1160,17 @@ session.gc_divisor = 1
 
 ![session-id](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/session-id.png)
 
-`(1)`
+1. 最初、ブラウザはリクエストを送信する。
 
-: 最初、ブラウザはリクエストを送信する。
+    セッションIDを発行し、セッションIDごとに`sess_*****`ファイルを作成。
 
-     セッションIDを発行し、セッションIDごとに`sess_*****`ファイルを作成。
+2. サーバーは、レスポンスヘッダー情報の `Cookie` ヘッダーにセッション ID を割り当て送信する。
 
-`(2)`
+3. ブラウザは、そのセッション ID を保管する。
 
-: サーバーは、レスポンスヘッダー情報の `Cookie` ヘッダーにセッション ID を割り当て送信する。
+4. 2 回目以降のリクエストでは、ブラウザは、リクエストヘッダー情報の `Cookie` ヘッダーにセッション ID を割り当て、サーバーに送信する。
 
-`(3)`
-
-: ブラウザは、そのセッション ID を保管する。
-
-`(4)`
-
-: 2 回目以降のリクエストでは、ブラウザは、リクエストヘッダー情報の `Cookie` ヘッダーにセッション ID を割り当て、サーバーに送信する。
-
-     サーバーは、セッションIDに紐付くクライアントのデータのRead処理を実行する。
+    サーバーは、セッションIDに紐付くクライアントのデータのRead処理を実行する。
 
 <br>
 

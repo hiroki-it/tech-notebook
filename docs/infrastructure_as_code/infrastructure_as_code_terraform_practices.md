@@ -876,39 +876,33 @@ CI ツールに長期間有効なクレデンシャルを保存せず、OIDC な
 > - https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets
 > - [\[Terraform\] 誤解されがちなignore_changesの動き・機密情報はstateに保持されるのか？ \| DevelopersIO](https://dev.classmethod.jp/articles/note-about-terraform-ignore-changes/#toc-9)
 
-`(1)`
+1. 初期構築時にダミー値を割り当ててプロビジョニングする。
 
-: 初期構築時にダミー値を割り当ててプロビジョニングする。
+    この時点で、`tfstate`ファイルにはダミー値が書き込まれる。
 
-     この時点で、`tfstate`ファイルにはダミー値が書き込まれる。
+2. 実際の値を AWS Secrets Manager や Amazon RDS のコンソール画面から設定する。
 
-`(2)`
+3. `ignore_changes` 引数を設定する。
 
-: 実際の値を AWS Secrets Manager や Amazon RDS のコンソール画面から設定する。
+    以降のプロビジョニングで、`tfstate`ファイル上はダミー値のままになる。
 
-`(3)`
-
-: `ignore_changes` 引数を設定する。
-
-     以降のプロビジョニングで、`tfstate`ファイル上はダミー値のままになる。
-
-```terraform
-# Amazon RDSの場合
-resource "aws_rds_cluster" "this" {
-
-  # 実際の値はAWS Secrets Managerから参照する。
-  master_username = var.rds_db_master_username_ssm_parameter_value
-  master_password = var.rds_db_master_password_ssm_parameter_value
-
-  lifecycle {
-    ignore_changes = [
-      # ユーザー名とパスワードがtfstateファイルに書き込まれなくなる。
-      master_username,
-      master_password
-    ]
-  }
-}
-```
+    ```terraform
+    # Amazon RDSの場合
+    resource "aws_rds_cluster" "this" {
+    
+      # 実際の値はAWS Secrets Managerから参照する。
+      master_username = var.rds_db_master_username_ssm_parameter_value
+      master_password = var.rds_db_master_password_ssm_parameter_value
+    
+      lifecycle {
+        ignore_changes = [
+          # ユーザー名とパスワードがtfstateファイルに書き込まれなくなる。
+          master_username,
+          master_password
+        ]
+      }
+    }
+    ```
 
 #### ▼ `tfstate` ファイルへの平文を妥協する
 
@@ -1293,13 +1287,9 @@ DB インスタンスの設定変更でダウンタイムが発生する場合�
 
 プライマリーインスタンスのリリース時にフェールオーバーが発生するため、ダウンタイムを短縮できる。
 
-`(1)`
+1. リードレプリカの変更をリリースする。
 
-: リードレプリカの変更をリリースする。
-
-`(2)`
-
-: プライマリーインスタンスの変更をリリースする。リリース時にフェールオーバーを発生し、現プライマリーインスタンスはリードレプリカに降格する。また、前のリリースですでに更新されたリードレプリカがプライマリーインスタンスに昇格する。新しいリードレプリカがアップグレードされる間、代わりに新しいプライマリーインスタンスが動作する。
+2. プライマリーインスタンスの変更をリリースする。リリース時にフェールオーバーを発生し、現プライマリーインスタンスはリードレプリカに降格する。また、前のリリースですでに更新されたリードレプリカがプライマリーインスタンスに昇格する。新しいリードレプリカがアップグレードされる間、代わりに新しいプライマリーインスタンスが動作する。
 
 ダウンタイムが発生する DB インスタンスの設定項目は以下のリンクを参考にせよ。
 

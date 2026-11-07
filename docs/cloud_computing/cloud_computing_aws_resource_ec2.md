@@ -830,80 +830,72 @@ Filesystem     Type      Size  Used Avail Use% Mounted on
 
 **＊例＊**
 
-`(1)`
+1. 任意で、バックアップのために拡張対象の Amazon EC2 の AWS AMI を作成しておく。
 
-: 任意で、バックアップのために拡張対象の Amazon EC2 の AWS AMI を作成しておく。
+2. Amazon EC2 の AWS EBS ボリュームを `8`GiB から `16`GiB に拡張する例を考える。
 
-`(2)`
+    `lsblk`コマンドで現在のボリュームのサイズを確認すると、AWS EBSボリュームが`8`GiBである。
 
-: Amazon EC2 の AWS EBS ボリュームを `8`GiB から `16`GiB に拡張する例を考える。
+    この時、AWS EBSボリューム内にパーティションがある。
 
-     `lsblk`コマンドで現在のボリュームのサイズを確認すると、AWS EBSボリュームが`8`GiBである。
+    `df`コマンドでパーティションのサイズを確認すると、同じく`8`GiBである。
 
-     この時、AWS EBSボリューム内にパーティションがある。
+    ```bash
+    $ lsblk
+    
+    NAME    MAJ:MIN   RM   SIZE   RO   TYPE   MOUNTPOINT
+    xvda      202:0    0     8G    0   disk              # ストレージ (AWS EBSボリュームのルートボリューム)
+    └─xvda1   202:1    0     8G    0   part   /          # パーティション
+    nvme1n1   259:1    0   200G    0   disk   /var/lib   # ストレージ (AWS EBSボリュームの追加ボリューム)
+    ...
+    ```
 
-     `df`コマンドでパーティションのサイズを確認すると、同じく`8`GiBである。
+    ```bash
+    $ df -h
+    
+    Filesystem     Size   Used  Avail  Use%   Mounted on
+    /dev/xvda1       8G   1.9G    14G   12%   /           # パーティション
+    /dev/nvme1n1   200G   161G    40G   81%   /var/lib
+    ...
+    ```
 
-```bash
-$ lsblk
+3. コンソール画面から、AWS EBS ボリュームを `16`GiB に拡張する。
 
-NAME    MAJ:MIN   RM   SIZE   RO   TYPE   MOUNTPOINT
-xvda      202:0    0     8G    0   disk              # ストレージ (AWS EBSボリュームのルートボリューム)
-└─xvda1   202:1    0     8G    0   part   /          # パーティション
-nvme1n1   259:1    0   200G    0   disk   /var/lib   # ストレージ (AWS EBSボリュームの追加ボリューム)
-...
-```
+    この時、ダウンタイムは発生しない。
 
-```bash
-$ df -h
+    改めて`lsblk`コマンドを実行することで、該当のAWS EBSボリュームが拡張されたことを確認できる。
 
-Filesystem     Size   Used  Avail  Use%   Mounted on
-/dev/xvda1       8G   1.9G    14G   12%   /           # パーティション
-/dev/nvme1n1   200G   161G    40G   81%   /var/lib
-...
-```
+    ただ`df`コマンドで確認すると、パーティションはまだ拡張されていない。
 
-`(3)`
+    ```bash
+    $ lsblk
+    
+    NAME          MAJ:MIN RM   SIZE  RO  TYPE  MOUNTPOINT
+    xvda          202:0    0    16G   0  disk             # ストレージ (AWS EBSボリュームのルートボリューム)
+    └─xvda1       202:1    0     8G   0  part  /          # パーティション
+    nvme1n1       259:1    0   200G   0  disk  /var/lib   # ストレージ (AWS EBSボリュームの追加ボリューム)
+    ...
+    ```
 
-: コンソール画面から、AWS EBS ボリュームを `16`GiB に拡張する。
+    ```bash
+    $ df -h
+    
+    Filesystem     Size   Used  Avail  Use%   Mounted on
+    /dev/xvda1       8G   1.9G    14G   12%   /           # パーティション
+    /dev/nvme1n1   200G   161G    40G   81%   /var/lib
+    ...
+    ```
 
-     この時、ダウンタイムは発生しない。
+4. パーティションに紐づくファイルシステムのタイプを確認する。今回は `ext4` タイプである。
 
-     改めて`lsblk`コマンドを実行することで、該当のAWS EBSボリュームが拡張されたことを確認できる。
-
-     ただ`df`コマンドで確認すると、パーティションはまだ拡張されていない。
-
-```bash
-$ lsblk
-
-NAME          MAJ:MIN RM   SIZE  RO  TYPE  MOUNTPOINT
-xvda          202:0    0    16G   0  disk             # ストレージ (AWS EBSボリュームのルートボリューム)
-└─xvda1       202:1    0     8G   0  part  /          # パーティション
-nvme1n1       259:1    0   200G   0  disk  /var/lib   # ストレージ (AWS EBSボリュームの追加ボリューム)
-...
-```
-
-```bash
-$ df -h
-
-Filesystem     Size   Used  Avail  Use%   Mounted on
-/dev/xvda1       8G   1.9G    14G   12%   /           # パーティション
-/dev/nvme1n1   200G   161G    40G   81%   /var/lib
-...
-```
-
-`(4)`
-
-: パーティションに紐づくファイルシステムのタイプを確認する。今回は `ext4` タイプである。
-
-```bash
-$ df -hT
-
-Filesystem     Type  Size  Used  Avail  Use%  Mounted on
-/dev/xvda1     ext4    8G  1.9G    14G   12%  /           # ext4タイプ
-/dev/nvme1n1   xfs    20G  8.0G    13G   40%  /var/lib
-...
-```
+    ```bash
+    $ df -hT
+    
+    Filesystem     Type  Size  Used  Avail  Use%  Mounted on
+    /dev/xvda1     ext4    8G  1.9G    14G   12%  /           # ext4タイプ
+    /dev/nvme1n1   xfs    20G  8.0G    13G   40%  /var/lib
+    ...
+    ```
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html#extend-file-system
 
@@ -913,9 +905,9 @@ Filesystem     Type  Size  Used  Avail  Use%  Mounted on
 
 : `lsblk` コマンドの結果、AWS EBS ボリュームが複数のパーティションで区切られている場合、この手順が必要になる。
 
-     今回、AWS EBSボリュームがパーティションに区切られている。
+    今回、AWS EBSボリュームがパーティションに区切られている。
 
-     そのため、`growpart`コマンドでパーティションの番号を指定し、パーティションのサイズを拡張する。パーティションに区切られていなければ、この手順は不要である。
+    そのため、`growpart`コマンドでパーティションの番号を指定し、パーティションのサイズを拡張する。パーティションに区切られていなければ、この手順は不要である。
 
 ```bash
 # growpart <パーティションのデバイスファイル名> <パーティションの番号>
@@ -941,7 +933,7 @@ xvda    202:0    0  16G  0 disk            # ストレージ (AWS EBSボリュ�
 
 : ファイルシステムのサイズを拡張していく。
 
-     もし、パーティションに紐づくファイルシステムのタイプが`ext4`タイプであった場合、`resize2fs`コマンドでパーティションのデバイスファイル名を指定し、これに紐づくファイルシステムのサイズを拡張する。
+    もし、パーティションに紐づくファイルシステムのタイプが`ext4`タイプであった場合、`resize2fs`コマンドでパーティションのデバイスファイル名を指定し、これに紐づくファイルシステムのサイズを拡張する。
 
 ```bash
 # 空きサイズの100%を使用して拡張する。
@@ -967,9 +959,9 @@ Filesystem  Type  Size  Used  Avail  Use%  Mounted on
 
 : ファイルシステムのサイズを拡張していく。
 
-     もし、パーティションに紐づくファイルシステムのタイプが`xfs`タイプであった場合、`xfs_growfs`コマンドでファイルシステムのマウントポイントを指定し、ファイルシステムのサイズを拡張する。
+    もし、パーティションに紐づくファイルシステムのタイプが`xfs`タイプであった場合、`xfs_growfs`コマンドでファイルシステムのマウントポイントを指定し、ファイルシステムのサイズを拡張する。
 
-     もし、`xfs_growfs`コマンドがない場合は、インストールする。
+    もし、`xfs_growfs`コマンドがない場合は、インストールする。
 
 ```bash
 # xfs_growfs -d <ファイルシステムのマウントポイント名>

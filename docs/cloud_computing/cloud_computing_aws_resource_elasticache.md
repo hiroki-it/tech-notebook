@@ -190,75 +190,61 @@ DB 側でのクエリキャッシュはパフォーマンス上の問題から�
 
 #### ▼ 仕組み
 
-`(1)`
+1. アプリケーションは、Amazon RDS の前に、Redis に対して Read 処理を実行する。
 
-: アプリケーションは、Amazon RDS の前に、Redis に対して Read 処理を実行する。
+    ```mysql
+    SELECT * FROM users;
+    ```
 
-```mysql
-SELECT * FROM users;
-```
+2. 初めて実行された SQL の場合、Redis は SQL をキーとして保管し、キャッシュがないことをアプリケーションへ返却する。
 
-`(2)`
+3. アプリケーションは Amazon RDS に対して Read 処理を実行する。
 
-: 初めて実行された SQL の場合、Redis は SQL をキーとして保管し、キャッシュがないことをアプリケーションへ返却する。
+4. データが読み出される。
 
-`(3)`
+5. アプリケーションは Redis にデータを登録する。
 
-: アプリケーションは Amazon RDS に対して Read 処理を実行する。
+    ```bash
+    # Amazon ElastiCacheには、SQLの実行結果がまだ保管されていない
+    
+    *** no cache ***
+    {"id"=>"1", "name"=>"alice"}
+    {"id"=>"2", "name"=>"bob"}
+    {"id"=>"3", "name"=>"charles"}
+    {"id"=>"4", "name"=>"donny"}
+    {"id"=>"5", "name"=>"elie"}
+    {"id"=>"6", "name"=>"fabian"}
+    {"id"=>"7", "name"=>"gabriel"}
+    {"id"=>"8", "name"=>"harold"}
+    {"id"=>"9", "name"=>"Ignatius"}
+    {"id"=>"10", "name"=>"jonny"}
+    ```
 
-`(4)`
+    ![クエリCache管理機能_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クエリCache管理機能_2.png)
 
-: データが読み出される。
+6. 次回、アプリケーションは、Amazon RDS の前に、Redis に対して Read 処理を実行する。
 
-`(5)`
+    ```mysql
+    SELECT * FROM users;
+    ```
 
-: アプリケーションは Redis にデータを登録する。
+7. Redis は、SQL をキーにしてデータを特定し、アプリケーションに返却する。
 
-```bash
-# Amazon ElastiCacheには、SQLの実行結果がまだ保管されていない
-
-*** no cache ***
-{"id"=>"1", "name"=>"alice"}
-{"id"=>"2", "name"=>"bob"}
-{"id"=>"3", "name"=>"charles"}
-{"id"=>"4", "name"=>"donny"}
-{"id"=>"5", "name"=>"elie"}
-{"id"=>"6", "name"=>"fabian"}
-{"id"=>"7", "name"=>"gabriel"}
-{"id"=>"8", "name"=>"harold"}
-{"id"=>"9", "name"=>"Ignatius"}
-{"id"=>"10", "name"=>"jonny"}
-```
-
-![クエリCache管理機能_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クエリCache管理機能_2.png)
-
-`(6)`
-
-: 次回、アプリケーションは、Amazon RDS の前に、Redis に対して Read 処理を実行する。
-
-```mysql
-SELECT * FROM users;
-```
-
-`(7)`
-
-: Redis は、SQL をキーにしてデータを特定し、アプリケーションに返却する。
-
-```bash
-# Amazon ElastiCacheには、SQLの実行結果が既に保管されている
-
-*** cache hit ***
-{"id"=>"1", "name"=>"alice"}
-{"id"=>"2", "name"=>"bob"}
-{"id"=>"3", "name"=>"charles"}
-{"id"=>"4", "name"=>"donny"}
-{"id"=>"5", "name"=>"elie"}
-{"id"=>"6", "name"=>"fabian"}
-{"id"=>"7", "name"=>"gabriel"}
-{"id"=>"8", "name"=>"harold"}
-{"id"=>"9", "name"=>"Ignatius"}
-{"id"=>"10", "name"=>"jonny"}
-```
+    ```bash
+    # Amazon ElastiCacheには、SQLの実行結果が既に保管されている
+    
+    *** cache hit ***
+    {"id"=>"1", "name"=>"alice"}
+    {"id"=>"2", "name"=>"bob"}
+    {"id"=>"3", "name"=>"charles"}
+    {"id"=>"4", "name"=>"donny"}
+    {"id"=>"5", "name"=>"elie"}
+    {"id"=>"6", "name"=>"fabian"}
+    {"id"=>"7", "name"=>"gabriel"}
+    {"id"=>"8", "name"=>"harold"}
+    {"id"=>"9", "name"=>"Ignatius"}
+    {"id"=>"10", "name"=>"jonny"}
+    ```
 
 <br>
 
@@ -324,24 +310,14 @@ Redis クラスターでは、設定値 (例：エンジンバージョン) の�
 
 以下の手順で、ダウンタイムを最小限にしてアップグレードできる。
 
-`(1)`
+1. Redis のセッションやクエリキャッシュを S3 にエクスポートする。
 
-: Redis のセッションやクエリキャッシュを S3 にエクスポートする。
+2. 新しい Redis を作成する。このとき、インポートを使用して、セッションやクエリキャッシュを引き継いだ Redis クラスターを別途作成する。
 
-`(2)`
+3. 新しく作成した Redis クラスターをアップグレードする。
 
-: 新しい Redis を作成する。このとき、インポートを使用して、セッションやクエリキャッシュを引き継いだ Redis クラスターを別途作成する。
+4. アプリケーションの接続先を古い Redis クラスターから新しいものに変更する。
 
-`(3)`
-
-: 新しく作成した Redis クラスターをアップグレードする。
-
-`(4)`
-
-: アプリケーションの接続先を古い Redis クラスターから新しいものに変更する。
-
-`(5)`
-
-: 古い Redis クラスターを削除する。
+5. 古い Redis クラスターを削除する。
 
 <br>

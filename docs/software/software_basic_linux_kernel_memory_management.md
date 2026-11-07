@@ -182,21 +182,15 @@ MMU によって、仮想メモリのアドレスは、物理メモリのアド�
 
 #### ▼ アドレス変換の仕組み (ページング方式型/セグメント方式型)
 
-`(1)`
+1. 仮想メモリにおけるページの仮想アドレスを、ページ番号とページオフセットに分割する。
 
-: 仮想メモリにおけるページの仮想アドレスを、ページ番号とページオフセットに分割する。
+    ![ページの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ページの構造.png)
 
-![ページの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ページの構造.png)
+2. ページテーブルを使用して、仮想アドレスのページ番号に対応する物理アドレスのページ番号を探す。
 
-`(2)`
+3. 物理ページ番号にページオフセットを再結合し、物理メモリのページフレームの物理アドレスとする。
 
-: ページテーブルを使用して、仮想アドレスのページ番号に対応する物理アドレスのページ番号を探す。
-
-`(3)`
-
-: 物理ページ番号にページオフセットを再結合し、物理メモリのページフレームの物理アドレスとする。
-
-![仮想メモリとのマッピングによる大容量アドレス空間の再現_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_3.png)
+    ![仮想メモリとのマッピングによる大容量アドレス空間の再現_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_3.png)
 
 #### ▼ ページテーブルにおける仮想ページ番号と物理ページ番号の対応づけ
 

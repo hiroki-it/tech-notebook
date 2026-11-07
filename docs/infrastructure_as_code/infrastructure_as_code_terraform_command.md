@@ -1030,31 +1030,27 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 ### はじめに
 
-`(1)`
+1. バックエンドがリモートの場合、ローカルマシンに `tfstate` ファイルをダウンロードする。
 
-: バックエンドがリモートの場合、ローカルマシンに `tfstate` ファイルをダウンロードする。
+    ```bash
+    # バックエンドがS3バケットの場合
+    $ aws s3 cp s3://<S3バケット名>/<tfstateファイルへのパス> <ローカルマシンのパス>
+    
+    # バックエンドがGoogle Cloud Storageの場合
+    $ gsutil cp gs://<Google Cloud Storage名>/<tfstateファイルへのパス> <ローカルマシンのパス>
+    ```
 
-```bash
-# バックエンドがS3バケットの場合
-$ aws s3 cp s3://<S3バケット名>/<tfstateファイルへのパス> <ローカルマシンのパス>
+2. ダウンロードした `tfstate` ファイルを `local` バックエンドで指定する。
 
-# バックエンドがGoogle Cloud Storageの場合
-$ gsutil cp gs://<Google Cloud Storage名>/<tfstateファイルへのパス> <ローカルマシンのパス>
-```
-
-`(2)`
-
-: ダウンロードした `tfstate` ファイルを `local` バックエンドで指定する。
-
-```terraform
-terraform {
-
-  # ローカルマシンで管理するように設定
-  backend "local" {
-    path = "terraform.tfstate"
-  }
-}
-```
+    ```terraform
+    terraform {
+    
+      # ローカルマシンで管理するように設定
+      backend "local" {
+        path = "terraform.tfstate"
+      }
+    }
+    ```
 
 ### 初期化する
 
@@ -1144,15 +1140,15 @@ resource "aws_instance" "foo" {
 
 : `terraform import` コマンドを実行する。
 
-     これにより、`resource`タイプと`resource`ブロック名を指定し、`tfstate`ファイルに実インフラの状態を書き込む。
+    これにより、`resource`タイプと`resource`ブロック名を指定し、`tfstate`ファイルに実インフラの状態を書き込む。
 
-     この時、`tfstate`ファイルの差分表記と反対に (例：`+`の場合は削除、`-`は追加、`→`は逆向き変更) になるように、tfファイルを修正する。
+    この時、`tfstate`ファイルの差分表記と反対に (例：`+`の場合は削除、`-`は追加、`→`は逆向き変更) になるように、tfファイルを修正する。
 
-     パラメーターの『`<resourceタイプ>.<resourceブロック名>`』は、`terraform plan`コマンドの結果が参考になる。
+    パラメーターの『`<resourceタイプ>.<resourceブロック名>`』は、`terraform plan`コマンドの結果が参考になる。
 
-     また『ARN、ID、名前など』は、`resource`タイプによって異なるため、リファレンスの『Import』の項目を確認すること。
+    また『ARN、ID、名前など』は、`resource`タイプによって異なるため、リファレンスの『Import』の項目を確認すること。
 
-     何らかの理由で`terraform import`コマンドを実行し直したい場合は、`terraform state rm`コマンドで`resource`ブロックを削除し、改めて書き込む。
+    何らかの理由で`terraform import`コマンドを実行し直したい場合は、`terraform state rm`コマンドで`resource`ブロックを削除し、改めて書き込む。
 
 ```bash
 # 関数を使用せずに定義されている場合
@@ -1314,17 +1310,11 @@ Error: error creating ECR repository: RepositoryAlreadyExistsException: The repo
 
 似た目的で使用する `import` は実インフラのすべての設定値が対象であるが、`terraform apply -refresh-only` コマンドは実インフラの一部の設定値が対象である。
 
-`(1)`
+1. 先にコンソール画面で設定値を変更する。
 
-: 先にコンソール画面で設定値を変更する。
+2. `terraform apply -refresh-only` コマンドまたは `terraform apply` コマンドを実行する。
 
-`(2)`
-
-: `terraform apply -refresh-only` コマンドまたは `terraform apply` コマンドを実行する。
-
-`(3)`
-
-: 実インフラは変更されず、`tfstate` ファイルに状態が書き込まれる。
+3. 実インフラは変更されず、`tfstate` ファイルに状態が書き込まれる。
 
 > - [Medium](https://medium.com/@mehmetodabashi/how-to-updateterraform-state-file-with-manually-changed-resources-2407b4843a55)
 

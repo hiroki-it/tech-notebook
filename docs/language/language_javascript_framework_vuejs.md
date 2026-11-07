@@ -21,47 +21,33 @@ description: Vue.js＠フレームワークの知見を記録しています。
 
 #### ▼ MVVM アーキテクチャにおける各層の責務
 
-`(1)`
+1. View (`foo.html`、`/foo.twig`、`foo-component.vue` の `template` タグ部分)
 
-: View (`foo.html`、`/foo.twig`、`foo-component.vue` の `template` タグ部分)
+    ViewModelから渡されたデータを出力するだけ。
 
-     ViewModelから渡されたデータを出力するだけ。
+2. ViewModel (`index.js`、`foo-component.vue` の `script` タグ部分)
 
-`(2)`
+    プレゼンテーションロジック (フォーマット整形、バリデーション、Webページのローディング、エラーハンドリング、イベント発火など) や、ビジネスロジック (※控えめに) を記述する。
 
-: ViewModel (`index.js`、`foo-component.vue` の `script` タグ部分)
+    scriptタグによって、JavaScriptが組み込まれている。
 
-     プレゼンテーションロジック (フォーマット整形、バリデーション、Webページのローディング、エラーハンドリング、イベント発火など) や、ビジネスロジック (※控えめに) を記述する。
+3. Model (`store.js` または `foo.js`)
 
-     scriptタグによって、JavaScriptが組み込まれている。
-
-`(3)`
-
-: Model (`store.js` または `foo.js`)
-
-     ビジネスロジックや、ajax関数によるデータ送受信を記述する。
+    ビジネスロジックや、ajax関数によるデータ送受信を記述する。
 
 #### ▼ Vue を使用した MVVM アーキテクチャ、双方向データバインディング
 
 Vue は、アプリケーションの設計に MVVM アーキテクチャを使用することを前提として、双方向データバインディングを実現できるような機能を提供する。
 
-`(1)`
+1. View では、`foo.html`、`/foo.twig`、`foo-component.vue` の `template` タグ部分)
 
-: View では、`foo.html`、`/foo.twig`、`foo-component.vue` の `template` タグ部分)
+2. ViewModel では、`index.js`、`foo-component.vue` の `script` タグ部分
 
-`(2)`
+3. Model では、Vuex (`store.js`)や JavaScript からなるモデル (`foo.js`) を配置する。
 
-: ViewModel では、`index.js`、`foo-component.vue` の `script` タグ部分
+4. この仕組みのもと、双方向データバインディングが実現される。View でイベントが起こると、ViewModel でこれにバインディングされたイベントハンドラ関数がコールされる。
 
-`(3)`
-
-: Model では、Vuex (`store.js`)や JavaScript からなるモデル (`foo.js`) を配置する。
-
-`(4)`
-
-: この仕組みのもと、双方向データバインディングが実現される。View でイベントが起こると、ViewModel でこれにバインディングされたイベントハンドラ関数がコールされる。
-
-![Vueコンポーネントツリーにおけるコンポーネント間の通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VueにおけるMVVMアーキテクチャ.png)
+    ![Vueコンポーネントツリーにおけるコンポーネント間の通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VueにおけるMVVMアーキテクチャ.png)
 
 ### 親子コンポーネント間のデータ渡し
 
@@ -376,35 +362,32 @@ var vm = new Vue({
 });
 ```
 
-`(1)`
+1. 『検索ボタンを押す』という `submit` イベントの発火によって、`form` タグでイベントに紐付けられているイベントハンドラ関数 (`search()` 関数) がコールされる。
 
-: 『検索ボタンを押す』という `submit` イベントの発火によって、`form` タグでイベントに紐付けられているイベントハンドラ関数 (`search()` 関数) がコールされる。
-`(2)`
+2. イベントハンドラ関数内の `emit()` 関数が、親コンポーネントの `search` イベントを発火させる。これに紐付くイベントハンドラ関数 (`result()` 関数) がコールされる。
 
-: イベントハンドラ関数内の `emit()` 関数が、親コンポーネントの `search` イベントを発火させる。これに紐付くイベントハンドラ関数 (`result()` 関数) がコールされる。
-
-```html
-<template>
-  <!-- submitイベントが発火すると、紐付くイベントハンドラ関数がコールされる -->
-  <form v-on:submit.prevent="search()">
-    <!-- submitイベントを発火させるbuttonタグ。submitの場合は省略可能 -->
-    <button type="submit">検索する</button>
-  </form>
-</template>
-
-<script>
-  // 変数に対する格納を省略しても良い
-  var vm = new Vue({
-    // イベントハンドラ関数を定義
-    methods: {
-      search() {
-        // 親コンポーネントのsearchイベントを発火させる。
-        this.$emit("search");
-      },
-    },
-  });
-</script>
-```
+    ```html
+    <template>
+      <!-- submitイベントが発火すると、紐付くイベントハンドラ関数がコールされる -->
+      <form v-on:submit.prevent="search()">
+        <!-- submitイベントを発火させるbuttonタグ。submitの場合は省略可能 -->
+        <button type="submit">検索する</button>
+      </form>
+    </template>
+    
+    <script>
+      // 変数に対する格納を省略しても良い
+      var vm = new Vue({
+        // イベントハンドラ関数を定義
+        methods: {
+          search() {
+            // 親コンポーネントのsearchイベントを発火させる。
+            this.$emit("search");
+          },
+        },
+      });
+    </script>
+    ```
 
 #### ▼ `v-on:click="<イベントハンドラ関数>"`
 

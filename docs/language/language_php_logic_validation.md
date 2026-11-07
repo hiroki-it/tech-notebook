@@ -322,19 +322,13 @@ class Example
 
 以下の手順で設計と実装をする。
 
-`(1)`
+1. 条件分岐の処理順序の概要を日本で記述する。
 
-: 条件分岐の処理順序の概要を日本で記述する。
+2. 記述内容を、条件部と動作部に分解し、決定表で表す。
 
-`(2)`
+3. 決定表を、流れ図で表す。
 
-: 記述内容を、条件部と動作部に分解し、決定表で表す。
-
-`(3)`
-
-: 決定表を、流れ図で表す。
-
-![決定表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/決定表.png)
+    ![決定表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/決定表.png)
 
 #### ▼ if-elseif-else は使用しない
 

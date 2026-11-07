@@ -62,30 +62,26 @@ Open Policy Agent は、`rego` ファイルの認可スコープに基づいて�
 
 #### ▼ 資格情報の作成
 
-`(1)`
+1. 資格情報を `json` 形式で作成する。
 
-: 資格情報を `json` 形式で作成する。
+    ここでは、各アカウントが一般社員または管理職のいずれかであるかを定義している。
 
-     ここでは、各アカウントが一般社員または管理職のいずれかであるかを定義している。
+    > - [注目のOpen Policy Agent、その概要とKubernetesでの活用事例 \| 現場で役立つTipsが盛りだくさん! Kubernetesのアレやコレ \| Think IT（シンクイット）](https://thinkit.co.jp/article/17511)
 
-> - [注目のOpen Policy Agent、その概要とKubernetesでの活用事例 \| 現場で役立つTipsが盛りだくさん! Kubernetesのアレやコレ \| Think IT（シンクイット）](https://thinkit.co.jp/article/17511)
+    ```yaml
+    # subordinates.json ファイル
+    {"alice": ["bob"], "bob": [], "charlie": ["david"], "david": []}
+    ```
 
-```yaml
-# subordinates.json ファイル
-{"alice": ["bob"], "bob": [], "charlie": ["david"], "david": []}
-```
+2. アプリケーションは、Open Policy Agent に資格情報を送信し、資格情報を DB に作成する。
 
-`(2)`
-
-: アプリケーションは、Open Policy Agent に資格情報を送信し、資格情報を DB に作成する。
-
-```bash
-$ curl \
-    -X PUT \
-    -H 'Content-Type:application/json' \
-    --data-binary @subordinates.json \
-    127.0.0.1:8181/v1/data/subordinates
-```
+    ```bash
+    $ curl \
+        -X PUT \
+        -H 'Content-Type:application/json' \
+        --data-binary @subordinates.json \
+        127.0.0.1:8181/v1/data/subordinates
+    ```
 
 #### ▼ 認可スコープの定義
 
@@ -138,7 +134,7 @@ $ curl \
 
 : 認可スコープを取得するためのリクエストを `json` 形式で作成する。
 
-     実際は、aliceというアカウントがデータを参照できるかどうかを取得するために、アプリケーションがリクエストを作成する。
+    実際は、aliceというアカウントがデータを参照できるかどうかを取得するために、アプリケーションがリクエストを作成する。
 
 ```yaml
 # request.json ファイル
@@ -159,7 +155,7 @@ $ curl \
 
 : アプリケーションは、alice アカウントの参照権限の有無を Open Policy Agent にリクエストを送信する。
 
-     Open Policy Agentは、アプリケーションに`true`を返却する。
+    Open Policy Agentは、アプリケーションに`true`を返却する。
 
 ```bash
 $ curl \

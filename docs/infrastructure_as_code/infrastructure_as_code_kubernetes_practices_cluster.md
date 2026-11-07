@@ -173,13 +173,9 @@ GitOps を採用できないため、CIOps になる。
 
 > - https://logmi.jp/tech/articles/323033
 
-`(1)`
+1. ワーカーNode を削除する。
 
-: ワーカーNode を削除する。
-
-`(2)`
-
-: ワーカーNode を再作成する。
+2. ワーカーNode を再作成する。
 
 #### ▼ セルフマネージドなローリング方式 (サージ方式、ライブ方式)
 
@@ -193,44 +189,36 @@ GitOps を採用できないため、CIOps になる。
 
 デメリットとして、新バージョンを 1 つずつしかアップグレードできない。
 
-`(1)`
+1. 旧 Node グループ (Prod ブルー) を残したまま、新 Node グループ (Test グリーン) を作成する。
 
-: 旧 Node グループ (Prod ブルー) を残したまま、新 Node グループ (Test グリーン) を作成する。
+    このとき、新 Node グループ内ワーカーNode 上には Pod が存在していないため、アクセスが新 Node グループにルーティングされることはない。
 
-このとき、新 Node グループ内ワーカーNode 上には Pod が存在していないため、アクセスが新 Node グループにルーティングされることはない。
+2. `kubectl drain` コマンドを実行することで、旧 Node グループ内のワーカーNode でドレイン処理を開始させる。
 
-`(2)`
+    この時、DaemonSetのPodを退避させられるように、`--ignore-daemonsets`オプションを有効化する。
 
-: `kubectl drain` コマンドを実行することで、旧 Node グループ内のワーカーNode でドレイン処理を開始させる。
+    また、EmptyDir Volumeを持つPodを退避させられるように `--delete-emptydir-data`オプションも有効化する。
 
-     この時、DaemonSetのPodを退避させられるように、`--ignore-daemonsets`オプションを有効化する。
+    ドレイン処理によって、旧Nodeグループ内のワーカーNodeが`SchedulingDisabled`状態になり、加えてこのワーカーNodeからPodが退避していく。
 
-     また、EmptyDir Volumeを持つPodを退避させられるように `--delete-emptydir-data`オプションも有効化する。
+    その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングさせる。
 
-     ドレイン処理によって、旧Nodeグループ内のワーカーNodeが`SchedulingDisabled`状態になり、加えてこのワーカーNodeからPodが退避していく。
+    この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。
 
-     その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングさせる。
+    ```bash
+    $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
+        --ignore-daemonsets \
+        --delete-emptydir-data
+    ```
 
-     この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。
+    ![kubernetes_node_scheduling-pod-status](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_node_scheduling-pod-status.png)
 
-```bash
-$ kubectl drain <旧Nodeグループ内のワーカーNode名> \
-    --ignore-daemonsets \
-    --delete-emptydir-data
-```
+    > - [YasuBlog](https://dunkshoot.hatenablog.com/)
+    > - [kubernetes – Nodeの削除 \| HYOUBLOG](https://hyoublog.com/2020/06/10/kubernetes-node%E3%81%AE%E5%89%8A%E9%99%A4/)
 
-![kubernetes_node_scheduling-pod-status](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_node_scheduling-pod-status.png)
+3. ドレイン処理が完了した後、新 Node グループ内ワーカーNode 上で Pod が正常に稼働していることを確認する。
 
-> - [YasuBlog](https://dunkshoot.hatenablog.com/)
-> - [kubernetes – Nodeの削除 \| HYOUBLOG](https://hyoublog.com/2020/06/10/kubernetes-node%E3%81%AE%E5%89%8A%E9%99%A4/)
-
-`(3)`
-
-: ドレイン処理が完了した後、新 Node グループ内ワーカーNode 上で Pod が正常に稼働していることを確認する。
-
-`(4)`
-
-: 動作が問題なければ、旧 Node グループを削除する。
+4. 動作が問題なければ、旧 Node グループを削除する。
 
 > - [より安全なEKS cluster update方法を模索する](https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely)
 > - https://logmi.jp/tech/articles/323032
@@ -275,17 +263,11 @@ ip-*****.ap-northeast-1.compute.internal   NotReady,SchedulingDisabled   <none> 
 
 メリットとして、バージョンを 1 つずつのみでなく飛び越えてアップグレードできる。
 
-`(1)`
+1. 旧 Cluster (Prod ブルー) を残したまま、新 Cluster (Test グリーン) を作成する。新 Cluster には、すべての Kubernetes リソースが揃っている。
 
-: 旧 Cluster (Prod ブルー) を残したまま、新 Cluster (Test グリーン) を作成する。新 Cluster には、すべての Kubernetes リソースが揃っている。
+2. 社内から、新 Cluster に特定のポート番号でアクセスし、動作を確認する。
 
-`(2)`
-
-: 社内から、新 Cluster に特定のポート番号でアクセスし、動作を確認する。
-
-`(3)`
-
-: 動作が問題なければ、社外を含む全ユーザーのアクセスのルーティング先を新 Cluster に変更する。新 Cluster から旧 Cluster へロールバックする場合に備えて、旧 Cluster は削除せずに残しておく。
+3. 動作が問題なければ、社外を含む全ユーザーのアクセスのルーティング先を新 Cluster に変更する。新 Cluster から旧 Cluster へロールバックする場合に備えて、旧 Cluster は削除せずに残しておく。
 
 > - https://logmi.jp/tech/articles/323032
 > - https://logmi.jp/tech/articles/323033

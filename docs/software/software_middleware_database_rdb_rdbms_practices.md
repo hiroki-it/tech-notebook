@@ -104,59 +104,43 @@ master テーブルと transaction テーブルがわかるように命名する
 
 これらの主キーは、複合主キーではないとする。
 
-`(1)`
+1. エクセルで表を作成する。 エクセルで作られた以下の表があると仮定する。
 
-: エクセルで表を作成する。 エクセルで作られた以下の表があると仮定する。
+    ![非正規形](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/非正規形.png)
 
-![非正規形](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/非正規形.png)
+2. 第一正規化 (繰り返し要素の排除) を実施する。レコードを 1 つずつに分割する。
 
-`(2)`
+    ![第一正規形](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第一正規形.png)
 
-: 第一正規化 (繰り返し要素の排除) を実施する。レコードを 1 つずつに分割する。
+3. 第二正規化 (主キーの関数従属性を排除) を実施する。主キーと特定のカラムは連動することがある (関数従属性あり) 。その場合は、カラムを左表として独立させる。今回、主キーは 2 つあるため、まず受注 No から関数従属性を排除していく。受注 No と他 3 カラムは連動しており、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。最後に、主キーの重複行を削除する。
 
-![第一正規形](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第一正規形.png)
+    ![第二正規形-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第二正規形-1.png)
 
-`(3)`
+4. 商品 ID の関数従属性を排除していく。商品 ID と他 2 カラムに関数従属性があり、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。また、主キーが重複するローを削除する。これで、主キーの関数従属性の排除は終了。
 
-: 第二正規化 (主キーの関数従属性を排除) を実施する。主キーと特定のカラムは連動することがある (関数従属性あり) 。その場合は、カラムを左表として独立させる。今回、主キーは 2 つあるため、まず受注 No から関数従属性を排除していく。受注 No と他 3 カラムは連動しており、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。最後に、主キーの重複行を削除する。
+    ![第二正規形-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第二正規形-2.png)
 
-![第二正規形-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第二正規形-1.png)
+    ![第二正規形-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第二正規形-3.png)
 
-`(4)`
+5. 第三正規化 (主キー以外のカラムの関数従属性を排除) を実施する。 主キー以外のカラムの関数従属性を排除していく。上記で独立させた `3` 個の表のうち、一番左の表で、顧客 ID と顧客名に関数従属性があるため、顧客 ID を新しい主キーに設定し、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。
 
-: 商品 ID の関数従属性を排除していく。商品 ID と他 2 カラムに関数従属性があり、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。また、主キーが重複するローを削除する。これで、主キーの関数従属性の排除は終了。
+    ![第三正規形](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第三正規形-1.png)
 
-![第二正規形-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第二正規形-2.png)
+    ![第三正規形-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第三正規形-2.png)
 
-![第二正規形-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第二正規形-3.png)
+6. 主キーの関数従属性の排除によって、受注表、商品表、数量表に分割できた。また、主キー以外の関数従属性の排除によって、顧客 ID を新しい主キーとした顧客表に分割できた。
 
-`(5)`
-
-: 第三正規化 (主キー以外のカラムの関数従属性を排除) を実施する。 主キー以外のカラムの関数従属性を排除していく。上記で独立させた `3` 個の表のうち、一番左の表で、顧客 ID と顧客名に関数従属性があるため、顧客 ID を新しい主キーに設定し、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。
-
-![第三正規形](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第三正規形-1.png)
-
-![第三正規形-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第三正規形-2.png)
-
-`(6)`
-
-: 主キーの関数従属性の排除によって、受注表、商品表、数量表に分割できた。また、主キー以外の関数従属性の排除によって、顧客 ID を新しい主キーとした顧客表に分割できた。
-
-![正規化後にどんな表ができるのか](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/正規化後にどんな表ができるのか.png)
+    ![正規化後にどんな表ができるのか](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/正規化後にどんな表ができるのか.png)
 
 **＊例＊**
 
-`(1)`
+1. エクセルで表を作成する。以下のような表の場合、行を分割し、異なる表と見なす。
 
-: エクセルで表を作成する。以下のような表の場合、行を分割し、異なる表と見なす。
+    ![非正規形-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/非正規形-2.png)
 
-![非正規形-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/非正規形-2.png)
+2. 第一正規化 (繰り返し要素の排除) を実施する。
 
-`(2)`
-
-: 第一正規化 (繰り返し要素の排除) を実施する。
-
-![第一正規形-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第一正規形-2.png)
+    ![第一正規形-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第一正規形-2.png)
 
 <br>
 
@@ -204,26 +188,16 @@ DB データを作成するあるいは削除する場合、カラムではな�
 
 前処理として、契約マスタデータと異動トランザクションデータに共通する識別子が同じ順番で並んでいる必要がある。
 
-`(1)`
+1. 契約マスタデータの 1 レコード目と、異動トランザクションデータの 1 レコード目の識別子を突き合わせる。『`契約マスタデータ = 異動トランザクションデータ`』のとき、異動トランザクションデータを基に契約マスタデータを更新し、それを新しいデータとして変更後契約マスタデータに挿入する。
 
-: 契約マスタデータの 1 レコード目と、異動トランザクションデータの 1 レコード目の識別子を突き合わせる。『`契約マスタデータ = 異動トランザクションデータ`』のとき、異動トランザクションデータを基に契約マスタデータを更新し、それを新しいデータとして変更後契約マスタデータに挿入する。
+2. 契約マスタデータの 2 レコード目と、異動トランザクションデータの 2 レコード目の識別子を突き合わせる。『`マスタデータ < トランザクションデータ`』の場合、マスタデータをそのまま変更後マスタテーブルに挿入する。
 
-`(2)`
+3. マスタデータの 3 レコード目と、固定したままのトランザクションデータの 2 レコード目の識別子を突き合わせる。『`マスタデータ = トランザクションデータ`』のとき、トランザクションデータを基にマスタデータを更新し、それを変更後データとして変更後マスタテーブルに挿入する。
 
-: 契約マスタデータの 2 レコード目と、異動トランザクションデータの 2 レコード目の識別子を突き合わせる。『`マスタデータ < トランザクションデータ`』の場合、マスタデータをそのまま変更後マスタテーブルに挿入する。
+4. 『`契約マスタデータ < 異動トランザクションデータ`』になるまで、データを突き合わせる。
 
-`(3)`
+5. 最終的に、変更後マスタテーブルは以下の通りになる。
 
-: マスタデータの 3 レコード目と、固定したままのトランザクションデータの 2 レコード目の識別子を突き合わせる。『`マスタデータ = トランザクションデータ`』のとき、トランザクションデータを基にマスタデータを更新し、それを変更後データとして変更後マスタテーブルに挿入する。
-
-`(4)`
-
-: 『`契約マスタデータ < 異動トランザクションデータ`』になるまで、データを突き合わせる。
-
-`(5)`
-
-: 最終的に、変更後マスタテーブルは以下の通りになる。
-
-![マッチング処理_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/マッチング処理_3.png)
+    ![マッチング処理_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/マッチング処理_3.png)
 
 <br>

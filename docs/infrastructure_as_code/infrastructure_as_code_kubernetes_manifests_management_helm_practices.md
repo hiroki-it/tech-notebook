@@ -352,21 +352,17 @@ $ asdf install
 
 > - [Using Helm \| Helm](https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback)
 
-`(1)`
+1. `helm upgrade` コマンドを実行することで、インストール済みのチャートをアップグレードする。
 
-: `helm upgrade` コマンドを実行することで、インストール済みのチャートをアップグレードする。
+    ```bash
+    $ helm upgrade <Helmリリース名> <チャートへのパス> -f foo-values.yaml --version <バージョンタグ> --wait
+    ```
 
-```bash
-$ helm upgrade <Helmリリース名> <チャートへのパス> -f foo-values.yaml --version <バージョンタグ> --wait
-```
+2. Helm リリースのリビジョンが新しくなっていることを確認する。
 
-`(2)`
-
-: Helm リリースのリビジョンが新しくなっていることを確認する。
-
-```bash
-$ helm list
-```
+    ```bash
+    $ helm list
+    ```
 
 #### ▼ CRD を含むチャートの場合
 
@@ -378,43 +374,35 @@ Helm は、CRD を含むチャートのインストールはサポートして�
 
 > - [Custom Resource Definitions \| Helm](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you)
 
-`(1)`
+1. kube-apiserver に CRD のマニフェストを送信し、新バージョンの CRD を更新する。
 
-: kube-apiserver に CRD のマニフェストを送信し、新バージョンの CRD を更新する。
+    Helmは、CRDの更新をサポートしていない (作成はサポートしている) .
 
-     Helmは、CRDの更新をサポートしていない (作成はサポートしている) .
+    そのため、`kubectl`コマンドを使用してこれを更新する。
 
-     そのため、`kubectl`コマンドを使用してこれを更新する。
+    ```bash
+    $ kubectl apply -f <新バージョンのCRDのマニフェストのURL>
+    ```
 
-```bash
-$ kubectl apply -f <新バージョンのCRDのマニフェストのURL>
-```
+2. kube-apiserver にカスタムリソースのマニフェストを送信する。
 
-`(2)`
+    ```bash
+    $ helm install <Helmリリース名> <チャートリポジトリ名>/foo-crd -n foo --version <バージョンタグ>
+    ```
 
-: kube-apiserver にカスタムリソースのマニフェストを送信する。
+3. 補足として、もし CRD をインストールする前にカスタムリソースをインストールしようとすると、カスタムリソースを定義できずエラーになってしまう。
 
-```bash
-$ helm install <Helmリリース名> <チャートリポジトリ名>/foo-crd -n foo --version <バージョンタグ>
-```
+    ```bash
+    Error: unable to build kubernetes objects from release manifest: [unable to recognize "": no matches for kind "<カスタムリソース名>>" in version "<カスタムリソースのAPIグループ>"
+    ```
 
-`(3)`
+4. 旧バージョンの CRD を削除する。
 
-: 補足として、もし CRD をインストールする前にカスタムリソースをインストールしようとすると、カスタムリソースを定義できずエラーになってしまう。
+    Helmは、CRDの削除をサポートしていないため、`kubectl delete`コマンドを使用する。
 
-```bash
-Error: unable to build kubernetes objects from release manifest: [unable to recognize "": no matches for kind "<カスタムリソース名>>" in version "<カスタムリソースのAPIグループ>"
-```
-
-`(4)`
-
-: 旧バージョンの CRD を削除する。
-
-     Helmは、CRDの削除をサポートしていないため、`kubectl delete`コマンドを使用する。
-
-```bash
-$ kubectl delete -f <旧バージョンのCRDのマニフェストのURL>
-```
+    ```bash
+    $ kubectl delete -f <旧バージョンのCRDのマニフェストのURL>
+    ```
 
 <br>
 

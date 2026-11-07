@@ -272,31 +272,21 @@ Envoy が組み込まれたサービスメッシュツール (例：Istio) で�
 > - [xDS REST and gRPC protocol — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#streaming-grpc-subscriptions)
 > - [Envoy ProxyのためのEDSサーバーを作る \| Folioscope](https://i-beam.org/2019/03/13/envoy-xds-server/)
 
-`(1)`
+1. Envoy は、起動時にリスナーとクラスターを XDS-API から取得する。
 
-: Envoy は、起動時にリスナーとクラスターを XDS-API から取得する。
+    取得した宛先情報を自身に設定する。
 
-     取得した宛先情報を自身に設定する。
+2. Envoy は、リスナーに紐付ける必要のあるルートを特定する。
 
-`(2)`
+3. Envoy は、クラスターに紐付ける必要のあるエンドポイントを特定する。
 
-: Envoy は、リスナーに紐付ける必要のあるルートを特定する。
+4. Envoy は、ルートとエンドポイントを XDS-API から取得する。
 
-`(3)`
+    取得した宛先情報を自身に設定する。
 
-: Envoy は、クラスターに紐付ける必要のあるエンドポイントを特定する。
+5. Envoy は、ADS-API のストリームを介して更新された設定値をリアルタイムで取得する。
 
-`(4)`
-
-: Envoy は、ルートとエンドポイントを XDS-API から取得する。
-
-     取得した宛先情報を自身に設定する。
-
-`(5)`
-
-: Envoy は、ADS-API のストリームを介して更新された設定値をリアルタイムで取得する。
-
-     取得した設定値を自身に設定する。
+    取得した設定値を自身に設定する。
 
 #### ▼ 実装
 

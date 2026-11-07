@@ -63,34 +63,28 @@ description: Amazon ECR＠AWSリソースの知見を記録しています。
 
 #### ▼ コンテナイメージの場合
 
-`(1)`
+1. Amazon ECR にログインする。
 
-: Amazon ECR にログインする。
+    ```bash
+    $ aws ecr get-login-password --region ap-northeast-1 | \
+        docker login --username AWS --password-stdin <イメージリポジトリURL>
+    
+    Login Succeeded
+    ```
 
-```bash
-$ aws ecr get-login-password --region ap-northeast-1 | \
-    docker login --username AWS --password-stdin <イメージリポジトリURL>
+2. イメージにタグを付与する。
 
-Login Succeeded
-```
+    ```bash
+    # docker tag foo:latest <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
+    $ docker tag <イメージID> <イメージリポジトリURL>:<バージョンタグ>
+    ```
 
-`(2)`
+3. Amazon ECR にコンテナイメージをプッシュする。
 
-: イメージにタグを付与する。
-
-```bash
-# docker tag foo:latest <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
-$ docker tag <イメージID> <イメージリポジトリURL>:<バージョンタグ>
-```
-
-`(3)`
-
-: Amazon ECR にコンテナイメージをプッシュする。
-
-```bash
-# docker push <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
-$ docker push <イメージリポジトリURL>:<バージョンタグ>
-```
+    ```bash
+    # docker push <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
+    $ docker push <イメージリポジトリURL>:<バージョンタグ>
+    ```
 
 > - [Pushing a Docker image to an Amazon ECR private repository - Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html)
 

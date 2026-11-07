@@ -804,27 +804,21 @@ Prune による Kubernetes リソースの削除を有効化し、フォアグ�
 
 > - https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted
 
-`(1)`
+1. Application の `.spec.syncPolicy.allowEmpty` キーを有効化する。
 
-: Application の `.spec.syncPolicy.allowEmpty` キーを有効化する。
+2. フォアグラウンドで削除すると、Application の `.metadata.finalizers` キーの値に削除中のリソースが設定される。
 
-`(2)`
+    この配列を空配列に変更する。ArgoCDのUIからは変更できず、`kubectl patch`コマンドを使用する必要がある。
 
-: フォアグラウンドで削除すると、Application の `.metadata.finalizers` キーの値に削除中のリソースが設定される。
+    ```bash
+    $ kubectl patch crd applications.argoproj.io \
+        -p '{"metadata":{"finalizers":[]}}' \
+        --type=merge
+    ```
 
-     この配列を空配列に変更する。ArgoCDのUIからは変更できず、`kubectl patch`コマンドを使用する必要がある。
+    > - [kubernetes – カスケード削除(連鎖削除) \| HYOUBLOG](https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/)
 
-```bash
-$ kubectl patch crd applications.argoproj.io \
-    -p '{"metadata":{"finalizers":[]}}' \
-    --type=merge
-```
-
-> - [kubernetes – カスケード削除(連鎖削除) \| HYOUBLOG](https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/)
-
-`(3)`
-
-: 1 つ目の `.spec.syncPolicy.allowEmpty` キーの変更を元に戻す。
+3. 1 つ目の `.spec.syncPolicy.allowEmpty` キーの変更を元に戻す。
 
 #### ▼ Namespace を削除できない
 

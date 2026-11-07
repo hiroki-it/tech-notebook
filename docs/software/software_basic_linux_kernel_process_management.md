@@ -392,23 +392,15 @@ CPU のプロセスへの割り当ては、『20 秒』ごとに起こるとす�
 
 ![優先順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/優先順方式_1.png)
 
-`(1)`
+1. プロセス A が `0` 秒に待ち行列へ登録される。
 
-: プロセス A が `0` 秒に待ち行列へ登録される。
+2. `20` 秒間、プロセス A は実行状態へ割り当てられる。
 
-`(2)`
+3. `20` 秒時点で、プロセス A は実行状態から待ち行列へ追加される。同時に、待ち行列の先頭にいるプロセス B へ CPU を割り当てる。
 
-: `20` 秒間、プロセス A は実行状態へ割り当てられる。
+4. `40` 秒時点で、プロセス C は実行状態から待ち行列へ追加される。同時に、待ち行列の先頭にいるプロセス A へ CPU を割り当てる。
 
-`(3)`
-
-: `20` 秒時点で、プロセス A は実行状態から待ち行列へ追加される。同時に、待ち行列の先頭にいるプロセス B へ CPU を割り当てる。
-
-`(4)`
-
-: `40` 秒時点で、プロセス C は実行状態から待ち行列へ追加される。同時に、待ち行列の先頭にいるプロセス A へ CPU を割り当てる。
-
-![優先順方式_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/優先順方式_2.png)
+    ![優先順方式_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/優先順方式_2.png)
 
 <br>
 

@@ -286,13 +286,9 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 
 サービスレジストリ (例：etcd) に宛先を問い合わせ、宛先にルーティングする責務は、クライアント側マイクロサービスにある。
 
-`(1)`
+1. 送信元マイクロサービスは、宛先マイクロサービスの場所をサービスレジストリに問い合わせ、宛先情報を取得する。
 
-: 送信元マイクロサービスは、宛先マイクロサービスの場所をサービスレジストリに問い合わせ、宛先情報を取得する。
-
-`(2)`
-
-: 送信元マイクロサービスは、ロードバランサーを経由して、宛先マイクロサービスにリクエストを送信する。
+2. 送信元マイクロサービスは、ロードバランサーを経由して、宛先マイクロサービスにリクエストを送信する。
 
 > - [Pattern: Client-side service discovery](https://microservices.io/patterns/client-side-discovery.html)
 > - [Service Discovery in Microservices \| Baeldung on Computer Science](https://www.baeldung.com/cs/service-discovery-microservices)
@@ -315,17 +311,11 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 
 サービスレジストリ (例：etcd) に宛先を問い合わせ、宛先にルーティングする責務が、クライアント側から切り離されている。
 
-`(1)`
+1. 送信元マイクロサービスは、ロードバランサーにリクエストを送信する。
 
-: 送信元マイクロサービスは、ロードバランサーにリクエストを送信する。
+2. ロードバランサーは、宛先マイクロサービスの場所をサービス検出に問い合わせ、宛先情報を取得する。
 
-`(2)`
-
-: ロードバランサーは、宛先マイクロサービスの場所をサービス検出に問い合わせ、宛先情報を取得する。
-
-`(3)`
-
-: ロードバランサーは、宛先マイクロサービスにリクエストをルーティングする。
+3. ロードバランサーは、宛先マイクロサービスにリクエストをルーティングする。
 
 > - [Pattern: Server-side service discovery](https://microservices.io/patterns/server-side-discovery.html)
 > - [Service Discovery in Microservices \| Baeldung on Computer Science](https://www.baeldung.com/cs/service-discovery-microservices)

@@ -19,18 +19,12 @@ description: Capistrano＠CIツールの知見を記録しています。
 
 ![capistrano_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/capistrano_ec2.png)
 
-`(1)`
+1. 自身のパソコンからデプロイサーバーにリモート通信する。
 
-: 自身のパソコンからデプロイサーバーにリモート通信する。
+2. デプロイサーバーの自動デプロイツール (例：Capistrano) が、デプロイサーバーから Web サーバーにリモート通信する。
 
-`(2)`
+3. 自動デプロイツールが、Web サーバーの Git を操作し、`git pull` コマンドあるいは `git clone` コマンドを実行する。
 
-: デプロイサーバーの自動デプロイツール (例：Capistrano) が、デプロイサーバーから Web サーバーにリモート通信する。
-
-`(3)`
-
-: 自動デプロイツールが、Web サーバーの Git を操作し、`git pull` コマンドあるいは `git clone` コマンドを実行する。
-
-     その結果、GitHubリポジトリからデプロイサーバーに指定のブランチの状態が取り込まれる。
+    その結果、GitHubリポジトリからデプロイサーバーに指定のブランチの状態が取り込まれる。
 
 <br>

@@ -197,35 +197,31 @@ OIDC ではなく OAuth のため、ID トークンではなく、リフレッ�
 
 #### ▼ ブラウザ ⇄ SSO でログインしたい Web サイト
 
-`(1)`
+1. ブラウザは、免許証作成サイトにログインしようとする。
 
-: ブラウザは、免許証作成サイトにログインしようとする。
+    免許証作成サイトは、Facebookアカウントを使用するかどうかをレスポンスする。
 
-     免許証作成サイトは、Facebookアカウントを使用するかどうかをレスポンスする。
+2. ブラウザは、Facebook アカウントを使用することをリクエストする。
 
-`(2)`
+    免許証作成サイトは、Facebookの認可サーバーの認可エンドポイントに、認可リクエストを送信する。
 
-: ブラウザは、Facebook アカウントを使用することをリクエストする。
+    ```yaml
+    # 認可エンドポイントに認可リクエストを送信する
+    GET https://www.facebook.com/auth?<下表で説明>
+    ---
+    HOST: authorization-server.com # 認可サーバーのホスト
+    ```
 
-     免許証作成サイトは、Facebookの認可サーバーの認可エンドポイントに、認可リクエストを送信する。
-
-```yaml
-# 認可エンドポイントに認可リクエストを送信する
-GET https://www.facebook.com/auth?<下表で説明>
----
-HOST: authorization-server.com # 認可サーバーのホスト
-```
-
-<table>
-  <thead>
+    <table>
+      <thead>
     <tr>
       <th>クエリストリングの種類</th>
       <th>値</th>
       <th>例</th>
       <th>認可リクエスト時に必須/任意</th>
     </tr>
-  </thead>
-  <tbody>
+      </thead>
+      <tbody>
     <tr>
       <td><code>response_type</code></td>
       <td>認可レスポンスの種類</td>
@@ -268,14 +264,12 @@ HOST: authorization-server.com # 認可サーバーのホスト
       <td></td>
       <td>任意</td>
     </tr>
-  </tbody>
-</table>
+      </tbody>
+    </table>
 
-> - [OAuth 2.0 全フローの図解と動画 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#11-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88)
+    > - [OAuth 2.0 全フローの図解と動画 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#11-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88)
 
-`(3)`
-
-: ブラウザにアカウント連携画面 (認可画面) をレスポンスする。
+3. ブラウザにアカウント連携画面 (認可画面) をレスポンスする。
 
 #### ▼ ブラウザ ⇄ 認証フェーズの委譲先の Web サイト
 
@@ -287,11 +281,11 @@ HOST: authorization-server.com # 認可サーバーのホスト
 
 : Facebook の認可サーバーは、短命な認可コードを発行する。
 
-     `Location`ヘッダーにリダイレクト先のURL (免許証作成サイトURL) とパラメーターを割り当て、認可レスポンスをブラウザに送信する。
+    `Location`ヘッダーにリダイレクト先のURL (免許証作成サイトURL) とパラメーターを割り当て、認可レスポンスをブラウザに送信する。
 
-     認可レスポンスにより、リダイレクトが起こる。
+    認可レスポンスにより、リダイレクトが起こる。
 
-     リダイレクト先として指定するURLは、『コールバックURL』ともいう。
+    リダイレクト先として指定するURLは、『コールバックURL』ともいう。
 
 ```yaml
 302 Found

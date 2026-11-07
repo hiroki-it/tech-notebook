@@ -225,51 +225,47 @@ Minikube では、`mount` コマンド、ホスト側の `$MINIKUBE_HOME/files` 
 
 **＊例＊**
 
-`(1)`
+1. HyperKit ドライバーを使用する場合、ホストと Node 間のマウント機能がない。そこで `mount` コマンドを使用して、ホスト側のディレクトリを Node のボリュームにマウントする。
 
-: HyperKit ドライバーを使用する場合、ホストと Node 間のマウント機能がない。そこで `mount` コマンドを使用して、ホスト側のディレクトリを Node のボリュームにマウントする。
+    ```bash
+    $ minikube start \
+        --driver=hyperkit \
+        --mount=true \
+        --mount-string="/Users/hiroki.hasegawa/projects/foo:/data"
+    ```
 
-```bash
-$ minikube start \
-    --driver=hyperkit \
-    --mount=true \
-    --mount-string="/Users/hiroki.hasegawa/projects/foo:/data"
-```
+2. Node のボリュームを Pod 内のコンテナにマウントする。
 
-`(2)`
-
-: Node のボリュームを Pod 内のコンテナにマウントする。
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: foo-deployment
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: foo-pod
-  template:
+    ```yaml
+    apiVersion: apps/v1
+    kind: Deployment
     metadata:
-      labels:
-        app.kubernetes.io/name: foo-pod
+      name: foo-deployment
     spec:
-      containers:
-        - name: app
-          image: app:1.0.0
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 8080
-          volumeMounts:
+      replicas: 2
+      selector:
+        matchLabels:
+          app.kubernetes.io/name: foo-pod
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: foo-pod
+        spec:
+          containers:
             - name: app
-              mountPath: /go/src
-      volumes:
-        - name: app
-          hostPath:
-            path: /data
-            type: DirectoryOrCreate
-```
+              image: app:1.0.0
+              imagePullPolicy: IfNotPresent
+              ports:
+                - containerPort: 8080
+              volumeMounts:
+                - name: app
+                  mountPath: /go/src
+          volumes:
+            - name: app
+              hostPath:
+                path: /data
+                type: DirectoryOrCreate
+    ```
 
 <br>
 

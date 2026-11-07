@@ -394,41 +394,37 @@ Unix にて、Linux の能力の `1` 個であるジョブ管理を実装する�
   </tbody>
 </table>
 
-`(1)`
+1. あらかじめ、各ディレクトリに cron ファイルを配置しておく。
 
-: あらかじめ、各ディレクトリに cron ファイルを配置しておく。
+2. ジョブを登録するファイルを作成する。`run-parts` コマンドで、指定した時間に、各 cron ディレクトリ内の `cron` ファイルを一括で実行するように記述しておく。
 
-`(2)`
-
-: ジョブを登録するファイルを作成する。`run-parts` コマンドで、指定した時間に、各 cron ディレクトリ内の `cron` ファイルを一括で実行するように記述しておく。
-
-```bash
-# 設定
-SHELL=/bin/bash
-PATH=/sbin:/bin:/usr/sbin:/usr/bin
-MAILTO="example@gmail.com"
-LANG=ja_JP.UTF-8
-LC_ALL=ja_JP.UTF-8
-CONTENT_TYPE=text/plain; charset=UTF-8
-
-# For details see man 4 crontabs
-
-# Example of job definition:
-# .---------------- minute (0 - 59)
-# |  .------------- hour (0 - 23)
-# |  |  .---------- day of month (1 - 31)
-# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
-# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
-# |  |  |  |  |
-# *  *  *  *  * user-name command to be executed
-
-# ジョブ
-1 * * * * root run-parts /etc/cron.hourly # 毎時・1分
-5 2 * * * root run-parts /etc/cron.daily # 毎日・2時5分
-20 2 * * 0 root run-parts /etc/cron.weekly # 毎週日曜日・2時20分
-40 2 1 * * root run-parts /etc/cron.monthly # 毎月一日・2時40分
-@reboot make clean html # cron起動時に一度だけ
-```
+    ```bash
+    # 設定
+    SHELL=/bin/bash
+    PATH=/sbin:/bin:/usr/sbin:/usr/bin
+    MAILTO="example@gmail.com"
+    LANG=ja_JP.UTF-8
+    LC_ALL=ja_JP.UTF-8
+    CONTENT_TYPE=text/plain; charset=UTF-8
+    
+    # For details see man 4 crontabs
+    
+    # Example of job definition:
+    # .---------------- minute (0 - 59)
+    # |  .------------- hour (0 - 23)
+    # |  |  .---------- day of month (1 - 31)
+    # |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+    # |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+    # |  |  |  |  |
+    # *  *  *  *  * user-name command to be executed
+    
+    # ジョブ
+    1 * * * * root run-parts /etc/cron.hourly # 毎時・1分
+    5 2 * * * root run-parts /etc/cron.daily # 毎日・2時5分
+    20 2 * * 0 root run-parts /etc/cron.weekly # 毎週日曜日・2時20分
+    40 2 1 * * root run-parts /etc/cron.monthly # 毎月一日・2時40分
+    @reboot make clean html # cron起動時に一度だけ
+    ```
 
 <br>
 
@@ -489,77 +485,67 @@ crontab ファイルを操作する。
 $ crontab <ファイルへのパス>
 ```
 
-`(1)`
+1. 拡張子は自由で、時刻とコマンドが実装されたファイルを用意する。このとき、最後に改行がないとエラー (`premature EOF`) になるため、改行を追加する。
 
-: 拡張子は自由で、時刻とコマンドが実装されたファイルを用意する。このとき、最後に改行がないとエラー (`premature EOF`) になるため、改行を追加する。
+    ```bash title=".txt"
+    # 毎時・1分
+    1 * * * * root run-parts /etc/cron.hourly
+    # <- 最後は改行する。
+    ```
 
-```bash title=".txt"
-# 毎時・1分
-1 * * * * root run-parts /etc/cron.hourly
-# <- 最後は改行する。
-```
+    ```bash title=".txt"
+    # 毎日・2時5分
+    5 2 * * * root run-parts /etc/cron.daily
+    # <- 最後は改行する。
+    ```
 
-```bash title=".txt"
-# 毎日・2時5分
-5 2 * * * root run-parts /etc/cron.daily
-# <- 最後は改行する。
-```
+    ```bash title=".txt"
+    # 毎週日曜日・2時20分
+    20 2 * * 0 root run-parts /etc/cron.weekly
+    # <- 最後は改行する。
+    ```
 
-```bash title=".txt"
-# 毎週日曜日・2時20分
-20 2 * * 0 root run-parts /etc/cron.weekly
-# <- 最後は改行する。
-```
+    ```bash title=".txt"
+    # 毎月一日・2時40分
+    40 2 1 * * root run-parts /etc/cron.monthly
+    # <- 最後は改行する。
+    ```
 
-```bash title=".txt"
-# 毎月一日・2時40分
-40 2 1 * * root run-parts /etc/cron.monthly
-# <- 最後は改行する。
-```
+    ```bash
+    # cron起動時に一度だけ
+    @reboot make clean html
+    # <- 最後は改行する。
+    ```
 
-```bash
-# cron起動時に一度だけ
-@reboot make clean html
-# <- 最後は改行する。
-```
+2. このファイルを `crontab` コマンドで登録する。cron ファイルの実体はないことと、ファイルの内容を変更した場合は登録し直さなければいけないことに注意する。
 
-`(2)`
+    ```bash
+    $ crontab /etc/cron.hourly/cron-hourly.txt
+    ```
 
-: このファイルを `crontab` コマンドで登録する。cron ファイルの実体はないことと、ファイルの内容を変更した場合は登録し直さなければいけないことに注意する。
+3. 登録されている処理を取得する。
 
-```bash
-$ crontab /etc/cron.hourly/cron-hourly.txt
-```
+    ```bash
+    $ crontab -l
+    
+    1 * * * * root run-parts /etc/cron.hourly/cron.hourly
+    ```
 
-`(3)`
+4. ログに表示されているか否かを確認する。
 
-: 登録されている処理を取得する。
+    ```bash
+    $ cd /var/log
+    
+    $ tail -f cron
+    ```
 
-```bash
-$ crontab -l
+5. 改行コードを確認。改行コードが表示されない場合は LF であり、問題ない。
 
-1 * * * * root run-parts /etc/cron.hourly/cron.hourly
-```
-
-`(4)`
-
-: ログに表示されているか否かを確認する。
-
-```bash
-$ cd /var/log
-
-$ tail -f cron
-```
-
-`(5)`
-
-: 改行コードを確認。改行コードが表示されない場合は LF であり、問題ない。
-
-```bash
-$ file /etc/cron.hourly/cron-hourly.txt
-
-foo.txt: ASCII text
-```
+    ```bash
+    $ file /etc/cron.hourly/cron-hourly.txt
+    
+    foo.txt: ASCII text
+    ```
 
 <br>
 

@@ -61,31 +61,29 @@ gatling {
 
 ### 実行
 
-`(1)`
-
-: `sbt` 経由で Gatling の シナリオ を実行する。
+1. `sbt` 経由で Gatling の シナリオ を実行する。
 
     `-Dusers`、`-DrampUpDuration`、`-DconstantDuration` は Gatling 固有の標準オプションではない。
 
     `sbt` に Java system properties として渡し、シナリオファイルで参照する。
 
-```bash
-$ cd /home/ssm-user/gatling-xbqr
-
-# Dusers (Simulation に渡す仮想ユーザー数) ：5人
-# DrampUpDuration (Simulation に渡すスロースタート期間) ：20秒かけてユーザー数を増やす
-# DconstantDuration (Simulation に渡す維持期間) ：120秒間、仮想ユーザー5人を維持する
-# testOnly (実行するシナリオ)：特定のシナリオファイルを指定する
-$ sbt -Dusers=5 -DrampUpDuration=20 -DconstantDuration=120 "gatling:testOnly {scala製のシナリオファイル名}"
-
-Choose a simulation number:
-     [0] computerdatabase.BasicSimulation
-     [1] computerdatabase.advanced.AdvancedSimulationStep01
-     [2] computerdatabase.advanced.AdvancedSimulationStep02
-     [3] computerdatabase.advanced.AdvancedSimulationStep03
-     [4] computerdatabase.advanced.AdvancedSimulationStep04
-     [5] computerdatabase.advanced.AdvancedSimulationStep05
-```
+    ```bash
+    $ cd /home/ssm-user/gatling-xbqr
+    
+    # Dusers (Simulation に渡す仮想ユーザー数) ：5人
+    # DrampUpDuration (Simulation に渡すスロースタート期間) ：20秒かけてユーザー数を増やす
+    # DconstantDuration (Simulation に渡す維持期間) ：120秒間、仮想ユーザー5人を維持する
+    # testOnly (実行するシナリオ)：特定のシナリオファイルを指定する
+    $ sbt -Dusers=5 -DrampUpDuration=20 -DconstantDuration=120 "gatling:testOnly {scala製のシナリオファイル名}"
+    
+    Choose a simulation number:
+         [0] computerdatabase.BasicSimulation
+         [1] computerdatabase.advanced.AdvancedSimulationStep01
+         [2] computerdatabase.advanced.AdvancedSimulationStep02
+         [3] computerdatabase.advanced.AdvancedSimulationStep03
+         [4] computerdatabase.advanced.AdvancedSimulationStep04
+         [5] computerdatabase.advanced.AdvancedSimulationStep05
+    ```
 
 > - [負荷試験テストツールGatlingの使い方 #Scala - Qiita](https://qiita.com/hogucc/items/e213a93f5b3a3cd3c96f)
 > - [Passing parameters to a Gatling simulation](https://docs.gatling.io/guides/optimize-scripts/passing-parameters/)

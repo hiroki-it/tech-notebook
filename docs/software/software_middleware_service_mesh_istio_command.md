@@ -23,30 +23,24 @@ $ brew install istioctl
 
 #### ▼ チャートとして
 
-`(1)`
+1. インストール先のディレクトリに移動する。
 
-: インストール先のディレクトリに移動する。
+    ```bash
+    $ cd /Users/hiroki.hasegawa/projects
+    ```
 
-```bash
-$ cd /Users/hiroki.hasegawa/projects
-```
+2. `istioctl` コマンドをインストールする。
 
-`(2)`
+    ```bash
+    $ curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.12.1 - sh
+    ```
 
-: `istioctl` コマンドをインストールする。
+3. `istioctl` コマンドへのパスを環境変数に登録する。
 
-```bash
-$ curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.12.1 - sh
-```
-
-`(3)`
-
-: `istioctl` コマンドへのパスを環境変数に登録する。
-
-```bash
-$ cd istio-1.12.1
-$ export PATH=$PWD/bin:$PATH
-```
+    ```bash
+    $ cd istio-1.12.1
+    $ export PATH=$PWD/bin:$PATH
+    ```
 
 > - [Istio / Getting Started](https://istio.io/latest/docs/setup/getting-started/#download)
 
@@ -988,73 +982,65 @@ $ istioctl tag set <エイリアス> --revision <エイリアスの実体> --ove
 
 **＊例＊**
 
-`(1)`
+1. 現在のバージョンのエイリアス (`istio.io/tag` キーの値) が `default`、またバージョン (`.metadata.labels.istio.io/rev` キーの値) が `v1.10.0` とする。
 
-: 現在のバージョンのエイリアス (`istio.io/tag` キーの値) が `default`、またバージョン (`.metadata.labels.istio.io/rev` キーの値) が `v1.10.0` とする。
+    ```bash
+    $ istioctl tag list
+    
+    TAG      REVISION   NAMESPACES
+    default   1-10-0      app
+    ```
 
-```bash
-$ istioctl tag list
+2. `default` タグを持つ MutatingWebhookConfiguration を確認する。
 
-TAG      REVISION   NAMESPACES
-default   1-10-0      app
-```
+    ```bash
+    # MutatingWebhookConfiguration
+    $ kubectl get mutatingwebhookconfigurations
+    
+    NAME                               WEBHOOKS   AGE
+    istio-sidecar-injector-1-10-0       1          7m56s # 1.10.0
+    istio-revision-tag-default          1          7m56s # 現在のリビジョン (1.10.0) 定義するdefaultタグを持つ
+    ```
 
-`(2)`
+3. もし、ここで Istio をアップグレードしたとする。
 
-: `default` タグを持つ MutatingWebhookConfiguration を確認する。
+    ```bash
+    $ istioctl install --set revision=1-11-0
+    ```
 
-```bash
-# MutatingWebhookConfiguration
-$ kubectl get mutatingwebhookconfigurations
+4. すると、既存の MutatingWebhookConfiguration を残して、新しい MutatingWebhookConfiguration を作成する。
 
-NAME                               WEBHOOKS   AGE
-istio-sidecar-injector-1-10-0       1          7m56s # 1.10.0
-istio-revision-tag-default          1          7m56s # 現在のリビジョン (1.10.0) 定義するdefaultタグを持つ
-```
+    その他、新しいIstiodコントロールプレーンも作成される。
 
-`(3)`
+    ```bash
+    # Deployment
+    NAME                 READY   STATUS    RESTARTS   AGE
+    istiod-1-10-0        1/1     Running   0          1m  # 1-10-0
+    istiod-1-11-0        1/1     Running   0          1m  # 1-11-0 (今回のアップグレード先)
+    ```
 
-: もし、ここで Istio をアップグレードしたとする。
+    ```bash
+    # Service
+    NAME             TYPE         CLUSTER-IP    EXTERNAL-IP   PORT(S)                                                AGE
+    istiod-1-10-0    ClusterIP    10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m
+    istiod-1-11-0    ClusterIP    10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m # 新しい方
+    ```
 
-```bash
-$ istioctl install --set revision=1-11-0
-```
-
-`(4)`
-
-: すると、既存の MutatingWebhookConfiguration を残して、新しい MutatingWebhookConfiguration を作成する。
-
-     その他、新しいIstiodコントロールプレーンも作成される。
-
-```bash
-# Deployment
-NAME                 READY   STATUS    RESTARTS   AGE
-istiod-1-10-0        1/1     Running   0          1m  # 1-10-0
-istiod-1-11-0        1/1     Running   0          1m  # 1-11-0 (今回のアップグレード先)
-```
-
-```bash
-# Service
-NAME             TYPE         CLUSTER-IP    EXTERNAL-IP   PORT(S)                                                AGE
-istiod-1-10-0    ClusterIP    10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m
-istiod-1-11-0    ClusterIP    10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m # 新しい方
-```
-
-```bash
-# MutatingWebhookConfiguration
-$ kubectl get mutatingwebhookconfigurations
-
-NAME                                WEBHOOKS   AGE
-istio-sidecar-injector-1-10-0       1          7m56s # 1.10.0
-istio-sidecar-injector-1-11-0       1          7m56s # 1.11.0 (今回のアップグレード先)
-istio-revision-tag-default          1          7m56s # 現在のリビジョン (1.10.0) 定義するdefaultタグを持つ
-```
+    ```bash
+    # MutatingWebhookConfiguration
+    $ kubectl get mutatingwebhookconfigurations
+    
+    NAME                                WEBHOOKS   AGE
+    istio-sidecar-injector-1-10-0       1          7m56s # 1.10.0
+    istio-sidecar-injector-1-11-0       1          7m56s # 1.11.0 (今回のアップグレード先)
+    istio-revision-tag-default          1          7m56s # 現在のリビジョン (1.10.0) 定義するdefaultタグを持つ
+    ```
 
 `(3)`
 
 : エイリアス (`istio.io/tag` キーの値) を指定して、リビジョンを書き換える。
 
-     これにより、`istio-revision-tag-default`の`default`タグが指すリビジョンが変更される。
+    これにより、`istio-revision-tag-default`の`default`タグが指すリビジョンが変更される。
 
 ```bash
 $ istioctl tag set default --revision 1-11-0 --overwrite

@@ -72,50 +72,38 @@ JMeter が送信するリクエストの総数はスレッド数とループ数�
 
 以下の手順で、JMeter を使用したロードテストを実施する。
 
-`(1)`
+1. URL のアクセスランキングを元に、リクエストを送信するための URL リストを `csv` ファイルで作成する。Google を参考にしたが、ALB アクセスログを参考にしたほうが、より正確かもしれない。
 
-: URL のアクセスランキングを元に、リクエストを送信するための URL リストを `csv` ファイルで作成する。Google を参考にしたが、ALB アクセスログを参考にしたほうが、より正確かもしれない。
+2. JMeter の GUI 版にて、シナリオ (`jmx` ファイル) を作成する。スループットコントローラーで URL リスト (`csv` ファイル) を JMeter のビルトイン関数で読み込むようにする。
 
-`(2)`
+    csvファイルのリストからランダムに読み出したい場合は、Random関数が適している。スレッド数が例えば`10000`個といった高負荷であると、ローカルマシンがフリーズするため注意すること。
 
-: JMeter の GUI 版にて、シナリオ (`jmx` ファイル) を作成する。スループットコントローラーで URL リスト (`csv` ファイル) を JMeter のビルトイン関数で読み込むようにする。
+    > - [Apache JMeter - User's Manual: Functions and Variables](https://jmeter.apache.org/usermanual/functions.html#__Random)
 
-     csvファイルのリストからランダムに読み出したい場合は、Random関数が適している。スレッド数が例えば`10000`個といった高負荷であると、ローカルマシンがフリーズするため注意すること。
+3. AWS リソースのスペック、VPN など、ロードテストの周辺準備が整っていることを確認する。
 
-> - [Apache JMeter - User's Manual: Functions and Variables](https://jmeter.apache.org/usermanual/functions.html#__Random)
+4. JMeter の CUI 版のバイナリファイルに、`jmx` ファイルをドラッグ＆ドロップし、テストを実施する。
 
-`(3)`
+    または、バイナリファイルへのパスを通した上で、以下のコマンドでも実行できる。
 
-: AWS リソースのスペック、VPN など、ロードテストの周辺準備が整っていることを確認する。
+    ```bash
+    $ jmeter -n \
+        -t <JMXファイルへのパス> \
+        -l <Resultファイルへのパス> \
+        -e \
+        -o <レポートファイルへのパス>
+    ```
 
-`(4)`
+    ここで、GUI 版を使用しない理由は、コマンドの結果に表示される説明より、GUI 版では正しい結果を得られないとのことのためである。
 
-: JMeter の CUI 版のバイナリファイルに、`jmx` ファイルをドラッグ＆ドロップし、テストを実施する。
+    ```bash
+    # コマンドの結果
+    Don't use GUI mode for load testing !, only for Test creation and Test debugging.For load testing, use CLI Mode (was NON GUI):
+    ```
 
-     または、バイナリファイルへのパスを通した上で、以下のコマンドでも実行できる。
+5. テストを開始後に、結果 (`jtl` ファイル) とログ (`log` ファイル) が作成され、テストが終了するまで追記されていく。
 
-```bash
-$ jmeter -n \
-    -t <JMXファイルへのパス> \
-    -l <Resultファイルへのパス> \
-    -e \
-    -o <レポートファイルへのパス>
-```
-
-ここで、GUI 版を使用しない理由は、コマンドの結果に表示される説明より、GUI 版では正しい結果を得られないとのことのためである。
-
-```bash
-# コマンドの結果
-Don't use GUI mode for load testing !, only for Test creation and Test debugging.For load testing, use CLI Mode (was NON GUI):
-```
-
-`(5)`
-
-: テストを開始後に、結果 (`jtl` ファイル) とログ (`log` ファイル) が作成され、テストが終了するまで追記されていく。
-
-`(6)`
-
-: テストを修正して新しく実行したい場合、`jmx` ファイル、`jtl` ファイル、log ファイルをコピーして、バックアップしておく。
+6. テストを修正して新しく実行したい場合、`jmx` ファイル、`jtl` ファイル、log ファイルをコピーして、バックアップしておく。
 
 <br>
 
@@ -125,7 +113,7 @@ Don't use GUI mode for load testing !, only for Test creation and Test debugging
 
 : JMeter の GUI 版にて、スレッドグループに、結果をツリーで表示、結果を表で表示のリスナーを追加する。
 
-     これらの画面で、`jtl`ファイルを読み込むと、`jtl`ファイルに基づく集計データを得られる。
+    これらの画面で、`jtl`ファイルを読み込むと、`jtl`ファイルに基づく集計データを得られる。
 
 `(8)`
 

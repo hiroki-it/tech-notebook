@@ -23,41 +23,37 @@ Anthos Cluster のアップグレード時、データプレーンのワーカ�
 
 ### `bmctl` コマンドのセットアップ
 
-`(1)`
+1. `bmctl` コマンドをインストールする。Anthos GKE Cluster と `bmctl` コマンドのバージョンには対応関係がある。
 
-: `bmctl` コマンドをインストールする。Anthos GKE Cluster と `bmctl` コマンドのバージョンには対応関係がある。
+    ```bash
+    $ gsutil cp gs://anthos-baremetal-release/bmctl/1.13.2/linux-amd64/bmctl bmctl-1.12.0
+    $ chmod a+x bmctl-1.12.0
+    ```
 
-```bash
-$ gsutil cp gs://anthos-baremetal-release/bmctl/1.13.2/linux-amd64/bmctl bmctl-1.12.0
-$ chmod a+x bmctl-1.12.0
-```
+2. Anthos GKE Cluster の現在のバージョンを確認する。
 
-`(2)`
+    ```yaml
+    $ kubectl get cluster -A -o yaml
+    ---
+    apiVersion: baremetal.cluster.gke.io/v1
+    kind: Cluster
+    metadata:
+      name: foo-anthos-cluster
+      namespace: foo-namespace
+    spec:
+      anthosBareMetalVersion: 1.12.0 # 現在のバージョン
+    ```
 
-: Anthos GKE Cluster の現在のバージョンを確認する。
+    また、Anthos GKE Cluster のバージョンと Kubernetes のバージョンの対応関係を確認する。
 
-```yaml
-$ kubectl get cluster -A -o yaml
----
-apiVersion: baremetal.cluster.gke.io/v1
-kind: Cluster
-metadata:
-  name: foo-anthos-cluster
-  namespace: foo-namespace
-spec:
-  anthosBareMetalVersion: 1.12.0 # 現在のバージョン
-```
-
-また、Anthos GKE Cluster のバージョンと Kubernetes のバージョンの対応関係を確認する。
-
-<table>
-  <thead>
+    <table>
+      <thead>
     <tr>
       <th>Anthos GKE Cluster のバージョン</th>
       <th>Kubernetes のバージョン</th>
     </tr>
-  </thead>
-  <tbody>
+      </thead>
+      <tbody>
     <tr>
       <td><code> 1.11</code> 系</td>
       <td><code>v1.22.8-gke</code></td>
@@ -70,22 +66,20 @@ spec:
       <td>...</td>
       <td>...</td>
     </tr>
-  </tbody>
-</table>
+      </tbody>
+    </table>
 
-> - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support
+    > - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support
 
-`(3)`
+3. `docker` プロセスが稼働しているかを確認する。Anthos のアップグレードでは、その仕組みのなかで Kind が使われている。
 
-: `docker` プロセスが稼働しているかを確認する。Anthos のアップグレードでは、その仕組みのなかで Kind が使われている。
+    ワークステーション (仮想サーバー) 上でKindを起動し、Kindを使用してAnthos K8s in Dockerを検証する。
 
-     ワークステーション (仮想サーバー) 上でKindを起動し、Kindを使用してAnthos K8s in Dockerを検証する。
+    Kindによる検証のために、dockerが必要である。dockerプロセスのデーモンが正常なことを確認する。
 
-     Kindによる検証のために、dockerが必要である。dockerプロセスのデーモンが正常なことを確認する。
-
-```bash
-$ systemctl status docker
-```
+    ```bash
+    $ systemctl status docker
+    ```
 
 <br>
 
@@ -95,7 +89,7 @@ $ systemctl status docker
 
 : `bmctl` コマンドを使用して、Anthos GKE Cluster をローリング方式でアップグレードする。
 
-     また、ログの出力先が表示されるため、このログを`tail`コマンドで確認する。
+    また、ログの出力先が表示されるため、このログを`tail`コマンドで確認する。
 
 ```bash
 # カレントディレクトリは、baremetalである必要がある。
@@ -122,7 +116,7 @@ $ tail -f ~/baremetal/<ログの出力先>
 
 : アップグレードが開始する。
 
-     コントロールプレーンコンポーネントやNodeコンポーネントからエラーが発生するため、アラートで確認する。
+    コントロールプレーンコンポーネントやNodeコンポーネントからエラーが発生するため、アラートで確認する。
 
 <br>
 
@@ -132,7 +126,7 @@ $ tail -f ~/baremetal/<ログの出力先>
 
 : アップグレードが終了する。
 
-     Anthos GKE Clusterのバージョンがアップグレードされたことを確認する。
+    Anthos GKE Clusterのバージョンがアップグレードされたことを確認する。
 
 ```yaml
 $ kubectl get cluster -A -o yaml
@@ -160,9 +154,9 @@ $ kubectl get node -o wide
 
 : Crash、Terminating、Error などの Pod がいないかを確認する。
 
-     また、Podの作成が始まらないと、`kubectl get pod`コマンドにPod自体が表示されない。
+    また、Podの作成が始まらないと、`kubectl get pod`コマンドにPod自体が表示されない。
 
-     そのため、`kubectl get deployment`で、Podの管理リソース (例：Deployment) の全てのPodが`Ready`コンディションかどうかを確認しておく。
+    そのため、`kubectl get deployment`で、Podの管理リソース (例：Deployment) の全てのPodが`Ready`コンディションかどうかを確認しておく。
 
 ```bash
 $ kubectl get pod -A -o wide
@@ -194,37 +188,31 @@ Anthos Service Mesh のアップグレードでは、何らかの事情でこれ
 
 そこで、`asmcli` コマンドはバージョン管理したほうがよい。
 
-`(1)`
+1. `asmcli` コマンドをインストールする。アップグレード先のバージョン系の指定するようにする。
 
-: `asmcli` コマンドをインストールする。アップグレード先のバージョン系の指定するようにする。
+    ```bash
+    $ curl https://storage.googleapis.com/csm-artifacts/asm/asmcli_1.15 > asmcli
+    $ chmod a+x asmcli
+    ```
 
-```bash
-$ curl https://storage.googleapis.com/csm-artifacts/asm/asmcli_1.15 > asmcli
-$ chmod a+x asmcli
-```
+2. `asmcli` コマンドが指定している `POINT` 値と `REV` 値を確認する。
 
-`(2)`
+    ```bash
+    $ grep -e 'MAJOR=' -e 'MINOR=' -e 'POINT=' -e 'REV=' asmcli
+    
+    MAJOR="${MAJOR:=1}"; readonly MAJOR;
+    MINOR="${MINOR:=14}"; readonly MINOR;
+    POINT="${POINT:=0}"; readonly POINT; # POINT値
+    REV="${REV:=0}"; readonly REV;       # REV値
+    ...
+    ```
 
-: `asmcli` コマンドが指定している `POINT` 値と `REV` 値を確認する。
+3. バイナリファイルの名前を変更する。これをバージョン管理する。
 
-```bash
-$ grep -e 'MAJOR=' -e 'MINOR=' -e 'POINT=' -e 'REV=' asmcli
-
-MAJOR="${MAJOR:=1}"; readonly MAJOR;
-MINOR="${MINOR:=14}"; readonly MINOR;
-POINT="${POINT:=0}"; readonly POINT; # POINT値
-REV="${REV:=0}"; readonly REV;       # REV値
-...
-```
-
-`(3)`
-
-: バイナリファイルの名前を変更する。これをバージョン管理する。
-
-```bash
-# asmcliコマンドの名前を変える。
-$ mv asmcli asmcli_1140-0
-```
+    ```bash
+    # asmcliコマンドの名前を変える。
+    $ mv asmcli asmcli_1140-0
+    ```
 
 > - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_anthos_service_mesh
 
@@ -265,7 +253,7 @@ istio-revision-tag-default             1          3m18s # 現在のリビジョ�
 
 : 新しい Istiod コントロールプレーンをインストールする。
 
-     事前にバージョン管理している`asmcli`コマンドを使用して、`asmcli`コマンドを使用して、旧バージョンを残しつつ、新バージョンのIstiodコントロールプレーンをデプロイする。
+    事前にバージョン管理している`asmcli`コマンドを使用して、`asmcli`コマンドを使用して、旧バージョンを残しつつ、新バージョンのIstiodコントロールプレーンをデプロイする。
 
 ```bash
 $ ./repository/asmcli-1140-0 install \
@@ -291,7 +279,7 @@ $ ./repository/asmcli-1140-0 install \
 
 : Istiod コントロールプレーンがデプロイされたことを確認する。
 
-     補足として、`asmcli`コマンドでは、最新のパッチバージョンがインストールするため、狙ったバージョンをインストールできない可能性がある。
+    補足として、`asmcli`コマンドでは、最新のパッチバージョンがインストールするため、狙ったバージョンをインストールできない可能性がある。
 
 ```bash
 # Deployment
@@ -381,11 +369,11 @@ metadata:
 
 : Istio の `istio.io/rev` キーにリビジョンタグが設定されていることを確認する。
 
-     多くの場合、istio-proxyはIstio Ingress GatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。
+    多くの場合、istio-proxyはIstio Ingress GatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。
 
-     これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは`istio.io/rev`キーを推奨している。
+    これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは`istio.io/rev`キーを推奨している。
 
-     もしGitOpsツール (例：ArgoCD、Flux) でNamespaceを管理している場合は、`kubectl label`コマンドの代わりに、GitHub上でリビジョンを変更することになる。
+    もしGitOpsツール (例：ArgoCD、Flux) でNamespaceを管理している場合は、`kubectl label`コマンドの代わりに、GitHub上でリビジョンを変更することになる。
 
 ```bash
 # Istio Ingress Gatewayの特定のNamespace
@@ -412,7 +400,7 @@ $ kubectl get namespace -L istio.io/rev
 
 : Istio Ingress Gateway の Pod を再作成し、新バージョンに更新する。
 
-     Istio Ingress Gateway 自体が istio-proxy であるため、サイドカーとして istio-proxy をインジェクションするわけではない。
+    Istio Ingress Gateway 自体が istio-proxy であるため、サイドカーとして istio-proxy をインジェクションするわけではない。
 
 ```bash
 $ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
@@ -422,7 +410,7 @@ $ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
 
 : 新バージョンの istio-proxy がインジェクションされたことを、イメージタグから確認する。
 
-     `istioctl proxy-status` コマンドではバージョンを確認できないため、イメージタグまたは `istioctl version` コマンドで確認する。
+    `istioctl proxy-status` コマンドではバージョンを確認できないため、イメージタグまたは `istioctl version` コマンドで確認する。
 
 ```bash
 # 新バージョンのリビジョン：asm-1140-0
@@ -444,7 +432,7 @@ $ istioctl version
 
 : アプリケーションの Pod を再作成し、新バージョンの istio-proxy を自動的にインジェクションする。
 
-     カナリア方式のため、webhook-serviceがそのままで新しいistio-proxyをインジェクションできる。
+    カナリア方式のため、webhook-serviceがそのままで新しいistio-proxyをインジェクションできる。
 
 ```bash
 $ kubectl rollout restart deployment app-deployment -n app
@@ -454,7 +442,7 @@ $ kubectl rollout restart deployment app-deployment -n app
 
 : 新バージョンの istio-proxy がインジェクションされたことを、イメージタグから確認する。
 
-     `istioctl proxy-status` コマンドではバージョンを確認できないため、イメージタグまたは `istioctl version` コマンドで確認する。
+    `istioctl proxy-status` コマンドではバージョンを確認できないため、イメージタグまたは `istioctl version` コマンドで確認する。
 
 ```bash
 # 新バージョンのリビジョン：asm-1140-0
@@ -479,7 +467,7 @@ $ istioctl version
 
 : Istio の validating-admission 時を経由する Service 更新する。
 
-     ソースコードは、anthos-service-mesh-packagesリポジトリから拝借する。
+    ソースコードは、anthos-service-mesh-packagesリポジトリから拝借する。
 
 ```yaml
 $ kubectl diff -f ./asm/istio/istiod-service.yaml
@@ -545,9 +533,9 @@ istio.io/tag: default
 
 : Istio の mutating-admission を設定する MutatingWebhookConfiguration のラベル値を変更する。
 
-     MutatingWebhookConfigurationの`.metadata.labels`キーにあるエイリアス (`istio.io/tag`キーの値) の実体 (`istio.io/rev`キーの値) が旧バージョンのままであるため、新バージョンに変更する。
+    MutatingWebhookConfigurationの`.metadata.labels`キーにあるエイリアス (`istio.io/tag`キーの値) の実体 (`istio.io/rev`キーの値) が旧バージョンのままであるため、新バージョンに変更する。
 
-     `istioctl`コマンドは、`asmcli`コマンドの`--output_dir`オプションで指定したディレクトリにある。
+    `istioctl`コマンドは、`asmcli`コマンドの`--output_dir`オプションで指定したディレクトリにある。
 
 ```bash
 # asmcliコマンドのoutput_dirオプションで指定したディレクトリのistioctlコマンド
@@ -633,9 +621,9 @@ $ kubectl get IstioOperator -n istio-system
 
 : すべての Pod が正常に稼働していることを確認する。
 
-     また、Podの作成が始まらないと、`kubectl get pod`コマンドにPod自体が表示されない。
+    また、Podの作成が始まらないと、`kubectl get pod`コマンドにPod自体が表示されない。
 
-     そのため、`kubectl get deployment`で、Podの管理リソース (例：Deployment) の全てのPodが`Ready`コンディションかどうかを確認しておく。
+    そのため、`kubectl get deployment`で、Podの管理リソース (例：Deployment) の全てのPodが`Ready`コンディションかどうかを確認しておく。
 
 ```bash
 $ kubectl get pod -A -o wide

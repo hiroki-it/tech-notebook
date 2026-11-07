@@ -198,37 +198,29 @@ module "eks_foo" {
 
 `kubectl` コマンドで Amazon EKS Cluster を操作するためには、`kubeconfig` ファイルへ Cluster の資格情報を登録する必要がある。
 
-`(1)`
+1. AWS CLI に資格情報を設定する。
 
-: AWS CLI に資格情報を設定する。
+    ```bash
+    $ aws configure
+    ```
 
-```bash
-$ aws configure
-```
+2. Amazon EKS Cluster の名前を指定して、`kubeconfig` ファイルに Cluster の資格情報を登録する。
 
-`(2)`
+    ```bash
+    $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
+    ```
 
-: Amazon EKS Cluster の名前を指定して、`kubeconfig` ファイルに Cluster の資格情報を登録する。
+3. `kubectl` コマンドの向き先を、Amazon EKS Cluster の kube-apiserver に変更する。
 
-```bash
-$ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
-```
+    ```bash
+    $ kubectl config use-context <ClusterのARN>
+    ```
 
-`(3)`
+4. `kubectl` コマンドの接続を確認する。
 
-: `kubectl` コマンドの向き先を、Amazon EKS Cluster の kube-apiserver に変更する。
-
-```bash
-$ kubectl config use-context <ClusterのARN>
-```
-
-`(4)`
-
-: `kubectl` コマンドの接続を確認する。
-
-```bash
-$ kubectl get pod
-```
+    ```bash
+    $ kubectl get pod
+    ```
 
 > - [Get started with Amazon EKS – AWS Management Console and AWS CLI - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html)
 > - https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
@@ -323,62 +315,50 @@ ConfigMap を経由して Kubernetes の RBAC と連携することにより、K
 
 新しいアクセスエントリーよりもセットアップが難しい。
 
-`(1)`
+1. あらかじめ、kube-apiserver クライアント (`kubectl` クライアント、Kubernetes リソース) に紐づく AWS IAM ユーザーを作成しておく。
 
-: あらかじめ、kube-apiserver クライアント (`kubectl` クライアント、Kubernetes リソース) に紐づく AWS IAM ユーザーを作成しておく。
+2. AWS IAM ユーザーが kube-apiserver の URL にリクエストを送信する。
 
-`(2)`
+    kube-apiserverは、aws-iam-authenticator-serverにWebhookリクエストを送信する。
 
-: AWS IAM ユーザーが kube-apiserver の URL にリクエストを送信する。
+    admission-controllersアドオンのWebhookではないことに注意する。
 
-     kube-apiserverは、aws-iam-authenticator-serverにWebhookリクエストを送信する。
+3. コントロールプレーン Node 上の aws-iam-authenticator-server は、IAM API を使用して AWS IAM ユーザーを認証する。
 
-     admission-controllersアドオンのWebhookではないことに注意する。
+4. もし認証に成功していた場合、aws-iam-authenticator-server は、ConfigMap (aws-auth) を確認する。
 
-`(3)`
+    このConfigMapには、そのAWS IAMユーザーに紐づくUserAccount／ServiceAccount／Group／RoleBinding／ClusterRoleBindingが定義されている。
 
-: コントロールプレーン Node 上の aws-iam-authenticator-server は、IAM API を使用して AWS IAM ユーザーを認証する。
+    この時、Kubernetes Cluster外部のkube-apiserverクライアント (例：開発者、GitOps CDツール、監視ツールなど) の場合はUserAccount、Kubernetesリソースの場合はServiceAccountを取得する。
 
-`(4)`
+    ```yaml
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: aws-auth
+      namespace: kube-system
+    data:
+      mapAccounts: []
+      mapUsers: []
+      mapRoles: |
+        - rolearn: arn:aws:iam::<AWSアカウントID>:role/foo-role # AWS IAM ロール名
+          username: hiroki-it # AWS IAM ユーザー名
+          groups:
+            - system:masters # ClusterRoleBinding に定義された Group 名
+        - rolearn: arn:aws:iam::<AWSアカウントID>:role/bar-role # ワーカーNode に紐付けたロール名
+          username: system:node:{{EC2PrivateDNSName}} # ワーカーNode の識別子
+          groups:
+            - system:bootstrappers
+            - system:nodes
+    ```
 
-: もし認証に成功していた場合、aws-iam-authenticator-server は、ConfigMap (aws-auth) を確認する。
+5. aws-iam-authenticator-server は、UserAccount／ServiceAccount／Group、RoleBinding や ClusterRoleBinding の情報を含むレスポンスを kube-apiserver に返信する。
 
-     このConfigMapには、そのAWS IAMユーザーに紐づくUserAccount／ServiceAccount／Group／RoleBinding／ClusterRoleBindingが定義されている。
+6. あとは、Kubernetes 標準の認可の仕組みである。
 
-     この時、Kubernetes Cluster外部のkube-apiserverクライアント (例：開発者、GitOps CDツール、監視ツールなど) の場合はUserAccount、Kubernetesリソースの場合はServiceAccountを取得する。
+    kube-apiserverは、UserAccount／ServiceAccount／Groupに紐づくRoleやClusterRoleを、RoleBindingやClusterRoleBindingを経由して取得する。
 
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: aws-auth
-  namespace: kube-system
-data:
-  mapAccounts: []
-  mapUsers: []
-  mapRoles: |
-    - rolearn: arn:aws:iam::<AWSアカウントID>:role/foo-role # AWS IAM ロール名
-      username: hiroki-it # AWS IAM ユーザー名
-      groups:
-        - system:masters # ClusterRoleBinding に定義された Group 名
-    - rolearn: arn:aws:iam::<AWSアカウントID>:role/bar-role # ワーカーNode に紐付けたロール名
-      username: system:node:{{EC2PrivateDNSName}} # ワーカーNode の識別子
-      groups:
-        - system:bootstrappers
-        - system:nodes
-```
-
-`(5)`
-
-: aws-iam-authenticator-server は、UserAccount／ServiceAccount／Group、RoleBinding や ClusterRoleBinding の情報を含むレスポンスを kube-apiserver に返信する。
-
-`(6)`
-
-: あとは、Kubernetes 標準の認可の仕組みである。
-
-     kube-apiserverは、UserAccount／ServiceAccount／Groupに紐づくRoleやClusterRoleを、RoleBindingやClusterRoleBindingを経由して取得する。
-
-     AWS IAMユーザーは、Kubernetesリソースを操作できる。
+    AWS IAMユーザーは、Kubernetesリソースを操作できる。
 
 > - [Kubernetes RBAC and IAM Integration in Amazon EKS using a Java-based Kubernetes Operator \| Containers](https://aws.amazon.com/blogs/containers/kubernetes-rbac-and-iam-integration-in-amazon-eks-using-a-java-based-kubernetes-operator/)
 > - [Amazon EKS Authentication and Authorization Process](https://dzone.com/articles/amazon-eks-authentication-amp-authorization-proces)
@@ -655,139 +635,131 @@ Amazon EKS を SSO の ID プロバイダーとして使用することで、IAM
 
 ここでは、SSO の種類で OIDC を選ぶとする。
 
-`(1)`
+1. SSO の ID プロバイダーのタイプは、OIDC とする。
 
-: SSO の ID プロバイダーのタイプは、OIDC とする。
+    『Amazon EKS ClusterのOIDCプロバイダーURL』『OIDCプロバイダーのサーバー証明書を署名する中間認証局 (例：CertificateManagerなど) のサムプリント』『IDプロバイダーによるトークンの発行対象 (`sts.amazonaws.com`) 』を使用して、OIDCプロバイダーを作成する。
 
-     『Amazon EKS ClusterのOIDCプロバイダーURL』『OIDCプロバイダーのサーバー証明書を署名する中間認証局 (例：CertificateManagerなど) のサムプリント』『IDプロバイダーによるトークンの発行対象 (`sts.amazonaws.com`) 』を使用して、OIDCプロバイダーを作成する。
+    ```terraform
+    data "tls_certificate" "this" {
+      url = module.foo_eks.cluster_oidc_issuer_url
+    }
+    
+    # OIDCのIDプロバイダーをAWSに登録する。
+    resource "aws_iam_openid_connect_provider" "this" {
+      url             = module.foo_eks.cluster_oidc_issuer_url
+      client_id_list  = ["sts.amazonaws.com"]
+      thumbprint_list = data.tls_certificate.this[0].certificates[*].sha1_fingerprint
+    }
+    ```
 
-```terraform
-data "tls_certificate" "this" {
-  url = module.foo_eks.cluster_oidc_issuer_url
-}
+    ```yaml
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: foo-pod
+    spec:
+      containers:
+        - name: app
+          image: app:1.0.0
+          volumeMounts:
+            - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+              name: kube-api-access-*****
+              readOnly: "true"
+            # OIDC のプロバイダーによるアクセストークンをコンテナにマウントする
+            - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+              name: aws-iam-token
+              readOnly: "true"
+      volumes:
+        - name: kube-api-access-*****
+          projected:
+            defaultMode: 420
+            sources:
+              - serviceAccountToken:
+                  expirationSeconds: 3607
+                  path: token
+              - configMap:
+                  items:
+                    - key: ca.crt
+                      path: ca.crt
+                  name: kube-root-ca.crt
+              - downwardAPI:
+                  items:
+                    - fieldRef:
+                        apiVersion: v1
+                        fieldPath: metadata.namespace
+                      path: namespace
+        # Amazon EKS を使用している場合、AWS-API へのリクエストに必要なトークンも設定される
+        - name: aws-iam-token
+          projected:
+            defaultMode: 420
+            sources:
+              - serviceAccountToken:
+                  # OIDC の ID プロバイダーによるトークンの発行対象
+                  audience: sts.amazonaws.com
+                  expirationSeconds: 86400
+                  path: token
+    ```
 
-# OIDCのIDプロバイダーをAWSに登録する。
-resource "aws_iam_openid_connect_provider" "this" {
-  url             = module.foo_eks.cluster_oidc_issuer_url
-  client_id_list  = ["sts.amazonaws.com"]
-  thumbprint_list = data.tls_certificate.this[0].certificates[*].sha1_fingerprint
-}
-```
+    > - [Create an IAM OIDC provider for your cluster - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
+    > - [EKSのaws-authとかIRSAとか](https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#%E7%99%BB%E9%8C%B2%E6%89%8B%E9%A0%86-1)
+    > - [IAM Roles for Service Accounts を Terraformで手軽に体験してみる - onsd’s blog](https://onsd.hatenablog.com/entry/2019/09/21/015522)
+    > - [terraform-aws-eks/main.tf at v19.16.0 · terraform-aws-modules/terraform-aws-eks · GitHub](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/v19.16.0/main.tf#L223-L242)
+    > - [Obtain the thumbprint for an OpenID Connect identity provider - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html)
 
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-spec:
-  containers:
-    - name: app
-      image: app:1.0.0
-      volumeMounts:
-        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-          name: kube-api-access-*****
-          readOnly: "true"
-        # OIDC のプロバイダーによるアクセストークンをコンテナにマウントする
-        - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-          name: aws-iam-token
-          readOnly: "true"
-  volumes:
-    - name: kube-api-access-*****
-      projected:
-        defaultMode: 420
-        sources:
-          - serviceAccountToken:
-              expirationSeconds: 3607
-              path: token
-          - configMap:
-              items:
-                - key: ca.crt
-                  path: ca.crt
-              name: kube-root-ca.crt
-          - downwardAPI:
-              items:
-                - fieldRef:
-                    apiVersion: v1
-                    fieldPath: metadata.namespace
-                  path: namespace
-    # Amazon EKS を使用している場合、AWS-API へのリクエストに必要なトークンも設定される
-    - name: aws-iam-token
-      projected:
-        defaultMode: 420
-        sources:
-          - serviceAccountToken:
-              # OIDC の ID プロバイダーによるトークンの発行対象
-              audience: sts.amazonaws.com
-              expirationSeconds: 86400
-              path: token
-```
+2. IRSA で使用する AWS IAM ロールの信頼されたエンティティに、Amazon EKS Cluster の OIDC プロバイダーURL やユーザー名 (`system:serviceaccount:<Namespac名>:<ServiceAccount名>`) を設定する。
 
-> - [Create an IAM OIDC provider for your cluster - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
-> - [EKSのaws-authとかIRSAとか](https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#%E7%99%BB%E9%8C%B2%E6%89%8B%E9%A0%86-1)
-> - [IAM Roles for Service Accounts を Terraformで手軽に体験してみる - onsd’s blog](https://onsd.hatenablog.com/entry/2019/09/21/015522)
-> - [terraform-aws-eks/main.tf at v19.16.0 · terraform-aws-modules/terraform-aws-eks · GitHub](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/v19.16.0/main.tf#L223-L242)
-> - [Obtain the thumbprint for an OpenID Connect identity provider - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html)
-
-`(2)`
-
-: IRSA で使用する AWS IAM ロールの信頼されたエンティティに、Amazon EKS Cluster の OIDC プロバイダーURL やユーザー名 (`system:serviceaccount:<Namespac名>:<ServiceAccount名>`) を設定する。
-
-```yaml
-{"Version": "2012-10-17", "Statement": [
-      {
-        "Sid": "",
-        "Effect": "Allow",
-        "Principal":
+    ```yaml
+    {"Version": "2012-10-17", "Statement": [
           {
-            "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<Amazon EKS ClusterのOIDCプロバイダーURL>",
-          },
-        # AssumeRoleWithWebIdentity を使用する
-        "Action": "sts:AssumeRoleWithWebIdentity",
-        "Condition": {
-            # 完全一致
-            "StringEquals":
+            "Sid": "",
+            "Effect": "Allow",
+            "Principal":
               {
-                "<Amazon EKS ClusterのOIDCプロバイダーURL>:sub":
-                  ["system:serviceaccount:<Namespac名>:<ServiceAccount名>"],
+                "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<Amazon EKS ClusterのOIDCプロバイダーURL>",
+              },
+            # AssumeRoleWithWebIdentity を使用する
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+                # 完全一致
+                "StringEquals":
+                  {
+                    "<Amazon EKS ClusterのOIDCプロバイダーURL>:sub":
+                      ["system:serviceaccount:<Namespac名>:<ServiceAccount名>"],
+                  },
               },
           },
-      },
-    ]}
-```
+        ]}
+    ```
 
-`(3)`
+3. ServiceAccount の `.metadata.annotations.eks.amazonaws.com/role-arn` キーで AWS IAM ロールの ARN を設定する。
 
-: ServiceAccount の `.metadata.annotations.eks.amazonaws.com/role-arn` キーで AWS IAM ロールの ARN を設定する。
+    これにより、Amazon EKSで認証済みのServiceAccountにAWS IAMロールを紐付けられるようになる。
 
-     これにより、Amazon EKSで認証済みのServiceAccountにAWS IAMロールを紐付けられるようになる。
+    `automountServiceAccountToken`キーが有効化されていることを確認する。
 
-     `automountServiceAccountToken`キーが有効化されていることを確認する。
+    ```yaml
+    apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      annotations:
+        eks.amazonaws.com/role-arn: <AWS IAMロールのARN>
+      name: <信頼されたエンティティで指定したユーザー名にあるServiceAccount名>
+      namespace: <信頼されたエンティティで指定したユーザー名にあるNamespace名>
+    automountServiceAccountToken: "true"
+    ```
 
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  annotations:
-    eks.amazonaws.com/role-arn: <AWS IAMロールのARN>
-  name: <信頼されたエンティティで指定したユーザー名にあるServiceAccount名>
-  namespace: <信頼されたエンティティで指定したユーザー名にあるNamespace名>
-automountServiceAccountToken: "true"
-```
+4. Pod で、ServiceAccount 名を設定する。
 
-`(4)`
-
-: Pod で、ServiceAccount 名を設定する。
-
-```yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: foo-pod
-  namespace: foo-namespace
-spec:
-  serviceAccountName: foo-sa
-  containers: ...
-```
+    ```yaml
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: foo-pod
+      namespace: foo-namespace
+    spec:
+      serviceAccountName: foo-sa
+      containers: ...
+    ```
 
 もし `.metadata.annotations.eks.amazonaws.com/role-arn` キーを使用しない場合、Kubernetes リソースから AWS リソースへのアクセスがあったときは、Amazon EC2 ワーカーNode や Fargate ワーカーNode の AWS IAM ロールが使用される。
 
@@ -820,67 +792,53 @@ AWS_WEB_IDENTITY_TOKEN_FILE=/var/run/secrets/eks.amazonaws.com/serviceaccount/to
 
 #### ▼ ダッシュボード
 
-`(1)`
+1. Amazon EKS Cluster の名前を指定して、`kubeconfig` ファイルに Cluster の資格情報を登録する。
 
-: Amazon EKS Cluster の名前を指定して、`kubeconfig` ファイルに Cluster の資格情報を登録する。
+    ```bash
+    $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
+    ```
 
-```bash
-$ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
-```
+    > - [Get started with Amazon EKS – AWS Management Console and AWS CLI - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html)
 
-> - [Get started with Amazon EKS – AWS Management Console and AWS CLI - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html)
+2. `kubectl` コマンドの向き先を、Amazon EKS Cluster の kube-apiserver に変更する。
 
-`(2)`
+    ```bash
+    $ kubectl config use-context <ClusterのARN>
+    ```
 
-: `kubectl` コマンドの向き先を、Amazon EKS Cluster の kube-apiserver に変更する。
+    > - https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 
-```bash
-$ kubectl config use-context <ClusterのARN>
-```
+3. マニフェストを使用して、ダッシュボードの Kubernetes リソースを Amazon EKS にデプロイする。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
+    ```bash
+    $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.5/aio/deploy/recommended.yaml
+    ```
 
-`(3)`
+    > - https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#eks-admin-service-account
 
-: マニフェストを使用して、ダッシュボードの Kubernetes リソースを Amazon EKS にデプロイする。
+4. ダッシュボードに安全に接続するために、ServiceAccount を Amazon EKS にデプロイする
 
-```bash
-$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.5/aio/deploy/recommended.yaml
-```
+    ```bash
+    $ kubectl apply -f service-account.yml
+    ```
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#eks-admin-service-account
+5. トークン文字列を取得する。
 
-`(4)`
+    ```bash
+    $ kubectl -n kube-system describe secret $(kubectl get secret -n kube-system | grep eks-admin | awk '{print $1}')
+    ```
 
-: ダッシュボードに安全に接続するために、ServiceAccount を Amazon EKS にデプロイする
+6. ローカルマシンから Amazon EKS にポートフォワーディングを実行する。
 
-```bash
-$ kubectl apply -f service-account.yml
-```
+    ```bash
+    $ kubectl proxy
+    ```
 
-`(5)`
+7. ダッシュボードに接続する。
 
-: トークン文字列を取得する。
-
-```bash
-$ kubectl -n kube-system describe secret $(kubectl get secret -n kube-system | grep eks-admin | awk '{print $1}')
-```
-
-`(6)`
-
-: ローカルマシンから Amazon EKS にポートフォワーディングを実行する。
-
-```bash
-$ kubectl proxy
-```
-
-`(7)`
-
-: ダッシュボードに接続する。
-
-```yaml
-GET http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login HTTP/1.1
-```
+    ```yaml
+    GET http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login HTTP/1.1
+    ```
 
 #### ▼ ワーカーNode (例：Amazon EC2、Fargate) への接続
 
@@ -1912,61 +1870,55 @@ Fargate ワーカーNode 内のログをフォワーディングするうえで�
 
 > - [Start AWS Fargate logging for your cluster - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/fargate-logging.html)
 
-`(1)`
+1. ログフォワーディングコンテナのための Namespace を作成する。
 
-: ログフォワーディングコンテナのための Namespace を作成する。
+    名前は、必ず`aws-observability`とする。
 
-     名前は、必ず`aws-observability`とする。
+    > - https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
 
-> - https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
+    ```yaml
+    apiVersion: v1
+    kind: Namespace
+    metadata:
+      name: aws-observability
+      labels:
+        aws-observability: enabled
+    ```
 
-```yaml
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: aws-observability
-  labels:
-    aws-observability: enabled
-```
+2. `aws-observability` 内で `aws-logging` という名前の ConfigMap を作成する。
 
-`(2)`
+    これにより、ログフォワーディングコンテナとしてFluentBitコンテナが作成され、PodからAmazon CloudWatch Logsにログを送信できるようになる。
 
-: `aws-observability` 内で `aws-logging` という名前の ConfigMap を作成する。
+    名前は、必ず`aws-logging`とする。
 
-     これにより、ログフォワーディングコンテナとしてFluentBitコンテナが作成され、PodからAmazon CloudWatch Logsにログを送信できるようになる。
+    > - https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
 
-     名前は、必ず`aws-logging`とする。
+    ```yaml
+    $ kubectl apply -f config-map.yaml
+    ---
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: aws-logging
+      namespace: aws-observability
+    data:
+      output.conf: |
+        [OUTPUT]
+            Name cloudwatch
+            Match *
+            region ap-northeast-1
+            log_group_name fluent-bit-cloudwatch
+            log_stream_prefix from-fluent-bit-
+            auto_create_group true
+    ```
 
-> - https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
+3. Fargate ワーカーNode に Amazon ECR や CloudWatch への認可スコープを持つポッド実行ロールを付与しておく。
 
-```yaml
-$ kubectl apply -f config-map.yaml
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: aws-logging
-  namespace: aws-observability
-data:
-  output.conf: |
-    [OUTPUT]
-        Name cloudwatch
-        Match *
-        region ap-northeast-1
-        log_group_name fluent-bit-cloudwatch
-        log_stream_prefix from-fluent-bit-
-        auto_create_group true
-```
+    これにより、KubernetesリソースにAWSへの認可スコープが付与され、ServiceAccountやSecretを作成せずとも、PodがAmazon ECRからコンテナイメージをプルできる様になる。
 
-`(3)`
+    一方で、Pod内のコンテナには認可スコープが付与されない。
 
-: Fargate ワーカーNode に Amazon ECR や CloudWatch への認可スコープを持つポッド実行ロールを付与しておく。
-
-     これにより、KubernetesリソースにAWSへの認可スコープが付与され、ServiceAccountやSecretを作成せずとも、PodがAmazon ECRからコンテナイメージをプルできる様になる。
-
-     一方で、Pod内のコンテナには認可スコープが付与されない。
-
-     そのため、Podが作成された後に必要な認可スコープ (例：コンテナがRDSにリクエストを送信する認可スコープなど) には、ServiceAccountとAWS IAMロールの紐付けが必要である。
+    そのため、Podが作成された後に必要な認可スコープ (例：コンテナがRDSにリクエストを送信する認可スコープなど) には、ServiceAccountとAWS IAMロールの紐付けが必要である。
 
 > - [EKSで、別AWSアカウントのECRリポジトリのDockerイメージをpullする方法 \| Nishipy Notes](https://nishipy.com/archives/1122)
 > - [Kubernetes クラスタが AWS 上でコンテナイメージを pull するときの権限まわりの話 \| トリの部屋](https://toris.io/2021/01/how-kubernetes-pulls-private-container-images-on-aws/)
@@ -2085,33 +2037,21 @@ Amazon EKS Cluster のアップグレード時、以下の仕組みでデータ�
 
 また、Node グループに紐づく AWS Auto Scaling グループの AZ リバランシングの仕組みによって、既存のワーカーNode と同じ AZ でワーカーNode を再作成する。
 
-`(1)`
+1. Node グループ単位でローリングアップグレードできるように、Amazon EKS Cluster のワーカーNode 数の設定 (Node 希望数、Node 最大数) を自動的に増加させる。
 
-: Node グループ単位でローリングアップグレードできるように、Amazon EKS Cluster のワーカーNode 数の設定 (Node 希望数、Node 最大数) を自動的に増加させる。
+2. 旧ワーカーNode を残して、新しい AWS AMI を使用したワーカーNode を作成する。
 
-`(2)`
+    旧ワーカーNodeが稼働しているAZで新ワーカーNodeを作成する。
 
-: 旧ワーカーNode を残して、新しい AWS AMI を使用したワーカーNode を作成する。
+    旧ワーカーNodeを残せるのは、あらかじめAmazon EKS ClusterのワーカーNode数の設定 (Node希望数、Node最大数) を増加させているためである。
 
-     旧ワーカーNodeが稼働しているAZで新ワーカーNodeを作成する。
+3. 各 AZ で新ワーカーNode を正しく作成できることを検証する。
 
-     旧ワーカーNodeを残せるのは、あらかじめAmazon EKS ClusterのワーカーNode数の設定 (Node希望数、Node最大数) を増加させているためである。
+4. AZ リバランシングが成功すれば、旧ワーカーNode で Drain が開始され、Pod のスケジューリングが無効化される。
 
-`(3)`
+5. 新ワーカーNode 上で Pod をスケジューリングさせ直し、旧ワーカーNode を削除する。
 
-: 各 AZ で新ワーカーNode を正しく作成できることを検証する。
-
-`(4)`
-
-: AZ リバランシングが成功すれば、旧ワーカーNode で Drain が開始され、Pod のスケジューリングが無効化される。
-
-`(5)`
-
-: 新ワーカーNode 上で Pod をスケジューリングさせ直し、旧ワーカーNode を削除する。
-
-`(6)`
-
-: 最終的に、アップグレード前のワーカーNode 数 (Node 希望数) に戻る。
+6. 最終的に、アップグレード前のワーカーNode 数 (Node 希望数) に戻る。
 
 > - [Understand each phase of node updates - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html)
 > - [Auto Scaling benefits for application architecture - Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html#AutoScalingBehavior.InstanceUsage)
@@ -2125,19 +2065,13 @@ Amazon EKS Cluster のアップグレード時、以下の仕組みでデータ�
 
 Amazon EKS Cluster はおおよそ以下の方法でインプレースアップグレードする。
 
-`(1)`
+1. コントロールプレーン Node をアップグレードする。
 
-: コントロールプレーン Node をアップグレードする。
+2. ワーカーNode をアップグレードする。
 
-`(2)`
+    コントロールプレーン上のkube-apiserverのバージョンに応じた新しいAWS AMIを使用して、ワーカーNodeを再作成する。
 
-: ワーカーNode をアップグレードする。
-
-     コントロールプレーン上のkube-apiserverのバージョンに応じた新しいAWS AMIを使用して、ワーカーNodeを再作成する。
-
-`(3)`
-
-: ワーカーNode 上の Amazon EKS アドオン (例：AWS CoreDNS、AWS kube-proxy、Amazon VPC CNI など) をアップグレードする。
+3. ワーカーNode 上の Amazon EKS アドオン (例：AWS CoreDNS、AWS kube-proxy、Amazon VPC CNI など) をアップグレードする。
 
 > - https://inside.dmm.com/entry/2022/08/26/eks_is_hard
 
@@ -2145,30 +2079,18 @@ Amazon EKS Cluster はおおよそ以下の方法でインプレースアップ�
 
 Amazon EKS Cluster はおおよそ以下の方法でブルー/グリーンアップグレードする。
 
-`(1)`
+1. 新しいバージョン Amazon EKS クラスターを構築する。またマイクロサービスなどをデプロイする。
 
-: 新しいバージョン Amazon EKS クラスターを構築する。またマイクロサービスなどをデプロイする。
-
-`(2)`
-
-: このままだと、新旧の EKS クラスターでバッチサービスの実行が衝突する。
+2. このままだと、新旧の EKS クラスターでバッチサービスの実行が衝突する。
 
     そこで、`kubectl patch cronjobs foo-batch -p '{"spec" : {"suspend" : true }}'`を実行し、旧EKSクラスターのバッチサービスを止める。
 
-`(3)`
+3. 新しい Amazon EKS クラスターの Ingress Controller や Ingress Gateway の Pod に対して、ポートフォワーディングを実行し、アプリケーションを動作確認する。
 
-: 新しい Amazon EKS クラスターの Ingress Controller や Ingress Gateway の Pod に対して、ポートフォワーディングを実行し、アプリケーションを動作確認する。
+4. 既存の AWS ALB ターゲットグループにグリーン環境の Amazon EKS クラスターの Node を登録する。
 
-`(4)`
+5. 既存の AWS ALB ターゲットグループからブルー環境の Amazon EKS クラスターの Node を解除する。
 
-: 既存の AWS ALB ターゲットグループにグリーン環境の Amazon EKS クラスターの Node を登録する。
-
-`(5)`
-
-: 既存の AWS ALB ターゲットグループからブルー環境の Amazon EKS クラスターの Node を解除する。
-
-`(6)`
-
-: ワーカーNode 上の Amazon EKS アドオン (例：AWS CoreDNS、AWS kube-proxy、Amazon VPC CNI など) をアップグレードする。
+6. ワーカーNode 上の Amazon EKS アドオン (例：AWS CoreDNS、AWS kube-proxy、Amazon VPC CNI など) をアップグレードする。
 
 <br>

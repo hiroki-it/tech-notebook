@@ -253,45 +253,33 @@ Amazon VPC 内のリソースからの DNS クエリに応答し、プライベ�
 
 ![Amazon Route 53を含む名前解決の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Route53を含む名前解決の仕組み.png)
 
-`(1)`
+1. クライアント PC は、`www.example.com` にマッピングされる IP アドレスのキャッシュを検索する。キャッシュが無ければ、クライアント PC はドメイン名をキャッシュ DNS サーバーに問い合わせる。
 
-: クライアント PC は、`www.example.com` にマッピングされる IP アドレスのキャッシュを検索する。キャッシュが無ければ、クライアント PC はドメイン名をキャッシュ DNS サーバーに問い合わせる。
+2. キャッシュ DNS サーバーは、IP アドレスのキャッシュを検索する。キャッシュが無ければ、キャッシュ DNS サーバーはドメイン名を DNS サーバーに問い合わせる。
 
-`(2)`
+3. Amazon Route 53 は、IP アドレスのキャッシュを検索する。キャッシュが無ければ、Amazon Route 53 は IP アドレスを検索する。また、キャッシュ DNS サーバーにこれを返却する。
 
-: キャッシュ DNS サーバーは、IP アドレスのキャッシュを検索する。キャッシュが無ければ、キャッシュ DNS サーバーはドメイン名を DNS サーバーに問い合わせる。
-
-`(3)`
-
-: Amazon Route 53 は、IP アドレスのキャッシュを検索する。キャッシュが無ければ、Amazon Route 53 は IP アドレスを検索する。また、キャッシュ DNS サーバーにこれを返却する。
-
-<table>
-  <thead>
+    <table>
+      <thead>
     <tr>
       <th style="text-align:center">ドメイン名</th>
       <th style="text-align:center">Amazon Route 53 による変換</th>
       <th style="text-align:center">IP アドレス</th>
     </tr>
-  </thead>
-  <tbody>
+      </thead>
+      <tbody>
     <tr>
       <td style="text-align:center"><code>http://www.example.com</code></td>
       <td style="text-align:center">⇄</td>
       <td style="text-align:center"><code>203.142.205.139</code></td>
     </tr>
-  </tbody>
-</table>
+      </tbody>
+    </table>
 
-`(4)`
+4. キャッシュ DNS サーバーは、IP アドレスを NAT に返却する。このとき、IP アドレスのネットワーク間変換が起こる。
 
-: キャッシュ DNS サーバーは、IP アドレスを NAT に返却する。このとき、IP アドレスのネットワーク間変換が起こる。
+5. NAT は、IP アドレスをクライアント PC に返却する。
 
-`(5)`
-
-: NAT は、IP アドレスをクライアント PC に返却する。
-
-`(6)`
-
-: クライアント PC は、返却された IP アドレスに基づいて Web ページにリクエストを送信する。
+6. クライアント PC は、返却された IP アドレスに基づいて Web ページにリクエストを送信する。
 
 <br>

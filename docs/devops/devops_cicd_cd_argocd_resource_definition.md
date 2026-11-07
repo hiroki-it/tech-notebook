@@ -157,65 +157,55 @@ $ kubectl get csv -n operators
 
 #### ▼ `kubectl` コマンドを使用して
 
-`(1)`
+1. 既存の Service を LoadBalancer Service に変更する。
 
-: 既存の Service を LoadBalancer Service に変更する。
+    ```bash
+    $ kubectl patch service argocd-server \
+        -n foo \
+        -p '{"spec": {"type": "LoadBalancer"}}'
+    ```
 
-```bash
-$ kubectl patch service argocd-server \
-    -n foo \
-    -p '{"spec": {"type": "LoadBalancer"}}'
-```
+2. Kubernetes 上の ArgoCD ダッシュボードのパスワードを取得する。
 
-`(2)`
+    ```bash
+    $ kubectl get secret argocd-initial-admin-secret \
+        -n foo \
+        -o jsonpath="{.data.password}" | base64 -d; echo
+    ```
 
-: Kubernetes 上の ArgoCD ダッシュボードのパスワードを取得する。
+3. `443` 番ポートにルーティングできる `L7` ロードバランサーを作成する。
 
-```bash
-$ kubectl get secret argocd-initial-admin-secret \
-    -n foo \
-    -o jsonpath="{.data.password}" | base64 -d; echo
-```
+    この時、IngressとIngress Controllerを作成するか、`kubectl port-forward`コマンドなど実行することで、ダッシュボードにリクエストを送信する。
 
-`(3)`
+    `minikube tunnel`コマンドでは、ポート番号を指定できないことに注意する。
 
-: `443` 番ポートにルーティングできる `L7` ロードバランサーを作成する。
-
-     この時、IngressとIngress Controllerを作成するか、`kubectl port-forward`コマンドなど実行することで、ダッシュボードにリクエストを送信する。
-
-     `minikube tunnel`コマンドでは、ポート番号を指定できないことに注意する。
-
-```bash
-# Serviceの情報を使用してPodを指定し、ダッシュボードにリクエストを送信できるようにする。
-$ kubectl port-forward svc/argocd-server -n argocd 8080:443
-
-# ホストポートを介してPodのポートにリクエストを送信する。
-$ curl http://127.0.0.1:8080
-```
+    ```bash
+    # Serviceの情報を使用してPodを指定し、ダッシュボードにリクエストを送信できるようにする。
+    $ kubectl port-forward svc/argocd-server -n argocd 8080:443
+    
+    # ホストポートを介してPodのポートにリクエストを送信する。
+    $ curl http://127.0.0.1:8080
+    ```
 
 #### ▼ `argocd` コマンドを使用して
 
-`(1)`
+1. `argocd` コマンドをインストールする。
 
-: `argocd` コマンドをインストールする。
+    > - [Installation - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/cli_installation/)
 
-> - [Installation - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/cli_installation/)
+    ```bash
+    $ curl -L -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+    
+    $ chmod +x /usr/local/bin/argocd
+    ```
 
-```bash
-$ curl -L -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+2. ArgoCD にログインする。ユーザー名とパスワードを要求されるため、これらを入力する。
 
-$ chmod +x /usr/local/bin/argocd
-```
-
-`(2)`
-
-: ArgoCD にログインする。ユーザー名とパスワードを要求されるため、これらを入力する。
-
-```bash
-$ argocd login <ArgoCDのドメイン名> --username admin --password <前の手順で取得した文字列>
-
-'admin:login' logged in successfully
-```
+    ```bash
+    $ argocd login <ArgoCDのドメイン名> --username admin --password <前の手順で取得した文字列>
+    
+    'admin:login' logged in successfully
+    ```
 
 <br>
 

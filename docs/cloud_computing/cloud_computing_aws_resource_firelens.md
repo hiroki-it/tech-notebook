@@ -17,35 +17,27 @@ description: FireLens＠AWSリソースの知見を記録しています。
 
 ![fluent-bit_aws-firelens](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_aws-firelens.png)
 
-`(1)`
+1. awsfirelens ドライバーは Fluentd ログドライバーをラッピングしたものであり、ログを FireLens コンテナに送信する。Fluentd ログドライバーについては、以下のリンクを参考にせよ。
 
-: awsfirelens ドライバーは Fluentd ログドライバーをラッピングしたものであり、ログを FireLens コンテナに送信する。Fluentd ログドライバーについては、以下のリンクを参考にせよ。
+2. FireLens コンテナは、これを受信する。
 
-`(2)`
+3. コンテナ内で稼働する FluentBit のログパイプラインの INPUT に渡され、FluentBit はログを処理する。FireLens コンテナのパイプラインでは、ログは『`<コンテナ名>-firelens-<Amazon ECSタスクID>`』というタグ名で処理されている。
 
-: FireLens コンテナは、これを受信する。
+    ```yaml
+    # 本来、改行はないが、わかりやすいように改行している。
+    # <コンテナ名>-firelens-<Amazon ECS タスク ID>
+    [0] foo-firelens-*****: [
+        *****,
+        {
+            "log"=>"127.0.0.1 -  01/01/2022:0:00:00 +0000 "GET /index.php" 200",
+            "container_id"=>"*****",
+            "container_name"=>"foo",
+            "source"=>"stderr"
+        }
+    ]
+    ```
 
-`(3)`
-
-: コンテナ内で稼働する FluentBit のログパイプラインの INPUT に渡され、FluentBit はログを処理する。FireLens コンテナのパイプラインでは、ログは『`<コンテナ名>-firelens-<Amazon ECSタスクID>`』というタグ名で処理されている。
-
-```yaml
-# 本来、改行はないが、わかりやすいように改行している。
-# <コンテナ名>-firelens-<Amazon ECS タスク ID>
-[0] foo-firelens-*****: [
-    *****,
-    {
-        "log"=>"127.0.0.1 -  01/01/2022:0:00:00 +0000 "GET /index.php" 200",
-        "container_id"=>"*****",
-        "container_name"=>"foo",
-        "source"=>"stderr"
-    }
-]
-```
-
-`(4)`
-
-: OUTPUT に渡され、FluentBit は指定した外部にログをルーティングする。
+4. OUTPUT に渡され、FluentBit は指定した外部にログをルーティングする。
 
 > - [詳解 FireLens – Amazon ECS タスクで高度なログルーティングを実現する機能を深く知る \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/)
 > - https://docs.docker.com/config/containers/logging/fluentd/

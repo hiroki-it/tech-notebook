@@ -27,33 +27,23 @@ JVM 言語 (例：Java、Scala、Kotlin など) のコードを、Java バイト
 
 Java では、コードの実行前と実行中の二段階で機械語を翻訳する。
 
-`(1)`
+1. Java コンパイラ (javac) は、JVM 言語のコード (`.java` ファイル) を、Java バイトコードを含むクラスファイル (`.class` ファイル) に変換する。
 
-: Java コンパイラ (javac) は、JVM 言語のコード (`.java` ファイル) を、Java バイトコードを含むクラスファイル (`.class` ファイル) に変換する。
+2. アプリケーションの実行前に、JVM 内の Java インタプリタはクラスファイルを機械語に翻訳する。
 
-`(2)`
-
-: アプリケーションの実行前に、JVM 内の Java インタプリタはクラスファイルを機械語に翻訳する。
-
-`(3)`
-
-: アプリケーションの実行中に、JVM 内のクラスローダーはクラスファイルを JVM 内に取得する。
+3. アプリケーションの実行中に、JVM 内のクラスローダーはクラスファイルを JVM 内に取得する。
 
     クラスローダーの処理はCPUを大量に消費するため、ユーザーへの公開前にウォームアップを実施すると良い。
 
-![java_class-loader](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_class-loader.png)
+    ![java_class-loader](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_class-loader.png)
 
-`(4)`
-
-: アプリケーションの実行中に、JVM 内の JIT コンパイラは実行中関数のみを機械語に翻訳する。
+4. アプリケーションの実行中に、JVM 内の JIT コンパイラは実行中関数のみを機械語に翻訳する。
 
     また、繰り返し実行される関数の翻訳を最適化する (例：不要な処理を省く) 。
 
     JITコンパイラの処理はCPUを大量に消費するため、ユーザーへの公開前にウォームアップを実施すると良い。
 
-`(5)`
-
-: 結果的に、OS (制御プログラム？) へ依存せず、命令できる (C 言語) 。
+5. 結果的に、OS (制御プログラム？) へ依存せず、命令できる (C 言語) 。
 
 > - https://stackoverflow.com/a/1481903/12771072
 > - [How to Warm Up the JVM \| Baeldung](https://www.baeldung.com/java-jvm-warmup)
