@@ -25,22 +25,75 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 その結果、集約が大きくなり、状態の整合性を守る範囲が広くなってしまっている。
 
-```typescript
-class Book {
-  constructor(
-    public bookId: BookId, // ID値オブジェクト
-    public title: Title, // タイトル値オブジェクト
-    public author: Author, // 著者値オブジェクト
-    public price: Price, // 価格値オブジェクト
+=== "Go"
 
-    // いろんな集約
-    public reviews: Review[], // レビューエンティティ（本来は別集約にすべき)
-    public publisher: Publisher, // 出版社エンティティ（本来は別集約にすべき)
-    public stock: Stock, // 在庫エンティティ（本来は別集約にすべき)
-  ) {}
-  // (省略) 本に関するあらゆる操作がここに混在する可能性がある
-}
-```
+    ```go title=".go"
+    type Book struct {
+    	BookID BookID // ID値オブジェクト
+    	Title  Title  // タイトル値オブジェクト
+    	Author Author // 著者値オブジェクト
+    	Price  Price  // 価格値オブジェクト
+
+    	// いろんな集約
+    	Reviews   []*Review // レビューエンティティ（本来は別集約にすべき)
+    	Publisher Publisher // 出版社エンティティ（本来は別集約にすべき)
+    	Stock     Stock     // 在庫エンティティ（本来は別集約にすべき)
+    }
+
+    func NewBook(bookID BookID, title Title, author Author, price Price, reviews []*Review, publisher Publisher, stock Stock) *Book {
+    	return &Book{
+    		BookID:    bookID,
+    		Title:     title,
+    		Author:    author,
+    		Price:     price,
+    		Reviews:   reviews,
+    		Publisher: publisher,
+    		Stock:     stock,
+    	}
+    }
+
+    // (省略) 本に関するあらゆる操作がここに混在する可能性がある
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    class Book {
+      constructor(
+        public bookId: BookId, // ID値オブジェクト
+        public title: Title, // タイトル値オブジェクト
+        public author: Author, // 著者値オブジェクト
+        public price: Price, // 価格値オブジェクト
+
+        // いろんな集約
+        public reviews: Review[], // レビューエンティティ（本来は別集約にすべき)
+        public publisher: Publisher, // 出版社エンティティ（本来は別集約にすべき)
+        public stock: Stock, // 在庫エンティティ（本来は別集約にすべき)
+      ) {}
+      // (省略) 本に関するあらゆる操作がここに混在する可能性がある
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    class Book
+    {
+        public function __construct(
+            public BookId $bookId, // ID値オブジェクト
+            public Title $title, // タイトル値オブジェクト
+            public Author $author, // 著者値オブジェクト
+            public Price $price, // 価格値オブジェクト
+
+            // いろんな集約
+            public array $reviews, // レビューエンティティ（本来は別集約にすべき)
+            public Publisher $publisher, // 出版社エンティティ（本来は別集約にすべき)
+            public Stock $stock, // 在庫エンティティ（本来は別集約にすべき)
+        ) {
+        }
+        // (省略) 本に関するあらゆる操作がここに混在する可能性がある
+    }
+    ```
 
 ## 11-2 集約の設計上の指針
 
@@ -66,24 +119,73 @@ class Book {
 
 識別子にはドメインルールを持たせないほうがよいため、ドメインルール上の識別子（例：書籍の ISBN）はエンティティの識別子にしないほうがいい。
 
-```typescript
-// アンチパターン: 集約が他の集約を直接コールする
-class Book {
-  constructor(
-    public bookId: BookId,
-    public title: Title,
-    public price: Price,
-    public reviews: Review[], // Review集約のインスタンスを直接保持
-  ) {}
+=== "Go"
 
-  // Book集約からReview集約に関わる操作
-  antiPatternMethod() {
-    if (this.reviews.length > 0) {
-      this.reviews[0].updateRating(new Rating(4));
+    ```go title=".go"
+    // アンチパターン: 集約が他の集約を直接コールする
+    type Book struct {
+    	BookID  BookID
+    	Title   Title
+    	Price   Price
+    	Reviews []*Review // Review集約のインスタンスを直接保持
     }
-  }
-}
-```
+
+    func NewBook(bookID BookID, title Title, price Price, reviews []*Review) *Book {
+    	return &Book{BookID: bookID, Title: title, Price: price, Reviews: reviews}
+    }
+
+    // Book集約からReview集約に関わる操作
+    func (b *Book) AntiPatternMethod() {
+    	if len(b.Reviews) > 0 {
+    		b.Reviews[0].UpdateRating(NewRating(4))
+    	}
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // アンチパターン: 集約が他の集約を直接コールする
+    class Book {
+      constructor(
+        public bookId: BookId,
+        public title: Title,
+        public price: Price,
+        public reviews: Review[], // Review集約のインスタンスを直接保持
+      ) {}
+
+      // Book集約からReview集約に関わる操作
+      antiPatternMethod() {
+        if (this.reviews.length > 0) {
+          this.reviews[0].updateRating(new Rating(4));
+        }
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // アンチパターン: 集約が他の集約を直接コールする
+    class Book
+    {
+        public function __construct(
+            public BookId $bookId,
+            public Title $title,
+            public Price $price,
+            public array $reviews, // Review集約のインスタンスを直接保持
+        ) {
+        }
+
+        // Book集約からReview集約に関わる操作
+        public function antiPatternMethod(): void
+        {
+            if (count($this->reviews) > 0) {
+                $this->reviews[0]->updateRating(new Rating(4));
+            }
+        }
+    }
+    ```
 
 `Review` 集約が `Book` 集約そのものを保持するのではなく、BookId を保持する例が次の実装である。
 
@@ -91,34 +193,106 @@ class Book {
 
 これが『集約間は識別子でコールする』という指針の具体例である。
 
-```typescript
-class Review {
-  constructor(
-    public reviewId: ReviewId, // ID値オブジェクト
-    public bookId: BookId,
-    public name: Name, // 投稿者名値オブジェクト
-    public rating: Rating, // 評価値オブジェクト
-    public comment: Comment, // コメント値オブジェクト（任意）
-  ) {}
-  // (省略)
-}
-```
+=== "Go"
+
+    ```go title=".go"
+    type Review struct {
+    	ReviewID ReviewID // ID値オブジェクト
+    	BookID   BookID
+    	Name     Name    // 投稿者名値オブジェクト
+    	Rating   Rating  // 評価値オブジェクト
+    	Comment  Comment // コメント値オブジェクト（任意）
+    }
+
+    func NewReview(reviewID ReviewID, bookID BookID, name Name, rating Rating, comment Comment) *Review {
+    	return &Review{ReviewID: reviewID, BookID: bookID, Name: name, Rating: rating, Comment: comment}
+    }
+
+    // (省略)
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    class Review {
+      constructor(
+        public reviewId: ReviewId, // ID値オブジェクト
+        public bookId: BookId,
+        public name: Name, // 投稿者名値オブジェクト
+        public rating: Rating, // 評価値オブジェクト
+        public comment: Comment, // コメント値オブジェクト（任意）
+      ) {}
+      // (省略)
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    class Review
+    {
+        public function __construct(
+            public ReviewId $reviewId, // ID値オブジェクト
+            public BookId $bookId,
+            public Name $name, // 投稿者名値オブジェクト
+            public Rating $rating, // 評価値オブジェクト
+            public Comment $comment, // コメント値オブジェクト（任意）
+        ) {
+        }
+        // (省略)
+    }
+    ```
 
 `Book` 集約側が ReviewId のリストを持つパターンもある。
 
 このパターンでは、`Book` 集約と複数の `Review` 集約の関係を表現しつつ、`Review` 集約そのものを直接抱え込まずに済む。
 
-```typescript
-class Book {
-  constructor(
-    public bookId: BookId,
-    public title: Title,
-    public price: Price,
-    public reviewIds: ReviewId[], // Review集約のID （値オブジェクト）のリストを保持
-  ) {}
-  // (省略)
-}
-```
+=== "Go"
+
+    ```go title=".go"
+    type Book struct {
+    	BookID    BookID
+    	Title     Title
+    	Price     Price
+    	ReviewIDs []ReviewID // Review集約のID （値オブジェクト）のリストを保持
+    }
+
+    func NewBook(bookID BookID, title Title, price Price, reviewIDs []ReviewID) *Book {
+    	return &Book{BookID: bookID, Title: title, Price: price, ReviewIDs: reviewIDs}
+    }
+
+    // (省略)
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    class Book {
+      constructor(
+        public bookId: BookId,
+        public title: Title,
+        public price: Price,
+        public reviewIds: ReviewId[], // Review集約のID （値オブジェクト）のリストを保持
+      ) {}
+      // (省略)
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    class Book
+    {
+        public function __construct(
+            public BookId $bookId,
+            public Title $title,
+            public Price $price,
+            public array $reviewIds, // Review集約のID （値オブジェクト）のリストを保持
+        ) {
+        }
+        // (省略)
+    }
+    ```
 
 ### 11-2-3 デメテルの法則に従う
 
@@ -126,76 +300,248 @@ class Book {
 
 `Book` 集約から `Review` 集約を取り出し、さらに `Review` 集約内にもアクセスできてしまう。
 
-```typescript
-// 冒頭の悪い例
-class Book {
-  constructor(
-    public bookId: BookId,
-    public title: Title,
-    public reviews: Review[], // publicになっているため外部から直接アクセス可能
-    // ...
-  ) {}
+=== "Go"
 
-  // (省略) 本に関するあらゆる操作がここに混在する可能性がある
-}
+    ```go title=".go"
+    // 冒頭の悪い例
+    type Book struct {
+    	BookID  BookID
+    	Title   Title
+    	Reviews []*Review // publicになっているため外部から直接アクセス可能
+    	// ...
+    }
 
-// この構造だと外部コードは以下のようなアクセスが可能になる
-const book = new Book(bookId, title, reviews /* 他の引数は省略 */);
+    func NewBook(bookID BookID, title Title, reviews []*Review /* ... */) *Book {
+    	return &Book{BookID: bookID, Title: title, Reviews: reviews}
+    }
 
-// book.reviewsを直接参照できる
-const firstReview = book.reviews[0];
+    // (省略) 本に関するあらゆる操作がここに混在する可能性がある
 
-// さらにReviewの内部構造にもアクセスできてしまう
-const reviewRating = firstReview.rating;
-```
+    // この構造だと外部コードは以下のようなアクセスが可能になる
+    var book = NewBook(bookID, title, reviews /* 他の引数は省略 */)
+
+    // book.Reviewsを直接参照できる
+    var firstReview = book.Reviews[0]
+
+    // さらにReviewの内部構造にもアクセスできてしまう
+    var reviewRating = firstReview.Rating
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 冒頭の悪い例
+    class Book {
+      constructor(
+        public bookId: BookId,
+        public title: Title,
+        public reviews: Review[], // publicになっているため外部から直接アクセス可能
+        // ...
+      ) {}
+
+      // (省略) 本に関するあらゆる操作がここに混在する可能性がある
+    }
+
+    // この構造だと外部コードは以下のようなアクセスが可能になる
+    const book = new Book(bookId, title, reviews /* 他の引数は省略 */);
+
+    // book.reviewsを直接参照できる
+    const firstReview = book.reviews[0];
+
+    // さらにReviewの内部構造にもアクセスできてしまう
+    const reviewRating = firstReview.rating;
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 冒頭の悪い例
+    class Book
+    {
+        public function __construct(
+            public BookId $bookId,
+            public Title $title,
+            public array $reviews, // publicになっているため外部から直接アクセス可能
+            // ...
+        ) {
+        }
+
+        // (省略) 本に関するあらゆる操作がここに混在する可能性がある
+    }
+
+    // この構造だと外部コードは以下のようなアクセスが可能になる
+    $book = new Book($bookId, $title, $reviews /* 他の引数は省略 */);
+
+    // $book->reviewsを直接参照できる
+    $firstReview = $book->reviews[0];
+
+    // さらにReviewの内部構造にもアクセスできてしまう
+    $reviewRating = $firstReview->rating;
+    ```
 
 それに対して、デメテルの法則に従う設計では、オブジェクト内部のオブジェクトをチェーンでコールしない
 
 `Review` 集約から `review.extractRecommendedBooks()` をコールする。
 
-```typescript
-// 書籍の基本情報に焦点を当てた集約
-class Book {
-  constructor(
-    private readonly bookId: BookId,
-    private readonly title: Title,
-    private readonly author: Author,
-    private price: Price,
-  ) {}
+=== "Go"
 
-  // 価格変更のメソッド
-  changePrice(newPrice: Price): void {
-    this.price = newPrice;
-  }
-}
+    ```go title=".go"
+    // 書籍の基本情報に焦点を当てた集約
+    type Book struct {
+    	bookID BookID
+    	title  Title
+    	author Author
+    	price  Price
+    }
 
-// レビュー管理に焦点を当てた集約
-class Review {
-  constructor(
-    private readonly reviewId: ReviewId,
-    private readonly bookId: BookId,
-    private readonly rating: Rating,
-    private readonly comment?: Comment,
-  ) {}
+    func NewBook(bookID BookID, title Title, author Author, price Price) *Book {
+    	return &Book{bookID: bookID, title: title, author: author, price: price}
+    }
 
-  // 推薦書籍抽出のロジックを集約内にカプセル化
-  extractRecommendedBooks(): string[] {
-    if (!this.comment) return [];
+    // 価格変更のメソッド
+    func (b *Book) ChangePrice(newPrice Price) {
+    	b.price = newPrice
+    }
 
-    // 推薦本を抽出する正規表現パターン（実装の詳細は集約内に隠蔽）
-    // 書籍名の後30文字以内に推薦キーワードがあるものを抽出
-    const pattern =
-      /[『『]([^』』]+)[』』][^。]{0,30}(?:読む|読んだ|学ぶ|学んだ|必要|推奨|おすすめ|良い|いい|理解)/g;
+    // レビュー管理に焦点を当てた集約
+    type Review struct {
+    	reviewID ReviewID
+    	bookID   BookID
+    	rating   Rating
+    	comment  *Comment
+    }
 
-    const matches = this.comment.extractMatches(pattern);
-    return Array.from(new Set(matches));
-  }
-}
+    func NewReview(reviewID ReviewID, bookID BookID, rating Rating, comment *Comment) *Review {
+    	return &Review{reviewID: reviewID, bookID: bookID, rating: rating, comment: comment}
+    }
 
-// デメテルの法則に従った使用例
-// レビューから推薦書籍を抽出
-const recommendedBooks = review.extractRecommendedBooks();
-```
+    // 推薦書籍抽出のロジックを集約内にカプセル化
+    func (r *Review) ExtractRecommendedBooks() []string {
+    	if r.comment == nil {
+    		return []string{}
+    	}
+
+    	// 推薦本を抽出する正規表現パターン（実装の詳細は集約内に隠蔽）
+    	// 書籍名の後30文字以内に推薦キーワードがあるものを抽出
+    	pattern := regexp.MustCompile(`[『『]([^』』]+)[』』][^。]{0,30}(?:読む|読んだ|学ぶ|学んだ|必要|推奨|おすすめ|良い|いい|理解)`)
+
+    	matches := r.comment.ExtractMatches(pattern)
+    	seen := make(map[string]struct{}, len(matches))
+    	uniqueMatches := make([]string, 0, len(matches))
+    	for _, match := range matches {
+    		if _, ok := seen[match]; ok {
+    			continue
+    		}
+    		seen[match] = struct{}{}
+    		uniqueMatches = append(uniqueMatches, match)
+    	}
+    	return uniqueMatches
+    }
+
+    // デメテルの法則に従った使用例
+    // レビューから推薦書籍を抽出
+    var recommendedBooks = review.ExtractRecommendedBooks()
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 書籍の基本情報に焦点を当てた集約
+    class Book {
+      constructor(
+        private readonly bookId: BookId,
+        private readonly title: Title,
+        private readonly author: Author,
+        private price: Price,
+      ) {}
+
+      // 価格変更のメソッド
+      changePrice(newPrice: Price): void {
+        this.price = newPrice;
+      }
+    }
+
+    // レビュー管理に焦点を当てた集約
+    class Review {
+      constructor(
+        private readonly reviewId: ReviewId,
+        private readonly bookId: BookId,
+        private readonly rating: Rating,
+        private readonly comment?: Comment,
+      ) {}
+
+      // 推薦書籍抽出のロジックを集約内にカプセル化
+      extractRecommendedBooks(): string[] {
+        if (!this.comment) return [];
+
+        // 推薦本を抽出する正規表現パターン（実装の詳細は集約内に隠蔽）
+        // 書籍名の後30文字以内に推薦キーワードがあるものを抽出
+        const pattern =
+          /[『『]([^』』]+)[』』][^。]{0,30}(?:読む|読んだ|学ぶ|学んだ|必要|推奨|おすすめ|良い|いい|理解)/g;
+
+        const matches = this.comment.extractMatches(pattern);
+        return Array.from(new Set(matches));
+      }
+    }
+
+    // デメテルの法則に従った使用例
+    // レビューから推薦書籍を抽出
+    const recommendedBooks = review.extractRecommendedBooks();
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 書籍の基本情報に焦点を当てた集約
+    class Book
+    {
+        public function __construct(
+            private readonly BookId $bookId,
+            private readonly Title $title,
+            private readonly Author $author,
+            private Price $price,
+        ) {
+        }
+
+        // 価格変更のメソッド
+        public function changePrice(Price $newPrice): void
+        {
+            $this->price = $newPrice;
+        }
+    }
+
+    // レビュー管理に焦点を当てた集約
+    class Review
+    {
+        public function __construct(
+            private readonly ReviewId $reviewId,
+            private readonly BookId $bookId,
+            private readonly Rating $rating,
+            private readonly ?Comment $comment = null,
+        ) {
+        }
+
+        // 推薦書籍抽出のロジックを集約内にカプセル化
+        public function extractRecommendedBooks(): array
+        {
+            if ($this->comment === null) {
+                return [];
+            }
+
+            // 推薦本を抽出する正規表現パターン（実装の詳細は集約内に隠蔽）
+            // 書籍名の後30文字以内に推薦キーワードがあるものを抽出
+            $pattern =
+                "/[『『]([^』』]+)[』』][^。]{0,30}(?:読む|読んだ|学ぶ|学んだ|必要|推奨|おすすめ|良い|いい|理解)/u";
+
+            $matches = $this->comment->extractMatches($pattern);
+            return array_values(array_unique($matches));
+        }
+    }
+
+    // デメテルの法則に従った使用例
+    // レビューから推薦書籍を抽出
+    $recommendedBooks = $review->extractRecommendedBooks();
+    ```
 
 ### 11-2-4 集約の外部では結果整合性を用いる
 
@@ -205,80 +551,268 @@ const recommendedBooks = review.extractRecommendedBooks();
 
 この実装は『1 冊につきレビューは 100 件まで』という Book 集約と Review 集約間の状態の整合性を保ちやすくなる一方、`Book` 集約が肥大化し、`Review` 集約の更新のたびに `Book` 集約全体を巻き込んでしまっている
 
-```typescript
-class Book {
-  constructor(
-    public bookId: BookId,
-    // ...
-  ) {}
+=== "Go"
 
-  public reviews: Review[]; // レビューを直接含める
+    ```go title=".go"
+    type Book struct {
+    	BookID BookID
+    	// ...
 
-  // レビューを追加するメソッド
-  addReview(review: Review): void {
-    // レビュー数の制約を集約内で強制できる
-    if (this.reviews.length >= 100) {
-      throw new Error("レビュー数が上限に達しています");
+    	Reviews []*Review // レビューを直接含める
     }
-    this.reviews.push(review);
-  }
-}
-```
+
+    func NewBook(bookID BookID /* ... */) *Book {
+    	return &Book{BookID: bookID}
+    }
+
+    // レビューを追加するメソッド
+    func (b *Book) AddReview(review *Review) error {
+    	// レビュー数の制約を集約内で強制できる
+    	if len(b.Reviews) >= 100 {
+    		return errors.New("レビュー数が上限に達しています")
+    	}
+    	b.Reviews = append(b.Reviews, review)
+    	return nil
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    class Book {
+      constructor(
+        public bookId: BookId,
+        // ...
+      ) {}
+
+      public reviews: Review[]; // レビューを直接含める
+
+      // レビューを追加するメソッド
+      addReview(review: Review): void {
+        // レビュー数の制約を集約内で強制できる
+        if (this.reviews.length >= 100) {
+          throw new Error("レビュー数が上限に達しています");
+        }
+        this.reviews.push(review);
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    class Book
+    {
+        public array $reviews; // レビューを直接含める
+
+        public function __construct(
+            public BookId $bookId,
+            // ...
+        ) {
+        }
+
+        // レビューを追加するメソッド
+        public function addReview(Review $review): void
+        {
+            // レビュー数の制約を集約内で強制できる
+            if (count($this->reviews) >= 100) {
+                throw new Exception("レビュー数が上限に達しています");
+            }
+            $this->reviews[] = $review;
+        }
+    }
+    ```
 
 それに対し、`Book` 集約と `Review` 集約を分けたまま、状態の結果整合性を保つ。
 
 この設計では、`Book` 集約と `Review` 集約を疎結合にしている。Book リポジトリで Books 集約の状態を取得し、Review リポジトリで取得した `Review` 集約に渡している。
 
-```typescript
-// Book集約 - 基本情報管理に特化
-class Book {
-  constructor(
-    private readonly bookId: BookId,
-    private readonly title: Title,
-    private readonly author: Author,
-    private price: Price
-  ) {}
+=== "Go"
 
-  // 書籍の基本情報に関する機能のみを提供
-  changePrice(newPrice: Price): void {
-    this.price = newPrice;
-  }
-}
+    ```go title=".go"
+    // Book集約 - 基本情報管理に特化
+    type Book struct {
+    	bookID BookID
+    	title  Title
+    	author Author
+    	price  Price
+    }
 
-// Review集約 - レビュー分析という差別化ロジックに特化
-class Review {
-  constructor(
-    private readonly reviewId: ReviewId,
-    private readonly bookId: BookId, // 書籍IDで参照
-    private readonly rating: Rating,
-    private readonly comment?: Comment
-  ) {}
+    func NewBook(bookID BookID, title Title, author Author, price Price) *Book {
+    	return &Book{bookID: bookID, title: title, author: author, price: price}
+    }
 
-  // 差別化ロジック: レビューからの推薦書籍抽出
-  extractRecommendedBooks(): string[] {
-    // レビューからの推薦書籍抽出ロジック
-    // これは競合他社にはない独自の機能
-  }
-}
+    // 書籍の基本情報に関する機能のみを提供
+    func (b *Book) ChangePrice(newPrice Price) {
+    	b.price = newPrice
+    }
 
-// レビュー作成時に整合性を確認
-function createReview(bookId: string, rating: number, comment?: string): Promise<void> {
-  // 書籍の存在確認
-  const book = await bookRepository.findById(bookId); // DBから書籍を取得
-  if (!book) {
-    throw new Error("対象の書籍が存在しません");
-  }
+    // Review集約 - レビュー分析という差別化ロジックに特化
+    type Review struct {
+    	reviewID ReviewID
+    	bookID   BookID // 書籍IDで参照
+    	rating   Rating
+    	comment  *Comment
+    }
 
-  // レビュー数の確認（一時的な不整合の可能性あり）
-  const reviewCount = await reviewRepository.countByBookId(book.bookId);
-  if (reviewCount >= 100) {
-    throw new Error("レビュー数が上限に達しています");
-  }
+    func NewReview(reviewID ReviewID, bookID BookID, rating Rating, comment *Comment) *Review {
+    	return &Review{reviewID: reviewID, bookID: bookID, rating: rating, comment: comment}
+    }
 
-  // レビューを作成
-  // ...
-}
-```
+    // 差別化ロジック: レビューからの推薦書籍抽出
+    func (r *Review) ExtractRecommendedBooks() []string {
+    	// レビューからの推薦書籍抽出ロジック
+    	// これは競合他社にはない独自の機能
+    }
+
+    // レビュー作成時に整合性を確認
+    func createReview(ctx context.Context, bookID string, rating int, comment *string) error {
+    	// 書籍の存在確認
+    	book, err := bookRepository.FindByID(ctx, bookID) // DBから書籍を取得
+    	if err != nil {
+    		return err
+    	}
+    	if book == nil {
+    		return errors.New("対象の書籍が存在しません")
+    	}
+
+    	// レビュー数の確認（一時的な不整合の可能性あり）
+    	reviewCount, err := reviewRepository.CountByBookID(ctx, book.bookID)
+    	if err != nil {
+    		return err
+    	}
+    	if reviewCount >= 100 {
+    		return errors.New("レビュー数が上限に達しています")
+    	}
+
+    	// レビューを作成
+    	// ...
+    	return nil
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // Book集約 - 基本情報管理に特化
+    class Book {
+      constructor(
+        private readonly bookId: BookId,
+        private readonly title: Title,
+        private readonly author: Author,
+        private price: Price
+      ) {}
+
+      // 書籍の基本情報に関する機能のみを提供
+      changePrice(newPrice: Price): void {
+        this.price = newPrice;
+      }
+    }
+
+    // Review集約 - レビュー分析という差別化ロジックに特化
+    class Review {
+      constructor(
+        private readonly reviewId: ReviewId,
+        private readonly bookId: BookId, // 書籍IDで参照
+        private readonly rating: Rating,
+        private readonly comment?: Comment
+      ) {}
+
+      // 差別化ロジック: レビューからの推薦書籍抽出
+      extractRecommendedBooks(): string[] {
+        // レビューからの推薦書籍抽出ロジック
+        // これは競合他社にはない独自の機能
+      }
+    }
+
+    // レビュー作成時に整合性を確認
+    function createReview(bookId: string, rating: number, comment?: string): Promise<void> {
+      // 書籍の存在確認
+      const book = await bookRepository.findById(bookId); // DBから書籍を取得
+      if (!book) {
+        throw new Error("対象の書籍が存在しません");
+      }
+
+      // レビュー数の確認（一時的な不整合の可能性あり）
+      const reviewCount = await reviewRepository.countByBookId(book.bookId);
+      if (reviewCount >= 100) {
+        throw new Error("レビュー数が上限に達しています");
+      }
+
+      // レビューを作成
+      // ...
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // Book集約 - 基本情報管理に特化
+    class Book
+    {
+        public function __construct(
+            private readonly BookId $bookId,
+            private readonly Title $title,
+            private readonly Author $author,
+            private Price $price,
+        ) {
+        }
+
+        public function bookId(): BookId
+        {
+            return $this->bookId;
+        }
+
+        // 書籍の基本情報に関する機能のみを提供
+        public function changePrice(Price $newPrice): void
+        {
+            $this->price = $newPrice;
+        }
+    }
+
+    // Review集約 - レビュー分析という差別化ロジックに特化
+    class Review
+    {
+        public function __construct(
+            private readonly ReviewId $reviewId,
+            private readonly BookId $bookId, // 書籍IDで参照
+            private readonly Rating $rating,
+            private readonly ?Comment $comment = null,
+        ) {
+        }
+
+        // 差別化ロジック: レビューからの推薦書籍抽出
+        public function extractRecommendedBooks(): array
+        {
+            // レビューからの推薦書籍抽出ロジック
+            // これは競合他社にはない独自の機能
+        }
+    }
+
+    // レビュー作成時に整合性を確認
+    function createReview(
+        BookRepository $bookRepository,
+        ReviewRepository $reviewRepository,
+        string $bookId,
+        int $rating,
+        ?string $comment = null,
+    ): void {
+        // 書籍の存在確認
+        $book = $bookRepository->findById($bookId); // DBから書籍を取得
+        if ($book === null) {
+            throw new Exception("対象の書籍が存在しません");
+        }
+
+        // レビュー数の確認（一時的な不整合の可能性あり）
+        $reviewCount = $reviewRepository->countByBookId($book->bookId());
+        if ($reviewCount >= 100) {
+            throw new Exception("レビュー数が上限に達しています");
+        }
+
+        // レビューを作成
+        // ...
+    }
+    ```
 
 ## 11-3 複数の集約による実装
 
@@ -315,120 +849,366 @@ function createReview(bookId: string, rating: number, comment?: string): Promise
 
 `Review` 集約と `Book` 集約は疎結合になっている。
 
-```typescript
-import {BookId} from "../Book/BookId/BookId";
-import {Comment} from "./Comment/Comment";
-import {Name} from "./Name/Name";
-import {Rating} from "./Rating/Rating";
-import {ReviewId} from "./ReviewId/ReviewId";
-import {ReviewIdentity} from "./ReviewIdentity/ReviewIdentity";
+=== "Go"
 
-export class Review {
-  private constructor(
-    private readonly _identity: ReviewIdentity,
-    private readonly _bookId: BookId,
-    private _name: Name,
-    private _rating: Rating,
-    private _comment?: Comment,
-  ) {}
+    ```go title=".go"
+    package review
 
-  static create(
-    identity: ReviewIdentity,
-    bookId: BookId,
-    name: Name,
-    rating: Rating,
-    comment?: Comment,
-  ): Review {
-    return new Review(identity, bookId, name, rating, comment);
-  }
+    import (
+    	"regexp"
 
-  static reconstruct(
-    identity: ReviewIdentity,
-    bookId: BookId,
-    name: Name,
-    rating: Rating,
-    comment?: Comment,
-  ): Review {
-    return new Review(identity, bookId, name, rating, comment);
-  }
+    	"example.com/catalog/domain/models/book"
+    )
 
-  /**
-   * このレビューが信頼できるかを判断
-   * @param threshold 信頼性閾値（0.0～1.0）
-   * @returns 信頼できる場合はtrue
-   */
-  isTrustworthy(threshold: number = 0.6): boolean {
-    // コメントがない場合は評価のみで判断
-    if (!this._comment) {
-      return this._rating.getQualityFactor() >= threshold;
+    type Review struct {
+    	identity ReviewIdentity
+    	bookID   book.BookID
+    	name     Name
+    	rating   Rating
+    	comment  *Comment
     }
 
-    // 評価とコメントの係数を組み合わせる
-    const ratingFactor = this._rating.getQualityFactor();
-    const commentFactor = this._comment.getQualityFactor();
+    func Create(identity ReviewIdentity, bookID book.BookID, name Name, rating Rating, comment *Comment) *Review {
+    	return &Review{identity: identity, bookID: bookID, name: name, rating: rating, comment: comment}
+    }
 
-    // 評価の重みを0.7、コメントの重みを0.3とする
-    const combinedFactor = ratingFactor * 0.7 + commentFactor * 0.3;
-    return combinedFactor >= threshold;
-  }
+    func Reconstruct(identity ReviewIdentity, bookID book.BookID, name Name, rating Rating, comment *Comment) *Review {
+    	return &Review{identity: identity, bookID: bookID, name: name, rating: rating, comment: comment}
+    }
 
-  /**
-   * コメントから推薦本を抽出する
-   * @returns 推薦本のタイトル配列
-   */
-  extractRecommendedBooks(): string[] {
-    if (!this._comment) return [];
+    // IsTrustworthy このレビューが信頼できるかを判断
+    // threshold: 信頼性閾値（0.0～1.0）
+    // 信頼できる場合はtrueを返す
+    func (r *Review) IsTrustworthy(threshold float64) bool {
+    	// コメントがない場合は評価のみで判断
+    	if r.comment == nil {
+    		return r.rating.GetQualityFactor() >= threshold
+    	}
 
-    // 書籍名の後30文字以内に推薦キーワードがあるものを抽出
-    const pattern =
-      /[『『]([^』』]+)[』』][^。]{0,30}(?:読む|読んだ|学ぶ|学んだ|必要|推奨|おすすめ|良い|いい|理解)/g;
+    	// 評価とコメントの係数を組み合わせる
+    	ratingFactor := r.rating.GetQualityFactor()
+    	commentFactor := r.comment.GetQualityFactor()
 
-    const matches = this._comment.extractMatches(pattern);
-    return Array.from(new Set(matches));
-  }
+    	// 評価の重みを0.7、コメントの重みを0.3とする
+    	combinedFactor := ratingFactor*0.7 + commentFactor*0.3
+    	return combinedFactor >= threshold
+    }
 
-  /**
-   * 別のレビューと同一かどうかを判定
-   * @param other 比較対象のレビュー
-   * @returns 同一の場合はtrue
-   */
-  equals(other: Review): boolean {
-    return this._identity.equals(other._identity);
-  }
+    // ExtractRecommendedBooks コメントから推薦本を抽出する
+    // 推薦本のタイトル配列を返す
+    func (r *Review) ExtractRecommendedBooks() []string {
+    	if r.comment == nil {
+    		return []string{}
+    	}
 
-  get reviewId(): ReviewId {
-    return this._identity.reviewId;
-  }
+    	// 書籍名の後30文字以内に推薦キーワードがあるものを抽出
+    	pattern := regexp.MustCompile(`[『『]([^』』]+)[』』][^。]{0,30}(?:読む|読んだ|学ぶ|学んだ|必要|推奨|おすすめ|良い|いい|理解)`)
 
-  get bookId(): BookId {
-    return this._bookId;
-  }
+    	matches := r.comment.ExtractMatches(pattern)
+    	seen := make(map[string]struct{}, len(matches))
+    	uniqueMatches := make([]string, 0, len(matches))
+    	for _, match := range matches {
+    		if _, ok := seen[match]; ok {
+    			continue
+    		}
+    		seen[match] = struct{}{}
+    		uniqueMatches = append(uniqueMatches, match)
+    	}
+    	return uniqueMatches
+    }
 
-  get name(): Name {
-    return this._name;
-  }
+    // Equals 別のレビューと同一かどうかを判定
+    // other: 比較対象のレビュー
+    // 同一の場合はtrueを返す
+    func (r *Review) Equals(other *Review) bool {
+    	return r.identity.Equals(other.identity)
+    }
 
-  get rating(): Rating {
-    return this._rating;
-  }
+    func (r *Review) ReviewID() ReviewID {
+    	return r.identity.ReviewID()
+    }
 
-  get comment(): Comment | undefined {
-    return this._comment;
-  }
+    func (r *Review) BookID() book.BookID {
+    	return r.bookID
+    }
 
-  updateName(name: Name): void {
-    this._name = name;
-  }
+    func (r *Review) Name() Name {
+    	return r.name
+    }
 
-  updateRating(rating: Rating): void {
-    this._rating = rating;
-  }
+    func (r *Review) Rating() Rating {
+    	return r.rating
+    }
 
-  editComment(comment: Comment): void {
-    this._comment = comment;
-  }
-}
-```
+    func (r *Review) Comment() *Comment {
+    	return r.comment
+    }
+
+    func (r *Review) UpdateName(name Name) {
+    	r.name = name
+    }
+
+    func (r *Review) UpdateRating(rating Rating) {
+    	r.rating = rating
+    }
+
+    func (r *Review) EditComment(comment Comment) {
+    	r.comment = &comment
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    import {BookId} from "../Book/BookId/BookId";
+    import {Comment} from "./Comment/Comment";
+    import {Name} from "./Name/Name";
+    import {Rating} from "./Rating/Rating";
+    import {ReviewId} from "./ReviewId/ReviewId";
+    import {ReviewIdentity} from "./ReviewIdentity/ReviewIdentity";
+
+    export class Review {
+      private constructor(
+        private readonly _identity: ReviewIdentity,
+        private readonly _bookId: BookId,
+        private _name: Name,
+        private _rating: Rating,
+        private _comment?: Comment,
+      ) {}
+
+      static create(
+        identity: ReviewIdentity,
+        bookId: BookId,
+        name: Name,
+        rating: Rating,
+        comment?: Comment,
+      ): Review {
+        return new Review(identity, bookId, name, rating, comment);
+      }
+
+      static reconstruct(
+        identity: ReviewIdentity,
+        bookId: BookId,
+        name: Name,
+        rating: Rating,
+        comment?: Comment,
+      ): Review {
+        return new Review(identity, bookId, name, rating, comment);
+      }
+
+      /**
+       * このレビューが信頼できるかを判断
+       * @param threshold 信頼性閾値（0.0～1.0）
+       * @returns 信頼できる場合はtrue
+       */
+      isTrustworthy(threshold: number = 0.6): boolean {
+        // コメントがない場合は評価のみで判断
+        if (!this._comment) {
+          return this._rating.getQualityFactor() >= threshold;
+        }
+
+        // 評価とコメントの係数を組み合わせる
+        const ratingFactor = this._rating.getQualityFactor();
+        const commentFactor = this._comment.getQualityFactor();
+
+        // 評価の重みを0.7、コメントの重みを0.3とする
+        const combinedFactor = ratingFactor * 0.7 + commentFactor * 0.3;
+        return combinedFactor >= threshold;
+      }
+
+      /**
+       * コメントから推薦本を抽出する
+       * @returns 推薦本のタイトル配列
+       */
+      extractRecommendedBooks(): string[] {
+        if (!this._comment) return [];
+
+        // 書籍名の後30文字以内に推薦キーワードがあるものを抽出
+        const pattern =
+          /[『『]([^』』]+)[』』][^。]{0,30}(?:読む|読んだ|学ぶ|学んだ|必要|推奨|おすすめ|良い|いい|理解)/g;
+
+        const matches = this._comment.extractMatches(pattern);
+        return Array.from(new Set(matches));
+      }
+
+      /**
+       * 別のレビューと同一かどうかを判定
+       * @param other 比較対象のレビュー
+       * @returns 同一の場合はtrue
+       */
+      equals(other: Review): boolean {
+        return this._identity.equals(other._identity);
+      }
+
+      get reviewId(): ReviewId {
+        return this._identity.reviewId;
+      }
+
+      get bookId(): BookId {
+        return this._bookId;
+      }
+
+      get name(): Name {
+        return this._name;
+      }
+
+      get rating(): Rating {
+        return this._rating;
+      }
+
+      get comment(): Comment | undefined {
+        return this._comment;
+      }
+
+      updateName(name: Name): void {
+        this._name = name;
+      }
+
+      updateRating(rating: Rating): void {
+        this._rating = rating;
+      }
+
+      editComment(comment: Comment): void {
+        this._comment = comment;
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    namespace Domain\Models\Review;
+
+    use Domain\Models\Book\BookId\BookId;
+    use Domain\Models\Review\Comment\Comment;
+    use Domain\Models\Review\Name\Name;
+    use Domain\Models\Review\Rating\Rating;
+    use Domain\Models\Review\ReviewId\ReviewId;
+    use Domain\Models\Review\ReviewIdentity\ReviewIdentity;
+
+    class Review
+    {
+        private function __construct(
+            private readonly ReviewIdentity $identity,
+            private readonly BookId $bookId,
+            private Name $name,
+            private Rating $rating,
+            private ?Comment $comment = null,
+        ) {
+        }
+
+        public static function create(
+            ReviewIdentity $identity,
+            BookId $bookId,
+            Name $name,
+            Rating $rating,
+            ?Comment $comment = null,
+        ): self {
+            return new self($identity, $bookId, $name, $rating, $comment);
+        }
+
+        public static function reconstruct(
+            ReviewIdentity $identity,
+            BookId $bookId,
+            Name $name,
+            Rating $rating,
+            ?Comment $comment = null,
+        ): self {
+            return new self($identity, $bookId, $name, $rating, $comment);
+        }
+
+        /**
+         * このレビューが信頼できるかを判断
+         * @param float $threshold 信頼性閾値（0.0～1.0）
+         * @return bool 信頼できる場合はtrue
+         */
+        public function isTrustworthy(float $threshold = 0.6): bool
+        {
+            // コメントがない場合は評価のみで判断
+            if ($this->comment === null) {
+                return $this->rating->getQualityFactor() >= $threshold;
+            }
+
+            // 評価とコメントの係数を組み合わせる
+            $ratingFactor = $this->rating->getQualityFactor();
+            $commentFactor = $this->comment->getQualityFactor();
+
+            // 評価の重みを0.7、コメントの重みを0.3とする
+            $combinedFactor = $ratingFactor * 0.7 + $commentFactor * 0.3;
+            return $combinedFactor >= $threshold;
+        }
+
+        /**
+         * コメントから推薦本を抽出する
+         * @return string[] 推薦本のタイトル配列
+         */
+        public function extractRecommendedBooks(): array
+        {
+            if ($this->comment === null) {
+                return [];
+            }
+
+            // 書籍名の後30文字以内に推薦キーワードがあるものを抽出
+            $pattern =
+                "/[『『]([^』』]+)[』』][^。]{0,30}(?:読む|読んだ|学ぶ|学んだ|必要|推奨|おすすめ|良い|いい|理解)/u";
+
+            $matches = $this->comment->extractMatches($pattern);
+            return array_values(array_unique($matches));
+        }
+
+        /**
+         * 別のレビューと同一かどうかを判定
+         * @param Review $other 比較対象のレビュー
+         * @return bool 同一の場合はtrue
+         */
+        public function equals(Review $other): bool
+        {
+            return $this->identity->equals($other->identity);
+        }
+
+        public function reviewId(): ReviewId
+        {
+            return $this->identity->reviewId();
+        }
+
+        public function bookId(): BookId
+        {
+            return $this->bookId;
+        }
+
+        public function name(): Name
+        {
+            return $this->name;
+        }
+
+        public function rating(): Rating
+        {
+            return $this->rating;
+        }
+
+        public function comment(): ?Comment
+        {
+            return $this->comment;
+        }
+
+        public function updateName(Name $name): void
+        {
+            $this->name = $name;
+        }
+
+        public function updateRating(Rating $rating): void
+        {
+            $this->rating = $rating;
+        }
+
+        public function editComment(Comment $comment): void
+        {
+            $this->comment = $comment;
+        }
+    }
+    ```
 
 ### 11-3-3 Book 集約の実装
 
@@ -438,57 +1218,177 @@ export class Review {
 
 `Review` 集約と `Book` 集約は疎結合になっている。
 
-```typescript
-import {Author} from "./Author/Author";
-import {BookId} from "./BookId/BookId";
-import {BookIdentity} from "./BookIdentity/BookIdentity";
-import {Price} from "./Price/Price";
-import {Title} from "./Title/Title";
+=== "Go"
 
-export class Book {
-  constructor(
-    private readonly _identity: BookIdentity,
-    private _price: Price,
-  ) {}
+    ```go title=".go"
+    package book
 
-  static create(identity: BookIdentity, price: Price): Book {
-    return new Book(identity, price);
-  }
+    type Book struct {
+    	identity BookIdentity
+    	price    Price
+    }
 
-  static reconstruct(identity: BookIdentity, price: Price): Book {
-    return new Book(identity, price);
-  }
+    func NewBook(identity BookIdentity, price Price) *Book {
+    	return &Book{identity: identity, price: price}
+    }
 
-  /**
-   * 別の書籍と同一かどうかを判定
-   * @param other 比較対象の書籍
-   * @returns 同一の場合はtrue
-   */
-  equals(other: Book): boolean {
-    return this._identity.equals(other._identity);
-  }
+    func Create(identity BookIdentity, price Price) *Book {
+    	return NewBook(identity, price)
+    }
 
-  get bookId(): BookId {
-    return this._identity.bookId;
-  }
+    func Reconstruct(identity BookIdentity, price Price) *Book {
+    	return NewBook(identity, price)
+    }
 
-  get title(): Title {
-    return this._identity.title;
-  }
+    // Equals 別の書籍と同一かどうかを判定
+    // other: 比較対象の書籍
+    // 同一の場合はtrueを返す
+    func (b *Book) Equals(other *Book) bool {
+    	return b.identity.Equals(other.identity)
+    }
 
-  get author(): Author {
-    return this._identity.author;
-  }
+    func (b *Book) BookID() BookID {
+    	return b.identity.BookID()
+    }
 
-  get price(): Price {
-    return this._price;
-  }
+    func (b *Book) Title() Title {
+    	return b.identity.Title()
+    }
 
-  changePrice(price: Price): void {
-    this._price = price;
-  }
-}
-```
+    func (b *Book) Author() Author {
+    	return b.identity.Author()
+    }
+
+    func (b *Book) Price() Price {
+    	return b.price
+    }
+
+    func (b *Book) ChangePrice(price Price) {
+    	b.price = price
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    import {Author} from "./Author/Author";
+    import {BookId} from "./BookId/BookId";
+    import {BookIdentity} from "./BookIdentity/BookIdentity";
+    import {Price} from "./Price/Price";
+    import {Title} from "./Title/Title";
+
+    export class Book {
+      constructor(
+        private readonly _identity: BookIdentity,
+        private _price: Price,
+      ) {}
+
+      static create(identity: BookIdentity, price: Price): Book {
+        return new Book(identity, price);
+      }
+
+      static reconstruct(identity: BookIdentity, price: Price): Book {
+        return new Book(identity, price);
+      }
+
+      /**
+       * 別の書籍と同一かどうかを判定
+       * @param other 比較対象の書籍
+       * @returns 同一の場合はtrue
+       */
+      equals(other: Book): boolean {
+        return this._identity.equals(other._identity);
+      }
+
+      get bookId(): BookId {
+        return this._identity.bookId;
+      }
+
+      get title(): Title {
+        return this._identity.title;
+      }
+
+      get author(): Author {
+        return this._identity.author;
+      }
+
+      get price(): Price {
+        return this._price;
+      }
+
+      changePrice(price: Price): void {
+        this._price = price;
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    namespace Domain\Models\Book;
+
+    use Domain\Models\Book\Author\Author;
+    use Domain\Models\Book\BookId\BookId;
+    use Domain\Models\Book\BookIdentity\BookIdentity;
+    use Domain\Models\Book\Price\Price;
+    use Domain\Models\Book\Title\Title;
+
+    class Book
+    {
+        public function __construct(
+            private readonly BookIdentity $identity,
+            private Price $price,
+        ) {
+        }
+
+        public static function create(BookIdentity $identity, Price $price): self
+        {
+            return new self($identity, $price);
+        }
+
+        public static function reconstruct(BookIdentity $identity, Price $price): self
+        {
+            return new self($identity, $price);
+        }
+
+        /**
+         * 別の書籍と同一かどうかを判定
+         * @param Book $other 比較対象の書籍
+         * @return bool 同一の場合はtrue
+         */
+        public function equals(Book $other): bool
+        {
+            return $this->identity->equals($other->identity);
+        }
+
+        public function bookId(): BookId
+        {
+            return $this->identity->bookId();
+        }
+
+        public function title(): Title
+        {
+            return $this->identity->title();
+        }
+
+        public function author(): Author
+        {
+            return $this->identity->author();
+        }
+
+        public function price(): Price
+        {
+            return $this->price;
+        }
+
+        public function changePrice(Price $price): void
+        {
+            $this->price = $price;
+        }
+    }
+    ```
 
 ## 11-4 集約のテスト
 

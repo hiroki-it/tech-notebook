@@ -38,12 +38,32 @@ description: デザインパターン＠オブジェクト指向の知見を記�
 
 コマンドの実行者は `Execute` メソッドを呼ぶだけでよく、その要求で何をするのかを知る必要がない
 
-```go
-app.command = &LoginCommand{browser: browser, credentials: credentials}
+=== "Go"
 
-// コマンド経由で、ブラウザでログインさせてトークンを保存させる
-app.Run() 
-```
+    ```go title=".go"
+    app.command = &LoginCommand{browser: browser, credentials: credentials}
+
+    // コマンド経由で、ブラウザでログインさせてトークンを保存させる
+    app.Run()
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    app.command = new LoginCommand(browser, credentials);
+
+    // コマンド経由で、ブラウザでログインさせてトークンを保存させる
+    app.run();
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    $app->command = new LoginCommand(browser: $browser, credentials: $credentials);
+
+    // コマンド経由で、ブラウザでログインさせてトークンを保存させる
+    $app->run();
+    ```
 
 <br>
 
@@ -55,21 +75,66 @@ GoFでは、『Chain of Responsibility パターン』に近い。
 
 HTTP リクエストを受信する API とこれを処理するハンドラーの間に共通の処理を挟むデザインパターンである。
 
-```go
-handler := WithAccessLog(WithAuth(projectListHandler))
+=== "Go"
 
-http.ListenAndServe(":8080", handler)
+    ```go title=".go"
+    handler := WithAccessLog(WithAuth(projectListHandler))
 
-func WithAuth(next http.Handler) http.Handler {
-    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-        if !verify(r.Header.Get("Authorization")) {
-            http.Error(w, "unauthorized", http.StatusUnauthorized)
-            return
+    http.ListenAndServe(":8080", handler)
+
+    func WithAuth(next http.Handler) http.Handler {
+    	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+    		if !verify(r.Header.Get("Authorization")) {
+    			http.Error(w, "unauthorized", http.StatusUnauthorized)
+    			return
+    		}
+    		next.ServeHTTP(w, r) // 次のミドルウェアまたはハンドラーに渡す
+    	})
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    import { createServer, IncomingMessage, ServerResponse } from "node:http";
+
+    type Handler = (req: IncomingMessage, res: ServerResponse) => void;
+
+    const handler = withAccessLog(withAuth(projectListHandler));
+
+    createServer(handler).listen(8080);
+
+    function withAuth(next: Handler): Handler {
+      return (req, res) => {
+        if (!verify(req.headers.authorization)) {
+          res.statusCode = 401;
+          res.end("unauthorized");
+          return;
         }
-        next.ServeHTTP(w, r) // 次のミドルウェアまたはハンドラーに渡す
-    })
-}
-```
+        next(req, res); // 次のミドルウェアまたはハンドラーに渡す
+      };
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    $handler = withAccessLog(withAuth($projectListHandler));
+
+    $handler();
+
+    function withAuth(callable $next): callable
+    {
+        return function () use ($next): void {
+            if (!verify($_SERVER["HTTP_AUTHORIZATION"] ?? "")) {
+                http_response_code(401);
+                echo "unauthorized";
+                return;
+            }
+            $next(); // 次のミドルウェアまたはハンドラーに渡す
+        };
+    }
+    ```
 
 すべてと言い切ることはできないが、サービスメッシュではミドルウェアパターンで実装するようなロジックを配布できる。
 

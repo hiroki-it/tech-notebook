@@ -70,43 +70,151 @@ description: 関数型の知見を記録しています。
 
 ### プリミティブ型
 
-```typescript
-type User = {
-  // 状態
-  name: string;
-  age: number;
-};
+=== "Go"
 
-// 振る舞い
-function isAdultAge(age: number): boolean {
-  return age >= 18;
-}
+    ```go title=".go"
+    package main
 
-// オブジェクトの状態を設定する
-const u: User = {name: "Alice", age: 20};
+    import "fmt"
 
-console.log(isAdultAge(u.age)); // true
-```
+    type User struct {
+    	// 状態
+    	name string
+    	age  int
+    }
+
+    // 振る舞い
+    func isAdultAge(age int) bool {
+    	return age >= 18
+    }
+
+    func main() {
+    	// オブジェクトの状態を設定する
+    	u := User{name: "Alice", age: 20}
+
+    	fmt.Println(isAdultAge(u.age)) // true
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    type User = {
+      // 状態
+      name: string;
+      age: number;
+    };
+
+    // 振る舞い
+    function isAdultAge(age: number): boolean {
+      return age >= 18;
+    }
+
+    // オブジェクトの状態を設定する
+    const u: User = {name: "Alice", age: 20};
+
+    console.log(isAdultAge(u.age)); // true
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    class User
+    {
+        public function __construct(
+            // 状態
+            public readonly string $name,
+            public readonly int $age,
+        ) {
+        }
+    }
+
+    // 振る舞い
+    function isAdultAge(int $age): bool
+    {
+        return $age >= 18;
+    }
+
+    // オブジェクトの状態を設定する
+    $u = new User(name: "Alice", age: 20);
+
+    echo var_export(isAdultAge($u->age), true); // true
+    ```
 
 <br>
 
 ### オブジェクト
 
-```typescript
-type User = {
-  // 状態
-  name: string;
-  age: number;
-};
+=== "Go"
 
-// 振る舞い
-function isAdult(number: User): boolean {
-  return user.age >= 18;
-}
+    ```go title=".go"
+    package main
 
-// オブジェクトの状態を設定する
-const u: User = {name: "Alice", age: 20};
-console.log(isAdult(u)); // true
-```
+    import "fmt"
+
+    type User struct {
+    	// 状態
+    	name string
+    	age  int
+    }
+
+    // 振る舞い
+    func isAdult(user User) bool {
+    	return user.age >= 18
+    }
+
+    func main() {
+    	// オブジェクトの状態を設定する
+    	u := User{name: "Alice", age: 20}
+    	fmt.Println(isAdult(u)) // true
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    type User = {
+      // 状態
+      name: string;
+      age: number;
+    };
+
+    // 振る舞い
+    function isAdult(number: User): boolean {
+      return user.age >= 18;
+    }
+
+    // オブジェクトの状態を設定する
+    const u: User = {name: "Alice", age: 20};
+    console.log(isAdult(u)); // true
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    class User
+    {
+        public function __construct(
+            // 状態
+            public readonly string $name,
+            public readonly int $age,
+        ) {
+        }
+    }
+
+    // 振る舞い
+    function isAdult(User $user): bool
+    {
+        return $user->age >= 18;
+    }
+
+    // オブジェクトの状態を設定する
+    $u = new User(name: "Alice", age: 20);
+    echo var_export(isAdult($u), true); // true
+    ```
 
 <br>

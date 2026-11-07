@@ -27,45 +27,145 @@ description: ６章＠ドメイン駆動設計入門ボトムアップの知見�
 
 ## 6.2 アプリケーションサービスの実装方法（関数型）
 
-```typescript
-export type userRepositoryDI = Readonly<{
-  userRepository: UserRepository;
-}>;
+=== "Go"
 
-export type RegisterUserInput = Readonly<{
-  name: string;
-  email: string;
-}>;
+    ```go title=".go"
+    type UserRepositoryDI struct {
+    	UserRepository UserRepository
+    }
 
-export const registerUser = async (
-  userRepositoryDI: UserRepositoryDI,
-  input: RegisterUserInput,
-): Promise<Result<User>> => {
-  const name = createUserName(input.name);
+    type RegisterUserInput struct {
+    	Name  string
+    	Email string
+    }
 
-  if (name instanceof Error) {
-    return err(name);
-  }
+    func RegisterUser(
+    	userRepositoryDI UserRepositoryDI,
+    	input RegisterUserInput,
+    ) (*User, error) {
+    	name, err := CreateUserName(input.Name)
 
-  const email = createEmail(input.email);
+    	if err != nil {
+    		return nil, err
+    	}
 
-  if (email instanceof Error) {
-    return err(email);
-  }
+    	email, err := CreateEmail(input.Email)
 
-  const exists = await userRepositoryDI.userRepository.findByEmail(email);
+    	if err != nil {
+    		return nil, err
+    	}
 
-  if (exists) {
-    return err(new Error("Email already registered"));
-  }
+    	exists, err := userRepositoryDI.UserRepository.FindByEmail(email)
 
-  const user = createUser(name, email);
+    	if err != nil {
+    		return nil, err
+    	}
 
-  await userRepositoryDI.userRepository.save(user);
+    	if exists != nil {
+    		return nil, errors.New("Email already registered")
+    	}
 
-  return ok(user);
-};
-```
+    	user := CreateUser(name, email)
+
+    	if err := userRepositoryDI.UserRepository.Save(user); err != nil {
+    		return nil, err
+    	}
+
+    	return user, nil
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    export type userRepositoryDI = Readonly<{
+      userRepository: UserRepository;
+    }>;
+
+    export type RegisterUserInput = Readonly<{
+      name: string;
+      email: string;
+    }>;
+
+    export const registerUser = async (
+      userRepositoryDI: UserRepositoryDI,
+      input: RegisterUserInput,
+    ): Promise<Result<User>> => {
+      const name = createUserName(input.name);
+
+      if (name instanceof Error) {
+        return err(name);
+      }
+
+      const email = createEmail(input.email);
+
+      if (email instanceof Error) {
+        return err(email);
+      }
+
+      const exists = await userRepositoryDI.userRepository.findByEmail(email);
+
+      if (exists) {
+        return err(new Error("Email already registered"));
+      }
+
+      const user = createUser(name, email);
+
+      await userRepositoryDI.userRepository.save(user);
+
+      return ok(user);
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    final class UserRepositoryDI
+    {
+        public function __construct(
+            public readonly UserRepository $userRepository,
+        ) {
+        }
+    }
+
+    final class RegisterUserInput
+    {
+        public function __construct(
+            public readonly string $name,
+            public readonly string $email,
+        ) {
+        }
+    }
+
+    function registerUser(
+        UserRepositoryDI $userRepositoryDI,
+        RegisterUserInput $input,
+    ): Result {
+        $name = createUserName($input->name);
+
+        if ($name instanceof Error) {
+            return err($name);
+        }
+
+        $email = createEmail($input->email);
+
+        if ($email instanceof Error) {
+            return err($email);
+        }
+
+        $exists = $userRepositoryDI->userRepository->findByEmail($email);
+
+        if ($exists) {
+            return err(new Error("Email already registered"));
+        }
+
+        $user = createUser($name, $email);
+
+        $userRepositoryDI->userRepository->save($user);
+
+        return ok($user);
+    }
+    ```
 
 <br>
 

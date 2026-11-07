@@ -45,32 +45,138 @@ UserRepository／InMemoryUserRepository # インフラストラクチャ層
 
 #### ▼ UserController
 
-```typescript
-import {Request, Response} from "express";
-import {UserRegisterDto} from "../../application/dto/UserRegisterDto";
-import {IUserApplicationService} from "../../application/UserApplicationService";
+=== "Go"
 
-export class UserController {
-  constructor(private readonly service: IUserApplicationService) {}
+    ```go title=".go"
+    package controller
 
-  async register(req: Request, res: Response): Promise<void> {
-    const dto = new UserRegisterDto(req.body.name, req.body.email);
-    await this.service.register(dto);
-    res.status(200).json({message: "User registered successfully"});
-  }
-}
-```
+    import (
+    	"encoding/json"
+    	"net/http"
+
+    	"app/application"
+    	"app/application/dto"
+    )
+
+    type UserController struct {
+    	service application.IUserApplicationService
+    }
+
+    func NewUserController(service application.IUserApplicationService) *UserController {
+    	return &UserController{
+    		service: service,
+    	}
+    }
+
+    func (c *UserController) Register(w http.ResponseWriter, r *http.Request) {
+    	var body struct {
+    		Name  string `json:"name"`
+    		Email string `json:"email"`
+    	}
+    	if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+    		http.Error(w, err.Error(), http.StatusBadRequest)
+    		return
+    	}
+
+    	dto := dto.NewUserRegisterDto(body.Name, body.Email)
+    	if err := c.service.Register(dto); err != nil {
+    		http.Error(w, err.Error(), http.StatusInternalServerError)
+    		return
+    	}
+
+    	w.Header().Set("Content-Type", "application/json")
+    	w.WriteHeader(http.StatusOK)
+    	json.NewEncoder(w).Encode(map[string]string{"message": "User registered successfully"})
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    import {Request, Response} from "express";
+    import {UserRegisterDto} from "../../application/dto/UserRegisterDto";
+    import {IUserApplicationService} from "../../application/UserApplicationService";
+
+    export class UserController {
+      constructor(private readonly service: IUserApplicationService) {}
+
+      async register(req: Request, res: Response): Promise<void> {
+        const dto = new UserRegisterDto(req.body.name, req.body.email);
+        await this.service.register(dto);
+        res.status(200).json({message: "User registered successfully"});
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    use App\Application\Dto\UserRegisterDto;
+    use App\Application\IUserApplicationService;
+
+    class UserController
+    {
+        public function __construct(private readonly IUserApplicationService $service)
+        {
+        }
+
+        public function register(): void
+        {
+            $body = json_decode(file_get_contents("php://input"), true);
+            $dto = new UserRegisterDto($body["name"], $body["email"]);
+            $this->service->register($dto);
+            http_response_code(200);
+            header("Content-Type: application/json");
+            echo json_encode(["message" => "User registered successfully"]);
+        }
+    }
+    ```
 
 #### ▼ RequestDTO
 
-```typescript
-export class UserRegisterDto {
-  constructor(
-    public readonly name: string,
-    public readonly email: string,
-  ) {}
-}
-```
+=== "Go"
+
+    ```go title=".go"
+    package dto
+
+    type UserRegisterDto struct {
+    	Name  string
+    	Email string
+    }
+
+    func NewUserRegisterDto(name string, email string) UserRegisterDto {
+    	return UserRegisterDto{
+    		Name:  name,
+    		Email: email,
+    	}
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    export class UserRegisterDto {
+      constructor(
+        public readonly name: string,
+        public readonly email: string,
+      ) {}
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    class UserRegisterDto
+    {
+        public function __construct(
+            public readonly string $name,
+            public readonly string $email,
+        ) {
+        }
+    }
+    ```
 
 <br>
 
@@ -78,19 +184,61 @@ export class UserRegisterDto {
 
 #### ▼ ApplicationService
 
-```typescript
-import {UserRegisterDto} from "./dto/UserRegisterDto";
+=== "Go"
 
-export interface IUserApplicationService {
-  register(dto: UserRegisterDto): Promise<void>;
-}
+    ```go title=".go"
+    package application
 
-export class UserApplicationService implements IUserApplicationService {
-  async register(dto: UserRegisterDto): Promise<void> {
-    // ここでUserRepositoryを実行する
-  }
-}
-```
+    import "app/application/dto"
+
+    type IUserApplicationService interface {
+    	Register(dto dto.UserRegisterDto) error
+    }
+
+    type UserApplicationService struct{}
+
+    func (s *UserApplicationService) Register(dto dto.UserRegisterDto) error {
+    	// ここでUserRepositoryを実行する
+    	return nil
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    import {UserRegisterDto} from "./dto/UserRegisterDto";
+
+    export interface IUserApplicationService {
+      register(dto: UserRegisterDto): Promise<void>;
+    }
+
+    export class UserApplicationService implements IUserApplicationService {
+      async register(dto: UserRegisterDto): Promise<void> {
+        // ここでUserRepositoryを実行する
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    use App\Application\Dto\UserRegisterDto;
+
+    interface IUserApplicationService
+    {
+        public function register(UserRegisterDto $dto): void;
+    }
+
+    class UserApplicationService implements IUserApplicationService
+    {
+        public function register(UserRegisterDto $dto): void
+        {
+            // ここでUserRepositoryを実行する
+        }
+    }
+    ```
 
 <br>
 

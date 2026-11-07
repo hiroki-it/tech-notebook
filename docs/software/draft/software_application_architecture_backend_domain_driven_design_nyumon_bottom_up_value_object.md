@@ -93,40 +93,130 @@ flowchart LR
 
 氏名を値オブジェクトにする場合は次のとおりになる。
 
-```tsx
-// 値オブジェクト
-export type FullName = Readonly<{
-  // 状態
-  firstName: string;
-  lastName: string;
-}>;
+=== "Go"
 
-// 初期化
-export const createFullName = (
-  first: string,
-  last: string,
-): FullName | Error => {
-  // ビジネスロジックのバリデーション
-  if (!first || !last) return new Error("氏名は必須です");
-  return Object.freeze({firstName: first, lastName: last});
-};
+    ```go title=".go"
+    // 値オブジェクト
+    type FullName struct {
+    	// 状態
+    	firstName string
+    	lastName  string
+    }
 
-// 等価性バリデーション
-export const equalsFullName = (a: FullName, b: FullName): boolean => {
-  return a.firstName === b.firstName && a.lastName === b.lastName;
-};
+    // 初期化
+    func CreateFullName(first string, last string) (FullName, error) {
+    	// ビジネスロジックのバリデーション
+    	if first == "" || last == "" {
+    		return FullName{}, errors.New("氏名は必須です")
+    	}
+    	return FullName{firstName: first, lastName: last}, nil
+    }
 
-// 振る舞い
-export const getDisplayName = (fullName: FullName): string => {
-  return `${fullName.lastName} ${fullName.firstName}`;
-};
-```
+    // 等価性バリデーション
+    func EqualsFullName(a FullName, b FullName) bool {
+    	return a.firstName == b.firstName && a.lastName == b.lastName
+    }
 
-```tsx
-const fullName = createFullName("太郎", "山田");
+    // 振る舞い
+    func GetDisplayName(fullName FullName) string {
+    	return fullName.lastName + " " + fullName.firstName
+    }
+    ```
 
-console.log(getDisplayName(fullName)); // 山田 太郎
-```
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 値オブジェクト
+    export type FullName = Readonly<{
+      // 状態
+      firstName: string;
+      lastName: string;
+    }>;
+
+    // 初期化
+    export const createFullName = (
+      first: string,
+      last: string,
+    ): FullName | Error => {
+      // ビジネスロジックのバリデーション
+      if (!first || !last) return new Error("氏名は必須です");
+      return Object.freeze({firstName: first, lastName: last});
+    };
+
+    // 等価性バリデーション
+    export const equalsFullName = (a: FullName, b: FullName): boolean => {
+      return a.firstName === b.firstName && a.lastName === b.lastName;
+    };
+
+    // 振る舞い
+    export const getDisplayName = (fullName: FullName): string => {
+      return `${fullName.lastName} ${fullName.firstName}`;
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 値オブジェクト
+    final readonly class FullName
+    {
+        public function __construct(
+            // 状態
+            public string $firstName,
+            public string $lastName,
+        ) {
+        }
+    }
+
+    // 初期化
+    function createFullName(string $first, string $last): FullName
+    {
+        // ビジネスロジックのバリデーション
+        if ($first === "" || $last === "") {
+            throw new InvalidArgumentException("氏名は必須です");
+        }
+        return new FullName(firstName: $first, lastName: $last);
+    }
+
+    // 等価性バリデーション
+    function equalsFullName(FullName $a, FullName $b): bool
+    {
+        return $a->firstName === $b->firstName && $a->lastName === $b->lastName;
+    }
+
+    // 振る舞い
+    function getDisplayName(FullName $fullName): string
+    {
+        return "{$fullName->lastName} {$fullName->firstName}";
+    }
+    ```
+
+===! "Go"
+
+    ```go title=".go"
+    fullName, err := CreateFullName("太郎", "山田")
+    if err != nil {
+    	return err
+    }
+
+    fmt.Println(GetDisplayName(fullName)) // 山田 太郎
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    const fullName = createFullName("太郎", "山田");
+
+    console.log(getDisplayName(fullName)); // 山田 太郎
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    $fullName = createFullName("太郎", "山田");
+
+    echo getDisplayName($fullName) . PHP_EOL; // 山田 太郎
+    ```
 
 #### ▼ インスタンスのデータが不変である
 
@@ -135,92 +225,309 @@ console.log(getDisplayName(fullName)); // 山田 太郎
 - Readonly を使用して、JavaScript へのコンパイル時にインスタンスのもつデータが変化しないようにする必要がある
 - Object.freeze を使用して、コンパイル後の実行時にインスタンスのもつデータが変化しないようにする必要がある（この実装は、あればなお良しくらい）
 
-```tsx
-// 値オブジェクト
-export type FullName = Readonly<{
-  // 状態
-  firstName: string;
-  lastName: string;
-}>;
+=== "Go"
 
-// 初期化
-export const createFullName = (
-  first: string,
-  last: string,
-): FullName | Error => {
-  // ビジネスロジックのバリデーション
-  if (!first || !last) return new Error("氏名は必須です");
-  return Object.freeze({firstName: first, lastName: last});
-};
+    ```go title=".go"
+    // 値オブジェクト
+    type FullName struct {
+    	// 状態
+    	firstName string
+    	lastName  string
+    }
 
-// 等価性バリデーション
-export const equalsFullName = (a: FullName, b: FullName): boolean => {
-  return a.firstName === b.firstName && a.lastName === b.lastName;
-};
+    // 初期化
+    func CreateFullName(first string, last string) (FullName, error) {
+    	// ビジネスロジックのバリデーション
+    	if first == "" || last == "" {
+    		return FullName{}, errors.New("氏名は必須です")
+    	}
+    	return FullName{firstName: first, lastName: last}, nil
+    }
 
-// 振る舞い
-export const getDisplayName = (fullName: FullName): string => {
-  return `${fullName.lastName} ${fullName.firstName}`;
-};
-```
+    // 等価性バリデーション
+    func EqualsFullName(a FullName, b FullName) bool {
+    	return a.firstName == b.firstName && a.lastName == b.lastName
+    }
 
-```tsx
-// インスタンスのデータを後から変えられない
-const fullName = createFullName("太郎", "山田");
-```
+    // 振る舞い
+    func GetDisplayName(fullName FullName) string {
+    	return fullName.lastName + " " + fullName.firstName
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 値オブジェクト
+    export type FullName = Readonly<{
+      // 状態
+      firstName: string;
+      lastName: string;
+    }>;
+
+    // 初期化
+    export const createFullName = (
+      first: string,
+      last: string,
+    ): FullName | Error => {
+      // ビジネスロジックのバリデーション
+      if (!first || !last) return new Error("氏名は必須です");
+      return Object.freeze({firstName: first, lastName: last});
+    };
+
+    // 等価性バリデーション
+    export const equalsFullName = (a: FullName, b: FullName): boolean => {
+      return a.firstName === b.firstName && a.lastName === b.lastName;
+    };
+
+    // 振る舞い
+    export const getDisplayName = (fullName: FullName): string => {
+      return `${fullName.lastName} ${fullName.firstName}`;
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 値オブジェクト
+    final readonly class FullName
+    {
+        public function __construct(
+            // 状態
+            public string $firstName,
+            public string $lastName,
+        ) {
+        }
+    }
+
+    // 初期化
+    function createFullName(string $first, string $last): FullName
+    {
+        // ビジネスロジックのバリデーション
+        if ($first === "" || $last === "") {
+            throw new InvalidArgumentException("氏名は必須です");
+        }
+        return new FullName(firstName: $first, lastName: $last);
+    }
+
+    // 等価性バリデーション
+    function equalsFullName(FullName $a, FullName $b): bool
+    {
+        return $a->firstName === $b->firstName && $a->lastName === $b->lastName;
+    }
+
+    // 振る舞い
+    function getDisplayName(FullName $fullName): string
+    {
+        return "{$fullName->lastName} {$fullName->firstName}";
+    }
+    ```
+
+===! "Go"
+
+    ```go title=".go"
+    // インスタンスのデータを後から変えられない
+    fullName, err := CreateFullName("太郎", "山田")
+    if err != nil {
+    	return err
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // インスタンスのデータを後から変えられない
+    const fullName = createFullName("太郎", "山田");
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // インスタンスのデータを後から変えられない
+    $fullName = createFullName("太郎", "山田");
+    ```
 
 #### ▼ インスタンスを交換できる
 
 インスタンスは異なるが、どちらを使用しても同じ結果を得られるように実装する必要がある。
 
-```tsx
-const fullName1 = createFullName("太郎", "山田");
-const fullName2 = createFullName("太郎", "山田");
+=== "Go"
 
-// getDisplayNameに渡すインスタンスを交換しても、display1とdisplay2は同じである
-const display1 = getDisplayName(fullName1);
-const display2 = getDisplayName(fullName2);
+    ```go title=".go"
+    fullName1, err := CreateFullName("太郎", "山田")
+    if err != nil {
+    	return err
+    }
+    fullName2, err := CreateFullName("太郎", "山田")
+    if err != nil {
+    	return err
+    }
 
-console.log(display1 === display2); // true
-```
+    // GetDisplayNameに渡すインスタンスを交換しても、display1とdisplay2は同じである
+    display1 := GetDisplayName(fullName1)
+    display2 := GetDisplayName(fullName2)
+
+    fmt.Println(display1 == display2) // true
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    const fullName1 = createFullName("太郎", "山田");
+    const fullName2 = createFullName("太郎", "山田");
+
+    // getDisplayNameに渡すインスタンスを交換しても、display1とdisplay2は同じである
+    const display1 = getDisplayName(fullName1);
+    const display2 = getDisplayName(fullName2);
+
+    console.log(display1 === display2); // true
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    $fullName1 = createFullName("太郎", "山田");
+    $fullName2 = createFullName("太郎", "山田");
+
+    // getDisplayNameに渡すインスタンスを交換しても、display1とdisplay2は同じである
+    $display1 = getDisplayName($fullName1);
+    $display2 = getDisplayName($fullName2);
+
+    var_export($display1 === $display2); // true
+    ```
 
 #### ▼ インスタンス間で等価性を検証できる
 
-```tsx
-// 値オブジェクト
-export type FullName = Readonly<{
-  // 状態
-  firstName: string;
-  lastName: string;
-}>;
+=== "Go"
 
-// 初期化
-export const createFullName = (
-  first: string,
-  last: string,
-): FullName | Error => {
-  // ビジネスロジックのバリデーション
-  if (!first || !last) return new Error("氏名は必須です");
-  return Object.freeze({firstName: first, lastName: last});
-};
+    ```go title=".go"
+    // 値オブジェクト
+    type FullName struct {
+    	// 状態
+    	firstName string
+    	lastName  string
+    }
 
-// 振る舞い
-export const getDisplayName = (fullName: FullName): string => {
-  return `${fullName.lastName} ${fullName.firstName}`;
-};
+    // 初期化
+    func CreateFullName(first string, last string) (FullName, error) {
+    	// ビジネスロジックのバリデーション
+    	if first == "" || last == "" {
+    		return FullName{}, errors.New("氏名は必須です")
+    	}
+    	return FullName{firstName: first, lastName: last}, nil
+    }
 
-// 等価性バリデーション
-export const equalsFullName = (a: FullName, b: FullName): boolean => {
-  return a.firstName === b.firstName && a.lastName === b.lastName;
-};
-```
+    // 振る舞い
+    func GetDisplayName(fullName FullName) string {
+    	return fullName.lastName + " " + fullName.firstName
+    }
 
-```tsx
-const fullName1 = createFullName("太郎", "山田");
-const fullName2 = createFullName("太郎", "山田");
+    // 等価性バリデーション
+    func EqualsFullName(a FullName, b FullName) bool {
+    	return a.firstName == b.firstName && a.lastName == b.lastName
+    }
+    ```
 
-console.log(equalsFullName(fullName1, fullName2)); // true
-```
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 値オブジェクト
+    export type FullName = Readonly<{
+      // 状態
+      firstName: string;
+      lastName: string;
+    }>;
+
+    // 初期化
+    export const createFullName = (
+      first: string,
+      last: string,
+    ): FullName | Error => {
+      // ビジネスロジックのバリデーション
+      if (!first || !last) return new Error("氏名は必須です");
+      return Object.freeze({firstName: first, lastName: last});
+    };
+
+    // 振る舞い
+    export const getDisplayName = (fullName: FullName): string => {
+      return `${fullName.lastName} ${fullName.firstName}`;
+    };
+
+    // 等価性バリデーション
+    export const equalsFullName = (a: FullName, b: FullName): boolean => {
+      return a.firstName === b.firstName && a.lastName === b.lastName;
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 値オブジェクト
+    final readonly class FullName
+    {
+        public function __construct(
+            // 状態
+            public string $firstName,
+            public string $lastName,
+        ) {
+        }
+    }
+
+    // 初期化
+    function createFullName(string $first, string $last): FullName
+    {
+        // ビジネスロジックのバリデーション
+        if ($first === "" || $last === "") {
+            throw new InvalidArgumentException("氏名は必須です");
+        }
+        return new FullName(firstName: $first, lastName: $last);
+    }
+
+    // 振る舞い
+    function getDisplayName(FullName $fullName): string
+    {
+        return "{$fullName->lastName} {$fullName->firstName}";
+    }
+
+    // 等価性バリデーション
+    function equalsFullName(FullName $a, FullName $b): bool
+    {
+        return $a->firstName === $b->firstName && $a->lastName === $b->lastName;
+    }
+    ```
+
+===! "Go"
+
+    ```go title=".go"
+    fullName1, err := CreateFullName("太郎", "山田")
+    if err != nil {
+    	return err
+    }
+    fullName2, err := CreateFullName("太郎", "山田")
+    if err != nil {
+    	return err
+    }
+
+    fmt.Println(EqualsFullName(fullName1, fullName2)) // true
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    const fullName1 = createFullName("太郎", "山田");
+    const fullName2 = createFullName("太郎", "山田");
+
+    console.log(equalsFullName(fullName1, fullName2)); // true
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    $fullName1 = createFullName("太郎", "山田");
+    $fullName2 = createFullName("太郎", "山田");
+
+    var_export(equalsFullName($fullName1, $fullName2)); // true
+    ```
 
 <br>
 
@@ -228,20 +535,63 @@ console.log(equalsFullName(fullName1, fullName2)); // true
 
 氏名をプリミティブにする場合は次のとおりになる。
 
-```tsx
-// 状態
-const firstName = "太郎";
-const lastName = "山田";
+=== "Go"
 
-// 振る舞い
-function getDisplayName(firstName: string, lastName: string): string {
-  return `${lastName} ${firstName}`;
-}
-```
+    ```go title=".go"
+    // 状態
+    const firstName = "太郎"
+    const lastName = "山田"
 
-```tsx
-console.log(getDisplayName(firstName, lastName)); // 山田 太郎
-```
+    // 振る舞い
+    func getDisplayName(firstName string, lastName string) string {
+    	return lastName + " " + firstName
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 状態
+    const firstName = "太郎";
+    const lastName = "山田";
+
+    // 振る舞い
+    function getDisplayName(firstName: string, lastName: string): string {
+      return `${lastName} ${firstName}`;
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 状態
+    $firstName = "太郎";
+    $lastName = "山田";
+
+    // 振る舞い
+    function getDisplayName(string $firstName, string $lastName): string
+    {
+        return "{$lastName} {$firstName}";
+    }
+    ```
+
+===! "Go"
+
+    ```go title=".go"
+    fmt.Println(getDisplayName(firstName, lastName)) // 山田 太郎
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    console.log(getDisplayName(firstName, lastName)); // 山田 太郎
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    echo getDisplayName($firstName, $lastName) . PHP_EOL; // 山田 太郎
+    ```
 
 <br>
 
@@ -256,34 +606,103 @@ console.log(getDisplayName(firstName, lastName)); // 山田 太郎
 - 氏名を値オブジェクトとして扱うと、ドメインオブジェクトのもつデータに意味づけができる。
 - 値オブジェクトをプログラミング上のデータ型として扱えば、getDisplayName 関数のような苗字や名前に関する処理では、これらのデータのみを扱うように強制できる
 
-```tsx
-// 値オブジェクト
-export type FullName = Readonly<{
-  // 状態
-  firstName: string;
-  lastName: string;
-}>;
+=== "Go"
 
-// 初期化
-export const createFullName = (
-  first: string,
-  last: string,
-): FullName | Error => {
-  // ビジネスロジックのバリデーション
-  if (!first || !last) return new Error("氏名は必須です");
-  return Object.freeze({firstName: first, lastName: last});
-};
+    ```go title=".go"
+    // 値オブジェクト
+    type FullName struct {
+    	// 状態
+    	firstName string
+    	lastName  string
+    }
 
-// 等価性バリデーション
-export const equalsFullName = (a: FullName, b: FullName): boolean => {
-  return a.firstName === b.firstName && a.lastName === b.lastName;
-};
+    // 初期化
+    func CreateFullName(first string, last string) (FullName, error) {
+    	// ビジネスロジックのバリデーション
+    	if first == "" || last == "" {
+    		return FullName{}, errors.New("氏名は必須です")
+    	}
+    	return FullName{firstName: first, lastName: last}, nil
+    }
 
-// 振る舞い
-export const getDisplayName = (fullName: FullName): string => {
-  return `${fullName.lastName} ${fullName.firstName}`;
-};
-```
+    // 等価性バリデーション
+    func EqualsFullName(a FullName, b FullName) bool {
+    	return a.firstName == b.firstName && a.lastName == b.lastName
+    }
+
+    // 振る舞い
+    func GetDisplayName(fullName FullName) string {
+    	return fullName.lastName + " " + fullName.firstName
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 値オブジェクト
+    export type FullName = Readonly<{
+      // 状態
+      firstName: string;
+      lastName: string;
+    }>;
+
+    // 初期化
+    export const createFullName = (
+      first: string,
+      last: string,
+    ): FullName | Error => {
+      // ビジネスロジックのバリデーション
+      if (!first || !last) return new Error("氏名は必須です");
+      return Object.freeze({firstName: first, lastName: last});
+    };
+
+    // 等価性バリデーション
+    export const equalsFullName = (a: FullName, b: FullName): boolean => {
+      return a.firstName === b.firstName && a.lastName === b.lastName;
+    };
+
+    // 振る舞い
+    export const getDisplayName = (fullName: FullName): string => {
+      return `${fullName.lastName} ${fullName.firstName}`;
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 値オブジェクト
+    final readonly class FullName
+    {
+        public function __construct(
+            // 状態
+            public string $firstName,
+            public string $lastName,
+        ) {
+        }
+    }
+
+    // 初期化
+    function createFullName(string $first, string $last): FullName
+    {
+        // ビジネスロジックのバリデーション
+        if ($first === "" || $last === "") {
+            throw new InvalidArgumentException("氏名は必須です");
+        }
+        return new FullName(firstName: $first, lastName: $last);
+    }
+
+    // 等価性バリデーション
+    function equalsFullName(FullName $a, FullName $b): bool
+    {
+        return $a->firstName === $b->firstName && $a->lastName === $b->lastName;
+    }
+
+    // 振る舞い
+    function getDisplayName(FullName $fullName): string
+    {
+        return "{$fullName->lastName} {$fullName->firstName}";
+    }
+    ```
 
 <br>
 

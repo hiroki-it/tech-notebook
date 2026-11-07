@@ -42,22 +42,83 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 識別子にはドメインルールを持たせないほうがよいため、ドメインルール上の識別子（例：書籍の ISBN）はエンティティの識別子にしないほうがいい。
 
-```typescript
-export type UserId = string;
+=== "Go"
 
-export type User = {
-  id: UserId;
-  name: string;
-  email: string;
-};
-```
+    ```go title=".go"
+    type UserId string
 
-```typescript
-const createUser = (id: UserId, name: string, email: string): User | Error => {
-  if (!id || !email) return new Error("IDとメールは必須です");
-  return Object.freeze({id, name, email});
-};
-```
+    type User struct {
+    	Id    UserId
+    	Name  string
+    	Email string
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    export type UserId = string;
+
+    export type User = {
+      id: UserId;
+      name: string;
+      email: string;
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    final readonly class UserId
+    {
+        public function __construct(
+            public string $value,
+        ) {
+        }
+    }
+
+    final readonly class User
+    {
+        public function __construct(
+            public UserId $id,
+            public string $name,
+            public string $email,
+        ) {
+        }
+    }
+    ```
+
+===! "Go"
+
+    ```go title=".go"
+    func createUser(id UserId, name string, email string) (User, error) {
+    	if id == "" || email == "" {
+    		return User{}, errors.New("IDとメールは必須です")
+    	}
+    	return User{Id: id, Name: name, Email: email}, nil
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    const createUser = (id: UserId, name: string, email: string): User | Error => {
+      if (!id || !email) return new Error("IDとメールは必須です");
+      return Object.freeze({id, name, email});
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    function createUser(UserId $id, string $name, string $email): User
+    {
+        if ($id->value === "" || $email === "") {
+            throw new InvalidArgumentException("IDとメールは必須です");
+        }
+        return new User(id: $id, name: $name, email: $email);
+    }
+    ```
 
 <br>
 
@@ -67,21 +128,76 @@ const createUser = (id: UserId, name: string, email: string): User | Error => {
 
 「〇はすでに存在しています」のエラーで役立つ。
 
-```typescript
-export type UserId = string;
+=== "Go"
 
-export type User = {
-  id: UserId;
-  name: string;
-  email: string;
-};
-```
+    ```go title=".go"
+    type UserId string
 
-```typescript
-export const equalsUser = (a: User, b: User): boolean => {
-  return a.id === b.id;
-};
-```
+    type User struct {
+    	Id    UserId
+    	Name  string
+    	Email string
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    export type UserId = string;
+
+    export type User = {
+      id: UserId;
+      name: string;
+      email: string;
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    final readonly class UserId
+    {
+        public function __construct(
+            public string $value,
+        ) {
+        }
+    }
+
+    final readonly class User
+    {
+        public function __construct(
+            public UserId $id,
+            public string $name,
+            public string $email,
+        ) {
+        }
+    }
+    ```
+
+===! "Go"
+
+    ```go title=".go"
+    func EqualsUser(a User, b User) bool {
+    	return a.Id == b.Id
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    export const equalsUser = (a: User, b: User): boolean => {
+      return a.id === b.id;
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    function equalsUser(User $a, User $b): bool
+    {
+        return $a->id->value === $b->id->value;
+    }
+    ```
 
 <br>
 
@@ -89,22 +205,80 @@ export const equalsUser = (a: User, b: User): boolean => {
 
 処理のなかで状態が更新されても ID は変わらず、オブジェクトとしての等価性は保たれる。
 
-```typescript
-export type UserId = string;
+=== "Go"
 
-export type User = {
-  id: UserId;
-  name: string;
-  email: string;
-};
-```
+    ```go title=".go"
+    type UserId string
 
-```typescript
-// 処理の途中で状態を変更できる
-export const changeUserName = (user: User, newName: string): User => {
-  return Object.freeze({...user, name: newName});
-};
-```
+    type User struct {
+    	Id    UserId
+    	Name  string
+    	Email string
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    export type UserId = string;
+
+    export type User = {
+      id: UserId;
+      name: string;
+      email: string;
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    final readonly class UserId
+    {
+        public function __construct(
+            public string $value,
+        ) {
+        }
+    }
+
+    final readonly class User
+    {
+        public function __construct(
+            public UserId $id,
+            public string $name,
+            public string $email,
+        ) {
+        }
+    }
+    ```
+
+===! "Go"
+
+    ```go title=".go"
+    // 処理の途中で状態を変更できる
+    func ChangeUserName(user User, newName string) User {
+    	user.Name = newName
+    	return user
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 処理の途中で状態を変更できる
+    export const changeUserName = (user: User, newName: string): User => {
+      return Object.freeze({...user, name: newName});
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 処理の途中で状態を変更できる
+    function changeUserName(User $user, string $newName): User
+    {
+        return new User(id: $user->id, name: $newName, email: $user->email);
+    }
+    ```
 
 <br>
 
@@ -112,32 +286,115 @@ export const changeUserName = (user: User, newName: string): User => {
 
 作成から削除までのライフサイクルがある。
 
-```typescript
-export type UserId = string;
+=== "Go"
 
-export type User = {
-  id: UserId;
-  name: string;
-  email: string;
-};
-```
+    ```go title=".go"
+    type UserId string
 
-```typescript
-// 削除
-export const createUser = (
-  id: UserId,
-  name: string,
-  email: string,
-): User | Error => {
-  if (!id || !name || !email) return new Error("全ての値は必須です");
-  return Object.freeze({id, name, email});
-};
+    type User struct {
+    	Id    UserId
+    	Name  string
+    	Email string
+    }
+    ```
 
-// 作成
-export const deleteUser = (id: UserId): boolean => {
-  return db.delete(id);
-};
-```
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    export type UserId = string;
+
+    export type User = {
+      id: UserId;
+      name: string;
+      email: string;
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    final readonly class UserId
+    {
+        public function __construct(
+            public string $value,
+        ) {
+        }
+    }
+
+    final readonly class User
+    {
+        public function __construct(
+            public UserId $id,
+            public string $name,
+            public string $email,
+        ) {
+        }
+    }
+    ```
+
+===! "Go"
+
+    ```go title=".go"
+    // 削除
+    func CreateUser(
+    	id UserId,
+    	name string,
+    	email string,
+    ) (User, error) {
+    	if id == "" || name == "" || email == "" {
+    		return User{}, errors.New("全ての値は必須です")
+    	}
+    	return User{Id: id, Name: name, Email: email}, nil
+    }
+
+    // 作成
+    func DeleteUser(id UserId) bool {
+    	return db.Delete(id)
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 削除
+    export const createUser = (
+      id: UserId,
+      name: string,
+      email: string,
+    ): User | Error => {
+      if (!id || !name || !email) return new Error("全ての値は必須です");
+      return Object.freeze({id, name, email});
+    };
+
+    // 作成
+    export const deleteUser = (id: UserId): boolean => {
+      return db.delete(id);
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 削除
+    function createUser(
+        UserId $id,
+        string $name,
+        string $email,
+    ): User {
+        if ($id->value === "" || $name === "" || $email === "") {
+            throw new InvalidArgumentException("全ての値は必須です");
+        }
+        return new User(id: $id, name: $name, email: $email);
+    }
+
+    // 作成
+    function deleteUser(UserId $id): bool
+    {
+        global $db;
+
+        return $db->delete($id);
+    }
+    ```
 
 <br>
 

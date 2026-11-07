@@ -65,74 +65,270 @@ description: 21章＠ドメイン駆動設計実践入門の知見を記録し�
   </tbody>
 </table>
 
-```typescript
-// 解説を補足するために長谷川で追加
+=== "Go"
 
-type Review = {
-  reviewId: string;
-  bookId: string;
-  rating: number;
-  comment: string;
-};
+    ```go title=".go"
+    // 解説を補足するために長谷川で追加
 
-// ステートソーシングに基づいてモデリング
-const review: Review = {
-  reviewId: "REV001",
-  bookId: "B001",
-  rating: 5,
-  comment:
-    "実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします",
-};
-```
-
-```typescript
-// 解説を補足するために長谷川で追加
-
-type ReviewEvent =
-  | {
-      type: "ReviewCreated";
-      payload: {
-        reviewId: string;
-        bookId: string;
-        rating: number;
-        comment: string;
-      };
+    type Review struct {
+    	ReviewID string
+    	BookID   string
+    	Rating   int
+    	Comment  string
     }
-  | {type: "ReviewCommentEdited"; payload: {comment: string}}
-  | {type: "ReviewRatingChanged"; payload: {rating: number}};
 
-// イベントソーシングに基づいてモデリング
-const reviewEvents: ReviewEvent[] = [
-  {
-    type: "ReviewCreated",
-    payload: {
+    // ステートソーシングに基づいてモデリング
+    var review = Review{
+    	ReviewID: "REV001",
+    	BookID:   "B001",
+    	Rating:   5,
+    	Comment:  "実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします",
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 解説を補足するために長谷川で追加
+
+    type Review = {
+      reviewId: string;
+      bookId: string;
+      rating: number;
+      comment: string;
+    };
+
+    // ステートソーシングに基づいてモデリング
+    const review: Review = {
       reviewId: "REV001",
       bookId: "B001",
-      rating: 4,
-      comment: "実践的な内容で良かったです",
-    },
-  },
-  {
-    type: "ReviewCommentEdited",
-    payload: {
-      comment: "実践的な内容で良かったです。ただし初心者には少し難しいかも",
-    },
-  },
-  {
-    type: "ReviewCommentEdited",
-    payload: {
+      rating: 5,
       comment:
         "実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします",
-    },
-  },
-  {
-    type: "ReviewRatingChanged",
-    payload: {
-      rating: 5,
-    },
-  },
-];
-```
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 解説を補足するために長谷川で追加
+
+    final class Review
+    {
+        public function __construct(
+            public string $reviewId,
+            public string $bookId,
+            public int $rating,
+            public string $comment,
+        ) {
+        }
+    }
+
+    // ステートソーシングに基づいてモデリング
+    $review = new Review(
+        reviewId: "REV001",
+        bookId: "B001",
+        rating: 5,
+        comment: "実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします",
+    );
+    ```
+
+===! "Go"
+
+    ```go title=".go"
+    // 解説を補足するために長谷川で追加
+
+    type ReviewEvent interface {
+    	Type() string
+    }
+
+    type ReviewCreatedPayload struct {
+    	ReviewID string
+    	BookID   string
+    	Rating   int
+    	Comment  string
+    }
+
+    type ReviewCreated struct {
+    	Payload ReviewCreatedPayload
+    }
+
+    func (e ReviewCreated) Type() string { return "ReviewCreated" }
+
+    type ReviewCommentEditedPayload struct {
+    	Comment string
+    }
+
+    type ReviewCommentEdited struct {
+    	Payload ReviewCommentEditedPayload
+    }
+
+    func (e ReviewCommentEdited) Type() string { return "ReviewCommentEdited" }
+
+    type ReviewRatingChangedPayload struct {
+    	Rating int
+    }
+
+    type ReviewRatingChanged struct {
+    	Payload ReviewRatingChangedPayload
+    }
+
+    func (e ReviewRatingChanged) Type() string { return "ReviewRatingChanged" }
+
+    // イベントソーシングに基づいてモデリング
+    var reviewEvents = []ReviewEvent{
+    	ReviewCreated{
+    		Payload: ReviewCreatedPayload{
+    			ReviewID: "REV001",
+    			BookID:   "B001",
+    			Rating:   4,
+    			Comment:  "実践的な内容で良かったです",
+    		},
+    	},
+    	ReviewCommentEdited{
+    		Payload: ReviewCommentEditedPayload{
+    			Comment: "実践的な内容で良かったです。ただし初心者には少し難しいかも",
+    		},
+    	},
+    	ReviewCommentEdited{
+    		Payload: ReviewCommentEditedPayload{
+    			Comment: "実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします",
+    		},
+    	},
+    	ReviewRatingChanged{
+    		Payload: ReviewRatingChangedPayload{
+    			Rating: 5,
+    		},
+    	},
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 解説を補足するために長谷川で追加
+
+    type ReviewEvent =
+      | {
+          type: "ReviewCreated";
+          payload: {
+            reviewId: string;
+            bookId: string;
+            rating: number;
+            comment: string;
+          };
+        }
+      | {type: "ReviewCommentEdited"; payload: {comment: string}}
+      | {type: "ReviewRatingChanged"; payload: {rating: number}};
+
+    // イベントソーシングに基づいてモデリング
+    const reviewEvents: ReviewEvent[] = [
+      {
+        type: "ReviewCreated",
+        payload: {
+          reviewId: "REV001",
+          bookId: "B001",
+          rating: 4,
+          comment: "実践的な内容で良かったです",
+        },
+      },
+      {
+        type: "ReviewCommentEdited",
+        payload: {
+          comment: "実践的な内容で良かったです。ただし初心者には少し難しいかも",
+        },
+      },
+      {
+        type: "ReviewCommentEdited",
+        payload: {
+          comment:
+            "実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします",
+        },
+      },
+      {
+        type: "ReviewRatingChanged",
+        payload: {
+          rating: 5,
+        },
+      },
+    ];
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 解説を補足するために長谷川で追加
+
+    interface ReviewEvent
+    {
+        public function type(): string;
+    }
+
+    final class ReviewCreated implements ReviewEvent
+    {
+        /**
+         * @param array{reviewId: string, bookId: string, rating: int, comment: string} $payload
+         */
+        public function __construct(public array $payload)
+        {
+        }
+
+        public function type(): string
+        {
+            return "ReviewCreated";
+        }
+    }
+
+    final class ReviewCommentEdited implements ReviewEvent
+    {
+        /**
+         * @param array{comment: string} $payload
+         */
+        public function __construct(public array $payload)
+        {
+        }
+
+        public function type(): string
+        {
+            return "ReviewCommentEdited";
+        }
+    }
+
+    final class ReviewRatingChanged implements ReviewEvent
+    {
+        /**
+         * @param array{rating: int} $payload
+         */
+        public function __construct(public array $payload)
+        {
+        }
+
+        public function type(): string
+        {
+            return "ReviewRatingChanged";
+        }
+    }
+
+    // イベントソーシングに基づいてモデリング
+    /** @var ReviewEvent[] $reviewEvents */
+    $reviewEvents = [
+        new ReviewCreated([
+            "reviewId" => "REV001",
+            "bookId" => "B001",
+            "rating" => 4,
+            "comment" => "実践的な内容で良かったです",
+        ]),
+        new ReviewCommentEdited([
+            "comment" => "実践的な内容で良かったです。ただし初心者には少し難しいかも",
+        ]),
+        new ReviewCommentEdited([
+            "comment" => "実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします",
+        ]),
+        new ReviewRatingChanged([
+            "rating" => 5,
+        ]),
+    ];
+    ```
 
 ### 21-2-2 レビューの例（現在の状態 vs イベントの記録）
 
@@ -254,55 +450,178 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 そのため、オブジェクトの最新の状態を得るにはその履歴を順番にたどる必要があり、履歴数が多くなるほど性能問題に影響する。
 
-```typescript
-// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+=== "Go"
 
-async function getReview(reviewId: ReviewId): Promise<ReviewState> {
-  // オブジェクトの最新の状態を得るには、そのReview集約に紐づく過去の履歴をすべてたどる必要がある
-  const events = await eventStore.findByAggregateId(reviewId);
+    ```go title=".go"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
-  let state = ReviewState.initial();
+    func getReview(ctx context.Context, reviewID ReviewID) (ReviewState, error) {
+    	// オブジェクトの最新の状態を得るには、そのReview集約に紐づく過去の履歴をすべてたどる必要がある
+    	events, err := eventStore.FindByAggregateID(ctx, reviewID)
+    	if err != nil {
+    		return ReviewState{}, err
+    	}
 
-  // 取得したイベントを古い順に適用してオブジェクトの最新の状態を取得する必要があり、イベント種別が増えるほどこの分岐も増えていく
-  for (const event of events) {
-    switch (event.type) {
-      case "ReviewCreated":
-        state = state.create(event.payload);
-        break;
-      case "ReviewCommentEdited":
-        state = state.editComment(event.payload.comment);
-        break;
-      case "ReviewRatingChanged":
-        state = state.changeRating(event.payload.rating);
-        break;
+    	state := InitialReviewState()
+
+    	// 取得したイベントを古い順に適用してオブジェクトの最新の状態を取得する必要があり、イベント種別が増えるほどこの分岐も増えていく
+    	for _, event := range events {
+    		switch e := event.(type) {
+    		case ReviewCreated:
+    			state = state.Create(e.Payload)
+    		case ReviewCommentEdited:
+    			state = state.EditComment(e.Payload.Comment)
+    		case ReviewRatingChanged:
+    			state = state.ChangeRating(e.Payload.Rating)
+    		}
+    	}
+
+    	return state, nil
     }
-  }
+    ```
 
-  return state;
-}
-```
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+    async function getReview(reviewId: ReviewId): Promise<ReviewState> {
+      // オブジェクトの最新の状態を得るには、そのReview集約に紐づく過去の履歴をすべてたどる必要がある
+      const events = await eventStore.findByAggregateId(reviewId);
+
+      let state = ReviewState.initial();
+
+      // 取得したイベントを古い順に適用してオブジェクトの最新の状態を取得する必要があり、イベント種別が増えるほどこの分岐も増えていく
+      for (const event of events) {
+        switch (event.type) {
+          case "ReviewCreated":
+            state = state.create(event.payload);
+            break;
+          case "ReviewCommentEdited":
+            state = state.editComment(event.payload.comment);
+            break;
+          case "ReviewRatingChanged":
+            state = state.changeRating(event.payload.rating);
+            break;
+        }
+      }
+
+      return state;
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+    function getReview(EventStore $eventStore, ReviewId $reviewId): ReviewState
+    {
+        // オブジェクトの最新の状態を得るには、そのReview集約に紐づく過去の履歴をすべてたどる必要がある
+        $events = $eventStore->findByAggregateId($reviewId);
+
+        $state = ReviewState::initial();
+
+        // 取得したイベントを古い順に適用してオブジェクトの最新の状態を取得する必要があり、イベント種別が増えるほどこの分岐も増えていく
+        foreach ($events as $event) {
+            switch ($event->type()) {
+                case "ReviewCreated":
+                    $state = $state->create($event->payload);
+                    break;
+                case "ReviewCommentEdited":
+                    $state = $state->editComment($event->payload["comment"]);
+                    break;
+                case "ReviewRatingChanged":
+                    $state = $state->changeRating($event->payload["rating"]);
+                    break;
+            }
+        }
+
+        return $state;
+    }
+    ```
 
 ### 21-4-2 クエリの複雑性とパフォーマンスの問題
 
 イベントソーシングでは、異なる集約を横断する処理では負荷が大きくなる。
 
-```typescript
-// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+=== "Go"
 
-async function findTop3RecommendedBooks(bookId: BookId): Promise<string[]> {
-  const reviewIds = await reviewLocator.findByBookId(bookId);
+    ```go title=".go"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
-  // 対象Bookに紐づく全Reviewをたどってそれぞれのイベントを読み出し、各オブジェクトの最新の状態を取得しているため、異なる集約を横断する処理ではコストが大きくなりやすい
-  const reviews = await Promise.all(
-    reviewIds.map(async (reviewId) => {
-      const events = await eventStore.findByAggregateId(reviewId);
-      return replay(events);
-    }),
-  );
+    func findTop3RecommendedBooks(ctx context.Context, bookID BookID) ([]string, error) {
+    	reviewIDs, err := reviewLocator.FindByBookID(ctx, bookID)
+    	if err != nil {
+    		return nil, err
+    	}
 
-  return aggregateRecommendedBooks(reviews).slice(0, 3);
-}
-```
+    	// 対象Bookに紐づく全Reviewをたどってそれぞれのイベントを読み出し、各オブジェクトの最新の状態を取得しているため、異なる集約を横断する処理ではコストが大きくなりやすい
+    	reviews := make([]ReviewState, 0, len(reviewIDs))
+    	for _, reviewID := range reviewIDs {
+    		events, err := eventStore.FindByAggregateID(ctx, reviewID)
+    		if err != nil {
+    			return nil, err
+    		}
+    		reviews = append(reviews, replay(events))
+    	}
+
+    	recommendedBooks := aggregateRecommendedBooks(reviews)
+    	if len(recommendedBooks) > 3 {
+    		recommendedBooks = recommendedBooks[:3]
+    	}
+
+    	return recommendedBooks, nil
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+    async function findTop3RecommendedBooks(bookId: BookId): Promise<string[]> {
+      const reviewIds = await reviewLocator.findByBookId(bookId);
+
+      // 対象Bookに紐づく全Reviewをたどってそれぞれのイベントを読み出し、各オブジェクトの最新の状態を取得しているため、異なる集約を横断する処理ではコストが大きくなりやすい
+      const reviews = await Promise.all(
+        reviewIds.map(async (reviewId) => {
+          const events = await eventStore.findByAggregateId(reviewId);
+          return replay(events);
+        }),
+      );
+
+      return aggregateRecommendedBooks(reviews).slice(0, 3);
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+    /**
+     * @return string[]
+     */
+    function findTop3RecommendedBooks(
+        ReviewLocator $reviewLocator,
+        EventStore $eventStore,
+        BookId $bookId,
+    ): array {
+        $reviewIds = $reviewLocator->findByBookId($bookId);
+
+        // 対象Bookに紐づく全Reviewをたどってそれぞれのイベントを読み出し、各オブジェクトの最新の状態を取得しているため、異なる集約を横断する処理ではコストが大きくなりやすい
+        $reviews = array_map(
+            function (ReviewId $reviewId) use ($eventStore): ReviewState {
+                $events = $eventStore->findByAggregateId($reviewId);
+                return replay($events);
+            },
+            $reviewIds,
+        );
+
+        return array_slice(aggregateRecommendedBooks($reviews), 0, 3);
+    }
+    ```
 
 ### 21-4-3 開発チームの学習コスト
 
@@ -341,76 +660,276 @@ async function findTop3RecommendedBooks(bookId: BookId): Promise<string[]> {
 
 任意時点の状態再現や後からの再分析が必要になった場合は、イベントソーシングの導入を検討する。
 
-```typescript
-// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+=== "Go"
 
-type Review = {
-  reviewId: string;
-  bookId: string;
-  rating: number;
-  comment: string;
-};
+    ```go title=".go"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
-// まずはステートソーシングでReview集約を設計する
-const review: Review = {
-  reviewId: "REV001",
-  bookId: "B001",
-  rating: 5,
-  comment:
-    "実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします",
-};
-```
-
-```typescript
-// イベントソーシングを導入したくなったら、Review集約をイベント列で表現する
-type ReviewEvent =
-  | {
-      type: "ReviewCreated";
-      payload: {
-        reviewId: string;
-        bookId: string;
-        rating: number;
-        comment: string;
-      };
+    type Review struct {
+    	ReviewID string
+    	BookID   string
+    	Rating   int
+    	Comment  string
     }
-  | {type: "ReviewCommentEdited"; payload: {comment: string}}
-  | {type: "ReviewRatingChanged"; payload: {rating: number}};
 
-const reviewEvents: ReviewEvent[] = [
-  {
-    // 初回作成時点の状態をイベントとして残す
-    type: "ReviewCreated",
-    payload: {
+    // まずはステートソーシングでReview集約を設計する
+    var review = Review{
+    	ReviewID: "REV001",
+    	BookID:   "B001",
+    	Rating:   5,
+    	Comment:  "実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします",
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+    type Review = {
+      reviewId: string;
+      bookId: string;
+      rating: number;
+      comment: string;
+    };
+
+    // まずはステートソーシングでReview集約を設計する
+    const review: Review = {
       reviewId: "REV001",
       bookId: "B001",
-      rating: 4,
-      comment: "実践的な内容で良かったです",
-    },
-  },
-  {
-    // コメント変更を上書きではなくイベントとして追加する
-    type: "ReviewCommentEdited",
-    payload: {
-      comment: "実践的な内容で良かったです。ただし初心者には少し難しいかも",
-    },
-  },
-  {
-    // さらにコメント変更をイベントとして追加する
-    type: "ReviewCommentEdited",
-    payload: {
+      rating: 5,
       comment:
         "実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします",
-    },
-  },
-  {
-    // 評価変更もイベントとして追加する
-    type: "ReviewRatingChanged",
-    payload: {
-      rating: 5,
-    },
-  },
-];
-```
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+    final class Review
+    {
+        public function __construct(
+            public string $reviewId,
+            public string $bookId,
+            public int $rating,
+            public string $comment,
+        ) {
+        }
+    }
+
+    // まずはステートソーシングでReview集約を設計する
+    $review = new Review(
+        reviewId: "REV001",
+        bookId: "B001",
+        rating: 5,
+        comment: "実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします",
+    );
+    ```
+
+===! "Go"
+
+    ```go title=".go"
+    // イベントソーシングを導入したくなったら、Review集約をイベント列で表現する
+    type ReviewEvent interface {
+    	Type() string
+    }
+
+    type ReviewCreatedPayload struct {
+    	ReviewID string
+    	BookID   string
+    	Rating   int
+    	Comment  string
+    }
+
+    type ReviewCreated struct {
+    	Payload ReviewCreatedPayload
+    }
+
+    func (e ReviewCreated) Type() string { return "ReviewCreated" }
+
+    type ReviewCommentEditedPayload struct {
+    	Comment string
+    }
+
+    type ReviewCommentEdited struct {
+    	Payload ReviewCommentEditedPayload
+    }
+
+    func (e ReviewCommentEdited) Type() string { return "ReviewCommentEdited" }
+
+    type ReviewRatingChangedPayload struct {
+    	Rating int
+    }
+
+    type ReviewRatingChanged struct {
+    	Payload ReviewRatingChangedPayload
+    }
+
+    func (e ReviewRatingChanged) Type() string { return "ReviewRatingChanged" }
+
+    var reviewEvents = []ReviewEvent{
+    	// 初回作成時点の状態をイベントとして残す
+    	ReviewCreated{
+    		Payload: ReviewCreatedPayload{
+    			ReviewID: "REV001",
+    			BookID:   "B001",
+    			Rating:   4,
+    			Comment:  "実践的な内容で良かったです",
+    		},
+    	},
+    	// コメント変更を上書きではなくイベントとして追加する
+    	ReviewCommentEdited{
+    		Payload: ReviewCommentEditedPayload{
+    			Comment: "実践的な内容で良かったです。ただし初心者には少し難しいかも",
+    		},
+    	},
+    	// さらにコメント変更をイベントとして追加する
+    	ReviewCommentEdited{
+    		Payload: ReviewCommentEditedPayload{
+    			Comment: "実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします",
+    		},
+    	},
+    	// 評価変更もイベントとして追加する
+    	ReviewRatingChanged{
+    		Payload: ReviewRatingChangedPayload{
+    			Rating: 5,
+    		},
+    	},
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // イベントソーシングを導入したくなったら、Review集約をイベント列で表現する
+    type ReviewEvent =
+      | {
+          type: "ReviewCreated";
+          payload: {
+            reviewId: string;
+            bookId: string;
+            rating: number;
+            comment: string;
+          };
+        }
+      | {type: "ReviewCommentEdited"; payload: {comment: string}}
+      | {type: "ReviewRatingChanged"; payload: {rating: number}};
+
+    const reviewEvents: ReviewEvent[] = [
+      {
+        // 初回作成時点の状態をイベントとして残す
+        type: "ReviewCreated",
+        payload: {
+          reviewId: "REV001",
+          bookId: "B001",
+          rating: 4,
+          comment: "実践的な内容で良かったです",
+        },
+      },
+      {
+        // コメント変更を上書きではなくイベントとして追加する
+        type: "ReviewCommentEdited",
+        payload: {
+          comment: "実践的な内容で良かったです。ただし初心者には少し難しいかも",
+        },
+      },
+      {
+        // さらにコメント変更をイベントとして追加する
+        type: "ReviewCommentEdited",
+        payload: {
+          comment:
+            "実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします",
+        },
+      },
+      {
+        // 評価変更もイベントとして追加する
+        type: "ReviewRatingChanged",
+        payload: {
+          rating: 5,
+        },
+      },
+    ];
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // イベントソーシングを導入したくなったら、Review集約をイベント列で表現する
+    interface ReviewEvent
+    {
+        public function type(): string;
+    }
+
+    final class ReviewCreated implements ReviewEvent
+    {
+        /**
+         * @param array{reviewId: string, bookId: string, rating: int, comment: string} $payload
+         */
+        public function __construct(public array $payload)
+        {
+        }
+
+        public function type(): string
+        {
+            return "ReviewCreated";
+        }
+    }
+
+    final class ReviewCommentEdited implements ReviewEvent
+    {
+        /**
+         * @param array{comment: string} $payload
+         */
+        public function __construct(public array $payload)
+        {
+        }
+
+        public function type(): string
+        {
+            return "ReviewCommentEdited";
+        }
+    }
+
+    final class ReviewRatingChanged implements ReviewEvent
+    {
+        /**
+         * @param array{rating: int} $payload
+         */
+        public function __construct(public array $payload)
+        {
+        }
+
+        public function type(): string
+        {
+            return "ReviewRatingChanged";
+        }
+    }
+
+    /** @var ReviewEvent[] $reviewEvents */
+    $reviewEvents = [
+        // 初回作成時点の状態をイベントとして残す
+        new ReviewCreated([
+            "reviewId" => "REV001",
+            "bookId" => "B001",
+            "rating" => 4,
+            "comment" => "実践的な内容で良かったです",
+        ]),
+        // コメント変更を上書きではなくイベントとして追加する
+        new ReviewCommentEdited([
+            "comment" => "実践的な内容で良かったです。ただし初心者には少し難しいかも",
+        ]),
+        // さらにコメント変更をイベントとして追加する
+        new ReviewCommentEdited([
+            "comment" => "実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします",
+        ]),
+        // 評価変更もイベントとして追加する
+        new ReviewRatingChanged([
+            "rating" => 5,
+        ]),
+    ];
+    ```
 
 ## 21-5 レビュー集約でのイベントソーシング適用
 
@@ -418,26 +937,87 @@ const reviewEvents: ReviewEvent[] = [
 
 蓄積されたイベント履歴から、後から定義した新しい観点や指標で状態を取得し分析できる。
 
-```typescript
-// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+=== "Go"
 
-// 新しい機能として、信頼性スコア関数を追加できる
-async function calculateTrustScoreAt(
-  reviewId: ReviewId,
-  at: Date,
-): Promise<number> {
-  const events = await eventStore.findUntil(reviewId, at);
-  const review = replay(events);
+    ```go title=".go"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
-  let score = 100;
+    // 新しい機能として、信頼性スコア関数を追加できる
+    func calculateTrustScoreAt(ctx context.Context, reviewID ReviewID, at time.Time) (int, error) {
+    	events, err := eventStore.FindUntil(ctx, reviewID, at)
+    	if err != nil {
+    		return 0, err
+    	}
+    	review := replay(events)
 
-  if (review.commentEditCount >= 3) score -= 20;
-  if (review.ratingChangeCount >= 2) score -= 30;
-  if (review.comment.length < 20) score -= 10;
+    	score := 100
 
-  return score;
-}
-```
+    	if review.CommentEditCount >= 3 {
+    		score -= 20
+    	}
+    	if review.RatingChangeCount >= 2 {
+    		score -= 30
+    	}
+    	if utf8.RuneCountInString(review.Comment) < 20 {
+    		score -= 10
+    	}
+
+    	return score, nil
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+    // 新しい機能として、信頼性スコア関数を追加できる
+    async function calculateTrustScoreAt(
+      reviewId: ReviewId,
+      at: Date,
+    ): Promise<number> {
+      const events = await eventStore.findUntil(reviewId, at);
+      const review = replay(events);
+
+      let score = 100;
+
+      if (review.commentEditCount >= 3) score -= 20;
+      if (review.ratingChangeCount >= 2) score -= 30;
+      if (review.comment.length < 20) score -= 10;
+
+      return score;
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+    // 新しい機能として、信頼性スコア関数を追加できる
+    function calculateTrustScoreAt(
+        EventStore $eventStore,
+        ReviewId $reviewId,
+        DateTimeImmutable $at,
+    ): int {
+        $events = $eventStore->findUntil($reviewId, $at);
+        $review = replay($events);
+
+        $score = 100;
+
+        if ($review->commentEditCount >= 3) {
+            $score -= 20;
+        }
+        if ($review->ratingChangeCount >= 2) {
+            $score -= 30;
+        }
+        if (mb_strlen($review->comment) < 20) {
+            $score -= 10;
+        }
+
+        return $score;
+    }
+    ```
 
 ### 21-5-2 変更の透明性と監査性の確保
 
@@ -551,23 +1131,82 @@ async function calculateTrustScoreAt(
 
 従来方式とのハイブリッドアプローチも有効である。
 
-```typescript
-// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+=== "Go"
 
-type AggregatePersistencePolicy = {
-  aggregate: string;
-  persistence: "state-based" | "event-sourcing";
-};
+    ```go title=".go"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
-// 同じシステム内で、集約ごとに保存方式を使い分ける
-const aggregatePolicies: AggregatePersistencePolicy[] = [
-  // Review集約は履歴の価値が高いためイベントソーシングを採用
-  {aggregate: "Review集約", persistence: "event-sourcing"},
+    type Persistence string
 
-  // Book集約は現在状態を扱えれば十分なためステートソーシングを採用
-  {aggregate: "Book集約", persistence: "state-based"},
-];
-```
+    const (
+    	StateBased    Persistence = "state-based"
+    	EventSourcing Persistence = "event-sourcing"
+    )
+
+    type AggregatePersistencePolicy struct {
+    	Aggregate   string
+    	Persistence Persistence
+    }
+
+    // 同じシステム内で、集約ごとに保存方式を使い分ける
+    var aggregatePolicies = []AggregatePersistencePolicy{
+    	// Review集約は履歴の価値が高いためイベントソーシングを採用
+    	{Aggregate: "Review集約", Persistence: EventSourcing},
+
+    	// Book集約は現在状態を扱えれば十分なためステートソーシングを採用
+    	{Aggregate: "Book集約", Persistence: StateBased},
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+    type AggregatePersistencePolicy = {
+      aggregate: string;
+      persistence: "state-based" | "event-sourcing";
+    };
+
+    // 同じシステム内で、集約ごとに保存方式を使い分ける
+    const aggregatePolicies: AggregatePersistencePolicy[] = [
+      // Review集約は履歴の価値が高いためイベントソーシングを採用
+      {aggregate: "Review集約", persistence: "event-sourcing"},
+
+      // Book集約は現在状態を扱えれば十分なためステートソーシングを採用
+      {aggregate: "Book集約", persistence: "state-based"},
+    ];
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+    enum Persistence: string
+    {
+        case StateBased = "state-based";
+        case EventSourcing = "event-sourcing";
+    }
+
+    final class AggregatePersistencePolicy
+    {
+        public function __construct(
+            public string $aggregate,
+            public Persistence $persistence,
+        ) {
+        }
+    }
+
+    // 同じシステム内で、集約ごとに保存方式を使い分ける
+    $aggregatePolicies = [
+        // Review集約は履歴の価値が高いためイベントソーシングを採用
+        new AggregatePersistencePolicy(aggregate: "Review集約", persistence: Persistence::EventSourcing),
+
+        // Book集約は現在状態を扱えれば十分なためステートソーシングを採用
+        new AggregatePersistencePolicy(aggregate: "Book集約", persistence: Persistence::StateBased),
+    ];
+    ```
 
 ## 21-7 パフォーマンスとスケーラビリティ
 
@@ -622,16 +1261,45 @@ const aggregatePolicies: AggregatePersistencePolicy[] = [
 
 イベントソーシングの課題によって性能に問題が起こった後から、スナップショットの導入を検討する。
 
-```typescript
-// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+=== "Go"
 
-function needsSnapshot(metrics: {
-  replayLatencyMs: number;
-  eventCount: number;
-}): boolean {
-  return metrics.replayLatencyMs > 200 || metrics.eventCount > 1000;
-}
-```
+    ```go title=".go"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+    func needsSnapshot(metrics struct {
+    	ReplayLatencyMs int
+    	EventCount      int
+    }) bool {
+    	return metrics.ReplayLatencyMs > 200 || metrics.EventCount > 1000
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+    function needsSnapshot(metrics: {
+      replayLatencyMs: number;
+      eventCount: number;
+    }): boolean {
+      return metrics.replayLatencyMs > 200 || metrics.eventCount > 1000;
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+    /**
+     * @param array{replayLatencyMs: int, eventCount: int} $metrics
+     */
+    function needsSnapshot(array $metrics): bool
+    {
+        return $metrics["replayLatencyMs"] > 200 || $metrics["eventCount"] > 1000;
+    }
+    ```
 
 ## 21-8 多様な状態導出とビジネス価値の創出
 
@@ -639,28 +1307,105 @@ function needsSnapshot(metrics: {
 
 イベント履歴だけでは、横断的な読み取り要求をうまく扱えない。
 
-```typescript
-// 現在の実装（ステートソーシング）
-export class BookRecommendationDomainService {
-  constructor(private reviewRepository: IReviewRepository) {}
+=== "Go"
 
-  private async getTrustworthyReviews(bookId: BookId): Promise<Review[]> {
-    // 特定の BookID に紐づくすべてのレビューを取得
-    const bookReviews = await this.reviewRepository.findAllByBookId(bookId);
+    ```go title=".go"
+    // 現在の実装（ステートソーシング）
+    type BookRecommendationDomainService struct {
+    	reviewRepository IReviewRepository
+    }
 
-    // 信頼性の閾値に基づいて信頼できるレビューのみをフィルタリング
-    return bookReviews.filter((review) => review.isTrustworthy());
-  }
+    func NewBookRecommendationDomainService(reviewRepository IReviewRepository) *BookRecommendationDomainService {
+    	return &BookRecommendationDomainService{reviewRepository: reviewRepository}
+    }
 
-  async calculateTopRecommendedBooks(
-    bookId: BookId,
-    maxCount: number = 3,
-  ): Promise<string[]> {
-    // 信頼できるレビューを取得してRecommendedBookを集計
-    // ...
-  }
-}
-```
+    func (s *BookRecommendationDomainService) getTrustworthyReviews(ctx context.Context, bookID BookID) ([]*Review, error) {
+    	// 特定の BookID に紐づくすべてのレビューを取得
+    	bookReviews, err := s.reviewRepository.FindAllByBookID(ctx, bookID)
+    	if err != nil {
+    		return nil, err
+    	}
+
+    	// 信頼性の閾値に基づいて信頼できるレビューのみをフィルタリング
+    	trustworthyReviews := make([]*Review, 0, len(bookReviews))
+    	for _, review := range bookReviews {
+    		if review.IsTrustworthy() {
+    			trustworthyReviews = append(trustworthyReviews, review)
+    		}
+    	}
+
+    	return trustworthyReviews, nil
+    }
+
+    func (s *BookRecommendationDomainService) CalculateTopRecommendedBooks(ctx context.Context, bookID BookID, maxCount int) ([]string, error) {
+    	if maxCount <= 0 {
+    		maxCount = 3
+    	}
+
+    	// 信頼できるレビューを取得してRecommendedBookを集計
+    	// ...
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 現在の実装（ステートソーシング）
+    export class BookRecommendationDomainService {
+      constructor(private reviewRepository: IReviewRepository) {}
+
+      private async getTrustworthyReviews(bookId: BookId): Promise<Review[]> {
+        // 特定の BookID に紐づくすべてのレビューを取得
+        const bookReviews = await this.reviewRepository.findAllByBookId(bookId);
+
+        // 信頼性の閾値に基づいて信頼できるレビューのみをフィルタリング
+        return bookReviews.filter((review) => review.isTrustworthy());
+      }
+
+      async calculateTopRecommendedBooks(
+        bookId: BookId,
+        maxCount: number = 3,
+      ): Promise<string[]> {
+        // 信頼できるレビューを取得してRecommendedBookを集計
+        // ...
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 現在の実装（ステートソーシング）
+    class BookRecommendationDomainService
+    {
+        public function __construct(private IReviewRepository $reviewRepository)
+        {
+        }
+
+        /**
+         * @return Review[]
+         */
+        private function getTrustworthyReviews(BookId $bookId): array
+        {
+            // 特定の BookID に紐づくすべてのレビューを取得
+            $bookReviews = $this->reviewRepository->findAllByBookId($bookId);
+
+            // 信頼性の閾値に基づいて信頼できるレビューのみをフィルタリング
+            return array_values(
+                array_filter($bookReviews, fn (Review $review) => $review->isTrustworthy()),
+            );
+        }
+
+        /**
+         * @return string[]
+         */
+        public function calculateTopRecommendedBooks(BookId $bookId, int $maxCount = 3): array
+        {
+            // 信頼できるレビューを取得してRecommendedBookを集計
+            // ...
+        }
+    }
+    ```
 
 ### 21-8-2 書き込みと読み取りの異なる要求
 
@@ -668,11 +1413,30 @@ export class BookRecommendationDomainService {
 
 このズレを解決するのがクエリモデルである。
 
-```typescript
-interface BookReviewsQueryModel {
-  // プロパティ
-}
-```
+=== "Go"
+
+    ```go title=".go"
+    type BookReviewsQueryModel struct {
+    	// プロパティ
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    interface BookReviewsQueryModel {
+      // プロパティ
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    final class BookReviewsQueryModel
+    {
+        // プロパティ
+    }
+    ```
 
 ### 21-8-3 CQRS
 
@@ -688,28 +1452,93 @@ CQRS は、書き込みと読み取りの責務を分離するパターンであ
 
 BookRecommendation を取得するためのクエリモデル設計例として、2 つの方法がある
 
-```typescript
-// 方法1: BookIDごとのレビューリストモデル
-interface BookReviewsQueryModel {
-  readonly bookId: string;
-  readonly reviews: readonly {
-    readonly reviewId: string;
-    readonly name: string;
-    readonly rating: number;
-    readonly comment: string;
-    readonly recommendedBooks: readonly string[];
-    readonly lastUpdated: Date;
-  }[];
-}
-```
+=== "Go"
 
-```typescript
-// 方法2: 事前集計されたRecommendedBookモデル
-interface BookRecommendationQueryModel {
-  readonly bookId: string;
-  readonly recommendedBooks: readonly string[];
-}
-```
+    ```go title=".go"
+    // 方法1: BookIDごとのレビューリストモデル
+    type BookReviewsQueryModel struct {
+    	BookID  string
+    	Reviews []struct {
+    		ReviewID         string
+    		Name             string
+    		Rating           int
+    		Comment          string
+    		RecommendedBooks []string
+    		LastUpdated      time.Time
+    	}
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 方法1: BookIDごとのレビューリストモデル
+    interface BookReviewsQueryModel {
+      readonly bookId: string;
+      readonly reviews: readonly {
+        readonly reviewId: string;
+        readonly name: string;
+        readonly rating: number;
+        readonly comment: string;
+        readonly recommendedBooks: readonly string[];
+        readonly lastUpdated: Date;
+      }[];
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 方法1: BookIDごとのレビューリストモデル
+    final class BookReviewsQueryModel
+    {
+        /**
+         * @param list<array{reviewId: string, name: string, rating: int, comment: string, recommendedBooks: list<string>, lastUpdated: DateTimeImmutable}> $reviews
+         */
+        public function __construct(
+            public readonly string $bookId,
+            public readonly array $reviews,
+        ) {
+        }
+    }
+    ```
+
+===! "Go"
+
+    ```go title=".go"
+    // 方法2: 事前集計されたRecommendedBookモデル
+    type BookRecommendationQueryModel struct {
+    	BookID           string
+    	RecommendedBooks []string
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 方法2: 事前集計されたRecommendedBookモデル
+    interface BookRecommendationQueryModel {
+      readonly bookId: string;
+      readonly recommendedBooks: readonly string[];
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 方法2: 事前集計されたRecommendedBookモデル
+    final class BookRecommendationQueryModel
+    {
+        /**
+         * @param list<string> $recommendedBooks
+         */
+        public function __construct(
+            public readonly string $bookId,
+            public readonly array $recommendedBooks,
+        ) {
+        }
+    }
+    ```
 
 ### 21-8-5 イベントからクエリモデルを構築する仕組み
 
@@ -732,34 +1561,102 @@ CQRS で使用できるデータストアは次のとおりである。
 
 CQRS では、コマンドサイドとクエリサイドの間に時間差が生じるため、結果整合性を採用する必要がある。
 
-```typescript
-// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+=== "Go"
 
-async function addReview(command: AddReviewCommand): Promise<void> {
-  // コマンドサイドではイベントストアにレビュー作成イベントを書き込む
-  await eventStore.append({
-    type: "ReviewCreated",
-    id: command.reviewId,
-    payload: {
-      bookId: command.bookId,
-      rating: command.rating,
-      comment: command.comment,
-    },
-  });
-}
+    ```go title=".go"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
-async function updateBookReviewsQueryModel(event: DomainEvent): Promise<void> {
-  // この更新はコマンド処理とは別タイミングで行われるため、この間はクエリモデルがまだ古い可能性がある
-  // ここでコマンドサイドとクエリサイドの間に結果整合性が生じる
-  // クエリサイドでは、後からイベントを受け取って読み取り用データを更新する
-  await bookReviewsQueryModelRepository.addReview({
-    bookId: event.payload.bookId,
-    reviewId: event.id,
-    rating: event.payload.rating,
-    comment: event.payload.comment,
-  });
-}
-```
+    func addReview(ctx context.Context, command AddReviewCommand) error {
+    	// コマンドサイドではイベントストアにレビュー作成イベントを書き込む
+    	return eventStore.Append(ctx, DomainEvent{
+    		Type: "ReviewCreated",
+    		ID:   command.ReviewID,
+    		Payload: DomainEventPayload{
+    			BookID:  command.BookID,
+    			Rating:  command.Rating,
+    			Comment: command.Comment,
+    		},
+    	})
+    }
+
+    func updateBookReviewsQueryModel(ctx context.Context, event DomainEvent) error {
+    	// この更新はコマンド処理とは別タイミングで行われるため、この間はクエリモデルがまだ古い可能性がある
+    	// ここでコマンドサイドとクエリサイドの間に結果整合性が生じる
+    	// クエリサイドでは、後からイベントを受け取って読み取り用データを更新する
+    	return bookReviewsQueryModelRepository.AddReview(ctx, AddReviewParams{
+    		BookID:   event.Payload.BookID,
+    		ReviewID: event.ID,
+    		Rating:   event.Payload.Rating,
+    		Comment:  event.Payload.Comment,
+    	})
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+    async function addReview(command: AddReviewCommand): Promise<void> {
+      // コマンドサイドではイベントストアにレビュー作成イベントを書き込む
+      await eventStore.append({
+        type: "ReviewCreated",
+        id: command.reviewId,
+        payload: {
+          bookId: command.bookId,
+          rating: command.rating,
+          comment: command.comment,
+        },
+      });
+    }
+
+    async function updateBookReviewsQueryModel(event: DomainEvent): Promise<void> {
+      // この更新はコマンド処理とは別タイミングで行われるため、この間はクエリモデルがまだ古い可能性がある
+      // ここでコマンドサイドとクエリサイドの間に結果整合性が生じる
+      // クエリサイドでは、後からイベントを受け取って読み取り用データを更新する
+      await bookReviewsQueryModelRepository.addReview({
+        bookId: event.payload.bookId,
+        reviewId: event.id,
+        rating: event.payload.rating,
+        comment: event.payload.comment,
+      });
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+    function addReview(EventStore $eventStore, AddReviewCommand $command): void
+    {
+        // コマンドサイドではイベントストアにレビュー作成イベントを書き込む
+        $eventStore->append(new DomainEvent(
+            type: "ReviewCreated",
+            id: $command->reviewId,
+            payload: [
+                "bookId" => $command->bookId,
+                "rating" => $command->rating,
+                "comment" => $command->comment,
+            ],
+        ));
+    }
+
+    function updateBookReviewsQueryModel(
+        BookReviewsQueryModelRepository $bookReviewsQueryModelRepository,
+        DomainEvent $event,
+    ): void {
+        // この更新はコマンド処理とは別タイミングで行われるため、この間はクエリモデルがまだ古い可能性がある
+        // ここでコマンドサイドとクエリサイドの間に結果整合性が生じる
+        // クエリサイドでは、後からイベントを受け取って読み取り用データを更新する
+        $bookReviewsQueryModelRepository->addReview([
+            "bookId" => $event->payload["bookId"],
+            "reviewId" => $event->id,
+            "rating" => $event->payload["rating"],
+            "comment" => $event->payload["comment"],
+        ]);
+    }
+    ```
 
 ## 21-9 実装の詳細
 

@@ -25,35 +25,120 @@ description: ４章＠ドメイン駆動設計入門ボトムアップの知見�
 
 ## 02. ドメインサービスの実装方法（関数型）
 
-```typescript
-export type UserId = string;
-export type UserName = string;
+=== "Go"
 
-export type User = Readonly<{
-  id: UserId;
-  name: UserName;
-}>;
+    ```go title=".go"
+    type UserId = string
+    type UserName = string
 
-export const createUser = (id: string, name: string): User => {
-  if (!id.trim()) throw new Error("ユーザーIDは必須です。");
-  if (!name.trim()) throw new Error("ユーザー名は必須です。");
-  return {id, name};
-};
-```
+    type User struct {
+    	Id   UserId
+    	Name UserName
+    }
 
-```typescript
-import type {User, UserName} from "./user";
+    func CreateUser(id string, name string) (User, error) {
+    	if strings.TrimSpace(id) == "" {
+    		return User{}, errors.New("ユーザーIDは必須です。")
+    	}
+    	if strings.TrimSpace(name) == "" {
+    		return User{}, errors.New("ユーザー名は必須です。")
+    	}
+    	return User{Id: id, Name: name}, nil
+    }
+    ```
 
-export type UserExistenceServiceDI = {
-  existsByName: (name: UserName) => Promise<boolean>;
-};
+=== "TypeScript"
 
-export const exists =
-  (userExistenceServiceDI: UserExistenceServiceDI) =>
-  async (user: User): Promise<boolean> => {
-    return userExistenceServiceDI.existsByName(user.name);
-  };
-```
+    ```typescript title=".ts"
+    export type UserId = string;
+    export type UserName = string;
+
+    export type User = Readonly<{
+      id: UserId;
+      name: UserName;
+    }>;
+
+    export const createUser = (id: string, name: string): User => {
+      if (!id.trim()) throw new Error("ユーザーIDは必須です。");
+      if (!name.trim()) throw new Error("ユーザー名は必須です。");
+      return {id, name};
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    final class User
+    {
+        public function __construct(
+            public readonly string $id,
+            public readonly string $name,
+        ) {
+        }
+    }
+
+    function createUser(string $id, string $name): User
+    {
+        if (trim($id) === "") {
+            throw new Exception("ユーザーIDは必須です。");
+        }
+        if (trim($name) === "") {
+            throw new Exception("ユーザー名は必須です。");
+        }
+        return new User($id, $name);
+    }
+    ```
+
+===! "Go"
+
+    ```go title=".go"
+    type UserExistenceServiceDI struct {
+    	ExistsByName func(ctx context.Context, name UserName) (bool, error)
+    }
+
+    func Exists(userExistenceServiceDI UserExistenceServiceDI) func(ctx context.Context, user User) (bool, error) {
+    	return func(ctx context.Context, user User) (bool, error) {
+    		return userExistenceServiceDI.ExistsByName(ctx, user.Name)
+    	}
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    import type {User, UserName} from "./user";
+
+    export type UserExistenceServiceDI = {
+      existsByName: (name: UserName) => Promise<boolean>;
+    };
+
+    export const exists =
+      (userExistenceServiceDI: UserExistenceServiceDI) =>
+      async (user: User): Promise<boolean> => {
+        return userExistenceServiceDI.existsByName(user.name);
+      };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    require_once __DIR__ . "/user.php";
+
+    final class UserExistenceServiceDI
+    {
+        public function __construct(
+            public readonly Closure $existsByName,
+        ) {
+        }
+    }
+
+    function exists(UserExistenceServiceDI $userExistenceServiceDI): Closure
+    {
+        return function (User $user) use ($userExistenceServiceDI): bool {
+            return ($userExistenceServiceDI->existsByName)($user->name);
+        };
+    }
+    ```
 
 <br>
 

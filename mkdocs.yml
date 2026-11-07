@@ -88,6 +88,10 @@ extra_css:
 #  - "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"
 #  - javascripts/config.js
 
+# MkDocsのフック
+hooks:
+  - hooks/ordered_list_start.py
+
 # 標準プラグイン
 markdown_extensions:
   # コードブロックのハイライト化

@@ -273,13 +273,9 @@ OIDC ではなく OAuth のため、ID トークンではなく、リフレッ�
 
 #### ▼ ブラウザ ⇄ 認証フェーズの委譲先の Web サイト
 
-`(4)`
+4. ブラウザで、アカウント連携画面 (認可画面) に情報を入力し、Facebook に送信する。
 
-: ブラウザで、アカウント連携画面 (認可画面) に情報を入力し、Facebook に送信する。
-
-`(5)`
-
-: Facebook の認可サーバーは、短命な認可コードを発行する。
+5. Facebook の認可サーバーは、短命な認可コードを発行する。
 
     `Location`ヘッダーにリダイレクト先のURL (免許証作成サイトURL) とパラメーターを割り当て、認可レスポンスをブラウザに送信する。
 
@@ -287,146 +283,134 @@ OIDC ではなく OAuth のため、ID トークンではなく、リフレッ�
 
     リダイレクト先として指定するURLは、『コールバックURL』ともいう。
 
-```yaml
-302 Found
----
-Location: https://www.免許証作成サイト.com/callback?code=<認可コード>&state=<任意の文字列>
-```
+    ```yaml
+    302 Found
+    ---
+    Location: https://www.免許証作成サイト.com/callback?code=<認可コード>&state=<任意の文字列>
+    ```
 
-<table>
-  <thead>
-    <tr>
-      <th>クエリストリングのキーの種類</th>
-      <th>値</th>
-      <th>例</th>
-      <th>必須/任意</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>code</code></td>
-      <td>認可コード</td>
-      <td></td>
-      <td>必須</td>
-    </tr>
-    <tr>
-      <td><code>state</code></td>
-      <td>任意の文字列</td>
-      <td></td>
-      <td>認可リクエストのクエリストリングで、<code>state</code> キーが使用されていれば必須</td>
-    </tr>
-  </tbody>
-</table>
+    <table>
+      <thead>
+        <tr>
+          <th>クエリストリングのキーの種類</th>
+          <th>値</th>
+          <th>例</th>
+          <th>必須/任意</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>code</code></td>
+          <td>認可コード</td>
+          <td></td>
+          <td>必須</td>
+        </tr>
+        <tr>
+          <td><code>state</code></td>
+          <td>任意の文字列</td>
+          <td></td>
+          <td>認可リクエストのクエリストリングで、<code>state</code> キーが使用されていれば必須</td>
+        </tr>
+      </tbody>
+    </table>
 
-> - [OAuth 2.0 全フローの図解と動画 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#12-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9)
+    > - [OAuth 2.0 全フローの図解と動画 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#12-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9)
 
 #### ▼ ブラウザ ⇄ SSO でログインしたい Web サイト ⇄ 認証フェーズの委譲先の Web サイト
 
-`(6)`
+6. ブラウザでリダイレクトが発生し、免許証作成サイトに短命な認可コードを送信する。
 
-: ブラウザでリダイレクトが発生し、免許証作成サイトに短命な認可コードを送信する。
+7. 免許証作成サイトは、Facebook の認可サーバーのトークンエンドポイントにトークンリクエストを送信する。
 
-`(7)`
+    ```yaml
+    # トークンエンドポイントにトークンリクエストを送信する
+    POST https://www.facebook.com/auth?
+    ---
+    Host: authorization-server.com # 認可サーバーのホスト
+    Content-Type: application/x-www-form-urlencoded
+    ---
+    # ボディ
+    # 下表で説明
+    ```
 
-: 免許証作成サイトは、Facebook の認可サーバーのトークンエンドポイントにトークンリクエストを送信する。
+    <table>
+      <thead>
+        <tr>
+          <th>ボディのキーの種類</th>
+          <th>値</th>
+          <th>例</th>
+          <th>トークンリクエスト時に必須/任意</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>grant_type</code></td>
+          <td>認証方法の種類</td>
+          <td><code>authorization_code</code></td>
+          <td>必須</td>
+        </tr>
+        <tr>
+          <td><code>code</code></td>
+          <td>認可コード</td>
+          <td><code>*****</code></td>
+          <td>必須</td>
+        </tr>
+        <tr>
+          <td><code>redirect_uri</code></td>
+          <td>リダイレクト URL</td>
+          <td><code>https://example.com/callback</code></td>
+          <td>認可リクエストのクエリストリングで、<code>redirect_uri</code> キーが使用されていれば、必須である。</td>
+        </tr>
+        <tr>
+          <td><code>code_verifier</code></td>
+          <td>ベリファイア</td>
+          <td></td>
+          <td>認可リクエストのクエリストリングで、<code>code_verifier</code> キーが使用されていれば、必須である。</td>
+        </tr>
+        <tr>
+          <td><code>client_id</code></td>
+          <td>クライアント ID</td>
+          <td><code>foo-client</code></td>
+          <td>条件により必須</td>
+        </tr>
+        <tr>
+          <td><code>client_secret</code></td>
+          <td>クライアントシークレット</td>
+          <td><code>*****</code></td>
+          <td>条件により必須</td>
+        </tr>
+      </tbody>
+    </table>
 
-```yaml
-# トークンエンドポイントにトークンリクエストを送信する
-POST https://www.facebook.com/auth?
----
-Host: authorization-server.com # 認可サーバーのホスト
-Content-Type: application/x-www-form-urlencoded
----
-# ボディ
-# 下表で説明
-```
+    > - [OAuth 2.0 全フローの図解と動画 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#13-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88)
 
-<table>
-  <thead>
-    <tr>
-      <th>ボディのキーの種類</th>
-      <th>値</th>
-      <th>例</th>
-      <th>トークンリクエスト時に必須/任意</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>grant_type</code></td>
-      <td>認証方法の種類</td>
-      <td><code>authorization_code</code></td>
-      <td>必須</td>
-    </tr>
-    <tr>
-      <td><code>code</code></td>
-      <td>認可コード</td>
-      <td><code>*****</code></td>
-      <td>必須</td>
-    </tr>
-    <tr>
-      <td><code>redirect_uri</code></td>
-      <td>リダイレクト URL</td>
-      <td><code>https://example.com/callback</code></td>
-      <td>認可リクエストのクエリストリングで、<code>redirect_uri</code> キーが使用されていれば、必須である。</td>
-    </tr>
-    <tr>
-      <td><code>code_verifier</code></td>
-      <td>ベリファイア</td>
-      <td></td>
-      <td>認可リクエストのクエリストリングで、<code>code_verifier</code> キーが使用されていれば、必須である。</td>
-    </tr>
-    <tr>
-      <td><code>client_id</code></td>
-      <td>クライアント ID</td>
-      <td><code>foo-client</code></td>
-      <td>条件により必須</td>
-    </tr>
-    <tr>
-      <td><code>client_secret</code></td>
-      <td>クライアントシークレット</td>
-      <td><code>*****</code></td>
-      <td>条件により必須</td>
-    </tr>
-  </tbody>
-</table>
+8. Facebook の認可サーバーは、アクセストークンを含むトークンレスポンスを免許証作成サイトに返信する。
 
-> - [OAuth 2.0 全フローの図解と動画 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#13-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88)
+9. 免許証作成サイトはアクセストークンを受信し、Facebook の認可サーバーにアクセストークンを再度送信する。
 
-`(8)`
+    ```yaml
+    HTTP/1.1 200 OK
+    ---
+    # ヘッダー
+    Content-Type: application/json;charset=UTF-8
+    Cache-Control: no-store
+    Pragma: no-cache
+    ---
+    # ボディ
+    {
+      "access_token": "<アクセストークン>", # 必須
+      "token_type": " <トークンタイプ>", # 必須
+      "expires_in": <失効秒数>, # 任意
+      "refresh_token": "<リフレッシュトークン>", # 任意
+      "scope": "<認可スコープ>", # 要求したスコープ群と差異があれば必須
+    }
+    ```
 
-: Facebook の認可サーバーは、アクセストークンを含むトークンレスポンスを免許証作成サイトに返信する。
+    > - [OAuth 2.0 全フローの図解と動画 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#14-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9)
 
-`(9)`
+10. Facebook は認証を完了させ、Facebook の資格情報を送信する。
 
-: 免許証作成サイトはアクセストークンを受信し、Facebook の認可サーバーにアクセストークンを再度送信する。
-
-```yaml
-HTTP/1.1 200 OK
----
-# ヘッダー
-Content-Type: application/json;charset=UTF-8
-Cache-Control: no-store
-Pragma: no-cache
----
-# ボディ
-{
-  "access_token": "<アクセストークン>", # 必須
-  "token_type": " <トークンタイプ>", # 必須
-  "expires_in": <失効秒数>, # 任意
-  "refresh_token": "<リフレッシュトークン>", # 任意
-  "scope": "<認可スコープ>", # 要求したスコープ群と差異があれば必須
-}
-```
-
-> - [OAuth 2.0 全フローの図解と動画 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#14-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9)
-
-`(10)`
-
-: Facebook は認証を完了させ、Facebook の資格情報を送信する。
-
-`(11)`
-
-: 免許証作成サイトは認可を実施し、Facebook の資格情報の権限に応じた処理をクライアントに提供する。
+11. 免許証作成サイトは認可を実施し、Facebook の資格情報の権限に応じた処理をクライアントに提供する。
 
 <br>
 

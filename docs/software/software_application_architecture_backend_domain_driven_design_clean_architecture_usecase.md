@@ -97,41 +97,127 @@ description: ユースケース層＠クリーンアーキテクチャの知見�
 
 両方に共通するルールはドメイン層に置き、インターラクター同士の重複は処理の組み立てだけに留める。
 
-```typescript
-// UIクライアント向けのインターラクター
-export class UiFooInteractor {
-  constructor(private readonly fooRepository: FooRepository) {}
+=== "Go"
 
-  // ログイン中のユーザーを所有者として登録する
-  async registerFoo({ userId, name }: { userId: string; name: string }) {
-    const foo = Foo.create({ ownerId: userId, name: new FooName(name) });
+    ```go title=".go"
+    // UIクライアント向けのインターラクター
+    type UiFooInteractor struct {
+    	fooRepository FooRepository
+    }
 
-    await this.fooRepository.save(foo);
+    func NewUiFooInteractor(fooRepository FooRepository) *UiFooInteractor {
+    	return &UiFooInteractor{fooRepository: fooRepository}
+    }
 
-    return foo;
-  }
-}
+    // ログイン中のユーザーを所有者として登録する
+    func (i *UiFooInteractor) RegisterFoo(userID string, name string) (*Foo, error) {
+    	foo := CreateFoo(userID, NewFooName(name))
 
-// APIクライアント向けのインターラクター
-export class ApiFooInteractor {
-  constructor(private readonly fooRepository: FooRepository) {}
+    	if err := i.fooRepository.Save(foo); err != nil {
+    		return nil, err
+    	}
 
-  // APIトークンの所有者として登録し、APIクライアント向けのレスポンスモデルを返す
-  async registerFoo({
-    apiTokenOwnerId,
-    name,
-  }: {
-    apiTokenOwnerId: string;
-    name: string;
-  }) {
-    const foo = Foo.create({ ownerId: apiTokenOwnerId, name: new FooName(name) });
+    	return foo, nil
+    }
 
-    await this.fooRepository.save(foo);
+    // APIクライアント向けのインターラクター
+    type ApiFooInteractor struct {
+    	fooRepository FooRepository
+    }
 
-    return FooApiResponseModel.from(foo);
-  }
-}
-```
+    func NewApiFooInteractor(fooRepository FooRepository) *ApiFooInteractor {
+    	return &ApiFooInteractor{fooRepository: fooRepository}
+    }
+
+    // APIトークンの所有者として登録し、APIクライアント向けのレスポンスモデルを返す
+    func (i *ApiFooInteractor) RegisterFoo(apiTokenOwnerID string, name string) (*FooApiResponseModel, error) {
+    	foo := CreateFoo(apiTokenOwnerID, NewFooName(name))
+
+    	if err := i.fooRepository.Save(foo); err != nil {
+    		return nil, err
+    	}
+
+    	return NewFooApiResponseModel(foo), nil
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    // UIクライアント向けのインターラクター
+    export class UiFooInteractor {
+      constructor(private readonly fooRepository: FooRepository) {}
+
+      // ログイン中のユーザーを所有者として登録する
+      async registerFoo({ userId, name }: { userId: string; name: string }) {
+        const foo = Foo.create({ ownerId: userId, name: new FooName(name) });
+
+        await this.fooRepository.save(foo);
+
+        return foo;
+      }
+    }
+
+    // APIクライアント向けのインターラクター
+    export class ApiFooInteractor {
+      constructor(private readonly fooRepository: FooRepository) {}
+
+      // APIトークンの所有者として登録し、APIクライアント向けのレスポンスモデルを返す
+      async registerFoo({
+        apiTokenOwnerId,
+        name,
+      }: {
+        apiTokenOwnerId: string;
+        name: string;
+      }) {
+        const foo = Foo.create({ ownerId: apiTokenOwnerId, name: new FooName(name) });
+
+        await this.fooRepository.save(foo);
+
+        return FooApiResponseModel.from(foo);
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    // UIクライアント向けのインターラクター
+    class UiFooInteractor
+    {
+        public function __construct(private readonly FooRepository $fooRepository)
+        {
+        }
+
+        // ログイン中のユーザーを所有者として登録する
+        public function registerFoo(string $userId, string $name): Foo
+        {
+            $foo = Foo::create(ownerId: $userId, name: new FooName($name));
+
+            $this->fooRepository->save($foo);
+
+            return $foo;
+        }
+    }
+
+    // APIクライアント向けのインターラクター
+    class ApiFooInteractor
+    {
+        public function __construct(private readonly FooRepository $fooRepository)
+        {
+        }
+
+        // APIトークンの所有者として登録し、APIクライアント向けのレスポンスモデルを返す
+        public function registerFoo(string $apiTokenOwnerId, string $name): FooApiResponseModel
+        {
+            $foo = Foo::create(ownerId: $apiTokenOwnerId, name: new FooName($name));
+
+            $this->fooRepository->save($foo);
+
+            return FooApiResponseModel::from($foo);
+        }
+    }
+    ```
 
 <br>
 
@@ -265,172 +351,496 @@ flowchart TB
 
 そのため、ユースケース層でトランザクション処理を定義し、定義したトランザクション範囲内でリポジトリを呼び出す。
 
-```injectablephp
-<?php
+=== "Go"
 
-namespace App\Usecase\Foo\Interactors;
+    ```go title=".go"
+    package interactors
 
-use Illuminate\Support\Facades\DB;
+    import "errors"
 
-/**
- * Foo作成インターラクタークラス
- * ※ユースケースごとにクラスを定義する方法
- */
-class FooCreateInteractor
-{
-
-    private FooRepository $fooRepository;
-
-    public function __construct(FooRepository $fooRepository)
-    {
-        $this->fooRepository = $fooRepository;
+    // Foo作成インターラクター構造体
+    // ※ユースケースごとに構造体を定義する方法
+    type FooCreateInteractor struct {
+    	fooRepository FooRepository
     }
 
-    public function registerFoo(RegisterFooRequest $registerFooRequest): RegisterFooResponse
-    {
+    func NewFooCreateInteractor(fooRepository FooRepository) *FooCreateInteractor {
+    	return &FooCreateInteractor{fooRepository: fooRepository}
+    }
+
+    func (i *FooCreateInteractor) RegisterFoo(registerFooRequest *RegisterFooRequest) (*RegisterFooResponse, error) {
+    	var foo *Foo
+
+    	// トランザクション処理を実行
+    	err := db.Transaction(func() error {
+    		// 重複チェック (READ処理) を実行
+    		duplicateFoo, err := i.fooRepository.FindByID(
+    			NewFooID(registerFooRequest.ID),
+    		)
+    		if err != nil {
+    			return err
+    		}
+
+    		if duplicateFoo != nil {
+    			return errors.New("Foo is already exists.")
+    		}
+
+    		// CREATE処理を実行
+    		foo = NewFoo(
+    			NewFooID(registerFooRequest.ID),
+    			NewBar(registerFooRequest.Bar),
+    			NewBaz(registerFooRequest.Baz),
+    		)
+
+    		return i.fooRepository.Create(foo)
+    	})
+    	if err != nil {
+    		return nil, err
+    	}
+
+    	return NewRegisterFooResponse(foo), nil
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    /**
+     * Foo作成インターラクタークラス
+     * ※ユースケースごとにクラスを定義する方法
+     */
+    export class FooCreateInteractor {
+      constructor(private readonly fooRepository: FooRepository) {}
+
+      async registerFoo(
+        registerFooRequest: RegisterFooRequest,
+      ): Promise<RegisterFooResponse> {
         // トランザクション処理を実行
-        $foo = DB::transaction(function () use ($registerFooRequest): Foo {
+        const foo = await db.transaction(async (): Promise<Foo> => {
+          // 重複チェック (READ処理) を実行
+          const duplicateFoo = await this.fooRepository.findById(
+            new FooId(registerFooRequest.id),
+          );
 
-            // 重複チェック (READ処理) を実行
-            $duplicateFoo = $this->fooRepository->findById(
-                new FooId($registerFooRequest->id)
-            );
+          if (duplicateFoo !== null) {
+            throw new Error("Foo is already exists.");
+          }
 
-            if ($duplicateFoo !== null) {
-                throw new \Exception("Foo is already exists.");
-            }
+          // CREATE処理を実行
+          const foo = new Foo(
+            new FooId(registerFooRequest.id),
+            new Bar(registerFooRequest.bar),
+            new Baz(registerFooRequest.baz),
+          );
+          await this.fooRepository.create(foo);
 
-            // CREATE処理を実行
-            $foo = new Foo(
-                new FooId($registerFooRequest->id),
-                new Bar($registerFooRequest->bar),
-                new Baz($registerFooRequest->baz)
-            );
-            $this->fooRepository->create($foo);
-
-            return $foo;
+          return foo;
         });
 
-        return new RegisterFooResponse($foo);
+        return new RegisterFooResponse(foo);
+      }
     }
-}
-```
+    ```
 
-```injectablephp
-<?php
+=== "PHP"
 
-namespace App\Usecase\Foo\Interactors;
+    ```injectablephp title=".php"
+    <?php
 
-use Illuminate\Support\Facades\DB;
+    namespace App\Usecase\Foo\Interactors;
 
-/**
- * Fooインターラクタークラス
- * ※CRUD全てのユースケースを、1個のクラスを定義する方法
- */
-class FooInteractor
-{
+    use Illuminate\Support\Facades\DB;
 
-    private FooRepository $fooRepository;
-
-    public function __construct(FooRepository $fooRepository)
+    /**
+     * Foo作成インターラクタークラス
+     * ※ユースケースごとにクラスを定義する方法
+     */
+    class FooCreateInteractor
     {
-        $this->fooRepository = $fooRepository;
-    }
 
-    public function registerFoo(RegisterFooRequest $registerFooRequest): RegisterFooResponse
-    {
-        // トランザクション処理を実行
-        $foo = DB::transaction(function () use ($registerFooRequest): Foo {
+        private FooRepository $fooRepository;
 
-            // 重複チェック (READ処理) を実行
-            $duplicateFoo = $this->fooRepository->findById(
-                new FooId($registerFooRequest->id)
-            );
-
-            if ($duplicateFoo !== null) {
-                throw new \Exception("Foo is already exists.");
-            }
-
-            // CREATE処理を実行
-            $foo = new Foo(
-                new FooId($registerFooRequest->id),
-                new Bar($registerFooRequest->bar),
-                new Baz($registerFooRequest->baz)
-            );
-            $this->fooRepository->create($foo);
-
-            return $foo;
-        });
-
-        return new RegisterFooResponse($foo);
-    }
-
-    public function getFoo(GetFooRequest $getFooRequest): GetFooResponse
-    {
-        // READ処理を実行
-        $foo = $this->fooRepository->findById(
-            new FooId($getFooRequest->id)
-        );
-
-        if ($foo === null) {
-            throw new \Exception("Foo is not found.");
+        public function __construct(FooRepository $fooRepository)
+        {
+            $this->fooRepository = $fooRepository;
         }
 
-        return new GetFooResponse($foo);
+        public function registerFoo(RegisterFooRequest $registerFooRequest): RegisterFooResponse
+        {
+            // トランザクション処理を実行
+            $foo = DB::transaction(function () use ($registerFooRequest): Foo {
+
+                // 重複チェック (READ処理) を実行
+                $duplicateFoo = $this->fooRepository->findById(
+                    new FooId($registerFooRequest->id)
+                );
+
+                if ($duplicateFoo !== null) {
+                    throw new \Exception("Foo is already exists.");
+                }
+
+                // CREATE処理を実行
+                $foo = new Foo(
+                    new FooId($registerFooRequest->id),
+                    new Bar($registerFooRequest->bar),
+                    new Baz($registerFooRequest->baz)
+                );
+                $this->fooRepository->create($foo);
+
+                return $foo;
+            });
+
+            return new RegisterFooResponse($foo);
+        }
+    }
+    ```
+
+===! "Go"
+
+    ```go title=".go"
+    package interactors
+
+    import "errors"
+
+    // Fooインターラクター構造体
+    // ※CRUD全てのユースケースを、1個の構造体を定義する方法
+    type FooInteractor struct {
+    	fooRepository FooRepository
     }
 
-    public function changeFoo(ChangeFooRequest $changeFooRequest): ChangeFooResponse
-    {
+    func NewFooInteractor(fooRepository FooRepository) *FooInteractor {
+    	return &FooInteractor{fooRepository: fooRepository}
+    }
+
+    func (i *FooInteractor) RegisterFoo(registerFooRequest *RegisterFooRequest) (*RegisterFooResponse, error) {
+    	var foo *Foo
+
+    	// トランザクション処理を実行
+    	err := db.Transaction(func() error {
+    		// 重複チェック (READ処理) を実行
+    		duplicateFoo, err := i.fooRepository.FindByID(
+    			NewFooID(registerFooRequest.ID),
+    		)
+    		if err != nil {
+    			return err
+    		}
+
+    		if duplicateFoo != nil {
+    			return errors.New("Foo is already exists.")
+    		}
+
+    		// CREATE処理を実行
+    		foo = NewFoo(
+    			NewFooID(registerFooRequest.ID),
+    			NewBar(registerFooRequest.Bar),
+    			NewBaz(registerFooRequest.Baz),
+    		)
+
+    		return i.fooRepository.Create(foo)
+    	})
+    	if err != nil {
+    		return nil, err
+    	}
+
+    	return NewRegisterFooResponse(foo), nil
+    }
+
+    func (i *FooInteractor) GetFoo(getFooRequest *GetFooRequest) (*GetFooResponse, error) {
+    	// READ処理を実行
+    	foo, err := i.fooRepository.FindByID(
+    		NewFooID(getFooRequest.ID),
+    	)
+    	if err != nil {
+    		return nil, err
+    	}
+
+    	if foo == nil {
+    		return nil, errors.New("Foo is not found.")
+    	}
+
+    	return NewGetFooResponse(foo), nil
+    }
+
+    func (i *FooInteractor) ChangeFoo(changeFooRequest *ChangeFooRequest) (*ChangeFooResponse, error) {
+    	var foo *Foo
+
+    	// トランザクション処理を実行
+    	err := db.Transaction(func() error {
+    		// 存在チェック (READ処理) を実行
+    		existingFoo, err := i.fooRepository.FindByID(
+    			NewFooID(changeFooRequest.ID),
+    		)
+    		if err != nil {
+    			return err
+    		}
+
+    		if existingFoo == nil {
+    			return errors.New("Foo is not found.")
+    		}
+
+    		// UPDATE処理を実行
+    		foo = NewFoo(
+    			NewFooID(changeFooRequest.ID),
+    			NewBar(changeFooRequest.Bar),
+    			NewBaz(changeFooRequest.Baz),
+    		)
+
+    		return i.fooRepository.Update(foo)
+    	})
+    	if err != nil {
+    		return nil, err
+    	}
+
+    	return NewChangeFooResponse(foo), nil
+    }
+
+    func (i *FooInteractor) DeleteFoo(deleteFooRequest *DeleteFooRequest) (*DeleteFooResponse, error) {
+    	// トランザクション処理を実行
+    	err := db.Transaction(func() error {
+    		// 存在チェック (READ処理) を実行
+    		existingFoo, err := i.fooRepository.FindByID(
+    			NewFooID(deleteFooRequest.ID),
+    		)
+    		if err != nil {
+    			return err
+    		}
+
+    		if existingFoo == nil {
+    			return errors.New("Foo is not found.")
+    		}
+
+    		// DELETE処理を実行
+    		return i.fooRepository.Delete(
+    			NewFooID(deleteFooRequest.ID),
+    		)
+    	})
+    	if err != nil {
+    		return nil, err
+    	}
+
+    	return NewDeleteFooResponse(), nil
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    /**
+     * Fooインターラクタークラス
+     * ※CRUD全てのユースケースを、1個のクラスを定義する方法
+     */
+    export class FooInteractor {
+      constructor(private readonly fooRepository: FooRepository) {}
+
+      async registerFoo(
+        registerFooRequest: RegisterFooRequest,
+      ): Promise<RegisterFooResponse> {
         // トランザクション処理を実行
-        $foo = DB::transaction(function () use ($changeFooRequest): Foo {
+        const foo = await db.transaction(async (): Promise<Foo> => {
+          // 重複チェック (READ処理) を実行
+          const duplicateFoo = await this.fooRepository.findById(
+            new FooId(registerFooRequest.id),
+          );
 
-            // 存在チェック (READ処理) を実行
-            $existingFoo = $this->fooRepository->findById(
-                new FooId($changeFooRequest->id)
-            );
+          if (duplicateFoo !== null) {
+            throw new Error("Foo is already exists.");
+          }
 
-            if ($existingFoo === null) {
-                throw new \Exception("Foo is not found.");
-            }
+          // CREATE処理を実行
+          const foo = new Foo(
+            new FooId(registerFooRequest.id),
+            new Bar(registerFooRequest.bar),
+            new Baz(registerFooRequest.baz),
+          );
+          await this.fooRepository.create(foo);
 
-            // UPDATE処理を実行
-            $foo = new Foo(
-                new FooId($changeFooRequest->id),
-                new Bar($changeFooRequest->bar),
-                new Baz($changeFooRequest->baz)
-            );
-            $this->fooRepository->update($foo);
-
-            return $foo;
+          return foo;
         });
 
-        return new ChangeFooResponse($foo);
-    }
+        return new RegisterFooResponse(foo);
+      }
 
-    public function deleteFoo(DeleteFooRequest $deleteFooRequest): DeleteFooResponse
-    {
+      async getFoo(getFooRequest: GetFooRequest): Promise<GetFooResponse> {
+        // READ処理を実行
+        const foo = await this.fooRepository.findById(
+          new FooId(getFooRequest.id),
+        );
+
+        if (foo === null) {
+          throw new Error("Foo is not found.");
+        }
+
+        return new GetFooResponse(foo);
+      }
+
+      async changeFoo(
+        changeFooRequest: ChangeFooRequest,
+      ): Promise<ChangeFooResponse> {
         // トランザクション処理を実行
-        DB::transaction(function () use ($deleteFooRequest): void {
+        const foo = await db.transaction(async (): Promise<Foo> => {
+          // 存在チェック (READ処理) を実行
+          const existingFoo = await this.fooRepository.findById(
+            new FooId(changeFooRequest.id),
+          );
 
-            // 存在チェック (READ処理) を実行
-            $existingFoo = $this->fooRepository->findById(
-                new FooId($deleteFooRequest->id)
-            );
+          if (existingFoo === null) {
+            throw new Error("Foo is not found.");
+          }
 
-            if ($existingFoo === null) {
-                throw new \Exception("Foo is not found.");
-            }
+          // UPDATE処理を実行
+          const foo = new Foo(
+            new FooId(changeFooRequest.id),
+            new Bar(changeFooRequest.bar),
+            new Baz(changeFooRequest.baz),
+          );
+          await this.fooRepository.update(foo);
 
-            // DELETE処理を実行
-            $this->fooRepository->delete(
-                new FooId($deleteFooRequest->id)
-            );
+          return foo;
+        });
+
+        return new ChangeFooResponse(foo);
+      }
+
+      async deleteFoo(
+        deleteFooRequest: DeleteFooRequest,
+      ): Promise<DeleteFooResponse> {
+        // トランザクション処理を実行
+        await db.transaction(async (): Promise<void> => {
+          // 存在チェック (READ処理) を実行
+          const existingFoo = await this.fooRepository.findById(
+            new FooId(deleteFooRequest.id),
+          );
+
+          if (existingFoo === null) {
+            throw new Error("Foo is not found.");
+          }
+
+          // DELETE処理を実行
+          await this.fooRepository.delete(new FooId(deleteFooRequest.id));
         });
 
         return new DeleteFooResponse();
+      }
     }
-}
-```
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    namespace App\Usecase\Foo\Interactors;
+
+    use Illuminate\Support\Facades\DB;
+
+    /**
+     * Fooインターラクタークラス
+     * ※CRUD全てのユースケースを、1個のクラスを定義する方法
+     */
+    class FooInteractor
+    {
+
+        private FooRepository $fooRepository;
+
+        public function __construct(FooRepository $fooRepository)
+        {
+            $this->fooRepository = $fooRepository;
+        }
+
+        public function registerFoo(RegisterFooRequest $registerFooRequest): RegisterFooResponse
+        {
+            // トランザクション処理を実行
+            $foo = DB::transaction(function () use ($registerFooRequest): Foo {
+
+                // 重複チェック (READ処理) を実行
+                $duplicateFoo = $this->fooRepository->findById(
+                    new FooId($registerFooRequest->id)
+                );
+
+                if ($duplicateFoo !== null) {
+                    throw new \Exception("Foo is already exists.");
+                }
+
+                // CREATE処理を実行
+                $foo = new Foo(
+                    new FooId($registerFooRequest->id),
+                    new Bar($registerFooRequest->bar),
+                    new Baz($registerFooRequest->baz)
+                );
+                $this->fooRepository->create($foo);
+
+                return $foo;
+            });
+
+            return new RegisterFooResponse($foo);
+        }
+
+        public function getFoo(GetFooRequest $getFooRequest): GetFooResponse
+        {
+            // READ処理を実行
+            $foo = $this->fooRepository->findById(
+                new FooId($getFooRequest->id)
+            );
+
+            if ($foo === null) {
+                throw new \Exception("Foo is not found.");
+            }
+
+            return new GetFooResponse($foo);
+        }
+
+        public function changeFoo(ChangeFooRequest $changeFooRequest): ChangeFooResponse
+        {
+            // トランザクション処理を実行
+            $foo = DB::transaction(function () use ($changeFooRequest): Foo {
+
+                // 存在チェック (READ処理) を実行
+                $existingFoo = $this->fooRepository->findById(
+                    new FooId($changeFooRequest->id)
+                );
+
+                if ($existingFoo === null) {
+                    throw new \Exception("Foo is not found.");
+                }
+
+                // UPDATE処理を実行
+                $foo = new Foo(
+                    new FooId($changeFooRequest->id),
+                    new Bar($changeFooRequest->bar),
+                    new Baz($changeFooRequest->baz)
+                );
+                $this->fooRepository->update($foo);
+
+                return $foo;
+            });
+
+            return new ChangeFooResponse($foo);
+        }
+
+        public function deleteFoo(DeleteFooRequest $deleteFooRequest): DeleteFooResponse
+        {
+            // トランザクション処理を実行
+            DB::transaction(function () use ($deleteFooRequest): void {
+
+                // 存在チェック (READ処理) を実行
+                $existingFoo = $this->fooRepository->findById(
+                    new FooId($deleteFooRequest->id)
+                );
+
+                if ($existingFoo === null) {
+                    throw new \Exception("Foo is not found.");
+                }
+
+                // DELETE処理を実行
+                $this->fooRepository->delete(
+                    new FooId($deleteFooRequest->id)
+                );
+            });
+
+            return new DeleteFooResponse();
+        }
+    }
+    ```
 
 > - [【戦術的DDD】なぜトランザクションをユースケース層で張るのか - Yappli Tech Blog](https://tech.yappli.io/entry/ddd_usecase)
 
@@ -444,26 +854,64 @@ class FooInteractor
 
 上位レイヤーにあるコントローラーは、インターラクターインタフェースに依存する。
 
-```injectablephp
-<?php
+=== "Go"
 
-namespace App\Usecase\Foo\InputBoundaries;
+    ```go title=".go"
+    package inputboundaries
 
-/**
- * Fooインターラクターインターフェース
- */
-interface FooInteractorInterface
-{
+    // Fooインターラクターインターフェース
+    type FooInteractorInterface interface {
+    	RegisterFoo(registerFooRequest *RegisterFooRequest) (*RegisterFooResponse, error)
 
-    public function registerFoo(RegisterFooRequest $registerFooRequest): RegisterFooResponse;
+    	GetFoo(getFooRequest *GetFooRequest) (*GetFooResponse, error)
 
-    public function getFoo(GetFooRequest $getFooRequest): GetFooResponse;
+    	ChangeFoo(changeFooRequest *ChangeFooRequest) (*ChangeFooResponse, error)
 
-    public function changeFoo(ChangeFooRequest $changeFooRequest): ChangeFooResponse;
+    	DeleteFoo(deleteFooRequest *DeleteFooRequest) (*DeleteFooResponse, error)
+    }
+    ```
 
-    public function deleteFoo(DeleteFooRequest $deleteFooRequest): DeleteFooResponse;
-}
-```
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    /**
+     * Fooインターラクターインターフェース
+     */
+    export interface FooInteractorInterface {
+      registerFoo(
+        registerFooRequest: RegisterFooRequest,
+      ): Promise<RegisterFooResponse>;
+
+      getFoo(getFooRequest: GetFooRequest): Promise<GetFooResponse>;
+
+      changeFoo(changeFooRequest: ChangeFooRequest): Promise<ChangeFooResponse>;
+
+      deleteFoo(deleteFooRequest: DeleteFooRequest): Promise<DeleteFooResponse>;
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    namespace App\Usecase\Foo\InputBoundaries;
+
+    /**
+     * Fooインターラクターインターフェース
+     */
+    interface FooInteractorInterface
+    {
+
+        public function registerFoo(RegisterFooRequest $registerFooRequest): RegisterFooResponse;
+
+        public function getFoo(GetFooRequest $getFooRequest): GetFooResponse;
+
+        public function changeFoo(ChangeFooRequest $changeFooRequest): ChangeFooResponse;
+
+        public function deleteFoo(DeleteFooRequest $deleteFooRequest): DeleteFooResponse;
+    }
+    ```
 
 <br>
 
@@ -489,25 +937,61 @@ interface FooInteractorInterface
 
 インターラクターの関数ごとにリクエストモデルを用意するとよい。
 
-```injectablephp
-<?php
+=== "Go"
 
-namespace App\Interface\Foo\Requests;
+    ```go title=".go"
+    package requests
 
-class FooCreateRequest
-{
+    type FooCreateRequest struct {
+    	fooID int
 
-    private int $fooId;
-
-    private string $fooName;
-
-    public function __construct(int $fooId, string $fooName)
-    {
-        $this->fooId = $fooId;
-        $this->fooName = $fooName;
+    	fooName string
     }
-}
-```
+
+    func NewFooCreateRequest(fooID int, fooName string) *FooCreateRequest {
+    	return &FooCreateRequest{
+    		fooID:   fooID,
+    		fooName: fooName,
+    	}
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    export class FooCreateRequest {
+      private readonly fooId: number;
+
+      private readonly fooName: string;
+
+      constructor(fooId: number, fooName: string) {
+        this.fooId = fooId;
+        this.fooName = fooName;
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    namespace App\Interface\Foo\Requests;
+
+    class FooCreateRequest
+    {
+
+        private int $fooId;
+
+        private string $fooName;
+
+        public function __construct(int $fooId, string $fooName)
+        {
+            $this->fooId = $fooId;
+            $this->fooName = $fooName;
+        }
+    }
+    ```
 
 <br>
 
@@ -527,59 +1011,149 @@ class FooCreateRequest
 
 JSON レスポンス関数が配列構造を引数に受け付けるため、これに渡せるよう、自身を配列構造に変換する関数を持たせる。
 
-```injectablephp
-<?php
+=== "Go"
 
-namespace App\Interface\Foo\Responses;
+    ```go title=".go"
+    package responses
 
-class FooIndexResponse
-{
-
-    private array $foos;
-
-    public function __construct(array $foos)
-    {
-        $this->foos = $foos;
+    type FooIndexResponse struct {
+    	foos []*Foo
     }
 
-    public function toArray(): array
-    {
-        return [
-            "foos" => $this->foos
-        ];
+    func NewFooIndexResponse(foos []*Foo) *FooIndexResponse {
+    	return &FooIndexResponse{foos: foos}
     }
-}
-```
+
+    func (r *FooIndexResponse) ToArray() map[string]any {
+    	return map[string]any{
+    		"foos": r.foos,
+    	}
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    export class FooIndexResponse {
+      private readonly foos: Foo[];
+
+      constructor(foos: Foo[]) {
+        this.foos = foos;
+      }
+
+      toArray(): Record<string, unknown> {
+        return {
+          foos: this.foos,
+        };
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    namespace App\Interface\Foo\Responses;
+
+    class FooIndexResponse
+    {
+
+        private array $foos;
+
+        public function __construct(array $foos)
+        {
+            $this->foos = $foos;
+        }
+
+        public function toArray(): array
+        {
+            return [
+                "foos" => $this->foos
+            ];
+        }
+    }
+    ```
 
 ユースケース層の create 関数に対応するレスポンスモデル。
 
-```injectablephp
-<?php
+=== "Go"
 
-namespace App\Interface\Foo\Responses;
+    ```go title=".go"
+    package responses
 
-class FooCreateResponse
-{
+    type FooCreateResponse struct {
+    	fooID int
 
-    private int $fooId;
-
-    private string $fooName;
-
-    public function __construct(int $fooId, string $fooName)
-    {
-        $this->fooId = $fooId;
-        $this->fooName = $fooName;
+    	fooName string
     }
 
-    public function toArray(): array
-    {
-        return [
-            "id" => $this->fooId,
-            "name" => $this->fooName
-        ];
+    func NewFooCreateResponse(fooID int, fooName string) *FooCreateResponse {
+    	return &FooCreateResponse{
+    		fooID:   fooID,
+    		fooName: fooName,
+    	}
     }
-}
-```
+
+    func (r *FooCreateResponse) ToArray() map[string]any {
+    	return map[string]any{
+    		"id":   r.fooID,
+    		"name": r.fooName,
+    	}
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    export class FooCreateResponse {
+      private readonly fooId: number;
+
+      private readonly fooName: string;
+
+      constructor(fooId: number, fooName: string) {
+        this.fooId = fooId;
+        this.fooName = fooName;
+      }
+
+      toArray(): Record<string, unknown> {
+        return {
+          id: this.fooId,
+          name: this.fooName,
+        };
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    namespace App\Interface\Foo\Responses;
+
+    class FooCreateResponse
+    {
+
+        private int $fooId;
+
+        private string $fooName;
+
+        public function __construct(int $fooId, string $fooName)
+        {
+            $this->fooId = $fooId;
+            $this->fooName = $fooName;
+        }
+
+        public function toArray(): array
+        {
+            return [
+                "id" => $this->fooId,
+                "name" => $this->fooName
+            ];
+        }
+    }
+    ```
 
 <br>
 
@@ -601,46 +1175,111 @@ class FooCreateResponse
 
 エンティティへの通知処理をアプリケーションサービスとして切り分ける。
 
-```injectablephp
-<?php
+=== "Go"
 
-namespace App\Usecase\Foo\Services\Notify;
+    ```go title=".go"
+    package notify
 
-class NotifyFooService
-{
-
-    private Message $message;
-
-    public function __construct(Message $message)
-    {
-        $this->message = $message;
+    type NotifyFooService struct {
+    	message *Message
     }
 
-    public function notify(): void
-    {
+    func NewNotifyFooService(message *Message) *NotifyFooService {
+    	return &NotifyFooService{message: message}
+    }
+
+    func (s *NotifyFooService) Notify() error {
+    	// SlackのAPIにメッセージを送信する処理
+    	return nil
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    export class NotifyFooService {
+      private readonly message: Message;
+
+      constructor(message: Message) {
+        this.message = message;
+      }
+
+      async notify(): Promise<void> {
         // SlackのAPIにメッセージを送信する処理
+      }
     }
-}
-```
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    namespace App\Usecase\Foo\Services\Notify;
+
+    class NotifyFooService
+    {
+
+        private Message $message;
+
+        public function __construct(Message $message)
+        {
+            $this->message = $message;
+        }
+
+        public function notify(): void
+        {
+            // SlackのAPIにメッセージを送信する処理
+        }
+    }
+    ```
 
 これを、ユースケース層でコールする。
 
-```injectablephp
-<?php
+=== "Go"
 
-namespace App\Usecase\Foo\Services;
+    ```go title=".go"
+    package services
 
-use App\Service\SlackNotification;
+    type FooInteractor struct{}
 
-class FooInteractor
-{
-    public function foo(): void
-    {
-        $message = new Message(/* メッセージに関するデータを渡す */);
-        $notifyFooService = new NotifyFooService($message);
-        $notifyFooService->notify();
+    func (i *FooInteractor) Foo() error {
+    	message := NewMessage( /* メッセージに関するデータを渡す */ )
+    	notifyFooService := NewNotifyFooService(message)
+    	return notifyFooService.Notify()
     }
-}
-```
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    export class FooInteractor {
+      async foo(): Promise<void> {
+        const message = new Message(/* メッセージに関するデータを渡す */);
+        const notifyFooService = new NotifyFooService(message);
+        await notifyFooService.notify();
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    <?php
+
+    namespace App\Usecase\Foo\Services;
+
+    use App\Service\SlackNotification;
+
+    class FooInteractor
+    {
+        public function foo(): void
+        {
+            $message = new Message(/* メッセージに関するデータを渡す */);
+            $notifyFooService = new NotifyFooService($message);
+            $notifyFooService->notify();
+        }
+    }
+    ```
 
 <br>

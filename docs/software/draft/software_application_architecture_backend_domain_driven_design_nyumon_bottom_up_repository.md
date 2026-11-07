@@ -27,80 +27,249 @@ description: ５章＠ドメイン駆動設計入門ボトムアップの知見�
 
 ### インターフェースリポジトリ
 
-```typescript
-type UserRepositoryInterface = {
-  findById: (id: UserId) => Promise<User>;
-  save: (user: User) => Promise<void>;
-};
-```
+=== "Go"
+
+    ```go title=".go"
+    type UserRepositoryInterface interface {
+    	FindById(id UserId) (*User, error)
+    	Save(user *User) error
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    type UserRepositoryInterface = {
+      findById: (id: UserId) => Promise<User>;
+      save: (user: User) => Promise<void>;
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    interface UserRepositoryInterface
+    {
+        public function findById(UserId $id): ?User;
+
+        public function save(User $user): void;
+    }
+    ```
 
 <br>
 
 ### 実装リポジトリ
 
-```typescript
-import {Pool} from "mysql2/promise";
-import {User} from "../domain/user";
-import {UserId} from "../domain/userId";
-import {UserName} from "../domain/userName";
+=== "Go"
 
-// 依存性注入
-export type UserRepositoryDI = Readonly<{
-  pool: Pool;
-}>;
+    ```go title=".go"
+    import (
+    	"database/sql"
+    	"errors"
 
-export const findById = async (
-  userRepositoryDI: UserRepositoryDI,
-  id: UserId,
-): Promise<User> => {
-  const sql = `SELECT id, name FROM users WHERE id = ? LIMIT 1`;
-  const [rows] = await userRepositoryDI.pool.query(sql, [
-    id as unknown as string,
-  ]);
-  const row = (rows as any[])[0];
+    	"example.com/app/domain"
+    )
 
-  if (!row) {
-    throw new Error("User not found");
-  }
+    // 依存性注入
+    type UserRepositoryDI struct {
+    	pool *sql.DB
+    }
 
-  return new User(UserId.from(row.id), new UserName(row.name));
-};
+    func FindById(
+    	userRepositoryDI UserRepositoryDI,
+    	id domain.UserId,
+    ) (*domain.User, error) {
+    	query := `SELECT id, name FROM users WHERE id = ? LIMIT 1`
+    	row := userRepositoryDI.pool.QueryRow(query, string(id))
 
-export const save = async (
-  userRepositoryDI: UserRepositoryDI,
-  user: User,
-): Promise<void> => {
-  const sql = `
-    INSERT INTO users (id, name)
-    VALUES (?, ?)
-    ON DUPLICATE KEY UPDATE
-      name = VALUES(name)
-  `;
-  await userRepositoryDI.pool.query(sql, [
-    user.id as unknown as string,
-    user.name.toString(),
-  ]);
-};
-```
+    	var recordId, recordName string
+    	if err := row.Scan(&recordId, &recordName); err != nil {
+    		if errors.Is(err, sql.ErrNoRows) {
+    			return nil, errors.New("User not found")
+    		}
+    		return nil, err
+    	}
+
+    	return domain.NewUser(domain.UserIdFrom(recordId), domain.NewUserName(recordName)), nil
+    }
+
+    func Save(
+    	userRepositoryDI UserRepositoryDI,
+    	user *domain.User,
+    ) error {
+    	query := `
+        INSERT INTO users (id, name)
+        VALUES (?, ?)
+        ON DUPLICATE KEY UPDATE
+          name = VALUES(name)
+      `
+    	_, err := userRepositoryDI.pool.Exec(query, string(user.Id), user.Name.String())
+    	return err
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    import {Pool} from "mysql2/promise";
+    import {User} from "../domain/user";
+    import {UserId} from "../domain/userId";
+    import {UserName} from "../domain/userName";
+
+    // 依存性注入
+    export type UserRepositoryDI = Readonly<{
+      pool: Pool;
+    }>;
+
+    export const findById = async (
+      userRepositoryDI: UserRepositoryDI,
+      id: UserId,
+    ): Promise<User> => {
+      const sql = `SELECT id, name FROM users WHERE id = ? LIMIT 1`;
+      const [rows] = await userRepositoryDI.pool.query(sql, [
+        id as unknown as string,
+      ]);
+      const row = (rows as any[])[0];
+
+      if (!row) {
+        throw new Error("User not found");
+      }
+
+      return new User(UserId.from(row.id), new UserName(row.name));
+    };
+
+    export const save = async (
+      userRepositoryDI: UserRepositoryDI,
+      user: User,
+    ): Promise<void> => {
+      const sql = `
+        INSERT INTO users (id, name)
+        VALUES (?, ?)
+        ON DUPLICATE KEY UPDATE
+          name = VALUES(name)
+      `;
+      await userRepositoryDI.pool.query(sql, [
+        user.id as unknown as string,
+        user.name.toString(),
+      ]);
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    use App\Domain\User;
+    use App\Domain\UserId;
+    use App\Domain\UserName;
+
+    // 依存性注入
+    final readonly class UserRepositoryDI
+    {
+        public function __construct(
+            public PDO $pool,
+        ) {
+        }
+    }
+
+    function findById(
+        UserRepositoryDI $userRepositoryDI,
+        UserId $id,
+    ): User {
+        $sql = "SELECT id, name FROM users WHERE id = ? LIMIT 1";
+        $statement = $userRepositoryDI->pool->prepare($sql);
+        $statement->execute([(string) $id]);
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if ($row === false) {
+            throw new RuntimeException("User not found");
+        }
+
+        return new User(UserId::from($row["id"]), new UserName($row["name"]));
+    }
+
+    function save(
+        UserRepositoryDI $userRepositoryDI,
+        User $user,
+    ): void {
+        $sql = "
+        INSERT INTO users (id, name)
+        VALUES (?, ?)
+        ON DUPLICATE KEY UPDATE
+          name = VALUES(name)
+      ";
+        $statement = $userRepositoryDI->pool->prepare($sql);
+        $statement->execute([
+            (string) $user->id,
+            $user->name->toString(),
+        ]);
+    }
+    ```
 
 <br>
 
 ### インメモリリポジトリ
 
-```typescript
-const createUserRepositoryInMemory = (): UserRepositoryInterface => {
-  const store = new Map<UserId, User>();
+=== "Go"
 
-  return {
-    async findById(id: UserId): Promise<User | null> {
-      return store.get(id) ?? null;
-    },
-    async save(user: User): Promise<void> {
-      store.set(user.id, user);
-    },
-  };
-};
-```
+    ```go title=".go"
+    type userRepositoryInMemory struct {
+    	store map[UserId]*User
+    }
+
+    func createUserRepositoryInMemory() UserRepositoryInterface {
+    	return &userRepositoryInMemory{
+    		store: map[UserId]*User{},
+    	}
+    }
+
+    func (r *userRepositoryInMemory) FindById(id UserId) (*User, error) {
+    	return r.store[id], nil
+    }
+
+    func (r *userRepositoryInMemory) Save(user *User) error {
+    	r.store[user.Id] = user
+    	return nil
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    const createUserRepositoryInMemory = (): UserRepositoryInterface => {
+      const store = new Map<UserId, User>();
+
+      return {
+        async findById(id: UserId): Promise<User | null> {
+          return store.get(id) ?? null;
+        },
+        async save(user: User): Promise<void> {
+          store.set(user.id, user);
+        },
+      };
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    function createUserRepositoryInMemory(): UserRepositoryInterface
+    {
+        return new class () implements UserRepositoryInterface {
+            /** @var array<string, User> */
+            private array $store = [];
+
+            public function findById(UserId $id): ?User
+            {
+                return $this->store[(string) $id] ?? null;
+            }
+
+            public function save(User $user): void
+            {
+                $this->store[(string) $user->id] = $user;
+            }
+        };
+    }
+    ```
 
 ### DTO
 
@@ -213,17 +382,60 @@ export const save = async (
 
 User オブジェクトに実装するべき振る舞いのビジネスロジックを、永続化の役割を持つ Repository へ実装することになってしまう。
 
-```typescript
-type UserRepositoryInterface = {
-  findbyId: (id: UserId) => Promise<User>;
-  updateName: (name: UserName) => Promise<void>;
-};
-```
+=== "Go"
 
-```typescript
-const user = await userRepository.findById(userId);
-await userRepository.updateName(getName(user)); // リポジトリの UpdateName のなかで、ドメインロジックを書くことになってしまう
-```
+    ```go title=".go"
+    type UserRepositoryInterface interface {
+    	FindbyId(id UserId) (*User, error)
+    	UpdateName(name UserName) error
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    type UserRepositoryInterface = {
+      findbyId: (id: UserId) => Promise<User>;
+      updateName: (name: UserName) => Promise<void>;
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    interface UserRepositoryInterface
+    {
+        public function findbyId(UserId $id): ?User;
+
+        public function updateName(UserName $name): void;
+    }
+    ```
+
+===! "Go"
+
+    ```go title=".go"
+    user, err := userRepository.FindById(userId)
+    if err != nil {
+    	return err
+    }
+    if err := userRepository.UpdateName(getName(user)); err != nil { // リポジトリの UpdateName のなかで、ドメインロジックを書くことになってしまう
+    	return err
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    const user = await userRepository.findById(userId);
+    await userRepository.updateName(getName(user)); // リポジトリの UpdateName のなかで、ドメインロジックを書くことになってしまう
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    $user = $userRepository->findById($userId);
+    $userRepository->updateName(getName($user)); // リポジトリの UpdateName のなかで、ドメインロジックを書くことになってしまう
+    ```
 
 #### ▼ よりよい実装（リポジトリに Save を書く）
 
@@ -231,18 +443,63 @@ User オブジェクトが振る舞いのビジネスロジックをもち、Rep
 
 責務さえ区別できていれば、名前は Save や Store、それこそ Update でもよい
 
-```typescript
-type UserRepositoryInterface = {
-  findById: (id: UserId) => Promise<User>;
-  save: (user: User) => Promise<void>;
-};
-```
+=== "Go"
 
-```typescript
-const user = await userRepository.findById(userId);
-const updatedUser = changeName(user, newName); // ユーザーオブジェクトが自分でユーザー名の状態を変更する
-await userRepository.save(updatedUser); // リポジトリは、状態の変更されたユーザーオブジェクトを保存するだけ
-```
+    ```go title=".go"
+    type UserRepositoryInterface interface {
+    	FindById(id UserId) (*User, error)
+    	Save(user *User) error
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    type UserRepositoryInterface = {
+      findById: (id: UserId) => Promise<User>;
+      save: (user: User) => Promise<void>;
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    interface UserRepositoryInterface
+    {
+        public function findById(UserId $id): ?User;
+
+        public function save(User $user): void;
+    }
+    ```
+
+===! "Go"
+
+    ```go title=".go"
+    user, err := userRepository.FindById(userId)
+    if err != nil {
+    	return err
+    }
+    updatedUser := changeName(user, newName)                 // ユーザーオブジェクトが自分でユーザー名の状態を変更する
+    if err := userRepository.Save(updatedUser); err != nil { // リポジトリは、状態の変更されたユーザーオブジェクトを保存するだけ
+    	return err
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    const user = await userRepository.findById(userId);
+    const updatedUser = changeName(user, newName); // ユーザーオブジェクトが自分でユーザー名の状態を変更する
+    await userRepository.save(updatedUser); // リポジトリは、状態の変更されたユーザーオブジェクトを保存するだけ
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    $user = $userRepository->findById($userId);
+    $updatedUser = changeName($user, $newName); // ユーザーオブジェクトが自分でユーザー名の状態を変更する
+    $userRepository->save($updatedUser); // リポジトリは、状態の変更されたユーザーオブジェクトを保存するだけ
+    ```
 
 <br>
 

@@ -326,87 +326,172 @@ graph LR
 
 レイヤー間の依存関係の方向を静的解析で制御する。
 
-例えば、`eslint-plugin-import` プラグインの `import/norestricted-paths` というルールが役立つ。
+例えば、Go では golangci-lint の `depguard`、TypeScript では `eslint-plugin-import` プラグインの `import/no-restricted-paths` ルール、PHP では `Deptrac` が役立つ。
 
-```typescript
-import eslint from "@eslint/js";
-import tseslint from "typescript-eslint";
-import * as importPlugin from "eslint-plugin-import";
+=== "Go"
 
-export default tseslint.config(
-  eslint.configs.recommended,
-  ...tseslint.configs.recommended,
+    ```yaml title=".yml"
+    version: "2"
 
-  {
-    files: ["**/*.ts"],
-    plugins: {
-      import: importPlugin,
-    },
-    settings: {
-      "import/resolver": {
-        typescript: {},
-      },
-    },
-    rules: {
-// (略)
-      "import/no-restricted-paths": [
-        "error",
-        {
-          zones: [
-            {
-              // 依存禁止のパス
-              // アプリケーション層に依存してはいけない
-              from: "./src/Application/**/*",
-              // 対象のファイル
-              target: "./src/Domain/**/!(*.spec.ts|*.test.ts)",
-              message:
-                "Domain層でApplication層をimportしてはいけません。",
-            },
-            {
-              // 依存禁止のパス
-              // プレゼンテーション層に依存してはいけない
-              from: "./src/Presentation/**/*",
-              // 対象のファイル
-              target: "./src/Domain/**/!(*.spec.ts|*.test.ts)",
-              message:
-                "Domain層でPresentation層をimportしてはいけません。",
-            },
-            {
-              // 依存禁止のパス
-              // インフラストラクチャ層に依存してはいけない
-              from: "./src/Infrastructure/**/*!(test).ts",
-              // 対象のファイル
-              target: "./src/Domain/**/!(*.spec.ts|*.test.ts)",
-              message:
-                "Domain層でInfrastructure層をimportしてはいけません。",
-            },
+    linters:
+      enable:
+        - depguard
+      settings:
+        depguard:
+          rules:
+            domain:
+              # 対象のファイル
+              files:
+                - "**/internal/domain/**"
+                - "!$test"
+              # 依存禁止のパッケージ
+              deny:
+                # アプリケーション層に依存してはいけない
+                - pkg: "example.com/foo/internal/application"
+                  desc: "Domain層でApplication層をimportしてはいけません。"
+                # プレゼンテーション層に依存してはいけない
+                - pkg: "example.com/foo/internal/presentation"
+                  desc: "Domain層でPresentation層をimportしてはいけません。"
+                # インフラストラクチャ層に依存してはいけない
+                - pkg: "example.com/foo/internal/infrastructure"
+                  desc: "Domain層でInfrastructure層をimportしてはいけません。"
+            application:
+              # 対象のファイル
+              files:
+                - "**/internal/application/**"
+                - "!$test"
+              # 依存禁止のパッケージ
+              deny:
+                # プレゼンテーション層に依存してはいけない
+                - pkg: "example.com/foo/internal/presentation"
+                  desc: "Application層でPresentation層をimportしてはいけません。"
+                # インフラストラクチャ層に依存してはいけない
+                - pkg: "example.com/foo/internal/infrastructure"
+                  desc: "Application層でInfrastructure層をimportしてはいけません。"
+    ```
 
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    import eslint from "@eslint/js";
+    import tseslint from "typescript-eslint";
+    import * as importPlugin from "eslint-plugin-import";
+
+    export default tseslint.config(
+      eslint.configs.recommended,
+      ...tseslint.configs.recommended,
+
+      {
+        files: ["**/*.ts"],
+        plugins: {
+          import: importPlugin,
+        },
+        settings: {
+          "import/resolver": {
+            typescript: {},
+          },
+        },
+        rules: {
+    // (略)
+          "import/no-restricted-paths": [
+            "error",
             {
-              // 依存禁止のパス
-              // プレゼンテーション層に依存してはいけない
-              from: "./src/Presentation/**/*",
-              // 対象のファイル
-              target: "./src/Application/**/!(*.spec.ts|*.test.ts)",
-              message:
-                "Application層でPresentation層をimportしてはいけません。",
-            },
-            {
-              // 依存禁止のパス
-              // インフラストラクチャ層に依存してはいけない
-              from: "./src/Infrastructure/**/*",
-              // 対象のファイル
-              target: "./src/Application/**/!(*.spec.ts|*.test.ts)",
-              message:
-                "Application層でInfrastructure層をimportしてはいけません。",
+              zones: [
+                {
+                  // 依存禁止のパス
+                  // アプリケーション層に依存してはいけない
+                  from: "./src/Application/**/*",
+                  // 対象のファイル
+                  target: "./src/Domain/**/!(*.spec.ts|*.test.ts)",
+                  message:
+                    "Domain層でApplication層をimportしてはいけません。",
+                },
+                {
+                  // 依存禁止のパス
+                  // プレゼンテーション層に依存してはいけない
+                  from: "./src/Presentation/**/*",
+                  // 対象のファイル
+                  target: "./src/Domain/**/!(*.spec.ts|*.test.ts)",
+                  message:
+                    "Domain層でPresentation層をimportしてはいけません。",
+                },
+                {
+                  // 依存禁止のパス
+                  // インフラストラクチャ層に依存してはいけない
+                  from: "./src/Infrastructure/**/*!(test).ts",
+                  // 対象のファイル
+                  target: "./src/Domain/**/!(*.spec.ts|*.test.ts)",
+                  message:
+                    "Domain層でInfrastructure層をimportしてはいけません。",
+                },
+
+                {
+                  // 依存禁止のパス
+                  // プレゼンテーション層に依存してはいけない
+                  from: "./src/Presentation/**/*",
+                  // 対象のファイル
+                  target: "./src/Application/**/!(*.spec.ts|*.test.ts)",
+                  message:
+                    "Application層でPresentation層をimportしてはいけません。",
+                },
+                {
+                  // 依存禁止のパス
+                  // インフラストラクチャ層に依存してはいけない
+                  from: "./src/Infrastructure/**/*",
+                  // 対象のファイル
+                  target: "./src/Application/**/!(*.spec.ts|*.test.ts)",
+                  message:
+                    "Application層でInfrastructure層をimportしてはいけません。",
+                },
+              ],
             },
           ],
         },
-      ],
-    },
-  }
-);
-```
+      }
+    );
+    ```
 
+=== "PHP"
+
+    ```yaml title=".yaml"
+    deptrac:
+      paths:
+        - ./src
+      # 層とそのディレクトリ
+      layers:
+        - name: Domain
+          collectors:
+            - type: directory
+              value: src/Domain/.*
+        - name: Application
+          collectors:
+            - type: directory
+              value: src/Application/.*
+        - name: Presentation
+          collectors:
+            - type: directory
+              value: src/Presentation/.*
+        - name: Infrastructure
+          collectors:
+            - type: directory
+              value: src/Infrastructure/.*
+      # 依存してよい層
+      ruleset:
+        # ドメイン層は、ほかの層に依存してはいけない
+        Domain: ~
+        # アプリケーション層は、ドメイン層にのみ依存してよい
+        Application:
+          - Domain
+        Presentation:
+          - Application
+          - Domain
+        Infrastructure:
+          - Application
+          - Domain
+    ```
+
+> - [depguard - golangci-lint](https://golangci-lint.run/docs/linters/configuration/#depguard)
 > - [「このパスでこのファイルのインポートをさせたくない、、、」をESLintでルール化する](https://zenn.dev/sqer/articles/35d56d9850efb2)
+> - [deptrac/deptrac - GitHub](https://github.com/deptrac/deptrac)
 
 <br>

@@ -29,61 +29,237 @@ description: 13章＠ドメイン駆動設計入門ボトムアップの知見�
 
 単一のエンティティに関する単一のドメインルールの場合は、Specification パターンとして切り分けずに、そのエンティティに boolean 値関数 (`isFoo()` 関数) をもたせる。
 
-```typescript
-export class CircleFullSpecification {
-  constructor(private readonly userRepository: IUserRepository) {}
+=== "Go"
 
-  public async isSatisfiedBy(circle: Circle): Promise<boolean> {
-    const users = await this.userRepository.find(circle.members);
-
-    const premiumUserNumber = users.filter((user) => user.isPremium).length;
-
-    const circleUpperLimit = premiumUserNumber < 10 ? 30 : 50;
-
-    return circle.countMembers() >= circleUpperLimit;
-  }
-}
-```
-
-```typescript
-export class CircleApplicationService {
-  constructor(
-    private readonly circleFactory: ICircleFactory,
-    private readonly circleRepository: ICircleRepository,
-    private readonly circleService: CircleService,
-    private readonly userRepository: IUserRepository,
-  ) {}
-
-  public async join(command: CircleJoinCommand): Promise<void> {
-    const circleId = new CircleId(command.circleId);
-
-    const circle = await this.circleRepository.find(circleId);
-
-    const users = await this.userRepository.find(circle.members);
-
-    // サークルに所属しているプレミアムユーザの人数により上限が変わる
-    const premiumUserNumber = users.filter((user) => user.isPremium).length;
-    const circleUpperLimit = premiumUserNumber < 10 ? 30 : 50;
-
-    if (circle.countMembers() >= circleUpperLimit) {
-      throw new CircleFullException(circleId);
+    ```go title=".go"
+    type CircleFullSpecification struct {
+    	userRepository IUserRepository
     }
 
-    const memberId = new UserId(command.userId);
-    const member = await this.userRepository.find(memberId);
-
-    if (!member) {
-      throw new UserNotFoundException(
-        memberId,
-        "ユーザが見つかりませんでした。",
-      );
+    func NewCircleFullSpecification(userRepository IUserRepository) *CircleFullSpecification {
+    	return &CircleFullSpecification{userRepository: userRepository}
     }
 
-    circle.join(member);
-    await this.circleRepository.save(circle);
-  }
-}
-```
+    func (s *CircleFullSpecification) IsSatisfiedBy(circle *Circle) (bool, error) {
+    	users, err := s.userRepository.Find(circle.Members)
+    	if err != nil {
+    		return false, err
+    	}
+
+    	premiumUserNumber := 0
+    	for _, user := range users {
+    		if user.IsPremium {
+    			premiumUserNumber++
+    		}
+    	}
+
+    	circleUpperLimit := 50
+    	if premiumUserNumber < 10 {
+    		circleUpperLimit = 30
+    	}
+
+    	return circle.CountMembers() >= circleUpperLimit, nil
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    export class CircleFullSpecification {
+      constructor(private readonly userRepository: IUserRepository) {}
+
+      public async isSatisfiedBy(circle: Circle): Promise<boolean> {
+        const users = await this.userRepository.find(circle.members);
+
+        const premiumUserNumber = users.filter((user) => user.isPremium).length;
+
+        const circleUpperLimit = premiumUserNumber < 10 ? 30 : 50;
+
+        return circle.countMembers() >= circleUpperLimit;
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    final class CircleFullSpecification
+    {
+        public function __construct(
+            private readonly IUserRepository $userRepository,
+        ) {
+        }
+
+        public function isSatisfiedBy(Circle $circle): bool
+        {
+            $users = $this->userRepository->find($circle->members);
+
+            $premiumUserNumber = count(array_filter($users, fn (User $user) => $user->isPremium));
+
+            $circleUpperLimit = $premiumUserNumber < 10 ? 30 : 50;
+
+            return $circle->countMembers() >= $circleUpperLimit;
+        }
+    }
+    ```
+
+===! "Go"
+
+    ```go title=".go"
+    type CircleApplicationService struct {
+    	circleFactory    ICircleFactory
+    	circleRepository ICircleRepository
+    	circleService    *CircleService
+    	userRepository   IUserRepository
+    }
+
+    func NewCircleApplicationService(
+    	circleFactory ICircleFactory,
+    	circleRepository ICircleRepository,
+    	circleService *CircleService,
+    	userRepository IUserRepository,
+    ) *CircleApplicationService {
+    	return &CircleApplicationService{
+    		circleFactory:    circleFactory,
+    		circleRepository: circleRepository,
+    		circleService:    circleService,
+    		userRepository:   userRepository,
+    	}
+    }
+
+    func (s *CircleApplicationService) Join(command CircleJoinCommand) error {
+    	circleId := NewCircleId(command.CircleId)
+
+    	circle, err := s.circleRepository.Find(circleId)
+    	if err != nil {
+    		return err
+    	}
+
+    	users, err := s.userRepository.Find(circle.Members)
+    	if err != nil {
+    		return err
+    	}
+
+    	// サークルに所属しているプレミアムユーザの人数により上限が変わる
+    	premiumUserNumber := 0
+    	for _, user := range users {
+    		if user.IsPremium {
+    			premiumUserNumber++
+    		}
+    	}
+    	circleUpperLimit := 50
+    	if premiumUserNumber < 10 {
+    		circleUpperLimit = 30
+    	}
+
+    	if circle.CountMembers() >= circleUpperLimit {
+    		return NewCircleFullException(circleId)
+    	}
+
+    	memberId := NewUserId(command.UserId)
+    	member, err := s.userRepository.FindById(memberId)
+    	if err != nil {
+    		return err
+    	}
+
+    	if member == nil {
+    		return NewUserNotFoundException(
+    			memberId,
+    			"ユーザが見つかりませんでした。",
+    		)
+    	}
+
+    	circle.Join(member)
+    	return s.circleRepository.Save(circle)
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    export class CircleApplicationService {
+      constructor(
+        private readonly circleFactory: ICircleFactory,
+        private readonly circleRepository: ICircleRepository,
+        private readonly circleService: CircleService,
+        private readonly userRepository: IUserRepository,
+      ) {}
+
+      public async join(command: CircleJoinCommand): Promise<void> {
+        const circleId = new CircleId(command.circleId);
+
+        const circle = await this.circleRepository.find(circleId);
+
+        const users = await this.userRepository.find(circle.members);
+
+        // サークルに所属しているプレミアムユーザの人数により上限が変わる
+        const premiumUserNumber = users.filter((user) => user.isPremium).length;
+        const circleUpperLimit = premiumUserNumber < 10 ? 30 : 50;
+
+        if (circle.countMembers() >= circleUpperLimit) {
+          throw new CircleFullException(circleId);
+        }
+
+        const memberId = new UserId(command.userId);
+        const member = await this.userRepository.find(memberId);
+
+        if (!member) {
+          throw new UserNotFoundException(
+            memberId,
+            "ユーザが見つかりませんでした。",
+          );
+        }
+
+        circle.join(member);
+        await this.circleRepository.save(circle);
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    final class CircleApplicationService
+    {
+        public function __construct(
+            private readonly ICircleFactory $circleFactory,
+            private readonly ICircleRepository $circleRepository,
+            private readonly CircleService $circleService,
+            private readonly IUserRepository $userRepository,
+        ) {
+        }
+
+        public function join(CircleJoinCommand $command): void
+        {
+            $circleId = new CircleId($command->circleId);
+
+            $circle = $this->circleRepository->find($circleId);
+
+            $users = $this->userRepository->find($circle->members);
+
+            // サークルに所属しているプレミアムユーザの人数により上限が変わる
+            $premiumUserNumber = count(array_filter($users, fn (User $user) => $user->isPremium));
+            $circleUpperLimit = $premiumUserNumber < 10 ? 30 : 50;
+
+            if ($circle->countMembers() >= $circleUpperLimit) {
+                throw new CircleFullException($circleId);
+            }
+
+            $memberId = new UserId($command->userId);
+            $member = $this->userRepository->find($memberId);
+
+            if ($member === null) {
+                throw new UserNotFoundException(
+                    $memberId,
+                    "ユーザが見つかりませんでした。",
+                );
+            }
+
+            $circle->join($member);
+            $this->circleRepository->save($circle);
+        }
+    }
+    ```
 
 ### クエリ検索条件オブジェクトとして
 
@@ -91,46 +267,169 @@ export class CircleApplicationService {
 
 Criteria パターンと呼ぶこともある。
 
-```typescript
-export class CircleRecommendSpecification {
-  constructor(private readonly executeDateTime: Date) {}
+=== "Go"
 
-  public isSatisfiedBy(circle: Circle): boolean {
-    if (circle.countMembers() < 10) {
-      return false;
+    ```go title=".go"
+    type CircleRecommendSpecification struct {
+    	executeDateTime time.Time
     }
-    const oneMonthAgo = new Date(this.executeDateTime);
-    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
-    return circle.created > oneMonthAgo;
-  }
-}
-```
 
-```typescript
-export class CircleApplicationService {
-  constructor(
-    private readonly circleFactory: ICircleFactory,
-    private readonly circleRepository: ICircleRepository,
-    private readonly circleService: CircleService,
-    private readonly userRepository: IUserRepository,
-    private readonly now: Date,
-  ) {}
+    func NewCircleRecommendSpecification(executeDateTime time.Time) *CircleRecommendSpecification {
+    	return &CircleRecommendSpecification{executeDateTime: executeDateTime}
+    }
 
-  public async getRecommend(
-    request: CircleGetRecommendRequest,
-  ): Promise<CircleGetRecommendResult> {
-    const circleRecommendSpecification = new CircleRecommendSpecification(
-      this.now,
-    );
+    func (s *CircleRecommendSpecification) IsSatisfiedBy(circle *Circle) bool {
+    	if circle.CountMembers() < 10 {
+    		return false
+    	}
+    	oneMonthAgo := s.executeDateTime.AddDate(0, -1, 0)
+    	return circle.Created.After(oneMonthAgo)
+    }
+    ```
 
-    // リポジトリに仕様を引き渡して抽出（フィルタリング）
-    const recommendCircles = (
-      await this.circleRepository.find(circleRecommendSpecification)
-    ).slice(0, 10);
+=== "TypeScript"
 
-    return new CircleGetRecommendResult(recommendCircles);
-  }
-}
-```
+    ```typescript title=".ts"
+    export class CircleRecommendSpecification {
+      constructor(private readonly executeDateTime: Date) {}
+
+      public isSatisfiedBy(circle: Circle): boolean {
+        if (circle.countMembers() < 10) {
+          return false;
+        }
+        const oneMonthAgo = new Date(this.executeDateTime);
+        oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+        return circle.created > oneMonthAgo;
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    final class CircleRecommendSpecification
+    {
+        public function __construct(
+            private readonly DateTimeImmutable $executeDateTime,
+        ) {
+        }
+
+        public function isSatisfiedBy(Circle $circle): bool
+        {
+            if ($circle->countMembers() < 10) {
+                return false;
+            }
+            $oneMonthAgo = $this->executeDateTime->modify("-1 month");
+            return $circle->created > $oneMonthAgo;
+        }
+    }
+    ```
+
+===! "Go"
+
+    ```go title=".go"
+    type CircleApplicationService struct {
+    	circleFactory    ICircleFactory
+    	circleRepository ICircleRepository
+    	circleService    *CircleService
+    	userRepository   IUserRepository
+    	now              time.Time
+    }
+
+    func NewCircleApplicationService(
+    	circleFactory ICircleFactory,
+    	circleRepository ICircleRepository,
+    	circleService *CircleService,
+    	userRepository IUserRepository,
+    	now time.Time,
+    ) *CircleApplicationService {
+    	return &CircleApplicationService{
+    		circleFactory:    circleFactory,
+    		circleRepository: circleRepository,
+    		circleService:    circleService,
+    		userRepository:   userRepository,
+    		now:              now,
+    	}
+    }
+
+    func (s *CircleApplicationService) GetRecommend(
+    	request CircleGetRecommendRequest,
+    ) (*CircleGetRecommendResult, error) {
+    	circleRecommendSpecification := NewCircleRecommendSpecification(
+    		s.now,
+    	)
+
+    	// リポジトリに仕様を引き渡して抽出（フィルタリング）
+    	circles, err := s.circleRepository.FindBySpecification(circleRecommendSpecification)
+    	if err != nil {
+    		return nil, err
+    	}
+    	recommendCircles := circles[:min(len(circles), 10)]
+
+    	return NewCircleGetRecommendResult(recommendCircles), nil
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title=".ts"
+    export class CircleApplicationService {
+      constructor(
+        private readonly circleFactory: ICircleFactory,
+        private readonly circleRepository: ICircleRepository,
+        private readonly circleService: CircleService,
+        private readonly userRepository: IUserRepository,
+        private readonly now: Date,
+      ) {}
+
+      public async getRecommend(
+        request: CircleGetRecommendRequest,
+      ): Promise<CircleGetRecommendResult> {
+        const circleRecommendSpecification = new CircleRecommendSpecification(
+          this.now,
+        );
+
+        // リポジトリに仕様を引き渡して抽出（フィルタリング）
+        const recommendCircles = (
+          await this.circleRepository.find(circleRecommendSpecification)
+        ).slice(0, 10);
+
+        return new CircleGetRecommendResult(recommendCircles);
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title=".php"
+    final class CircleApplicationService
+    {
+        public function __construct(
+            private readonly ICircleFactory $circleFactory,
+            private readonly ICircleRepository $circleRepository,
+            private readonly CircleService $circleService,
+            private readonly IUserRepository $userRepository,
+            private readonly DateTimeImmutable $now,
+        ) {
+        }
+
+        public function getRecommend(
+            CircleGetRecommendRequest $request,
+        ): CircleGetRecommendResult {
+            $circleRecommendSpecification = new CircleRecommendSpecification(
+                $this->now,
+            );
+
+            // リポジトリに仕様を引き渡して抽出（フィルタリング）
+            $recommendCircles = array_slice(
+                $this->circleRepository->find($circleRecommendSpecification),
+                0,
+                10,
+            );
+
+            return new CircleGetRecommendResult($recommendCircles);
+        }
+    }
+    ```
 
 <br>
