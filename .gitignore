@@ -1,3 +1,4 @@
 **/private
 /site
 node_modules
+.cache
